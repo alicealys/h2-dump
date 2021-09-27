@@ -1,0 +1,187 @@
+// H2 PC GSC
+// Decompiled by https://github.com/xensik/gsc-tool
+
+_ID616()
+{
+    _ID49575::_ID616();
+    _ID43893::_ID616();
+    level thread _unknown_0150();
+    level._ID1426["bouncing_betty_launch"] = _func_155( "vfx/map/estate/h2_bouncing_betty_launch_dirt_estate" );
+    level._ID1426["bouncing_betty_swirl"] = _func_155( "vfx/map/estate/h2_bouncing_betty_swirl_estate" );
+    level._ID1426["bouncing_betty_explosion"] = _func_155( "vfx/map/estate/h2_bouncing_betty_explosion_estate" );
+    level._ID1426["breach_estate_door"] = _func_155( "vfx/map/estate/h2_breach_door2_estate" );
+    level._ID1426["breach_room_residual_estate"] = _func_155( "vfx/map/estate/h2_breach_room_residual_estate" );
+    level._ID1426["breach_room_residual_estate_fill"] = _func_155( "vfx/map/estate/h2_breach_room_residual_estate_fill" );
+    level._ID1426["fenceblast"] = _func_155( "fx/explosions/artilleryExp_dirt_brown" );
+    level._ID1426["redsmoke"] = _func_155( "fx/smoke/signal_smoke_red_estate" );
+    level._ID1426["bodydump_dust_large"] = _func_155( "vfx/map/estate/h2_bodydump_dust_large_runner_estate" );
+    level._ID1426["flesh_hit_body_fatal_exit"] = _func_155( "fx/impacts/flesh_hit_body_fatal_exit" );
+    level._ID1426["gas_can_splash"] = _func_155( "vfx/map/estate/h2_gas_can_splash_estate" );
+    level._ID1426["gas_can_drips"] = _func_155( "vfx/map/estate/h2_gas_can_drips_estate" );
+    level._ID1426["cigar_glow"] = _func_155( "vfx/map/estate/h2_cigar_glow_estate" );
+    level._ID1426["cigar_glow_puff"] = _func_155( "vfx/map/estate/h2_cigar_glow_puff_estate" );
+    level._ID1426["cigar_smoke_puff"] = _func_155( "vfx/map/estate/h2_cigarsmoke_puff_estate" );
+    level._ID1426["cigar_exhale_estate"] = _func_155( "vfx/map/estate/h2_cigarsmoke_exhale_estate" );
+    level._ID1426["anaconda_muzzle_flash"] = _func_155( "fx/muzzleflashes/pistolflash_shepard_estate" );
+    level._ID1426["camera_flash"] = _func_155( "vfx/lights/camera_flash" );
+    level._ID1426["mortar"]["dirt"] = _func_155( "vfx/map/estate/h2_artilleryexp_dirt_brown_2_estate" );
+    level._ID1426["gasoline_fire_on_player"] = _func_155( "vfx/map/estate/h2_firelp_med_pm_estate" );
+    level._ID1426["h2_firelp_lg_pm_estate"] = _func_155( "vfx/map/estate/h2_firelp_lg_pm_estate" );
+    level._ID1426["h2_fire_lg_pm_estate"] = _func_155( "vfx/map/estate/h2_fire_lg_pm_estate" );
+    level._ID1426["gasoline_fire_on_player_ignite"] = _func_155( "vfx/map/estate/h2_firelp_med_pm_estate_ignite" );
+    level._ID1426["suicide_bomber"] = _func_155( "vfx/map/estate/h2_propane_large_exp_estate" );
+    level._ID1426["smoke_cloud"] = _func_155( "vfx/map/estate/h2_smoke_grenade_estate" );
+    level._ID1426["h2_sunflare_estate"] = _func_155( "vfx/map/estate/h2_sunflare_estate" );
+    level._ID1426["ground_fog1200x1200_estate"] = _func_155( "vfx/map/estate/h2_ground_fog_1200x1200_estate" );
+    level._ID1426["ground_fog1200x1200_estate_2"] = _func_155( "vfx/map/estate/h2_ground_fog2_1200x1200_estate" );
+    level._ID1426["fog_ground_200"] = _func_155( "vfx/map/estate/h2_fog_ground_200_estate" );
+    level._ID1426["fog_ground_400"] = _func_155( "vfx/map/estate/h2_fog_ground_400_estate" );
+    level._ID1426["room_smoke_200"] = _func_155( "vfx/map/estate/h2_room_smoke_200_estate" );
+    level._ID1426["h2_cloud_bank_far_estate"] = _func_155( "vfx/map/estate/h2_cloud_bank_far_estate" );
+    level._ID1426["h2_fog_distant_vista_estate"] = _func_155( "vfx/map/estate/h2_fog_distant_vista_estate" );
+    level._ID1426["h2_fog_distant_vista_far_estate"] = _func_155( "vfx/map/estate/h2_fog_distant_vista_far_estate" );
+    level._ID1426["hallway_smoke_light"] = _func_155( "vfx/map/estate/h2_hallway_smoke_light_estate" );
+    level._ID1426["leaves_fall_gentlewind"] = _func_155( "vfx/map/estate/h2_leaves_fall_gentlewind_estate" );
+    level._ID1426["leaves_spiral_runner"] = _func_155( "vfx/map/estate/h2_leaves_spiral_runner_estate" );
+    level._ID1426["leaves_spiral_estate_ending"] = _func_155( "vfx/map/estate/h2_leaves_spiral_estate_ending" );
+    level._ID1426["leaves_ground_gentlewind_dust"] = _func_155( "vfx/map/estate/h2_leaves_ground_gentle_dust_estate" );
+    level._ID1426["h2_light_shaft_dust"] = _func_155( "vfx/map/estate/h2_light_shaft_dust_estate" );
+    level._ID1426["h2_light_shaft_dust_sm"] = _func_155( "vfx/map/estate/h2_light_shaft_dust_sm_estate" );
+    level._ID1426["h2_lightbeam_outdoor_estate"] = _func_155( "vfx/map/estate/h2_lightbeam_outdoor_estate" );
+    level._ID1426["h2_lightbeam_outdoor_briter"] = _func_155( "vfx/map/estate/h2_lightbeam_outdoor_briter_estate" );
+    level._ID1426["h2_vl"] = _func_155( "vfx/map/estate/h2_vl_estate" );
+    level._ID1426["h2_flare"] = _func_155( "vfx/map/estate/h2_flare_estate" );
+    level._ID1426["h2_light_cone"] = _func_155( "vfx/map/estate/h2_light_cone_estate" );
+    level._ID1426["dust_outdoor_large"] = _func_155( "vfx/map/estate/h2_dust_outdoor_large_estate" );
+    level._ID1426["firelp_small_pm"] = _func_155( "vfx/map/estate/h2_firelp_small_pm_estate" );
+    level._ID1426["thin_black_smoke_M"] = _func_155( "vfx/map/estate/h2_thin_black_smoke_m_estate" );
+    level._ID1426["moth_runner"] = _func_155( "vfx/map/estate/h2_moth_runner_estate" );
+    level._ID1426["insect_trail_runner_icbm"] = _func_155( "vfx/map/estate/h2_insect_trail_runner_estate" );
+    level._ID1426["insects_carcass_runner"] = _func_155( "fx/misc/insects_carcass_runner" );
+    level._ID1426["waterfall_drainage_splash"] = _func_155( "fx/water/waterfall_drainage_splash_estate" );
+    level._ID1426["waterfall_splash_large"] = _func_155( "fx/water/waterfall_splash_large_estate" );
+    level._ID1426["waterfall_splash_large_drops"] = _func_155( "fx/water/waterfall_splash_large_drops_estate" );
+    level._ID1426["falling_water_trickle"] = _func_155( "fx/water/falling_water_trickle" );
+    level._ID1426["bird_takeoff_pm"] = _func_155( "fx/misc/bird_takeoff_pm" );
+    level._ID1426["heli_dust_estate"] = _func_155( "fx/treadfx/heli_dust_estate" );
+    level._ID1426["heli_dust_estate_large"] = _func_155( "fx/treadfx/heli_dust_estate_large" );
+    level._ID1426["steam_solar_panels"] = _func_155( "fx/smoke/steam_solar_panels" );
+    level._ID1426["flare_light_sml_estate"] = _func_155( "vfx/lensflare/flare_light_sml_estate" );
+    level._ID1426["dsm_light"] = _func_155( "fx/misc/dsm_light" );
+    level._ID1426["h2_cam_dirt_bodythrow_estate"] = _func_155( "vfx/map/estate/h2_cam_dirt_bodythrow_estate" );
+    level._ID1426["javelin_explosion_estate_jeep"] = _func_155( "fx/explosions/javelin_explosion_estate_jeep" );
+    level._ID1426["h2_bodydump_player"] = _func_155( "vfx/map/estate/h2_bodydump_player" );
+    level._ID1426["h2_gas_can_splash_estate_long"] = _func_155( "vfx/map/estate/h2_gas_can_splash_estate_long" );
+    level._ID1426["h2_bodydump_player_hand_impact"] = _func_155( "vfx/map/estate/h2_bodydump_player_hand_impact" );
+    level._ID1426["pavelow_lighting_estate"] = _func_155( "fx/lights/pavelow_lighting_estate" );
+    level._ID1426["fluorescent_light_cone_estate"] = _func_155( "vfx/lights/fluorescent_light_cone_estate" );
+    level._ID1426["light_window_estate"] = _func_155( "vfx/map/estate/light_window_estate" );
+    level._ID1426["light_glow_white_lamp"] = _func_155( "fx/misc/light_glow_white_lamp" );
+}
+
+_ID38735()
+{
+    var_0 = "fx/treadfx/heli_dust_estate";
+    var_1 = "fx/treadfx/heli_dust_estate_large";
+    _ID42400::_ID33619( "script_vehicle_pavelow", "brick", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "bark", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "carpet", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "cloth", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "concrete", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "dirt", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "flesh", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "foliage", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "glass", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "grass", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "gravel", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "ice", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "metal", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "mud", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "paper", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "plaster", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "rock", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "sand", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "snow", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "water", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "wood", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "asphalt", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "ceramic", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "plastic", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "rubber", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "cushion", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "fruit", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "painted metal", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "default", var_1 );
+    _ID42400::_ID33619( "script_vehicle_pavelow", "none", var_1 );
+    var_2[0] = "script_vehicle_littlebird_armed";
+    var_2[1] = "script_vehicle_littlebird_bench";
+    var_3 = var_2;
+
+    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    {
+        var_4 = var_3[var_5];
+        _ID42400::_ID33619( var_4, "brick", var_0 );
+        _ID42400::_ID33619( var_4, "bark", var_0 );
+        _ID42400::_ID33619( var_4, "carpet", var_0 );
+        _ID42400::_ID33619( var_4, "cloth", var_0 );
+        _ID42400::_ID33619( var_4, "concrete", var_0 );
+        _ID42400::_ID33619( var_4, "dirt", var_0 );
+        _ID42400::_ID33619( var_4, "flesh", var_0 );
+        _ID42400::_ID33619( var_4, "foliage", var_0 );
+        _ID42400::_ID33619( var_4, "glass", var_0 );
+        _ID42400::_ID33619( var_4, "grass", var_0 );
+        _ID42400::_ID33619( var_4, "gravel", var_0 );
+        _ID42400::_ID33619( var_4, "ice", var_0 );
+        _ID42400::_ID33619( var_4, "metal", var_0 );
+        _ID42400::_ID33619( var_4, "mud", var_0 );
+        _ID42400::_ID33619( var_4, "paper", var_0 );
+        _ID42400::_ID33619( var_4, "plaster", var_0 );
+        _ID42400::_ID33619( var_4, "rock", var_0 );
+        _ID42400::_ID33619( var_4, "sand", var_0 );
+        _ID42400::_ID33619( var_4, "snow", var_0 );
+        _ID42400::_ID33619( var_4, "water", var_0 );
+        _ID42400::_ID33619( var_4, "wood", var_0 );
+        _ID42400::_ID33619( var_4, "asphalt", var_0 );
+        _ID42400::_ID33619( var_4, "ceramic", var_0 );
+        _ID42400::_ID33619( var_4, "plastic", var_0 );
+        _ID42400::_ID33619( var_4, "rubber", var_0 );
+        _ID42400::_ID33619( var_4, "cushion", var_0 );
+        _ID42400::_ID33619( var_4, "fruit", var_0 );
+        _ID42400::_ID33619( var_4, "painted metal", var_0 );
+        _ID42400::_ID33619( var_4, "default", var_0 );
+        _ID42400::_ID33619( var_4, "none", var_0 );
+    }
+
+    var_clear_2
+    var_clear_0
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "brick", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "bark", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "carpet", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "cloth", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "concrete", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "dirt", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "flesh", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "foliage", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "glass", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "grass", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "gravel", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "ice", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "metal", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "mud", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "paper", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "plaster", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "rock", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "sand", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "snow", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "water", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "wood", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "asphalt", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "ceramic", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "plastic", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "rubber", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "cushion", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "fruit", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "painted metal", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "default", var_0 );
+    _ID42400::_ID33619( "script_vehicle_mi17_woodland_fly_cheap", "none", var_0 );
+}

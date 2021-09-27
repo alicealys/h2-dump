@@ -1,0 +1,72 @@
+// H2 PC GSC
+// Decompiled by https://github.com/xensik/gsc-tool
+
+_ID616()
+{
+    level._ID39397 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_outdoors" );
+    var_0._ID36107 = 3764.17;
+    var_0._ID17667 = 19391;
+    var_0._ID29340 = 0.661137;
+    var_0._ID17371 = 0.554261;
+    var_0._ID5320 = 0.454014;
+    var_0._ID23114 = 0.7;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_indoors" );
+    var_0._ID36107 = 3764.17;
+    var_0._ID17667 = 19391;
+    var_0._ID29340 = 0.661137;
+    var_0._ID17371 = 0.554261;
+    var_0._ID5320 = 0.454014;
+    var_0._ID23114 = 0.7;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_indoors_steamroom" );
+    var_0._ID36107 = 0;
+    var_0._ID17667 = 15242;
+    var_0._ID29340 = 0.807;
+    var_0._ID17371 = 0.8225;
+    var_0._ID5320 = 0.8262;
+    var_0._ID23114 = 0.7682;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_indoors_steamroom_dark" );
+    var_0._ID36107 = 0;
+    var_0._ID17667 = 4110;
+    var_0._ID29340 = 0.73311;
+    var_0._ID17371 = 0.2763;
+    var_0._ID5320 = 0.288116;
+    var_0._ID23114 = 0.7682;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_indoors_overlook" );
+    var_0._ID36107 = 3764.17;
+    var_0._ID17667 = 19391;
+    var_0._ID29340 = 0.661137;
+    var_0._ID17371 = 0.554261;
+    var_0._ID5320 = 0.454014;
+    var_0._ID23114 = 0.7;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_indoors_skylight" );
+    var_0._ID36107 = 3764.17;
+    var_0._ID17667 = 19391;
+    var_0._ID29340 = 0.661137;
+    var_0._ID17371 = 0.554261;
+    var_0._ID5320 = 0.454014;
+    var_0._ID23114 = 0.7;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_indoors_breachroom" );
+    var_0._ID36107 = 3764.17;
+    var_0._ID17667 = 19391;
+    var_0._ID29340 = 0.661137;
+    var_0._ID17371 = 0.554261;
+    var_0._ID5320 = 0.454014;
+    var_0._ID23114 = 0.7;
+    var_0._ID38687 = 0;
+    var_0 = _ID42407::_ID9186( "af_caves_outdoors_airstrip" );
+    var_0._ID36107 = 2044.09;
+    var_0._ID17667 = 16810;
+    var_0._ID29340 = 0.67451;
+    var_0._ID17371 = 0.67451;
+    var_0._ID5320 = 0.713726;
+    var_0._ID23114 = 0.778285;
+    var_0._ID38687 = 0;
+    _ID42407::_ID40561( "af_caves_outdoors", 0 );
+}
