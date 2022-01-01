@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "latvee", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0073 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_laatpv", "vehicle_laatpv_destroyed" );
     _ID42411::_ID6216( "vehicle_laatpv_blood", "vehicle_laatpv_destroyed" );
     _ID42411::_ID6216( "vehicle_laatpv_no_doors", "vehicle_laatpv_destroyed" );
@@ -15,28 +15,28 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6216( "vehicle_latvee_camo" );
     _ID42411::_ID6216( "vehicle_latvee_camo_50cal_doors" );
     _ID42411::_ID6216( "vehicle_latvee_camo_50cal_nodoors" );
-    _ID42411::_ID6206( ::_unknown_00C4 );
-    _ID42411::_ID6262( ::_unknown_0100 );
+    _ID42411::_ID6206( ::_ID32221 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6220( %latvee_50cal_driving_idle_forward, %latvee_50cal_driving_idle_backward, 10 );
     _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion", undefined, "car_explode" );
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    var_3 = ::_unknown_01F0;
+    var_3 = ::_ID32550;
 
-    if ( _func_02F( var_1 ) && _func_125( var_1, "open" ) )
-        var_3 = ::_unknown_01B6;
+    if ( isdefined( var_1 ) && issubstr( var_1, "open" ) )
+        var_3 = ::opentop_anims;
 
-    _ID42411::_ID6204( var_3, ::_unknown_017A );
+    _ID42411::_ID6204( var_3, ::_ID32509 );
 }
 
 _ID32221()
 {
     var_0 = [];
 
-    if ( _func_02F( self._ID40791 ) && _func_125( self._ID40791, "script_vehicle_laatpv_viewmodel_01" ) )
+    if ( isdefined( self._ID40791 ) && issubstr( self._ID40791, "script_vehicle_laatpv_viewmodel_01" ) )
     {
-        var_0["attach_exterior"] = _func_1A5();
+        var_0["attach_exterior"] = spawnstruct();
         var_0["attach_exterior"]._ID1067 = "body_animate_jnt";
         var_0["attach_exterior"]._ID669 = "vehicle_laatpv_viewmodel_02";
         var_0["attach_exterior"]._ID47753 = "tag_origin";
@@ -47,7 +47,7 @@ _ID32221()
 
 _ID19731()
 {
-    if ( _func_125( self._ID1282, "physics" ) )
+    if ( issubstr( self._ID1282, "physics" ) )
     {
         var_0 = [];
         var_0["idle"] = %latvee_antennas_idle_movement;
@@ -56,8 +56,8 @@ _ID19731()
         thread _ID42413::_ID19207( var_0 );
     }
 
-    if ( !_func_125( self._ID669, "opentop" ) && self _meth_844F( "tag_blood" ) != -1 )
-        self _meth_804E( "tag_blood" );
+    if ( !issubstr( self._ID669, "opentop" ) && self _meth_844f( "tag_blood" ) != -1 )
+        self hidepart( "tag_blood" );
 }
 
 _ID39488()
@@ -108,7 +108,7 @@ opentop_anims()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 4; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";
@@ -135,7 +135,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 4; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";

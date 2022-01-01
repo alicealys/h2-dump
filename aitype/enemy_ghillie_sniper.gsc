@@ -15,10 +15,10 @@ _ID616()
     self._ID949 = "pp2000_silencer";
     self._ID34144 = "usp_silencer";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     self._ID1302 = "wa2000";
@@ -27,15 +27,15 @@ _ID616()
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID45656::_ID814();
-    _func_14E( "wa2000" );
-    _func_14E( "pp2000_silencer" );
-    _func_14E( "usp_silencer" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "wa2000" );
+    precacheitem( "pp2000_silencer" );
+    precacheitem( "usp_silencer" );
+    precacheitem( "fraggrenade" );
     _ID42368::_ID616();
 }

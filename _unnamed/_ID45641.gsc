@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "pavelow_noai", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_008A );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_pavelow" );
     _ID42411::_ID6213( "fx/explosions/helicopter_explosion_secondary_small", "tag_engine_left", "pavelow_helicopter_secondary_exp", undefined, undefined, undefined, 0.0, 1, undefined );
     _ID42411::_ID6213( "fx/fire/fire_smoke_trail_L", "tag_engine_left", "pavelow_helicopter_dying_loop", 1, 0.05, 1, 0.5, 1, undefined );
@@ -28,7 +28,7 @@ _ID616( var_0, var_1, var_2 )
 
 _ID19731()
 {
-    self._ID26026 = _func_0F3( self _meth_818C( "tag_origin" ), self _meth_818C( "tag_ground" ) );
+    self._ID26026 = distance( self gettagorigin( "tag_origin" ), self gettagorigin( "tag_ground" ) );
     self._ID31066 = 0;
     thread _ID42411::_ID40197( "running" );
 }

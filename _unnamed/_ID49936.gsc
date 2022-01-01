@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "swat_van", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0051 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( var_0, "h2_vehicle_russian_swat_van_destroy" );
     _ID42411::_ID6213( "fx/explosions/huge_vehicle_explosion", "TAG_DEATHFX", "car_explode", undefined, undefined, undefined, 0 );
     _ID42411::_ID6213( "fx/fire/firelp_swat_van_back", "TAG_CARGO_FIRE", "fire_metal_medium", undefined, undefined, 1, 0 );
@@ -17,7 +17,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "axis" );
     _ID42411::_ID6257();
-    _ID42411::_ID6204( ::_unknown_0101, ::_unknown_00F2 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
 }
 
 _ID19731()
@@ -39,7 +39,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 1; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[0]._ID19302 = %russian_swat_van_driver_idle;

@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "bmp", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0085 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6219( "vehicle_bmp_dsty", "vehicle_bmp_winter" );
     _ID42411::_ID6216( "vehicle_bmp", "vehicle_bmp_dsty" );
     _ID42411::_ID6216( "vehicle_bmp_winter", "vehicle_bmp_woodland_dsty" );
@@ -26,7 +26,7 @@ _ID616( var_0, var_1, var_2 )
     var_3["vehicle_bmp_low"] = "fx/explosions/vehicle_explosion_bmp_low";
     _ID42411::_ID6220( %bmp_movement, %bmp_movement_backwards, 10 );
 
-    if ( _func_125( var_0, "_low" ) )
+    if ( issubstr( var_0, "_low" ) )
         _ID42411::_ID6261( "bmp_turret2", "tag_turret2", "vehicle_bmp_machine_gun_low" );
     else
         _ID42411::_ID6261( "bmp_turret2", "tag_turret2", "vehicle_bmp_machine_gun" );
@@ -35,7 +35,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "axis" );
-    _ID42411::_ID6204( ::_unknown_01BD, ::_unknown_01B2 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6223( 0.33 );
     _ID42411::_ID6207( 1 );
     _ID42411::_ID6226( 1 );
@@ -59,7 +59,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 4; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_guy1";
     var_0[1]._ID34225 = "tag_guy2";

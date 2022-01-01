@@ -3,56 +3,56 @@
 
 _ID19838()
 {
-    var_0 = _func_1A2( "generic_flickering", "targetname" );
-    var_1 = _func_1A2( "generic_pulsing", "targetname" );
-    var_2 = _func_1A2( "generic_double_strobe", "targetname" );
-    var_3 = _func_1A2( "burning_trash_fire", "targetname" );
-    var_4 = _func_1A2( "scripted_light", "targetname" );
+    var_0 = getentarray( "generic_flickering", "targetname" );
+    var_1 = getentarray( "generic_pulsing", "targetname" );
+    var_2 = getentarray( "generic_double_strobe", "targetname" );
+    var_3 = getentarray( "burning_trash_fire", "targetname" );
+    var_4 = getentarray( "scripted_light", "targetname" );
     var_5 = _ID42237::_ID16640( "h2_generic_flickering", "targetname" );
-    _ID42237::_ID3350( var_5, ::_unknown_0293, 1 );
-    _unknown_0154( "h2_pulsing_alarm", 0, 1, 0.3, 0.3, 0, 0, 0, 0, 0 );
-    _unknown_0190( "h2_pulsing_alarm", _ID42237::_ID16640( "h2_pulsing_alarm", "targetname" ) );
-    _unknown_017D( "h2_pulsing_alarm_02", 0, 1, 0.6, 0.6, 0, 0, 0, 0, 0 );
-    _unknown_01B9( "h2_pulsing_alarm_02", _ID42237::_ID16640( "h2_pulsing_alarm_02", "targetname" ) );
-    _unknown_01AD( "h2_flickering_01", 0.001, 1, 0, 0.3, 0, 1.5, 0, 0.5, 1 );
-    _unknown_01E9( "h2_flickering_01", _ID42237::_ID16640( "h2_flickering_01", "targetname" ) );
-    _unknown_01DD( "h2_flickering_02", 0.75, 1, 0, 0, 0.2, 1.5, 0, 1.5, 1 );
-    _unknown_0219( "h2_flickering_02", _ID42237::_ID16640( "h2_flickering_02", "targetname" ) );
-    _unknown_020E( "h2_flickering_03", 0, 1, 0.5, 0.5, 0.15, 1, 0, 0.25, 1 );
-    _unknown_024A( "h2_flickering_03", _ID42237::_ID16640( "h2_flickering_03", "targetname" ) );
-    _unknown_023E( "h2_flickering_flare", 0.5, 1, 0, 0.25, 0, 0.025, 0, 0.025, 1 );
-    _unknown_027A( "h2_flickering_flare", _ID42237::_ID16640( "h2_flickering_flare", "targetname" ) );
-    _unknown_0277( "h2_flickering_fire", 0.6, 1, 0.1, 0.5, 0.3, 1.5, 0.2, 1.5, 1 );
-    _unknown_02B3( "h2_flickering_fire", _ID42237::_ID16640( "h2_flickering_fire", "targetname" ) );
-    _unknown_02B0( "h2_flickering_intense_fire", 0.5, 1, 0.1, 0.4, 0.2, 0.5, 0.2, 0.5, 1 );
-    _unknown_02EC( "h2_flickering_intense_fire", _ID42237::_ID16640( "h2_flickering_intense_fire", "targetname" ) );
-    _unknown_02E9( "h2_flickering_intense_fire2", 0.5, 1, 0.1, 0.5, 0.2, 0.4, 0.2, 0.7, 1 );
-    _unknown_0325( "h2_flickering_intense_fire2", _ID42237::_ID16640( "h2_flickering_intense_fire2", "targetname" ) );
-    _unknown_0322( "h2_flickering_intense_fire_dcb", 0.25, 1, 0.3, 0.6, 0.2, 0.5, 0.2, 0.5, 1 );
-    _unknown_035E( "h2_flickering_intense_fire_dcb", _ID42237::_ID16640( "h2_flickering_intense_fire_dcb", "targetname" ) );
-    _unknown_0358( "h2_flickering_broken_light", 0, 1, 0.1, 0.5, 0.15, 0.5, 0.2, 1.5, 1 );
-    _unknown_0394( "h2_flickering_broken_light", _ID42237::_ID16640( "h2_flickering_broken_light", "targetname" ) );
-    _unknown_0385( "h2_flickering_intense", 0.001, 1, 0, 0, 0, 1.5, 0, 0.3, 1 );
-    _unknown_03C1( "h2_flickering_intense", _ID42237::_ID16640( "h2_flickering_intense", "targetname" ) );
-    _ID42237::_ID3350( var_0, ::_unknown_059B );
-    _ID42237::_ID3350( var_1, ::_unknown_0481 );
-    _ID42237::_ID3350( var_2, ::_unknown_04B8 );
-    _ID42237::_ID3350( var_3, ::_unknown_0974 );
-    _ID42237::_ID3350( var_4, ::_unknown_0AB6 );
+    _ID42237::_ID3350( var_5, ::_ID48424, 1 );
+    _ID52844( "h2_pulsing_alarm", 0, 1, 0.3, 0.3, 0, 0, 0, 0, 0 );
+    _ID46386( "h2_pulsing_alarm", _ID42237::_ID16640( "h2_pulsing_alarm", "targetname" ) );
+    _ID52844( "h2_pulsing_alarm_02", 0, 1, 0.6, 0.6, 0, 0, 0, 0, 0 );
+    _ID46386( "h2_pulsing_alarm_02", _ID42237::_ID16640( "h2_pulsing_alarm_02", "targetname" ) );
+    _ID52844( "h2_flickering_01", 0.001, 1, 0, 0.3, 0, 1.5, 0, 0.5, 1 );
+    _ID46386( "h2_flickering_01", _ID42237::_ID16640( "h2_flickering_01", "targetname" ) );
+    _ID52844( "h2_flickering_02", 0.75, 1, 0, 0, 0.2, 1.5, 0, 1.5, 1 );
+    _ID46386( "h2_flickering_02", _ID42237::_ID16640( "h2_flickering_02", "targetname" ) );
+    _ID52844( "h2_flickering_03", 0, 1, 0.5, 0.5, 0.15, 1, 0, 0.25, 1 );
+    _ID46386( "h2_flickering_03", _ID42237::_ID16640( "h2_flickering_03", "targetname" ) );
+    _ID52844( "h2_flickering_flare", 0.5, 1, 0, 0.25, 0, 0.025, 0, 0.025, 1 );
+    _ID46386( "h2_flickering_flare", _ID42237::_ID16640( "h2_flickering_flare", "targetname" ) );
+    _ID52844( "h2_flickering_fire", 0.6, 1, 0.1, 0.5, 0.3, 1.5, 0.2, 1.5, 1 );
+    _ID46386( "h2_flickering_fire", _ID42237::_ID16640( "h2_flickering_fire", "targetname" ) );
+    _ID52844( "h2_flickering_intense_fire", 0.5, 1, 0.1, 0.4, 0.2, 0.5, 0.2, 0.5, 1 );
+    _ID46386( "h2_flickering_intense_fire", _ID42237::_ID16640( "h2_flickering_intense_fire", "targetname" ) );
+    _ID52844( "h2_flickering_intense_fire2", 0.5, 1, 0.1, 0.5, 0.2, 0.4, 0.2, 0.7, 1 );
+    _ID46386( "h2_flickering_intense_fire2", _ID42237::_ID16640( "h2_flickering_intense_fire2", "targetname" ) );
+    _ID52844( "h2_flickering_intense_fire_dcb", 0.25, 1, 0.3, 0.6, 0.2, 0.5, 0.2, 0.5, 1 );
+    _ID46386( "h2_flickering_intense_fire_dcb", _ID42237::_ID16640( "h2_flickering_intense_fire_dcb", "targetname" ) );
+    _ID52844( "h2_flickering_broken_light", 0, 1, 0.1, 0.5, 0.15, 0.5, 0.2, 1.5, 1 );
+    _ID46386( "h2_flickering_broken_light", _ID42237::_ID16640( "h2_flickering_broken_light", "targetname" ) );
+    _ID52844( "h2_flickering_intense", 0.001, 1, 0, 0, 0, 1.5, 0, 0.3, 1 );
+    _ID46386( "h2_flickering_intense", _ID42237::_ID16640( "h2_flickering_intense", "targetname" ) );
+    _ID42237::_ID3350( var_0, ::_ID15511 );
+    _ID42237::_ID3350( var_1, ::_ID15524 );
+    _ID42237::_ID3350( var_2, ::_ID15505 );
+    _ID42237::_ID3350( var_3, ::_ID6443 );
+    _ID42237::_ID3350( var_4, ::_ID19800 );
 }
 
 _ID52844( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
 {
-    if ( !_func_02F( level._ID46300 ) )
+    if ( !isdefined( level._ID46300 ) )
         level._ID46300 = [];
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
-    if ( _func_02F( level._ID46300[var_0] ) )
+    if ( isdefined( level._ID46300[var_0] ) )
         return;
 
-    var_10 = _func_1A5();
+    var_10 = spawnstruct();
     var_10._ID53272 = var_1;
     var_10._ID48403 = var_2;
     var_10._ID51712 = var_3;
@@ -67,18 +67,18 @@ _ID52844( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
 
 _ID51954( var_0, var_1 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
-    _unknown_0463( var_0, [ var_1 ] );
+    _ID46386( var_0, [ var_1 ] );
 }
 
 _ID46386( var_0, var_1 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
     if ( var_1.size == 0 )
@@ -86,17 +86,14 @@ _ID46386( var_0, var_1 )
 
     var_2 = level._ID46300[var_0];
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         return;
 
     var_3 = [];
-    var_4 = var_1;
 
-    for ( var_10 = _func_1DA( var_4 ); _func_02F( var_10 ); var_10 = _func_1BF( var_4, var_10 ) )
+    foreach ( var_5 in var_1 )
     {
-        var_5 = var_4[var_10];
-
-        if ( !_func_02F( var_5._ID1191 ) )
+        if ( !isdefined( var_5._ID1191 ) )
             continue;
 
         var_5._ID51712 = var_2._ID51712;
@@ -106,35 +103,27 @@ _ID46386( var_0, var_1 )
         var_5._ID49248 = var_2._ID49248;
         var_5._ID51934 = var_2._ID51934;
         var_5._ID54303 = var_2._ID54303;
-        var_6 = _func_1A2( var_5._ID1191, "targetname" );
+        var_6 = getentarray( var_5._ID1191, "targetname" );
 
         if ( var_6.size == 0 )
             continue;
 
-        var_7 = var_6;
-
-        for ( var_9 = _func_1DA( var_7 ); _func_02F( var_9 ); var_9 = _func_1BF( var_7, var_9 ) )
+        foreach ( var_8 in var_6 )
         {
-            var_8 = var_7[var_9];
-
-            if ( _func_02F( var_8._ID922 ) )
+            if ( isdefined( var_8._ID922 ) )
             {
                 if ( var_8._ID922 == "flickering_lights" )
                 {
-                    var_8._ID53272 = var_2._ID53272 * var_8 _meth_81EA();
-                    var_8._ID48403 = var_2._ID48403 * var_8 _meth_81EA();
+                    var_8._ID53272 = var_2._ID53272 * var_8 getlightintensity();
+                    var_8._ID48403 = var_2._ID48403 * var_8 getlightintensity();
                 }
             }
         }
 
-        var_clear_3
-        var_clear_1
         var_3[var_3.size] = var_5;
     }
 
-    var_clear_6
-    var_clear_0
-    _ID42237::_ID3350( var_3, ::_unknown_0681 );
+    _ID42237::_ID3350( var_3, ::_ID48424 );
 }
 
 _ID20556( var_0 )
@@ -158,19 +147,19 @@ _ID14555( var_0, var_1, var_2, var_3 )
         }
 
         var_6 = var_4;
-        var_4 = var_0 + var_1 - var_0 * _func_0B8( 1.0 );
+        var_4 = var_0 + ( var_1 - var_0 ) * randomfloat( 1.0 );
 
         if ( var_2 != var_3 )
-            var_5 += _func_0BA( var_2, var_3 );
+            var_5 += randomfloatrange( var_2, var_3 );
         else
             var_5 += var_2;
 
         if ( var_5 == 0 )
             var_5 += 1e-07;
 
-        for ( var_7 = var_6 - var_4 * 1 / var_5; var_5 > 0 && !_ID42407::_ID13019( "stop_flicker" ); var_5 -= 0.05 )
+        for ( var_7 = ( var_6 - var_4 ) * 1 / var_5; var_5 > 0 && !_ID42407::_ID13019( "stop_flicker" ); var_5 -= 0.05 )
         {
-            self _meth_8046( var_4 + var_7 * var_5 );
+            self setlightcolor( var_4 + var_7 * var_5 );
             wait 0.05;
         }
     }
@@ -178,15 +167,13 @@ _ID14555( var_0, var_1, var_2, var_3 )
 
 _ID21263( var_0 )
 {
-    var_1 = _func_1A2( var_0, "script_noteworthy" );
+    var_1 = getentarray( var_0, "script_noteworthy" );
     var_2 = undefined;
     var_3 = 1e+08.0;
-    var_4 = var_1;
 
-    for ( var_7 = _func_1DA( var_4 ); _func_02F( var_7 ); var_7 = _func_1BF( var_4, var_7 ) )
+    foreach ( var_5 in var_1 )
     {
-        var_5 = var_4[var_7];
-        var_6 = _func_0F3( self._ID740, var_5._ID740 );
+        var_6 = distance( self._ID740, var_5._ID740 );
 
         if ( var_6 < var_3 )
         {
@@ -195,33 +182,30 @@ _ID21263( var_0 )
         }
     }
 
-    var_clear_3
-    var_clear_0
-
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
     {
-        var_9 waittill( "damage",  var_14, var_14, var_14, var_14, var_14, var_14, var_14  );
+        var_2 waittill( "damage",  var_8, var_9, var_10, var_11, var_12, var_13, var_14  );
         self notify( "kill_flicker" );
         wait 0.05;
-        self _meth_8046( ( 0, 0, 0 ) );
+        self setlightcolor( ( 0, 0, 0 ) );
     }
 }
 
 _ID15524()
 {
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
     {
-        self _meth_81EB( 0 );
+        self setlightintensity( 0 );
         return;
     }
 
-    var_0 = self _meth_81EA();
+    var_0 = self getlightintensity();
     var_1 = 0.05;
     var_2 = var_0;
     var_3 = 0.3;
     var_4 = 0.6;
-    var_5 = var_0 - var_1 / var_3 / 0.05;
-    var_6 = var_0 - var_1 / var_4 / 0.05;
+    var_5 = ( var_0 - var_1 ) / ( var_3 / 0.05 );
+    var_6 = ( var_0 - var_1 ) / ( var_4 / 0.05 );
 
     for (;;)
     {
@@ -230,8 +214,8 @@ _ID15524()
         while ( var_7 < var_4 )
         {
             var_2 -= var_6;
-            var_2 = _func_0EE( var_2, 0, 100 );
-            self _meth_81EB( var_2 );
+            var_2 = clamp( var_2, 0, 100 );
+            self setlightintensity( var_2 );
             var_7 += 0.05;
             wait 0.05;
         }
@@ -242,8 +226,8 @@ _ID15524()
         while ( var_7 < var_3 )
         {
             var_2 += var_5;
-            var_2 = _func_0EE( var_2, 0, 100 );
-            self _meth_81EB( var_2 );
+            var_2 = clamp( var_2, 0, 100 );
+            self setlightintensity( var_2 );
             var_7 += 0.05;
             wait 0.05;
         }
@@ -254,13 +238,13 @@ _ID15524()
 
 _ID15505()
 {
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
     {
-        self _meth_81EB( 0 );
+        self setlightintensity( 0 );
         return;
     }
 
-    var_0 = self _meth_81EA();
+    var_0 = self getlightintensity();
     var_1 = 0.05;
     var_2 = 0;
     var_3 = undefined;
@@ -268,13 +252,13 @@ _ID15505()
     var_5 = 0;
     var_6 = [];
 
-    if ( _func_02F( self._ID922 ) )
+    if ( isdefined( self._ID922 ) )
     {
-        var_7 = _func_1A2( self._ID922, "targetname" );
+        var_7 = getentarray( self._ID922, "targetname" );
 
         for ( var_8 = 0; var_8 < var_7.size; var_8++ )
         {
-            if ( _unknown_07A2( var_7[var_8] ) )
+            if ( _ID20556( var_7[var_8] ) )
             {
                 var_5 = 1;
                 var_6[var_6.size] = var_7[var_8];
@@ -283,7 +267,7 @@ _ID15505()
             if ( var_7[var_8]._ID170 == "script_model" )
             {
                 var_3 = var_7[var_8];
-                var_4 = _func_1A1( var_3._ID1191, "targetname" );
+                var_4 = getent( var_3._ID1191, "targetname" );
                 var_2 = 1;
             }
         }
@@ -291,39 +275,39 @@ _ID15505()
 
     for (;;)
     {
-        self _meth_81EB( var_1 );
+        self setlightintensity( var_1 );
 
         if ( var_2 )
         {
-            var_3 _meth_805A();
-            var_4 _meth_8059();
+            var_3 hide();
+            var_4 show();
         }
 
         wait 0.8;
-        self _meth_81EB( var_0 );
+        self setlightintensity( var_0 );
 
         if ( var_2 )
         {
-            var_3 _meth_8059();
-            var_4 _meth_805A();
+            var_3 show();
+            var_4 hide();
         }
 
         wait 0.1;
-        self _meth_81EB( var_1 );
+        self setlightintensity( var_1 );
 
         if ( var_2 )
         {
-            var_3 _meth_805A();
-            var_4 _meth_8059();
+            var_3 hide();
+            var_4 show();
         }
 
         wait 0.12;
-        self _meth_81EB( var_0 );
+        self setlightintensity( var_0 );
 
         if ( var_2 )
         {
-            var_3 _meth_8059();
-            var_4 _meth_805A();
+            var_3 show();
+            var_4 hide();
         }
 
         wait 0.1;
@@ -332,11 +316,11 @@ _ID15505()
 
 _ID16189( var_0 )
 {
-    var_1 = _func_1A2( "light_flicker_model", "targetname" );
+    var_1 = getentarray( "light_flicker_model", "targetname" );
     var_2 = [];
     var_3 = _ID42237::_ID16182( var_0, var_1 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
         var_2[0] = var_3;
 
     return var_2;
@@ -347,20 +331,17 @@ _ID48424( var_0 )
     self endon( "stop_dynamic_light_behavior" );
     self endon( "death" );
 
-    if ( !_func_02F( self._ID1191 ) )
+    if ( !isdefined( self._ID1191 ) )
         return;
 
-    self._ID47454 = _func_1A2( self._ID1191, "targetname" );
+    self._ID47454 = getentarray( self._ID1191, "targetname" );
     self._ID43670 = undefined;
     self._ID47812 = undefined;
     self._ID52890 = [];
-    var_1 = self._ID47454;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in self._ID47454 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_02F( var_2._ID922 ) )
+        if ( isdefined( var_2._ID922 ) )
         {
             if ( var_2._ID922 == "flickering_model_on" )
             {
@@ -379,23 +360,12 @@ _ID48424( var_0 )
         }
     }
 
-    var_clear_2
-    var_clear_0
-
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
     {
         if ( self._ID52890.size > 0 )
         {
-            var_4 = self._ID52890;
-
-            for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
-            {
-                var_5 = var_4[var_6];
-                var_5 _meth_81EB( 0 );
-            }
-
-            var_clear_2
-            var_clear_0
+            foreach ( var_5 in self._ID52890 )
+                var_5 setlightintensity( 0 );
         }
 
         return;
@@ -404,12 +374,12 @@ _ID48424( var_0 )
     if ( self._ID52890.size == 0 )
         return;
 
-    if ( _func_02F( var_0 ) && var_0 )
-        _unknown_0A62();
+    if ( isdefined( var_0 ) && var_0 )
+        _ID52563();
 
-    if ( _func_02F( self._ID43670 ) && _func_02F( self._ID43670._ID31220 ) )
+    if ( isdefined( self._ID43670 ) && isdefined( self._ID43670._ID31220 ) )
     {
-        var_7 = _func_129( self._ID43670._ID31220, ", " );
+        var_7 = strtok( self._ID43670._ID31220, ", " );
         self._ID43670._ID15244 = "tag_origin";
         self._ID43670._ID15195 = _ID42237::_ID16299( var_7[0] );
 
@@ -417,64 +387,57 @@ _ID48424( var_0 )
             self._ID43670._ID15244 = var_7[1];
 
         self._ID43670.fx_started = 1;
-        _func_157( self._ID43670._ID15195, self._ID43670, self._ID43670._ID15244 );
+        playfxontag( self._ID43670._ID15195, self._ID43670, self._ID43670._ID15244 );
     }
 
-    if ( _func_02F( self._ID43670 ) && _func_02F( self._ID43670._ID31388 ) && self._ID43670._ID31388 == "delay_flickering" )
+    if ( isdefined( self._ID43670 ) && isdefined( self._ID43670._ID31388 ) && self._ID43670._ID31388 == "delay_flickering" )
         self._ID43670 waittill( "start_flickering" );
 
-    _ID42237::_ID3350( self._ID52890, ::_unknown_0BE8 );
-    thread _unknown_0CAC();
+    _ID42237::_ID3350( self._ID52890, ::_ID15509 );
+    thread _ID43288();
 }
 
 _ID52563()
 {
-    if ( _func_02F( self._ID47655 ) )
+    if ( isdefined( self._ID47655 ) )
         self._ID51712 = self._ID47655;
 
-    if ( _func_02F( self._ID51407 ) )
+    if ( isdefined( self._ID51407 ) )
         self._ID48527 = self._ID51407;
 
-    if ( _func_02F( self._ID54068 ) )
+    if ( isdefined( self._ID54068 ) )
         self._ID46994 = self._ID54068;
 
-    if ( _func_02F( self._ID44426 ) )
+    if ( isdefined( self._ID44426 ) )
         self._ID53594 = self._ID44426;
 
-    if ( _func_02F( self._ID44180 ) )
+    if ( isdefined( self._ID44180 ) )
         self._ID49248 = self._ID44180;
 
-    if ( _func_02F( self._ID54726 ) )
+    if ( isdefined( self._ID54726 ) )
         self._ID51934 = self._ID54726;
 
-    if ( _func_02F( self._ID46155 ) )
+    if ( isdefined( self._ID46155 ) )
         self._ID54303 = self._ID46155;
 
-    var_0 = self._ID52890;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID52890 )
     {
-        var_1 = var_0[var_2];
-
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
-        if ( _func_02F( self._ID53385 ) )
-            var_1._ID53272 = self._ID53385 * var_1 _meth_81EA();
+        if ( isdefined( self._ID53385 ) )
+            var_1._ID53272 = self._ID53385 * var_1 getlightintensity();
 
-        if ( _func_02F( self._ID44625 ) )
-            var_1._ID48403 = self._ID44625 * var_1 _meth_81EA();
+        if ( isdefined( self._ID44625 ) )
+            var_1._ID48403 = self._ID44625 * var_1 getlightintensity();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID15511()
 {
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
     {
-        self _meth_81EB( 0 );
+        self setlightintensity( 0 );
         return;
     }
 
@@ -488,18 +451,15 @@ _ID15511()
     self._ID22417 = undefined;
     self._ID22419 = [];
 
-    if ( _func_02F( self._ID31273 ) )
+    if ( isdefined( self._ID31273 ) )
     {
         self._ID22417 = _ID42237::_ID15808();
-        var_0 = self._ID22417;
 
-        for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+        foreach ( var_1 in self._ID22417 )
         {
-            var_1 = var_0[var_2];
-
-            if ( _func_02F( var_1._ID922 ) && var_1._ID922 == "on" )
+            if ( isdefined( var_1._ID922 ) && var_1._ID922 == "on" )
             {
-                if ( !_func_02F( self._ID22441 ) )
+                if ( !isdefined( self._ID22441 ) )
                     self._ID22441[0] = var_1;
                 else
                     self._ID22441[self._ID22441.size] = var_1;
@@ -507,9 +467,9 @@ _ID15511()
                 continue;
             }
 
-            if ( _func_02F( var_1._ID922 ) && var_1._ID922 == "off" )
+            if ( isdefined( var_1._ID922 ) && var_1._ID922 == "off" )
             {
-                if ( !_func_02F( self._ID39484 ) )
+                if ( !isdefined( self._ID39484 ) )
                     self._ID39484[0] = var_1;
                 else
                     self._ID39484[self._ID39484.size] = var_1;
@@ -518,27 +478,25 @@ _ID15511()
                 continue;
             }
 
-            if ( _unknown_0AED( var_1 ) )
+            if ( _ID20556( var_1 ) )
             {
                 self._ID22413 = 1;
                 self._ID22412[self._ID22412.size] = var_1;
             }
         }
 
-        var_clear_2
-        var_clear_0
         self._ID22415 = 1;
     }
 
-    if ( _func_02F( self._ID922 ) )
-        self._ID22419 = _func_1A2( self._ID922, "targetname" );
+    if ( isdefined( self._ID922 ) )
+        self._ID22419 = getentarray( self._ID922, "targetname" );
 
-    if ( !self._ID22419.size && !_func_02F( self._ID22417 ) )
-        self._ID22419 = _unknown_0C02( self._ID740 );
+    if ( !self._ID22419.size && !isdefined( self._ID22417 ) )
+        self._ID22419 = _ID16189( self._ID740 );
 
     for ( var_3 = 0; var_3 < self._ID22419.size; var_3++ )
     {
-        if ( _unknown_0B41( self._ID22419[var_3] ) )
+        if ( _ID20556( self._ID22419[var_3] ) )
         {
             self._ID22413 = 1;
             self._ID22412[self._ID22412.size] = self._ID22419[var_3];
@@ -548,37 +506,33 @@ _ID15511()
         {
             var_4 = self._ID22419[var_3];
 
-            if ( !_func_02F( self._ID22441 ) )
+            if ( !isdefined( self._ID22441 ) )
                 self._ID22441[0] = var_4;
             else
                 self._ID22441[self._ID22441.size] = var_4;
 
-            if ( !_func_02F( self._ID39484 ) )
-                self._ID39484[0] = _func_1A1( var_4._ID1191, "targetname" );
+            if ( !isdefined( self._ID39484 ) )
+                self._ID39484[0] = getent( var_4._ID1191, "targetname" );
             else
-                self._ID39484[self._ID39484.size] = _func_1A1( var_4._ID1191, "targetname" );
+                self._ID39484[self._ID39484.size] = getent( var_4._ID1191, "targetname" );
 
             self._ID22415 = 1;
         }
     }
 
-    if ( _func_02F( self._ID22441 ) )
+    if ( isdefined( self._ID22441 ) )
     {
-        var_5 = self._ID22441;
-
-        for ( var_12 = _func_1DA( var_5 ); _func_02F( var_12 ); var_12 = _func_1BF( var_5, var_12 ) )
+        foreach ( var_4 in self._ID22441 )
         {
-            var_4 = var_5[var_12];
-
-            if ( _func_02F( var_4 ) && _func_02F( var_4._ID31220 ) )
+            if ( isdefined( var_4 ) && isdefined( var_4._ID31220 ) )
             {
                 var_4._ID12315 = _ID42237::_ID9265( var_4._ID31220 );
                 var_6 = ( 0, 0, 0 );
                 var_7 = ( 0, 0, 0 );
 
-                if ( _func_02F( var_4._ID31388 ) )
+                if ( isdefined( var_4._ID31388 ) )
                 {
-                    var_8 = _func_129( var_4._ID31388, ", " );
+                    var_8 = strtok( var_4._ID31388, ", " );
 
                     if ( var_8.size < 3 )
                     {
@@ -586,20 +540,20 @@ _ID15511()
                     }
                     else if ( var_8.size == 6 )
                     {
-                        var_9 = _func_0C2( var_8[0] );
-                        var_10 = _func_0C2( var_8[1] );
-                        var_11 = _func_0C2( var_8[2] );
+                        var_9 = float( var_8[0] );
+                        var_10 = float( var_8[1] );
+                        var_11 = float( var_8[2] );
                         var_6 = ( var_9, var_10, var_11 );
-                        var_9 = _func_0C2( var_8[3] );
-                        var_10 = _func_0C2( var_8[4] );
-                        var_11 = _func_0C2( var_8[5] );
+                        var_9 = float( var_8[3] );
+                        var_10 = float( var_8[4] );
+                        var_11 = float( var_8[5] );
                         var_7 = ( var_9, var_10, var_11 );
                     }
                     else
                     {
-                        var_9 = _func_0C2( var_8[0] );
-                        var_10 = _func_0C2( var_8[1] );
-                        var_11 = _func_0C2( var_8[2] );
+                        var_9 = float( var_8[0] );
+                        var_10 = float( var_8[1] );
+                        var_11 = float( var_8[2] );
                         var_6 = ( var_9, var_10, var_11 );
                     }
                 }
@@ -608,27 +562,24 @@ _ID15511()
                 var_4._ID12315._ID40005["angles"] = var_4._ID65 + var_7;
             }
         }
-
-        var_clear_2
-        var_clear_0
     }
 
-    thread _unknown_0EF0();
-    thread _unknown_112D();
+    thread _ID15509();
+    thread _ID15508();
 }
 
 _ID15509()
 {
     _ID42407::_ID13024( "flicker_on" );
 
-    if ( _func_02F( self._ID31270 ) && self._ID31270 != "nil" )
+    if ( isdefined( self._ID31270 ) && self._ID31270 != "nil" )
     {
         for (;;)
         {
             level waittill( self._ID31270 );
             _ID42407::_ID13025( "flicker_on" );
 
-            if ( _func_02F( self._ID31271 ) && self._ID31271 != "nil" )
+            if ( isdefined( self._ID31271 ) && self._ID31271 != "nil" )
             {
                 level waittill( self._ID31271 );
                 _ID42407::_ID13021( "flicker_on" );
@@ -641,92 +592,64 @@ _ID15509()
 
 _ID15510()
 {
-    var_0 = self _meth_81EA();
+    var_0 = self getlightintensity();
 
     if ( !_ID42407::_ID13019( "flicker_on" ) )
     {
         if ( self._ID22415 )
         {
-            if ( _func_02F( self._ID22441 ) )
+            if ( isdefined( self._ID22441 ) )
             {
-                var_1 = self._ID22441;
-
-                for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+                foreach ( var_2 in self._ID22441 )
                 {
-                    var_2 = var_1[var_3];
-                    var_2 _meth_805A();
+                    var_2 hide();
 
-                    if ( _func_02F( var_2._ID12315 ) )
+                    if ( isdefined( var_2._ID12315 ) )
                         var_2._ID12315 _ID42237::_ID26402();
                 }
-
-                var_clear_2
-                var_clear_0
             }
 
-            if ( _func_02F( self._ID39484 ) )
+            if ( isdefined( self._ID39484 ) )
             {
-                var_4 = self._ID39484;
-
-                for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
-                {
-                    var_5 = var_4[var_6];
-                    var_5 _meth_8059();
-                }
-
-                var_clear_2
-                var_clear_0
+                foreach ( var_5 in self._ID39484 )
+                    var_5 show();
             }
         }
 
-        self _meth_81EB( 0 );
+        self setlightintensity( 0 );
 
         if ( self._ID22413 )
         {
             for ( var_7 = 0; var_7 < self._ID22412.size; var_7++ )
-                self._ID22412[var_7] _meth_81EB( 0 );
+                self._ID22412[var_7] setlightintensity( 0 );
         }
 
         _ID42407::_ID13027( "flicker_on" );
-        self _meth_81EB( var_0 );
+        self setlightintensity( var_0 );
 
         if ( self._ID22413 )
         {
             for ( var_7 = 0; var_7 < self._ID22412.size; var_7++ )
-                self._ID22412[var_7] _meth_81EB( var_0 );
+                self._ID22412[var_7] setlightintensity( var_0 );
         }
 
         if ( self._ID22415 )
         {
-            if ( _func_02F( self._ID22441 ) )
+            if ( isdefined( self._ID22441 ) )
             {
-                var_8 = self._ID22441;
-
-                for ( var_9 = _func_1DA( var_8 ); _func_02F( var_9 ); var_9 = _func_1BF( var_8, var_9 ) )
+                foreach ( var_2 in self._ID22441 )
                 {
-                    var_2 = var_8[var_9];
-                    var_2 _meth_8059();
+                    var_2 show();
 
-                    if ( _func_02F( var_2._ID12315 ) )
+                    if ( isdefined( var_2._ID12315 ) )
                         var_2._ID12315 _ID42407::_ID29840();
                 }
-
-                var_clear_2
-                var_clear_0
             }
 
-            if ( _func_02F( self._ID39484 ) )
+            if ( isdefined( self._ID39484 ) )
             {
-                var_10 = self._ID39484;
-
-                for ( var_11 = _func_1DA( var_10 ); _func_02F( var_11 ); var_11 = _func_1BF( var_10, var_11 ) )
-                {
-                    var_5 = var_10[var_11];
-                    var_5 _meth_805A();
-                }
-
-                var_clear_2
-                var_clear_0
+                foreach ( var_5 in self._ID39484 )
+                    var_5 hide();
             }
         }
     }
@@ -734,54 +657,40 @@ _ID15510()
 
 _ID51113()
 {
-    if ( !_func_02F( self._ID52890[0] ) )
+    if ( !isdefined( self._ID52890[0] ) )
         return;
 
     if ( !self._ID52890[0] _ID42407::_ID13019( "flicker_on" ) )
     {
-        if ( _func_02F( self._ID43670 ) )
+        if ( isdefined( self._ID43670 ) )
         {
-            self._ID43670 _meth_805A();
+            self._ID43670 hide();
 
-            if ( _func_02F( self._ID43670._ID12315 ) )
+            if ( isdefined( self._ID43670._ID12315 ) )
                 self._ID43670._ID12315 _ID42237::_ID26402();
         }
 
-        if ( _func_02F( self._ID47812 ) )
-            self._ID47812 _meth_8059();
+        if ( isdefined( self._ID47812 ) )
+            self._ID47812 show();
 
-        var_0 = self._ID52890;
+        foreach ( var_1 in self._ID52890 )
+            var_1 setlightintensity( 0 );
 
-        for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
-        {
-            var_1 = var_0[var_2];
-            var_1 _meth_81EB( 0 );
-        }
-
-        var_clear_2
-        var_clear_0
         self._ID52890[0] _ID42407::_ID13027( "flicker_on" );
-        var_3 = self._ID52890;
 
-        for ( var_4 = _func_1DA( var_3 ); _func_02F( var_4 ); var_4 = _func_1BF( var_3, var_4 ) )
+        foreach ( var_1 in self._ID52890 )
+            var_1 setlightintensity( var_1._ID46351 );
+
+        if ( isdefined( self._ID43670 ) )
         {
-            var_1 = var_3[var_4];
-            var_1 _meth_81EB( var_1._ID46351 );
-        }
+            self._ID43670 show();
 
-        var_clear_1
-        var_clear_0
-
-        if ( _func_02F( self._ID43670 ) )
-        {
-            self._ID43670 _meth_8059();
-
-            if ( _func_02F( self._ID43670._ID12315 ) )
+            if ( isdefined( self._ID43670._ID12315 ) )
                 self._ID43670._ID12315 _ID42407::_ID29840();
         }
 
-        if ( _func_02F( self._ID47812 ) )
-            self._ID47812 _meth_805A();
+        if ( isdefined( self._ID47812 ) )
+            self._ID47812 hide();
     }
 }
 
@@ -790,40 +699,57 @@ _ID43288()
     self endon( "stop_dynamic_light_behavior" );
     self endon( "death" );
 
-    if ( _func_02F( self._ID31523 ) )
+    if ( isdefined( self._ID31523 ) )
         wait(self._ID31523);
 
     switch ( self._ID1193 )
     {
+        case "h2_flickering_flare":
+        case "h2_flickering_fire":
+        case "h2_flickering_intense_fire":
+            break;
+        default:
+            var_0 = "emt_light_flourescent_hum";
 
+            if ( isdefined( self._ID43356 ) )
+            {
+                if ( self._ID43356 != "none" )
+                    var_0 = self._ID43356;
+                else
+                    break;
+            }
+
+            self._ID34523 = spawn( "script_origin", self._ID740 );
+            self._ID34523 playloopsound( var_0 );
+            thread _ID54364();
     }
 
-    if ( !_func_02F( self._ID51712 ) )
+    if ( !isdefined( self._ID51712 ) )
         self._ID51712 = 0;
 
-    if ( !_func_02F( self._ID48527 ) )
+    if ( !isdefined( self._ID48527 ) )
         self._ID48527 = 0;
 
     if ( self._ID51712 > self._ID48527 )
         return;
 
-    if ( !_func_02F( self._ID46994 ) )
+    if ( !isdefined( self._ID46994 ) )
         self._ID46994 = 0.2;
 
-    if ( !_func_02F( self._ID53594 ) )
+    if ( !isdefined( self._ID53594 ) )
         self._ID53594 = 1.5;
 
-    if ( !_func_02F( self._ID49248 ) )
+    if ( !isdefined( self._ID49248 ) )
         self._ID49248 = 0.2;
 
-    if ( !_func_02F( self._ID51934 ) )
+    if ( !isdefined( self._ID51934 ) )
         self._ID51934 = 1.5;
 
-    if ( !_func_02F( self._ID54303 ) )
+    if ( !isdefined( self._ID54303 ) )
         self._ID54303 = 1;
 
-    var_1 = _func_0E6( 0.05, self._ID51712 );
-    var_2 = _func_0E6( 0.05, self._ID48527 );
+    var_1 = max( 0.05, self._ID51712 );
+    var_2 = max( 0.05, self._ID48527 );
     var_3 = self._ID46994;
     var_4 = self._ID53594;
 
@@ -837,53 +763,48 @@ _ID43288()
         return;
 
     var_7 = self._ID54303;
-    var_8 = self._ID52890;
 
-    for ( var_10 = _func_1DA( var_8 ); _func_02F( var_10 ); var_10 = _func_1BF( var_8, var_10 ) )
+    foreach ( var_9 in self._ID52890 )
     {
-        var_9 = var_8[var_10];
-
-        if ( !_func_02F( var_9 ) )
+        if ( !isdefined( var_9 ) )
             continue;
 
-        if ( !_func_02F( var_9._ID53272 ) )
+        if ( !isdefined( var_9._ID53272 ) )
             var_9._ID53272 = 0;
 
-        if ( !_func_02F( var_9._ID48403 ) )
-            var_9._ID48403 = var_9 _meth_81EA();
+        if ( !isdefined( var_9._ID48403 ) )
+            var_9._ID48403 = var_9 getlightintensity();
 
         var_9._ID47081 = var_9._ID53272;
         var_9._ID46351 = var_9._ID48403;
         var_9._ID9421 = var_9._ID46351;
-        var_9._ID54595 = var_9._ID46351 - var_9._ID47081 / var_2 / 0.05;
-        var_9._ID50571 = var_9._ID46351 - var_9._ID47081 / var_1 / 0.05;
+        var_9._ID54595 = ( var_9._ID46351 - var_9._ID47081 ) / ( var_2 / 0.05 );
+        var_9._ID50571 = ( var_9._ID46351 - var_9._ID47081 ) / ( var_1 / 0.05 );
 
         if ( var_7 && var_9._ID54595 != var_9._ID50571 )
         {
-            var_9._ID44472 = _func_0BA( var_9._ID54595, var_9._ID50571 );
+            var_9._ID44472 = randomfloatrange( var_9._ID54595, var_9._ID50571 );
             continue;
         }
 
         var_9._ID44472 = var_9._ID50571;
     }
 
-    var_clear_2
-    var_clear_0
     var_11 = 0;
 
-    for ( var_12 = 0; _func_02F( self ); var_12 = var_11 )
+    for ( var_12 = 0; isdefined( self ); var_12 = var_11 )
     {
-        _unknown_1358();
-        var_13 = _ID42237::_ID37527( var_7, _func_0B9( 1, 10 ), 1 );
+        _ID51113();
+        var_13 = _ID42237::_ID37527( var_7, randomintrange( 1, 10 ), 1 );
 
         while ( var_13 )
         {
-            _unknown_136D();
+            _ID51113();
             waittillframeend;
 
             if ( var_7 )
             {
-                var_14 = _func_0BA( 0.0, 0.3 );
+                var_14 = randomfloatrange( 0.0, 0.3 );
 
                 if ( !var_11 && var_14 < 0.1 )
                     var_11 = 1;
@@ -893,13 +814,9 @@ _ID43288()
 
             if ( !var_11 )
             {
-                var_15 = self._ID52890;
-
-                for ( var_16 = _func_1DA( var_15 ); _func_02F( var_16 ); var_16 = _func_1BF( var_15, var_16 ) )
+                foreach ( var_9 in self._ID52890 )
                 {
-                    var_9 = var_15[var_16];
-
-                    if ( !_func_02F( var_9 ) )
+                    if ( !isdefined( var_9 ) )
                         continue;
 
                     var_9._ID9421 = var_9._ID9421 - var_9._ID44472;
@@ -910,26 +827,19 @@ _ID43288()
 
                         if ( var_9._ID54595 != var_9._ID50571 )
                         {
-                            var_9._ID44472 = _func_0BA( var_9._ID54595, var_9._ID50571 );
+                            var_9._ID44472 = randomfloatrange( var_9._ID54595, var_9._ID50571 );
                             continue;
                         }
 
                         var_9._ID44472 = var_9._ID54595;
                     }
                 }
-
-                var_clear_1
-                var_clear_0
             }
             else
             {
-                var_17 = self._ID52890;
-
-                for ( var_18 = _func_1DA( var_17 ); _func_02F( var_18 ); var_18 = _func_1BF( var_17, var_18 ) )
+                foreach ( var_9 in self._ID52890 )
                 {
-                    var_9 = var_17[var_18];
-
-                    if ( !_func_02F( var_9 ) )
+                    if ( !isdefined( var_9 ) )
                         continue;
 
                     var_9._ID9421 = var_9._ID9421 + var_9._ID44472;
@@ -940,95 +850,86 @@ _ID43288()
 
                         if ( var_9._ID54595 != var_9._ID50571 )
                         {
-                            var_9._ID44472 = _func_0BA( var_9._ID54595, var_9._ID50571 );
+                            var_9._ID44472 = randomfloatrange( var_9._ID54595, var_9._ID50571 );
                             continue;
                         }
 
                         var_9._ID44472 = var_9._ID54595;
                     }
                 }
-
-                var_clear_1
-                var_clear_0
             }
 
-            var_19 = self._ID52890;
-
-            for ( var_20 = _func_1DA( var_19 ); _func_02F( var_20 ); var_20 = _func_1BF( var_19, var_20 ) )
+            foreach ( var_9 in self._ID52890 )
             {
-                var_9 = var_19[var_20];
-
-                if ( !_func_02F( var_9 ) )
+                if ( !isdefined( var_9 ) )
                     continue;
 
-                var_9._ID9421 = _func_0C4( var_9._ID46351, _func_0E6( var_9._ID47081, var_9._ID9421 ) );
-                var_9 _meth_81EB( var_9._ID9421 );
+                var_9._ID9421 = min( var_9._ID46351, max( var_9._ID47081, var_9._ID9421 ) );
+                var_9 setlightintensity( var_9._ID9421 );
             }
 
-            var_clear_4
-            var_clear_3
             var_21 = self._ID52890[0];
 
-            if ( !_func_02F( var_21 ) )
+            if ( !isdefined( var_21 ) )
             {
                 var_13--;
                 continue;
             }
 
-            if ( var_21._ID9421 < 0.3 * var_21._ID46351 - var_21._ID47081 )
+            if ( var_21._ID9421 < 0.3 * ( var_21._ID46351 - var_21._ID47081 ) )
             {
-                if ( _func_02F( self._ID43670 ) )
+                if ( isdefined( self._ID43670 ) )
                 {
-                    self._ID43670 _meth_805A();
+                    self._ID43670 hide();
 
-                    if ( _func_02F( self._ID43670._ID12315 ) )
+                    if ( isdefined( self._ID43670._ID12315 ) )
                         self._ID43670._ID12315 _ID42237::_ID26402();
                 }
 
-                if ( _func_02F( self._ID47812 ) )
-                    self._ID47812 _meth_8059();
+                if ( isdefined( self._ID47812 ) )
+                    self._ID47812 show();
 
-                if ( _func_02F( self._ID34523 ) )
-                    self._ID34523 _meth_8076( 0, 0 );
+                if ( isdefined( self._ID34523 ) )
+                    self._ID34523 setvolume( 0, 0 );
 
-                if ( _func_02F( self._ID43670 ) && _func_02F( self._ID43670._ID15195 ) && self._ID43670.fx_started )
+                if ( isdefined( self._ID43670 ) && isdefined( self._ID43670._ID15195 ) && self._ID43670.fx_started )
                 {
                     self._ID43670.fx_started = 0;
-                    _func_159( self._ID43670._ID15195, self._ID43670, self._ID43670._ID15244 );
+                    killfxontag( self._ID43670._ID15195, self._ID43670, self._ID43670._ID15244 );
                 }
             }
             else
             {
-                if ( _func_02F( self._ID43670 ) )
+                if ( isdefined( self._ID43670 ) )
                 {
-                    self._ID43670 _meth_8059();
+                    self._ID43670 show();
 
-                    if ( _func_02F( self._ID43670._ID12315 ) )
+                    if ( isdefined( self._ID43670._ID12315 ) )
                         self._ID43670._ID12315 _ID42407::_ID29840();
                 }
 
-                if ( _func_02F( self._ID47812 ) )
-                    self._ID47812 _meth_805A();
+                if ( isdefined( self._ID47812 ) )
+                    self._ID47812 hide();
 
-                if ( _func_02F( self._ID34523 ) )
-                    self._ID34523 _meth_8076( 1, 0 );
+                if ( isdefined( self._ID34523 ) )
+                    self._ID34523 setvolume( 1, 0 );
 
-                if ( _func_02F( self._ID43670 ) && _func_02F( self._ID43670._ID15195 ) && !self._ID43670.fx_started )
+                if ( isdefined( self._ID43670 ) && isdefined( self._ID43670._ID15195 ) && !self._ID43670.fx_started )
                 {
                     self._ID43670.fx_started = 1;
-                    _func_157( self._ID43670._ID15195, self._ID43670, self._ID43670._ID15244 );
+                    playfxontag( self._ID43670._ID15195, self._ID43670, self._ID43670._ID15244 );
                 }
             }
 
             var_13--;
         }
 
-        _unknown_15B7();
+        _ID51113();
 
         if ( var_3 == var_4 )
             var_22 = var_4;
         else
-            var_22 = _func_0BA( var_3, var_4 );
+            var_22 = randomfloatrange( var_3, var_4 );
 
         if ( !var_11 && var_11 != var_12 && var_22 != 0 )
             wait(var_22);
@@ -1036,24 +937,19 @@ _ID43288()
         if ( var_5 == var_6 )
             var_23 = var_6;
         else
-            var_23 = _func_0BA( var_5, var_6 );
+            var_23 = randomfloatrange( var_5, var_6 );
 
         if ( var_11 && var_11 != var_12 && var_23 != 0 )
             wait(var_23);
     }
-
-    case "h2_flickering_intense_fire":
-    case "h2_flickering_fire":
-    case "h2_flickering_flare":
-    default:
 }
 
 _ID54364()
 {
     self waittill( "death" );
-    self._ID34523 _meth_80B2();
+    self._ID34523 stopsounds();
     wait 0.1;
-    self._ID34523 _meth_80B7();
+    self._ID34523 delete();
 }
 
 _ID15508()
@@ -1062,53 +958,39 @@ _ID15508()
     self endon( "death" );
     var_0 = 0.2;
     var_1 = 1.5;
-    var_2 = self _meth_81EA();
+    var_2 = self getlightintensity();
     var_3 = 0;
     var_4 = var_2;
     var_5 = 0;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        _unknown_15E6();
+        _ID15510();
 
-        for ( var_5 = _func_0B9( 1, 10 ); var_5; var_5-- )
+        for ( var_5 = randomintrange( 1, 10 ); var_5; var_5-- )
         {
-            _unknown_15F3();
-            wait(_func_0BA( 0.05, 0.1 ));
+            _ID15510();
+            wait(randomfloatrange( 0.05, 0.1 ));
 
             if ( var_4 > 0.2 )
             {
-                var_4 = _func_0BA( 0, 0.3 );
+                var_4 = randomfloatrange( 0, 0.3 );
 
                 if ( self._ID22415 )
                 {
-                    var_6 = self._ID22441;
-
-                    for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
+                    foreach ( var_7 in self._ID22441 )
                     {
-                        var_7 = var_6[var_8];
-                        var_7 _meth_805A();
+                        var_7 hide();
 
-                        if ( _func_02F( var_7._ID12315 ) )
+                        if ( isdefined( var_7._ID12315 ) )
                             var_7._ID12315 _ID42237::_ID26402();
                     }
-
-                    var_clear_2
-                    var_clear_0
                 }
 
-                if ( _func_02F( self._ID39484 ) )
+                if ( isdefined( self._ID39484 ) )
                 {
-                    var_9 = self._ID39484;
-
-                    for ( var_11 = _func_1DA( var_9 ); _func_02F( var_11 ); var_11 = _func_1BF( var_9, var_11 ) )
-                    {
-                        var_10 = var_9[var_11];
-                        var_10 _meth_8059();
-                    }
-
-                    var_clear_2
-                    var_clear_0
+                    foreach ( var_10 in self._ID39484 )
+                        var_10 show();
                 }
             }
             else
@@ -1117,93 +999,67 @@ _ID15508()
 
                 if ( self._ID22415 )
                 {
-                    if ( _func_02F( self._ID22441 ) )
+                    if ( isdefined( self._ID22441 ) )
                     {
-                        var_12 = self._ID22441;
-
-                        for ( var_13 = _func_1DA( var_12 ); _func_02F( var_13 ); var_13 = _func_1BF( var_12, var_13 ) )
+                        foreach ( var_7 in self._ID22441 )
                         {
-                            var_7 = var_12[var_13];
-                            var_7 _meth_8059();
+                            var_7 show();
 
-                            if ( _func_02F( var_7._ID12315 ) )
+                            if ( isdefined( var_7._ID12315 ) )
                                 var_7._ID12315 _ID42407::_ID29840();
                         }
-
-                        var_clear_2
-                        var_clear_0
                     }
 
-                    if ( _func_02F( self._ID39484 ) )
+                    if ( isdefined( self._ID39484 ) )
                     {
-                        var_14 = self._ID39484;
-
-                        for ( var_15 = _func_1DA( var_14 ); _func_02F( var_15 ); var_15 = _func_1BF( var_14, var_15 ) )
+                        foreach ( var_10 in self._ID39484 )
                         {
-                            var_10 = var_14[var_15];
-                            var_10 _meth_805A();
+                            var_10 hide();
                             _ID42463::_ID10405( "light_flicker_on", var_10 );
                         }
-
-                        var_clear_2
-                        var_clear_0
                     }
                 }
             }
 
-            self _meth_81EB( var_4 );
+            self setlightintensity( var_4 );
 
             if ( self._ID22413 )
             {
                 for ( var_16 = 0; var_16 < self._ID22412.size; var_16++ )
-                    self._ID22412[var_16] _meth_81EB( var_4 );
+                    self._ID22412[var_16] setlightintensity( var_4 );
             }
         }
 
-        _unknown_1706();
-        self _meth_81EB( var_2 );
+        _ID15510();
+        self setlightintensity( var_2 );
 
         if ( self._ID22413 )
         {
             for ( var_16 = 0; var_16 < self._ID22412.size; var_16++ )
-                self._ID22412[var_16] _meth_81EB( var_2 );
+                self._ID22412[var_16] setlightintensity( var_2 );
         }
 
         if ( self._ID22415 )
         {
-            if ( _func_02F( self._ID22441 ) )
+            if ( isdefined( self._ID22441 ) )
             {
-                var_17 = self._ID22441;
-
-                for ( var_18 = _func_1DA( var_17 ); _func_02F( var_18 ); var_18 = _func_1BF( var_17, var_18 ) )
+                foreach ( var_7 in self._ID22441 )
                 {
-                    var_7 = var_17[var_18];
-                    var_7 _meth_8059();
+                    var_7 show();
 
-                    if ( _func_02F( var_7._ID12315 ) )
+                    if ( isdefined( var_7._ID12315 ) )
                         var_7._ID12315 _ID42407::_ID29840();
                 }
-
-                var_clear_2
-                var_clear_0
             }
 
-            if ( _func_02F( self._ID39484 ) )
+            if ( isdefined( self._ID39484 ) )
             {
-                var_19 = self._ID39484;
-
-                for ( var_20 = _func_1DA( var_19 ); _func_02F( var_20 ); var_20 = _func_1BF( var_19, var_20 ) )
-                {
-                    var_10 = var_19[var_20];
-                    var_10 _meth_805A();
-                }
-
-                var_clear_2
-                var_clear_0
+                foreach ( var_10 in self._ID39484 )
+                    var_10 hide();
             }
         }
 
-        wait(_func_0BA( var_0, var_1 ));
+        wait(randomfloatrange( var_0, var_1 ));
     }
 }
 
@@ -1215,51 +1071,51 @@ _ID15526()
 
 _ID14556( var_0, var_1 )
 {
-    var_2 = self _meth_81EA();
+    var_2 = self getlightintensity();
     var_3 = 0;
     var_4 = var_2;
     var_5 = 0;
 
     for (;;)
     {
-        for ( var_5 = _func_0B9( 1, 10 ); var_5; var_5-- )
+        for ( var_5 = randomintrange( 1, 10 ); var_5; var_5-- )
         {
-            wait(_func_0BA( 0.05, 0.1 ));
+            wait(randomfloatrange( 0.05, 0.1 ));
 
             if ( var_4 > 0.2 )
-                var_4 = _func_0BA( 0, 0.3 );
+                var_4 = randomfloatrange( 0, 0.3 );
             else
                 var_4 = var_2;
 
-            self _meth_81EB( var_4 );
+            self setlightintensity( var_4 );
         }
 
-        self _meth_81EB( var_2 );
-        wait(_func_0BA( var_0, var_1 ));
+        self setlightintensity( var_2 );
+        wait(randomfloatrange( var_0, var_1 ));
     }
 }
 
 _ID6443()
 {
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
     {
-        self _meth_81EB( 0 );
+        self setlightintensity( 0 );
         return;
     }
 
-    var_0 = self _meth_81EA();
+    var_0 = self getlightintensity();
     var_1 = var_0;
 
     for (;;)
     {
-        var_2 = _func_0BA( var_0 * 0.7, var_0 * 1.2 );
-        var_3 = _func_0BA( 0.3, 0.6 );
+        var_2 = randomfloatrange( var_0 * 0.7, var_0 * 1.2 );
+        var_3 = randomfloatrange( 0.3, 0.6 );
         var_3 *= 20;
 
         for ( var_4 = 0; var_4 < var_3; var_4++ )
         {
-            var_5 = var_2 * var_4 / var_3 + var_1 * var_3 - var_4 / var_3;
-            self _meth_81EB( var_5 );
+            var_5 = var_2 * var_4 / var_3 + var_1 * ( var_3 - var_4 ) / var_3;
+            self setlightintensity( var_5 );
             wait 0.05;
         }
 
@@ -1274,15 +1130,15 @@ _ID36706( var_0, var_1, var_2, var_3 )
 
     for (;;)
     {
-        var_6 = _func_0BB( var_5 * var_4 ) * 0.5 + 0.5;
-        self _meth_81EB( var_0 + var_1 - var_0 * var_6 );
+        var_6 = sin( var_5 * var_4 ) * 0.5 + 0.5;
+        self setlightintensity( var_0 + ( var_1 - var_0 ) * var_6 );
         wait 0.05;
         var_5 += 0.05;
 
         if ( var_5 > var_2 )
             var_5 -= var_2;
 
-        if ( _func_02F( var_3 ) )
+        if ( isdefined( var_3 ) )
         {
             if ( _ID42237::_ID14385( var_3 ) )
                 return;
@@ -1292,19 +1148,19 @@ _ID36706( var_0, var_1, var_2, var_3 )
 
 _ID7299( var_0, var_1, var_2, var_3 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 0;
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         var_3 = 0;
 
-    thread _unknown_1BC7( var_0, var_1, var_2, var_3 );
+    thread _ID7300( var_0, var_1, var_2, var_3 );
 }
 
 _ID7300( var_0, var_1, var_2, var_3 )
 {
-    var_4 = self _meth_8045();
-    var_5 = 1 / var_1 * 2 - var_2 + var_3;
+    var_4 = self getlightcolor();
+    var_5 = 1 / ( var_1 * 2 - var_2 + var_3 );
     var_6 = 0;
 
     if ( var_6 < var_2 )
@@ -1312,15 +1168,15 @@ _ID7300( var_0, var_1, var_2, var_3 )
         for ( var_7 = var_5 / var_2; var_6 < var_2; var_6 += 0.05 )
         {
             var_8 = var_7 * var_6 * var_6;
-            self _meth_8046( _func_11C( var_4, var_0, var_8 ) );
+            self setlightcolor( vectorlerp( var_4, var_0, var_8 ) );
             wait 0.05;
         }
     }
 
     while ( var_6 < var_1 - var_3 )
     {
-        var_8 = var_5 * 2 * var_6 - var_2;
-        self _meth_8046( _func_11C( var_4, var_0, var_8 ) );
+        var_8 = var_5 * ( 2 * var_6 - var_2 );
+        self setlightcolor( vectorlerp( var_4, var_0, var_8 ) );
         wait 0.05;
         var_6 += 0.05;
     }
@@ -1332,36 +1188,36 @@ _ID7300( var_0, var_1, var_2, var_3 )
         for ( var_7 = var_5 / var_3; var_6 > 0; var_6 -= 0.05 )
         {
             var_8 = 1 - var_7 * var_6 * var_6;
-            self _meth_8046( _func_11C( var_4, var_0, var_8 ) );
+            self setlightcolor( vectorlerp( var_4, var_0, var_8 ) );
             wait 0.05;
         }
     }
 
-    self _meth_8046( var_0 );
+    self setlightcolor( var_0 );
 }
 
 _ID37475()
 {
-    thread _unknown_1CA5();
-    thread _unknown_1CC6();
+    thread _ID39377();
+    thread _ID39376();
 }
 
 _ID39377()
 {
     self endon( "light_off" );
-    var_0 = self _meth_81EA();
+    var_0 = self getlightintensity();
     var_1 = var_0;
 
     for (;;)
     {
-        var_2 = _func_0BA( var_0 * 0.7, var_0 * 1.2 );
-        var_3 = _func_0BA( 0.3, 1.2 );
+        var_2 = randomfloatrange( var_0 * 0.7, var_0 * 1.2 );
+        var_3 = randomfloatrange( 0.3, 1.2 );
         var_3 *= 20;
 
         for ( var_4 = 0; var_4 < var_3; var_4++ )
         {
-            var_5 = var_2 * var_4 / var_3 + var_1 * var_3 - var_4 / var_3;
-            self _meth_81EB( var_5 );
+            var_5 = var_2 * var_4 / var_3 + var_1 * ( var_3 - var_4 ) / var_3;
+            self setlightintensity( var_5 );
             wait 0.05;
         }
 
@@ -1388,10 +1244,10 @@ _ID39376()
         for ( var_4 = 0; var_4 < var_2.size; var_4++ )
         {
             var_3[var_4] = var_2[var_4];
-            var_2[var_4] = _func_0B8( var_0 ) + var_1;
+            var_2[var_4] = randomfloat( var_0 ) + var_1;
         }
 
-        var_5 = _func_0BA( 0.3, 1.2 );
+        var_5 = randomfloatrange( 0.3, 1.2 );
         var_5 *= 20;
 
         for ( var_4 = 0; var_4 < var_5; var_4++ )
@@ -1399,9 +1255,9 @@ _ID39376()
             var_6 = [];
 
             for ( var_7 = 0; var_7 < var_2.size; var_7++ )
-                var_6[var_7] = var_2[var_7] * var_4 / var_5 + var_3[var_7] * var_5 - var_4 / var_5;
+                var_6[var_7] = var_2[var_7] * var_4 / var_5 + var_3[var_7] * ( var_5 - var_4 ) / var_5;
 
-            self _meth_8046( ( var_6[0], var_6[1], var_6[2] ) );
+            self setlightcolor( ( var_6[0], var_6[1], var_6[2] ) );
             wait 0.05;
         }
     }
@@ -1411,60 +1267,60 @@ _ID36799( var_0 )
 {
     var_1 = 1;
 
-    if ( _func_02F( var_0._ID31159 ) )
+    if ( isdefined( var_0._ID31159 ) )
         var_1 = var_0._ID31159;
 
     for (;;)
     {
         var_0 waittill( "trigger",  var_2  );
-        var_0 _unknown_1E15( var_1 );
+        var_0 _ID32462( var_1 );
 
-        while ( var_2 _meth_80B0( var_0 ) )
+        while ( var_2 istouching( var_0 ) )
             wait 0.25;
     }
 }
 
 _ID32462( var_0 )
 {
-    var_1 = _func_03A( "sm_sunenable", 1 );
-    var_2 = _func_03B( "sm_sunshadowscale", 1.0 );
-    var_3 = _func_03A( "sm_spotlimit", 4 );
-    var_4 = _func_03B( "sm_sunsamplesizenear", 0.25 );
-    var_5 = _func_03B( "sm_qualityspotshadow", 1.0 );
+    var_1 = getdvarint( "sm_sunenable", 1 );
+    var_2 = getdvarfloat( "sm_sunshadowscale", 1.0 );
+    var_3 = getdvarint( "sm_spotlimit", 4 );
+    var_4 = getdvarfloat( "sm_sunsamplesizenear", 0.25 );
+    var_5 = getdvarfloat( "sm_qualityspotshadow", 1.0 );
 
-    if ( _func_02F( self._ID31466 ) )
+    if ( isdefined( self._ID31466 ) )
         var_1 = self._ID31466;
 
-    if ( _func_02F( self._ID31468 ) )
+    if ( isdefined( self._ID31468 ) )
         var_2 = self._ID31468;
 
-    if ( _func_02F( self._ID31448 ) )
+    if ( isdefined( self._ID31448 ) )
         var_3 = self._ID31448;
 
-    if ( _func_02F( self._ID31467 ) )
+    if ( isdefined( self._ID31467 ) )
         var_4 = self._ID31467;
 
-    var_4 = _func_0C4( _func_0E6( 0.016, var_4 ), 32 );
+    var_4 = min( max( 0.016, var_4 ), 32 );
 
-    if ( _func_02F( self._ID31412 ) )
+    if ( isdefined( self._ID31412 ) )
         var_5 = self._ID31412;
 
-    var_6 = _func_03A( "sm_sunenable", 1 );
-    var_7 = _func_03B( "sm_sunshadowscale", 1.0 );
-    var_8 = _func_03A( "sm_spotlimit", 4 );
-    var_9 = _func_03A( "sm_qualityspotshadow", 1.0 );
-    _func_0DB( "sm_sunenable", var_1 );
-    _func_0DB( "sm_sunshadowscale", var_2 );
-    _func_0DB( "sm_spotlimit", var_3 );
-    _func_0DB( "sm_qualityspotshadow", var_5 );
-    _unknown_1F2C( var_4, var_0 );
+    var_6 = getdvarint( "sm_sunenable", 1 );
+    var_7 = getdvarfloat( "sm_sunshadowscale", 1.0 );
+    var_8 = getdvarint( "sm_spotlimit", 4 );
+    var_9 = getdvarint( "sm_qualityspotshadow", 1.0 );
+    setsaveddvar( "sm_sunenable", var_1 );
+    setsaveddvar( "sm_sunshadowscale", var_2 );
+    setsaveddvar( "sm_spotlimit", var_3 );
+    setsaveddvar( "sm_qualityspotshadow", var_5 );
+    _ID22186( var_4, var_0 );
 }
 
 _ID22186( var_0, var_1 )
 {
     level notify( "changing_sunsamplesizenear" );
     level endon( "changing_sunsamplesizenear" );
-    var_2 = _func_03B( "sm_sunSampleSizeNear", 0.25 );
+    var_2 = getdvarfloat( "sm_sunSampleSizeNear", 0.25 );
 
     if ( var_0 == var_2 )
         return;
@@ -1480,18 +1336,18 @@ _ID22186( var_0, var_1 )
         for ( var_7 = 0; var_7 < var_4; var_7++ )
         {
             var_6 += var_5;
-            _func_0DB( "sm_sunSampleSizeNear", var_6 );
+            setsaveddvar( "sm_sunSampleSizeNear", var_6 );
             wait 0.05;
         }
     }
 
-    _func_0DB( "sm_sunSampleSizeNear", var_0 );
+    setsaveddvar( "sm_sunSampleSizeNear", var_0 );
 }
 
 _ID19800()
 {
-    _unknown_1FAB();
-    _unknown_20C5();
+    _ID19726();
+    _ID19723();
 }
 
 _ID19726()
@@ -1500,34 +1356,30 @@ _ID19726()
     self._ID39484 = [];
     self._ID22413 = [];
 
-    if ( _func_02F( self._ID1191 ) )
+    if ( isdefined( self._ID1191 ) )
     {
-        var_0 = _func_1A2( self._ID1191, "targetname" );
+        var_0 = getentarray( self._ID1191, "targetname" );
 
         if ( var_0.size == 0 )
             return;
 
-        var_1 = var_0;
-
-        for ( var_8 = _func_1DA( var_1 ); _func_02F( var_8 ); var_8 = _func_1BF( var_1, var_8 ) )
+        foreach ( var_2 in var_0 )
         {
-            var_2 = var_1[var_8];
-
-            if ( _unknown_1964( var_2 ) )
+            if ( _ID20556( var_2 ) )
             {
                 self._ID22413[self._ID22413.size] = var_2;
-                var_2 _unknown_1FF5();
+                var_2 _ID19726();
                 continue;
             }
 
             var_3 = 1;
 
-            if ( _func_02F( var_2._ID922 ) )
+            if ( isdefined( var_2._ID922 ) )
             {
                 if ( var_2._ID922 == "on" )
                 {
                     var_3 = 0;
-                    _unknown_206B( var_2 );
+                    _ID19727( var_2 );
                 }
                 else if ( var_2._ID922 == "off" )
                 {
@@ -1538,44 +1390,22 @@ _ID19726()
 
             if ( var_3 )
             {
-                _unknown_208B( var_2 );
-                var_4 = _func_1A2( var_2._ID1191, "targetname" );
-                var_5 = var_4;
+                _ID19727( var_2 );
+                var_4 = getentarray( var_2._ID1191, "targetname" );
 
-                for ( var_7 = _func_1DA( var_5 ); _func_02F( var_7 ); var_7 = _func_1BF( var_5, var_7 ) )
-                {
-                    var_6 = var_5[var_7];
+                foreach ( var_6 in var_4 )
                     self._ID39484[self._ID39484.size] = var_6;
-                }
-
-                var_clear_2
-                var_clear_0
             }
         }
 
-        var_clear_2
-        var_clear_0
-        var_9 = self._ID22441;
-
-        for ( var_10 = _func_1DA( var_9 ); _func_02F( var_10 ); var_10 = _func_1BF( var_9, var_10 ) )
-        {
-            var_2 = var_9[var_10];
+        foreach ( var_2 in self._ID22441 )
             var_2._ID40541 = 1;
-        }
 
-        var_clear_1
-        var_clear_0
-        var_11 = self._ID39484;
-
-        for ( var_12 = _func_1DA( var_11 ); _func_02F( var_12 ); var_12 = _func_1BF( var_11, var_12 ) )
+        foreach ( var_2 in self._ID39484 )
         {
-            var_2 = var_11[var_12];
             var_2._ID40541 = 0;
-            var_2 _meth_805A();
+            var_2 hide();
         }
-
-        var_clear_1
-        var_clear_0
     }
 }
 
@@ -1586,28 +1416,28 @@ _ID19727( var_0 )
     var_2 = undefined;
     var_3 = undefined;
 
-    if ( _func_02F( var_0._ID31220 ) )
+    if ( isdefined( var_0._ID31220 ) )
     {
         var_1 = self._ID31220;
         var_2 = var_0._ID740;
         var_3 = var_0._ID65;
     }
-    else if ( _func_02F( var_0._ID1191 ) )
+    else if ( isdefined( var_0._ID1191 ) )
     {
         var_4 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
 
-        if ( _func_02F( var_4 ) && _func_02F( var_4._ID31220 ) )
+        if ( isdefined( var_4 ) && isdefined( var_4._ID31220 ) )
         {
             var_1 = var_4._ID31220;
             var_2 = var_4._ID740;
             var_3 = ( 0, 0, 0 );
 
-            if ( _func_02F( var_4._ID65 ) )
+            if ( isdefined( var_4._ID65 ) )
                 var_3 = var_4._ID65;
         }
     }
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
     {
         var_0._ID12315 = _ID42237::_ID9265( var_1 );
         var_0._ID12315._ID40005["origin"] = var_2;
@@ -1624,70 +1454,61 @@ _ID28756()
     {
         _ID42407::_ID31523();
         var_0 = self._ID31261;
-        var_1 = self._ID31261 + self._ID31260 - self._ID31261 * 0.4;
-        var_2 = self._ID31260 - self._ID31260 - self._ID31261 * 0.4;
+        var_1 = self._ID31261 + ( self._ID31260 - self._ID31261 ) * 0.4;
+        var_2 = self._ID31260 - ( self._ID31260 - self._ID31261 ) * 0.4;
         var_3 = self._ID31260;
-        var_4 = _func_0B9( self._ID31105, self._ID31104 );
+        var_4 = randomintrange( self._ID31105, self._ID31104 );
 
         for ( var_5 = 0; var_5 < var_4; var_5++ )
         {
-            var_6 = _func_0BA( var_0, var_1 );
-            _unknown_225B( var_6, _unknown_22B7() );
+            var_6 = randomfloatrange( var_0, var_1 );
+            _ID22160( var_6, _ID15667() );
             _ID42407::_ID916();
-            var_6 = _func_0BA( var_2, var_3 );
-            _unknown_226C( var_6, _unknown_22C8() );
+            var_6 = randomfloatrange( var_2, var_3 );
+            _ID22160( var_6, _ID15667() );
         }
 
-        _unknown_227B( self._ID31260, _unknown_22D5() );
+        _ID22160( self._ID31260, _ID15667() );
     }
 }
 
 _ID22160( var_0, var_1 )
 {
-    var_2 = _func_0C1( var_1 * 20 );
-    var_3 = self _meth_81EA();
-    var_4 = var_0 - var_3 / var_2;
+    var_2 = int( var_1 * 20 );
+    var_3 = self getlightintensity();
+    var_4 = ( var_0 - var_3 ) / var_2;
 
     for ( var_5 = 0; var_5 < var_2; var_5++ )
     {
-        thread _unknown_22C0( var_0 );
-        self _meth_81EB( var_3 + var_5 * var_4 );
+        thread _ID17847( var_0 );
+        self setlightintensity( var_3 + var_5 * var_4 );
         wait 0.05;
     }
 
     var_6[0] = self;
 
-    if ( _func_02F( self._ID22413 ) )
+    if ( isdefined( self._ID22413 ) )
         var_6 = _ID42237::_ID3296( var_6, self._ID22413 );
 
-    var_7 = var_6;
-
-    for ( var_9 = _func_1DA( var_7 ); _func_02F( var_9 ); var_9 = _func_1BF( var_7, var_9 ) )
+    foreach ( var_8 in var_6 )
     {
-        var_8 = var_7[var_9];
-        var_8 thread _unknown_22FB( var_0 );
-        var_8 _meth_81EB( var_0 );
+        var_8 thread _ID17847( var_0 );
+        var_8 setlightintensity( var_0 );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17847( var_0 )
 {
     var_1 = var_0 > self._ID31479;
-    var_2 = self._ID22441;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in self._ID22441 )
     {
-        var_3 = var_2[var_4];
-
         if ( var_1 && !var_3._ID40541 )
         {
             var_3._ID40541 = var_1;
-            var_3 _meth_8059();
+            var_3 show();
 
-            if ( _func_02F( var_3._ID12315 ) )
+            if ( isdefined( var_3._ID12315 ) )
                 var_3._ID12315 thread _ID42407::_ID29840();
 
             continue;
@@ -1696,136 +1517,120 @@ _ID17847( var_0 )
         if ( !var_1 && var_3._ID40541 )
         {
             var_3._ID40541 = var_1;
-            var_3 _meth_805A();
+            var_3 hide();
 
-            if ( _func_02F( var_3._ID12315 ) )
+            if ( isdefined( var_3._ID12315 ) )
                 var_3._ID12315 thread _ID42237::_ID26402();
         }
     }
 
-    var_clear_2
-    var_clear_0
-    var_5 = self._ID39484;
-
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
+    foreach ( var_3 in self._ID39484 )
     {
-        var_3 = var_5[var_6];
-
         if ( !var_1 && !var_3._ID40541 )
         {
             var_3._ID40541 = 1;
-            var_3 _meth_8059();
+            var_3 show();
             continue;
         }
 
         if ( var_1 && var_3._ID40541 )
         {
             var_3._ID40541 = 0;
-            var_3 _meth_805A();
+            var_3 hide();
         }
     }
-
-    var_clear_1
-    var_clear_0
 }
 
 _ID15667()
 {
-    return _func_0BA( self._ID31121, self._ID31120 );
+    return randomfloatrange( self._ID31121, self._ID31120 );
 }
 
 _ID19723()
 {
-    var_0["pulse"] = ::_unknown_2418;
-    var_0["neon"] = ::_unknown_2434;
-    var_0["fire"] = ::_unknown_244F;
+    var_0["pulse"] = ::_ID10102;
+    var_0["neon"] = ::_ID10097;
+    var_0["fire"] = ::_ID10094;
     [[ var_0[self._ID31269] ]]();
 }
 
 _ID10102()
 {
-    _unknown_248E( 0.1, 0.2 );
-    _unknown_249D( 1, 4 );
-    _unknown_24AD( 3, 6 );
-    _unknown_2492( 0.5 );
-    var_0 = self _meth_81EA();
-    _unknown_24CD( var_0 * 0.25, var_0 );
-    thread _unknown_23D4();
+    _ID32273( 0.1, 0.2 );
+    _ID32519( 1, 4 );
+    _ID32252( 3, 6 );
+    _ID32476( 0.5 );
+    var_0 = self getlightintensity();
+    _ID32357( var_0 * 0.25, var_0 );
+    thread _ID28756();
 }
 
 _ID10097()
 {
-    _unknown_24C6( 0.05, 0.1 );
-    _unknown_24D6( 2, 5 );
-    _unknown_24E5( 1, 3 );
-    _unknown_24CB( 0.5 );
-    var_0 = self _meth_81EA();
-    _unknown_2505( var_0 * 0.1, var_0 );
-    thread _ID19723();
+    _ID32273( 0.05, 0.1 );
+    _ID32519( 2, 5 );
+    _ID32252( 1, 3 );
+    _ID32476( 0.5 );
+    var_0 = self getlightintensity();
+    _ID32357( var_0 * 0.1, var_0 );
+    thread _ID28756();
 }
 
 _ID10094()
 {
-    _unknown_24FE( 0.05, 0.1 );
-    _unknown_2512( 0.05, 0.1 );
-    _unknown_2522( 1, 2 );
-    _unknown_2507( 0.5 );
-    var_0 = self _meth_81EA();
-    _unknown_2542( var_0 * 0.75, var_0 );
-    thread _unknown_2449();
+    _ID32273( 0.05, 0.1 );
+    _ID32519( 0.05, 0.1 );
+    _ID32252( 1, 2 );
+    _ID32476( 0.5 );
+    var_0 = self getlightintensity();
+    _ID32357( var_0 * 0.75, var_0 );
+    thread _ID28756();
 }
 
 _ID32476( var_0 )
 {
-    if ( !_func_02F( self._ID31479 ) )
+    if ( !isdefined( self._ID31479 ) )
         self._ID31479 = var_0;
 
-    var_1 = self._ID22413;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in self._ID22413 )
     {
-        var_2 = var_1[var_3];
-
-        if ( !_func_02F( var_2._ID31479 ) )
+        if ( !isdefined( var_2._ID31479 ) )
             var_2._ID31479 = self._ID31479;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID32273( var_0, var_1 )
 {
-    if ( !_func_02F( self._ID31121 ) )
+    if ( !isdefined( self._ID31121 ) )
         self._ID31121 = var_0;
 
-    if ( !_func_02F( self._ID31120 ) )
+    if ( !isdefined( self._ID31120 ) )
         self._ID31120 = var_1;
 }
 
 _ID32519( var_0, var_1 )
 {
-    if ( !_func_02F( self._ID31526 ) )
+    if ( !isdefined( self._ID31526 ) )
         self._ID31526 = var_0;
 
-    if ( !_func_02F( self._ID31525 ) )
+    if ( !isdefined( self._ID31525 ) )
         self._ID31525 = var_1;
 }
 
 _ID32252( var_0, var_1 )
 {
-    if ( !_func_02F( self._ID31105 ) )
+    if ( !isdefined( self._ID31105 ) )
         self._ID31105 = var_0;
 
-    if ( !_func_02F( self._ID31104 ) )
+    if ( !isdefined( self._ID31104 ) )
         self._ID31104 = var_1;
 }
 
 _ID32357( var_0, var_1 )
 {
-    if ( !_func_02F( self._ID31261 ) )
+    if ( !isdefined( self._ID31261 ) )
         self._ID31261 = var_0;
 
-    if ( !_func_02F( self._ID31260 ) )
+    if ( !isdefined( self._ID31260 ) )
         self._ID31260 = var_1;
 }

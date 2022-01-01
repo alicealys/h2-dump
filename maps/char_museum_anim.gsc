@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    _unknown_000E();
-    _unknown_0301();
-    _unknown_039A();
-    _unknown_0403();
-    _unknown_0466();
-    _unknown_04BD();
-    _unknown_043D();
-    _unknown_04D8();
-    _unknown_054A();
+    _ID15518();
+    _ID48690();
+    _ID50267();
+    _ID48917();
+    _ID23866();
+    _ID27230();
+    chicken_anims();
+    h2_animation_diorama();
+    h2_animation_diorama_model();
 }
 #using_animtree("generic_human");
 

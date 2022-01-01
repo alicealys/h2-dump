@@ -15,35 +15,48 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "beretta";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 5 ) )
     {
-
+        case 0:
+            self._ID1302 = "mp5";
+            break;
+        case 1:
+            self._ID1302 = "mp5_reflex";
+            break;
+        case 2:
+            self._ID1302 = "ump45";
+            break;
+        case 3:
+            self._ID1302 = "ump45_acog";
+            break;
+        case 4:
+            self._ID1302 = "ump45_reflex";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID48907::_ID616();
+            break;
+        case 1:
+            _ID43349::_ID616();
+            break;
+        case 2:
+            _ID52301::_ID616();
+            break;
     }
-
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "allies" );
+    self setspawnerteam( "allies" );
 }
 
 _ID814()
@@ -51,11 +64,11 @@ _ID814()
     _ID48907::_ID814();
     _ID43349::_ID814();
     _ID52301::_ID814();
-    _func_14E( "mp5" );
-    _func_14E( "mp5_reflex" );
-    _func_14E( "ump45" );
-    _func_14E( "ump45_acog" );
-    _func_14E( "ump45_reflex" );
-    _func_14E( "beretta" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "mp5" );
+    precacheitem( "mp5_reflex" );
+    precacheitem( "ump45" );
+    precacheitem( "ump45_acog" );
+    precacheitem( "ump45_reflex" );
+    precacheitem( "beretta" );
+    precacheitem( "fraggrenade" );
 }

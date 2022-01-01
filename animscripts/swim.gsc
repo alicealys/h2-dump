@@ -4,7 +4,7 @@
 _ID24451()
 {
     self endon( "movemode" );
-    self _meth_819B( "face enemy or motion" );
+    self orientmode( "face enemy or motion" );
 
     if ( animscripts\utility::_ID20915() )
         self._ID1230 = 0.16;
@@ -14,34 +14,34 @@ _ID24451()
     animscripts\utility::_ID39726();
 
     if ( animscripts\utility::_ID20775( 0 ) )
-        _unknown_00C6();
+        _ID24452();
     else
-        _unknown_00B3();
+        _ID24460();
 }
 
 _ID36914()
 {
-    self._ID36905 = _func_1A5();
+    self._ID36905 = spawnstruct();
     self._ID36905._ID8375 = "nostate";
     self._ID36905._ID24449 = "combat_stationary";
     self._ID36905._ID38166 = "track_none";
     self._ID36905._ID36200 = [];
-    self._ID36905._ID36200["nostate"] = [ ::_unknown_00D8, ::_unknown_00DC ];
-    self._ID36905._ID36200["noncombat"] = [ ::_unknown_0171, ::_unknown_017F ];
-    self._ID36905._ID36200["combat"] = [ ::_unknown_0190, ::_unknown_01A2 ];
-    self._ID36905._ID36200["combat_stationary"] = [ ::_unknown_0110, ::_unknown_0114 ];
-    self._ID36905._ID36200["combat_forward"] = [ ::_unknown_01D6, ::_unknown_01E3 ];
-    self._ID36905._ID36200["combat_strafe"] = [ ::_unknown_01F2, ::_unknown_021A ];
-    self._ID36905._ID36200["track_none"] = [ ::_unknown_0149, ::_unknown_014C ];
-    self._ID36905._ID36200["track_forward"] = [ ::_unknown_0268, ::_unknown_027D ];
-    self._ID36905._ID36200["track_strafe"] = [ ::_unknown_029F, ::_unknown_02A3 ];
-    self _meth_8156( _unknown_02E1( "aim_stand_D" ) );
-    self _meth_8156( _unknown_02ED( "aim_stand_U" ) );
-    self _meth_8156( _unknown_02F8( "aim_stand_L" ) );
-    self _meth_8156( _unknown_0303( "aim_stand_R" ) );
-    self._ID9575 = ::_unknown_0346;
+    self._ID36905._ID36200["nostate"] = [ ::_ID36938, ::_ID36938 ];
+    self._ID36905._ID36200["noncombat"] = [ ::_ID24461, ::_ID24462 ];
+    self._ID36905._ID36200["combat"] = [ ::_ID24453, ::_ID24454 ];
+    self._ID36905._ID36200["combat_stationary"] = [ ::_ID36938, ::_ID36938 ];
+    self._ID36905._ID36200["combat_forward"] = [ ::_ID24455, ::_ID24456 ];
+    self._ID36905._ID36200["combat_strafe"] = [ ::_ID24458, ::_ID24459 ];
+    self._ID36905._ID36200["track_none"] = [ ::_ID36938, ::_ID36938 ];
+    self._ID36905._ID36200["track_forward"] = [ ::_ID36971, ::_ID36972 ];
+    self._ID36905._ID36200["track_strafe"] = [ ::_ID36974, ::_ID36975 ];
+    self setanimlimited( _ID16643( "aim_stand_D" ) );
+    self setanimlimited( _ID16643( "aim_stand_U" ) );
+    self setanimlimited( _ID16643( "aim_stand_L" ) );
+    self setanimlimited( _ID16643( "aim_stand_R" ) );
+    self._ID9575 = ::_ID36936;
     self._ID26587 = 1;
-    self._ID26360 = ::_unknown_08F3;
+    self._ID26360 = ::_ID36940;
     self._ID26359 = 0.2;
 }
 
@@ -62,10 +62,10 @@ _ID36938()
 
 _ID36937()
 {
-    _unknown_0257( "nostate" );
-    _unknown_0451();
+    _ID24464( "nostate" );
+    _ID36919();
 
-    if ( _func_02F( self._ID28541 ) )
+    if ( isdefined( self._ID28541 ) )
     {
         self._ID1230 = self._ID28541;
         self._ID28541 = undefined;
@@ -75,7 +75,7 @@ _ID36937()
 _ID24460()
 {
     if ( self._ID36905._ID8375 != "noncombat" )
-        _unknown_027F( "noncombat" );
+        _ID24464( "noncombat" );
 
     var_0 = self._ID36905._ID24350;
     var_1 = 0.4;
@@ -83,35 +83,35 @@ _ID24460()
     if ( animscripts\utility::_ID20915() )
         var_1 = 0.2;
 
-    self _meth_815C( "swimanim", var_0, 1, var_1, self._ID24424 );
-    _unknown_099B();
+    self setflaggedanimknob( "swimanim", var_0, 1, var_1, self._ID24424 );
+    _ID36976();
     animscripts\notetracks::_ID11534( 0.2, "swimanim" );
 }
 
 _ID24452()
 {
     if ( self._ID36905._ID8375 != "combat" )
-        _unknown_02C7( "combat" );
+        _ID24464( "combat" );
 
-    if ( _func_02F( self._ID322 ) )
+    if ( isdefined( self._ID322 ) )
     {
         animscripts\run::_ID32784( 1 );
 
         if ( !self._ID373 )
         {
-            _unknown_086B();
+            _ID36925();
             return;
         }
         else
         {
             if ( self._ID36905._ID24449 != "combat_forward" )
-                _unknown_0322( "combat_forward" );
+                _ID24457( "combat_forward" );
 
-            if ( _func_02F( self._ID4932 ) && self._ID4932 && _func_0F8( self._ID1283 ) )
+            if ( isdefined( self._ID4932 ) && self._ID4932 && lengthsquared( self._ID1283 ) )
             {
-                var_0 = _func_11A( self._ID1283 );
+                var_0 = vectortoangles( self._ID1283 );
 
-                if ( _func_0C3( _func_0F0( var_0[1] - self._ID65[1] ) ) > 35 )
+                if ( abs( angleclamp180( var_0[1] - self._ID65[1] ) ) > 35 )
                 {
                     self._ID1230 = 0.18;
 
@@ -131,16 +131,16 @@ _ID24452()
             else
                 self._ID4932 = undefined;
 
-            var_1 = _unknown_0443( "forward_aim" );
+            var_1 = _ID16643( "forward_aim" );
         }
     }
     else
     {
         if ( self._ID36905._ID24449 != "combat_forward" )
-            _unknown_03A3( "combat_forward" );
+            _ID24457( "combat_forward" );
 
         animscripts\run::_ID32784( 0 );
-        var_1 = _unknown_046A( "forward_aim" );
+        var_1 = _ID16643( "forward_aim" );
     }
 
     var_2 = 0.4;
@@ -148,8 +148,8 @@ _ID24452()
     if ( animscripts\utility::_ID20915() )
         var_2 = 0.2;
 
-    _unknown_0A8D();
-    self _meth_815C( "swimanim", var_access_1, 1, var_2, self._ID24424 );
+    _ID36976();
+    self setflaggedanimknob( "swimanim", var_access_1, 1, var_2, self._ID24424 );
     animscripts\notetracks::_ID11534( 0.2, "swimanim" );
 }
 
@@ -166,10 +166,10 @@ _ID24464( var_0 )
 _ID24461()
 {
     if ( self._ID36905._ID38166 != "track_none" )
-        _unknown_047A( "track_none" );
+        _ID36973( "track_none" );
 
-    _unknown_05DC();
-    thread _unknown_04E9();
+    _ID36963();
+    thread _ID24463();
 }
 
 _ID24462()
@@ -180,15 +180,15 @@ _ID24462()
 
 _ID24453()
 {
-    self _meth_814D( %combatrun, 1.0, 0.5, self._ID24424 );
+    self setanimknob( %combatrun, 1.0, 0.5, self._ID24424 );
 
     if ( self._ID36905._ID24449 != "combat_forward" )
-        _unknown_045A( "combat_forward" );
+        _ID24457( "combat_forward" );
 }
 
 _ID24454()
 {
-    _unknown_0465( "combat_stationary" );
+    _ID24457( "combat_stationary" );
 }
 
 _ID24457( var_0 )
@@ -204,9 +204,9 @@ _ID24457( var_0 )
 _ID24455()
 {
     if ( self._ID36905._ID38166 != "track_forward" )
-        _unknown_0502( "track_forward" );
+        _ID36973( "track_forward" );
 
-    _unknown_0664();
+    _ID36963();
 }
 
 _ID24456()
@@ -216,14 +216,14 @@ _ID24456()
 
 _ID24458()
 {
-    self _meth_814E( _unknown_0579( "strafe_B" ), 1, 0.1, self._ID34146, 1 );
-    self _meth_814E( _unknown_058D( "strafe_L" ), 1, 0.1, self._ID34146, 1 );
-    self _meth_814E( _unknown_05A2( "strafe_R" ), 1, 0.1, self._ID34146, 1 );
+    self setanimknoblimited( _ID16643( "strafe_B" ), 1, 0.1, self._ID34146, 1 );
+    self setanimknoblimited( _ID16643( "strafe_L" ), 1, 0.1, self._ID34146, 1 );
+    self setanimknoblimited( _ID16643( "strafe_R" ), 1, 0.1, self._ID34146, 1 );
 
     if ( self._ID36905._ID38166 != "track_strafe" )
-        _unknown_0559( "track_strafe" );
+        _ID36973( "track_strafe" );
 
-    _unknown_06CD();
+    _ID36919();
 
     if ( animscripts\utility::_ID20915() )
         self._ID1230 = 0.25;
@@ -236,10 +236,10 @@ _ID24458()
 
 _ID24459()
 {
-    self _meth_814C( %combatrun_forward, 0.2 );
-    self _meth_814C( %combatrun_backward, 0.2 );
-    self _meth_814C( %combatrun_left, 0.2 );
-    self _meth_814C( %combatrun_right, 0.2 );
+    self clearanim( %combatrun_forward, 0.2 );
+    self clearanim( %combatrun_backward, 0.2 );
+    self clearanim( %combatrun_left, 0.2 );
+    self clearanim( %combatrun_right, 0.2 );
 
     if ( animscripts\utility::_ID20915() )
         self._ID1230 = 0.16;
@@ -264,19 +264,19 @@ _ID36973( var_0 )
 
 _ID36971()
 {
-    self _meth_8156( _unknown_0661( "aim_move_D" ) );
-    self _meth_8156( _unknown_066C( "aim_move_L" ) );
-    self _meth_8156( _unknown_0677( "aim_move_R" ) );
-    self _meth_8156( _unknown_0683( "aim_move_U" ) );
-    thread _unknown_0672();
+    self setanimlimited( _ID16643( "aim_move_D" ) );
+    self setanimlimited( _ID16643( "aim_move_L" ) );
+    self setanimlimited( _ID16643( "aim_move_R" ) );
+    self setanimlimited( _ID16643( "aim_move_U" ) );
+    thread _ID24465();
 }
 
 _ID36972()
 {
-    self _meth_814C( %aim_2, 0.2 );
-    self _meth_814C( %aim_4, 0.2 );
-    self _meth_814C( %aim_6, 0.2 );
-    self _meth_814C( %aim_8, 0.2 );
+    self clearanim( %aim_2, 0.2 );
+    self clearanim( %aim_4, 0.2 );
+    self clearanim( %aim_6, 0.2 );
+    self clearanim( %aim_8, 0.2 );
 }
 
 _ID36974()
@@ -286,10 +286,10 @@ _ID36974()
 
 _ID36975()
 {
-    self _meth_814C( %w_aim_4, 0.2 );
-    self _meth_814C( %w_aim_6, 0.2 );
-    self _meth_814C( %w_aim_8, 0.2 );
-    self _meth_814C( %w_aim_2, 0.2 );
+    self clearanim( %w_aim_4, 0.2 );
+    self clearanim( %w_aim_6, 0.2 );
+    self clearanim( %w_aim_8, 0.2 );
+    self clearanim( %w_aim_2, 0.2 );
 }
 
 _ID24465()
@@ -297,7 +297,7 @@ _ID24465()
     self endon( "killanimscript" );
     self endon( "end_face_enemy_tracking" );
 
-    if ( !_func_02F( self._ID2421 ) )
+    if ( !isdefined( self._ID2421 ) )
     {
         self._ID2421 = 1;
         animscripts\combat::_ID32267();
@@ -316,7 +316,7 @@ _ID16643( var_0, var_1 )
 {
     var_2 = animscripts\utility::_ID22630( "swim", var_0 );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         return var_2[var_1];
     else
         return var_2;
@@ -324,22 +324,22 @@ _ID16643( var_0, var_1 )
 
 _ID24463()
 {
-    var_0 = _unknown_076B( "forward" );
+    var_0 = _ID16643( "forward" );
     self._ID36905._ID24350 = var_0;
 }
 
 _ID36968()
 {
-    if ( _func_02F( self._ID11025 ) )
+    if ( isdefined( self._ID11025 ) )
         return 0;
 
-    if ( !_func_02F( self._ID762 ) )
+    if ( !isdefined( self._ID762 ) )
         return 0;
 
     var_0 = self._ID625;
     self._ID625 = 128;
 
-    if ( !self _meth_819D() )
+    if ( !self shouldfacemotion() )
     {
         self._ID625 = var_0;
         return 0;
@@ -351,21 +351,21 @@ _ID36968()
     if ( animscripts\utility::_ID20915() )
         var_1 = 32400;
 
-    if ( _func_0F5( self._ID740, self._ID762 ) < var_1 )
+    if ( distancesquared( self._ID740, self._ID762 ) < var_1 )
         return 0;
 
     if ( self._ID7._ID24414 != "stop" )
         return 0;
 
-    if ( _func_0F8( self._ID821 ) > 1 )
+    if ( lengthsquared( self._ID821 ) > 1 )
     {
-        var_2 = _func_11A( self._ID821 );
+        var_2 = vectortoangles( self._ID821 );
 
-        if ( _func_0C3( _func_0F0( var_2[1] - self._ID65[1] ) ) < 90 )
+        if ( abs( angleclamp180( var_2[1] - self._ID65[1] ) ) < 90 )
         {
-            var_3 = _func_11A( self._ID601 );
+            var_3 = vectortoangles( self._ID601 );
 
-            if ( _func_0C3( _func_0F0( var_3[1] - self._ID65[1] ) ) < 90 )
+            if ( abs( angleclamp180( var_3[1] - self._ID65[1] ) ) < 90 )
                 return 0;
         }
     }
@@ -377,81 +377,81 @@ _ID36936()
 {
     self._ID7._ID28253 = "stand";
 
-    if ( !_unknown_081A() )
+    if ( !_ID36968() )
         return;
 
-    var_0 = _unknown_0937();
+    var_0 = _ID36917();
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     var_1 = var_0._ID22723;
     var_2 = var_0._ID22721;
     var_3 = var_0._ID22720;
-    var_4 = _func_11A( self._ID601 );
+    var_4 = vectortoangles( self._ID601 );
     var_5 = var_4 - var_3;
-    var_6 = _func_11F( var_5 );
+    var_6 = anglestoforward( var_5 );
     var_7 = animscripts\exit_node::_ID16270();
 
-    if ( animscripts\utility::_ID20915() && _func_02F( var_7 ) )
+    if ( animscripts\utility::_ID20915() && isdefined( var_7 ) )
     {
-        var_8 = _unknown_0C9D( var_7 );
+        var_8 = _ID36930( var_7 );
 
         if ( var_8 != "exposed" )
         {
-            var_9 = _unknown_0CC7( var_7 );
-            var_6 = _func_11F( var_9 );
+            var_9 = _ID16461( var_7 );
+            var_6 = anglestoforward( var_9 );
         }
         else
-            var_6 = _func_11F( self._ID65 );
+            var_6 = anglestoforward( self._ID65 );
     }
 
-    self _meth_819A( "nogravity", 0 );
-    var_10 = _func_0BA( 0.9, 1.1 );
+    self animmode( "nogravity", 0 );
+    var_10 = randomfloatrange( 0.9, 1.1 );
     var_11 = 0.3;
-    self _meth_819B( "face angle 3d", self._ID65 );
+    self orientmode( "face angle 3d", self._ID65 );
 
-    if ( _func_02F( var_1 ) && !animscripts\utility::_ID20915() )
+    if ( isdefined( var_1 ) && !animscripts\utility::_ID20915() )
     {
-        self _meth_8119( "startturn", var_1, %body, 1, 0.3, var_10 * self._ID24424 );
+        self setflaggedanimknoballrestart( "startturn", var_1, %body, 1, 0.3, var_10 * self._ID24424 );
         animscripts\shared::_ID11529( "startturn" );
         var_11 = 0.5;
     }
-    else if ( _func_02F( var_1 ) && animscripts\utility::_ID20915() )
+    else if ( isdefined( var_1 ) && animscripts\utility::_ID20915() )
     {
-        if ( _func_02F( var_7 ) )
-            self _meth_819B( "face direction", var_6 );
+        if ( isdefined( var_7 ) )
+            self orientmode( "face direction", var_6 );
 
         self._ID28541 = 0.16;
         self._ID1230 = 5.0;
         var_11 = 0.1;
-        self _meth_8119( "startturn", var_1, %body, 1, var_11, var_10 * self._ID24424 );
+        self setflaggedanimknoballrestart( "startturn", var_1, %body, 1, var_11, var_10 * self._ID24424 );
         animscripts\shared::_ID11529( "startturn" );
         var_11 = 0.5;
         self._ID1230 = 0.16;
         self._ID28541 = undefined;
-        var_12 = _func_095( var_1 );
+        var_12 = getmovedelta( var_1 );
         var_7 = animscripts\exit_node::_ID16270();
-        var_6 = _func_11F( self._ID65 );
+        var_6 = anglestoforward( self._ID65 );
 
-        if ( _func_02F( var_7 ) )
+        if ( isdefined( var_7 ) )
         {
-            var_8 = _unknown_0D87( var_7 );
+            var_8 = _ID36930( var_7 );
 
             if ( var_8 != "exposed" )
             {
-                var_9 = _unknown_0DB0( var_7 );
+                var_9 = _ID16461( var_7 );
                 var_9 = ( var_9[0], var_9[1] - var_12, var_9[2] );
-                var_6 = _func_11F( var_9 );
+                var_6 = anglestoforward( var_9 );
             }
         }
     }
 
     var_13 = var_4 - self._ID65;
-    var_14 = _func_067( var_2 );
-    var_15 = 0.001 * _func_0C3( _func_0F0( var_13[1] - var_3[1] ) ) / var_14;
-    var_16 = 0.001 * _func_0C3( _func_0F0( var_13[0] - var_3[0] ) ) / var_14;
-    var_17 = _func_0E6( var_15, var_16 );
+    var_14 = getanimlength( var_2 );
+    var_15 = 0.001 * abs( angleclamp180( var_13[1] - var_3[1] ) ) / var_14;
+    var_16 = 0.001 * abs( angleclamp180( var_13[0] - var_3[0] ) ) / var_14;
+    var_17 = max( var_15, var_16 );
 
     if ( var_17 < 0.01 )
         var_17 = 0.01;
@@ -465,26 +465,26 @@ _ID36936()
 
     self._ID28541 = self._ID1230;
     self._ID1230 = var_17;
-    self _meth_819B( "face direction", var_6 );
-    self _meth_8119( "startmove", var_2, %body, 1, var_11, var_10 * self._ID24424 );
+    self orientmode( "face direction", var_6 );
+    self setflaggedanimknoballrestart( "startmove", var_2, %body, 1, var_11, var_10 * self._ID24424 );
     animscripts\shared::_ID11529( "startmove" );
     self._ID1230 = self._ID28541;
     self._ID28541 = undefined;
-    self _meth_819B( "face default" );
-    self _meth_819A( "none", 0 );
+    self orientmode( "face default" );
+    self animmode( "none", 0 );
 
     if ( animscripts\utility::_ID20915() )
     {
-        if ( _func_068( var_2, "finish" ) )
+        if ( animhasnotetrack( var_2, "finish" ) )
             animscripts\shared::_ID11529( "startmove" );
 
         var_18 = 65536;
         var_19 = self._ID451;
 
-        if ( _func_02F( self._ID700 ) )
+        if ( isdefined( self._ID700 ) )
             var_19 = self._ID700._ID740;
 
-        if ( _func_22D( self._ID740, var_19 ) > var_18 )
+        if ( distance2dsquared( self._ID740, var_19 ) > var_18 )
             self notify( "force_space_rotation_update",  0, 0, undefined, 1  );
     }
 
@@ -496,20 +496,20 @@ _ID36936()
 
 _ID36963()
 {
-    self _meth_8156( _unknown_0A4E( "turn_add_l" ) );
-    self _meth_8156( _unknown_0A59( "turn_add_r" ) );
-    self _meth_8156( _unknown_0A64( "turn_add_u" ) );
-    self _meth_8156( _unknown_0A70( "turn_add_d" ) );
+    self setanimlimited( _ID16643( "turn_add_l" ) );
+    self setanimlimited( _ID16643( "turn_add_r" ) );
+    self setanimlimited( _ID16643( "turn_add_u" ) );
+    self setanimlimited( _ID16643( "turn_add_d" ) );
     self._ID28526 = 0;
     self._ID28525 = 0;
 }
 
 _ID36919()
 {
-    self _meth_814C( %add_turn_l, 0.2 );
-    self _meth_814C( %add_turn_r, 0.2 );
-    self _meth_814C( %add_turn_u, 0.2 );
-    self _meth_814C( %add_turn_d, 0.2 );
+    self clearanim( %add_turn_l, 0.2 );
+    self clearanim( %add_turn_r, 0.2 );
+    self clearanim( %add_turn_u, 0.2 );
+    self clearanim( %add_turn_d, 0.2 );
     self._ID28526 = undefined;
     self._ID28525 = undefined;
 }
@@ -522,24 +522,24 @@ _ID36917()
     var_3 = 0;
     var_4 = 0;
     var_5 = 0;
-    var_6 = _func_11A( self._ID601 );
+    var_6 = vectortoangles( self._ID601 );
     var_7 = animscripts\utility::_ID16702( var_1 );
 
     if ( animscripts\utility::_ID20915() && var_7[2] )
     {
         if ( var_7[2] != 0 )
         {
-            var_8 = _func_11F( var_7 );
+            var_8 = anglestoforward( var_7 );
             var_9 = self._ID451;
 
-            if ( _func_02F( self._ID700 ) )
+            if ( isdefined( self._ID700 ) )
                 var_9 = self._ID700._ID740;
 
-            var_10 = _func_124( var_8, var_9 - self._ID740, var_7[2] * -1 );
+            var_10 = rotatepointaroundvector( var_8, var_9 - self._ID740, var_7[2] * -1 );
             var_11 = var_10 + self._ID740;
             var_12 = var_11 - self._ID740;
-            var_12 = _func_119( var_12 );
-            var_6 = _func_11A( var_12 );
+            var_12 = vectornormalize( var_12 );
+            var_6 = vectortoangles( var_12 );
             var_5 = 1;
         }
     }
@@ -547,9 +547,9 @@ _ID36917()
     var_13 = undefined;
     var_14 = undefined;
 
-    if ( _func_02F( var_1 ) && _func_02F( var_1._ID1244 ) )
+    if ( isdefined( var_1 ) && isdefined( var_1._ID1244 ) )
     {
-        var_14 = _unknown_0F91( var_1 );
+        var_14 = _ID36930( var_1 );
 
         if ( var_14 != "exposed" )
         {
@@ -570,7 +570,7 @@ _ID36917()
         }
     }
 
-    if ( !_func_02F( var_13 ) )
+    if ( !isdefined( var_13 ) )
     {
         if ( var_0 )
             var_13 = "idle_ready_to_forward";
@@ -582,54 +582,54 @@ _ID36917()
         }
     }
 
-    var_15 = _unknown_0B9B( var_13 );
-    var_16 = _func_0F0( var_6[1] - var_2[1] );
-    var_17 = _func_0F0( var_6[0] - var_2[0] );
+    var_15 = _ID16643( var_13 );
+    var_16 = angleclamp180( var_6[1] - var_2[1] );
+    var_17 = angleclamp180( var_6[0] - var_2[0] );
     var_18 = undefined;
 
     if ( animscripts\utility::_ID20915() )
         var_18 = 3;
 
-    var_19 = _unknown_0FD6( var_16, var_18 );
-    var_20 = _unknown_0FDC( var_17, var_18 );
+    var_19 = _ID36928( var_16, var_18 );
+    var_20 = _ID36928( var_17, var_18 );
     var_21 = var_14;
 
-    if ( !_func_02F( var_21 ) && _func_02F( self._ID822 ) && _func_22D( self._ID822._ID740, self._ID740 ) < 36 )
-        var_21 = _unknown_103F( self._ID822 );
+    if ( !isdefined( var_21 ) && isdefined( self._ID822 ) && distance2dsquared( self._ID822._ID740, self._ID740 ) < 36 )
+        var_21 = _ID36930( self._ID822 );
 
-    if ( var_19 == 4 && _func_02F( var_21 ) )
+    if ( var_19 == 4 && isdefined( var_21 ) )
     {
-        var_22 = _func_02F( var_14 );
+        var_22 = isdefined( var_14 );
 
-        if ( var_21 == "cover_corner_l" && var_16 < -10 && !var_22 || _func_02F( var_15[2] ) )
+        if ( var_21 == "cover_corner_l" && var_16 < -10 && ( !var_22 || isdefined( var_15[2] ) ) )
             var_19 = 2;
-        else if ( var_21 == "cover_corner_r" && var_16 > 10 && !var_22 || _func_02F( var_15[6] ) )
+        else if ( var_21 == "cover_corner_r" && var_16 > 10 && ( !var_22 || isdefined( var_15[6] ) ) )
             var_19 = 6;
     }
 
-    if ( !_func_02F( var_15[var_19] ) )
+    if ( !isdefined( var_15[var_19] ) )
     {
         var_13 = "idle_to_forward";
-        var_15 = _unknown_0C50( var_13 );
+        var_15 = _ID16643( var_13 );
         var_4 = 1;
     }
 
-    var_23 = _func_1A5();
+    var_23 = spawnstruct();
 
     if ( var_4 )
     {
-        var_24 = _unknown_0C64( "idle_turn" );
+        var_24 = _ID16643( "idle_turn" );
 
-        if ( !_func_02F( var_24[var_19] ) )
+        if ( !isdefined( var_24[var_19] ) )
         {
             var_25 = 0;
 
-            for ( var_26 = 8; !_func_02F( var_15[var_25] ) && var_25 < 8; var_25++ )
+            for ( var_26 = 8; !isdefined( var_15[var_25] ) && var_25 < 8; var_25++ )
             {
 
             }
 
-            while ( !_func_02F( var_15[var_26] ) && var_26 > 0 )
+            while ( !isdefined( var_15[var_26] ) && var_26 > 0 )
                 var_26--;
 
             if ( var_19 < var_25 )
@@ -642,13 +642,13 @@ _ID36917()
         var_19 = 4;
     }
 
-    if ( _func_02F( var_15[var_19] ) && _func_02F( var_15[var_19][var_20] ) )
+    if ( isdefined( var_15[var_19] ) && isdefined( var_15[var_19][var_20] ) )
     {
         var_23._ID22721 = var_15[var_19][var_20];
 
         if ( var_3 )
         {
-            var_15 = _unknown_0CDA( var_13 + "_angleDelta" );
+            var_15 = _ID16643( var_13 + "_angleDelta" );
             var_23._ID22720 = var_15[var_19][var_20];
         }
         else
@@ -665,22 +665,22 @@ _ID36967()
 {
     self endon( "killanimscript" );
     self endon( "swim_cancelapproach" );
-    thread _unknown_0F08();
+    thread _ID36941();
 
-    if ( _func_02F( self._ID10998 ) && self._ID10998 )
+    if ( isdefined( self._ID10998 ) && self._ID10998 )
         return;
 
     self._ID36905._ID3369 = self._ID762;
 
-    if ( _func_02F( self _meth_81A9() ) )
+    if ( isdefined( self getnegotiationstartnode() ) )
         return;
 
     var_0 = animscripts\cover_arrival::_ID16131();
 
-    if ( _func_02F( var_0 ) && _unknown_139F( var_0 ) )
-        thread _unknown_0F73();
+    if ( isdefined( var_0 ) && _ID36934( var_0 ) )
+        thread _ID36911();
     else
-        thread _unknown_0F68();
+        thread _ID36912();
 }
 
 _ID36941()
@@ -688,16 +688,16 @@ _ID36941()
     self endon( "killanimscript" );
     self endon( "swim_killrestartlistener" );
     self waittill( "path_set" );
-    var_0 = _func_02F( self._ID762 ) && _func_02F( self._ID36905._ID3369 ) && _func_0F5( self._ID762, self._ID36905._ID3369 ) < 4;
+    var_0 = isdefined( self._ID762 ) && isdefined( self._ID36905._ID3369 ) && distancesquared( self._ID762, self._ID36905._ID3369 ) < 4;
 
     if ( var_0 )
     {
-        thread _unknown_0F7A();
+        thread _ID36941();
         return;
     }
 
-    _unknown_0F95();
-    _unknown_0F6B();
+    _ID36916();
+    _ID36967();
 }
 
 _ID36916()
@@ -709,8 +709,8 @@ _ID36916()
 _ID36979( var_0, var_1 )
 {
     self endon( "swim_cancelwaitforapproachpos" );
-    var_2 = var_1 + 60 * var_1 + 60;
-    var_3 = _func_0F5( var_0, self._ID740 );
+    var_2 = ( var_1 + 60 ) * ( var_1 + 60 );
+    var_3 = distancesquared( var_0, self._ID740 );
 
     if ( var_3 <= var_2 )
         return;
@@ -727,12 +727,12 @@ _ID36912()
     self endon( "move_interrupt" );
     self endon( "swim_killrestartlistener" );
 
-    if ( !_func_02F( self._ID762 ) )
+    if ( !isdefined( self._ID762 ) )
         return;
 
-    var_0 = _unknown_1204( "arrival_exposed" );
-    _unknown_0FFF( self._ID762, var_0 );
-    _unknown_1053();
+    var_0 = _ID36931( "arrival_exposed" );
+    _ID36979( self._ID762, var_0 );
+    _ID36924();
 }
 
 _ID36911()
@@ -741,28 +741,28 @@ _ID36911()
     self endon( "swim_cancelapproach" );
     self endon( "swim_killrestartlistener" );
     var_0 = animscripts\cover_arrival::_ID16131();
-    self._ID3263 = _unknown_1258( var_0 );
+    self._ID3263 = _ID36930( var_0 );
     self._ID875 = 1;
     self waittill( "cover_approach",  var_1  );
     var_0 = animscripts\cover_arrival::_ID16131();
-    var_2 = _unknown_1270( var_0 );
+    var_2 = _ID36930( var_0 );
 
     if ( var_2 == "exposed" )
     {
-        if ( _func_02F( var_0 ) )
+        if ( isdefined( var_0 ) )
             var_3 = var_0._ID740;
         else
             var_3 = self._ID762;
 
         var_4 = var_3 - self._ID740;
-        var_5 = _func_11A( var_4 );
+        var_5 = vectortoangles( var_4 );
         var_6 = ( 0, var_5[1], 0 );
         var_7 = ( 0, var_5[1], 0 );
     }
     else
     {
         var_3 = var_0._ID740;
-        var_6 = _unknown_12D1( var_0 );
+        var_6 = _ID16461( var_0 );
 
         if ( animscripts\utility::_ID20915() )
             var_7 = animscripts\utility::_ID16702( var_0 );
@@ -770,7 +770,7 @@ _ID36911()
             var_7 = var_0._ID65;
     }
 
-    thread _unknown_113B( var_2, var_3, var_1, var_7, var_6 );
+    thread _ID36923( var_2, var_3, var_1, var_7, var_6 );
 }
 
 _ID36924()
@@ -779,27 +779,27 @@ _ID36924()
     var_1 = self._ID762;
     var_2 = ( 0, self._ID65[1], self._ID65[2] );
 
-    if ( _func_02F( var_0 ) && var_0._ID1244 != "Path" && var_0._ID1244 != "Path 3D" )
-        var_2 = _unknown_1325( var_0 );
+    if ( isdefined( var_0 ) && var_0._ID1244 != "Path" && var_0._ID1244 != "Path 3D" )
+        var_2 = _ID16461( var_0 );
     else if ( animscripts\cover_arrival::_ID13755() )
-        var_2 = _func_11A( self._ID322._ID740 - var_1 );
+        var_2 = vectortoangles( self._ID322._ID740 - var_1 );
 
-    var_3 = _func_119( var_1 - self._ID740 );
+    var_3 = vectornormalize( var_1 - self._ID740 );
 
-    if ( _func_02F( var_0 ) && _unknown_1544( var_0 ) )
+    if ( isdefined( var_0 ) && _ID36934( var_0 ) )
     {
-        var_4 = _unknown_1335( var_0 );
-        var_5 = _unknown_1357( var_0 );
+        var_4 = _ID36930( var_0 );
+        var_5 = _ID16461( var_0 );
         var_2 = var_0._ID65;
 
         if ( animscripts\utility::_ID20915() )
             var_2 = animscripts\utility::_ID16702( var_0 );
 
-        thread _unknown_11C1( var_4, var_0._ID740, var_3, var_2, var_5 );
+        thread _ID36923( var_4, var_0._ID740, var_3, var_2, var_5 );
         return;
     }
 
-    thread _unknown_11CD( "exposed", var_1, var_3, var_2, var_2 );
+    thread _ID36923( "exposed", var_1, var_3, var_2, var_2 );
 }
 
 _ID36922( var_0, var_1, var_2, var_3, var_4, var_5 )
@@ -808,17 +808,17 @@ _ID36922( var_0, var_1, var_2, var_3, var_4, var_5 )
     {
         var_6 = ( 0, 0, 0 );
         var_7 = ( 0, 0, 0 );
-        var_8 = _func_121( _func_25B( var_4 ), var_5 );
-        var_9 = _func_25C( _func_119( self._ID740 - var_2 ), var_4 ) * -1.0;
-        var_10 = _unknown_12FC( var_0, var_1, var_6, var_9, var_7, var_8, 1, var_2, var_4 );
+        var_8 = combineangles( invertangles( var_4 ), var_5 );
+        var_9 = rotatevectorinverted( vectornormalize( self._ID740 - var_2 ), var_4 ) * -1.0;
+        var_10 = _ID36921( var_0, var_1, var_6, var_9, var_7, var_8, 1, var_2, var_4 );
 
         if ( var_10 )
-            var_0._ID22725 = _func_123( var_0._ID22725, var_4 ) + var_2;
+            var_0._ID22725 = rotatevector( var_0._ID22725, var_4 ) + var_2;
 
         return var_10;
     }
     else
-        return _unknown_131A( var_0, var_1, var_2, var_3, var_4, var_5, 0 );
+        return _ID36921( var_0, var_1, var_2, var_3, var_4, var_5, 0 );
 }
 
 _ID36923( var_0, var_1, var_2, var_3, var_4 )
@@ -826,37 +826,37 @@ _ID36923( var_0, var_1, var_2, var_3, var_4 )
     self endon( "killanimscript" );
     self endon( "swim_cancelapproach" );
     self._ID3263 = var_0;
-    var_5 = _func_1A5();
+    var_5 = spawnstruct();
 
-    if ( !_unknown_1238( var_5, var_0, var_1, var_2, var_3, var_4 ) )
+    if ( !_ID36922( var_5, var_0, var_1, var_2, var_3, var_4 ) )
         return;
 
-    var_6 = _func_11F( self._ID65 );
+    var_6 = anglestoforward( self._ID65 );
     var_7 = var_5._ID22725 - self._ID740;
-    var_8 = _func_0F6( var_7 );
+    var_8 = length( var_7 );
     var_7 /= var_8;
 
     if ( animscripts\utility::_ID20915() )
     {
         var_9 = var_1 - var_5._ID22725;
-        var_10 = _func_0F6( var_9 );
-        var_11 = _func_0FB( var_7, var_6 );
+        var_10 = length( var_9 );
+        var_11 = vectordot( var_7, var_6 );
 
-        if ( var_8 > var_10 * 0.4 && _func_0FB( var_7, var_6 ) < 0.5 )
+        if ( var_8 > var_10 * 0.4 && vectordot( var_7, var_6 ) < 0.5 )
         {
             self notify( "force_space_rotation_update",  0, 0  );
             return;
         }
     }
-    else if ( var_8 < 100 && _func_0FB( var_7, var_6 ) < 0.5 )
+    else if ( var_8 < 100 && vectordot( var_7, var_6 ) < 0.5 )
         return;
 
     if ( var_8 > 4 )
     {
-        if ( var_8 < 12 || self._ID381 || !_func_02F( self._ID700 ) || !animscripts\cover_arrival::_ID20951() )
+        if ( var_8 < 12 || self._ID381 || !isdefined( self._ID700 ) || !animscripts\cover_arrival::_ID20951() )
         {
             self._ID36905._ID3369 = var_5._ID22725;
-            self _meth_816A( var_5._ID22725 );
+            self setruntopos( var_5._ID22725 );
 
             if ( animscripts\utility::_ID20915() )
             {
@@ -864,11 +864,11 @@ _ID36923( var_0, var_1, var_2, var_3, var_4 )
 
                 for (;;)
                 {
-                    if ( _func_0F5( self._ID740, var_5._ID22725 ) < var_12 )
+                    if ( distancesquared( self._ID740, var_5._ID22725 ) < var_12 )
                     {
                         self._ID28541 = self._ID1230;
                         self._ID1230 = 0.1;
-                        var_13 = _func_25D( var_5._ID22722, var_5._ID22720, var_1, var_4 );
+                        var_13 = _func_25d( var_5._ID22722, var_5._ID22720, var_1, var_4 );
                         self notify( "force_space_rotation_update",  0, 0, var_13[1]  );
                         break;
                     }
@@ -882,17 +882,17 @@ _ID36923( var_0, var_1, var_2, var_3, var_4 )
     }
 
     self notify( "swim_killrestartlistener" );
-    var_14 = _func_119( var_1 - self._ID740 );
+    var_14 = vectornormalize( var_1 - self._ID740 );
 
-    if ( !_unknown_132E( var_5, var_0, var_1, var_14, var_3, var_4 ) )
+    if ( !_ID36922( var_5, var_0, var_1, var_14, var_3, var_4 ) )
         return;
 
     self._ID36905._ID3366 = var_5._ID22721;
 
     if ( animscripts\utility::_ID20915() )
-        var_15 = self _meth_81F4( var_5._ID22725, var_4[1] - var_5._ID22720[1], var_4[0] - var_5._ID22720[0], var_4, var_5._ID22720 );
+        var_15 = self startcoverarrival( var_5._ID22725, var_4[1] - var_5._ID22720[1], var_4[0] - var_5._ID22720[0], var_4, var_5._ID22720 );
     else
-        self _meth_81F4( var_5._ID22725, var_4[1] - var_5._ID22720[1], var_4[0] - var_5._ID22720[0] );
+        self startcoverarrival( var_5._ID22725, var_4[1] - var_5._ID22720[1], var_4[0] - var_5._ID22720[0] );
 }
 
 _ID36920()
@@ -910,15 +910,15 @@ _ID36920()
     if ( animscripts\utility::_ID20915() )
     {
         var_2 = 0.2;
-        thread _unknown_148E();
+        thread _ID34998();
     }
 
-    self _meth_814C( %body, 0.2 );
-    self _meth_811C( "coverArrival", var_1, 1, var_2, self._ID24474 );
-    animscripts\shared::_ID11529( "coverArrival", ::_unknown_1586 );
+    self clearanim( %body, 0.2 );
+    self setflaggedanimrestart( "coverArrival", var_1, 1, var_2, self._ID24474 );
+    animscripts\shared::_ID11529( "coverArrival", ::_ID36933 );
 
-    if ( !_func_068( var_1, "start_aim" ) )
-        _unknown_1592();
+    if ( !animhasnotetrack( var_1, "start_aim" ) )
+        _ID36969();
 
     self._ID7._ID28253 = "stand";
     self._ID7._ID24414 = "stop";
@@ -930,7 +930,7 @@ _ID36920()
         self._ID28541 = undefined;
     }
 
-    self _meth_814C( %animscript_root, 0.3 );
+    self clearanim( %animscript_root, 0.3 );
     self._ID21880 = undefined;
     self._ID36905._ID3366 = undefined;
 
@@ -951,14 +951,14 @@ _ID36929( var_0, var_1, var_2, var_3, var_4 )
 {
     if ( var_4 )
     {
-        var_5 = _func_25D( var_2, var_3, var_0, var_1 );
+        var_5 = _func_25d( var_2, var_3, var_0, var_1 );
         return var_5[0];
     }
 
     var_6 = var_1 - var_3;
-    var_7 = _func_11F( var_6 );
-    var_8 = _func_11E( var_6 );
-    var_9 = _func_11D( var_6 );
+    var_7 = anglestoforward( var_6 );
+    var_8 = anglestoright( var_6 );
+    var_9 = anglestoup( var_6 );
     var_10 = var_7 * var_2[0];
     var_11 = var_8 * var_2[1];
     var_12 = var_9 * var_2[2];
@@ -969,19 +969,19 @@ _ID36935( var_0, var_1, var_2, var_3, var_4 )
 {
     if ( var_2 )
     {
-        var_1 = _func_123( var_1, var_4 ) + var_3;
-        return self _meth_81D0( var_3, var_1, 0, 1 );
+        var_1 = rotatevector( var_1, var_4 ) + var_3;
+        return self maymovefrompointtopoint( var_3, var_1, 0, 1 );
     }
 
-    return self _meth_81D0( var_0, var_1, 0, 1 );
+    return self maymovefrompointtopoint( var_0, var_1, 0, 1 );
 }
 
 _ID36921( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
 {
-    if ( _func_0F8( var_3 ) < 0.003 )
+    if ( lengthsquared( var_3 ) < 0.003 )
         return 0;
 
-    var_9 = _func_11A( var_3 );
+    var_9 = vectortoangles( var_3 );
 
     if ( var_1 == "exposed" )
     {
@@ -990,25 +990,25 @@ _ID36921( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
     }
     else
     {
-        var_12 = _func_0F0( var_4[1] - var_9[1] );
-        var_10 = _unknown_167E( var_12 );
-        var_11 = _unknown_1686( var_12, 25 );
+        var_12 = angleclamp180( var_4[1] - var_9[1] );
+        var_10 = _ID36928( var_12 );
+        var_11 = _ID36928( var_12, 25 );
     }
 
-    var_13 = _func_0F0( var_4[0] - var_9[0] );
-    var_14 = _unknown_1696( var_13 );
-    var_15 = _unknown_169E( var_13, 25 );
+    var_13 = angleclamp180( var_4[0] - var_9[0] );
+    var_14 = _ID36928( var_13 );
+    var_15 = _ID36928( var_13, 25 );
     var_16 = "arrival_" + var_1;
 
     if ( var_1 == "exposed" && !animscripts\utility::_ID20775( 0 ) )
         var_16 += "_noncombat";
 
-    var_17 = _unknown_12AB( var_16 );
+    var_17 = _ID16643( var_16 );
 
-    if ( !_func_02F( var_17[var_10] ) || !_func_02F( var_17[var_10][var_14] ) )
+    if ( !isdefined( var_17[var_10] ) || !isdefined( var_17[var_10][var_14] ) )
         return 0;
 
-    var_18 = var_10 != var_11 || var_14 != var_15 && _func_02F( var_17[var_11] ) && _func_02F( var_17[var_11][var_15] );
+    var_18 = ( var_10 != var_11 || var_14 != var_15 ) && isdefined( var_17[var_11] ) && isdefined( var_17[var_11][var_15] );
     var_19 = 0;
     var_20 = 0;
     var_21 = undefined;
@@ -1018,29 +1018,29 @@ _ID36921( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
         var_21 = var_17[var_11][var_15];
 
     var_23 = var_16 + "_delta";
-    var_17 = _unknown_12FE( var_23 );
+    var_17 = _ID16643( var_23 );
     var_24 = var_17[var_10][var_14];
 
     if ( var_18 )
         var_19 = var_17[var_11][var_15];
 
     var_25 = var_16 + "_angleDelta";
-    var_17 = _unknown_131D( var_25 );
+    var_17 = _ID16643( var_25 );
     var_26 = var_17[var_10][var_14];
 
     if ( var_18 )
         var_20 = var_17[var_11][var_15];
 
-    var_27 = _unknown_16B8( var_2, var_5, var_24, var_26, var_6 );
+    var_27 = _ID36929( var_2, var_5, var_24, var_26, var_6 );
 
-    if ( !_unknown_16D9( var_2, var_27, var_6, var_7, var_8 ) && var_18 && !animscripts\utility::_ID20915() )
+    if ( !_ID36935( var_2, var_27, var_6, var_7, var_8 ) && var_18 && !animscripts\utility::_ID20915() )
     {
         var_22 = var_21;
         var_24 = var_19;
         var_26 = var_20;
-        var_27 = _unknown_16E5( var_2, var_5, var_24, var_26, var_6 );
+        var_27 = _ID36929( var_2, var_5, var_24, var_26, var_6 );
 
-        if ( !_unknown_1705( var_2, var_27, var_6, var_7, var_8 ) )
+        if ( !_ID36935( var_2, var_27, var_6, var_7, var_8 ) )
             return 0;
     }
 
@@ -1053,22 +1053,22 @@ _ID36921( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
 
 _ID36928( var_0, var_1 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = 10;
 
     if ( var_0 < 0 )
-        return _func_0C1( _func_0E8( 180 + var_0 - var_1 / 45 ) );
+        return int( ceil( ( 180 + var_0 - var_1 ) / 45 ) );
     else
-        return _func_0C1( _func_0E7( 180 + var_0 + var_1 / 45 ) );
+        return int( floor( ( 180 + var_0 + var_1 ) / 45 ) );
 }
 
 _ID36931( var_0 )
 {
     var_1 = anim._ID3277["soldier"]["swim"][var_0]["maxDelta"];
 
-    if ( _func_02F( self._ID3152 ) && self._ID3152 != "soldier" )
+    if ( isdefined( self._ID3152 ) && self._ID3152 != "soldier" )
     {
-        if ( _func_02F( anim._ID3277[self._ID3152]["swim"] ) && _func_02F( anim._ID3277[self._ID3152]["swim"][var_0] ) )
+        if ( isdefined( anim._ID3277[self._ID3152]["swim"] ) && isdefined( anim._ID3277[self._ID3152]["swim"][var_0] ) )
         {
             var_2 = anim._ID3277[self._ID3152]["swim"][var_0]["maxDelta"];
 
@@ -1094,52 +1094,55 @@ _ID36933( var_0 )
     if ( var_0 != "start_aim" )
         return;
 
-    _unknown_1883();
+    _ID36969();
 }
 
 _ID36930( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return "exposed";
 
     var_1 = var_0._ID1244;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return "exposed";
 
     switch ( var_1 )
     {
-
+        case "Cover Right 3D":
+            return "cover_corner_r";
+        case "Cover Left 3D":
+            return "cover_corner_l";
+        case "Cover Up 3D":
+            return "cover_u";
+        case "Exposed 3D":
+        case "Path 3D":
+            return "exposed";
     }
 
-    case "Path 3D":
-    case "Cover Right 3D":
-    case "Exposed 3D":
-    case "Cover Left 3D":
-    case "Cover Up 3D":
-    default:
+    endswitch( 6 )  case "Path 3D" loc_18D0 case "Exposed 3D" loc_18D0 case "Cover Right 3D" loc_18BE case "Cover Left 3D" loc_18C4 case "Cover Up 3D" loc_18CA default loc_18D6
 }
 
 _ID16461( var_0 )
 {
-    if ( _func_03A( "player_spaceEnabled" ) == 1 )
+    if ( getdvarint( "player_spaceEnabled" ) == 1 )
     {
         var_1 = animscripts\utility::_ID16702( var_0 );
 
         if ( animscripts\utility::_ID20830( var_0 ) )
         {
-            var_2 = _unknown_14B4( "arrival_cover_corner_l_angleDelta" );
+            var_2 = _ID16643( "arrival_cover_corner_l_angleDelta" );
             var_3 = var_2[4][4][1];
         }
         else if ( animscripts\utility::_ID20833( var_0 ) )
         {
-            var_2 = _unknown_14D4( "arrival_cover_corner_r_angleDelta" );
+            var_2 = _ID16643( "arrival_cover_corner_r_angleDelta" );
             var_3 = var_2[4][4][1];
         }
         else
             var_3 = 0;
 
-        var_1 = _func_121( var_1, ( 0, var_3, 0 ) );
+        var_1 = combineangles( var_1, ( 0, var_3, 0 ) );
         return var_1;
     }
     else
@@ -1149,12 +1152,12 @@ _ID16461( var_0 )
 
     if ( animscripts\utility::_ID20830( var_0 ) )
     {
-        var_2 = _unknown_150C( "arrival_cover_corner_l_angleDelta" );
+        var_2 = _ID16643( "arrival_cover_corner_l_angleDelta" );
         var_4 += var_2[4][4][1];
     }
     else if ( animscripts\utility::_ID20833( var_0 ) )
     {
-        var_2 = _unknown_152C( "arrival_cover_corner_r_angleDelta" );
+        var_2 = _ID16643( "arrival_cover_corner_r_angleDelta" );
         var_4 += var_2[4][4][1];
     }
 
@@ -1165,11 +1168,11 @@ _ID16461( var_0 )
 _ID36925()
 {
     if ( self._ID36905._ID24449 != "combat_strafe" )
-        _unknown_149F( "combat_strafe" );
+        _ID24457( "combat_strafe" );
 
-    var_0 = _unknown_1560( "forward_aim" );
-    self _meth_815D( "swimanim", var_0, 1, 0.1, 1, 1 );
-    thread _unknown_1A36();
+    var_0 = _ID16643( "forward_aim" );
+    self setflaggedanimknoblimited( "swimanim", var_0, 1, 0.1, 1, 1 );
+    thread _ID36978();
     animscripts\notetracks::_ID11534( 0.2, "swimanim" );
     self notify( "end_swim_updatestrafeanim" );
 }
@@ -1189,8 +1192,8 @@ _ID36978()
         {
             if ( !var_0 )
             {
-                _unknown_1ACA( 1.0, 0.0, 0.0, 0.0 );
-                _unknown_1B8E( 0, 0, 0, 0 );
+                _ID36966( 1.0, 0.0, 0.0, 0.0 );
+                _ID36965( 0, 0, 0, 0 );
             }
         }
         else
@@ -1204,9 +1207,9 @@ _ID36978()
                 var_1["right"] = 0;
             }
             else
-                var_1 = animscripts\utility::_ID28805( self _meth_819C() );
+                var_1 = animscripts\utility::_ID28805( self getmotionangle() );
 
-            if ( _func_02F( self._ID39629 ) )
+            if ( isdefined( self._ID39629 ) )
             {
                 var_1["back"] = 0.0;
 
@@ -1214,9 +1217,9 @@ _ID36978()
                     var_1["front"] = 0.2;
             }
 
-            var_2 = _unknown_1B41( var_1["front"], var_1["back"], var_1["left"], var_1["right"] );
-            _unknown_1B6D( var_2 );
-            _unknown_1BD9();
+            var_2 = _ID36966( var_1["front"], var_1["back"], var_1["left"], var_1["right"] );
+            _ID36964( var_2 );
+            _ID36977();
         }
 
         var_0 = self._ID373;
@@ -1235,11 +1238,11 @@ _ID36932()
 
 _ID36966( var_0, var_1, var_2, var_3 )
 {
-    var_4 = _unknown_1B6D();
-    self _meth_8155( %combatrun_forward, var_0, var_4, 1, 1 );
-    self _meth_8155( %combatrun_backward, var_1, var_4, 1, 1 );
-    self _meth_8155( %combatrun_left, var_2, var_4, 1, 1 );
-    self _meth_8155( %combatrun_right, var_3, var_4, 1, 1 );
+    var_4 = _ID36932();
+    self setanim( %combatrun_forward, var_0, var_4, 1, 1 );
+    self setanim( %combatrun_backward, var_1, var_4, 1, 1 );
+    self setanim( %combatrun_left, var_2, var_4, 1, 1 );
+    self setanim( %combatrun_right, var_3, var_4, 1, 1 );
 
     if ( var_0 > 0 )
         return "front";
@@ -1255,14 +1258,33 @@ _ID36964( var_0 )
 {
     switch ( var_0 )
     {
-
+        case "front":
+            self setanimknoblimited( _ID16643( "aim_move_U" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "aim_move_D" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "aim_move_L" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "aim_move_R" ), 1, 0.1 );
+            break;
+        case "back":
+            self setanimknoblimited( _ID16643( "strafe_B_aim_U" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_B_aim_D" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_B_aim_L" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_B_aim_R" ), 1, 0.1 );
+            break;
+        case "left":
+            self setanimknoblimited( _ID16643( "strafe_L_aim_U" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_L_aim_D" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_L_aim_L" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_L_aim_R" ), 1, 0.1 );
+            break;
+        case "right":
+            self setanimknoblimited( _ID16643( "strafe_R_aim_U" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_R_aim_D" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_R_aim_L" ), 1, 0.1 );
+            self setanimknoblimited( _ID16643( "strafe_R_aim_R" ), 1, 0.1 );
+            break;
     }
 
-    case "back":
-    case "right":
-    case "front":
-    case "left":
-    default:
+    endswitch( 5 )  case "back" loc_1C69 case "right" loc_1D23 case "front" loc_1C0C case "left" loc_1CC6 default loc_1D80
 }
 
 _ID36977()
@@ -1276,58 +1298,58 @@ _ID36977()
     var_6 = 45;
     var_7 = 60;
 
-    if ( _func_02F( self._ID322 ) )
+    if ( isdefined( self._ID322 ) )
     {
         var_8 = self._ID322._ID740 - self._ID740;
-        var_9 = _func_11A( var_8 );
-        var_10 = _func_0F0( var_9[1] - var_0 );
-        var_11 = _func_0F0( var_9[0] - var_1 );
+        var_9 = vectortoangles( var_8 );
+        var_10 = angleclamp180( var_9[1] - var_0 );
+        var_11 = angleclamp180( var_9[0] - var_1 );
 
         if ( var_10 > 0 )
-            var_4 = _func_0EE( 1 - var_6 - var_10 / var_6, 0, 1 );
+            var_4 = clamp( 1 - ( var_6 - var_10 ) / var_6, 0, 1 );
         else
-            var_5 = _func_0EE( 1 - var_6 + var_10 / var_6, 0, 1 );
+            var_5 = clamp( 1 - ( var_6 + var_10 ) / var_6, 0, 1 );
 
         if ( var_11 > 0 )
-            var_3 = _func_0EE( 1 - var_7 - var_11 / var_7, 0, 1 );
+            var_3 = clamp( 1 - ( var_7 - var_11 ) / var_7, 0, 1 );
         else
-            var_2 = _func_0EE( 1 - var_7 + var_11 / var_7, 0, 1 );
+            var_2 = clamp( 1 - ( var_7 + var_11 ) / var_7, 0, 1 );
     }
 
-    _unknown_1E5D( var_2, var_3, var_4, var_5 );
+    _ID36965( var_2, var_3, var_4, var_5 );
 }
 
 _ID36965( var_0, var_1, var_2, var_3 )
 {
-    self _meth_8155( %w_aim_4, var_2, 0.2, 1, 1 );
-    self _meth_8155( %w_aim_6, var_3, 0.2, 1, 1 );
-    self _meth_8155( %w_aim_8, var_0, 0.2, 1, 1 );
-    self _meth_8155( %w_aim_2, var_1, 0.2, 1, 1 );
+    self setanim( %w_aim_4, var_2, 0.2, 1, 1 );
+    self setanim( %w_aim_6, var_3, 0.2, 1, 1 );
+    self setanim( %w_aim_8, var_0, 0.2, 1, 1 );
+    self setanim( %w_aim_2, var_1, 0.2, 1, 1 );
 }
 
 _ID36940( var_0, var_1 )
 {
     var_2 = undefined;
     var_3 = undefined;
-    var_4 = _unknown_18F8( "turn" );
-    var_5 = _unknown_1D15( var_0 );
-    var_6 = _unknown_1D1B( var_1 );
+    var_4 = _ID16643( "turn" );
+    var_5 = _ID36928( var_0 );
+    var_6 = _ID36928( var_1 );
 
-    if ( _func_02F( var_4[var_5] ) )
+    if ( isdefined( var_4[var_5] ) )
         var_2 = var_4[var_5][var_6];
 
     if ( var_5 == 4 )
     {
-        if ( var_6 > 4 && _func_02F( var_4[4][var_6 + 1] ) )
+        if ( var_6 > 4 && isdefined( var_4[4][var_6 + 1] ) )
             var_2 = var_4[4][var_6 + 1];
-        else if ( var_6 < 4 && var_6 > 0 && _func_02F( var_4[4][var_6 - 1] ) )
+        else if ( var_6 < 4 && var_6 > 0 && isdefined( var_4[4][var_6 - 1] ) )
             var_2 = var_4[4][var_6 - 1];
     }
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = var_4[var_5][4];
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
     {
         if ( animscripts\move::_ID26327( var_2 ) )
             return var_2;
@@ -1338,48 +1360,48 @@ _ID36940( var_0, var_1 )
 
 _ID36918()
 {
-    _unknown_1890( "nostate" );
+    _ID24464( "nostate" );
 }
 
 _ID36976()
 {
-    var_0 = _func_0EE( self._ID587 / 20.0, -1, 1 );
+    var_0 = clamp( self._ID587 / 20.0, -1, 1 );
 
     if ( var_0 > 0 )
     {
         if ( self._ID28526 <= 0 && var_0 < 0.075 )
             var_0 = 0;
 
-        self _meth_8155( %add_turn_l, var_0, 0.2, 1, 1 );
-        self _meth_8155( %add_turn_r, 0.0, 0.2, 1, 1 );
+        self setanim( %add_turn_l, var_0, 0.2, 1, 1 );
+        self setanim( %add_turn_r, 0.0, 0.2, 1, 1 );
     }
     else
     {
         if ( self._ID28526 >= 0 && var_0 > -0.075 )
             var_0 = 0;
 
-        self _meth_8155( %add_turn_l, 0, 0.2, 1, 1 );
-        self _meth_8155( %add_turn_r, 0 - var_0, 0.2, 1, 1 );
+        self setanim( %add_turn_l, 0, 0.2, 1, 1 );
+        self setanim( %add_turn_r, 0 - var_0, 0.2, 1, 1 );
     }
 
     self._ID28526 = var_0;
-    var_0 = _func_0EE( self._ID788 / 25.0, -1, 1 );
+    var_0 = clamp( self._ID788 / 25.0, -1, 1 );
 
     if ( var_0 > 0 )
     {
         if ( self._ID28525 <= 0 && var_0 < 0.075 )
             var_0 = 0;
 
-        self _meth_8155( %add_turn_d, var_0, 0.2, 1, 1 );
-        self _meth_8155( %add_turn_u, 0.0, 0.2, 1, 1 );
+        self setanim( %add_turn_d, var_0, 0.2, 1, 1 );
+        self setanim( %add_turn_u, 0.0, 0.2, 1, 1 );
     }
     else
     {
         if ( self._ID28525 >= 0 && var_0 > -0.075 )
             var_0 = 0;
 
-        self _meth_8155( %add_turn_d, 0, 0.2, 1, 1 );
-        self _meth_8155( %add_turn_u, 0 - var_0, 0.2, 1, 1 );
+        self setanim( %add_turn_d, 0, 0.2, 1, 1 );
+        self setanim( %add_turn_u, 0 - var_0, 0.2, 1, 1 );
     }
 
     self._ID28525 = var_0;
@@ -1389,14 +1411,14 @@ _ID36934( var_0 )
 {
     switch ( var_0._ID1244 )
     {
-
+        case "Cover Up 3D":
+        case "Cover Left 3D":
+        case "Cover Right 3D":
+        case "Exposed 3D":
+            return 1;
     }
 
     return 0;
-    case "Exposed 3D":
-    case "Cover Right 3D":
-    case "Cover Left 3D":
-    case "Cover Up 3D":
 }
 
 _ID34999()

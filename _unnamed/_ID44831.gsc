@@ -5,16 +5,16 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "seaknight", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0077 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_ch46e" );
     _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion", undefined, "explo_metal_rand" );
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_00E6, ::_unknown_00B2 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6220( %sniper_escape_ch46_rotors, undefined, 0 );
-    _ID42411::_ID6206( ::_unknown_019E );
-    _ID42411::_ID6262( ::_unknown_018C );
+    _ID42411::_ID6206( ::_ID32221 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6234( var_2, "cockpit_red_cargo02", "tag_light_cargo02", "fx/misc/aircraft_light_cockpit_red", "interior", 0.0 );
     _ID42411::_ID6234( var_2, "cockpit_blue_cockpit01", "tag_light_cockpit01", "fx/misc/aircraft_light_cockpit_blue", "interior", 0.1 );
     _ID42411::_ID6234( var_2, "white_blink", "tag_light_belly", "fx/misc/aircraft_light_red_blink", "running", 0.0 );
@@ -28,7 +28,7 @@ _ID616( var_0, var_1, var_2 )
 
 _ID19731()
 {
-    self._ID26026 = _func_0F3( self _meth_818C( "tag_origin" ), self _meth_818C( "tag_ground" ) );
+    self._ID26026 = distance( self gettagorigin( "tag_origin" ), self gettagorigin( "tag_ground" ) );
     self._ID31066 = 0;
 }
 
@@ -40,10 +40,10 @@ _ID32509( var_0 )
     var_0[1]._ID40148 = 0;
     var_0[1]._ID40154 = "seaknight_door_open";
     var_0[1]._ID40149 = "seaknight_door_close";
-    var_0[1]._ID10179 = _func_067( %ch46_doors_open ) - 1.7;
-    var_0[2]._ID10179 = _func_067( %ch46_doors_open ) - 1.7;
-    var_0[3]._ID10179 = _func_067( %ch46_doors_open ) - 1.7;
-    var_0[4]._ID10179 = _func_067( %ch46_doors_open ) - 1.7;
+    var_0[1]._ID10179 = getanimlength( %ch46_doors_open ) - 1.7;
+    var_0[2]._ID10179 = getanimlength( %ch46_doors_open ) - 1.7;
+    var_0[3]._ID10179 = getanimlength( %ch46_doors_open ) - 1.7;
+    var_0[4]._ID10179 = getanimlength( %ch46_doors_open ) - 1.7;
     return var_0;
 }
 #using_animtree("generic_human");
@@ -53,7 +53,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 6; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID19302[0] = %seaknight_pilot_idle;
     var_0[0]._ID19302[1] = %seaknight_pilot_switches;
@@ -106,22 +106,15 @@ _ID32221()
 {
     var_0 = [];
 
-    if ( _func_02F( self._ID40791 ) && _func_125( self._ID40791, "vehicle_ch46e_opened_door_interior_a" ) )
+    if ( isdefined( self._ID40791 ) && issubstr( self._ID40791, "vehicle_ch46e_opened_door_interior_a" ) )
     {
-        var_0["attach_interior"] = _func_1A5();
+        var_0["attach_interior"] = spawnstruct();
         var_0["attach_interior"]._ID1067 = "body_animate_jnt";
         var_0["attach_interior"]._ID669 = "vehicle_ch46e_opened_door_interior_b";
     }
 
-    var_1 = var_0;
+    foreach ( var_2 in var_0 )
+        precachemodel( var_2._ID669 );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        _func_14C( var_2._ID669 );
-    }
-
-    var_clear_2
-    var_clear_0
     return var_0;
 }

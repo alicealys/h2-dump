@@ -3,34 +3,34 @@
 
 _ID19742()
 {
-    if ( _func_02F( anim._ID24380 ) )
+    if ( isdefined( anim._ID24380 ) )
         return;
 
     anim._ID24380 = 1;
 
-    if ( !_func_02F( anim._ID8906 ) )
+    if ( !isdefined( anim._ID8906 ) )
         anim._ID8906 = [];
 
-    if ( !_func_02F( anim._ID8870 ) )
+    if ( !isdefined( anim._ID8870 ) )
         anim._ID8870 = [];
 
     anim._ID23090 = [];
     anim._ID13291 = [];
     anim._ID38721 = [];
 
-    if ( !_func_02F( anim._ID8908 ) )
+    if ( !isdefined( anim._ID8908 ) )
         anim._ID8908 = [];
 
-    if ( !_func_02F( anim._ID8872 ) )
+    if ( !isdefined( anim._ID8872 ) )
         anim._ID8872 = [];
 
     anim._ID8874 = [];
     anim._ID8909 = [];
 
-    if ( !_func_02F( anim._ID8907 ) )
+    if ( !isdefined( anim._ID8907 ) )
         anim._ID8907 = [];
 
-    if ( !_func_02F( anim._ID8871 ) )
+    if ( !isdefined( anim._ID8871 ) )
         anim._ID8871 = [];
 
     anim._ID3367 = [];
@@ -379,11 +379,11 @@ _ID49458( var_0 )
     var_3 = 1;
     var_4 = 0.05;
 
-    for ( var_5 = _func_067( var_0 ); var_3 - var_2 * var_5 > var_4; var_1 = var_3 - var_2 / 2 + var_2 )
+    for ( var_5 = getanimlength( var_0 ); ( var_3 - var_2 ) * var_5 > var_4; var_1 = ( var_3 - var_2 ) / 2 + var_2 )
     {
-        var_6 = _func_094( var_0, var_1, 1 );
+        var_6 = getangledelta( var_0, var_1, 1 );
 
-        if ( _func_0F9( var_6 ) < 1 )
+        if ( length2dsquared( var_6 ) < 1 )
         {
             var_3 = var_1;
             continue;
@@ -397,7 +397,7 @@ _ID49458( var_0 )
 
 _ID20018( var_0 )
 {
-    if ( !_func_02F( anim._ID3277[var_0] ) )
+    if ( !isdefined( anim._ID3277[var_0] ) )
         return;
 
     var_1 = [];
@@ -428,7 +428,7 @@ _ID20018( var_0 )
     var_1[24] = "exposed_crouch_crouchwalk";
     var_1[25] = "prone";
 
-    if ( !_func_02F( anim._ID3277[var_0]["cover_trans"] ) )
+    if ( !isdefined( anim._ID3277[var_0]["cover_trans"] ) )
         return;
 
     for ( var_2 = 1; var_2 <= 6; var_2++ )
@@ -440,27 +440,27 @@ _ID20018( var_0 )
         {
             var_4 = var_1[var_3];
 
-            if ( _func_02F( anim._ID3277[var_0]["cover_trans"][var_4] ) && _func_02F( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
+            if ( isdefined( anim._ID3277[var_0]["cover_trans"][var_4] ) && isdefined( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
             {
-                anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] = _func_094( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
-                anim._ID3277[var_0]["cover_trans_angles"][var_4][var_2] = _func_095( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
-                anim._ID3277[var_0]["cover_trans_move_end"][var_4][var_2] = _unknown_192C( anim._ID3277[var_0]["cover_trans"][var_4][var_2] );
+                anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] = getangledelta( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
+                anim._ID3277[var_0]["cover_trans_angles"][var_4][var_2] = getmovedelta( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
+                anim._ID3277[var_0]["cover_trans_move_end"][var_4][var_2] = _ID49458( anim._ID3277[var_0]["cover_trans"][var_4][var_2] );
             }
 
-            if ( _func_02F( anim._ID3277[var_0]["cover_exit"][var_4] ) && _func_02F( anim._ID3277[var_0]["cover_exit"][var_4][var_2] ) )
+            if ( isdefined( anim._ID3277[var_0]["cover_exit"][var_4] ) && isdefined( anim._ID3277[var_0]["cover_exit"][var_4][var_2] ) )
             {
-                if ( _func_068( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" ) )
-                    var_5 = _func_069( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" )[0];
+                if ( animhasnotetrack( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" ) )
+                    var_5 = getnotetracktimes( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" )[0];
                 else
                     var_5 = 1;
 
-                anim._ID3277[var_0]["cover_exit_dist"][var_4][var_2] = _func_094( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, var_5 );
-                anim._ID3277[var_0]["cover_exit_angles"][var_4][var_2] = _func_095( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, 1 );
+                anim._ID3277[var_0]["cover_exit_dist"][var_4][var_2] = getangledelta( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, var_5 );
+                anim._ID3277[var_0]["cover_exit_angles"][var_4][var_2] = getmovedelta( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, 1 );
             }
         }
     }
 
-    if ( !_func_02F( anim._ID3277[var_0]["CoverTransLongestDist"] ) )
+    if ( !isdefined( anim._ID3277[var_0]["CoverTransLongestDist"] ) )
         anim._ID3277[var_0]["CoverTransLongestDist"] = [];
 
     for ( var_3 = 0; var_3 < var_1.size; var_3++ )
@@ -470,16 +470,16 @@ _ID20018( var_0 )
 
         for ( var_2 = 1; var_2 <= 6; var_2++ )
         {
-            if ( var_2 == 5 || !_func_02F( anim._ID3277[var_0]["cover_trans"][var_4] ) || !_func_02F( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
+            if ( var_2 == 5 || !isdefined( anim._ID3277[var_0]["cover_trans"][var_4] ) || !isdefined( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
                 continue;
 
-            var_6 = _func_0F8( anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] );
+            var_6 = lengthsquared( anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] );
 
             if ( anim._ID3277[var_0]["CoverTransLongestDist"][var_4] < var_6 )
                 anim._ID3277[var_0]["CoverTransLongestDist"][var_4] = var_6;
         }
 
-        anim._ID3277[var_0]["CoverTransLongestDist"][var_4] = _func_0EC( anim._ID3277[var_0]["CoverTransLongestDist"][var_4] );
+        anim._ID3277[var_0]["CoverTransLongestDist"][var_4] = sqrt( anim._ID3277[var_0]["CoverTransLongestDist"][var_4] );
     }
 
     anim._ID13719["exposed"] = 1;
@@ -492,51 +492,45 @@ _ID20018( var_0 )
     anim._ID13719["exposed_smg"] = 1;
     anim._ID13719["heat"] = 1;
 
-    if ( !_func_02F( anim._ID3277[var_0]["longestExposedApproachDist"] ) )
+    if ( !isdefined( anim._ID3277[var_0]["longestExposedApproachDist"] ) )
         anim._ID3277[var_0]["longestExposedApproachDist"] = 0;
 
-    var_7 = anim._ID13719;
-
-    for ( var_4 = _func_1DA( var_7 ); _func_02F( var_4 ); var_4 = _func_1BF( var_7, var_4 ) )
+    foreach ( var_4, var_8 in anim._ID13719 )
     {
-        var_8 = var_7[var_4];
-
         for ( var_2 = 7; var_2 <= 9; var_2++ )
         {
-            if ( _func_02F( anim._ID3277[var_0]["cover_trans"][var_4] ) && _func_02F( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
+            if ( isdefined( anim._ID3277[var_0]["cover_trans"][var_4] ) && isdefined( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
             {
-                anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] = _func_094( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
-                anim._ID3277[var_0]["cover_trans_angles"][var_4][var_2] = _func_095( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
-                anim._ID3277[var_0]["cover_trans_move_end"][var_4][var_2] = _unknown_1B65( anim._ID3277[var_0]["cover_trans"][var_4][var_2] );
+                anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] = getangledelta( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
+                anim._ID3277[var_0]["cover_trans_angles"][var_4][var_2] = getmovedelta( anim._ID3277[var_0]["cover_trans"][var_4][var_2], 0, 1 );
+                anim._ID3277[var_0]["cover_trans_move_end"][var_4][var_2] = _ID49458( anim._ID3277[var_0]["cover_trans"][var_4][var_2] );
             }
 
-            if ( _func_02F( anim._ID3277[var_0]["cover_exit"][var_4] ) && _func_02F( anim._ID3277[var_0]["cover_exit"][var_4][var_2] ) )
+            if ( isdefined( anim._ID3277[var_0]["cover_exit"][var_4] ) && isdefined( anim._ID3277[var_0]["cover_exit"][var_4][var_2] ) )
             {
-                var_9 = _func_068( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" );
-                var_5 = _func_069( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" )[0];
-                anim._ID3277[var_0]["cover_exit_dist"][var_4][var_2] = _func_094( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, var_5 );
-                anim._ID3277[var_0]["cover_exit_angles"][var_4][var_2] = _func_095( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, 1 );
+                var_9 = animhasnotetrack( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" );
+                var_5 = getnotetracktimes( anim._ID3277[var_0]["cover_exit"][var_4][var_2], "code_move" )[0];
+                anim._ID3277[var_0]["cover_exit_dist"][var_4][var_2] = getangledelta( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, var_5 );
+                anim._ID3277[var_0]["cover_exit_angles"][var_4][var_2] = getmovedelta( anim._ID3277[var_0]["cover_exit"][var_4][var_2], 0, 1 );
             }
         }
 
         for ( var_2 = 1; var_2 <= 9; var_2++ )
         {
-            if ( !_func_02F( anim._ID3277[var_0]["cover_trans"][var_4] ) || !_func_02F( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
+            if ( !isdefined( anim._ID3277[var_0]["cover_trans"][var_4] ) || !isdefined( anim._ID3277[var_0]["cover_trans"][var_4][var_2] ) )
                 continue;
 
-            var_10 = _func_0F6( anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] );
+            var_10 = length( anim._ID3277[var_0]["cover_trans_dist"][var_4][var_2] );
 
             if ( var_10 > anim._ID3277[var_0]["longestExposedApproachDist"] )
                 anim._ID3277[var_0]["longestExposedApproachDist"] = var_10;
         }
     }
-
-    var_clear_2
 }
 
 _ID19958()
 {
-    _unknown_1685();
+    _ID19742();
     anim._ID3257 = [];
     anim._ID3257["Cover Left"] = [];
     anim._ID3257["Cover Left"]["stand"] = "left";
@@ -585,9 +579,9 @@ _ID19958()
     anim._ID20710["Exposed"] = 1;
     anim._ID20711["Guard"] = 1;
     anim._ID20711["Exposed"] = 1;
-    _unknown_18D8();
-    _unknown_1B90();
-    _unknown_1EC4( "soldier" );
+    _ID20001();
+    _ID20002();
+    _ID20018( "soldier" );
     anim._ID35451 = [];
     anim._ID35451["left"] = 1;
     anim._ID35451["left_crouch"] = 1;
@@ -610,7 +604,7 @@ _ID19958()
     anim._ID35454["right_cqb"] = 1;
     anim._ID35454["right_crouch_cqb"] = 1;
     anim._ID35454["heat_right"] = 1;
-    _unknown_226A( "soldier" );
+    _ID16612( "soldier" );
     anim._ID3367["left"] = "stand";
     anim._ID3367["left_cqb"] = "stand";
     anim._ID3367["right"] = "stand";
@@ -644,21 +638,21 @@ _ID19958()
 
 _ID16612( var_0 )
 {
-    _unknown_23E0( var_0, 7, 8, 0, anim._ID35451, anim._ID35453 );
-    _unknown_23EE( var_0, 8, 9, 1, anim._ID35452, anim._ID35454 );
+    _ID16613( var_0, 7, 8, 0, anim._ID35451, anim._ID35453 );
+    _ID16613( var_0, 8, 9, 1, anim._ID35452, anim._ID35454 );
 }
 
 _ID49033( var_0, var_1 )
 {
     var_2 = 1;
 
-    if ( _func_068( var_0, "code_move" ) )
-        var_2 = _func_069( var_0, "code_move" )[0];
+    if ( animhasnotetrack( var_0, "code_move" ) )
+        var_2 = getnotetracktimes( var_0, "code_move" )[0];
 
-    var_3 = _func_1A5();
-    var_3._ID46547 = _func_094( var_0, 0, var_1 );
-    var_3._ID44458 = _func_094( var_0, 0, var_2 ) - var_3._ID46547;
-    var_3._ID50830 = _func_095( var_0, 0, 1 );
+    var_3 = spawnstruct();
+    var_3._ID46547 = getangledelta( var_0, 0, var_1 );
+    var_3._ID44458 = getangledelta( var_0, 0, var_2 ) - var_3._ID46547;
+    var_3._ID50830 = getmovedelta( var_0, 0, 1 );
     return var_3;
 }
 
@@ -666,61 +660,49 @@ _ID16613( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
     for ( var_6 = var_1; var_6 <= var_2; var_6++ )
     {
-        if ( _func_02F( anim._ID3277[var_0]["cover_trans"] ) )
+        if ( isdefined( anim._ID3277[var_0]["cover_trans"] ) )
         {
-            var_7 = var_4;
-
-            for ( var_11 = _func_1DA( var_7 ); _func_02F( var_11 ); var_11 = _func_1BF( var_7, var_11 ) )
+            foreach ( var_11, var_8 in var_4 )
             {
-                var_8 = var_7[var_11];
-
-                if ( _func_125( var_11, "heat" ) )
+                if ( issubstr( var_11, "heat" ) )
                     continue;
 
-                if ( _func_02F( anim._ID3277[var_0]["cover_trans"][var_11] ) && _func_02F( anim._ID3277[var_0]["cover_trans"][var_11][var_6] ) )
+                if ( isdefined( anim._ID3277[var_0]["cover_trans"][var_11] ) && isdefined( anim._ID3277[var_0]["cover_trans"][var_11][var_6] ) )
                 {
-                    var_9 = _unknown_2522( anim._ID3277[var_0]["cover_trans"][var_11][var_6], 1, var_3 );
-                    var_10 = _unknown_249A( anim._ID3277[var_0]["cover_trans"][var_11][var_6], var_9 );
+                    var_9 = _ID45765( anim._ID3277[var_0]["cover_trans"][var_11][var_6], 1, var_3 );
+                    var_10 = _ID49033( anim._ID3277[var_0]["cover_trans"][var_11][var_6], var_9 );
                     anim._ID3277[var_0]["cover_trans_predist"][var_11][var_6] = var_10._ID46547;
                     anim._ID3277[var_0]["cover_trans_dist"][var_11][var_6] = var_10._ID44458;
                     anim._ID3277[var_0]["cover_trans_angles"][var_11][var_6] = var_10._ID50830;
-                    anim._ID3277[var_0]["cover_trans_move_end"][var_11][var_6] = _unknown_21CE( anim._ID3277[var_0]["cover_trans"][var_11][var_6] );
+                    anim._ID3277[var_0]["cover_trans_move_end"][var_11][var_6] = _ID49458( anim._ID3277[var_0]["cover_trans"][var_11][var_6] );
                 }
             }
-
-            var_clear_2
         }
 
-        if ( _func_02F( anim._ID3277[var_0]["cover_exit"] ) )
+        if ( isdefined( anim._ID3277[var_0]["cover_exit"] ) )
         {
-            var_12 = var_5;
-
-            for ( var_11 = _func_1DA( var_12 ); _func_02F( var_11 ); var_11 = _func_1BF( var_12, var_11 ) )
+            foreach ( var_11, var_8 in var_5 )
             {
-                var_8 = var_12[var_11];
-
-                if ( _func_125( var_11, "heat" ) )
+                if ( issubstr( var_11, "heat" ) )
                     continue;
 
-                if ( _func_02F( anim._ID3277[var_0]["cover_exit"][var_11] ) && _func_02F( anim._ID3277[var_0]["cover_exit"][var_11][var_6] ) )
+                if ( isdefined( anim._ID3277[var_0]["cover_exit"][var_11] ) && isdefined( anim._ID3277[var_0]["cover_exit"][var_11][var_6] ) )
                 {
-                    var_9 = _unknown_25ED( anim._ID3277[var_0]["cover_exit"][var_11][var_6], 0, var_3 );
-                    var_10 = _unknown_2565( anim._ID3277[var_0]["cover_exit"][var_11][var_6], var_9 );
+                    var_9 = _ID45765( anim._ID3277[var_0]["cover_exit"][var_11][var_6], 0, var_3 );
+                    var_10 = _ID49033( anim._ID3277[var_0]["cover_exit"][var_11][var_6], var_9 );
                     anim._ID3277[var_0]["cover_exit_dist"][var_11][var_6] = var_10._ID46547;
                     anim._ID3277[var_0]["cover_exit_postdist"][var_11][var_6] = var_10._ID44458;
                     anim._ID3277[var_0]["cover_exit_angles"][var_11][var_6] = var_10._ID50830;
                 }
             }
-
-            var_clear_2
         }
     }
 }
 
 _ID45765( var_0, var_1, var_2 )
 {
-    var_3 = _func_095( var_0, 0, 1 );
-    var_4 = _func_094( var_0, 0, 1 );
+    var_3 = getmovedelta( var_0, 0, 1 );
+    var_4 = getangledelta( var_0, 0, 1 );
     var_5 = 1000;
     var_6 = -1;
     var_7 = -100000000;
@@ -728,16 +710,16 @@ _ID45765( var_0, var_1, var_2 )
 
     for ( var_9 = 0; var_9 < var_5; var_9++ )
     {
-        var_10 = 1.0 * var_9 / var_5 - 1;
-        var_11 = _func_094( var_0, 0, var_10 );
+        var_10 = 1.0 * var_9 / ( var_5 - 1 );
+        var_11 = getangledelta( var_0, 0, var_10 );
 
         if ( var_1 )
-            var_11 = _unknown_26C7( var_4 - var_11, 180 - var_3 );
+            var_11 = _ID47164( var_4 - var_11, 180 - var_3 );
 
         if ( var_2 )
             var_11 = ( var_11[0], 0 - var_11[1], var_11[2] );
 
-        var_12 = _func_0C4( var_11[0] - 32, var_11[1] );
+        var_12 = min( var_11[0] - 32, var_11[1] );
 
         if ( var_12 > var_7 || var_6 < 0 )
         {
@@ -752,7 +734,7 @@ _ID45765( var_0, var_1, var_2 )
 
 _ID47164( var_0, var_1 )
 {
-    var_2 = _func_0BC( var_1 );
-    var_3 = _func_0BB( var_1 );
+    var_2 = cos( var_1 );
+    var_3 = sin( var_1 );
     return ( var_0[0] * var_2 - var_0[1] * var_3, var_0[1] * var_2 + var_0[0] * var_3, 0 );
 }

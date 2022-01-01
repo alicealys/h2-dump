@@ -3,13 +3,13 @@
 
 _ID616()
 {
-    _unknown_000B();
-    _unknown_060A();
-    _unknown_03EB();
-    _unknown_0426();
-    _unknown_0541();
-    _unknown_03F0();
-    _unknown_07DB();
+    _ID3197();
+    _ID10730();
+    _ID300();
+    _ID31296();
+    _ID27229();
+    _ID51591();
+    _ID47674();
 }
 #using_animtree("generic_human");
 
@@ -111,8 +111,8 @@ _ID3197()
     level._ID30895["price"]["rise_up"] = %scout_sniper_price_prone_opening;
     level._ID30895["price"]["price_slide"] = %afgan_caves_price_slide;
     var_0 = _ID42237::_ID16299( "sand_slide_price" );
-    _ID42259::_ID2058( "price", "slide_start", ::_unknown_0D19, "price_slide", var_0 );
-    _ID42259::_ID2058( "price", "slide_end", ::_unknown_0D40, "price_slide" );
+    _ID42259::_ID2058( "price", "slide_start", ::_ID54029, "price_slide", var_0 );
+    _ID42259::_ID2058( "price", "slide_end", ::_ID54626, "price_slide" );
     level._ID30895["price"]["rappel"] = %afgan_caves_price_rappel_animatic;
     level._ID30895["price"]["pri_rappel_setup"] = %afgan_caves_price_rappel_setup;
     level._ID30895["price"]["pri_rappel_idle"][0] = %afgan_caves_price_rappel_idle;
@@ -129,7 +129,7 @@ _ID3197()
     level._ID30895["guard_1"]["rappel_kill"] = %h2_afgan_caves_guard_a_death;
     level._ID30895["guard_1"]["guardA_idle"][0] = %cliff_guarda_idle;
     level._ID30895["guard_1"]["guardA_react"] = %cliff_guarda_react;
-    _ID42259::_ID2058( "guard_1", "kill", ::_unknown_0E6B );
+    _ID42259::_ID2058( "guard_1", "kill", ::_ID21285 );
     _ID42259::_ID2058( "guard_1", "death_gurgle", maps\af_caves_code::_ID45342, "rappel_kill" );
     level._ID30895["guard_2"]["rappel"] = %afgan_caves_guard_2_animatic;
     level._ID30895["generic"]["steamroom_knifekill_price"] = %parabolic_knifekill_mark;
@@ -154,7 +154,7 @@ _ID3197()
     level._ID30895["generic"]["breach_react_knife_charge_death"] = %death_shotgun_back_v1;
     level._ID30895["nade_tosser"]["cqb_nade_throw"] = %cqb_stand_grenade_throw;
     _ID42259::_ID2063( "nade_tosser", "grenade_throw", "nade_tossed", "cqb_nade_throw" );
-    _unknown_0DD7();
+    _ID50662();
 }
 
 _ID50662()
@@ -274,7 +274,7 @@ _ID27229()
     level._ID30900["worldbody"] = #animtree;
     level._ID30904["worldbody"] = "viewbody_tf141";
     level._ID30895["worldbody"]["barracks_stealth_takedown"] = %h2_afgan_caves_takedown_player;
-    _ID42259::_ID2058( "player_rig", "start_guard", ::_unknown_162D );
+    _ID42259::_ID2058( "player_rig", "start_guard", ::_ID47841 );
     level._ID30895["worldbody"]["slide_in"] = %h2_cliffhanger_slide_in;
     level._ID30895["worldbody"]["slide_loop"][0] = %h2_cliffhanger_slide_idle;
     level._ID30895["worldbody"]["slide_out"] = %h2_cliffhanger_slide_out;
@@ -284,11 +284,11 @@ _ID27229()
     level._ID30895["worldbody"]["slide_ar"] = %h2_cliffhanger_slide_turnl;
     level._ID30895["worldbody"]["slide_al"] = %h2_cliffhanger_slide_turnr;
     var_0 = _ID42237::_ID16299( "sand_slide_player" );
-    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_unknown_16F2, "slide_in", var_0 );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_1719, "slide_out" );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_172C, "slide_back_out" );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_1735, "slide_out", var_0 );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_1749, "slide_back_out", var_0 );
+    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_ID54029, "slide_in", var_0 );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID54626, "slide_out" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID54626, "slide_back_out" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID53259, "slide_out", var_0 );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID53259, "slide_back_out", var_0 );
     level._ID30895["worldbody"]["keyboard_control"] = %h2_afgan_caves_player_typing;
     level._ID30895["worldbody"]["explosion"] = %h2_afghan_caves_explosion_player;
     level._ID30895["worldbody"]["explosion_wake"] = %h2_afghan_caves_explosionwake_player;
@@ -305,7 +305,7 @@ _ID21285( var_0 )
     var_0._ID49 = 1;
     var_0._ID287 = 1;
     _ID45456::_ID54623( var_0 );
-    var_0 _meth_8058();
+    var_0 kill();
 }
 
 _ID54029( var_0, var_1 )
@@ -315,7 +315,7 @@ _ID54029( var_0, var_1 )
 
     for (;;)
     {
-        _func_157( var_1, var_0, "tag_origin" );
+        playfxontag( var_1, var_0, "tag_origin" );
         wait 0.1;
     }
 }
@@ -327,7 +327,7 @@ _ID53259( var_0, var_1 )
 
     for (;;)
     {
-        _func_157( var_1, var_0, "tag_origin" );
+        playfxontag( var_1, var_0, "tag_origin" );
         wait 0.1;
     }
 }

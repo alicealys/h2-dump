@@ -3,16 +3,16 @@
 
 _ID19772()
 {
-    if ( _func_02F( level._ID30018 ) )
+    if ( isdefined( level._ID30018 ) )
         return;
 
     level._ID30018 = 1;
-    level._ID1426["riot_shield_dmg"] = _func_155( "fx/misc/riot_shield_dmg" );
+    level._ID1426["riot_shield_dmg"] = loadfx( "fx/misc/riot_shield_dmg" );
 
-    if ( !_func_02F( level._ID36742 ) )
+    if ( !isdefined( level._ID36742 ) )
         level._ID36742 = [];
 
-    level._ID36742["riotshield"] = ::_unknown_0035;
+    level._ID36742["riotshield"] = ::_ID36741;
     animscripts\riotshield\riotshield::_ID19774();
 }
 
@@ -50,48 +50,38 @@ _ID30014()
     self._ID452 = 2048;
     self._ID51437 = undefined;
     animscripts\riotshield\riotshield::_ID30017();
-    var_0 = self _meth_81FE();
+    var_0 = self findbestcovernode();
 
-    if ( _func_02F( var_0 ) )
-        self _meth_8200( var_0 );
+    if ( isdefined( var_0 ) )
+        self usecovernode( var_0 );
 }
 
 _ID17441( var_0, var_1, var_2 )
 {
     var_3 = [];
-    var_4 = var_0;
 
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
+    foreach ( var_5 in var_0 )
     {
-        var_5 = var_4[var_6];
-
         if ( var_5._ID199 != "no_cover" )
             continue;
 
         var_3[var_3.size] = var_5;
     }
 
-    var_clear_2
-    var_clear_0
-    var_7 = _func_1A5();
-    var_8 = var_3;
+    var_7 = spawnstruct();
 
-    for ( var_9 = _func_1DA( var_8 ); _func_02F( var_9 ); var_9 = _func_1BF( var_8, var_9 ) )
+    foreach ( var_5 in var_3 )
     {
-        var_5 = var_8[var_9];
-
-        if ( _func_02F( var_5._ID17437 ) && _func_02F( var_5._ID17437._ID2237 ) )
+        if ( isdefined( var_5._ID17437 ) && isdefined( var_5._ID17437._ID2237 ) )
             var_5._ID17437._ID2237 = _ID42237::_ID3321( var_5._ID17437._ID2237, var_5 );
 
         var_5._ID17437 = var_7;
     }
 
-    var_clear_1
-    var_clear_0
     var_7._ID2237 = var_3;
     var_7._ID14549 = 1;
     var_7._ID35001 = 50;
-    var_7 thread _unknown_01D2();
+    var_7 thread _ID17440();
     return var_7;
 }
 
@@ -100,25 +90,20 @@ _ID17451( var_0, var_1 )
     self._ID2237 = _ID42407::_ID3328( self._ID2237 );
     self._ID409 = var_0;
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         self._ID35001 = var_1;
 
-    var_2 = self._ID2237;
-
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in self._ID2237 )
     {
-        var_3 = var_2[var_4];
         var_3._ID452 = 25;
-        var_3._ID23429 = _func_0ED( 160 );
+        var_3._ID23429 = squared( 160 );
         var_3._ID51437 = 1;
         var_3._ID760 = 128;
         var_3._ID761 = 128;
     }
 
-    var_clear_2
-    var_clear_0
-    _unknown_01EF();
-    thread _unknown_029A();
+    _ID17463();
+    thread _ID7367();
 }
 
 _ID17459()
@@ -136,7 +121,7 @@ _ID17459()
             self waittill( "goal" );
 
         self._ID2237 = _ID42407::_ID3328( self._ID2237 );
-        _unknown_022B();
+        _ID17463();
     }
 }
 
@@ -145,22 +130,22 @@ _ID17463( var_0 )
     if ( self._ID2237.size == 0 )
         return;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         self._ID409 = var_0;
     else
         var_0 = self._ID409;
 
-    var_1 = _unknown_0398();
+    var_1 = _ID17439();
     var_2 = ( self._ID409[1], -1 * self._ID409[0], 0 );
     var_3 = var_2 * self._ID35001;
-    var_4 = _unknown_02B9( var_1, var_3 );
+    var_4 = _ID17452( var_1, var_3 );
     var_5 = [];
 
     for ( var_6 = 0; var_6 < self._ID2237.size; var_6++ )
     {
-        if ( _func_02F( self._ID2237[var_6] ) )
+        if ( isdefined( self._ID2237[var_6] ) )
         {
-            var_5[var_6] = _func_0FB( var_4 - self._ID2237[var_6]._ID740, var_2 );
+            var_5[var_6] = vectordot( var_4 - self._ID2237[var_6]._ID740, var_2 );
             continue;
         }
 
@@ -196,16 +181,9 @@ _ID17440()
 
             if ( self._ID2237.size <= self._ID14549 )
             {
-                var_0 = self._ID2237;
+                foreach ( var_1 in self._ID2237 )
+                    var_1 _ID30014();
 
-                for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
-                {
-                    var_1 = var_0[var_2];
-                    var_1 _unknown_02A2();
-                }
-
-                var_clear_2
-                var_clear_0
                 self notify( "break_group" );
                 break;
             }
@@ -217,7 +195,7 @@ _ID17440()
 
 _ID17452( var_0, var_1 )
 {
-    return var_0 - self._ID2237.size - 1 / 2 * var_1;
+    return var_0 - ( self._ID2237.size - 1 ) / 2 * var_1;
 }
 
 _ID17456( var_0, var_1 )
@@ -225,26 +203,26 @@ _ID17456( var_0, var_1 )
     self notify( "new_goal_set" );
     self._ID17457 = "moving";
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         self._ID409 = var_1;
     else
         var_1 = self._ID409;
 
     var_2 = ( var_1[1], -1 * var_1[0], 0 );
     var_3 = var_2 * self._ID35001;
-    var_4 = _unknown_03C6( var_0, var_3 );
+    var_4 = _ID17452( var_0, var_3 );
 
     for ( var_5 = 0; var_5 < self._ID2237.size; var_5++ )
     {
         var_6 = self._ID2237[var_5];
 
-        if ( _func_02F( var_6 ) )
-            var_6 _meth_81B2( var_4 );
+        if ( isdefined( var_6 ) )
+            var_6 setgoalpos( var_4 );
 
         var_4 += var_3;
     }
 
-    thread _unknown_0410();
+    thread _ID7366();
 }
 
 _ID7366()
@@ -255,29 +233,24 @@ _ID7366()
     {
         wait 0.5;
         var_0 = 0;
-        var_1 = self._ID2237;
 
-        for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+        foreach ( var_2 in self._ID2237 )
         {
-            var_2 = var_1[var_3];
-
-            if ( _func_02F( var_2 ) && _func_1A7( var_2 ) )
+            if ( isdefined( var_2 ) && isalive( var_2 ) )
                 var_0++;
         }
 
-        var_clear_4
-        var_clear_2
         var_4 = 0;
 
         for ( var_5 = 0; var_5 < self._ID2237.size; var_5++ )
         {
             var_2 = self._ID2237[var_5];
 
-            if ( _func_02F( var_2 ) )
+            if ( isdefined( var_2 ) )
             {
-                var_6 = _func_0E6( 45, var_2._ID452 );
+                var_6 = max( 45, var_2._ID452 );
 
-                if ( _func_0F5( var_2._ID740, var_2._ID451 ) < _func_0ED( var_6 ) )
+                if ( distancesquared( var_2._ID740, var_2._ID451 ) < squared( var_6 ) )
                     var_4++;
             }
         }
@@ -298,28 +271,23 @@ _ID7367()
     {
         wait 0.5;
         var_0 = 0;
-        var_1 = self._ID2237;
 
-        for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+        foreach ( var_2 in self._ID2237 )
         {
-            var_2 = var_1[var_3];
-
-            if ( _func_02F( var_2 ) && _func_1A7( var_2 ) )
+            if ( isdefined( var_2 ) && isalive( var_2 ) )
                 var_0++;
         }
 
-        var_clear_5
-        var_clear_3
         var_4 = 0;
-        var_5 = _func_11B( self._ID409 );
+        var_5 = vectortoyaw( self._ID409 );
 
         for ( var_6 = 0; var_6 < self._ID2237.size; var_6++ )
         {
             var_2 = self._ID2237[var_6];
 
-            if ( _func_02F( var_2 ) )
+            if ( isdefined( var_2 ) )
             {
-                if ( _func_0C3( var_2._ID65[1] - var_5 ) < 45 )
+                if ( abs( var_2._ID65[1] - var_5 ) < 45 )
                     var_4++;
             }
         }
@@ -331,152 +299,100 @@ _ID7367()
 
 _ID17465()
 {
-    var_0 = self._ID2237;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID2237 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_1A7( var_1 ) )
-            var_1 _unknown_0447();
+        if ( isalive( var_1 ) )
+            var_1 _ID30024();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17443()
 {
-    var_0 = self._ID2237;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID2237 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_1A7( var_1 ) )
-            var_1 _unknown_0471();
+        if ( isalive( var_1 ) )
+            var_1 _ID30012();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17464()
 {
-    var_0 = self._ID2237;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID2237 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_1A7( var_1 ) )
-            var_1 _unknown_049A();
+        if ( isalive( var_1 ) )
+            var_1 _ID30023();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17442()
 {
-    var_0 = self._ID2237;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID2237 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_1A7( var_1 ) )
-            var_1 _unknown_04C4();
+        if ( isalive( var_1 ) )
+            var_1 _ID30011();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17454( var_0 )
 {
     self._ID409 = var_0;
-    var_1 = _func_11B( var_0 );
-    var_2 = self._ID2237;
+    var_1 = vectortoyaw( var_0 );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in self._ID2237 )
     {
-        var_3 = var_2[var_4];
-
-        if ( !_func_02F( var_3 ) )
+        if ( !isdefined( var_3 ) )
             continue;
 
-        if ( _func_02F( var_3._ID322 ) && _func_0F5( var_3._ID740, var_3._ID322._ID740 ) < _func_0ED( var_3._ID760 ) )
+        if ( isdefined( var_3._ID322 ) && distancesquared( var_3._ID740, var_3._ID322._ID740 ) < squared( var_3._ID760 ) )
             continue;
 
-        var_3 _meth_819B( "face angle", var_1 );
+        var_3 orientmode( "face angle", var_1 );
         var_3._ID597 = 1;
     }
 
-    var_clear_2
-    var_clear_0
     wait 0.1;
 }
 
 _ID17467()
 {
-    var_0 = self._ID2237;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID2237 )
     {
-        var_1 = var_0[var_2];
-
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
-        var_1 _meth_819B( "face default" );
+        var_1 orientmode( "face default" );
         var_1._ID597 = 0;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17447()
 {
-    _unknown_0706();
-    var_0 = self._ID2237;
+    _ID17467();
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID2237 )
     {
-        var_1 = var_0[var_2];
-
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
         var_1._ID452 = 2048;
         var_1._ID760 = 400;
         var_1._ID761 = 400;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID17439()
 {
     var_0 = ( 0, 0, 0 );
     var_1 = 0;
-    var_2 = self._ID2237;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in self._ID2237 )
     {
-        var_3 = var_2[var_4];
-
-        if ( _func_02F( var_3 ) )
+        if ( isdefined( var_3 ) )
         {
             var_0 += var_3._ID740;
             var_1++;
         }
     }
-
-    var_clear_2
-    var_clear_0
 
     if ( var_1 )
         var_0 = 1 / var_1 * var_0;

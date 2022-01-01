@@ -6,17 +6,17 @@ _ID49306( var_0, var_1 )
     _ID42237::_ID14400( "player_can_die_on_snowmobile" );
     _ID42237::_ID14402( "player_can_die_on_snowmobile" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         level._ID46144 = "viewhands_player_arctic_wind";
     else
         level._ID46144 = var_0;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         level._ID49402 = "vehicle_snowmobile_player";
     else
         level._ID49402 = var_1;
 
-    if ( !_func_02F( level._ID53252 ) )
+    if ( !isdefined( level._ID53252 ) )
         level._ID53252 = "h2_viewmodel_glock";
 
     level._ID51509 = "snowmobile_glock";
@@ -25,29 +25,29 @@ _ID49306( var_0, var_1 )
     level._ID46698["weap_miniuzi_clipout_plr"] = "h2_wpn_g18_snowmobile_foley_plr_clipout";
     level._ID46698["weap_miniclip_clipin_plr"] = "h2_wpn_g18_snowmobile_foley_plr_clipin";
     level._ID46698["weap_m9_chamber_plr"] = "h2_wpn_g18_snowmobile_foley_plr_chamber";
-    _func_14C( level._ID46144 );
-    _func_14C( level._ID49402 );
-    _func_14C( level._ID53252 );
-    _func_14E( level._ID51509 );
-    _func_152( "pistol_fire_auto" );
-    _func_14C( "vehicle_snowmobile_player_glass_break" );
-    _func_14C( "vehicle_snowmobile_player_glass_break_alt" );
-    _func_14F( "h2_snowmobile_speed_blur" );
-    _func_14F( "h2_snowmobile_speed_blur_corners" );
-    level._ID54009 = _func_155( "fx/muzzleflashes/uzi_flash_view" );
-    level._ID52280 = _func_155( "vfx/shelleject/pistol_view" );
-    _unknown_09DD();
-    _ID42407::_ID1865( "snowmobile_attack_player1", &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK", ::_unknown_0BEB, &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK_KEYBOARD", undefined, "small_background" );
-    _ID42407::_ID1865( "snowmobile_attack_player2", &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK", ::_unknown_0C05, &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK_KEYBOARD", undefined, "small_background" );
-    _ID42407::_ID1865( "snowmobile_drive_player1", &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE", ::_unknown_0C32, &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE_KEYBOARD", undefined, "small_background" );
-    _ID42407::_ID1865( "snowmobile_drive_player2", &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE", ::_unknown_0C4C, &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE_KEYBOARD", undefined, "small_background" );
+    precachemodel( level._ID46144 );
+    precachemodel( level._ID49402 );
+    precachemodel( level._ID53252 );
+    precacheitem( level._ID51509 );
+    precacherumble( "pistol_fire_auto" );
+    precachemodel( "vehicle_snowmobile_player_glass_break" );
+    precachemodel( "vehicle_snowmobile_player_glass_break_alt" );
+    precacheshader( "h2_snowmobile_speed_blur" );
+    precacheshader( "h2_snowmobile_speed_blur_corners" );
+    level._ID54009 = loadfx( "fx/muzzleflashes/uzi_flash_view" );
+    level._ID52280 = loadfx( "vfx/shelleject/pistol_view" );
+    _ID53742();
+    _ID42407::_ID1865( "snowmobile_attack_player1", &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK", ::_ID47481, &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK_KEYBOARD", undefined, "small_background" );
+    _ID42407::_ID1865( "snowmobile_attack_player2", &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK", ::_ID43628, &"SCRIPT_PLATFORM_SNOWMOBILE_ATTACK_KEYBOARD", undefined, "small_background" );
+    _ID42407::_ID1865( "snowmobile_drive_player1", &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE", ::_ID45276, &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE_KEYBOARD", undefined, "small_background" );
+    _ID42407::_ID1865( "snowmobile_drive_player2", &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE", ::_ID45606, &"SCRIPT_PLATFORM_SNOWMOBILE_DRIVE_KEYBOARD", undefined, "small_background" );
     var_2 = &"SCRIPT_PLATFORM_SNOWMOBILE_REVERSE";
 
-    if ( _func_09A() )
+    if ( _func_9a() )
         var_2 = &"SCRIPT_PLATFORM_SNOWMOBILE_REVERSE_BUTTON_INVERSED";
 
-    _ID42407::_ID1865( "snowmobile_reverse_player1", var_2, ::_unknown_045B, &"SCRIPT_PLATFORM_SNOWMOBILE_REVERSE_KEYBOARD", undefined, "small_background" );
-    _ID42407::_ID1865( "snowmobile_reverse_player2", var_2, ::_unknown_0472, &"SCRIPT_PLATFORM_SNOWMOBILE_REVERSE_KEYBOARD", undefined, "small_background" );
+    _ID42407::_ID1865( "snowmobile_reverse_player1", var_2, ::_ID52056, &"SCRIPT_PLATFORM_SNOWMOBILE_REVERSE_KEYBOARD", undefined, "small_background" );
+    _ID42407::_ID1865( "snowmobile_reverse_player2", var_2, ::_ID52792, &"SCRIPT_PLATFORM_SNOWMOBILE_REVERSE_KEYBOARD", undefined, "small_background" );
 }
 
 _ID50469()
@@ -56,22 +56,22 @@ _ID50469()
 
     if ( level._ID912 == "cliffhanger" && level._ID35897 != "snowmobile" && level._ID35897 != "ending" )
     {
-        var_1 = var_0 _meth_818C( "tag_driver" ) + ( 0, 0, 30 );
-        var_2 = _func_06A( "script_origin", var_1 );
-        var_2 _meth_80C6();
-        var_2 _meth_80E1( "HINT_ACTIVATE" );
+        var_1 = var_0 gettagorigin( "tag_driver" ) + ( 0, 0, 30 );
+        var_2 = spawn( "script_origin", var_1 );
+        var_2 makeusable();
+        var_2 setcursorhint( "HINT_ACTIVATE" );
         var_2 thread _ID42237::_ID44574( level._ID794, &"CLIFFHANGER_BOARD", &"CLIFFHANGER_BOARD_PRESS", "trigger" );
         var_2 waittill( "trigger" );
-        var_2 _meth_80C7();
-        var_2 _meth_80B7();
+        var_2 makeunusable();
+        var_2 delete();
         level._ID794 maps\cliffhanger_code::_ID49754( var_0 );
-        var_0 _meth_80C6();
+        var_0 makeusable();
         var_3 = level._ID794;
-        var_0 _meth_80A0( var_3 );
+        var_0 useby( var_3 );
     }
     else
     {
-        var_0 _meth_80C6();
+        var_0 makeusable();
         self waittill( "vehicle_mount",  var_3  );
         level._ID48727._ID51615 = 1;
     }
@@ -90,41 +90,41 @@ _ID50469()
 
     var_3 _ID42407::_ID10226( 20, _ID42407::_ID18684, var_4 );
     var_3 _ID42407::_ID10226( 3, _ID42407::_ID18684, var_5 );
-    _ID42407::_ID10226( 3, ::_unknown_0520 );
+    _ID42407::_ID10226( 3, ::_ID52444 );
     var_0._ID794 = var_3;
     var_3._ID40065 = var_0;
-    var_0 thread _unknown_04FD( "veh_landed", "damage_heavy", var_3 );
-    var_0 thread _unknown_050A( "veh_jolt", "damage_light", var_3 );
-    var_0 thread _unknown_03F6();
-    var_0 thread _unknown_046A();
-    var_0 thread _unknown_04A2();
+    var_0 thread _ID43759( "veh_landed", "damage_heavy", var_3 );
+    var_0 thread _ID43759( "veh_jolt", "damage_light", var_3 );
+    var_0 thread _ID44815();
+    var_0 thread _ID50304();
+    var_0 thread _ID53845();
     var_0._ID51001 = var_0._ID669;
     var_0._ID49107 = 32;
     var_0._ID3189 = "snowmobile_player";
     var_0 _ID42407::_ID3428();
-    var_0 _meth_80C7();
-    var_0 _meth_8095();
-    var_0 _meth_859E( 0 );
-    var_3 thread _unknown_0593( var_0 );
-    var_3 thread _unknown_0603( var_0 );
-    var_3 thread _unknown_0633( var_0 );
-    var_3 thread _unknown_0681( var_0 );
-    var_3 thread _unknown_0697( var_0, "pullout_anim" );
-    var_3 thread _unknown_06A1( var_0, "fire_anim" );
-    var_3 thread _unknown_06AB( var_0, "reload_anim" );
-    var_3 thread _unknown_06B4( var_0, "putaway_anim" );
+    var_0 makeunusable();
+    var_0 dontcastshadows();
+    var_0 _meth_859e( 0 );
+    var_3 thread _ID54207( var_0 );
+    var_3 thread _ID51137( var_0 );
+    var_3 thread _ID48108( var_0 );
+    var_3 thread _ID46907( var_0 );
+    var_3 thread _ID53630( var_0, "pullout_anim" );
+    var_3 thread _ID53630( var_0, "fire_anim" );
+    var_3 thread _ID53630( var_0, "reload_anim" );
+    var_3 thread _ID53630( var_0, "putaway_anim" );
 
     if ( _ID42407::_ID20495() )
-        var_3 thread _unknown_0621( var_0 );
+        var_3 thread _ID44897( var_0 );
 
     if ( _ID42407::_ID20614() )
-        var_0 thread _unknown_05AE( var_3 );
+        var_0 thread _ID51239( var_3 );
 
-    var_3 _unknown_06E8( var_0 );
-    var_3 thread _unknown_0402();
+    var_3 _ID45562( var_0 );
+    var_3 thread _ID45171();
     var_0 _ID42237::_ID41098( "vehicle_dismount", "death" );
-    var_3 _unknown_0711( var_0 );
-    _unknown_0413();
+    var_3 _ID51371( var_0 );
+    _ID44309();
     var_3._ID40065 = undefined;
 }
 
@@ -139,48 +139,48 @@ _ID45171()
     self._ID40065 endon( "vehicle_dismount" );
     self._ID40065 endon( "death" );
     self waittill( "death" );
-    _unknown_0442();
-    self._ID40065 _meth_814C( self._ID40065 _ID42407::_ID16120( "root" ), 0 );
+    _ID44309();
+    self._ID40065 clearanim( self._ID40065 _ID42407::_ID16120( "root" ), 0 );
     self._ID40065 notify( "kill_anims" );
 
-    if ( !_func_02F( self._ID51531 ) )
+    if ( !isdefined( self._ID51531 ) )
     {
         var_0 = [ "death_front", "death_back", "death_right" ];
-        self._ID51531 = var_0[_func_0B7( var_0.size )];
+        self._ID51531 = var_0[randomint( var_0.size )];
     }
 
-    self._ID40065 _meth_811A( self._ID51531, self._ID40065 _ID42407::_ID16120( self._ID51531 ) );
+    self._ID40065 setflaggedanim( self._ID51531, self._ID40065 _ID42407::_ID16120( self._ID51531 ) );
     self._ID40065 waittillmatch( self._ID51531,  "detach_snowmobile"  );
-    thread _unknown_04C2();
+    thread _ID45011();
 }
 
 _ID45011()
 {
-    var_0 = self._ID40065 _meth_8291();
-    var_1 = _func_0F6( var_0 );
+    var_0 = self._ID40065 vehicle_getvelocity();
+    var_1 = length( var_0 );
 
     if ( var_1 < 200 )
         return;
 
-    var_2 = _func_06A( "script_origin", self._ID40065 _meth_818C( "tag_camera" ) );
-    var_2._ID65 = self _meth_846A();
+    var_2 = spawn( "script_origin", self._ID40065 gettagorigin( "tag_camera" ) );
+    var_2._ID65 = self _meth_846a();
     var_3 = _ID42407::_ID35028( "snowmobile_player_detached", var_2._ID740 - ( 0, 0, 60 ), var_2._ID65 );
-    var_3 _meth_8053( var_2 );
+    var_3 linkto( var_2 );
 
     if ( var_3 _ID42407::_ID18203( self._ID51531 + "_detached" ) )
         var_3 thread _ID42259::_ID3111( var_3, self._ID51531 + "_detached" );
 
-    var_4 = _func_11F( self._ID40065._ID65 );
+    var_4 = anglestoforward( self._ID40065._ID65 );
     var_5 = var_4 * var_1 * ( 0.75, 0.75, 1 );
-    var_6 = self _meth_846B();
-    self _meth_8032( var_6, 0.01 );
+    var_6 = self _meth_846b();
+    self lerpfov( var_6, 0.01 );
     _ID42407::_ID27348();
-    _unknown_082B( self._ID40065 );
-    self _meth_8345( var_3._ID65 * ( 1, 1, 0 ) );
-    self _meth_8083( var_3, "tag_player", 1, 0, 0, 0, 0 );
+    _ID51371( self._ID40065 );
+    self setplayerangles( var_3._ID65 * ( 1, 1, 0 ) );
+    self playerlinkto( var_3, "tag_player", 1, 0, 0, 0, 0 );
     wait 0.1;
     var_7 = 5;
-    var_2 _meth_82BD( ( 0, 0, 0 ), var_7, var_5 );
+    var_2 moveslide( ( 0, 0, 0 ), var_7, var_5 );
     var_8 = 1.0;
     var_9 = var_8;
 
@@ -194,13 +194,13 @@ _ID45011()
             continue;
         }
 
-        var_10 = _func_093( var_2._ID740, var_7 );
+        var_10 = getgroundposition( var_2._ID740, var_7 );
 
-        if ( _func_0F8( var_2._ID740 - var_10 ) <= var_7 * var_7 + 1 )
+        if ( lengthsquared( var_2._ID740 - var_10 ) <= var_7 * var_7 + 1 )
         {
             var_9 -= 0.05;
             var_11 = var_9 / var_8;
-            var_11 = _func_0EC( _func_0E6( 0.0, var_11 ) );
+            var_11 = sqrt( max( 0.0, var_11 ) );
             var_2._ID974 = var_2._ID974 * var_11;
         }
     }
@@ -211,8 +211,8 @@ _ID44815()
     self endon( "vehicle_dismount" );
     self endon( "death" );
     self endon( "kill_anims" );
-    childthread _unknown_066A();
-    childthread _unknown_0692();
+    childthread _ID50346();
+    childthread _ID48613();
 }
 
 _ID50346()
@@ -227,11 +227,11 @@ _ID50346()
 
         if ( var_3 >= var_0 && self._ID47370 )
         {
-            var_4 = _func_0EE( var_3 / var_1, 0, 1 );
-            self _meth_811B( "land", _ID42407::_ID16120( "land_anim" ), 1.0, 0 );
-            self _meth_8155( _ID42407::_ID16120( "land" ), var_4, 0.05 );
+            var_4 = clamp( var_3 / var_1, 0, 1 );
+            self setflaggedanimlimited( "land", _ID42407::_ID16120( "land_anim" ), 1.0, 0 );
+            self setanim( _ID42407::_ID16120( "land" ), var_4, 0.05 );
             self waittillmatch( "land",  "end"  );
-            self _meth_814C( _ID42407::_ID16120( "land" ), 0.2 );
+            self clearanim( _ID42407::_ID16120( "land" ), 0.2 );
         }
     }
 }
@@ -242,16 +242,16 @@ _ID48613()
     {
         self waittill( "veh_jolt",  var_0  );
         var_1 = 0;
-        var_1 |= _unknown_0743( -1.0 * var_0[0], "front" );
-        var_1 |= _unknown_0754( -1.0 * var_0[1], "right" );
-        var_1 |= _unknown_0761( var_0[1], "left" );
+        var_1 |= _ID45324( -1.0 * var_0[0], "front" );
+        var_1 |= _ID45324( -1.0 * var_0[1], "right" );
+        var_1 |= _ID45324( var_0[1], "left" );
 
         if ( var_1 )
         {
             self waittillmatch( "collision_reaction",  "end"  );
-            self _meth_814C( _ID42407::_ID16120( "collision_reaction_front" ), 0.2 );
-            self _meth_814C( _ID42407::_ID16120( "collision_reaction_right" ), 0.2 );
-            self _meth_814C( _ID42407::_ID16120( "collision_reaction_left" ), 0.2 );
+            self clearanim( _ID42407::_ID16120( "collision_reaction_front" ), 0.2 );
+            self clearanim( _ID42407::_ID16120( "collision_reaction_right" ), 0.2 );
+            self clearanim( _ID42407::_ID16120( "collision_reaction_left" ), 0.2 );
         }
     }
 }
@@ -265,8 +265,8 @@ _ID45324( var_0, var_1 )
         return 0;
 
     var_4 = _ID42366::_ID22384( var_0, var_2, var_3, 0.25, 1.0 );
-    self _meth_811B( "collision_reaction", _ID42407::_ID16120( "collision_reaction_" + var_1 + "_anim" ), 1.0, 0 );
-    self _meth_8155( _ID42407::_ID16120( "collision_reaction_" + var_1 ), var_4, 0.05 );
+    self setflaggedanimlimited( "collision_reaction", _ID42407::_ID16120( "collision_reaction_" + var_1 + "_anim" ), 1.0, 0 );
+    self setanim( _ID42407::_ID16120( "collision_reaction_" + var_1 ), var_4, 0.05 );
     return 1;
 }
 
@@ -277,12 +277,12 @@ _ID50304()
     self endon( "kill_anims" );
     var_0 = 4;
     var_1 = 0;
-    self._ID43666 = self _meth_84DD();
+    self._ID43666 = self _meth_84dd();
 
     for (;;)
     {
         self._ID47370 = self._ID43666;
-        self._ID43666 = self _meth_84DD();
+        self._ID43666 = self _meth_84dd();
 
         if ( self._ID43666 )
         {
@@ -290,9 +290,9 @@ _ID50304()
 
             if ( var_1 == var_0 )
             {
-                self _meth_8155( _ID42407::_ID16120( "air_in" ), 1.0, 0.05 );
-                self _meth_811B( "air_in", _ID42407::_ID16120( "air_in_anim" ), 1.0, 0 );
-                thread _unknown_0884();
+                self setanim( _ID42407::_ID16120( "air_in" ), 1.0, 0.05 );
+                self setflaggedanimlimited( "air_in", _ID42407::_ID16120( "air_in_anim" ), 1.0, 0 );
+                thread _ID48020();
             }
         }
         else
@@ -307,7 +307,7 @@ _ID48020()
     self endon( "vehicle_dismount" );
     self endon( "death" );
     self waittill( "veh_landed" );
-    self _meth_814C( _ID42407::_ID16120( "air_in" ), 0.05 );
+    self clearanim( _ID42407::_ID16120( "air_in" ), 0.05 );
 }
 
 _ID48625()
@@ -321,38 +321,38 @@ _ID53845()
 {
     self endon( "vehicle_dismount" );
     self endon( "death" );
-    childthread _unknown_092B();
-    childthread _unknown_0949();
+    childthread _ID46650();
+    childthread tweak_suspension_strength_for_jump();
     _ID42237::_ID14413( "snowmobile_jump" );
-    self _meth_8156( _ID42407::_ID16120( "big_jump" ), 1.0, 0.05 );
-    self _meth_811A( "jump_in", _ID42407::_ID16120( "big_jump_in" ), 1, 0.2, 1.2 );
-    childthread _unknown_0957();
-    childthread _unknown_091B();
+    self setanimlimited( _ID42407::_ID16120( "big_jump" ), 1.0, 0.05 );
+    self setflaggedanim( "jump_in", _ID42407::_ID16120( "big_jump_in" ), 1, 0.2, 1.2 );
+    childthread _ID46427();
+    childthread _ID48625();
     self waittillmatch( "jump_in",  "end"  );
-    self _meth_8155( _ID42407::_ID16120( "big_jump_idle" ) );
+    self setanim( _ID42407::_ID16120( "big_jump_idle" ) );
 
     while ( self._ID47640 == 0 )
         waittillframeend;
 
-    _unknown_1253( "vehicle_snowmobile_player_glass_break" );
-    self _meth_814C( _ID42407::_ID16120( "head_down" ), 0.2 );
-    self _meth_811A( "jump_out", _ID42407::_ID16120( "big_jump_out" ) );
+    _ID45731( "vehicle_snowmobile_player_glass_break" );
+    self clearanim( _ID42407::_ID16120( "head_down" ), 0.2 );
+    self setflaggedanim( "jump_out", _ID42407::_ID16120( "big_jump_out" ) );
     self waittillmatch( "jump_out",  "end"  );
-    self _meth_814C( _ID42407::_ID16120( "big_jump" ), 0.05 );
+    self clearanim( _ID42407::_ID16120( "big_jump" ), 0.05 );
 }
 
 _ID46427()
 {
     self endon( "veh_landed" );
-    self _meth_8155( _ID42407::_ID16120( "head_down_anim" ) );
+    self setanim( _ID42407::_ID16120( "head_down_anim" ) );
     var_0 = _ID42407::_ID16120( "head_down" );
     var_1 = 0;
 
     for (;;)
     {
-        self _meth_8156( var_0, var_1 );
+        self setanimlimited( var_0, var_1 );
         var_1 += 0.05;
-        var_1 = _func_0C4( 1, var_1 );
+        var_1 = min( 1, var_1 );
         waittillframeend;
     }
 }
@@ -363,13 +363,13 @@ _ID46650()
 
     for (;;)
     {
-        if ( level._ID794._ID40065 _meth_8290() < 30 )
+        if ( level._ID794._ID40065 vehicle_getspeed() < 30 )
         {
             if ( level._ID794._ID740[1] > 26300 && level._ID794._ID740[1] < 27000 )
             {
-                level._ID794._ID40065 _meth_85A5( 1 );
+                level._ID794._ID40065 _meth_85a5( 1 );
                 wait 0.3;
-                level._ID794._ID40065 _meth_85A5( 0 );
+                level._ID794._ID40065 _meth_85a5( 0 );
                 break;
             }
         }
@@ -386,9 +386,9 @@ tweak_suspension_strength_for_jump()
     {
         if ( level._ID794._ID740[1] > 26500 )
         {
-            level._ID794._ID40065 _meth_85BF( 5000, 10000 );
+            level._ID794._ID40065 _meth_85bf( 5000, 10000 );
             wait 0.5;
-            level._ID794._ID40065 _meth_85BF( 100, 200 );
+            level._ID794._ID40065 _meth_85bf( 100, 200 );
             break;
         }
 
@@ -404,10 +404,10 @@ _ID43759( var_0, var_1, var_2 )
     for (;;)
     {
         self waittill( var_0 );
-        var_2 _meth_80B4( var_1 );
-        self._ID45343 = _func_03D() + 1000 * _func_0BA( 0.4, 0.7 );
-        self._ID51423 = _func_0BA( 0.45, 0.75 );
-        self._ID45536 = _func_0BA( 0.35, 0.55 );
+        var_2 playrumblelooponentity( var_1 );
+        self._ID45343 = gettime() + 1000 * randomfloatrange( 0.4, 0.7 );
+        self._ID51423 = randomfloatrange( 0.45, 0.75 );
+        self._ID45536 = randomfloatrange( 0.35, 0.55 );
     }
 }
 
@@ -415,25 +415,20 @@ _ID51239( var_0 )
 {
     wait 0.05;
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    if ( !_func_1A7( var_0 ) )
+    if ( !isalive( var_0 ) )
         return;
 
-    _ID42237::_ID3294( self._ID29965, ::_meth_805D, var_0 );
-    var_1 = self._ID29965;
+    _ID42237::_ID3294( self._ID29965, ::laserforceoff, var_0 );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in self._ID29965 )
     {
-        var_2 = var_1[var_3];
-        var_2 _meth_805D( var_0 );
+        var_2 laserforceoff( var_0 );
         var_2 _ID42407::_ID26720( "usp", "left" );
         var_2._ID834 = "usp";
     }
-
-    var_clear_2
-    var_clear_0
 
     if ( _ID42407::_ID20495() )
     {
@@ -441,15 +436,15 @@ _ID51239( var_0 )
         _ID42237::_ID3350( self._ID29965, _ID42407::_ID22746 );
     }
     else
-        _ID42237::_ID3294( self._ID29965, ::_meth_80B7 );
+        _ID42237::_ID3294( self._ID29965, ::delete );
 }
 
 _ID52444()
 {
-    _ID42407::_ID1888( "snowmobile_speed", ::_unknown_0C28, "^3Player was riding too slow" );
+    _ID42407::_ID1888( "snowmobile_speed", ::_ID45850, "^3Player was riding too slow" );
 
-    if ( _func_02F( level._ID45355 ) )
-        _ID42407::_ID1888( "snowmobile_fov", ::_unknown_0C28, "Player was pointed the wrong way" );
+    if ( isdefined( level._ID45355 ) )
+        _ID42407::_ID1888( "snowmobile_fov", ::_ID52829, "Player was pointed the wrong way" );
 }
 
 _ID54207( var_0 )
@@ -457,13 +452,13 @@ _ID54207( var_0 )
     self endon( "death" );
     var_0 endon( "vehicle_dismount" );
     var_0 endon( "death" );
-    var_0 _unknown_0C3D();
+    var_0 _ID49316();
     var_0._ID45638 = 0;
     var_1 = 0;
 
     for (;;)
     {
-        if ( _func_0C3( var_0._ID1276 ) < 5 )
+        if ( abs( var_0._ID1276 ) < 5 )
         {
             var_0._ID45638++;
 
@@ -495,19 +490,19 @@ _ID54207( var_0 )
 
 _ID52056()
 {
-    return level._ID794 _unknown_0C87();
+    return level._ID794 _ID52245();
 }
 
 _ID52792()
 {
-    return level._ID27742 _unknown_0C8F();
+    return level._ID27742 _ID52245();
 }
 
 _ID52245()
 {
-    if ( !_func_02F( self._ID40065 ) )
+    if ( !isdefined( self._ID40065 ) )
         var_0 = 1;
-    else if ( !_func_02F( self._ID40065._ID45638 ) )
+    else if ( !isdefined( self._ID40065._ID45638 ) )
         var_0 = 1;
     else if ( _ID42407::_ID13023( "finish_line" ) && _ID42407::_ID13019( "finish_line" ) )
         var_0 = 1;
@@ -538,25 +533,25 @@ _ID44897( var_0 )
     if ( self != level._ID794 )
         var_1 = level._ID794;
 
-    self _meth_805D( var_1 );
+    self laserforceoff( var_1 );
 }
 
 _ID52829()
 {
     var_0 = level._ID794._ID40065._ID65;
     var_0 = ( 0, var_0[1], 0 );
-    var_1 = _func_11F( var_0 );
+    var_1 = anglestoforward( var_0 );
     var_2 = level._ID794._ID43692;
-    var_3 = _func_11A( var_2._ID24768._ID740 - var_2._ID740 );
+    var_3 = vectortoangles( var_2._ID24768._ID740 - var_2._ID740 );
     var_3 = ( 0, var_3[1], 0 );
-    var_4 = _func_11F( var_3 );
-    var_5 = _func_0FB( var_1, var_4 );
+    var_4 = anglestoforward( var_3 );
+    var_5 = vectordot( var_1, var_4 );
     return var_5 > 0.7;
 }
 
 _ID45850()
 {
-    return level._ID794._ID40065 _meth_8290() > 60;
+    return level._ID794._ID40065 vehicle_getspeed() > 60;
 }
 
 _ID51137( var_0 )
@@ -566,18 +561,16 @@ _ID51137( var_0 )
 
     for (;;)
     {
-        var_1 = _func_0DE( "bad_guys" );
+        var_1 = getaiarray( "bad_guys" );
         var_2 = 0.94;
         var_3 = undefined;
         var_4 = _ID42407::_ID32530( self._ID740, 0 );
-        var_5 = var_1;
 
-        for ( var_9 = _func_1DA( var_5 ); _func_02F( var_9 ); var_9 = _func_1BF( var_5, var_9 ) )
+        foreach ( var_6 in var_1 )
         {
-            var_6 = var_5[var_9];
             var_7 = _ID42407::_ID32530( var_6._ID740, 0 );
 
-            if ( _func_0F3( var_7, var_4 ) > 750 )
+            if ( distance( var_7, var_4 ) > 750 )
                 continue;
 
             var_8 = _ID42407::_ID15689( var_4, self._ID65, var_7 );
@@ -589,8 +582,6 @@ _ID51137( var_0 )
             }
         }
 
-        var_clear_4
-        var_clear_0
         self._ID48892 = var_3;
         wait 0.2;
     }
@@ -601,20 +592,20 @@ _ID48108( var_0 )
     var_0 endon( "vehicle_dismount" );
     var_0 endon( "death" );
     level endon( "avalanche_begins" );
-    var_0 _unknown_0E65();
-    var_1 = var_0 _meth_8290();
+    var_0 _ID52886();
+    var_1 = var_0 vehicle_getspeed();
     var_1 *= 17.6;
     var_2 = ( 0, var_1, 64 );
 
-    if ( _func_02F( level._ID51956 ) )
+    if ( isdefined( level._ID51956 ) )
         self thread [[ level._ID51956 ]]( var_0 );
 
     if ( _ID42237::_ID14385( "player_can_die_on_snowmobile" ) )
     {
-        var_0 _unknown_162A( "vehicle_snowmobile_player_glass_break_alt" );
+        var_0 _ID45731( "vehicle_snowmobile_player_glass_break_alt" );
         self._ID51531 = "death_smash_front";
 
-        if ( _func_1A7( self ) )
+        if ( isalive( self ) )
             _ID42407::_ID21321();
     }
 }
@@ -624,20 +615,20 @@ _ID52886()
     if ( !_ID42407::_ID20614() )
         level endon( "player_crashes" );
     else
-        thread _unknown_0EC3();
+        thread _ID49659();
 
     _ID42237::_ID41068( "veh_collision", "veh_falling" );
 }
 
 _ID49659()
 {
-    var_0 = _func_1A1( "player_crashes_trigger", "script_noteworthy" );
+    var_0 = getent( "player_crashes_trigger", "script_noteworthy" );
 
     for (;;)
     {
         var_0 waittill( "trigger",  var_1  );
 
-        if ( !_func_02F( var_1 ) || !_func_1B3( var_1 ) )
+        if ( !isdefined( var_1 ) || !isplayernumber( var_1 ) )
             continue;
 
         if ( var_1._ID50001 == self )
@@ -655,7 +646,7 @@ _ID51130( var_0, var_1 )
 
     if ( _ID42237::_ID14385( "player_can_die_on_snowmobile" ) )
     {
-        if ( _func_1A7( self ) )
+        if ( isalive( self ) )
             _ID42407::_ID21321();
     }
 
@@ -670,9 +661,9 @@ _ID46907( var_0 )
     for (;;)
     {
         var_0 waittill( "third_person" );
-        _unknown_0F9A( var_0 );
+        _ID51371( var_0 );
         var_0 waittill( "first_person" );
-        _unknown_0F94( var_0 );
+        _ID45562( var_0 );
     }
 }
 
@@ -684,16 +675,16 @@ _ID53630( var_0, var_1 )
     for (;;)
     {
         var_0 waittill( var_1,  var_2  );
-        var_3 = _func_127( var_2, 0, 3 );
+        var_3 = getsubstr( var_2, 0, 3 );
 
         if ( var_3 == "ps_" )
         {
-            var_4 = _func_127( var_2, 3 );
+            var_4 = getsubstr( var_2, 3 );
 
-            if ( _func_02F( level._ID46698[var_4] ) )
+            if ( isdefined( level._ID46698[var_4] ) )
                 var_4 = level._ID46698[var_4];
 
-            var_0 _meth_80A1( var_4 );
+            var_0 playsound( var_4 );
             continue;
         }
     }
@@ -701,30 +692,30 @@ _ID53630( var_0, var_1 )
 
 _ID45562( var_0 )
 {
-    if ( _func_02F( var_0._ID45277 ) )
+    if ( isdefined( var_0._ID45277 ) )
         return;
 
-    var_0 _meth_80B8( level._ID49402 );
-    var_0 _meth_801D( level._ID46144, "tag_player" );
-    var_0 _meth_814C( var_0 _ID42407::_ID16120( "root" ), 0 );
+    var_0 setmodel( level._ID49402 );
+    var_0 attach( level._ID46144, "tag_player" );
+    var_0 clearanim( var_0 _ID42407::_ID16120( "root" ), 0 );
     var_0._ID45277 = 1;
-    thread _unknown_1036( var_0 );
+    thread _ID45386( var_0 );
 }
 
 _ID51371( var_0 )
 {
-    if ( !_func_02F( var_0._ID45277 ) )
+    if ( !isdefined( var_0._ID45277 ) )
         return;
 
-    if ( _func_02F( var_0._ID46302 ) )
+    if ( isdefined( var_0._ID46302 ) )
     {
-        var_0 _meth_802A( level._ID53252, "tag_weapon_left" );
+        var_0 detach( level._ID53252, "tag_weapon_left" );
         var_0._ID46302 = undefined;
     }
 
-    var_0 _meth_802A( level._ID46144, "tag_player" );
-    var_0 _meth_80B8( var_0._ID51001 );
-    var_0 _meth_814C( var_0 _ID42407::_ID16120( "root" ), 0 );
+    var_0 detach( level._ID46144, "tag_player" );
+    var_0 setmodel( var_0._ID51001 );
+    var_0 clearanim( var_0 _ID42407::_ID16120( "root" ), 0 );
     var_0._ID45277 = undefined;
     var_0 notify( "kill_anims" );
 }
@@ -734,14 +725,14 @@ _ID45386( var_0 )
     var_0 endon( "vehicle_dismount" );
     var_0 endon( "death" );
     var_0 endon( "kill_anims" );
-    childthread _unknown_10AB( var_0 );
-    childthread _unknown_13F8( var_0 );
-    childthread _unknown_1437( var_0 );
-    childthread _unknown_145E( var_0 );
-    childthread _unknown_14A7( var_0 );
-    childthread _unknown_14DB( var_0 );
-    childthread _unknown_152B( var_0 );
-    thread _unknown_1571( var_0 );
+    childthread _ID50116( var_0 );
+    childthread _ID47689( var_0 );
+    childthread _ID54013( var_0 );
+    childthread _ID48821( var_0 );
+    childthread _ID44846( var_0 );
+    childthread _ID51438( var_0 );
+    childthread _ID43855( var_0 );
+    thread _ID50993( var_0 );
 }
 
 _ID50116( var_0 )
@@ -753,57 +744,57 @@ _ID50116( var_0 )
     var_5 = var_4;
     var_6 = "left_cam";
     var_7 = "right_cam";
-    var_8[var_4]["L"] = _func_067( var_0 _ID42407::_ID16120( var_4 + "L" ) );
-    var_8[var_4]["R"] = _func_067( var_0 _ID42407::_ID16120( var_4 + "R" ) );
-    var_8[var_3]["L"] = _func_067( var_0 _ID42407::_ID16120( var_3 + "L" ) );
-    var_8[var_3]["R"] = _func_067( var_0 _ID42407::_ID16120( var_3 + "R" ) );
-    var_0 _meth_8155( var_0 _ID42407::_ID16120( "left_arm" ), 1.0, 0.0, 1.0 );
-    var_0 _meth_8155( var_0 _ID42407::_ID16120( "right_arm" ), 1.0, 0.0, 1.0 );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( var_5 + "L" ), 1.0, 0.5, 0.0 );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( var_5 + "R" ), 1.0, 0.5, 0.0 );
-    var_0 _meth_8120( var_0 _ID42407::_ID16120( var_5 + "L" ), 0.5 );
-    var_0 _meth_8120( var_0 _ID42407::_ID16120( var_5 + "R" ), 0.5 );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "gun_left_anim" ) );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "gun_right_anim" ) );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "gun_down_anim" ) );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "tilt_left_anim" ), 1.0, 0.0, 1.0 );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "tilt_right_anim" ), 1.0, 0.0, 1.0 );
+    var_8[var_4]["L"] = getanimlength( var_0 _ID42407::_ID16120( var_4 + "L" ) );
+    var_8[var_4]["R"] = getanimlength( var_0 _ID42407::_ID16120( var_4 + "R" ) );
+    var_8[var_3]["L"] = getanimlength( var_0 _ID42407::_ID16120( var_3 + "L" ) );
+    var_8[var_3]["R"] = getanimlength( var_0 _ID42407::_ID16120( var_3 + "R" ) );
+    var_0 setanim( var_0 _ID42407::_ID16120( "left_arm" ), 1.0, 0.0, 1.0 );
+    var_0 setanim( var_0 _ID42407::_ID16120( "right_arm" ), 1.0, 0.0, 1.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( var_5 + "L" ), 1.0, 0.5, 0.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( var_5 + "R" ), 1.0, 0.5, 0.0 );
+    var_0 setanimtime( var_0 _ID42407::_ID16120( var_5 + "L" ), 0.5 );
+    var_0 setanimtime( var_0 _ID42407::_ID16120( var_5 + "R" ), 0.5 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_left_anim" ) );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_right_anim" ) );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_down_anim" ) );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "tilt_left_anim" ), 1.0, 0.0, 1.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "tilt_right_anim" ), 1.0, 0.0, 1.0 );
 
     for (;;)
     {
         var_9 = var_2;
-        var_2 = var_0 _meth_8293() * -1.0;
+        var_2 = var_0 vehicle_getsteering() * -1.0;
 
-        if ( _func_02F( var_0._ID52700 ) )
+        if ( isdefined( var_0._ID52700 ) )
             var_2 = var_0._ID52700;
 
         var_10 = var_2 - var_9;
         var_11 = var_2;
         var_12 = var_0 _meth_8597();
-        var_11 = _func_0EE( var_11 / var_12, -1.0, 1.0 );
+        var_11 = clamp( var_11 / var_12, -1.0, 1.0 );
         var_13 = 0;
-        var_14["L"] = var_0 _meth_8159( var_0 _ID42407::_ID16120( var_5 + "L" ) );
-        var_14["R"] = var_0 _meth_8159( var_0 _ID42407::_ID16120( var_5 + "R" ) );
-        var_15 = _func_0C3( var_11 - -1.0 / -2.0 );
+        var_14["L"] = var_0 getanimtime( var_0 _ID42407::_ID16120( var_5 + "L" ) );
+        var_14["R"] = var_0 getanimtime( var_0 _ID42407::_ID16120( var_5 + "R" ) );
+        var_15 = abs( ( var_11 - -1.0 ) / -2.0 );
 
         if ( var_5 == "turn_right2left_" )
             var_15 = 1.0 - var_15;
 
-        var_15 = _func_0EE( var_15, 0.0, 1.0 );
+        var_15 = clamp( var_15, 0.0, 1.0 );
 
         if ( var_15 < var_14["L"] )
         {
             var_13 = 1;
             var_3 = var_5;
             var_4 = _ID42237::_ID37527( var_3 == "turn_left2right_", "turn_right2left_", "turn_left2right_" );
-            var_14["L"] = _func_0C3( 1.0 - var_14["L"] );
-            var_14["R"] = _func_0C3( 1.0 - var_14["R"] );
+            var_14["L"] = abs( 1.0 - var_14["L"] );
+            var_14["R"] = abs( 1.0 - var_14["R"] );
             var_15 = 1.0 - var_15;
         }
 
-        var_16 = _ID42366::_ID22384( _func_0C3( var_11 ), 0.0, 0.6, 0.0, 1.0 );
+        var_16 = _ID42366::_ID22384( abs( var_11 ), 0.0, 0.6, 0.0, 1.0 );
         var_16 *= var_16;
-        var_17 = var_0 _meth_8290();
+        var_17 = var_0 vehicle_getspeed();
         var_18 = _ID42366::_ID22384( var_17, 0.0, 80.0, 0.0, 1.0 );
         var_16 *= var_18;
         var_19 = "tilt_left";
@@ -815,69 +806,69 @@ _ID50116( var_0 )
             var_20 = "tilt_left";
         }
 
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( var_19 ), var_16, 1.0, 1.0 );
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( var_20 ), 0.0, 0.5, 1.0 );
-        var_15 = _func_0C3( var_11 - -1.0 / -2.0 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( var_19 ), var_16, 1.0, 1.0 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( var_20 ), 0.0, 0.5, 1.0 );
+        var_15 = abs( ( var_11 - -1.0 ) / -2.0 );
 
         if ( var_4 == "turn_right2left_" )
             var_15 = 1.0 - var_15;
 
-        var_15 = _func_0EE( var_15, 0.0, 1.0 );
-        var_21["L"] = _func_0C3( var_15 - var_14["L"] );
-        var_21["R"] = _func_0C3( var_15 - var_14["R"] );
-        var_22["L"] = _func_0C3( var_8[var_4]["L"] / 0.05 * var_21["L"] ) * 0.5;
-        var_22["R"] = _func_0C3( var_8[var_4]["R"] / 0.05 * var_21["R"] ) * 0.5;
+        var_15 = clamp( var_15, 0.0, 1.0 );
+        var_21["L"] = abs( var_15 - var_14["L"] );
+        var_21["R"] = abs( var_15 - var_14["R"] );
+        var_22["L"] = abs( var_8[var_4]["L"] / 0.05 * var_21["L"] ) * 0.5;
+        var_22["R"] = abs( var_8[var_4]["R"] / 0.05 * var_21["R"] ) * 0.5;
         var_23 = 0;
         var_24 = 0;
 
-        if ( _func_02F( var_0._ID49106 ) )
+        if ( isdefined( var_0._ID49106 ) )
         {
             if ( var_4 == "turn_right2left_" )
             {
                 var_25 = var_15 * 2 - 1;
-                var_23 = _func_0C3( _func_0EE( var_25, -1, 0 ) );
-                var_24 = _func_0EE( var_25, 0, 1 );
+                var_23 = abs( clamp( var_25, -1, 0 ) );
+                var_24 = clamp( var_25, 0, 1 );
             }
             else
             {
                 var_25 = var_15 * 2 - 1;
-                var_24 = _func_0C3( _func_0EE( var_25, -1, 0 ) );
-                var_23 = _func_0EE( var_25, 0, 1 );
+                var_24 = abs( clamp( var_25, -1, 0 ) );
+                var_23 = clamp( var_25, 0, 1 );
             }
         }
 
         var_26 = 3;
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( "gun_left" ), var_24, 0.05 * var_26 );
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( "gun_right" ), var_23, 0.05 * var_26 );
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( "gun_down" ), var_24, 0.05 * var_26 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_left" ), var_24, 0.05 * var_26 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_right" ), var_23, 0.05 * var_26 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_down" ), var_24, 0.05 * var_26 );
 
         if ( var_13 )
         {
-            var_0 _meth_814C( var_0 _ID42407::_ID16120( var_3 + "L" ), 0 );
-            var_0 _meth_814C( var_0 _ID42407::_ID16120( var_3 + "R" ), 0 );
-            var_0 _meth_8156( var_0 _ID42407::_ID16120( var_4 + "L" ), 1, 0.5, var_22["L"] );
-            var_0 _meth_8156( var_0 _ID42407::_ID16120( var_4 + "R" ), 1, 0.5, var_22["R"] );
-            var_0 _meth_8120( var_0 _ID42407::_ID16120( var_4 + "L" ), var_14["L"] );
-            var_0 _meth_8120( var_0 _ID42407::_ID16120( var_4 + "R" ), var_14["R"] );
+            var_0 clearanim( var_0 _ID42407::_ID16120( var_3 + "L" ), 0 );
+            var_0 clearanim( var_0 _ID42407::_ID16120( var_3 + "R" ), 0 );
+            var_0 setanimlimited( var_0 _ID42407::_ID16120( var_4 + "L" ), 1, 0.5, var_22["L"] );
+            var_0 setanimlimited( var_0 _ID42407::_ID16120( var_4 + "R" ), 1, 0.5, var_22["R"] );
+            var_0 setanimtime( var_0 _ID42407::_ID16120( var_4 + "L" ), var_14["L"] );
+            var_0 setanimtime( var_0 _ID42407::_ID16120( var_4 + "R" ), var_14["R"] );
         }
         else
         {
-            var_0 _meth_8156( var_0 _ID42407::_ID16120( var_4 + "L" ), 1, 0.5, var_22["L"] );
-            var_0 _meth_8156( var_0 _ID42407::_ID16120( var_4 + "R" ), 1, 0.5, var_22["R"] );
+            var_0 setanimlimited( var_0 _ID42407::_ID16120( var_4 + "L" ), 1, 0.5, var_22["L"] );
+            var_0 setanimlimited( var_0 _ID42407::_ID16120( var_4 + "R" ), 1, 0.5, var_22["R"] );
         }
 
         var_27 = _ID42237::_ID37527( var_11 < 0, 1, 0 );
         var_28 = _ID42237::_ID37527( var_11 > 0, 1, 0 );
-        var_29 = _ID42237::_ID37527( var_11 < 0, _func_0C3( var_11 ), 0 );
+        var_29 = _ID42237::_ID37527( var_11 < 0, abs( var_11 ), 0 );
         var_30 = _ID42237::_ID37527( var_11 > 0, var_11, 0 );
-        var_31 = var_0 _meth_8159( var_0 _ID42407::_ID16120( var_6 ) );
-        var_32 = var_0 _meth_8159( var_0 _ID42407::_ID16120( var_7 ) );
-        var_33 = _func_067( var_0 _ID42407::_ID16120( var_6 ) ) / 0.05 * var_29 - var_31 * 0.25;
-        var_34 = _func_067( var_0 _ID42407::_ID16120( var_7 ) ) / 0.05 * var_30 - var_32 * 0.25;
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( var_6 ), 1, 0.5, var_33 );
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( var_7 ), 1, 0.5, var_34 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "camera_left" ), var_27, 0.5 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "camera_right" ), var_28, 0.5 );
+        var_31 = var_0 getanimtime( var_0 _ID42407::_ID16120( var_6 ) );
+        var_32 = var_0 getanimtime( var_0 _ID42407::_ID16120( var_7 ) );
+        var_33 = getanimlength( var_0 _ID42407::_ID16120( var_6 ) ) / 0.05 * ( var_29 - var_31 ) * 0.25;
+        var_34 = getanimlength( var_0 _ID42407::_ID16120( var_7 ) ) / 0.05 * ( var_30 - var_32 ) * 0.25;
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( var_6 ), 1, 0.5, var_33 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( var_7 ), 1, 0.5, var_34 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "camera_left" ), var_27, 0.5 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "camera_right" ), var_28, 0.5 );
         var_5 = var_4;
         wait 0.05;
     }
@@ -885,24 +876,24 @@ _ID50116( var_0 )
 
 _ID51581( var_0, var_1 )
 {
-    var_2 = var_0 _meth_818C( "tag_flash" );
-    self _meth_80B4( "pistol_fire_auto" );
-    _func_1C8( level._ID51509, var_2, var_1, self );
-    _func_157( level._ID54009, var_0, "tag_flash" );
-    _func_157( level._ID52280, var_0, "tag_brass" );
+    var_2 = var_0 gettagorigin( "tag_flash" );
+    self playrumblelooponentity( "pistol_fire_auto" );
+    magicbullet( level._ID51509, var_2, var_1, self );
+    playfxontag( level._ID54009, var_0, "tag_flash" );
+    playfxontag( level._ID52280, var_0, "tag_brass" );
 }
 
 _ID48564( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
     var_0 endon( var_2 );
-    var_0 _meth_811C( var_1, var_0 _ID42407::_ID16120( var_3 ), 0.001, 0.08, 1.0 );
-    var_0 _meth_811C( var_1, var_0 _ID42407::_ID16120( var_4 ), 0.001, 0.08, 1.0 );
-    var_0 _meth_811C( var_1, var_0 _ID42407::_ID16120( var_5 ), 0.001, 0.08, 1.0 );
+    var_0 setflaggedanimrestart( var_1, var_0 _ID42407::_ID16120( var_3 ), 0.001, 0.08, 1.0 );
+    var_0 setflaggedanimrestart( var_1, var_0 _ID42407::_ID16120( var_4 ), 0.001, 0.08, 1.0 );
+    var_0 setflaggedanimrestart( var_1, var_0 _ID42407::_ID16120( var_5 ), 0.001, 0.08, 1.0 );
 
     for (;;)
     {
-        var_6 = var_0 _meth_8293() * -1.0;
-        var_6 = _func_0EE( var_6, -1.0, 1.0 );
+        var_6 = var_0 vehicle_getsteering() * -1.0;
+        var_6 = clamp( var_6, -1.0, 1.0 );
 
         if ( var_6 >= 0.0 )
         {
@@ -917,50 +908,45 @@ _ID48564( var_0, var_1, var_2, var_3, var_4, var_5 )
             var_9 = 0.001;
         }
 
-        var_0 _meth_811A( var_1, var_0 _ID42407::_ID16120( var_3 ), var_7, 0.08, 1.0 );
-        var_0 _meth_811A( var_1, var_0 _ID42407::_ID16120( var_4 ), var_8, 0.08, 1.0 );
-        var_0 _meth_811A( var_1, var_0 _ID42407::_ID16120( var_5 ), var_9, 0.08, 1.0 );
+        var_0 setflaggedanim( var_1, var_0 _ID42407::_ID16120( var_3 ), var_7, 0.08, 1.0 );
+        var_0 setflaggedanim( var_1, var_0 _ID42407::_ID16120( var_4 ), var_8, 0.08, 1.0 );
+        var_0 setflaggedanim( var_1, var_0 _ID42407::_ID16120( var_5 ), var_9, 0.08, 1.0 );
         wait 0.05;
     }
 }
 
 _ID20608()
 {
-    if ( !level._ID8534 && !level._ID794 _meth_835B() )
-        return self _meth_8348();
+    if ( !level._ID8534 && !level._ID794 _meth_835b() )
+        return self attackbuttonpressed();
 
     return self _meth_8108();
 }
 
 _ID45584( var_0 )
 {
-    var_0 _meth_814E( var_0 _ID42407::_ID16120( "gun_pullout_root" ), 1.0, 0.0, 1.0 );
-    childthread _unknown_197E( var_0, "pullout_anim", "pullout_done", "gun_pullout_L", "gun_pullout", "gun_pullout_R" );
+    var_0 setanimknoblimited( var_0 _ID42407::_ID16120( "gun_pullout_root" ), 1.0, 0.0, 1.0 );
+    childthread _ID48564( var_0, "pullout_anim", "pullout_done", "gun_pullout_L", "gun_pullout", "gun_pullout_R" );
     var_0._ID49106 = 1;
     var_0 waittillmatch( "pullout_anim",  "attach_gun"  );
-    var_0 _meth_801D( level._ID53252, "tag_weapon_left" );
+    var_0 attach( level._ID53252, "tag_weapon_left" );
     var_1 = [];
     var_1["TAG_EOTECH"] = 1;
     var_1["TAG_RAIL"] = 1;
     var_1["TAG_RED_DOT"] = 1;
     var_1["TAG_SILENCER"] = 1;
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_0 _meth_804E( var_4 );
-    }
+    foreach ( var_4, var_3 in var_1 )
+        var_0 hidepart( var_4 );
 
-    var_clear_2
     var_0._ID46302 = 1;
     var_0 waittillmatch( "pullout_anim",  "end"  );
     var_0 notify( "pullout_done" );
-    var_0 _meth_8155( var_0 _ID42407::_ID16120( "glock" ), 1.0, 0.0, 1.0 );
-    var_0 _meth_814E( var_0 _ID42407::_ID16120( "gun_idle" ), 1.0, 0.0, 1.0 );
+    var_0 setanim( var_0 _ID42407::_ID16120( "glock" ), 1.0, 0.0, 1.0 );
+    var_0 setanimknoblimited( var_0 _ID42407::_ID16120( "gun_idle" ), 1.0, 0.0, 1.0 );
     var_0._ID47443 = 1.0;
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "aim_left_anim" ) );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "aim_right_anim" ) );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "aim_left_anim" ) );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "aim_right_anim" ) );
     var_5 = 0;
     var_6 = 6;
     var_7 = [];
@@ -971,69 +957,69 @@ _ID45584( var_0 )
         if ( var_0._ID47443 <= 0.0 )
             break;
 
-        var_9 = _unknown_1AB8();
+        var_9 = _ID20608();
         var_10 = undefined;
-        var_11 = var_0 _meth_818C( "tag_flash" );
+        var_11 = var_0 gettagorigin( "tag_flash" );
 
-        if ( _func_1A7( self._ID48892 ) )
-            var_10 = self._ID48892 _meth_80AF();
+        if ( isalive( self._ID48892 ) )
+            var_10 = self._ID48892 geteye();
         else
         {
-            var_12 = _func_11F( self._ID65 );
+            var_12 = anglestoforward( self._ID65 );
             var_10 = var_11 + var_12 * 1500;
         }
 
-        var_13 = _func_11B( var_10 - var_11 );
-        var_14 = _func_0EF( self._ID65[1] );
+        var_13 = vectortoyaw( var_10 - var_11 );
+        var_14 = angleclamp( self._ID65[1] );
         var_15 = 20;
-        var_16 = _func_0F0( var_13 - var_14 );
+        var_16 = angleclamp180( var_13 - var_14 );
         var_7[var_5 % var_6] = var_16;
         var_17 = _ID42237::_ID44103( var_7 );
-        var_18 = _func_0EE( var_17 / var_15, 0, 1 );
-        var_19 = _func_0C3( _func_0EE( var_17 / var_15, -1, 0 ) );
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( "aim_right" ), var_19, var_8 );
-        var_0 _meth_8156( var_0 _ID42407::_ID16120( "aim_left" ), var_18, var_8 );
+        var_18 = clamp( var_17 / var_15, 0, 1 );
+        var_19 = abs( clamp( var_17 / var_15, -1, 0 ) );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( "aim_right" ), var_19, var_8 );
+        var_0 setanimlimited( var_0 _ID42407::_ID16120( "aim_left" ), var_18, var_8 );
         var_5++;
 
         if ( var_9 && var_0._ID49107 > 0 )
         {
             _ID42407::_ID13025( "player_shot_on_snowmobile" );
-            var_0 _meth_8117( "fire_anim", var_0 _ID42407::_ID16120( "gun_fire" ), 1.0, 0.0, 1.0 );
+            var_0 setflaggedanimknoblimitedrestart( "fire_anim", var_0 _ID42407::_ID16120( "gun_fire" ), 1.0, 0.0, 1.0 );
 
             if ( var_0._ID49107 == 1 )
-                var_0 _meth_8150( var_0 _ID42407::_ID16120( "glock_last_fire" ), 1.0, 0.0, 1.0 );
+                var_0 setanimknoblimitedrestart( var_0 _ID42407::_ID16120( "glock_last_fire" ), 1.0, 0.0, 1.0 );
             else
-                var_0 _meth_8150( var_0 _ID42407::_ID16120( "glock_fire" ), 1.0, 0.0, 1.0 );
+                var_0 setanimknoblimitedrestart( var_0 _ID42407::_ID16120( "glock_fire" ), 1.0, 0.0, 1.0 );
 
-            _unknown_1B56( var_0, var_10 );
+            _ID51581( var_0, var_10 );
             wait 0.05;
 
-            if ( !_func_03A( "player_sustainAmmo" ) )
+            if ( !getdvarint( "player_sustainAmmo" ) )
                 var_0._ID49107 = var_0._ID49107 - 1;
 
             var_0._ID47443 = 1.0;
         }
         else if ( var_0._ID49107 <= 0 )
         {
-            var_0 _meth_8117( "reload_anim", var_0 _ID42407::_ID16120( "gun_reload" ), 1.0, 0.0, 1.0 );
-            var_0 _meth_8150( var_0 _ID42407::_ID16120( "glock_reload" ), 1.0, 0.0, 1.0 );
+            var_0 setflaggedanimknoblimitedrestart( "reload_anim", var_0 _ID42407::_ID16120( "gun_reload" ), 1.0, 0.0, 1.0 );
+            var_0 setanimknoblimitedrestart( var_0 _ID42407::_ID16120( "glock_reload" ), 1.0, 0.0, 1.0 );
             var_0 waittillmatch( "reload_anim",  "end"  );
             var_0._ID49107 = 32;
             var_0._ID47443 = 1.0;
         }
         else
         {
-            var_0 _meth_814E( var_0 _ID42407::_ID16120( "gun_idle" ), 1.0, 0.0, 1.0 );
+            var_0 setanimknoblimited( var_0 _ID42407::_ID16120( "gun_idle" ), 1.0, 0.0, 1.0 );
             var_0._ID47443 = var_0._ID47443 - 0.05;
         }
 
         wait 0.05;
     }
 
-    var_0 _meth_814E( var_0 _ID42407::_ID16120( "gun_putaway_root" ), 1.0, 0.0, 1.0 );
-    childthread _unknown_1C40( var_0, "putaway_anim", "putaway_done", "gun_putaway_L", "gun_putaway", "gun_putaway_R" );
+    var_0 setanimknoblimited( var_0 _ID42407::_ID16120( "gun_putaway_root" ), 1.0, 0.0, 1.0 );
+    childthread _ID48564( var_0, "putaway_anim", "putaway_done", "gun_putaway_L", "gun_putaway", "gun_putaway_R" );
     var_0 waittillmatch( "putaway_anim",  "detach_gun"  );
-    var_0 _meth_802A( level._ID53252, "tag_weapon_left" );
+    var_0 detach( level._ID53252, "tag_weapon_left" );
     var_0._ID46302 = undefined;
     var_0 waittillmatch( "putaway_anim",  "stop_steering_additives"  );
     var_0._ID49106 = undefined;
@@ -1045,23 +1031,23 @@ _ID45584( var_0 )
 _ID47689( var_0 )
 {
     self endon( "death" );
-    var_0 _meth_8155( var_0 _ID42407::_ID16120( "drive_left_arm" ), 1.0, 0.1, 1.0 );
-    var_0 _meth_8155( var_0 _ID42407::_ID16120( "shoot_left_arm" ), 0.0, 0.1, 1.0 );
+    var_0 setanim( var_0 _ID42407::_ID16120( "drive_left_arm" ), 1.0, 0.1, 1.0 );
+    var_0 setanim( var_0 _ID42407::_ID16120( "shoot_left_arm" ), 0.0, 0.1, 1.0 );
 
     for (;;)
     {
-        var_1 = _unknown_1D10();
+        var_1 = _ID20608();
 
         if ( var_1 )
         {
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "drive_left_arm" ), 0.001, 0.1, 1.0 );
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "shoot_left_arm" ), 1.0, 0.1, 1.0 );
-            childthread _unknown_1D4D( var_0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "drive_left_arm" ), 0.001, 0.1, 1.0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "shoot_left_arm" ), 1.0, 0.1, 1.0 );
+            childthread _ID45584( var_0 );
             var_0 waittill( "drive_shooting_done" );
         }
 
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "drive_left_arm" ), 1.0, 0.1, 1.0 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "shoot_left_arm" ), 0.0, 0.1, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "drive_left_arm" ), 1.0, 0.1, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "shoot_left_arm" ), 0.0, 0.1, 1.0 );
         wait 0.05;
     }
 }
@@ -1070,7 +1056,7 @@ _ID54013( var_0 )
 {
     for (;;)
     {
-        var_1 = var_0 _meth_8290();
+        var_1 = var_0 vehicle_getspeed();
         var_2 = var_1 / 65.0;
 
         if ( var_2 > 1.0 )
@@ -1078,8 +1064,8 @@ _ID54013( var_0 )
 
         var_3 = 0.75 * var_2 + 0.75;
         var_4 = 0.9 * var_2 + 0.1;
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "sleeve_pose" ), 1.0 - var_4, 0.5, var_3 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "sleeve_flapping" ), var_4, 0.5, var_3 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "sleeve_pose" ), 1.0 - var_4, 0.5, var_3 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "sleeve_flapping" ), var_4, 0.5, var_3 );
         wait 0.05;
     }
 }
@@ -1088,7 +1074,7 @@ _ID48821( var_0 )
 {
     for (;;)
     {
-        var_1 = var_0 _meth_8290();
+        var_1 = var_0 vehicle_getspeed();
         var_2 = var_1 / 180.0;
 
         if ( var_2 > 1.0 )
@@ -1097,16 +1083,16 @@ _ID48821( var_0 )
         if ( var_2 < 0.5 )
         {
             var_3 = var_2 / 0.5;
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "speedometer_0" ), 1.0 - var_3, 0.1, 1.0 );
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "speedometer_90" ), var_3, 0.1, 1.0 );
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "speedometer_180" ), 0.0, 0.1, 1.0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "speedometer_0" ), 1.0 - var_3, 0.1, 1.0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "speedometer_90" ), var_3, 0.1, 1.0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "speedometer_180" ), 0.0, 0.1, 1.0 );
         }
         else
         {
-            var_3 = var_2 - 0.5 / 0.5;
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "speedometer_0" ), 0.0, 0.1, 1.0 );
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "speedometer_90" ), 1.0 - var_3, 0.1, 1.0 );
-            var_0 _meth_8155( var_0 _ID42407::_ID16120( "speedometer_180" ), var_3, 0.1, 1.0 );
+            var_3 = ( var_2 - 0.5 ) / 0.5;
+            var_0 setanim( var_0 _ID42407::_ID16120( "speedometer_0" ), 0.0, 0.1, 1.0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "speedometer_90" ), 1.0 - var_3, 0.1, 1.0 );
+            var_0 setanim( var_0 _ID42407::_ID16120( "speedometer_180" ), var_3, 0.1, 1.0 );
         }
 
         wait 0.05;
@@ -1120,17 +1106,17 @@ _ID44846( var_0 )
     for (;;)
     {
         var_2 = var_1;
-        var_1 = var_0 _meth_8294();
+        var_1 = var_0 vehicle_getthrottle();
 
         if ( var_1 > var_2 || var_1 == 1.0 )
         {
             var_3 = 0.2;
-            var_4 = var_1 - 0.3 + _func_0B8( 0.6 );
+            var_4 = var_1 - 0.3 + randomfloat( 0.6 );
         }
         else
         {
             var_3 = 1.3;
-            var_4 = var_1 - 0.8 + _func_0B8( 1.6 );
+            var_4 = var_1 - 0.8 + randomfloat( 1.6 );
         }
 
         if ( var_4 < 0.0 )
@@ -1138,40 +1124,40 @@ _ID44846( var_0 )
         else if ( var_4 > 1.0 )
             var_4 = 1.0;
 
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "rpm_min" ), 1.0 - var_4, var_3, 1.0 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "rpm_max" ), var_4, var_3, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "rpm_min" ), 1.0 - var_4, var_3, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "rpm_max" ), var_4, var_3, 1.0 );
         wait 0.05;
     }
 }
 
 _ID51438( var_0 )
 {
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "throttle" ), 1.0, 0.0, 1.0 );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "throttle_left" ), 1.0, 0.0, 1.0 );
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "throttle_right" ), 1.0, 0.0, 1.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "throttle" ), 1.0, 0.0, 1.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "throttle_left" ), 1.0, 0.0, 1.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "throttle_right" ), 1.0, 0.0, 1.0 );
 
     for (;;)
     {
-        var_1 = var_0 _meth_8294();
-        var_2 = var_0 _meth_8293() * -1.0;
-        var_2 = _func_0EE( var_2, -1.0, 1.0 );
+        var_1 = var_0 vehicle_getthrottle();
+        var_2 = var_0 vehicle_getsteering() * -1.0;
+        var_2 = clamp( var_2, -1.0, 1.0 );
 
         if ( var_2 >= 0.0 )
         {
-            var_3 = var_1 * 1.0 - var_2;
+            var_3 = var_1 * ( 1.0 - var_2 );
             var_4 = 0.0;
             var_5 = var_1 * var_2;
         }
         else
         {
-            var_3 = var_1 * 1.0 + var_2;
+            var_3 = var_1 * ( 1.0 + var_2 );
             var_4 = var_1 * var_2 * -1.0;
             var_5 = 0.0;
         }
 
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "throttle_add" ), var_3, 0.08, 1.0 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "throttle_add_left" ), var_4, 0.08, 1.0 );
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "throttle_add_right" ), var_5, 0.08, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "throttle_add" ), var_3, 0.08, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "throttle_add_left" ), var_4, 0.08, 1.0 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "throttle_add_right" ), var_5, 0.08, 1.0 );
         wait 0.05;
     }
 }
@@ -1181,7 +1167,7 @@ _ID43855( var_0 )
     var_0._ID45343 = 0.0;
     var_0._ID51423 = 0.0;
     var_0._ID45536 = 0.0;
-    var_0 _meth_8156( var_0 _ID42407::_ID16120( "hand_shake_loop_anim" ), 1.0, 0.0, 1.0 );
+    var_0 setanimlimited( var_0 _ID42407::_ID16120( "hand_shake_loop_anim" ), 1.0, 0.0, 1.0 );
 
     for (;;)
     {
@@ -1190,7 +1176,7 @@ _ID43855( var_0 )
 
         if ( !var_0._ID43666 )
         {
-            var_3 = var_0 _meth_8290();
+            var_3 = var_0 vehicle_getspeed();
 
             if ( var_3 > 85.0 )
             {
@@ -1198,24 +1184,24 @@ _ID43855( var_0 )
                 var_2 = _ID42366::_ID22384( var_3, 85.0, 180.0, 0.2, 0.5 );
             }
 
-            if ( var_3 > 20.0 && _func_03D() < var_0._ID45343 )
+            if ( var_3 > 20.0 && gettime() < var_0._ID45343 )
             {
                 var_1 += var_0._ID51423;
                 var_2 += var_0._ID45536;
             }
 
-            var_1 = _func_0C4( var_1, 0.75 );
-            var_2 = _func_0C4( var_2, 0.7 );
+            var_1 = min( var_1, 0.75 );
+            var_2 = min( var_2, 0.7 );
         }
 
-        var_0 _meth_8155( var_0 _ID42407::_ID16120( "hand_shake_loop" ), var_1, 0.2, var_2 );
+        var_0 setanim( var_0 _ID42407::_ID16120( "hand_shake_loop" ), var_1, 0.2, var_2 );
         wait 0.05;
     }
 }
 
 _ID50993( var_0 )
 {
-    if ( _func_1B3( self ) && !_func_02F( self._ID43979 ) )
+    if ( isplayernumber( self ) && !isdefined( self._ID43979 ) )
     {
         self._ID49208 = _ID42313::_ID50939( "h2_snowmobile_speed_blur_corners", 1.0, 180, 240, self );
         self._ID43979 = _ID42313::_ID9125( "h2_snowmobile_speed_blur", 0.0, self );
@@ -1228,36 +1214,30 @@ _ID50993( var_0 )
 
     for (;;)
     {
-        if ( _func_02F( var_0._ID43555 ) && var_0._ID43555 || !_func_1A7( self ) || _ID42237::_ID14385( "fade_to_death" ) )
+        if ( isdefined( var_0._ID43555 ) && var_0._ID43555 || !isalive( self ) || _ID42237::_ID14385( "fade_to_death" ) )
         {
             if ( var_3 == 0 )
             {
-                var_3 = _func_03D();
+                var_3 = gettime();
                 var_4 = var_2;
             }
 
-            var_5 = _func_03D() - var_3 / 500;
-            var_5 = _func_0C4( var_5, 1.0 );
+            var_5 = ( gettime() - var_3 ) / 500;
+            var_5 = min( var_5, 1.0 );
             var_5 = 1.0 - var_5 * var_5;
             var_2 = var_4 * var_5;
         }
         else
         {
-            var_2 = _func_0EE( var_0 _meth_8290() - 110 / var_1, 0, 1 );
+            var_2 = clamp( ( var_0 vehicle_getspeed() - 110 ) / var_1, 0, 1 );
             var_3 = 0;
         }
 
         self._ID43979._ID55 = var_2;
-        var_6 = self._ID49208._ID7488;
 
-        for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
-        {
-            var_7 = var_6[var_8];
+        foreach ( var_7 in self._ID49208._ID7488 )
             var_7._ID55 = var_2;
-        }
 
-        var_clear_2
-        var_clear_0
         wait 0.05;
     }
 }
@@ -1353,23 +1333,23 @@ _ID53742()
 
 _ID47481()
 {
-    return level._ID794 _unknown_2C74();
+    return level._ID794 _ID44503();
 }
 
 _ID43628()
 {
-    return level._ID27742 _unknown_2C7C();
+    return level._ID27742 _ID44503();
 }
 
 _ID44503()
 {
-    if ( _func_02F( self._ID49400 ) )
+    if ( isdefined( self._ID49400 ) )
         return 1;
 
-    if ( _func_02F( level._ID43179 ) )
+    if ( isdefined( level._ID43179 ) )
         return 1;
 
-    if ( !_func_02F( self._ID40065 ) )
+    if ( !isdefined( self._ID40065 ) )
         return 1;
 
     if ( _ID42407::_ID13023( "finish_line" ) && _ID42407::_ID13019( "finish_line" ) )
@@ -1380,17 +1360,17 @@ _ID44503()
 
 _ID45276()
 {
-    return level._ID794 _unknown_2CD9();
+    return level._ID794 _ID53176();
 }
 
 _ID45606()
 {
-    return level._ID27742 _unknown_2CE1();
+    return level._ID27742 _ID53176();
 }
 
 _ID53176()
 {
-    if ( !_func_02F( self._ID40065 ) )
+    if ( !isdefined( self._ID40065 ) )
         return 1;
 
     return self._ID40065._ID1276 > 10;
@@ -1398,12 +1378,12 @@ _ID53176()
 
 _ID45731( var_0 )
 {
-    if ( !_func_02F( self._ID45830 ) )
+    if ( !isdefined( self._ID45830 ) )
         self._ID45830 = [];
 
-    if ( !_func_02F( self._ID45830[var_0] ) )
+    if ( !isdefined( self._ID45830[var_0] ) )
     {
         self._ID45830[var_0] = 1;
-        self _meth_801D( var_0, "tag_window_break" );
+        self attach( var_0, "tag_window_break" );
     }
 }

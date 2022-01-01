@@ -15,30 +15,24 @@ _ID50320()
     maps\airport_lighting::_ID616();
     _ID42289::_ID521();
     _ID42287::_ID521();
-    var_0 = _func_1A2( "script_model", "classname" );
-    var_1 = var_0;
+    var_0 = getentarray( "script_model", "classname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        var_2 _meth_805A();
-    }
+    foreach ( var_2 in var_0 )
+        var_2 hide();
 
-    var_clear_2
-    var_clear_0
-    thread _unknown_0077();
+    thread _ID49243();
 }
 
 _ID49243()
 {
     var_0 = ( 5358.4, 2161.7, 308.9 );
     var_1 = ( 12.6, 161.5, 0 );
-    level._ID794 _meth_8343( var_0 );
-    level._ID794 _meth_8345( var_1 );
-    level._ID794 _meth_8032( 95, 0.1 );
+    level._ID794 setorigin( var_0 );
+    level._ID794 setplayerangles( var_1 );
+    level._ID794 lerpfov( 95, 0.1 );
     level._ID794._ID511 = 1;
-    _func_0DB( "hud_drawhud", 0 );
+    setsaveddvar( "hud_drawhud", 0 );
     level _ID42407::_ID40561( "airport", 0 );
     level._ID794 _ID42407::_ID40561( "airport", 0 );
-    level._ID794 _meth_83CD( "airport" );
+    level._ID794 lightset( "airport" );
 }

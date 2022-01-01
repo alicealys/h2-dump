@@ -4,19 +4,12 @@
 
 _ID616( var_0 )
 {
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
         level._ID12262 = var_0;
-        var_1 = var_0;
 
-        for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-        {
-            var_2 = var_1[var_3];
+        foreach ( var_2 in var_0 )
             level._ID30908[var_2] = var_2;
-        }
-
-        var_clear_2
-        var_clear_0
     }
 
     level._ID30895["generic"]["DRS_sprint"] = %sprint1_loop;

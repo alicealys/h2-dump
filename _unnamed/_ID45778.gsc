@@ -7,8 +7,8 @@ _ID616()
     _ID42358::_ID1942( "generic" );
     level._ID30895["generic"]["sit_load_ak_idle"][0] = %sitting_guard_loadak_idle;
     level._ID30895["generic"]["sit_load_ak_react"] = %sitting_guard_loadak_react1;
-    _ID42259::_ID2058( "generic", "detach clip left", ::_unknown_004E, "sit_load_ak_react" );
-    _unknown_0064();
+    _ID42259::_ID2058( "generic", "detach clip left", ::_ID50354, "sit_load_ak_react" );
+    _ID31296();
 }
 
 _ID50354( var_0 )

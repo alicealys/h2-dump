@@ -3,24 +3,24 @@
 
 _ID616()
 {
-    _unknown_0019();
-    _unknown_0059();
-    _unknown_01A7();
-    _unknown_0547();
-    _unknown_09FE();
-    _unknown_08A6();
-    _unknown_093E();
-    _unknown_0958();
-    _unknown_0982();
-    _unknown_09B3();
-    _unknown_09A3();
-    _unknown_0A39();
-    _unknown_0988();
-    _unknown_0A5C();
-    _unknown_0A6D();
-    _unknown_0A8B();
-    _unknown_0A3B();
-    thread _unknown_005A();
+    _ID52819();
+    _ID50500();
+    _ID3197();
+    _ID10742();
+    _ID48809();
+    _ID27230();
+    _ID43088();
+    _ID46517();
+    _ID47964();
+    _ID51458();
+    _ID53960();
+    _ID50163();
+    _ID40319();
+    weapon_anims();
+    _ID921();
+    animated_palette();
+    _ID51444();
+    thread audio_anim();
 }
 
 _ID52819()
@@ -117,7 +117,7 @@ _ID3197()
     level._ID30895["generic"]["bored_cell_loop"][0] = %patrol_bored_idle_cellphone;
     level._ID30895["generic"]["oilrig_balcony_smoke_idle"][0] = %h2_oilrig_smoker_idle;
     level._ID30895["generic"]["railing_death"] = %h2_oilrig_smoker_death;
-    _ID42259::_ID2058( "generic", "detach_hat", ::_unknown_0F72, "railing_death", ( 0, 0, 0 ) );
+    _ID42259::_ID2058( "generic", "detach_hat", ::helmetpop_wrapper, "railing_death", ( 0, 0, 0 ) );
     _ID42259::_ID2058( "generic", "detach cig", _ID42358::_ID10617 );
     level._ID30895["generic"]["pronehide_dive"] = %hunted_dive_2_pronehide_v1;
     level._ID30895["generic"]["pronehide_idle"][0] = %hunted_pronehide_idle_v1;
@@ -241,8 +241,8 @@ _ID3197()
     level._ID30895["generic"]["takedown_room1Alt_soldier"] = %h2_room1alt_takedown_soldier;
     level._ID30895["generic"]["takedown_room1Alt_soldier_idle"][0] = %h2_room1alt_takedown_soldier_idle;
     _ID42259::_ID2058( "generic", "takedown", maps\oilrig_aud::_ID48358, "takedown_room2A_soldier1" );
-    _ID42259::_ID2058( "generic", "open_door", ::_unknown_1971, "takedown_room2A_soldier1_part2A", "doorOpen1" );
-    _ID42259::_ID2058( "generic", "open_door", ::_unknown_1988, "takedown_room2B_soldier2_part2B", "doorOpen2" );
+    _ID42259::_ID2058( "generic", "open_door", ::_ID25891, "takedown_room2A_soldier1_part2A", "doorOpen1" );
+    _ID42259::_ID2058( "generic", "open_door", ::_ID25891, "takedown_room2B_soldier2_part2B", "doorOpen2" );
     level._ID30895["generic"]["c4bodywall"] = %h2_oilrig_hidingthec4_c4bodywall_deadbody;
     level._ID30895["generic"]["c4bodyground"] = %h2_oilrig_hidingthec4_c4bodyground_deadbody;
     level._ID30895["generic"]["c4bodyground2"] = %h2_oilrig_hidingthec4_c4bodyground2_deadbody;
@@ -374,9 +374,9 @@ _ID10742()
     level._ID30908["oilrig_nsl_ambushthem"] = "oilrig_nsl_ambushthem";
     level._ID30908["oilrig_nsl_elevatedposwait"] = "oilrig_nsl_elevatedposwait";
     level._ID30908["oilrig_nsl_holdfire"] = "oilrig_nsl_holdfire";
-    _ID42259::_ID2058( "generic", "soap_scaffold_vo_01", ::_unknown_1FD5, "soap_go_up_scaffolding", "oilrig_nsl_holdfire" );
+    _ID42259::_ID2058( "generic", "soap_scaffold_vo_01", ::soap_scaffold_vo, "soap_go_up_scaffolding", "oilrig_nsl_holdfire" );
     level._ID30908["oilrig_nsl_standby1"] = "oilrig_nsl_standby1";
-    _ID42259::_ID2058( "generic", "soap_scaffold_vo_02", ::_unknown_1FF7, "soap_go_up_scaffolding", "oilrig_nsl_standby1" );
+    _ID42259::_ID2058( "generic", "soap_scaffold_vo_02", ::soap_scaffold_vo, "soap_go_up_scaffolding", "oilrig_nsl_standby1" );
     level._ID30908["oilrig_nsl_standby2"] = "oilrig_nsl_standby2";
     level._ID30895["soap"]["oilrig_nsl_standby2"] = %h2_oilrig_soap_standbyvo;
     level._ID30908["oilrig_mrc3_alarm"] = "oilrig_mrc3_alarm";
@@ -490,7 +490,7 @@ _ID27230()
     level._ID30895["worldbody"]["c4bodywall"] = %h2_oilrig_hidingthec4_c4bodywall_player;
     level._ID30895["worldbody"]["c4bodyground"] = %h2_oilrig_hidingthec4_c4bodyground_player;
     level._ID30895["worldbody"]["c4bodyground2"] = %h2_oilrig_hidingthec4_c4bodyground2_player;
-    _ID42259::_ID2058( "worldbody", "c4_detach", ::_unknown_23DB );
+    _ID42259::_ID2058( "worldbody", "c4_detach", ::_ID48187 );
     level._ID30895["worldbody"]["escape_in"] = %h2_oilrig_helipad_escape_player_in_alt;
     level._ID30895["worldbody"]["escape_idle"][0] = %h2_oilrig_helipad_escape_player_idle;
     level._ID30895["worldbody"]["escape_departure"] = %h2_oilrig_helipad_escape_player_departure;
@@ -499,12 +499,12 @@ _ID27230()
 
 _ID48187( var_0 )
 {
-    level._ID794._ID49479._ID740 = var_0 _meth_818C( "tag_weapon_left" );
-    level._ID794._ID49479._ID65 = var_0 _meth_818D( "tag_weapon_left" );
+    level._ID794._ID49479._ID740 = var_0 gettagorigin( "tag_weapon_left" );
+    level._ID794._ID49479._ID65 = var_0 gettagangles( "tag_weapon_left" );
     level._ID794._ID49479._ID25567 = level._ID794._ID49479._ID740;
     waittillframeend;
-    var_0 _meth_802A( "weapon_c4", "tag_weapon_left" );
-    level._ID794._ID49479 _meth_8059();
+    var_0 detach( "weapon_c4", "tag_weapon_left" );
+    level._ID794._ID49479 show();
 }
 #using_animtree("vehicles");
 
@@ -544,7 +544,7 @@ _ID47964()
 _ID53960()
 {
     level._ID30895["generic"]["smoker_takedown"] = %h2_oilrig_smoker_takedown_npc;
-    _ID42259::_ID2058( "generic", "detach_hat", ::_unknown_2622, "smoker_takedown", ( 0, 0, 0 ) );
+    _ID42259::_ID2058( "generic", "detach_hat", ::helmetpop_wrapper, "smoker_takedown", ( 0, 0, 0 ) );
 }
 
 helmetpop_wrapper( var_0, var_1 )
@@ -578,12 +578,12 @@ _ID51458()
 _ID44366( var_0, var_1, var_2, var_3 )
 {
     var_4 = _ID42407::_ID35028( var_0 );
-    var_4 _meth_805A();
+    var_4 hide();
     var_2 _ID42259::_ID3018( var_4, var_1 );
     _ID42237::_ID14413( var_3 );
-    var_4 _meth_8059();
+    var_4 show();
     var_2 _ID42259::_ID3111( var_4, var_1 );
-    var_4 _meth_805A();
+    var_4 hide();
 }
 
 _ID48809()
@@ -597,7 +597,7 @@ _ID51444()
 {
     level._ID43404 = [];
     level._ID43404 = _ID42237::_ID3293( level._ID43404, "exploder_script_model" );
-    _unknown_280C();
+    _ID47863();
 }
 
 _ID47863()
@@ -632,7 +632,7 @@ _ID921()
 
 _ID25891( var_0, var_1 )
 {
-    var_2 = _func_1A1( "door_deck1_animated", "targetname" );
+    var_2 = getent( "door_deck1_animated", "targetname" );
     var_2 thread _ID42407::_ID27079( "scn_oilrig_open_deck1_door" );
     var_2 _ID42259::_ID3111( var_2, var_1 );
 }

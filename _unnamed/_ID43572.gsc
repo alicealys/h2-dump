@@ -3,25 +3,25 @@
 
 _ID53301()
 {
-    _ID42475::_ID34575( "snd_register_vehicle", "mi28", ::_unknown_001F );
+    _ID42475::_ID34575( "snd_register_vehicle", "mi28", ::_ID46308 );
 }
 
 _ID48477()
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         wait 1.0;
-        _unknown_0036( 1.0 );
+        _ID47184( 1.0 );
     }
 
-    var_0 = _func_1A5();
+    var_0 = spawnstruct();
     var_0._ID28452 = "mi28";
     _ID42475::_ID34575( "snd_start_vehicle", var_0 );
 }
 
 _ID47184( var_0 )
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         _ID42475::_ID34575( "snd_stop_vehicle", var_0 );
         self notify( "snd_stop_vehicle" );
@@ -72,20 +72,20 @@ _ID46308()
     _ID42471::_ID4509();
     _ID42471::_ID4508();
     _ID42471::_ID4488();
-    _ID42471::_ID4489( "to_state_hover", ::_unknown_0357, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_hover", ::_ID47904, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_fly", ::_unknown_0386, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_fly", ::_ID50091, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_fly_from_hover", ::_unknown_03A7, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_fly_from_hover", ::_ID50091, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4485( "h1r_havoc_start_rev" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_distant", ::_unknown_0415, [ "distance2d" ] );
+    _ID42471::_ID4489( "to_state_distant", ::_ID43106, [ "distance2d" ] );
     _ID42471::_ID4483( "havoc_engine_dist_loop" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_flyby", ::_unknown_03FB, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_flyby", ::_ID50763, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4485( "h1r_havoc_pass_by" );
     _ID42471::_ID4505();
@@ -156,9 +156,9 @@ _ID50763( var_0, var_1 )
     var_3 = var_0["distance2d"];
     var_4 = var_0["speed"];
 
-    if ( !_func_02F( var_1._ID14624 ) )
+    if ( !isdefined( var_1._ID14624 ) )
     {
-        var_1._ID14624 = _func_1A5();
+        var_1._ID14624 = spawnstruct();
         var_1._ID14624._ID28476 = var_3;
         var_1._ID14624._ID28479 = 0;
     }
@@ -171,7 +171,7 @@ _ID50763( var_0, var_1 )
         {
             var_7 = _ID42471::_ID4557();
 
-            if ( _unknown_0797( var_7 ) )
+            if ( _ID27862( var_7 ) )
                 var_2 = 1;
         }
 
@@ -184,9 +184,9 @@ _ID50763( var_0, var_1 )
 
 _ID27862( var_0 )
 {
-    var_1 = _func_11F( _ID42237::_ID14539( var_0._ID65 ) );
-    var_2 = _func_119( _ID42237::_ID14540( level._ID794._ID740 ) - var_0._ID740 );
-    var_3 = _func_0FB( var_1, var_2 );
+    var_1 = anglestoforward( _ID42237::_ID14539( var_0._ID65 ) );
+    var_2 = vectornormalize( _ID42237::_ID14540( level._ID794._ID740 ) - var_0._ID740 );
+    var_3 = vectordot( var_1, var_2 );
 
     if ( var_3 > 0 )
         return 1;

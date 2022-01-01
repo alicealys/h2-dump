@@ -963,20 +963,20 @@ initatvicredits_ulysse()
 
 _ID46965()
 {
-    _unknown_2A4D();
-    _unknown_2BB1();
-    _unknown_2DCE();
-    _unknown_2E7A();
-    _unknown_2E9E();
+    initiwcredits_iw();
+    initiwcredits_beenox();
+    initiwcredits_ca();
+    initiwcredits_nerve();
+    initiwcredits_irongalaxy();
 }
 
 _ID19839()
 {
-    _unknown_2EC4();
-    _unknown_3551();
-    _unknown_3599();
-    _unknown_3609();
-    _unknown_3681();
-    _unknown_36C5();
-    _unknown_36E1();
+    _ID51281();
+    initatvicredits_artbully();
+    initatvicredits_elite();
+    initatvicredits_redhot();
+    initatvicredits_ringtail();
+    initatvicredits_ssup();
+    initatvicredits_ulysse();
 }

@@ -8,7 +8,7 @@ _ID522()
 
 _ID220()
 {
-    var_0 = _func_1A5();
+    var_0 = spawnstruct();
     level._ID36707[level._ID36707.size] = var_0;
     return var_0;
 }

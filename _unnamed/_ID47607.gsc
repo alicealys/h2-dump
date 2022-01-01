@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_ultra_nationalist_assault_c" );
-    self _meth_801D( "head_spetsnaz_assault_boris", "", 1 );
+    self setmodel( "body_ultra_nationalist_assault_c" );
+    self attach( "head_spetsnaz_assault_boris", "", 1 );
     self._ID18304 = "head_spetsnaz_assault_boris";
     self._ID40757 = "russian";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_ultra_nationalist_assault_c" );
-    _func_14C( "head_spetsnaz_assault_boris" );
+    precachemodel( "body_ultra_nationalist_assault_c" );
+    precachemodel( "head_spetsnaz_assault_boris" );
 }

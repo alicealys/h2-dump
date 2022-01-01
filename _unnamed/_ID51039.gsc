@@ -3,218 +3,208 @@
 
 _ID616()
 {
-    level._ID1426["fire_tree"] = _func_155( "fx/fire/fire_tree" );
-    level._ID1426["fire_tree_slow"] = _func_155( "fx/fire/fire_tree_slow" );
-    level._ID1426["fire_falling_runner"] = _func_155( "fx/fire/fire_falling_runner" );
-    level._ID1426["fire_falling_localized_runner"] = _func_155( "fx/fire/fire_falling_localized_runner" );
-    level._ID1426["fire_tree_embers"] = _func_155( "fx/fire/fire_tree_embers" );
-    level._ID1426["fire_tree_distortion"] = _func_155( "fx/fire/fire_tree_distortion" );
-    level._ID1426["fire_loop_sml"] = _func_155( "fx/fire/firelp_small_pm" );
-    level._ID1426["fire_loop_sml_2"] = _func_155( "fx/fire/firelp_small_pm_2" );
-    level._ID1426["fire_ground"] = _func_155( "fx/fire/fire_wide_ground_sml" );
-    level._ID1426["fire_ground_sml"] = _func_155( "fx/fire/fire_wide_ground_sml_2" );
-    level._ID1426["fire_loop_med"] = _func_155( "fx/fire/firelp_med_pm_invasion" );
-    level._ID1426["fire_loop_large"] = _func_155( "fx/fire/firelp_large_pm_invasion" );
-    level._ID1426["fire_loop_large_2"] = _func_155( "fx/fire/firelp_large_pm_2_invasion" );
-    level._ID1426["fire_loop_large_nolight"] = _func_155( "fx/fire/firelp_large_pm_nolight_invasion" );
-    level._ID1426["fire_wide_world_sml"] = _func_155( "fx/fire/fire_wide_world_sml" );
-    level._ID1426["leaves_fall"] = _func_155( "vfx/wind/leaves_fall_invasion" );
-    level._ID1426["leaves_fall_sml"] = _func_155( "vfx/wind/leaves_fall_invasion_sml" );
-    level._ID1426["papers_windblown"] = _func_155( "vfx/wind/papers_windblown_random_slw" );
-    level._ID1426["insect_moth"] = _func_155( "vfx/animal/insects_moths_invasion" );
-    level._ID1426["insect_trash"] = _func_155( "vfx/animal/insects_fruitflies_invasion" );
-    level._ID1426["hallway_smk"] = _func_155( "vfx/smoke/hallway_smoke" );
-    level._ID1426["hallway_smk_light"] = _func_155( "fx/smoke/hallway_smoke_light_invasion" );
-    level._ID1426["godray_hallway"] = _func_155( "vfx/lights/godray_outside" );
-    level._ID1426["water_drips"] = _func_155( "vfx/rain/drips_slow_invasion" );
-    level._ID1426["river_smk_200"] = _func_155( "vfx/smoke/fog_river_200" );
-    level._ID1426["amb_smk_600"] = _func_155( "fx/smoke/ground_smoke600x600" );
-    level._ID1426["amb_smk_1200"] = _func_155( "fx/smoke/ground_smoke1200x1200" );
-    level._ID1426["dust_light"] = _func_155( "vfx/dust/amb_particle_light" );
-    level._ID1426["godray_short"] = _func_155( "vfx/lights/godray_short_arcadia" );
-    level._ID1426["godray_window"] = _func_155( "vfx/lights/godray_window_arcadia" );
-    level._ID1426["godray_mansion"] = _func_155( "vfx/lights/godray_mansion_arcadia" );
-    level._ID1426["powerline"] = _func_155( "fx/explosions/powerline_runner" );
-    level._ID1426["powerline_nospark"] = _func_155( "fx/explosions/powerline_runner_nospark" );
-    level._ID1426["powerline_cheap"] = _func_155( "fx/explosions/powerline_runner_cheap" );
-    level._ID1426["powerline_cheap_nospark"] = _func_155( "fx/explosions/powerline_runner_cheap_nospark" );
-    level._ID1426["generic_explosion"] = _func_155( "vfx/explosion/exp_generic_radial" );
-    level._ID1426["generic_explosion_2"] = _func_155( "vfx/explosion/exp_generic_radial_2" );
-    level._ID1426["generic_explosion_3"] = _func_155( "vfx/explosion/exp_generic_radial_3" );
-    level._ID1426["debris_bluehouse"] = _func_155( "vfx/explosion/exp_house_debris" );
-    level._ID1426["whouse_roof_exp"] = _func_155( "vfx/explosion/exp_pillar_roof" );
-    level._ID1426["whouse_banister_exp"] = _func_155( "vfx/explosion/exp_banister_wood" );
-    level._ID1426["whouse_window_exp"] = _func_155( "vfx/explosion/exp_window" );
-    level._ID1426["whouse_window_exp_sml"] = _func_155( "vfx/explosion/exp_window_sml" );
-    level._ID1426["whouse_window_exp_lrg"] = _func_155( "vfx/explosion/exp_window_lrg" );
-    level._ID1426["whouse_light_interior"] = _func_155( "vfx/lights/light_fire_loop_invasion" );
-    level._ID1426["intro_pillar_exp"] = _func_155( "vfx/explosion/exp_pillar_concrete" );
-    level._ID1426["intro_pillar_exp_2"] = _func_155( "vfx/explosion/exp_pillar_concrete_2" );
-    level._ID1426["intro_wall_exp"] = _func_155( "vfx/explosion/exp_wall_wood" );
-    level._ID1426["intro_wall_exp_sml"] = _func_155( "vfx/explosion/exp_wall_wood_sml" );
-    level._ID1426["intro_wall_exp_hole"] = _func_155( "vfx/explosion/exp_wall_hole" );
-    level._ID1426["latvee_explosion"] = _func_155( "fx/explosions/small_vehicle_explosion" );
-    level._ID1426["roof_shatter"] = _func_155( "vfx/weaponimpact/roof_destruction_invasion" );
-    level._ID1426["latvee_explosion_player"] = _func_155( "fx/explosions/invasion_player_latvee_explosion" );
-    level._ID1426["nates_concrete_exp"] = _func_155( "vfx/explosion/exp_nates_roof" );
-    level._ID1426["nates_concrete_exp_2"] = _func_155( "vfx/explosion/exp_nates_roof_2" );
-    level._ID1426["nates_sign_main_exp"] = _func_155( "vfx/explosion/exp_nates_sign_main" );
-    level._ID1426["nates_sign_ball_exp"] = _func_155( "vfx/explosion/exp_nates_sign_ball" );
-    level._ID1426["nates_roof_pipe_fire"] = _func_155( "vfx/fire/pipe_fire_invasion" );
-    level._ID1426["tv_explosion"] = _func_155( "fx/explosions/tv_explosion" );
-    level._ID1426["h2_us_ceiling_fan_housing_01_dest"] = _func_155( "fx/explosions/h2_us_ceiling_fan_housing_01_dest" );
-    level._ID1426["h2_us_ceiling_fan_01_dest"] = _func_155( "fx/explosions/h2_us_ceiling_fan_01_dest" );
-    level._ID1426["h2_us_ceiling_fan_02_dest"] = _func_155( "fx/explosions/h2_us_ceiling_fan_02_dest" );
-    level._ID1426["sunflare"] = _func_155( "vfx/lensflare/fx_sunflare_invasion" );
-    level._ID1426["skybox_smoke"] = _func_155( "fx/smoke/skybox_smoke" );
-    level._ID1426["skybox_flame"] = _func_155( "vfx/fire/fire_vista_glow_lp_sml" );
-    level._ID1426["skybox_columns"] = _func_155( "vfx/unique/skybox_invasion" );
-    level._ID1426["heli_crash_fire"] = _func_155( "fx/fire/heli_crash_fire" );
-    level._ID1426["heli_crash_sub_column"] = _func_155( "fx/fire/heli_crash_sub_smk_column" );
-    level._ID1426["uav_explosion"] = _func_155( "fx/explosions/vehicle_explosion_laatpv_nodoors" );
-    level._ID1426["water_stop"] = _func_155( "fx/misc/parabolic_water_stand" );
-    level._ID1426["water_movement"] = _func_155( "fx/misc/parabolic_water_movement" );
-    level._ID1426["firelp_vhc_lrg_pm_farview"] = _func_155( "fx/fire/firelp_vhc_lrg_pm_farview" );
-    level._ID1426["antiair_runner"] = _func_155( "fx/misc/antiair_runner_cloudy" );
-    level._ID1426["thin_black_smoke_L"] = _func_155( "fx/smoke/thin_black_smoke_L" );
-    level._ID1426["wood_explosion_1"] = _func_155( "fx/explosions/wood_explosion_1" );
-    level._ID1426["smokescreen"] = _func_155( "fx/smoke/smoke_grenade_low_invasion" );
-    level._ID1426["ceiling_dust"] = _func_155( "fx/dust/ceiling_dust_default" );
-    level._ID1426["nates_roof_balcony_blaster"] = _func_155( "fx/explosions/default_explosion" );
-    level._ID1426["nates_roof_balcony_blaster_bricks"] = _func_155( "fx/explosions/brick_chunk" );
-    level._ID1426["nates_sign_explosion"] = _func_155( "fx/explosions/window_explosion" );
-    level._ID1426["nates_sign_explosion_flaming_awning"] = _func_155( "fx/fire/firelp_small_pm" );
-    level._ID1426["nates_roof_balcony_blaster"] = _func_155( "fx/explosions/default_explosion" );
-    level._ID1426["nates_roof_awning_flareup"] = _func_155( "vfx/explosion/exp_awning_invasion" );
-    level._ID1426["nates_super_explosion"] = _func_155( "fx/explosions/nates_super_explosion" );
-    level._ID1426["nates_sign_explode"] = _func_155( "fx/explosions/nates_sign_explode" );
-    level._ID1426["falling_debris_player"] = _func_155( "fx/misc/falling_debris_player" );
-    level._ID1426["firelp_small_streak_pm1_h"] = _func_155( "fx/fire/firelp_small_streak_pm1_h" );
-    level._ID1426["bird_seagull_flock_large"] = _func_155( "fx/misc/bird_seagull_flock_large" );
-    level._ID1426["leaves_fall_gentlewind"] = _func_155( "fx/misc/leaves_fall_gentlewind" );
-    level._ID1426["leaves_ground_gentlewind"] = _func_155( "fx/misc/leaves_ground_gentlewind" );
-    level._ID1426["godray_nates"] = _func_155( "vfx/lights/godray_nates" );
-    level._ID1426["flare_light_sml_2"] = _func_155( "vfx/lensflare/flare_light_sml_2" );
-    level._ID1426["fluorescent_light_cone"] = _func_155( "vfx/lights/ca/fluorescent_light_cone" );
-    level._ID1426["smoke_residual_tacotogo_invasion"] = _func_155( "vfx/smoke/smoke_residual_tacotogo_invasion" );
-    level._ID1426["falling_water_pipe_invasion"] = _func_155( "vfx/water/falling_water_pipe_invasion" );
-    level._ID1426["waterfall_splash_pipe_invasion"] = _func_155( "vfx/water/waterfall_splash_pipe_invasion" );
-    level._ID1426["smoke_ambient_interior_invasion"] = _func_155( "vfx/smoke/smoke_ambient_interior_invasion" );
-    level._ID1426["falling_water_pipe_invasion_lowflow"] = _func_155( "vfx/water/falling_water_pipe_invasion_lowflow" );
-    level._ID1426["godray_taco_staged_invasion"] = _func_155( "vfx/lights/godray_taco_staged_invasion" );
-    level._ID1426["smk_roof"] = _func_155( "fx/smoke/smk_roof" );
-    level._ID1426["roof_vent_smoke"] = _func_155( "vfx/smoke/roof_vent_smoke" );
-    level._ID1426["trash_spiral_runner"] = _func_155( "fx/misc/trash_spiral_runner" );
-    level._ID1426["smoke_residual_slow"] = _func_155( "vfx/smoke/smoke_residual_slow" );
-    level._ID1426["godray_outside_1sided"] = _func_155( "vfx/lights/godray_outside_1sided" );
-    level._ID1426["heat_distortion_grill"] = _func_155( "vfx/distortion/heat_distortion_grill" );
-    level._ID1426["ash_only_column_falling_invasion"] = _func_155( "fx/misc/ash_only_column_falling_invasion" );
-    level._ID1426["embers_only_column_falling_invasion"] = _func_155( "fx/misc/embers_only_column_falling_invasion" );
-    level._ID1426["light_dust_particles_2"] = _func_155( "vfx/dust/light_dust_particles_2" );
-    level._ID1426["icecream_sign_blink_light"] = _func_155( "vfx/lights/icecream_sign_blink_light" );
-    level._ID1426["open_neon_light"] = _func_155( "vfx/lights/open_neon_light" );
-    level._ID1426["light_glow_white_lamp"] = _func_155( "fx/misc/light_glow_white_lamp" );
-    level._ID1426["smoke_residual_inside"] = _func_155( "vfx/smoke/smoke_residual_inside" );
-    level._ID1426["fire_large_background"] = _func_155( "fx/fire/fire_large_background" );
-    level._ID1426["fire_large_background_nosmoke"] = _func_155( "fx/fire/fire_large_background_nosmoke" );
-    level._ID1426["cold_smoke"] = _func_155( "vfx/smoke/cold_smoke" );
-    level._ID1426["cold_smoke_door"] = _func_155( "vfx/smoke/cold_smoke_door" );
-    level._ID1426["smoke_residual_nate"] = _func_155( "vfx/smoke/smoke_residual_nate" );
-    level._ID1426["dust_falling_nate_runner"] = _func_155( "vfx/dust/dust_falling_nate_runner" );
-    level._ID1426["burning_wood_heat_small"] = _func_155( "fx/distortion/burning_wood_heat_small" );
-    level._ID1426["nate_roof_smoke"] = _func_155( "fx/smoke/nate_roof_smoke" );
-    level._ID1426["firelp_small_streak_pm1_h_nosmoke"] = _func_155( "fx/fire/firelp_small_streak_pm1_h_nosmoke" );
-    level._ID1426["firelp_small_pm_2_nosmoke"] = _func_155( "fx/fire/firelp_small_pm_2_nosmoke" );
-    level._ID1426["firelp_med_pm_invasion_nosmoke"] = _func_155( "fx/fire/firelp_med_pm_invasion_nosmoke" );
-    level._ID1426["firelp_small_pm_nosmoke"] = _func_155( "fx/fire/firelp_small_pm_nosmoke" );
-    level._ID1426["smk_fire_nofire"] = _func_155( "vfx/smoke/smk_fire_nofire" );
-    level._ID1426["fluorescent_reunion"] = _func_155( "vfx/lights/fluorescent_reunion" );
-    level._ID1426["coffee_sign_light"] = _func_155( "vfx/lights/coffee_sign_light" );
-    level._ID1426["smoke_windows_sml_invasion"] = _func_155( "vfx/smoke/smoke_windows_sml_invasion" );
-    level._ID1426["smoke_plume_invasion_02"] = _func_155( "vfx/smoke/smoke_plume_invasion_02" );
-    level._ID1426["smoke_plume_invasion_01"] = _func_155( "vfx/smoke/smoke_plume_invasion_01" );
-    level._ID1426["taco_togo_roof_smoke"] = _func_155( "vfx/smoke/taco_togo_roof_smoke" );
-    level._ID1426["smoke_embers_windows_sml_invasion"] = _func_155( "vfx/smoke/smoke_embers_windows_sml_invasion" );
-    level._ID1426["crashed_heli_inside_smoke"] = _func_155( "vfx/smoke/crashed_heli_inside_smoke" );
-    level._ID1426["godray_wolverine"] = _func_155( "vfx/lights/godray_wolverine" );
-    level._ID1426["jeep_car_glass_explode"] = _func_155( "vfx/map/invasion/jeep_car_glass_explode" );
-    level._ID1426["btr_explo_dust_nates"] = _func_155( "vfx/dust/btr_explo_dust_nates" );
-    level._ID1426["btr_explo_pebbles_nates"] = _func_155( "vfx/explosion/btr_explo_pebbles_nates" );
-    level._ID1426["smoke_grenade_american"] = _func_155( "fx/props/american_smoke_grenade" );
-    level._ID1426["smoke_grenade_low"] = _func_155( "fx/smoke/smoke_grenade_low" );
-    level._ID1426["smoke_grenade_dud"] = _func_155( "fx/smoke/smoke_grenade_dud" );
-    thread _unknown_0A52();
-    thread _unknown_0AD9();
-    thread _unknown_0CA2();
-    thread _unknown_0CA7();
-    thread _unknown_0A3A( "sign_nates_main", "139", 1 );
-    thread _unknown_0A47( "sign_nates_main", "333", 4 );
-    thread _unknown_0A55( "sign_nates_ball", "140", 1 );
-    thread _unknown_0A62( "sign_nates_ball", "333", 4 );
+    level._ID1426["fire_tree"] = loadfx( "fx/fire/fire_tree" );
+    level._ID1426["fire_tree_slow"] = loadfx( "fx/fire/fire_tree_slow" );
+    level._ID1426["fire_falling_runner"] = loadfx( "fx/fire/fire_falling_runner" );
+    level._ID1426["fire_falling_localized_runner"] = loadfx( "fx/fire/fire_falling_localized_runner" );
+    level._ID1426["fire_tree_embers"] = loadfx( "fx/fire/fire_tree_embers" );
+    level._ID1426["fire_tree_distortion"] = loadfx( "fx/fire/fire_tree_distortion" );
+    level._ID1426["fire_loop_sml"] = loadfx( "fx/fire/firelp_small_pm" );
+    level._ID1426["fire_loop_sml_2"] = loadfx( "fx/fire/firelp_small_pm_2" );
+    level._ID1426["fire_ground"] = loadfx( "fx/fire/fire_wide_ground_sml" );
+    level._ID1426["fire_ground_sml"] = loadfx( "fx/fire/fire_wide_ground_sml_2" );
+    level._ID1426["fire_loop_med"] = loadfx( "fx/fire/firelp_med_pm_invasion" );
+    level._ID1426["fire_loop_large"] = loadfx( "fx/fire/firelp_large_pm_invasion" );
+    level._ID1426["fire_loop_large_2"] = loadfx( "fx/fire/firelp_large_pm_2_invasion" );
+    level._ID1426["fire_loop_large_nolight"] = loadfx( "fx/fire/firelp_large_pm_nolight_invasion" );
+    level._ID1426["fire_wide_world_sml"] = loadfx( "fx/fire/fire_wide_world_sml" );
+    level._ID1426["leaves_fall"] = loadfx( "vfx/wind/leaves_fall_invasion" );
+    level._ID1426["leaves_fall_sml"] = loadfx( "vfx/wind/leaves_fall_invasion_sml" );
+    level._ID1426["papers_windblown"] = loadfx( "vfx/wind/papers_windblown_random_slw" );
+    level._ID1426["insect_moth"] = loadfx( "vfx/animal/insects_moths_invasion" );
+    level._ID1426["insect_trash"] = loadfx( "vfx/animal/insects_fruitflies_invasion" );
+    level._ID1426["hallway_smk"] = loadfx( "vfx/smoke/hallway_smoke" );
+    level._ID1426["hallway_smk_light"] = loadfx( "fx/smoke/hallway_smoke_light_invasion" );
+    level._ID1426["godray_hallway"] = loadfx( "vfx/lights/godray_outside" );
+    level._ID1426["water_drips"] = loadfx( "vfx/rain/drips_slow_invasion" );
+    level._ID1426["river_smk_200"] = loadfx( "vfx/smoke/fog_river_200" );
+    level._ID1426["amb_smk_600"] = loadfx( "fx/smoke/ground_smoke600x600" );
+    level._ID1426["amb_smk_1200"] = loadfx( "fx/smoke/ground_smoke1200x1200" );
+    level._ID1426["dust_light"] = loadfx( "vfx/dust/amb_particle_light" );
+    level._ID1426["godray_short"] = loadfx( "vfx/lights/godray_short_arcadia" );
+    level._ID1426["godray_window"] = loadfx( "vfx/lights/godray_window_arcadia" );
+    level._ID1426["godray_mansion"] = loadfx( "vfx/lights/godray_mansion_arcadia" );
+    level._ID1426["powerline"] = loadfx( "fx/explosions/powerline_runner" );
+    level._ID1426["powerline_nospark"] = loadfx( "fx/explosions/powerline_runner_nospark" );
+    level._ID1426["powerline_cheap"] = loadfx( "fx/explosions/powerline_runner_cheap" );
+    level._ID1426["powerline_cheap_nospark"] = loadfx( "fx/explosions/powerline_runner_cheap_nospark" );
+    level._ID1426["generic_explosion"] = loadfx( "vfx/explosion/exp_generic_radial" );
+    level._ID1426["generic_explosion_2"] = loadfx( "vfx/explosion/exp_generic_radial_2" );
+    level._ID1426["generic_explosion_3"] = loadfx( "vfx/explosion/exp_generic_radial_3" );
+    level._ID1426["debris_bluehouse"] = loadfx( "vfx/explosion/exp_house_debris" );
+    level._ID1426["whouse_roof_exp"] = loadfx( "vfx/explosion/exp_pillar_roof" );
+    level._ID1426["whouse_banister_exp"] = loadfx( "vfx/explosion/exp_banister_wood" );
+    level._ID1426["whouse_window_exp"] = loadfx( "vfx/explosion/exp_window" );
+    level._ID1426["whouse_window_exp_sml"] = loadfx( "vfx/explosion/exp_window_sml" );
+    level._ID1426["whouse_window_exp_lrg"] = loadfx( "vfx/explosion/exp_window_lrg" );
+    level._ID1426["whouse_light_interior"] = loadfx( "vfx/lights/light_fire_loop_invasion" );
+    level._ID1426["intro_pillar_exp"] = loadfx( "vfx/explosion/exp_pillar_concrete" );
+    level._ID1426["intro_pillar_exp_2"] = loadfx( "vfx/explosion/exp_pillar_concrete_2" );
+    level._ID1426["intro_wall_exp"] = loadfx( "vfx/explosion/exp_wall_wood" );
+    level._ID1426["intro_wall_exp_sml"] = loadfx( "vfx/explosion/exp_wall_wood_sml" );
+    level._ID1426["intro_wall_exp_hole"] = loadfx( "vfx/explosion/exp_wall_hole" );
+    level._ID1426["latvee_explosion"] = loadfx( "fx/explosions/small_vehicle_explosion" );
+    level._ID1426["roof_shatter"] = loadfx( "vfx/weaponimpact/roof_destruction_invasion" );
+    level._ID1426["latvee_explosion_player"] = loadfx( "fx/explosions/invasion_player_latvee_explosion" );
+    level._ID1426["nates_concrete_exp"] = loadfx( "vfx/explosion/exp_nates_roof" );
+    level._ID1426["nates_concrete_exp_2"] = loadfx( "vfx/explosion/exp_nates_roof_2" );
+    level._ID1426["nates_sign_main_exp"] = loadfx( "vfx/explosion/exp_nates_sign_main" );
+    level._ID1426["nates_sign_ball_exp"] = loadfx( "vfx/explosion/exp_nates_sign_ball" );
+    level._ID1426["nates_roof_pipe_fire"] = loadfx( "vfx/fire/pipe_fire_invasion" );
+    level._ID1426["tv_explosion"] = loadfx( "fx/explosions/tv_explosion" );
+    level._ID1426["h2_us_ceiling_fan_housing_01_dest"] = loadfx( "fx/explosions/h2_us_ceiling_fan_housing_01_dest" );
+    level._ID1426["h2_us_ceiling_fan_01_dest"] = loadfx( "fx/explosions/h2_us_ceiling_fan_01_dest" );
+    level._ID1426["h2_us_ceiling_fan_02_dest"] = loadfx( "fx/explosions/h2_us_ceiling_fan_02_dest" );
+    level._ID1426["sunflare"] = loadfx( "vfx/lensflare/fx_sunflare_invasion" );
+    level._ID1426["skybox_smoke"] = loadfx( "fx/smoke/skybox_smoke" );
+    level._ID1426["skybox_flame"] = loadfx( "vfx/fire/fire_vista_glow_lp_sml" );
+    level._ID1426["skybox_columns"] = loadfx( "vfx/unique/skybox_invasion" );
+    level._ID1426["heli_crash_fire"] = loadfx( "fx/fire/heli_crash_fire" );
+    level._ID1426["heli_crash_sub_column"] = loadfx( "fx/fire/heli_crash_sub_smk_column" );
+    level._ID1426["uav_explosion"] = loadfx( "fx/explosions/vehicle_explosion_laatpv_nodoors" );
+    level._ID1426["water_stop"] = loadfx( "fx/misc/parabolic_water_stand" );
+    level._ID1426["water_movement"] = loadfx( "fx/misc/parabolic_water_movement" );
+    level._ID1426["firelp_vhc_lrg_pm_farview"] = loadfx( "fx/fire/firelp_vhc_lrg_pm_farview" );
+    level._ID1426["antiair_runner"] = loadfx( "fx/misc/antiair_runner_cloudy" );
+    level._ID1426["thin_black_smoke_L"] = loadfx( "fx/smoke/thin_black_smoke_L" );
+    level._ID1426["wood_explosion_1"] = loadfx( "fx/explosions/wood_explosion_1" );
+    level._ID1426["smokescreen"] = loadfx( "fx/smoke/smoke_grenade_low_invasion" );
+    level._ID1426["ceiling_dust"] = loadfx( "fx/dust/ceiling_dust_default" );
+    level._ID1426["nates_roof_balcony_blaster"] = loadfx( "fx/explosions/default_explosion" );
+    level._ID1426["nates_roof_balcony_blaster_bricks"] = loadfx( "fx/explosions/brick_chunk" );
+    level._ID1426["nates_sign_explosion"] = loadfx( "fx/explosions/window_explosion" );
+    level._ID1426["nates_sign_explosion_flaming_awning"] = loadfx( "fx/fire/firelp_small_pm" );
+    level._ID1426["nates_roof_balcony_blaster"] = loadfx( "fx/explosions/default_explosion" );
+    level._ID1426["nates_roof_awning_flareup"] = loadfx( "vfx/explosion/exp_awning_invasion" );
+    level._ID1426["nates_super_explosion"] = loadfx( "fx/explosions/nates_super_explosion" );
+    level._ID1426["nates_sign_explode"] = loadfx( "fx/explosions/nates_sign_explode" );
+    level._ID1426["falling_debris_player"] = loadfx( "fx/misc/falling_debris_player" );
+    level._ID1426["firelp_small_streak_pm1_h"] = loadfx( "fx/fire/firelp_small_streak_pm1_h" );
+    level._ID1426["bird_seagull_flock_large"] = loadfx( "fx/misc/bird_seagull_flock_large" );
+    level._ID1426["leaves_fall_gentlewind"] = loadfx( "fx/misc/leaves_fall_gentlewind" );
+    level._ID1426["leaves_ground_gentlewind"] = loadfx( "fx/misc/leaves_ground_gentlewind" );
+    level._ID1426["godray_nates"] = loadfx( "vfx/lights/godray_nates" );
+    level._ID1426["flare_light_sml_2"] = loadfx( "vfx/lensflare/flare_light_sml_2" );
+    level._ID1426["fluorescent_light_cone"] = loadfx( "vfx/lights/ca/fluorescent_light_cone" );
+    level._ID1426["smoke_residual_tacotogo_invasion"] = loadfx( "vfx/smoke/smoke_residual_tacotogo_invasion" );
+    level._ID1426["falling_water_pipe_invasion"] = loadfx( "vfx/water/falling_water_pipe_invasion" );
+    level._ID1426["waterfall_splash_pipe_invasion"] = loadfx( "vfx/water/waterfall_splash_pipe_invasion" );
+    level._ID1426["smoke_ambient_interior_invasion"] = loadfx( "vfx/smoke/smoke_ambient_interior_invasion" );
+    level._ID1426["falling_water_pipe_invasion_lowflow"] = loadfx( "vfx/water/falling_water_pipe_invasion_lowflow" );
+    level._ID1426["godray_taco_staged_invasion"] = loadfx( "vfx/lights/godray_taco_staged_invasion" );
+    level._ID1426["smk_roof"] = loadfx( "fx/smoke/smk_roof" );
+    level._ID1426["roof_vent_smoke"] = loadfx( "vfx/smoke/roof_vent_smoke" );
+    level._ID1426["trash_spiral_runner"] = loadfx( "fx/misc/trash_spiral_runner" );
+    level._ID1426["smoke_residual_slow"] = loadfx( "vfx/smoke/smoke_residual_slow" );
+    level._ID1426["godray_outside_1sided"] = loadfx( "vfx/lights/godray_outside_1sided" );
+    level._ID1426["heat_distortion_grill"] = loadfx( "vfx/distortion/heat_distortion_grill" );
+    level._ID1426["ash_only_column_falling_invasion"] = loadfx( "fx/misc/ash_only_column_falling_invasion" );
+    level._ID1426["embers_only_column_falling_invasion"] = loadfx( "fx/misc/embers_only_column_falling_invasion" );
+    level._ID1426["light_dust_particles_2"] = loadfx( "vfx/dust/light_dust_particles_2" );
+    level._ID1426["icecream_sign_blink_light"] = loadfx( "vfx/lights/icecream_sign_blink_light" );
+    level._ID1426["open_neon_light"] = loadfx( "vfx/lights/open_neon_light" );
+    level._ID1426["light_glow_white_lamp"] = loadfx( "fx/misc/light_glow_white_lamp" );
+    level._ID1426["smoke_residual_inside"] = loadfx( "vfx/smoke/smoke_residual_inside" );
+    level._ID1426["fire_large_background"] = loadfx( "fx/fire/fire_large_background" );
+    level._ID1426["fire_large_background_nosmoke"] = loadfx( "fx/fire/fire_large_background_nosmoke" );
+    level._ID1426["cold_smoke"] = loadfx( "vfx/smoke/cold_smoke" );
+    level._ID1426["cold_smoke_door"] = loadfx( "vfx/smoke/cold_smoke_door" );
+    level._ID1426["smoke_residual_nate"] = loadfx( "vfx/smoke/smoke_residual_nate" );
+    level._ID1426["dust_falling_nate_runner"] = loadfx( "vfx/dust/dust_falling_nate_runner" );
+    level._ID1426["burning_wood_heat_small"] = loadfx( "fx/distortion/burning_wood_heat_small" );
+    level._ID1426["nate_roof_smoke"] = loadfx( "fx/smoke/nate_roof_smoke" );
+    level._ID1426["firelp_small_streak_pm1_h_nosmoke"] = loadfx( "fx/fire/firelp_small_streak_pm1_h_nosmoke" );
+    level._ID1426["firelp_small_pm_2_nosmoke"] = loadfx( "fx/fire/firelp_small_pm_2_nosmoke" );
+    level._ID1426["firelp_med_pm_invasion_nosmoke"] = loadfx( "fx/fire/firelp_med_pm_invasion_nosmoke" );
+    level._ID1426["firelp_small_pm_nosmoke"] = loadfx( "fx/fire/firelp_small_pm_nosmoke" );
+    level._ID1426["smk_fire_nofire"] = loadfx( "vfx/smoke/smk_fire_nofire" );
+    level._ID1426["fluorescent_reunion"] = loadfx( "vfx/lights/fluorescent_reunion" );
+    level._ID1426["coffee_sign_light"] = loadfx( "vfx/lights/coffee_sign_light" );
+    level._ID1426["smoke_windows_sml_invasion"] = loadfx( "vfx/smoke/smoke_windows_sml_invasion" );
+    level._ID1426["smoke_plume_invasion_02"] = loadfx( "vfx/smoke/smoke_plume_invasion_02" );
+    level._ID1426["smoke_plume_invasion_01"] = loadfx( "vfx/smoke/smoke_plume_invasion_01" );
+    level._ID1426["taco_togo_roof_smoke"] = loadfx( "vfx/smoke/taco_togo_roof_smoke" );
+    level._ID1426["smoke_embers_windows_sml_invasion"] = loadfx( "vfx/smoke/smoke_embers_windows_sml_invasion" );
+    level._ID1426["crashed_heli_inside_smoke"] = loadfx( "vfx/smoke/crashed_heli_inside_smoke" );
+    level._ID1426["godray_wolverine"] = loadfx( "vfx/lights/godray_wolverine" );
+    level._ID1426["jeep_car_glass_explode"] = loadfx( "vfx/map/invasion/jeep_car_glass_explode" );
+    level._ID1426["btr_explo_dust_nates"] = loadfx( "vfx/dust/btr_explo_dust_nates" );
+    level._ID1426["btr_explo_pebbles_nates"] = loadfx( "vfx/explosion/btr_explo_pebbles_nates" );
+    level._ID1426["smoke_grenade_american"] = loadfx( "fx/props/american_smoke_grenade" );
+    level._ID1426["smoke_grenade_low"] = loadfx( "fx/smoke/smoke_grenade_low" );
+    level._ID1426["smoke_grenade_dud"] = loadfx( "fx/smoke/smoke_grenade_dud" );
+    thread _ID38735();
+    thread _ID52070();
+    thread _ID54426();
+    thread _ID53720();
+    thread _ID51924( "sign_nates_main", "139", 1 );
+    thread _ID51924( "sign_nates_main", "333", 4 );
+    thread _ID51924( "sign_nates_ball", "140", 1 );
+    thread _ID51924( "sign_nates_ball", "333", 4 );
     _ID42407::_ID1885( "exp_bluehouse", 0.1, 0.25, 4000 );
     _ID42407::_ID1885( "intro_house_side_explosion", 0.3, 2.5, 4000 );
 
-    if ( _func_039( "mapname" ) == "invasion" || _func_039( "mapname" ) == "so_chopper_invasion" )
+    if ( getdvar( "mapname" ) == "invasion" || getdvar( "mapname" ) == "so_chopper_invasion" )
         _ID54254::_ID616();
 
-    if ( !_func_02F( level._ID9242 ) )
+    if ( !isdefined( level._ID9242 ) )
         level._ID9242 = [];
 
     _ID42407::_ID33441();
     _ID50868::_ID616();
-    thread _unknown_0BED();
-    thread _unknown_0AD5();
-    var_0 = _func_1A1( "tree_fire_light", "targetname" );
+    thread _ID44287();
+    thread _ID43416();
+    var_0 = getent( "tree_fire_light", "targetname" );
 
-    if ( _func_02F( var_0 ) )
-        var_0 _meth_81EB( 0 );
+    if ( isdefined( var_0 ) )
+        var_0 setlightintensity( 0 );
 
     _ID42237::_ID14400( "super_exploder_exploded" );
-    level._ID51276 = ::_unknown_0C9F;
-    level._ID45688 = ::_unknown_0CE7;
+    level._ID51276 = ::_ID50124;
+    level._ID45688 = ::_ID54074;
 }
 
 _ID51924( var_0, var_1, var_2 )
 {
-    var_3 = _func_23E( var_0, "targetname" );
-    var_4 = var_3;
+    var_3 = getscriptablearray( var_0, "targetname" );
 
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
+    foreach ( var_5 in var_3 )
     {
-        var_5 = var_4[var_6];
         level waittill( "exploding_" + var_1 );
-        var_5 _meth_8403( 0, var_2 );
+        var_5 setscriptablepartstate( 0, var_2 );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID50608()
 {
     if ( self._ID740[1] > 0 )
-        self _meth_805A();
+        self hide();
 }
 
 _ID43416()
 {
     wait 10;
 
-    if ( !_func_03A( "scr_glasstest" ) )
+    if ( !getdvarint( "scr_glasstest" ) )
         return;
 
-    var_0 = _func_1DC( "nates_glass_delete" );
-    var_1 = var_0;
+    var_0 = getglassarray( "nates_glass_delete" );
 
-    for ( var_4 = _func_1DA( var_1 ); _func_02F( var_4 ); var_4 = _func_1BF( var_1, var_4 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_4];
-        var_3 = _func_1DD( var_2 );
-        thread _unknown_0B85( var_3, var_2 );
+        var_3 = getglassorigin( var_2 );
+        thread _ID50640( var_3, var_2 );
     }
-
-    var_clear_3
-    var_clear_0
 }
 
 _ID50640( var_0, var_1 )
@@ -272,70 +262,57 @@ _ID43197( var_0 )
 {
     var_1 = self._ID31170;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = self._ID31401;
 
     var_2 = [];
     var_2 = _ID42237::_ID15566( self._ID740, var_0, undefined, undefined, self._ID851 );
     level waittill( "exploding_" + var_1 );
-    var_3 = var_2;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
-    {
-        var_4 = var_3[var_5];
+    foreach ( var_4 in var_2 )
         var_4 notify( "damage",  150, undefined, undefined, undefined, "bullet"  );
-    }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID52614( var_0 )
 {
-    var_1 = _func_1A2( var_0, "targetname" );
-    return _ID42237::_ID3296( var_1, _func_1A2( var_0, "script_noteworthy" ) );
+    var_1 = getentarray( var_0, "targetname" );
+    return _ID42237::_ID3296( var_1, getentarray( var_0, "script_noteworthy" ) );
 }
 
 _ID51072()
 {
-    return _func_02F( self._ID989 ) && self._ID989 & 1;
+    return isdefined( self._ID989 ) && self._ID989 & 1;
 }
 
 _ID49364()
 {
-    var_0 = _unknown_0E93( "nates_after_bombing" );
-    var_1 = var_0;
+    var_0 = _ID52614( "nates_after_bombing" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-        var_2 _meth_805A();
-        var_2 _meth_82C9();
+        var_2 hide();
+        var_2 notsolid();
 
-        if ( var_2 _unknown_0EBA() && _func_02F( var_2._ID31139 ) )
-            var_2 _meth_805F();
+        if ( var_2 _ID51072() && isdefined( var_2._ID31139 ) )
+            var_2 connectpaths();
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14402( "nates_after_bombing_setup_done" );
 }
 
 _ID49026()
 {
-    var_0 = _unknown_0EDB( "nates_after_bombing" );
-    var_1 = _func_0C1( var_0.size / 2 );
-    var_2 = var_0;
+    var_0 = _ID52614( "nates_after_bombing" );
+    var_1 = int( var_0.size / 2 );
 
-    for ( var_5 = _func_1DA( var_2 ); _func_02F( var_5 ); var_5 = _func_1BF( var_2, var_5 ) )
+    foreach ( var_5, var_3 in var_0 )
     {
-        var_3 = var_2[var_5];
-        var_3 _meth_8059();
-        var_3 _meth_82C8();
+        var_3 show();
+        var_3 solid();
 
-        if ( var_3 _unknown_0F09() )
+        if ( var_3 _ID51072() )
         {
-            var_4 = _ID42237::_ID37527( !_func_02F( var_3._ID31139 ), ::_meth_805F, ::_meth_805E );
+            var_4 = _ID42237::_ID37527( !isdefined( var_3._ID31139 ), ::connectpaths, ::disconnectpaths );
             var_3 call [[ var_4 ]]();
         }
 
@@ -343,74 +320,48 @@ _ID49026()
             waittillframeend;
     }
 
-    var_clear_2
     waittillframeend;
-    var_0 = _unknown_0F31( "nates_before_bombing" );
-    var_6 = var_0;
+    var_0 = _ID52614( "nates_before_bombing" );
 
-    for ( var_5 = _func_1DA( var_6 ); _func_02F( var_5 ); var_5 = _func_1BF( var_6, var_5 ) )
+    foreach ( var_5, var_3 in var_0 )
     {
-        var_3 = var_6[var_5];
+        if ( var_3 _ID51072() )
+            var_3 connectpaths();
 
-        if ( var_3 _unknown_0F4E() )
-            var_3 _meth_805F();
-
-        var_3 _meth_80B7();
+        var_3 delete();
 
         if ( var_5 % var_1 == 0 )
             waittillframeend;
     }
-
-    var_clear_0
 }
 
 _ID44287()
 {
     wait 0.1;
     _ID42234::_ID13611( "nates_alive" );
-    _unknown_0F7D();
+    _ID49364();
     level waittill( "exploding_333" );
-    thread _unknown_1018();
+    thread super_nates_exploder_deletes();
     _ID42407::_ID36481( "nates_alive" );
     _ID42407::_ID10256( "nates_alive" );
-    var_0 = _func_1DC( "nates_glass_destroy" );
-    var_1 = _func_1DC( "nates_glass_delete" );
-    thread _unknown_0FC3();
-    var_2 = var_0;
+    var_0 = getglassarray( "nates_glass_destroy" );
+    var_1 = getglassarray( "nates_glass_delete" );
+    thread _ID49026();
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        _func_1DF( var_3 );
-    }
+    foreach ( var_3 in var_0 )
+        destroyglass( var_3 );
 
-    var_clear_2
-    var_clear_0
-    var_5 = var_1;
-
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
-    {
-        var_3 = var_5[var_6];
-        _func_1E0( var_3 );
-    }
-
-    var_clear_1
-    var_clear_0
+    foreach ( var_3 in var_1 )
+        deleteglass( var_3 );
 
     for ( var_7 = 0; var_7 < 6; var_7++ )
-        _ID42237::_ID24938( 0.1 * var_7, ::_func_184, ( 245 + _func_0B7( 55 ), -4730 + _func_0B7( 55 ), 2594 + _func_0B7( 55 ) ), 3000, 2000, 6 );
+        _ID42237::_ID24938( 0.1 * var_7, ::physicsexplosionsphere, ( 245 + randomint( 55 ), -4730 + randomint( 55 ), 2594 + randomint( 55 ) ), 3000, 2000, 6 );
 
-    var_8 = _func_1A2( "nates_lights", "targetname" );
-    var_9 = var_8;
+    var_8 = getentarray( "nates_lights", "targetname" );
 
-    for ( var_11 = _func_1DA( var_9 ); _func_02F( var_11 ); var_11 = _func_1BF( var_9, var_11 ) )
-    {
-        var_10 = var_9[var_11];
-        var_10 _meth_81EB( 0 );
-    }
+    foreach ( var_10 in var_8 )
+        var_10 setlightintensity( 0 );
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14402( "super_exploder_exploded" );
 }
 
@@ -430,15 +381,15 @@ super_nates_exploder_deletes()
 
 _ID53222()
 {
-    _func_1A1( self._ID1191, "targetname" ) _meth_80B7();
-    self _meth_80B7();
+    getent( self._ID1191, "targetname" ) delete();
+    self delete();
 }
 
 _ID45637()
 {
-    var_0 = _func_1A1( "exploding_car_spot", "targetname" );
+    var_0 = getent( "exploding_car_spot", "targetname" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     var_1 = var_0._ID740;
@@ -451,22 +402,22 @@ _ID45637()
 
     while ( !_ID42237::_ID14385( "leaving_gas_station" ) )
     {
-        var_8 = _func_0BA( var_6, var_7 );
-        var_9 = _func_0BA( 0.1, 1 );
-        var_10 = var_3 * _func_0BA( 0.1, 1 );
-        var_11 = var_4 * _func_0BA( 0.1, 1 );
-        var_12 = var_5 * _func_0BA( 0.3, 0.7 );
+        var_8 = randomfloatrange( var_6, var_7 );
+        var_9 = randomfloatrange( 0.1, 1 );
+        var_10 = var_3 * randomfloatrange( 0.1, 1 );
+        var_11 = var_4 * randomfloatrange( 0.1, 1 );
+        var_12 = var_5 * randomfloatrange( 0.3, 0.7 );
         var_13 = var_1 + ( var_10, var_11, var_12 );
-        var_0 _meth_82B8( var_13, var_8 );
+        var_0 moveto( var_13, var_8 );
         wait(var_8);
     }
 
-    var_0 _meth_81EB( 0 );
+    var_0 setlightintensity( 0 );
 }
 
 _ID50124()
 {
-    thread _unknown_11E9();
+    thread _ID51796();
 }
 
 _ID51796()
@@ -484,19 +435,19 @@ _ID51796()
     _ID42407::_ID18514( "9990" );
     _ID42407::_ID18514( "9991" );
     _ID42407::_ID18514( "9992" );
-    _ID42237::_ID3294( _func_1A2( "window_poster", "targetname" ), ::_meth_805A );
-    _ID42237::_ID3294( _func_1A2( "escape_door", "targetname" ), ::_meth_805A );
+    _ID42237::_ID3294( getentarray( "window_poster", "targetname" ), ::hide );
+    _ID42237::_ID3294( getentarray( "escape_door", "targetname" ), ::hide );
 
     if ( _ID42237::_ID14385( "super_exploder_exploded" ) )
-        _ID42237::_ID3294( _func_1A2( "super_exploder_uav_hide", "script_noteworthy" ), ::_meth_805A );
+        _ID42237::_ID3294( getentarray( "super_exploder_uav_hide", "script_noteworthy" ), ::hide );
 
-    _ID42237::_ID3350( _func_1A2( "destructible_vehicle", "targetname" ), ::_unknown_10E1 );
-    _ID42237::_ID3350( _func_1A2( "destructible_toy", "targetname" ), ::_unknown_10F2 );
+    _ID42237::_ID3350( getentarray( "destructible_vehicle", "targetname" ), ::_ID50608 );
+    _ID42237::_ID3350( getentarray( "destructible_toy", "targetname" ), ::_ID50608 );
 }
 
 _ID54074()
 {
-    thread _unknown_12F6();
+    thread _ID45773();
 }
 
 _ID45773()
@@ -513,20 +464,20 @@ _ID45773()
     _ID42407::_ID34001( "9990" );
     _ID42407::_ID34001( "9991" );
     _ID42407::_ID34001( "9992" );
-    _ID42237::_ID3294( _func_1A2( "window_poster", "targetname" ), ::_meth_8059 );
-    _ID42237::_ID3294( _func_1A2( "escape_door", "targetname" ), ::_meth_8059 );
+    _ID42237::_ID3294( getentarray( "window_poster", "targetname" ), ::show );
+    _ID42237::_ID3294( getentarray( "escape_door", "targetname" ), ::show );
 
     if ( _ID42237::_ID14385( "super_exploder_exploded" ) )
-        _ID42237::_ID3294( _func_1A2( "super_exploder_uav_hide", "script_noteworthy" ), ::_meth_8059 );
+        _ID42237::_ID3294( getentarray( "super_exploder_uav_hide", "script_noteworthy" ), ::show );
 
-    _ID42237::_ID3350( _func_1A2( "destructible_vehicle", "targetname" ), ::_unknown_13D9 );
-    _ID42237::_ID3350( _func_1A2( "destructible_toy", "targetname" ), ::_unknown_13EA );
+    _ID42237::_ID3350( getentarray( "destructible_vehicle", "targetname" ), ::_ID53784 );
+    _ID42237::_ID3350( getentarray( "destructible_toy", "targetname" ), ::_ID53784 );
 }
 
 _ID53784()
 {
     if ( self._ID740[1] > 0 )
-        self _meth_8059();
+        self show();
 }
 
 _ID43070()
@@ -553,14 +504,13 @@ _ID51354()
 
     for (;;)
     {
-        var_0 = _func_1A2( "script_brushmodel", "code_classname" );
-        var_1 = var_0;
+        var_0 = getentarray( "script_brushmodel", "code_classname" );
 
-        for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-            var_2 = var_1[var_3];
+        foreach ( var_2 in var_0 )
+        {
 
-        var_clear_2
-        var_clear_0
+        }
+
         wait 0.05;
     }
 }

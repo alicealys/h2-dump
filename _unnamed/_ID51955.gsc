@@ -18,7 +18,7 @@ _ID45502()
     level._ID30895["price"]["soap_cliff_crouch_idle_look_add"] = [ %h2_lookat_casual_crouch_upper_90l, %h2_lookat_casual_crouch_upper_90r ];
     level._ID30895["price"]["climb_catch"] = %h2_price_icepicker_bigjump;
     _ID42259::_ID2058( "price", "ps_cliff_pri_breaksover", maps\cliffhanger_anim::_ID48737, "price_climb_intro" );
-    _ID42259::_ID2058( "price", "ps_cliff_pri_breaksover", ::_unknown_0242, "price_climb_intro" );
+    _ID42259::_ID2058( "price", "ps_cliff_pri_breaksover", ::_ID53728, "price_climb_intro" );
     _ID42259::_ID2058( "price", "price_finished_talking", maps\cliffhanger_anim::_ID50919, "price_climb_intro" );
     _ID42259::_ID2058( "price", "ps_cliff_pri_spotme", maps\cliffhanger_anim::_ID48737, "price_climb_start" );
     _ID42259::_ID2058( "price", "ps_cliff_pri_iceisgood", maps\cliffhanger_anim::_ID53723, "price_climb_start" );
@@ -26,31 +26,31 @@ _ID45502()
     _ID42259::_ID2058( "price", "ps_cliff_pri_thefarside", maps\cliffhanger_anim::_ID48737, "price_jump" );
     _ID42259::_ID2058( "price", "scn_cliffhanger_price_jump_dx", maps\cliffhanger_anim::_ID50919, "price_jump" );
     _ID42259::_ID2058( "price", "price_not_talking", maps\cliffhanger_anim::_ID50919, "price_reach" );
-    _ID42259::_ID2058( "price", "price_intro_foley", ::_unknown_02DB, "price_climb_intro" );
-    _ID42259::_ID2058( "price", "price_intro_foley_getup", ::_unknown_02F3, "price_climb_intro" );
-    _ID42259::_ID2058( "price", "price_intro_foley_snow", ::_unknown_0309, "price_climb_intro" );
-    _ID42259::_ID2058( "price", "price_intro_foley_snow", ::_unknown_031C, "price_climb_start" );
-    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_unknown_0336, "price_climb_intro" );
-    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_unknown_0345, "price_climb_start" );
-    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_unknown_0358, "price_climb_mid" );
-    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_unknown_036B, "price_reach" );
-    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_unknown_037D, "soap_cliff_climb" );
-    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_unknown_0390, "climb_catch" );
+    _ID42259::_ID2058( "price", "price_intro_foley", ::_ID43000, "price_climb_intro" );
+    _ID42259::_ID2058( "price", "price_intro_foley_getup", ::_ID44749, "price_climb_intro" );
+    _ID42259::_ID2058( "price", "price_intro_foley_snow", ::_ID43844, "price_climb_intro" );
+    _ID42259::_ID2058( "price", "price_intro_foley_snow", ::_ID43844, "price_climb_start" );
+    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::price_intro_fs_spike_ledgewalk, "price_climb_intro" );
+    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_ID44262, "price_climb_start" );
+    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_ID44262, "price_climb_mid" );
+    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_ID44262, "price_reach" );
+    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_ID44262, "soap_cliff_climb" );
+    _ID42259::_ID2058( "price", "price_intro_fs_spike", ::_ID44262, "climb_catch" );
     _ID42259::_ID2056( "price", "price_climb_start", "pickaxe_pullout", "scn_cliff_soap_icepick_pullout" );
-    _ID42259::_ID2058( "price", "catch", ::_unknown_03BD, "climb_catch" );
-    _ID42259::_ID2058( "price", "exhale", ::_unknown_0454 );
-    _ID42259::_ID2058( "price", "puff", ::_unknown_0469 );
-    _ID42259::_ID2058( "price", "attach_axe", ::_unknown_0450 );
-    _ID42259::_ID2058( "price", "detach_axe", ::_unknown_046A );
-    _ID42259::_ID2058( "price", "attach_second_axe", ::_unknown_0473 );
-    _ID42259::_ID2058( "price", "detach_second_axe", ::_unknown_048C );
-    _ID42259::_ID2058( "price", "attach_gun", ::_ID43000 );
-    _ID42259::_ID2058( "price", "attach_pick", ::_unknown_0489 );
-    _ID42259::_ID2058( "price", "pick_slide_left", ::_unknown_0461 );
-    _ID42259::_ID2058( "price", "pick_in_left", ::_unknown_0462 );
-    _ID42259::_ID2058( "price", "pick_in_right", ::_unknown_048D );
-    _ID42259::_ID2058( "price", "pick_out_left", ::_unknown_04A9 );
-    _ID42259::_ID2058( "price", "pick_out_right", ::_unknown_04C6 );
+    _ID42259::_ID2058( "price", "catch", ::_ID50296, "climb_catch" );
+    _ID42259::_ID2058( "price", "exhale", ::_ID48987 );
+    _ID42259::_ID2058( "price", "puff", ::_ID44769 );
+    _ID42259::_ID2058( "price", "attach_axe", ::_ID50791 );
+    _ID42259::_ID2058( "price", "detach_axe", ::_ID52427 );
+    _ID42259::_ID2058( "price", "attach_second_axe", ::_ID51493 );
+    _ID42259::_ID2058( "price", "detach_second_axe", ::_ID54186 );
+    _ID42259::_ID2058( "price", "attach_gun", ::_ID53801 );
+    _ID42259::_ID2058( "price", "attach_pick", ::_ID47962 );
+    _ID42259::_ID2058( "price", "pick_slide_left", ::_ID46208 );
+    _ID42259::_ID2058( "price", "pick_in_left", ::_ID53092 );
+    _ID42259::_ID2058( "price", "pick_in_right", ::_ID45575 );
+    _ID42259::_ID2058( "price", "pick_out_left", ::_ID54512 );
+    _ID42259::_ID2058( "price", "pick_out_right", ::_ID52506 );
     _ID42259::_ID2058( "price", "left_foot_stab", _ID47980::_ID49477, "price_climb_start" );
     level._ID44648 = "none";
 }
@@ -63,35 +63,35 @@ _ID53728( var_0 )
 _ID43000( var_0 )
 {
     wait 0.1;
-    var_0 _meth_80A1( "scn_cliffhanger_price_intro" );
+    var_0 playsound( "scn_cliffhanger_price_intro" );
 }
 
 _ID44749( var_0 )
 {
-    var_0 _meth_80A1( "scn_cliffhanger_price_intro1_getup" );
+    var_0 playsound( "scn_cliffhanger_price_intro1_getup" );
 }
 
 _ID43844( var_0 )
 {
-    var_0 _meth_80A1( "scn_cliffhanger_price_foley_snowfall" );
+    var_0 playsound( "scn_cliffhanger_price_foley_snowfall" );
 }
 
 _ID44262( var_0 )
 {
-    var_0 _meth_80A1( "scn_cliffhanger_fs_spike_ice" );
+    var_0 playsound( "scn_cliffhanger_fs_spike_ice" );
 }
 
 price_intro_fs_spike_ledgewalk( var_0 )
 {
-    var_0 _meth_80A1( "ledgewalk_foley_price_fs_metal" );
+    var_0 playsound( "ledgewalk_foley_price_fs_metal" );
 }
 
 _ID50296( var_0 )
 {
-    if ( _func_02F( level._ID30333 ) )
-        level._ID30333 _meth_80B7();
+    if ( isdefined( level._ID30333 ) )
+        level._ID30333 delete();
 
-    level._ID794 _meth_80B4( "damage_light" );
+    level._ID794 playrumblelooponentity( "damage_light" );
     _ID42237::_ID14402( "player_was_caught" );
 }
 
@@ -107,48 +107,48 @@ _ID50879( var_0 )
 
 _ID53092( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_inhand" );
+    var_0 detach( "weapon_ice_picker", "tag_inhand" );
     var_0 _ID42407::_ID38044( "ice_pick", "TAG_ICE_PICKER_FX", 10 );
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
 }
 
 _ID46208( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_inhand" );
+    var_0 detach( "weapon_ice_picker", "tag_inhand" );
     var_0 _ID42407::_ID38044( "ice_pick", "TAG_ICE_PICKER_FX", 10 );
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
 }
 
 _ID45575( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_weapon_left" );
+    var_0 detach( "weapon_ice_picker", "tag_weapon_left" );
     var_0 _ID42407::_ID38044( "ice_pick", "TAG_ICE_PICKER_FX", 10 );
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_weapon_left" );
 }
 
 _ID54512( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_inhand" );
+    var_0 detach( "weapon_ice_picker", "tag_inhand" );
     var_0 _ID42407::_ID38044( "ice_pick_out", "TAG_ICE_PICKER_FX", 10 );
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
 }
 
 _ID52506( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_weapon_left" );
+    var_0 detach( "weapon_ice_picker", "tag_weapon_left" );
     var_0 _ID42407::_ID38044( "ice_pick_out", "TAG_ICE_PICKER_FX", 10 );
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_weapon_left" );
 }
 
 _ID47962( var_0 )
 {
-    if ( _func_02F( var_0._ID49299 ) )
+    if ( isdefined( var_0._ID49299 ) )
         return;
 
     var_0._ID49299 = 1;
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_weapon_left" );
     var_0 _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
-    var_0 _meth_8051( "tag_weapon", "weapon_ice_picker" );
+    var_0 showpart( "tag_weapon", "weapon_ice_picker" );
 }
 
 _ID50791( var_0 )
@@ -163,12 +163,12 @@ _ID51493( var_0 )
 
 _ID52427( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_weapon_left" );
+    var_0 detach( "weapon_ice_picker", "tag_weapon_left" );
 }
 
 _ID54186( var_0 )
 {
-    var_0 _meth_802A( "weapon_ice_picker", "tag_inhand" );
+    var_0 detach( "weapon_ice_picker", "tag_inhand" );
 }
 
 _ID53801( var_0 )
@@ -178,60 +178,60 @@ _ID53801( var_0 )
 
 _ID44585()
 {
-    if ( !_func_02F( self._ID49299 ) )
+    if ( !isdefined( self._ID49299 ) )
         return;
 
     self._ID49299 = undefined;
-    self _meth_802A( "weapon_ice_picker", "tag_weapon_left" );
-    self _meth_802A( "weapon_ice_picker", "tag_inhand" );
+    self detach( "weapon_ice_picker", "tag_weapon_left" );
+    self detach( "weapon_ice_picker", "tag_inhand" );
 }
 
 _ID48987( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "cigar_exhale_price" ), var_0, "J_Head" );
+    playfxontag( _ID42237::_ID16299( "cigar_exhale_price" ), var_0, "J_Head" );
 }
 
 _ID44769( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "cigar_glow_puff" ), var_0, "tag_cigarglow" );
+    playfxontag( _ID42237::_ID16299( "cigar_glow_puff" ), var_0, "tag_cigarglow" );
     wait 1;
-    _func_157( _ID42237::_ID16299( "cigar_smoke_puff" ), var_0, "tag_eye" );
+    playfxontag( _ID42237::_ID16299( "cigar_smoke_puff" ), var_0, "tag_eye" );
 }
 
 _ID46751( var_0, var_1 )
 {
-    level._ID794 _meth_80B4( "icepick_climb" );
+    level._ID794 playrumblelooponentity( "icepick_climb" );
     var_2 = _ID47980::_ID51668( "right" );
     var_3 = _ID47980::_ID52045( var_0, var_2, var_1 );
     var_3 _ID42407::_ID38044( "player_ice_pick", "tag_origin", 10 );
-    var_3 _meth_80B7();
+    var_3 delete();
 }
 
 _ID45179( var_0, var_1 )
 {
-    level._ID794 _meth_80B4( "icepick_climb" );
+    level._ID794 playrumblelooponentity( "icepick_climb" );
     var_2 = _ID47980::_ID51668( var_1 );
     var_3 = _ID47980::_ID52045( var_0, var_2 );
     var_3 _ID42407::_ID38044( "player_ice_pick", "tag_origin", 10 );
-    var_3 _meth_80B7();
+    var_3 delete();
 }
 
 _ID54223( var_0 )
 {
     var_1 = level._ID45147._ID45132;
-    _unknown_07CB( var_0, var_1 );
+    _ID45179( var_0, var_1 );
 }
 
 _ID43405( var_0 )
 {
     var_1 = "left";
-    _unknown_07D9( var_0, var_1 );
+    _ID45179( var_0, var_1 );
 }
 
 _ID43886( var_0 )
 {
     var_1 = "right";
-    _unknown_07E7( var_0, var_1 );
+    _ID45179( var_0, var_1 );
 }
 #using_animtree("player");
 
@@ -310,26 +310,21 @@ _ID27229()
     level._ID30895["worldbody"]["h2_hang"] = %h2_playerview_hang;
     level._ID30895["worldbody"]["fail_icepick"] = %h2_playerview_icepicker_bigjump_slide_fail_right;
     _ID42259::_ID2058( "player_rig", "start_gaz", _ID47980::_ID54238 );
-    _ID42259::_ID2058( "player_rig", "stab", ::_unknown_0C8B, "big_jump" );
+    _ID42259::_ID2058( "player_rig", "stab", ::_ID46751, "big_jump" );
     _ID42259::_ID2058( "worldbody", "start_gaz", _ID47980::_ID54238 );
-    _ID42259::_ID2058( "worldbody", "stab", ::_unknown_0CB7, "h2_hang", ( 0, 1, 5.5 ) );
-    _ID42259::_ID2058( "player_rig", "stab", ::_unknown_0CE8, "climbing" );
-    _ID42259::_ID2058( "player_rig", "stab_left", ::_unknown_0D00, "climbing" );
-    _ID42259::_ID2058( "player_rig", "stab_right", ::_unknown_0D18, "climbing" );
+    _ID42259::_ID2058( "worldbody", "stab", ::_ID46751, "h2_hang", ( 0, 1, 5.5 ) );
+    _ID42259::_ID2058( "player_rig", "stab", ::_ID54223, "climbing" );
+    _ID42259::_ID2058( "player_rig", "stab_left", ::_ID43405, "climbing" );
+    _ID42259::_ID2058( "player_rig", "stab_right", ::_ID43886, "climbing" );
     var_0 = [ "ledgewalking_in", "ledgewalking_1", "ledgewalking_2", "ledgewalking_3" ];
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
         _ID42259::_ID2058( "worldbody", "footstep_right_small", _ID47980::_ID51300, var_2, [ "right", "small" ] );
         _ID42259::_ID2058( "worldbody", "footstep_left_small", _ID47980::_ID51300, var_2, [ "left", "small" ] );
         _ID42259::_ID2058( "worldbody", "footstep_right_large", _ID47980::_ID51300, var_2, [ "right", "large" ] );
         _ID42259::_ID2058( "worldbody", "footstep_left_large", _ID47980::_ID51300, var_2, [ "left", "large" ] );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID49370( var_0, var_1, var_2 )
@@ -449,23 +444,23 @@ _ID48923()
     var_0["cliff_hero1_pose_jump4"] = %cliff_hero1_pose_jump4;
     var_0["cliff_hero1_pose_jump5"] = %cliff_hero1_pose_jump5;
     var_0["cliff_hero1_pose_jump6"] = %cliff_hero1_pose_jump6;
-    self _meth_811E( #animtree );
+    self useanimtree( #animtree );
     var_1 = var_0[self._ID70];
-    var_2 = _func_071( self._ID740, self._ID65, var_1 );
-    var_3 = _func_072( self._ID740, self._ID65, var_1 );
-    thread _unknown_14D8( var_1, var_2, var_3 );
+    var_2 = getstartorigin( self._ID740, self._ID65, var_1 );
+    var_3 = getstartangles( self._ID740, self._ID65, var_1 );
+    thread _ID46904( var_1, var_2, var_3 );
     _ID42259::_ID3128( "weapon_ice_picker", "tag_weapon_left" );
     _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
 
     for (;;)
     {
-        if ( _func_0F3( level._ID794._ID740, self._ID740 ) < 150 )
+        if ( distance( level._ID794._ID740, self._ID740 ) < 150 )
             break;
 
         wait 0.05;
     }
 
-    self _meth_80B7();
+    self delete();
 }
 
 _ID46904( var_0, var_1, var_2 )
@@ -476,7 +471,7 @@ _ID46904( var_0, var_1, var_2 )
     {
         self._ID740 = var_1;
         self._ID65 = var_2;
-        self _meth_811A( "anim", var_0, 1, 0, 1 );
+        self setflaggedanim( "anim", var_0, 1, 0, 1 );
         self waittillmatch( "anim",  "end"  );
     }
 }

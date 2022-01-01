@@ -4,7 +4,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "c130", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0049 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_ac130_low" );
     _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion", undefined, "explo_metal_rand" );
     _ID42411::_ID6233( 999, 500, 1500 );
@@ -19,9 +19,9 @@ _ID616( var_0, var_1, var_2 )
 _ID19731()
 {
     _ID42411::_ID40197( "running" );
-    self _meth_804E( "tag_25mm" );
-    self _meth_804E( "tag_40mm" );
-    self _meth_804E( "tag_105mm" );
+    self hidepart( "tag_25mm" );
+    self hidepart( "tag_40mm" );
+    self hidepart( "tag_105mm" );
 }
 
 _ID32509( var_0 )
@@ -34,7 +34,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 1; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     return var_0;
 }

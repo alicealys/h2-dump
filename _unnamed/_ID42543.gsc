@@ -6,7 +6,7 @@ _ID17848()
     self endon( "death" );
     _ID42475::_ID34575( "rec_littlebird_formation_spawn", self );
 
-    if ( _func_125( self._ID170, "sentinel" ) || _func_125( self._ID170, "armed" ) || _func_125( self._ID170, "atlas_bench" ) )
+    if ( issubstr( self._ID170, "sentinel" ) || issubstr( self._ID170, "armed" ) || issubstr( self._ID170, "atlas_bench" ) )
     {
         var_0 = 0.25;
 
@@ -15,17 +15,17 @@ _ID17848()
 
         var_1 = 0;
         var_2 = 0;
-        var_3 = _func_1A5();
+        var_3 = spawnstruct();
         var_3._ID28452 = "littlebird_sentinel";
         var_3._ID13811 = 3;
         var_3._ID13816 = 3;
-        _ID42475::_ID34575( "snd_register_vehicle", "littlebird_sentinel", ::_unknown_00A0 );
+        _ID42475::_ID34575( "snd_register_vehicle", "littlebird_sentinel", ::_ID22456 );
 
         for (;;)
         {
-            if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+            if ( !isdefined( self._ID31138 ) || !self._ID31138 )
             {
-                var_4 = _func_0F3( self._ID740, level._ID794._ID740 );
+                var_4 = distance( self._ID740, level._ID794._ID740 );
 
                 if ( !var_1 && var_4 < 5400 )
                 {
@@ -90,25 +90,25 @@ _ID22456()
     _ID42471::_ID4492();
     _ID42471::_ID4508();
     _ID42471::_ID4488();
-    _ID42471::_ID4489( "to_state_hover", ::_unknown_0435, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_hover", ::_ID22078, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_flying", ::_unknown_0465, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_flying", ::_ID22076, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_distant", ::_unknown_0491, [ "distance2d" ] );
+    _ID42471::_ID4489( "to_state_distant", ::_ID22074, [ "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_flyby", ::_unknown_04B8, [ "distance2d" ] );
+    _ID42471::_ID4489( "to_state_flyby", ::_ID22075, [ "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_deathspin", ::_unknown_04FD );
+    _ID42471::_ID4489( "to_state_deathspin", ::_ID22072 );
     _ID42471::_ID4483( "NONE" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_destruct", ::_unknown_0516 );
+    _ID42471::_ID4489( "to_state_destruct", ::_ID22073 );
     _ID42471::_ID4483( "NONE" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_off", ::_unknown_04D3 );
+    _ID42471::_ID4489( "to_state_off", ::_ID22079 );
     _ID42471::_ID4483( "NONE" );
     _ID42471::_ID4505();
     _ID42471::_ID4504();
@@ -276,9 +276,9 @@ _ID22075( var_0, var_1 )
     var_3 = var_0["distance2d"];
     var_4 = _ID42471::_ID39469( var_3 );
 
-    if ( !_func_02F( var_1._ID14624 ) )
+    if ( !isdefined( var_1._ID14624 ) )
     {
-        var_1._ID14624 = _func_1A5();
+        var_1._ID14624 = spawnstruct();
         var_1._ID14624._ID28494 = var_4;
         var_1._ID14624._ID28479 = 0;
     }

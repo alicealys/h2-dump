@@ -3,10 +3,10 @@
 
 _ID616()
 {
-    _unknown_000A();
+    _ID19720();
     maps\_thermal_scope_lightset::_ID521( "estate_thermal" );
-    thread _unknown_0016();
-    thread _unknown_001B();
+    thread _ID32969();
+    thread _ID32363();
 }
 
 _ID19720()
@@ -25,5 +25,5 @@ _ID32363()
     level._ID51424 = "estate";
     level._ID49027 = "estate";
     _ID42407::_ID40561( "estate", 0 );
-    level._ID794 _meth_83CD( "estate" );
+    level._ID794 lightset( "estate" );
 }

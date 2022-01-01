@@ -15,27 +15,31 @@ _ID616()
     self._ID949 = "ak47_woodland_reflex";
     self._ID34144 = "pp2000";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 768.0, 512.0 );
-        self _meth_8179( 1024.0, 1500.0 );
+        self setengagementmindist( 768.0, 512.0 );
+        self setengagementmaxdist( 1024.0, 1500.0 );
     }
 
     self._ID1302 = "rpg";
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID45139::_ID616();
+            break;
+        case 1:
+            _ID49398::_ID616();
+            break;
+        case 2:
+            _ID46819::_ID616();
+            break;
     }
-
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -43,8 +47,8 @@ _ID814()
     _ID45139::_ID814();
     _ID49398::_ID814();
     _ID46819::_ID814();
-    _func_14E( "rpg" );
-    _func_14E( "ak47_woodland_reflex" );
-    _func_14E( "pp2000" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "rpg" );
+    precacheitem( "ak47_woodland_reflex" );
+    precacheitem( "pp2000" );
+    precacheitem( "fraggrenade" );
 }

@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_us_army_assault_a_dead_elevator" );
-    self _meth_801D( "head_us_army_d_dead_elevator", "", 1 );
+    self setmodel( "body_us_army_assault_a_dead_elevator" );
+    self attach( "head_us_army_d_dead_elevator", "", 1 );
     self._ID18304 = "head_us_army_d_dead_elevator";
     self._ID40757 = "american";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_us_army_assault_a_dead_elevator" );
-    _func_14C( "head_us_army_d_dead_elevator" );
+    precachemodel( "body_us_army_assault_a_dead_elevator" );
+    precachemodel( "head_us_army_d_dead_elevator" );
 }

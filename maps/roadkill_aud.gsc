@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    _unknown_000E();
-    _unknown_001B();
-    _unknown_001F();
-    _unknown_0023();
-    _unknown_0027();
-    thread _unknown_002C();
-    _unknown_0032();
-    _unknown_0036();
-    _unknown_003B();
+    _ID8467();
+    _ID19806();
+    _ID19703();
+    _ID22056();
+    _ID22043();
+    thread _ID22042();
+    _ID9159();
+    _ID28366();
+    _ID29419();
 }
 
 _ID8467()
@@ -58,28 +58,28 @@ _ID28366()
 
 _ID29419()
 {
-    _ID42475::_ID34640( "start_riverbank_checkpoint", ::_unknown_00C0 );
-    _ID42475::_ID34640( "start_convoy_checkpoint", ::_unknown_00DE );
-    _ID42475::_ID34640( "start_ride_checkpoint", ::_unknown_00ED );
-    _ID42475::_ID34640( "start_crazy_ride_checkpoint", ::_unknown_00FC );
-    _ID42475::_ID34640( "start_crazy_ride_later_checkpoint", ::_unknown_010B );
-    _ID42475::_ID34640( "start_dismount_checkpoint", ::_unknown_011A );
-    _ID42475::_ID34640( "start_roadkill_school_fight_checkpoint", ::_unknown_0129 );
-    _ID42475::_ID34640( "start_roadkill_endfight_checkpoint", ::_unknown_0138 );
-    _ID42475::_ID34640( "start_roadkill_end_checkpoint", ::_unknown_0147 );
-    _ID42475::_ID34640( "start_interior_vehicle_context", ::_unknown_0156 );
-    _ID42475::_ID34640( "stop_interior_vehicle_context", ::_unknown_0164 );
-    _ID42475::_ID34640( "start_stryker_01", ::_unknown_0172 );
-    _ID42475::_ID34640( "start_stryker_02", ::_unknown_0186 );
-    _ID42475::_ID34640( "scn_npc_technical_stop_to_shoot_01", ::_unknown_02C4 );
-    _ID42475::_ID34640( "start_technical_pickup_blocking_path", ::_unknown_02D5 );
-    _ID42475::_ID34640( "start_shellshock_mix", ::_unknown_01AD );
-    _ID42475::_ID34640( "stop_shellshock_mix", ::_unknown_01BB );
-    _ID42475::_ID34640( "start_pushed_truck_mix", ::_unknown_01CA );
-    _ID42475::_ID34640( "stop_pushed_truck_mix", ::_unknown_01D8 );
-    _ID42475::_ID34640( "start_ambush_mix", ::_unknown_01E7 );
-    _ID42475::_ID34640( "start_ambush_flee_mix", ::_unknown_01F8 );
-    _ID42475::_ID34640( "scn_plr_laatpv_05_flee_area_02", ::_unknown_02A3 );
+    _ID42475::_ID34640( "start_riverbank_checkpoint", ::_ID53361 );
+    _ID42475::_ID34640( "start_convoy_checkpoint", ::_ID51477 );
+    _ID42475::_ID34640( "start_ride_checkpoint", ::_ID54721 );
+    _ID42475::_ID34640( "start_crazy_ride_checkpoint", ::_ID44313 );
+    _ID42475::_ID34640( "start_crazy_ride_later_checkpoint", ::_ID43849 );
+    _ID42475::_ID34640( "start_dismount_checkpoint", ::_ID43544 );
+    _ID42475::_ID34640( "start_roadkill_school_fight_checkpoint", ::_ID49063 );
+    _ID42475::_ID34640( "start_roadkill_endfight_checkpoint", ::_ID54419 );
+    _ID42475::_ID34640( "start_roadkill_end_checkpoint", ::_ID48013 );
+    _ID42475::_ID34640( "start_interior_vehicle_context", ::_ID51595 );
+    _ID42475::_ID34640( "stop_interior_vehicle_context", ::_ID52093 );
+    _ID42475::_ID34640( "start_stryker_01", ::_ID52388 );
+    _ID42475::_ID34640( "start_stryker_02", ::_ID51872 );
+    _ID42475::_ID34640( "scn_npc_technical_stop_to_shoot_01", ::scn_npc_technical_stop_to_shoot_01 );
+    _ID42475::_ID34640( "start_technical_pickup_blocking_path", ::start_technical_pickup_blocking_path );
+    _ID42475::_ID34640( "start_shellshock_mix", ::start_shellshock_mix );
+    _ID42475::_ID34640( "stop_shellshock_mix", ::stop_shellshock_mix );
+    _ID42475::_ID34640( "start_pushed_truck_mix", ::start_pushed_truck_mix );
+    _ID42475::_ID34640( "stop_pushed_truck_mix", ::stop_pushed_truck_mix );
+    _ID42475::_ID34640( "start_ambush_mix", ::start_ambush_mix );
+    _ID42475::_ID34640( "start_ambush_flee_mix", ::start_ambush_flee_mix );
+    _ID42475::_ID34640( "scn_plr_laatpv_05_flee_area_02", ::player_laatpv_flee_area_02 );
 }
 
 _ID41961( var_0, var_1 )
@@ -144,12 +144,12 @@ _ID48013( var_0 )
 
 _ID51595()
 {
-    _func_29A( "bullet_metal_vehicle" );
+    enablecontext( "bullet_metal_vehicle" );
 }
 
 _ID52093()
 {
-    _func_29B( "bullet_metal_vehicle" );
+    disablecontext( "bullet_metal_vehicle" );
 }
 
 _ID52388( var_0 )
@@ -197,12 +197,12 @@ start_ambush_flee_mix()
 
 _ID46869( var_0, var_1, var_2 )
 {
-    _unknown_035D( var_0, 0.05 );
+    _ID47662( var_0, 0.05 );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         level._ID794 thread _ID42407::_ID27079( var_1 );
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
     {
         _ID42465::_ID23797( var_2 );
 
@@ -223,10 +223,10 @@ _ID46869( var_0, var_1, var_2 )
 
     wait(var_0);
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         _ID42465::_ID23801( var_2 );
 
-    _unknown_03CD( 1 );
+    _ID44578( 1 );
 }
 
 _ID47662( var_0, var_1 )
@@ -246,49 +246,58 @@ _ID44578( var_0 )
 _ID47919()
 {
     wait 0.1;
-    thread _unknown_0426( level._ID48503, "scn_friendly_open_latvee_arrive_01" );
-    thread _unknown_0435( level._ID52834["detour"], "scn_laatpv_detour_arrive_01" );
-    thread _unknown_0444( level._ID52834["player"], "scn_laatpv_player_arrive_01" );
-    thread _unknown_0453( level._ID52834["rear"], "scn_laatpv_rear_arrive_01" );
+    thread _ID53893( level._ID48503, "scn_friendly_open_latvee_arrive_01" );
+    thread _ID53893( level._ID52834["detour"], "scn_laatpv_detour_arrive_01" );
+    thread _ID53893( level._ID52834["player"], "scn_laatpv_player_arrive_01" );
+    thread _ID53893( level._ID52834["rear"], "scn_laatpv_rear_arrive_01" );
 }
 
 _ID53893( var_0, var_1 )
 {
-    var_0 _unknown_04BA();
+    var_0 _ID50111();
     var_0 thread _ID42407::_ID27081( var_1 );
     var_0 waittill( "vehicle_flag_arrived" );
-    var_0 _unknown_04D0();
+    var_0 _ID47418();
 }
 
 _ID51245( var_0, var_1 )
 {
     _ID42237::_ID14413( var_0 );
-    _unknown_04D9();
+    _ID50111();
     _ID42407::_ID27081( var_1 );
-    _unknown_04E6();
+    _ID47418();
 }
 
 _ID46867()
 {
     switch ( level._ID35897 )
     {
-
+        case "default":
+        case "intro":
+        case "riverbank":
+        case "move_out":
+        case "convoy":
+            _ID42237::_ID14413( "convoy_crosses_bridge3" );
+            thread _ID50111();
+            thread _ID42407::_ID27001( "scn_plr_laatpv_02_enter_city_01", undefined, 1, undefined, 0, 1 );
+        case "ride":
+            _ID42237::_ID14413( "shot_rings_out" );
+            wait 1.5;
+            thread _ID42237::_ID36516( "scn_plr_laatpv_02_enter_city_01" );
+            thread _ID42407::_ID27001( "scn_plr_laatpv_02_enter_city_02", undefined, 1, 1, 0.1, 0.5 );
+        case "ambush":
+        case "ride_later":
+        case "ride_end":
+            _ID42237::_ID14413( "ambush" );
+            thread _ID42237::_ID36516( "scn_plr_laatpv_02_enter_city_02" );
+        case "end":
+        case "dismount":
+        case "school":
+        case "endfight":
+            break;
+        default:
+            break;
     }
-
-    case "endfight":
-    case "school":
-    case "ride_end":
-    case "dismount":
-    case "ride_later":
-    case "ride":
-    case "convoy":
-    case "move_out":
-    case "riverbank":
-    case "intro":
-    case "end":
-    case "default":
-    case "ambush":
-    default:
 }
 
 _ID44074()
@@ -319,14 +328,14 @@ player_laatpv_flee_area_04( var_0 )
 _ID50111()
 {
     wait 0.1;
-    self _meth_8295();
+    self vehicle_turnengineoff();
     self._ID31138 = 1;
 }
 
 _ID47418()
 {
     wait 0.1;
-    self _meth_8296();
+    self vehicle_turnengineon();
     self._ID31138 = 0;
 }
 
@@ -342,18 +351,18 @@ _ID47883()
 
 _ID49024( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = "script_noteworthy";
 
     var_3 = _ID42407::_ID16262( var_0, var_2 );
-    var_4 waittill( "trigger",  var_4  );
+    var_3 waittill( "trigger",  var_4  );
     var_4 _ID42407::_ID27080( var_1, undefined, 1 );
     return var_4;
 }
 
 _ID46321()
 {
-    var_0 = _unknown_0664( "pickup_arrival_node", "scn_roadkill_pickup_truck_appear_01", "script_noteworthy" );
+    var_0 = _ID49024( "pickup_arrival_node", "scn_roadkill_pickup_truck_appear_01", "script_noteworthy" );
     _ID42237::_ID14413( "bridge_truck_leaves" );
     var_0 _ID42407::_ID27080( "scn_roadkill_pickup_truck_leave_01", undefined, 1 );
 }
@@ -365,26 +374,26 @@ _ID47719( var_0 )
 
 scn_apache_show_building_scripted_sfx()
 {
-    _unknown_067A();
+    _ID50111();
     _ID42407::_ID27081( self._ID43356 );
 }
 
 _ID53506()
 {
-    thread _unknown_0686();
-    self _meth_80A1( "scn_roadkill_bridge_tank_crossing" );
+    thread _ID50111();
+    self playsound( "scn_roadkill_bridge_tank_crossing" );
 }
 
 _ID51695()
 {
-    thread _unknown_0693();
+    thread _ID50111();
     _ID42237::_ID27000( "scn_npc_heli_idle_01", undefined, undefined, 1.5 );
 }
 
 _ID52617()
 {
     _ID42237::_ID36516( "scn_npc_heli_idle_01" );
-    self _meth_80A1( "scn_npc_heli_flyaway_01" );
+    self playsound( "scn_npc_heli_flyaway_01" );
 }
 
 _ID49995()
@@ -400,7 +409,7 @@ _ID49995()
 plr_oob_gunfire_aud()
 {
     level._ID794 endon( "death" );
-    var_0 = _func_1A1( "oob_gunfire_ent", "targetname" );
+    var_0 = getent( "oob_gunfire_ent", "targetname" );
 
     for (;;)
     {
@@ -411,7 +420,7 @@ plr_oob_gunfire_aud()
 
 scn_npc_technical_stop_to_shoot_01( var_0 )
 {
-    var_0 _unknown_071D();
+    var_0 _ID50111();
     var_0 thread _ID42407::_ID27079( "scn_npc_technical_stop_to_shoot_01" );
 }
 
@@ -434,15 +443,15 @@ bridge_layer_impact_snd()
     for (;;)
     {
         self waittill( "damage" );
-        self _meth_80A1( "scn_roadkill_bridge_tank_impact" );
+        self playsound( "scn_roadkill_bridge_tank_impact" );
     }
 }
 
 bridge_lower_end()
 {
-    self _meth_80A1( "scn_roadkill_bridgedown_part2" );
+    self playsound( "scn_roadkill_bridgedown_part2" );
     self waittillmatch( "single anim",  "bridge_lower_end"  );
-    self _meth_8076( 0, 1.5 );
+    self setvolume( 0, 1.5 );
     thread _ID42407::_ID27079( "scn_roadkill_bridgedown_part2_end" );
     wait 1.5;
     self _meth_8561( "scn_roadkill_bridgedown_part2" );
@@ -467,6 +476,6 @@ traffic_jam_truck_impact_02( var_0 )
 
 school_latvee_sounds()
 {
-    thread _unknown_07DF();
+    thread _ID50111();
     thread _ID42407::_ID27081( self._ID43356, undefined );
 }

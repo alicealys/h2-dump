@@ -3,16 +3,16 @@
 
 _ID19730()
 {
-    _unknown_0005();
+    _ID16845();
     _ID42325::_ID22491();
 }
 
 _ID16845()
 {
-    if ( _func_02F( level._ID11311 ) )
+    if ( isdefined( level._ID11311 ) )
         return;
 
-    if ( !_func_02F( level._ID6720 ) )
+    if ( !isdefined( level._ID6720 ) )
         level._ID6720 = "american";
 
     var_0 = _ID42325::_ID15823();

@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_complete_sp_usmc_ghillie_price" );
-    self _meth_801D( "head_usmc_ghillie_price", "", 1 );
+    self setmodel( "body_complete_sp_usmc_ghillie_price" );
+    self attach( "head_usmc_ghillie_price", "", 1 );
     self._ID18304 = "head_usmc_ghillie_price";
     self._ID40757 = "american";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_complete_sp_usmc_ghillie_price" );
-    _func_14C( "head_usmc_ghillie_price" );
+    precachemodel( "body_complete_sp_usmc_ghillie_price" );
+    precachemodel( "head_usmc_ghillie_price" );
 }

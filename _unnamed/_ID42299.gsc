@@ -36,7 +36,7 @@ _ID616()
     _ID42300::_ID16944( "light_pulse_red_FX_origin", "fx/misc/light_glow_red_generic_pulse", -2 );
     _ID42300::_ID16944( "light_pulse_orange_FX_origin", "fx/misc/light_glow_orange_generic_pulse", -2 );
     _ID42300::_ID16944( "light_red_blink_FX_origin", "fx/misc/power_tower_light_red_blink", -2 );
-    var_0 = _func_0BA( -20, -15 );
+    var_0 = randomfloatrange( -20, -15 );
     _ID42300::_ID16944( "flare_ambient_FX_origin", "fx/misc/flare_ambient", var_0, "flare_ambient_FX", "emt_road_flare_burn" );
     _ID42300::_ID16944( "flare_ambient_FX_nosparks_origin", "fx/misc/flare_ambient_nosparks", var_0, "flare_ambient_FX_nosparks", "emt_road_flare_burn" );
     _ID42300::_ID16944( "me_dumpster_fire_FX_origin", "fx/fire/firelp_med_pm", var_0, "me_dumpster_fire_FX", "fire_dumpster_medium" );
@@ -69,14 +69,11 @@ _ID53720( var_0, var_1, var_2, var_3, var_4 )
 
 _ID52057()
 {
-    if ( !_func_02F( level._ID52012 ) )
+    if ( !isdefined( level._ID52012 ) )
         return;
 
-    var_0 = level._ID52012;
-
-    for ( var_7 = _func_1DA( var_0 ); _func_02F( var_7 ); var_7 = _func_1BF( var_0, var_7 ) )
+    foreach ( var_1 in level._ID52012 )
     {
-        var_1 = var_0[var_7];
         var_2 = var_1["targetname"];
         var_3 = var_1["fxFile"];
         var_4 = var_1["delay"];
@@ -84,7 +81,4 @@ _ID52057()
         var_6 = var_1["soundalias"];
         _ID42300::_ID16944( var_2, var_3, var_4, var_5, var_6 );
     }
-
-    var_clear_7
-    var_clear_0
 }

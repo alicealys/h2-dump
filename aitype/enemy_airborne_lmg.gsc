@@ -15,36 +15,51 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "pp2000";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 512.0, 400.0 );
-        self _meth_8179( 1024.0, 1250.0 );
+        self setengagementmindist( 512.0, 400.0 );
+        self setengagementmaxdist( 1024.0, 1250.0 );
     }
 
     switch ( _ID42226::_ID15950( 6 ) )
     {
-
+        case 0:
+            self._ID1302 = "rpd";
+            break;
+        case 1:
+            self._ID1302 = "rpd_reflex";
+            break;
+        case 2:
+            self._ID1302 = "rpd_acog";
+            break;
+        case 3:
+            self._ID1302 = "rpd_digital";
+            break;
+        case 4:
+            self._ID1302 = "rpd_digital_acog";
+            break;
+        case 5:
+            self._ID1302 = "rpd_digital_reflex";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID52464::_ID616();
+            break;
+        case 1:
+            _ID49613::_ID616();
+            break;
+        case 2:
+            _ID54249::_ID616();
+            break;
     }
-
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -52,12 +67,12 @@ _ID814()
     _ID52464::_ID814();
     _ID49613::_ID814();
     _ID54249::_ID814();
-    _func_14E( "rpd" );
-    _func_14E( "rpd_reflex" );
-    _func_14E( "rpd_acog" );
-    _func_14E( "rpd_digital" );
-    _func_14E( "rpd_digital_acog" );
-    _func_14E( "rpd_digital_reflex" );
-    _func_14E( "pp2000" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "rpd" );
+    precacheitem( "rpd_reflex" );
+    precacheitem( "rpd_acog" );
+    precacheitem( "rpd_digital" );
+    precacheitem( "rpd_digital_acog" );
+    precacheitem( "rpd_digital_reflex" );
+    precacheitem( "pp2000" );
+    precacheitem( "fraggrenade" );
 }

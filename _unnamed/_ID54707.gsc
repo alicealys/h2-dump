@@ -4,7 +4,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "zodiac_player", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_002C );
+    _ID42411::_ID6236( ::_ID19731 );
 
     if ( var_0 != "vehicle_zodiac_boat" )
         _ID42411::_ID6216( "vehicle_zodiac_viewmodel" );
@@ -13,7 +13,7 @@ _ID616( var_0, var_1, var_2 )
 
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_0065, ::_unknown_0060 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
 }
 
 _ID19731()
@@ -32,7 +32,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 6; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_body";
     var_0[1]._ID34225 = "tag_body";

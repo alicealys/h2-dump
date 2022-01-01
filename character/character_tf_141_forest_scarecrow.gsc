@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_forest_tf141_assault_b" );
-    self _meth_801D( "head_tf141_scarecrow", "", 1 );
+    self setmodel( "body_forest_tf141_assault_b" );
+    self attach( "head_tf141_scarecrow", "", 1 );
     self._ID18304 = "head_tf141_scarecrow";
     self._ID40757 = "taskforce";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_forest_tf141_assault_b" );
-    _func_14C( "head_tf141_scarecrow" );
+    precachemodel( "body_forest_tf141_assault_b" );
+    precachemodel( "head_tf141_scarecrow" );
 }

@@ -8,10 +8,10 @@ _ID616()
     self notify( "killanimscript" );
     self._ID8196["root"] = %root;
     self endon( "end_sequence" );
-    self _meth_824F( self._ID8196["notifyName"], self._ID8196["origin"], self._ID8196["angles"], self._ID8196["anim"], self._ID8196["animMode"], self._ID8196["root"] );
+    self startscriptedanim( self._ID8196["notifyName"], self._ID8196["origin"], self._ID8196["angles"], self._ID8196["anim"], self._ID8196["animMode"], self._ID8196["root"] );
     self._ID8196 = undefined;
 
-    if ( _func_02F( self._ID9843 ) )
+    if ( isdefined( self._ID9843 ) )
         self._ID9842 = self._ID9843;
 
     self waittill( "killanimscript" );
@@ -24,12 +24,12 @@ _ID521( var_0, var_1, var_2, var_3, var_4, var_5 )
     self._ID8196["angles"] = var_2;
     self._ID8196["anim"] = var_3;
 
-    if ( _func_02F( var_4 ) )
+    if ( isdefined( var_4 ) )
         self._ID8196["animMode"] = var_4;
     else
         self._ID8196["animMode"] = "normal";
 
-    if ( _func_02F( var_5 ) )
+    if ( isdefined( var_5 ) )
         self._ID8196["root"] = var_5;
     else
         self._ID8196["root"] = %root;

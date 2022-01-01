@@ -15,47 +15,64 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 128.0, 0.0 );
-        self _meth_8179( 512.0, 1024.0 );
+        self setengagementmindist( 128.0, 0.0 );
+        self setengagementmaxdist( 512.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 9 ) )
     {
-
+        case 0:
+            self._ID1302 = "ak47_arctic";
+            break;
+        case 1:
+            self._ID1302 = "ak47_arctic_acog";
+            break;
+        case 2:
+            self._ID1302 = "ak47_arctic_grenadier";
+            break;
+        case 3:
+            self._ID1302 = "ak47_arctic_reflex";
+            break;
+        case 4:
+            self._ID1302 = "famas_arctic";
+            break;
+        case 5:
+            self._ID1302 = "famas_arctic_reflex";
+            break;
+        case 6:
+            self._ID1302 = "aug_scope_arctic";
+            break;
+        case 7:
+            self._ID1302 = "aug_reflex_arctic";
+            break;
+        case 8:
+            self._ID1302 = "aug_reflex_arctic";
+            break;
     }
 
     character\character_opforce_merc_lmg_a_oilrig::_ID616();
-    case 8:
-    case 7:
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     character\character_opforce_merc_lmg_a_oilrig::_ID814();
-    _func_14E( "ak47_arctic" );
-    _func_14E( "ak47_arctic_acog" );
-    _func_14E( "ak47_arctic_grenadier" );
-    _func_14E( "gl_ak47_arctic" );
-    _func_14E( "ak47_arctic_reflex" );
-    _func_14E( "famas_arctic" );
-    _func_14E( "famas_arctic_reflex" );
-    _func_14E( "aug_scope_arctic" );
-    _func_14E( "aug_reflex_arctic" );
-    _func_14E( "aug_reflex_arctic" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "ak47_arctic" );
+    precacheitem( "ak47_arctic_acog" );
+    precacheitem( "ak47_arctic_grenadier" );
+    precacheitem( "gl_ak47_arctic" );
+    precacheitem( "ak47_arctic_reflex" );
+    precacheitem( "famas_arctic" );
+    precacheitem( "famas_arctic_reflex" );
+    precacheitem( "aug_scope_arctic" );
+    precacheitem( "aug_reflex_arctic" );
+    precacheitem( "aug_reflex_arctic" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
 }

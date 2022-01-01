@@ -3,12 +3,12 @@
 
 _ID50786()
 {
-    if ( _func_039( "beautiful_corner" ) != "1" && _func_039( "beautiful_corner_demo" ) != "1" )
+    if ( getdvar( "beautiful_corner" ) != "1" && getdvar( "beautiful_corner_demo" ) != "1" )
         return 0;
 
     level._ID40576 = "invasion_thermal_scope";
-    _func_14C( "h2_arc_foliage_tree_oak_01" );
-    _func_14C( "h2_foliage_tree_oak_1_burnt" );
+    precachemodel( "h2_arc_foliage_tree_oak_01" );
+    precachemodel( "h2_foliage_tree_oak_1_burnt" );
     _ID54687::_ID616( "vehicle_mi-28_flying", "mi28", "script_vehicle_mi28" );
     _ID43797::_ID521();
     _ID47059::_ID616();
@@ -23,23 +23,23 @@ _ID50786()
     _ID46436::_ID521();
     _ID53924::_ID616();
     thread maps\invasion::_ID53625();
-    _func_0DB( "r_useLightGridDefaultModelLightingLookup", "1" );
-    _func_0DB( "r_lightGridDefaultModelLightingLookup", " 2550 8000 2375 " );
-    _func_0DB( "r_useLightGridDefaultModelLightingSmoothing", "1" );
+    setsaveddvar( "r_useLightGridDefaultModelLightingLookup", "1" );
+    setsaveddvar( "r_lightGridDefaultModelLightingLookup", " 2550 8000 2375 " );
+    setsaveddvar( "r_useLightGridDefaultModelLightingSmoothing", "1" );
     _ID42234::_ID13611( "1" );
     _ID42234::_ID13611( "2" );
     _ID42234::_ID13611( "3" );
     _ID42234::_ID13611( "4" );
-    thread _unknown_0101();
-    var_0 = _func_1A1( "destructible_notify", "script_noteworthy" );
+    thread trigger_late_explosion();
+    var_0 = getent( "destructible_notify", "script_noteworthy" );
     var_0 thread maps\invasion::exploding_car();
     var_0 _ID42407::_ID10514();
     _ID49238::_ID19930();
 
-    if ( _func_039( "beautiful_corner_demo" ) != "1" )
+    if ( getdvar( "beautiful_corner_demo" ) != "1" )
         return 1;
 
-    _unknown_0135();
+    _ID45560();
     _ID49238::_ID47777();
     return 1;
 }
@@ -54,88 +54,88 @@ trigger_late_explosion()
 
 _ID45560()
 {
-    var_0 = _func_06A( "script_origin", ( 1109.31, 2024.73, 2413.11 ) );
+    var_0 = spawn( "script_origin", ( 1109.31, 2024.73, 2413.11 ) );
     var_0._ID65 = ( -9.25789, -10.5549, 0 );
     var_0._ID1193 = "beautiful_corner1";
-    var_0 = _func_06A( "script_origin", ( 1109.31, 2024.73, 2413.11 ) );
+    var_0 = spawn( "script_origin", ( 1109.31, 2024.73, 2413.11 ) );
     var_0._ID65 = ( -9.25789, -10.5549, 0 );
     var_0._ID1193 = "beautiful_corner1_static";
-    var_0 = _func_06A( "script_origin", ( 1472.93, 1828.51, 2421.13 ) );
+    var_0 = spawn( "script_origin", ( 1472.93, 1828.51, 2421.13 ) );
     var_0._ID65 = ( -11.5867, -39.3862, 0 );
     var_0._ID1193 = "beautiful_corner1_end";
-    var_0 = _func_06A( "script_origin", ( 1472.93, 1828.51, 2421.13 ) );
+    var_0 = spawn( "script_origin", ( 1472.93, 1828.51, 2421.13 ) );
     var_0._ID65 = ( -11.5867, -39.3862, 0 );
     var_0._ID1193 = "beautiful_corner1_static_end";
-    var_0 = _func_06A( "script_origin", ( -121.893, -1379.18, 2447.69 ) );
+    var_0 = spawn( "script_origin", ( -121.893, -1379.18, 2447.69 ) );
     var_0._ID65 = ( 5.499, 55.2429, 0 );
     var_0._ID1193 = "beautiful_corner2";
-    var_0 = _func_06A( "script_origin", ( -121.893, -1379.18, 2447.69 ) );
+    var_0 = spawn( "script_origin", ( -121.893, -1379.18, 2447.69 ) );
     var_0._ID65 = ( 5.499, 55.2429, 0 );
     var_0._ID1193 = "beautiful_corner2_static";
-    var_0 = _func_06A( "script_origin", ( 11.9733, -1392.81, 2447.69 ) );
+    var_0 = spawn( "script_origin", ( 11.9733, -1392.81, 2447.69 ) );
     var_0._ID65 = ( -0.13454, 21.7928, 0 );
     var_0._ID1193 = "beautiful_corner2_end";
-    var_0 = _func_06A( "script_origin", ( 11.9733, -1392.81, 2447.69 ) );
+    var_0 = spawn( "script_origin", ( 11.9733, -1392.81, 2447.69 ) );
     var_0._ID65 = ( -0.13454, 21.7928, 0 );
     var_0._ID1193 = "beautiful_corner2_static_end";
-    var_0 = _func_06A( "script_origin", ( 551.003, -876.097, 2350.1 ) );
+    var_0 = spawn( "script_origin", ( 551.003, -876.097, 2350.1 ) );
     var_0._ID65 = ( 14.8583, -149.313, 0 );
     var_0._ID1193 = "beautiful_corner3";
-    var_0 = _func_06A( "script_origin", ( 551.003, -876.097, 2350.1 ) );
+    var_0 = spawn( "script_origin", ( 551.003, -876.097, 2350.1 ) );
     var_0._ID65 = ( 14.8583, -149.313, 0 );
     var_0._ID1193 = "beautiful_corner3_static";
-    var_0 = _func_06A( "script_origin", ( 551.003, -876.097, 2350.1 ) );
+    var_0 = spawn( "script_origin", ( 551.003, -876.097, 2350.1 ) );
     var_0._ID65 = ( 14.4069, 143.408, 0 );
     var_0._ID1193 = "beautiful_corner3_end";
-    var_0 = _func_06A( "script_origin", ( 551.003, -876.097, 2350.1 ) );
+    var_0 = spawn( "script_origin", ( 551.003, -876.097, 2350.1 ) );
     var_0._ID65 = ( 14.4069, 143.408, 0 );
     var_0._ID1193 = "beautiful_corner3_static_end";
-    var_0 = _func_06A( "script_origin", ( -3474.27, -3154.81, 2408.19 ) );
+    var_0 = spawn( "script_origin", ( -3474.27, -3154.81, 2408.19 ) );
     var_0._ID65 = ( -6.55077, -26.8643, 0 );
     var_0._ID1193 = "beautiful_corner4";
-    var_0 = _func_06A( "script_origin", ( -3474.27, -3154.81, 2408.19 ) );
+    var_0 = spawn( "script_origin", ( -3474.27, -3154.81, 2408.19 ) );
     var_0._ID65 = ( -6.55077, -26.8643, 0 );
     var_0._ID1193 = "beautiful_corner4_static";
-    var_0 = _func_06A( "script_origin", ( -3132.29, -2504.03, 2356.07 ) );
+    var_0 = spawn( "script_origin", ( -3132.29, -2504.03, 2356.07 ) );
     var_0._ID65 = ( -11.7701, -49.5571, 0 );
     var_0._ID1193 = "beautiful_corner4_end";
-    var_0 = _func_06A( "script_origin", ( -3132.29, -2504.03, 2356.07 ) );
+    var_0 = spawn( "script_origin", ( -3132.29, -2504.03, 2356.07 ) );
     var_0._ID65 = ( -11.7701, -49.5571, 0 );
     var_0._ID1193 = "beautiful_corner4_static_end";
-    var_0 = _func_06A( "script_origin", ( 3.29932, -3248.86, 2311.5 ) );
+    var_0 = spawn( "script_origin", ( 3.29932, -3248.86, 2311.5 ) );
     var_0._ID65 = ( 7.72262, -36.5188, 0 );
     var_0._ID1193 = "beautiful_corner5";
-    var_0 = _func_06A( "script_origin", ( 3.29932, -3248.86, 2311.5 ) );
+    var_0 = spawn( "script_origin", ( 3.29932, -3248.86, 2311.5 ) );
     var_0._ID65 = ( 7.72262, -36.5188, 0 );
     var_0._ID1193 = "beautiful_corner5_static";
-    var_0 = _func_06A( "script_origin", ( 332.742, -3724.68, 2338.32 ) );
+    var_0 = spawn( "script_origin", ( 332.742, -3724.68, 2338.32 ) );
     var_0._ID65 = ( 9.27587, -4.88177, 0 );
     var_0._ID1193 = "beautiful_corner5_end";
-    var_0 = _func_06A( "script_origin", ( 332.742, -3724.68, 2338.32 ) );
+    var_0 = spawn( "script_origin", ( 332.742, -3724.68, 2338.32 ) );
     var_0._ID65 = ( 9.27587, -4.88177, 0 );
     var_0._ID1193 = "beautiful_corner5_static_end";
-    var_0 = _func_06A( "script_origin", ( 3059.61, -5369.65, 2339.15 ) );
+    var_0 = spawn( "script_origin", ( 3059.61, -5369.65, 2339.15 ) );
     var_0._ID65 = ( 2.72444, -140.366, 0 );
     var_0._ID1193 = "beautiful_corner6";
-    var_0 = _func_06A( "script_origin", ( 3059.61, -5369.65, 2339.15 ) );
+    var_0 = spawn( "script_origin", ( 3059.61, -5369.65, 2339.15 ) );
     var_0._ID65 = ( 2.72444, -140.366, 0 );
     var_0._ID1193 = "beautiful_corner6_static";
-    var_0 = _func_06A( "script_origin", ( 2655.82, -5383.29, 2339.15 ) );
+    var_0 = spawn( "script_origin", ( 2655.82, -5383.29, 2339.15 ) );
     var_0._ID65 = ( 3.99832, -90.9433, 0 );
     var_0._ID1193 = "beautiful_corner6_end";
-    var_0 = _func_06A( "script_origin", ( 2655.82, -5383.29, 2339.15 ) );
+    var_0 = spawn( "script_origin", ( 2655.82, -5383.29, 2339.15 ) );
     var_0._ID65 = ( 3.99832, -90.9433, 0 );
     var_0._ID1193 = "beautiful_corner6_static_end";
-    var_0 = _func_06A( "script_origin", ( 234.496, -3356.12, 2302.88 ) );
+    var_0 = spawn( "script_origin", ( 234.496, -3356.12, 2302.88 ) );
     var_0._ID65 = ( 14.9387, -44.2707, 0 );
     var_0._ID1193 = "beautiful_corner7";
-    var_0 = _func_06A( "script_origin", ( 234.496, -3356.12, 2302.88 ) );
+    var_0 = spawn( "script_origin", ( 234.496, -3356.12, 2302.88 ) );
     var_0._ID65 = ( 14.9387, -44.2707, 0 );
     var_0._ID1193 = "beautiful_corner7_static";
-    var_0 = _func_06A( "script_origin", ( 556.035, -3913.33, 2362.63 ) );
+    var_0 = spawn( "script_origin", ( 556.035, -3913.33, 2362.63 ) );
     var_0._ID65 = ( 11.0961, -9.44425, 0 );
     var_0._ID1193 = "beautiful_corner7_end";
-    var_0 = _func_06A( "script_origin", ( 556.035, -3913.33, 2362.63 ) );
+    var_0 = spawn( "script_origin", ( 556.035, -3913.33, 2362.63 ) );
     var_0._ID65 = ( 11.0961, -9.44425, 0 );
     var_0._ID1193 = "beautiful_corner7_static_end";
     level._ID43337 = _ID42237::_ID3293( level._ID43337, "beautiful_corner1" );

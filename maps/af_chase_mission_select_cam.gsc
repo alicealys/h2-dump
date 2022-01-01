@@ -14,25 +14,25 @@ _ID50320()
     _ID48270::_ID616();
     _ID48669::_ID52537( "viewhands_player_tf141" );
     _ID45655::_ID616();
-    var_0 = _func_1A2( "script_vehicle_zodiac_player", "classname" );
+    var_0 = getentarray( "script_vehicle_zodiac_player", "classname" );
     _ID42237::_ID3350( var_0, _ID42407::_ID1947, _ID48669::_ID50469 );
     _ID42237::_ID3350( var_0, _ID42407::_ID1947, maps\af_chase_code::_ID48364 );
     _ID42237::_ID3350( var_0, _ID42407::_ID1947, maps\af_chase_code::_ID44200 );
-    _unknown_0083();
+    _ID49243();
     return 1;
 }
 
 _ID49243()
 {
-    var_0 = _func_06A( "script_origin", ( -17560.4, -25627.9, 372.9 ) );
+    var_0 = spawn( "script_origin", ( -17560.4, -25627.9, 372.9 ) );
     var_0._ID65 = ( 1.8, -34.9, 0 );
-    level._ID794 _meth_8343( var_0._ID740 );
-    level._ID794 _meth_8345( var_0._ID65 );
-    level._ID794 _meth_8032( 70, 0.1 );
+    level._ID794 setorigin( var_0._ID740 );
+    level._ID794 setplayerangles( var_0._ID65 );
+    level._ID794 lerpfov( 70, 0.1 );
     level._ID794._ID511 = 1;
-    _func_0DB( "hud_drawhud", 0 );
+    setsaveddvar( "hud_drawhud", 0 );
     level _ID42407::_ID40561( "af_chase_caves_end", 0 );
     level._ID794 _ID42407::_ID40561( "af_chase_caves_end", 0 );
-    level._ID794 _meth_83CD( "af_chase_caves_end" );
+    level._ID794 lightset( "af_chase_caves_end" );
     return;
 }

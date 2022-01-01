@@ -15,10 +15,10 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 128.0, 0.0 );
-        self _meth_8179( 512.0, 1024.0 );
+        self setengagementmindist( 128.0, 0.0 );
+        self setengagementmaxdist( 512.0, 1024.0 );
     }
 
     self._ID1302 = "ak47_arctic";
@@ -27,13 +27,13 @@ _ID616()
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID51745::_ID814();
-    _func_14E( "ak47_arctic" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "ak47_arctic" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
 }

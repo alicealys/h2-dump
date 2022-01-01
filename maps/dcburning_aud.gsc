@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    _unknown_000E();
-    _unknown_001B();
-    _unknown_001F();
-    _unknown_0023();
-    _unknown_002A();
-    thread _unknown_002F();
-    _unknown_0035();
-    _unknown_0039();
-    _unknown_003E();
+    _ID8467();
+    _ID19806();
+    _ID19703();
+    _ID22056();
+    _ID22043();
+    thread _ID22042();
+    _ID9159();
+    _ID28366();
+    _ID29419();
 }
 
 _ID8467()
@@ -33,8 +33,8 @@ _ID19703()
 
 _ID22056()
 {
-    thread _unknown_016F();
-    thread _ID45610();
+    thread _ID54133();
+    thread _ID46394();
 }
 
 _ID22043()
@@ -59,29 +59,29 @@ _ID28366()
 
 _ID29419()
 {
-    _ID42475::_ID34640( "start_debug_checkpoint", ::_unknown_00D0 );
-    _ID42475::_ID34640( "start_default_checkpoint", ::_unknown_00DF );
-    _ID42475::_ID34640( "start_elevator_bottom_checkpoint", ::_unknown_00EE );
-    _ID42475::_ID34640( "start_elevator_top_checkpoint", ::_unknown_00FD );
-    _ID42475::_ID34640( "start_crows_nest_checkpoint", ::_unknown_010C );
-    _ID42475::_ID34640( "start_crows_nest_armor_checkpoint", ::_unknown_011B );
-    _ID42475::_ID34640( "start_barrett_checkpoint", ::_unknown_012A );
-    _ID42475::_ID34640( "start_to_roof_checkpoint", ::_unknown_0139 );
-    _ID42475::_ID34640( "start_roof_checkpoint", ::_unknown_0148 );
-    _ID42475::_ID34640( "start_heli_ride2_checkpoint", ::_unknown_0157 );
-    _ID42475::_ID34640( "start_crash_checkpoint", ::_unknown_0168 );
-    _ID42475::_ID34640( "start_music_intropeak_mix", ::_unknown_0177 );
-    _ID42475::_ID34640( "start_heli_crash_black_screen", ::_unknown_019B );
-    _ID42475::_ID34640( "stop_heli_crash_black_screen", ::_unknown_01D1 );
-    _ID42475::_ID34640( "start_space_transition_in_mix", ::_unknown_020B );
-    _ID42475::_ID34640( "start_m1a1_owned_idle", ::_unknown_01AC );
-    _ID42475::_ID34640( "start_player_heli_landing", ::_unknown_01C0 );
-    _ID42475::_ID34640( "start_heli_balcony_passby", ::_unknown_0206 );
-    _ID42475::_ID34640( "start_player_on_turret", ::_unknown_021A );
-    _ID42475::_ID34640( "start_player_off_turret", ::_unknown_0229 );
-    _ID42475::_ID34640( "start_missile_earthquake", ::_unknown_0239 );
-    _ID42475::_ID34640( "start_crowsnest_dialog_mix", ::_unknown_0252 );
-    _ID42475::_ID34640( "stop_crowsnest_dialog_mix", ::_unknown_0261 );
+    _ID42475::_ID34640( "start_debug_checkpoint", ::_ID54011 );
+    _ID42475::_ID34640( "start_default_checkpoint", ::_ID44198 );
+    _ID42475::_ID34640( "start_elevator_bottom_checkpoint", ::_ID44746 );
+    _ID42475::_ID34640( "start_elevator_top_checkpoint", ::_ID54028 );
+    _ID42475::_ID34640( "start_crows_nest_checkpoint", ::_ID45350 );
+    _ID42475::_ID34640( "start_crows_nest_armor_checkpoint", ::_ID49644 );
+    _ID42475::_ID34640( "start_barrett_checkpoint", ::_ID48839 );
+    _ID42475::_ID34640( "start_to_roof_checkpoint", ::_ID49369 );
+    _ID42475::_ID34640( "start_roof_checkpoint", ::_ID49873 );
+    _ID42475::_ID34640( "start_heli_ride2_checkpoint", ::_ID45610 );
+    _ID42475::_ID34640( "start_crash_checkpoint", ::_ID54460 );
+    _ID42475::_ID34640( "start_music_intropeak_mix", ::_ID43362 );
+    _ID42475::_ID34640( "start_heli_crash_black_screen", ::_ID44038 );
+    _ID42475::_ID34640( "stop_heli_crash_black_screen", ::_ID51612 );
+    _ID42475::_ID34640( "start_space_transition_in_mix", ::start_space_transition_in_mix );
+    _ID42475::_ID34640( "start_m1a1_owned_idle", ::_ID45758 );
+    _ID42475::_ID34640( "start_player_heli_landing", ::_ID53919 );
+    _ID42475::_ID34640( "start_heli_balcony_passby", ::_ID44652 );
+    _ID42475::_ID34640( "start_player_on_turret", ::_ID49127 );
+    _ID42475::_ID34640( "start_player_off_turret", ::_ID45959 );
+    _ID42475::_ID34640( "start_missile_earthquake", ::_ID52163 );
+    _ID42475::_ID34640( "start_crowsnest_dialog_mix", ::_ID49292 );
+    _ID42475::_ID34640( "stop_crowsnest_dialog_mix", ::_ID46944 );
 }
 
 _ID41961( var_0, var_1 )
@@ -166,7 +166,7 @@ _ID45758( var_0 )
 
 _ID53919( var_0 )
 {
-    level._ID53882 _meth_8074( 0.85, 5.0 );
+    level._ID53882 setpitch( 0.85, 5.0 );
     var_0 _ID42407::_ID27079( "scn_player_heli_landing" );
 }
 
@@ -199,7 +199,7 @@ _ID51612()
 _ID44652( var_0 )
 {
     _ID42465::_ID23797( "heli_pre_liftoff_mix" );
-    var_0 _unknown_03F2();
+    var_0 _ID51203();
     var_0 _ID42407::_ID27081( "scn_heli_balcony_passby" );
 }
 
@@ -240,30 +240,30 @@ start_space_transition_in_mix()
 _ID51203()
 {
     wait 0.1;
-    self _meth_8295();
+    self vehicle_turnengineoff();
     self._ID31138 = 1;
 }
 
 _ID52857( var_0, var_1 )
 {
     var_2 = _ID42407::_ID16262( var_0, "script_noteworthy" );
-    var_3 waittill( "trigger",  var_3  );
-    var_3 thread _unknown_0491();
+    var_2 waittill( "trigger",  var_3  );
+    var_3 thread _ID51203();
     var_3 thread _ID42407::_ID27001( var_1, undefined, 1 );
 }
 
 _ID54133()
 {
-    thread _unknown_04AB( "helis_bunker_aud01", "scn_heli_bunker_01" );
-    thread _unknown_04B7( "helis_bunker_aud02", "scn_heli_bunker_02" );
-    thread _unknown_04C3( "helis_mezzanine_aud01", "scn_heli_mezzanine_01" );
-    thread _unknown_04CF( "helis_mezzanine_aud02", "scn_heli_mezzanine_02" );
-    thread _unknown_04DB( "helis_mezzanine_aud03", "scn_heli_mezzanine_03" );
+    thread _ID52857( "helis_bunker_aud01", "scn_heli_bunker_01" );
+    thread _ID52857( "helis_bunker_aud02", "scn_heli_bunker_02" );
+    thread _ID52857( "helis_mezzanine_aud01", "scn_heli_mezzanine_01" );
+    thread _ID52857( "helis_mezzanine_aud02", "scn_heli_mezzanine_02" );
+    thread _ID52857( "helis_mezzanine_aud03", "scn_heli_mezzanine_03" );
 }
 
 _ID45803( var_0 )
 {
-    thread _unknown_04DE();
+    thread _ID51203();
     _ID42407::_ID27080( var_0, undefined, 1 );
 }
 
@@ -271,7 +271,7 @@ _ID54551()
 {
     _ID42474::_ID4669( "interior_heli" );
     wait 4;
-    level._ID53882 _meth_8074( 1.05, 4.0 );
+    level._ID53882 setpitch( 1.05, 4.0 );
     thread _ID42407::_ID27080( "scn_player_heli_liftoff", undefined, 1 );
     _ID42465::_ID23801( "heli_pre_liftoff_mix" );
     _ID42465::_ID23797( "heli_liftoff_mix" );
@@ -298,24 +298,17 @@ _ID45199()
 
 _ID50541()
 {
-    thread _unknown_0586();
+    thread _ID51203();
     _ID42407::_ID27079( "scn_littlebird_crash_01" );
 }
 
 _ID48468()
 {
     wait 0.1;
-    var_0 = _func_1A2( "snd_play_metal_detector_sfx", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "snd_play_metal_detector_sfx", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        var_2 thread _unknown_0628();
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_2 in var_0 )
+        var_2 thread _ID45567();
 }
 
 _ID45567()
@@ -348,31 +341,31 @@ _ID53638( var_0 )
 _ID48789()
 {
     level waittill( "c4_placement_started" );
-    level._ID794 _meth_80A1( "scn_dcburning_plant_c4" );
+    level._ID794 playsound( "scn_dcburning_plant_c4" );
 }
 
 _ID50906()
 {
     wait 0.1;
-    self _meth_8295();
+    self vehicle_turnengineoff();
     self._ID31138 = 1;
-    level._ID53882 = _func_06A( "script_origin", self._ID740 );
-    level._ID53882 _meth_8053( self );
-    level._ID53882 _meth_807C( "scn_player_heli_idle" );
-    thread _unknown_070E();
+    level._ID53882 = spawn( "script_origin", self._ID740 );
+    level._ID53882 linkto( self );
+    level._ID53882 playloopsound( "scn_player_heli_idle" );
+    thread _ID53628();
 }
 
 _ID53628()
 {
     self waittill( "death" );
-    level._ID53882 _meth_80B3();
+    level._ID53882 playrumbleonentity();
     wait 0.1;
-    level._ID53882 _meth_80B7();
+    level._ID53882 delete();
 }
 
 littlebird_monument_idle_sound()
 {
-    thread _unknown_0681();
+    thread _ID51203();
     _ID42407::_ID27001( "scn_dcburning_littlebird_engine_low", undefined, 1, 1, 0.5, 3 );
 }
 
@@ -384,13 +377,13 @@ littlebird_monument_taking_off_sound()
 
 _ID46244( var_0 )
 {
-    thread _unknown_06AE();
+    thread _ID51203();
     _ID42407::_ID27001( var_0, undefined, 1 );
 }
 
 heli_array_scripted_sound()
 {
-    thread _unknown_06BB();
+    thread _ID51203();
     _ID42237::_ID14413( "player_approaching_monument" );
     _ID42407::_ID27001( self._ID43356, undefined, 1 );
 }
@@ -398,12 +391,12 @@ heli_array_scripted_sound()
 _ID50701()
 {
     self endon( "death" );
-    _unknown_06D8();
+    _ID51203();
     thread _ID42407::_ID27001( "scn_mi28_trench_01", undefined, 1 );
 
     for (;;)
     {
-        var_0 = _func_0F5( level._ID794._ID740, self._ID740 );
+        var_0 = distancesquared( level._ID794._ID740, self._ID740 );
 
         if ( var_0 < 2250000 )
         {
@@ -447,9 +440,9 @@ _ID45750()
 _ID46394()
 {
     wait 0.1;
-    var_0 = _func_1A1( "battlechatter_exit_bunker1", "targetname" );
-    var_1 = _func_1A1( "battlechatter_exit_bunker2", "targetname" );
-    var_2 = _func_1A1( "battlechatter_exit_bunker3", "targetname" );
+    var_0 = getent( "battlechatter_exit_bunker1", "targetname" );
+    var_1 = getent( "battlechatter_exit_bunker2", "targetname" );
+    var_2 = getent( "battlechatter_exit_bunker3", "targetname" );
     _ID42237::_ID14413( "player_leaving_bunker" );
     var_0 thread _ID42407::_ID27079( "TF_0_exposed_acquired_custom" );
     wait 2.4;
@@ -474,26 +467,26 @@ intro_heli_sequence_snd()
 
 crashsite_heli_rappel()
 {
-    var_0 = _func_1A1( "heli_crash_rappel_01", "script_noteworthy" );
-    var_1 = _func_1A1( "heli_crash_rappel_02", "script_noteworthy" );
-    var_0 _ID42407::_ID1947( ::_unknown_097D, "scn_dcemp_heli1_arrival", "scn_dcemp_heli1_idle", "scn_dcemp_heli1_leaving" );
-    var_1 _ID42407::_ID1947( ::_unknown_0994, "scn_dcemp_heli2_arrival", "scn_dcemp_heli2_idle", "scn_dcemp_heli2_leaving", "heli_rappel_mix" );
+    var_0 = getent( "heli_crash_rappel_01", "script_noteworthy" );
+    var_1 = getent( "heli_crash_rappel_02", "script_noteworthy" );
+    var_0 _ID42407::_ID1947( ::crashsite_heli_rappel_snd, "scn_dcemp_heli1_arrival", "scn_dcemp_heli1_idle", "scn_dcemp_heli1_leaving" );
+    var_1 _ID42407::_ID1947( ::crashsite_heli_rappel_snd, "scn_dcemp_heli2_arrival", "scn_dcemp_heli2_idle", "scn_dcemp_heli2_leaving", "heli_rappel_mix" );
 }
 
 crashsite_heli_rappel_snd( var_0, var_1, var_2, var_3 )
 {
-    thread _unknown_0857();
-    self _meth_80A1( var_0 );
+    thread _ID51203();
+    self playsound( var_0 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
         _ID42465::_ID23797( var_3 );
 
     self waittill( "near_goal" );
     thread _ID42237::_ID27000( var_1, undefined, 1, 1 );
     self waittill( "unloaded" );
     _ID42237::_ID36516( var_1 );
-    self _meth_80A1( var_2 );
+    self playsound( var_2 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
         _ID42465::_ID23801( var_3 );
 }

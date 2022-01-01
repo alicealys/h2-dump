@@ -15,7 +15,7 @@ _ID16445()
 {
     var_0 = "soldier";
 
-    if ( _func_02F( self._ID3152 ) && _func_02F( anim._ID14503[self._ID3152] ) )
+    if ( isdefined( self._ID3152 ) && isdefined( anim._ID14503[self._ID3152] ) )
         var_0 = self._ID3152;
 
     anim._ID14503[var_0]++;
@@ -32,7 +32,7 @@ _ID16445()
 _ID14504( var_0 )
 {
     self endon( "killanimscript" );
-    self _meth_8118( "flashed_anim", var_0, %body, 0.2, _func_0BA( 0.9, 1.1 ) );
+    self setflaggedanimknoball( "flashed_anim", var_0, %body, 0.2, randomfloatrange( 0.9, 1.1 ) );
     animscripts\shared::_ID11529( "flashed_anim" );
 }
 
@@ -48,14 +48,14 @@ _ID616()
 
     animscripts\face::_ID30759( "flashbang" );
 
-    if ( _func_02F( self._ID35376 ) )
+    if ( isdefined( self._ID35376 ) )
     {
         self [[ self._ID35376 ]]();
         return;
     }
 
-    var_1 = _ID616();
-    _unknown_0168( var_1, var_0 );
+    var_1 = _ID16445();
+    _ID14505( var_1, var_0 );
 }
 
 _ID14505( var_0, var_1 )
@@ -68,7 +68,7 @@ _ID14505( var_0, var_1 )
 
     self._ID7._ID28253 = "stand";
     self._ID49 = 1;
-    thread _unknown_0177( var_0 );
+    thread _ID14504( var_0 );
     wait(var_1);
     self notify( "stop_flashbang_effect" );
     self._ID14514 = 0;

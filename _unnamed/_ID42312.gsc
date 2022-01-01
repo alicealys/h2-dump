@@ -3,7 +3,7 @@
 
 _ID521()
 {
-    level._ID39415 = _func_1A5();
+    level._ID39415 = spawnstruct();
     level._ID39415._ID499 = "left";
     level._ID39415._ID1284 = "top";
     level._ID39415._ID44 = "left";

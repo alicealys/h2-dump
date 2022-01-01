@@ -7,8 +7,8 @@ _ID50786()
         return 0;
 
     _ID43797::_ID521();
-    _unknown_006C();
-    _unknown_004B();
+    _ID54482();
+    _ID52688();
     maps\airport::_ID49693();
     _ID45908::_ID616();
     _ID47439::_ID616();
@@ -20,220 +20,201 @@ _ID50786()
     _ID42323::_ID616();
     maps\airport_lighting::_ID616();
     maps\airport_aud::_ID616();
-    _func_1A1( "escape_van_dummy", "targetname" ) _ID42407::_ID1947( maps\airport_code::_ID49286, "escape_van" );
+    getent( "escape_van_dummy", "targetname" ) _ID42407::_ID1947( maps\airport_code::_ID49286, "escape_van" );
     _ID42407::_ID1801( "escape_van_spawn", "targetname" );
-    var_0 = _func_1A2( "ambulance_door_right", "targetname" );
-    var_0 = _ID42407::_ID3317( var_0, _func_1A2( "ambulance_door_left", "targetname" ) );
-    var_1 = var_0;
+    var_0 = getentarray( "ambulance_door_right", "targetname" );
+    var_0 = _ID42407::_ID3317( var_0, getentarray( "ambulance_door_left", "targetname" ) );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        var_2 _meth_80B7();
-    }
+    foreach ( var_2 in var_0 )
+        var_2 delete();
 
-    var_clear_2
-    var_clear_0
-
-    if ( _func_039( "beautiful_corner_demo" ) != "1" )
+    if ( getdvar( "beautiful_corner_demo" ) != "1" )
         return 1;
 
-    _unknown_010B();
+    _ID45560();
     _ID49238::_ID47777();
     return 1;
 }
 
 _ID52688()
 {
-    var_0 = _func_1A2( "script_model", "classname" );
-    var_1 = var_0;
+    var_0 = getentarray( "script_model", "classname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_125( var_2._ID669, "body_" ) )
-            var_2 _meth_80B7();
+        if ( issubstr( var_2._ID669, "body_" ) )
+            var_2 delete();
     }
 
-    var_clear_2
-    var_clear_0
-    var_0 = _func_1A2( "h2_intro_dead_people", "targetname" );
-    var_0 = _ID42407::_ID3317( var_0, _func_1A2( "h2_departuregate_dead_people", "targetname" ) );
-    var_4 = var_0;
+    var_0 = getentarray( "h2_intro_dead_people", "targetname" );
+    var_0 = _ID42407::_ID3317( var_0, getentarray( "h2_departuregate_dead_people", "targetname" ) );
 
-    for ( var_5 = _func_1DA( var_4 ); _func_02F( var_5 ); var_5 = _func_1BF( var_4, var_5 ) )
-    {
-        var_2 = var_4[var_5];
-        var_2 _meth_80B7();
-    }
-
-    var_clear_1
-    var_clear_0
+    foreach ( var_2 in var_0 )
+        var_2 delete();
 }
 
 _ID54482()
 {
-    _ID42237::_ID3294( _func_0E0(), ::_meth_80B7 );
-    _ID42237::_ID3294( _func_0DE(), ::_meth_80B7 );
+    _ID42237::_ID3294( getspawnerarray(), ::delete );
+    _ID42237::_ID3294( getaiarray(), ::delete );
 }
 
 _ID45560()
 {
-    var_0 = _func_06A( "script_origin", ( 5547.72, 1645.04, 23.1178 ) );
+    var_0 = spawn( "script_origin", ( 5547.72, 1645.04, 23.1178 ) );
     var_0._ID65 = ( -13.1434, 131.043, 0 );
     var_0._ID1193 = "beautiful_corner1";
-    var_0 = _func_06A( "script_origin", ( 5547.72, 1645.04, 23.1178 ) );
+    var_0 = spawn( "script_origin", ( 5547.72, 1645.04, 23.1178 ) );
     var_0._ID65 = ( -13.1434, 131.043, 0 );
     var_0._ID1193 = "beautiful_corner1_static";
-    var_0 = _func_06A( "script_origin", ( 5484.13, 2131.84, 379.15 ) );
+    var_0 = spawn( "script_origin", ( 5484.13, 2131.84, 379.15 ) );
     var_0._ID65 = ( 2.83482, 146.93, 0 );
     var_0._ID1193 = "beautiful_corner1_end";
-    var_0 = _func_06A( "script_origin", ( 5484.13, 2131.84, 379.15 ) );
+    var_0 = spawn( "script_origin", ( 5484.13, 2131.84, 379.15 ) );
     var_0._ID65 = ( 2.83482, 146.93, 0 );
     var_0._ID1193 = "beautiful_corner1_static_end";
-    var_0 = _func_06A( "script_origin", ( 5067.97, 3136.66, 302.727 ) );
+    var_0 = spawn( "script_origin", ( 5067.97, 3136.66, 302.727 ) );
     var_0._ID65 = ( -3.15795, -117.973, 0 );
     var_0._ID1193 = "beautiful_corner2";
-    var_0 = _func_06A( "script_origin", ( 5067.97, 3136.66, 302.727 ) );
+    var_0 = spawn( "script_origin", ( 5067.97, 3136.66, 302.727 ) );
     var_0._ID65 = ( -3.15795, -117.973, 0 );
     var_0._ID1193 = "beautiful_corner2_static";
-    var_0 = _func_06A( "script_origin", ( 4714.15, 3140.97, 302.727 ) );
+    var_0 = spawn( "script_origin", ( 4714.15, 3140.97, 302.727 ) );
     var_0._ID65 = ( -3.15788, -117.971, 0 );
     var_0._ID1193 = "beautiful_corner2_end";
-    var_0 = _func_06A( "script_origin", ( 4714.15, 3140.97, 302.727 ) );
+    var_0 = spawn( "script_origin", ( 4714.15, 3140.97, 302.727 ) );
     var_0._ID65 = ( -3.15788, -117.971, 0 );
     var_0._ID1193 = "beautiful_corner2_static_end";
-    var_0 = _func_06A( "script_origin", ( 4415.46, 2293.62, 344.35 ) );
+    var_0 = spawn( "script_origin", ( 4415.46, 2293.62, 344.35 ) );
     var_0._ID65 = ( 6.46121, -130.429, 0 );
     var_0._ID1193 = "beautiful_corner3";
-    var_0 = _func_06A( "script_origin", ( 4415.46, 2293.62, 344.35 ) );
+    var_0 = spawn( "script_origin", ( 4415.46, 2293.62, 344.35 ) );
     var_0._ID65 = ( 6.46121, -130.429, 0 );
     var_0._ID1193 = "beautiful_corner3_static";
-    var_0 = _func_06A( "script_origin", ( 4011.46, 2305.2, 344.35 ) );
+    var_0 = spawn( "script_origin", ( 4011.46, 2305.2, 344.35 ) );
     var_0._ID65 = ( 6.44318, -115.899, 0 );
     var_0._ID1193 = "beautiful_corner3_end";
-    var_0 = _func_06A( "script_origin", ( 4011.46, 2305.2, 344.35 ) );
+    var_0 = spawn( "script_origin", ( 4011.46, 2305.2, 344.35 ) );
     var_0._ID65 = ( 6.44318, -115.899, 0 );
     var_0._ID1193 = "beautiful_corner3_static_end";
-    var_0 = _func_06A( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
+    var_0 = spawn( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
     var_0._ID65 = ( 14.3518, 157.706, 0 );
     var_0._ID1193 = "beautiful_corner4";
-    var_0 = _func_06A( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
+    var_0 = spawn( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
     var_0._ID65 = ( 14.3518, 157.706, 0 );
     var_0._ID1193 = "beautiful_corner4_static";
-    var_0 = _func_06A( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
+    var_0 = spawn( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
     var_0._ID65 = ( 16.9029, -118.221, 0 );
     var_0._ID1193 = "beautiful_corner4_end";
-    var_0 = _func_06A( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
+    var_0 = spawn( "script_origin", ( 3207.45, 3298.68, 376.468 ) );
     var_0._ID65 = ( 16.9029, -118.221, 0 );
     var_0._ID1193 = "beautiful_corner4_static_end";
-    var_0 = _func_06A( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
+    var_0 = spawn( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
     var_0._ID65 = ( 3.41713, -133.427, 0 );
     var_0._ID1193 = "beautiful_corner5";
-    var_0 = _func_06A( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
+    var_0 = spawn( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
     var_0._ID65 = ( 3.41713, -133.427, 0 );
     var_0._ID1193 = "beautiful_corner5_static";
-    var_0 = _func_06A( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
+    var_0 = spawn( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
     var_0._ID65 = ( 4.00784, -56.3852, 0 );
     var_0._ID1193 = "beautiful_corner5_end";
-    var_0 = _func_06A( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
+    var_0 = spawn( "script_origin", ( 3803.06, 4317.91, 335.635 ) );
     var_0._ID65 = ( 4.00784, -56.3852, 0 );
     var_0._ID1193 = "beautiful_corner5_static_end";
-    var_0 = _func_06A( "script_origin", ( 3267.67, 4670.03, 335.718 ) );
+    var_0 = spawn( "script_origin", ( 3267.67, 4670.03, 335.718 ) );
     var_0._ID65 = ( -3.71819, 45.3178, 0 );
     var_0._ID1193 = "beautiful_corner6";
-    var_0 = _func_06A( "script_origin", ( 3267.67, 4670.03, 335.718 ) );
+    var_0 = spawn( "script_origin", ( 3267.67, 4670.03, 335.718 ) );
     var_0._ID65 = ( -3.71819, 45.3178, 0 );
     var_0._ID1193 = "beautiful_corner6_static";
-    var_0 = _func_06A( "script_origin", ( 3583.51, 4565.98, 321.972 ) );
+    var_0 = spawn( "script_origin", ( 3583.51, 4565.98, 321.972 ) );
     var_0._ID65 = ( -8.66787, 100.833, 0 );
     var_0._ID1193 = "beautiful_corner6_end";
-    var_0 = _func_06A( "script_origin", ( 3583.51, 4565.98, 321.972 ) );
+    var_0 = spawn( "script_origin", ( 3583.51, 4565.98, 321.972 ) );
     var_0._ID65 = ( -8.66787, 100.833, 0 );
     var_0._ID1193 = "beautiful_corner6_static_end";
-    var_0 = _func_06A( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
+    var_0 = spawn( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
     var_0._ID65 = ( -3.38675, 155.254, 0 );
     var_0._ID1193 = "beautiful_corner7";
-    var_0 = _func_06A( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
+    var_0 = spawn( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
     var_0._ID65 = ( -3.38675, 155.254, 0 );
     var_0._ID1193 = "beautiful_corner7_static";
-    var_0 = _func_06A( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
+    var_0 = spawn( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
     var_0._ID65 = ( -4.08897, -94.0619, 0 );
     var_0._ID1193 = "beautiful_corner7_end";
-    var_0 = _func_06A( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
+    var_0 = spawn( "script_origin", ( 3294.87, 4172.24, 327.424 ) );
     var_0._ID65 = ( -4.08897, -94.0619, 0 );
     var_0._ID1193 = "beautiful_corner7_static_end";
-    var_0 = _func_06A( "script_origin", ( 2682.3, 4556.47, 286.172 ) );
+    var_0 = spawn( "script_origin", ( 2682.3, 4556.47, 286.172 ) );
     var_0._ID65 = ( -8.98089, -116.538, 0 );
     var_0._ID1193 = "beautiful_corner8";
-    var_0 = _func_06A( "script_origin", ( 2682.3, 4556.47, 286.172 ) );
+    var_0 = spawn( "script_origin", ( 2682.3, 4556.47, 286.172 ) );
     var_0._ID65 = ( -8.98089, -116.538, 0 );
     var_0._ID1193 = "beautiful_corner8_static";
-    var_0 = _func_06A( "script_origin", ( 2261.83, 4517.24, 286.172 ) );
+    var_0 = spawn( "script_origin", ( 2261.83, 4517.24, 286.172 ) );
     var_0._ID65 = ( -8.97072, -49.6633, 0 );
     var_0._ID1193 = "beautiful_corner8_end";
-    var_0 = _func_06A( "script_origin", ( 2261.83, 4517.24, 286.172 ) );
+    var_0 = spawn( "script_origin", ( 2261.83, 4517.24, 286.172 ) );
     var_0._ID65 = ( -8.97072, -49.6633, 0 );
     var_0._ID1193 = "beautiful_corner8_static_end";
-    var_0 = _func_06A( "script_origin", ( 2536.33, 4666.59, 307.819 ) );
+    var_0 = spawn( "script_origin", ( 2536.33, 4666.59, 307.819 ) );
     var_0._ID65 = ( -11.2841, -78.0111, 0 );
     var_0._ID1193 = "beautiful_corner9";
-    var_0 = _func_06A( "script_origin", ( 2536.33, 4666.59, 307.819 ) );
+    var_0 = spawn( "script_origin", ( 2536.33, 4666.59, 307.819 ) );
     var_0._ID65 = ( -11.2841, -78.0111, 0 );
     var_0._ID1193 = "beautiful_corner9_static";
-    var_0 = _func_06A( "script_origin", ( 2276.78, 4494.1, 310.361 ) );
+    var_0 = spawn( "script_origin", ( 2276.78, 4494.1, 310.361 ) );
     var_0._ID65 = ( -9.3, -60.8, 0 );
     var_0._ID1193 = "beautiful_corner9_end";
-    var_0 = _func_06A( "script_origin", ( 2276.78, 4494.1, 310.361 ) );
+    var_0 = spawn( "script_origin", ( 2276.78, 4494.1, 310.361 ) );
     var_0._ID65 = ( -9.3, -60.8, 0 );
     var_0._ID1193 = "beautiful_corner9_static_end";
-    var_0 = _func_06A( "script_origin", ( 2895.47, 3382.74, 179.472 ) );
+    var_0 = spawn( "script_origin", ( 2895.47, 3382.74, 179.472 ) );
     var_0._ID65 = ( 1.14801, 130.572, 0 );
     var_0._ID1193 = "beautiful_corner10";
-    var_0 = _func_06A( "script_origin", ( 2895.47, 3382.74, 179.472 ) );
+    var_0 = spawn( "script_origin", ( 2895.47, 3382.74, 179.472 ) );
     var_0._ID65 = ( 1.14801, 130.572, 0 );
     var_0._ID1193 = "beautiful_corner10_static";
-    var_0 = _func_06A( "script_origin", ( 2773.33, 3858.93, 164.229 ) );
+    var_0 = spawn( "script_origin", ( 2773.33, 3858.93, 164.229 ) );
     var_0._ID65 = ( -13.9278, 126.658, 0 );
     var_0._ID1193 = "beautiful_corner10_end";
-    var_0 = _func_06A( "script_origin", ( 2773.33, 3858.93, 164.229 ) );
+    var_0 = spawn( "script_origin", ( 2773.33, 3858.93, 164.229 ) );
     var_0._ID65 = ( -13.9278, 126.658, 0 );
     var_0._ID1193 = "beautiful_corner10_static_end";
-    var_0 = _func_06A( "script_origin", ( 3034.83, 4538.33, 347.588 ) );
+    var_0 = spawn( "script_origin", ( 3034.83, 4538.33, 347.588 ) );
     var_0._ID65 = ( 5.3129, -128.52, 0 );
     var_0._ID1193 = "beautiful_corner11";
-    var_0 = _func_06A( "script_origin", ( 3034.83, 4538.33, 347.588 ) );
+    var_0 = spawn( "script_origin", ( 3034.83, 4538.33, 347.588 ) );
     var_0._ID65 = ( 5.3129, -128.52, 0 );
     var_0._ID1193 = "beautiful_corner11_static";
-    var_0 = _func_06A( "script_origin", ( 2864.23, 4060.77, 305.394 ) );
+    var_0 = spawn( "script_origin", ( 2864.23, 4060.77, 305.394 ) );
     var_0._ID65 = ( 17.6122, -154.379, 0 );
     var_0._ID1193 = "beautiful_corner11_end";
-    var_0 = _func_06A( "script_origin", ( 2864.23, 4060.77, 305.394 ) );
+    var_0 = spawn( "script_origin", ( 2864.23, 4060.77, 305.394 ) );
     var_0._ID65 = ( 17.6122, -154.379, 0 );
     var_0._ID1193 = "beautiful_corner11_static_end";
-    var_0 = _func_06A( "script_origin", ( 1660.04, 4219.16, 381.956 ) );
+    var_0 = spawn( "script_origin", ( 1660.04, 4219.16, 381.956 ) );
     var_0._ID65 = ( 10.2925, -168.28, 0 );
     var_0._ID1193 = "beautiful_corner12";
-    var_0 = _func_06A( "script_origin", ( 1660.04, 4219.16, 381.956 ) );
+    var_0 = spawn( "script_origin", ( 1660.04, 4219.16, 381.956 ) );
     var_0._ID65 = ( 10.2925, -168.28, 0 );
     var_0._ID1193 = "beautiful_corner12_static";
-    var_0 = _func_06A( "script_origin", ( 227.466, 2800.3, 381.956 ) );
+    var_0 = spawn( "script_origin", ( 227.466, 2800.3, 381.956 ) );
     var_0._ID65 = ( 1.31578, 140.766, 0 );
     var_0._ID1193 = "beautiful_corner12_end";
-    var_0 = _func_06A( "script_origin", ( 227.466, 2800.3, 381.956 ) );
+    var_0 = spawn( "script_origin", ( 227.466, 2800.3, 381.956 ) );
     var_0._ID65 = ( 1.31578, 140.766, 0 );
     var_0._ID1193 = "beautiful_corner12_static_end";
-    var_0 = _func_06A( "script_origin", ( -3677.78, 4951.05, -129.489 ) );
+    var_0 = spawn( "script_origin", ( -3677.78, 4951.05, -129.489 ) );
     var_0._ID65 = ( -4.55152, -108.566, 0 );
     var_0._ID1193 = "beautiful_corner13";
-    var_0 = _func_06A( "script_origin", ( -3677.78, 4951.05, -129.489 ) );
+    var_0 = spawn( "script_origin", ( -3677.78, 4951.05, -129.489 ) );
     var_0._ID65 = ( -4.55152, -108.566, 0 );
     var_0._ID1193 = "beautiful_corner13_static";
-    var_0 = _func_06A( "script_origin", ( -3968.01, 4679.83, -129.489 ) );
+    var_0 = spawn( "script_origin", ( -3968.01, 4679.83, -129.489 ) );
     var_0._ID65 = ( -11.8402, -95.688, 0 );
     var_0._ID1193 = "beautiful_corner13_end";
-    var_0 = _func_06A( "script_origin", ( -3968.01, 4679.83, -129.489 ) );
+    var_0 = spawn( "script_origin", ( -3968.01, 4679.83, -129.489 ) );
     var_0._ID65 = ( -11.8402, -95.688, 0 );
     var_0._ID1193 = "beautiful_corner13_static_end";
     level._ID43337 = _ID42237::_ID3293( level._ID43337, "beautiful_corner1" );

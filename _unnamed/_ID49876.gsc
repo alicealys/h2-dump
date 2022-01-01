@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "policecar", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_003C );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6219( "vehicle_policecar_lapd_destructible", "vehicle_policecar" );
     _ID42411::_ID6219( "vehicle_policecar_russia_destructible", "vehicle_policecar_russia" );
     _ID42411::_ID6216( "vehicle_policecar_lapd_destructible", "vehicle_policecar_lapd_destroy" );
@@ -14,7 +14,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_00DE, ::_unknown_009E );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
 }
 
 _ID19731()
@@ -49,7 +49,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 6; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";

@@ -3,11 +3,11 @@
 
 _ID43266()
 {
-    _unknown_0126();
-    _unknown_01A5();
-    _unknown_03C9();
-    _unknown_0014();
-    _unknown_0185();
+    _ID40317();
+    _ID3197();
+    _ID10730();
+    _ID31296();
+    _ID794();
 }
 #using_animtree("script_model");
 
@@ -86,7 +86,7 @@ _ID40317()
     level._ID30904["bmp_paradrop"] = "vehicle_btr80_static_low";
     level._ID30900["anatov_opendoors"] = #animtree;
     level._ID30895["anatov_opendoors"]["anatov_opendoors"] = %paratrooper_jet_opendoors;
-    var_0 = _func_1A5();
+    var_0 = spawnstruct();
     var_0._ID3197 = [];
     var_0._ID3197["front"] = %mi17_heli_hitreact_front;
     var_0._ID3197["rear"] = %mi17_heli_hitreact_rear;
@@ -133,9 +133,9 @@ _ID3197()
     level._ID30895["generic"]["roof_landing_parachute"] = %invasion_paratrooper_roof_landing;
     level._ID30895["generic"]["rolldeath"] = %invasion_paratrooper_roof_landing_rolldeath;
     level._ID30895["generic"]["crawldeath"] = %invasion_paratrooper_roof_landing_crawldeath;
-    _ID42259::_ID2058( "generic", "roll_death", ::_unknown_09CD, "roof_landing_parachute" );
-    _ID42259::_ID2058( "generic", "crawl_death_start", ::_unknown_09ED, "roof_landing_parachute" );
-    _ID42259::_ID2058( "generic", "crawl_death", ::_unknown_0A11, "roof_landing_parachute" );
+    _ID42259::_ID2058( "generic", "roll_death", ::_ID51971, "roof_landing_parachute" );
+    _ID42259::_ID2058( "generic", "crawl_death_start", ::_ID53191, "roof_landing_parachute" );
+    _ID42259::_ID2058( "generic", "crawl_death", ::_ID45605, "roof_landing_parachute" );
     _ID42259::_ID2063( "generic", "roll_death", "roll_death", "roof_landing_parachute" );
     _ID42259::_ID2063( "generic", "crawl_death_start", "crawl_death_start", "roof_landing_parachute" );
     _ID42259::_ID2063( "generic", "crawl_death", "crawl_death", "roof_landing_parachute" );
@@ -145,14 +145,14 @@ _ID3197()
     level._ID30895["generic"]["turret_guy_panic"] = %h2_invasion_latvee_explosion_turret_panic;
     level._ID30895["generic"]["convoy_driver_idle"][0] = %h2_invasion_ending_driver_idle;
     level._ID30895["generic"]["convoy_driver_nod"] = %h2_invasion_ending_driver_nod;
-    _ID42259::_ID2058( "generic", "dialog_inv_six_gimmesitrep", ::_unknown_09E1, "invasion_vehicle_cover_dialogue_guy2" );
-    _ID42259::_ID2058( "generic", "dialog_inv_six_status", ::_unknown_09F8, "invasion_vehicle_cover_dialogue_guy2" );
-    _ID42259::_ID2058( "generic", "dialog_inv_six_whatelse", ::_unknown_0A0E, "invasion_vehicle_cover_dialogue_guy2" );
-    _ID42259::_ID2058( "generic", "dialog_inv_six_sentrygunsouth", ::_unknown_0A25, "invasion_vehicle_cover_dialogue_guy2" );
-    _ID42259::_ID2058( "generic", "dunn_checkout", ::_unknown_0A3B, "invasion_vehicle_cover_dialogue_guy2" );
-    _ID42259::_ID2058( "generic", "dialog_inv_sgw_meatlocker", ::_unknown_0A52, "invasion_vehicle_cover_dialogue_guy1" );
-    _ID42259::_ID2058( "generic", "dialog_inv_sgw_unconscious", ::_unknown_0A68, "invasion_vehicle_cover_dialogue_guy1" );
-    _ID42259::_ID2058( "generic", "dialog_inv_sgw_supplydrop", ::_unknown_0A7F, "invasion_vehicle_cover_dialogue_guy1" );
+    _ID42259::_ID2058( "generic", "dialog_inv_six_gimmesitrep", ::_ID43608, "invasion_vehicle_cover_dialogue_guy2" );
+    _ID42259::_ID2058( "generic", "dialog_inv_six_status", ::_ID49385, "invasion_vehicle_cover_dialogue_guy2" );
+    _ID42259::_ID2058( "generic", "dialog_inv_six_whatelse", ::_ID54036, "invasion_vehicle_cover_dialogue_guy2" );
+    _ID42259::_ID2058( "generic", "dialog_inv_six_sentrygunsouth", ::_ID51056, "invasion_vehicle_cover_dialogue_guy2" );
+    _ID42259::_ID2058( "generic", "dunn_checkout", ::_ID47691, "invasion_vehicle_cover_dialogue_guy2" );
+    _ID42259::_ID2058( "generic", "dialog_inv_sgw_meatlocker", ::_ID53627, "invasion_vehicle_cover_dialogue_guy1" );
+    _ID42259::_ID2058( "generic", "dialog_inv_sgw_unconscious", ::_ID51843, "invasion_vehicle_cover_dialogue_guy1" );
+    _ID42259::_ID2058( "generic", "dialog_inv_sgw_supplydrop", ::_ID44054, "invasion_vehicle_cover_dialogue_guy1" );
 }
 
 _ID43608( var_0 )
@@ -200,20 +200,20 @@ _ID43872()
     self._ID511 = 1;
     thread _ID42407::_ID22746();
     self._ID9813 = %invasion_parachute_ground_detach_death;
-    var_0 = _func_1A1( "tangled_parachute_guy_node", "targetname" );
+    var_0 = getent( "tangled_parachute_guy_node", "targetname" );
     var_1 = _ID42407::_ID35028( "tangled_chute_parachute" );
     var_0 thread _ID42259::_ID3044( var_1, "idle", "stop_tangled_chute_idle" );
     var_0 thread _ID42259::_ID3025( self, "invasion_parachute_ground_detach_idle", "stop_tangled_guy_idle" );
 
-    while ( !_ID42407::_ID54053( self _meth_80AF() ) )
+    while ( !_ID42407::_ID54053( self geteye() ) )
         wait 0.05;
 
     self._ID49 = 1;
     thread _ID42407::_ID36519();
-    thread _unknown_0B80( var_0, var_1 );
+    thread _ID53719( var_0, var_1 );
     self endon( "death" );
     wait 1;
-    thread _unknown_0B78( var_0, var_1 );
+    thread _ID53057( var_0, var_1 );
 }
 
 _ID53057( var_0, var_1 )
@@ -247,7 +247,7 @@ _ID52448()
 _ID43827()
 {
     wait 3;
-    var_0 = _func_1A1( "burning_tree", "script_noteworthy" );
+    var_0 = getent( "burning_tree", "script_noteworthy" );
     var_0._ID3189 = "burning_tree";
     var_0 _ID42407::_ID3428();
     var_0 _ID42259::_ID3044( var_0, "tree_oak_fire", "stop_burning_tree" );
@@ -255,34 +255,34 @@ _ID43827()
 
 _ID43813( var_0 )
 {
-    self _meth_8053( level._ID51121, "tag_guy1" );
+    self linkto( level._ID51121, "tag_guy1" );
     level._ID51121 thread _ID42259::_ID3025( self, "invasion_latvee_exit_v1_guy1_idle", "stop_front_latvee_anims", "tag_guy1" );
     level waittill( "latvee_blows_up" );
     self notify( "stop_front_latvee_anims" );
     var_0 thread _ID42259::_ID3020( self, "invasion_latvee_exit_v1_guy1_react" );
     level._ID51121 waittill( "reached_end_node" );
-    self _meth_8055();
-    var_0 _meth_8055();
+    self unlink();
+    var_0 unlink();
     _ID42407::_ID41115( "single anim", "end", 1000 );
     self._ID49 = 1;
     self._ID7._ID24881 = 1;
-    self _meth_8058();
+    self kill();
 }
 
 _ID53447( var_0 )
 {
-    self _meth_8053( level._ID51121, "tag_passenger" );
+    self linkto( level._ID51121, "tag_passenger" );
     level._ID51121 thread _ID42259::_ID3025( self, "invasion_latvee_exit_v1_passenger_idle", "stop_front_latvee_anims", "tag_passenger" );
     level waittill( "latvee_blows_up" );
     self notify( "stop_front_latvee_anims" );
     var_0 thread _ID42259::_ID3020( self, "invasion_latvee_exit_v1_passenger_react" );
     level._ID51121 waittill( "reached_end_node" );
-    self _meth_8055();
-    var_0 _meth_8055();
+    self unlink();
+    var_0 unlink();
     _ID42407::_ID41115( "single anim", "end", 1000 );
     self._ID49 = 1;
     self._ID7._ID24881 = 1;
-    self _meth_8058();
+    self kill();
 }
 
 _ID50748( var_0 )
@@ -290,34 +290,34 @@ _ID50748( var_0 )
     self._ID49 = 0;
     self._ID24924 = 1;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         self._ID43028 = 1;
 
     self._ID486 = 1;
-    var_1 = _func_06A( "script_origin", self._ID740 );
+    var_1 = spawn( "script_origin", self._ID740 );
     var_1._ID65 = self._ID65;
     var_2 = _ID42407::_ID35028( "roof_landing_parachute" );
     var_1 thread _ID42259::_ID3020( self, "roof_landing_parachute" );
     var_1 _ID42259::_ID3111( var_2, "roof_landing_parachute" );
-    var_2 _meth_80B7();
+    var_2 delete();
     level notify( "roof_landing_anim_finished" );
 }
 
 _ID51971( var_0 )
 {
-    if ( _func_02F( var_0._ID43028 ) )
+    if ( isdefined( var_0._ID43028 ) )
         return;
 
     var_0._ID34237 = 1;
     thread _ID42259::_ID3020( var_0, "rolldeath" );
     wait 0.5;
     var_0._ID49 = 1;
-    var_0 _meth_8058();
+    var_0 kill();
 }
 
 _ID53191( var_0 )
 {
-    if ( _func_02F( var_0._ID43028 ) )
+    if ( isdefined( var_0._ID43028 ) )
         return;
 
     level endon( "crawl_death_finished" );
@@ -326,7 +326,7 @@ _ID53191( var_0 )
     var_0 thread _ID42259::_ID3020( var_0, "crawldeath" );
     wait 0.5;
     var_0._ID49 = 1;
-    var_0 _meth_8058();
+    var_0 kill();
 }
 
 _ID45605( var_0 )
@@ -334,13 +334,13 @@ _ID45605( var_0 )
     var_0._ID49 = 0;
     level notify( "crawl_death_finished" );
     level waittill( "roof_landing_anim_finished" );
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 convoy_latvee_remap_dismount_anims()
 {
-    _unknown_0E58();
-    _unknown_0E70();
+    convoy_latvee_remap_dismount_anims_guys();
+    convoy_latvee_remap_dismount_anims_vehicle();
 }
 
 convoy_latvee_remap_dismount_anims_guys()

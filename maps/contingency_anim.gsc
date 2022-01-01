@@ -3,13 +3,13 @@
 
 _ID43266()
 {
-    _unknown_0014();
-    _ID49514();
-    _unknown_0044();
-    _unknown_0299();
-    _unknown_023D();
-    _unknown_05E7();
-    _unknown_074D();
+    _ID46912();
+    _ID46888();
+    _ID15518();
+    _ID10730();
+    _ID40317();
+    _ID50600();
+    _ID27230();
 }
 
 _ID51341( var_0 )
@@ -36,9 +36,9 @@ _ID46912()
 _ID53058()
 {
     var_0 = _ID42412::_ID16125();
-    var_0 _meth_815C( "uaz_door_anim", level._ID30895["generic"]["boneyard_UAZ_door"], 1, 0.2, 1 );
+    var_0 setflaggedanimknob( "uaz_door_anim", level._ID30895["generic"]["boneyard_UAZ_door"], 1, 0.2, 1 );
     var_0 waittillmatch( "uaz_door_anim",  "end"  );
-    var_0 _meth_814C( level._ID30895["generic"]["boneyard_UAZ_door"], 0 );
+    var_0 clearanim( level._ID30895["generic"]["boneyard_UAZ_door"], 0 );
 }
 #using_animtree("player");
 
@@ -64,7 +64,7 @@ _ID15518()
     _ID42259::_ID2062( "price", "dialog", "ridge_dialogue", "cont_pri_bollocks" );
     _ID42259::_ID2062( "price", "dialog", "ridge_dialogue", "cont_pri_mobilesaminvillage" );
     _ID42259::_ID2062( "price", "dialog", "ridge_dialogue", "cont_pri_uavsharpish" );
-    _ID42259::_ID2058( "price", "dialog2", ::_unknown_03BC, "ridge_dialogue", "cont_cmt_whathappened" );
+    _ID42259::_ID2058( "price", "dialog2", ::_ID49055, "ridge_dialogue", "cont_cmt_whathappened" );
     _ID42259::_ID2058( "price", "activate_predator", maps\contingency::_ID48117, "ridge_dialogue" );
     level._ID30895["price"]["running_slide"] = %h2_contingency_price_ridge_runandslide;
     level._ID30895["price"]["slide"] = %h2_contingency_price_slide;
@@ -83,22 +83,22 @@ _ID15518()
     level._ID30895["generic"]["tear_gas_guy1"] = %contingency_teargas_1;
     level._ID30895["generic"]["tear_gas_guy2"] = %contingency_teargas_2;
     level._ID30895["generic"]["tear_gas_guy3"] = %contingency_teargas_3;
-    _ID42259::_ID2058( "price", "price_land", ::_unknown_0564, "slide" );
-    _ID42259::_ID2058( "price", "price_land_settle", ::_unknown_0586, "slide" );
-    _ID42259::_ID2058( "price", "price_slide_start", ::_unknown_05AE, "slide", [ "J_Ankle_LE" ] );
-    _ID42259::_ID2058( "price", "price_slide_end", ::_unknown_05CD, "slide" );
+    _ID42259::_ID2058( "price", "price_land", ::_ID48705, "slide" );
+    _ID42259::_ID2058( "price", "price_land_settle", ::_ID54501, "slide" );
+    _ID42259::_ID2058( "price", "price_slide_start", ::_ID44893, "slide", [ "J_Ankle_LE" ] );
+    _ID42259::_ID2058( "price", "price_slide_end", ::_ID49745, "slide" );
     level._ID30895["bricktop"]["at4_fire"] = %contengency_rocket_moment;
-    _ID42259::_ID2058( "bricktop", "attach rocket", ::_unknown_0374, "at4_fire" );
-    _ID42259::_ID2058( "bricktop", "fire rocket", ::_unknown_0389, "at4_fire" );
-    _ID42259::_ID2058( "bricktop", "drop rocket", ::_unknown_039F, "at4_fire" );
+    _ID42259::_ID2058( "bricktop", "attach rocket", ::_ID51341, "at4_fire" );
+    _ID42259::_ID2058( "bricktop", "fire rocket", ::_ID49514, "at4_fire" );
+    _ID42259::_ID2058( "bricktop", "drop rocket", ::_ID47325, "at4_fire" );
     level._ID30895["rasta"]["at4_fire"] = %contengency_rocket_moment;
-    _ID42259::_ID2058( "rasta", "attach rocket", ::_unknown_03BF, "at4_fire" );
-    _ID42259::_ID2058( "rasta", "fire rocket", ::_unknown_03D4, "at4_fire" );
-    _ID42259::_ID2058( "rasta", "drop rocket", ::_unknown_03EA, "at4_fire" );
+    _ID42259::_ID2058( "rasta", "attach rocket", ::_ID51341, "at4_fire" );
+    _ID42259::_ID2058( "rasta", "fire rocket", ::_ID49514, "at4_fire" );
+    _ID42259::_ID2058( "rasta", "drop rocket", ::_ID47325, "at4_fire" );
     level._ID30895["price"]["at4_fire"] = %contengency_rocket_moment;
-    _ID42259::_ID2058( "price", "attach rocket", ::_unknown_040A, "at4_fire" );
-    _ID42259::_ID2058( "price", "fire rocket", ::_unknown_041F, "at4_fire" );
-    _ID42259::_ID2058( "price", "drop rocket", ::_unknown_0435, "at4_fire" );
+    _ID42259::_ID2058( "price", "attach rocket", ::_ID51341, "at4_fire" );
+    _ID42259::_ID2058( "price", "fire rocket", ::_ID49514, "at4_fire" );
+    _ID42259::_ID2058( "price", "drop rocket", ::_ID47325, "at4_fire" );
     _ID42304::_ID19911();
     level._ID30895["generic"]["_stealth_patrol_search_a"] = %patrolwalk_cold_gunup_idle;
     level._ID30895["generic"]["_stealth_patrol_search_b"] = %patrolwalk_cold_gunup_idle;
@@ -146,7 +146,7 @@ _ID52208()
     level endon( "run_to_woods" );
     _ID42259::_ID3074( level._ID28543, "caution_stop" );
     _ID42259::_ID3111( level._ID28543, "caution_stop" );
-    level._ID28543 _meth_81B1( self );
+    level._ID28543 setgoalnode( self );
 }
 #using_animtree("vehicles");
 
@@ -159,27 +159,27 @@ _ID40317()
     level._ID30900["contingency_btr_slide"] = #animtree;
     level._ID30895["contingency_btr_slide"]["contingency_btr_slide"] = %h2_contingency_btrattack;
     level._ID30904["contingency_btr_slide"] = "vehicle_btr80_snow";
-    _ID42259::_ID2058( "contingency_btr_slide", "btr_fire", ::_unknown_0953, "contingency_btr_slide" );
+    _ID42259::_ID2058( "contingency_btr_slide", "btr_fire", ::_ID51940, "contingency_btr_slide" );
 }
 
 _ID51940( var_0 )
 {
-    var_0 _meth_8272();
+    var_0 fireweapon();
     level notify( "btr_fired" );
 }
 
 _ID48705( var_0 )
 {
-    var_1 = var_0 _meth_818C( "J_Ankle_RI" );
-    var_1 = _func_091( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
-    _func_156( level._ID1426["price_landing"], var_1 );
+    var_1 = var_0 gettagorigin( "J_Ankle_RI" );
+    var_1 = physicstrace( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
+    playfx( level._ID1426["price_landing"], var_1 );
 }
 
 _ID54501( var_0 )
 {
-    var_1 = var_0 _meth_818C( "J_Ankle_LE" );
-    var_1 = _func_091( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
-    _func_156( level._ID1426["price_landing"], var_1 );
+    var_1 = var_0 gettagorigin( "J_Ankle_LE" );
+    var_1 = physicstrace( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
+    playfx( level._ID1426["price_landing"], var_1 );
 }
 
 _ID44893( var_0, var_1 )
@@ -190,7 +190,7 @@ _ID44893( var_0, var_1 )
 
     for (;;)
     {
-        _func_157( _ID42237::_ID16299( "price_sliding" ), var_0, var_2 );
+        playfxontag( _ID42237::_ID16299( "price_sliding" ), var_0, var_2 );
         wait 0.1;
     }
 }
@@ -481,7 +481,7 @@ _ID27230()
     level._ID30895["worldbody"]["slide_back_out"] = %h2_cliffhanger_slide_back_out;
     level._ID30895["worldbody"]["slide_ar"] = %h2_contingency_slide_player_turnl;
     level._ID30895["worldbody"]["slide_al"] = %h2_contingency_slide_player_turnr;
-    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_unknown_18D3, "slide_in", [ "tag_origin" ] );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_18F2, "slide_out" );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_1905, "slide_back_out" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_ID44893, "slide_in", [ "tag_origin" ] );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID49745, "slide_out" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID49745, "slide_back_out" );
 }

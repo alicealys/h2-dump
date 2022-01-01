@@ -3,14 +3,14 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_seal_soccom_assault_c_blk" );
+    self setmodel( "body_seal_soccom_assault_c_blk" );
     _ID42226::_ID3584( "alias_seal_soccom_heads_h_blk", _ID47672::_ID616() );
     self._ID40757 = "taskforce";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_seal_soccom_assault_c_blk" );
+    precachemodel( "body_seal_soccom_assault_c_blk" );
     _ID42226::_ID28388( _ID47672::_ID616() );
 }

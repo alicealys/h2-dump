@@ -15,46 +15,61 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "glock";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 8 ) )
     {
-
+        case 0:
+            self._ID1302 = "ak47_desert";
+            break;
+        case 1:
+            self._ID1302 = "ak47_reflex";
+            break;
+        case 2:
+            self._ID1302 = "ak47_desert_grenadier";
+            break;
+        case 3:
+            self._ID1302 = "ak47_acog";
+            break;
+        case 4:
+            self._ID1302 = "fal";
+            break;
+        case 5:
+            self._ID1302 = "fal_acog";
+            break;
+        case 6:
+            self._ID1302 = "ak47_desert";
+            break;
+        case 7:
+            self._ID1302 = "fal_shotgun";
+            break;
     }
 
     _ID48914::_ID616();
-    case 7:
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID48914::_ID814();
-    _func_14E( "ak47_desert" );
-    _func_14E( "ak47_reflex" );
-    _func_14E( "ak47_desert_grenadier" );
-    _func_14E( "gl_ak47_desert" );
-    _func_14E( "ak47_acog" );
-    _func_14E( "fal" );
-    _func_14E( "fal_acog" );
-    _func_14E( "ak47_desert" );
-    _func_14E( "fal_shotgun" );
-    _func_14E( "fal_shotgun_attach" );
-    _func_14E( "glock" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "ak47_desert" );
+    precacheitem( "ak47_reflex" );
+    precacheitem( "ak47_desert_grenadier" );
+    precacheitem( "gl_ak47_desert" );
+    precacheitem( "ak47_acog" );
+    precacheitem( "fal" );
+    precacheitem( "fal_acog" );
+    precacheitem( "ak47_desert" );
+    precacheitem( "fal_shotgun" );
+    precacheitem( "fal_shotgun_attach" );
+    precacheitem( "glock" );
+    precacheitem( "fraggrenade" );
 }

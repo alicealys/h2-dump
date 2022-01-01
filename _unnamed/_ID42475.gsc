@@ -3,20 +3,20 @@
 
 _ID34551()
 {
-    if ( !_func_02F( level._ID1632 ) )
+    if ( !isdefined( level._ID1632 ) )
     {
-        level._ID1632 = _func_1A5();
+        level._ID1632 = spawnstruct();
         level._ID1632._ID17491 = 0;
         level._ID1632._ID10132 = 1.0;
-        thread _unknown_0036();
-        _unknown_013E();
+        thread _ID34555();
+        _ID34505();
         _ID42492::_ID34549();
-        _unknown_00D1( level._ID912 );
+        _ID34652( level._ID912 );
         _ID42490::_ID34567();
         _ID42490::_ID34528();
         _ID42495::_ID34687();
         _ID42491::_ID34531();
-        _unknown_005F();
+        _ID34576();
         _ID42476::_ID34503();
     }
 }
@@ -48,23 +48,23 @@ _ID34585( var_0, var_1, var_2 )
     level notify( "stop_other_music" );
     level endon( "stop_other_music" );
 
-    if ( _func_02F( var_2 ) )
-        childthread _unknown_00CC( "snd_music_handler", var_0, var_1, var_2 );
-    else if ( _func_02F( var_1 ) )
-        childthread _unknown_00DC( "snd_music_handler", var_0, var_1 );
+    if ( isdefined( var_2 ) )
+        childthread _ID34575( "snd_music_handler", var_0, var_1, var_2 );
+    else if ( isdefined( var_1 ) )
+        childthread _ID34575( "snd_music_handler", var_0, var_1 );
     else
-        childthread _unknown_00E6( "snd_music_handler", var_0 );
+        childthread _ID34575( "snd_music_handler", var_0 );
 }
 
 _ID34575( var_0, var_1, var_2, var_3 )
 {
-    if ( _func_02F( level._ID1632._ID23484[var_0] ) )
+    if ( isdefined( level._ID1632._ID23484[var_0] ) )
     {
-        if ( _func_02F( var_3 ) )
+        if ( isdefined( var_3 ) )
             thread [[ level._ID1632._ID23484[var_0] ]]( var_1, var_2, var_3 );
-        else if ( _func_02F( var_2 ) )
+        else if ( isdefined( var_2 ) )
             thread [[ level._ID1632._ID23484[var_0] ]]( var_1, var_2 );
-        else if ( _func_02F( var_1 ) )
+        else if ( isdefined( var_1 ) )
             thread [[ level._ID1632._ID23484[var_0] ]]( var_1 );
         else
             thread [[ level._ID1632._ID23484[var_0] ]]();
@@ -85,7 +85,7 @@ _ID34544( var_0, var_1 )
 {
     var_2 = undefined;
 
-    if ( _func_0D3( var_1 ) )
+    if ( isarray( var_1 ) )
         var_2 = var_1[var_0];
 
     return var_2;
@@ -93,7 +93,7 @@ _ID34544( var_0, var_1 )
 
 _ID34542()
 {
-    return _func_03D() * 0.001;
+    return gettime() * 0.001;
 }
 
 _ID34587()
@@ -109,10 +109,10 @@ _ID34571( var_0, var_1 )
 
 _ID34530()
 {
-    var_0 = _func_1AF();
+    var_0 = newhudelem();
     var_0._ID1331 = 0;
     var_0._ID1339 = 0;
-    var_0 _meth_80D3( "white", 640, 480 );
+    var_0 setshader( "white", 640, 480 );
     var_0._ID44 = "left";
     var_0._ID45 = "top";
     var_0._ID983 = 1;
@@ -121,7 +121,7 @@ _ID34530()
     var_0._ID55 = 1.0;
     var_0._ID408 = 1;
     wait 0.05;
-    var_0 _meth_808F();
+    var_0 destroy();
 }
 
 _ID34659( var_0 )
@@ -137,7 +137,7 @@ _ID34685()
         self._ID216++;
 
     if ( !self._ID29754 )
-        thread _unknown_023E();
+        thread _ID34686();
 }
 
 _ID34686()
@@ -150,14 +150,14 @@ _ID34686()
 
 _ID34545( var_0 )
 {
-    var_1 = _func_1A5();
+    var_1 = spawnstruct();
     var_1._ID680 = "throttle_waiter";
     var_1._ID216 = 0;
     var_1._ID29754 = 0;
     var_2 = 10;
 
-    if ( _func_02F( var_0 ) )
-        var_2 = _func_0E6( var_0, 1 );
+    if ( isdefined( var_0 ) )
+        var_2 = max( var_0, 1 );
 
     var_1._ID23037 = var_2;
     return var_1;
@@ -179,7 +179,7 @@ _ID34589( var_0, var_1, var_2 )
 
     for ( var_4 = 0; var_4 < var_2; var_4++ )
     {
-        var_5 = _func_1C2( var_0, var_1, var_4 );
+        var_5 = tablelookupbyrow( var_0, var_1, var_4 );
         var_3[var_5] = var_4;
     }
 
@@ -199,28 +199,28 @@ _ID34590( var_0, var_1, var_2, var_3, var_4 )
         var_11 = 0;
         var_12 = undefined;
         var_13 = "";
-        var_14 = _func_2A0( var_7, var_3, var_4 );
+        var_14 = _func_2a0( var_7, var_3, var_4 );
 
-        if ( _func_02F( var_14 ) )
+        if ( isdefined( var_14 ) )
         {
             while ( var_10 < 10 && var_8 + var_14[0] < var_14[1] )
             {
-                var_15 = _func_1C2( var_7, var_8 + var_14[0], var_11 );
+                var_15 = tablelookupbyrow( var_7, var_8 + var_14[0], var_11 );
 
                 if ( var_15 != "" )
                 {
                     var_10 = 0;
 
-                    if ( !_func_02F( var_9 ) )
+                    if ( !isdefined( var_9 ) )
                     {
-                        var_9 = _unknown_033E( var_7, var_8 + var_14[0], var_2 );
+                        var_9 = _ID34589( var_7, var_8 + var_14[0], var_2 );
                         var_11 = var_9[var_3];
                     }
                     else
                     {
                         var_16 = 0;
 
-                        if ( !_func_02F( var_12 ) )
+                        if ( !isdefined( var_12 ) )
                             var_16 = 1;
                         else if ( var_15 != var_13 )
                         {
@@ -230,19 +230,17 @@ _ID34590( var_0, var_1, var_2, var_3, var_4 )
 
                         if ( var_16 )
                         {
-                            var_12 = _func_1A5();
+                            var_12 = spawnstruct();
                             var_12._ID680 = var_15;
                             var_12._ID32823 = [];
                             var_13 = var_15;
                         }
 
                         var_17 = [];
-                        var_18 = var_9;
 
-                        for ( var_21 = _func_1DA( var_18 ); _func_02F( var_21 ); var_21 = _func_1BF( var_18, var_21 ) )
+                        foreach ( var_21, var_19 in var_9 )
                         {
-                            var_19 = var_18[var_21];
-                            var_20 = _func_1C2( var_7, var_8 + var_14[0], var_19 );
+                            var_20 = tablelookupbyrow( var_7, var_8 + var_14[0], var_19 );
 
                             if ( var_21 == var_3 )
                             {
@@ -254,20 +252,19 @@ _ID34590( var_0, var_1, var_2, var_3, var_4 )
 
                             if ( _ID42407::_ID20617( var_20 ) )
                             {
-                                var_17[var_21] = _func_0C2( var_20 );
+                                var_17[var_21] = float( var_20 );
                                 continue;
                             }
 
                             var_17[var_21] = var_20;
                         }
 
-                        var_clear_3
                         var_12._ID32823[var_12._ID32823.size] = var_17;
                     }
                 }
                 else
                 {
-                    if ( _func_02F( var_12 ) )
+                    if ( isdefined( var_12 ) )
                     {
                         var_5[var_13] = var_12;
                         var_12 = undefined;
@@ -279,7 +276,7 @@ _ID34590( var_0, var_1, var_2, var_3, var_4 )
                 var_8++;
             }
 
-            if ( _func_02F( var_12 ) )
+            if ( isdefined( var_12 ) )
             {
                 var_5[var_13] = var_12;
                 var_12 = undefined;

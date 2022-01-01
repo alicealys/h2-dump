@@ -3,18 +3,18 @@
 
 _ID52726()
 {
-    _ID42407::_ID1951( "wakeup", ::_unknown_0181, "", ::_unknown_0288 );
-    _ID42407::_ID1951( "wakefast", ::_unknown_0193, "", ::_unknown_029A );
-    _ID42407::_ID1951( "turnbuckle", ::_unknown_03D5, "", ::_unknown_03F0 );
-    _ID42407::_ID1951( "gun_fight", ::_unknown_098D, "", ::_unknown_09F6 );
-    _ID42407::_ID1951( "crawl", ::_unknown_0AD7, "", ::_unknown_0AF4 );
-    _ID42407::_ID1951( "gun_kick", ::_unknown_0B9E, "", ::_unknown_0BA1 );
-    _ID42407::_ID1951( "wounded", ::_unknown_0BE4, "Watch Price/Shep fight", ::_unknown_0BE2 );
-    _ID42407::_ID1951( "pullout", ::_unknown_0C95, "", ::_unknown_0C93 );
-    _ID42407::_ID1951( "kill", ::_unknown_0DAD, "", ::_unknown_0DC9 );
-    _ID42407::_ID1951( "endgame", ::_unknown_0E54, "", ::_unknown_0E6A );
-    _ID42407::_ID1951( "museum_freeroam", ::_unknown_00FB );
-    _ID42407::_ID1951( "museum_credits", ::_unknown_0106 );
+    _ID42407::_ID1951( "wakeup", ::_ID43097, "", ::_ID48459 );
+    _ID42407::_ID1951( "wakefast", ::_ID43097, "", ::_ID48459 );
+    _ID42407::_ID1951( "turnbuckle", ::_ID51436, "", ::_ID45882 );
+    _ID42407::_ID1951( "gun_fight", ::_ID46900, "", ::_ID43418 );
+    _ID42407::_ID1951( "crawl", ::_ID46566, "", ::_ID52014 );
+    _ID42407::_ID1951( "gun_kick", ::_ID47310, "", ::_ID44725 );
+    _ID42407::_ID1951( "wounded", ::_ID50498, "Watch Price/Shep fight", ::_ID49842 );
+    _ID42407::_ID1951( "pullout", ::_ID43087, "", ::_ID53116 );
+    _ID42407::_ID1951( "kill", ::_ID50745, "", ::_ID43968 );
+    _ID42407::_ID1951( "endgame", ::_ID53855, "", ::_ID12642 );
+    _ID42407::_ID1951( "museum_freeroam", ::_ID54337 );
+    _ID42407::_ID1951( "museum_credits", ::_ID54337 );
 }
 
 _ID54337()
@@ -84,12 +84,12 @@ _ID53376()
     _ID42237::_ID14400( "crawl_gameplay_player_input" );
     thread _ID51067::_ID616();
     level._ID51340 = &"AF_CHASE_FAILED_TO_PULL_KNIFE";
-    _func_036( "enable_heartbeat_overlay", 1 );
+    setdynamicdvar( "enable_heartbeat_overlay", 1 );
 }
 
 _ID45160()
 {
-    _func_2F1( 0, "xy", 1.5, 0.3 );
+    _func_2f1( 0, "xy", 1.5, 0.3 );
     maps\af_chase_knife_fight_code::_ID46312( "bump_small_start", "bump_big_start" );
     level._ID45017 = 2500;
     level._ID50860 = 1200;
@@ -102,7 +102,7 @@ _ID45160()
 
     waitframe;
 
-    if ( _func_02F( level._ID36513 ) && level._ID36513 )
+    if ( isdefined( level._ID36513 ) && level._ID36513 )
         return;
 }
 
@@ -116,44 +116,44 @@ _ID53792()
     _ID42407::_ID4917( "axis" );
     _ID42407::_ID4917( "allies" );
     maps\af_chase_knife_fight_code::_ID54597();
-    level._ID794 _meth_830C( 0 );
+    level._ID794 allowjump( 0 );
     thread maps\af_chase_knife_fight_code::_ID51324();
     thread maps\af_chase_knife_fight_code::_ID46620();
-    anim._ID14274["empty_script"] = ::_unknown_0483;
+    anim._ID14274["empty_script"] = ::_ID312;
     var_0 = _ID42237::_ID35164();
     level._ID50049 = var_0;
-    var_1 = _func_03A( "cg_fov" );
+    var_1 = getdvarint( "cg_fov" );
     var_0._ID740 = ( var_1, 0, 0 );
     _ID42407::_ID10226( 0.05, maps\af_chase_knife_fight_code::_ID44688 );
     thread _ID51067::_ID48476();
     maps\af_chase_knife_fight_code::_ID43537();
-    _func_0DB( "g_friendlyNameDist", 0 );
-    _func_0DB( "sm_sunSampleSizeNear", 0.25 );
+    setsaveddvar( "g_friendlyNameDist", 0 );
+    setsaveddvar( "sm_sunSampleSizeNear", 0.25 );
     maps\af_chase_knife_fight_code::_ID48973();
     maps\af_chase_knife_fight_code::_ID45418();
-    level._ID47973 = _func_1A5();
+    level._ID47973 = spawnstruct();
     level._ID47973._ID23586 = 0.5;
     level._ID47973._ID23033 = 0.8;
     _ID42407::_ID29516( "boat_check_trailing" );
     _ID42407::_ID29516( "boat_check_player_speeding_along" );
     _ID42407::_ID32527( 100, 0.7, 0.4 );
-    _func_0DB( "cg_fov", 65 );
-    _func_0DB( "ammoCounterHide", 1 );
-    _func_0DB( "hud_showstance", 0 );
-    _func_0DB( "compass", 1 );
-    _func_0DB( "ui_hideCompassTicker", 1 );
-    _func_0DB( "actionSlotsHide", 1 );
-    level._ID794 _meth_830F( 0 );
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_832A();
+    setsaveddvar( "cg_fov", 65 );
+    setsaveddvar( "ammoCounterHide", 1 );
+    setsaveddvar( "hud_showstance", 0 );
+    setsaveddvar( "compass", 1 );
+    setsaveddvar( "ui_hideCompassTicker", 1 );
+    setsaveddvar( "actionSlotsHide", 1 );
+    level._ID794 _meth_830f( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
+    level._ID794 disableoffhandweapons();
     thread _ID52272::_ID48356();
     thread maps\af_chase_knife_fight_code::_ID48797();
-    level._ID794 _meth_831B();
+    level._ID794 takeallweapons();
     level._ID43135.greenberet_disabled = 1;
-    _func_1E3( 1, "invisible", &"AF_CHASE_PURSUE" );
-    _func_114( 1, "done" );
-    thread _unknown_1513();
+    objective_add( 1, "invisible", &"AF_CHASE_PURSUE" );
+    objective_state_nomessage( 1, "done" );
+    thread knife_fight_culldist();
 }
 
 _ID43097()
@@ -165,19 +165,19 @@ _ID53570()
 {
     var_0 = animscripts\utility::_ID3291( 11, 9.5, 8 );
     var_1 = animscripts\utility::_ID3291( 9, 7.5, 6 );
-    var_2 = _func_046();
+    var_2 = _func_46();
 
     for ( var_3 = ( var_2[0], var_2[1], var_2[2] ); !_ID42237::_ID14385( "do_museum_credits" ); var_3 = var_6 )
     {
         if ( _ID42237::_ID14385( "h2_sunintensity_intense" ) )
         {
             var_4 = _ID42237::_ID28945( var_1 );
-            var_5 = _func_0BA( 3, 4 );
+            var_5 = randomfloatrange( 3, 4 );
         }
         else
         {
             var_4 = _ID42237::_ID28945( var_0 );
-            var_5 = _func_0BA( 1, 2 );
+            var_5 = randomfloatrange( 1, 2 );
         }
 
         var_5 = _ID42407::_ID30229( var_5, 1, 0 );
@@ -185,30 +185,30 @@ _ID53570()
 
         for ( var_7 = 0; var_7 < var_5; var_7 += 0.05 )
         {
-            var_8 = _func_11C( var_3, var_6, var_7 / var_5 );
-            _func_047( var_8[0], var_8[1], var_8[2] );
+            var_8 = vectorlerp( var_3, var_6, var_7 / var_5 );
+            _func_47( var_8[0], var_8[1], var_8[2] );
             wait 0.05;
         }
     }
 
-    _func_048();
+    _func_48();
 }
 
 _ID52520()
 {
-    var_0 = _func_1B0( level._ID794 );
+    var_0 = newclienthudelem( level._ID794 );
     var_0._ID48175 = 648;
     var_0._ID43646 = 486;
     var_0._ID49777 = 640;
     var_0._ID50083 = 480;
-    _func_0DB( "cg_altDamageBrightness", 0 );
-    _func_0DB( "cg_altDamageAlpha", "1" );
-    _func_0DB( "cg_altDamageFlashColor", ".125 0 0" );
-    _func_0DB( "cg_bloodThickColor", "100 0 0 100" );
+    setsaveddvar( "cg_altDamageBrightness", 0 );
+    setsaveddvar( "cg_altDamageAlpha", "1" );
+    setsaveddvar( "cg_altDamageFlashColor", ".125 0 0" );
+    setsaveddvar( "cg_bloodThickColor", "100 0 0 100" );
     var_1 = "overlay_low_health";
     var_0._ID1331 = 320;
     var_0._ID1339 = 240;
-    var_0 _meth_80D3( var_1, var_0._ID49777, var_0._ID50083 );
+    var_0 setshader( var_1, var_0._ID49777, var_0._ID50083 );
     var_0._ID998 = 1;
     var_0._ID44 = "center";
     var_0._ID45 = "middle";
@@ -218,7 +218,7 @@ _ID52520()
     var_0._ID1284 = "fullscreen";
     var_0._ID55 = 0;
     wait 1.4;
-    var_0 _meth_808B( 0.5 );
+    var_0 fadeovertime( 0.5 );
     var_0._ID55 = 0;
     var_2 = 0.1;
     var_3 = 0.5;
@@ -229,32 +229,32 @@ _ID52520()
     var_8 = 0;
     var_9 = 0.1;
     var_0._ID55 = var_7;
-    var_10 = _func_0E6( var_2, var_5 );
-    var_10 += _func_0E6( var_4, var_9 );
-    var_11 = _func_0E6( var_3, var_6 );
-    var_11 += _func_0E6( var_4, var_9 );
+    var_10 = max( var_2, var_5 );
+    var_10 += max( var_4, var_9 );
+    var_11 = max( var_3, var_6 );
+    var_11 += max( var_4, var_9 );
     var_11 += 1.2;
     var_12 = "breathing_heartbeat";
 
     for ( var_13 = 0; var_13 < 6; var_13++ )
     {
-        var_0 _meth_808C( var_3, var_0._ID48175, var_0._ID43646 );
-        var_0 _meth_808B( var_6 );
+        var_0 scaleovertime( var_3, var_0._ID48175, var_0._ID43646 );
+        var_0 fadeovertime( var_6 );
         var_0._ID55 = var_8;
         wait(var_11);
-        var_0 _meth_808C( var_2, var_0._ID49777, var_0._ID50083 );
-        var_0 _meth_808B( var_5 );
+        var_0 scaleovertime( var_2, var_0._ID49777, var_0._ID50083 );
+        var_0 fadeovertime( var_5 );
         var_0._ID55 = var_7;
         wait(var_10);
         var_7 -= 0.1;
-        thread _unknown_0882( 1 - var_13 * 0.1 );
-        level._ID794 _meth_82FF( var_12 );
+        thread _ID48057( 1 - var_13 * 0.1 );
+        level._ID794 playlocalsound( var_12 );
     }
 
-    var_0 _meth_808B( 2 );
+    var_0 fadeovertime( 2 );
     var_0._ID55 = 0;
     wait 2;
-    var_0 _meth_808F();
+    var_0 destroy();
 }
 
 _ID48057( var_0 )
@@ -296,8 +296,8 @@ _ID52710()
 {
     level._ID794 endon( "death" );
     level endon( "stop_drunk_walk" );
-    _unknown_17C3();
-    _unknown_17D5( 0.6, 0 );
+    _ID54688();
+    _ID50005( 0.6, 0 );
     wait 2;
     level._ID54494 = 0;
     var_0 = 0.4;
@@ -311,9 +311,9 @@ _ID52710()
     for (;;)
     {
         var_0 -= var_5;
-        var_0 = _func_0EE( var_0, 0, 1 );
+        var_0 = clamp( var_0, 0, 1 );
         var_7 = var_0 + level._ID54494;
-        _unknown_1810( var_7, 0.05 );
+        _ID50005( var_7, 0.05 );
         var_4++;
         wait(var_2);
     }
@@ -323,37 +323,37 @@ _ID48459()
 {
     var_0 = level._ID35897 != "wakefast";
     _ID42237::_ID14413( "fell_off_waterfall" );
-    thread _unknown_091C();
+    thread _ID53570();
     maps\af_chase_knife_fight_code::_ID52796( "af_chase_ending_wakeup" );
     thread maps\af_chase_knife_fight_code::_ID50617();
     thread maps\af_chase_knife_fight_code::_ID47957();
     thread maps\af_chase_knife_fight_code::_ID45872();
     thread maps\af_chase_knife_fight_code::_ID52811();
-    _unknown_08D8();
+    _ID53792();
 
     if ( var_0 )
     {
         thread maps\af_chase_knife_fight_code::_ID49077();
-        thread _unknown_0AD4();
+        thread _ID50651();
     }
 
-    _func_076( 20, 0 );
-    _func_076( 0, 8 );
+    setblur( 20, 0 );
+    setblur( 0, 8 );
     var_1 = "wakeup";
     var_2 = _ID42237::_ID16638( "end_scene_org", "targetname" );
     var_3 = _ID42407::_ID35028( "player_rig" );
     var_2 _ID42259::_ID3018( var_3, var_1 );
-    level._ID794 _meth_8084( var_3, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level._ID794 playerlinktodelta( var_3, "tag_player", 1, 0, 0, 0, 0, 1 );
 
-    if ( _func_03A( "lastMissionPassCheatStatus" ) == 1 )
+    if ( getdvarint( "lastMissionPassCheatStatus" ) == 1 )
         _ID42237::_ID14402( "has_cheated" );
 
-    _func_087( var_1, &"AUTOSAVE_LEVELSTART", "shot", 1 );
-    level._ID794 _meth_8334( 1 );
+    savegame( var_1, &"AUTOSAVE_LEVELSTART", "shot", 1 );
+    level._ID794 freezecontrols( 1 );
     _ID42407::_ID3344( "crawling_spawner", maps\af_chase_knife_fight_code::_ID47222 );
     _ID42407::_ID3344( "crawling_spawner", maps\af_chase_knife_fight_code::_ID51151 );
     _ID42407::_ID3346( "crawling_spawner" );
-    var_4 = _func_1A1( "damaged_pavelow", "targetname" );
+    var_4 = getent( "damaged_pavelow", "targetname" );
     var_4 thread _ID42407::_ID27079( "scn_afchase_heli_cookoff" );
 
     if ( var_0 )
@@ -361,10 +361,10 @@ _ID48459()
         level._ID794 _ID42407::_ID10226( 5, _ID42407::_ID27079, "scn_afchase_wakeup_player" );
         level._ID794 _ID42407::_ID10226( 12.5, _ID42407::_ID27079, "scn_afchase_wakeup_player_cough" );
 
-        if ( _func_039( "enable_heartbeat_overlay" ) == "1" )
+        if ( getdvar( "enable_heartbeat_overlay" ) == "1" )
         {
-            thread _unknown_0A45();
-            thread _unknown_0B01();
+            thread _ID52520();
+            thread _ID52710();
         }
 
         var_2 _ID42259::_ID3111( var_3, var_1 );
@@ -373,11 +373,11 @@ _ID48459()
     {
         var_2 thread _ID42259::_ID3111( var_3, var_1 );
         var_5 = var_3 _ID42407::_ID16120( var_1 );
-        var_3 _meth_8155( var_5, 1, 0, 25 );
+        var_3 setanim( var_5, 1, 0, 25 );
 
         for (;;)
         {
-            var_6 = var_3 _meth_8159( var_5 );
+            var_6 = var_3 getanimtime( var_5 );
 
             if ( var_6 >= 0.95 )
                 break;
@@ -387,10 +387,10 @@ _ID48459()
     }
 
     _ID42407::_ID10226( 5, maps\af_chase_knife_fight_code::_ID52297 );
-    var_3 _meth_80B7();
-    _func_1E3( 2, "current", &"AF_CHASE_OBJ_CRASH" );
+    var_3 delete();
+    objective_add( 2, "current", &"AF_CHASE_OBJ_CRASH" );
     _func_194( 2, level._ID53826, ( 0, 0, 90 ) );
-    _func_0C7( 2, &"SCRIPT_WAYPOINT_SHEPHERD" );
+    objective_setpointertextoverride( 2, &"SCRIPT_WAYPOINT_SHEPHERD" );
     _ID42237::_ID14402( "player_standing" );
     _ID42237::_ID14402( "start_doing_aftermath_walk" );
 }
@@ -414,17 +414,17 @@ _ID50651()
     var_0 _ID54167::_ID48800( 8.8 ) _ID54167::_ID47198( 0.08, 0.6, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
     var_0 _ID54167::_ID48800( 10.25 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
     var_0 _ID54167::_ID48800( 11.75 ) _ID54167::_ID47198( 0.14, 1.0, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.5 );
-    thread _unknown_0E5C();
+    thread _ID47563();
     var_0 _ID54167::_ID48166();
-    _func_0DB( "ui_consciousnessVignetteDarkness", 1.0 );
+    setsaveddvar( "ui_consciousnessVignetteDarkness", 1.0 );
 }
 
 _ID47563()
 {
     wait 0.5;
-    _func_032( "ui_consciousness_init", 1 );
-    _func_032( "ui_consciousness_play", 1 );
-    _func_0DB( "ui_consciousnessVignetteDarkness", 0.5 );
+    setomnvar( "ui_consciousness_init", 1 );
+    setomnvar( "ui_consciousness_play", 1 );
+    setsaveddvar( "ui_consciousnessVignetteDarkness", 0.5 );
 }
 
 _ID51436()
@@ -454,43 +454,43 @@ _ID45882()
 {
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
-    var_1 _meth_805A();
+    var_1 hide();
     var_0 _ID42259::_ID3018( var_1, "turn_buckle" );
-    thread _unknown_0F2A();
+    thread _ID49371();
     maps\af_chase_knife_fight_code::_ID54100();
-    var_2 = _func_06A( "script_model", level._ID794._ID740 + ( 0, 0, 32 ) );
-    var_2 _meth_80B8( "viewbody_tf141_injured" );
-    var_2 _meth_805A();
-    var_2 _meth_8053( level._ID794 );
+    var_2 = spawn( "script_model", level._ID794._ID740 + ( 0, 0, 32 ) );
+    var_2 setmodel( "viewbody_tf141_injured" );
+    var_2 hide();
+    var_2 linkto( level._ID794 );
     maps\af_chase_knife_fight_code::_ID50390();
 
-    if ( _func_02F( level._ID53970 ) )
+    if ( isdefined( level._ID53970 ) )
     {
-        level._ID53970 _meth_82BF( ( 0, 0, 0 ), 0.5, 0.25, 0.25 );
-        level._ID794 _meth_85B5( undefined );
-        level._ID53970 _meth_80B7();
+        level._ID53970 rotateto( ( 0, 0, 0 ), 0.5, 0.25, 0.25 );
+        level._ID794 _meth_85b5( undefined );
+        level._ID53970 delete();
     }
 
     level notify( "stop_random_breathing_sounds" );
     level notify( "stop_drunk_walk" );
     level notify( "kill_limp" );
-    _func_0DB( "compass", 0 );
+    setsaveddvar( "compass", 0 );
     level notify( "do_staged_pain_pulse" );
     level notify( "kill_limp" );
     _ID42237::_ID14402( "stop_aftermath_player" );
     maps\af_chase_knife_fight_code::_ID46058( 1 );
 
-    if ( _func_02F( level._ID46102._ID15093 ) )
+    if ( isdefined( level._ID46102._ID15093 ) )
         level._ID46102 _ID42407::_ID15095();
 
-    level._ID46102 _meth_80B3();
+    level._ID46102 playrumbleonentity();
     maps\af_chase_knife_fight_code::_ID48836();
     _ID42237::_ID14402( "turn_buckle_start" );
-    thread _unknown_1086( "start_turnbuckle" );
+    thread _ID52865( "start_turnbuckle" );
     level notify( "no_more_shepherd_idle" );
     var_0 notify( "player_arrived" );
     thread maps\af_chase_knife_fight_code::_ID44884();
-    var_1 _meth_801D( "weapon_commando_knife", "TAG_WEAPON_LEFT" );
+    var_1 attach( "weapon_commando_knife", "TAG_WEAPON_LEFT" );
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     var_4 = [];
     var_4["shepherd"] = level._ID46102;
@@ -514,33 +514,198 @@ _ID45882()
 
     var_0 _ID42259::_ID3016( var_4, var_7 );
     var_0 thread _ID42259::_ID3099( var_4, var_7 );
-    level._ID794 _meth_80A1( var_8 );
+    level._ID794 playsound( var_8 );
     level._ID46102 thread _ID42407::_ID27079( var_9 );
     _ID42237::_ID14413( "turn_buckle_fadeout" );
     wait(var_6);
     wait 0.5;
-    var_3 _meth_8059();
+    var_3 show();
 }
 
 _ID52865( var_0 )
 {
     switch ( var_0 )
     {
+        case "start_turnbuckle":
+            var_1 = _ID54167::_ID43386( var_0 );
+            level notify( "not_random_blur" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44392( 0, 0.5 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44944( 1.0 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 1.85 ) _ID54167::_ID53207();
+            var_2 = getent( "staging_finale_lgt01", "targetname" );
+            var_1 _ID54167::_ID48800( 2.35 ) _ID54167::_ID43376( _ID42407::_ID31877, var_2, "staging_on" );
+            var_1 _ID54167::_ID48800( 0.5 ) _ID54167::_ID47198( 0.14, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 1.6 ) _ID54167::_ID47198( 0.2, 0.7, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.2 );
+            var_1 _ID54167::_ID48800( 2.1 ) _ID54167::_ID47198( 0.12, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 2.65 ) _ID54167::_ID47198( 0.38, 1.0, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.8 );
+            var_1 _ID54167::_ID48800( 3.85 ) _ID54167::_ID47198( 0.14, 0.8, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48166();
+            _ID42237::_ID14413( "gloat_fade_in" );
+            var_1 = _ID54167::_ID43386( "gloat_sequence" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 13.8 ) _ID54167::_ID50321( 3.1, -1, 3.5, 3.5 ) _ID54167::_ID52391( level._ID51910, "tag_flash" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 15.0 ) _ID54167::_ID50321( 3.1, -1, 4, 4 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 16.5 ) _ID54167::_ID50321( 3.1, -1, 4, 4 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 17.7 ) _ID54167::_ID44191( 50, 1.4, 0 ) _ID54167::_ID47844( 2 );
+            var_1 _ID54167::_ID48800( 18.5 ) _ID54167::_ID50321( 4.5, -1, 1.0, 1.0 ) _ID54167::_ID52391( level._ID51910, "tag_brass" ) _ID54167::_ID44518( -2 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 15.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+            var_1 _ID54167::_ID48800( 16.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 20.4 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48166();
+            break;
+        case "crawl_gameplay_started":
+            var_1 = _ID54167::_ID43386( var_0 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 5.5, -1, 64, 64 ) _ID54167::_ID52391( level._ID51910, "tag_brass" ) _ID54167::_ID44518( -2 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956() _ID54167::_ID47844( 2 );
+            var_2 = getent( "staging_finale_lgt01", "targetname" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID43376( _ID42407::_ID31877, var_2, "staging_off" );
+            var_1 _ID54167::_ID48166();
+            var_3 = 2.14;
 
+            for ( var_4 = 1; var_4 <= 6; var_4++ )
+            {
+                _ID42237::_ID14413( "crawl_gameplay_player_input" );
+                _ID42237::_ID14388( "crawl_gameplay_player_input" );
+                var_5 = 50 + var_4 * var_3;
+                var_1 = _ID54167::_ID43386( "crawl_new_input" + var_4 );
+                var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44191( var_5, 1.0, 0 );
+                var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+                var_1 _ID54167::_ID48166();
+            }
+
+            _ID42237::_ID14413( "crawl_gameplay_complete" );
+            var_1 = _ID54167::_ID43386( "crawl_gameplay_complete" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727() _ID54167::_ID47844( 0 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44191( 65, 1.0, 0 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 5.0, -1, 64, 64 ) _ID54167::_ID52391( level._ID51910, "tag_brass" ) _ID54167::_ID44518( -2 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 2.35 ) _ID54167::_ID50321( 3.0, 23, 4, 4 );
+            var_1 _ID54167::_ID48800( 2.65 ) _ID54167::_ID44191( 50, 1.15, 0 );
+            var_1 _ID54167::_ID48800( 3.3 ) _ID54167::_ID50321( 3.1, -1, 4, 4 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44944( 1.0 );
+            var_6 = getent( "staging_finale_lgt02", "targetname" );
+            var_1 _ID54167::_ID48800( 5.0 ) _ID54167::_ID43376( _ID42407::_ID31877, var_6, "staging_on" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 1.85 ) _ID54167::_ID47198( 0.06, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 2.4 ) _ID54167::_ID47198( 0.1, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+            var_1 _ID54167::_ID48166();
+            break;
+        case "shepherd_fights_price_sequence_start":
+            var_1 = _ID54167::_ID43386( var_0 );
+            setomnvar( "ui_consciousness_init", 1 );
+            setomnvar( "ui_consciousness_play", 12 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44191( 40, 0.0, 1 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956() _ID54167::_ID53207();
+            var_1 _ID54167::_ID48800( 11.3 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 17.8 ) _ID54167::_ID44191( 47, 0.0, 1 );
+            var_1 _ID54167::_ID48800( 17.8 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level._ID794, 15, 0.1 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 21.3 ) _ID54167::_ID44191( 40, 0.0, 1 );
+            var_1 _ID54167::_ID48800( 21.3 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level._ID794, 15, 0.1 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 1.05 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -1, 5, -2, 6 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 2.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.15, 0.5, 0.5, -8, 12, 1, 3 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 3.7 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 2.3, 0.5, 0.9, -22, 26, 0, 4 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 6.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.0, 0.5, 0.5, -25, 29, -4, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 8.4 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.5, 0.5, 0.9, -15, 19, -9, 13 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 11.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -8, 12, -6, 10 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 12.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 3.5, 1.0, 1.0, -1, 5, -9, 13 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 17.7 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -26, 30, -10, 14 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 19.2 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.85, 0.3, 0.3, -30, 34, -7, 11 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 21.4 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -38, 42, -8, 12 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 2.4 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 3.7 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 8.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 12.3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 13.8 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 19.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 9.3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 12.7 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 19.75 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48166();
+            _ID42237::_ID14413( "focused_on_knife" );
+            var_1 = _ID54167::_ID43386( "focused_on_knife" );
+            var_1 _ID54167::_ID48800( 1.35 ) _ID54167::_ID44191( 58, 13.0, 0 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 5.75 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level._ID794, 0, 6.15 );
+            var_1 _ID54167::_ID48800( 6.85 ) _ID54167::_ID50321( 4.0, 11.5, 0.55, 0.55 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 1.35 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.6, 0.8, 0.8, -38, 42, -11, 15 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 4.25 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 7.15, 4.0, 1.0, 7, -1, 4, 2 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 0.25 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 1.25 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 4.1 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 4.9 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 7.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 7.85 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 9.95 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 11.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48166();
+            break;
+        case "player_looks_at_knife":
+            var_1 = _ID54167::_ID43386( var_0 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.0, 11.5, 2, 2 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 5.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 5.6 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+            var_1 _ID54167::_ID48166();
+            _ID42237::_ID14413( "throw_knife_pulled_out" );
+            var_1 = _ID54167::_ID43386( "throw_knife_pulled_out" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.0, -1, 64, 64 ) _ID54167::_ID52391( level._ID27625, "tag_knife_attach2" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 0.6 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.5 );
+            var_1 _ID54167::_ID48800( 3.1 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 4.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 5.3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.2 );
+            var_1 _ID54167::_ID48800( 1.7 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 2.35 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+            var_1 _ID54167::_ID48800( 2.55 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48166();
+            break;
+        case "throw_knife_gameplay_started":
+            var_1 = _ID54167::_ID43386( "throw_knife_gameplay_started" );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 3.1, -1, 2, 2 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48166();
+            break;
+        case "shepherd_killed":
+            var_1 = _ID54167::_ID43386( "shepherd_killed_cinematic" );
+            var_1 _ID54167::_ID48800( 5.0 ) _ID54167::_ID46727();
+            var_1 _ID54167::_ID48800( 5.0 ) _ID54167::_ID50321( 3.1, -1, 1, 1 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44944( 1.0 ) _ID54167::_ID44956();
+            var_1 _ID54167::_ID48800( 65.65 ) _ID54167::_ID50321( 1.4, 300, 1.5, 1.5 );
+            var_1 _ID54167::_ID48800( 68.65 ) _ID54167::_ID50321( 3.1, -1, 2.5, 2.5 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 73.15 ) _ID54167::_ID44191( 57, 1.5, 0 ) _ID54167::_ID50321( 14.1, 150, 2, 2 );
+            var_1 _ID54167::_ID48800( 84.65 ) _ID54167::_ID44191( 65, 1.5, 0 ) _ID54167::_ID50321( 14.1, 150, 2, 2 );
+            var_1 _ID54167::_ID48800( 94.0 ) _ID54167::_ID48959();
+            var_1 _ID54167::_ID48800( 94.0 ) _ID54167::_ID53207();
+            var_1 _ID54167::_ID48800( 1.2 ) _ID54167::_ID44191( 40, 0.4, 0 );
+            var_1 _ID54167::_ID48800( 11.3 ) _ID54167::_ID43500( 28.0, 0 );
+            var_1 _ID54167::_ID48800( 7.75 ) _ID54167::_ID47844( 2 );
+            var_1 _ID54167::_ID48800( 37.0 ) _ID54167::_ID47844( 0 );
+            var_1 _ID54167::_ID48800( 85.0 ) _ID54167::_ID47844( 2 );
+            var_1 _ID54167::_ID48800( 94.0 ) _ID54167::_ID47844( 0 );
+            var_1 _ID54167::_ID48800( 85.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 8.0, 3.5, 3.5, 0, 0, 0, 0 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_6 = getent( "staging_finale_lgt02", "targetname" );
+            var_1 _ID54167::_ID48800( 80.0 ) _ID54167::_ID43376( _ID42407::_ID31877, var_6, "staging_off" );
+            var_1 _ID54167::_ID48800( 1.2 ) _ID54167::_ID47198( 0.04, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 1.45 ) _ID54167::_ID47198( 0.04, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 3.5 ) _ID54167::_ID47198( 0.06, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 60.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 61.4 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 65.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 69.75 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 84.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.4 );
+            var_1 _ID54167::_ID48800( 85.85 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48166();
+            break;
     }
-
-    case "shepherd_killed":
-    case "player_looks_at_knife":
-    case "throw_knife_gameplay_started":
-    case "shepherd_fights_price_sequence_start":
-    case "crawl_gameplay_started":
-    case "start_turnbuckle":
 }
 
 h2_lerp_camera_roll( var_0, var_1 )
 {
     var_2 = 0.05;
-    var_3 = level._ID794 _meth_8346();
+    var_3 = level._ID794 getplayerangles();
     var_4 = var_0 - var_3[2];
     var_5 = var_1 / var_2;
     var_6 = var_4 / var_5;
@@ -548,7 +713,7 @@ h2_lerp_camera_roll( var_0, var_1 )
 
     while ( var_7 <= var_5 )
     {
-        level._ID794 _meth_8345( ( var_3[0], var_3[1], var_3[2] + var_7 * var_6 ) );
+        level._ID794 setplayerangles( ( var_3[0], var_3[1], var_3[2] + var_7 * var_6 ) );
         var_7 += 1;
         wait(var_2);
     }
@@ -569,17 +734,17 @@ _ID43538()
 _ID47670( var_0 )
 {
     _ID42237::_ID14402( "bloody_player_rig" );
-    var_0 _meth_80B8( "viewbody_tf141_injured" );
+    var_0 setmodel( "viewbody_tf141_injured" );
 }
 
 _ID51865()
 {
     level notify( "not_random_blur" );
     thread _ID51067::_ID27474();
-    level._ID794 _meth_8190();
+    level._ID794 stopshellshock();
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
-    _unknown_2593( var_1 );
+    _ID47670( var_1 );
     var_2 = maps\af_chase_knife_fight_code::_ID47027();
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     maps\af_chase_knife_fight_code::_ID48416();
@@ -588,16 +753,16 @@ _ID51865()
     var_4 maps\af_chase_knife_fight_code::_ID50666( level._ID46102, "tag_eye", 1 );
     maps\af_chase_knife_fight_code::_ID50567();
     var_4 = maps\af_chase_knife_fight_code::_ID47505();
-    var_4 _meth_8053( level._ID46102, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_4 linkto( level._ID46102, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_5 = [];
     var_5["shepherd"] = level._ID46102;
     var_5["player_rig"] = var_1;
     var_5["gun"] = var_2;
     var_5["knife"] = var_3;
     var_0 _ID42259::_ID3016( var_5, "gun_monologue" );
-    level._ID794 _meth_8084( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
-    _func_076( 0, 1.75 );
+    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    setblur( 0, 1.75 );
     var_6 = 6.5;
     var_7 = 4;
     var_6 -= var_7;
@@ -607,7 +772,7 @@ _ID51865()
     var_0 _ID42259::_ID3018( level._ID28543, "gun_drop" );
     level._ID46102 thread _ID42407::_ID27079( "h2_scn_afchase_shepherd_gloat" );
     level._ID794 _ID42407::_ID10226( 13.45, _ID42298::_ID17386, "right" );
-    _ID42407::_ID10226( 14.7, ::_unknown_274F );
+    _ID42407::_ID10226( 14.7, ::_ID52754 );
     var_0 _ID42259::_ID3099( var_5, "gun_monologue" );
 }
 
@@ -615,22 +780,22 @@ _ID43418()
 {
     level notify( "not_random_blur" );
     thread _ID51067::_ID27474();
-    level._ID794 _meth_8190();
+    level._ID794 stopshellshock();
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
-    _unknown_26B3( var_1 );
+    _ID47670( var_1 );
     var_2 = maps\af_chase_knife_fight_code::_ID47027();
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     var_4 = var_1 _ID42237::_ID35164();
-    var_4 _meth_8053( var_1, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8098( var_4 );
+    var_4 linkto( var_1, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 playersetgroundreferenceent( var_4 );
     maps\af_chase_knife_fight_code::_ID48416();
     var_5 = maps\af_chase_knife_fight_code::_ID47505();
     var_5._ID740 = level._ID794._ID740;
     var_5 maps\af_chase_knife_fight_code::_ID50666( level._ID46102, "tag_eye", 1 );
     maps\af_chase_knife_fight_code::_ID50567();
     var_5 = maps\af_chase_knife_fight_code::_ID47505();
-    var_5 _meth_8053( level._ID46102, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_5 linkto( level._ID46102, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_6 = [];
     var_6["shepherd"] = level._ID46102;
     var_6["player_rig"] = var_1;
@@ -638,9 +803,9 @@ _ID43418()
     var_6["knife"] = var_3;
     var_6["price"] = level._ID28543;
     var_0 _ID42259::_ID3016( var_6, "gun_fight" );
-    level._ID794 _meth_8084( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
-    _func_076( 0, 1.75 );
+    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    setblur( 0, 1.75 );
     var_7 = 6.5;
     var_8 = 4;
     var_7 -= var_8;
@@ -649,10 +814,10 @@ _ID43418()
     maps\af_chase_knife_fight_code::_ID46058( 3.5 );
     level._ID46102 thread _ID42407::_ID27079( "h2_scn_afchase_shepherd_gloat" );
     level._ID794 _ID42407::_ID10226( 13.45, _ID42298::_ID17386, "right" );
-    _ID42407::_ID10226( 14.7, ::_unknown_2892 );
+    _ID42407::_ID10226( 14.7, ::_ID52754 );
     var_0 _ID42259::_ID3099( var_6, "gun_fight" );
-    level._ID794 _meth_8098( undefined );
-    var_4 _meth_80B7();
+    level._ID794 playersetgroundreferenceent( undefined );
+    var_4 delete();
 }
 
 _ID52754()
@@ -669,7 +834,7 @@ _ID51225()
 _ID48325()
 {
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
-    var_1 = _func_06A( "script_origin", var_0._ID740 );
+    var_1 = spawn( "script_origin", var_0._ID740 );
     var_1._ID65 = var_0._ID65;
     var_2 = maps\af_chase_knife_fight_code::_ID50885();
     var_3 = maps\af_chase_knife_fight_code::_ID47027();
@@ -677,11 +842,11 @@ _ID48325()
     var_4["shepherd"] = level._ID46102;
     var_4["price"] = level._ID28543;
     var_5 = maps\af_chase_knife_fight_code::_ID47505();
-    var_5 _meth_8053( level._ID46102, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_5 linkto( level._ID46102, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_6 = level._ID46102 _ID42407::_ID16120( "gun_drop" );
-    var_7 = _func_067( var_6 );
+    var_7 = getanimlength( var_6 );
     var_8 = var_2 _ID42407::_ID16120( "gun_drop_player" );
-    var_9 = _func_067( var_8 );
+    var_9 = getanimlength( var_8 );
     var_10 = var_9 - var_7;
     var_11 = 0.7;
     var_12 = var_7 - var_11;
@@ -691,16 +856,10 @@ _ID48325()
     var_0 thread _ID42259::_ID3111( var_2, "gun_drop_player" );
     level._ID794 thread _ID42407::_ID27079( "af_chase_scene_gun_drop" );
     wait 0.05;
-    var_13 = var_4;
 
-    for ( var_15 = _func_1DA( var_13 ); _func_02F( var_15 ); var_15 = _func_1BF( var_13, var_15 ) )
-    {
-        var_14 = var_13[var_15];
-        var_14 _meth_8053( var_1 );
-    }
+    foreach ( var_14 in var_4 )
+        var_14 linkto( var_1 );
 
-    var_clear_2
-    var_clear_0
     wait(var_12 - 0.05);
     wait(var_11 - 0.05);
 }
@@ -716,14 +875,14 @@ _ID46566()
     var_3 maps\af_chase_knife_fight_code::_ID50666( var_0, "tag_flash", 0.1 );
     var_1 _ID42259::_ID3018( var_0, "gun_kick_gun" );
     var_1 _ID42259::_ID3018( var_2, "gun_crawl_01" );
-    var_3 _ID42237::_ID10192( 0.1, ::_meth_8053, var_2, "J_Wrist_LE", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_3 _ID42237::_ID10192( 0.1, ::linkto, var_2, "J_Wrist_LE", ( 0, 0, 0 ), ( 0, 0, 0 ) );
 }
 
 _ID52014()
 {
     _ID42237::_ID14402( "crawl_gameplay_started" );
-    thread _unknown_245A( "crawl_gameplay_started" );
-    _func_087( "crawl", &"AUTOSAVE_LEVELSTART", "shot", 1 );
+    thread _ID52865( "crawl_gameplay_started" );
+    savegame( "crawl", &"AUTOSAVE_LEVELSTART", "shot", 1 );
     maps\af_chase_knife_fight_code::_ID43648();
     level._ID50049._ID740 = ( 40, 0, 0 );
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
@@ -732,15 +891,15 @@ _ID52014()
     var_3 = [];
     var_3["player_rig"] = var_1;
     var_4 = var_1 _ID42237::_ID35164();
-    var_4 _meth_8053( var_1, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8098( var_4 );
+    var_4 linkto( var_1, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 playersetgroundreferenceent( var_4 );
     var_5 = [];
     var_5[0] = maps\af_chase_knife_fight_code::_ID48590;
     var_5[1] = maps\af_chase_knife_fight_code::_ID49499;
     var_6 = [];
     var_6[0] = "hint_crawl_right";
     var_6[1] = "hint_crawl_left";
-    var_7 = _func_1A5();
+    var_7 = spawnstruct();
     thread maps\af_chase_knife_fight_code::_ID49497( var_7, var_5, var_6 );
     thread maps\af_chase_knife_fight_code::_ID51449();
 
@@ -773,12 +932,12 @@ _ID52014()
             thread maps\af_chase_knife_fight_code::_ID46084();
 
         var_0 notify( "stop_crawl" );
-        var_12 = _func_0BA( 0.9, 1.1 );
-        _func_192( 0.16, var_12, level._ID794._ID740, 5000 );
+        var_12 = randomfloatrange( 0.9, 1.1 );
+        earthquake( 0.16, var_12, level._ID794._ID740, 5000 );
         var_13 = "gun_crawl_0" + var_9;
         var_14 = var_1 _ID42407::_ID16120( var_13 );
-        var_15 = _func_067( var_14 );
-        _ID42407::_ID10226( var_15 - 0.25, ::_unknown_2C87 );
+        var_15 = getanimlength( var_14 );
+        _ID42407::_ID10226( var_15 - 0.25, ::_ID46362 );
 
         if ( var_9 == 6 )
             break;
@@ -789,14 +948,14 @@ _ID52014()
         var_0 _ID42259::_ID3099( var_3, var_13 );
     }
 
-    level._ID794 _meth_8098( undefined );
-    var_4 _meth_80B7();
+    level._ID794 playersetgroundreferenceent( undefined );
+    var_4 delete();
     _ID42237::_ID14402( "crawl_gameplay_complete" );
 }
 
 _ID46362()
 {
-    _func_192( 0.12, 0.45, level._ID794._ID740, 5000 );
+    earthquake( 0.12, 0.45, level._ID794._ID740, 5000 );
 }
 
 _ID47310()
@@ -819,7 +978,7 @@ _ID44725()
     var_4 maps\af_chase_knife_fight_code::_ID50666( level._ID46102, "J_Ankle_RI", 1 );
     var_5 = "gun_kick";
     var_6 = var_1 _ID42407::_ID16120( var_5 );
-    var_7 = _func_067( var_6 );
+    var_7 = getanimlength( var_6 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_5, var_7 );
     var_0 thread _ID42259::_ID3111( level._ID46102, var_5 );
     var_0 thread _ID42259::_ID3111( var_1, var_5 );
@@ -836,28 +995,28 @@ _ID50498()
 
 _ID49842()
 {
-    if ( _func_02F( level._ID45018 ) )
+    if ( isdefined( level._ID45018 ) )
     {
         level._ID45018 notify( "stop_loop" );
-        level._ID45018 _meth_80B7();
+        level._ID45018 delete();
     }
 
     _ID42237::_ID14402( "shepherd_fights_price_sequence_start" );
-    thread _unknown_26CB( "shepherd_fights_price_sequence_start" );
+    thread _ID52865( "shepherd_fights_price_sequence_start" );
     level._ID28543 thread maps\af_chase_knife_fight_code::_ID52809();
     level._ID46102 thread maps\af_chase_knife_fight_code::_ID52809();
     maps\af_chase_knife_fight_code::_ID44429();
     maps\af_chase_knife_fight_code::_ID52979();
     level notify( "stop_idle_crawl_fight" );
-    var_0 = _func_1A1( "end_scene_org_fight_B", "targetname" );
-    var_1 = _func_1A1( "end_scene_org_fight_C", "targetname" );
+    var_0 = getent( "end_scene_org_fight_B", "targetname" );
+    var_1 = getent( "end_scene_org_fight_C", "targetname" );
     var_2 = _ID42237::_ID16638( "end_scene_org_wrestle_C", "targetname" );
     var_3 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_4 = maps\af_chase_knife_fight_code::_ID49656();
     var_5 = "price_wakeup";
     var_3 thread _ID42259::_ID3018( var_4, var_5 );
     var_6 = maps\af_chase_knife_fight_code::_ID50885();
-    var_6 _meth_80B7();
+    var_6 delete();
     var_6 = maps\af_chase_knife_fight_code::_ID50885();
     var_7 = maps\af_chase_knife_fight_code::_ID53008();
     thread maps\af_chase_knife_fight_code::_ID51050( var_6 );
@@ -870,11 +1029,11 @@ _ID49842()
     var_9["shepherd"] = level._ID46102;
     var_9["price"] = level._ID28543;
     var_10 = maps\af_chase_knife_fight_code::_ID47505();
-    var_10 _meth_8053( level._ID28543, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_818E( "af_chase_ending_no_control_lowkick", 60 );
+    var_10 linkto( level._ID28543, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 shellshock( "af_chase_ending_no_control_lowkick", 60 );
     var_5 = "fight_B";
     var_11 = level._ID28543 _ID42407::_ID16120( var_5 );
-    var_12 = _func_067( var_11 );
+    var_12 = getanimlength( var_11 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_5, var_12 );
     var_3 thread _ID42259::_ID3099( var_9, var_5 );
     var_3 thread _ID42259::_ID3040( var_8, "knifepull_grab_idle" );
@@ -884,7 +1043,7 @@ _ID49842()
 
     for (;;)
     {
-        if ( level._ID28543 _meth_8159( var_11 ) >= 0.845 )
+        if ( level._ID28543 getanimtime( var_11 ) >= 0.845 )
             break;
 
         wait 0.05;
@@ -897,17 +1056,17 @@ _ID49842()
     wait 1.05;
     var_5 = "fight_B2";
     var_11 = level._ID28543 _ID42407::_ID16120( var_5 );
-    var_12 = _func_067( var_11 );
+    var_12 = getanimlength( var_11 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_5, var_12 );
     var_3 thread _ID42259::_ID3099( var_9, var_5 );
-    var_14 = _func_03D();
+    var_14 = gettime();
     wait 0.45;
     _ID42475::_ID34575( "stop_post_curb_stomp_black_screen" );
     maps\af_chase_knife_fight_code::_ID46058( 1 );
 
     for (;;)
     {
-        if ( level._ID28543 _meth_8159( var_11 ) >= 0.5 )
+        if ( level._ID28543 getanimtime( var_11 ) >= 0.5 )
             break;
 
         wait 0.05;
@@ -929,13 +1088,13 @@ _ID43087()
 _ID53116()
 {
     level endon( "missionfailed" );
-    _func_087( "pullout", &"AUTOSAVE_LEVELSTART", "shot", 1 );
+    savegame( "pullout", &"AUTOSAVE_LEVELSTART", "shot", 1 );
     thread maps\af_chase_knife_fight_code::_ID47177();
 
-    if ( !_func_02F( level._ID52109 ) )
-        _unknown_34DB();
+    if ( !isdefined( level._ID52109 ) )
+        _ID54688();
 
-    var_0 = _func_1A1( "end_scene_org_fight_C", "targetname" );
+    var_0 = getent( "end_scene_org_fight_C", "targetname" );
     var_1 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_2 = maps\af_chase_knife_fight_code::_ID50885();
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
@@ -951,13 +1110,13 @@ _ID53116()
     var_1 notify( "stop_loop" );
     var_1 thread _ID42259::_ID3040( var_5, "knifepull_grab_idle" );
     wait 0.5;
-    level._ID794 _meth_818E( "af_chase_ending_pulling_knife_later", 60 );
+    level._ID794 shellshock( "af_chase_ending_pulling_knife_later", 60 );
     level notify( "player_has_min_arc" );
     var_7 = maps\af_chase_knife_fight_code::_ID47505();
-    var_7 _meth_8053( level._ID28543, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_7 linkto( level._ID28543, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_8 = "fight_C";
     var_9 = level._ID28543 _ID42407::_ID16120( var_8 );
-    var_10 = _func_067( var_9 );
+    var_10 = getanimlength( var_9 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_8, var_10 );
     var_1 thread _ID42259::_ID3099( var_6, var_8 );
     thread maps\af_chase_knife_fight_code::_ID46092();
@@ -973,13 +1132,13 @@ _ID53116()
     _ID42407::_ID10226( 0.3, _ID42475::_ID34575, "stop_post_curb_stomp_black_screen" );
     _ID42407::_ID10226( 0.3, maps\af_chase_knife_fight_code::_ID46058, 1 );
 
-    if ( _func_039( "af_chase_use_old_knife_input", 1 ) == "1" )
+    if ( getdvar( "af_chase_use_old_knife_input", 1 ) == "1" )
         maps\af_chase_knife_fight_code::_ID48230();
     else
         maps\af_chase_knife_fight_code::_ID43708();
 
     _ID42237::_ID14402( "player_looks_at_knife" );
-    thread _unknown_29EB( "player_looks_at_knife" );
+    thread _ID52865( "player_looks_at_knife" );
     maps\af_chase_knife_fight_code::_ID46058( 0.5 );
     _ID42237::_ID14402( "focused_on_knife" );
     _ID42237::_ID14402( "player_uses_knife" );
@@ -993,7 +1152,7 @@ _ID53116()
     thread maps\ending_aud::_ID52100();
     var_1 thread _ID42259::_ID3099( var_5, "knifepull_pull_01" );
     thread maps\af_chase_knife_fight_code::_ID51155();
-    var_11 = _func_1A5();
+    var_11 = spawnstruct();
     var_11._ID49013 = 0;
     var_11._ID50849 = 6;
     var_11._ID48316 = 1;
@@ -1009,13 +1168,13 @@ _ID53116()
     var_11._ID30348 = "light_3s";
     var_11 maps\af_chase_knife_fight_code::_ID51867( "knifepull_pull_01" );
     level._ID2036 = 1;
-    _func_192( 0.2, 0.3, level._ID794._ID740, 5000 );
+    earthquake( 0.2, 0.3, level._ID794._ID740, 5000 );
     level notify( "second_knife_pull" );
     var_1 _ID42259::_ID3099( var_5, "knifepull_grab_02" );
     var_1 _ID42259::_ID3016( var_5, "knifepull_pull_02" );
     _ID42237::_ID14402( "two_hand_pull_begins" );
     var_1 thread _ID42259::_ID3099( var_5, "knifepull_pull_02" );
-    var_11 = _func_1A5();
+    var_11 = spawnstruct();
     var_11._ID49013 = 0;
     var_11._ID50849 = 6;
     var_11._ID48316 = 1;
@@ -1031,9 +1190,9 @@ _ID53116()
     var_11._ID30348 = "heavy_3s";
     var_11 maps\af_chase_knife_fight_code::_ID51867( "knifepull_pull_02" );
     level notify( "fight_C_is_over" );
-    _ID42407::_ID10226( 0.65, ::_unknown_37C7 );
-    level._ID46102 _ID42237::_ID10192( 3, ::_meth_8059 );
-    level._ID28543 _ID42237::_ID10192( 3, ::_meth_8059 );
+    _ID42407::_ID10226( 0.65, ::_ID44555 );
+    level._ID46102 _ID42237::_ID10192( 3, ::show );
+    level._ID28543 _ID42237::_ID10192( 3, ::show );
 }
 
 _ID50745()
@@ -1041,8 +1200,8 @@ _ID50745()
     _ID42475::_ID34575( "start_knife_kill_checkpoint" );
     var_0 = maps\af_chase_knife_fight_code::_ID50885();
     var_1 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
-    level._ID794 _meth_8084( var_0, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 _meth_818E( "af_chase_ending_pulling_knife_later", 60 );
+    level._ID794 playerlinktodelta( var_0, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level._ID794 shellshock( "af_chase_ending_pulling_knife_later", 60 );
     thread maps\af_chase_knife_fight_code::_ID50060( 0.1 );
     var_2 = maps\af_chase_knife_fight_code::_ID49656();
     var_1 thread _ID42259::_ID3018( var_2, "price_wakeup" );
@@ -1064,16 +1223,16 @@ _ID43968()
     _ID42237::_ID14402( "throw_knife_pulled_out" );
     maps\af_chase_anim::_ID47455();
     _ID42237::_ID14402( "player_heartbeat_sound" );
-    _func_087( "kill", &"AUTOSAVE_LEVELSTART", "shot", 1 );
-    var_0 = _func_1A1( "end_scene_org_fight_C", "targetname" );
+    savegame( "kill", &"AUTOSAVE_LEVELSTART", "shot", 1 );
+    var_0 = getent( "end_scene_org_fight_C", "targetname" );
     var_1 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_2 = maps\af_chase_knife_fight_code::_ID50885();
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     var_4 = maps\af_chase_knife_fight_code::_ID49656();
     thread maps\af_chase_knife_fight_code::_ID48039( var_2 );
-    level._ID794 _meth_8106();
-    _func_0DB( "aim_turnrate_yaw", 260 );
-    _func_0DB( "aim_turnrate_pitch", 90 );
+    level._ID794 disableslowaim();
+    setsaveddvar( "aim_turnrate_yaw", 260 );
+    setsaveddvar( "aim_turnrate_pitch", 90 );
     var_5 = [];
     var_5["knife"] = var_3;
     var_5["player_rig"] = var_2;
@@ -1084,28 +1243,28 @@ _ID43968()
     var_1 _ID42259::_ID3099( var_5, "knifepull_pullout_flip" );
     level notify( "aim_at_shepherd" );
     _ID42237::_ID14402( "throw_knife_gameplay_started" );
-    thread _unknown_2CA7( "throw_knife_gameplay_started" );
+    thread _ID52865( "throw_knife_gameplay_started" );
     thread maps\af_chase_knife_fight_code::_ID44869( var_2 );
     var_1 thread _ID42259::_ID3040( var_5, "knifepull_pullout_flip_idle" );
     thread maps\af_chase_knife_fight_code::_ID51529();
     var_7 = maps\af_chase_knife_fight_code::_ID46812();
     var_7._ID55 = 1;
-    var_7 _meth_808B( 1 );
+    var_7 fadeovertime( 1 );
     maps\af_chase_knife_fight_code::_ID47281( var_7 );
-    var_7 _meth_808F();
-    _func_078( 4 );
+    var_7 destroy();
+    musicstop( 4 );
     level._ID794 thread _ID42407::_ID27079( "mus_af_chase_shepherd_death_stinger" );
     maps\af_chase_knife_fight_code::_ID46058( 0.5 );
     level notify( "pull_back_knife_anim_starts" );
     var_8 = 1.2;
-    level._ID50049 _meth_82B8( ( 52, 0, 0 ), var_8, var_8 * 0.5, var_8 * 0.5 );
+    level._ID50049 moveto( ( 52, 0, 0 ), var_8, var_8 * 0.5, var_8 * 0.5 );
     var_2 thread _ID42407::_ID27079( "scn_afchase_player_knife_breath" );
     maps\af_chase_knife_fight_code::_ID51045( 0.15 );
     var_1 notify( "stop_loop" );
     _ID42237::_ID14402( "shepherd_killed" );
-    thread _unknown_2D39( "shepherd_killed" );
-    level._ID46102 _meth_80B3();
-    level._ID28543 _meth_80B3();
+    thread _ID52865( "shepherd_killed" );
+    level._ID46102 playrumbleonentity();
+    level._ID28543 playrumbleonentity();
 }
 
 _ID53855()
@@ -1117,8 +1276,8 @@ _ID53855()
     level._ID27625 = _ID42407::_ID35028( "player_rig" );
     var_1 = level._ID27625;
     var_0 thread _ID42259::_ID3018( var_1, "endgame" );
-    level._ID794 _meth_8084( var_1, "tag_player", 1, 10, 15, 5, 10 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 10, 15, 5, 10 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
 }
 
 _ID12642()
@@ -1126,9 +1285,9 @@ _ID12642()
     maps\af_chase_knife_fight_code::_ID48558();
     level._ID51522 animscripts\shared::_ID12143();
     var_0 = maps\af_chase_knife_fight_code::_ID53008();
-    level._ID794 _meth_8191();
+    level._ID794 fadeoutshellshock();
     var_1 = _ID42411::_ID35195( "ending_rescue_chopper" );
-    var_1 _meth_80B8( "vehicle_little_bird_bench_afghan" );
+    var_1 setmodel( "vehicle_little_bird_bench_afghan" );
     var_1._ID3189 = "littlebird";
     var_1 notify( "suspend_drive_anims" );
     var_1 maps\af_chase_aud::_ID50965();
@@ -1141,33 +1300,29 @@ _ID12642()
     var_2["chopper"] = var_1;
     var_3 = level._ID27625;
     var_4 = var_3 _ID42237::_ID35164();
-    var_4 _meth_8053( var_3, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8098( var_4 );
+    var_4 linkto( var_3, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 playersetgroundreferenceent( var_4 );
     var_5 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     _ID42237::_ID30398( "shep_blood", maps\af_chase_knife_fight_code::_ID51502 );
     var_5 thread _ID42259::_ID3099( var_2, "endgame" );
     var_6 = level._ID27625 _ID42407::_ID16120( "endgame" );
-    var_7 = _func_069( var_6, "ps_sc_afchase_wakeup" );
-    var_8 = _func_069( var_6, "ps_scn_afchase_walkoff" );
+    var_7 = getnotetracktimes( var_6, "ps_sc_afchase_wakeup" );
+    var_8 = getnotetracktimes( var_6, "ps_scn_afchase_walkoff" );
     level._ID27625 waittillmatch( "single anim",  "ps_sc_afchase_wakeup"  );
-    var_9 = var_2;
 
-    for ( var_12 = _func_1DA( var_9 ); _func_02F( var_12 ); var_12 = _func_1BF( var_9, var_12 ) )
+    foreach ( var_10 in var_2 )
     {
-        var_10 = var_9[var_12];
         var_11 = var_10 _ID42407::_ID16120( "endgame" );
-        var_10 _meth_83D4( var_11, 0 );
+        var_10 _meth_83d4( var_11, 0 );
     }
 
-    var_clear_3
-    var_clear_0
-    thread _unknown_390F();
+    thread _ID43392();
     wait 1.8;
     _ID42234::_ID13611( 60 );
     var_13 = 8.5;
     maps\af_chase_knife_fight_code::_ID51476( var_13 );
-    level._ID50049 _meth_82B8( ( 65, 0, 0 ), var_13, var_13 * 0.5, var_13 * 0.5 );
-    var_14 = _func_03D();
+    level._ID50049 moveto( ( 65, 0, 0 ), var_13, var_13 * 0.5, var_13 * 0.5 );
+    var_14 = gettime();
     _ID42407::_ID40847( var_14, 4 );
     _ID42407::_ID40847( var_14, 13.5 );
     _ID42475::_ID34575( "aud_start_mix_fadeout_post_sheperd_death" );
@@ -1176,31 +1331,27 @@ _ID12642()
     _ID42475::_ID34575( "aud_start_mix_price_wakeup", 3.5 );
     var_15 = "price_wakeup";
     var_16 = level._ID28543 _ID42407::_ID16120( var_15 );
-    var_17 = _func_067( var_16 );
+    var_17 = getanimlength( var_16 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_15, var_17 );
-    var_18 = var_2;
 
-    for ( var_19 = _func_1DA( var_18 ); _func_02F( var_19 ); var_19 = _func_1BF( var_18, var_19 ) )
+    foreach ( var_10 in var_2 )
     {
-        var_10 = var_18[var_19];
         var_11 = var_10 _ID42407::_ID16120( "endgame" );
-        var_10 _meth_83D4( var_11, 1 );
+        var_10 _meth_83d4( var_11, 1 );
     }
 
-    var_clear_1
-    var_clear_0
-    var_20 = _func_067( var_6 );
-    var_21 = var_8[0] - var_7[0] * 0.95 * var_20;
+    var_20 = getanimlength( var_6 );
+    var_21 = ( var_8[0] - var_7[0] ) * 0.95 * var_20;
     _ID42407::_ID10226( var_21, maps\af_chase_knife_fight_code::_ID43249, 1 );
     var_22 = 2.4;
     _ID42407::_ID10226( var_22, _ID42237::_ID14402, "af_chase_final_ending" );
-    _ID42407::_ID10226( var_22 + 54.7, ::_unknown_3B25 );
+    _ID42407::_ID10226( var_22 + 54.7, ::_ID54717 );
     _ID42407::_ID10226( var_22 + 195, _ID42237::_ID14402, "af_chase_ending_credits" );
     _ID42407::_ID10226( var_22 + 0.25, maps\af_chase_knife_fight_code::_ID46058, 1 );
     level._ID27625 waittillmatch( "single anim",  "ps_scn_afchase_walkoff"  );
     var_23 = 0;
-    level._ID794 _meth_8084( var_3, "tag_player", 1, var_23, var_23, var_23, var_23, 1 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+    level._ID794 playerlinktodelta( var_3, "tag_player", 1, var_23, var_23, var_23, var_23, 1 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
     _ID42407::_ID10226( 0.8, maps\af_chase_knife_fight_code::_ID49905 );
     var_15 = "price_wakeup";
     thread maps\af_chase_knife_fight_code::_ID52629();
@@ -1215,34 +1366,34 @@ _ID12642()
     var_24 = _ID42237::_ID16638( "anim_node_chopper", "targetname" );
     var_15 = "walk_off";
     var_16 = level._ID28543 _ID42407::_ID16120( var_15 );
-    var_17 = _func_067( var_16 );
+    var_17 = getanimlength( var_16 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_15, var_17 );
-    var_14 = _func_03D();
+    var_14 = gettime();
     var_16 = var_3 _ID42407::_ID16120( var_15 );
     var_25 = 0.5;
-    var_26 = _func_067( var_16 ) - var_25;
+    var_26 = getanimlength( var_16 ) - var_25;
     _ID42407::_ID40847( var_14, var_26 - 10 );
-    var_4 _meth_80B7();
+    var_4 delete();
 }
 
 _ID43392()
 {
-    _func_032( "ui_consciousness_init", 1 );
-    _func_032( "ui_consciousness_play", 10 );
+    setomnvar( "ui_consciousness_init", 1 );
+    setomnvar( "ui_consciousness_play", 10 );
     var_0 = 28.0;
     var_1 = _ID42313::_ID9125( "black", 0.0, level._ID794 );
-    var_1 _meth_808B( var_0 );
+    var_1 fadeovertime( var_0 );
     var_1._ID55 = 0.75;
     wait(var_0 + 0.15);
     var_2 = 0.5;
-    var_1 _meth_808B( var_2 );
+    var_1 fadeovertime( var_2 );
     var_1._ID55 = 0.0;
     wait(var_2 + 0.25);
-    var_1 _meth_808F();
+    var_1 destroy();
     wait(9 - var_2);
-    _func_032( "ui_consciousness_play", 11 );
+    setomnvar( "ui_consciousness_play", 11 );
     wait 46;
-    _func_032( "ui_consciousness_play", 0 );
+    setomnvar( "ui_consciousness_play", 0 );
 }
 
 _ID49862()
@@ -1256,33 +1407,33 @@ _ID49862()
     level._ID27625 = _ID42407::_ID35028( "player_rig" );
     var_1 = level._ID27625;
     var_0 thread _ID42259::_ID3018( var_1, "price_wakeup" );
-    level._ID794 _meth_8084( var_1, "tag_player", 1, 10, 15, 5, 10 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 10, 15, 5, 10 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
 }
 
 _ID48043()
 {
-    level._ID794 _meth_818E( "af_chase_ending_fakeout", 60 );
+    level._ID794 shellshock( "af_chase_ending_fakeout", 60 );
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
     var_2 = maps\af_chase_knife_fight_code::_ID49656();
     wait 1.8;
     var_3 = 8.5;
     maps\af_chase_knife_fight_code::_ID51476( var_3 );
-    level._ID50049 _meth_82B8( ( 65, 0, 0 ), var_3, var_3 * 0.5, var_3 * 0.5 );
+    level._ID50049 moveto( ( 65, 0, 0 ), var_3, var_3 * 0.5, var_3 * 0.5 );
     var_4 = [];
     var_4["shepherd"] = level._ID46102;
     var_4["price"] = level._ID28543;
 
     if ( level._ID35897 == "price_wakeup" )
     {
-        level._ID794 _meth_8084( var_1, "tag_player" );
+        level._ID794 playerlinktodelta( var_1, "tag_player" );
         var_0 thread _ID42259::_ID3018( var_1, "price_wakeup" );
         var_0 thread _ID42259::_ID3111( var_1, "price_wakeup" );
         var_0 _ID42259::_ID3016( var_4, "price_wakeup" );
     }
 
-    var_5 = _func_03D();
+    var_5 = gettime();
     _ID42407::_ID40847( var_5, 4 );
     _ID42407::_ID40847( var_5, 13.5 );
     _ID42475::_ID34575( "aud_start_mix_fadeout_post_sheperd_death" );
@@ -1292,17 +1443,17 @@ _ID48043()
     _ID42475::_ID34575( "aud_start_mix_price_wakeup", 3.5 );
     var_6 = "price_wakeup";
     var_7 = level._ID28543 _ID42407::_ID16120( var_6 );
-    var_8 = _func_067( var_7 );
+    var_8 = getanimlength( var_7 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_6, var_8 );
-    level._ID794 _meth_8084( var_1, "tag_player" );
+    level._ID794 playerlinktodelta( var_1, "tag_player" );
     var_0 thread _ID42259::_ID3111( var_1, var_6 );
     var_7 = level._ID28543 _ID42407::_ID16120( var_6 );
-    var_9 = _func_067( var_7 );
+    var_9 = getanimlength( var_7 );
     var_10 = var_9 * 0.75;
     _ID42407::_ID10226( var_10, maps\af_chase_knife_fight_code::_ID43249, 1 );
     var_11 = 2.7;
     _ID42407::_ID10226( var_11, _ID42237::_ID14402, "af_chase_final_ending" );
-    _ID42407::_ID10226( var_11 + 55.7, ::_unknown_3DFF );
+    _ID42407::_ID10226( var_11 + 55.7, ::_ID54717 );
     _ID42407::_ID10226( var_11 + 195, _ID42237::_ID14402, "af_chase_ending_credits" );
     _ID42407::_ID10226( var_11 + 0.25, maps\af_chase_knife_fight_code::_ID46058, 1 );
     var_0 thread _ID42259::_ID3099( var_4, var_6 );
@@ -1323,18 +1474,18 @@ _ID45099()
     var_2 = maps\af_chase_knife_fight_code::_ID50885();
     var_3 = maps\af_chase_knife_fight_code::_ID49656();
     var_4 = 0;
-    level._ID794 _meth_8084( var_2, "tag_player", 1, var_4, var_4, var_4, var_4, 1 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+    level._ID794 playerlinktodelta( var_2, "tag_player", 1, var_4, var_4, var_4, var_4, 1 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
     _ID42407::_ID10226( 0.8, maps\af_chase_knife_fight_code::_ID49905 );
     var_5 = _ID42237::_ID35164();
-    var_5 _meth_8053( var_2, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8098( var_5 );
+    var_5 linkto( var_2, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 playersetgroundreferenceent( var_5 );
     var_6 = "price_wakeup";
     var_1 thread _ID42259::_ID3018( var_3, var_6 );
     var_1 thread _ID42259::_ID3018( var_2, var_6 );
     var_1 _ID42259::_ID3016( var_0, var_6 );
     thread maps\af_chase_knife_fight_code::_ID52629();
-    var_3 _meth_80B7();
+    var_3 delete();
     var_0 = [];
     maps\af_chase_knife_fight_code::_ID48558();
     thread maps\af_chase_knife_fight_code::_ID43024();
@@ -1343,7 +1494,7 @@ _ID45099()
     thread maps\af_chase_anim::_ID53101( 0.1 );
     _ID42407::_ID10226( 0.5, maps\af_chase_knife_fight_code::_ID46058, 1 );
     var_7 = _ID42411::_ID35195( "ending_rescue_chopper" );
-    var_7 _meth_80B8( "vehicle_little_bird_bench_afghan" );
+    var_7 setmodel( "vehicle_little_bird_bench_afghan" );
     var_7._ID3189 = "littlebird";
     var_7 notify( "suspend_drive_anims" );
     _ID42475::_ID34575( "aud_start_mix_walking_to_heli" );
@@ -1357,21 +1508,21 @@ _ID45099()
     var_8 = _ID42237::_ID16638( "anim_node_chopper", "targetname" );
     var_6 = "walk_off";
     var_9 = level._ID28543 _ID42407::_ID16120( var_6 );
-    var_10 = _func_067( var_9 );
+    var_10 = getanimlength( var_9 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_6, var_10 );
     var_8 thread _ID42259::_ID3111( var_7, var_6 );
     var_1 thread _ID42259::_ID3099( var_0, var_6 );
     var_1 thread _ID42259::_ID3111( var_2, var_6 );
-    var_11 = _func_03D();
+    var_11 = gettime();
     var_9 = var_2 _ID42407::_ID16120( var_6 );
     var_12 = 0.5;
-    var_13 = _func_067( var_9 ) - var_12;
+    var_13 = getanimlength( var_9 ) - var_12;
     _ID42407::_ID40847( var_11, var_13 - 10 );
 }
 
 _ID54717()
 {
-    level._ID794 _meth_8098( undefined );
+    level._ID794 playersetgroundreferenceent( undefined );
     _ID42475::_ID34575( "aud_stop_mix_walking_to_heli" );
     _ID42475::_ID34575( "aud_start_mix_level_fadeout" );
     var_0 = 0.5;
@@ -1380,9 +1531,9 @@ _ID54717()
     _ID42407::_ID10226( 4, _ID42407::_ID24793 );
     _ID42237::_ID14402( "do_museum_credits" );
     wait 0.1;
-    var_2 = _func_0DF();
-    _ID42237::_ID3294( var_2, ::_meth_80B7 );
-    level._ID50049 _meth_80B7();
+    var_2 = getaispeciesarray();
+    _ID42237::_ID3294( var_2, ::delete );
+    level._ID50049 delete();
     thread _ID52272::_ID49484();
 }
 
@@ -1390,11 +1541,11 @@ _ID49101()
 {
     _ID42237::_ID14413( "af_chase_see_shepherd" );
     _ID42407::_ID25327( 2 );
-    _func_1E3( 3, "current", &"AF_CHASE_KILL_SHEPHERD" );
-    _func_0C7( 3, &"AF_CHASE_OBJ_KILL" );
+    objective_add( 3, "current", &"AF_CHASE_KILL_SHEPHERD" );
+    objective_setpointertextoverride( 3, &"AF_CHASE_OBJ_KILL" );
     _ID42237::_ID14413( "shepherd_killed" );
     wait 3.1;
-    _func_114( 3, "done" );
+    objective_state_nomessage( 3, "done" );
 }
 
 _ID52987()
@@ -1413,7 +1564,7 @@ _ID52987()
         return;
 
     _ID42237::_ID14402( "start_doing_aftermath_walk" );
-    _unknown_31AE();
+    _ID53792();
     maps\af_chase_knife_fight_code::_ID51611();
     _ID52272::_ID45059();
     _ID42237::_ID14402( "player_standing" );
@@ -1425,7 +1576,7 @@ _ID52987()
     maps\af_chase_knife_fight_code::_ID48416();
     level._ID51073 = _ID52272::_ID53217;
     _ID42237::_ID14402( "aftermath_dont_do_wakeup" );
-    level._ID794 _meth_831B();
+    level._ID794 takeallweapons();
     _ID42237::_ID14402( "stop_aftermath_player" );
     maps\af_chase_knife_fight_code::_ID48836();
     _ID42237::_ID14402( "player_near_shepherd" );
@@ -1484,8 +1635,8 @@ _ID52987()
 
 _ID54688()
 {
-    level._ID794 _meth_85B6( "ending_pain", "veilstrength,veilbackgroundstrength,tonemapwhite,tonemapshoulder,tonemapcrossover,tonemaptoe,tonemapblack,tonemaphdrwhite,tonemaphdrshoulder,tonemaphdrcrossover,tonemaphdrtoe,tonemaphdrblack" );
-    level._ID794 _meth_85B9( "ending_pain" );
+    level._ID794 _meth_85b6( "ending_pain", "veilstrength,veilbackgroundstrength,tonemapwhite,tonemapshoulder,tonemapcrossover,tonemaptoe,tonemapblack,tonemaphdrwhite,tonemaphdrshoulder,tonemaphdrcrossover,tonemaphdrtoe,tonemaphdrblack" );
+    level._ID794 _meth_85b9( "ending_pain" );
     level._ID52109 = 0;
 }
 
@@ -1494,27 +1645,27 @@ _ID50005( var_0, var_1 )
     level notify( "lerp_blood_rush" );
     level endon( "lerp_blood_rush" );
     var_2 = 0.05;
-    var_3 = _func_0E8( var_1 / var_2 );
-    var_4 = var_0 - level._ID52109 / _func_0E6( var_3, 1 );
+    var_3 = ceil( var_1 / var_2 );
+    var_4 = ( var_0 - level._ID52109 ) / max( var_3, 1 );
 
     for ( var_5 = 0; var_5 < var_3; var_5++ )
     {
         var_6 = level._ID52109;
         level._ID52109 = level._ID52109 + var_4;
-        _func_0DB( "r_lightSetBlendFrac", level._ID52109 );
-        level._ID794 _meth_85B8( var_6, level._ID52109 );
+        setsaveddvar( "r_lightSetBlendFrac", level._ID52109 );
+        level._ID794 _meth_85b8( var_6, level._ID52109 );
         wait(var_2);
     }
 
-    _func_0DB( "r_lightSetBlendFrac", var_0 );
-    level._ID794 _meth_85B8( level._ID52109, var_0 );
+    setsaveddvar( "r_lightSetBlendFrac", var_0 );
+    level._ID794 _meth_85b8( level._ID52109, var_0 );
     level._ID52109 = var_0;
 }
 
 _ID44555()
 {
-    level._ID794 _meth_85B7();
-    level._ID794 _meth_85BA();
+    level._ID794 _meth_85b7();
+    level._ID794 _meth_85ba();
     level._ID52109 = undefined;
 }
 
@@ -1522,23 +1673,30 @@ knife_fight_culldist()
 {
     switch ( level._ID35897 )
     {
-
+        case "wakeup":
+        case "wakefast":
+        case "turnbuckle":
+            setculldist( 30000 );
+            _ID42237::_ID14413( "player_touched_shepherd" );
+        case "crawl":
+        case "kill":
+        case "gloat":
+        case "gun_drop":
+        case "gun_kick":
+        case "wounded":
+        case "pullout":
+        case "price_wakeup":
+        case "walkoff":
+        case "endgame":
+            setculldist( 3500 );
+            _ID42237::_ID14413( "do_museum_credits" );
+        case "museum_credits":
+        case "museum_freeroam":
+            setculldist( 0 );
+            break;
+        case "no_game":
+            break;
+        default:
+            break;
     }
-
-    case "walkoff":
-    case "price_wakeup":
-    case "pullout":
-    case "wounded":
-    case "gun_kick":
-    case "gun_drop":
-    case "gloat":
-    case "turnbuckle":
-    case "wakefast":
-    case "wakeup":
-    case "museum_freeroam":
-    case "museum_credits":
-    case "no_game":
-    case "kill":
-    case "crawl":
-    default:
 }

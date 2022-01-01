@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "uaz", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0062 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6219( "vehicle_uaz_winter_destructible", "vehicle_uaz_winter" );
     _ID42411::_ID6219( "vehicle_uaz_open_destructible", "vehicle_uaz_open" );
     _ID42411::_ID6207( 0 );
@@ -23,7 +23,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 2500, 2400, 2600 );
     _ID42411::_ID6253( "axis" );
-    _ID42411::_ID6204( ::_unknown_0181, ::_unknown_0134 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID44204( "uaz", 0 );
 }
 
@@ -31,7 +31,7 @@ _ID19731()
 {
     self._ID7837 = 1;
 
-    if ( !_func_02F( self._ID31030 ) )
+    if ( !isdefined( self._ID31030 ) )
         self._ID31030 = 0;
 }
 
@@ -66,7 +66,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 6; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";

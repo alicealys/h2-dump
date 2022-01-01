@@ -3,27 +3,27 @@
 
 _ID521()
 {
-    level._ID1426["c4_light_blink"] = _func_155( "vfx/lights/light_c4_blink" );
-    level._ID1426["claymore_laser"] = _func_155( "vfx/props/claymore_laser" );
-    _unknown_0089( "dirt" );
-    _unknown_0091( "dust" );
-    _unknown_009A( "mud" );
-    _unknown_00A2( "snow" );
-    _unknown_00AA( "water" );
-    _unknown_00D1( "water_waist", "water" );
-    _unknown_00DD( "water_ankle", "water" );
-    _unknown_00E9( "water_knee", "water" );
-    _unknown_00F5( "foliage_debris", "dirt" );
-    _unknown_0101( "foliage_vegetation", "dirt" );
-    _unknown_010D( "foliage_leaves", "dirt" );
-    _unknown_0119( "grass", "dirt" );
-    _unknown_0125( "grass_tall", "dirt" );
-    _unknown_0131( "sand", "dirt" );
-    _unknown_013D( "ice", "snow" );
-    _unknown_0149( "default", "dust" );
+    level._ID1426["c4_light_blink"] = loadfx( "vfx/lights/light_c4_blink" );
+    level._ID1426["claymore_laser"] = loadfx( "vfx/props/claymore_laser" );
+    loadgrenadeexplosionfx( "dirt" );
+    loadgrenadeexplosionfx( "dust" );
+    loadgrenadeexplosionfx( "mud" );
+    loadgrenadeexplosionfx( "snow" );
+    loadgrenadeexplosionfx( "water" );
+    setgrenadeexplosionfxoverride( "water_waist", "water" );
+    setgrenadeexplosionfxoverride( "water_ankle", "water" );
+    setgrenadeexplosionfxoverride( "water_knee", "water" );
+    setgrenadeexplosionfxoverride( "foliage_debris", "dirt" );
+    setgrenadeexplosionfxoverride( "foliage_vegetation", "dirt" );
+    setgrenadeexplosionfxoverride( "foliage_leaves", "dirt" );
+    setgrenadeexplosionfxoverride( "grass", "dirt" );
+    setgrenadeexplosionfxoverride( "grass_tall", "dirt" );
+    setgrenadeexplosionfxoverride( "sand", "dirt" );
+    setgrenadeexplosionfxoverride( "ice", "snow" );
+    setgrenadeexplosionfxoverride( "default", "dust" );
 
     for ( var_0 = 0; var_0 < level._ID805.size; var_0++ )
-        level._ID805[var_0] thread _unknown_0122();
+        level._ID805[var_0] thread _ID41525();
 }
 
 _ID41525()
@@ -32,11 +32,11 @@ _ID41525()
     self endon( "death" );
     self._ID6512 = [];
     self._ID37697 = 0;
-    thread _unknown_0234();
-    thread _unknown_02BB();
-    thread _unknown_0257();
-    thread _unknown_01CF();
-    thread _unknown_0206();
+    thread _ID41478();
+    thread _ID41481();
+    thread _ID41485();
+    thread _ID5008();
+    thread _ID4990();
 
     for (;;)
     {
@@ -45,25 +45,25 @@ _ID41525()
 
         if ( var_0 == "c4" )
         {
-            _unknown_0257();
+            _ID5018();
             continue;
         }
 
         if ( var_0 == "smoke_grenade_american" )
         {
-            _unknown_01D6();
+            _ID5027();
             continue;
         }
 
-        _unknown_025D();
+        _ID5023();
     }
 }
 
 loadgrenadeexplosionfx( var_0 )
 {
-    level._ID1426["explosion_overlay_" + var_0 + "_left"] = _func_155( "vfx/explosion/explosion_overlay_" + var_0 + "_left" );
-    level._ID1426["explosion_overlay_" + var_0 + "_bottom"] = _func_155( "vfx/explosion/explosion_overlay_" + var_0 + "_middle" );
-    level._ID1426["explosion_overlay_" + var_0 + "_right"] = _func_155( "vfx/explosion/explosion_overlay_" + var_0 + "_right" );
+    level._ID1426["explosion_overlay_" + var_0 + "_left"] = loadfx( "vfx/explosion/explosion_overlay_" + var_0 + "_left" );
+    level._ID1426["explosion_overlay_" + var_0 + "_bottom"] = loadfx( "vfx/explosion/explosion_overlay_" + var_0 + "_middle" );
+    level._ID1426["explosion_overlay_" + var_0 + "_right"] = loadfx( "vfx/explosion/explosion_overlay_" + var_0 + "_right" );
 }
 
 setgrenadeexplosionfxoverride( var_0, var_1 )
@@ -77,7 +77,7 @@ getgrenadeexplosionfx( var_0, var_1 )
 {
     var_2 = "explosion_overlay_" + var_1 + "_" + var_0;
 
-    if ( _func_02F( level._ID1426[var_2] ) )
+    if ( isdefined( level._ID1426[var_2] ) )
         return level._ID1426[var_2];
 
     var_2 = "explosion_overlay_default_" + var_0;
@@ -86,33 +86,33 @@ getgrenadeexplosionfx( var_0, var_1 )
 
 _ID5027()
 {
-    self waittill( "grenade_fire",  var_1, var_1  );
+    self waittill( "grenade_fire",  var_0, var_1  );
 
-    if ( !_func_02F( level._ID34439 ) )
+    if ( !isdefined( level._ID34439 ) )
         level._ID34439 = 0;
 
-    var_0 thread _unknown_0345();
+    var_0 thread _ID34436();
 }
 
 _ID5022()
 {
     self._ID37697 = 0;
-    var_0 = _func_03D();
-    self waittill( "grenade_fire",  var_2, var_2  );
+    var_0 = gettime();
+    self waittill( "grenade_fire",  var_1, var_2  );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
     {
-        var_3 = _func_03D();
+        var_3 = gettime();
         var_4 = var_3 - var_0;
 
         if ( var_4 >= 1250 )
         {
-            var_2 waittill( "explode",  var_5  );
+            var_1 waittill( "explode",  var_5  );
 
-            if ( _func_1D0( "null" ) )
+            if ( soundexists( "null" ) )
                 thread _ID42237::_ID27077( "null", var_5 );
 
-            _func_18F( var_5, 96, 300, 200, self, "MOD_UNKNOWN", "flash_grenade" );
+            radiusdamage( var_5, 96, 300, 200, self, "MOD_UNKNOWN", "flash_grenade" );
         }
     }
 }
@@ -121,12 +121,12 @@ _ID5008()
 {
     for (;;)
     {
-        self waittill( "grenade_fire",  var_1, var_0  );
+        self waittill( "grenade_fire",  var_0, var_1  );
 
         if ( var_1 == "semtex_grenade" )
         {
-            thread _unknown_0369( var_0 );
-            var_0 thread _unknown_037A( self );
+            thread _ID38069( var_0 );
+            var_0 thread _ID31870( self );
         }
     }
 }
@@ -135,7 +135,7 @@ _ID38069( var_0 )
 {
     self._ID37697 = 0;
 
-    if ( !_func_02F( level._ID37698 ) )
+    if ( !isdefined( level._ID37698 ) )
         level._ID37698 = 1;
     else
         level._ID37698++;
@@ -149,7 +149,7 @@ _ID31870( var_0 )
 {
     self waittill( "missile_stuck",  var_1  );
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
     if ( var_1._ID172 != "script_vehicle" )
@@ -158,7 +158,7 @@ _ID31870( var_0 )
     var_1._ID18176 = 1;
     self waittill( "explode" );
 
-    if ( !_func_02F( var_1 ) || !_func_1A7( var_1 ) )
+    if ( !isdefined( var_1 ) || !isalive( var_1 ) )
         return;
 
     if ( var_1 _ID42411::_ID20532() || var_1 _ID42413::_ID3628( var_0 ) )
@@ -167,17 +167,17 @@ _ID31870( var_0 )
         return;
     }
 
-    var_1 _meth_8058( var_1._ID740, var_0 );
+    var_1 kill( var_1._ID740, var_0 );
 }
 
 _ID4990()
 {
     for (;;)
     {
-        self waittill( "grenade_fire",  var_1, var_0  );
+        self waittill( "grenade_fire",  var_0, var_1  );
 
         if ( var_1 == "concussion_grenade" )
-            thread _unknown_0431( var_0 );
+            thread _ID38052( var_0 );
     }
 }
 
@@ -190,9 +190,9 @@ _ID38052( var_0 )
     _ID42407::_ID34376( 1 );
     _ID42407::_ID34377( 0.25 );
     _ID42407::_ID34371();
-    _func_034( "noflash", "1" );
+    setdvar( "noflash", "1" );
     wait 0.05;
-    _func_034( "noflash", "0" );
+    setdvar( "noflash", "0" );
     wait 2.0;
     _ID42407::_ID34372();
 }
@@ -207,7 +207,7 @@ _ID34436()
 _ID5023()
 {
     self endon( "death" );
-    self waittill( "grenade_fire",  var_1, var_1  );
+    self waittill( "grenade_fire",  var_0, var_1  );
 
     if ( var_1 == "fraggrenade" )
         var_0 thread _ID42407::_ID17388();
@@ -228,18 +228,18 @@ _ID41478()
 {
     for (;;)
     {
-        self waittill( "grenade_fire",  var_1, var_0  );
+        self waittill( "grenade_fire",  var_0, var_1  );
 
         if ( var_1 == "c4" )
         {
             if ( !self._ID6512.size )
-                thread _unknown_0706();
+                thread _ID41479();
 
             self._ID6512[self._ID6512.size] = var_0;
             var_0._ID743 = self;
-            var_0 thread _unknown_05F5();
-            thread _unknown_0557( var_0 );
-            var_0 thread _unknown_0633();
+            var_0 thread _ID6513();
+            thread _ID6514( var_0 );
+            var_0 thread _ID27192();
         }
     }
 }
@@ -257,14 +257,14 @@ _ID41485()
 
     for (;;)
     {
-        self waittill( "grenade_fire",  var_1, var_0  );
+        self waittill( "grenade_fire",  var_0, var_1  );
 
         if ( var_1 == "claymore" || var_1 == "claymore_mp" )
         {
             var_0._ID743 = self;
-            var_0 thread _unknown_0648( 1 );
-            var_0 thread _unknown_05D3();
-            var_0 thread _unknown_068F();
+            var_0 thread _ID6513( 1 );
+            var_0 thread _ID7755();
+            var_0 thread _ID27193();
         }
     }
 }
@@ -274,13 +274,13 @@ _ID7756( var_0 )
     self endon( "death" );
     wait 1;
 
-    if ( _func_02F( level._ID7758 ) )
+    if ( isdefined( level._ID7758 ) )
     {
         self thread [[ level._ID7758 ]]( var_0 );
         return;
     }
 
-    self _meth_8143( var_0, 1 );
+    self makeentitysentient( var_0, 1 );
     self._ID86 = 2;
     self._ID630 = 750;
     self._ID1204 = -1000;
@@ -292,39 +292,39 @@ _ID7755()
     self waittill( "missile_stuck" );
     var_0 = 192;
 
-    if ( _func_02F( self._ID10678 ) )
+    if ( isdefined( self._ID10678 ) )
         var_0 = self._ID10678;
 
-    var_1 = _func_06A( "trigger_radius", self._ID740 + ( 0, 0, 0 - var_0 ), 9, var_0, var_0 * 2 );
-    thread _unknown_0671( var_1 );
+    var_1 = spawn( "trigger_radius", self._ID740 + ( 0, 0, 0 - var_0 ), 9, var_0, var_0 * 2 );
+    thread _ID10333( var_1 );
 
-    if ( !_func_02F( level._ID7757 ) )
+    if ( !isdefined( level._ID7757 ) )
         level._ID7757 = [];
 
     level._ID7757 = _ID42237::_ID3293( level._ID7757, self );
 
     if ( !_ID42407::_ID20614() && level._ID7757.size > 15 )
-        level._ID7757[0] _meth_80B7();
+        level._ID7757[0] delete();
 
     for (;;)
     {
         var_1 waittill( "trigger",  var_2  );
 
-        if ( _func_02F( self._ID743 ) && var_2 == self._ID743 )
+        if ( isdefined( self._ID743 ) && var_2 == self._ID743 )
             continue;
 
-        if ( _func_1B3( var_2 ) )
+        if ( isplayernumber( var_2 ) )
             continue;
 
-        if ( var_2 _meth_81E3( self._ID740, self ) > 0 )
+        if ( var_2 damageconetrace( self._ID740, self ) > 0 )
         {
-            self _meth_80A1( "claymore_activated_SP" );
+            self playsound( "claymore_activated_SP" );
             wait 0.4;
 
-            if ( _func_02F( self._ID743 ) )
-                self _meth_81E2( self._ID743 );
+            if ( isdefined( self._ID743 ) )
+                self detonate( self._ID743 );
             else
-                self _meth_81E2( undefined );
+                self detonate( undefined );
 
             return;
         }
@@ -337,8 +337,8 @@ _ID10333( var_0 )
     level._ID7757 = _ID42407::_ID3326( level._ID7757, self );
     wait 0.05;
 
-    if ( _func_02F( var_0 ) )
-        var_0 _meth_80B7();
+    if ( isdefined( var_0 ) )
+        var_0 delete();
 }
 
 _ID41481()
@@ -348,14 +348,14 @@ _ID41481()
     for (;;)
     {
         self waittill( "detonate" );
-        var_0 = self _meth_831C();
+        var_0 = self getcurrentweapon();
 
         if ( var_0 == "c4" )
         {
             for ( var_1 = 0; var_1 < self._ID6512.size; var_1++ )
             {
-                if ( _func_02F( self._ID6512[var_1] ) )
-                    self._ID6512[var_1] thread _unknown_077E( 0.1 );
+                if ( isdefined( self._ID6512[var_1] ) )
+                    self._ID6512[var_1] thread _ID40969( 0.1 );
             }
 
             self._ID6512 = [];
@@ -371,7 +371,7 @@ _ID41480()
     for (;;)
     {
         self waittill( "alt_detonate" );
-        var_0 = self _meth_831C();
+        var_0 = self getcurrentweapon();
 
         if ( var_0 != "c4" )
         {
@@ -381,8 +381,8 @@ _ID41480()
             {
                 var_3 = self._ID6512[var_2];
 
-                if ( _func_02F( self._ID6512[var_2] ) )
-                    var_3 thread _unknown_07CA( 0.1 );
+                if ( isdefined( self._ID6512[var_2] ) )
+                    var_3 thread _ID40969( 0.1 );
             }
 
             self._ID6512 = var_1;
@@ -395,44 +395,44 @@ _ID40969( var_0 )
 {
     self endon( "death" );
     wait(var_0);
-    self _meth_81E2();
+    self detonate();
 }
 
 _ID6513( var_0 )
 {
     self._ID486 = 100;
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
     self._ID626 = 100000;
     self._ID486 = self._ID626;
     var_1 = undefined;
 
     for (;;)
     {
-        self waittill( "damage",  var_1, var_2  );
+        self waittill( "damage",  var_2, var_1  );
         break;
     }
 
-    self _meth_80A1( "claymore_activated_SP" );
+    self playsound( "claymore_activated_SP" );
 
     if ( level._ID6519 )
-        wait(0.1 + _func_0B8( 0.4 ));
+        wait(0.1 + randomfloat( 0.4 ));
     else
         wait 0.05;
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     level._ID6519 = 1;
 
-    if ( _func_02F( var_0 ) && var_0 && _func_1B3( var_1 ) )
+    if ( isdefined( var_0 ) && var_0 && isplayernumber( var_1 ) )
         level._ID48473 = 1;
 
-    thread _unknown_0880();
+    thread _ID29770();
 
-    if ( _func_1B3( var_1 ) )
-        self _meth_81E2( var_1 );
+    if ( isplayernumber( var_1 ) )
+        self detonate( var_1 );
     else
-        self _meth_81E2();
+        self detonate();
 }
 
 _ID29770()
@@ -452,43 +452,43 @@ _ID27192()
 {
     self endon( "death" );
     self waittill( "missile_stuck" );
-    _func_157( _ID42237::_ID16299( "c4_light_blink" ), self, "tag_fx" );
+    playfxontag( _ID42237::_ID16299( "c4_light_blink" ), self, "tag_fx" );
 }
 
 _ID27193()
 {
     self endon( "death" );
     self waittill( "missile_stuck" );
-    _func_157( _ID42237::_ID16299( "claymore_laser" ), self, "tag_fx" );
+    playfxontag( _ID42237::_ID16299( "claymore_laser" ), self, "tag_fx" );
 }
 
 _ID7921( var_0 )
 {
     self waittill( "death" );
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID16203( var_0, var_1, var_2, var_3 )
 {
     var_4 = [];
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 0;
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         var_3 = 0;
 
     for ( var_5 = 0; var_5 < level._ID805.size; var_5++ )
     {
-        if ( !_func_1A7( level._ID805[var_5] ) || level._ID805[var_5]._ID958 != "playing" )
+        if ( !isalive( level._ID805[var_5] ) || level._ID805[var_5]._ID958 != "playing" )
             continue;
 
         var_6 = level._ID805[var_5]._ID740 + ( 0, 0, 32 );
-        var_7 = _func_0F3( var_0, var_6 );
+        var_7 = distance( var_0, var_6 );
 
-        if ( var_7 < var_1 && !var_2 || _unknown_09F1( var_0, var_6, var_3, undefined ) )
+        if ( var_7 < var_1 && ( !var_2 || _ID41689( var_0, var_6, var_3, undefined ) ) )
         {
-            var_8 = _func_1A5();
+            var_8 = spawnstruct();
             var_8._ID20856 = 1;
             var_8._ID20651 = 0;
             var_8._ID337 = level._ID805[var_5];
@@ -497,16 +497,16 @@ _ID16203( var_0, var_1, var_2, var_3 )
         }
     }
 
-    var_9 = _func_1A2( "grenade", "classname" );
+    var_9 = getentarray( "grenade", "classname" );
 
     for ( var_5 = 0; var_5 < var_9.size; var_5++ )
     {
         var_10 = var_9[var_5]._ID740;
-        var_7 = _func_0F3( var_0, var_10 );
+        var_7 = distance( var_0, var_10 );
 
-        if ( var_7 < var_1 && !var_2 || _unknown_0A50( var_0, var_10, var_3, var_9[var_5] ) )
+        if ( var_7 < var_1 && ( !var_2 || _ID41689( var_0, var_10, var_3, var_9[var_5] ) ) )
         {
-            var_8 = _func_1A5();
+            var_8 = spawnstruct();
             var_8._ID20856 = 0;
             var_8._ID20651 = 0;
             var_8._ID337 = var_9[var_5];
@@ -515,16 +515,16 @@ _ID16203( var_0, var_1, var_2, var_3 )
         }
     }
 
-    var_11 = _func_1A2( "destructable", "targetname" );
+    var_11 = getentarray( "destructable", "targetname" );
 
     for ( var_5 = 0; var_5 < var_11.size; var_5++ )
     {
         var_10 = var_11[var_5]._ID740;
-        var_7 = _func_0F3( var_0, var_10 );
+        var_7 = distance( var_0, var_10 );
 
-        if ( var_7 < var_1 && !var_2 || _unknown_0AAD( var_0, var_10, var_3, var_11[var_5] ) )
+        if ( var_7 < var_1 && ( !var_2 || _ID41689( var_0, var_10, var_3, var_11[var_5] ) ) )
         {
-            var_8 = _func_1A5();
+            var_8 = spawnstruct();
             var_8._ID20856 = 0;
             var_8._ID20651 = 1;
             var_8._ID337 = var_11[var_5];
@@ -541,21 +541,21 @@ _ID41689( var_0, var_1, var_2, var_3 )
     var_4 = undefined;
     var_5 = var_1 - var_0;
 
-    if ( _func_0F8( var_5 ) < var_2 * var_2 )
+    if ( lengthsquared( var_5 ) < var_2 * var_2 )
         var_4 = var_1;
 
-    var_6 = _func_119( var_5 );
+    var_6 = vectornormalize( var_5 );
     var_4 = var_0 + ( var_6[0] * var_2, var_6[1] * var_2, var_6[2] * var_2 );
-    var_7 = _func_06D( var_4, var_1, 0, var_3 );
+    var_7 = bullettrace( var_4, var_1, 0, var_3 );
 
-    if ( _func_03A( "scr_damage_debug" ) != 0 )
+    if ( getdvarint( "scr_damage_debug" ) != 0 )
     {
         if ( var_7["fraction"] == 1 )
-            thread _unknown_0B78( var_4, var_1, ( 1, 1, 1 ) );
+            thread _ID10028( var_4, var_1, ( 1, 1, 1 ) );
         else
         {
-            thread _unknown_0B90( var_4, var_7["position"], ( 1, 0.9, 0.8 ) );
-            thread _unknown_0BA5( var_7["position"], var_1, ( 1, 0.4, 0.3 ) );
+            thread _ID10028( var_4, var_7["position"], ( 1, 0.9, 0.8 ) );
+            thread _ID10028( var_7["position"], var_1, ( 1, 0.4, 0.3 ) );
         }
     }
 
@@ -571,7 +571,7 @@ _ID9630( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     }
     else
     {
-        if ( self._ID20651 && var_4 == "artillery_mp" || var_4 == "claymore_mp" )
+        if ( self._ID20651 && ( var_4 == "artillery_mp" || var_4 == "claymore_mp" ) )
             return;
 
         self._ID337 notify( "damage",  var_2, var_1  );
@@ -590,10 +590,16 @@ _ID25856( var_0, var_1, var_2, var_3 )
 
     switch ( var_1 )
     {
-
+        case "concussion_grenade_mp":
+            var_4 = 512;
+            var_5 = 1 - distance( self._ID740, var_0._ID740 ) / var_4;
+            var_6 = 1 + 4 * var_5;
+            wait 0.05;
+            self shellshock( "concussion_grenade_mp", var_6 );
+            break;
+        default:
+            break;
     }
-
-    default:
 }
 
 _ID41479()
@@ -606,11 +612,11 @@ _ID41479()
 
     for (;;)
     {
-        if ( self _meth_8347() )
+        if ( self usebuttonpressed() )
         {
             var_0 = 0;
 
-            while ( self _meth_8347() )
+            while ( self usebuttonpressed() )
             {
                 var_0 += 0.05;
                 wait 0.05;
@@ -621,7 +627,7 @@ _ID41479()
 
             var_0 = 0;
 
-            while ( !self _meth_8347() && var_0 < 0.5 )
+            while ( !self usebuttonpressed() && var_0 < 0.5 )
             {
                 var_0 += 0.05;
                 wait 0.05;

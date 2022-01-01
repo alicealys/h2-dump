@@ -15,33 +15,42 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 128.0, 0.0 );
-        self _meth_8179( 512.0, 1024.0 );
+        self setengagementmindist( 128.0, 0.0 );
+        self setengagementmaxdist( 512.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 3 ) )
     {
-
+        case 0:
+            self._ID1302 = "mg4";
+            break;
+        case 1:
+            self._ID1302 = "mg4_arctic";
+            break;
+        case 2:
+            self._ID1302 = "mg4_arctic";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID46503::_ID616();
+            break;
+        case 1:
+            _ID53653::_ID616();
+            break;
+        case 2:
+            _ID48010::_ID616();
+            break;
     }
-
-    case 2:
-    case 1:
-    case 0:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -49,9 +58,9 @@ _ID814()
     _ID46503::_ID814();
     _ID53653::_ID814();
     _ID48010::_ID814();
-    _func_14E( "mg4" );
-    _func_14E( "mg4_arctic" );
-    _func_14E( "mg4_arctic" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "mg4" );
+    precacheitem( "mg4_arctic" );
+    precacheitem( "mg4_arctic" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
 }

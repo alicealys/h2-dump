@@ -3,96 +3,199 @@
 
 _ID616()
 {
-    _unknown_000B();
-    _unknown_0018( "gulag_intro_flight" );
+    _ID32363();
+    _ID46054( "gulag_intro_flight" );
     level._ID44391 = "gulag_nvg";
-    _unknown_0111();
-    _unknown_013B();
+    _ID51919();
+    shower_scriptables_light_target_override();
 }
 
 _ID32363()
 {
     if ( _func_242() )
-        _func_0DB( "r_disablelightsets", 0 );
+        setsaveddvar( "r_disablelightsets", 0 );
 }
 
 _ID46054( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     var_1 = "gulag_global";
 
     switch ( var_0 )
     {
-
+        case "gulag":
+            var_2 = 1;
+            var_3 = "gulag";
+            var_4 = "gulag";
+            var_0 = "gulag";
+            break;
+        case "gulag_entrance":
+            var_2 = 1;
+            var_3 = "gulag_nohaze";
+            var_4 = "gulag_nohaze";
+            var_0 = "gulag_entrance";
+            break;
+        case "gulag_intro_flight":
+            var_2 = 2;
+            var_3 = "gulag_intro_flight";
+            var_4 = "gulag_intro_flight";
+            var_0 = "gulag_intro_flight";
+            break;
+        case "gulag_flight":
+            var_2 = 4;
+            var_3 = "gulag_flight";
+            var_4 = "gulag_flight";
+            var_0 = "gulag_flight";
+            break;
+        case "gulag_cellblock_01":
+            var_2 = 2;
+            var_3 = "gulag_prisoncells";
+            var_4 = "gulag_prisoncells";
+            var_0 = "gulag_prisoncells";
+            break;
+        case "gulag_cellblock_02":
+            var_2 = 2;
+            var_3 = "gulag_hallways_cb2";
+            var_4 = "gulag_hallways_cb2";
+            var_0 = "gulag_hallways_cb2";
+            break;
+        case "gulag_hallways":
+            var_2 = 2;
+            var_3 = "gulag_hallways";
+            var_4 = "gulag_hallways";
+            var_0 = "gulag_hallways";
+            break;
+        case "gulag_rappel":
+            var_2 = 2.2;
+            var_3 = "gulag_prisoncells";
+            var_4 = "gulag_prisoncells";
+            var_0 = "gulag_prisoncells";
+            break;
+        case "gulag_nvg":
+            var_2 = 2;
+            var_3 = "gulag_nvg";
+            var_4 = "gulag_nvg";
+            var_0 = "gulag_nvg";
+            break;
+        case "gulag_nvg_corridors":
+            var_2 = 2;
+            var_3 = "gulag_nvg_corridors";
+            var_4 = "gulag_nvg_corridors";
+            var_0 = "gulag_nvg_corridors";
+            break;
+        case "slomo_breach":
+            var_2 = 2;
+            var_3 = "gulag_showers";
+            var_4 = "gulag_showers";
+            var_0 = "gulag_showers";
+            break;
+        case "gulag_pipetunnels":
+            var_2 = 2;
+            var_3 = "gulag_pipetunnels";
+            var_4 = "gulag_pipetunnels";
+            var_0 = "gulag_pipetunnels";
+            break;
+        case "gulag_showers":
+            var_2 = 2;
+            var_3 = "gulag_showers";
+            var_4 = "gulag_showers";
+            var_0 = "gulag_showers";
+            var_1 = "gulag_showers";
+            break;
+        case "gulag_sewers":
+            var_2 = 2;
+            var_3 = "gulag_sewers";
+            var_4 = "gulag_sewers";
+            var_0 = "gulag_sewers";
+            break;
+        case "gulag_sewers_slide":
+            var_2 = 2;
+            var_3 = "gulag_sewers_slide";
+            var_4 = "gulag_sewers_slide";
+            var_0 = "gulag_sewers_slide";
+            break;
+        case "gulag_torture":
+            var_2 = 2;
+            var_3 = "gulag_torture";
+            var_4 = "gulag_torture";
+            var_0 = "gulag_torture";
+            break;
+        case "gulag_ending":
+            var_2 = 4;
+            var_3 = "gulag_ending";
+            var_4 = "gulag_ending";
+            var_0 = "gulag_ending";
+            break;
+        default:
+            var_2 = 1;
+            var_3 = "gulag_entrance_prisoncells";
+            var_4 = "gulag_entrance_prisoncells";
+            var_0 = "gulag_entrance_prisoncells";
+            break;
     }
 
-    _ID42407::_ID32515( var_0, var_access_2 );
-    _ID42407::_ID14689( var_1, var_access_2 );
-    level._ID794 _ID42407::_ID48929( var_access_4 );
-    level._ID794 _meth_849F( "gulag", var_access_2 );
-    _ID42407::_ID49346( var_access_3, 1 );
-    case "gulag_torture":
-    case "gulag_sewers_slide":
-    case "gulag_sewers":
-    case "gulag_pipetunnels":
-    case "gulag_showers":
-    case "slomo_breach":
-    case "gulag_nvg_corridors":
-    case "gulag_cellblock_02":
-    case "gulag_cellblock_01":
-    case "gulag_flight":
-    case "gulag_entrance":
-    case "gulag_nvg":
-    case "gulag_intro_flight":
-    case "gulag":
-    case "gulag_rappel":
-    case "gulag_ending":
-    case "gulag_hallways":
-    default:
+    _ID42407::_ID32515( var_3, var_2 );
+    _ID42407::_ID14689( var_4, var_2 );
+    level._ID794 _ID42407::_ID48929( var_0 );
+    level._ID794 _meth_849f( "gulag", var_2 );
+    _ID42407::_ID49346( var_1, 1 );
 }
 
 _ID45391( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     var_1 = undefined;
 
     switch ( var_0 )
     {
-
+        case "exterior":
+            var_1 = "-3500 835 2800";
+            break;
+        case "cellblock_01":
+            var_1 = "-2850 -1225 1290";
+            break;
+        case "exploding_wall":
+            var_1 = "-3507 -2677 677";
+            break;
+        case "bathroom_in":
+            var_1 = "-849 -829 816";
+            break;
+        case "bathroom_out":
+            var_1 = "-479 -144 349";
+            break;
+        case "ending_rappel":
+            var_1 = "-4700 -800 3500";
+            break;
+        default:
+            var_1 = "-3507 -2677 677";
+            break;
     }
 
-    _func_0DB( "r_useLightGridDefaultFXLightingLookup", 1 );
-    _func_0DB( "r_lightGridDefaultFXLightingLookup", var_1 );
-    _func_0DB( "r_useLightGridDefaultModelLightingLookup", 1 );
-    _func_0DB( "r_useLightGridDefaultModelLightingSmoothing", 1 );
-    _func_0DB( "r_lightGridDefaultModelLightingLookup", var_1 );
-    case "ending_rappel":
-    case "bathroom_out":
-    case "bathroom_in":
-    case "exploding_wall":
-    case "cellblock_01":
-    case "exterior":
-    default:
+    setsaveddvar( "r_useLightGridDefaultFXLightingLookup", 1 );
+    setsaveddvar( "r_lightGridDefaultFXLightingLookup", var_1 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingLookup", 1 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingSmoothing", 1 );
+    setsaveddvar( "r_lightGridDefaultModelLightingLookup", var_1 );
 }
 
 _ID51919()
 {
     level._ID52349 = ( 0, 0, 0 );
-    var_0 = _func_1A2( "reflexion_override_trigger", "targetname" );
-    _ID42237::_ID3350( var_0, ::_unknown_0417 );
+    var_0 = getentarray( "reflexion_override_trigger", "targetname" );
+    _ID42237::_ID3350( var_0, ::_ID46803 );
 }
 
 _ID46803()
 {
     var_0 = undefined;
 
-    if ( _func_02F( self._ID1191 ) )
+    if ( isdefined( self._ID1191 ) )
     {
-        self._ID49589 = _func_1A1( self._ID1191, "targetname" );
+        self._ID49589 = getent( self._ID1191, "targetname" );
         var_0 = self._ID49589._ID740;
         var_1 = 1;
     }
@@ -107,36 +210,30 @@ _ID46803()
         {
             if ( var_0 != level._ID52349 )
             {
-                level._ID794 _meth_85A6( var_0 );
+                level._ID794 _meth_85a6( var_0 );
                 level._ID52349 = var_0;
             }
 
             continue;
         }
 
-        level._ID794 _meth_85A7();
+        level._ID794 _meth_85a7();
         level._ID52349 = ( 0, 0, 0 );
     }
 }
 
 shower_scriptables_light_target_override()
 {
-    var_0 = _func_1A2( "ceramic_lighting_override", "targetname" );
-    var_1 = _func_23E( "ceramic_lighting_override", "targetname" );
+    var_0 = getentarray( "ceramic_lighting_override", "targetname" );
+    var_1 = getscriptablearray( "ceramic_lighting_override", "targetname" );
     var_2 = _ID42237::_ID3296( var_0, var_1 );
-    var_3 = var_2;
 
-    for ( var_6 = _func_1DA( var_3 ); _func_02F( var_6 ); var_6 = _func_1BF( var_3, var_6 ) )
+    foreach ( var_4 in var_2 )
     {
-        var_4 = var_3[var_6];
-
-        if ( !_func_02F( self._ID1191 ) )
+        if ( !isdefined( self._ID1191 ) )
             continue;
 
-        var_5 = _func_1A1( self._ID1191, "targetname" );
-        var_4 _meth_848A( var_5._ID740 );
+        var_5 = getent( self._ID1191, "targetname" );
+        var_4 _meth_848a( var_5._ID740 );
     }
-
-    var_clear_3
-    var_clear_0
 }

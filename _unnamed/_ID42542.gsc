@@ -3,27 +3,27 @@
 
 _ID3283( var_0, var_1 )
 {
-    return _func_125( var_0, "armed" ) || _func_125( var_1, "armed" );
+    return issubstr( var_0, "armed" ) || issubstr( var_1, "armed" );
 }
 #using_animtree("vehicles");
 
 _ID616( var_0, var_1, var_2 )
 {
-    if ( _unknown_001F( var_0, var_2 ) )
+    if ( _ID3283( var_0, var_2 ) )
         _ID42508::_ID28414();
 
-    if ( _func_125( var_2, "bench" ) )
+    if ( issubstr( var_2, "bench" ) )
     {
-        _func_14C( "vehicle_sentinel_littlebird_benchleft" );
-        _func_14C( "vehicle_sentinel_littlebird_benchright" );
+        precachemodel( "vehicle_sentinel_littlebird_benchleft" );
+        precachemodel( "vehicle_sentinel_littlebird_benchright" );
     }
 
     _ID42411::_ID6255( "littlebird", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00F8 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_little_bird_armed" );
     _ID42411::_ID6216( "vehicle_little_bird_bench" );
 
-    if ( _func_125( var_2, "kva" ) || _func_125( var_2, "atlas" ) || _func_125( var_2, "sentinel" ) )
+    if ( issubstr( var_2, "kva" ) || issubstr( var_2, "atlas" ) || issubstr( var_2, "sentinel" ) )
         _ID42411::_ID6220( %mil_helicopter_littlebird_ai_rotors, undefined, 0, 3.0 );
     else
         _ID42411::_ID6220( %mi28_rotors, undefined, 0, 3.0 );
@@ -38,9 +38,9 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6233( 799 );
     _ID42411::_ID6253( "axis" );
     _ID42411::_ID6237();
-    _ID42411::_ID6262( ::_unknown_03FA );
-    _ID42411::_ID6204( ::_unknown_0253, ::_unknown_024F );
-    var_3 = _func_0BA( 0, 1 );
+    _ID42411::_ID6262( ::_ID39488 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    var_3 = randomfloatrange( 0, 1 );
     _ID42411::_ID6234( var_2, "white_blink", "TAG_LIGHT_BELLY", "vfx/lights/aircraft_light_white_blink", "running", var_3 );
     _ID42411::_ID6234( var_2, "red_blink1", "TAG_LIGHT_TAIL1", "vfx/lights/aircraft_light_red_blink", "running", var_3 );
     _ID42411::_ID6234( var_2, "red_blink2", "TAG_LIGHT_TAIL2", "vfx/lights/aircraft_light_red_blink", "running", var_3 );
@@ -63,54 +63,47 @@ _ID616( var_0, var_1, var_2 )
 _ID19731()
 {
     self endon( "death" );
-    self._ID26026 = _func_0F3( self _meth_818C( "tag_origin" ), self _meth_818C( "tag_ground" ) );
+    self._ID26026 = distance( self gettagorigin( "tag_origin" ), self gettagorigin( "tag_ground" ) );
     self._ID31066 = 0;
     self._ID11571 = 1;
     self._ID40203 = 6;
     thread _ID42544::_ID22452();
-    thread _unknown_0321();
+    thread _ID3562();
     thread _ID42411::_ID40197( "running" );
 
-    if ( _func_125( self._ID170, "sentinel" ) )
-        self _meth_804E( "main_rotor_static_jnt" );
+    if ( issubstr( self._ID170, "sentinel" ) )
+        self hidepart( "main_rotor_static_jnt" );
 
     waitframe;
 
-    if ( !_unknown_0258( self._ID669, self._ID170 ) )
+    if ( !_ID3283( self._ID669, self._ID170 ) )
     {
         _ID42411::_ID23509();
-        var_0 = self._ID23512;
 
-        for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
-        {
-            var_1 = var_0[var_2];
-            var_1 _meth_805A();
-        }
-
-        var_clear_2
-        var_clear_0
+        foreach ( var_1 in self._ID23512 )
+            var_1 hide();
     }
 
     thread _ID42543::_ID17848();
-    self._ID12396 = ::_unknown_0597;
-    _ID42407::_ID1868( ::_unknown_0592 );
+    self._ID12396 = ::_ID22449;
+    _ID42407::_ID1868( ::_ID22448 );
 }
 
 _ID33989()
 {
-    if ( _func_125( self._ID170, "sentinel" ) )
+    if ( issubstr( self._ID170, "sentinel" ) )
     {
-        self _meth_804E( "main_rotor_static_jnt" );
-        self _meth_8051( "main_rotor_jnt" );
+        self hidepart( "main_rotor_static_jnt" );
+        self showpart( "main_rotor_jnt" );
     }
 }
 
 _ID34035()
 {
-    if ( _func_125( self._ID170, "sentinel" ) )
+    if ( issubstr( self._ID170, "sentinel" ) )
     {
-        self _meth_8051( "main_rotor_static_jnt" );
-        self _meth_804E( "main_rotor_jnt" );
+        self showpart( "main_rotor_static_jnt" );
+        self hidepart( "main_rotor_jnt" );
     }
 }
 
@@ -118,11 +111,14 @@ _ID3562()
 {
     switch ( self._ID170 )
     {
-
+        case "script_vehicle_littlebird_sentinel_bench":
+        case "script_vehicle_littlebird_atlas_bench":
+            self attach( "vehicle_sentinel_littlebird_benchleft", "TAG_BENCH_ATTACH_LEFT" );
+            self attach( "vehicle_sentinel_littlebird_benchright", "TAG_BENCH_ATTACH_RIGHT" );
+            break;
+        default:
+            break;
     }
-
-    endswitch( 3 )  case "script_vehicle_littlebird_atlas_bench" loc_3E5 case "script_vehicle_littlebird_sentinel_bench" loc_3EA default loc_3F8
-    default:
 }
 
 _ID32509( var_0 )
@@ -138,7 +134,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 8; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_pilot1";
     var_0[1]._ID34225 = "tag_pilot2";
@@ -276,7 +272,7 @@ _ID39488()
 
 _ID22448( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 {
-    if ( var_4 == "MOD_ENERGY" && _func_02F( self._ID12396 ) )
+    if ( var_4 == "MOD_ENERGY" && isdefined( self._ID12396 ) )
         self thread [[ self._ID12396 ]]( var_1, var_4 );
 }
 
@@ -287,25 +283,25 @@ _ID22449( var_0, var_1 )
     self notify( "emp_death" );
     _ID42411::_ID40196( "all" );
     self._ID40270 = 1;
-    var_2 = self _meth_8291();
+    var_2 = self vehicle_getvelocity();
     var_3 = 250;
 
-    if ( _func_02F( level._ID15815 ) )
+    if ( isdefined( level._ID15815 ) )
         var_4 = [[ level._ID15815 ]]();
     else
     {
         var_5 = ( self._ID740[0] + var_2[0] * 5, self._ID740[1] + var_2[1] * 5, self._ID740[2] - 2000 );
-        var_4 = _func_06D( self._ID740, var_5, 0, self )["position"];
+        var_4 = bullettrace( self._ID740, var_5, 0, self )["position"];
     }
 
     self notify( "newpath" );
     self notify( "deathspin" );
-    thread _unknown_0D04();
+    thread _ID22446();
     var_6 = 1000;
-    self _meth_828D( var_6, 40, 1000 );
-    self _meth_8264( var_3 );
-    self _meth_8265( var_4, 0 );
-    thread _unknown_0D31( var_4, var_3, var_6 );
+    self vehicle_setspeed( var_6, 40, 1000 );
+    self neargoalnotifydist( var_3 );
+    self setvehgoalpos( var_4, 0 );
+    thread _ID22447( var_4, var_3, var_6 );
     _ID42237::_ID41068( "goal", "near_goal" );
     self notify( "stop_crash_loop_sound" );
     self notify( "crash_done" );
@@ -313,15 +309,15 @@ _ID22449( var_0, var_1 )
     self._ID12571 = 1;
     _ID42413::_ID40179( var_0, var_1 );
 
-    if ( _func_039( "mapname" ) == "lab" )
-        _unknown_0D4D();
+    if ( getdvar( "mapname" ) == "lab" )
+        _ID7379();
 
-    self _meth_8058( self._ID740, var_0 );
+    self kill( self._ID740, var_0 );
 }
 
 _ID7379()
 {
-    if ( !_func_02F( level._ID29884 ) )
+    if ( !isdefined( level._ID29884 ) )
         level._ID29884 = 0;
 
     level._ID29884++;
@@ -333,16 +329,16 @@ _ID7379()
 _ID22446()
 {
     self endon( "crash_done" );
-    self _meth_8270();
-    self _meth_829C( 400, 100, 100 );
+    self clearlookatent();
+    self setyawspeed( 400, 100, 100 );
 
     for (;;)
     {
-        if ( !_func_02F( self ) )
+        if ( !isdefined( self ) )
             return;
 
-        var_0 = _func_0B9( 90, 120 );
-        self _meth_8268( self._ID65[1] + var_0 );
+        var_0 = randomintrange( 90, 120 );
+        self settargetyaw( self._ID65[1] + var_0 );
         wait 0.5;
     }
 }
@@ -350,12 +346,12 @@ _ID22446()
 _ID22447( var_0, var_1, var_2 )
 {
     self endon( "crash_done" );
-    self _meth_8270();
-    self _meth_829C( 400, 100, 100 );
+    self clearlookatent();
+    self setyawspeed( 400, 100, 100 );
     var_3 = 400;
     var_4 = 100;
     var_5 = undefined;
-    var_6 = 90 * _func_0B9( -2, 3 );
+    var_6 = 90 * randomintrange( -2, 3 );
 
     for (;;)
     {
@@ -369,16 +365,16 @@ _ID22447( var_0, var_1, var_2 )
 _ID18444()
 {
     self endon( "crash_done" );
-    self _meth_8270();
-    self _meth_829C( 400, 100, 100 );
+    self clearlookatent();
+    self setyawspeed( 400, 100, 100 );
 
     for (;;)
     {
-        if ( !_func_02F( self ) )
+        if ( !isdefined( self ) )
             return;
 
-        var_0 = _func_0B9( 90, 120 );
-        self _meth_8268( self._ID65[1] + var_0 );
+        var_0 = randomintrange( 90, 120 );
+        self settargetyaw( self._ID65[1] + var_0 );
         wait 0.5;
     }
 }

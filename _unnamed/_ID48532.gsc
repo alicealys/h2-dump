@@ -3,7 +3,7 @@
 
 _ID616()
 {
-    _unknown_0A1D();
+    _ID36815();
     var_0 = _ID42407::_ID9186( "gulag_intro_flight" );
     var_0._ID36107 = 750;
     var_0._ID17667 = 4000;

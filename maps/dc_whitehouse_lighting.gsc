@@ -4,9 +4,9 @@
 _ID616()
 {
     _ID42237::_ID14400( "change_sun" );
-    thread _unknown_004B();
-    thread _unknown_0018();
-    _unknown_0029( "dc_whitehouse_tunnel" );
+    thread _ID50482();
+    thread _ID48420();
+    _ID53004( "dc_whitehouse_tunnel" );
 }
 
 _ID48420()
@@ -18,20 +18,40 @@ _ID48420()
 
 _ID53004( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     switch ( var_0 )
     {
-
+        case "dc_whitehouse_tunnel":
+            var_1 = 0;
+            var_2 = "dc_whitehouse_tunnel";
+            var_3 = "dc_whitehouse_tunnel";
+            var_0 = "dc_whitehouse_tunnel";
+            break;
+        case "dc_whitehouse_lawn":
+            var_1 = 0;
+            var_2 = "dc_whitehouse_lawn";
+            var_3 = "dc_whitehouse_lawn";
+            var_0 = "dc_whitehouse_lawn";
+            break;
+        case "dc_whitehouse_interior":
+            var_1 = 0;
+            var_2 = "dc_whitehouse_interior";
+            var_3 = "dc_whitehouse_interior";
+            var_0 = "dc_whitehouse_interior";
+            break;
+        default:
+            var_1 = 1;
+            var_2 = "dc_whitehouse";
+            var_3 = "dc_whitehouse";
+            var_0 = "dc_whitehouse";
+            break;
     }
 
-    _ID42407::_ID32515( var_access_1, var_access_2 );
-    _ID42407::_ID14689( var_0, var_access_2 );
-    level._ID794 _ID42407::_ID48929( var_access_3 );
-    case "dc_whitehouse_tunnel":
-    case "dc_whitehouse_lawn":
-    default:
+    _ID42407::_ID32515( var_2, var_1 );
+    _ID42407::_ID14689( var_3, var_1 );
+    level._ID794 _ID42407::_ID48929( var_0 );
 }
 
 _ID50482()

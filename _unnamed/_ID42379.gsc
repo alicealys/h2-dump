@@ -3,13 +3,13 @@
 
 _ID36252()
 {
-    _unknown_0004();
+    _ID36251();
 }
 
 _ID36251()
 {
-    level._ID1644._ID5029 = _func_1A5();
-    level._ID1644._ID24875 = _func_1A5();
+    level._ID1644._ID5029 = spawnstruct();
+    level._ID1644._ID24875 = spawnstruct();
     level._ID1644._ID5029._ID34972 = [];
     level._ID1644._ID5029._ID34972["huh"] = 0;
     level._ID1644._ID5029._ID34972["hmph"] = 0;

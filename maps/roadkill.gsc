@@ -3,27 +3,27 @@
 
 _ID616()
 {
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
         return;
 
-    if ( _func_039( "beautiful_corner" ) == "1" || _func_039( "beautiful_corner_demo" ) == "1" )
+    if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
         maps\roadkill_beautiful_corner::_ID616();
         return;
     }
 
-    if ( _func_039( "mission_select_cam" ) == "1" )
+    if ( getdvar( "mission_select_cam" ) == "1" )
     {
         maps\roadkill_mission_select_cam::_ID50320();
         return;
     }
 
-    thread _unknown_0F7C();
-    _func_034( "newintro", 1 );
+    thread _ID43442();
+    setdvar( "newintro", 1 );
     level._ID54654 = 0;
     level._ID46686 = 1;
-    _func_14E( "m14_scoped" );
-    _func_14E( "littlebird_FFAR" );
+    precacheitem( "m14_scoped" );
+    precacheitem( "littlebird_FFAR" );
     _ID42287::_ID521();
     _ID49192::_ID616();
     _ID53481::_ID616();
@@ -34,72 +34,72 @@ _ID616()
     _ID42411::_ID52468( "script_vehicle_laatpv_minigun_physics_player", maps\roadkill_anim::_ID50120, maps\roadkill_anim::_ID49234 );
     maps\roadkill_code::_ID51313();
     _ID42407::_ID32271( "riverbank" );
-    _ID42407::_ID1951( "riverbank", ::_unknown_03BF, "riverbank", ::_unknown_03C9 );
-    _ID42407::_ID1951( "convoy", ::_unknown_03FE, "convoy", ::_unknown_0406 );
-    _ID42407::_ID1951( "ride", ::_unknown_0622, "ride", ::_unknown_075E );
-    _ID42407::_ID1951( "ambush", ::_unknown_0803, "ambush", ::_unknown_080E );
-    _ID42407::_ID1951( "ride_later", ::_unknown_08BE, "ride_later", ::_unknown_08CC );
-    _ID42407::_ID1951( "dismount", ::_unknown_09F9, "dismount", ::_unknown_0A0F );
-    _ID42407::_ID1951( "school", ::_unknown_0D3C, "school", ::_unknown_0D77 );
-    _ID42407::_ID1951( "endfight", ::_unknown_0E32, "end", ::_unknown_0E7D );
-    _ID42407::_ID1951( "end", ::_unknown_0E1F, "end", ::_unknown_0E8F );
-    _func_001( "latvee_50cal_mg" );
-    _func_001( "rpd_bipod_prone" );
-    _func_001( "rpd_bipod_crouch" );
-    _func_14C( "weapon_m16" );
-    _func_14C( "weapon_rpd_mg_setup" );
-    _func_14C( "com_soup_can" );
-    _func_14C( "com_bottle1" );
-    _func_14C( "me_plastic_crate1" );
-    _func_14C( "mil_mre_chocolate01" );
-    _func_14C( "weapon_binocular" );
-    _func_14C( "vehicle_laatpv_seat_rb_obj" );
-    _func_14C( "viewhands_player_us_army" );
-    _func_14C( "hat_opforce_arab_d" );
-    _func_14C( "electronics_camera_pointandshoot_low" );
-    _func_14C( "h2_rkl_cellphone_camera" );
-    _func_14C( "viewbody_us_army" );
-    _func_14C( "weapon_suburban_minigun_viewmodel" );
-    _func_152( "collapsing_building" );
-    _func_152( "tank_rumble" );
-    _func_14C( "me_woodcrateclosed" );
-    _func_14C( "com_cardboardboxshortclosed_2" );
-    _func_14C( "com_hand_radio" );
-    _func_14E( "scripted_silent" );
-    _func_14C( "h2_rkl_handheld_gps" );
-    _func_150( &"ROADKILL_BRIDGELAYER_DESTROYED" );
-    _func_150( &"ROADKILL_HOLD_TO_BOARD" );
-    _func_150( &"ROADKILL_SHOT_TOO_MUCH" );
-    _func_150( &"ROADKILL_OBJECTIVE_BRIDGELAYER" );
-    _func_150( &"ROADKILL_OBJECTIVE_LATVEE" );
-    _func_150( &"ROADKILL_OBJECTIVE_AIRSTRIKE" );
-    _func_150( &"ROADKILL_OBJECTIVE_SCAN" );
-    _func_150( &"ROADKILL_OBJECTIVE_TARGETS" );
-    _func_150( &"ROADKILL_OBJECTIVE_DISMOUNT" );
-    _func_150( &"ROADKILL_OBJECTIVE_SECURE_TOP_FLOOR" );
-    _func_150( &"ROADKILL_OBJECTIVE_SCHOOL" );
-    _func_150( &"ROADKILL_OBJECTIVE_REPORT" );
-    _func_150( &"ROADKILL_GOT_SNIPED" );
-    _func_150( &"ROADKILL_SHOT_UNARMED" );
-    _func_150( &"SCRIPT_MISSIONFAIL_KILLTEAM_AMERICAN" );
-    _func_150( &"SCRIPT_LEARN_JAVELIN" );
-    _func_150( &"SCRIPT_PLATFORM_HINT_FLASH" );
-    _func_150( &"SCRIPT_LEARN_GRENADE_LAUNCHER" );
-    _func_150( &"SCRIPT_WAYPOINT_TARGETS" );
-    _func_14F( "h1_hud_tutorial_blur" );
-    _func_14F( "h1_hud_tutorial_border" );
-    _func_14C( "h2_com_clipboard_wpaper_anim" );
-    _func_14C( "h2_characters_accessories_pencil" );
+    _ID42407::_ID1951( "riverbank", ::_ID44057, "riverbank", ::_ID52946 );
+    _ID42407::_ID1951( "convoy", ::_ID44873, "convoy", ::_ID48411 );
+    _ID42407::_ID1951( "ride", ::_ID54583, "ride", ::_ID54142 );
+    _ID42407::_ID1951( "ambush", ::_ID45367, "ambush", ::_ID49117 );
+    _ID42407::_ID1951( "ride_later", ::_ID51976, "ride_later", ::_ID52649 );
+    _ID42407::_ID1951( "dismount", ::_ID50764, "dismount", ::_ID43234 );
+    _ID42407::_ID1951( "school", ::_ID53153, "school", ::_ID44068 );
+    _ID42407::_ID1951( "endfight", ::_ID51950, "end", ::_ID53110 );
+    _ID42407::_ID1951( "end", ::_ID49864, "end", ::_ID53110 );
+    precacheturret( "latvee_50cal_mg" );
+    precacheturret( "rpd_bipod_prone" );
+    precacheturret( "rpd_bipod_crouch" );
+    precachemodel( "weapon_m16" );
+    precachemodel( "weapon_rpd_mg_setup" );
+    precachemodel( "com_soup_can" );
+    precachemodel( "com_bottle1" );
+    precachemodel( "me_plastic_crate1" );
+    precachemodel( "mil_mre_chocolate01" );
+    precachemodel( "weapon_binocular" );
+    precachemodel( "vehicle_laatpv_seat_rb_obj" );
+    precachemodel( "viewhands_player_us_army" );
+    precachemodel( "hat_opforce_arab_d" );
+    precachemodel( "electronics_camera_pointandshoot_low" );
+    precachemodel( "h2_rkl_cellphone_camera" );
+    precachemodel( "viewbody_us_army" );
+    precachemodel( "weapon_suburban_minigun_viewmodel" );
+    precacherumble( "collapsing_building" );
+    precacherumble( "tank_rumble" );
+    precachemodel( "me_woodcrateclosed" );
+    precachemodel( "com_cardboardboxshortclosed_2" );
+    precachemodel( "com_hand_radio" );
+    precacheitem( "scripted_silent" );
+    precachemodel( "h2_rkl_handheld_gps" );
+    precachestring( &"ROADKILL_BRIDGELAYER_DESTROYED" );
+    precachestring( &"ROADKILL_HOLD_TO_BOARD" );
+    precachestring( &"ROADKILL_SHOT_TOO_MUCH" );
+    precachestring( &"ROADKILL_OBJECTIVE_BRIDGELAYER" );
+    precachestring( &"ROADKILL_OBJECTIVE_LATVEE" );
+    precachestring( &"ROADKILL_OBJECTIVE_AIRSTRIKE" );
+    precachestring( &"ROADKILL_OBJECTIVE_SCAN" );
+    precachestring( &"ROADKILL_OBJECTIVE_TARGETS" );
+    precachestring( &"ROADKILL_OBJECTIVE_DISMOUNT" );
+    precachestring( &"ROADKILL_OBJECTIVE_SECURE_TOP_FLOOR" );
+    precachestring( &"ROADKILL_OBJECTIVE_SCHOOL" );
+    precachestring( &"ROADKILL_OBJECTIVE_REPORT" );
+    precachestring( &"ROADKILL_GOT_SNIPED" );
+    precachestring( &"ROADKILL_SHOT_UNARMED" );
+    precachestring( &"SCRIPT_MISSIONFAIL_KILLTEAM_AMERICAN" );
+    precachestring( &"SCRIPT_LEARN_JAVELIN" );
+    precachestring( &"SCRIPT_PLATFORM_HINT_FLASH" );
+    precachestring( &"SCRIPT_LEARN_GRENADE_LAUNCHER" );
+    precachestring( &"SCRIPT_WAYPOINT_TARGETS" );
+    precacheshader( "h1_hud_tutorial_blur" );
+    precacheshader( "h1_hud_tutorial_border" );
+    precachemodel( "h2_com_clipboard_wpaper_anim" );
+    precachemodel( "h2_characters_accessories_pencil" );
     level._ID47547 = maps\roadkill_code::_ID47542;
     level._ID52834 = [];
-    level._ID52834["detour"] = _func_1A5();
+    level._ID52834["detour"] = spawnstruct();
     level._ID52834["max"] = 4;
     level._ID49654 = [];
     level._ID44591 = [];
-    var_0 = _func_1A1( "trapper_clip", "targetname" );
-    var_0 _meth_805F();
-    var_0 _meth_80B7();
-    _func_150( &"SCRIPT_LEARN_JAVELIN" );
+    var_0 = getent( "trapper_clip", "targetname" );
+    var_0 connectpaths();
+    var_0 delete();
+    precachestring( &"SCRIPT_LEARN_JAVELIN" );
     _ID42530::_ID616( "tag_origin" );
     _ID42323::_ID616();
     _ID44133::_ID521();
@@ -180,7 +180,7 @@ _ID616()
     _ID42237::_ID30398( "deleteme", _ID42407::_ID31860 );
     _ID42237::_ID30398( "damage_targ_trigger", maps\roadkill_code::_ID49768 );
     _ID42237::_ID30398( "wave_right_trigger", maps\roadkill_code::_ID53772 );
-    level.moving_tank = _func_1A1( "moving_riverbank_tank", "targetname" );
+    level.moving_tank = getent( "moving_riverbank_tank", "targetname" );
     level.moving_tank _ID42407::_ID1947( maps\roadkill_code::intro_moving_tank );
     _ID42407::_ID3344( "riverbank_tank", maps\roadkill_code::_ID48886 );
     _ID42407::_ID3343( "retreat_spawner", maps\roadkill_code::_ID52319 );
@@ -196,78 +196,64 @@ _ID616()
     _ID42407::_ID3343( "shepherd_spawner", maps\roadkill_code::_ID50532 );
     level._ID43117 = [];
     _ID42407::_ID3344( "ambushed_laatpv", maps\roadkill_code::_ID53557 );
-    level._ID53922 = _func_1A2( "more_street_spawner", "script_noteworthy" );
-    level._ID48014 = _func_1A2( "school_ambush", "targetname" );
+    level._ID53922 = getentarray( "more_street_spawner", "script_noteworthy" );
+    level._ID48014 = getentarray( "school_ambush", "targetname" );
     _ID42407::_ID3342( level._ID48014, maps\roadkill_code::_ID52672 );
     level._ID8248 = 1;
     level._ID8249 = 1;
-    level._ID54178 = _func_1A5();
-    level._ID50802 = _func_1A5();
+    level._ID54178 = spawnstruct();
+    level._ID50802 = spawnstruct();
     level._ID35367["javelin"] = _ID42262::_ID21033;
-    var_1 = _func_1A2( "player_backtrack_blocker_model", "targetname" );
-    var_2 = var_1;
+    var_1 = getentarray( "player_backtrack_blocker_model", "targetname" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_1 )
+        var_3 hide();
+
+    var_1 = getentarray( "player_backtrack_blocker_brush", "targetname" );
+
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_4];
-        var_3 _meth_805A();
+        var_3 hide();
+        var_3 notsolid();
     }
 
-    var_clear_2
-    var_clear_0
-    var_1 = _func_1A2( "player_backtrack_blocker_brush", "targetname" );
-    var_5 = var_1;
+    var_7 = getentarray( "dead_vehicle_spawner", "targetname" );
 
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
+    foreach ( var_9 in var_7 )
     {
-        var_3 = var_5[var_6];
-        var_3 _meth_805A();
-        var_3 _meth_82C9();
+        var_9._ID25546 = var_9 setcontents( 0 );
+        var_9 hide();
     }
 
-    var_clear_1
-    var_clear_0
-    var_7 = _func_1A2( "dead_vehicle_spawner", "targetname" );
-    var_8 = var_7;
-
-    for ( var_10 = _func_1DA( var_8 ); _func_02F( var_10 ); var_10 = _func_1BF( var_8, var_10 ) )
-    {
-        var_9 = var_8[var_10];
-        var_9._ID25546 = var_9 _meth_80C5( 0 );
-        var_9 _meth_805A();
-    }
-
-    var_clear_2
-    var_clear_0
     thread maps\roadkill_code::_ID44863();
     maps\roadkill_aud::_ID616();
     _ID42407::_ID40561( "roadkill", 0 );
-    thread _unknown_155C();
-    _func_10C( "axis_school" );
-    _func_10C( "axis_school_unreachable" );
-    _func_10C( "axis_ambush_house" );
-    _func_10C( "axis_dismount_attackers" );
-    _func_10C( "ally_with_player" );
-    _func_10C( "ally_outside_school" );
-    _func_10C( "bridge_attackers" );
-    _func_10C( "just_player" );
-    level._ID794 _meth_8183( "just_player" );
-    _func_111( "ally_with_player", "axis_school_unreachable" );
-    _func_111( "axis_school_unreachable", "ally_with_player" );
-    _func_111( "ally_with_player", "axis_school" );
-    _func_111( "axis_school", "ally_with_player" );
-    _func_10F( "ally_outside_school", "axis_ambush_house", 750 );
-    thread _unknown_1637();
-    thread _unknown_1660();
+    thread _ID46458();
+    createthreatbiasgroup( "axis_school" );
+    createthreatbiasgroup( "axis_school_unreachable" );
+    createthreatbiasgroup( "axis_ambush_house" );
+    createthreatbiasgroup( "axis_dismount_attackers" );
+    createthreatbiasgroup( "ally_with_player" );
+    createthreatbiasgroup( "ally_outside_school" );
+    createthreatbiasgroup( "bridge_attackers" );
+    createthreatbiasgroup( "just_player" );
+    level._ID794 setthreatbiasgroup( "just_player" );
+    setignoremegroup( "ally_with_player", "axis_school_unreachable" );
+    setignoremegroup( "axis_school_unreachable", "ally_with_player" );
+    setignoremegroup( "ally_with_player", "axis_school" );
+    setignoremegroup( "axis_school", "ally_with_player" );
+    setthreatbias( "ally_outside_school", "axis_ambush_house", 750 );
+    thread _ID52481();
+    thread _ID51524();
     _ID42237::_ID30398( "roadkill_tree", maps\roadkill_code::_ID53536 );
     thread _ID43858::_ID616();
-    var_11 = _func_1A1( "pickup_crash_and_shoot", "targetname" );
+    var_11 = getent( "pickup_crash_and_shoot", "targetname" );
     var_11 _ID42407::_ID1947( maps\roadkill_code::_ID49950, 0.05 );
     waitframe;
     level._ID794._ID4934 = undefined;
     thread maps\roadkill_code::bring_back_buildings();
     thread maps\roadkill_code::static_model_groups_think();
-    _ID42237::_ID3350( _func_1A2( "building_collapse_lamp_post", "targetname" ), maps\roadkill_code::building_collapse_lamp_post );
+    _ID42237::_ID3350( getentarray( "building_collapse_lamp_post", "targetname" ), maps\roadkill_code::building_collapse_lamp_post );
 }
 
 _ID49377()
@@ -280,12 +266,12 @@ _ID47373()
     _ID42237::_ID14402( "Beach_Begin_Section_Flag" );
     _ID42237::_ID14402( "City_Ceiling_Flag" );
     thread maps\roadkill_lighting::_ID45110();
-    _ID42237::_ID3294( _func_1A2( "city_dynamics_models", "targetname" ), ::_meth_805A );
-    _ID42237::_ID3294( _func_1A2( "inside_school_dynamiques", "script_noteworthy" ), ::_meth_805A );
+    _ID42237::_ID3294( getentarray( "city_dynamics_models", "targetname" ), ::hide );
+    _ID42237::_ID3294( getentarray( "inside_school_dynamiques", "script_noteworthy" ), ::hide );
     thread maps\roadkill_code::_ID44112();
-    var_0 = _func_1A1( "bridge_layer_clipbrush", "targetname" );
-    var_0 _meth_805E();
-    var_1 = _func_1A2( "destroyed_latvee_model", "targetname" );
+    var_0 = getent( "bridge_layer_clipbrush", "targetname" );
+    var_0 disconnectpaths();
+    var_1 = getentarray( "destroyed_latvee_model", "targetname" );
     _ID42237::_ID3350( var_1, _ID42237::_ID18529 );
     _ID42407::_ID3343( "enemy_riverbank_rpg_spawner", maps\roadkill_code::_ID45889 );
     thread maps\roadkill_code::_ID51559();
@@ -310,9 +296,9 @@ _ID47373()
     thread maps\roadkill_code::_ID50917();
     thread maps\roadkill_code::_ID50284();
 
-    if ( !_func_03A( "use_old_waving_guy" ) )
+    if ( !getdvarint( "use_old_waving_guy" ) )
     {
-        var_2 = _func_1A1( "stair_wave_spawner", "targetname" );
+        var_2 = getent( "stair_wave_spawner", "targetname" );
         var_2 _ID42407::_ID1947( maps\roadkill_code::_ID49485 );
         var_2 _ID42407::_ID35014();
     }
@@ -348,44 +334,44 @@ _ID44057()
 {
     _ID42475::_ID34575( "start_riverbank_checkpoint" );
     _ID42465::_ID23797( "intro_fight_part_a_mix" );
-    _func_0DB( "g_friendlyNameDist", 0 );
-    _ID42237::_ID24938( 3, ::_func_0DB, "g_friendlyNameDist", 15000 );
-    _unknown_0C22();
+    setsaveddvar( "g_friendlyNameDist", 0 );
+    _ID42237::_ID24938( 3, ::setsaveddvar, "g_friendlyNameDist", 15000 );
+    _ID47373();
 }
 
 _ID46095()
 {
-    thread _unknown_0C28();
+    thread _ID47373();
 }
 
 _ID52946()
 {
     _ID42237::setaicount( 64 );
-    var_0 = _func_1A2( "enemy_riverhouse_spawner", "targetname" );
-    var_1 = _func_1A2( "enemy_riverside_spawner", "targetname" );
+    var_0 = getentarray( "enemy_riverhouse_spawner", "targetname" );
+    var_1 = getentarray( "enemy_riverside_spawner", "targetname" );
     _ID42407::_ID3342( var_0, maps\roadkill_code::_ID44023 );
     _ID42407::_ID3342( var_1, maps\roadkill_code::_ID44023 );
     thread maps\roadkill_code::_ID44995( var_0 );
     thread maps\roadkill_code::_ID48412( var_1 );
-    _ID42407::_ID10226( 25, ::_unknown_1937, "littlebird_attacks", 9 );
-    _ID42407::_ID10226( 30, ::_unknown_1946, "littlebird_attacks_2", 11 );
+    _ID42407::_ID10226( 25, ::_ID45809, "littlebird_attacks", 9 );
+    _ID42407::_ID10226( 30, ::_ID45809, "littlebird_attacks_2", 11 );
 }
 
 _ID44873()
 {
     _ID42475::_ID34575( "start_convoy_checkpoint" );
-    _unknown_0C8B();
+    _ID47373();
     var_0 = _ID42237::_ID16638( "start_ride_player", "targetname" );
-    level._ID794 _meth_8343( var_0._ID740 );
-    level._ID794 _meth_8345( var_0._ID65 );
+    level._ID794 setorigin( var_0._ID740 );
+    level._ID794 setplayerangles( var_0._ID65 );
 }
 
 _ID48411()
 {
-    var_0 = _func_1A1( "friendly_video_blocker", "targetname" );
-    var_0 _meth_82C8();
-    var_0 _meth_805F();
-    var_0 _meth_82C9();
+    var_0 = getent( "friendly_video_blocker", "targetname" );
+    var_0 solid();
+    var_0 connectpaths();
+    var_0 notsolid();
     level._ID52228 = 0;
     thread maps\roadkill_code::_ID46408();
     _ID42407::_ID3344( "riverbank_bmp", maps\roadkill_code::_ID48886 );
@@ -395,37 +381,27 @@ _ID48411()
     _ID42407::_ID3344( "ride_vehicle_starts_spawned", maps\roadkill_code::_ID47167 );
     level._ID44748 = [];
     level._ID49143 = [];
-    var_1 = _func_1A1( "guy_gets_in_vehicle", "targetname" );
+    var_1 = getent( "guy_gets_in_vehicle", "targetname" );
     var_1 thread maps\roadkill_code::_ID49246();
-    var_2 = _func_1A1( "stairs_blocker", "targetname" );
-    var_2 _meth_805F();
-    var_2 _meth_80B7();
-    var_3 = _func_1A1( "friendly_midroad_blocker", "targetname" );
-    var_3 _meth_805F();
-    var_3 _meth_80B7();
-    var_4 = _func_1A2( "player_backtrack_blocker_model", "targetname" );
-    var_5 = var_4;
+    var_2 = getent( "stairs_blocker", "targetname" );
+    var_2 connectpaths();
+    var_2 delete();
+    var_3 = getent( "friendly_midroad_blocker", "targetname" );
+    var_3 connectpaths();
+    var_3 delete();
+    var_4 = getentarray( "player_backtrack_blocker_model", "targetname" );
 
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
+    foreach ( var_0 in var_4 )
+        var_0 show();
+
+    var_4 = getentarray( "player_backtrack_blocker_brush", "targetname" );
+
+    foreach ( var_0 in var_4 )
     {
-        var_0 = var_5[var_6];
-        var_0 _meth_8059();
+        var_0 show();
+        var_0 solid();
     }
 
-    var_clear_1
-    var_clear_0
-    var_4 = _func_1A2( "player_backtrack_blocker_brush", "targetname" );
-    var_7 = var_4;
-
-    for ( var_8 = _func_1DA( var_7 ); _func_02F( var_8 ); var_8 = _func_1BF( var_7, var_8 ) )
-    {
-        var_0 = var_7[var_8];
-        var_0 _meth_8059();
-        var_0 _meth_82C8();
-    }
-
-    var_clear_1
-    var_clear_0
     _ID42407::_ID3343( "friendly_open_latvee", maps\roadkill_code::_ID48503 );
     _ID42407::_ID3344( "player_ride_vehicle", maps\roadkill_code::_ID43427 );
     _ID42407::_ID3344( "ride_vehicle_starts_moving", maps\roadkill_code::_ID47333 );
@@ -455,9 +431,9 @@ _ID48411()
     _ID42237::_ID14413( "bridge_baddies_retreat" );
     _ID42407::_ID4422( "bridge_baddies_retreat" );
     _ID42237::_ID14413( "bridgelayer_crosses" );
-    var_9 = _func_1A1( "bridge_layer_clipbrush", "targetname" );
-    var_9 _meth_805F();
-    var_9 _meth_80B7();
+    var_9 = getent( "bridge_layer_clipbrush", "targetname" );
+    var_9 connectpaths();
+    var_9 delete();
     _ID42465::_ID23801( "intro_fight_part_b_mix" );
     _ID42407::_ID1985( _ID42237::_ID14413, "leaving_riverbank" );
     _ID42407::_ID1890( maps\roadkill_code::_ID44937 );
@@ -466,14 +442,14 @@ _ID48411()
     _ID42407::_ID1890( _ID42407::_ID4422, "leaving_riverbank" );
     _ID42407::_ID11231();
 
-    if ( _func_03A( "use_old_waving_guy" ) )
+    if ( getdvarint( "use_old_waving_guy" ) )
     {
-        var_10 = _func_1A1( "stair_wave_spawner", "targetname" );
+        var_10 = getent( "stair_wave_spawner", "targetname" );
         var_10 _ID42407::_ID1947( maps\roadkill_code::_ID51659 );
-        var_10 _meth_809B();
+        var_10 stalingradspawn();
     }
 
-    var_11 = _func_1A1( "player_latvee_passenger_spawner", "targetname" );
+    var_11 = getent( "player_latvee_passenger_spawner", "targetname" );
     var_11 _ID42407::_ID1947( maps\roadkill_code::_ID43653 );
     var_11 _ID42407::_ID35014();
     _ID42407::_ID4917( "allies" );
@@ -487,51 +463,42 @@ _ID48411()
     _ID42237::_ID14402( "convoy_moment" );
     _ID42237::resetaicount();
     thread maps\roadkill_aud::_ID47919();
-    var_12 = _func_0DE( "axis" );
-    var_13 = var_12;
+    var_12 = getaiarray( "axis" );
 
-    for ( var_16 = _func_1DA( var_13 ); _func_02F( var_16 ); var_16 = _func_1BF( var_13, var_16 ) )
+    foreach ( var_14 in var_12 )
     {
-        var_14 = var_13[var_16];
-        var_15 = _func_0B8( 2 );
-        var_14 _ID42237::_ID10192( var_15, ::_meth_8058 );
+        var_15 = randomfloat( 2 );
+        var_14 _ID42237::_ID10192( var_15, ::kill );
     }
 
-    var_clear_3
-    var_clear_0
     _ID42407::_ID10226( 4.5, _ID42237::_ID14402, "guys_get_in_convoy_vehicles" );
     thread maps\roadkill_code::_ID52234();
     _ID42237::_ID14413( "player_gets_in" );
-    thread _unknown_116E();
+    thread player_gets_in_latvee_dof();
     thread maps\roadkill_code::_ID44324();
     _ID42407::_ID3344( "apache_show_building_spawner", maps\roadkill_aud::scn_apache_show_building_scripted_sfx );
     _ID42407::_ID10226( 0, _ID42411::_ID35200, "apache_show_building_spawner" );
-    _func_023();
+    clearallcorpses();
     _ID42407::_ID4422( "player_gets_in" );
-    var_12 = _func_0DE( "allies" );
-    var_17 = var_12;
+    var_12 = getaiarray( "allies" );
 
-    for ( var_18 = _func_1DA( var_17 ); _func_02F( var_18 ); var_18 = _func_1BF( var_17, var_18 ) )
+    foreach ( var_14 in var_12 )
     {
-        var_14 = var_17[var_18];
-
-        if ( _func_02F( var_14._ID22746 ) )
+        if ( isdefined( var_14._ID22746 ) )
             var_14 _ID42407::_ID36519();
 
         var_14._ID507 = 0;
     }
 
-    var_clear_1
-    var_clear_0
     thread maps\roadkill_code::_ID48774();
     wait 0.8;
     _ID42237::_ID30398( "film_org", maps\roadkill_code::_ID51396 );
     _ID42237::_ID14402( "safe_to_delete_bridge_allies" );
     wait 2.7;
-    var_0 = _func_1A1( "friendly_video_blocker", "targetname" );
-    var_0 _meth_82C8();
-    var_0 _meth_805E();
-    var_19 = _func_1A2( "jeep_rider_spawner", "targetname" );
+    var_0 = getent( "friendly_video_blocker", "targetname" );
+    var_0 solid();
+    var_0 disconnectpaths();
+    var_19 = getentarray( "jeep_rider_spawner", "targetname" );
     _ID42407::_ID3342( var_19, maps\roadkill_code::_ID50920 );
     _ID42237::_ID3350( var_19, _ID42407::_ID35014 );
     level notify( "continue_film_explosion_h2" );
@@ -555,7 +522,7 @@ _ID48411()
         wait(var_20[var_21]);
     }
 
-    _unknown_1364( 0 );
+    _ID45445( 0 );
 }
 
 player_gets_in_latvee_dof()
@@ -598,25 +565,25 @@ _ID54583()
     _ID42237::_ID14402( "First_City_Section_Flag" );
     _ID42237::_ID14402( "Crossroads_Flag" );
     maps\roadkill_code::_ID46274( "start_vehicle_ride" );
-    _unknown_15CE( 1 );
+    _ID45445( 1 );
 }
 
 _ID45445( var_0 )
 {
-    thread _unknown_1629();
-    thread _unknown_1685();
-    _ID42237::_ID3294( _func_1A2( "city_dynamics_models", "targetname" ), ::_meth_8059 );
+    thread h2_latvee_ride_cinematic();
+    thread h2_latvee_escape_cinematic();
+    _ID42237::_ID3294( getentarray( "city_dynamics_models", "targetname" ), ::show );
     _ID42407::_ID1892( "axis", _ID42407::_ID32355, 1 );
     _ID42407::_ID32255( maps\roadkill_code::_ID49363 );
     maps\roadkill_code::_ID47829();
-    var_1 = _func_1A2( "destroyed_latvee_model", "targetname" );
+    var_1 = getentarray( "destroyed_latvee_model", "targetname" );
     _ID42237::_ID3350( var_1, _ID42237::_ID18529 );
     level._ID9277 = 0;
-    level._ID794 _meth_80F3( 1 );
+    level._ID794 enabledeathshield( 1 );
     thread maps\roadkill_code::_ID49867();
-    level._ID794 _meth_8328();
+    level._ID794 disableweapons();
     level._ID794 _ID42407::_ID13021( "near_death_vision_enabled" );
-    level._ID27617 = _func_1AB( level._ID794, 2000, 500 );
+    level._ID27617 = missile_createrepulsorent( level._ID794, 2000, 500 );
     level._ID45681 = [];
     _ID42407::_ID3343( "run_away_die", maps\roadkill_code::_ID51066 );
     _ID42407::_ID3343( "start_player_crazy_ride", maps\roadkill_code::_ID48458 );
@@ -700,7 +667,7 @@ h2_latvee_escape_cinematic()
         var_0 _ID54167::_ID48800( var_5 ) _ID54167::_ID47198( var_6, var_1, var_3, var_2 );
     }
 
-    thread _unknown_1A01();
+    thread h2_latvee_escape_pickup_push_cin();
     var_0 _ID54167::_ID48166();
 }
 
@@ -715,22 +682,17 @@ h2_latvee_escape_pickup_push_cin()
 
 _ID54142()
 {
-    var_0 = _func_0DE();
-    var_1 = var_0;
+    var_0 = getaiarray();
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_1A7( level._ID46107 ) && var_2 == level._ID46107 )
+        if ( isalive( level._ID46107 ) && var_2 == level._ID46107 )
             continue;
 
-        if ( _func_02F( var_2._ID22746 ) )
+        if ( isdefined( var_2._ID22746 ) )
             var_2 _ID42407::_ID36519();
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "roadkill_town_dialogue" );
     _ID42407::_ID4422( "roadkill_town_dialogue" );
     thread maps\roadkill_code::_ID49480();
@@ -738,7 +700,7 @@ _ID54142()
 
     if ( level._ID35897 != "ride" )
     {
-        var_4 = _func_03D();
+        var_4 = gettime();
         wait 0.6;
         thread maps\roadkill_code::_ID43640( "roadkill_fly_breakingaway" );
         wait 2.1;
@@ -767,21 +729,16 @@ _ID54142()
     wait 2.6;
     thread maps\roadkill_code::_ID43123( "roadkill_ar3_rogerthat" );
     _ID42237::_ID14413( "start_runner" );
-    var_0 = _func_0DE( "allies" );
-    var_5 = var_0;
+    var_0 = getaiarray( "allies" );
 
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_5[var_6];
-
-        if ( _func_02F( var_2._ID29969 ) )
+        if ( isdefined( var_2._ID29969 ) )
             continue;
 
         var_2 maps\roadkill_code::_ID52943();
     }
 
-    var_clear_1
-    var_clear_0
     thread maps\roadkill_code::_ID44805();
     _ID42407::_ID10226( 6.0, maps\roadkill_code::_ID43640, "roadkill_fly_watchalleys" );
     _ID42407::_ID10226( 8.0, maps\roadkill_code::_ID43640, "roadkill_ar3_covering" );
@@ -802,11 +759,11 @@ _ID45367()
     _ID42475::_ID34575( "start_crazy_ride_checkpoint" );
     _ID42237::_ID14402( "First_City_Section_Flag" );
     _ID42237::_ID14402( "Crossroads_Flag" );
-    _func_31B( 1 );
-    _func_31B( 3 );
-    _func_31C( 2 );
+    _func_31b( 1 );
+    _func_31b( 3 );
+    _func_31c( 2 );
     maps\roadkill_code::_ID46274( "start_vehicle_crazy_ride" );
-    _unknown_1B39( 1 );
+    _ID45445( 1 );
 }
 
 _ID49117()
@@ -815,17 +772,14 @@ _ID49117()
     thread maps\roadkill_aud::_ID49995();
     _ID42237::_ID14413( "shot_rings_out" );
     thread maps\roadkill_code::_ID49525();
-    thread _unknown_1D67();
+    thread _ID53393();
     thread maps\roadkill_code::_ID47699();
     _ID42237::_ID14413( "ambush_spawn" );
-    var_0 = _func_0DE();
-    var_1 = var_0;
+    var_0 = getaiarray();
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_02F( var_2 _meth_81A0() ) )
+        if ( isdefined( var_2 getturret() ) )
             continue;
 
         if ( var_2._ID1194 != "neutral" )
@@ -834,16 +788,14 @@ _ID49117()
         var_2 maps\roadkill_code::_ID52943();
     }
 
-    var_clear_2
-    var_clear_0
     level._ID794._ID511 = 0;
     level._ID794._ID512 = 0;
     _ID42237::_ID3350( level._ID48014, _ID42407::_ID35014 );
     _ID42237::_ID14413( "ambush" );
     _ID42407::_ID4918( "axis" );
     _ID42407::_ID1892( "axis", maps\roadkill_code::_ID43159 );
-    level._ID54552 = _func_03B( "physveh_explodeforce", 0 );
-    _func_0DB( "physveh_explodeforce", 0 );
+    level._ID54552 = getdvarfloat( "physveh_explodeforce", 0 );
+    setsaveddvar( "physveh_explodeforce", 0 );
     wait 3;
     _ID42407::_ID4422( "ambush" );
 }
@@ -891,87 +843,81 @@ _ID51976()
     _ID42475::_ID34575( "start_crazy_ride_later_checkpoint" );
     _ID42237::_ID14402( "School_Section_Flag" );
     _ID42237::_ID14402( "Crossroads_Flag" );
-    _func_31B( 1 );
-    _func_31B( 3 );
-    _func_31C( 2 );
-    _func_31C( 4 );
-    _func_31C( 5 );
+    _func_31b( 1 );
+    _func_31b( 3 );
+    _func_31c( 2 );
+    _func_31c( 4 );
+    _func_31c( 5 );
     maps\roadkill_code::_ID46274( "start_vehicle_ride_later" );
-    _unknown_1D3C( 1 );
+    _ID45445( 1 );
 }
 
 _ID52649()
 {
-    thread _unknown_20B4();
-    var_0 = _func_1A1( "player_brake_trigger", "targetname" );
+    thread _ID52162();
+    var_0 = getent( "player_brake_trigger", "targetname" );
     var_0 thread maps\roadkill_code::_ID45988();
     var_1 = level._ID52834[0];
     var_2 = level._ID52834[1];
     var_3 = level._ID52834[2];
-    var_2 _meth_823C();
-    level._ID794 _meth_80F3( 0 );
+    var_2 vehphys_disablecrashing();
+    level._ID794 enabledeathshield( 0 );
     wait 0.05;
     thread maps\roadkill_code::_ID45499();
     thread maps\roadkill_code::_ID54662();
     _ID42237::_ID14413( "lead_vehicle_speeds_up" );
-    level._ID54552 = _func_03B( "physveh_explodeforce", 0 );
-    _func_0DB( "physveh_explodeforce", 0 );
+    level._ID54552 = getdvarfloat( "physveh_explodeforce", 0 );
+    setsaveddvar( "physveh_explodeforce", 0 );
     _ID42237::_ID14413( "resume_the_path" );
-    _func_190( 1 );
+    setplayerignoreradiusdamage( 1 );
     _ID42407::_ID10226( 0.25, maps\roadkill_code::_ID45561, 12 );
     _ID42407::_ID10226( 0.2, maps\roadkill_code::_ID46217 );
     _ID42407::_ID10226( 1.25, maps\roadkill_code::_ID45561, 8 );
     _ID42237::_ID14413( "player_is_pushing_truck" );
-    _ID42237::_ID3350( _func_1A2( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
-    var_4 = _func_1F2( "player_reattach_route", "script_noteworthy" );
-    var_2 _meth_8289( var_4 );
+    _ID42237::_ID3350( getentarray( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
+    var_4 = getvehiclenode( "player_reattach_route", "script_noteworthy" );
+    var_2 startpath( var_4 );
     var_3._ID1266 = 0;
     var_1 thread maps\roadkill_code::_ID54293();
-    var_2 _meth_829B( 5 );
+    var_2 resumespeed( 5 );
     _ID42237::_ID14402( "push_complete" );
     level notify( "stop_updating_player_vehicle_speed" );
-    _func_190( 0 );
-    thread _unknown_2199();
+    setplayerignoreradiusdamage( 0 );
+    thread _ID46200();
     var_1 = level._ID52834[0];
     var_2 = level._ID52834[1];
     var_3 = level._ID52834[2];
     _ID42237::_ID14413( "player_vehicle_wipes_out" );
-    var_2 _meth_828D( 14, 2, 2 );
-    var_3 _meth_828D( 14, 2, 2 );
-    var_5 = _func_1A2( "last_building_spawner", "targetname" );
+    var_2 vehicle_setspeed( 14, 2, 2 );
+    var_3 vehicle_setspeed( 14, 2, 2 );
+    var_5 = getentarray( "last_building_spawner", "targetname" );
     _ID42407::_ID3339( var_5 );
-    _func_1AD( level._ID27617 );
-    var_6 = _func_1A1( "missile_target", "targetname" );
-    var_7 = _func_1A1( var_6._ID1191, "targetname" );
-    var_8 = _func_1A9( var_7, 50000, 50000, level._ID48697 );
+    missile_deleteattractor( level._ID27617 );
+    var_6 = getent( "missile_target", "targetname" );
+    var_7 = getent( var_6._ID1191, "targetname" );
+    var_8 = missile_createattractorent( var_7, 50000, 50000, level._ID48697 );
     _ID42407::_ID32411( 0.0 );
     level._ID794._ID512 = 1;
     thread maps\roadkill_code::_ID49415();
     wait 2;
-    var_2 _meth_828D( 10, 2, 2 );
-    var_3 _meth_828D( 10, 2, 2 );
-    level._ID794 _meth_80F3( 1 );
+    var_2 vehicle_setspeed( 10, 2, 2 );
+    var_3 vehicle_setspeed( 10, 2, 2 );
+    level._ID794 enabledeathshield( 1 );
     var_9 = undefined;
 
     for (;;)
     {
         var_10 = 0;
-        var_11 = _func_1A2( "rocket", "classname" );
-        var_12 = var_11;
+        var_11 = getentarray( "rocket", "classname" );
 
-        for ( var_13 = _func_1DA( var_12 ); _func_02F( var_13 ); var_13 = _func_1BF( var_12, var_13 ) )
+        foreach ( var_9 in var_11 )
         {
-            var_9 = var_12[var_13];
-
-            if ( _func_0F3( var_9._ID740, level._ID794._ID740 ) < 750 )
+            if ( distance( var_9._ID740, level._ID794._ID740 ) < 750 )
             {
                 var_10 = 1;
                 break;
             }
         }
-
-        var_clear_1
-        var_clear_0
 
         if ( var_10 )
             break;
@@ -979,7 +925,7 @@ _ID52649()
         wait 0.05;
     }
 
-    var_14 = _ID42407::_ID15689( level._ID794 _meth_80AF(), level._ID794 _meth_8346(), var_9._ID740 );
+    var_14 = _ID42407::_ID15689( level._ID794 geteye(), level._ID794 getplayerangles(), var_9._ID740 );
     var_15 = var_14 >= 0.8;
 
     if ( var_15 )
@@ -993,10 +939,10 @@ _ID52649()
 
     for (;;)
     {
-        if ( !_func_02F( var_9 ) )
+        if ( !isdefined( var_9 ) )
             break;
 
-        if ( _func_0F3( var_9._ID740, level._ID794._ID740 ) < 150 )
+        if ( distance( var_9._ID740, level._ID794._ID740 ) < 150 )
         {
             if ( var_15 )
             {
@@ -1007,7 +953,7 @@ _ID52649()
             }
         }
 
-        if ( _func_0F3( var_9._ID740, level._ID794._ID740 ) < 75 )
+        if ( distance( var_9._ID740, level._ID794._ID740 ) < 75 )
             break;
 
         wait 0.05;
@@ -1022,46 +968,35 @@ _ID52649()
 
     thread maps\roadkill_code::_ID45240();
     var_16 = level._ID794._ID740;
-    level._ID794 _meth_8055();
-    level._ID44301 _meth_80B7();
-    level._ID794 _meth_8343( var_16 );
+    level._ID794 unlink();
+    level._ID44301 delete();
+    level._ID794 setorigin( var_16 );
     level notify( "ride_ends" );
     level._ID794 _ID42298::_ID39638();
-    var_17 = _func_0DE( "allies" );
-    var_18 = var_17;
+    var_17 = getaiarray( "allies" );
 
-    for ( var_20 = _func_1DA( var_18 ); _func_02F( var_20 ); var_20 = _func_1BF( var_18, var_20 ) )
+    foreach ( var_19 in var_17 )
     {
-        var_19 = var_18[var_20];
-
-        if ( _func_02F( var_19._ID22746 ) )
+        if ( isdefined( var_19._ID22746 ) )
             var_19 _ID42407::_ID36519();
     }
 
-    var_clear_2
-    var_clear_0
     var_21 = [];
     var_21[0] = var_1;
     var_21[1] = var_2;
     var_21[2] = var_3;
-    var_22 = _func_1F2( "vehicle_hell", "targetname" );
-    var_23 = var_21;
+    var_22 = getvehiclenode( "vehicle_hell", "targetname" );
 
-    for ( var_25 = _func_1DA( var_23 ); _func_02F( var_25 ); var_25 = _func_1BF( var_23, var_25 ) )
-    {
-        var_24 = var_23[var_25];
+    foreach ( var_24 in var_21 )
         var_24 thread maps\roadkill_code::_ID54403( var_22 );
-    }
 
-    var_clear_2
-    var_clear_0
-    _func_0DB( "physveh_explodeforce", level._ID54552 );
+    setsaveddvar( "physveh_explodeforce", level._ID54552 );
 }
 
 _ID52162()
 {
     _ID42237::_ID14413( "lead_vehicle_speeds_up" );
-    var_0 = _func_03D();
+    var_0 = gettime();
     thread maps\roadkill_code::_ID45780( "roadkill_fly_strungout" );
     _ID42237::_ID14413( "we're cut off" );
     maps\roadkill_code::_ID49738( "roadkill_cpd_cutoff" );
@@ -1080,40 +1015,40 @@ _ID50764()
 {
     _ID42475::_ID34575( "start_dismount_checkpoint" );
     _ID42237::_ID14402( "School_Section_Flag" );
-    _ID42237::_ID3350( _func_1A2( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
-    _func_31B( 1 );
-    _func_31B( 3 );
-    _func_31C( 2 );
-    _func_31C( 4 );
-    _func_31C( 5 );
-    level._ID794 _meth_8328();
+    _ID42237::_ID3350( getentarray( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
+    _func_31b( 1 );
+    _func_31b( 3 );
+    _func_31c( 2 );
+    _func_31c( 4 );
+    _func_31c( 5 );
+    level._ID794 disableweapons();
     var_0 = _ID42237::_ID16638( "slide_org", "targetname" );
-    level._ID794 _meth_8343( var_0._ID740 );
+    level._ID794 setorigin( var_0._ID740 );
 }
 
 _ID43234()
 {
     _ID42237::_ID14402( "kill_drones" );
     _ID42407::_ID29534( "axis", maps\roadkill_code::_ID24832 );
-    _ID42237::_ID3294( _func_1A2( "before_school_dynamiques", "script_noteworthy" ), ::_meth_805A );
+    _ID42237::_ID3294( getentarray( "before_school_dynamiques", "script_noteworthy" ), ::hide );
     _ID42475::_ID34575( "stop_interior_vehicle_context" );
     thread maps\roadkill_code::_ID51652();
 
-    if ( _func_02F( level._ID52834["detour"] ) && _func_02F( level._ID52834["detour"]._ID170 ) )
+    if ( isdefined( level._ID52834["detour"] ) && isdefined( level._ID52834["detour"]._ID170 ) )
     {
-        level._ID52834["detour"]._ID9829 _meth_80B7();
-        level._ID52834["detour"] _meth_80B7();
+        level._ID52834["detour"]._ID9829 delete();
+        level._ID52834["detour"] delete();
     }
 
     _ID42234::_ID13611( "smoke_column" );
-    var_0 = _func_1A2( "destroyed_latvee_model", "targetname" );
+    var_0 = getentarray( "destroyed_latvee_model", "targetname" );
     _ID42237::_ID3350( var_0, _ID42237::_ID34034 );
     level notify( "dismount_staged_firelights" );
 
     if ( level._ID35897 != "dismount" )
         thread _ID42263::_ID1376();
 
-    thread _unknown_27C0();
+    thread _ID43189();
     _ID42407::_ID3342( level._ID48014, maps\roadkill_code::_ID53507 );
     _ID42407::_ID3343( "school_spawner", _ID42407::_ID12471, 5000 );
     _ID42407::_ID3343( "school_spawner", maps\roadkill_code::_ID52672 );
@@ -1122,128 +1057,118 @@ _ID43234()
     _ID42407::_ID10226( 0.95, maps\roadkill_code::_ID52377 );
     var_1 = 5;
     thread maps\roadkill_aud::_ID46869( var_1, "scn_shellshock_latvee_ambush_02", "shellshock_latvee_ambush_02_mix" );
-    level._ID794 _meth_818E( "default", var_1 );
-    _func_192( 0.3, 1.0, level._ID794._ID740, 2000 );
-    _func_032( "ui_consciousness_init", 1 );
-    _func_0DB( "ui_consciousnessVignetteDarkness", 0.1 );
-    _func_032( "ui_consciousness_play", 2 );
-    var_2 = _func_1A2( "dead_vehicle_spawner", "targetname" );
-    var_3 = var_2;
+    level._ID794 shellshock( "default", var_1 );
+    earthquake( 0.3, 1.0, level._ID794._ID740, 2000 );
+    setomnvar( "ui_consciousness_init", 1 );
+    setsaveddvar( "ui_consciousnessVignetteDarkness", 0.1 );
+    setomnvar( "ui_consciousness_play", 2 );
+    var_2 = getentarray( "dead_vehicle_spawner", "targetname" );
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_2 )
     {
-        var_4 = var_3[var_5];
-        var_4 _meth_80C5( var_4._ID25546 );
-        var_4 _meth_8059();
+        var_4 setcontents( var_4._ID25546 );
+        var_4 show();
     }
 
-    var_clear_2
-    var_clear_0
-    level._ID49551 = _func_06A( "script_origin", ( -6382.98, 8474.13, 334 ) );
+    level._ID49551 = spawn( "script_origin", ( -6382.98, 8474.13, 334 ) );
     var_6 = _ID42407::_ID35028( "player_worldbody", level._ID49551._ID740, ( 0, 0, 0 ) );
-    var_6 _meth_805A();
-    thread _unknown_27D4( var_6 );
+    var_6 hide();
+    thread thrown_out_of_latvee_cinseq( var_6 );
     level._ID49551 _ID42259::_ID3018( var_6, "exit_latvee" );
-    var_7 = _func_06A( "script_origin", var_6 _meth_818C( "tag_camera" ) - ( 0, 0, 10 ) );
-    var_7._ID65 = var_6 _meth_818D( "tag_camera" );
-    level._ID794 _meth_8083( var_7, "", 1, 0, 0, 0, 0, 0 );
+    var_7 = spawn( "script_origin", var_6 gettagorigin( "tag_camera" ) - ( 0, 0, 10 ) );
+    var_7._ID65 = var_6 gettagangles( "tag_camera" );
+    level._ID794 playerlinkto( var_7, "", 1, 0, 0, 0, 0, 0 );
     waittillframeend;
-    var_7 _meth_80B7();
-    level._ID794 _meth_8334( 1 );
-    level._ID794 _meth_84DA( 0 );
-    level._ID794 _meth_8189( "prone" );
-    level._ID794 _meth_8121( 0 );
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 1 );
-    _func_0DB( "hud_showStance", 0 );
-    _func_0DB( "compass", 0 );
-    _func_0DB( "ammoCounterHide", 1 );
-    _func_0DB( "actionSlotsHide", 1 );
-    var_8 = _func_0DE( "axis" );
+    var_7 delete();
+    level._ID794 freezecontrols( 1 );
+    level._ID794 _meth_84da( 0 );
+    level._ID794 setstance( "prone" );
+    level._ID794 allowstand( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 1 );
+    setsaveddvar( "hud_showStance", 0 );
+    setsaveddvar( "compass", 0 );
+    setsaveddvar( "ammoCounterHide", 1 );
+    setsaveddvar( "actionSlotsHide", 1 );
+    var_8 = getaiarray( "axis" );
     _ID42237::_ID15566( level._ID794._ID740, var_8 );
 
     for ( var_9 = var_8.size - 1; var_9 >= 0 && var_9 >= var_8.size - 4; var_9-- )
     {
-        if ( _func_02F( var_8[var_9]._ID22746 ) )
+        if ( isdefined( var_8[var_9]._ID22746 ) )
             continue;
 
-        var_8[var_9] _meth_8058();
+        var_8[var_9] kill();
     }
 
-    var_10 = _func_1A2( "friendly_crash_spawner", "targetname" );
+    var_10 = getentarray( "friendly_crash_spawner", "targetname" );
     _ID42407::_ID3342( var_10, maps\roadkill_code::_ID52118 );
     _ID42407::_ID3344( "dismount_enemy_spawner", maps\roadkill_code::_ID44667 );
     _ID42407::_ID10226( 4, _ID42407::_ID3346, "dismount_enemy_spawner" );
-    level._ID794 _meth_8183( "ally_with_player" );
+    level._ID794 setthreatbiasgroup( "ally_with_player" );
     _ID42237::_ID3350( var_10, _ID42407::_ID35014 );
     waittillframeend;
-    level._ID794 _ID42237::_ID10192( 0.15, ::_meth_80AA, 50, 50, 20, 20 );
-    level._ID794 _ID42237::_ID10192( 0.75, ::_meth_80AA, 50, 50, 20, 20 );
-    level._ID794 _meth_8084( var_6, "tag_player", 0.9, 0, 0, 0, 0, 1 );
-    var_6 _meth_8059();
+    level._ID794 _ID42237::_ID10192( 0.15, ::setviewangleresistance, 50, 50, 20, 20 );
+    level._ID794 _ID42237::_ID10192( 0.75, ::setviewangleresistance, 50, 50, 20, 20 );
+    level._ID794 playerlinktodelta( var_6, "tag_player", 0.9, 0, 0, 0, 0, 1 );
+    var_6 show();
     level._ID49551 _ID42259::_ID3111( var_6, "exit_latvee" );
-    var_6 _meth_80B7();
+    var_6 delete();
     wait 0.15;
-    level._ID794 _meth_8334( 0 );
-    level._ID794 _meth_84DB();
-    level._ID794 _meth_8122( 1 );
-    level._ID794 _meth_8121( 1 );
+    level._ID794 freezecontrols( 0 );
+    level._ID794 _meth_84db();
+    level._ID794 allowcrouch( 1 );
+    level._ID794 allowstand( 1 );
     _ID42237::_ID14402( "player_knocked_down" );
     _ID42234::_ID13611( "crashed_latvees" );
     _ID42407::_ID29534( "axis", maps\roadkill_code::_ID43159 );
     _ID42407::_ID29534( "axis", _ID42407::_ID32355 );
-    _func_0DB( "ui_ignoreTurretCompassHide", 0 );
-    _func_0DB( "ui_hidemap", 0 );
-    _func_0DB( "hud_showStance", 1 );
-    _func_0DB( "compass", 1 );
+    setsaveddvar( "ui_ignoreTurretCompassHide", 0 );
+    setsaveddvar( "ui_hidemap", 0 );
+    setsaveddvar( "hud_showStance", 1 );
+    setsaveddvar( "compass", 1 );
     wait 0.5;
     var_11 = 5;
     var_12 = var_11 * 20;
 
     for ( var_9 = 0; var_9 < var_12; var_9++ )
     {
-        if ( level._ID794 _meth_8188() != "prone" )
+        if ( level._ID794 getstance() != "prone" )
             break;
 
         wait 0.05;
     }
 
-    var_13 = level._ID794 _meth_8317();
-    var_14 = level._ID794 _meth_831C();
+    var_13 = level._ID794 getweaponslistprimaries();
+    var_14 = level._ID794 getcurrentweapon();
     var_15 = undefined;
-    var_16 = var_13;
 
-    for ( var_18 = _func_1DA( var_16 ); _func_02F( var_18 ); var_18 = _func_1BF( var_16, var_18 ) )
+    foreach ( var_17 in var_13 )
     {
-        var_17 = var_16[var_18];
-
         if ( var_17 == "javelin" )
         {
-            level._ID794 _meth_831A( var_17 );
+            level._ID794 takeweapon( var_17 );
             continue;
         }
 
         var_15 = var_17;
     }
 
-    var_clear_2
-    var_clear_0
+    if ( isdefined( var_15 ) && var_14 == "javelin" )
+        level._ID794 switchtoweapon( var_15 );
 
-    if ( _func_02F( var_15 ) && var_14 == "javelin" )
-        level._ID794 _meth_8320( var_15 );
-
-    level._ID794 _ID42237::_ID10192( 4, ::_meth_80F3, 0 );
-    level._ID794 _meth_8329();
-    _func_0DB( "ammoCounterHide", 0 );
-    _func_0DB( "actionSlotsHide", 0 );
+    level._ID794 _ID42237::_ID10192( 4, ::enabledeathshield, 0 );
+    level._ID794 enableweapons();
+    setsaveddvar( "ammoCounterHide", 0 );
+    setsaveddvar( "actionSlotsHide", 0 );
     _ID42407::_ID32421( "g", "c" );
     _ID42237::_ID14402( "player_is_dismounted" );
     _ID42237::_ID14413( "player_enters_ambush_house" );
     level._ID53321 = 0;
-    var_19 = _func_1A2( "ambush_ally_spawner", "targetname" );
+    var_19 = getentarray( "ambush_ally_spawner", "targetname" );
     _ID42407::_ID3342( var_19, maps\roadkill_code::_ID51806 );
     _ID42237::_ID3350( var_19, _ID42407::_ID35014 );
-    var_20 = _func_1A2( "ambush_house_spawner", "targetname" );
+    var_20 = getentarray( "ambush_house_spawner", "targetname" );
     _ID42407::_ID3343( "slowbie", maps\roadkill_code::_ID53791 );
     _ID42407::_ID3342( var_20, maps\roadkill_code::_ID46725 );
     _ID42407::_ID1985( _ID42237::_ID14413, "player_looks_at_staircase" );
@@ -1257,8 +1182,8 @@ _ID43234()
     _ID42237::_ID14413( "dismount_friendlies_go_for_staircase" );
     _ID42407::_ID1805( "ambush_house_friendlies_reach_staircase" );
     _ID42411::_ID35199( "ambushed_laatpv" );
-    var_21 = _func_1A1( "remove_car", "script_noteworthy" );
-    var_21 _meth_80B7();
+    var_21 = getent( "remove_car", "script_noteworthy" );
+    var_21 delete();
     _ID42407::_ID1985( _ID42237::_ID14413, "foley_flashbang" );
     _ID42407::_ID1890( maps\roadkill_code::_ID50127 );
     thread _ID42407::_ID11231();
@@ -1268,20 +1193,16 @@ _ID43234()
     level._ID50953 = [];
     _ID42407::_ID3343( "enemy_playground_spawner", maps\roadkill_code::_ID47014 );
     _ID42407::_ID3345( "enemy_playground_spawner" );
-    var_22 = level._ID48014;
 
-    for ( var_24 = _func_1DA( var_22 ); _func_02F( var_24 ); var_24 = _func_1BF( var_22, var_24 ) )
+    foreach ( var_23 in level._ID48014 )
     {
-        var_23 = var_22[var_24];
         var_23._ID216 = 1;
         var_23._ID31023 = 1;
         var_23 _ID42407::_ID35014();
     }
 
-    var_clear_2
-    var_clear_0
-    var_25 = _func_03D();
-    var_26 = _func_1A1( "ambush_house_upstairs_first_room", "targetname" );
+    var_25 = gettime();
+    var_26 = getent( "ambush_house_upstairs_first_room", "targetname" );
     var_26 _ID42407::_ID1985( _ID42407::_ID41163 );
     _ID42407::_ID1985( _ID42237::_ID14413, "player_leaves_ambush_house" );
     _ID42407::_ID11232();
@@ -1314,9 +1235,9 @@ thrown_out_of_latvee_cinseq( var_0 )
     var_1 _ID54167::_ID48800( 8.5 ) _ID54167::_ID47198( 0.08, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
     var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID47844( 2 );
     var_1 _ID54167::_ID48800( 0.9 ) _ID54167::_ID47844( 0 );
-    var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID43376( ::_meth_80A9, level._ID794, 0.5, 0.1, 0.2, 20, 20, 15, 5 ) _ID54167::_ID43376( ::_meth_80AA, level._ID794, 50, 50, 20, 20 );
-    var_1 _ID54167::_ID48800( 5.3 ) _ID54167::_ID43376( ::_meth_80A9, level._ID794, 0.65, 0.2, 0.2, 15, 0, 5, 3 ) _ID54167::_ID43376( ::_meth_80AA, level._ID794, 50, 50, 20, 20 );
-    var_1 _ID54167::_ID48800( 7.0 ) _ID54167::_ID43376( ::_meth_80A9, level._ID794, 1.0, 0.3, 0.4, 20, 10, 10, 3 ) _ID54167::_ID43376( ::_meth_80AA, level._ID794, 50, 50, 20, 20 );
+    var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.5, 0.1, 0.2, 20, 20, 15, 5 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+    var_1 _ID54167::_ID48800( 5.3 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.65, 0.2, 0.2, 15, 0, 5, 3 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+    var_1 _ID54167::_ID48800( 7.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.0, 0.3, 0.4, 20, 10, 10, 3 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
     var_1 _ID54167::_ID48800( 1.4 ) _ID54167::_ID44191( 72, 1.6, 0 );
     var_1 _ID54167::_ID48800( 3.0 ) _ID54167::_ID44191( 58, 2.1, 0 );
     var_1 _ID54167::_ID48800( 5.35 ) _ID54167::_ID43500( 2.3, 0 );
@@ -1343,7 +1264,7 @@ _ID43189()
     if ( !_ID42237::_ID14385( "lets_go_trigger" ) )
     {
         _ID42407::_ID1886( "lets_go_trigger" );
-        var_0 = _func_1A1( "ambush_house_last_room", "targetname" );
+        var_0 = getent( "ambush_house_last_room", "targetname" );
         var_0 _ID42407::_ID1985( _ID42407::_ID41162 );
         _ID42407::_ID1985( _ID42407::_ID1687, 4 );
         _ID42407::_ID11232();
@@ -1361,16 +1282,10 @@ _ID43189()
     _ID42237::_ID14413( "friendlies_run_to_school" );
     var_2 = level._ID52610;
     level._ID52610 = _ID42407::_ID3328( level._ID52610 );
-    var_3 = level._ID52610;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
-    {
-        var_4 = var_3[var_5];
+    foreach ( var_4 in level._ID52610 )
         var_4 _ID42407::_ID12492();
-    }
 
-    var_clear_2
-    var_clear_0
     _ID42407::_ID1805( "school_friendlies_gather_outside_trigger" );
     _ID42237::_ID30398( "stop_sprinting_trigger", maps\roadkill_code::_ID49703 );
 }
@@ -1381,12 +1296,12 @@ _ID53153()
     _ID42237::_ID14402( "School_Section_Flag" );
     _ID42237::_ID14402( "classroom_down_stair" );
     _ID42237::_ID14402( "Crossroads_Flag" );
-    _func_31B( 1 );
-    _func_31B( 3 );
-    _func_31C( 2 );
-    _func_31C( 4 );
-    _func_31C( 5 );
-    _ID42237::_ID3350( _func_1A2( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
+    _func_31b( 1 );
+    _func_31b( 3 );
+    _func_31c( 2 );
+    _func_31c( 4 );
+    _func_31c( 5 );
+    _ID42237::_ID3350( getentarray( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
     thread maps\roadkill_code::school_weaponclips();
     var_0 = _ID42237::_ID16638( "school_start_player", "targetname" );
     level._ID794 _ID42407::_ID37404( var_0 );
@@ -1406,10 +1321,10 @@ _ID53153()
 
 _ID44068()
 {
-    thread _unknown_3229();
+    thread _ID44598();
     thread maps\roadkill_code::_ID54107();
     _ID42407::_ID3343( "hidden_room_spawner", maps\roadkill_code::_ID49284 );
-    _ID42237::_ID3294( _func_1A2( "inside_school_dynamiques", "script_noteworthy" ), ::_meth_8059 );
+    _ID42237::_ID3294( getentarray( "inside_school_dynamiques", "script_noteworthy" ), ::show );
     thread maps\roadkill_code::_ID46807();
     thread maps\roadkill_code::_ID50204();
     _ID42237::_ID14402( "lets_go_trigger" );
@@ -1420,8 +1335,8 @@ _ID44068()
     _ID42407::_ID1890( maps\roadkill_code::_ID45692, "roadkill_shp_copythat21" );
     thread _ID42407::_ID11204();
     _ID42237::_ID14413( "roadkill_school_3" );
-    _func_10F( "axis_school", "ally_with_player", 0 );
-    _func_10F( "ally_with_player", "axis_school", 0 );
+    setthreatbias( "axis_school", "ally_with_player", 0 );
+    setthreatbias( "ally_with_player", "axis_school", 0 );
     _ID42237::_ID14413( "roadkill_school_5" );
     _ID42407::_ID1985( maps\roadkill_code::_ID44554 );
     _ID42407::_ID1985( _ID42407::_ID1687, 3.5 );
@@ -1429,13 +1344,13 @@ _ID44068()
     thread _ID42407::_ID11232();
     _ID42237::_ID14413( "roadkill_school_6" );
     maps\roadkill_code::_ID52866();
-    var_0 = _func_1A1( "player_shoot_detection_trigger", "targetname" );
+    var_0 = getent( "player_shoot_detection_trigger", "targetname" );
     var_0 thread maps\roadkill_code::_ID44657();
     _ID42407::_ID3343( "fleeing_baddie_spawner", maps\roadkill_code::_ID43030 );
     _ID42237::_ID14413( "roadkill_school_9" );
     _ID42237::_ID14402( "shepherd_moves_out" );
     _ID42237::_ID14413( "roadkill_school_13" );
-    thread _ID44598();
+    thread _ID48346();
     thread maps\roadkill_code::_ID45886();
 }
 
@@ -1453,7 +1368,7 @@ _ID48346()
         return;
 
     level endon( "player_rounds_end_corner" );
-    var_0 = _func_1A1( "roadkill_school_14", "targetname" );
+    var_0 = getent( "roadkill_school_14", "targetname" );
     var_1 = var_0 _ID42407::_ID15633();
     var_1 _ID42407::_ID41163();
     wait 1;
@@ -1472,16 +1387,16 @@ _ID49864()
     _ID42237::_ID14402( "School_Section_Flag" );
     _ID42237::_ID14402( "Final_Section_Flag" );
     _ID42237::_ID14402( "classroom_down_stair" );
-    _ID42237::_ID3350( _func_1A2( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
+    _ID42237::_ID3350( getentarray( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
     thread maps\roadkill_code::school_weaponclips();
-    _func_31B( 1 );
-    _func_31B( 3 );
-    _func_31C( 2 );
-    _func_31C( 4 );
-    _func_31C( 5 );
+    _func_31b( 1 );
+    _func_31b( 3 );
+    _func_31c( 2 );
+    _func_31c( 4 );
+    _func_31c( 5 );
     var_0 = _ID42237::_ID16638( "start_player_end", "targetname" );
-    level._ID794 _meth_8343( var_0._ID740 );
-    level._ID794 _meth_8345( var_0._ID65 );
+    level._ID794 setorigin( var_0._ID740 );
+    level._ID794 setplayerangles( var_0._ID65 );
 }
 
 _ID51950()
@@ -1490,23 +1405,23 @@ _ID51950()
     _ID42237::_ID14402( "School_Section_Flag" );
     _ID42237::_ID14402( "Final_Section_Flag" );
     _ID42237::_ID14402( "classroom_down_stair" );
-    _ID42237::_ID3350( _func_1A2( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
+    _ID42237::_ID3350( getentarray( "rotate_object", "targetname" ), maps\roadkill_code::rotate_object );
     thread maps\roadkill_code::school_weaponclips();
-    _func_31B( 1 );
-    _func_31B( 3 );
-    _func_31C( 2 );
-    _func_31C( 4 );
-    _func_31C( 5 );
+    _func_31b( 1 );
+    _func_31b( 3 );
+    _func_31c( 2 );
+    _func_31c( 4 );
+    _func_31c( 5 );
     var_0 = _ID42237::_ID16638( "start_player_endfight", "targetname" );
-    level._ID794 _meth_8343( var_0._ID740 );
-    level._ID794 _meth_8345( var_0._ID65 );
+    level._ID794 setorigin( var_0._ID740 );
+    level._ID794 setplayerangles( var_0._ID65 );
     var_1 = _ID42237::_ID16640( "start_ally_endfight", "targetname" );
-    var_2 = _func_1A1( "dismount_macey", "script_noteworthy" );
+    var_2 = getent( "dismount_macey", "script_noteworthy" );
     var_2._ID740 = var_1[0]._ID740;
-    var_3 = _func_1A1( "dismount_dunn", "script_noteworthy" );
+    var_3 = getent( "dismount_dunn", "script_noteworthy" );
     var_3._ID740 = var_1[1]._ID740;
-    level._ID388 = var_2 _meth_809B();
-    level._ID44224 = var_3 _meth_809B();
+    level._ID388 = var_2 stalingradspawn();
+    level._ID44224 = var_3 stalingradspawn();
 
     for ( var_4 = 0; var_4 <= 16; var_4++ )
     {
@@ -1532,7 +1447,7 @@ _ID53110()
     _ID42407::_ID3343( "pistol_walk_spawner", maps\roadkill_code::_ID46299 );
     _ID42407::_ID3343( "pistol_killer_spawner", maps\roadkill_code::_ID46490 );
     _ID42237::_ID30398( "friendlies_get_on_exit_convoy_trigger", maps\roadkill_code::_ID51307 );
-    thread _unknown_368C();
+    thread dropplayergun();
     _ID42237::_ID14413( "roadkill_school_20" );
     level._ID54471 = [];
     level._ID43526 = [];
@@ -1543,51 +1458,40 @@ _ID53110()
     _ID42407::_ID3344( "ending_takeoff_heli_spawner", maps\roadkill_code::_ID45112 );
     _ID42407::_ID3346( "ending_takeoff_heli_spawner" );
 
-    if ( !_func_03A( "use_old_rangers_before_finale" ) )
-        thread _unknown_36E8();
+    if ( !getdvarint( "use_old_rangers_before_finale" ) )
+        thread _ID47758();
 
     _ID42237::_ID14413( "pistol_runner_died" );
     _ID42407::_ID1805( "final_friendly_trigger" );
 
-    if ( _func_1A7( level._ID45694 ) )
+    if ( isalive( level._ID45694 ) )
         level._ID45694 thread _ID42407::_ID15504( "roadkill_fly_lastofem" );
 
     _ID42465::_ID23797( "finale" );
     _ID42237::_ID14413( "player_rounds_end_corner" );
-    var_0 = _func_1A1( "shepherd_ending_spawner", "targetname" );
+    var_0 = getent( "shepherd_ending_spawner", "targetname" );
     var_0 _ID42407::_ID35014();
     _ID42407::_ID3346( "ending_hangout_spawner" );
     _ID42407::_ID3346( "ending_wounded_spawner" );
     _ID42237::_ID14413( "approaching_end" );
-    var_0 = _func_1A1( "stryker_blocker_spawner", "targetname" );
+    var_0 = getent( "stryker_blocker_spawner", "targetname" );
     var_0 _ID42407::_ID35192();
     _ID42237::_ID14413( "the_end" );
     var_1 = _ID42407::_ID15741( "allies", "c" );
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_4];
-
-        if ( _func_02F( var_3._ID22746 ) )
+        if ( isdefined( var_3._ID22746 ) )
             var_3 _ID42407::_ID36519();
 
-        var_3 _meth_80B7();
+        var_3 delete();
     }
 
-    var_clear_2
-    var_clear_0
-    var_5 = _func_0DE( "axis" );
-    var_6 = var_5;
+    var_5 = getaiarray( "axis" );
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
-    {
-        var_3 = var_6[var_7];
-        var_3 _meth_8058();
-    }
+    foreach ( var_3 in var_5 )
+        var_3 kill();
 
-    var_clear_1
-    var_clear_0
     _ID42407::_ID3344( "friendly_ending_runner_spawner", maps\roadkill_code::_ID46353 );
     _ID42407::_ID3346( "friendly_ending_runner_spawner" );
 }
@@ -1595,50 +1499,39 @@ _ID53110()
 dropplayergun()
 {
     _ID42237::_ID14413( "start_shepherd_end" );
-    _func_0DB( "cg_gunDownAnimDelayTime", 250 );
+    setsaveddvar( "cg_gunDownAnimDelayTime", 250 );
 }
 
 _ID47758()
 {
     _ID42237::_ID14413( "player_rounds_end_corner_setup" );
     var_0 = [];
-    var_1 = _func_1A2( "pistol_killer_spawner", "script_noteworthy" );
-    var_2 = var_1;
+    var_1 = getentarray( "pistol_killer_spawner", "script_noteworthy" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_4];
-
-        if ( _func_0D4( var_3 ) )
+        if ( isai( var_3 ) )
         {
             var_0 = _ID42237::_ID3293( var_0, var_3 );
             break;
         }
     }
 
-    var_clear_2
-    var_clear_0
-    var_1 = _func_1A2( "pistol_killer_friend_spawner", "script_noteworthy" );
-    var_5 = var_1;
+    var_1 = getentarray( "pistol_killer_friend_spawner", "script_noteworthy" );
 
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_5[var_6];
-
-        if ( _func_0D4( var_3 ) )
+        if ( isai( var_3 ) )
         {
             var_0 = _ID42237::_ID3293( var_0, var_3 );
             break;
         }
     }
-
-    var_clear_1
-    var_clear_0
 
     if ( var_0.size > 0 )
     {
         for ( var_7 = 0; var_7 < var_0.size; var_7++ )
-            thread _unknown_389D( var_0[var_7], var_7 + 1 );
+            thread _ID50674( var_0[var_7], var_7 + 1 );
     }
     else
     {
@@ -1648,7 +1541,7 @@ _ID47758()
 
 _ID50674( var_0, var_1 )
 {
-    var_2 = _func_06A( "script_origin", ( -9703.88, 12828.4, 511.943 ) );
+    var_2 = spawn( "script_origin", ( -9703.88, 12828.4, 511.943 ) );
     var_2._ID65 = ( 0, 34.957, 0 );
 
     if ( var_1 == 1 )
@@ -1758,50 +1651,69 @@ _ID52481()
 {
     switch ( level._ID35897 )
     {
-
+        case "default":
+        case "intro":
+        case "riverbank":
+        case "move_out":
+        case "convoy":
+            maps\roadkill_code::_ID46785();
+        case "ambush":
+        case "ride":
+        case "ride_later":
+        case "ride_end":
+            maps\roadkill_code::_ID45301();
+        case "dismount":
+            maps\roadkill_code::_ID52544();
+            maps\roadkill_code::_ID49256();
+        case "end":
+        case "school":
+        case "endfight":
+            maps\roadkill_code::_ID49096();
+            break;
+        default:
+            break;
     }
-
-    case "endfight":
-    case "school":
-    case "dismount":
-    case "ride_end":
-    case "ride_later":
-    case "ride":
-    case "convoy":
-    case "move_out":
-    case "riverbank":
-    case "intro":
-    case "default":
-    case "end":
-    case "ambush":
-    default:
 }
 
 _ID51524()
 {
     switch ( level._ID35897 )
     {
-
+        case "default":
+        case "intro":
+            _ID42237::_ID14413( "get_on_the_line" );
+        case "riverbank":
+        case "move_out":
+        case "convoy":
+            _ID42237::_ID14413( "intro_latvee_complete" );
+            wait 5;
+            _ID42407::_ID24587( "mus_roadkill_intro" );
+            _ID42237::_ID14413( "player_starts_stairs" );
+            musicstop( 10 );
+            _ID42237::_ID14413( "player_gets_in" );
+        case "ambush":
+        case "ride":
+        case "ride_later":
+        case "ride_end":
+        case "dismount":
+        case "school":
+        case "endfight":
+            thread _ID42407::_ID24577( "mus_roadkill_armored_and_combat" );
+        case "end":
+            _ID42237::_ID14413( "start_shepherd_end" );
+            level notify( "stop_music" );
+            musicstop( 5 );
+            level._ID794 _ID42407::_ID27079( "mus_roadkill_finish" );
+            break;
+        default:
+            break;
     }
-
-    endswitch( 14 )  case "endfight" loc_3C5A case "school" loc_3C5F case "dismount" loc_3C64 case "ride_end" loc_3C6A case "ride_later" loc_3C6F case "ride" loc_3C74 case "convoy" loc_3C6C case "move_out" loc_3C71 case "riverbank" loc_3C77 case "intro" loc_3C79 case "end" loc_3C91 case "default" loc_3C84 case "ambush" loc_3C99 default loc_3CAC
-    case "ride_end":
-    case "ride_later":
-    case "ride":
-    case "convoy":
-    case "move_out":
-    case "riverbank":
-    case "intro":
-    case "end":
-    case "default":
-    case "ambush":
-    default:
 }
 
 _ID51698( var_0, var_1, var_2 )
 {
-    var_2 = _func_0EE( var_2 - var_0 / var_1 - var_0, 0.0, 1.0 );
-    return var_2 * var_2 * 3 - 2 * var_2;
+    var_2 = clamp( ( var_2 - var_0 ) / ( var_1 - var_0 ), 0.0, 1.0 );
+    return var_2 * var_2 * ( 3 - 2 * var_2 );
 }
 
 _ID43442()
@@ -1810,17 +1722,17 @@ _ID43442()
     var_1 = 4.0;
     var_2 = 0.0;
     var_3 = 0.05;
-    _func_2F1( 0, "x", 1.0 );
-    _func_2F1( 0, "y", 0.0 );
+    _func_2f1( 0, "x", 1.0 );
+    _func_2f1( 0, "y", 0.0 );
     level waittill( "building_collapse" );
     wait(var_0);
-    _func_2F1( 0, "y", 1.0 );
+    _func_2f1( 0, "y", 1.0 );
     var_2 = var_1;
 
     while ( var_2 > 0.0 )
     {
-        var_4 = _unknown_3D39( 0.0, var_1, var_2 );
-        _func_2F1( 0, "y", var_4 );
+        var_4 = _ID51698( 0.0, var_1, var_2 );
+        _func_2f1( 0, "y", var_4 );
         var_2 -= var_3;
         wait(var_3);
     }
@@ -1830,15 +1742,10 @@ _ID45809( var_0, var_1 )
 {
     var_2 = _ID42411::_ID35200( var_0 );
     wait(var_1);
-    var_3 = var_2;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_2 )
     {
-        var_4 = var_3[var_5];
         var_4 maps\roadkill_aud::_ID50111();
         var_4 thread _ID42407::_ID27079( var_4._ID43356 );
     }
-
-    var_clear_2
-    var_clear_0
 }

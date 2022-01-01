@@ -5,17 +5,17 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "luxurysedan", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_003E );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_luxurysedan", "vehicle_luxurysedan_destroy" );
     _ID42411::_ID6216( "vehicle_luxurysedan_test", "vehicle_luxurysedan_destroy" );
     _ID42411::_ID6216( "vehicle_luxurysedan_viewmodel", "vehicle_luxurysedan_destroy" );
     _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion", undefined, "explo_metal_rand" );
-    _ID42411::_ID6206( ::_unknown_0088 );
+    _ID42411::_ID6206( ::_ID32221 );
     _ID42411::_ID6220( %technical_driving_idle_forward, %technical_driving_idle_backward, 10 );
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_00AE, ::_unknown_00A9 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
 }
 
 _ID19731()
@@ -34,7 +34,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 1; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[0]._ID19302 = %luxurysedan_driver_idle;
@@ -45,9 +45,9 @@ _ID32221()
 {
     var_0 = [];
 
-    if ( _func_02F( self._ID40791 ) && _func_125( self._ID40791, "script_vehicle_luxurysedan_viewmodel" ) )
+    if ( isdefined( self._ID40791 ) && issubstr( self._ID40791, "script_vehicle_luxurysedan_viewmodel" ) )
     {
-        var_0["attach_exterior"] = _func_1A5();
+        var_0["attach_exterior"] = spawnstruct();
         var_0["attach_exterior"]._ID1067 = "body_animate_jnt";
         var_0["attach_exterior"]._ID669 = "vehicle_luxurysedan_2009_viewmodel_interior";
         var_0["attach_exterior"]._ID47753 = "tag_origin";

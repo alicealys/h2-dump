@@ -15,68 +15,101 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "beretta";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 17 ) )
     {
-
+        case 0:
+            self._ID1302 = "m4_grenadier";
+            break;
+        case 1:
+            self._ID1302 = "m4_grunt";
+            break;
+        case 2:
+            self._ID1302 = "m4m203_acog";
+            break;
+        case 3:
+            self._ID1302 = "m4m203_eotech";
+            break;
+        case 4:
+            self._ID1302 = "m4m203_reflex";
+            break;
+        case 5:
+            self._ID1302 = "tavor_acog";
+            break;
+        case 6:
+            self._ID1302 = "tavor_mars";
+            break;
+        case 7:
+            self._ID1302 = "m16_acog";
+            break;
+        case 8:
+            self._ID1302 = "m16_grenadier";
+            break;
+        case 9:
+            self._ID1302 = "m16_reflex";
+            break;
+        case 10:
+            self._ID1302 = "masada";
+            break;
+        case 11:
+            self._ID1302 = "masada_acog";
+            break;
+        case 12:
+            self._ID1302 = "masada_reflex";
+            break;
+        case 13:
+            self._ID1302 = "scar_h";
+            break;
+        case 14:
+            self._ID1302 = "scar_h_acog";
+            break;
+        case 15:
+            self._ID1302 = "scar_h_reflex";
+            break;
+        case 16:
+            self._ID1302 = "scar_h_shotgun";
+            break;
     }
 
     character\character_tf_141_forest_scarecrow::_ID616();
-    case 16:
-    case 15:
-    case 14:
-    case 13:
-    case 12:
-    case 11:
-    case 10:
-    case 9:
-    case 8:
-    case 7:
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "allies" );
+    self setspawnerteam( "allies" );
 }
 
 _ID814()
 {
     character\character_tf_141_forest_scarecrow::_ID814();
-    _func_14E( "m4_grenadier" );
-    _func_14E( "m203_m4" );
-    _func_14E( "m4_grunt" );
-    _func_14E( "m4m203_acog" );
-    _func_14E( "m203_m4_acog" );
-    _func_14E( "m4m203_eotech" );
-    _func_14E( "m203_m4_eotech" );
-    _func_14E( "m4m203_reflex" );
-    _func_14E( "m203_m4_reflex" );
-    _func_14E( "tavor_acog" );
-    _func_14E( "tavor_mars" );
-    _func_14E( "m16_acog" );
-    _func_14E( "m16_grenadier" );
-    _func_14E( "m203_m16" );
-    _func_14E( "m16_reflex" );
-    _func_14E( "masada" );
-    _func_14E( "masada_acog" );
-    _func_14E( "masada_reflex" );
-    _func_14E( "scar_h" );
-    _func_14E( "scar_h_acog" );
-    _func_14E( "scar_h_reflex" );
-    _func_14E( "scar_h_shotgun" );
-    _func_14E( "scar_h_shotgun_attach" );
-    _func_14E( "beretta" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "m4_grenadier" );
+    precacheitem( "m203_m4" );
+    precacheitem( "m4_grunt" );
+    precacheitem( "m4m203_acog" );
+    precacheitem( "m203_m4_acog" );
+    precacheitem( "m4m203_eotech" );
+    precacheitem( "m203_m4_eotech" );
+    precacheitem( "m4m203_reflex" );
+    precacheitem( "m203_m4_reflex" );
+    precacheitem( "tavor_acog" );
+    precacheitem( "tavor_mars" );
+    precacheitem( "m16_acog" );
+    precacheitem( "m16_grenadier" );
+    precacheitem( "m203_m16" );
+    precacheitem( "m16_reflex" );
+    precacheitem( "masada" );
+    precacheitem( "masada_acog" );
+    precacheitem( "masada_reflex" );
+    precacheitem( "scar_h" );
+    precacheitem( "scar_h_acog" );
+    precacheitem( "scar_h_reflex" );
+    precacheitem( "scar_h_shotgun" );
+    precacheitem( "scar_h_shotgun_attach" );
+    precacheitem( "beretta" );
+    precacheitem( "fraggrenade" );
 }

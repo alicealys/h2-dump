@@ -15,36 +15,43 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "beretta";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 128.0, 0.0 );
-        self _meth_8179( 512.0, 768.0 );
+        self setengagementmindist( 128.0, 0.0 );
+        self setengagementmaxdist( 512.0, 768.0 );
     }
 
     switch ( _ID42226::_ID15950( 4 ) )
     {
-
+        case 0:
+            self._ID1302 = "uzi";
+            break;
+        case 1:
+            self._ID1302 = "tmp";
+            break;
+        case 2:
+            self._ID1302 = "mp5";
+            break;
+        case 3:
+            self._ID1302 = "uzi";
+            break;
     }
 
     _ID47889::_ID616();
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID47889::_ID814();
-    _func_14E( "uzi" );
-    _func_14E( "tmp" );
-    _func_14E( "mp5" );
-    _func_14E( "uzi" );
-    _func_14E( "beretta" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "uzi" );
+    precacheitem( "tmp" );
+    precacheitem( "mp5" );
+    precacheitem( "uzi" );
+    precacheitem( "beretta" );
+    precacheitem( "fraggrenade" );
 }

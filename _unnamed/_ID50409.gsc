@@ -4,7 +4,7 @@
 
 _ID616()
 {
-    if ( !_func_02F( level._ID3055 ) )
+    if ( !isdefined( level._ID3055 ) )
         level._ID3055 = [];
 
     var_0 = "foliage_pacific_bushtree01_animated";

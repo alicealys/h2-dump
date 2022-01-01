@@ -51,7 +51,7 @@ _ID45673( var_0 )
     self endon( "killanimscript" );
     self endon( "killsetAnimModeDelayed" );
     wait(var_0);
-    self _meth_819B( "face angle", self._ID8893._ID65[1] );
+    self orientmode( "face angle", self._ID8893._ID65[1] );
 }
 
 _ID616()
@@ -59,34 +59,34 @@ _ID616()
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "cover_prone" );
 
-    if ( _func_1BE( self._ID1302 ) == "rocketlauncher" )
+    if ( weaponclass( self._ID1302 ) == "rocketlauncher" )
     {
         animscripts\combat::_ID616();
         return;
     }
 
-    if ( _func_02F( self._ID7._ID3372 ) && self._ID7._ID3372 == "prone_saw" )
+    if ( isdefined( self._ID7._ID3372 ) && self._ID7._ID3372 == "prone_saw" )
         animscripts\cover_wall::_ID39957( "saw_bipod_prone", "weapon_saw_MG_Setup", 0 );
-    else if ( _func_02F( self._ID700._ID39235 ) )
+    else if ( isdefined( self._ID700._ID39235 ) )
         animscripts\cover_wall::_ID39960();
 
-    if ( _func_02F( self._ID322 ) && _func_0F8( self._ID740 - self._ID322._ID740 ) < _func_0ED( 512 ) )
+    if ( isdefined( self._ID322 ) && lengthsquared( self._ID740 - self._ID322._ID740 ) < squared( 512 ) )
     {
         thread animscripts\combat::_ID616();
         return;
     }
 
-    _unknown_0538();
+    _ID32934();
     self._ID39229 = 50;
     self._ID8893 = self._ID700;
-    self _meth_819B( "face angle", self._ID65[1] );
+    self orientmode( "face angle", self._ID65[1] );
     self._ID7._ID16990 = 1;
-    self _meth_820A( -45, 45, %prone_legs_down, %exposed_aiming, %prone_legs_up );
+    self setproneanimnodes( -45, 45, %prone_legs_down, %exposed_aiming, %prone_legs_up );
 
     if ( self._ID7._ID28253 != "prone" )
     {
-        self _meth_819B( "face angle", self._ID8893._ID65[1] );
-        _unknown_05DA( "prone" );
+        self orientmode( "face angle", self._ID8893._ID65[1] );
+        _ID28706( "prone" );
     }
     else
     {
@@ -114,10 +114,10 @@ _ID616()
                 var_2 = %h1_crawl_2_prone_35l;
             }
 
-            var_4 = _func_067( var_2 );
+            var_4 = getanimlength( var_2 );
             var_5 = var_4 * var_3;
-            thread _unknown_0435( var_5 );
-            self _meth_811C( "coverProneArrival", var_2, 1, 0.2, 1 );
+            thread _ID45673( var_5 );
+            self setflaggedanimrestart( "coverProneArrival", var_2, 1, 0.2, 1 );
             animscripts\shared::_ID11529( "coverProneArrival" );
             self notify( "killsetAnimModeDelayed" );
             self._ID7._ID24414 = "stop";
@@ -125,11 +125,11 @@ _ID616()
     }
 
     thread animscripts\combat_utility::_ID2428();
-    _unknown_06C1( 0.2 );
-    self _meth_8155( %prone_aim_5, 1, 0.1 );
-    self _meth_819B( "face angle", self._ID65[1] );
-    self _meth_819A( "zonly_physics" );
-    _unknown_061C();
+    _ID33590( 0.2 );
+    self setanim( %prone_aim_5, 1, 0.1 );
+    self orientmode( "face angle", self._ID65[1] );
+    self animmode( "zonly_physics" );
+    _ID28709();
     self notify( "stop_deciding_how_to_shoot" );
 }
 
@@ -146,26 +146,26 @@ _ID19338()
     for (;;)
     {
         var_0 = animscripts\utility::_ID3156( "prone_idle" );
-        self _meth_811B( "idle", var_0 );
+        self setflaggedanimlimited( "idle", var_0 );
         self waittillmatch( "idle",  "end"  );
-        self _meth_814C( var_0, 0.2 );
+        self clearanim( var_0, 0.2 );
     }
 }
 
 _ID39763( var_0 )
 {
-    self _meth_820B( animscripts\utility::_ID22630( "cover_prone", "legs_up" ), animscripts\utility::_ID22630( "cover_prone", "legs_down" ), 1, var_0, 1 );
-    self _meth_8155( %exposed_aiming, 1, 0.2 );
+    self updateprone( animscripts\utility::_ID22630( "cover_prone", "legs_up" ), animscripts\utility::_ID22630( "cover_prone", "legs_down" ), 1, var_0, 1 );
+    self setanim( %exposed_aiming, 1, 0.2 );
 }
 
 _ID11659( var_0, var_1 )
 {
-    var_2 = _func_02F( self._ID33810 );
+    var_2 = isdefined( self._ID33810 );
     var_3 = 1;
     var_4 = 0.2;
-    var_5 = _func_02F( self._ID322 ) && !_func_02F( self._ID39233 ) && self _meth_81CB( self._ID322, 2 ) && _func_0F5( self._ID322._ID740, self._ID740 ) < 262144;
+    var_5 = isdefined( self._ID322 ) && !isdefined( self._ID39233 ) && self seerecently( self._ID322, 2 ) && distancesquared( self._ID322._ID740, self._ID740 ) < 262144;
 
-    if ( self._ID7._ID31561 + 500 > _func_03D() )
+    if ( self._ID7._ID31561 + 500 > gettime() )
     {
         var_4 = 0.25;
 
@@ -174,7 +174,7 @@ _ID11659( var_0, var_1 )
     }
     else if ( var_5 )
     {
-        var_6 = 1.0 - _func_0F3( self._ID322._ID740, self._ID740 ) / 512;
+        var_6 = 1.0 - distance( self._ID322._ID740, self._ID740 ) / 512;
         var_3 = 1 + var_6 * 1;
 
         if ( var_3 > 2 )
@@ -197,29 +197,29 @@ _ID11659( var_0, var_1 )
     var_8 = "turn_" + var_0 + "_" + var_7;
     var_9 = animscripts\utility::_ID3153( var_8 );
 
-    if ( _func_02F( self._ID39233 ) )
-        self _meth_819A( "angle deltas", 0 );
-    else if ( _func_02F( self._ID700 ) && _func_02F( anim._ID20710[self._ID700._ID1244] ) && _func_0F5( self._ID740, self._ID700._ID740 ) < 256 )
-        self _meth_819A( "angle deltas", 0 );
+    if ( isdefined( self._ID39233 ) )
+        self animmode( "angle deltas", 0 );
+    else if ( isdefined( self._ID700 ) && isdefined( anim._ID20710[self._ID700._ID1244] ) && distancesquared( self._ID740, self._ID700._ID740 ) < 256 )
+        self animmode( "angle deltas", 0 );
     else if ( animscripts\combat::_ID20667( var_9 ) )
         animscripts\combat::_ID29767();
     else
-        self _meth_819A( "angle deltas", 0 );
+        self animmode( "angle deltas", 0 );
 
-    self _meth_8151( %exposed_aiming, %body, 1, var_4 );
-    self _meth_8156( %turn, 1, var_4 );
+    self setanimknoball( %exposed_aiming, %body, 1, var_4 );
+    self setanimlimited( %turn, 1, var_4 );
 
-    if ( _func_02F( self._ID18328 ) )
-        var_3 = _func_0C4( 1.0, var_3 );
+    if ( isdefined( self._ID18328 ) )
+        var_3 = min( 1.0, var_3 );
 
-    self _meth_8117( "turn", var_9, 1, var_4, var_3 );
+    self setflaggedanimknoblimitedrestart( "turn", var_9, 1, var_4, var_3 );
     self notify( "turning" );
     animscripts\combat::_ID11660();
-    self _meth_8156( %turn, 0, 0.2 );
-    self _meth_814C( %turn, 0.2 );
-    self _meth_814D( %exposed_aiming, 1, 0.2, 1 );
+    self setanimlimited( %turn, 0, 0.2 );
+    self clearanim( %turn, 0.2 );
+    self setanimknob( %exposed_aiming, 1, 0.2, 1 );
 
-    if ( _func_02F( self._ID39220 ) )
+    if ( isdefined( self._ID39220 ) )
     {
         self._ID39220 = undefined;
         thread animscripts\combat::_ID13757();
@@ -231,23 +231,23 @@ _ID11659( var_0, var_1 )
 
 _ID24717()
 {
-    if ( !_func_02F( self._ID45105 ) )
+    if ( !isdefined( self._ID45105 ) )
         return 0;
 
     var_0 = self._ID33810;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return 0;
 
-    var_1 = self._ID65[1] - _func_11B( var_0 - self._ID740 );
-    var_2 = _func_0F5( self._ID740, var_0 );
+    var_1 = self._ID65[1] - vectortoyaw( var_0 - self._ID740 );
+    var_2 = distancesquared( self._ID740, var_0 );
 
     if ( var_2 < 65536 )
     {
-        var_3 = _func_0EC( var_2 );
+        var_3 = sqrt( var_2 );
 
         if ( var_3 > 3 )
-            var_1 += _func_0BE( -3 / var_3 );
+            var_1 += asin( -3 / var_3 );
     }
 
     return animscripts\utility::_ID1735( var_1 ) > self._ID39229;
@@ -257,14 +257,14 @@ _ID39232( var_0 )
 {
     if ( var_0 < 0 - self._ID39229 )
     {
-        _unknown_07D6( "left", 0 - var_0 );
+        _ID11659( "left", 0 - var_0 );
         _ID42298::_ID10832();
         return 1;
     }
 
     if ( var_0 > self._ID39229 )
     {
-        _unknown_07EB( "right", var_0 );
+        _ID11659( "right", var_0 );
         _ID42298::_ID10832();
         return 1;
     }
@@ -274,16 +274,16 @@ _ID39232( var_0 )
 
 _ID48484()
 {
-    if ( _unknown_088A() )
+    if ( _ID24717() )
     {
         var_0 = 0.25;
 
-        if ( _func_02F( self._ID33785 ) && !_func_0D6( self._ID33785 ) )
+        if ( isdefined( self._ID33785 ) && !issentient( self._ID33785 ) )
             var_0 = 1.5;
 
         var_1 = animscripts\shared::_ID16537( var_0 );
 
-        if ( _unknown_08C8( var_1 ) )
+        if ( _ID39232( var_1 ) )
             return 1;
     }
 
@@ -295,57 +295,57 @@ _ID28709()
     self endon( "killanimscript" );
     thread animscripts\track::_ID38165();
     thread animscripts\shoot_behavior::_ID10054( "normal" );
-    var_0 = _func_03D() > 2500;
+    var_0 = gettime() > 2500;
 
     for (;;)
     {
         animscripts\utility::_ID39726();
-        _unknown_083C( 0.05 );
+        _ID39763( 0.05 );
 
         if ( !var_0 )
         {
-            wait(0.05 + _func_0B8( 1.5 ));
+            wait(0.05 + randomfloat( 1.5 ));
             var_0 = 1;
             continue;
         }
 
-        if ( !_func_02F( self._ID33810 ) )
+        if ( !isdefined( self._ID33810 ) )
         {
-            if ( _unknown_0927() )
+            if ( _ID48484() )
                 continue;
 
-            if ( _unknown_09AC() )
+            if ( _ID8533() )
                 continue;
 
             wait 0.05;
             continue;
         }
 
-        var_1 = _func_0F8( self._ID740 - self._ID33810 );
+        var_1 = lengthsquared( self._ID740 - self._ID33810 );
 
-        if ( self._ID7._ID28253 != "crouch" && self _meth_81D7( "crouch" ) && var_1 < _func_0ED( 400 ) )
+        if ( self._ID7._ID28253 != "crouch" && self isstanceallowed( "crouch" ) && var_1 < squared( 400 ) )
         {
-            if ( var_1 < _func_0ED( 285 ) )
+            if ( var_1 < squared( 285 ) )
             {
-                _unknown_0A1A( "crouch" );
+                _ID28706( "crouch" );
                 thread animscripts\combat::_ID616();
                 return;
             }
         }
 
-        if ( _unknown_097E() )
+        if ( _ID48484() )
             continue;
 
-        if ( _unknown_0A03() )
+        if ( _ID8533() )
             continue;
 
-        if ( _unknown_09EA( 0 ) )
+        if ( _ID28713( 0 ) )
             continue;
 
         if ( animscripts\combat_utility::_ID2425() )
         {
             animscripts\combat_utility::_ID33818();
-            self _meth_814C( %add_fire, 0.2 );
+            self clearanim( %add_fire, 0.2 );
             continue;
         }
 
@@ -360,7 +360,7 @@ _ID28713( var_0 )
 
 _ID32934()
 {
-    self _meth_817F( self._ID700 );
+    self setdefaultaimlimits( self._ID700 );
     self._ID7._ID3291 = animscripts\utility::_ID22631( "cover_prone" );
 }
 
@@ -368,12 +368,12 @@ _ID39080( var_0, var_1 )
 {
     var_2 = undefined;
 
-    if ( _func_02F( var_1 ) && var_1 )
+    if ( isdefined( var_1 ) && var_1 )
         var_2 = animscripts\utility::_ID3156( "grenade_safe" );
     else
         var_2 = animscripts\utility::_ID3156( "grenade_exposed" );
 
-    self _meth_819A( "zonly_physics" );
+    self animmode( "zonly_physics" );
     self._ID562 = 1;
     var_3 = ( 32, 20, 64 );
     var_4 = animscripts\combat_utility::_ID39072( var_0, var_2 );
@@ -383,27 +383,27 @@ _ID39080( var_0, var_1 )
 
 _ID8533()
 {
-    if ( _func_02F( anim._ID37694 ) && _func_1A7( level._ID794 ) )
+    if ( isdefined( anim._ID37694 ) && isalive( level._ID794 ) )
     {
-        if ( _unknown_0AA0( level._ID794, 200 ) )
+        if ( _ID39080( level._ID794, 200 ) )
             return 1;
     }
 
-    if ( _func_02F( self._ID322 ) )
-        return _unknown_0AB3( self._ID322, 850 );
+    if ( isdefined( self._ID322 ) )
+        return _ID39080( self._ID322, 850 );
 
     return 0;
 }
 
 _ID33948()
 {
-    if ( !_func_02F( self._ID1302 ) || !_func_1B8( self._ID1302 ) )
+    if ( !isdefined( self._ID1302 ) || !weaponisauto( self._ID1302 ) )
         return 0;
 
-    if ( _func_02F( self._ID700 ) && _func_0F5( self._ID740, self._ID700._ID740 ) < 256 )
+    if ( isdefined( self._ID700 ) && distancesquared( self._ID740, self._ID700._ID740 ) < 256 )
         return 0;
 
-    if ( _func_02F( self._ID322 ) && self _meth_81CA( self._ID322 ) && !_func_02F( self._ID458 ) && animscripts\shared::_ID16103() < 20 )
+    if ( isdefined( self._ID322 ) && self cansee( self._ID322 ) && !isdefined( self._ID458 ) && animscripts\shared::_ID16103() < 20 )
         return animscripts\move::_ID23140();
 
     return 0;
@@ -414,10 +414,10 @@ _ID28706( var_0 )
     if ( var_0 == self._ID7._ID28253 )
         return;
 
-    self _meth_814C( %animscript_root, 0.3 );
+    self clearanim( %animscript_root, 0.3 );
     animscripts\combat_utility::_ID12641();
 
-    if ( _unknown_0B4D() )
+    if ( _ID33948() )
         var_1 = animscripts\utility::_ID3153( self._ID7._ID28253 + "_2_" + var_0 + "_firing" );
     else
         var_1 = animscripts\utility::_ID3153( self._ID7._ID28253 + "_2_" + var_0 );
@@ -427,10 +427,10 @@ _ID28706( var_0 )
 
     }
 
-    self _meth_8119( "trans", var_1, %body, 1, 0.2, 1.0 );
+    self setflaggedanimknoballrestart( "trans", var_1, %body, 1, 0.2, 1.0 );
     animscripts\shared::_ID11529( "trans" );
-    self _meth_8153( animscripts\utility::_ID3153( "straight_level" ), %body, 1, 0.25 );
-    _ID14236( 0.25 );
+    self setanimknoballrestart( animscripts\utility::_ID3153( "straight_level" ), %body, 1, 0.25 );
+    _ID33590( 0.25 );
 }
 
 _ID14236( var_0 )
@@ -441,19 +441,19 @@ _ID14236( var_0 )
 
 _ID33590( var_0 )
 {
-    self _meth_8151( %prone_aim_5, %body, 1, var_0 );
-    self _meth_8156( %prone_aim_2_add, 1, var_0 );
-    self _meth_8156( %prone_aim_4_add, 1, var_0 );
-    self _meth_8156( %prone_aim_6_add, 1, var_0 );
-    self _meth_8156( %prone_aim_8_add, 1, var_0 );
+    self setanimknoball( %prone_aim_5, %body, 1, var_0 );
+    self setanimlimited( %prone_aim_2_add, 1, var_0 );
+    self setanimlimited( %prone_aim_4_add, 1, var_0 );
+    self setanimlimited( %prone_aim_6_add, 1, var_0 );
+    self setanimlimited( %prone_aim_8_add, 1, var_0 );
 }
 
 _ID28718( var_0, var_1, var_2 )
 {
-    self _meth_814C( %animscript_root, 0.3 );
+    self clearanim( %animscript_root, 0.3 );
     var_3 = undefined;
 
-    if ( _unknown_0C31() )
+    if ( _ID33948() )
     {
         if ( var_0 == "crouch" )
             var_3 = %prone_2_crouch_firing;
@@ -465,21 +465,21 @@ _ID28718( var_0, var_1, var_2 )
     else if ( var_0 == "stand" )
         var_3 = %prone_2_stand_nodelta;
 
-    if ( _func_02F( self._ID28703 ) )
+    if ( isdefined( self._ID28703 ) )
         var_3 = self._ID28703;
 
-    if ( _func_02F( self._ID28705 ) )
+    if ( isdefined( self._ID28705 ) )
         var_1 = self._ID28705;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = 1;
 
-    animscripts\utility::_ID13390( _func_067( var_3 ) / 2 );
-    self _meth_8119( "trans", var_3, %body, 1, 0.2, var_1 );
+    animscripts\utility::_ID13390( getanimlength( var_3 ) / 2 );
+    self setflaggedanimknoballrestart( "trans", var_3, %body, 1, 0.2, var_1 );
     animscripts\shared::_ID11529( "trans" );
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 0.1;
 
-    self _meth_814C( var_3, var_2 );
+    self clearanim( var_3, var_2 );
 }

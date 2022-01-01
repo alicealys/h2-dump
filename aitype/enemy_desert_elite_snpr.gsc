@@ -15,33 +15,36 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "glock";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 128.0, 0.0 );
-        self _meth_8179( 512.0, 1024.0 );
+        self setengagementmindist( 128.0, 0.0 );
+        self setengagementmaxdist( 512.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 2 ) )
     {
-
+        case 0:
+            self._ID1302 = "wa2000_thermal";
+            break;
+        case 1:
+            self._ID1302 = "wa2000";
+            break;
     }
 
     _ID45063::_ID616();
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID45063::_ID814();
-    _func_14E( "wa2000_thermal" );
-    _func_14E( "wa2000" );
-    _func_14E( "glock" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "wa2000_thermal" );
+    precacheitem( "wa2000" );
+    precacheitem( "glock" );
+    precacheitem( "fraggrenade" );
     _ID42368::_ID616();
 }

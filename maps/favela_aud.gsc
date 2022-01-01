@@ -3,16 +3,16 @@
 
 _ID616()
 {
-    _unknown_0010();
-    _unknown_002E();
-    _unknown_0032();
-    _unknown_0036();
-    _unknown_0048();
-    thread _unknown_004C();
-    _unknown_0053();
-    _unknown_0057();
-    _unknown_005B();
-    thread _unknown_0109();
+    _ID8467();
+    _ID19806();
+    _ID19703();
+    _ID22056();
+    _ID22043();
+    thread _ID22042();
+    _ID9159();
+    _ID28366();
+    _ID29419();
+    thread _ID51200();
 }
 
 _ID8467()
@@ -21,7 +21,7 @@ _ID8467()
     _ID42490::_ID34650( "med_occlusion" );
     _ID42465::_ID23797( "mix_favela_global" );
 
-    if ( _func_039( "beautiful_corner" ) == "1" || _func_039( "beautiful_corner_demo" ) == "1" )
+    if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
         _ID42474::_ID4669( "exterior_alley" );
         var_0 = _ID42407::_ID24586( "mus_favela_tension" );
@@ -41,11 +41,11 @@ _ID19703()
 
 _ID22056()
 {
-    if ( _func_039( "beautiful_corner" ) != "1" && _func_039( "beautiful_corner_demo" ) != "1" )
-        thread _unknown_01A2();
+    if ( getdvar( "beautiful_corner" ) != "1" && getdvar( "beautiful_corner_demo" ) != "1" )
+        thread _ID45461();
 
-    thread _unknown_01C8();
-    thread _unknown_01F1();
+    thread _ID45490();
+    thread _ID43900();
 }
 
 _ID22043()
@@ -70,24 +70,24 @@ _ID28366()
 
 _ID29419()
 {
-    _ID42475::_ID34640( "start_street_checkpoint", ::_unknown_0133 );
-    _ID42475::_ID34640( "start_chase_checkpoint", ::_unknown_0143 );
-    _ID42475::_ID34640( "start_favela_checkpoint", ::_unknown_0153 );
-    _ID42475::_ID34640( "start_torture_checkpoint", ::_unknown_0162 );
-    _ID42475::_ID34640( "start_soccer_checkpoint", ::_unknown_0171 );
-    _ID42475::_ID34640( "start_hilltop_checkpoint", ::_unknown_0180 );
-    _ID42475::_ID34640( "start_trailer1_checkpoint", ::_unknown_018F );
-    _ID42475::_ID34640( "start_trailer2_checkpoint", ::_unknown_019E );
-    _ID42475::_ID34640( "start_trailer3_checkpoint", ::_unknown_01AD );
-    _ID42475::_ID34640( "start_end_checkpoint", ::_unknown_01BC );
-    _ID42475::_ID34640( "start_interior_vehicle_open", ::_unknown_01CB );
-    _ID42475::_ID34640( "start_player_exit_vehicle", ::_unknown_01DD );
-    _ID42475::_ID34640( "start_fade_out_level", ::_unknown_01F5 );
-    _ID42475::_ID34640( "start_ending_sequence_mix", ::_unknown_0208 );
-    _ID42475::_ID34640( "start_ending_slowmo", ::_unknown_0217 );
-    _ID42475::_ID34640( "stop_ending_slowmo", ::_unknown_022A );
-    _ID42475::_ID34640( "start_van_arrival", ::_unknown_0245 );
-    _ID42475::_ID34640( "intro_plr_car_bump", ::_unknown_024B );
+    _ID42475::_ID34640( "start_street_checkpoint", ::_ID45162 );
+    _ID42475::_ID34640( "start_chase_checkpoint", ::_ID47591 );
+    _ID42475::_ID34640( "start_favela_checkpoint", ::_ID49690 );
+    _ID42475::_ID34640( "start_torture_checkpoint", ::_ID44890 );
+    _ID42475::_ID34640( "start_soccer_checkpoint", ::_ID52935 );
+    _ID42475::_ID34640( "start_hilltop_checkpoint", ::_ID49509 );
+    _ID42475::_ID34640( "start_trailer1_checkpoint", ::_ID52676 );
+    _ID42475::_ID34640( "start_trailer2_checkpoint", ::_ID45299 );
+    _ID42475::_ID34640( "start_trailer3_checkpoint", ::_ID47768 );
+    _ID42475::_ID34640( "start_end_checkpoint", ::_ID45096 );
+    _ID42475::_ID34640( "start_interior_vehicle_open", ::_ID50271 );
+    _ID42475::_ID34640( "start_player_exit_vehicle", ::_ID44791 );
+    _ID42475::_ID34640( "start_fade_out_level", ::_ID52274 );
+    _ID42475::_ID34640( "start_ending_sequence_mix", ::_ID52654 );
+    _ID42475::_ID34640( "start_ending_slowmo", ::_ID51459 );
+    _ID42475::_ID34640( "stop_ending_slowmo", ::_ID51763 );
+    _ID42475::_ID34640( "start_van_arrival", ::start_van_arrival );
+    _ID42475::_ID34640( "intro_plr_car_bump", ::_ID50087 );
 }
 
 _ID41961( var_0, var_1 )
@@ -103,13 +103,13 @@ _ID24576( var_0, var_1 )
 _ID45162( var_0 )
 {
     _ID42474::_ID4669( "interior_vehicle" );
-    _unknown_0282();
+    _ID50579();
 }
 
 _ID47591( var_0 )
 {
     _ID42474::_ID4669( "exterior_street" );
-    _unknown_0291();
+    _ID50579();
 }
 
 _ID49690( var_0 )
@@ -209,24 +209,17 @@ _ID51200()
 {
     _ID42237::_ID14413( "introscreen_activate" );
     _ID42465::_ID23797( "fade_in_level_mix" );
-    level._ID794 _meth_80A1( "mus_favela_intro_stinger" );
+    level._ID794 playsound( "mus_favela_intro_stinger" );
     _ID42237::_ID14413( "introscreen_remove_submix" );
     _ID42465::_ID23801( "fade_in_level_mix" );
 }
 
 _ID50579()
 {
-    var_0 = _func_1A2( "civilians_scream_intro", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "civilians_scream_intro", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
+    foreach ( var_2 in var_0 )
         var_2 thread _ID42237::_ID27000( var_2._ID43356 );
-    }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID54580()
@@ -238,31 +231,31 @@ _ID54580()
 
 _ID45461()
 {
-    var_0 = _func_1A1( "snd_play_alley_falling_trashcan", "targetname" );
-    var_1 = _func_1A1( "snd_alley_falling_trashcan_origin", "targetname" );
-    var_1 waittill( "trigger",  var_2  );
+    var_0 = getent( "snd_play_alley_falling_trashcan", "targetname" );
+    var_1 = getent( "snd_alley_falling_trashcan_origin", "targetname" );
+    var_0 waittill( "trigger",  var_2  );
     var_1 _ID42407::_ID27079( "scn_alley_falling_trashcan" );
 }
 
 _ID45707()
 {
     wait 0.1;
-    self _meth_8295();
+    self vehicle_turnengineoff();
     self._ID31138 = 1;
 }
 
 _ID47993()
 {
     self endon( "death" );
-    _unknown_0478();
+    _ID45707();
 
     for (;;)
     {
-        var_0 = _func_0F5( level._ID794._ID740, self._ID740 );
+        var_0 = distancesquared( level._ID794._ID740, self._ID740 );
 
         if ( var_0 < 1000000 )
         {
-            self _meth_80A1( self._ID43356 );
+            self playsound( self._ID43356 );
             return;
         }
 
@@ -272,7 +265,7 @@ _ID47993()
 
 _ID45490()
 {
-    level._ID3674._ID53947 = _func_1A1( "distant_fight", "targetname" );
+    level._ID3674._ID53947 = getent( "distant_fight", "targetname" );
     level._ID3674._ID53947 thread _ID42237::_ID27000( "emt_distant_battle_lp", undefined, 0.5, 6 );
     wait 0.1;
     _ID42237::_ID14413( "faust_appearance_3" );
@@ -281,7 +274,7 @@ _ID45490()
 
 _ID51272()
 {
-    var_0 = _func_1A1( "soccer_civilian_walla", "targetname" );
+    var_0 = getent( "soccer_civilian_walla", "targetname" );
     var_0 thread _ID42237::_ID27000( "walla_favela_civ_dist_lp", undefined, 0.5, 0.5 );
     _ID42237::_ID14413( "favela_civilians_alerted" );
     var_0 _ID42237::_ID36516( "walla_favela_civ_dist_lp" );
@@ -290,19 +283,14 @@ _ID51272()
 _ID43900()
 {
     wait 1;
-    var_0 = _func_1A2( "intro_car_alarm", "script_noteworthy" );
-    var_1 = var_0;
+    var_0 = getentarray( "intro_car_alarm", "script_noteworthy" );
 
-    for ( var_4 = _func_1DA( var_1 ); _func_02F( var_4 ); var_4 = _func_1BF( var_1, var_4 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_4];
-        var_3 = _func_06A( "script_origin", var_2._ID740 );
+        var_3 = spawn( "script_origin", var_2._ID740 );
         var_3 thread _ID42237::_ID27000( "car_alarm" );
-        var_2 thread _unknown_0591( var_3 );
+        var_2 thread _ID51035( var_3 );
     }
-
-    var_clear_3
-    var_clear_0
 }
 
 _ID51035( var_0 )
@@ -310,21 +298,21 @@ _ID51035( var_0 )
     self waittill( "stop_car_alarm" );
     var_0 _ID42237::_ID36516( "car_alarm" );
     wait 0.1;
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID50452( var_0 )
 {
-    var_1 = _func_1A1( "int_garage_snd_ent", "targetname" );
+    var_1 = getent( "int_garage_snd_ent", "targetname" );
     var_1 _ID42407::_ID27079( "scn_favela_garage_interior" );
 }
 
 _ID54641()
 {
-    var_0 = _func_1A1( "shockwave_ent", "targetname" );
-    var_1 = _func_1A1( "shockwave_stop", "targetname" );
+    var_0 = getent( "shockwave_ent", "targetname" );
+    var_1 = getent( "shockwave_stop", "targetname" );
     var_0 thread _ID42407::_ID27079( "scn_favela_tanker_explosion_shockwave" );
-    var_0 _meth_82B8( var_1._ID740, 3.2, 0.5, 0.05 );
+    var_0 moveto( var_1._ID740, 3.2, 0.5, 0.05 );
 }
 
 set_ending_slowmo_timescale()

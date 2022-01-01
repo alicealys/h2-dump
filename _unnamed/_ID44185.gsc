@@ -3,7 +3,7 @@
 
 _ID46256()
 {
-    level thread _unknown_001F();
+    level thread the_real_gun_game_init();
 }
 
 do_it_with_style_init()
@@ -20,7 +20,7 @@ do_it_with_style_init()
             if ( var_2 == 3 )
                 continue;
 
-            if ( level._ID794 _meth_821F( "sp_doItWithStyle", var_2 ) == "1" )
+            if ( level._ID794 getlocalplayerprofiledata( "sp_doItWithStyle", var_2 ) == "1" )
             {
                 if ( var_2 == var_0 )
                     var_1 = 1;
@@ -40,9 +40,9 @@ the_real_gun_game_init()
     if ( level._ID912 == "trainer" || level._ID912 == "af_chase" || level._ID912 == "ending" )
         return;
 
-    _func_00E( "melee_attack", "+melee" );
-    _func_00E( "melee_attack", "+melee_breath" );
-    _func_00E( "melee_attack", "+melee_zoom" );
+    notifyoncommand( "melee_attack", "+melee" );
+    notifyoncommand( "melee_attack", "+melee_breath" );
+    notifyoncommand( "melee_attack", "+melee_zoom" );
     level endon( "level_skipped" );
     level._ID794 endon( "melee_attack" );
     level._ID794 endon( "reload" );
@@ -54,9 +54,9 @@ _ID46068()
 {
     _ID42237::_ID14400( "master_ninja_melee_kill" );
     _ID42237::_ID14400( "master_ninja_illegal_kill" );
-    _ID42407::_ID1892( "axis", ::_unknown_0123 );
-    _ID42237::_ID3350( _func_0DE( "axis" ), ::_unknown_012E );
-    level thread _unknown_012D();
+    _ID42407::_ID1892( "axis", ::_ID50890 );
+    _ID42237::_ID3350( getaiarray( "axis" ), ::_ID50890 );
+    level thread _ID53877();
 }
 
 _ID53877()
@@ -71,9 +71,9 @@ _ID53877()
 _ID50890()
 {
     level endon( "master_ninja_illegal_kill" );
-    self waittill( "death",  var_1, var_1  );
+    self waittill( "death",  var_0, var_1  );
 
-    if ( _func_02F( var_0 ) && var_0 == level._ID794 )
+    if ( isdefined( var_0 ) && var_0 == level._ID794 )
     {
         if ( var_1 == "MOD_MELEE" )
             _ID42237::_ID14402( "master_ninja_melee_kill" );
@@ -86,23 +86,23 @@ _ID46481()
 {
     switch ( level._ID912 )
     {
-
+        case "ac130":
+        case "aftermath":
+        case "coup":
+        case "simplecredits":
+            return;
+        default:
+            break;
     }
 
     level endon( "retro_shooter_player_reloaded" );
-    level thread _unknown_01FB();
+    level thread _ID53943();
 
     for (;;)
     {
         level._ID794 waittill( "reload" );
         level notify( "retro_shooter_player_reloaded" );
     }
-
-    case "simplecredits":
-    case "coup":
-    case "aftermath":
-    case "ac130":
-    default:
 }
 
 _ID53943()
@@ -114,13 +114,13 @@ _ID53943()
 
 _ID46292()
 {
-    var_0 = _unknown_024C();
-    _ID42407::_ID1892( "axis", ::_unknown_028A );
-    _ID42237::_ID3350( _func_0DE( "axis" ), ::_unknown_0296 );
+    var_0 = _ID54483();
+    _ID42407::_ID1892( "axis", ::_ID45438 );
+    _ID42237::_ID3350( getaiarray( "axis" ), ::_ID45438 );
     var_1 = _ID42413::_ID1473();
-    _ID42237::_ID3350( var_1, _ID42407::_ID1947, ::_unknown_02EB );
-    _ID42237::_ID3350( _func_1F8(), ::_unknown_02F6 );
-    thread _unknown_0278();
+    _ID42237::_ID3350( var_1, _ID42407::_ID1947, ::_ID43400 );
+    _ID42237::_ID3350( vehicle_getarray(), ::_ID43400 );
+    thread _ID54003();
 }
 
 _ID54003()
@@ -128,7 +128,7 @@ _ID54003()
     if ( level._ID912 == "sniperescape" )
     {
         _ID42237::_ID41068( "weapon_master_barrett_kill", "makarov_killed" );
-        _unknown_033F( "barrett" );
+        _ID44671( "barrett" );
     }
 }
 
@@ -140,12 +140,12 @@ _ID54483()
 
 _ID50971( var_0 )
 {
-    var_1 = _func_128( var_0 );
-    var_2 = _unknown_0336();
+    var_1 = tolower( var_0 );
+    var_2 = _ID54483();
 
     for ( var_3 = 0; var_3 < var_2.size; var_3++ )
     {
-        if ( _func_125( var_1, var_2[var_3] ) )
+        if ( issubstr( var_1, var_2[var_3] ) )
             return var_2[var_3];
     }
 
@@ -154,10 +154,10 @@ _ID50971( var_0 )
 
 _ID45438()
 {
-    self waittill( "death",  var_2, var_2, var_2  );
+    self waittill( "death",  var_0, var_1, var_2  );
 
-    if ( _func_02F( var_0 ) && var_0 == level._ID794 && _func_02F( var_2 ) && var_1 != "MOD_MELEE" )
-        _unknown_041C( var_2 );
+    if ( isdefined( var_0 ) && var_0 == level._ID794 && isdefined( var_2 ) && var_1 != "MOD_MELEE" )
+        _ID44671( var_2 );
 }
 
 _ID54495()
@@ -168,9 +168,9 @@ _ID54495()
 
     for (;;)
     {
-        self waittill( "damage",  var_6, var_5, var_4, var_3, var_2, var_1, var_0  );
+        self waittill( "damage",  var_0, var_1, var_2, var_3, var_4, var_5, var_6  );
         var_7 = "unknown";
-        var_4 = _func_128( var_4 );
+        var_4 = tolower( var_4 );
 
         if ( var_4 == "mod_explosive" || var_4 == "mod_explosive_splash" )
         {
@@ -191,7 +191,7 @@ _ID54495()
         if ( var_7 != "unknown" )
         {
             level._ID43897 = var_7;
-            level._ID52653 = _func_03D();
+            level._ID52653 = gettime();
             level._ID43988 = self;
         }
     }
@@ -200,11 +200,11 @@ _ID54495()
 _ID43400()
 {
     var_0 = self;
-    thread _unknown_0469();
-    self waittill( "death",  var_3, var_3, var_3  );
+    thread _ID54495();
+    self waittill( "death",  var_1, var_2, var_3  );
 
-    if ( _func_02F( var_1 ) && var_1 == level._ID794 && _func_02F( var_3 ) && var_2 != "MOD_MELEE" )
-        _unknown_04EC( var_3 );
+    if ( isdefined( var_1 ) && var_1 == level._ID794 && isdefined( var_3 ) && var_2 != "MOD_MELEE" )
+        _ID44671( var_3 );
     else
     {
         wait 0.25;
@@ -212,80 +212,80 @@ _ID43400()
         if ( level._ID43897 == "unknown" || level._ID43988 != var_0 )
             return;
 
-        if ( _func_0C3( _func_03D() - level._ID52653 ) <= 1000 )
-            _unknown_0515( level._ID43897 );
+        if ( abs( gettime() - level._ID52653 ) <= 1000 )
+            _ID44671( level._ID43897 );
     }
 }
 
 _ID44671( var_0 )
 {
-    var_0 = _unknown_04AF( var_0 );
-    var_1 = _ID42237::_ID3307( _unknown_0487(), var_0 );
+    var_0 = _ID50971( var_0 );
+    var_1 = _ID42237::_ID3307( _ID54483(), var_0 );
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
     if ( _ID42237::_ID14385( "has_cheated" ) || _ID49347::_ID44352() )
         return;
 
-    if ( level._ID794 _meth_821F( "sp_weaponMaster", var_1 ) != "1" )
+    if ( level._ID794 getlocalplayerprofiledata( "sp_weaponMaster", var_1 ) != "1" )
     {
-        level._ID794 _meth_8220( "sp_weaponMaster", var_1, 1 );
-        _func_004();
-        _unknown_0579();
+        level._ID794 setlocalplayerprofiledata( "sp_weaponMaster", var_1, 1 );
+        updategamerprofileall();
+        _ID51323();
     }
 }
 
 _ID51323()
 {
-    var_0 = _unknown_04C9();
+    var_0 = _ID54483();
     var_1 = [];
     var_2 = 0;
 
     for ( var_3 = 0; var_3 < var_0.size; var_3++ )
     {
-        var_4 = level._ID794 _meth_821F( "sp_weaponMaster", var_3 );
+        var_4 = level._ID794 getlocalplayerprofiledata( "sp_weaponMaster", var_3 );
         var_1[var_0[var_3]] = var_4;
 
         if ( var_4 == "1" )
             var_2++;
     }
 
-    if ( var_2 == var_0.size || _unknown_05FE() )
+    if ( var_2 == var_0.size || _ID48939() )
         _ID42407::_ID16864( "WEAPON_MASTER" );
 }
 
 _ID47161()
 {
-    _ID42407::_ID1892( "axis", ::_unknown_05E7 );
-    _ID42237::_ID3350( _func_0DE( "axis" ), ::_unknown_05F2 );
+    _ID42407::_ID1892( "axis", ::_ID51508 );
+    _ID42237::_ID3350( getaiarray( "axis" ), ::_ID51508 );
 }
 
 _ID51508()
 {
-    if ( !_func_02F( self._ID170 ) )
+    if ( !isdefined( self._ID170 ) )
         return;
 
     if ( self._ID170 != "actor_enemy_dog" )
         return;
 
-    self waittill( "death",  var_access_0, var_access_0  );
+    self waittill( "death",  var_0, var_1  );
 
-    if ( _func_02F( var_access_1 ) && var_access_1 == level._ID794 && var_access_0 == "MOD_MELEE" )
+    if ( isdefined( var_0 ) && var_0 == level._ID794 && var_1 == "MOD_MELEE" )
     {
         if ( _ID42237::_ID14385( "has_cheated" ) || _ID49347::_ID44352() )
             return;
 
-        var_2 = level._ID794 _meth_821F( "sp_iHateDogs" );
+        var_2 = level._ID794 getlocalplayerprofiledata( "sp_iHateDogs" );
         var_3 = 20;
 
         if ( var_2 < var_3 )
         {
             var_2++;
-            level._ID794 _meth_8220( "sp_iHateDogs", var_2 );
-            _func_004();
+            level._ID794 setlocalplayerprofiledata( "sp_iHateDogs", var_2 );
+            updategamerprofileall();
 
-            if ( var_2 >= var_3 || _unknown_0690() )
+            if ( var_2 >= var_3 || _ID48939() )
                 _ID42407::_ID16864( "DOGS_I_HATE_DOGS" );
         }
     }

@@ -6,7 +6,7 @@ _ID616()
     if ( self._ID1244 == "dog" )
         animscripts\traverse\shared::_ID11456( "window_40", 40 );
     else
-        _unknown_001E();
+        _ID22688();
 }
 #using_animtree("generic_human");
 

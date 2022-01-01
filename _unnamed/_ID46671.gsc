@@ -3,7 +3,7 @@
 
 _ID616()
 {
-    _unknown_0C5B();
+    _ID36815();
     var_0 = _ID42407::_ID9186( "dcburning_crash" );
     var_0._ID36107 = 17346.3;
     var_0._ID17667 = 32487.6;

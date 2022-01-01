@@ -3,34 +3,22 @@
 
 _ID521()
 {
-    _func_152( "stinger_lock_rumble" );
-    var_0 = level._ID805;
+    precacherumble( "stinger_lock_rumble" );
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in level._ID805 )
+        var_1 _ID43906();
+
+    foreach ( var_1 in level._ID805 )
     {
-        var_1 = var_0[var_2];
-        var_1 _unknown_0037();
+        var_1 thread _ID50997();
+        var_1 thread _ID48623();
     }
-
-    var_clear_2
-    var_clear_0
-    var_3 = level._ID805;
-
-    for ( var_4 = _func_1DA( var_3 ); _func_02F( var_4 ); var_4 = _func_1BF( var_3, var_4 ) )
-    {
-        var_1 = var_3[var_4];
-        var_1 thread _unknown_0076();
-        var_1 thread _unknown_0086();
-    }
-
-    var_clear_1
-    var_clear_0
 }
 
 _ID43906()
 {
-    if ( !_func_02F( self._ID54388 ) )
-        self._ID54388 = _func_1A5();
+    if ( !isdefined( self._ID54388 ) )
+        self._ID54388 = spawnstruct();
 
     self._ID54388._ID36427 = 0;
     self._ID54388._ID54493 = 0;
@@ -40,12 +28,12 @@ _ID43906()
     self notify( "stop_lockon_sound" );
     self notify( "stop_locked_sound" );
     self._ID54388._ID53805 = undefined;
-    self _meth_80B6( "stinger_lock_rumble" );
-    self _meth_82F1();
-    self _meth_82F2( 0 );
-    self _meth_82AD( 0 );
-    self _meth_8300( "stinger_clu_lock" );
-    self _meth_8300( "stinger_clu_aquiring_lock" );
+    self _meth_80b6( "stinger_lock_rumble" );
+    self weaponlockfree();
+    self weaponlocktargettooclose( 0 );
+    self weaponlocknoclearance( 0 );
+    self stoplocalsound( "stinger_clu_lock" );
+    self stoplocalsound( "stinger_clu_aquiring_lock" );
 }
 
 _ID50997()
@@ -53,7 +41,7 @@ _ID50997()
     for (;;)
     {
         self waittill( "weapon_fired" );
-        var_0 = self _meth_831C();
+        var_0 = self getcurrentweapon();
 
         if ( var_0 != "stinger" )
             continue;
@@ -68,16 +56,16 @@ _ID48623()
 
     for (;;)
     {
-        while ( !_unknown_0193() )
+        while ( !_ID45627() )
             wait 0.05;
 
-        thread _unknown_0137();
+        thread _ID48040();
 
-        while ( _unknown_01A4() )
+        while ( _ID45627() )
             wait 0.05;
 
         self notify( "stinger_IRT_off" );
-        _unknown_0113();
+        _ID43906();
     }
 }
 
@@ -93,59 +81,59 @@ _ID48040()
 
         if ( self._ID54388._ID53306 )
         {
-            if ( !_unknown_01D7( self._ID54388._ID36445 ) )
+            if ( !_ID48693( self._ID54388._ID36445 ) )
             {
-                _unknown_0143();
+                _ID43906();
                 continue;
             }
 
-            thread _unknown_0267( "stinger_clu_lock", 0.75 );
-            _unknown_0256( self._ID54388._ID36445 );
-            _unknown_020C();
+            thread _ID48662( "stinger_clu_lock", 0.75 );
+            _ID49517( self._ID54388._ID36445 );
+            _ID50048();
             continue;
         }
 
         if ( self._ID54388._ID54493 )
         {
-            if ( !_unknown_020F( self._ID54388._ID36445 ) )
+            if ( !_ID48693( self._ID54388._ID36445 ) )
             {
-                _unknown_017A();
+                _ID43906();
                 continue;
             }
 
-            var_1 = _func_03D() - self._ID54388._ID36427;
+            var_1 = gettime() - self._ID54388._ID36427;
 
             if ( var_1 < var_0 )
                 continue;
 
             self notify( "stop_lockon_sound" );
             self._ID54388._ID53306 = 1;
-            self _meth_82F0( self._ID54388._ID36445 );
-            _unknown_02AA( self._ID54388._ID36445 );
-            _unknown_0260();
+            self weaponlockfinalize( self._ID54388._ID36445 );
+            _ID49517( self._ID54388._ID36445 );
+            _ID50048();
             continue;
         }
 
-        var_2 = _unknown_023D();
+        var_2 = _ID50596();
 
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             continue;
 
         self._ID54388._ID36445 = var_2;
-        self._ID54388._ID36427 = _func_03D();
+        self._ID54388._ID36427 = gettime();
         self._ID54388._ID54493 = 1;
-        thread _unknown_02F2( "stinger_clu_aquiring_lock", 0.6 );
+        thread _ID48639( "stinger_clu_aquiring_lock", 0.6 );
     }
 }
 
 _ID50596()
 {
-    var_0 = _func_0AA();
+    var_0 = target_getarray();
     var_1 = [];
 
     for ( var_2 = 0; var_2 < var_0.size; var_2++ )
     {
-        if ( _unknown_0292( var_0[var_2] ) )
+        if ( _ID44986( var_0[var_2] ) )
             var_1[var_1.size] = var_0[var_2];
     }
 
@@ -164,23 +152,23 @@ _ID50596()
 
 _ID44986( var_0 )
 {
-    return _func_0A7( var_0, self, 65, 60 );
+    return target_isincircle( var_0, self, 65, 60 );
 }
 
 _ID50273( var_0 )
 {
-    return _func_0A7( var_0, self, 65, 75 );
+    return target_isincircle( var_0, self, 65, 75 );
 }
 
 _ID48693( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( !_func_0AB( var_0 ) )
+    if ( !target_istarget( var_0 ) )
         return 0;
 
-    if ( !_unknown_02DE( var_0 ) )
+    if ( !_ID50273( var_0 ) )
         return 0;
 
     return 1;
@@ -188,12 +176,12 @@ _ID48693( var_0 )
 
 _ID45627()
 {
-    var_0 = self _meth_831C();
+    var_0 = self getcurrentweapon();
 
     if ( var_0 != "stinger" )
         return 0;
 
-    if ( self _meth_834B() == 1.0 )
+    if ( self playerads() == 1.0 )
         return 1;
 
     return 0;
@@ -213,22 +201,22 @@ _ID50048()
     var_5[3] = ( -40, 0, 40 );
     var_5[4] = ( 40, 0, 40 );
 
-    if ( _func_039( "missileDebugDraw" ) == "1" )
+    if ( getdvar( "missileDebugDraw" ) == "1" )
         var_6 = 1;
     else
         var_6 = 0;
 
-    var_7 = self _meth_8346();
-    var_8 = _func_11F( var_7 );
-    var_9 = _func_11E( var_7 );
-    var_10 = _func_11D( var_7 );
+    var_7 = self getplayerangles();
+    var_8 = anglestoforward( var_7 );
+    var_9 = anglestoright( var_7 );
+    var_10 = anglestoup( var_7 );
     var_11 = self._ID740 + ( 0, 0, var_0 ) + var_9 * var_1;
     var_12 = 0;
 
     for ( var_13 = 0; var_13 < var_5.size; var_13++ )
     {
         var_14 = var_11 + var_8 * var_2 + var_10 * var_5[var_13][2] + var_9 * var_5[var_13][0];
-        var_15 = _func_06D( var_11, var_14, 0, undefined );
+        var_15 = bullettrace( var_11, var_14, 0, undefined );
 
         if ( var_15["fraction"] < 1 )
         {
@@ -250,27 +238,27 @@ _ID50048()
         }
     }
 
-    self _meth_82AD( var_12 );
+    self weaponlocknoclearance( var_12 );
 }
 
 _ID49517( var_0 )
 {
     var_1 = 1000;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return 0;
 
-    var_2 = _func_0F4( self._ID740, var_0._ID740 );
+    var_2 = distance2d( self._ID740, var_0._ID740 );
 
     if ( var_2 < var_1 )
     {
         self._ID54388._ID52383 = 1;
-        self _meth_82F2( 1 );
+        self weaponlocktargettooclose( 1 );
     }
     else
     {
         self._ID54388._ID52383 = 0;
-        self _meth_82F2( 0 );
+        self weaponlocktargettooclose( 0 );
     }
 }
 
@@ -281,8 +269,8 @@ _ID48639( var_0, var_1 )
 
     for (;;)
     {
-        self _meth_82FF( var_0 );
-        self _meth_80B4( "stinger_lock_rumble" );
+        self playlocalsound( var_0 );
+        self playrumblelooponentity( "stinger_lock_rumble" );
         wait(var_1);
     }
 }
@@ -292,21 +280,21 @@ _ID48662( var_0, var_1 )
     self endon( "stop_locked_sound" );
     self endon( "death" );
 
-    if ( _func_02F( self._ID54388._ID53805 ) )
+    if ( isdefined( self._ID54388._ID53805 ) )
         return;
 
     self._ID54388._ID53805 = 1;
 
     for (;;)
     {
-        self _meth_82FF( var_0 );
-        self _meth_80B4( "stinger_lock_rumble" );
+        self playlocalsound( var_0 );
+        self playrumblelooponentity( "stinger_lock_rumble" );
         wait(var_1 / 3);
-        self _meth_80B4( "stinger_lock_rumble" );
+        self playrumblelooponentity( "stinger_lock_rumble" );
         wait(var_1 / 3);
-        self _meth_80B4( "stinger_lock_rumble" );
+        self playrumblelooponentity( "stinger_lock_rumble" );
         wait(var_1 / 3);
-        self _meth_80B6( "stinger_lock_rumble" );
+        self _meth_80b6( "stinger_lock_rumble" );
     }
 
     self._ID54388._ID53805 = undefined;

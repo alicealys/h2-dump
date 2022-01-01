@@ -27,72 +27,72 @@ _ID19738()
 
 _ID616()
 {
-    if ( _func_039( "mg42" ) == "" )
-        _func_034( "mgTurret", "off" );
+    if ( getdvar( "mg42" ) == "" )
+        setdvar( "mgTurret", "off" );
 
     level._ID22748 = 24;
-    var_0 = _func_1A2( "turretInfo", "targetname" );
+    var_0 = getentarray( "turretInfo", "targetname" );
 
     for ( var_1 = 0; var_1 < var_0.size; var_1++ )
-        var_0[var_1] _meth_80B7();
+        var_0[var_1] delete();
 }
 
 _ID28237()
 {
-    self _meth_802A( "weapon_mg42_carry", "tag_origin" );
+    self detach( "weapon_mg42_carry", "tag_origin" );
     self endon( "death" );
     self._ID452 = level._ID10115;
 
-    if ( _func_02F( self._ID1191 ) )
+    if ( isdefined( self._ID1191 ) )
     {
-        var_0 = _func_0C8( self._ID1191, "targetname" );
+        var_0 = getnode( self._ID1191, "targetname" );
 
-        if ( _func_02F( var_0 ) )
+        if ( isdefined( var_0 ) )
         {
-            if ( _func_02F( var_0._ID851 ) )
+            if ( isdefined( var_0._ID851 ) )
                 self._ID452 = var_0._ID851;
 
-            self _meth_81B1( var_0 );
+            self setgoalnode( var_0 );
         }
     }
 
-    while ( !_func_02F( self._ID700 ) )
+    while ( !isdefined( self._ID700 ) )
         wait 0.05;
 
     var_1 = undefined;
 
-    if ( _func_02F( self._ID1191 ) )
+    if ( isdefined( self._ID1191 ) )
     {
-        var_0 = _func_0C8( self._ID1191, "targetname" );
+        var_0 = getnode( self._ID1191, "targetname" );
         var_1 = var_0;
     }
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = self._ID700;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
     if ( var_1._ID1244 != "Turret" )
         return;
 
-    var_2 = _unknown_0A60();
+    var_2 = _ID16647();
     var_2[self._ID700._ID740 + ""] = undefined;
 
-    if ( _func_02F( var_2[var_1._ID740 + ""] ) )
+    if ( isdefined( var_2[var_1._ID740 + ""] ) )
         return;
 
     var_3 = var_1._ID39235;
 
-    if ( _func_02F( var_3._ID886 ) )
+    if ( isdefined( var_3._ID886 ) )
         return;
 
-    _unknown_0B3A( var_3 );
+    _ID29729( var_3 );
 
     if ( var_3._ID20897 )
-        _unknown_09AF( var_3 );
+        _ID22120( var_3 );
     else
-        _unknown_09DD( var_3 );
+        _ID30401( var_3 );
 
     _ID42330::_ID17529( var_1._ID39235 );
 }
@@ -102,25 +102,25 @@ _ID23503()
     self waittill( "trigger" );
     level notify( self._ID1193 );
     level._ID23503[self._ID1193] = 1;
-    self _meth_80B7();
+    self delete();
 }
 
 _ID23513( var_0 )
 {
     var_0 waittill( "trigger" );
-    var_1 = _func_0DE( "bad_guys" );
+    var_1 = getaiarray( "bad_guys" );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
     {
-        if ( _func_02F( var_1[var_2]._ID31288 ) && var_0._ID31288 == var_1[var_2]._ID31288 )
+        if ( isdefined( var_1[var_2]._ID31288 ) && var_0._ID31288 == var_1[var_2]._ID31288 )
             var_1[var_2] notify( "auto_ai" );
     }
 
-    var_3 = _func_0E0();
+    var_3 = getspawnerarray();
 
     for ( var_2 = 0; var_2 < var_3.size; var_2++ )
     {
-        if ( _func_02F( var_3[var_2]._ID31288 ) && var_0._ID31288 == var_3[var_2]._ID31288 )
+        if ( isdefined( var_3[var_2]._ID31288 ) && var_0._ID31288 == var_3[var_2]._ID31288 )
             var_3[var_2]._ID2312 = "auto_ai";
     }
 
@@ -132,18 +132,18 @@ _ID23500( var_0 )
     self endon( "death" );
     self endon( "stop_suppressionFire" );
 
-    if ( !_func_02F( self._ID36838 ) )
+    if ( !isdefined( self._ID36838 ) )
         self._ID36838 = 1;
 
     for (;;)
     {
         while ( self._ID36838 )
         {
-            self _meth_810F( var_0[_func_0B7( var_0.size )] );
-            wait(2 + _func_0B8( 2 ));
+            self settargetentity( var_0[randomint( var_0.size )] );
+            wait(2 + randomfloat( 2 ));
         }
 
-        self _meth_8111();
+        self cleartargetentity();
 
         while ( !self._ID36838 )
             wait 1;
@@ -155,8 +155,8 @@ _ID22904( var_0 )
     var_1 = self._ID740;
     self waittill( "auto_ai" );
     var_0 notify( "stopfiring" );
-    var_0 _meth_806C( "auto_ai" );
-    var_0 _meth_810F( level._ID794 );
+    var_0 setmode( "auto_ai" );
+    var_0 settargetentity( level._ID794 );
 }
 
 _ID6447( var_0 )
@@ -176,56 +176,56 @@ _ID6448()
     self endon( "death" );
     self endon( "stop_burst_fire_unmanned" );
 
-    if ( _func_02F( self._ID31121 ) )
+    if ( isdefined( self._ID31121 ) )
         var_0 = self._ID31121;
     else
-        var_0 = _unknown_0478( "delay" );
+        var_0 = _ID6447( "delay" );
 
-    if ( _func_02F( self._ID31120 ) )
+    if ( isdefined( self._ID31120 ) )
         var_1 = self._ID31120 - var_0;
     else
-        var_1 = _unknown_0491( "delay_range" );
+        var_1 = _ID6447( "delay_range" );
 
-    if ( _func_02F( self._ID31083 ) )
+    if ( isdefined( self._ID31083 ) )
         var_2 = self._ID31083;
     else
-        var_2 = _unknown_04A8( "burst" );
+        var_2 = _ID6447( "burst" );
 
-    if ( _func_02F( self._ID31082 ) )
+    if ( isdefined( self._ID31082 ) )
         var_3 = self._ID31082 - var_2;
     else
-        var_3 = _unknown_04C1( "burst_range" );
+        var_3 = _ID6447( "burst_range" );
 
-    var_4 = _func_03D();
+    var_4 = gettime();
     var_5 = "start";
 
-    if ( _func_02F( self._ID33723 ) )
-        thread _unknown_0540();
+    if ( isdefined( self._ID33723 ) )
+        thread _ID39312();
 
     for (;;)
     {
-        var_6 = var_4 - _func_03D() * 0.001;
+        var_6 = ( var_4 - gettime() ) * 0.001;
 
-        if ( self _meth_80EB() && var_6 <= 0 )
+        if ( self isfiringturret() && var_6 <= 0 )
         {
             if ( var_5 != "fire" )
             {
                 var_5 = "fire";
-                thread _unknown_0558();
+                thread _ID11644();
             }
 
-            var_6 = var_2 + _func_0B8( var_3 );
-            thread _unknown_0596( var_6 );
+            var_6 = var_2 + randomfloat( var_3 );
+            thread _ID39366( var_6 );
             self waittill( "turretstatechange" );
-            var_6 = var_0 + _func_0B8( var_1 );
-            var_4 = _func_03D() + _func_0C1( var_6 * 1000 );
+            var_6 = var_0 + randomfloat( var_1 );
+            var_4 = gettime() + int( var_6 * 1000 );
             continue;
         }
 
         if ( var_5 != "aim" )
             var_5 = "aim";
 
-        thread _unknown_05C2( var_6 );
+        thread _ID39366( var_6 );
         self waittill( "turretstatechange" );
     }
 }
@@ -237,9 +237,9 @@ _ID11644()
 
     for (;;)
     {
-        self _meth_80F1();
+        self shootturret();
 
-        if ( !_func_02F( self._ID43488 ) || !self._ID43488 )
+        if ( !isdefined( self._ID43488 ) || !self._ID43488 )
             self notify( "turret_fire" );
 
         wait 0.1;
@@ -251,16 +251,16 @@ _ID39312()
     self endon( "death" );
     self endon( "stop_burst_fire_unmanned" );
 
-    if ( _func_02F( self._ID33724 ) )
+    if ( isdefined( self._ID33724 ) )
         self._ID33725 = 1;
 
     for (;;)
     {
         self waittill( "turret_fire" );
-        _func_157( self._ID33723, self, "tag_origin" );
+        playfxontag( self._ID33723, self, "tag_origin" );
 
-        if ( _func_02F( self._ID33725 ) && self._ID33725 )
-            thread _unknown_0619();
+        if ( isdefined( self._ID33725 ) && self._ID33725 )
+            thread _ID39313();
     }
 }
 
@@ -268,7 +268,7 @@ _ID39313()
 {
     self endon( "death" );
     self._ID33725 = 0;
-    var_0 = self _meth_818C( "tag_origin" );
+    var_0 = self gettagorigin( "tag_origin" );
     var_1 = _ID42237::_ID12140( var_0, -30 );
     var_2 = var_0[2] - var_1[2];
     var_3 = var_2 / 300;
@@ -286,7 +286,7 @@ _ID39366( var_0 )
     self endon( "turretstatechange" );
     wait(var_0);
 
-    if ( _func_02F( self ) )
+    if ( isdefined( self ) )
         self notify( "turretstatechange" );
 }
 
@@ -296,16 +296,16 @@ _ID28956( var_0 )
     self notify( "stop random_spread" );
     self endon( "stop random_spread" );
     self endon( "stopfiring" );
-    self _meth_810F( var_0 );
+    self settargetentity( var_0 );
 
     for (;;)
     {
-        if ( _func_1B3( var_0 ) )
-            var_0._ID740 = self._ID22903 _meth_809C();
+        if ( isplayernumber( var_0 ) )
+            var_0._ID740 = self._ID22903 getorigin();
         else
             var_0._ID740 = self._ID22903._ID740;
 
-        var_0._ID740 = var_0._ID740 + ( 20 - _func_0B8( 40 ), 20 - _func_0B8( 40 ), 20 - _func_0B8( 60 ) );
+        var_0._ID740 = var_0._ID740 + ( 20 - randomfloat( 40 ), 20 - randomfloat( 40 ), 20 - randomfloat( 60 ) );
         wait 0.2;
     }
 }
@@ -314,15 +314,15 @@ _ID23495( var_0 )
 {
     self notify( "stop_using_built_in_burst_fire" );
     self endon( "stop_using_built_in_burst_fire" );
-    var_0 _meth_80EA();
+    var_0 stopfiring();
 
     for (;;)
     {
         var_0 waittill( "startfiring" );
-        thread _unknown_072E( var_0 );
-        var_0 _meth_80E9();
+        thread _ID6446( var_0 );
+        var_0 startfiring();
         var_0 waittill( "stopfiring" );
-        var_0 _meth_80EA();
+        var_0 stopfiring();
     }
 }
 
@@ -331,56 +331,56 @@ _ID6446( var_0, var_1 )
     var_0 endon( "stopfiring" );
     self endon( "stop_using_built_in_burst_fire" );
 
-    if ( _func_02F( var_0._ID31121 ) )
+    if ( isdefined( var_0._ID31121 ) )
         var_2 = var_0._ID31121;
     else
-        var_2 = _unknown_06A1( "delay" );
+        var_2 = _ID6447( "delay" );
 
-    if ( _func_02F( var_0._ID31120 ) )
+    if ( isdefined( var_0._ID31120 ) )
         var_3 = var_0._ID31120 - var_2;
     else
-        var_3 = _unknown_06BD( "delay_range" );
+        var_3 = _ID6447( "delay_range" );
 
-    if ( _func_02F( var_0._ID31083 ) )
+    if ( isdefined( var_0._ID31083 ) )
         var_4 = var_0._ID31083;
     else
-        var_4 = _unknown_06D7( "burst" );
+        var_4 = _ID6447( "burst" );
 
-    if ( _func_02F( var_0._ID31082 ) )
+    if ( isdefined( var_0._ID31082 ) )
         var_5 = var_0._ID31082 - var_4;
     else
-        var_5 = _unknown_06F3( "burst_range" );
+        var_5 = _ID6447( "burst_range" );
 
     for (;;)
     {
-        var_0 _meth_80E9();
+        var_0 startfiring();
 
-        if ( _func_02F( var_1 ) )
-            var_0 thread _unknown_079B( var_1 );
+        if ( isdefined( var_1 ) )
+            var_0 thread _ID28956( var_1 );
 
-        wait(var_4 + _func_0B8( var_5 ));
-        var_0 _meth_80EA();
-        wait(var_2 + _func_0B8( var_3 ));
+        wait(var_4 + randomfloat( var_5 ));
+        var_0 stopfiring();
+        wait(var_2 + randomfloat( var_3 ));
     }
 }
 
 _ID1638()
 {
-    if ( !_func_02F( self._ID14439 ) )
+    if ( !isdefined( self._ID14439 ) )
         self._ID14439 = 0;
 
-    if ( !_func_02F( self._ID1193 ) )
+    if ( !isdefined( self._ID1193 ) )
         return;
 
-    var_0 = _func_0C8( self._ID1193, "target" );
+    var_0 = getnode( self._ID1193, "target" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
-    if ( !_func_02F( var_0._ID31287 ) )
+    if ( !isdefined( var_0._ID31287 ) )
         return;
 
-    if ( !_func_02F( var_0._ID23494 ) )
+    if ( !isdefined( var_0._ID23494 ) )
         var_0._ID23494 = 1;
 
     self._ID31287 = var_0._ID31287;
@@ -392,7 +392,7 @@ _ID1638()
         {
             var_1 = 0;
 
-            if ( _func_02F( var_0._ID1193 ) || self._ID14439 )
+            if ( isdefined( var_0._ID1193 ) || self._ID14439 )
                 self waittill( "get new user" );
         }
 
@@ -403,16 +403,16 @@ _ID1638()
         }
 
         var_2 = [];
-        var_3 = _func_0DE();
+        var_3 = getaiarray();
 
         for ( var_4 = 0; var_4 < var_3.size; var_4++ )
         {
             var_5 = 1;
 
-            if ( _func_02F( var_3[var_4]._ID31287 ) && var_3[var_4]._ID31287 == self._ID31287 )
+            if ( isdefined( var_3[var_4]._ID31287 ) && var_3[var_4]._ID31287 == self._ID31287 )
                 var_5 = 0;
 
-            if ( _func_02F( var_3[var_4]._ID39928 ) )
+            if ( isdefined( var_3[var_4]._ID39928 ) )
                 var_5 = 1;
 
             if ( var_5 )
@@ -426,7 +426,7 @@ _ID1638()
 
         var_2 = undefined;
 
-        if ( _func_02F( var_3 ) )
+        if ( isdefined( var_3 ) )
         {
             var_3 notify( "stop_going_to_node" );
             var_3 thread _ID42372::_ID16964( var_0 );
@@ -440,23 +440,23 @@ _ID1638()
 
 _ID23502()
 {
-    if ( !_func_02F( self._ID2312 ) )
+    if ( !isdefined( self._ID2312 ) )
         self._ID2312 = "manual_ai";
 
-    var_0 = _func_0C8( self._ID1191, "targetname" );
+    var_0 = getnode( self._ID1191, "targetname" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
-    var_1 = _func_1A1( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0._ID1191, "targetname" );
     var_1._ID25988 = var_0._ID740;
 
-    if ( _func_02F( var_1._ID1191 ) )
+    if ( isdefined( var_1._ID1191 ) )
     {
-        if ( !_func_02F( level._ID23503 ) || !_func_02F( level._ID23503[var_1._ID1191] ) )
+        if ( !isdefined( level._ID23503 ) || !isdefined( level._ID23503[var_1._ID1191] ) )
         {
             level._ID23503[var_1._ID1191] = 0;
-            _func_1A1( var_1._ID1191, "targetname" ) thread _unknown_0820();
+            getent( var_1._ID1191, "targetname" ) thread _ID23503();
         }
 
         var_2 = 1;
@@ -471,25 +471,25 @@ _ID23502()
 
         var_3 = undefined;
 
-        while ( !_func_02F( var_3 ) )
+        while ( !isdefined( var_3 ) )
         {
-            var_3 = self _meth_809A();
+            var_3 = self dospawn();
             wait 1;
         }
 
-        var_3 thread _unknown_0A2E( var_1, var_2, self._ID2312 );
-        var_3 thread _unknown_0953( var_1 );
+        var_3 thread _ID23497( var_1, var_2, self._ID2312 );
+        var_3 thread _ID23495( var_1 );
         var_3 waittill( "death" );
 
-        if ( _func_02F( self._ID916 ) )
+        if ( isdefined( self._ID916 ) )
         {
             wait(self._ID916);
             continue;
         }
 
-        if ( _func_02F( self._ID31121 ) && _func_02F( self._ID31120 ) )
+        if ( isdefined( self._ID31121 ) && isdefined( self._ID31120 ) )
         {
-            wait(self._ID31121 + _func_0B8( self._ID31120 - self._ID31121 ));
+            wait(self._ID31121 + randomfloat( self._ID31120 - self._ID31121 ));
             continue;
         }
 
@@ -501,11 +501,11 @@ _ID21294( var_0, var_1, var_2, var_3 )
 {
     var_0 waittill( var_1 );
 
-    if ( _func_02F( var_2 ) )
-        var_2 _meth_80B7();
+    if ( isdefined( var_2 ) )
+        var_2 delete();
 
-    if ( _func_02F( var_3 ) )
-        var_3 _meth_80B7();
+    if ( isdefined( var_3 ) )
+        var_3 delete();
 }
 
 _ID23497( var_0, var_1, var_2 )
@@ -516,9 +516,9 @@ _ID23497( var_0, var_1, var_2 )
     {
         for (;;)
         {
-            thread _unknown_0ADE( var_0, var_1 );
+            thread _ID23496( var_0, var_1 );
             self waittill( "auto_ai" );
-            _unknown_0C26( var_0, "auto_ai" );
+            _ID24385( var_0, "auto_ai" );
             self waittill( "manual_ai" );
         }
     }
@@ -526,9 +526,9 @@ _ID23497( var_0, var_1, var_2 )
     {
         for (;;)
         {
-            _unknown_0C3B( var_0, "auto_ai", level._ID794 );
+            _ID24385( var_0, "auto_ai", level._ID794 );
             self waittill( "manual_ai" );
-            thread _unknown_0B0D( var_0, var_1 );
+            thread _ID23496( var_0, var_1 );
             self waittill( "auto_ai" );
         }
     }
@@ -536,13 +536,13 @@ _ID23497( var_0, var_1, var_2 )
 
 _ID27637()
 {
-    if ( !_func_02F( level._ID27328 ) )
+    if ( !isdefined( level._ID27328 ) )
         return 0;
 
-    if ( level._ID794 _meth_8188() == "prone" )
+    if ( level._ID794 getstance() == "prone" )
         return 1;
 
-    if ( level._ID27329 == "cow" && level._ID794 _meth_8188() == "crouch" )
+    if ( level._ID27329 == "cow" && level._ID794 getstance() == "crouch" )
         return 1;
 
     return 0;
@@ -550,9 +550,9 @@ _ID27637()
 
 _ID35580()
 {
-    if ( level._ID794 _meth_8188() == "prone" )
+    if ( level._ID794 getstance() == "prone" )
         return ( 0, 0, 5 );
-    else if ( level._ID794 _meth_8188() == "crouch" )
+    else if ( level._ID794 getstance() == "crouch" )
         return ( 0, 0, 25 );
 
     return ( 0, 0, 50 );
@@ -563,7 +563,7 @@ _ID23496( var_0, var_1 )
     self endon( "death" );
     self endon( "auto_ai" );
     self._ID744 = 1;
-    self _meth_81B2( var_0._ID25988 );
+    self setgoalpos( var_0._ID25988 );
     self._ID452 = level._ID22748;
     self waittill( "goal" );
 
@@ -574,45 +574,45 @@ _ID23496( var_0, var_1 )
     }
 
     self._ID744 = 0;
-    var_0 _meth_806C( "auto_ai" );
-    var_0 _meth_8111();
-    var_2 = _func_06A( "script_origin", ( 0, 0, 0 ) );
-    var_3 = _func_06A( "script_model", ( 0, 0, 0 ) );
+    var_0 setmode( "auto_ai" );
+    var_0 cleartargetentity();
+    var_2 = spawn( "script_origin", ( 0, 0, 0 ) );
+    var_3 = spawn( "script_model", ( 0, 0, 0 ) );
     var_3._ID30768 = 3;
 
-    if ( _func_039( "mg42" ) != "off" )
-        var_3 _meth_80B8( "temp" );
+    if ( getdvar( "mg42" ) != "off" )
+        var_3 setmodel( "temp" );
 
-    var_3 thread _unknown_0D59( var_0, var_2 );
-    level thread _unknown_0BCC( self, "death", var_2, var_3 );
-    level thread _unknown_0BD8( self, "auto_ai", var_2, var_3 );
+    var_3 thread _ID37495( var_0, var_2 );
+    level thread _ID21294( self, "death", var_2, var_3 );
+    level thread _ID21294( self, "auto_ai", var_2, var_3 );
     var_0._ID27696 = 0;
     var_4 = 0;
-    var_5 = _func_1A2( "mg42_target", "targetname" );
+    var_5 = getentarray( "mg42_target", "targetname" );
 
     if ( var_5.size > 0 )
     {
         var_6 = 1;
-        var_7 = var_5[_func_0B7( var_5.size )]._ID740;
-        thread _unknown_0D69( var_5 );
-        _unknown_0D8B( var_0 );
+        var_7 = var_5[randomint( var_5.size )]._ID740;
+        thread _ID33760( var_5 );
+        _ID24385( var_0 );
         self._ID37285 = var_2;
-        var_0 _meth_806C( "manual_ai" );
-        var_0 _meth_810F( var_2 );
+        var_0 setmode( "manual_ai" );
+        var_0 settargetentity( var_2 );
         var_0 notify( "startfiring" );
         var_8 = 15;
         var_9 = 0.08;
         var_10 = 0.05;
-        var_2._ID740 = var_5[_func_0B7( var_5.size )]._ID740;
+        var_2._ID740 = var_5[randomint( var_5.size )]._ID740;
         var_11 = 0;
 
-        while ( !_func_02F( level._ID27328 ) )
+        while ( !isdefined( level._ID27328 ) )
         {
             var_7 = var_2._ID740;
 
-            if ( _func_0F3( var_7, var_5[self._ID17513]._ID740 ) > var_8 )
+            if ( distance( var_7, var_5[self._ID17513]._ID740 ) > var_8 )
             {
-                var_12 = _func_119( var_5[self._ID17513]._ID740 - var_7 );
+                var_12 = vectornormalize( var_5[self._ID17513]._ID740 - var_7 );
                 var_12 *= var_8;
                 var_7 += var_12;
             }
@@ -627,47 +627,47 @@ _ID23496( var_0, var_1 )
         {
             for ( var_13 = 0; var_13 < 1; var_13 += var_10 )
             {
-                var_2._ID740 = var_7 * 1.0 - var_13 + level._ID794 _meth_809C() + _unknown_0CD4() * var_13;
+                var_2._ID740 = var_7 * ( 1.0 - var_13 ) + ( level._ID794 getorigin() + _ID35580() ) * var_13;
 
-                if ( _unknown_0CCE() )
+                if ( _ID27637() )
                     var_13 = 2;
 
                 wait(var_9);
             }
 
-            var_14 = level._ID794 _meth_809C();
+            var_14 = level._ID794 getorigin();
 
-            while ( !_unknown_0CE4() )
+            while ( !_ID27637() )
             {
-                var_2._ID740 = level._ID794 _meth_809C();
+                var_2._ID740 = level._ID794 getorigin();
                 var_15 = var_2._ID740 - var_14;
-                var_2._ID740 = var_2._ID740 + var_15 + _unknown_0D0E();
-                var_14 = level._ID794 _meth_809C();
+                var_2._ID740 = var_2._ID740 + var_15 + _ID35580();
+                var_14 = level._ID794 getorigin();
                 wait 0.1;
             }
 
-            if ( _unknown_0D13() )
+            if ( _ID27637() )
             {
-                var_11 = _func_03D() + 1500 + _func_0B8( 4000 );
+                var_11 = gettime() + 1500 + randomfloat( 4000 );
 
-                while ( _unknown_0D25() && _func_02F( level._ID27328._ID1191 ) && _func_03D() < var_11 )
+                while ( _ID27637() && isdefined( level._ID27328._ID1191 ) && gettime() < var_11 )
                 {
-                    var_16 = _func_1A2( level._ID27328._ID1191, "targetname" );
-                    var_16 = var_16[_func_0B7( var_16.size )];
-                    var_2._ID740 = var_16._ID740 + ( _func_0B8( 30 ) - 15, _func_0B8( 30 ) - 15, _func_0B8( 40 ) - 60 );
+                    var_16 = getentarray( level._ID27328._ID1191, "targetname" );
+                    var_16 = var_16[randomint( var_16.size )];
+                    var_2._ID740 = var_16._ID740 + ( randomfloat( 30 ) - 15, randomfloat( 30 ) - 15, randomfloat( 40 ) - 60 );
                     wait 0.1;
                 }
             }
 
             self notify( "next_target" );
 
-            while ( _unknown_0D79() )
+            while ( _ID27637() )
             {
                 var_7 = var_2._ID740;
 
-                if ( _func_0F3( var_7, var_5[self._ID17513]._ID740 ) > var_8 )
+                if ( distance( var_7, var_5[self._ID17513]._ID740 ) > var_8 )
                 {
-                    var_12 = _func_119( var_5[self._ID17513]._ID740 - var_7 );
+                    var_12 = vectornormalize( var_5[self._ID17513]._ID740 - var_7 );
                     var_12 *= var_8;
                     var_7 += var_12;
                 }
@@ -683,13 +683,13 @@ _ID23496( var_0, var_1 )
     {
         for (;;)
         {
-            _unknown_0F25( var_0 );
+            _ID24385( var_0 );
 
-            while ( !_func_02F( level._ID27328 ) )
+            while ( !isdefined( level._ID27328 ) )
             {
                 if ( !var_0._ID27696 )
                 {
-                    var_0 _meth_810F( level._ID794 );
+                    var_0 settargetentity( level._ID794 );
                     var_0._ID27696 = 1;
                     var_3._ID37274 = level._ID794;
                 }
@@ -697,21 +697,21 @@ _ID23496( var_0, var_1 )
                 wait 0.2;
             }
 
-            var_0 _meth_806C( "manual_ai" );
-            _unknown_0F5A( var_0 );
+            var_0 setmode( "manual_ai" );
+            _ID24385( var_0 );
             var_0 notify( "startfiring" );
-            var_11 = _func_03D() + 1500 + _func_0B8( 4000 );
+            var_11 = gettime() + 1500 + randomfloat( 4000 );
 
-            while ( var_11 > _func_03D() )
+            while ( var_11 > gettime() )
             {
-                if ( _func_02F( level._ID27328 ) )
+                if ( isdefined( level._ID27328 ) )
                 {
-                    var_16 = _func_1A2( level._ID27328._ID1191, "targetname" );
-                    var_16 = var_16[_func_0B7( var_16.size )];
-                    var_2._ID740 = var_16._ID740 + ( _func_0B8( 30 ) - 15, _func_0B8( 30 ) - 15, _func_0B8( 40 ) - 60 );
-                    var_0 _meth_810F( var_2 );
+                    var_16 = getentarray( level._ID27328._ID1191, "targetname" );
+                    var_16 = var_16[randomint( var_16.size )];
+                    var_2._ID740 = var_16._ID740 + ( randomfloat( 30 ) - 15, randomfloat( 30 ) - 15, randomfloat( 40 ) - 60 );
+                    var_0 settargetentity( var_2 );
                     var_3._ID37274 = var_2;
-                    wait(_func_0B8( 1 ));
+                    wait(randomfloat( 1 ));
                     continue;
                 }
 
@@ -719,21 +719,21 @@ _ID23496( var_0, var_1 )
             }
 
             var_0 notify( "stopfiring" );
-            _unknown_0FCD( var_0 );
+            _ID24385( var_0 );
 
             if ( var_0._ID27696 )
             {
-                var_0 _meth_806C( "auto_ai" );
-                var_0 _meth_8111();
+                var_0 setmode( "auto_ai" );
+                var_0 cleartargetentity();
                 var_0._ID27696 = 0;
                 var_3._ID37274 = var_3;
                 var_3._ID740 = ( 0, 0, 0 );
             }
 
-            while ( _func_02F( level._ID27328 ) )
+            while ( isdefined( level._ID27328 ) )
                 wait 0.2;
 
-            wait(0.75 + _func_0B8( 0.2 ));
+            wait(0.75 + randomfloat( 0.2 ));
         }
     }
 }
@@ -751,7 +751,7 @@ _ID33760( var_0 )
 
         for ( var_2 = 0; var_2 < var_0.size; var_2++ )
         {
-            self._ID17513 = _func_0B7( var_0.size );
+            self._ID17513 = randomint( var_0.size );
             self waittill( "next_target" );
 
             while ( var_1[self._ID17513] )
@@ -769,26 +769,26 @@ _ID33760( var_0 )
 
 _ID24385( var_0, var_1, var_2 )
 {
-    self _meth_81B2( var_0._ID25988 );
+    self setgoalpos( var_0._ID25988 );
     self._ID452 = level._ID22748;
     self waittill( "goal" );
 
-    if ( _func_02F( var_1 ) && var_1 == "auto_ai" )
+    if ( isdefined( var_1 ) && var_1 == "auto_ai" )
     {
-        var_0 _meth_806C( "auto_ai" );
+        var_0 setmode( "auto_ai" );
 
-        if ( _func_02F( var_2 ) )
-            var_0 _meth_810F( var_2 );
+        if ( isdefined( var_2 ) )
+            var_0 settargetentity( var_2 );
         else
-            var_0 _meth_8111();
+            var_0 cleartargetentity();
     }
 
-    self _meth_8196( var_0 );
+    self useturret( var_0 );
 }
 
 _ID37495( var_0, var_1 )
 {
-    if ( _func_039( "mg42" ) == "off" )
+    if ( getdvar( "mg42" ) == "off" )
         return;
 
     self._ID37274 = self;
@@ -802,25 +802,25 @@ _ID37495( var_0, var_1 )
 
 _ID39324( var_0 )
 {
-    var_1 = _func_1A1( var_0._ID4392, "targetname" );
+    var_1 = getent( var_0._ID4392, "targetname" );
     var_2 = 0.5;
 
-    if ( _func_02F( var_1._ID31493 ) )
+    if ( isdefined( var_1._ID31493 ) )
         var_2 = var_1._ID31493;
 
     var_3 = 2;
 
-    if ( _func_02F( var_1._ID31492 ) )
+    if ( isdefined( var_1._ID31492 ) )
         var_2 = var_1._ID31492;
 
     for (;;)
     {
         var_1 waittill( "turret_deactivate" );
-        wait(var_2 + _func_0B8( var_3 - var_2 ));
+        wait(var_2 + randomfloat( var_3 - var_2 ));
 
-        while ( !_func_09E( var_1 ) )
+        while ( !isturretactive( var_1 ) )
         {
-            _unknown_1150( var_0, var_1 );
+            _ID39259( var_0, var_1 );
             wait 1.0;
         }
     }
@@ -828,16 +828,16 @@ _ID39324( var_0 )
 
 _ID39259( var_0, var_1 )
 {
-    var_2 = _func_0DE();
+    var_2 = getaiarray();
 
     for ( var_3 = 0; var_3 < var_2.size; var_3++ )
     {
-        if ( var_2[var_3] _meth_8169( var_0._ID740 ) && var_2[var_3] _meth_8198( var_1 ) )
+        if ( var_2[var_3] isingoal( var_0._ID740 ) && var_2[var_3] canuseturret( var_1 ) )
         {
             var_4 = var_2[var_3]._ID562;
             var_2[var_3]._ID562 = 0;
 
-            if ( !var_2[var_3] _meth_8200( var_0 ) )
+            if ( !var_2[var_3] usecovernode( var_0 ) )
                 var_2[var_3]._ID562 = var_4;
         }
     }
@@ -845,26 +845,34 @@ _ID39259( var_0, var_1 )
 
 _ID32596()
 {
-    _unknown_0D4B();
-    var_0 = _func_1A2( "misc_turret", "code_classname" );
+    _ID19738();
+    var_0 = getentarray( "misc_turret", "code_classname" );
     var_1 = _ID42407::_ID16219();
 
     for ( var_2 = 0; var_2 < var_0.size; var_2++ )
     {
-        if ( _func_02F( var_0[var_2]._ID31432 ) )
+        if ( isdefined( var_0[var_2]._ID31432 ) )
         {
             switch ( var_0[var_2]._ID31432 )
             {
-
+                case "easy":
+                    var_1 = "easy";
+                    break;
+                case "medium":
+                    var_1 = "medium";
+                    break;
+                case "hard":
+                    var_1 = "hard";
+                    break;
+                case "fu":
+                    var_1 = "fu";
+                    break;
+                default:
+                    continue;
             }
         }
 
-        _unknown_1259( var_0[var_2], var_1 );
-        case "fu":
-        case "hard":
-        case "medium":
-        case "easy":
-        default:
+        _ID23499( var_0[var_2], var_1 );
     }
 }
 
@@ -879,7 +887,7 @@ _ID23499( var_0, var_1 )
 
 _ID23501( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 0.88;
 
     self endon( "death" );
@@ -887,16 +895,16 @@ _ID23501( var_0, var_1, var_2 )
     self endon( "stop_mg42_target_drones" );
     self._ID12043 = 0;
 
-    if ( !_func_02F( self._ID31187 ) )
+    if ( !isdefined( self._ID31187 ) )
         self._ID31187 = 0;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = 0;
 
-    self _meth_806C( "manual_ai" );
+    self setmode( "manual_ai" );
     var_3 = _ID42407::_ID16219();
 
-    if ( !_func_02F( level._ID12061 ) )
+    if ( !isdefined( level._ID12061 ) )
         var_4 = 1;
     else
         var_4 = 0;
@@ -905,26 +913,26 @@ _ID23501( var_0, var_1, var_2 )
     {
         if ( var_4 )
         {
-            if ( _func_02F( self._ID12071 ) )
-                self _meth_806C( self._ID10142 );
+            if ( isdefined( self._ID12071 ) )
+                self setmode( self._ID10142 );
             else if ( var_0 )
-                self _meth_806C( "auto_nonai" );
+                self setmode( "auto_nonai" );
             else
-                self _meth_806C( "auto_ai" );
+                self setmode( "auto_ai" );
 
             level waittill( "new_drone" );
         }
 
-        if ( !_func_02F( self._ID25547 ) )
+        if ( !isdefined( self._ID25547 ) )
             self._ID25547 = self._ID212;
 
         self._ID212 = 2;
 
         if ( !var_0 )
         {
-            var_5 = self _meth_80F2();
+            var_5 = self getturretowner();
 
-            if ( !_func_1A7( var_5 ) || _func_1B3( var_5 ) )
+            if ( !isalive( var_5 ) || isplayernumber( var_5 ) )
             {
                 wait 0.05;
                 continue;
@@ -950,42 +958,42 @@ _ID23501( var_0, var_1, var_2 )
                 break;
             }
 
-            var_7 = _unknown_1481( var_6, var_2 );
+            var_7 = _ID15582( var_6, var_2 );
             _ID42237::_ID39496( "mg42_drones" );
 
-            if ( !_func_02F( self._ID31187 ) || !self._ID31187 )
+            if ( !isdefined( self._ID31187 ) || !self._ID31187 )
             {
                 wait 0.05;
                 break;
             }
 
-            if ( !_func_02F( var_7 ) )
+            if ( !isdefined( var_7 ) )
             {
                 wait 0.05;
                 break;
             }
 
-            if ( _func_02F( self._ID3146 ) )
+            if ( isdefined( self._ID3146 ) )
                 [[ self._ID3146 ]]();
 
             if ( var_0 )
-                self _meth_806C( "manual" );
+                self setmode( "manual" );
             else
-                self _meth_806C( "manual_ai" );
+                self setmode( "manual_ai" );
 
-            self _meth_810F( var_7, ( 0, 0, 32 ) );
-            _unknown_14AC( var_7, 1, var_2 );
-            self _meth_8111();
-            self _meth_80EA();
+            self settargetentity( var_7, ( 0, 0, 32 ) );
+            _ID11994( var_7, 1, var_2 );
+            self cleartargetentity();
+            self stopfiring();
 
-            if ( !var_0 && !_func_02F( self _meth_80F2() ) && self _meth_80F2() == var_5 )
+            if ( !var_0 && !( isdefined( self getturretowner() ) && self getturretowner() == var_5 ) )
                 break;
         }
 
         self._ID212 = self._ID25547;
         self._ID25547 = undefined;
-        self _meth_8111();
-        self _meth_80EA();
+        self cleartargetentity();
+        self stopfiring();
 
         if ( level._ID12061[var_6]._ID21937 )
         {
@@ -1001,20 +1009,20 @@ _ID11994( var_0, var_1, var_2 )
 {
     self endon( "death" );
     var_0 endon( "death" );
-    var_3 = _func_03D() + var_1 * 1000;
+    var_3 = gettime() + var_1 * 1000;
     var_4 = 0;
 
-    while ( var_3 > _func_03D() || var_4 )
+    while ( var_3 > gettime() || var_4 )
     {
         _ID42237::_ID22529( "mg42_drones_target_trace" );
-        var_5 = self _meth_8112( 1 );
+        var_5 = self getturrettarget( 1 );
 
-        if ( !_func_08F( self _meth_818C( "tag_flash" ), var_0._ID740 + ( 0, 0, 40 ), 0, var_0 ) )
+        if ( !bullettracepassed( self gettagorigin( "tag_flash" ), var_0._ID740 + ( 0, 0, 40 ), 0, var_0 ) )
         {
             _ID42237::_ID39496( "mg42_drones_target_trace" );
             break;
         }
-        else if ( _func_02F( var_5 ) && _func_0F3( var_5._ID740, self._ID740 ) < _func_0F3( self._ID740, var_0._ID740 ) )
+        else if ( isdefined( var_5 ) && distance( var_5._ID740, self._ID740 ) < distance( self._ID740, var_0._ID740 ) )
         {
             _ID42237::_ID39496( "mg42_drones_target_trace" );
             break;
@@ -1022,14 +1030,14 @@ _ID11994( var_0, var_1, var_2 )
 
         if ( !var_4 )
         {
-            self _meth_80E9();
+            self startfiring();
             var_4 = 1;
         }
 
         _ID42237::_ID39501( "mg42_drones_target_trace" );
     }
 
-    self _meth_80EA();
+    self stopfiring();
     _ID42407::_ID36716( level._ID12061[var_0._ID1194], 1 );
 }
 
@@ -1039,22 +1047,22 @@ _ID15582( var_0, var_1 )
         return;
 
     var_2 = undefined;
-    var_3 = _func_11F( self._ID65 );
+    var_3 = anglestoforward( self._ID65 );
 
     for ( var_4 = 0; var_4 < level._ID12061[var_0]._ID21937; var_4++ )
     {
-        if ( !_func_02F( level._ID12061[var_0]._ID3291[var_4] ) )
+        if ( !isdefined( level._ID12061[var_0]._ID3291[var_4] ) )
             continue;
 
-        var_5 = _func_11A( level._ID12061[var_0]._ID3291[var_4]._ID740 - self._ID740 );
-        var_6 = _func_11F( var_5 );
+        var_5 = vectortoangles( level._ID12061[var_0]._ID3291[var_4]._ID740 - self._ID740 );
+        var_6 = anglestoforward( var_5 );
 
-        if ( _func_0FB( var_3, var_6 ) < var_1 )
+        if ( vectordot( var_3, var_6 ) < var_1 )
             continue;
 
         var_2 = level._ID12061[var_0]._ID3291[var_4];
 
-        if ( !_func_08F( self _meth_818C( "tag_flash" ), var_2 _meth_809D(), 0, var_2 ) )
+        if ( !bullettracepassed( self gettagorigin( "tag_flash" ), var_2 getcentroid(), 0, var_2 ) )
         {
             var_2 = undefined;
             continue;
@@ -1063,11 +1071,11 @@ _ID15582( var_0, var_1 )
         break;
     }
 
-    var_7 = self _meth_8112( 1 );
+    var_7 = self getturrettarget( 1 );
 
-    if ( !_func_02F( self._ID28409 ) )
+    if ( !isdefined( self._ID28409 ) )
     {
-        if ( _func_02F( var_2 ) && _func_02F( var_7 ) && _func_0F5( self._ID740, var_7._ID740 ) < _func_0F5( self._ID740, var_2._ID740 ) )
+        if ( isdefined( var_2 ) && isdefined( var_7 ) && distancesquared( self._ID740, var_7._ID740 ) < distancesquared( self._ID740, var_2._ID740 ) )
             var_2 = undefined;
     }
 
@@ -1076,15 +1084,15 @@ _ID15582( var_0, var_1 )
 
 _ID30755( var_0 )
 {
-    var_1 = _func_1A2( "misc_turret", "code_classname" );
+    var_1 = getentarray( "misc_turret", "code_classname" );
     var_2 = [];
 
     for ( var_3 = 0; var_3 < var_1.size; var_3++ )
     {
-        if ( _func_02F( var_1[var_3]._ID1193 ) )
+        if ( isdefined( var_1[var_3]._ID1193 ) )
             continue;
 
-        if ( _func_02F( var_1[var_3]._ID20994 ) )
+        if ( isdefined( var_1[var_3]._ID20994 ) )
             continue;
 
         var_2[var_1[var_3]._ID740 + ""] = var_1[var_3];
@@ -1106,23 +1114,20 @@ _ID30755( var_0 )
         if ( var_5._ID1244 == "End" )
             continue;
 
-        var_6 = _func_11F( ( 0, var_5._ID65[1], 0 ) );
-        var_7 = var_2;
+        var_6 = anglestoforward( ( 0, var_5._ID65[1], 0 ) );
 
-        for ( var_11 = _func_1DA( var_7 ); _func_02F( var_11 ); var_11 = _func_1BF( var_7, var_11 ) )
+        foreach ( var_11, var_8 in var_2 )
         {
-            var_8 = var_7[var_11];
-
-            if ( _func_0F3( var_5._ID740, var_8._ID740 ) > 50 )
+            if ( distance( var_5._ID740, var_8._ID740 ) > 50 )
                 continue;
 
-            var_9 = _func_11F( ( 0, var_8._ID65[1], 0 ) );
-            var_10 = _func_0FB( var_6, var_9 );
+            var_9 = anglestoforward( ( 0, var_8._ID65[1], 0 ) );
+            var_10 = vectordot( var_6, var_9 );
 
             if ( var_10 < 0.9 )
                 continue;
 
-            var_5._ID39350 = _func_06A( "script_origin", var_8._ID740 );
+            var_5._ID39350 = spawn( "script_origin", var_8._ID740 );
             var_5._ID39350._ID65 = var_8._ID65;
             var_5._ID39350._ID700 = var_5;
             var_5._ID39350._ID591 = 45;
@@ -1130,40 +1135,38 @@ _ID30755( var_0 )
             var_5._ID39350._ID1215 = 15;
             var_5._ID39350._ID137 = 15;
 
-            if ( _func_02F( var_8._ID591 ) )
-                var_5._ID39350._ID591 = _func_0C4( var_8._ID591, 45 );
+            if ( isdefined( var_8._ID591 ) )
+                var_5._ID39350._ID591 = min( var_8._ID591, 45 );
 
-            if ( _func_02F( var_8._ID895 ) )
-                var_5._ID39350._ID895 = _func_0C4( var_8._ID895, 45 );
+            if ( isdefined( var_8._ID895 ) )
+                var_5._ID39350._ID895 = min( var_8._ID895, 45 );
 
-            if ( _func_02F( var_8._ID1215 ) )
-                var_5._ID39350._ID1215 = _func_0C4( var_8._ID1215, 15 );
+            if ( isdefined( var_8._ID1215 ) )
+                var_5._ID39350._ID1215 = min( var_8._ID1215, 15 );
 
-            if ( _func_02F( var_8._ID137 ) )
-                var_5._ID39350._ID137 = _func_0C4( var_8._ID137, 15 );
+            if ( isdefined( var_8._ID137 ) )
+                var_5._ID39350._ID137 = min( var_8._ID137, 15 );
 
             var_2[var_11] = undefined;
-            var_8 _meth_80B7();
+            var_8 delete();
         }
-
-        var_clear_4
     }
 }
 
 _ID4393( var_0 )
 {
-    var_1 = _func_1A2( "misc_turret", "code_classname" );
+    var_1 = getentarray( "misc_turret", "code_classname" );
     var_2 = [];
 
     for ( var_3 = 0; var_3 < var_1.size; var_3++ )
     {
-        if ( !_func_02F( var_1[var_3]._ID1193 ) || _func_128( var_1[var_3]._ID1193 ) != "find_mgTurret" )
+        if ( !isdefined( var_1[var_3]._ID1193 ) || tolower( var_1[var_3]._ID1193 ) != "find_mgTurret" )
             continue;
 
-        if ( !_func_02F( var_1[var_3]._ID13703 ) )
+        if ( !isdefined( var_1[var_3]._ID13703 ) )
             continue;
 
-        if ( !_func_02F( var_1[var_3]._ID31147 ) )
+        if ( !isdefined( var_1[var_3]._ID31147 ) )
             var_2[var_1[var_3]._ID740 + ""] = var_1[var_3];
     }
 
@@ -1183,18 +1186,18 @@ _ID4393( var_0 )
         if ( var_5._ID1244 == "End" )
             continue;
 
-        var_6 = _func_11F( ( 0, var_5._ID65[1], 0 ) );
-        var_7 = _func_1D9( var_2 );
+        var_6 = anglestoforward( ( 0, var_5._ID65[1], 0 ) );
+        var_7 = getarraykeys( var_2 );
 
         for ( var_3 = 0; var_3 < var_7.size; var_3++ )
         {
             var_8 = var_2[var_7[var_3]];
 
-            if ( _func_0F3( var_5._ID740, var_8._ID740 ) > 70 )
+            if ( distance( var_5._ID740, var_8._ID740 ) > 70 )
                 continue;
 
-            var_9 = _func_11F( ( 0, var_8._ID65[1], 0 ) );
-            var_10 = _func_0FB( var_6, var_9 );
+            var_9 = anglestoforward( ( 0, var_8._ID65[1], 0 ) );
+            var_10 = vectordot( var_6, var_9 );
 
             if ( var_10 < 0.9 )
                 continue;
@@ -1215,22 +1218,22 @@ _ID30736()
     self._ID33719["connected"] = [];
     self._ID33719["ambush"] = [];
 
-    if ( !_func_02F( self._ID13703 ) )
+    if ( !isdefined( self._ID13703 ) )
         return;
 
     level._ID33718[self._ID13703] = self;
 
-    if ( _func_02F( self._ID31494 ) )
+    if ( isdefined( self._ID31494 ) )
     {
-        var_0 = _func_129( self._ID31494, " " );
+        var_0 = strtok( self._ID31494, " " );
 
         for ( var_1 = 0; var_1 < var_0.size; var_1++ )
             self._ID33719["connected"][var_0[var_1]] = 1;
     }
 
-    if ( _func_02F( self._ID31491 ) )
+    if ( isdefined( self._ID31491 ) )
     {
-        var_0 = _func_129( self._ID31491, " " );
+        var_0 = strtok( self._ID31491, " " );
 
         for ( var_1 = 0; var_1 < var_0.size; var_1++ )
             self._ID33719["ambush"][var_0[var_1]] = 1;
@@ -1243,27 +1246,27 @@ _ID29867()
     self endon( "gun_placed_again" );
     self waittill( "restore_default_drop_pitch" );
     wait 1;
-    self _meth_8165();
+    self restoredefaultdroppitch();
 }
 
 _ID12185()
 {
-    thread _unknown_1B10();
+    thread _ID12186();
 }
 
 _ID12186()
 {
-    var_0 = _func_06A( "script_model", ( 0, 0, 0 ) );
-    var_0._ID740 = self _meth_818C( level._ID28238 );
-    var_0._ID65 = self _meth_818D( level._ID28238 );
-    var_0 _meth_80B8( self._ID39352 );
-    var_1 = _func_11F( self._ID65 );
+    var_0 = spawn( "script_model", ( 0, 0, 0 ) );
+    var_0._ID740 = self gettagorigin( level._ID28238 );
+    var_0._ID65 = self gettagangles( level._ID28238 );
+    var_0 setmodel( self._ID39352 );
+    var_1 = anglestoforward( self._ID65 );
     var_1 *= 100;
-    var_0 _meth_82BC( var_1, 0.5 );
-    self _meth_802A( self._ID39352, level._ID28238 );
+    var_0 movegravity( var_1, 0.5 );
+    self detach( self._ID39352, level._ID28238 );
     self._ID39352 = undefined;
     wait 0.7;
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID39342()
@@ -1272,10 +1275,10 @@ _ID39342()
     self endon( "dropped_gun" );
     self waittill( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    _unknown_1B7C();
+    _ID12185();
 }
 
 _ID39344()
@@ -1283,7 +1286,7 @@ _ID39344()
     self endon( "death" );
     self endon( "kill_turret_detach_thread" );
     self waittill( "dropped_gun" );
-    self _meth_802A( self._ID39352, level._ID28238 );
+    self detach( self._ID39352, level._ID28238 );
 }
 
 _ID29868()
@@ -1295,7 +1298,7 @@ _ID29868()
 _ID29873()
 {
     self waittill( "turret_deactivate" );
-    self _meth_8165();
+    self restoredefaultdroppitch();
 }
 
 _ID39611( var_0 )
@@ -1323,11 +1326,11 @@ _ID24371( var_0, var_1 )
     {
         wait 0.05;
 
-        if ( _func_090( var_0._ID740, var_3, 0, undefined ) )
+        if ( sighttracepassed( var_0._ID740, var_3, 0, undefined ) )
             continue;
 
-        var_4 = _func_11A( var_2 - var_0._ID740 );
-        var_5 = _func_11F( var_4 );
+        var_4 = vectortoangles( var_2 - var_0._ID740 );
+        var_5 = anglestoforward( var_4 );
         var_5 *= 8;
         var_0._ID740 = var_0._ID740 + var_5;
     }
@@ -1349,26 +1352,26 @@ _ID29316( var_0 )
 
 _ID2420( var_0, var_1 )
 {
-    if ( !_func_1A7( self._ID9442 ) && self _meth_81CA( self._ID9442 ) )
+    if ( !isalive( self._ID9442 ) && self cansee( self._ID9442 ) )
     {
         var_1._ID740 = self._ID21799;
         return;
     }
 
-    var_2 = _func_11F( var_0._ID65 );
+    var_2 = anglestoforward( var_0._ID65 );
 
     for ( var_3 = var_1._ID6092.size - 3; var_3 >= 0; var_3-- )
     {
         var_4 = var_1._ID6092[var_3];
-        var_5 = _func_119( var_4 - var_0._ID740 );
-        var_6 = _func_0FB( var_2, var_5 );
+        var_5 = vectornormalize( var_4 - var_0._ID740 );
+        var_6 = vectordot( var_2, var_5 );
 
         if ( var_6 < 0.75 )
             continue;
 
         var_1._ID740 = var_4;
 
-        if ( _func_090( var_0._ID740, var_4, 0, undefined ) )
+        if ( sighttracepassed( var_0._ID740, var_4, 0, undefined ) )
             continue;
 
         break;
@@ -1377,58 +1380,58 @@ _ID2420( var_0, var_1 )
 
 _ID14164( var_0 )
 {
-    var_1 = _unknown_1E7F( var_0 );
+    var_1 = _ID15929( var_0 );
     var_2 = var_1["spot"];
     var_3 = var_1["type"];
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         return;
 
-    _unknown_1F5C( var_2 );
-    thread _unknown_1D3A( var_0 );
-    thread _unknown_1D4B( var_0, var_2 );
+    _ID29729( var_2 );
+    thread _ID39611( var_0 );
+    thread _ID24371( var_0, var_2 );
 
     if ( var_3 == "ambush" )
-        thread _unknown_1D7B( var_0 );
+        thread _ID29316( var_0 );
 
     if ( var_2._ID20897 )
-        _unknown_1DE9( var_2 );
+        _ID22120( var_2 );
     else
     {
-        _unknown_1E03( var_2 );
-        _unknown_1E1D( var_2 );
+        _ID26643( var_2 );
+        _ID30401( var_2 );
     }
 
     self notify( "stop_updating_enemy_target_pos" );
 
     if ( var_3 == "ambush" )
-        _unknown_1DBA( var_2, var_0 );
+        _ID2420( var_2, var_0 );
 
-    var_2 _meth_810F( var_0 );
+    var_2 settargetentity( var_0 );
 }
 
 _ID34495( var_0 )
 {
-    var_0 _meth_806C( "manual" );
+    var_0 setmode( "manual" );
     wait 0.5;
-    var_0 _meth_806C( "manual_ai" );
+    var_0 setmode( "manual_ai" );
 }
 
 _ID22120( var_0 )
 {
-    self _meth_8197();
+    self stopuseturret();
     animscripts\shared::_ID26732( self._ID834, "none" );
-    var_1 = _unknown_1E52( var_0 );
-    var_2 = _func_071( var_0._ID740, var_0._ID65, var_1 );
-    self _meth_816A( var_2 );
+    var_1 = _ID16044( var_0 );
+    var_2 = getstartorigin( var_0._ID740, var_0._ID65, var_1 );
+    self setruntopos( var_2 );
     self waittill( "runto_arrived" );
-    _unknown_1F18( var_0 );
+    _ID39915( var_0 );
 }
 
 _ID26643( var_0 )
 {
-    self _meth_8197();
-    self._ID39235 _unknown_1FD2();
+    self stopuseturret();
+    self._ID39235 _ID18537();
 }
 
 _ID16044( var_0 )
@@ -1448,54 +1451,54 @@ _ID30401( var_0 )
     self._ID23493 = var_0;
     self endon( "death" );
     self endon( "dropped_gun" );
-    var_2 = _unknown_1ECA( var_0 );
+    var_2 = _ID16044( var_0 );
     self._ID39352 = "weapon_mg42_carry";
     self notify( "kill_get_gun_back_on_killanimscript_thread" );
     animscripts\shared::_ID26732( self._ID1302, "none" );
 
-    if ( self _meth_8147() )
+    if ( self isbadguy() )
         self._ID486 = 1;
 
     self._ID30386 = %saw_gunner_run_fast;
     self._ID9352 = %saw_gunner_run_fast;
-    self _meth_801D( self._ID39352, level._ID28238 );
-    thread _unknown_1E49();
-    var_3 = _func_071( var_0._ID740, var_0._ID65, var_2 );
-    self _meth_816A( var_3 );
+    self attach( self._ID39352, level._ID28238 );
+    thread _ID39342();
+    var_3 = getstartorigin( var_0._ID740, var_0._ID65, var_2 );
+    self setruntopos( var_3 );
     wait 0.05;
     _ID42237::_ID32186( animscripts\combat::_ID13289 );
     _ID42237::_ID7866( "move" );
-    _ID42237::_ID32287( "cover_crouch", ::_unknown_1F9F );
+    _ID42237::_ID32287( "cover_crouch", ::_ID18752 );
 
-    while ( _func_0F3( self._ID740, var_3 ) > 16 )
+    while ( distance( self._ID740, var_3 ) > 16 )
     {
-        self _meth_816A( var_3 );
+        self setruntopos( var_3 );
         wait 0.05;
     }
 
     self notify( "kill_turret_detach_thread" );
 
-    if ( self _meth_8147() )
+    if ( self isbadguy() )
         self._ID486 = var_1;
 
-    if ( _func_1D0( "weapon_setup" ) )
+    if ( soundexists( "weapon_setup" ) )
         thread _ID42237::_ID27077( "weapon_setup" );
 
-    self _meth_8148( "setup_done", var_0._ID740, var_0._ID65, var_2 );
-    _unknown_1ED3();
+    self animscripted( "setup_done", var_0._ID740, var_0._ID65, var_2 );
+    _ID29868();
     self waittillmatch( "setup_done",  "end"  );
     var_0 notify( "restore_default_drop_pitch" );
-    var_0 _unknown_20F6();
+    var_0 _ID34039();
     animscripts\shared::_ID26732( self._ID834, "right" );
-    _unknown_2050( var_0 );
-    self _meth_802A( self._ID39352, level._ID28238 );
+    _ID39915( var_0 );
+    self detach( self._ID39352, level._ID28238 );
     _ID42237::_ID32186( animscripts\init::_ID312 );
     self notify( "bcs_portable_turret_setup" );
 }
 
 _ID24378()
 {
-    self _meth_816A( self._ID30442 );
+    self setruntopos( self._ID30442 );
 }
 
 _ID18752()
@@ -1506,7 +1509,7 @@ _ID18752()
 
 _ID39969()
 {
-    if ( !_func_02F( self._ID39235 ) )
+    if ( !isdefined( self._ID39235 ) )
         return 0;
 
     return self._ID39235._ID743 == self;
@@ -1514,13 +1517,13 @@ _ID39969()
 
 _ID39331()
 {
-    if ( !_unknown_2058() )
+    if ( !_ID39969() )
     {
         _ID42237::_ID7866( "move" );
         return;
     }
 
-    var_0 = _unknown_20E0( "connected" );
+    var_0 = _ID14175( "connected" );
     var_1 = var_0["spots"];
 
     if ( !var_1.size )
@@ -1531,52 +1534,52 @@ _ID39331()
 
     var_2 = self._ID700;
 
-    if ( !_func_02F( var_2 ) || !_ID42407::_ID20542( var_1, var_2 ) )
+    if ( !isdefined( var_2 ) || !_ID42407::_ID20542( var_1, var_2 ) )
     {
-        var_3 = _unknown_20FA();
+        var_3 = _ID16647();
 
         for ( var_4 = 0; var_4 < var_1.size; var_4++ )
         {
             var_2 = _ID42237::_ID28945( var_1 );
 
-            if ( _func_02F( var_3[var_2._ID740 + ""] ) )
+            if ( isdefined( var_3[var_2._ID740 + ""] ) )
                 return;
         }
     }
 
     var_5 = var_2._ID39235;
 
-    if ( _func_02F( var_5._ID886 ) )
+    if ( isdefined( var_5._ID886 ) )
         return;
 
-    _unknown_21DB( var_5 );
+    _ID29729( var_5 );
 
     if ( var_5._ID20897 )
-        _unknown_2051( var_5 );
+        _ID22120( var_5 );
     else
-        _unknown_207F( var_5 );
+        _ID30401( var_5 );
 
     _ID42330::_ID17529( var_2._ID39235 );
 }
 
 _ID39915( var_0 )
 {
-    var_1 = self _meth_8196( var_0 );
+    var_1 = self useturret( var_0 );
 
     if ( var_1 )
     {
-        _ID42237::_ID32287( "move", ::_unknown_20FF );
+        _ID42237::_ID32287( "move", ::_ID39331 );
         self._ID39235 = var_0;
-        thread _unknown_1AB7( var_0 );
-        var_0 _meth_806C( "manual_ai" );
-        var_0 thread _unknown_1FF9();
+        thread _ID23495( var_0 );
+        var_0 setmode( "manual_ai" );
+        var_0 thread _ID29873();
         self._ID39235 = var_0;
         var_0._ID743 = self;
         return 1;
     }
     else
     {
-        var_0 _meth_8165();
+        var_0 restoredefaultdroppitch();
         return 0;
     }
 }
@@ -1584,15 +1587,15 @@ _ID39915( var_0 )
 _ID15929( var_0 )
 {
     var_1 = [];
-    var_1[var_1.size] = ::_unknown_21E4;
-    var_1[var_1.size] = ::_unknown_21E6;
+    var_1[var_1.size] = ::_ID14183;
+    var_1[var_1.size] = ::_ID14185;
     var_1 = _ID42237::_ID3320( var_1 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
     {
         var_3 = [[ var_1[var_2] ]]( var_0 );
 
-        if ( !_func_02F( var_3["spots"] ) )
+        if ( !isdefined( var_3["spots"] ) )
             continue;
 
         var_3["spot"] = _ID42237::_ID28945( var_3["spots"] );
@@ -1603,11 +1606,11 @@ _ID15929( var_0 )
 _ID16647()
 {
     var_0 = [];
-    var_1 = _func_0DE();
+    var_1 = getaiarray();
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
     {
-        if ( !_func_02F( var_1[var_2]._ID700 ) )
+        if ( !isdefined( var_1[var_2]._ID700 ) )
             continue;
 
         var_0[var_1[var_2]._ID700._ID740 + ""] = 1;
@@ -1620,8 +1623,8 @@ _ID14175( var_0 )
 {
     var_1 = level._ID33718;
     var_2 = [];
-    var_3 = _func_1D9( var_1 );
-    var_4 = _unknown_2215();
+    var_3 = getarraykeys( var_1 );
+    var_4 = _ID16647();
     var_4[self._ID700._ID740 + ""] = undefined;
 
     for ( var_5 = 0; var_5 < var_3.size; var_5++ )
@@ -1631,20 +1634,20 @@ _ID14175( var_0 )
         if ( var_1[var_6] == self._ID39235 )
             continue;
 
-        var_7 = _func_1D9( self._ID39235._ID33719[var_0] );
+        var_7 = getarraykeys( self._ID39235._ID33719[var_0] );
 
         for ( var_8 = 0; var_8 < var_7.size; var_8++ )
         {
             if ( var_1[var_6]._ID13703 + "" != var_7[var_8] )
                 continue;
 
-            if ( _func_02F( var_1[var_6]._ID886 ) )
+            if ( isdefined( var_1[var_6]._ID886 ) )
                 continue;
 
-            if ( _func_02F( var_4[var_1[var_6]._ID700._ID740 + ""] ) )
+            if ( isdefined( var_4[var_1[var_6]._ID700._ID740 + ""] ) )
                 continue;
 
-            if ( _func_0F3( self._ID451, var_1[var_6]._ID740 ) > self._ID452 )
+            if ( distance( self._ID451, var_1[var_6]._ID740 ) > self._ID452 )
                 continue;
 
             var_2[var_2.size] = var_1[var_6];
@@ -1659,12 +1662,12 @@ _ID14175( var_0 )
 
 _ID14185( var_0 )
 {
-    return _unknown_22D6( "ambush" );
+    return _ID14175( "ambush" );
 }
 
 _ID14183( var_0 )
 {
-    var_1 = _unknown_22E1( "connected" );
+    var_1 = _ID14175( "connected" );
     var_2 = var_1["spots"];
 
     if ( !var_2.size )
@@ -1677,7 +1680,7 @@ _ID14183( var_0 )
         if ( !_ID42237::_ID41802( var_2[var_4]._ID740, var_2[var_4]._ID65, var_0._ID740, 0.75 ) )
             continue;
 
-        if ( !_func_090( var_0._ID740, var_2[var_4]._ID740 + ( 0, 0, 16 ), 0, undefined ) )
+        if ( !sighttracepassed( var_0._ID740, var_2[var_4]._ID740 + ( 0, 0, 16 ), 0, undefined ) )
             continue;
 
         var_3[var_3.size] = var_2[var_4];
@@ -1689,38 +1692,38 @@ _ID14183( var_0 )
 
 _ID28239()
 {
-    _unknown_2155();
+    _ID30736();
     var_0 = 1;
     self._ID20897 = 1;
     self._ID886 = undefined;
 
-    if ( _func_02F( self._ID20994 ) )
+    if ( isdefined( self._ID20994 ) )
         return;
 
     if ( self._ID989 & var_0 )
         return;
 
-    _unknown_23D3();
+    _ID18537();
 }
 
 _ID18537()
 {
     self notify( "stop_checking_for_flanking" );
     self._ID20897 = 0;
-    self _meth_805A();
+    self hide();
     self._ID34929 = 0;
-    self _meth_80C7();
-    self _meth_8164( 0 );
-    thread _unknown_21B5();
+    self makeunusable();
+    self setdefaultdroppitch( 0 );
+    thread _ID29867();
 }
 
 _ID34039()
 {
-    self _meth_8059();
+    self show();
     self._ID34929 = 1;
-    self _meth_80C6();
+    self makeusable();
     self._ID20897 = 1;
-    thread _unknown_2416();
+    thread _ID36520();
 }
 
 _ID36520()
@@ -1728,15 +1731,15 @@ _ID36520()
     self endon( "stop_checking_for_flanking" );
     self waittill( "turret_deactivate" );
 
-    if ( _func_1A7( self._ID743 ) )
+    if ( isalive( self._ID743 ) )
         self._ID743 notify( "end_mg_behavior" );
 }
 
 _ID39281( var_0 )
 {
-    var_1 = var_0 _meth_80F2();
+    var_1 = var_0 getturretowner();
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return 0;
 
     return var_1 == self;
@@ -1744,7 +1747,7 @@ _ID39281( var_0 )
 
 _ID12630( var_0 )
 {
-    _unknown_245F( var_0 );
+    _ID41160( var_0 );
     var_0._ID886 = undefined;
 }
 
@@ -1758,5 +1761,5 @@ _ID41160( var_0 )
 _ID29729( var_0 )
 {
     var_0._ID886 = self;
-    thread _unknown_247F( var_0 );
+    thread _ID12630( var_0 );
 }

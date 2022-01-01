@@ -4,7 +4,7 @@
 _ID616()
 {
     if ( self._ID39 > 1 )
-        self._ID9575 = ::_unknown_000F;
+        self._ID9575 = ::_ID48313;
 
     animscripts\move::_ID616();
 }
@@ -12,8 +12,8 @@ _ID616()
 
 _ID48313()
 {
-    var_0 = _func_11F( self._ID65 );
-    var_1 = _func_0FB( self._ID601, var_0 ) >= 0;
+    var_0 = anglestoforward( self._ID65 );
+    var_1 = vectordot( self._ID601, var_0 ) >= 0;
 
     if ( !var_1 )
     {
@@ -32,15 +32,15 @@ _ID48313()
     else if ( self._ID46224 )
     {
         var_3 = [ %h2_civilian_react_2_run_upright01, %h2_civilian_react_2_run_upright02, %h2_civilian_react_2_run_upright03 ];
-        var_2 = var_3[_func_0B7( var_3.size )];
+        var_2 = var_3[randomint( var_3.size )];
     }
     else
     {
         var_3 = [ %h2_civilian_react_2_run_hunched01, %h2_civilian_react_2_run_hunched02 ];
-        var_2 = var_3[_func_0B7( var_3.size )];
+        var_2 = var_3[randomint( var_3.size )];
     }
 
-    self _meth_8118( "civ_start_anim", var_2, %body, 0.2, 1 );
+    self setflaggedanimknoball( "civ_start_anim", var_2, %body, 0.2, 1 );
     animscripts\shared::_ID11529( "civ_start_anim" );
 }
 
@@ -54,7 +54,7 @@ _ID7645( var_0, var_1 )
     if ( var_0 > 60 && var_0 < 120 )
         var_2 = level._ID30895[self._ID3189]["turn_right_90"];
 
-    if ( _func_02F( var_2 ) && animscripts\move::_ID26327( var_2 ) )
+    if ( isdefined( var_2 ) && animscripts\move::_ID26327( var_2 ) )
         return var_2;
     else
         return undefined;
@@ -87,7 +87,7 @@ _ID7592( var_0, var_1 )
             var_2 = %civilian_run_upright_turn180;
     }
 
-    if ( _func_02F( var_2 ) && animscripts\move::_ID26327( var_2 ) )
+    if ( isdefined( var_2 ) && animscripts\move::_ID26327( var_2 ) )
     {
         self._ID26359 = 0.2;
         return var_2;
@@ -130,13 +130,13 @@ _ID7591( var_0, var_1 )
             var_2 = %civilian_run_upright_turn180;
     }
 
-    if ( _func_02F( var_3 ) && _func_0B7( 3 ) < 2 && animscripts\move::_ID26327( var_3 ) )
+    if ( isdefined( var_3 ) && randomint( 3 ) < 2 && animscripts\move::_ID26327( var_3 ) )
     {
         self._ID26359 = 0.2;
         return var_3;
     }
 
-    if ( _func_02F( var_2 ) && animscripts\move::_ID26327( var_2 ) )
+    if ( isdefined( var_2 ) && animscripts\move::_ID26327( var_2 ) )
     {
         self._ID26359 = 0.2;
         return var_2;

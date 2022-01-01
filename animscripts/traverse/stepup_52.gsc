@@ -6,9 +6,9 @@ _ID616()
     if ( self._ID1244 == "dog" )
         animscripts\traverse\shared::_ID11436( 52.0, 5 );
     else if ( self._ID1244 == "civilian" )
-        _unknown_0039();
+        _ID51275();
     else
-        _unknown_0030();
+        _ID22688();
 }
 #using_animtree("generic_human");
 

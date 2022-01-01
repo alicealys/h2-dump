@@ -3,60 +3,60 @@
 
 _ID616()
 {
-    level._ID1426["large_explosion"] = _func_155( "fx/explosions/large_vehicle_explosion" );
-    level._ID1426["wood_burst"] = _func_155( "fx/explosions/wood_explosion_1" );
-    level._ID1426["wood_burst2"] = _func_155( "fx/explosions/grenadeExp_wood" );
-    level._ID1426["wing_drop_dust"] = _func_155( "vfx/map/boneyard/h2_wing_drop_dust_boneyard" );
-    level._ID1426["wing_drop_spark"] = _func_155( "vfx/map/boneyard/h2_wing_drop_spark_boneyard" );
-    level._ID1426["wing_drop_spark_dir"] = _func_155( "vfx/map/boneyard/h2_wing_drop_spark_dir_boneyard" );
-    level._ID1426["dust_spiral01"] = _func_155( "fx/dust/dust_spiral01" );
-    level._ID1426["angel_flare_geotrail"] = _func_155( "vfx/map/boneyard/h2_angel_flare_geotrail_boneyard" );
-    level._ID1426["angel_flare_swirl"] = _func_155( "vfx/map/boneyard/h2_angel_flare_swirl_runner_boneyard" );
-    level._ID1426["scrape_sparks"] = _func_155( "vfx/map/boneyard/h2_vehicle_scrape_sparks_c130_boneyard" );
-    level._ID1426["scrape_sparks_right"] = _func_155( "vfx/map/boneyard/h2_vehicle_scrape_sparks_c130_boneyard_r" );
-    level._ID1426["scrape_sparks_left"] = _func_155( "vfx/map/boneyard/h2_vehicle_scrape_sparks_c130_boneyard_l" );
-    level._ID1426["c138_takeoff_dust"] = _func_155( "vfx/map/boneyard/h2_vehicle_c138_dust_takeoff_boneyard" );
-    level._ID1426["blood"] = _func_155( "vfx/blood/blood_rook_death" );
-    level._ID1426["blood_dashboard_splatter"] = _func_155( "fx/impacts/blood_dashboard_splatter_boneyard" );
-    level._ID1426["h2_vehicle_hit"] = _func_155( "vfx/map/boneyard/h2_vehicle_hit_boneyard" );
-    level._ID1426["propane_large_exp_h2"] = _func_155( "fx/explosions/propane_large_exp_h2" );
-    level._ID1426["h2_jeepbrake_dustpuff"] = _func_155( "vfx/map/boneyard/h2_jeepbrake_dustpuff" );
-    level._ID1426["h2_jeepride_environmental_dust"] = _func_155( "vfx/map/boneyard/h2_jeepride_environmental_dust" );
-    level._ID1426["h2_jeepride_environmental_dust_noz"] = _func_155( "vfx/map/boneyard/h2_jeepride_environmental_dust_nozfeather" );
-    level._ID1426["aerial_explosion_crashing"] = _func_155( "vfx/explosion/aerial_explosion_crashing" );
-    level._ID1426["h2_wing_drop_fire_boneyard"] = _func_155( "vfx/map/boneyard/h2_wing_drop_fire_boneyard" );
-    level._ID1426["h2_wing_drop_fire_boneyard_chd"] = _func_155( "vfx/map/boneyard/h2_wing_drop_fire_boneyard_chd" );
-    level._ID1426["h2_explosion_reveal_boneyard"] = _func_155( "vfx/map/boneyard/h2_explosion_reveal_boneyard" );
-    level._ID1426["h2_c130_interior_light"] = _func_155( "vfx/map/boneyard/h2_c130_interior_light" );
-    level._ID1426["h2_sunflare_boneyard"] = _func_155( "vfx/map/boneyard/h2_sunflare_boneyard" );
-    level._ID1426["thin_black_smoke_L"] = _func_155( "vfx/map/boneyard/h2_thin_black_smoke_L_boneyard" );
-    level._ID1426["insects_carcass_runner"] = _func_155( "fx/misc/insects_carcass_runner" );
-    level._ID1426["dust_wind_fast"] = _func_155( "vfx/map/boneyard/h2_dust_wind_fast_boneyard" );
-    level._ID1426["dust_wind_fast_light"] = _func_155( "vfx/map/boneyard/h2_dust_wind_fast_light_boneyard" );
-    level._ID1426["trash_spiral_runner"] = _func_155( "vfx/map/boneyard/h2_trash_spiral_runner_boneyard" );
-    level._ID1426["hallway_smoke_light"] = _func_155( "vfx/map/boneyard/h2_hallway_smoke_light_boneyard" );
-    level._ID1426["h2_fire_ground_01"] = _func_155( "vfx/map/boneyard/h2_fire_ground_01_boneyard" );
-    level._ID1426["h2_fire_ground_02_lg"] = _func_155( "vfx/map/boneyard/h2_fire_ground_02_lg_boneyard" );
-    level._ID1426["h2_smoke_ground_02_lg"] = _func_155( "vfx/map/boneyard/h2_smoke_ground_02_lg_boneyard" );
-    level._ID1426["h2_fire_smokeplume_far_01"] = _func_155( "vfx/map/boneyard/h2_fire_smokeplume_far_01_boneyard" );
-    level._ID1426["h2_fire_smokeplume_far_02"] = _func_155( "vfx/map/boneyard/h2_fire_smokeplume_far_02_boneyard" );
-    level._ID1426["h2_smoke_plume_01"] = _func_155( "vfx/map/boneyard/h2_smoke_plume_01_boneyard" );
-    level._ID1426["h2_smoke_plume_01_sm"] = _func_155( "vfx/map/boneyard/h2_smoke_plume_01_sm_boneyard" );
-    level._ID1426["h2_smoke_plume_02"] = _func_155( "vfx/map/boneyard/h2_smoke_plume_02_boneyard" );
-    level._ID1426["h2_smoke_plume_03"] = _func_155( "vfx/map/boneyard/h2_smoke_plume_03_boneyard" );
-    level._ID1426["h2_background_fogcard_boneyard"] = _func_155( "vfx/map/boneyard/h2_background_fogcard_boneyard" );
-    level._ID1426["h2_ash_falling_boneyard"] = _func_155( "vfx/map/boneyard/h2_ash_falling_boneyard" );
-    level._ID1426["battlefield_smoke_m_slow"] = _func_155( "vfx/map/boneyard/h2_battlefield_smoke_m_slow_boneyard" );
-    level._ID1426["heat_distortion_mirage_large"] = _func_155( "vfx/map/boneyard/h2_heat_distortion_mirage_boneyard" );
-    level._ID1426["h2_particulate_pcloud"] = _func_155( "vfx/map/boneyard/h2_particulate_pcloud_boneyard" );
-    level._ID1426["propane_large_exp_h2_boneyard"] = _func_155( "fx/explosions/propane_large_exp_h2_boneyard" );
-    level._ID1426["smoketrail_rpg_sp_boneyard"] = _func_155( "vfx/trail/smoketrail_rpg_sp_boneyard" );
-    _func_155( "fx/smoke/car_damage_blacksmoke_fire" );
-    _func_155( "fx/props/car_glass_headlight" );
-    thread _unknown_03E6();
+    level._ID1426["large_explosion"] = loadfx( "fx/explosions/large_vehicle_explosion" );
+    level._ID1426["wood_burst"] = loadfx( "fx/explosions/wood_explosion_1" );
+    level._ID1426["wood_burst2"] = loadfx( "fx/explosions/grenadeExp_wood" );
+    level._ID1426["wing_drop_dust"] = loadfx( "vfx/map/boneyard/h2_wing_drop_dust_boneyard" );
+    level._ID1426["wing_drop_spark"] = loadfx( "vfx/map/boneyard/h2_wing_drop_spark_boneyard" );
+    level._ID1426["wing_drop_spark_dir"] = loadfx( "vfx/map/boneyard/h2_wing_drop_spark_dir_boneyard" );
+    level._ID1426["dust_spiral01"] = loadfx( "fx/dust/dust_spiral01" );
+    level._ID1426["angel_flare_geotrail"] = loadfx( "vfx/map/boneyard/h2_angel_flare_geotrail_boneyard" );
+    level._ID1426["angel_flare_swirl"] = loadfx( "vfx/map/boneyard/h2_angel_flare_swirl_runner_boneyard" );
+    level._ID1426["scrape_sparks"] = loadfx( "vfx/map/boneyard/h2_vehicle_scrape_sparks_c130_boneyard" );
+    level._ID1426["scrape_sparks_right"] = loadfx( "vfx/map/boneyard/h2_vehicle_scrape_sparks_c130_boneyard_r" );
+    level._ID1426["scrape_sparks_left"] = loadfx( "vfx/map/boneyard/h2_vehicle_scrape_sparks_c130_boneyard_l" );
+    level._ID1426["c138_takeoff_dust"] = loadfx( "vfx/map/boneyard/h2_vehicle_c138_dust_takeoff_boneyard" );
+    level._ID1426["blood"] = loadfx( "vfx/blood/blood_rook_death" );
+    level._ID1426["blood_dashboard_splatter"] = loadfx( "fx/impacts/blood_dashboard_splatter_boneyard" );
+    level._ID1426["h2_vehicle_hit"] = loadfx( "vfx/map/boneyard/h2_vehicle_hit_boneyard" );
+    level._ID1426["propane_large_exp_h2"] = loadfx( "fx/explosions/propane_large_exp_h2" );
+    level._ID1426["h2_jeepbrake_dustpuff"] = loadfx( "vfx/map/boneyard/h2_jeepbrake_dustpuff" );
+    level._ID1426["h2_jeepride_environmental_dust"] = loadfx( "vfx/map/boneyard/h2_jeepride_environmental_dust" );
+    level._ID1426["h2_jeepride_environmental_dust_noz"] = loadfx( "vfx/map/boneyard/h2_jeepride_environmental_dust_nozfeather" );
+    level._ID1426["aerial_explosion_crashing"] = loadfx( "vfx/explosion/aerial_explosion_crashing" );
+    level._ID1426["h2_wing_drop_fire_boneyard"] = loadfx( "vfx/map/boneyard/h2_wing_drop_fire_boneyard" );
+    level._ID1426["h2_wing_drop_fire_boneyard_chd"] = loadfx( "vfx/map/boneyard/h2_wing_drop_fire_boneyard_chd" );
+    level._ID1426["h2_explosion_reveal_boneyard"] = loadfx( "vfx/map/boneyard/h2_explosion_reveal_boneyard" );
+    level._ID1426["h2_c130_interior_light"] = loadfx( "vfx/map/boneyard/h2_c130_interior_light" );
+    level._ID1426["h2_sunflare_boneyard"] = loadfx( "vfx/map/boneyard/h2_sunflare_boneyard" );
+    level._ID1426["thin_black_smoke_L"] = loadfx( "vfx/map/boneyard/h2_thin_black_smoke_L_boneyard" );
+    level._ID1426["insects_carcass_runner"] = loadfx( "fx/misc/insects_carcass_runner" );
+    level._ID1426["dust_wind_fast"] = loadfx( "vfx/map/boneyard/h2_dust_wind_fast_boneyard" );
+    level._ID1426["dust_wind_fast_light"] = loadfx( "vfx/map/boneyard/h2_dust_wind_fast_light_boneyard" );
+    level._ID1426["trash_spiral_runner"] = loadfx( "vfx/map/boneyard/h2_trash_spiral_runner_boneyard" );
+    level._ID1426["hallway_smoke_light"] = loadfx( "vfx/map/boneyard/h2_hallway_smoke_light_boneyard" );
+    level._ID1426["h2_fire_ground_01"] = loadfx( "vfx/map/boneyard/h2_fire_ground_01_boneyard" );
+    level._ID1426["h2_fire_ground_02_lg"] = loadfx( "vfx/map/boneyard/h2_fire_ground_02_lg_boneyard" );
+    level._ID1426["h2_smoke_ground_02_lg"] = loadfx( "vfx/map/boneyard/h2_smoke_ground_02_lg_boneyard" );
+    level._ID1426["h2_fire_smokeplume_far_01"] = loadfx( "vfx/map/boneyard/h2_fire_smokeplume_far_01_boneyard" );
+    level._ID1426["h2_fire_smokeplume_far_02"] = loadfx( "vfx/map/boneyard/h2_fire_smokeplume_far_02_boneyard" );
+    level._ID1426["h2_smoke_plume_01"] = loadfx( "vfx/map/boneyard/h2_smoke_plume_01_boneyard" );
+    level._ID1426["h2_smoke_plume_01_sm"] = loadfx( "vfx/map/boneyard/h2_smoke_plume_01_sm_boneyard" );
+    level._ID1426["h2_smoke_plume_02"] = loadfx( "vfx/map/boneyard/h2_smoke_plume_02_boneyard" );
+    level._ID1426["h2_smoke_plume_03"] = loadfx( "vfx/map/boneyard/h2_smoke_plume_03_boneyard" );
+    level._ID1426["h2_background_fogcard_boneyard"] = loadfx( "vfx/map/boneyard/h2_background_fogcard_boneyard" );
+    level._ID1426["h2_ash_falling_boneyard"] = loadfx( "vfx/map/boneyard/h2_ash_falling_boneyard" );
+    level._ID1426["battlefield_smoke_m_slow"] = loadfx( "vfx/map/boneyard/h2_battlefield_smoke_m_slow_boneyard" );
+    level._ID1426["heat_distortion_mirage_large"] = loadfx( "vfx/map/boneyard/h2_heat_distortion_mirage_boneyard" );
+    level._ID1426["h2_particulate_pcloud"] = loadfx( "vfx/map/boneyard/h2_particulate_pcloud_boneyard" );
+    level._ID1426["propane_large_exp_h2_boneyard"] = loadfx( "fx/explosions/propane_large_exp_h2_boneyard" );
+    level._ID1426["smoketrail_rpg_sp_boneyard"] = loadfx( "vfx/trail/smoketrail_rpg_sp_boneyard" );
+    loadfx( "fx/smoke/car_damage_blacksmoke_fire" );
+    loadfx( "fx/props/car_glass_headlight" );
+    thread _ID38735();
+    thread _ID54426();
+    thread _ID44263();
     thread uaz_ride_end_brake();
-    thread _unknown_03AF();
-    thread _unknown_038B();
     _ID46885::_ID616();
     _ID47344::_ID616();
 }
@@ -70,17 +70,17 @@ uaz_ride_end_brake()
 
     _ID42237::_ID14413( "uaz_ride_ending" );
     wait 0.35;
-    _func_157( _ID42237::_ID16299( "h2_jeepbrake_dustpuff" ), level._ID48653, "tag_origin" );
+    playfxontag( _ID42237::_ID16299( "h2_jeepbrake_dustpuff" ), level._ID48653, "tag_origin" );
     wait 0.85;
-    _func_158( _ID42237::_ID16299( "h2_jeepbrake_dustpuff" ), level._ID48653, "tag_origin" );
+    stopfxontag( _ID42237::_ID16299( "h2_jeepbrake_dustpuff" ), level._ID48653, "tag_origin" );
 }
 
 _ID54426()
 {
-    animscripts\utility::_ID32631( "dirt", _func_155( "fx/impacts/footstep_dust" ) );
-    animscripts\utility::_ID32631( "grass", _func_155( "fx/impacts/footstep_dust" ) );
-    animscripts\utility::_ID32632( "dirt", _func_155( "fx/impacts/footstep_dust" ) );
-    animscripts\utility::_ID32632( "grass", _func_155( "fx/impacts/footstep_dust" ) );
+    animscripts\utility::_ID32631( "dirt", loadfx( "fx/impacts/footstep_dust" ) );
+    animscripts\utility::_ID32631( "grass", loadfx( "fx/impacts/footstep_dust" ) );
+    animscripts\utility::_ID32632( "dirt", loadfx( "fx/impacts/footstep_dust" ) );
+    animscripts\utility::_ID32632( "grass", loadfx( "fx/impacts/footstep_dust" ) );
 }
 
 _ID44263()

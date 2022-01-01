@@ -15,42 +15,69 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "pp2000";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 12 ) )
     {
-
+        case 0:
+            self._ID1302 = "ak47";
+            break;
+        case 1:
+            self._ID1302 = "ak47_digital_reflex";
+            break;
+        case 2:
+            self._ID1302 = "ak47_digital_grenadier";
+            break;
+        case 3:
+            self._ID1302 = "ak47_digital_acog";
+            break;
+        case 4:
+            self._ID1302 = "fal_acog";
+            break;
+        case 5:
+            self._ID1302 = "fal_shotgun";
+            break;
+        case 6:
+            self._ID1302 = "tavor_digital_acog";
+            break;
+        case 7:
+            self._ID1302 = "tavor_mars";
+            break;
+        case 8:
+            self._ID1302 = "tavor_digital_eotech";
+            break;
+        case 9:
+            self._ID1302 = "tavor_reflex";
+            break;
+        case 10:
+            self._ID1302 = "ak47_shotgun";
+            break;
+        case 11:
+            self._ID1302 = "ak47_digital_eotech";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            character\character_airborne_assault_a_noik::_ID616();
+            break;
+        case 1:
+            character\character_airborne_assault_b_noik::_ID616();
+            break;
+        case 2:
+            character\character_airborne_assault_c_noik::_ID616();
+            break;
     }
-
-    case 11:
-    case 10:
-    case 9:
-    case 8:
-    case 7:
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -58,21 +85,21 @@ _ID814()
     character\character_airborne_assault_a_noik::_ID814();
     character\character_airborne_assault_b_noik::_ID814();
     character\character_airborne_assault_c_noik::_ID814();
-    _func_14E( "ak47" );
-    _func_14E( "ak47_digital_reflex" );
-    _func_14E( "ak47_digital_grenadier" );
-    _func_14E( "gl_ak47_digital" );
-    _func_14E( "ak47_digital_acog" );
-    _func_14E( "fal_acog" );
-    _func_14E( "fal_shotgun" );
-    _func_14E( "fal_shotgun_attach" );
-    _func_14E( "tavor_digital_acog" );
-    _func_14E( "tavor_mars" );
-    _func_14E( "tavor_digital_eotech" );
-    _func_14E( "tavor_reflex" );
-    _func_14E( "ak47_shotgun" );
-    _func_14E( "ak47_shotgun_attach" );
-    _func_14E( "ak47_digital_eotech" );
-    _func_14E( "pp2000" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "ak47" );
+    precacheitem( "ak47_digital_reflex" );
+    precacheitem( "ak47_digital_grenadier" );
+    precacheitem( "gl_ak47_digital" );
+    precacheitem( "ak47_digital_acog" );
+    precacheitem( "fal_acog" );
+    precacheitem( "fal_shotgun" );
+    precacheitem( "fal_shotgun_attach" );
+    precacheitem( "tavor_digital_acog" );
+    precacheitem( "tavor_mars" );
+    precacheitem( "tavor_digital_eotech" );
+    precacheitem( "tavor_reflex" );
+    precacheitem( "ak47_shotgun" );
+    precacheitem( "ak47_shotgun_attach" );
+    precacheitem( "ak47_digital_eotech" );
+    precacheitem( "pp2000" );
+    precacheitem( "fraggrenade" );
 }

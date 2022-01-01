@@ -15,35 +15,55 @@ _ID616()
     self._ID949 = "ak47";
     self._ID34144 = "glock";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 768.0, 512.0 );
-        self _meth_8179( 1024.0, 1500.0 );
+        self setengagementmindist( 768.0, 512.0 );
+        self setengagementmaxdist( 1024.0, 1500.0 );
     }
 
     self._ID1302 = "rpg";
 
     switch ( _ID42226::_ID15942( 11 ) )
     {
-
+        case 0:
+            _ID51316::_ID616();
+            break;
+        case 1:
+            _ID45439::_ID616();
+            break;
+        case 2:
+            _ID49730::_ID616();
+            break;
+        case 3:
+            _ID53930::_ID616();
+            break;
+        case 4:
+            _ID44765::_ID616();
+            break;
+        case 5:
+            _ID54019::_ID616();
+            break;
+        case 6:
+            _ID47374::_ID616();
+            break;
+        case 7:
+            _ID45943::_ID616();
+            break;
+        case 8:
+            _ID48226::_ID616();
+            break;
+        case 9:
+            _ID47555::_ID616();
+            break;
+        case 10:
+            _ID43317::_ID616();
+            break;
     }
-
-    case 10:
-    case 9:
-    case 8:
-    case 7:
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -59,9 +79,9 @@ _ID814()
     _ID48226::_ID814();
     _ID47555::_ID814();
     _ID43317::_ID814();
-    _func_14E( "rpg" );
-    _func_14E( "ak47" );
-    _func_14E( "glock" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "rpg" );
+    precacheitem( "ak47" );
+    precacheitem( "glock" );
+    precacheitem( "fraggrenade" );
     _ID42359::_ID616();
 }

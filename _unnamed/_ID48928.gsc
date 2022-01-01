@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "cobra", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0059 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_cobra_helicopter", "vehicle_cobra_helicopter_fly" );
     _ID42411::_ID6216( "vehicle_cobra_helicopter_fly", "vehicle_cobra_helicopter_fly" );
     _ID42411::_ID6220( %bh_rotors, undefined, 0, 3.0 );
@@ -18,7 +18,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6234( var_2, "wingtip_red", "tag_light_R_wing", "fx/misc/aircraft_light_wingtip_red", "running", 0.0 );
     _ID42411::_ID6234( var_2, "white_blink", "tag_light_belly", "fx/misc/aircraft_light_white_blink", "running", 0.0 );
     _ID42411::_ID6234( var_2, "white_blink_tail", "tag_light_tail", "fx/misc/aircraft_light_white_blink", "running", 0.4 );
-    _ID42411::_ID6204( ::_unknown_0145, ::_unknown_0141 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6232();
 }
 
@@ -26,7 +26,7 @@ _ID19731()
 {
     self._ID10280 = 1;
     self._ID31066 = 0;
-    thread _unknown_012B();
+    thread _ID17700();
 }
 
 _ID17700()
@@ -35,13 +35,13 @@ _ID17700()
     var_0 = 0;
     var_1 = 12000;
     _ID52871::_ID49683();
-    thread _unknown_0166();
+    thread _ID23939();
 
     for (;;)
     {
-        if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+        if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_2 = _func_0F3( self._ID740, level._ID794._ID740 );
+            var_2 = distance( self._ID740, level._ID794._ID740 );
 
             if ( var_0 && var_2 > var_1 )
             {
@@ -82,7 +82,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 2; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_pilot";
     var_0[1]._ID34225 = "tag_gunner";

@@ -3,39 +3,49 @@
 
 _ID616()
 {
-    _unknown_0007();
-    _unknown_0035( "favela_escape" );
+    _ID32363();
+    _ID50564( "favela_escape" );
 }
 
 _ID32363()
 {
     if ( _func_242() )
-        _func_0DB( "r_disablelightsets", 0 );
+        setsaveddvar( "r_disablelightsets", 0 );
 }
 
 _ID45391( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     var_1 = undefined;
 
     switch ( var_0 )
     {
-
+        case "cellblock_01":
+            var_1 = "-2850 -1225 1290";
+            break;
+        case "exploding_wall":
+            var_1 = "-3507 -2677 677";
+            break;
+        case "bathroom_in":
+            var_1 = "-849 -829 816";
+            break;
+        case "bathroom_out":
+            var_1 = "-479 -144 349";
+            break;
+        case "ending_rappel":
+            var_1 = "-4700 -800 3500";
+            break;
+        default:
+            var_1 = "-3507 -2677 677";
+            break;
     }
-
-    case "ending_rappel":
-    case "bathroom_out":
-    case "bathroom_in":
-    case "exploding_wall":
-    case "cellblock_01":
-    default:
 }
 
 _ID50564( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
     var_1 = undefined;
@@ -43,23 +53,92 @@ _ID50564( var_0 )
 
     switch ( var_0 )
     {
-
+        case "favela_escape":
+            var_2 = 1;
+            var_3 = "favela_escape";
+            var_4 = "favela_escape";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_radiotower":
+            var_2 = 1;
+            var_3 = "favela_escape_radiotower";
+            var_4 = "favela_escape_radiotower";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_street":
+            var_2 = 2;
+            var_3 = "favela_escape_street";
+            var_4 = "favela_escape_street";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_market":
+            var_2 = 2;
+            var_3 = "favela_escape_market";
+            var_4 = "favela_escape_market";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_soccerfield_buildings":
+            var_2 = 2;
+            var_3 = "favela_escape_soccerfield_buildings";
+            var_4 = "favela_escape_soccerfield_buildings";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_soccerfield":
+            var_2 = 2;
+            var_3 = "favela_escape_soccerfield";
+            var_4 = "favela_escape_soccerfield";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_rooftops":
+            var_2 = 2;
+            var_3 = "favela_escape_rooftops";
+            var_4 = "favela_escape_rooftops";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_rooftops_heli":
+            var_2 = 2;
+            var_3 = "favela_escape_rooftops_heli";
+            var_4 = "favela_escape_rooftops_heli";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_playerfall_recovery":
+            var_2 = 1;
+            var_3 = "favela_escape_playerfall_recovery";
+            var_4 = "favela_escape_playerfall_recovery";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_solorun_buildings":
+            var_2 = 2;
+            var_3 = "favela_escape_solorun_buildings";
+            var_4 = "favela_escape_solorun_buildings";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_solorun_nearend":
+            var_2 = 2;
+            var_3 = "favela_escape_solorun_nearend";
+            var_4 = "favela_escape_solorun_nearend";
+            var_0 = "favela_escape";
+            break;
+        case "favela_escape_chopperjump":
+            var_2 = 2;
+            var_3 = "favela_escape_chopperjump";
+            var_4 = "favela_escape_chopperjump";
+            var_0 = "favela_escape";
+            break;
+        default:
+            var_2 = 1;
+            var_3 = "favela_escape";
+            var_4 = "favela_escape";
+            var_0 = "favela_escape";
+            break;
     }
 
-    _func_0DB( "r_useLightGridDefaultFXLightingLookup", 1 );
-    _func_0DB( "r_lightGridDefaultFXLightingLookup", var_access_3 );
-    _func_0DB( "r_useLightGridDefaultModelLightingLookup", 1 );
-    _func_0DB( "r_useLightGridDefaultModelLightingSmoothing", 1 );
-    _func_0DB( "r_lightGridDefaultModelLightingLookup", var_access_3 );
-    _ID42407::_ID32515( var_0, var_access_2 );
-    _ID42407::_ID14689( var_1, var_access_2 );
-    level._ID794 _ID42407::_ID48929( var_access_4 );
-    case "favela_escape_chopperjump":
-    case "favela_escape_solorun_buildings":
-    case "favela_escape_playerfall_recovery":
-    case "favela_escape_rooftops":
-    case "favela_escape_soccerfield":
-    case "favela_escape_market":
-    case "favela_escape_radiotower":
-    default:
+    setsaveddvar( "r_useLightGridDefaultFXLightingLookup", 1 );
+    setsaveddvar( "r_lightGridDefaultFXLightingLookup", var_1 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingLookup", 1 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingSmoothing", 1 );
+    setsaveddvar( "r_lightGridDefaultModelLightingLookup", var_1 );
+    _ID42407::_ID32515( var_3, var_2 );
+    _ID42407::_ID14689( var_4, var_2 );
+    level._ID794 _ID42407::_ID48929( var_0 );
 }

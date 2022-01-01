@@ -15,10 +15,10 @@ _ID616()
     self._ID949 = "coltanaconda";
     self._ID34144 = "coltanaconda";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 512.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 512.0, 1024.0 );
     }
 
     self._ID1302 = "m4_grunt";
@@ -27,14 +27,14 @@ _ID616()
 
 _ID988()
 {
-    self _meth_8042( "allies" );
+    self setspawnerteam( "allies" );
 }
 
 _ID814()
 {
     _ID43281::_ID814();
-    _func_14E( "m4_grunt" );
-    _func_14E( "coltanaconda" );
-    _func_14E( "coltanaconda" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "m4_grunt" );
+    precacheitem( "coltanaconda" );
+    precacheitem( "coltanaconda" );
+    precacheitem( "fraggrenade" );
 }

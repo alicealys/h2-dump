@@ -3,7 +3,7 @@
 
 _ID19577()
 {
-    if ( _func_02F( anim._ID3277 ) )
+    if ( isdefined( anim._ID3277 ) )
         return;
 
     anim._ID3277 = [];
@@ -23,52 +23,52 @@ _ID19577()
     animscripts\pushed::_ID43955();
     animscripts\stop::_ID19602();
     animscripts\melee::_ID19617();
-    anim._ID3204 = _func_1A5();
+    anim._ID3204 = spawnstruct();
     anim._ID3204._ID24321 = [];
-    _unknown_05D7();
-    _unknown_04F2();
-    _unknown_03B0();
-    _unknown_0409();
-    _unknown_0446();
-    _unknown_056C();
-    _unknown_049E();
-    _unknown_066D();
-    _unknown_06AD();
-    _unknown_06E7();
-    _unknown_0711();
-    _unknown_0751();
-    _unknown_00D7();
-    _unknown_0220();
-    _unknown_027C();
-    _unknown_0219();
-    _unknown_03BD();
-    _unknown_0ACB();
-    _unknown_0C0E();
-    _unknown_0CA8();
-    _unknown_0CD8();
-    _unknown_0611();
-    _unknown_0D0C();
-    _unknown_0DEC();
-    _unknown_0EE5();
-    _unknown_0EFD();
-    _unknown_0F15();
+    _ID19597();
+    _ID19590();
+    _ID19620();
+    _ID19623();
+    _ID19627();
+    _ID19601();
+    _ID19632();
+    _ID19594();
+    _ID19622();
+    _ID19626();
+    _ID19629();
+    _ID19596();
+    _ID19624();
+    _ID19636();
+    _ID19589();
+    _ID19600();
+    _ID19619();
+    _ID19743();
+    _ID19691();
+    _ID52740();
+    _ID46499();
+    _ID19599();
+    _ID19704();
+    _ID19625();
+    _ID19580();
+    _ID19628();
+    _ID19630();
 }
 
 _ID29424( var_0, var_1, var_2 )
 {
-    _unknown_00C4();
+    _ID19577();
     anim._ID3277[var_0] = var_1;
 
-    if ( _func_02F( var_1["flashed"] ) )
+    if ( isdefined( var_1["flashed"] ) )
         anim._ID14503[var_0] = 0;
 
-    if ( _func_02F( var_2 ) && var_2 )
+    if ( isdefined( var_2 ) && var_2 )
         animscripts\init_move_transitions::_ID16612( var_0 );
 }
 
 _ID3276( var_0 )
 {
-    return _func_02F( anim._ID3277[var_0] );
+    return isdefined( anim._ID3277[var_0] );
 }
 #using_animtree("generic_human");
 
@@ -95,7 +95,7 @@ _ID19624()
     anim._ID19851["straight_15down"] = %h2_run_lowready_slope_down_15;
     anim._ID19851["straight_10up"] = %h2_run_lowready_slope_up_10;
     anim._ID19851["straight_10down"] = %h2_run_lowready_slope_down_10;
-    _unknown_02FF();
+    _ID46522();
     anim._ID19851["reload"] = [ %run_reload_a, %run_reload_b ];
     anim._ID3277["soldier"]["run"] = anim._ID19851;
 }
@@ -171,7 +171,7 @@ _ID19636()
     anim._ID19851["aim_4"] = %walk_aim_4;
     anim._ID19851["aim_6"] = %walk_aim_6;
     anim._ID19851["aim_8"] = %walk_aim_8;
-    _unknown_0827();
+    _ID53295();
     anim._ID3277["soldier"]["walk"] = anim._ID19851;
 }
 
@@ -191,7 +191,7 @@ _ID19589()
     anim._ID19851["aim_5"] = %cqb_run_aim_5;
     anim._ID19851["aim_6"] = %cqb_run_aim_6;
     anim._ID19851["aim_8"] = %cqb_run_aim_8;
-    _unknown_090E();
+    _ID53295();
     anim._ID19851["straight_30up"] = %h2_cqb_run_slope_up_30;
     anim._ID19851["straight_30down"] = %h2_cqb_run_slope_down_30;
     anim._ID19851["straight_15up"] = %h2_cqb_run_slope_up_15;
@@ -275,7 +275,7 @@ _ID19620()
     anim._ID19851["reload_grip"] = [ %h2_grip_stand_reload ];
     anim._ID19851["reload_crouchhide"] = [];
     anim._ID19851["exposed_idle"] = [ %exposed_idle_alert_v1, %exposed_idle_alert_v2, %exposed_idle_alert_v3 ];
-    _unknown_124A();
+    _ID32217();
     anim._ID19851["add_turn_aim_up"] = %pistol_stand_aim_8_alt;
     anim._ID19851["add_turn_aim_down"] = %pistol_stand_aim_2_alt;
     anim._ID19851["add_turn_aim_left"] = %pistol_stand_aim_4_alt;
@@ -296,9 +296,9 @@ _ID19623()
     anim._ID19851["reload"] = [ %rpg_stand_reload ];
     anim._ID19851["reload_crouchhide"] = [];
     anim._ID19851["exposed_idle"] = [ %rpg_stand_idle ];
-    _unknown_1425();
-    _unknown_1351();
-    _unknown_1512();
+    _ID32211();
+    _ID32216();
+    _ID32196();
     anim._ID3277["soldier"]["rpg_stand"] = anim._ID19851;
 }
 
@@ -312,13 +312,13 @@ _ID19627()
     anim._ID19851["straight_level"] = %shotgun_aim_5;
     anim._ID19851["fire"] = %exposed_shoot_auto_v3;
     anim._ID19851["single"] = [ %shotgun_stand_fire_1a, %shotgun_stand_fire_1b ];
-    _unknown_14F3();
+    _ID32198();
     anim._ID19851["exposed_idle"] = [ %exposed_idle_alert_v1, %exposed_idle_alert_v2, %exposed_idle_alert_v3 ];
     anim._ID19851["reload"] = [ %shotgun_stand_reload_a, %shotgun_stand_reload_b, %shotgun_stand_reload_c, %shotgun_stand_reload_c, %shotgun_stand_reload_c ];
     anim._ID19851["reload_crouchhide"] = [ %shotgun_stand_reload_a, %shotgun_stand_reload_b ];
-    _unknown_1517();
-    _unknown_1443();
-    _unknown_1604();
+    _ID32211();
+    _ID32216();
+    _ID32196();
     anim._ID3277["soldier"]["shotgun_stand"] = anim._ID19851;
 }
 
@@ -333,7 +333,7 @@ _ID19632()
     anim._ID19851["fire"] = %smg_exposed_shoot_auto_v3;
     anim._ID19851["fire_corner"] = %smg_exposed_shoot_auto_v2;
     anim._ID19851["single"] = animscripts\utility::_ID3291( %smg_exposed_shoot_semi1 );
-    _unknown_15EE();
+    _ID32198();
     anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( %smg_exposed_idle_alert_v1, %smg_exposed_idle_alert_v2, %smg_exposed_idle_alert_v3 );
     anim._ID19851["exposed_grenade"] = animscripts\utility::_ID3291( %smg_exposed_grenadethrowb, %smg_exposed_grenadethrowc );
     anim._ID19851["reload"] = animscripts\utility::_ID3291( %smg_exposed_reload );
@@ -342,9 +342,9 @@ _ID19632()
     anim._ID19851["reload_crouchhide"] = animscripts\utility::_ID3291( %smg_exposed_reloadb );
     anim._ID19851["reload_crouchhide_grip"] = [ %h2_grip_stand_reloadb ];
     anim._ID19851["reload_crouchhide_p90"] = [ %h2_p90_stand_reloadb ];
-    _unknown_166C();
-    _unknown_159D();
-    _unknown_174B();
+    _ID32212();
+    _ID32210();
+    _ID32194();
     anim._ID3277["soldier"]["smg_stand"] = anim._ID19851;
 }
 
@@ -358,7 +358,7 @@ _ID19590()
     anim._ID19851["straight_level"] = %cqb_stand_aim5;
     anim._ID19851["fire"] = %exposed_shoot_auto_v3;
     anim._ID19851["single"] = [ %exposed_shoot_semi1 ];
-    _unknown_1711();
+    _ID32198();
     anim._ID19851["exposed_idle"] = [ %exposed_idle_alert_v1, %exposed_idle_alert_v2, %exposed_idle_alert_v3 ];
     anim._ID19851["reload"] = [ %cqb_stand_reload_steady ];
     anim._ID19851["reload_back"] = [ %h2_back_stand_reload ];
@@ -370,9 +370,9 @@ _ID19590()
     anim._ID19851["reload_crouchhide_grip"] = [ %h2_grip_cqb_reload_knee ];
     anim._ID19851["reload_crouchhide_lmg"] = [ %h2_lmg_cqb_reload_knee ];
     anim._ID19851["reload_crouchhide_p90"] = [ %h2_p90_cqb_reload_knee ];
-    _unknown_178D();
-    _unknown_16B9();
-    _unknown_187A();
+    _ID32211();
+    _ID32216();
+    _ID32196();
     anim._ID3277["soldier"]["cqb_stand"] = anim._ID19851;
 }
 
@@ -386,11 +386,11 @@ _ID19601()
     anim._ID19851["straight_level"] = %heat_stand_aim_5;
     anim._ID19851["fire"] = %heat_stand_fire_auto;
     anim._ID19851["single"] = animscripts\utility::_ID3291( %heat_stand_fire_single );
-    _unknown_1889( %heat_stand_fire_burst );
+    _ID32205( %heat_stand_fire_burst );
     anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( %heat_stand_idle, %heat_stand_scana, %heat_stand_scanb );
     anim._ID19851["reload"] = animscripts\utility::_ID3291( %heat_exposed_reload );
     anim._ID19851["reload_crouchhide"] = animscripts\utility::_ID3291();
-    _unknown_185A();
+    _ID32211();
     anim._ID19851["turn_left_45"] = %heat_stand_turn_l;
     anim._ID19851["turn_left_90"] = %heat_stand_turn_l;
     anim._ID19851["turn_left_135"] = %heat_stand_turn_180;
@@ -399,7 +399,7 @@ _ID19601()
     anim._ID19851["turn_right_90"] = %heat_stand_turn_r;
     anim._ID19851["turn_right_135"] = %heat_stand_turn_180;
     anim._ID19851["turn_right_180"] = %heat_stand_turn_180;
-    _ID19626();
+    _ID32196();
     anim._ID3277["soldier"]["heat_stand"] = anim._ID19851;
 }
 
@@ -423,7 +423,7 @@ _ID19597()
     anim._ID19851["fire"] = %exposed_shoot_auto_v3;
     anim._ID19851["fire_corner"] = %exposed_shoot_auto_v2;
     anim._ID19851["single"] = animscripts\utility::_ID3291( %exposed_shoot_semi1 );
-    _unknown_19DD();
+    _ID32198();
     anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( %exposed_idle_alert_v1, %exposed_idle_alert_v2, %exposed_idle_alert_v3 );
     anim._ID19851["exposed_grenade"] = animscripts\utility::_ID3291( %exposed_grenadethrowb, %exposed_grenadethrowc );
     anim._ID19851["reload"] = animscripts\utility::_ID3291( %exposed_reload );
@@ -436,28 +436,28 @@ _ID19597()
     anim._ID19851["reload_crouchhide_grip"] = [ %h2_grip_stand_reloadb ];
     anim._ID19851["reload_crouchhide_lmg"] = [ %h2_lmg_stand_reloadb ];
     anim._ID19851["reload_crouchhide_p90"] = [ %h2_p90_stand_reloadb ];
-    _unknown_1A77();
-    _unknown_19A4();
-    _unknown_1B65();
+    _ID32211();
+    _ID32216();
+    _ID32196();
     anim._ID3277["soldier"]["default_stand"] = anim._ID19851;
 }
 
 _ID19594()
 {
     anim._ID19851 = [];
-    _unknown_1B49();
+    _ID32199();
     anim._ID19851["fire"] = %exposed_crouch_shoot_auto_v2;
     anim._ID19851["single"] = animscripts\utility::_ID3291( %exposed_crouch_shoot_semi1 );
-    _unknown_1B42();
+    _ID32197();
     anim._ID19851["reload"] = animscripts\utility::_ID3291( %exposed_crouch_reload );
     anim._ID19851["reload_back"] = [ %h2_back_exposed_crouch_reload ];
     anim._ID19851["reload_grip"] = [ %h2_grip_exposed_crouch_reload ];
     anim._ID19851["reload_lmg"] = [ %h2_lmg_exposed_crouch_reload ];
     anim._ID19851["reload_p90"] = [ %h2_p90_exposed_crouch_reload ];
     anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( %exposed_crouch_idle_alert_v1, %exposed_crouch_idle_alert_v2, %exposed_crouch_idle_alert_v3 );
-    _unknown_1B2E();
-    _unknown_1AA7();
-    _unknown_1C42();
+    _ID32211();
+    _ID32203();
+    _ID32195();
     anim._ID3277["soldier"]["default_crouch"] = anim._ID19851;
 }
 
@@ -473,43 +473,43 @@ _ID19622()
     anim._ID19851["single"] = [ %rpg_crouch_fire ];
     anim._ID19851["reload"] = [ %rpg_crouch_reload ];
     anim._ID19851["exposed_idle"] = [ %rpg_crouch_idle ];
-    _unknown_1BD0();
-    _unknown_1B4A();
-    _unknown_1CE5();
+    _ID32211();
+    _ID32203();
+    _ID32195();
     anim._ID3277["soldier"]["rpg_crouch"] = anim._ID19851;
 }
 
 _ID19626()
 {
     anim._ID19851 = [];
-    _unknown_1CA2();
+    _ID32199();
     anim._ID19851["fire"] = %exposed_crouch_shoot_auto_v2;
     anim._ID19851["single"] = [ %shotgun_crouch_fire ];
-    _unknown_1C99();
+    _ID32197();
     anim._ID19851["reload"] = [ %shotgun_crouch_reload ];
     anim._ID19851["exposed_idle"] = [ %exposed_crouch_idle_alert_v1, %exposed_crouch_idle_alert_v2, %exposed_crouch_idle_alert_v3 ];
-    _unknown_1C42();
-    _unknown_1BBC();
-    _unknown_1D57();
+    _ID32211();
+    _ID32203();
+    _ID32195();
     anim._ID3277["soldier"]["shotgun_crouch"] = anim._ID19851;
 }
 
 _ID19629()
 {
     anim._ID19851 = [];
-    _unknown_1D14();
+    _ID32199();
     anim._ID19851["fire"] = %exposed_crouch_shoot_auto_v2;
     anim._ID19851["single"] = animscripts\utility::_ID3291( %exposed_crouch_shoot_semi1 );
-    _unknown_1D0D();
+    _ID32197();
     anim._ID19851["reload"] = animscripts\utility::_ID3291( %exposed_crouch_reload );
     anim._ID19851["reload_back"] = [ %h2_back_exposed_crouch_reload ];
     anim._ID19851["reload_grip"] = [ %h2_grip_exposed_crouch_reload ];
     anim._ID19851["reload_lmg"] = [ %h2_lmg_exposed_crouch_reload ];
     anim._ID19851["reload_p90"] = [ %h2_p90_exposed_crouch_reload ];
     anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( %exposed_crouch_idle_alert_v1, %exposed_crouch_idle_alert_v2, %exposed_crouch_idle_alert_v3 );
-    _unknown_1D1A();
-    _unknown_1C72();
-    _unknown_1E0D();
+    _ID32212();
+    _ID32203();
+    _ID32195();
     anim._ID3277["soldier"]["smg_crouch"] = anim._ID19851;
 }
 
@@ -542,7 +542,7 @@ _ID19596()
     anim._ID19851["turn_right_135"] = %h1_prone_turn_r90;
     anim._ID19851["turn_right_180"] = %h1_prone_turn_180;
     anim._ID19851["exposed_idle"] = [ %exposed_crouch_idle_alert_v1, %exposed_crouch_idle_alert_v2, %exposed_crouch_idle_alert_v3 ];
-    _unknown_1E9D();
+    _ID32211();
     anim._ID3277["soldier"]["default_prone"] = anim._ID19851;
 }
 
@@ -555,20 +555,20 @@ _ID19592( var_0, var_1, var_2, var_3 )
 {
     anim._ID19851 = animscripts\utility::_ID22631( "default_stand" );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         anim._ID19851["straight_level"] = var_1;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
         anim._ID19851["fire"] = var_0;
         anim._ID19851["single"] = animscripts\utility::_ID3291( var_0 );
-        _unknown_1F5D( var_0 );
+        _ID32205( var_0 );
     }
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( var_2 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
     {
         anim._ID19851["reload"] = animscripts\utility::_ID3291( var_3 );
         anim._ID19851["reload_crouchhide"] = animscripts\utility::_ID3291( var_3 );
@@ -581,17 +581,17 @@ _ID19591( var_0, var_1, var_2 )
 {
     anim._ID19851 = animscripts\utility::_ID22631( "default_crouch" );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
         anim._ID19851["fire"] = var_0;
         anim._ID19851["single"] = animscripts\utility::_ID3291( var_0 );
-        _unknown_201C( var_0 );
+        _ID32204( var_0 );
     }
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         anim._ID19851["exposed_idle"] = animscripts\utility::_ID3291( var_1 );
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         anim._ID19851["reload"] = animscripts\utility::_ID3291( var_2 );
 
     self._ID8364 = anim._ID19851;
@@ -784,17 +784,17 @@ _ID32195()
 
 _ID32213()
 {
-    if ( animscripts\utility::_ID39997() || _func_02F( self._ID2834 ) )
+    if ( animscripts\utility::_ID39997() || isdefined( self._ID2834 ) )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "pistol_stand" );
-    else if ( _func_02F( self._ID8374 ) )
+    else if ( isdefined( self._ID8374 ) )
         self._ID7._ID3291 = self._ID8374;
-    else if ( _func_02F( self._ID18328 ) )
+    else if ( isdefined( self._ID18328 ) )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "heat_stand" );
     else if ( animscripts\utility::_ID39993() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "rpg_stand" );
     else if ( animscripts\utility::_ID39998() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "smg_stand" );
-    else if ( _func_02F( self._ID1302 ) && animscripts\utility::_ID41682() )
+    else if ( isdefined( self._ID1302 ) && animscripts\utility::_ID41682() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "shotgun_stand" );
     else if ( animscripts\utility::_ID20716() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "cqb_stand" );
@@ -809,13 +809,13 @@ _ID32200()
     if ( animscripts\utility::_ID39997() )
         animscripts\shared::_ID26732( self._ID834, "right" );
 
-    if ( _func_02F( self._ID8364 ) )
+    if ( isdefined( self._ID8364 ) )
         self._ID7._ID3291 = self._ID8364;
     else if ( animscripts\utility::_ID39993() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "rpg_crouch" );
     else if ( animscripts\utility::_ID39998() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "smg_crouch" );
-    else if ( _func_02F( self._ID1302 ) && animscripts\utility::_ID41682() )
+    else if ( isdefined( self._ID1302 ) && animscripts\utility::_ID41682() )
         self._ID7._ID3291 = animscripts\utility::_ID22631( "shotgun_crouch" );
     else
         self._ID7._ID3291 = animscripts\utility::_ID22631( "default_crouch" );
@@ -1164,9 +1164,9 @@ _ID18330()
     if ( self._ID1302 != self._ID834 )
         return animscripts\utility::_ID3156( "reload" );
 
-    if ( _func_02F( self._ID700 ) )
+    if ( isdefined( self._ID700 ) )
     {
-        if ( self _meth_816D() )
+        if ( self nearclaimnodeandangle() )
         {
             var_0 = undefined;
 
@@ -1175,7 +1175,7 @@ _ID18330()
             else if ( self._ID700._ID1244 == "Cover Right" )
                 var_0 = animscripts\utility::_ID22630( "heat_reload", "reload_cover_right" );
 
-            if ( _func_02F( var_0 ) )
+            if ( isdefined( var_0 ) )
                 return var_0;
         }
     }
@@ -1187,101 +1187,101 @@ is_back_reload_weapon( var_0 )
 {
     switch ( var_0 )
     {
-
+        case "aug_reflex":
+        case "aug_reflex_arctic":
+        case "aug_scope":
+        case "aug_scope_arctic":
+        case "famas_arctic":
+        case "famas_arctic_reflex":
+        case "famas_woodland":
+        case "famas_woodland_eotech":
+        case "famas_woodland_reflex":
+        case "fn2000":
+        case "fn2000_acog":
+        case "fn2000_eotech":
+        case "fn2000_reflex":
+        case "fn2000_scope":
+        case "fn2000_thermal":
+        case "tavor_acog":
+        case "tavor_digital_acog":
+        case "tavor_digital_eotech":
+        case "tavor_eotech":
+        case "tavor_mars":
+        case "tavor_reflex":
+        case "tavor_woodland_acog":
+        case "tavor_woodland_eotech":
+        case "wa2000":
+        case "wa2000_thermal":
+            return 1;
     }
 
     return 0;
-    case "wa2000_thermal":
-    case "wa2000":
-    case "tavor_woodland_eotech":
-    case "tavor_woodland_acog":
-    case "tavor_reflex":
-    case "tavor_mars":
-    case "tavor_eotech":
-    case "tavor_digital_eotech":
-    case "tavor_digital_acog":
-    case "tavor_acog":
-    case "fn2000_thermal":
-    case "fn2000_scope":
-    case "fn2000_reflex":
-    case "fn2000_eotech":
-    case "fn2000_acog":
-    case "fn2000":
-    case "famas_woodland_reflex":
-    case "famas_woodland_eotech":
-    case "famas_woodland":
-    case "famas_arctic_reflex":
-    case "famas_arctic":
-    case "aug_scope_arctic":
-    case "aug_scope":
-    case "aug_reflex_arctic":
-    case "aug_reflex":
 }
 
 is_lmg_reload_weapon( var_0 )
 {
     switch ( var_0 )
     {
-
+        case "m240":
+        case "m240_acog":
+        case "m240_heartbeat_reflex_arctic":
+        case "m240_reflex":
+        case "mg4":
+        case "mg4_arctic":
+        case "rpd":
+        case "rpd_acog":
+        case "rpd_digital":
+        case "rpd_digital_acog":
+        case "rpd_digital_reflex":
+        case "rpd_reflex":
+            return 1;
     }
 
     return 0;
-    case "rpd_reflex":
-    case "rpd_digital_reflex":
-    case "rpd_digital_acog":
-    case "rpd_digital":
-    case "rpd_acog":
-    case "rpd":
-    case "mg4_arctic":
-    case "mg4":
-    case "m240_reflex":
-    case "m240_heartbeat_reflex_arctic":
-    case "m240_acog":
-    case "m240":
 }
 
 is_grip_reload_weapon( var_0 )
 {
     switch ( var_0 )
     {
-
+        case "uzi":
+        case "uzi_akimbo":
+        case "pp2000":
+        case "pp2000_reflex":
+        case "pp2000_thermal":
+        case "tmp":
+        case "tmp_reflex":
+            return 1;
     }
 
     return 0;
-    case "tmp_reflex":
-    case "tmp":
-    case "pp2000_thermal":
-    case "pp2000_reflex":
-    case "pp2000":
-    case "uzi_akimbo":
-    case "uzi":
 }
 
 is_p90_reload_weapon( var_0 )
 {
     switch ( var_0 )
     {
-
+        case "p90":
+        case "p90_arctic":
+        case "p90_acog":
+        case "p90_eotech":
+        case "p90_reflex":
+        case "p90_silencer":
+            return 1;
     }
 
     return 0;
-    case "p90_silencer":
-    case "p90_reflex":
-    case "p90_eotech":
-    case "p90_acog":
-    case "p90_arctic":
-    case "p90":
 }
 
 has_special_reload( var_0 )
 {
-    if ( _unknown_3C00( var_0 ) )
+    if ( is_back_reload_weapon( var_0 ) )
         return "back";
-    else if ( _unknown_3C3F( var_0 ) )
+    else if ( is_lmg_reload_weapon( var_0 ) )
         return "lmg";
-    else if ( _unknown_3C67( var_0 ) )
+    else if ( is_grip_reload_weapon( var_0 ) )
         return "grip";
-    else if ( _unknown_3C87( var_0 ) )
+    else if ( is_p90_reload_weapon( var_0 ) )
         return "p90";
 
     return undefined;

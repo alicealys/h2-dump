@@ -3,13 +3,13 @@
 
 _ID616()
 {
-    _unknown_000C();
-    _unknown_09CF();
-    _unknown_0D1B();
-    _unknown_0E62();
-    _unknown_0D69();
-    _unknown_0D4C();
-    thread _unknown_0F2B();
+    _ID3197();
+    _ID10742();
+    _ID40317();
+    _ID46873();
+    _ID23866();
+    _ID27230();
+    thread audio_anims();
 }
 #using_animtree("generic_human");
 
@@ -89,7 +89,7 @@ _ID3197()
     level._ID30895["foley"]["training_intro_end_idle"][0] = %h2_training_intro_foley_end_idle;
     level._ID30895["translator"]["training_intro_end_idle"][0] = %h2_training_intro_translator_end_idle;
     level._ID30895["trainee_01"]["training_intro_end_idle"][0] = %h2_training_intro_trainee_1_end_idle;
-    _ID42259::_ID2058( "trainee_01", "fire_spray", ::_unknown_1427 );
+    _ID42259::_ID2058( "trainee_01", "fire_spray", ::_ID47704 );
     level._ID30895["soldier_wounded"]["laatpv_sequence"] = %training_latvee_wounded;
     level._ID30895["soldier_door"]["laatpv_sequence"] = %training_latvee_soldier;
     level._ID30895["generic"]["training_intro_soldier1_idle"][0] = %h2_training_intro_soldier1_idle;
@@ -184,10 +184,10 @@ _ID3197()
     level._ID30895["generic"]["h2_training_pushups_guy2"][0] = %h2_training_pushups_guy2;
     level._ID30895["generic"]["h2_training_jumpingjack_guy3"][0] = %h2_training_jumpingjack_guy3;
     level._ID30895["generic"]["h2_training_latveerepair_underguy"][0] = %h2_training_latveerepair_underguy;
-    _ID42259::_ID2058( "generic", "detach_wrench", ::_unknown_1B45, "h2_training_latveerepair_underguy", "wrench" );
-    _ID42259::_ID2058( "generic", "attach_pliers", ::_unknown_1B77, "h2_training_latveerepair_underguy", "plier" );
-    _ID42259::_ID2058( "generic", "detach_pliers", ::_unknown_1B72, "h2_training_latveerepair_underguy", "plier" );
-    _ID42259::_ID2058( "generic", "attach_wrench", ::_unknown_1BA4, "h2_training_latveerepair_underguy", "wrench" );
+    _ID42259::_ID2058( "generic", "detach_wrench", ::detachitem, "h2_training_latveerepair_underguy", "wrench" );
+    _ID42259::_ID2058( "generic", "attach_pliers", ::attachitem, "h2_training_latveerepair_underguy", "plier" );
+    _ID42259::_ID2058( "generic", "detach_pliers", ::detachitem, "h2_training_latveerepair_underguy", "plier" );
+    _ID42259::_ID2058( "generic", "attach_wrench", ::attachitem, "h2_training_latveerepair_underguy", "wrench" );
     level._ID30895["generic"]["h2_training_latveerepair_behindguy"][0] = %h2_training_latveerepair_behindguy;
     level._ID30895["generic"]["h2_training_latveerepair_topguy"][0] = %h2_training_latveerepair_topguy;
     level._ID30895["generic"]["h2_training_soldierreading"][0] = %h2_training_soldierreading;
@@ -280,13 +280,13 @@ _ID3197()
     level._ID30895["dunn"]["sitting_welcome_soldier_sidearm"] = %h2_training_pit_sitting_welcome_sidearm_soldier;
     _ID42259::_ID2062( "dunn", "dialog", "sitting_welcome_soldier_sidearm", "train_cpd_alreadyhave" );
     level._ID30895["dunn"]["sitting_idle_soldier"][0] = %h2_training_pit_sitting_idle_soldier;
-    _ID42259::_ID2058( "dunn", "stopidle", ::_unknown_2261, "sitting_idle_soldier" );
+    _ID42259::_ID2058( "dunn", "stopidle", ::dunnreadytocontinue, "sitting_idle_soldier" );
     level._ID30895["dunn"]["sitting_switchgun_VO1"] = %h2_training_pit_sitting_switchgun_vo1_soldier;
     _ID42259::_ID2062( "dunn", "dialog", "sitting_switchgun_VO1", "train_cpd_switchtorifle" );
     level._ID30895["dunn"]["sitting_switchgun_VO1_switch"] = %h2_training_pit_sitting_switchgun_vo1_sidearm_soldier;
     _ID42259::_ID2062( "dunn", "dialog", "sitting_switchgun_VO1_switch", "train_cpd_tryswitching" );
     level._ID30895["dunn"]["sitting_switchgun_idle"][0] = %h2_training_pit_sitting_switchgun_idle_soldier;
-    _ID42259::_ID2058( "dunn", "stopidle", ::_unknown_22D5, "sitting_switchgun_idle" );
+    _ID42259::_ID2058( "dunn", "stopidle", ::dunnreadytocontinue, "sitting_switchgun_idle" );
     level._ID30895["dunn"]["sitting_switchgun_VO2"] = %h2_training_pit_sitting_switchgun_vo2_soldier;
     _ID42259::_ID2062( "dunn", "dialog", "sitting_switchgun_VO2", "train_cpd_switchtosidearm" );
     level._ID30895["dunn"]["open_case_soldier"] = %h2_training_pit_open_case_soldier;
@@ -306,11 +306,11 @@ _ID3197()
     level._ID30895["dunn"]["stand_End_VO4"] = %h2_training_pit_stand_end_vo4_soldier;
     _ID42259::_ID2062( "dunn", "dialog", "stand_End_VO4", "train_cpd_bothintrouble" );
     level._ID30895["dunn"]["dunn_pit_outro"] = %h2_training_pit_outro;
-    _ID42259::_ID2058( "dunn", "Result_dialog", ::_unknown_24A0, "dunn_pit_outro" );
-    _ID42259::_ID2058( "dunn", "dialog", ::_unknown_2556, "dunn_pit_outro" );
+    _ID42259::_ID2058( "dunn", "Result_dialog", ::playdunnvo, "dunn_pit_outro" );
+    _ID42259::_ID2058( "dunn", "dialog", ::h2_dunn_headupstairs, "dunn_pit_outro" );
     level._ID30895["dunn"]["dunn_pit_outro_idle"][0] = %h2_training_pit_outro_idle;
     level._ID30895["dunn"]["dunn_pit_outro_retry"] = %h2_training_pit_outro_stay;
-    _ID42259::_ID2058( "dunn", "dialog", ::_unknown_24EC, "dunn_pit_outro_retry" );
+    _ID42259::_ID2058( "dunn", "dialog", ::playdunnvo, "dunn_pit_outro_retry" );
     level._ID30895["dunn"]["dunn_pit_outro_retry_idle"][0] = %h2_training_pit_outro_stay_idle;
     level._ID30895["dunn"]["dunn_pit_tryagain"] = %h2_training_pit_outro_tryagain;
     _ID42259::_ID2062( "dunn", "dialog", "dunn_pit_tryagain", "train_cpd_anothergo" );
@@ -380,19 +380,19 @@ _ID3197()
     level._ID30895["generic"]["civilian_cellphonewalk"][0] = %civilian_cellphonewalk;
     level._ID30895["generic"]["civilian_briefcase_walk_shoelace"][0] = %civilian_briefcase_walk_shoelace;
     level._ID30895["generic"]["civilian_sodawalk"][0] = %civilian_sodawalk;
-    _ID42259::_ID2058( "generic", "footstep_right_large", ::_unknown_2A10 );
-    _ID42259::_ID2058( "generic", "footstep_left_large", ::_unknown_2A1F );
-    _ID42259::_ID2058( "generic", "footstep_right_small", ::_unknown_2A2E );
-    _ID42259::_ID2058( "generic", "footstep_left_small", ::_unknown_2A3D );
+    _ID42259::_ID2058( "generic", "footstep_right_large", ::bounce_fx_guy );
+    _ID42259::_ID2058( "generic", "footstep_left_large", ::bounce_fx_guy );
+    _ID42259::_ID2058( "generic", "footstep_right_small", ::bounce_fx_guy );
+    _ID42259::_ID2058( "generic", "footstep_left_small", ::bounce_fx_guy );
     level._ID30895["generic"]["h2_training_ending_soldier02"] = %h2_training_ending_soldier02;
     level._ID30895["generic"]["h2_training_ending_soldier03"] = %h2_training_ending_soldier03;
     _ID42259::_ID2062( "generic", "dialog", "h2_training_ending_soldier03", "train_ar1_trapped" );
-    _ID42259::_ID2058( "generic", "dialog", ::_unknown_2AA0, "h2_training_ending_soldier03", 3 );
+    _ID42259::_ID2058( "generic", "dialog", ::guytalk, "h2_training_ending_soldier03", 3 );
     level._ID30895["generic"]["h2_training_ending_soldier04"] = %h2_training_ending_soldier04;
     level._ID30895["generic"]["h2_training_ending_injured"] = %h2_training_ending_injured;
     level._ID30895["generic"]["h2_training_ending_soldier01"] = %h2_training_ending_soldier01;
     _ID42259::_ID2062( "generic", "dialog", "h2_training_ending_soldier01", "train_ar2_blewthebridge" );
-    _ID42259::_ID2058( "generic", "dialog", ::_unknown_2B02, "h2_training_ending_soldier01", 1.5 );
+    _ID42259::_ID2058( "generic", "dialog", ::guytalk, "h2_training_ending_soldier01", 1.5 );
     level._ID30895["foley"]["h2_training_ending_foley"] = %h2_training_ending_foley;
     _ID42259::_ID2062( "foley", "dialog", "h2_training_ending_foley", "train_fly_movingout" );
     level._ID30895["generic"]["h2_training_ending_foleylatdriver"] = %h2_training_ending_foleylatdriver;
@@ -644,13 +644,11 @@ _ID23866()
     level._ID30900["training_case_02"] = #animtree;
     level._ID30895["tarp"]["training_camo_tarp_wind"][0] = %training_camo_tarp_wind;
     level._ID30900["tarp"] = #animtree;
-    var_0 = _func_1A2( "tarps", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "tarps", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-        var_2._ID3184 = _func_06A( "script_origin", ( 0, 0, 0 ) );
+        var_2._ID3184 = spawn( "script_origin", ( 0, 0, 0 ) );
         var_2._ID3184._ID740 = var_2._ID740;
         var_2._ID3184._ID65 = var_2._ID65;
         var_2._ID3189 = "tarp";
@@ -658,8 +656,6 @@ _ID23866()
         var_2._ID3184 thread _ID42259::_ID3044( var_2, "training_camo_tarp_wind", undefined, "stop_loop" );
     }
 
-    var_clear_2
-    var_clear_0
     level._ID30900["grenade_box"] = #animtree;
     level._ID30895["grenade_box"]["training_intro_talk7"] = %h2_training_intro_foley_grenadebox;
     level._ID30900["grenade1"] = #animtree;
@@ -680,18 +676,18 @@ _ID46873()
 {
     level._ID30895["basketball"]["training_basketball_loop"][0] = %training_basketball_ball;
     level._ID30900["basketball"] = #animtree;
-    _ID42259::_ID2058( "basketball", "ps_scn_trainer_bball_dribble", ::_unknown_3985 );
-    _ID42259::_ID2058( "basketball", "ps_scn_trainer_bball_bounce_pass", ::_unknown_3994 );
+    _ID42259::_ID2058( "basketball", "ps_scn_trainer_bball_dribble", ::_ID45571 );
+    _ID42259::_ID2058( "basketball", "ps_scn_trainer_bball_bounce_pass", ::_ID45571 );
 }
 
 _ID45571( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "ball_bounce_dust_runner" ), var_0, "tag_origin" );
+    playfxontag( _ID42237::_ID16299( "ball_bounce_dust_runner" ), var_0, "tag_origin" );
 }
 
 bounce_fx_guy( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "basketball_player_bounce_dust" ), var_0, "tag_origin" );
+    playfxontag( _ID42237::_ID16299( "basketball_player_bounce_dust" ), var_0, "tag_origin" );
 }
 
 dunnreadytocontinue( var_0 )
@@ -704,8 +700,8 @@ _ID47704( var_0 )
     if ( !_ID42237::_ID14385( "player_near_range" ) )
         return;
 
-    var_0 _meth_80A1( "h2_wpn_m4a1_npc_close" );
-    _func_157( _ID42237::_ID16299( "m16_muzzleflash" ), var_0, "tag_flash" );
+    var_0 playsound( "h2_wpn_m4a1_npc_close" );
+    playfxontag( _ID42237::_ID16299( "m16_muzzleflash" ), var_0, "tag_flash" );
 }
 
 guytalk( var_0, var_1 )
@@ -715,30 +711,38 @@ guytalk( var_0, var_1 )
 
 detachitem( var_0, var_1 )
 {
-    var_2 = _func_1A1( "h2_prop_wrench", "targetname" );
-    var_3 = _func_1A1( "h2_prop_plier", "targetname" );
+    var_2 = getent( "h2_prop_wrench", "targetname" );
+    var_3 = getent( "h2_prop_plier", "targetname" );
 
     switch ( var_1 )
     {
-
+        case "wrench":
+            var_0 detach( "h2_cs_tool_wrench_adjustable_lrg_anim", "TAG_INHAND" );
+            var_2 show();
+            break;
+        case "plier":
+            var_0 detach( "h2_fav_plier", "TAG_INHAND" );
+            var_3 show();
+            break;
     }
-
-    case "plier":
-    case "wrench":
 }
 
 attachitem( var_0, var_1 )
 {
-    var_2 = _func_1A1( "h2_prop_wrench", "targetname" );
-    var_3 = _func_1A1( "h2_prop_plier", "targetname" );
+    var_2 = getent( "h2_prop_wrench", "targetname" );
+    var_3 = getent( "h2_prop_plier", "targetname" );
 
     switch ( var_1 )
     {
-
+        case "wrench":
+            var_0 attach( "h2_cs_tool_wrench_adjustable_lrg_anim", "TAG_INHAND" );
+            var_2 hide();
+            break;
+        case "plier":
+            var_0 attach( "h2_fav_plier", "TAG_INHAND" );
+            var_3 hide();
+            break;
     }
-
-    case "plier":
-    case "wrench":
 }
 
 playdunnvo( var_0 )
@@ -747,34 +751,61 @@ playdunnvo( var_0 )
 
     switch ( level._ID51689 )
     {
-
+        case "train_cpd_targetswithknife":
+            var_1 = 4;
+            break;
+        case "train_cpd_longandcivilians":
+            var_1 = 3.65;
+            break;
+        case "train_cpd_longandtargets":
+            var_1 = 4.15;
+            break;
+        case "train_cpd_targets":
+            var_1 = 2.8;
+            break;
+        case "train_cpd_civilians":
+            var_1 = 3.75;
+            break;
+        case "train_cpd_needtorunagain":
+            var_1 = 2.4;
+            break;
+        case "end_of_course_easy_01":
+            var_1 = 3.4;
+            break;
+        case "end_of_course_easy_02":
+            break;
+        case "end_of_course_easy_03":
+            var_1 = 2.5;
+            break;
+        case "end_of_course_reg_01":
+            var_1 = 3.3;
+            break;
+        case "end_of_course_reg_02":
+            var_1 = 2.7;
+            break;
+        case "end_of_course_reg_03":
+            break;
+        case "end_of_course_hard_01":
+            var_1 = 3.9;
+            break;
+        case "end_of_course_hard_02":
+            var_1 = 3.2;
+            break;
+        case "end_of_course_hard_03":
+            break;
+        case "end_of_course_vet_01":
+            break;
+        case "end_of_course_vet_02":
+            var_1 = 3.6;
+            break;
+        case "train_cpd_headupstairs":
+            break;
     }
 
     level._ID47197 thread maps\trainer::_ID10760( level._ID51689 );
 
-    if ( _func_02F( var_1 ) )
-    {
+    if ( isdefined( var_1 ) )
         var_0 thread _ID42259::_ID37173( var_1 );
-        return;
-        case "end_of_course_hard_02":
-        case "end_of_course_vet_02":
-        case "end_of_course_hard_01":
-        case "end_of_course_reg_02":
-        case "end_of_course_reg_01":
-        case "end_of_course_easy_03":
-        case "end_of_course_easy_01":
-        case "train_cpd_needtorunagain":
-        case "end_of_course_easy_02":
-        case "train_cpd_headupstairs":
-        case "train_cpd_civilians":
-        case "end_of_course_vet_01":
-        case "end_of_course_hard_03":
-        case "end_of_course_reg_03":
-        case "train_cpd_targets":
-        case "train_cpd_longandtargets":
-        case "train_cpd_longandcivilians":
-        case "train_cpd_targetswithknife":
-    }
 }
 
 audio_anims()
@@ -786,10 +817,10 @@ audio_anims()
     _ID42259::_ID2075( "generic", "h2_training_latveerepair_topguy", "scn_trainer_latvee_welder" );
     _ID42259::_ID2075( "generic", "h1_killhouse_laptopguy_generic_typing", "npc_generic_typing" );
     _ID42259::_ID2075( "generic", "h1_killhouse_laptopguy_typing_variation", "npc_typing_variation" );
-    _ID42259::_ID2058( "laatpv", "open_door", ::_unknown_3CED, "h2_training_ending_foleylatvee" );
-    _ID42259::_ID2058( "laatpv", "close_door", ::_unknown_3D05, "h2_training_ending_foleylatvee" );
-    _ID42259::_ID2058( "laatpv", "open_door", ::_unknown_3D1D, "h2_training_ending_latvee01" );
-    _ID42259::_ID2058( "laatpv", "open_door", ::_unknown_3D35, "h2_training_ending_latvee02" );
+    _ID42259::_ID2058( "laatpv", "open_door", ::aud_open_door_foleylatvee, "h2_training_ending_foleylatvee" );
+    _ID42259::_ID2058( "laatpv", "close_door", ::aud_close_door_foleylatvee, "h2_training_ending_foleylatvee" );
+    _ID42259::_ID2058( "laatpv", "open_door", ::aud_open_door_latvee01, "h2_training_ending_latvee01" );
+    _ID42259::_ID2058( "laatpv", "open_door", ::aud_open_door_latvee02, "h2_training_ending_latvee02" );
 }
 
 aud_open_door_foleylatvee( var_0 )

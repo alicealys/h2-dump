@@ -3,45 +3,45 @@
 
 _ID616()
 {
-    var_0 = _func_1A2( "static_destructible", "script_noteworthy" );
-    _ID42237::_ID3350( var_0, ::_unknown_0015 );
+    var_0 = getentarray( "static_destructible", "script_noteworthy" );
+    _ID42237::_ID3350( var_0, ::_ID50419 );
 }
 
 _ID50419()
 {
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
 
-    if ( _func_02F( self._ID31388 ) )
-        self._ID46761 = _func_155( self._ID31388 );
+    if ( isdefined( self._ID31388 ) )
+        self._ID46761 = loadfx( self._ID31388 );
 
     var_0 = _ID42237::_ID35164();
-    var_0 _meth_8053( self );
+    var_0 linkto( self );
 
     for (;;)
     {
-        if ( _func_02F( self._ID279 ) )
+        if ( isdefined( self._ID279 ) )
             self waittill( "exploded" );
         else
         {
-            self waittill( "damage",  var_5, var_4, var_3, var_2, var_1  );
+            self waittill( "damage",  var_1, var_2, var_3, var_4, var_5  );
 
             if ( var_5 != "MOD_MELEE" && var_5 != "MOD_IMPACT" )
                 continue;
         }
 
-        if ( _func_02F( self._ID46761 ) )
-            _func_157( self._ID46761, var_0, "tag_origin" );
+        if ( isdefined( self._ID46761 ) )
+            playfxontag( self._ID46761, var_0, "tag_origin" );
 
-        var_6 = _func_1A1( self._ID1191, "targetname" );
+        var_6 = getent( self._ID1191, "targetname" );
 
-        if ( _func_02F( var_6 ) )
-            var_6 _meth_80B7();
+        if ( isdefined( var_6 ) )
+            var_6 delete();
 
-        if ( _func_02F( self._ID31388 ) )
-            self _meth_80B7();
+        if ( isdefined( self._ID31388 ) )
+            self delete();
 
         wait 15;
-        var_0 _meth_80B7();
+        var_0 delete();
         break;
     }
 

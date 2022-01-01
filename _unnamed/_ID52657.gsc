@@ -18,12 +18,12 @@ _ID616()
     level._ID30895["hiding_door"]["jump"] = %doorpeek_jump_door;
     level._ID30895["hiding_door"]["kick"] = %doorpeek_kick_door;
     level._ID30895["hiding_door"]["open"] = %doorpeek_open_door;
-    _func_14C( level._ID30904["hiding_door"] );
+    precachemodel( level._ID30904["hiding_door"] );
     _ID42259::_ID2069( "hiding_door", "sound door death", "any", "scn_doorpeek_door_open_death" );
     _ID42259::_ID2069( "hiding_door", "sound door open", "any", "scn_doorpeek_door_open" );
     _ID42259::_ID2069( "hiding_door", "sound door slam", "any", "scn_doorpeek_door_slam" );
-    _unknown_01A9();
-    thread _unknown_01F9();
+    _ID49187();
+    thread _ID25064();
 }
 #using_animtree("generic_human");
 

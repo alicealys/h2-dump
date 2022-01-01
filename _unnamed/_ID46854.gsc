@@ -3,7 +3,7 @@
 
 _ID616()
 {
-    _unknown_05DB();
+    _ID36815();
     var_0 = _ID42407::_ID9186( "favela_escape" );
     var_0._ID36107 = 154;
     var_0._ID17667 = 6560;

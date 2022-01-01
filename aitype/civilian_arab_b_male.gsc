@@ -15,10 +15,10 @@ _ID616()
     self._ID949 = "beretta";
     self._ID34144 = "colt45";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     self._ID1302 = "ak47";
@@ -27,14 +27,14 @@ _ID616()
 
 _ID988()
 {
-    self _meth_8042( "neutral" );
+    self setspawnerteam( "neutral" );
 }
 
 _ID814()
 {
     _ID43229::_ID814();
-    _func_14E( "ak47" );
-    _func_14E( "beretta" );
-    _func_14E( "colt45" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "ak47" );
+    precacheitem( "beretta" );
+    precacheitem( "colt45" );
+    precacheitem( "fraggrenade" );
 }

@@ -4,12 +4,12 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "zodiac", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0029 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_zodiac" );
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_0051, ::_unknown_004D );
-    _ID42411::_ID6262( ::_unknown_00AF );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6262( ::_ID39488 );
 }
 
 _ID19731()
@@ -28,7 +28,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 6; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_body";
     var_0[1]._ID34225 = "tag_body";
@@ -76,18 +76,18 @@ _ID39488()
 
 rider_death_animate_or_ragdoll( var_0, var_1 )
 {
-    if ( _func_02F( var_1.zodiac_rider_in_death_anim ) && var_1.zodiac_rider_in_death_anim )
+    if ( isdefined( var_1.zodiac_rider_in_death_anim ) && var_1.zodiac_rider_in_death_anim )
         return;
 
     var_1 notify( "newanim" );
     var_2 = _ID42412::_ID3052( var_0, var_1._ID40222 );
 
-    if ( _func_02F( var_2._ID264 ) )
+    if ( isdefined( var_2._ID264 ) )
     {
         var_0 thread _ID42412::_ID17549( var_1, var_2 );
         var_1.zodiac_rider_in_death_anim = 1;
         return;
     }
 
-    var_1 _meth_8023();
+    var_1 startragdoll();
 }

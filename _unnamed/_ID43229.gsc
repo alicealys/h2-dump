@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "character_arab_civilian_lowres_b" );
-    self _meth_801D( "character_arab_civilian_lowres_b_head", "", 1 );
+    self setmodel( "character_arab_civilian_lowres_b" );
+    self attach( "character_arab_civilian_lowres_b_head", "", 1 );
     self._ID18304 = "character_arab_civilian_lowres_b_head";
     self._ID40757 = "arab";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "character_arab_civilian_lowres_b" );
-    _func_14C( "character_arab_civilian_lowres_b_head" );
+    precachemodel( "character_arab_civilian_lowres_b" );
+    precachemodel( "character_arab_civilian_lowres_b_head" );
 }

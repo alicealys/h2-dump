@@ -3,7 +3,7 @@
 
 _ID616()
 {
-    _unknown_03E8();
+    _ID36815();
     var_0 = _ID42407::_ID9186( "oilrig_underwater" );
     var_0._ID36107 = 0;
     var_0._ID17667 = 1;

@@ -4,10 +4,10 @@
 
 _ID44498()
 {
-    if ( _func_02F( self._ID7111 ) )
+    if ( isdefined( self._ID7111 ) )
         return;
 
-    _unknown_0695( 1 );
+    casual_killer_setup_custom_turns( 1 );
     _ID42407::_ID10973();
     self._ID7111 = 1;
     self._ID24844 = 1;
@@ -28,35 +28,45 @@ _ID44498()
     self._ID25539 = self._ID1299;
     self._ID1298 = 0;
     self._ID1299 = 0;
-    _unknown_00E0();
+    _ID51537();
     self._ID7._ID28253 = "stand";
-    self _meth_81D6( "stand" );
-    _unknown_06BA();
-    self._ID9575 = ::_unknown_065A;
+    self allowedstances( "stand" );
+    _ID43210();
+    self._ID9575 = ::_ID51657;
     self._ID26587 = 1;
-    self._ID3264 = ::_unknown_065E;
-    self._ID3258 = ::_unknown_0661;
+    self._ID3264 = ::_ID45640;
+    self._ID3258 = ::_ID50253;
     self._ID11007 = 1;
     self._ID9568 = [];
 
     switch ( self._ID922 )
     {
-
+        case "shotgun":
+            self._ID3152 = "casual_killer_shotgun";
+            self._ID9568["stand"] = %h2_casual_killer_stand_idle_shotgun;
+            break;
+        case "makarov":
+            self._ID3152 = "casual_killer_makarov";
+            self._ID9568["stand"] = %h2_casual_killer_stand_idle_makarov;
+            break;
+        case "saw":
+            self._ID3152 = "casual_killer_saw";
+            self._ID9568["stand"] = %h2_casual_killer_stand_idle_m240;
+            break;
+        default:
+            self._ID3152 = "casual_killer";
+            self._ID9568["stand"] = %h2_casual_killer_stand_idle;
     }
 
     self._ID9568["stand_add"] = %casual_killer_stand_idle;
-    case "makarov":
-    case "saw":
-    case "shotgun":
-    default:
 }
 
 _ID46279()
 {
-    if ( !_func_02F( self._ID7111 ) )
+    if ( !isdefined( self._ID7111 ) )
         return;
 
-    _unknown_07AB( 0 );
+    casual_killer_setup_custom_turns( 0 );
     self._ID3152 = undefined;
     self._ID7111 = undefined;
     self._ID24844 = undefined;
@@ -74,7 +84,7 @@ _ID46279()
     self._ID1299 = self._ID25539;
     animscripts\animset::_ID7851();
     self._ID28530 = "none";
-    self _meth_81D6( "stand", "crouch", "prone" );
+    self allowedstances( "stand", "crouch", "prone" );
     animscripts\animset::_ID33414();
     self._ID9575 = undefined;
     self._ID26587 = undefined;
@@ -168,8 +178,8 @@ _ID51537()
             if ( var_6 == 5 )
                 continue;
 
-            if ( _func_02F( var_0["cover_trans"][var_5][var_6] ) )
-                var_0["cover_trans_dist"][var_5][var_6] = _func_094( var_0["cover_trans"][var_5][var_6], 0, 1 );
+            if ( isdefined( var_0["cover_trans"][var_5][var_6] ) )
+                var_0["cover_trans_dist"][var_5][var_6] = getangledelta( var_0["cover_trans"][var_5][var_6], 0, 1 );
         }
     }
 
@@ -404,7 +414,7 @@ _ID50253( var_0 )
 
 _ID45640()
 {
-    if ( _unknown_17CF() )
+    if ( _ID43763() )
         return "casual_killer_sprint";
 
     return "casual_killer";
@@ -412,27 +422,27 @@ _ID45640()
 
 _ID51657()
 {
-    if ( _func_02F( self._ID11025 ) )
+    if ( isdefined( self._ID11025 ) )
         return;
 
-    self _meth_819B( "face angle", self._ID65[1] );
-    self _meth_819A( "zonly_physics", 0 );
-    var_0 = _func_0BA( 0.9, 1.1 );
+    self orientmode( "face angle", self._ID65[1] );
+    self animmode( "zonly_physics", 0 );
+    var_0 = randomfloatrange( 0.9, 1.1 );
     var_0 *= self._ID24424;
 
-    if ( _func_02F( self.overrideexitanim ) )
+    if ( isdefined( self.overrideexitanim ) )
     {
         var_1 = self.overrideexitanim;
         self.overrideexitanim = undefined;
     }
     else
     {
-        if ( _func_02F( self._ID700 ) )
-            var_2 = self._ID65[1] - _func_11B( self._ID700._ID740 - self._ID740 );
+        if ( isdefined( self._ID700 ) )
+            var_2 = self._ID65[1] - vectortoyaw( self._ID700._ID740 - self._ID740 );
         else
             var_2 = 0;
 
-        if ( _unknown_183C() )
+        if ( _ID43763() )
             var_3 = animscripts\utility::_ID22631( "casual_killer_jog_start" );
         else
             var_3 = animscripts\utility::_ID22631( "casual_killer_walk_start" );
@@ -440,26 +450,26 @@ _ID51657()
         var_1 = _ID42237::array_find_closest_to_key( var_3, var_2 );
     }
 
-    var_4 = _ID42237::_ID37527( _func_02F( self.exitnode_overridetranstime ), self.exitnode_overridetranstime, 0.1 );
+    var_4 = _ID42237::_ID37527( isdefined( self.exitnode_overridetranstime ), self.exitnode_overridetranstime, 0.1 );
     animscripts\move::_ID51451();
-    self _meth_8119( "startmove", var_1, %body, 1, var_4, var_0 );
+    self setflaggedanimknoballrestart( "startmove", var_1, %body, 1, var_4, var_0 );
     animscripts\shared::_ID11529( "startmove" );
     self._ID19386 = undefined;
     animscripts\move::_ID48930();
     animscripts\utility::_ID46199( var_1 );
-    self _meth_819B( "face default" );
-    self _meth_819A( "none", 0 );
+    self orientmode( "face default" );
+    self animmode( "none", 0 );
 
-    if ( _func_068( var_1, "code_move" ) )
+    if ( animhasnotetrack( var_1, "code_move" ) )
         animscripts\exit_node::_ID14231( "startmove", var_1 );
 }
 
 _ID43763()
 {
-    if ( !_func_02F( self._ID30386 ) )
+    if ( !isdefined( self._ID30386 ) )
         return 0;
 
-    if ( _func_0D3( self._ID30386 ) )
+    if ( isarray( self._ID30386 ) )
         var_0 = self._ID30386[0];
     else
         var_0 = self._ID30386;
@@ -476,22 +486,22 @@ _ID43210( var_0 )
     self.maxrunngunanimationangle = self._ID23125;
     self.useoldrunngunsystem = 1;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = "straight";
 
     if ( var_0 == "straight" )
         self._ID30428 = 0.5;
 
-    if ( _func_02F( self.run_and_gun_current_type ) && self.run_and_gun_current_type == var_0 )
+    if ( isdefined( self.run_and_gun_current_type ) && self.run_and_gun_current_type == var_0 )
         return;
 
     self.run_and_gun_current_type = var_0;
-    self _meth_814C( %run_n_gun, 0.2 );
+    self clearanim( %run_n_gun, 0.2 );
 }
 
 _ID44829( var_0 )
 {
-    if ( _func_02F( var_0 ) && var_0 )
+    if ( isdefined( var_0 ) && var_0 )
         level notify( "abort_all_waiting_player" );
     else
         self notify( "abort_waiting_player" );
@@ -505,11 +515,11 @@ _ID53591( var_0 )
     self._ID46692 = thisthread;
     var_1 = animscripts\utility::_ID22631( "idle_waiting_for_player" );
 
-    while ( !_func_02F( var_0 ) || !_ID42237::_ID14385( var_0 ) )
+    while ( !isdefined( var_0 ) || !_ID42237::_ID14385( var_0 ) )
     {
         var_1 = _ID42237::_ID3320( var_1 );
         var_2 = var_1[0];
-        self _meth_8119( "idle", var_2, %exposed_aiming, 1, 0.5, 1 );
+        self setflaggedanimknoballrestart( "idle", var_2, %exposed_aiming, 1, 0.5, 1 );
         animscripts\shared::_ID11529( "idle" );
     }
 }
@@ -520,7 +530,7 @@ casual_killer_setup_custom_turns( var_0 )
 
     if ( var_0 )
     {
-        self._ID26360 = ::_unknown_1A3F;
+        self._ID26360 = ::casual_killer_get_turn_anim;
         self._ID763 = 70;
         self._ID629 = 19;
         self._ID960 = 0.94;
@@ -537,13 +547,13 @@ casual_killer_setup_custom_turns( var_0 )
 
 casual_killer_get_turn_anim( var_0, var_1 )
 {
-    if ( _func_02F( self._ID18328 ) && self._ID18328 )
+    if ( isdefined( self._ID18328 ) && self._ID18328 )
         return animscripts\move::pathchange_getturnanim_impl( var_0, var_1 );
 
-    if ( _func_0C3( var_0 ) < 10 )
+    if ( abs( var_0 ) < 10 )
         return undefined;
 
-    if ( _unknown_1A1C() )
+    if ( _ID43763() )
         return undefined;
 
     var_2 = animscripts\utility::_ID22631( "casual_killer_turn" );

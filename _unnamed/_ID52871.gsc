@@ -3,25 +3,25 @@
 
 _ID49683()
 {
-    _ID42475::_ID34575( "snd_register_vehicle", "cobra", ::_unknown_001F );
+    _ID42475::_ID34575( "snd_register_vehicle", "cobra", ::_ID51995 );
 }
 
 _ID43322()
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         wait 1.0;
-        _unknown_0036( 1.0 );
+        _ID49122( 1.0 );
     }
 
-    var_0 = _func_1A5();
+    var_0 = spawnstruct();
     var_0._ID28452 = "cobra";
     _ID42475::_ID34575( "snd_start_vehicle", var_0 );
 }
 
 _ID49122( var_0 )
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         _ID42475::_ID34575( "snd_stop_vehicle", var_0 );
         self notify( "snd_stop_vehicle" );
@@ -60,20 +60,20 @@ _ID51995()
     _ID42471::_ID4509();
     _ID42471::_ID4508();
     _ID42471::_ID4488();
-    _ID42471::_ID4489( "to_state_hover", ::_unknown_02C7, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_hover", ::_ID44903, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_fly", ::_unknown_02F6, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_fly", ::_ID49459, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_fly_from_hover", ::_unknown_0317, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_fly_from_hover", ::_ID49459, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4485( "cobra_engine_rev" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_distant", ::_unknown_036D, [ "distance2d" ] );
+    _ID42471::_ID4489( "to_state_distant", ::_ID48747, [ "distance2d" ] );
     _ID42471::_ID4483( "cobra_engine_far" );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_flyby", ::_unknown_036B, [ "speed", "distance2d" ] );
+    _ID42471::_ID4489( "to_state_flyby", ::_ID51679, [ "speed", "distance2d" ] );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4485( "cobra_pass_by" );
     _ID42471::_ID4505();
@@ -144,9 +144,9 @@ _ID51679( var_0, var_1 )
     var_3 = var_0["distance2d"];
     var_4 = var_0["speed"];
 
-    if ( !_func_02F( var_1._ID14624 ) )
+    if ( !isdefined( var_1._ID14624 ) )
     {
-        var_1._ID14624 = _func_1A5();
+        var_1._ID14624 = spawnstruct();
         var_1._ID14624._ID28476 = var_3;
     }
     else

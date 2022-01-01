@@ -8,5 +8,5 @@ _ID616()
     level._ID1410["light_fluorescent_single_null"] = %light_fluorescent_single_null;
     level._ID1410["light_fluorescent_single_swing_02"] = %light_fluorescent_single_swing_02;
     level._ID1410["light_fluorescent_single_swing_03"] = %light_fluorescent_single_swing_03;
-    level._ID1426["spotlight_fx"] = _func_155( "misc/fluorescent_spotlight" );
+    level._ID1426["spotlight_fx"] = loadfx( "misc/fluorescent_spotlight" );
 }

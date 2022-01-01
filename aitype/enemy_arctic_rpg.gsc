@@ -15,27 +15,31 @@ _ID616()
     self._ID949 = "ak47_arctic_reflex";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 0.0, 0.0 );
-        self _meth_8179( 280.0, 400.0 );
+        self setengagementmindist( 0.0, 0.0 );
+        self setengagementmaxdist( 280.0, 400.0 );
     }
 
     self._ID1302 = "rpg";
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID46503::_ID616();
+            break;
+        case 1:
+            _ID53653::_ID616();
+            break;
+        case 2:
+            _ID48010::_ID616();
+            break;
     }
-
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -43,8 +47,8 @@ _ID814()
     _ID46503::_ID814();
     _ID53653::_ID814();
     _ID48010::_ID814();
-    _func_14E( "rpg" );
-    _func_14E( "ak47_arctic_reflex" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "rpg" );
+    precacheitem( "ak47_arctic_reflex" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
 }

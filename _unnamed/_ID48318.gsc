@@ -3,9 +3,9 @@
 
 _ID44743()
 {
-    _unknown_0277();
-    _ID49806();
-    _unknown_02F0();
+    _ID48361();
+    _ID52803();
+    _ID50073();
 }
 
 _ID48131()
@@ -17,15 +17,15 @@ _ID48131()
 
     for (;;)
     {
-        childthread _unknown_0048();
+        childthread _ID43644();
         self waittill( "turretownerchange",  var_0  );
 
         if ( !var_0 )
             continue;
 
-        _unknown_0089( self._ID26175 );
+        _ID51892( self._ID26175 );
         self waittill( "turretownerchange" );
-        _unknown_00F8( self._ID26175 );
+        _ID49806( self._ID26175 );
     }
 }
 
@@ -39,131 +39,134 @@ _ID43644()
     for (;;)
     {
         var_0 = 0;
-        var_2 = _func_03B( "player_MGUseRadius" );
+        var_2 = getdvarfloat( "player_MGUseRadius" );
 
-        if ( _func_0F5( level._ID794._ID740, self._ID740 ) <= var_2 * var_2 )
+        if ( distancesquared( level._ID794._ID740, self._ID740 ) <= var_2 * var_2 )
         {
-            var_3 = _unknown_0180();
+            var_3 = _ID51204();
             var_4 = var_3[0];
             var_5 = var_3[1];
             var_clear_2
 
             switch ( var_4 )
             {
-
+                case "right":
+                case "left":
+                case "back":
+                    var_0 = 1;
+                    break;
+                case "front":
+                    var_0 = var_5 == "under";
+                    break;
             }
         }
 
         if ( var_0 != var_1 )
         {
             if ( var_0 )
-                self _meth_80C6();
+                self makeusable();
             else
-                self _meth_80C7();
+                self makeunusable();
 
             var_1 = var_0;
         }
 
         waittillframeend;
-        case "front":
-        case "back":
-        case "left":
-        case "right":
     }
 }
 
 _ID51892( var_0 )
 {
     _ID42407::_ID3428();
-    var_1 = _unknown_021C( "get_on" );
+    var_1 = _ID44842( "get_on" );
     var_2 = var_1[0];
     var_3 = var_1[1];
     var_clear_2
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         return;
 
-    level._ID794 _meth_8334( 1 );
-    level._ID794 _meth_80F3( 1 );
-    var_0 thread _unknown_035E();
-    level._ID794 _meth_8189( "stand", 1 );
-    _func_0DB( "actionSlotsHide", 1 );
-    _func_0DB( "hud_showStance", 0 );
-    _func_0DB( "ammoCounterHide", 1 );
-    _func_0DB( "compass", 0 );
-    level._ID794 _meth_8328( 1, 200, 0.1 );
-    level._ID794._ID46714 = _func_03B( "cg_fov" );
-    level._ID794 _meth_8032( _func_09F(), _func_067( _ID42407::_ID16120( var_2 ) ) );
+    level._ID794 freezecontrols( 1 );
+    level._ID794 enabledeathshield( 1 );
+    var_0 thread turret_monitor_player_death();
+    level._ID794 setstance( "stand", 1 );
+    setsaveddvar( "actionSlotsHide", 1 );
+    setsaveddvar( "hud_showStance", 0 );
+    setsaveddvar( "ammoCounterHide", 1 );
+    setsaveddvar( "compass", 0 );
+    level._ID794 disableweapons( 1, 200, 0.1 );
+    level._ID794._ID46714 = getdvarfloat( "cg_fov" );
+    level._ID794 lerpfov( getstarttime(), getanimlength( _ID42407::_ID16120( var_2 ) ) );
     var_4 = [ self ];
 
-    if ( var_0 _meth_8290() == 0 )
+    if ( var_0 vehicle_getspeed() == 0 )
         var_4[var_4.size] = var_0;
 
     level._ID794._ID49929 = _ID42407::_ID35028( "worldbody" );
-    level._ID794._ID49929 _meth_805A();
+    level._ID794._ID49929 hide();
     var_4[var_4.size] = level._ID794._ID49929;
-    level._ID794._ID49929 _meth_8053( var_0 );
+    level._ID794._ID49929 linkto( var_0 );
     level._ID794._ID49929.anim_to_play = var_2;
     var_0 _ID42259::_ID3018( level._ID794._ID49929, var_2 );
     var_0 thread _ID42259::_ID3099( var_4, var_2 );
-    level._ID794 _meth_8087( level._ID794._ID49929, "tag_player", var_3 );
+    level._ID794 playerlinktoblend( level._ID794._ID49929, "tag_player", var_3 );
     wait(var_3);
-    level._ID794._ID49929 _meth_8059();
-    wait(_func_067( level._ID794._ID49929 _ID42407::_ID16120( var_2 ) ));
-    self _meth_814C( _ID42407::_ID16120( var_2 ), 0 );
-    level._ID794 _meth_8055();
-    level._ID794._ID49929 _meth_80B7();
+    level._ID794._ID49929 show();
+    wait(getanimlength( level._ID794._ID49929 _ID42407::_ID16120( var_2 ) ));
+    self clearanim( _ID42407::_ID16120( var_2 ), 0 );
+    level._ID794 unlink();
+    level._ID794._ID49929 delete();
     self _meth_8580();
-    self _meth_8095();
-    thread _unknown_0372();
-    level._ID794 _meth_80F3( 0 );
+    self dontcastshadows();
+    thread _ID53616();
+    level._ID794 enabledeathshield( 0 );
     var_0 notify( "turret_player_use_end" );
 }
 
 _ID49806( var_0 )
 {
-    var_1 = self _meth_85B2();
-    level._ID794 _meth_80F3( 1 );
-    var_0 thread _unknown_0467();
-    self _meth_8096();
-    level._ID794 _meth_8032( level._ID794._ID46714, 0.5 );
+    var_1 = self _meth_85b2();
+    level._ID794 enabledeathshield( 1 );
+    var_0 thread turret_monitor_player_death();
+    self castshadows();
+    level._ID794 lerpfov( level._ID794._ID46714, 0.5 );
     level._ID794._ID46714 = undefined;
-    level._ID794._ID49929 = _ID42407::_ID35028( "worldbody", level._ID794._ID740, level._ID794 _meth_8346() );
-    level._ID794._ID49929 _meth_805A();
+    level._ID794._ID49929 = _ID42407::_ID35028( "worldbody", level._ID794._ID740, level._ID794 getplayerangles() );
+    level._ID794._ID49929 hide();
     level._ID794._ID49929 _ID42259::_ID3018( level._ID794._ID49929, "turret_technical_get_out" );
-    level._ID794._ID49929 _meth_8053( self, "tag_player", ( 0, 0, -60 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8086( level._ID794._ID49929, "tag_player" );
-    level._ID794._ID49929 _meth_8059();
-    self _meth_8164( 0 );
+    level._ID794._ID49929 linkto( self, "tag_player", ( 0, 0, -60 ), ( 0, 0, 0 ) );
+    level._ID794 playerlinktoabsolute( level._ID794._ID49929, "tag_player" );
+    level._ID794._ID49929 show();
+    self setdefaultdroppitch( 0 );
     self _meth_8581();
     self waittill( "turret_returned_to_default" );
     level._ID794._ID49929 _ID42259::_ID3111( level._ID794._ID49929, "turret_technical_get_out" );
-    level._ID794 _meth_8055();
-    level._ID794._ID49929 _meth_80B7();
-    level._ID794 _meth_8329();
-    self _meth_8164( var_1 );
-    level._ID794 _meth_80F3( 0 );
-    _func_0DB( "actionSlotsHide", 0 );
-    _func_0DB( "hud_showStance", 1 );
-    _func_0DB( "ammoCounterHide", 0 );
-    _func_0DB( "compass", 1 );
-    _func_032( "ui_expireHUD", 1 );
+    level._ID794 unlink();
+    level._ID794._ID49929 delete();
+    level._ID794 enableweapons();
+    self setdefaultdroppitch( var_1 );
+    level._ID794 enabledeathshield( 0 );
+    setsaveddvar( "actionSlotsHide", 0 );
+    setsaveddvar( "hud_showStance", 1 );
+    setsaveddvar( "ammoCounterHide", 0 );
+    setsaveddvar( "compass", 1 );
+    setomnvar( "ui_expireHUD", 1 );
     var_0 notify( "turret_player_drop_end" );
 }
 
 _ID51204( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = 1;
 
     var_1 = undefined;
     var_2 = undefined;
     var_3 = self._ID26175;
-    var_4 = _func_119( _ID42407::_ID32530( self._ID740 - level._ID794._ID740, 0 ) );
-    var_5 = _func_11F( self._ID65 );
-    var_6 = _func_11E( self._ID65 );
-    var_7 = _func_0FB( var_4, var_5 );
-    var_8 = _func_0FB( var_4, var_6 );
+    var_4 = vectornormalize( _ID42407::_ID32530( self._ID740 - level._ID794._ID740, 0 ) );
+    var_5 = anglestoforward( self._ID65 );
+    var_6 = anglestoright( self._ID65 );
+    var_7 = vectordot( var_4, var_5 );
+    var_8 = vectordot( var_4, var_6 );
     var_9 = 0;
 
     if ( var_7 < -0.3 && var_0 )
@@ -175,9 +178,9 @@ _ID51204( var_0 )
     else
         var_1 = "right";
 
-    if ( _func_0F5( level._ID794._ID740, self._ID740 ) > 7569 )
+    if ( distancesquared( level._ID794._ID740, self._ID740 ) > 7569 )
         var_2 = "under";
-    else if ( _func_0C3( level._ID794._ID740[2] - self._ID740[2] ) < 50 )
+    else if ( abs( level._ID794._ID740[2] - self._ID740[2] ) < 50 )
         var_2 = "middle";
     else
         var_2 = "under";
@@ -192,12 +195,18 @@ _ID44842( var_0, var_1 )
 
     switch ( var_0 )
     {
-
+        case "get_on":
+            var_2 = "turret_technical_get_in_";
+            break;
+        case "get_out":
+            var_2 = "turret_technical_get_out_";
+            break;
+        default:
+            return [ var_2, var_3 ];
     }
 
-    endswitch( 3 )  case "get_out" loc_51B case "get_on" loc_51E default loc_529
     var_3 = 0.2;
-    var_4 = _unknown_04F0( var_0 != "get_on" );
+    var_4 = _ID51204( var_0 != "get_on" );
     var_5 = var_4[0];
     var_6 = var_4[1];
     var_clear_2
@@ -205,48 +214,57 @@ _ID44842( var_0, var_1 )
 
     switch ( var_5 )
     {
-
+        case "front":
+            var_2 += "front";
+            var_7 = 180;
+            break;
+        case "back":
+            var_2 += "back";
+            break;
+        case "right":
+            var_2 += "right";
+            var_7 = 90;
+            break;
+        case "left":
+            var_2 += "left";
+            var_7 = -90;
+            break;
+        default:
+            return [ undefined, undefined ];
     }
 
     if ( var_0 == "get_on" && var_6 == "middle" )
         var_2 += "_fast";
 
-    if ( _func_02F( var_1 ) )
-        var_1._ID65 = _ID42407::_ID32529( var_1._ID65, _func_0F0( var_1._ID65[1] + var_7 ) );
+    if ( isdefined( var_1 ) )
+        var_1._ID65 = _ID42407::_ID32529( var_1._ID65, angleclamp180( var_1._ID65[1] + var_7 ) );
 
     return [ var_2, var_3 ];
-    case "get_on":
-    default:
-    case "front":
-    case "back":
-    case "left":
-    case "right":
-    default:
 }
 
 _ID53616()
 {
     self endon( "death" );
     self endon( "turretownerchange" );
-    thread _unknown_0639( thisthread );
+    thread _ID48384( thisthread );
     var_0 = 1;
 
     for (;;)
     {
-        if ( _unknown_066E() )
+        if ( _ID49622() )
         {
-            childthread _unknown_0676( var_0 );
-            childthread _unknown_06C3( var_0 );
+            childthread _ID54251( var_0 );
+            childthread _ID50886( var_0 );
 
-            while ( _unknown_067D() )
+            while ( _ID49622() )
                 waittillframeend;
         }
         else
         {
-            childthread _unknown_06AE( var_0 );
-            childthread _unknown_06FA( var_0 );
+            childthread _ID43238( var_0 );
+            childthread _ID48142( var_0 );
 
-            while ( !_unknown_0694() )
+            while ( !_ID49622() )
                 waittillframeend;
         }
 
@@ -256,25 +274,25 @@ _ID53616()
 
 _ID48384( var_0 )
 {
-    self _meth_801D( level._ID30904["viewhands"], "tag_player" );
+    self attach( level._ID30904["viewhands"], "tag_player" );
 
-    while ( _func_02F( var_0 ) )
+    while ( isdefined( var_0 ) )
         waittillframeend;
 
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_player_idle" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_player_fire2idle" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_player_fire_idle" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_player_idle2fire" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_idle" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_idle2fire" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_fire_idle" ), 0 );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_fire2idle" ), 0 );
-    self _meth_802A( level._ID30904["viewhands"], "tag_player" );
+    self clearanim( _ID42407::_ID16120( "turret_technical_player_idle" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_player_fire2idle" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_player_fire_idle" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_player_idle2fire" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_idle" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_idle2fire" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_fire_idle" ), 0 );
+    self clearanim( _ID42407::_ID16120( "turret_technical_fire2idle" ), 0 );
+    self detach( level._ID30904["viewhands"], "tag_player" );
 }
 
 _ID49622()
 {
-    return level._ID794 _meth_8348();
+    return level._ID794 attackbuttonpressed();
 }
 
 _ID54251( var_0 )
@@ -284,14 +302,14 @@ _ID54251( var_0 )
 
     if ( !var_0 )
     {
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_player_idle" ), 0.05 );
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_player_fire2idle" ), 0.05 );
+        self clearanim( _ID42407::_ID16120( "turret_technical_player_idle" ), 0.05 );
+        self clearanim( _ID42407::_ID16120( "turret_technical_player_fire2idle" ), 0.05 );
     }
 
-    self _meth_811C( "anim_player", _ID42407::_ID16120( "turret_technical_player_idle2fire" ) );
+    self setflaggedanimrestart( "anim_player", _ID42407::_ID16120( "turret_technical_player_idle2fire" ) );
     self waittillmatch( "anim_player",  "end"  );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_player_idle2fire" ), 0.05 );
-    self _meth_8155( _ID42407::_ID16120( "turret_technical_player_fire_idle" ) );
+    self clearanim( _ID42407::_ID16120( "turret_technical_player_idle2fire" ), 0.05 );
+    self setanim( _ID42407::_ID16120( "turret_technical_player_fire_idle" ) );
 }
 
 _ID43238( var_0 )
@@ -301,15 +319,15 @@ _ID43238( var_0 )
 
     if ( !var_0 )
     {
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_player_idle2fire" ), 0.05 );
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_player_fire_idle" ), 0.05 );
-        self _meth_811C( "anim_player", _ID42407::_ID16120( "turret_technical_player_fire2idle" ) );
+        self clearanim( _ID42407::_ID16120( "turret_technical_player_idle2fire" ), 0.05 );
+        self clearanim( _ID42407::_ID16120( "turret_technical_player_fire_idle" ), 0.05 );
+        self setflaggedanimrestart( "anim_player", _ID42407::_ID16120( "turret_technical_player_fire2idle" ) );
         self waittillmatch( "anim_player",  "end"  );
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_player_fire2idle" ), 0.05 );
-        self _meth_8155( _ID42407::_ID16120( "turret_technical_player_idle" ) );
+        self clearanim( _ID42407::_ID16120( "turret_technical_player_fire2idle" ), 0.05 );
+        self setanim( _ID42407::_ID16120( "turret_technical_player_idle" ) );
     }
     else
-        self _meth_8155( _ID42407::_ID16120( "turret_technical_player_idle" ), 1, 0 );
+        self setanim( _ID42407::_ID16120( "turret_technical_player_idle" ), 1, 0 );
 }
 
 _ID50886( var_0 )
@@ -319,14 +337,14 @@ _ID50886( var_0 )
 
     if ( !var_0 )
     {
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_idle" ), 0.05 );
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_fire2idle" ), 0.05 );
+        self clearanim( _ID42407::_ID16120( "turret_technical_idle" ), 0.05 );
+        self clearanim( _ID42407::_ID16120( "turret_technical_fire2idle" ), 0.05 );
     }
 
-    self _meth_811C( "anim_turret", _ID42407::_ID16120( "turret_technical_idle2fire" ) );
+    self setflaggedanimrestart( "anim_turret", _ID42407::_ID16120( "turret_technical_idle2fire" ) );
     self waittillmatch( "anim_turret",  "end"  );
-    self _meth_814C( _ID42407::_ID16120( "turret_technical_idle2fire" ), 0.05 );
-    self _meth_8155( _ID42407::_ID16120( "turret_technical_fire_idle" ) );
+    self clearanim( _ID42407::_ID16120( "turret_technical_idle2fire" ), 0.05 );
+    self setanim( _ID42407::_ID16120( "turret_technical_fire_idle" ) );
 }
 
 _ID48142( var_0 )
@@ -336,15 +354,15 @@ _ID48142( var_0 )
 
     if ( !var_0 )
     {
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_idle2fire" ), 0.05 );
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_fire_idle" ), 0.05 );
-        self _meth_811C( "anim_turret", _ID42407::_ID16120( "turret_technical_fire2idle" ) );
+        self clearanim( _ID42407::_ID16120( "turret_technical_idle2fire" ), 0.05 );
+        self clearanim( _ID42407::_ID16120( "turret_technical_fire_idle" ), 0.05 );
+        self setflaggedanimrestart( "anim_turret", _ID42407::_ID16120( "turret_technical_fire2idle" ) );
         self waittillmatch( "anim_turret",  "end"  );
-        self _meth_814C( _ID42407::_ID16120( "turret_technical_fire2idle" ), 0.05 );
-        self _meth_8155( _ID42407::_ID16120( "turret_technical_idle" ) );
+        self clearanim( _ID42407::_ID16120( "turret_technical_fire2idle" ), 0.05 );
+        self setanim( _ID42407::_ID16120( "turret_technical_idle" ) );
     }
     else
-        self _meth_8155( _ID42407::_ID16120( "turret_technical_idle" ), 1, 0 );
+        self setanim( _ID42407::_ID16120( "turret_technical_idle" ), 1, 0 );
 }
 
 turret_monitor_player_death()
@@ -355,20 +373,20 @@ turret_monitor_player_death()
 
     for (;;)
     {
-        var_0 waittill( "damage",  var_3, var_1, var_2, var_1  );
+        var_0 waittill( "damage",  var_1, var_2, var_1, var_3  );
 
         if ( var_2 == self )
         {
             var_4 = var_0._ID49929;
 
-            if ( _func_02F( var_4 ) )
+            if ( isdefined( var_4 ) )
             {
-                var_4 _meth_805A();
-                var_4 _meth_814C( var_4 _ID42407::_ID16120( var_4.anim_to_play ), 0 );
+                var_4 hide();
+                var_4 clearanim( var_4 _ID42407::_ID16120( var_4.anim_to_play ), 0 );
             }
 
-            var_0 _meth_80F3( 0 );
-            var_0 _meth_8058( var_3, var_2, var_2 );
+            var_0 enabledeathshield( 0 );
+            var_0 kill( var_3, var_2, var_2 );
         }
     }
 }

@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    _unknown_000E();
-    _unknown_001B();
-    _unknown_001F();
-    _unknown_0023();
-    _unknown_0032();
-    thread _unknown_0036();
-    _unknown_003C();
-    _unknown_0041();
-    _unknown_0045();
+    _ID8467();
+    _ID19806();
+    _ID19703();
+    _ID22056();
+    _ID22043();
+    thread _ID22042();
+    _ID9159();
+    _ID28366();
+    _ID29419();
 }
 
 _ID8467()
@@ -33,12 +33,12 @@ _ID19703()
 
 _ID22056()
 {
-    thread _unknown_0223();
+    thread _ID50324();
     _ID42495::_ID34653( "favela_escape_timescale_factor" );
-    thread _unknown_0279();
-    thread _unknown_02C6();
-    thread _unknown_02DE();
-    thread _unknown_01EB();
+    thread crucified_rojas_head_pos();
+    thread solorun_pavelow_passby();
+    thread chopper_jump_death_scream();
+    thread _ID51200();
 }
 
 _ID22043()
@@ -63,34 +63,34 @@ _ID28366()
 
 _ID29419()
 {
-    _ID42475::_ID34640( "start_intro_checkpoint", ::_unknown_00FF );
-    _ID42475::_ID34640( "start_street_checkpoint", ::_unknown_010E );
-    _ID42475::_ID34640( "start_street_mid_checkpoint", ::_unknown_0120 );
-    _ID42475::_ID34640( "start_street_vista2_checkpoint", ::_unknown_0132 );
-    _ID42475::_ID34640( "start_market_checkpoint", ::_unknown_0144 );
-    _ID42475::_ID34640( "start_market_evac_checkpoint", ::_unknown_0155 );
-    _ID42475::_ID34640( "start_market_evac_escape_checkpoint", ::_unknown_0167 );
-    _ID42475::_ID34640( "start_roofrun_checkpoint", ::_unknown_0176 );
-    _ID42475::_ID34640( "start_roofrun_bigjump_checkpoint", ::_unknown_0185 );
-    _ID42475::_ID34640( "start_solorun_checkpoint", ::_unknown_0197 );
-    _ID42475::_ID34640( "start_solorun_rooftops_checkpoint", ::_unknown_01AB );
-    _ID42475::_ID34640( "start_solorun_chopper_checkpoint", ::_unknown_01BD );
-    _ID42475::_ID34640( "start_fade_out_level", ::_unknown_01D5 );
-    _ID42475::_ID34640( "start_gate_truck_01", ::_unknown_01E4 );
-    _ID42475::_ID34640( "start_donut_truck_01", ::_unknown_01F6 );
-    _ID42475::_ID34640( "start_break_truck_01", ::_unknown_021F );
-    _ID42475::_ID34640( "stop_break_truck_01", ::_unknown_0238 );
-    _ID42475::_ID34640( "start_gate_truck_02", ::_unknown_0248 );
-    _ID42475::_ID34640( "start_market_truck_arrival", ::_unknown_025F );
-    _ID42475::_ID34640( "start_market_truck_break", ::_unknown_0272 );
-    _ID42475::_ID34640( "start_evac_fakefire_rpgs", ::_ID47552 );
-    _ID42475::_ID34640( "stop_evac_fakefire_rpgs", ::_unknown_0294 );
-    _ID42475::_ID34640( "start_player_normal_fall", ::_unknown_02A3 );
-    _ID42475::_ID34640( "start_player_bigjump", ::_unknown_02B7 );
-    _ID42475::_ID34640( "start_player_recovery_done", ::_unknown_02C6 );
-    _ID42475::_ID34640( "start_market_chopper_distant", ::_unknown_02DB );
-    _ID42475::_ID34640( "start_bird_startle_flyaway_01", ::_unknown_02FE );
-    _ID42475::_ID34640( "start_bird_startle_flyaway_02", ::_unknown_031A );
+    _ID42475::_ID34640( "start_intro_checkpoint", ::_ID52384 );
+    _ID42475::_ID34640( "start_street_checkpoint", ::_ID45162 );
+    _ID42475::_ID34640( "start_street_mid_checkpoint", ::_ID48675 );
+    _ID42475::_ID34640( "start_street_vista2_checkpoint", ::_ID47552 );
+    _ID42475::_ID34640( "start_market_checkpoint", ::_ID52443 );
+    _ID42475::_ID34640( "start_market_evac_checkpoint", ::_ID51891 );
+    _ID42475::_ID34640( "start_market_evac_escape_checkpoint", ::_ID46653 );
+    _ID42475::_ID34640( "start_roofrun_checkpoint", ::_ID51701 );
+    _ID42475::_ID34640( "start_roofrun_bigjump_checkpoint", ::_ID50912 );
+    _ID42475::_ID34640( "start_solorun_checkpoint", ::_ID46549 );
+    _ID42475::_ID34640( "start_solorun_rooftops_checkpoint", ::_ID47033 );
+    _ID42475::_ID34640( "start_solorun_chopper_checkpoint", ::_ID51489 );
+    _ID42475::_ID34640( "start_fade_out_level", ::_ID52274 );
+    _ID42475::_ID34640( "start_gate_truck_01", ::_ID44016 );
+    _ID42475::_ID34640( "start_donut_truck_01", ::_ID47293 );
+    _ID42475::_ID34640( "start_break_truck_01", ::_ID53518 );
+    _ID42475::_ID34640( "stop_break_truck_01", ::_ID52226 );
+    _ID42475::_ID34640( "start_gate_truck_02", ::_ID46494 );
+    _ID42475::_ID34640( "start_market_truck_arrival", ::_ID53459 );
+    _ID42475::_ID34640( "start_market_truck_break", ::_ID48202 );
+    _ID42475::_ID34640( "start_evac_fakefire_rpgs", ::start_evac_fakefire_rpgs );
+    _ID42475::_ID34640( "stop_evac_fakefire_rpgs", ::stop_evac_fakefire_rpgs );
+    _ID42475::_ID34640( "start_player_normal_fall", ::_ID44345 );
+    _ID42475::_ID34640( "start_player_bigjump", ::_ID45138 );
+    _ID42475::_ID34640( "start_player_recovery_done", ::_ID53862 );
+    _ID42475::_ID34640( "start_market_chopper_distant", ::_ID46203 );
+    _ID42475::_ID34640( "start_bird_startle_flyaway_01", ::_ID43014 );
+    _ID42475::_ID34640( "start_bird_startle_flyaway_02", ::_ID52752 );
 }
 
 _ID41961( var_0, var_1 )
@@ -190,7 +190,7 @@ _ID52274()
 
 _ID44016( var_0 )
 {
-    var_0 thread _unknown_0447();
+    var_0 thread _ID51834();
     var_0 _ID42407::_ID27080( "scn_favela_escape_truck_run_01", undefined, 1 );
 }
 
@@ -216,7 +216,7 @@ _ID47293( var_0 )
 
 _ID53518( var_0 )
 {
-    if ( _func_02F( var_0._ID53322 ) && !var_0._ID53322 )
+    if ( isdefined( var_0._ID53322 ) && !var_0._ID53322 )
     {
         var_0 thread _ID42237::_ID36516( "scn_favela_escape_truck_donut_01" );
         var_0 thread _ID42407::_ID27001( "scn_favela_escape_truck_break_01", undefined, 1, undefined, 1, 1 );
@@ -230,7 +230,7 @@ _ID52226( var_0 )
 
 _ID46494( var_0 )
 {
-    var_0 thread _unknown_04EB();
+    var_0 thread _ID51834();
     var_0 thread _ID42407::_ID27080( "scn_favela_escape_truck_run_02", undefined, 1 );
     _ID42237::_ID14413( "radiotower_escape_technical_2_arrival" );
     var_0 thread _ID42407::_ID27081( "scn_favela_escape_truck_break_02" );
@@ -238,7 +238,7 @@ _ID46494( var_0 )
 
 _ID53459( var_0 )
 {
-    var_0 thread _unknown_0510();
+    var_0 thread _ID51834();
     var_0 thread _ID42407::_ID27001( "scn_favela_escape_truck2_arrival", undefined, 1, undefined, 1, 1 );
 }
 
@@ -261,10 +261,10 @@ stop_evac_fakefire_rpgs()
 
 _ID44345()
 {
-    thread _unknown_0649();
+    thread favesc_falling_music_fail();
     _ID42465::_ID23797( "big_jump_mix" );
     wait 0.2;
-    level._ID794 _meth_80A1( "scn_player_jump_fail" );
+    level._ID794 playsound( "scn_player_jump_fail" );
 }
 
 _ID45138()
@@ -277,32 +277,32 @@ _ID53862()
     _ID42465::_ID23801( "big_jump_mix" );
     _ID42465::_ID23801( "friendly_fire_failed_mix" );
     _ID42465::_ID23797( "solo_run_mix" );
-    thread _unknown_063A();
+    thread footstep_player_additional_layer();
 }
 
 _ID46203( var_0 )
 {
     wait 2.2;
-    level._ID46358 = _func_06A( "script_origin", var_0._ID740 );
-    var_1 = _func_1A1( "market_chopper_distant_destination", "targetname" );
+    level._ID46358 = spawn( "script_origin", var_0._ID740 );
+    var_1 = getent( "market_chopper_distant_destination", "targetname" );
     level._ID46358 thread _ID42237::_ID27000( "emt_fav_escape_heli_dist_circle_loop", undefined, 0.8, 2.0 );
-    level._ID46358 _meth_82B8( var_1._ID740, 7.0, 0.05, 0.05 );
+    level._ID46358 moveto( var_1._ID740, 7.0, 0.05, 0.05 );
 }
 
 _ID43014()
 {
-    var_0 = _func_1A1( "bird_flyaway_01_start", "targetname" );
-    var_1 = _func_1A1( "bird_flyaway_01_end", "targetname" );
+    var_0 = getent( "bird_flyaway_01_start", "targetname" );
+    var_1 = getent( "bird_flyaway_01_end", "targetname" );
     var_0 thread _ID42407::_ID27079( "anml_bird_startle_flyaway" );
-    var_0 _meth_82B8( var_1._ID740, 3.5, 0.5, 0.05 );
+    var_0 moveto( var_1._ID740, 3.5, 0.5, 0.05 );
 }
 
 _ID52752()
 {
-    var_0 = _func_1A1( "bird_flyaway_02_start", "targetname" );
-    var_1 = _func_1A1( "bird_flyaway_02_end", "targetname" );
+    var_0 = getent( "bird_flyaway_02_start", "targetname" );
+    var_1 = getent( "bird_flyaway_02_end", "targetname" );
     var_0 thread _ID42407::_ID27079( "anml_bird_startle_flyaway" );
-    var_0 _meth_82B8( var_1._ID740, 3.0, 0.05, 0.05 );
+    var_0 moveto( var_1._ID740, 3.0, 0.05, 0.05 );
 }
 
 _ID51200()
@@ -317,13 +317,13 @@ _ID51200()
 _ID51834()
 {
     wait 0.1;
-    self _meth_8295();
+    self vehicle_turnengineoff();
     self._ID31138 = 1;
 }
 
 _ID43449()
 {
-    thread _unknown_0678();
+    thread _ID51834();
     thread _ID42407::_ID27001( "scn_favela_escape_heli_roofrun_flyover_01", "main_rotor_jnt", 1, undefined, 0.5, 3.0 );
     self waittill( "reached_dynamic_path_end" );
     thread _ID42237::_ID36516( "scn_favela_escape_heli_roofrun_flyover_01" );
@@ -346,7 +346,7 @@ _ID50228()
 
 _ID53534()
 {
-    thread _unknown_06F9();
+    thread _ID51834();
     thread _ID42407::_ID27001( "scn_favela_escape_fire_car_slope_01", undefined, 1, undefined, 1, 1 );
     _ID42465::_ID23797( "flaming_truck_mix" );
     self waittill( "reached_end_node" );
@@ -356,30 +356,30 @@ _ID53534()
 
 _ID53808()
 {
-    thread _unknown_072D();
+    thread _ID51834();
     thread _ID42407::_ID27081( "scn_favela_escape_heli_flyover_market" );
 }
 
 _ID50324()
 {
-    var_0 = _func_1A1( "favela_escape_slide", "script_noteworthy" );
-    var_1 waittill( "trigger",  var_1  );
+    var_0 = getent( "favela_escape_slide", "script_noteworthy" );
+    var_0 waittill( "trigger",  var_1  );
     var_1 _ID42407::_ID27079( "scn_favela_escape_player_slide" );
 }
 
 _ID49609()
 {
-    thread _unknown_075A();
+    thread _ID51834();
     thread _ID42407::_ID27079( "scn_favela_escape_heli_land" );
     wait 1;
     level._ID46358 _ID42237::_ID36516( "emt_fav_escape_heli_dist_circle_loop" );
     wait 2.5;
-    level._ID46358 _meth_80B7();
+    level._ID46358 delete();
 }
 
 _ID43790()
 {
-    level._ID794 _meth_80A1( "scn_favela_escape_bigjump_slomo_in" );
+    level._ID794 playsound( "scn_favela_escape_bigjump_slomo_in" );
     level._ID794 thread _ID42237::_ID27000( "scn_favela_escape_bigjump_slomo_lp", undefined, 1.0, 1.0 );
     _ID42465::_ID23797( "big_jump_slomo_mix" );
     _ID42474::_ID4655( 1 );
@@ -392,7 +392,7 @@ _ID52893()
 {
     _ID42465::_ID23801( "big_jump_slomo_mix" );
     level._ID794 _ID42237::_ID36516( "scn_favela_escape_bigjump_slomo_lp" );
-    level._ID794 _meth_80A1( "scn_favela_escape_bigjump_slomo_out" );
+    level._ID794 playsound( "scn_favela_escape_bigjump_slomo_out" );
     _ID42490::_ID34527( 1 );
     _ID42474::_ID4655( 0 );
     _ID42474::_ID4662( 0 );
@@ -411,27 +411,27 @@ crucified_rojas_head_pos()
 {
     wait 1;
 
-    if ( _func_02F( level.rojas ) )
+    if ( isdefined( level.rojas ) )
     {
-        var_0 = level.rojas _meth_818C( "j_head" );
-        level.rojas_head = _func_06A( "script_origin", var_0 );
+        var_0 = level.rojas gettagorigin( "j_head" );
+        level.rojas_head = spawn( "script_origin", var_0 );
     }
 }
 
 crucified_rojas_idle( var_0 )
 {
-    if ( _func_02F( level.rojas_head ) )
-        level.rojas_head _meth_80A1( "scn_favela_escape_crucified_rojas_mumbling" );
+    if ( isdefined( level.rojas_head ) )
+        level.rojas_head playsound( "scn_favela_escape_crucified_rojas_mumbling" );
 }
 
 crucified_rojas_death()
 {
-    if ( _func_02F( level.rojas_head ) )
+    if ( isdefined( level.rojas_head ) )
     {
-        level.rojas_head _meth_80B3();
-        level.rojas_head _meth_80A1( "scn_favela_escape_rojas_death" );
+        level.rojas_head playrumbleonentity();
+        level.rojas_head playsound( "scn_favela_escape_rojas_death" );
         wait 0.1;
-        level.rojas_head _meth_80B7();
+        level.rojas_head delete();
     }
 }
 
@@ -441,34 +441,39 @@ footstep_player_additional_layer()
 
     for (;;)
     {
-        level._ID794 waittill( "foley",  var_2, var_1, var_0  );
+        level._ID794 waittill( "foley",  var_0, var_1, var_2  );
 
         switch ( var_0 )
         {
-
+            case "walk":
+                level._ID794 thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_walk" );
+                continue;
+            case "run":
+                level._ID794 thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_run" );
+                continue;
+            case "sprint":
+                level._ID794 thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_sprint" );
+                continue;
         }
-
-        case "sprint":
-        case "walk":
     }
 }
 
 soap_hanging_up_phone( var_0 )
 {
-    if ( _func_02F( var_0.payphone ) )
+    if ( isdefined( var_0.payphone ) )
         var_0.payphone _ID42237::_ID27077( "scn_favela_escape_soap_intro_phone", var_0.payphone._ID740 + ( 0, 12, 50 ) );
 }
 
 solorun_pavelow_passby()
 {
     wait 1;
-    var_0 = _func_1A1( "solorun_pavelow_passby", "targetname" );
-    var_0 _ID42407::_ID1947( ::_unknown_09DC );
+    var_0 = getent( "solorun_pavelow_passby", "targetname" );
+    var_0 _ID42407::_ID1947( ::solorun_pavelow_sounds );
 }
 
 solorun_pavelow_sounds()
 {
-    thread _unknown_0906();
+    thread _ID51834();
     _ID42407::_ID27081( "scn_favela_escape_heli_solorun_passby_02" );
 }
 
@@ -482,11 +487,11 @@ chopperjump_player_foley_sounds()
 chopper_jump_death_scream()
 {
     wait 1;
-    var_0 = _func_1A1( "trigger_death_scream", "targetname" );
-    var_1 waittill( "trigger",  var_1  );
+    var_0 = getent( "trigger_death_scream", "targetname" );
+    var_0 waittill( "trigger",  var_1  );
 
-    if ( _func_1B3( var_1 ) )
-        var_1 _meth_80A1( "scn_favela_escape_plr_fall_scream" );
+    if ( isplayernumber( var_1 ) )
+        var_1 playsound( "scn_favela_escape_plr_fall_scream" );
 }
 
 favesc_falling_music_fail()

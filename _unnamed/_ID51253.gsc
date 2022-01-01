@@ -3,20 +3,20 @@
 
 _ID45689()
 {
-    _ID42471::_ID4518( "about_to_stop", ::_unknown_0107 );
-    _ID42475::_ID34575( "snd_register_vehicle", "m1a1", ::_unknown_003E );
+    _ID42471::_ID4518( "about_to_stop", ::_ID50589 );
+    _ID42475::_ID34575( "snd_register_vehicle", "m1a1", ::_ID54697 );
 }
 
 _ID54500()
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         wait 1.0;
-        _unknown_0055( 1.0 );
+        _ID48664( 1.0 );
     }
 
-    thread _unknown_004A();
-    var_0 = _func_1A5();
+    thread _ID34578();
+    var_0 = spawnstruct();
     var_0._ID28452 = "m1a1";
     _ID42475::_ID34575( "snd_start_vehicle", var_0 );
 }
@@ -31,7 +31,7 @@ _ID34578()
     {
         wait(var_0 - 1.0);
 
-        if ( !_func_02F( self ) )
+        if ( !isdefined( self ) )
             return;
     }
 
@@ -40,7 +40,7 @@ _ID34578()
 
 _ID48664( var_0 )
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         _ID42475::_ID34575( "snd_stop_vehicle", var_0 );
         self notify( "snd_stop_vehicle" );
@@ -79,14 +79,14 @@ _ID54697()
     _ID42471::_ID4492( 0.5 );
     _ID42471::_ID4508();
     _ID42471::_ID4488();
-    _ID42471::_ID4489( "to_state_idle", ::_unknown_027B );
+    _ID42471::_ID4489( "to_state_idle", ::_ID48647 );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4494( "speed", 1.0, 1.0 );
     _ID42471::_ID4510();
     _ID42471::_ID4494( "about_to_stop" );
     _ID42471::_ID4510();
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_engine", ::_unknown_02BE );
+    _ID42471::_ID4489( "to_state_engine", ::_ID45838 );
     _ID42471::_ID4483( "ALL" );
     _ID42471::_ID4494( "speed", 1.0, 1.0 );
     _ID42471::_ID4510();
@@ -116,7 +116,7 @@ _ID54697()
 _ID50589()
 {
     var_0 = _ID42471::_ID4557();
-    return _func_02F( var_0._ID1732 );
+    return isdefined( var_0._ID1732 );
 }
 
 _ID48647( var_0, var_1 )

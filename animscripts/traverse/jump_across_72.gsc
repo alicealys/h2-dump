@@ -13,12 +13,12 @@ _ID616()
     self._ID10423 = "stand";
     animscripts\utility::_ID39672();
     self endon( "killanimscript" );
-    self _meth_8199( "nogravity" );
-    self _meth_8199( "noclip" );
-    var_0 = self _meth_81A9();
-    self _meth_819B( "face angle", var_0._ID65[1] );
-    self _meth_8119( "jumpanim", %jump_across_72, %body, 1, 0.1, 1 );
+    self traversemode( "nogravity" );
+    self traversemode( "noclip" );
+    var_0 = self getnegotiationstartnode();
+    self orientmode( "face angle", var_0._ID65[1] );
+    self setflaggedanimknoballrestart( "jumpanim", %jump_across_72, %body, 1, 0.1, 1 );
     self waittillmatch( "jumpanim",  "gravity on"  );
-    self _meth_8199( "gravity" );
+    self traversemode( "gravity" );
     animscripts\shared::_ID11529( "jumpanim" );
 }

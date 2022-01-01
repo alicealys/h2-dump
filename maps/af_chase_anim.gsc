@@ -3,18 +3,18 @@
 
 _ID43266()
 {
-    _unknown_0042();
+    _ID49815();
 
     if ( level._ID912 == "ending" )
     {
-        _unknown_08C7();
-        _unknown_0C90();
-        _unknown_0CC5();
+        _ID27229();
+        chicken_anims();
+        _ID23866();
     }
 
-    _unknown_0AB1();
-    _unknown_0BC9();
-    _unknown_002E();
+    _ID51346();
+    _ID47674();
+    _ID46085();
 }
 #using_animtree("generic_human");
 
@@ -32,7 +32,7 @@ _ID46085()
 
     level._ID30895["worldbody"]["impaled_takedown"] = %h2_af_chase_impaled_takedown_player;
     level._ID30895["worldbody"]["crawl_takedown"] = %h2_af_chase_crawl_takedown_player;
-    _ID42259::_ID2058( "worldbody", "switch_bloody", ::_unknown_0D0E );
+    _ID42259::_ID2058( "worldbody", "switch_bloody", ::_ID47047 );
     level._ID30895["worldbody"]["jumpin_zodiac"] = %h2_afchase_boat_jumpin_player;
 }
 
@@ -203,11 +203,11 @@ _ID49815()
     level._ID30909["shepherd"]["afchase_shp_goodwarrior"] = "afchase_shp_goodwarrior";
     level._ID30909["shepherd"]["afchase_shp_extrastep"] = "afchase_shp_extrastep";
     level._ID30909["shepherd"]["afchase_shp_necessary"] = "afchase_shp_necessary";
-    _ID42259::_ID2058( "shepherd", "fire", ::_unknown_17EA, "gun_fight" );
+    _ID42259::_ID2058( "shepherd", "fire", ::_ID45390, "gun_fight" );
     level._ID30895["shepherd"]["knife_moment"] = %afchase_ending_shepherd_knife_moment;
     _ID42259::_ID2069( "shepherd", "gun_kick", "gun_kick", "scn_ending_gun_kick" );
     level._ID30895["shepherd"]["prone_stand"] = %hunted_pronehide_2_stand_v3;
-    _unknown_183B();
+    _ID47455();
     level._ID30895["price"]["knife_moment"] = %afchase_ending_price_knife_moment;
     _ID42259::_ID2069( "price", "dialog1", "endgame", "afchase_pri_soap1" );
     _ID42259::_ID2069( "price", "dialog2", "endgame", "afchase_pri_soap2" );
@@ -224,7 +224,7 @@ _ID49815()
     _ID42259::_ID2069( "generic", "steady_2", "zodiac_rapids_price", "afchase_pri_steady1" );
     _ID42259::_ID2069( "generic", "steady_3", "zodiac_rapids_price", "afchase_pri_steady1" );
     _ID42259::_ID2069( "generic", "dialog", "zodiac_rapids_price", "afchase_pri_backup" );
-    _ID42259::_ID2058( "generic", "hide_price", ::_unknown_14BB );
+    _ID42259::_ID2058( "generic", "hide_price", ::_ID43346 );
     _ID42259::_ID2069( "price", "dialog3", "endgame", "afchase_pri_holdfornow" );
     _ID42259::_ID2069( "price", "dialog4", "endgame", "afchase_pri_toldyou" );
     _ID42259::_ID2069( "price", "dialog5", "endgame", "afchase_pri_soapouttahere" );
@@ -253,25 +253,25 @@ _ID49815()
     _ID42259::_ID2075( "generic", "crawl_takedown", "scn_ending_crawling_guy_throat_slit" );
     _ID42259::_ID2075( "impaled", "impaled_takedown", "scn_ending_impaled_guy_killed" );
     _ID42259::_ID2069( "shepherd", "bodyfall large", "knifepull_throw_kill", "scn_afchase_shepherd_death_bodyfall" );
-    _ID42259::_ID2058( "shepherd", "slowmo_early", ::_unknown_16BB );
-    _ID42259::_ID2058( "shepherd", "slowmo", ::_unknown_16CA );
-    _ID42259::_ID2058( "shepherd", "settle", ::_unknown_16DA );
-    _ID42259::_ID2058( "impaled", "click", ::_unknown_1801 );
-    _ID42259::_ID2058( "impaled", "stop_aim", ::_unknown_1811, "react_death" );
-    _ID42259::_ID2058( "impaled", "start_aim", ::_unknown_1737, "react" );
-    _ID42259::_ID2058( "impaled", "pistol_pickup", ::_unknown_173C );
-    _ID42259::_ID2058( "price", "footstep_right_large", ::_unknown_1BB3 );
-    _ID42259::_ID2058( "price", "footstep_left_large", ::_unknown_1BCF );
-    _ID42259::_ID2058( "price", "footstep_right_small", ::_unknown_1BEB );
-    _ID42259::_ID2058( "price", "footstep_left_small", ::_unknown_1C00 );
-    _ID42259::_ID2058( "nikolai", "footstep_right_large", ::_unknown_1BF3, "endgame" );
-    _ID42259::_ID2058( "nikolai", "footstep_left_large", ::_unknown_1C13, "endgame" );
-    _ID42259::_ID2058( "nikolai", "footstep_right_small", ::_unknown_1C32, "endgame" );
-    _ID42259::_ID2058( "nikolai", "footstep_left_small", ::_unknown_1C4B, "endgame" );
-    _ID42259::_ID2058( "shepherd", "bodyfall large", ::_unknown_1C6C );
-    _ID42259::_ID2058( "shepherd", "bodyfall small", ::_unknown_1C7B );
-    _ID42259::_ID2058( "price", "bodyfall large", ::_unknown_1C8A );
-    _ID42259::_ID2058( "price", "bodyfall small", ::_unknown_1C99 );
+    _ID42259::_ID2058( "shepherd", "slowmo_early", ::_ID49675 );
+    _ID42259::_ID2058( "shepherd", "slowmo", ::_ID49675 );
+    _ID42259::_ID2058( "shepherd", "settle", ::_ID45671 );
+    _ID42259::_ID2058( "impaled", "click", ::_ID46843 );
+    _ID42259::_ID2058( "impaled", "stop_aim", ::_ID47963, "react_death" );
+    _ID42259::_ID2058( "impaled", "start_aim", ::_ID54474, "react" );
+    _ID42259::_ID2058( "impaled", "pistol_pickup", ::_ID49073 );
+    _ID42259::_ID2058( "price", "footstep_right_large", ::_ID48648 );
+    _ID42259::_ID2058( "price", "footstep_left_large", ::_ID53510 );
+    _ID42259::_ID2058( "price", "footstep_right_small", ::_ID48997 );
+    _ID42259::_ID2058( "price", "footstep_left_small", ::_ID50559 );
+    _ID42259::_ID2058( "nikolai", "footstep_right_large", ::_ID48648, "endgame" );
+    _ID42259::_ID2058( "nikolai", "footstep_left_large", ::_ID53510, "endgame" );
+    _ID42259::_ID2058( "nikolai", "footstep_right_small", ::_ID48997, "endgame" );
+    _ID42259::_ID2058( "nikolai", "footstep_left_small", ::_ID50559, "endgame" );
+    _ID42259::_ID2058( "shepherd", "bodyfall large", ::_ID48877 );
+    _ID42259::_ID2058( "shepherd", "bodyfall small", ::_ID48877 );
+    _ID42259::_ID2058( "price", "bodyfall large", ::_ID48877 );
+    _ID42259::_ID2058( "price", "bodyfall small", ::_ID48877 );
     level._ID30909["generic"]["afchase_pri_steady1"] = "afchase_pri_steady1";
     level._ID30909["generic"]["afchase_pri_steady2"] = "afchase_pri_steady2";
     level._ID30909["shepherd"]["afchase_shp_fiveyearsago"] = "afchase_shp_fiveyearsago";
@@ -361,18 +361,18 @@ _ID49815()
 
 _ID51111( var_0 )
 {
-    if ( _func_02F( level._ID46102.cheat._ID51310 ) && level._ID46102.cheat._ID51310 )
+    if ( isdefined( level._ID46102.cheat._ID51310 ) && level._ID46102.cheat._ID51310 )
         level._ID46102 _ID49347::_ID52060( 1 );
 
     var_1 = "jnt_eyeball_L";
     var_2 = _ID42237::_ID35164();
-    var_2 _meth_8053( level._ID46102, var_1, ( 1.5, 0, 0 ), ( 0, 180, 0 ) );
+    var_2 linkto( level._ID46102, var_1, ( 1.5, 0, 0 ), ( 0, 180, 0 ) );
     var_3 = 2;
 
     for ( var_4 = 0; var_4 < var_3; var_4++ )
     {
-        _func_157( _ID42237::_ID16299( "blood_sheperd_eye" ), var_2, "tag_origin" );
-        wait(_func_0BA( 0.1, 0.15 ));
+        playfxontag( _ID42237::_ID16299( "blood_sheperd_eye" ), var_2, "tag_origin" );
+        wait(randomfloatrange( 0.1, 0.15 ));
     }
 }
 
@@ -395,30 +395,30 @@ _ID45671( var_0 )
 
 _ID43346( var_0 )
 {
-    level._ID28543 _meth_805A();
+    level._ID28543 hide();
 }
 
 _ID53101( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = 14;
 
     maps\af_chase_knife_fight_code::_ID51476( var_0 );
-    level._ID50049 _meth_82B8( ( 65, 0, 0 ), var_0, var_0 * 0.5, var_0 * 0.5 );
+    level._ID50049 moveto( ( 65, 0, 0 ), var_0, var_0 * 0.5, var_0 * 0.5 );
 }
 
 _ID49073( var_0 )
 {
-    if ( _func_02F( level._ID53458 ) )
-        level._ID53458 _meth_80B7();
+    if ( isdefined( level._ID53458 ) )
+        level._ID53458 delete();
 
-    var_1 = var_0 _meth_818C( "tag_weapon_right" );
-    var_2 = var_0 _meth_818D( "tag_weapon_right" );
+    var_1 = var_0 gettagorigin( "tag_weapon_right" );
+    var_2 = var_0 gettagangles( "tag_weapon_right" );
 }
 
 _ID54474( var_0 )
 {
-    var_0 thread _unknown_1EF4();
+    var_0 thread h2_impaled_aims_at_player();
     var_0 thread maps\af_chase_knife_fight_code::impaled_takedown_additive_reset();
 }
 
@@ -433,26 +433,26 @@ h2_impaled_aims_at_player()
     var_4 = -27;
     var_5 = -13;
     var_6 = 58;
-    self _meth_8156( var_2, 1, 0, 1 );
-    self _meth_8156( var_3, 1, 0, 1 );
-    var_7 = _func_11F( self._ID65 );
-    var_7 = _func_119( var_7 * ( 1, 1, 0 ) );
-    var_8 = _func_11E( self._ID65 );
-    var_8 = _func_119( var_8 * ( 1, 1, 0 ) );
+    self setanimlimited( var_2, 1, 0, 1 );
+    self setanimlimited( var_3, 1, 0, 1 );
+    var_7 = anglestoforward( self._ID65 );
+    var_7 = vectornormalize( var_7 * ( 1, 1, 0 ) );
+    var_8 = anglestoright( self._ID65 );
+    var_8 = vectornormalize( var_8 * ( 1, 1, 0 ) );
 
     for (;;)
     {
         var_9 = level._ID794._ID740 - self._ID740;
-        var_9 = _func_119( var_9 * ( 1, 1, 0 ) );
-        var_10 = _func_0FB( var_7, var_9 );
-        var_11 = _func_0FB( var_8, var_9 );
+        var_9 = vectornormalize( var_9 * ( 1, 1, 0 ) );
+        var_10 = vectordot( var_7, var_9 );
+        var_11 = vectordot( var_8, var_9 );
 
         if ( var_10 >= 1 )
             var_12 = 0;
         else
         {
-            var_12 = _func_0BF( var_10 );
-            var_12 = _func_0C3( var_12 ) * _ID42237::_ID34160( var_11 );
+            var_12 = acos( var_10 );
+            var_12 = abs( var_12 ) * _ID42237::_ID34160( var_11 );
         }
 
         var_13 = 0;
@@ -462,18 +462,18 @@ h2_impaled_aims_at_player()
             if ( var_12 > var_6 )
                 var_12 = var_6;
 
-            var_13 = var_12 - var_5 / var_6 - var_5;
-            self _meth_8156( var_1, var_13, 0.1, 1 );
-            self _meth_8156( var_0, 0, 0.1, 1 );
+            var_13 = ( var_12 - var_5 ) / ( var_6 - var_5 );
+            self setanimlimited( var_1, var_13, 0.1, 1 );
+            self setanimlimited( var_0, 0, 0.1, 1 );
         }
         else
         {
             if ( var_12 < var_4 )
                 var_12 = var_4;
 
-            var_13 = var_5 - var_12 / var_5 - var_4;
-            self _meth_8156( var_0, var_13, 0.1, 1 );
-            self _meth_8156( var_1, 0, 0.1, 1 );
+            var_13 = ( var_5 - var_12 ) / ( var_5 - var_4 );
+            self setanimlimited( var_0, var_13, 0.1, 1 );
+            self setanimlimited( var_1, 0, 0.1, 1 );
         }
 
         wait 0.05;
@@ -488,18 +488,18 @@ _ID46638()
     var_1 = _ID42407::_ID16120( "aim_6" );
     var_2 = _ID42407::_ID16120( "aim_4" );
     var_3 = 45;
-    self _meth_8155( var_0, 1, 0.2, 1 );
+    self setanim( var_0, 1, 0.2, 1 );
 
     for (;;)
     {
-        var_4 = _func_11E( self._ID65 );
-        var_5 = _func_119( level._ID794._ID740 - self._ID740 );
-        var_6 = _func_11F( self._ID65 );
-        var_4 = _func_11E( self._ID65 );
-        var_7 = _func_0FB( var_6, var_5 );
-        var_8 = _func_0FB( var_4, var_5 );
-        var_9 = _func_0BF( var_7 );
-        var_9 = _func_0C3( var_9 );
+        var_4 = anglestoright( self._ID65 );
+        var_5 = vectornormalize( level._ID794._ID740 - self._ID740 );
+        var_6 = anglestoforward( self._ID65 );
+        var_4 = anglestoright( self._ID65 );
+        var_7 = vectordot( var_6, var_5 );
+        var_8 = vectordot( var_4, var_5 );
+        var_9 = acos( var_7 );
+        var_9 = abs( var_9 );
         var_10 = 0;
 
         if ( var_8 > 0 )
@@ -508,8 +508,8 @@ _ID46638()
                 var_9 = var_3;
 
             var_10 = var_9 / var_3;
-            self _meth_8155( var_1, var_10, 0.2, 1 );
-            self _meth_8155( var_2, 1 - var_10, 0.2, 1 );
+            self setanim( var_1, var_10, 0.2, 1 );
+            self setanim( var_2, 1 - var_10, 0.2, 1 );
         }
         else
         {
@@ -519,8 +519,8 @@ _ID46638()
                 var_9 = var_3;
 
             var_10 = var_9 / var_3;
-            self _meth_8155( var_2, var_10, 0.2, 1 );
-            self _meth_8155( var_1, 1 - var_10, 0.2, 1 );
+            self setanim( var_2, var_10, 0.2, 1 );
+            self setanim( var_1, 1 - var_10, 0.2, 1 );
         }
 
         wait 0.05;
@@ -535,18 +535,18 @@ _ID50978()
     var_1 = _ID42407::_ID16120( "aim_4" );
     var_2 = _ID42407::_ID16120( "aim_6" );
     var_3 = 45;
-    self _meth_8155( var_0, 1, 0.2, 1 );
+    self setanim( var_0, 1, 0.2, 1 );
 
     for (;;)
     {
-        var_4 = _func_11E( self._ID65 );
-        var_5 = _func_119( level._ID794._ID740 - self._ID740 );
-        var_6 = _func_11F( self._ID65 );
-        var_4 = _func_11E( self._ID65 );
-        var_7 = _func_0FB( var_6, var_5 );
-        var_8 = _func_0FB( var_4, var_5 );
-        var_9 = _func_0BF( var_7 );
-        var_9 = _func_0C3( var_9 );
+        var_4 = anglestoright( self._ID65 );
+        var_5 = vectornormalize( level._ID794._ID740 - self._ID740 );
+        var_6 = anglestoforward( self._ID65 );
+        var_4 = anglestoright( self._ID65 );
+        var_7 = vectordot( var_6, var_5 );
+        var_8 = vectordot( var_4, var_5 );
+        var_9 = acos( var_7 );
+        var_9 = abs( var_9 );
         var_10 = 0;
 
         if ( var_8 > 0 )
@@ -555,8 +555,8 @@ _ID50978()
                 var_9 = var_3;
 
             var_10 = var_9 / var_3;
-            self _meth_8155( var_1, var_10, 0.2, 1 );
-            self _meth_8155( var_2, 1 - var_10, 0.2, 1 );
+            self setanim( var_1, var_10, 0.2, 1 );
+            self setanim( var_2, 1 - var_10, 0.2, 1 );
         }
         else
         {
@@ -566,8 +566,8 @@ _ID50978()
                 var_9 = var_3;
 
             var_10 = var_9 / var_3;
-            self _meth_8155( var_2, var_10, 0.2, 1 );
-            self _meth_8155( var_1, 1 - var_10, 0.2, 1 );
+            self setanim( var_2, var_10, 0.2, 1 );
+            self setanim( var_1, 1 - var_10, 0.2, 1 );
         }
 
         wait 0.05;
@@ -585,11 +585,11 @@ _ID46843( var_0 )
 
     if ( var_0._ID44129 >= 6 )
     {
-        if ( _func_0B7( 100 ) > 50 )
+        if ( randomint( 100 ) > 50 )
             return;
     }
 
-    var_1 = var_0 _meth_818C( "tag_inhand" );
+    var_1 = var_0 gettagorigin( "tag_inhand" );
     _ID42237::_ID27077( "scn_afchase_dryfire_pistol_npc", var_1 );
 }
 #using_animtree("player");
@@ -610,17 +610,17 @@ _ID27229()
     level._ID30895["player_rig"]["gun_kick"] = %h2_afchase_player_gun_kick;
     level._ID30902["player_rig"]["gun_kick"] = 0;
     _ID42259::_ID2058( "player_rig", "rumble", maps\af_chase_knife_fight_code::_ID44802, "gun_kick" );
-    _ID42259::_ID2058( "player_rig", "vision_effect", ::_unknown_259B, "gun_kick" );
+    _ID42259::_ID2058( "player_rig", "vision_effect", ::_ID47060, "gun_kick" );
     level._ID30895["player_rig"]["turn_buckle_alt"] = %h2_afchase_player_turnbuckle_alt;
     _ID42259::_ID2059( "player_rig", "vision_effect", "weapon_commando_knife", "TAG_WEAPON_LEFT", "turn_buckle_alt" );
-    _ID42259::_ID2058( "player_rig", "rumble", ::_unknown_26FB, "turn_buckle_alt" );
-    _ID42259::_ID2058( "player_rig", "vision_effect", ::_unknown_25C8, "turn_buckle_alt" );
-    _ID42259::_ID2058( "player_rig", "fadeout", ::_unknown_2725, "turn_buckle_alt" );
+    _ID42259::_ID2058( "player_rig", "rumble", ::_ID49808, "turn_buckle_alt" );
+    _ID42259::_ID2058( "player_rig", "vision_effect", ::_ID51184, "turn_buckle_alt" );
+    _ID42259::_ID2058( "player_rig", "fadeout", ::_ID13798, "turn_buckle_alt" );
     level._ID30895["player_rig"]["turn_buckle"] = %h2_afchase_player_turnbuckle;
     _ID42259::_ID2059( "player_rig", "vision_effect", "weapon_commando_knife", "TAG_WEAPON_LEFT", "turn_buckle" );
-    _ID42259::_ID2058( "player_rig", "rumble", ::_unknown_275E, "turn_buckle" );
-    _ID42259::_ID2058( "player_rig", "vision_effect", ::_unknown_262A, "turn_buckle" );
-    _ID42259::_ID2058( "player_rig", "fadeout", ::_unknown_2787, "turn_buckle" );
+    _ID42259::_ID2058( "player_rig", "rumble", ::_ID49808, "turn_buckle" );
+    _ID42259::_ID2058( "player_rig", "vision_effect", ::_ID51184, "turn_buckle" );
+    _ID42259::_ID2058( "player_rig", "fadeout", ::_ID13798, "turn_buckle" );
     level._ID30895["player_rig"]["walk_off"] = %h2_afchase_player_walkoff;
     level._ID30895["player_rig"]["gun_crawl_00"] = %h2_afchase_player_gun_crawl_00;
     level._ID30895["player_rig"]["gun_crawl_01"] = %h2_afchase_player_gun_crawl_01;
@@ -644,9 +644,9 @@ _ID27229()
     level._ID30895["player_rig"]["knifepull_pull_02"] = %h2_afchase_player_knife_pull_02;
     level._ID30895["player_rig"]["knifepull_pull_03"] = %h2_afchase_player_knife_pull_03;
     level._ID30895["player_rig"]["knifepull_pullout_flip"] = %h2_afchase_player_knife_pullout_2_flip;
-    _ID42259::_ID2058( "player_rig", "blood", ::_unknown_27FF, "knifepull_pullout_flip" );
-    _ID42259::_ID2058( "player_rig", "right_hand", ::_unknown_29FC );
-    _ID42259::_ID2058( "player_rig", "left_hand", ::_unknown_2A11 );
+    _ID42259::_ID2058( "player_rig", "blood", ::_ID49714, "knifepull_pullout_flip" );
+    _ID42259::_ID2058( "player_rig", "right_hand", ::_ID52783 );
+    _ID42259::_ID2058( "player_rig", "left_hand", ::_ID47264 );
     level._ID30902["player_rig"]["knifepull_pullout_flip_idle"] = 1.0;
     level._ID30895["player_rig"]["knifepull_pullout_flip_idle"][0] = %h2_afchase_player_knife_pullout_2_flip_idle;
     level._ID30895["player_rig"]["knifepull_throw"] = %h2_afchase_player_knife_throw;
@@ -669,42 +669,42 @@ _ID27229()
 
 _ID49714( var_0 )
 {
-    _unknown_294C( 3 );
+    _ID51539( 3 );
 }
 
 _ID51539( var_0 )
 {
-    level._ID794 _meth_80B4( "damage_heavy" );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
     thread maps\ending_aud::_ID51899();
-    level._ID794 _meth_818E( "af_chase_ending_kill", 60 );
+    level._ID794 shellshock( "af_chase_ending_kill", 60 );
 }
 
 _ID51184( var_0 )
 {
-    level._ID794 _meth_80B4( "damage_light" );
+    level._ID794 playrumblelooponentity( "damage_light" );
     var_1 = maps\af_chase_knife_fight_code::_ID16077();
     var_1._ID55 = 1;
-    var_1 _meth_808B( 1.0 );
+    var_1 fadeovertime( 1.0 );
     var_1._ID55 = 0.0;
-    level._ID794 _meth_8190();
-    _func_076( 0, 2 );
+    level._ID794 stopshellshock();
+    setblur( 0, 2 );
     _ID42407::_ID32515( "ending_fight", 1 );
     _ID42407::_ID14689( "ending_fight", 1 );
     level._ID794 _ID42407::_ID48929( "ending_fight" );
-    level._ID794 _meth_80B4( "damage_heavy" );
-    _func_032( "ui_consciousness_init", 1 );
-    _func_032( "ui_consciousness_play", 2 );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
+    setomnvar( "ui_consciousness_init", 1 );
+    setomnvar( "ui_consciousness_play", 2 );
 }
 
 _ID47060( var_0 )
 {
-    level._ID794 _meth_80B4( "damage_heavy" );
-    level._ID794 _meth_8057( 50 / level._ID794._ID255, level._ID794._ID740 );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level._ID794 dodamage( 50 / level._ID794._ID255, level._ID794._ID740 );
     level._ID794 thread _ID42407::_ID27079( "face_stomp" );
     maps\af_chase_knife_fight_code::_ID52796( "af_chase_turn_buckle_slam" );
-    level._ID794 _meth_80B4( "damage_heavy" );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
     wait 0.05;
-    level._ID794 _meth_8056( 1 );
+    level._ID794 setnormalhealth( 1 );
 }
 #using_animtree("script_model");
 
@@ -716,7 +716,7 @@ _ID51346()
     level._ID30895["gun_model"]["gun_kick_gun"] = %h2_afchase_revolver_gun_kick;
     level._ID30895["gun_model"]["gun_monologue"] = %h2_afchase_revolver_gun_monologue;
     level._ID30895["gun_model"]["gun_fight"] = %h2_afchase_revolver_gun_fight;
-    _ID42259::_ID2058( "gun_model", "bullets", ::_unknown_2C3C, "gun_fight" );
+    _ID42259::_ID2058( "gun_model", "bullets", ::_ID51058, "gun_fight" );
     level._ID30904["knife"] = "weapon_commando_knife";
     level._ID30900["knife"] = #animtree;
     level._ID30900["window"] = #animtree;
@@ -731,9 +731,9 @@ _ID51346()
     level._ID30900["light"] = #animtree;
     level._ID30895["light"]["idle1"][0] = %h2_af_chase_light_river_idle;
     level._ID30895["knife"]["turn_buckle"] = %h2_afchase_knife_turnbuckle;
-    _ID42259::_ID2058( "knife", "blood", ::_unknown_2D15, "turn_buckle" );
+    _ID42259::_ID2058( "knife", "blood", ::_ID53203, "turn_buckle" );
     level._ID30895["knife"]["turn_buckle_alt"] = %h2_afchase_knife_turnbuckle_alt;
-    _ID42259::_ID2058( "knife", "blood", ::_unknown_2D3B, "turn_buckle_alt" );
+    _ID42259::_ID2058( "knife", "blood", ::_ID53203, "turn_buckle_alt" );
     level._ID30895["knife"]["gun_drop"] = %h2_afchase_knife_gun_drop;
     level._ID30895["knife"]["gun_monologue"] = %h2_afchase_knife_gun_monologue;
     level._ID30895["knife"]["gun_fight"] = %h2_afchase_knife_gun_fight;
@@ -753,15 +753,15 @@ _ID51346()
     level._ID30895["knife"]["endgame"] = %h2_afchase_knife_endgame;
     level._ID30902["knife"]["endgame"] = 0.1;
     level._ID30902["knife"]["knifepull_pullout_flip_idle"] = 1.0;
-    _ID42259::_ID2058( "knife", "blood", ::_unknown_2EAF, "turn_buckle" );
-    _ID42259::_ID2058( "shepherd", "knife_in_eye", ::_unknown_2A22, "endgame" );
-    _ID42259::_ID2058( "knife", "knife_out", ::_unknown_2ED4, "knifepull_pullout_flip" );
+    _ID42259::_ID2058( "knife", "blood", ::_ID53203, "turn_buckle" );
+    _ID42259::_ID2058( "shepherd", "knife_in_eye", ::_ID51111, "endgame" );
+    _ID42259::_ID2058( "knife", "knife_out", ::_ID53203, "knifepull_pullout_flip" );
     level._ID30895["rotation"]["z_down"] = %rotate_z_l;
 }
 
 _ID49808( var_0 )
 {
-    level._ID794 _meth_80B4( "damage_heavy" );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
 }
 
 _ID13798( var_0 )
@@ -777,7 +777,7 @@ _ID47674()
     level._ID30895["zodiac_player"]["zodiac_waterfall_left"] = %afchase_waterfall_zodiac_l;
     level._ID30895["zodiac_player"]["waterfall_over"] = %h2_afchase_waterfall_zodiac_fall;
     level._ID30902["zodiac_player"]["waterfall_over"] = 0;
-    _ID42259::_ID2058( "zodiac_player", "zodiac_hide", ::_unknown_2F61 );
+    _ID42259::_ID2058( "zodiac_player", "zodiac_hide", ::afch_hide_customfunction );
     level._ID30895["zodiac_player"]["zodiac_waterfall_add_left"] = %zodiac_waterfall_add_left;
     level._ID30895["zodiac_player"]["zodiac_waterfall_left"] = %afchase_waterfall_player_zodiac_add_l;
     level._ID30895["zodiac_player"]["zodiac_waterfall_add_right"] = %zodiac_waterfall_add_right;
@@ -791,7 +791,7 @@ _ID47674()
 
 afch_hide_customfunction( var_0 )
 {
-    var_0 _meth_805A();
+    var_0 hide();
 }
 
 _ID49948( var_0 )
@@ -802,12 +802,12 @@ _ID49948( var_0 )
 _ID53203( var_0 )
 {
     maps\af_chase_knife_fight_code::_ID49625();
-    _func_157( _ID42237::_ID16299( "player_stabbed" ), var_0, "TAG_FX" );
+    playfxontag( _ID42237::_ID16299( "player_stabbed" ), var_0, "TAG_FX" );
 }
 
 _ID51058( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "revolver_bullets" ), var_0, "J_Cylinder_Spin" );
+    playfxontag( _ID42237::_ID16299( "revolver_bullets" ), var_0, "J_Cylinder_Spin" );
 }
 
 _ID48648( var_0 )
@@ -822,34 +822,34 @@ _ID53510( var_0 )
 
 _ID48997( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "footstep_dust_sandstorm_small_runner" ), var_0, "J_Ball_RI" );
+    playfxontag( _ID42237::_ID16299( "footstep_dust_sandstorm_small_runner" ), var_0, "J_Ball_RI" );
 }
 
 _ID50559( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "footstep_dust_sandstorm_small_runner" ), var_0, "J_Ball_LE" );
+    playfxontag( _ID42237::_ID16299( "footstep_dust_sandstorm_small_runner" ), var_0, "J_Ball_LE" );
 }
 
 _ID52783( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "crawl_dust_sandstorm_runner" ), var_0, "J_Mid_RI_2" );
+    playfxontag( _ID42237::_ID16299( "crawl_dust_sandstorm_runner" ), var_0, "J_Mid_RI_2" );
 }
 
 _ID47264( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "crawl_dust_sandstorm_runner" ), var_0, "J_Mid_LE_2" );
+    playfxontag( _ID42237::_ID16299( "crawl_dust_sandstorm_runner" ), var_0, "J_Mid_LE_2" );
 }
 
 _ID48877( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "bodyfall_dust_sandstorm_large_runner" ), var_0, "J_SpineUpper" );
+    playfxontag( _ID42237::_ID16299( "bodyfall_dust_sandstorm_large_runner" ), var_0, "J_SpineUpper" );
 }
 
 _ID45390( var_0 )
 {
     maps\af_chase_knife_fight_code::_ID44089();
     var_1 = 0.5;
-    level._ID50049 _meth_82B8( ( 40, 0, 0 ), var_1, 0, var_1 );
+    level._ID50049 moveto( ( 40, 0, 0 ), var_1, 0, var_1 );
 }
 
 _ID47455()
@@ -866,12 +866,12 @@ _ID45586()
 
 _ID47047( var_0 )
 {
-    if ( _func_02F( level._ID794._ID50619 ) )
+    if ( isdefined( level._ID794._ID50619 ) )
         return;
 
-    level._ID794 _meth_831A( "ending_knife" );
-    level._ID794 _meth_8319( "ending_knife_bloody" );
-    level._ID794 _meth_8320( "ending_knife_bloody" );
+    level._ID794 takeweapon( "ending_knife" );
+    level._ID794 giveweapon( "ending_knife_bloody" );
+    level._ID794 switchtoweapon( "ending_knife_bloody" );
     level._ID794._ID50619 = 1;
 }
 #using_animtree("animals");

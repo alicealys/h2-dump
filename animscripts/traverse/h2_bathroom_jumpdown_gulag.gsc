@@ -9,12 +9,12 @@ _ID616()
     self endon( "killanimscript" );
     self._ID7._ID24414 = "walk";
     self._ID7._ID50251 = "alert";
-    self _meth_8199( "nogravity" );
-    var_0 = self _meth_81A9();
-    self _meth_819B( "face angle", var_0._ID65[1] );
-    self _meth_8119( "stepanim", %h2_traverse_jumpdown_56_gulag, %body, 1, 0.1, 1 );
+    self traversemode( "nogravity" );
+    var_0 = self getnegotiationstartnode();
+    self orientmode( "face angle", var_0._ID65[1] );
+    self setflaggedanimknoballrestart( "stepanim", %h2_traverse_jumpdown_56_gulag, %body, 1, 0.1, 1 );
     self waittillmatch( "stepanim",  "gravity on"  );
-    self _meth_8199( "gravity" );
+    self traversemode( "gravity" );
     animscripts\shared::_ID11529( "stepanim" );
-    self _meth_8153( %crouch_fastwalk_f, %body, 1, 0.1, 1 );
+    self setanimknoballrestart( %crouch_fastwalk_f, %body, 1, 0.1, 1 );
 }

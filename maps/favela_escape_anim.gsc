@@ -3,16 +3,16 @@
 
 _ID616()
 {
-    _unknown_0019();
-    _unknown_0260();
-    _unknown_001C();
-    _unknown_057B();
-    thread _unknown_0018();
+    _ID50899();
+    _ID32951();
+    _ID51444();
+    _ID47863();
+    thread _ID45937();
 }
 
 _ID45937()
 {
-    while ( !_func_02F( level._ID36711 ) )
+    while ( !isdefined( level._ID36711 ) )
         wait 0.05;
 
     level._ID53525["rooftop_mantle"] = _ID42237::_ID16638( "market_evac_friendlies_climb_animspot", "targetname" );
@@ -79,7 +79,7 @@ _ID50899()
     level._ID30895["freerunner"]["favela_escape_bigjump_soap"] = %h2_favela_escape_bigjump_soap;
     level._ID30895["freerunner"]["favela_escape_bigjump_ghost"] = %h2_favela_escape_bigjump_ghost;
     level._ID30895["freerunner"]["favela_escape_bigjump_faust"] = %h2_favela_escape_bigjump_faust;
-    _ID42259::_ID2058( "freerunner", "roof_piece_wobble", ::_unknown_0666 );
+    _ID42259::_ID2058( "freerunner", "roof_piece_wobble", ::_ID51349 );
     level._ID30895["generic"]["chase_run"] = %run_n_gun_f;
     level._ID30909["freerunner"]["favela_escape_bigjump_faust"] = "favesc_tf1_jumpsfx";
     level._ID30895["generic"]["mobwalk_A"] = %mob_arc_a;
@@ -115,9 +115,9 @@ _ID50899()
     level._ID30895["chopper_door_guy"]["chopperjump_loop"][0] = %h2_favela_escape_ending_mctavish_loop;
     level._ID30895["chopper_door_guy"]["chopperjump_flyaway"] = %h2_favela_escape_ending_mctavish_flying_away;
     _ID42259::_ID2062( "chopper_door_guy", "dialog", "chopperjump_flyaway", "favesc_cmt_gothim" );
-    _unknown_0C01();
-    _unknown_0B1A();
-    _unknown_0AB6();
+    _ID45616();
+    _ID52134();
+    _ID51336();
 }
 
 _ID51349( var_0 )

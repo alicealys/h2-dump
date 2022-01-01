@@ -3,8 +3,8 @@
 
 _ID34687()
 {
-    _unknown_000E();
-    _unknown_000F( "" );
+    _ID34570();
+    _ID34646( "" );
 }
 
 _ID34646( var_0 )
@@ -19,7 +19,7 @@ _ID34536()
 
 _ID34570()
 {
-    level._ID1632._ID37760 = _func_1A5();
+    level._ID1632._ID37760 = spawnstruct();
     var_0 = [];
     var_0[var_0.size] = "soundtables/sp_defaults.csv";
     var_0[var_0.size] = "soundtables/" + level._ID912 + ".csv";
@@ -28,18 +28,18 @@ _ID34570()
 
 _ID34653( var_0 )
 {
-    var_1 = _unknown_008E( var_0 );
+    var_1 = _ID34546( var_0 );
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
-    if ( _unknown_0078() != var_0 )
-        thread _unknown_00AF( var_1 );
+    if ( _ID34536() != var_0 )
+        thread _ID34658( var_1 );
 }
 
 _ID34546( var_0 )
 {
-    if ( _func_02F( level._ID1632._ID37760._ID28453 ) && _func_02F( level._ID1632._ID37760._ID28453[var_0] ) )
+    if ( isdefined( level._ID1632._ID37760._ID28453 ) && isdefined( level._ID1632._ID37760._ID28453[var_0] ) )
         return level._ID1632._ID37760._ID28453[var_0];
 
     return undefined;
@@ -48,76 +48,57 @@ _ID34546( var_0 )
 _ID34658( var_0 )
 {
     var_1 = _ID42475::_ID34545();
-    var_2 = var_0._ID32823;
 
-    for ( var_9 = _func_1DA( var_2 ); _func_02F( var_9 ); var_9 = _func_1BF( var_2, var_9 ) )
+    foreach ( var_3 in var_0._ID32823 )
     {
-        var_3 = var_2[var_9];
         var_4 = var_3["dsp_bus_name"];
 
         if ( var_4 == "all" )
         {
             var_5 = _ID42490::_ID34537();
-            var_6 = var_5;
 
-            for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
+            foreach ( var_7 in var_5 )
             {
-                var_7 = var_6[var_8];
-                _func_080( var_7, var_3["scalefactor"] );
+                soundtime( var_7, var_3["scalefactor"] );
                 var_1 _ID42475::_ID34685();
             }
 
-            var_clear_2
-            var_clear_0
             continue;
         }
 
-        _func_080( var_4, var_3["scalefactor"] );
+        soundtime( var_4, var_3["scalefactor"] );
     }
-
-    var_clear_3
-    var_clear_0
 }
 
 _ID34654( var_0 )
 {
-    thread _unknown_017B( var_0 );
+    thread _ID34655( var_0 );
 }
 
 _ID34655( var_0 )
 {
     var_1 = _ID42475::_ID34545();
     var_2 = _ID42490::_ID34537();
-    var_3 = var_2;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_2 )
     {
-        var_4 = var_3[var_5];
-        _func_080( var_4, var_0 );
+        soundtime( var_4, var_0 );
         var_1 _ID42475::_ID34685();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID34656( var_0, var_1 )
 {
-    thread _unknown_01C9( var_0, var_1 );
+    thread _ID34657( var_0, var_1 );
 }
 
 _ID34657( var_0, var_1 )
 {
     var_2 = _ID42475::_ID34545();
-    var_3 = var_0;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_0 )
     {
-        var_4 = var_3[var_5];
-        _func_080( var_4, var_1 );
+        soundtime( var_4, var_1 );
         var_2 _ID42475::_ID34685();
     }
-
-    var_clear_2
-    var_clear_0
 }

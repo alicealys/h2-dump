@@ -3,14 +3,14 @@
 
 _ID616()
 {
-    self _meth_80B8( "h2_body_shadow_co_assault_burned" );
+    self setmodel( "h2_body_shadow_co_assault_burned" );
     _ID42226::_ID3584( "alias_shad_co_heads", _ID52970::_ID616() );
     self._ID40757 = "shadowcompany";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "h2_body_shadow_co_assault_burned" );
+    precachemodel( "h2_body_shadow_co_assault_burned" );
     _ID42226::_ID28388( _ID52970::_ID616() );
 }

@@ -3,7 +3,7 @@
 
 _ID616()
 {
-    _unknown_0004();
+    high_wall_human();
 }
 #using_animtree("generic_human");
 

@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "blackhawk", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00B6 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_blackhawk" );
     _ID42411::_ID6216( "vehicle_blackhawk_low" );
     _ID42411::_ID6216( "vehicle_blackhawk_low_thermal" );
@@ -30,9 +30,9 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_0240, ::_unknown_021A );
-    _ID42411::_ID6206( ::_unknown_037F );
-    _ID42411::_ID6262( ::_unknown_0345 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6206( ::_ID32221 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6234( var_2, "cockpit_blue_cargo01", "tag_light_cargo01", "fx/misc/aircraft_light_cockpit_red", "interior", 0.0 );
     _ID42411::_ID6234( var_2, "cockpit_blue_cockpit01", "tag_light_cockpit01", "fx/misc/aircraft_light_cockpit_blue", "interior", 0.0 );
     _ID42411::_ID6234( var_2, "white_blink", "tag_light_belly", "fx/misc/aircraft_light_white_blink_daylight", "running", 0.0 );
@@ -44,10 +44,10 @@ _ID616( var_0, var_1, var_2 )
 
 _ID19731()
 {
-    self._ID26026 = _func_0F3( self _meth_818C( "tag_origin" ), self _meth_818C( "tag_ground" ) );
+    self._ID26026 = distance( self gettagorigin( "tag_origin" ), self gettagorigin( "tag_ground" ) );
     self._ID13954 = 762;
     self._ID31066 = 0;
-    _unknown_02B6();
+    _ID17700();
 }
 
 _ID17700()
@@ -56,13 +56,13 @@ _ID17700()
     var_0 = 0;
     var_1 = 12000;
     _ID48184::_ID53674();
-    thread _unknown_02F0();
+    thread _ID23939();
 
     for (;;)
     {
-        if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+        if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_2 = _func_0F3( self._ID740, level._ID794._ID740 );
+            var_2 = distance( self._ID740, level._ID794._ID740 );
 
             if ( var_0 && var_2 > var_1 )
             {
@@ -105,7 +105,7 @@ _ID32742( var_0 )
 {
     var_0[3]._ID27477 = %bh_player_idle;
 
-    if ( !_func_02F( level._ID46210 ) )
+    if ( !isdefined( level._ID46210 ) )
     {
         var_0[3]._ID27435 = "fastrope_start_plr";
         var_0[3]._ID27437 = "fastrope_loop_plr";
@@ -123,7 +123,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 8; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID19302 = %bh_pilot_idle;
     var_0[1]._ID19302 = %bh_copilot_idle;
@@ -190,7 +190,7 @@ _ID32550()
     var_0[5]._ID13955 = "TAG_FastRope_LE";
     var_0[6]._ID13955 = "TAG_FastRope_RI";
     var_0[7]._ID13955 = "TAG_FastRope_LE";
-    return _unknown_06BA( var_0 );
+    return _ID32742( var_0 );
 }
 
 _ID39488()
@@ -218,33 +218,33 @@ _ID39488()
 _ID32221()
 {
     var_0 = [];
-    var_0["TAG_FastRope_LE"] = _func_1A5();
+    var_0["TAG_FastRope_LE"] = spawnstruct();
     var_0["TAG_FastRope_LE"]._ID669 = "rope_test";
     var_0["TAG_FastRope_LE"]._ID1067 = "TAG_FastRope_LE";
     var_0["TAG_FastRope_LE"]._ID19324 = %bh_rope_idle_le;
     var_0["TAG_FastRope_LE"]._ID12144 = %bh_rope_drop_le;
-    var_0["TAG_FastRope_RI"] = _func_1A5();
+    var_0["TAG_FastRope_RI"] = spawnstruct();
     var_0["TAG_FastRope_RI"]._ID669 = "rope_test_ri";
     var_0["TAG_FastRope_RI"]._ID1067 = "TAG_FastRope_RI";
     var_0["TAG_FastRope_RI"]._ID19324 = %bh_rope_idle_ri;
     var_0["TAG_FastRope_RI"]._ID12144 = %bh_rope_drop_ri;
 
-    if ( _func_02F( self._ID40791 ) && _func_125( self._ID40791, "blackhawk_hero" ) && !_func_125( self._ID40791, "hamburg" ) )
+    if ( isdefined( self._ID40791 ) && issubstr( self._ID40791, "blackhawk_hero" ) && !issubstr( self._ID40791, "hamburg" ) )
     {
-        var_0["attach_interior"] = _func_1A5();
+        var_0["attach_interior"] = spawnstruct();
         var_0["attach_interior"]._ID1067 = "body_animate_jnt";
         var_0["attach_interior"]._ID19324 = %h1_blackhawk_interiorwires;
 
-        if ( _func_125( self._ID40791, "sas_night" ) )
+        if ( issubstr( self._ID40791, "sas_night" ) )
             var_0["attach_interior"]._ID669 = "vehicle_blackhawk_hero_sas_night_interior";
         else
             var_0["attach_interior"]._ID669 = "vehicle_blackhawk_hero_interior";
     }
 
-    var_1 = _func_1D9( var_0 );
+    var_1 = getarraykeys( var_0 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
-        _func_14C( var_0[var_1[var_2]]._ID669 );
+        precachemodel( var_0[var_1[var_2]]._ID669 );
 
     return var_0;
 }

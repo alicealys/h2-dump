@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "m1a1", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_004C );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_m1a1_abrams", "vehicle_m1a1_abrams_dmg" );
     _ID42411::_ID6251( "tankblast" );
     _ID42411::_ID6220( %abrams_movement, %abrams_movement_backwards, 10 );
@@ -18,7 +18,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6248( "tank_rumble", 0.15, 4.5, 900, 1, 1 );
     _ID42411::_ID6253( "allies" );
     _ID42411::_ID6237();
-    _ID42411::_ID6204( ::_unknown_010B, ::_unknown_0106 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6223( 0.33 );
 }
 
@@ -34,14 +34,14 @@ _ID17700()
     var_1 = 6000;
     var_2 = 1.0;
     _ID51253::_ID45689();
-    thread _unknown_012A();
+    thread _ID23939();
     self._ID34513 = self._ID31138;
 
     for (;;)
     {
-        if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+        if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_3 = _func_0F3( self._ID740, level._ID794._ID740 );
+            var_3 = distance( self._ID740, level._ID794._ID740 );
 
             if ( var_0 && var_3 > var_1 )
             {
@@ -82,7 +82,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 11; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID16493 = 1;
     return var_0;

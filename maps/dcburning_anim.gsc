@@ -3,16 +3,16 @@
 
 _ID616()
 {
-    _unknown_001B();
-    _unknown_0898();
-    _unknown_0837();
-    _unknown_0478();
-    _unknown_078F();
+    _ID3197();
+    _ID27230();
+    _ID40078();
+    _ID10742();
+    _ID31294();
     _ID42237::_ID14400( "roof_door_kicked" );
-    _ID42259::_ID2058( "generic", "kick", ::_unknown_089F, "shotgunhinges_breach_left_stack_breach_01" );
-    _ID42259::_ID2058( "generic", "fire", ::_unknown_08B8, "shotgunhinges_breach_left_stack_breach_01" );
-    _unknown_0932();
-    _unknown_0969();
+    _ID42259::_ID2058( "generic", "kick", ::_ID52985, "shotgunhinges_breach_left_stack_breach_01" );
+    _ID42259::_ID2058( "generic", "fire", ::_ID48208, "shotgunhinges_breach_left_stack_breach_01" );
+    _ID46978();
+    animated_fence_setup();
 }
 #using_animtree("generic_human");
 
@@ -64,15 +64,15 @@ _ID3197()
     level._ID30895["generic"]["javelin_fire"] = %javelin_fire_a;
     level._ID30895["generic"]["javelin_fire_short"] = %javelin_fire_short_a;
     level._ID30895["generic"]["javelin_react"] = %javelin_react_a;
-    _ID42259::_ID2058( "generic", "reload_begin", ::_unknown_0C48, "javelin_fire" );
-    _ID42259::_ID2058( "generic", "reload_end", ::_unknown_0C60, "javelin_fire" );
+    _ID42259::_ID2058( "generic", "reload_begin", ::_ID50967, "javelin_fire" );
+    _ID42259::_ID2058( "generic", "reload_end", ::_ID46428, "javelin_fire" );
     level._ID30895["generic"]["javelin_death_barrett"] = %exposed_death_blowback;
     level._ID30895["generic"]["javelin_idle_start2"] = %javelin_idle_b;
     level._ID30895["generic"]["javelin_idle2"][0] = %javelin_idle_b;
     level._ID30895["generic"]["javelin_fire2"] = %javelin_fire_b;
     level._ID30895["generic"]["javelin_react2"] = %javelin_react_b;
-    _ID42259::_ID2058( "generic", "reload_begin", ::_unknown_0CCD, "javelin_fire2" );
-    _ID42259::_ID2058( "generic", "reload_end", ::_unknown_0CE5, "javelin_fire2" );
+    _ID42259::_ID2058( "generic", "reload_begin", ::_ID50967, "javelin_fire2" );
+    _ID42259::_ID2058( "generic", "reload_end", ::_ID46428, "javelin_fire2" );
     level._ID30895["generic"]["javelin_death2"] = %javelin_death_1;
     level._ID30895["generic"]["javelin_death_reloading2"] = %javelin_death_2;
     level._ID30895["generic"]["javelin_death"] = %javelin_death_3;
@@ -154,15 +154,15 @@ _ID3197()
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger03_idle"][0] = %h2_dcburning_controlroom_ranger03_idle;
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger04"] = %h2_dcburning_controlroom_ranger04_start;
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger04_idle"][0] = %h2_dcburning_controlroom_ranger04_idle;
-    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::_unknown_1415, "h2_dcburning_controlroom_ranger04_idle" );
+    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::dcburning_mortar_notify, "h2_dcburning_controlroom_ranger04_idle" );
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger05"] = %h2_dcburning_controlroom_ranger05_start;
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger05_idle"][0] = %h2_dcburning_controlroom_ranger05_idle;
-    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::_unknown_144F, "h2_dcburning_controlroom_ranger05_idle" );
+    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::dcburning_mortar_notify, "h2_dcburning_controlroom_ranger05_idle" );
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger06"] = %h2_dcburning_controlroom_ranger06_start;
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger06_idle"][0] = %h2_dcburning_controlroom_ranger06_idle;
-    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::_unknown_1489, "h2_dcburning_controlroom_ranger06_idle" );
+    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::dcburning_mortar_notify, "h2_dcburning_controlroom_ranger06_idle" );
     level._ID30895["generic"]["h2_dcburning_controlroom_ranger08_idle"][0] = %h2_dcburning_controlroom_ranger08_idle;
-    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::_unknown_14B0, "h2_dcburning_controlroom_ranger08_idle" );
+    _ID42259::_ID2058( "generic", "dcburning_explosionbunker", ::dcburning_mortar_notify, "h2_dcburning_controlroom_ranger08_idle" );
     level._ID30895["generic"]["wounded_carry_fastwalk_carrier"] = %wounded_carry_fastwalk_carrier;
     level._ID30895["generic"]["wounded_carry_fastwalk_wounded"] = %wounded_carry_fastwalk_wounded;
     level._ID30895["generic"]["h2_dcburning_medicalbay_soldier1_E"] = %h2_dcburning_medicalbay_soldier1_e_start;
@@ -461,7 +461,7 @@ _ID27230()
     level._ID30895["worldhands"]["h2_dcburning_c4_br"] = %h2_dcburning_c4_br;
     level._ID30895["worldhands"]["h2_dcburning_c4_lf"] = %h2_dcburning_c4_lf;
     level._ID30895["worldhands"]["h2_dcburning_c4_rf"] = %h2_dcburning_c4_rf;
-    _ID42259::_ID2058( "worldhands", "c4_detach", ::_unknown_22F1 );
+    _ID42259::_ID2058( "worldhands", "c4_detach", ::_ID48187 );
     level._ID30895["worldhands"]["barrett_in"] = %h2_dc_burning_barret_player_grab_in;
     level._ID30895["worldhands"]["barrett_out"] = %h2_dc_burning_barret_player_grab_out;
     level._ID30895["worldhands"]["minigun_in_fast"] = %h2_dc_burning_blackhawk_minigun_in_fast;
@@ -473,12 +473,12 @@ _ID27230()
 
 _ID48187( var_0 )
 {
-    level._ID794._ID49479._ID740 = var_0 _meth_818C( "tag_weapon_left" );
-    level._ID794._ID49479._ID65 = var_0 _meth_818D( "tag_weapon_left" );
+    level._ID794._ID49479._ID740 = var_0 gettagorigin( "tag_weapon_left" );
+    level._ID794._ID49479._ID65 = var_0 gettagangles( "tag_weapon_left" );
     level._ID794._ID49479._ID25567 = level._ID794._ID49479._ID740;
     waittillframeend;
-    var_0 _meth_802A( "weapon_c4", "tag_weapon_left" );
-    level._ID794._ID49479 _meth_8059();
+    var_0 detach( "weapon_c4", "tag_weapon_left" );
+    level._ID794._ID49479 show();
 }
 #using_animtree("generic_human");
 
@@ -515,9 +515,9 @@ dcburning_mortar_notify( var_0 )
 {
     var_1 = 262144;
 
-    if ( _ID42407::_ID27540( var_0 _meth_818C( "tag_eye" ), 0.8, 1 ) )
+    if ( _ID42407::_ID27540( var_0 gettagorigin( "tag_eye" ), 0.8, 1 ) )
     {
-        var_2 = _func_0F5( var_0._ID740, level._ID794._ID740 );
+        var_2 = distancesquared( var_0._ID740, level._ID794._ID740 );
 
         if ( var_2 < var_1 )
             level notify( "explosion_mortar",  var_2  );

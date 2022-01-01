@@ -3,18 +3,18 @@
 
 _ID616()
 {
-    _unknown_01EC();
-    _unknown_0019();
-    _unknown_00A7();
-    _unknown_01EB();
-    _unknown_045E();
-    _unknown_00E5();
-    _unknown_0473();
-    _unknown_0131();
-    _unknown_0495();
-    _unknown_04D1();
-    _unknown_04DE();
-    _ID42411::_ID52468( "script_vehicle_uaz_hardtop_physics", _ID51074::_ID32550, ::_unknown_0535 );
+    _ID10730();
+    _ID52952();
+    _ID50191();
+    _ID49926();
+    _ID52626();
+    _ID5997();
+    _ID47971();
+    _ID46477();
+    _ID50777();
+    _ID44402();
+    _ID43799();
+    _ID42411::_ID52468( "script_vehicle_uaz_hardtop_physics", _ID51074::_ID32550, ::_ID48336 );
 }
 #using_animtree("generic_human");
 
@@ -81,7 +81,7 @@ _ID46477()
     level._ID30895["shepherd_ending"]["estate_ending_part1"] = %h2_estate_chopper_sequence_leader;
     _ID42259::_ID2062( "shepherd_ending", "shepherd_dsm_talk", "estate_ending_part1", "est_shp_havethedsm" );
     _ID42259::_ID2062( "shepherd_ending", "shepherd_talk_looseend", "estate_ending_part1", "est_shp_looseend" );
-    _ID42259::_ID2058( "shepherd_ending", "shepherd_vilain", ::_unknown_05A3, "estate_ending_part1" );
+    _ID42259::_ID2058( "shepherd_ending", "shepherd_vilain", ::ee_cheat_villain_shepherd, "estate_ending_part1" );
     _ID42259::_ID2069( "shepherd_ending", "shepherd_starts_walking", "estate_ending_part1", "scn_estate_finale_shepherd_foley_01" );
     level._ID30895["guy1_ending"]["estate_ending_part1"] = %h2_estate_chopper_sequence_enemy1;
     level._ID30895["guy2_ending"]["estate_ending_part1"] = %h2_estate_chopper_sequence_enemy2;
@@ -94,9 +94,9 @@ _ID46477()
     _ID42259::_ID2069( "ghost_ending_dead", "ghost_drop_floor", "estate_ending_part2_2ndbody", "scn_estate_betrayal_drop_ghost_01" );
     level._ID30895["gasolineGuy"]["estate_ending_part3"] = %h2_estate_ending_gasoline_guy1;
     level._ID30895["shepherd_ending"]["estate_ending_part3"] = %h2_estate_ending_gasoline_leader;
-    _ID42259::_ID2058( "gasolineGuy", "gas_splash_start", ::_unknown_06A6 );
-    _ID42259::_ID2058( "ghost_ending_dead", "bodyfall large", ::_unknown_06CB );
-    _ID42259::_ID2058( "ghost_ending", "blood_splat", ::_unknown_06BE );
+    _ID42259::_ID2058( "gasolineGuy", "gas_splash_start", ::_ID48443 );
+    _ID42259::_ID2058( "ghost_ending_dead", "bodyfall large", ::_ID48618 );
+    _ID42259::_ID2058( "ghost_ending", "blood_splat", ::_ID52459 );
 }
 
 ee_cheat_villain_shepherd( var_0 )
@@ -107,23 +107,23 @@ ee_cheat_villain_shepherd( var_0 )
 play_shepherd_ending_gun_anim()
 {
     waittillframeend;
-    self _meth_8155( %h2_estate_chopper_sequence_gun );
+    self setanim( %h2_estate_chopper_sequence_gun );
 }
 
 play_cannister_guy_cannister_anim()
 {
     waittillframeend;
-    self _meth_8155( %h2_estate_ending_gasoline_cannister );
+    self setanim( %h2_estate_ending_gasoline_cannister );
 }
 
 _ID52459( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "flesh_hit_body_fatal_exit" ), var_0, "J_SpineUpper" );
+    playfxontag( _ID42237::_ID16299( "flesh_hit_body_fatal_exit" ), var_0, "J_SpineUpper" );
 }
 
 _ID48443( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "gas_can_splash" ), var_0, "TAG_FX" );
+    playfxontag( _ID42237::_ID16299( "gas_can_splash" ), var_0, "TAG_FX" );
 }
 
 _ID47369( var_0 )
@@ -132,7 +132,7 @@ _ID47369( var_0 )
 
     for (;;)
     {
-        _func_157( _ID42237::_ID16299( "gas_can_splash" ), var_0, "TAG_FX" );
+        playfxontag( _ID42237::_ID16299( "gas_can_splash" ), var_0, "TAG_FX" );
         wait 0.03;
     }
 }
@@ -149,7 +149,7 @@ _ID50968( var_0 )
 
 _ID48618( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "bodydump_dust_large" ), var_0, "J_SpineLower" );
+    playfxontag( _ID42237::_ID16299( "bodydump_dust_large" ), var_0, "J_SpineLower" );
 }
 
 _ID49926()
@@ -339,14 +339,14 @@ _ID50777()
     level._ID30895["worldbody"]["estate_ending_drag"] = %h2_estate_drag_player;
     level._ID30895["worldbody"]["estate_ending_part1"] = %h2_estate_chopper_sequence_player;
     level._ID30895["worldbody"]["estate_ending_part2"] = %h2_estate_body_toss_player;
-    _ID42259::_ID2058( "playerview", "bodyfall large", ::_unknown_1268 );
+    _ID42259::_ID2058( "playerview", "bodyfall large", ::_ID48786 );
     level._ID30895["worldbody"]["dsm_in"] = %h2_estate_dsm_vm_in;
     level._ID30895["worldbody"]["dsm_out"] = %h2_estate_dsm_vm_out;
 }
 
 _ID48786( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "bodydump_dust_large" ), var_0, "J_Wrist_RI" );
+    playfxontag( _ID42237::_ID16299( "bodydump_dust_large" ), var_0, "J_Wrist_RI" );
 }
 #using_animtree("vehicles");
 

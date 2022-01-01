@@ -15,34 +15,37 @@ _ID616()
     self._ID949 = "riotshield";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 2 ) )
     {
-
+        case 0:
+            self._ID1302 = "mp5";
+            break;
+        case 1:
+            self._ID1302 = "mp5_reflex";
+            break;
     }
 
     character\character_us_army_riot_h2::_ID616();
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "neutral" );
+    self setspawnerteam( "neutral" );
 }
 
 _ID814()
 {
     character\character_us_army_riot_h2::_ID814();
-    _func_14E( "mp5" );
-    _func_14E( "mp5_reflex" );
-    _func_14E( "riotshield" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "mp5" );
+    precacheitem( "mp5_reflex" );
+    precacheitem( "riotshield" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
     _ID42360::_ID19772();
 }

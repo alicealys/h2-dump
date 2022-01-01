@@ -15,10 +15,10 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 1024.0, 825.0 );
-        self _meth_8179( 1450.0, 2100.0 );
+        self setengagementmindist( 1024.0, 825.0 );
+        self setengagementmaxdist( 1450.0, 2100.0 );
     }
 
     self._ID1302 = "dragunov_arctic";
@@ -27,14 +27,14 @@ _ID616()
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID45215::_ID814();
-    _func_14E( "dragunov_arctic" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "dragunov_arctic" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
     _ID42368::_ID616();
 }

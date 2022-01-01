@@ -15,32 +15,35 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "glock";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 2 ) )
     {
-
+        case 0:
+            self._ID1302 = "mp5";
+            break;
+        case 1:
+            self._ID1302 = "mp5_reflex";
+            break;
     }
 
     _ID53310::_ID616();
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "allies" );
+    self setspawnerteam( "allies" );
 }
 
 _ID814()
 {
     _ID53310::_ID814();
-    _func_14E( "mp5" );
-    _func_14E( "mp5_reflex" );
-    _func_14E( "glock" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "mp5" );
+    precacheitem( "mp5_reflex" );
+    precacheitem( "glock" );
+    precacheitem( "fraggrenade" );
 }

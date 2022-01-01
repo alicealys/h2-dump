@@ -3,38 +3,38 @@
 
 _ID51566( var_0 )
 {
-    _func_14D( "barrett" );
-    _ID42407::_ID1895( "barrett", &"WEAPON_PRESS_FORWARDS_OR_BACKWARDS", ::_unknown_028B );
+    precacheshellshock( "barrett" );
+    _ID42407::_ID1895( "barrett", &"WEAPON_PRESS_FORWARDS_OR_BACKWARDS", ::_ID53426 );
     _ID42237::_ID14400( "player_is_on_turret" );
     _ID42237::_ID14400( "player_on_barret" );
     _ID42237::_ID14400( "player_used_zoom" );
     _ID42237::_ID14400( "can_use_turret" );
     _ID42237::_ID14400( "player_gets_off_turret" );
     _ID42237::_ID14400( "player_get_on_turret" );
-    level._ID1426["bullet_geo"] = _func_155( "fx/smoke/smoke_geotrail_barret" );
-    thread _unknown_02BD();
+    level._ID1426["bullet_geo"] = loadfx( "fx/smoke/smoke_geotrail_barret" );
+    thread _ID45481();
 
-    if ( !_func_02F( var_0 ) )
-        thread _unknown_00A2();
+    if ( !isdefined( var_0 ) )
+        thread _ID48989();
 
     wait 0.05;
     level._ID45317 = 1;
-    thread _unknown_0095();
+    thread _ID53667();
 }
 
 _ID53667()
 {
-    var_0 = _func_1A1( "barrett_trigger", "targetname" );
-    var_1 = _func_1A1( "turret2", "targetname" );
-    var_2 = _func_03A( "player_useradius", 72 );
+    var_0 = getent( "barrett_trigger", "targetname" );
+    var_1 = getent( "turret2", "targetname" );
+    var_2 = getdvarint( "player_useradius", 72 );
 
     for (;;)
     {
-        if ( _func_1A7( level._ID794 ) )
+        if ( isalive( level._ID794 ) )
             level._ID794 _ID42407::_ID41104( var_0, var_2 * 10 );
 
-        if ( _func_1A7( level._ID794 ) )
-            level._ID794 _meth_85BB( var_0, var_1 );
+        if ( isalive( level._ID794 ) )
+            level._ID794 _meth_85bb( var_0, var_1 );
         else
             break;
 
@@ -46,26 +46,26 @@ _ID48989()
 {
     level._ID794._ID50328 = 0;
     level._ID794._ID43499 = 0;
-    var_0 = _func_1A1( "barrett_trigger", "targetname" );
+    var_0 = getent( "barrett_trigger", "targetname" );
     var_0 thread _ID42237::_ID44574( level._ID794, &"WEAPON_BARRETT_USE", &"WEAPON_BARRETT_USE_PRESS", "stop_hint_text" );
-    var_0 thread _unknown_0153( "stop_hint_text" );
-    var_1 = _func_1A1( "turret2", "targetname" );
-    var_2 = _func_1A1( var_1._ID1191, "targetname" );
-    var_1 _meth_80C7();
-    var_1 _meth_805A();
+    var_0 thread _ID48903( "stop_hint_text" );
+    var_1 = getent( "turret2", "targetname" );
+    var_2 = getent( var_1._ID1191, "targetname" );
+    var_1 makeunusable();
+    var_1 hide();
     var_1._ID740 = var_2._ID740;
 
     for (;;)
     {
         var_0 waittill( "trigger" );
-        _unknown_01B4( var_1 );
+        _ID45881( var_1 );
     }
 }
 
 _ID48903( var_0 )
 {
     self endon( var_0 );
-    var_1 = level._ID794 _meth_82D7();
+    var_1 = level._ID794 issplitscreenplayer();
 
     if ( !var_1 )
         _ID42237::_ID38863();
@@ -83,7 +83,7 @@ _ID48903( var_0 )
         }
         else
         {
-            var_2 = level._ID794 _meth_82D7();
+            var_2 = level._ID794 issplitscreenplayer();
 
             if ( var_1 != var_2 )
             {
@@ -109,7 +109,7 @@ _ID51667()
         if ( !_ID42237::_ID14385( "player_is_on_turret" ) )
             break;
 
-        _func_192( 0.25, 0.75, level._ID794._ID740, 10000 );
+        earthquake( 0.25, 0.75, level._ID794._ID740, 10000 );
     }
 }
 
@@ -117,32 +117,32 @@ _ID45881( var_0 )
 {
     if ( level._ID912 == "dcburning" )
     {
-        _unknown_02E0( var_0 );
+        _ID47635( var_0 );
         return;
     }
 
     level._ID794._ID26017 = level._ID794._ID740;
-    level._ID794 _meth_8345( ( var_0._ID65[0], var_0._ID65[1], level._ID794._ID65[2] ) );
-    var_0 _meth_80A0( level._ID794 );
-    _func_0DB( "ui_hideMap", "1" );
-    _func_0DB( "compass", 0 );
-    _func_0DB( "ammoCounterHide", "1" );
-    _func_0DB( "hud_showStance", 0 );
-    level._ID49546 = _func_03D() + 1000;
-    _func_0DB( "sv_znear", "100" );
-    _func_0DB( "sm_sunShadowCenter", _func_1A1( var_0._ID1191, "targetname" )._ID740 );
+    level._ID794 setplayerangles( ( var_0._ID65[0], var_0._ID65[1], level._ID794._ID65[2] ) );
+    var_0 useby( level._ID794 );
+    setsaveddvar( "ui_hideMap", "1" );
+    setsaveddvar( "compass", 0 );
+    setsaveddvar( "ammoCounterHide", "1" );
+    setsaveddvar( "hud_showStance", 0 );
+    level._ID49546 = gettime() + 1000;
+    setsaveddvar( "sv_znear", "100" );
+    setsaveddvar( "sm_sunShadowCenter", getent( var_0._ID1191, "targetname" )._ID740 );
     _ID42237::_ID14402( "player_is_on_turret" );
-    level._ID794 _meth_8328();
-    _func_0DB( "turret_adsEnabled", 0 );
+    level._ID794 disableweapons();
+    setsaveddvar( "turret_adsEnabled", 0 );
     _ID42465::_ID23797( "sniper_ads_mix" );
 
     if ( level._ID912 == "dcburning" )
     {
-        level._ID794 _meth_8313( 1, "" );
-        level._ID794 _meth_80F5();
+        level._ID794 setactionslot( 1, "" );
+        level._ID794 nightvisiongogglesforceoff();
     }
 
-    thread _unknown_04F6();
+    thread _ID54067();
 
     if ( !_ID42237::_ID14385( "player_used_zoom" ) )
         level._ID794 thread _ID42407::_ID11085( "barrett", undefined, undefined, undefined, -40 );
@@ -152,29 +152,29 @@ _ID45881( var_0 )
 
     for (;;)
     {
-        if ( !_func_02F( var_0 _meth_80F2() ) )
+        if ( !isdefined( var_0 getturretowner() ) )
             break;
 
         wait 0.05;
     }
 
-    _func_0DB( "compass", 1 );
-    _func_0DB( "ammoCounterHide", "0" );
-    _func_0DB( "ui_hideMap", "0" );
-    _func_0DB( "hud_showStance", 1 );
-    _func_0DB( "sv_znear", "0" );
-    _func_0DB( "sm_sunShadowCenter", ( 0, 0, 0 ) );
+    setsaveddvar( "compass", 1 );
+    setsaveddvar( "ammoCounterHide", "0" );
+    setsaveddvar( "ui_hideMap", "0" );
+    setsaveddvar( "hud_showStance", 1 );
+    setsaveddvar( "sv_znear", "0" );
+    setsaveddvar( "sm_sunShadowCenter", ( 0, 0, 0 ) );
     _ID42237::_ID14388( "player_is_on_turret" );
-    level._ID794 _meth_8329();
-    _func_0DB( "turret_adsEnabled", 1 );
+    level._ID794 enableweapons();
+    setsaveddvar( "turret_adsEnabled", 1 );
     _ID42465::_ID23801( "sniper_ads_mix" );
 
     if ( level._ID912 == "dcburning" )
-        level._ID794 _meth_8313( 1, "nightvision" );
+        level._ID794 setactionslot( 1, "nightvision" );
 
     level._ID22229 = 0;
-    _func_076( 0, 0.05 );
-    level._ID794 _meth_8343( level._ID794._ID26017 + ( 0, 0, 10 ) );
+    setblur( 0, 0.05 );
+    level._ID794 setorigin( level._ID794._ID26017 + ( 0, 0, 10 ) );
 }
 
 _ID44208( var_0, var_1, var_2, var_3 )
@@ -187,88 +187,88 @@ _ID44208( var_0, var_1, var_2, var_3 )
 
 _ID47635( var_0 )
 {
-    var_1 = _func_039( "sv_znear" );
-    thread _unknown_058C();
+    var_1 = getdvar( "sv_znear" );
+    thread _ID54656();
     _ID42237::_ID14402( "player_get_on_turret" );
     _ID42475::_ID34575( "start_player_on_turret" );
     level._ID794._ID50328 = 1;
-    _func_0DB( "ui_hideMap", "1" );
-    _func_0DB( "compass", 0 );
-    _func_0DB( "ammoCounterHide", "1" );
-    _func_0DB( "hud_showStance", 0 );
-    _func_0DB( "actionSlotsHide", "1" );
-    var_2 = _func_1A1( "model_barrett", "targetname" );
+    setsaveddvar( "ui_hideMap", "1" );
+    setsaveddvar( "compass", 0 );
+    setsaveddvar( "ammoCounterHide", "1" );
+    setsaveddvar( "hud_showStance", 0 );
+    setsaveddvar( "actionSlotsHide", "1" );
+    var_2 = getent( "model_barrett", "targetname" );
     var_2._ID3189 = "barrett";
     var_2 _ID42259::_ID32556();
     var_3 = level._ID53428;
-    _func_0DB( "sv_znear", "0.01" );
-    _func_0DB( "cg_altDamageMode", "0" );
-    level._ID794 _meth_8189( "stand" );
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_8328( 1, 200, 0.2 );
-    thread _unknown_052C( 3.05, 0.15, 0.2, 0.3 );
+    setsaveddvar( "sv_znear", "0.01" );
+    setsaveddvar( "cg_altDamageMode", "0" );
+    level._ID794 setstance( "stand" );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
+    level._ID794 disableweapons( 1, 200, 0.2 );
+    thread _ID44208( 3.05, 0.15, 0.2, 0.3 );
     var_4 = 0.5;
-    level._ID794 _meth_80F6();
+    level._ID794 enableinvulnerability();
     var_3 _ID42407::_ID49392( "barrett_in", var_2, 0, var_4, 1, undefined, undefined, undefined, undefined, undefined, undefined, 1 );
-    _func_0DB( "r_forceWeaponThermalWidth", 450 );
-    _func_0DB( "r_forceWeaponThermalHeight", 450 );
-    _func_0DB( "r_forceWeaponThermalActive", 1 );
+    setsaveddvar( "r_forceWeaponThermalWidth", 450 );
+    setsaveddvar( "r_forceWeaponThermalHeight", 450 );
+    setsaveddvar( "r_forceWeaponThermalActive", 1 );
     level._ID794 thread _ID42323::thermal_shellshock();
-    level._ID794 _meth_80F7();
+    level._ID794 disableinvulnerability();
     level._ID794._ID26017 = level._ID794._ID740;
-    level._ID794 _meth_8345( ( var_0._ID65[0], var_0._ID65[1], level._ID794._ID65[2] ) );
-    var_0 _meth_80A0( level._ID794 );
-    _func_032( "ui_barret", 1 );
-    level._ID49546 = _func_03D() + 1000;
-    _func_0DB( "sv_znear", "100" );
-    _func_0DB( "sm_sunShadowCenter", _func_1A1( var_0._ID1191, "targetname" )._ID740 );
+    level._ID794 setplayerangles( ( var_0._ID65[0], var_0._ID65[1], level._ID794._ID65[2] ) );
+    var_0 useby( level._ID794 );
+    setomnvar( "ui_barret", 1 );
+    level._ID49546 = gettime() + 1000;
+    setsaveddvar( "sv_znear", "100" );
+    setsaveddvar( "sm_sunShadowCenter", getent( var_0._ID1191, "targetname" )._ID740 );
     _ID42237::_ID14402( "player_is_on_turret" );
-    level._ID794 thread _unknown_0543();
-    _func_0DB( "turret_adsEnabled", 0 );
+    level._ID794 thread _ID51667();
+    setsaveddvar( "turret_adsEnabled", 0 );
     _ID42465::_ID23797( "sniper_ads_mix" );
-    level._ID794 _meth_8313( 1, "" );
-    level._ID794 _meth_80F5();
-    thread _unknown_076B();
+    level._ID794 setactionslot( 1, "" );
+    level._ID794 nightvisiongogglesforceoff();
+    thread _ID54067();
 
     if ( !_ID42237::_ID14385( "player_used_zoom" ) )
         level._ID794 thread _ID42407::_ID11085( "barrett", undefined, undefined, undefined, -40 );
 
     level._ID22229 = 1;
-    level._ID794.previousfov = _func_0C1( _func_039( "cg_fov" ) );
-    level._ID794.lastturretfov = _func_09F();
-    var_0 thread _unknown_0735();
+    level._ID794.previousfov = int( getdvar( "cg_fov" ) );
+    level._ID794.lastturretfov = getstarttime();
+    var_0 thread update_turret_fov();
     var_0 waittill( "turret_deactivate" );
-    level._ID794 _meth_8032( level._ID794.previousfov, 0.5 );
-    level._ID794 _meth_80F6();
-    thread _unknown_065E( 0.0, 0.1, 0.25, 0.3 );
+    level._ID794 lerpfov( level._ID794.previousfov, 0.5 );
+    level._ID794 enableinvulnerability();
+    thread _ID44208( 0.0, 0.1, 0.25, 0.3 );
     wait 0.2;
-    _func_0DB( "r_forceWeaponThermalActive", 0 );
+    setsaveddvar( "r_forceWeaponThermalActive", 0 );
     level._ID794 notify( "thermal_stopshellshock" );
-    level._ID794 _meth_8190();
-    _func_032( "ui_barret", 0 );
-    _func_0DB( "sv_znear", "0.01" );
-    _func_0DB( "sm_sunShadowCenter", ( 0, 0, 0 ) );
+    level._ID794 stopshellshock();
+    setomnvar( "ui_barret", 0 );
+    setsaveddvar( "sv_znear", "0.01" );
+    setsaveddvar( "sm_sunShadowCenter", ( 0, 0, 0 ) );
     _ID42237::_ID14388( "player_is_on_turret" );
-    _func_0DB( "turret_adsEnabled", 1 );
+    setsaveddvar( "turret_adsEnabled", 1 );
     _ID42465::_ID23801( "sniper_ads_mix" );
     _ID42475::_ID34575( "start_player_off_turret" );
-    level._ID794 _meth_8313( 1, "nightvision" );
+    level._ID794 setactionslot( 1, "nightvision" );
     level._ID22229 = 0;
-    _func_076( 0, 0.05 );
-    level._ID794 _meth_8343( level._ID794._ID26017 + ( 0, 0, 10 ) );
+    setblur( 0, 0.05 );
+    level._ID794 setorigin( level._ID794._ID26017 + ( 0, 0, 10 ) );
     var_3 _ID42407::_ID49392( "barrett_out", var_2, 1, 0.2, 1 );
-    level._ID794 _meth_80F7();
-    _func_0DB( "compass", 1 );
-    _func_0DB( "ammoCounterHide", "0" );
-    _func_0DB( "ui_hideMap", "0" );
-    _func_0DB( "actionSlotsHide", "0" );
-    _func_0DB( "hud_showStance", 1 );
-    _func_0DB( "sv_znear", var_1 );
-    _func_0DB( "cg_altDamageMode", "1" );
-    level._ID794 _meth_8122( 1 );
-    level._ID794 _meth_8123( 1 );
-    level._ID794 _meth_8329();
+    level._ID794 disableinvulnerability();
+    setsaveddvar( "compass", 1 );
+    setsaveddvar( "ammoCounterHide", "0" );
+    setsaveddvar( "ui_hideMap", "0" );
+    setsaveddvar( "actionSlotsHide", "0" );
+    setsaveddvar( "hud_showStance", 1 );
+    setsaveddvar( "sv_znear", var_1 );
+    setsaveddvar( "cg_altDamageMode", "1" );
+    level._ID794 allowcrouch( 1 );
+    level._ID794 allowprone( 1 );
+    level._ID794 enableweapons();
     _ID42237::_ID14388( "player_get_on_turret" );
     waittillframeend;
     level._ID794._ID50328 = 0;
@@ -281,8 +281,8 @@ update_turret_fov()
     for (;;)
     {
         waittillframeend;
-        level._ID794.lastturretfov = _func_09F();
-        _func_0DB( "cg_fov", level._ID794.lastturretfov );
+        level._ID794.lastturretfov = getstarttime();
+        setsaveddvar( "cg_fov", level._ID794.lastturretfov );
     }
 }
 
@@ -307,26 +307,26 @@ _ID45481()
         _ID42237::_ID14413( "player_is_on_turret" );
         _ID42407::_ID40847( var_0, 1.0 );
 
-        if ( !level._ID794 _meth_8348() )
+        if ( !level._ID794 attackbuttonpressed() )
         {
             wait 0.05;
             continue;
         }
 
-        thread _unknown_09CC();
-        var_0 = _func_03D();
+        thread _ID49762();
+        var_0 = gettime();
 
-        while ( level._ID794 _meth_8348() )
+        while ( level._ID794 attackbuttonpressed() )
             wait 0.05;
     }
 }
 
 _ID49762()
 {
-    if ( _func_03D() < level._ID49546 )
+    if ( gettime() < level._ID49546 )
         return;
 
-    level._ID794 _meth_818E( "barrett", 1.3 );
+    level._ID794 shellshock( "barrett", 1.3 );
 }
 
 _ID53426()
@@ -340,12 +340,12 @@ _ID53426()
 _ID54067()
 {
     _ID42237::_ID14388( "player_used_zoom" );
-    var_0 = level._ID794 _meth_82FE();
+    var_0 = level._ID794 getnormalizedmovement();
 
     for (;;)
     {
         wait 0.05;
-        var_0 = level._ID794 _meth_82FE();
+        var_0 = level._ID794 getnormalizedmovement();
 
         if ( var_0[0] > 0.2 )
             break;

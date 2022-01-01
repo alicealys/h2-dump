@@ -3,7 +3,7 @@
 
 _ID36255()
 {
-    _unknown_001B();
+    _ID14953();
     var_0 = self._ID1644._ID5029._ID2281["color"]["hidden"];
     thread _ID42386::_ID2310( var_0, "color_friendly" );
     var_0 = self._ID1644._ID5029._ID2281["color"]["spotted"];
@@ -23,21 +23,15 @@ _ID14926()
 
 _ID14953()
 {
-    _unknown_0088();
+    _ID14934();
     self._ID1644._ID28153._ID8260 = 1;
 }
 
 _ID14931( var_0 )
 {
-    var_1 = var_0;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
+    foreach ( var_3, var_2 in var_0 )
         _ID42386::_ID2261( "color", var_3, var_2 );
-    }
 
-    var_clear_2
     var_4 = self._ID1644._ID5029._ID2281["color"]["hidden"];
     thread _ID42386::_ID2310( var_4, "color_friendly" );
     var_4 = self._ID1644._ID5029._ID2281["color"]["spotted"];
@@ -47,7 +41,7 @@ _ID14931( var_0 )
 _ID14934()
 {
     var_0 = [];
-    var_0["hidden"] = ::_unknown_00CF;
-    var_0["spotted"] = ::_unknown_00DA;
-    _unknown_00EA( var_0 );
+    var_0["hidden"] = ::_ID14925;
+    var_0["spotted"] = ::_ID14926;
+    _ID14931( var_0 );
 }

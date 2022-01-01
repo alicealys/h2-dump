@@ -3,22 +3,22 @@
 
 _ID43266()
 {
-    _unknown_00F7();
-    _unknown_0762();
-    _unknown_086D();
-    _unknown_09DB();
-    _unknown_0D72();
-    _unknown_00B2();
-    _unknown_0E08();
-    _unknown_0028();
-    thread _unknown_0049();
+    _ID15518();
+    _ID31296();
+    _ID43312();
+    _ID27230();
+    _ID40317();
+    _ID43383();
+    _ID10730();
+    _ID47212();
+    thread _ID53378();
 }
 
 _ID47212()
 {
     level._ID53525["planting_c4"]["origin"] = ( -5621, -28756, 896 );
     level._ID53525["planting_c4"]["angles"] = ( 0, 0, 0 );
-    var_0 = _func_1A1( "acs_node", "targetname" );
+    var_0 = getent( "acs_node", "targetname" );
     level._ID53525["pickup_acs"]["origin"] = var_0._ID740;
     level._ID53525["pickup_acs"]["angles"] = var_0._ID65;
 }
@@ -88,10 +88,10 @@ _ID15518()
     level._ID30895["generic"]["balcony_death"] = %death_explosion_run_f_v2;
     level._ID30895["price"]["soap_separation"] = %h2_cliffhanger_soap_separation_crouch2ledge;
     level._ID30895["price"]["soap_separation_run"] = %h2_cliffhanger_soap_separation_run2ledge;
-    _ID42259::_ID2058( "price", "price_land", ::_unknown_0B16 );
-    _ID42259::_ID2058( "price", "price_land_settle", ::_unknown_0B35 );
-    _ID42259::_ID2058( "price", "price_slide_start", ::_unknown_0B59, undefined, [ "J_Ankle_LE" ] );
-    _ID42259::_ID2058( "price", "price_slide_end", ::_unknown_0B75 );
+    _ID42259::_ID2058( "price", "price_land", ::_ID48705 );
+    _ID42259::_ID2058( "price", "price_land_settle", ::_ID54501 );
+    _ID42259::_ID2058( "price", "price_slide_start", ::_ID44893, undefined, [ "J_Ankle_LE" ] );
+    _ID42259::_ID2058( "price", "price_slide_end", ::_ID49745 );
     _ID42304::_ID19911();
     level._ID30895["generic"]["lean_balcony"][0] = %killhouse_gaz_idleb;
     level._ID30895["generic"]["lean_balcony"][1] = %killhouse_gaz_idleb;
@@ -132,10 +132,10 @@ _ID15518()
     level._ID30895["driver"]["icepick_deathA"] = %cliffhanger_icepick_fight_driver_deatha;
     level._ID30895["driver"]["icepick_deathB"] = %cliffhanger_icepick_fight_driver_deathb;
     level._ID30895["driver"]["icepick_fight"] = %cliffhanger_icepick_fight_driver;
-    _ID42259::_ID2058( "driver", "deathA", ::_unknown_0E5A, "icepick_fight" );
-    _ID42259::_ID2058( "driver", "deathB", ::_unknown_0E70, "icepick_fight" );
+    _ID42259::_ID2058( "driver", "deathA", ::_ID51246, "icepick_fight" );
+    _ID42259::_ID2058( "driver", "deathB", ::_ID52550, "icepick_fight" );
     level._ID30895["passenger"]["icepick_fight"] = %h2_cliffhanger_icepick_fight_passenger;
-    _ID42259::_ID2058( "passenger", "dropgun", ::_unknown_1550, "icepick_fight" );
+    _ID42259::_ID2058( "passenger", "dropgun", ::_ID2290, "icepick_fight" );
     level._ID30895["generic"]["snowmobile_driver_climb_out"] = %pickup_passenger_climb_out;
     level._ID30895["generic"]["snowmobile_passenger_climb_out"] = %pickup_driver_climb_out;
     level._ID30895["generic"]["prone_death_quickdeath"] = %prone_death_quickdeath;
@@ -151,12 +151,12 @@ _ID15518()
     level._ID30902["leftguy"]["double_takedown"] = 1;
     level._ID30895["rightguy"]["double_takedown"] = %h2_cliffhanger_dualtakedown_sequence_soldierright;
     level._ID30895["price"]["locker_brawl"] = %h2_cliffhanger_lockerroom_fight_price;
-    _ID42259::_ID2058( "price", "locker slam", ::_unknown_10E8, "locker_brawl" );
+    _ID42259::_ID2058( "price", "locker slam", ::_ID54351, "locker_brawl" );
     _ID42259::_ID2057( "price", "knife attach", "weapon_parabolic_knife", "TAG_INHAND", "locker_brawl" );
     _ID42259::_ID2059( "price", "knife detach", "weapon_parabolic_knife", "TAG_INHAND", "locker_brawl" );
     level._ID30895["defender"]["locker_brawl"] = %h2_cliffhanger_lockerroom_fight_guard;
-    _ID42259::_ID2058( "defender", "ignoreall", ::_unknown_16C8, "locker_brawl" );
-    _ID42259::_ID2058( "defender", "dropgun", ::_unknown_16E0, "locker_brawl" );
+    _ID42259::_ID2058( "defender", "ignoreall", ::_ID46921, "locker_brawl" );
+    _ID42259::_ID2058( "defender", "dropgun", ::_ID2290, "locker_brawl" );
     level._ID30895["generic"]["crouch_walk_start_1"] = %launchfacility_b_ventwalk_v1_start;
     level._ID30895["generic"]["crouch_walk_stop_1"] = %launchfacility_b_ventwalk_v1_stop;
     level._ID30895["generic"]["crouch_walk_stop_1_idle"][0] = %launchfacility_b_ventwalk_stop_idle;
@@ -281,7 +281,7 @@ _ID15518()
     level._ID30895["generic"]["sleep_idle"][0] = %h2_cliffhanger_guard_sleeping_idle;
     level._ID30895["generic"]["sleep_react"] = %h2_cliffhanger_guard_sleeping_react;
     level._ID30895["generic"]["sleep_react_back"] = %h2_cliffhanger_guard_sleeping_react_back;
-    _unknown_17DE();
+    cold_patrol_turn_animations_init();
 }
 
 cold_patrol_turn_animations_init()
@@ -348,16 +348,16 @@ _ID52550( var_0 )
 
 _ID48705( var_0 )
 {
-    var_1 = var_0 _meth_818C( "J_Ankle_RI" );
-    var_1 = _func_091( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
-    _func_156( level._ID1426["price_landing"], var_1 );
+    var_1 = var_0 gettagorigin( "J_Ankle_RI" );
+    var_1 = physicstrace( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
+    playfx( level._ID1426["price_landing"], var_1 );
 }
 
 _ID54501( var_0 )
 {
-    var_1 = var_0 _meth_818C( "J_Ankle_LE" );
-    var_1 = _func_091( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
-    _func_156( level._ID1426["price_landing"], var_1 );
+    var_1 = var_0 gettagorigin( "J_Ankle_LE" );
+    var_1 = physicstrace( var_1 + ( 0, 0, 64 ), var_1 + ( 0, 0, -64 ) );
+    playfx( level._ID1426["price_landing"], var_1 );
 }
 
 _ID44893( var_0, var_1 )
@@ -368,7 +368,7 @@ _ID44893( var_0, var_1 )
 
     for (;;)
     {
-        _func_157( _ID42237::_ID16299( "price_sliding" ), var_0, var_2 );
+        playfxontag( _ID42237::_ID16299( "price_sliding" ), var_0, var_2 );
         wait 0.1;
     }
 }
@@ -434,17 +434,10 @@ _ID31296()
 
 _ID54351( var_0 )
 {
-    var_1 = _func_1A2( "locker_dyn_explosion_org", "targetname" );
-    var_2 = var_1;
+    var_1 = getentarray( "locker_dyn_explosion_org", "targetname" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        _func_184( var_3._ID740, 100, 80, 0.3 );
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_3 in var_1 )
+        physicsexplosionsphere( var_3._ID740, 100, 80, 0.3 );
 }
 #using_animtree("animated_props");
 
@@ -534,9 +527,9 @@ _ID27230()
     level._ID30895["worldbody"]["slide_back_out"] = %h2_cliffhanger_slide_back_out;
     level._ID30895["worldbody"]["slide_ar"] = %h2_cliffhanger_slide_turnl;
     level._ID30895["worldbody"]["slide_al"] = %h2_cliffhanger_slide_turnr;
-    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_unknown_25BA, "slide_in", [ "tag_origin" ] );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_25DA, "slide_out" );
-    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_unknown_25EC, "slide_back_out" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_ID44893, "slide_in", [ "tag_origin" ] );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID49745, "slide_out" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_end", ::_ID49745, "slide_back_out" );
     level._ID30895["worldbody"]["bigjump_left_01"] = %h2_playerview_icepicker_bigjump_left_01;
     level._ID30895["worldbody"]["bigjump_left_01_idle"] = %h2_playerview_icepicker_bigjump_left_01_idle;
     level._ID30895["worldbody"]["bigjump_right_01"] = %h2_playerview_icepicker_bigjump_right_01;
@@ -680,11 +673,11 @@ _ID27230()
     level._ID30895["worldbody"]["throatstab"] = %h2_cliffhanger_throatstab_player;
     level._ID30895["worldbody"]["planting_c4"] = %h2_cliffhanger_base_c4_player;
     _ID42259::_ID2057( "worldbody", "c4_attach", "weapon_c4", "tag_weapon", "planting_c4" );
-    _ID42259::_ID2058( "worldbody", "c4_detach", ::_unknown_394F, "planting_c4" );
+    _ID42259::_ID2058( "worldbody", "c4_detach", ::_ID48187, "planting_c4" );
     _ID42259::_ID2063( "worldbody", "c4_detach", "c4_placed", "planting_c4" );
     level._ID30895["worldbody"]["mounting_snowmobile_left"] = %h2_cliffhanger_snowmobile_player_in_left;
     level._ID30895["worldbody"]["mounting_snowmobile_right"] = %h2_cliffhanger_snowmobile_player_in_right;
-    _ID42259::_ID2058( "worldbody", "goggles_puton", ::_unknown_398B );
+    _ID42259::_ID2058( "worldbody", "goggles_puton", ::_ID48833 );
     level._ID30895["worldbody"]["pickup_acs"] = %h2_cliffhanger_hangar_acs_player;
     _ID42259::_ID2063( "worldbody", "acs_attach", "acs_picked_up", "pickup_acs" );
 }
@@ -701,9 +694,9 @@ _ID40317()
     level._ID30904["snowmobile"] = "vehicle_snowmobile_alt";
     level._ID30900["heli"] = #animtree;
     level._ID30895["heli"]["avalanche_heli_wipeout"] = %cliffhanger_crash_mi28_crash;
-    _ID42259::_ID2058( "mig", "touchdown_fx", ::_unknown_3665 );
-    _ID42259::_ID2058( "snowmobile", "snowmobile_skidout", ::_unknown_3667 );
-    _ID42259::_ID2058( "snowmobile", "snowmobile_stop_skidout", ::_unknown_3680 );
+    _ID42259::_ID2058( "mig", "touchdown_fx", ::_ID53484 );
+    _ID42259::_ID2058( "snowmobile", "snowmobile_skidout", ::_ID48794 );
+    _ID42259::_ID2058( "snowmobile", "snowmobile_stop_skidout", ::_ID45751 );
     level._ID30895["snowmobile"]["root"] = %root;
     level._ID30895["snowmobile"]["cliffhanger_ending"] = %h2_cliffhanger_ending_snowmobile_soap;
     level._ID30904["snowmobile_player"] = "vehicle_snowmobile_player";
@@ -718,7 +711,7 @@ _ID48794( var_0 )
 
     for (;;)
     {
-        _func_157( _ID42237::_ID16299( "tread_snow_snowmobile_skidout" ), var_0, "tag_deathfx" );
+        playfxontag( _ID42237::_ID16299( "tread_snow_snowmobile_skidout" ), var_0, "tag_deathfx" );
         wait 0.03;
     }
 }
@@ -730,15 +723,15 @@ _ID45751( var_0 )
 
 _ID53484( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "mig_landing_trail_snow" ), var_0, "origin_animate_jnt" );
+    playfxontag( _ID42237::_ID16299( "mig_landing_trail_snow" ), var_0, "origin_animate_jnt" );
 }
 
 _ID43098( var_0 )
 {
-    var_1 = var_0 _meth_818C( "TAG_INHAND" );
-    var_2 = var_0 _meth_818D( "TAG_INHAND" );
-    var_3 = _func_06A( "script_model", var_1 );
-    var_3 _meth_80B8( "weapon_c4" );
+    var_1 = var_0 gettagorigin( "TAG_INHAND" );
+    var_2 = var_0 gettagangles( "TAG_INHAND" );
+    var_3 = spawn( "script_model", var_1 );
+    var_3 setmodel( "weapon_c4" );
     var_3._ID65 = var_2;
     var_3 thread _ID43691::_ID27192();
 }
@@ -756,14 +749,14 @@ _ID46921( var_0 )
 
 _ID2290( var_0 )
 {
-    if ( !_func_1A7( var_0 ) )
+    if ( !isalive( var_0 ) )
         return;
 
     var_0._ID49 = 1;
     var_0._ID7._ID24881 = 1;
     var_0 _ID42407::_ID32226( 0 );
     _ID45456::_ID54623( var_0 );
-    var_0 _meth_8058();
+    var_0 kill();
 }
 #using_animtree("generic_human");
 
@@ -979,7 +972,7 @@ _ID48737( var_0 )
 
     while ( var_0._ID50240 == 1 )
     {
-        _func_157( var_1, var_0, "TAG_EYE" );
+        playfxontag( var_1, var_0, "TAG_EYE" );
         wait 1.0;
     }
 }
@@ -987,31 +980,31 @@ _ID48737( var_0 )
 _ID53723( var_0 )
 {
     var_0 thread _ID42259::_ID37173( 3.5 );
-    _unknown_463A( var_0 );
+    _ID48737( var_0 );
 }
 
 _ID50919( var_0 )
 {
     var_1 = _ID42237::_ID16299( "cold_breath_talking" );
     var_0._ID50240 = 0;
-    _func_158( var_1, var_0, "TAG_EYE" );
+    stopfxontag( var_1, var_0, "TAG_EYE" );
 }
 
 _ID48833( var_0 )
 {
-    var_1 = _func_039( "r_znear" );
-    _func_0DB( "r_znear", 1 );
+    var_1 = getdvar( "r_znear" );
+    setsaveddvar( "r_znear", 1 );
     _ID49359::_ID47801( level._ID794, 0.25, 1 );
-    _func_0DB( "r_znear", var_1 );
+    setsaveddvar( "r_znear", var_1 );
 }
 
 _ID48187( var_0 )
 {
-    var_1 = _func_1A2( "possible_c4_models", "targetname" );
+    var_1 = getentarray( "possible_c4_models", "targetname" );
     var_2 = _ID42237::_ID16182( level._ID794._ID740, var_1 );
-    var_2._ID740 = var_0 _meth_818C( "tag_weapon" );
-    var_2._ID65 = var_0 _meth_818D( "tag_weapon" );
+    var_2._ID740 = var_0 gettagorigin( "tag_weapon" );
+    var_2._ID65 = var_0 gettagangles( "tag_weapon" );
     waittillframeend;
-    var_0 _meth_802A( "weapon_c4", "tag_weapon" );
-    var_2 _meth_8059();
+    var_0 detach( "weapon_c4", "tag_weapon" );
+    var_2 show();
 }

@@ -3,7 +3,7 @@
 
 _ID15731()
 {
-    return anim._ID7698[_func_0B7( anim._ID7698.size )];
+    return anim._ID7698[randomint( anim._ID7698.size )];
 }
 
 _ID616()
@@ -13,5 +13,5 @@ _ID616()
     if ( var_0 <= 0 )
         return;
 
-    animscripts\flashed::_ID14505( _unknown_0018(), var_0 );
+    animscripts\flashed::_ID14505( _ID15731(), var_0 );
 }

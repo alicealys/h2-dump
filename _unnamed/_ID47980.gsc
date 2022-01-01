@@ -4,50 +4,50 @@
 _ID45379()
 {
     if ( level._ID912 == "climb" )
-        level._ID43641 = ::_unknown_01A9;
+        level._ID43641 = ::_ID312;
 
-    var_0 = _func_1A1( "player_jumpdown_block", "targetname" );
-    var_0 _meth_82C9();
+    var_0 = getent( "player_jumpdown_block", "targetname" );
+    var_0 notsolid();
 
     if ( level._ID35897 == "default" || level._ID35897 == "cave" )
-        _ID42407::_ID10226( 0.5, ::_unknown_053E, "dof_intro_camerapan" );
+        _ID42407::_ID10226( 0.5, ::_ID43069, "dof_intro_camerapan" );
 
     level._ID45632 = 0;
-    level._ID1426["icepick_impact_rock"] = _func_155( "fx/misc/ice_pick" );
-    level._ID1426["icepick_impact_snow"] = _func_155( "fx/misc/ice_pick" );
-    level._ID1426["icepick_impact_ice"] = _func_155( "fx/misc/ice_pick" );
-    level._ID1426["ice_pick_scrape"] = _func_155( "fx/misc/ice_pick_scrape" );
-    level._ID1426["climbing_cracks_1"] = _func_155( "fx/impacts/climbing_cracks_1" );
-    level._ID1426["climbing_cracks_1_no_rotation"] = _func_155( "fx/impacts/climbing_cracks_1_no_rotation" );
-    level._ID1426["climbing_cracks_2"] = _func_155( "fx/impacts/climbing_cracks_2" );
-    level._ID1426["climbing_cracks_3"] = _func_155( "fx/impacts/climbing_cracks_3" );
-    level._ID1426["ice_pick_large_miss"] = _func_155( "fx/misc/ice_pick_large_miss" );
-    _func_080( "Music", 0 );
-    level._ID1426["footstep_ice_climbing"] = _func_155( "fx/impacts/footstep_ice_climbing" );
+    level._ID1426["icepick_impact_rock"] = loadfx( "fx/misc/ice_pick" );
+    level._ID1426["icepick_impact_snow"] = loadfx( "fx/misc/ice_pick" );
+    level._ID1426["icepick_impact_ice"] = loadfx( "fx/misc/ice_pick" );
+    level._ID1426["ice_pick_scrape"] = loadfx( "fx/misc/ice_pick_scrape" );
+    level._ID1426["climbing_cracks_1"] = loadfx( "fx/impacts/climbing_cracks_1" );
+    level._ID1426["climbing_cracks_1_no_rotation"] = loadfx( "fx/impacts/climbing_cracks_1_no_rotation" );
+    level._ID1426["climbing_cracks_2"] = loadfx( "fx/impacts/climbing_cracks_2" );
+    level._ID1426["climbing_cracks_3"] = loadfx( "fx/impacts/climbing_cracks_3" );
+    level._ID1426["ice_pick_large_miss"] = loadfx( "fx/misc/ice_pick_large_miss" );
+    soundtime( "Music", 0 );
+    level._ID1426["footstep_ice_climbing"] = loadfx( "fx/impacts/footstep_ice_climbing" );
     var_1 = _ID42407::_ID1974( "player_ice_pick" );
     var_1._ID36851 = "ice";
     var_1._ID15143 = [];
-    var_1._ID15143[0] = _func_155( "fx/impacts/climbing_cracks_1" );
-    var_1._ID15143[1] = _func_155( "fx/misc/ice_pick" );
+    var_1._ID15143[0] = loadfx( "fx/impacts/climbing_cracks_1" );
+    var_1._ID15143[1] = loadfx( "fx/misc/ice_pick" );
     var_1._ID30328 = "icepick_climb";
     var_1._ID34972 = "icepick_impact_ice";
     var_1 = _ID42407::_ID1974( "ice_pick" );
     var_1._ID36851 = "ice";
-    var_1._ID15142 = _func_155( "fx/misc/ice_pick_large" );
+    var_1._ID15142 = loadfx( "fx/misc/ice_pick_large" );
     var_1._ID34972 = "icepick_impact_ice_npc";
     var_1 = _ID42407::_ID1974( "ice_pick_out" );
     var_1._ID36851 = "ice";
-    var_1._ID15142 = _func_155( "fx/misc/ice_pick_large" );
+    var_1._ID15142 = loadfx( "fx/misc/ice_pick_large" );
     var_1._ID34972 = "icepick_pullout_ice_npc";
     var_1 = _ID42407::_ID1974( "slide_fx" );
     var_1._ID36851 = "ice";
-    var_1._ID15142 = _func_155( "fx/misc/ice_pick_scrape" );
-    thread _unknown_1C5A();
-    level._ID1426["cigar_glow"] = _func_155( "fx/fire/cigar_glow" );
-    level._ID1426["cigar_glow_puff"] = _func_155( "fx/fire/cigar_glow_puff" );
-    level._ID1426["cigar_smoke_puff"] = _func_155( "fx/smoke/cigarsmoke_puff" );
-    level._ID1426["cigar_exhale"] = _func_155( "fx/smoke/cigarsmoke_exhale" );
-    level._ID1426["cigar_exhale_price"] = _func_155( "fx/smoke/cigarsmoke_exhale_price" );
+    var_1._ID15142 = loadfx( "fx/misc/ice_pick_scrape" );
+    thread _ID49836();
+    level._ID1426["cigar_glow"] = loadfx( "fx/fire/cigar_glow" );
+    level._ID1426["cigar_glow_puff"] = loadfx( "fx/fire/cigar_glow_puff" );
+    level._ID1426["cigar_smoke_puff"] = loadfx( "fx/smoke/cigarsmoke_puff" );
+    level._ID1426["cigar_exhale"] = loadfx( "fx/smoke/cigarsmoke_exhale" );
+    level._ID1426["cigar_exhale_price"] = loadfx( "fx/smoke/cigarsmoke_exhale_price" );
     level._ID43887 = 15;
     level._ID43325 = 0.2;
     level._ID52173 = 0;
@@ -56,20 +56,20 @@ _ID45379()
     level._ID50546 = [];
     level._ID50546["left"] = "tag_weapon_left";
     level._ID50546["right"] = "tag_weapon_right";
-    _func_14C( "viewmodel_ice_picker" );
-    _func_14C( "viewmodel_ice_picker_03" );
-    _func_14C( "h2_prop_npc_cigar" );
-    _func_14C( "prop_price_cigar" );
-    _func_14C( "weapon_ice_picker" );
-    _func_14C( "h2_ch_tarpaulin1_soft_snow" );
-    _func_14E( "ice_picker" );
-    _func_14E( "ice_picker_bigjump" );
-    _func_152( "icepick_slide" );
-    _func_152( "icepick_hang" );
-    _func_152( "icepick_climb" );
-    _func_152( "icepick_release" );
-    _func_152( "falling_land" );
-    _func_152( "tank_rumble" );
+    precachemodel( "viewmodel_ice_picker" );
+    precachemodel( "viewmodel_ice_picker_03" );
+    precachemodel( "h2_prop_npc_cigar" );
+    precachemodel( "prop_price_cigar" );
+    precachemodel( "weapon_ice_picker" );
+    precachemodel( "h2_ch_tarpaulin1_soft_snow" );
+    precacheitem( "ice_picker" );
+    precacheitem( "ice_picker_bigjump" );
+    precacherumble( "icepick_slide" );
+    precacherumble( "icepick_hang" );
+    precacherumble( "icepick_climb" );
+    precacherumble( "icepick_release" );
+    precacherumble( "falling_land" );
+    precacherumble( "tank_rumble" );
     level._ID51758 = "ice_picker";
     level._ID51708 = "h2_weapon_m14ebr_thermal_silencer_arctic";
     _ID42237::_ID9137( "climb_thirdperson", 0 );
@@ -79,10 +79,10 @@ _ID45379()
     _ID42237::_ID9137( "climb_preview", 0 );
     _ID51955::_ID27229();
     _ID51955::_ID45502();
-    _ID42407::_ID1865( "left_icepick", &"CLIFFHANGER_LEFT_ICEPICK", ::_unknown_22D6, &"CLIFFHANGER_LEFT_ICEPICK_PC" );
-    _ID42407::_ID1865( "right_icepick", &"CLIFFHANGER_RIGHT_ICEPICK", ::_unknown_22EC, &"CLIFFHANGER_RIGHT_ICEPICK_PC" );
-    _ID42407::_ID1865( "how_to_climb", &"CLIFFHANGER_HOW_TO_CLIMB", ::_unknown_2310, &"CLIFFHANGER_HOW_TO_CLIMB_PC" );
-    _ID42407::_ID1865( "how_to_ledge", &"SCRIPT_PLATFORM_HINT_STANDKEY", ::_unknown_232B, &"SCRIPT_PLATFORM_HINT_STANDKEY", undefined, "small_background" );
+    _ID42407::_ID1865( "left_icepick", &"CLIFFHANGER_LEFT_ICEPICK", ::_ID44848, &"CLIFFHANGER_LEFT_ICEPICK_PC" );
+    _ID42407::_ID1865( "right_icepick", &"CLIFFHANGER_RIGHT_ICEPICK", ::_ID47016, &"CLIFFHANGER_RIGHT_ICEPICK_PC" );
+    _ID42407::_ID1865( "how_to_climb", &"CLIFFHANGER_HOW_TO_CLIMB", ::_ID49007, &"CLIFFHANGER_HOW_TO_CLIMB_PC" );
+    _ID42407::_ID1865( "how_to_ledge", &"SCRIPT_PLATFORM_HINT_STANDKEY", ::_ID47354, &"SCRIPT_PLATFORM_HINT_STANDKEY", undefined, "small_background" );
     _ID42237::_ID14400( "we_care_about_right_icepick" );
     _ID42237::_ID14400( "finished_climbing" );
     _ID42237::_ID14400( "reached_top" );
@@ -113,54 +113,47 @@ _ID45379()
     _ID42237::_ID14400( "first_fx_crack_done" );
     _ID42237::_ID14400( "force_single_ice_crack" );
 
-    if ( _func_03A( "climb_preview" ) )
+    if ( getdvarint( "climb_preview" ) )
         _ID42237::_ID30398( "climb_model", _ID51955::_ID48923 );
     else
         _ID42237::_ID30398( "climb_model", _ID42407::_ID31860 );
 
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4917( "axis" );
-    thread _unknown_05E4();
-    thread _unknown_246C( 3 );
-    var_2 = _func_1A2( "climb_test", "targetname" );
-    var_3 = _func_1A1( "climb_catch", "targetname" );
-    var_3 _meth_805A();
-    _ID42237::_ID3294( var_2, ::_meth_805A );
-    thread _unknown_0591();
+    thread _ID47603();
+    thread _ID52331( 3 );
+    var_2 = getentarray( "climb_test", "targetname" );
+    var_3 = getent( "climb_catch", "targetname" );
+    var_3 hide();
+    _ID42237::_ID3294( var_2, ::hide );
+    thread _ID44983();
 }
 
 _ID44983()
 {
-    _unknown_05AB();
-    var_0 = _func_1A1( "player_ramp_block", "targetname" );
-    var_0 _meth_80B7();
+    _ID44001();
+    var_0 = getent( "player_ramp_block", "targetname" );
+    var_0 delete();
     var_1 = _ID42407::_ID16263( "ramp_block_notsolid" );
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 _meth_80B7();
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_3 in var_1 )
+        var_3 delete();
 }
 
 _ID44001()
 {
     level endon( "reached_top" );
-    var_0 = _func_1A1( "player_ramp_block", "targetname" );
+    var_0 = getent( "player_ramp_block", "targetname" );
 
     for (;;)
     {
         _ID42237::_ID14413( "ramp_block_notsolid" );
-        _ID42407::_ID1985( ::_unknown_0616 );
+        _ID42407::_ID1985( ::_ID52116 );
         _ID42407::_ID1985( _ID42407::_ID1687, 0.5 );
         _ID42407::_ID11232();
-        var_0 _meth_82C9();
+        var_0 notsolid();
         _ID42237::_ID14426( "ramp_block_notsolid" );
-        var_0 _meth_82C8();
+        var_0 solid();
     }
 }
 
@@ -168,8 +161,8 @@ _ID52116()
 {
     for (;;)
     {
-        var_0 = level._ID794 _meth_8344();
-        var_1 = _func_0F3( ( var_0[0], var_0[1], 0 ), ( 0, 0, 0 ) );
+        var_0 = level._ID794 getvelocity();
+        var_1 = distance( ( var_0[0], var_0[1], 0 ), ( 0, 0, 0 ) );
 
         if ( var_1 < 75 )
             return;
@@ -188,46 +181,46 @@ _ID48068()
     level endon( "player_slides_down_hill" );
     _ID42237::_ID14388( "fade_to_death" );
     _ID42237::_ID14413( "fade_to_death" );
-    level._ID794 _meth_80A1( "cliff_plyr_fall_scream" );
-    maps\cliffhanger_code::_ID54496( ::_unknown_06A7 );
+    level._ID794 playsound( "cliff_plyr_fall_scream" );
+    maps\cliffhanger_code::_ID54496( ::_ID44093 );
 }
 
 _ID44093()
 {
     if ( _ID42237::_ID14385( "ramp_block_notsolid" ) && !_ID42237::_ID14385( "reached_top" ) )
     {
-        if ( _func_03A( "hold_on_tight" ) )
-            _unknown_06E3( 1 );
+        if ( getdvarint( "hold_on_tight" ) )
+            _ID51533( 1 );
         else
         {
-            _func_034( "hold_on_tight", 1 );
-            _func_034( "ui_deadquote", &"CLIFFHANGER_MAKES_FIRST_JUMP" );
+            setdvar( "hold_on_tight", 1 );
+            setdvar( "ui_deadquote", &"CLIFFHANGER_MAKES_FIRST_JUMP" );
         }
     }
     else
-        _unknown_06FC();
+        _ID51533();
 }
 
 _ID51533( var_0 )
 {
     var_1 = 1;
     var_2 = 3;
-    var_3 = _ID42237::_ID37527( !_func_02F( var_0 ), var_1, var_2 );
-    var_4 = _func_0C1( _func_1C1( "sp/cliffhanger_deathquote.csv", var_3, "size", 0 ) );
-    var_5 = _func_0B7( var_4 );
-    var_6 = _func_1C1( "sp/cliffhanger_deathquote.csv", 0, var_5, var_3 );
+    var_3 = _ID42237::_ID37527( !isdefined( var_0 ), var_1, var_2 );
+    var_4 = int( tablelookup( "sp/cliffhanger_deathquote.csv", var_3, "size", 0 ) );
+    var_5 = randomint( var_4 );
+    var_6 = tablelookup( "sp/cliffhanger_deathquote.csv", 0, var_5, var_3 );
 
-    if ( _func_128( var_6[0] ) != _func_128( "@" ) )
+    if ( tolower( var_6[0] ) != tolower( "@" ) )
         var_6 = "@" + var_6;
 
-    _func_034( "ui_deadquote", var_6 );
+    setdvar( "ui_deadquote", var_6 );
 }
 
 _ID43665()
 {
     _ID42237::_ID14413( "mig_flies_over" );
     var_0 = _ID42407::_ID16268( "mig_flies_over" );
-    _func_192( 0.5, 3, var_0._ID740, 10000 );
+    earthquake( 0.5, 3, var_0._ID740, 10000 );
 }
 
 _ID47603()
@@ -241,8 +234,8 @@ _ID47603()
     {
         if ( _ID42407::_ID27470( level._ID51758 ) )
         {
-            level._ID794 _meth_833D( level._ID51758 );
-            level._ID794 _meth_8301( level._ID51758, 90 );
+            level._ID794 givemaxammo( level._ID51758 );
+            level._ID794 setweaponammoclip( level._ID51758, 90 );
         }
 
         wait 1;
@@ -266,7 +259,7 @@ _ID53338()
         wait 0.05;
     }
 
-    level._ID794 _meth_8058();
+    level._ID794 kill();
 }
 
 _ID46094()
@@ -277,7 +270,7 @@ _ID46094()
 
     for (;;)
     {
-        var_1._ID65 = ( _func_0B9( 0, 360 ), _func_0B9( 0, 360 ), _func_0B9( 0, 360 ) );
+        var_1._ID65 = ( randomintrange( 0, 360 ), randomintrange( 0, 360 ), randomintrange( 0, 360 ) );
         wait 0.05;
     }
 }
@@ -285,13 +278,13 @@ _ID46094()
 _ID44094( var_0 )
 {
     var_0 endon( "reached_end_node" );
-    var_1 = _func_1A1( "player_climb_start", "targetname" );
+    var_1 = getent( "player_climb_start", "targetname" );
     var_2 = 0.2;
 
     for (;;)
     {
-        self _meth_82B8( var_0._ID740, var_2, 0, 0 );
-        var_3 = _func_11A( var_1._ID740 - self._ID740 );
+        self moveto( var_0._ID740, var_2, 0, 0 );
+        var_3 = vectortoangles( var_1._ID740 - self._ID740 );
         self._ID65 = var_3;
         wait(var_2);
     }
@@ -303,40 +296,34 @@ _ID53966()
     _ID42407::_ID34377( 2 );
     _ID42407::_ID34374( 0.05 );
     _ID42407::_ID34371();
-    level._ID794 _meth_8192( 0, 0, 15000, 20000, 4, 4 );
+    level._ID794 setdepthoffield( 0, 0, 15000, 20000, 4, 4 );
     thread _ID42318::_ID50101( 1.25, 2 );
     thread _ID49359::_ID52826();
-    _func_188( 2000, 20000, level._ID44355["r"], level._ID44355["g"], level._ID44355["b"], 0.47, 0 );
+    setexpfog( 2000, 20000, level._ID44355["r"], level._ID44355["g"], level._ID44355["b"], 0.47, 0 );
     _ID49359::_ID46211();
-    level._ID794 _meth_831B();
+    level._ID794 takeallweapons();
     _ID42237::_ID14402( "flying_in" );
     var_0 = _ID42411::_ID35196( "fly_in_spawner" );
     level._ID43599 = var_0;
     var_1 = _ID42411::_ID35200( "fly_in_heli" );
-    level._ID794 _meth_8084( var_0, "tag_origin", 1, 0, 0, 0, 0 );
+    level._ID794 playerlinktodelta( var_0, "tag_origin", 1, 0, 0, 0, 0 );
     wait 16;
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 _meth_80B7();
-    }
+    foreach ( var_3 in var_1 )
+        var_3 delete();
 
-    var_clear_2
-    var_clear_0
     thread _ID42318::_ID50101( 0.5, 1, 2 );
     _ID42407::_ID34375( 0.5 );
     _ID42407::_ID34372();
     _ID42407::_ID34369();
     wait 2.5;
-    var_0 _meth_80B7();
+    var_0 delete();
     var_0 = _ID42411::_ID35196( "fly_in_spawner_cliff_repeat" );
-    level._ID794 _meth_8084( var_0, "tag_origin", 1, 0, 0, 0, 0 );
+    level._ID794 playerlinktodelta( var_0, "tag_origin", 1, 0, 0, 0, 0 );
     wait 4.5;
     thread _ID42318::_ID50101( 2, 0.5, 1.5 );
     wait 2.0;
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID54509( var_0 )
@@ -345,16 +332,16 @@ _ID54509( var_0 )
     var_1["farStart"] = 400;
     var_1["farEnd"] = 600;
     var_1["farBlur"] = 4;
-    var_2 = _func_1A1( "player_climb_start", "targetname" );
+    var_2 = getent( "player_climb_start", "targetname" );
 
     for (;;)
     {
         if ( _ID42237::_ID14385( "nearing_top_of_slam_zoom" ) )
             break;
 
-        var_3 = _func_0F3( level._ID794._ID740, var_2._ID740 );
+        var_3 = distance( level._ID794._ID740, var_2._ID740 );
         var_4 = 1;
-        var_5 = _func_0E6( 100, var_3 - 4000 );
+        var_5 = max( 100, var_3 - 4000 );
         var_6 = 5;
         var_7 = var_3 + 1000;
         var_8 = var_3 + 2000;
@@ -375,7 +362,7 @@ _ID44466()
     for (;;)
     {
         if ( self._ID1276 > 50 )
-            _func_156( level._ID1426["blizzard_level_1"], self._ID740 );
+            playfx( level._ID1426["blizzard_level_1"], self._ID740 );
 
         wait 0.1;
     }
@@ -383,24 +370,24 @@ _ID44466()
 
 _ID53352()
 {
-    var_0 = _func_1A1( "faux_player_spawner", "targetname" );
-    var_1 = var_0 _meth_809B();
+    var_0 = getent( "faux_player_spawner", "targetname" );
+    var_1 = var_0 stalingradspawn();
     var_1._ID1194 = "allies";
-    var_2 = _func_1A1( "faux_player_ent", "targetname" );
+    var_2 = getent( "faux_player_ent", "targetname" );
     var_1 _ID42407::_ID17509();
     var_2 _ID42259::_ID3023( var_1, "faux_player" );
     wait 8;
     var_2 thread _ID42259::_ID3020( var_1, "faux_player" );
     wait 4;
-    var_1 _meth_80B7();
-    var_0 _meth_80B7();
-    var_2 _meth_80B7();
+    var_1 delete();
+    var_0 delete();
+    var_2 delete();
 }
 
 _ID49409()
 {
     thread _ID42318::_ID50101( 0.1, 1 );
-    _func_0DB( "compass", "0" );
+    setsaveddvar( "compass", "0" );
     var_0 = level._ID11390;
     level._ID11390["nearStart"] = 1;
     level._ID11390["nearEnd"] = 1;
@@ -410,79 +397,79 @@ _ID49409()
     level._ID11390["farBlur"] = 2;
     _ID42262::_ID11342( 1, 1, 4, 10000, 20000, 2, 0 );
     _ID49359::_ID46211();
-    var_1 = _func_1A1( "player_climb_start", "targetname" );
+    var_1 = getent( "player_climb_start", "targetname" );
     var_1._ID65 = ( 16.5, var_1._ID65[1], 0 );
-    level._ID794 _meth_831B();
-    level._ID794 _meth_8319( level._ID51758, 0, 1 );
-    var_2 = _func_1F2( "slam_zoom_path", "targetname" );
+    level._ID794 takeallweapons();
+    level._ID794 giveweapon( level._ID51758, 0, 1 );
+    var_2 = getvehiclenode( "slam_zoom_path", "targetname" );
     var_3 = _ID42411::_ID35195( "fly_in_spawner" );
     var_4 = _ID42411::_ID35195( "fly_in_fx" );
-    var_4 thread _unknown_0C16();
+    var_4 thread _ID44466();
     level._ID43599 = var_3;
-    var_3 _meth_8287( var_2 );
-    var_4 _meth_8287( var_2 );
-    level._ID794 _meth_8083( var_3, "tag_origin", 1, 0, 0, 0, 0, 0 );
+    var_3 attachpath( var_2 );
+    var_4 attachpath( var_2 );
+    level._ID794 playerlinkto( var_3, "tag_origin", 1, 0, 0, 0, 0, 0 );
     var_5 = level._ID40239["mig29"];
     level._ID40239["mig29"] = undefined;
     _ID42407::_ID10226( 1.95, _ID42411::_ID35200, "slam_zoom_mig" );
-    thread _unknown_0C5F();
-    var_6 = _func_0F3( level._ID794._ID740, var_1._ID740 );
+    thread _ID53352();
+    var_6 = distance( level._ID794._ID740, var_1._ID740 );
     var_7 = 1;
-    var_8 = _func_0E6( 100, var_6 - 4000 );
+    var_8 = max( 100, var_6 - 4000 );
     var_9 = 5;
     var_10 = var_6 + 1000;
     var_11 = var_6 + 2000;
     var_12 = 2;
     _ID42262::_ID11342( var_7, var_8, var_9, var_10, var_11, var_12, 0.7 );
-    var_4 _meth_8289();
-    var_3 _meth_8289();
+    var_4 startpath();
+    var_3 startpath();
     _ID42237::_ID14402( "slam_zoom_started" );
-    thread _unknown_0C60( var_0 );
+    thread _ID54509( var_0 );
     var_3 waittill( "reached_end_node" );
-    var_3 _meth_80B7();
-    var_4 _meth_80B7();
+    var_3 delete();
+    var_4 delete();
     wait 0.5;
-    level._ID794 _meth_8055();
+    level._ID794 unlink();
     _ID42237::_ID14402( "can_save" );
     thread _ID42407::_ID4434();
-    thread _unknown_0BAB();
+    thread _ID48068();
     _ID42237::_ID14388( "flying_in" );
     level._ID40239["mig29"] = var_5;
-    _func_0DB( "compass", "1" );
+    setsaveddvar( "compass", "1" );
 }
 
 _ID47195()
 {
-    _func_0DB( "compass", "0" );
-    _func_0DB( "ammoCounterHide", 1 );
-    _func_0DB( "actionSlotsHide", 1 );
-    _func_0DB( "hud_showStance", 0 );
+    setsaveddvar( "compass", "0" );
+    setsaveddvar( "ammoCounterHide", 1 );
+    setsaveddvar( "actionSlotsHide", 1 );
+    setsaveddvar( "hud_showStance", 0 );
     thread _ID42318::_ID50101( 1.25, 2 );
-    var_0 = _func_1A1( "player_climb_start", "targetname" );
+    var_0 = getent( "player_climb_start", "targetname" );
     var_0._ID65 = ( 16.5, var_0._ID65[1], 0 );
-    level._ID794 _meth_8343( var_0._ID740 + ( 0, 0, -12 ) );
-    level._ID794 _meth_8345( var_0._ID65 );
-    level._ID794 _meth_8055();
+    level._ID794 setorigin( var_0._ID740 + ( 0, 0, -12 ) );
+    level._ID794 setplayerangles( var_0._ID65 );
+    level._ID794 unlink();
     _ID42237::_ID14388( "price_begins_climbing" );
     _ID42237::_ID14388( "price_begins_climbing2" );
     _ID42237::_ID14402( "flyin_complete" );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_830F( 0 );
+    level._ID794 allowprone( 0 );
+    level._ID794 _meth_830f( 0 );
     wait 0.05;
-    level._ID794 _meth_8189( "crouch" );
-    level._ID794 _meth_831B();
-    level._ID794 _meth_8319( level._ID51758, 0, 1 );
+    level._ID794 setstance( "crouch" );
+    level._ID794 takeallweapons();
+    level._ID794 giveweapon( level._ID51758, 0, 1 );
 }
 
 _ID45628()
 {
     for (;;)
     {
-        if ( level._ID794 _meth_82E9() )
+        if ( level._ID794 canmantle() )
         {
-            level._ID794 _meth_8055();
-            level._ID794 _meth_82EA();
-            thread _unknown_25D9();
+            level._ID794 unlink();
+            level._ID794 forcemantle();
+            thread _ID53240();
             return;
         }
 
@@ -543,48 +530,48 @@ _ID53355( var_0 )
 
 _ID51825( var_0, var_1 )
 {
-    level._ID794 _meth_81F1( 0.35 );
+    level._ID794 setmovespeedscale( 0.35 );
     _ID42407::_ID24587( "mus_cliffhanger_climbing_music" );
     _ID42237::_ID14413( "player_gets_on_wall" );
-    thread _unknown_110C( "dof_climb1_movingonledge" );
-    var_2 = _func_1A1( "player_climb_blocker", "targetname" );
-    var_2 _meth_80B7();
-    var_3 = _func_1A1( "player_jump_blocker", "targetname" );
+    thread _ID43069( "dof_climb1_movingonledge" );
+    var_2 = getent( "player_climb_blocker", "targetname" );
+    var_2 delete();
+    var_3 = getent( "player_jump_blocker", "targetname" );
     level._ID49340 = 0;
     level._ID43077 = 0;
-    level._ID54618 = _unknown_13F7();
-    level._ID50221 = _unknown_1479();
-    var_4 = _func_1A5();
+    level._ID54618 = _ID43885();
+    level._ID50221 = _ID43684();
+    var_4 = spawnstruct();
     var_4._ID740 = ( 438.645, -29386.9, 192.24 );
     var_4._ID65 = ( 0, 26.7091, 0 );
 
     for (;;)
     {
         level._ID49340++;
-        var_3 _meth_82C8();
-        var_5 = _unknown_1101();
-        var_6 = _unknown_100C( var_5 );
+        var_3 solid();
+        var_5 = _ID53809();
+        var_6 = _ID53355( var_5 );
 
         if ( var_5 == "left" || !_ID42237::_ID14385( "leaving_ledge_for_climb" ) )
         {
-            level._ID794 _unknown_3001( 0 );
+            level._ID794 _ID53144( 0 );
             level._ID50036 = _ID42407::_ID35028( "worldbody" );
             level._ID50036 _ID42259::_ID3128( "viewmodel_ice_picker", "tag_weapon_right" );
             level._ID50036 _ID42259::_ID3128( "viewmodel_ice_picker_03", "tag_weapon_left" );
-            level._ID50036 _meth_805A();
+            level._ID50036 hide();
             var_4 _ID42259::_ID3018( level._ID50036, var_6[0] );
             var_7 = 0.25;
-            level._ID794 _meth_8087( level._ID50036, "tag_player", var_7, var_7 * var_7, var_7 * var_7 );
+            level._ID794 playerlinktoblend( level._ID50036, "tag_player", var_7, var_7 * var_7, var_7 * var_7 );
             wait(var_7);
-            level._ID794 _meth_8084( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
-            level._ID50036 _meth_8059();
+            level._ID794 playerlinktodelta( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
+            level._ID50036 show();
         }
 
-        var_3 _meth_82C9();
+        var_3 notsolid();
         _ID42237::_ID14402( "player_is_climbing" );
-        thread _unknown_11FF( "dof_climb1_initialgeneric" );
+        thread _ID43069( "dof_climb1_initialgeneric" );
 
-        if ( !_unknown_15C6( var_4, var_5, var_6 ) )
+        if ( !_ID45887( var_4, var_5, var_6 ) )
         {
             wait 0.05;
             continue;
@@ -593,8 +580,8 @@ _ID51825( var_0, var_1 )
         break;
     }
 
-    level._ID794 _meth_81F1( 1 );
-    thread _unknown_29D2();
+    level._ID794 setmovespeedscale( 1 );
+    thread _ID49118();
 }
 
 _ID43778()
@@ -602,123 +589,123 @@ _ID43778()
     _ID42475::_ID34575( "aud_stop_mix_player_climbing" );
     _ID42237::_ID14388( "player_is_climbing" );
     level._ID43077 = 0;
-    level._ID794 _meth_8329();
-    level._ID794 _meth_8319( level._ID51758, 0, 1 );
-    level._ID794 _meth_8320( level._ID51758 );
+    level._ID794 enableweapons();
+    level._ID794 giveweapon( level._ID51758, 0, 1 );
+    level._ID794 switchtoweapon( level._ID51758 );
 }
 
 _ID47527( var_0, var_1 )
 {
-    level._ID794 _meth_81F1( 0.35 );
+    level._ID794 setmovespeedscale( 0.35 );
     _ID42407::_ID24587( "mus_cliffhanger_climbing_music" );
     var_2 = 0;
 
     if ( !var_2 )
         _ID42237::_ID14413( "player_gets_on_wall" );
 
-    var_3 = _func_1A1( "player_climb_blocker", "targetname" );
-    var_3 _meth_80B7();
-    var_4 = _func_1A1( "player_jump_blocker", "targetname" );
+    var_3 = getent( "player_climb_blocker", "targetname" );
+    var_3 delete();
+    var_4 = getent( "player_jump_blocker", "targetname" );
     level._ID49340 = 0;
 
     for (;;)
     {
         level._ID49340++;
-        var_4 _meth_82C8();
+        var_4 solid();
 
         if ( !var_2 )
-            _unknown_14E3();
+            _ID54052();
 
         var_2 = 0;
-        var_4 _meth_82C9();
+        var_4 notsolid();
 
-        if ( _unknown_18F7( var_0, var_1 ) )
+        if ( _ID52973( var_0, var_1 ) )
             break;
 
-        level._ID794 _meth_8319( level._ID51758, 0, 1 );
-        level._ID794 _meth_8320( level._ID51758 );
+        level._ID794 giveweapon( level._ID51758, 0, 1 );
+        level._ID794 switchtoweapon( level._ID51758 );
     }
 
-    level._ID794 _meth_81F1( 1 );
+    level._ID794 setmovespeedscale( 1 );
 }
 
 _ID43397( var_0 )
 {
-    var_1 = _func_1A1( var_0._ID1191, "targetname" );
-    var_2 = _func_11A( var_1._ID740 - var_0._ID740 );
+    var_1 = getent( var_0._ID1191, "targetname" );
+    var_2 = vectortoangles( var_1._ID740 - var_0._ID740 );
     var_2 = ( 0, var_2[1], 0 );
-    return _func_11F( var_2 );
+    return anglestoforward( var_2 );
 }
 
 _ID53809()
 {
-    var_0 = _func_1A1( "player_climb_yaw_check", "targetname" );
-    var_1 = _unknown_128C( var_0 );
+    var_0 = getent( "player_climb_yaw_check", "targetname" );
+    var_1 = _ID43397( var_0 );
     var_2 = 0;
-    var_3 = _func_03D() + _ID42237::_ID37527( _func_02F( level._ID49340 ) && level._ID49340 == 1, 3000, 1000 );
+    var_3 = gettime() + _ID42237::_ID37527( isdefined( level._ID49340 ) && level._ID49340 == 1, 3000, 1000 );
 
     for (;;)
     {
-        if ( _ID42237::_ID14385( "player_waiting_in_ledge" ) && _func_03D() > var_3 )
+        if ( _ID42237::_ID14385( "player_waiting_in_ledge" ) && gettime() > var_3 )
             _ID42407::_ID18684( "right_icepick" );
 
         if ( !_ID42237::_ID14385( "player_in_position_to_climb" ) )
-            level._ID794 _meth_813A( 1 );
+            level._ID794 allowfire( 1 );
 
         _ID42237::_ID14413( "player_in_position_to_climb" );
 
-        if ( level._ID794 _meth_8188() != "stand" )
+        if ( level._ID794 getstance() != "stand" )
         {
-            level._ID794 _meth_813A( 1 );
+            level._ID794 allowfire( 1 );
             wait 0.05;
             continue;
         }
 
         if ( !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
         {
-            var_4 = level._ID794 _meth_8346();
+            var_4 = level._ID794 getplayerangles();
 
             if ( var_4[0] >= 28 )
             {
-                level._ID794 _meth_813A( 1 );
+                level._ID794 allowfire( 1 );
                 wait 0.05;
                 continue;
             }
 
             var_4 = ( 0, var_4[1], 0 );
-            var_5 = _func_11F( var_4 );
-            var_6 = _func_0FB( var_5, var_1 );
+            var_5 = anglestoforward( var_4 );
+            var_6 = vectordot( var_5, var_1 );
 
             if ( var_6 < 0.6 )
             {
-                level._ID794 _meth_813A( 1 );
+                level._ID794 allowfire( 1 );
                 wait 0.05;
                 continue;
             }
         }
 
-        level._ID794 _meth_813A( 0 );
-        level._ID794 _meth_8320( level._ID51758 );
+        level._ID794 allowfire( 0 );
+        level._ID794 switchtoweapon( level._ID51758 );
 
         if ( !var_2 )
             thread _ID42407::_ID4434();
 
         var_2 = 1;
 
-        if ( level._ID794 _unknown_1678() )
+        if ( level._ID794 _ID47155() )
         {
             if ( _ID42237::_ID14385( "player_waiting_in_ledge" ) )
             {
                 _ID42237::_ID14402( "leaving_ledge_for_climb" );
-                thread _unknown_13EF( "dof_climb1_initialrightpick" );
+                thread _ID43069( "dof_climb1_initialrightpick" );
             }
 
             return "right";
         }
 
-        if ( level._ID794 _unknown_16A6() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
+        if ( level._ID794 _ID53748() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
         {
-            thread _unknown_140F( "dof_climb1_initialleftpick" );
+            thread _ID43069( "dof_climb1_initialleftpick" );
             return "left";
         }
 
@@ -739,43 +726,138 @@ _ID43069( var_0 )
 
     switch ( var_0 )
     {
+        case "dof_intro_camerapan":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 13.0, 1500, 8, 8 ) _ID54167::_ID44956();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44191( 75, 0.0, 0 );
+            var_4 _ID54167::_ID48800( 0.05 ) _ID54167::_ID43500( 4.25, 0 );
+            var_4 _ID54167::_ID48800( 2.85 ) _ID54167::_ID50321( 16.0, -1, 2, 2 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44518( var_3 ) _ID54167::_ID44545( 0.5 );
+            var_4 _ID54167::_ID48166();
+            _ID54167::_ID44227();
+            _ID54167::_ID49798( "vista" ) _ID54167::_ID49015( 10, 2000, 4, 4 );
+            _ID54167::_ID49798( "arm" ) _ID54167::_ID49498( 17, 90, -90, 28 ) _ID54167::_ID49015( 20, 13, 2, 2 );
+            _ID54167::_ID49798( "soap" ) _ID54167::_ID49498( -90, 17, -90, -16 ) _ID54167::_ID49015( 16.0, -1, 4, 4 ) _ID54167::_ID51166( level._ID28543, "tag_eye" ) _ID54167::_ID54400( var_3 ) _ID54167::_ID47448( 0.5 );
+            thread _ID54167::_ID47615();
 
+            while ( !_ID42237::_ID14385( "ledge_started" ) )
+                waittillframeend;
+
+            break;
+        case "dof_intro_getup_to_shimmy":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 12.0, -1, 4, 4 ) _ID54167::_ID52391( level._ID50036, "tag_knife_attach2" ) _ID54167::_ID44518( -3 ) _ID54167::_ID44545( 0.5 );
+            var_4 _ID54167::_ID48800( 1.5 ) _ID54167::_ID50321( 12.0, -1, 4, 4 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44518( var_3 ) _ID54167::_ID44545( 0.5 );
+            var_4 _ID54167::_ID48800( 4.85 ) _ID54167::_ID47844( 2 );
+            var_4 _ID54167::_ID48800( 5.0 ) _ID54167::_ID44191( 72, 0.85, 0 );
+            var_4 _ID54167::_ID48800( 5.15 ) _ID54167::_ID50321( 16.0, 1000, 4, 4 );
+            var_4 _ID54167::_ID48800( 0.3 ) _ID54167::_ID47198( 0.04, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_4 _ID54167::_ID48800( 1.05 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_4 _ID54167::_ID48800( 2.65 ) _ID54167::_ID47198( 0.08, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_4 _ID54167::_ID48800( 4.45 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_4 _ID54167::_ID48800( 5.9 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_4 _ID54167::_ID48800( 6.25 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            break;
+        case "dof_shimmy_falldeath":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 5.6, -1, 8, 8 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44545( 0.5 );
+            var_4 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48959();
+            break;
+        case "dof_shimmy_turntosoap":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 12.0, -1, 4, 4 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44518( var_3 - 5 ) _ID54167::_ID44545( 0.5 );
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44191( 65, 1.5, 0 );
+            var_4 _ID54167::_ID48800( 1.5 ) _ID54167::_ID47844( 0 );
+            break;
+        case "dof_climb1_movingonledge":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 8.0, 180, 8, 8 );
+            break;
+        case "dof_climb1_readyicepick":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 1.0 ) _ID54167::_ID50321( 40, 13, 1, 1 );
+            var_4 _ID54167::_ID48800( 0.9 ) _ID54167::_ID47198( 0.04, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            break;
+        case "dof_climb1_initialrightpick":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID47844( 2 );
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( var_1, 33, 8, 8 );
+            var_4 _ID54167::_ID48800( 1.65 ) _ID54167::_ID50321( var_1, 55, 8, 8 );
+            var_4 _ID54167::_ID48800( 2.2 ) _ID54167::_ID50321( var_1, 48, 8, 8 );
+            var_4 _ID54167::_ID48800( 4.1 ) _ID54167::_ID50321( var_1, var_2, 3, 3 );
+            break;
+        case "dof_climb1_initialleftpick":
+            var_4 _ID54167::_ID48800( 0.35 ) _ID54167::_ID50321( var_1, 33, 8, 8 ) _ID54167::_ID44956();
+            var_4 _ID54167::_ID48800( 0.35 ) _ID54167::_ID47844( 2 );
+            var_4 _ID54167::_ID48800( 1.5 ) _ID54167::_ID50321( var_1, var_2, 5, 5 );
+            break;
+        case "dof_climb1_initialgeneric":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( var_1, 35, 8, 8 ) _ID54167::_ID44956();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID47844( 2 );
+            var_4 _ID54167::_ID48800( 2.15 ) _ID54167::_ID50321( var_1, var_2, 4, 4 );
+            break;
+        case "dof_climb1_drop_start":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 12, 25, 1, 1 );
+            break;
+        case "dof_climb1_drop_complete":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.05 ) _ID54167::_ID48959();
+            var_4 _ID54167::_ID48800( 0.05 ) _ID54167::_ID47844( 0 );
+            break;
+        case "dof_climb_common_finishclimb":
+            if ( 1 )
+            {
+                var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+                var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 6.0, 20, 4, 4 );
+                var_4 _ID54167::_ID48800( 0.5 ) _ID54167::_ID50321( 6.0, 180, 4, 4 );
+                var_4 _ID54167::_ID48800( 3.15 ) _ID54167::_ID50321( 6.0, 25, 3, 3 );
+                var_4 _ID54167::_ID48800( 4.35 ) _ID54167::_ID47844( 0 );
+                var_4 _ID54167::_ID48800( 4.35 ) _ID54167::_ID50321( 12, 300, 1.5, 1.5 );
+                var_4 _ID54167::_ID48800( 5.15 ) _ID54167::_ID48959();
+                jump loc_1B23
+            }
+
+            break;
+        case "dof_climb_common_falldeath":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
+            var_4 _ID54167::_ID48800( 0.05 ) _ID54167::_ID50321( 1.0, -1, 8, 8 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44545( 1.0 );
+            var_4 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48959();
+            break;
+        case "dof_jump_far_side_success":
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( var_1, -1, 2, 2 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44545( 1.0 );
+            var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44956();
+            var_4 _ID54167::_ID48800( 1.65 ) _ID54167::_ID47844( 2 );
+            var_4 _ID54167::_ID48800( 2.15 ) _ID54167::_ID50321( var_1, 30, 3, 3 );
+            var_4 _ID54167::_ID48800( 3.85 ) _ID54167::_ID50321( var_1, 1500, 6, 6 );
+            var_4 _ID54167::_ID48800( 3.85 ) _ID54167::_ID44191( 78, 0.5, 0 );
+            var_4 _ID54167::_ID48800( 8.35 ) _ID54167::_ID50321( var_1, 25, 4, 4 );
+            var_4 _ID54167::_ID48800( 8.35 ) _ID54167::_ID43500( 1.15, 0 );
+            var_4 _ID54167::_ID48800( 10.3 ) _ID54167::_ID50321( var_1, 30, 4, 4 );
+            var_4 _ID54167::_ID48800( 15.6 ) _ID54167::_ID50321( var_1 + 1, var_2, 4, 4 );
+            var_4 _ID54167::_ID48800( 1.5 ) _ID54167::_ID47198( 0.12, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.3 );
+            break;
+        case "dof_jump_far_side_failed":
+            break;
     }
 
     if ( var_0 != "dof_intro_camerapan" )
-    {
         var_4 _ID54167::_ID48166();
-        return;
-    }
+    else
+    {
 
-    return;
-    case "dof_jump_far_side_failed":
-    case "dof_jump_far_side_success":
-    case "dof_climb_common_falldeath":
-    case "dof_climb_common_finishclimb":
-    case "dof_climb1_drop_complete":
-    case "dof_climb1_drop_start":
-    case "dof_climb1_readyicepick":
-    case "dof_shimmy_turntosoap":
-    case "dof_shimmy_falldeath":
-    case "dof_intro_getup_to_shimmy":
-    case "dof_climb1_initialleftpick":
-    case "dof_climb1_initialrightpick":
-    case "dof_climb1_initialgeneric":
-    case "dof_climb1_movingonledge":
+    }
 }
 
 _ID54052()
 {
-    var_0 = _func_1A1( "player_climb_yaw_check", "targetname" );
-    var_1 = _unknown_1A92( var_0 );
+    var_0 = getent( "player_climb_yaw_check", "targetname" );
+    var_1 = _ID43397( var_0 );
     var_2 = 0;
-    var_3 = _func_03D() + _ID42237::_ID37527( _func_02F( level._ID49340 ) && level._ID49340 == 1, 3000, 1000 );
+    var_3 = gettime() + _ID42237::_ID37527( isdefined( level._ID49340 ) && level._ID49340 == 1, 3000, 1000 );
     var_4 = 0;
 
     for (;;)
     {
-        if ( !var_4 && _func_03D() > var_3 )
+        if ( !var_4 && gettime() > var_3 )
         {
             _ID42237::_ID14388( "player_starts_climbing" );
             var_4 = 1;
@@ -783,55 +865,55 @@ _ID54052()
         }
 
         if ( !_ID42237::_ID14385( "player_in_position_to_climb" ) )
-            level._ID794 _meth_813A( 1 );
+            level._ID794 allowfire( 1 );
 
         _ID42237::_ID14413( "player_in_position_to_climb" );
 
-        if ( level._ID794 _meth_8188() != "stand" )
+        if ( level._ID794 getstance() != "stand" )
         {
-            level._ID794 _meth_813A( 1 );
+            level._ID794 allowfire( 1 );
             wait 0.05;
             continue;
         }
 
         if ( !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
         {
-            var_5 = level._ID794 _meth_8346();
+            var_5 = level._ID794 getplayerangles();
 
             if ( var_5[0] >= 28 )
             {
-                level._ID794 _meth_813A( 1 );
+                level._ID794 allowfire( 1 );
                 wait 0.05;
                 continue;
             }
 
             var_5 = ( 0, var_5[1], 0 );
-            var_6 = _func_11F( var_5 );
-            var_7 = _func_0FB( var_6, var_1 );
+            var_6 = anglestoforward( var_5 );
+            var_7 = vectordot( var_6, var_1 );
 
             if ( var_7 < 0.6 )
             {
-                level._ID794 _meth_813A( 1 );
+                level._ID794 allowfire( 1 );
                 wait 0.05;
                 continue;
             }
         }
 
-        level._ID794 _meth_813A( 0 );
-        level._ID794 _meth_8320( level._ID51758 );
+        level._ID794 allowfire( 0 );
+        level._ID794 switchtoweapon( level._ID51758 );
 
         if ( !var_2 )
             thread _ID42407::_ID4434();
 
         var_2 = 1;
 
-        if ( level._ID794 _unknown_1E86() )
+        if ( level._ID794 _ID47155() )
         {
             _ID42237::_ID14402( "leaving_ledge_for_climb" );
             return;
         }
 
-        if ( level._ID794 _unknown_1E9E() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
+        if ( level._ID794 _ID53748() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
             return;
 
         wait 0.05;
@@ -843,25 +925,25 @@ _ID47155()
     if ( _ID42237::_ID20583() )
         return level._ID794 _meth_8109();
     else
-        return level._ID794 _meth_8349( 1 );
+        return level._ID794 adsbuttonpressed( 1 );
 }
 
 _ID53748()
 {
     if ( _ID42237::_ID20583() )
-        return level._ID794 _meth_810A();
+        return level._ID794 vehicleattackbuttonpressed();
     else
-        return level._ID794 _meth_8348();
+        return level._ID794 attackbuttonpressed();
 }
 
 _ID53216()
 {
-    _func_0DB( "cg_fov", 65 );
+    setsaveddvar( "cg_fov", 65 );
 }
 
 _ID53934()
 {
-    _func_0DB( "cg_fov", 78 );
+    setsaveddvar( "cg_fov", 78 );
 }
 
 _ID49781( var_0, var_1, var_2 )
@@ -880,7 +962,7 @@ _ID43583( var_0 )
 
 _ID43885( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
     {
         var_1 = [];
         var_1[0] = ( 430.153, -29371, 274.5 );
@@ -922,7 +1004,7 @@ _ID43885( var_0 )
 
 _ID43684( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
     {
         var_1 = [];
         var_1[0] = ( 0.957508, 0.207168, -0.200648 );
@@ -964,25 +1046,25 @@ _ID43684( var_0 )
 
 _ID45887( var_0, var_1, var_2 )
 {
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_830F( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
+    level._ID794 _meth_830f( 0 );
     _ID42237::_ID14402( "player_starts_climbing" );
     var_3 = _ID42237::_ID14385( "leaving_ledge_for_climb" );
-    var_4 = _func_1A5();
+    var_4 = spawnstruct();
     var_4._ID45132 = var_1;
-    var_5 = _func_06A( "script_model", ( 0, 0, 0 ) );
-    var_5 _meth_80B8( "tag_origin" );
-    var_5 _meth_805A();
-    var_5 _meth_8053( level._ID50036, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8098( var_5 );
+    var_5 = spawn( "script_model", ( 0, 0, 0 ) );
+    var_5 setmodel( "tag_origin" );
+    var_5 hide();
+    var_5 linkto( level._ID50036, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 playersetgroundreferenceent( var_5 );
     var_6 = [];
     var_7 = [];
     var_7[var_7.size] = "left";
     var_7[var_7.size] = "right";
     var_8 = [];
-    var_8["left"] = ::_unknown_228E;
-    var_8["right"] = ::_unknown_228F;
+    var_8["left"] = ::_ID53748;
+    var_8["right"] = ::_ID47155;
     var_9 = [];
     var_10 = [];
     var_10["left"] = "j";
@@ -993,41 +1075,37 @@ _ID45887( var_0, var_1, var_2 )
         var_11 = 10000;
 
     var_4._ID51282 = 0;
-    var_12 = var_7;
 
-    for ( var_16 = _func_1DA( var_12 ); _func_02F( var_16 ); var_16 = _func_1BF( var_12, var_16 ) )
+    foreach ( var_13 in var_7 )
     {
-        var_13 = var_12[var_16];
-        var_14 = _func_06A( "script_origin", ( 0, 0, 0 ) );
+        var_14 = spawn( "script_origin", ( 0, 0, 0 ) );
         var_15 = var_10[var_13];
         var_14._ID47576 = var_15;
         var_14._ID46602 = var_13;
-        var_14._ID50118 = _func_03D() + 2500;
+        var_14._ID50118 = gettime() + 2500;
         var_14._ID52433 = 1;
         var_14._ID45941 = level._ID50036;
         var_14._ID3197 = var_6[var_13];
         var_14._ID3197 = _ID51955::_ID49370( var_14._ID3197, "up", var_13 );
         var_14._ID794 = self;
         var_14._ID51876 = var_8[var_13];
-        thread _unknown_31CF( var_14 );
+        thread _ID43391( var_14 );
         var_14._ID54537 = var_4;
         var_9[var_13] = var_14;
     }
 
-    var_clear_4
-    var_clear_0
     var_4._ID48348 = var_9;
     var_17 = var_9[var_4._ID45132];
     level._ID45147 = var_4;
     var_18 = 0;
-    level._ID794 _meth_80A9( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
+    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
     var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
     level._ID50036._ID46602 = "right";
     level._ID794._ID47069 = var_17;
     var_19 = 20;
     var_20 = 10;
 
-    if ( _func_125( var_2[var_18], "left" ) )
+    if ( issubstr( var_2[var_18], "left" ) )
     {
         var_19 = 10;
         var_20 = 20;
@@ -1035,26 +1113,26 @@ _ID45887( var_0, var_1, var_2 )
         level._ID794._ID47069 = var_17;
     }
 
-    level._ID50036 animscripts\shared::_ID11529( "single anim", ::_unknown_26F0 );
+    level._ID50036 animscripts\shared::_ID11529( "single anim", ::_ID45136 );
     var_18++;
-    level._ID794 _meth_80A9( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
     var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
     var_18++;
-    level._ID50036 _ID42407::_ID10226( 0.05, ::_unknown_26DC, level._ID50036._ID46602, level._ID30895["worldbody"][var_2[var_18 - 1]] );
-    var_4._ID45132 = _unknown_2A62( var_4._ID45132 );
+    level._ID50036 _ID42407::_ID10226( 0.05, ::_ID44792, level._ID50036._ID46602, level._ID30895["worldbody"][var_2[var_18 - 1]] );
+    var_4._ID45132 = _ID48513( var_4._ID45132 );
     var_17 = var_9[var_4._ID45132];
 
     if ( var_3 )
-        thread _unknown_3CAF( var_17 );
+        thread _ID47123( var_17 );
 
     level._ID50568 = 0;
     level._ID794._ID48545 = 0;
     var_21 = 1;
     _ID42237::_ID14402( "we_care_about_right_icepick" );
-    var_22 = _func_03D() + 8000;
+    var_22 = gettime() + 8000;
     var_23 = 0;
-    thread _unknown_3307( var_4 );
+    thread _ID52315( var_4 );
     var_24 = 0;
     _ID42475::_ID34575( "aud_start_mix_player_climbing" );
 
@@ -1068,22 +1146,22 @@ _ID45887( var_0, var_1, var_2 )
 
         var_17 = var_4._ID48348[var_4._ID45132];
 
-        if ( _unknown_2AA2( var_21, var_22, var_17 ) )
+        if ( _ID52227( var_21, var_22, var_17 ) )
         {
-            var_23 = _unknown_2995( var_17, var_2[var_18 - 1], var_0 );
-            thread _unknown_21E5( "dof_climb1_drop_complete" );
+            var_23 = _ID47170( var_17, var_2[var_18 - 1], var_0 );
+            thread _ID43069( "dof_climb1_drop_complete" );
             break;
         }
 
-        if ( _unknown_2CA6( var_17 ) )
+        if ( _ID44714( var_17 ) )
         {
             var_25 = level._ID30895["worldbody"][var_2[var_18]];
-            var_26 = _func_067( var_25 );
+            var_26 = getanimlength( var_25 );
             var_20 = 10;
             var_19 = 20;
             level._ID50036._ID46602 = "right";
 
-            if ( _func_125( var_2[var_18], "left" ) )
+            if ( issubstr( var_2[var_18], "left" ) )
             {
                 var_19 = 10;
                 var_20 = 20;
@@ -1091,54 +1169,54 @@ _ID45887( var_0, var_1, var_2 )
                 level._ID794._ID47069 = var_17;
             }
 
-            level._ID794 _meth_80A1( "player_climb_effort" );
-            level._ID794 _meth_80B4( "icepick_release" );
+            level._ID794 playsound( "player_climb_effort" );
+            level._ID794 playrumblelooponentity( "icepick_release" );
             var_17._ID45941 notify( "stop_crack" );
 
             if ( var_2[var_18] == "iceaxeclimbing_right_3" )
                 _ID42237::_ID14402( "price_climb_continues" );
 
             var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
-            var_27 = _func_067( level._ID30895["worldbody"][var_2[var_18]] );
-            level._ID794 _meth_80A9( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, 0, 0, 0, 0 );
+            var_27 = getanimlength( level._ID30895["worldbody"][var_2[var_18]] );
+            level._ID794 lerpviewangleclamp( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, 0, 0, 0, 0 );
 
             if ( var_18 == 20 )
-                level._ID794 _meth_80A9( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, -5, 5, 0, 0 );
+                level._ID794 lerpviewangleclamp( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, -5, 5, 0, 0 );
 
-            level._ID50036 animscripts\shared::_ID11529( "single anim", ::_unknown_289F );
+            level._ID50036 animscripts\shared::_ID11529( "single anim", ::_ID45136 );
             var_18++;
 
             if ( var_2[var_18] == "iceaxeclimbing_right_3_idle" )
                 _ID42237::_ID14402( "player_climbed_3_steps" );
 
-            level._ID794 _meth_80A9( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
+            level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
 
             if ( var_18 == 21 )
-                level._ID794 _meth_80A9( 0.5, 0.25, 0.25, -5, 5, 15, 20 );
+                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, -5, 5, 15, 20 );
 
             if ( var_18 == 23 )
-                level._ID794 _meth_80A9( 0.5, 0.25, 0.25, var_20, 0, 20, 0 );
+                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, 0, 20, 0 );
 
             if ( var_18 == 33 )
-                level._ID794 _meth_80A9( 0.5, 0.25, 0.25, var_20, var_19, 20, 0 );
+                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 0 );
 
-            level._ID794 _meth_80AA( 50, 50, 20, 20 );
+            level._ID794 setviewangleresistance( 50, 50, 20, 20 );
             var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
             var_18++;
 
             if ( var_18 == var_2.size )
             {
                 _ID42237::_ID14402( "force_single_ice_crack" );
-                level._ID50036 thread animscripts\shared::_ID11529( "single anim", ::_unknown_2956 );
+                level._ID50036 thread animscripts\shared::_ID11529( "single anim", ::_ID45136 );
                 level._ID50036 thread _ID42259::_ID46741( "stop_height_lerp", level._ID30895["worldbody"][var_2[var_18 - 1]], 0.1, var_0 );
-                level._ID794 _meth_80A9( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
-                thread _unknown_23B1( "dof_climb_common_finishclimb" );
+                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
+                thread _ID43069( "dof_climb_common_finishclimb" );
 
                 if ( !_ID42237::_ID14385( "player_preps_for_jump" ) )
                 {
-                    var_28 = _func_1A1( "climb_jump_org", "targetname" );
+                    var_28 = getent( "climb_jump_org", "targetname" );
                     level._ID50036 waittillmatch( "single anim",  "spawn_soap"  );
-                    thread _unknown_394A( var_28 );
+                    thread _ID51118( var_28 );
                 }
 
                 level._ID50036 waittillmatch( "single anim",  "end"  );
@@ -1147,17 +1225,17 @@ _ID45887( var_0, var_1, var_2 )
                 level._ID50036 notify( "stop_height_lerp" );
                 level notify( "player_shimmy_stop" );
                 var_17._ID45941 notify( "stop_crack" );
-                level._ID794 _meth_8098( undefined );
+                level._ID794 playersetgroundreferenceent( undefined );
                 wait 0.05;
-                level._ID794 _meth_8055();
-                level._ID50036 _meth_80B7();
+                level._ID794 unlink();
+                level._ID50036 delete();
             }
             else
-                level._ID50036 _ID42407::_ID10226( 0.05, ::_unknown_29C0, level._ID50036._ID46602, level._ID30895["worldbody"][var_2[var_18 - 1]] );
+                level._ID50036 _ID42407::_ID10226( 0.05, ::_ID44792, level._ID50036._ID46602, level._ID30895["worldbody"][var_2[var_18 - 1]] );
 
-            var_22 = _func_03D() + 8000;
+            var_22 = gettime() + 8000;
             var_17._ID50361 = var_17._ID49990;
-            var_4._ID45132 = _unknown_2D55( var_4._ID45132 );
+            var_4._ID45132 = _ID48513( var_4._ID45132 );
         }
 
         wait 0.05;
@@ -1165,16 +1243,16 @@ _ID45887( var_0, var_1, var_2 )
 
     if ( var_23 )
     {
-        level._ID794 _meth_813A( 1 );
-        level._ID794 _meth_8122( 1 );
-        level._ID794 _meth_8123( 1 );
-        level._ID794 _meth_830F( 1 );
+        level._ID794 allowfire( 1 );
+        level._ID794 allowcrouch( 1 );
+        level._ID794 allowprone( 1 );
+        level._ID794 _meth_830f( 1 );
         var_17._ID45941 notify( "stop_crack" );
-        thread _unknown_2745();
+        thread _ID53216();
         _ID42237::_ID14388( "climbing_dof" );
     }
 
-    _unknown_23F8();
+    _ID43778();
     return var_23;
 }
 
@@ -1184,7 +1262,7 @@ _ID44792( var_0, var_1 )
     level._ID794 endon( "death" );
     self endon( "restart_climb_idle" );
 
-    if ( self _meth_815A( var_1 ) == 0 )
+    if ( self getanimweight( var_1 ) == 0 )
         return;
 
     var_2 = _ID42407::_ID16120( "idle_additive" );
@@ -1195,52 +1273,52 @@ _ID44792( var_0, var_1 )
 
     for (;;)
     {
-        var_7 = _func_0B8( 1 );
+        var_7 = randomfloat( 1 );
         var_8 = var_3;
 
         if ( var_7 < var_6 )
             var_8 = _ID42237::_ID28945( var_4 );
 
-        self _meth_8155( var_2 );
-        self _meth_811A( var_5, var_8 );
+        self setanim( var_2 );
+        self setflaggedanim( var_5, var_8 );
         self waittillmatch( var_5,  "end"  );
-        self _meth_814C( var_8, 0.1 );
+        self clearanim( var_8, 0.1 );
     }
 }
 
 _ID47673( var_0 )
 {
     wait 0.05;
-    var_1 = _unknown_37E6( level._ID50036._ID46602 );
-    var_2 = _unknown_3771( level._ID50036, var_1 );
-    var_3 = _func_11F( var_2._ID65 );
+    var_1 = _ID51668( level._ID50036._ID46602 );
+    var_2 = _ID52045( level._ID50036, var_1 );
+    var_3 = anglestoforward( var_2._ID65 );
     var_4 = level._ID43887;
-    var_5 = var_2._ID740 + var_3 * var_4 * -5;
+    var_5 = var_2._ID740 + var_3 * ( var_4 * -5 );
     var_6 = var_2._ID740 + var_3 * var_4;
-    var_7 = _func_06D( var_5, var_6, 0, undefined );
-    var_2 _meth_80B7();
+    var_7 = bullettrace( var_5, var_6, 0, undefined );
+    var_2 delete();
     var_9 = var_7["position"];
     var_10 = var_7["surfacetype"];
     var_11 = var_7["normal"];
     var_12 = "icepick_impact_" + var_10;
 
     if ( _ID42237::_ID15272( var_12 ) )
-        _func_156( _ID42237::_ID16299( var_12 ), var_9, var_11 );
+        playfx( _ID42237::_ID16299( var_12 ), var_9, var_11 );
 
-    level._ID794 _meth_80B4( "icepick_climb" );
+    level._ID794 playrumblelooponentity( "icepick_climb" );
     [[ var_0 ]]( var_9, var_11 );
 }
 
 _ID52732( var_0, var_1 )
 {
     thread _ID42237::_ID27077( "icepick_impact_ice", var_0 );
-    level._ID50036 thread _unknown_3925( level._ID794._ID47069, var_0, var_1 );
+    level._ID50036 thread _ID48437( level._ID794._ID47069, var_0, var_1 );
 }
 
 _ID50738( var_0, var_1 )
 {
     thread _ID42237::_ID27077( "icepick_impact_rock", var_0 );
-    _func_156( _ID42237::_ID16299( "ice_pick_large_miss" ), var_0, var_1 );
+    playfx( _ID42237::_ID16299( "ice_pick_large_miss" ), var_0, var_1 );
 }
 
 _ID45136( var_0 )
@@ -1257,27 +1335,27 @@ _ID45136( var_0 )
     }
 
     if ( var_0 == "stab" )
-        _unknown_2BBC( ::_unknown_2BE3 );
+        _ID47673( ::_ID52732 );
     else if ( var_0 == "fail_stab" )
-        _unknown_2BCC( ::_unknown_2BFB );
+        _ID47673( ::_ID50738 );
     else if ( var_0 == "left_foot_stab" )
     {
         level notify( "fourth_swing" );
         var_1 = "J_Ball_LE";
         var_2 = 1.0;
-        var_3 = level._ID50036 _meth_818C( var_1 );
-        var_4 = _func_11F( level._ID50036 _meth_818D( var_1 ) ) * var_2;
+        var_3 = level._ID50036 gettagorigin( var_1 );
+        var_4 = anglestoforward( level._ID50036 gettagangles( var_1 ) ) * var_2;
         var_5 = var_3 + var_4 * -10;
         var_6 = var_3 + var_4 * 10;
-        var_7 = _func_06D( var_5, var_6, 0, undefined );
+        var_7 = bullettrace( var_5, var_6, 0, undefined );
         var_8 = var_7["position"];
         var_9 = var_7["normal"];
         var_10 = "footstep_ice_climbing";
 
         if ( _ID42237::_ID15272( var_10 ) )
         {
-            var_11 = _func_11D( level._ID50036._ID65 ) * -1;
-            _func_156( _ID42237::_ID16299( var_10 ), var_8, var_9, var_11 );
+            var_11 = anglestoup( level._ID50036._ID65 ) * -1;
+            playfx( _ID42237::_ID16299( var_10 ), var_8, var_9, var_11 );
         }
 
         thread _ID42237::_ID27077( "icepick_impact_ice", var_8 );
@@ -1286,19 +1364,19 @@ _ID45136( var_0 )
     {
         var_1 = "J_Ball_RI";
         var_2 = -1.0;
-        var_3 = level._ID50036 _meth_818C( var_1 );
-        var_4 = _func_11F( level._ID50036 _meth_818D( var_1 ) ) * var_2;
+        var_3 = level._ID50036 gettagorigin( var_1 );
+        var_4 = anglestoforward( level._ID50036 gettagangles( var_1 ) ) * var_2;
         var_5 = var_3 + var_4 * -10;
         var_6 = var_3 + var_4 * 10;
-        var_7 = _func_06D( var_5, var_6, 0, undefined );
+        var_7 = bullettrace( var_5, var_6, 0, undefined );
         var_8 = var_7["position"];
         var_9 = var_7["normal"];
         var_10 = "footstep_ice_climbing";
 
         if ( _ID42237::_ID15272( var_10 ) )
         {
-            var_11 = _func_11D( level._ID50036._ID65 ) * -1;
-            _func_156( _ID42237::_ID16299( var_10 ), var_8, var_9, var_11 );
+            var_11 = anglestoup( level._ID50036._ID65 ) * -1;
+            playfx( _ID42237::_ID16299( var_10 ), var_8, var_9, var_11 );
         }
 
         thread _ID42237::_ID27077( "icepick_impact_ice", var_8 );
@@ -1307,35 +1385,35 @@ _ID45136( var_0 )
 
 _ID52973( var_0, var_1, var_2, var_3 )
 {
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_830F( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
+    level._ID794 _meth_830f( 0 );
     _ID42237::_ID14402( "player_starts_climbing" );
     var_4 = _ID42407::_ID35028( "player_rig", var_0 );
     var_4._ID65 = var_1;
     var_4 _ID42259::_ID3128( "viewmodel_ice_picker", "tag_weapon_right" );
     var_4 _ID42259::_ID3128( "viewmodel_ice_picker_03", "tag_weapon_left" );
-    var_5 = _func_06A( "script_model", ( 0, 0, 0 ) );
-    var_5 _meth_80B8( "tag_origin" );
-    var_5 _meth_805A();
-    var_5 _meth_8053( var_4, "tag_player" );
+    var_5 = spawn( "script_model", ( 0, 0, 0 ) );
+    var_5 setmodel( "tag_origin" );
+    var_5 hide();
+    var_5 linkto( var_4, "tag_player" );
     var_6 = [];
-    thread _unknown_2A34();
+    thread _ID53934();
     var_7 = [];
     var_7[var_7.size] = "left";
     var_7[var_7.size] = "right";
     var_8 = [];
-    var_8["left"] = ::_unknown_2A41;
-    var_8["right"] = ::_unknown_2A42;
+    var_8["left"] = ::_ID53748;
+    var_8["right"] = ::_ID47155;
     var_9 = [];
     var_10 = [];
     var_10["left"] = "j";
     var_10["right"] = "k";
     var_11 = var_4._ID65;
-    var_12 = _func_11F( var_11 );
-    var_13 = _func_11D( var_11 );
-    var_14 = _func_11E( var_11 );
-    var_15 = _func_1A5();
+    var_12 = anglestoforward( var_11 );
+    var_13 = anglestoup( var_11 );
+    var_14 = anglestoright( var_11 );
+    var_15 = spawnstruct();
     var_15._ID50881 = 0.01;
     var_15._ID51651 = [];
     var_15._ID794 = self;
@@ -1347,25 +1425,22 @@ _ID52973( var_0, var_1, var_2, var_3 )
     var_15._ID17430 = var_5;
     var_15._ID50716 = 0;
     _ID42237::_ID14402( "climbing_dof" );
-    var_16 = _func_039( "climb_startdir" );
+    var_16 = getdvar( "climb_startdir" );
     var_15._ID51282 = 0;
     var_17 = 0;
 
     if ( level._ID15361 <= 1 )
         var_17 = 10000;
 
-    var_18 = var_7;
-
-    for ( var_23 = _func_1DA( var_18 ); _func_02F( var_23 ); var_23 = _func_1BF( var_18, var_23 ) )
+    foreach ( var_19 in var_7 )
     {
-        var_19 = var_18[var_23];
-        var_20 = _func_06A( "script_origin", ( 0, 0, 0 ) );
+        var_20 = spawn( "script_origin", ( 0, 0, 0 ) );
         var_21 = var_10[var_19];
         var_20._ID47576 = var_21;
         var_20._ID46602 = var_19;
 
-        if ( _func_02F( var_2 ) )
-            var_20._ID50118 = _func_03D() + var_17;
+        if ( isdefined( var_2 ) )
+            var_20._ID50118 = gettime() + var_17;
         else
             var_20._ID50118 = 0;
 
@@ -1376,35 +1451,33 @@ _ID52973( var_0, var_1, var_2, var_3 )
         var_20._ID44553 = var_16;
         var_20._ID794 = self;
         var_20._ID51876 = var_8[var_19];
-        thread _unknown_3A00( var_20 );
+        thread _ID43391( var_20 );
         var_20._ID54537 = var_15;
         var_20._ID49159 = "additive_in";
         var_20._ID43325 = 0;
         var_20._ID53026 = "ice";
-        var_22 = _unknown_3B92( var_19 );
-        var_20._ID15244 = _unknown_3B1D( var_4, var_22 );
+        var_22 = _ID51668( var_19 );
+        var_20._ID15244 = _ID52045( var_4, var_22 );
         var_20._ID15244._ID44160 = 0;
-        var_20 thread _unknown_3B7C( var_20._ID15244, var_4 );
+        var_20 thread _ID46315( var_20._ID15244, var_4 );
         var_9[var_19] = var_20;
     }
 
-    var_clear_5
-    var_clear_0
     var_15._ID48348 = var_9;
     var_24 = var_9[var_15._ID45132];
     level._ID45147 = var_15;
-    thread _unknown_434C( var_24._ID45941 );
-    _unknown_3225( var_24 );
+    thread _ID52993( var_24._ID45941 );
+    _ID53958( var_24 );
     level._ID50568 = 0;
-    var_25 = _unknown_321E( var_24 );
-    var_24._ID45941 _meth_8155( var_25._ID3197["idle"], 1, 0, 1 );
+    var_25 = _ID44276( var_24 );
+    var_24._ID45941 setanim( var_25._ID3197["idle"], 1, 0, 1 );
     var_24._ID794._ID48545 = 0;
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
     {
         _ID42237::_ID14402( "we_care_about_right_icepick" );
-        var_4 _meth_805A();
-        _unknown_347F( var_24 );
+        var_4 hide();
+        _ID46532( var_24 );
     }
     else
     {
@@ -1413,16 +1486,16 @@ _ID52973( var_0, var_1, var_2, var_3 )
         else
             _ID42237::_ID14402( "we_care_about_right_icepick" );
 
-        thread _unknown_4378( var_24 );
-        var_15._ID51282 = _func_03D();
+        thread _ID43716( var_24 );
+        var_15._ID51282 = gettime();
     }
 
     var_26 = 1;
-    var_27 = _func_03D() + 8000;
+    var_27 = gettime() + 8000;
     var_28 = 0;
-    thread _unknown_3B02( var_15 );
+    thread _ID52315( var_15 );
     var_29 = 0;
-    var_30 = _unknown_4501();
+    var_30 = _ID53109();
     var_31 = 0;
 
     for (;;)
@@ -1438,23 +1511,23 @@ _ID52973( var_0, var_1, var_2, var_3 )
             if ( var_29 == 2 && var_31 == 0 )
             {
                 var_32 = 1.5;
-                var_31 = _func_03D();
+                var_31 = gettime();
                 level._ID5261 = _ID42313::_ID9125( "black", 0, level._ID794 );
-                level._ID5261 _meth_808B( var_32 );
+                level._ID5261 fadeovertime( var_32 );
                 level._ID5261._ID55 = 1;
                 level._ID52233 = maps\cliffhanger_code::_ID50305( &"CLIFFHANGER_E3_INTEREST_OF_TIME" );
-                level._ID52233 _meth_808B( var_32 );
+                level._ID52233 fadeovertime( var_32 );
                 level._ID52233._ID55 = 1;
             }
-            else if ( var_29 >= 2 && _func_03D() > var_31 + 2000 )
+            else if ( var_29 >= 2 && gettime() > var_31 + 2000 )
             {
-                var_5 _meth_80B7();
-                level._ID794 _meth_813A( 1 );
-                level._ID794 _meth_8122( 1 );
-                level._ID794 _meth_8123( 1 );
-                level._ID794 _meth_830F( 1 );
+                var_5 delete();
+                level._ID794 allowfire( 1 );
+                level._ID794 allowcrouch( 1 );
+                level._ID794 allowprone( 1 );
+                level._ID794 _meth_830f( 1 );
                 _ID42237::_ID14402( "finished_climbing" );
-                level._ID794 _meth_8328();
+                level._ID794 disableweapons();
                 var_24._ID45941 notify( "stop_crack" );
                 _ID42237::_ID14388( "climbing_dof" );
                 return 1;
@@ -1462,20 +1535,20 @@ _ID52973( var_0, var_1, var_2, var_3 )
         }
 
         var_24 = var_15._ID48348[var_15._ID45132];
-        var_33 = _unknown_336A( var_15._ID45132 );
+        var_33 = _ID48513( var_15._ID45132 );
         var_25 = var_9[var_33];
 
-        if ( _unknown_3352( var_26, var_27, var_24 ) )
+        if ( _ID52227( var_26, var_27, var_24 ) )
         {
-            var_28 = _unknown_3288( var_24 );
+            var_28 = _ID47145( var_24 );
             break;
         }
 
-        if ( _unknown_355A( var_9[var_15._ID45132], var_3 ) )
+        if ( _ID43228( var_9[var_15._ID45132], var_3 ) )
         {
-            var_27 = _func_03D() + 8000;
+            var_27 = gettime() + 8000;
             var_24._ID50361 = var_24._ID49990;
-            var_15._ID45132 = _unknown_33A6( var_15._ID45132 );
+            var_15._ID45132 = _ID48513( var_15._ID45132 );
             var_26 = 1;
             var_29++;
         }
@@ -1495,25 +1568,25 @@ _ID52973( var_0, var_1, var_2, var_3 )
             _ID42237::_ID14413( "climb_start" );
             _ID42237::_ID14426( "climb_pullup" );
             var_24 = var_9[var_15._ID45132];
-            _unknown_37B8( var_24 );
+            _ID53926( var_24 );
 
-            while ( _unknown_3C8B( var_24 ) )
+            while ( _ID48003( var_24 ) )
                 wait 0.05;
         }
     }
 
-    var_5 _meth_80B7();
+    var_5 delete();
 
-    if ( _func_02F( var_4 ) )
-        var_4 _meth_80B7();
+    if ( isdefined( var_4 ) )
+        var_4 delete();
 
     if ( var_28 )
     {
-        level._ID794 _meth_813A( 1 );
-        level._ID794 _meth_8122( 1 );
-        level._ID794 _meth_8123( 1 );
-        level._ID794 _meth_830F( 1 );
-        thread _unknown_2DE9();
+        level._ID794 allowfire( 1 );
+        level._ID794 allowcrouch( 1 );
+        level._ID794 allowprone( 1 );
+        level._ID794 _meth_830f( 1 );
+        thread _ID53216();
         _ID42237::_ID14388( "climbing_dof" );
     }
 
@@ -1523,37 +1596,37 @@ _ID52973( var_0, var_1, var_2, var_3 )
 _ID47170( var_0, var_1, var_2 )
 {
     var_0._ID45941 notify( "stop_crack" );
-    level._ID794 _meth_80A1( "scn_cliff_plr_climb_fall_icepick_remove" );
+    level._ID794 playsound( "scn_cliff_plr_climb_fall_icepick_remove" );
 
     if ( _ID42237::_ID14385( "final_climb" ) )
     {
         _ID42237::_ID14388( "can_save" );
-        _unknown_3429( var_0, "bigjump_fall" );
+        _ID43815( var_0, "bigjump_fall" );
         return 1;
     }
 
     if ( _ID42237::_ID14385( "player_climbs_past_safe_point" ) )
     {
         _ID42237::_ID14388( "can_save" );
-        _unknown_3447( var_0, "new_fall" );
+        _ID43815( var_0, "new_fall" );
         return 1;
     }
 
-    var_0 = _unknown_348A( var_0 );
+    var_0 = _ID44276( var_0 );
     var_3 = var_0._ID3197;
-    var_0._ID45941 _meth_814B();
+    var_0._ID45941 stopanimscripted();
     var_4 = var_1 + "_fall";
     var_5 = "fall anim";
     level._ID50036 thread _ID42259::_ID46741( var_5, level._ID30895["worldbody"][var_4], 0.1, var_2 );
-    level._ID50036 _meth_8148( var_5, var_2._ID740, var_2._ID65, level._ID30895["worldbody"][var_4] );
-    level._ID794 _meth_80A9( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
-    thread _unknown_2BF8( "dof_climb1_drop_start" );
+    level._ID50036 animscripted( var_5, var_2._ID740, var_2._ID65, level._ID30895["worldbody"][var_4] );
+    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
+    thread _ID43069( "dof_climb1_drop_start" );
     wait 0.5;
-    level._ID794 _meth_80A1( "step_land_plr_med_ice" );
-    level._ID794 _meth_8098( undefined );
+    level._ID794 playsound( "step_land_plr_med_ice" );
+    level._ID794 playersetgroundreferenceent( undefined );
     level._ID50036 waittillmatch( var_5,  "end"  );
     wait 0.05;
-    _unknown_34B5( var_0 );
+    _ID54422( var_0 );
     return 0;
 }
 
@@ -1567,22 +1640,22 @@ _ID47145( var_0 )
         _ID42237::_ID14388( "can_save" );
         var_2 = _ID42237::_ID35164();
         var_2._ID740 = level._ID794._ID740 + ( 0, 0, 32 );
-        var_2._ID65 = var_0._ID45941 _meth_818D( "tag_player" );
-        level._ID794 _meth_8055();
-        var_0._ID794 _meth_8098( undefined );
-        level._ID794 _meth_8345( var_2._ID65 );
+        var_2._ID65 = var_0._ID45941 gettagangles( "tag_player" );
+        level._ID794 unlink();
+        var_0._ID794 playersetgroundreferenceent( undefined );
+        level._ID794 setplayerangles( var_2._ID65 );
         wait 0.1;
         var_3 = var_0._ID3197;
         var_4 = 2;
-        var_0._ID45941 _meth_8119( "anim", var_3["fall"], var_3["root"], 1, 0.35, var_4 );
-        var_0._ID45941 _meth_82B8( var_2._ID740, var_1, 0.1, 0 );
-        level._ID794 _meth_8087( var_2, "tag_origin", 0.5, 0.1, 0 );
+        var_0._ID45941 setflaggedanimknoballrestart( "anim", var_3["fall"], var_3["root"], 1, 0.35, var_4 );
+        var_0._ID45941 moveto( var_2._ID740, var_1, 0.1, 0 );
+        level._ID794 playerlinktoblend( var_2, "tag_origin", 0.5, 0.1, 0 );
         wait(var_1);
-        var_2 _meth_80B7();
-        _unknown_3564( var_0 );
+        var_2 delete();
+        _ID46993( var_0 );
         var_5 = ( -15, -100, 0 );
-        var_6 = _func_11F( var_5 );
-        level._ID794 _meth_82FC( var_6 * 50 );
+        var_6 = anglestoforward( var_5 );
+        level._ID794 setvelocity( var_6 * 50 );
         level._ID794 _ID42407::_ID5026();
         wait 1.2;
         _ID42237::_ID14402( "fade_to_death" );
@@ -1592,47 +1665,47 @@ _ID47145( var_0 )
     if ( _ID42237::_ID14385( "player_climbs_past_safe_point" ) )
     {
         _ID42237::_ID14388( "can_save" );
-        _unknown_35BB( var_0 );
+        _ID48918( var_0 );
         return 1;
     }
 
-    var_0 = _unknown_3619( var_0 );
+    var_0 = _ID44276( var_0 );
     var_3 = var_0._ID3197;
-    var_0._ID45941 _meth_814C( var_3["additive"], 0.1 );
-    var_0._ID45941 _meth_8119( "anim", var_3["fall_small"], var_3["root"], 1, 0.15, 1 );
+    var_0._ID45941 clearanim( var_3["additive"], 0.1 );
+    var_0._ID45941 setflaggedanimknoballrestart( "anim", var_3["fall_small"], var_3["root"], 1, 0.15, 1 );
     var_0._ID45941 waittillmatch( "anim",  "end"  );
-    var_0._ID45941 _meth_805A();
-    var_7 = _func_1A1( "player_recover", "targetname" );
-    var_8 = _func_0F3( var_7._ID740, var_0._ID45941._ID740 );
+    var_0._ID45941 hide();
+    var_7 = getent( "player_recover", "targetname" );
+    var_8 = distance( var_7._ID740, var_0._ID45941._ID740 );
     var_9 = var_8 * 0.0065 + 0.15;
-    var_0._ID45941 _meth_82B8( var_7._ID740, var_9, var_9 * 0.6 );
-    var_0._ID45941 _meth_82BF( ( 70, 165, 0 ), var_9, var_9 );
+    var_0._ID45941 moveto( var_7._ID740, var_9, var_9 * 0.6 );
+    var_0._ID45941 rotateto( ( 70, 165, 0 ), var_9, var_9 );
     wait(var_9);
     wait 0.05;
-    _unknown_364E( var_0 );
+    _ID46993( var_0 );
     return 0;
 }
 
 _ID46993( var_0 )
 {
-    var_0._ID794 _meth_8098( undefined );
-    var_0._ID794 _meth_8055();
-    var_0._ID45941 _meth_80B7();
+    var_0._ID794 playersetgroundreferenceent( undefined );
+    var_0._ID794 unlink();
+    var_0._ID45941 delete();
 }
 
 _ID54422( var_0 )
 {
-    var_0._ID794 _meth_8055();
-    var_0._ID45941 _meth_80B7();
+    var_0._ID794 unlink();
+    var_0._ID45941 delete();
 }
 
 _ID48918( var_0 )
 {
-    var_0 = _unknown_36E4( var_0 );
+    var_0 = _ID44276( var_0 );
     var_1 = var_0._ID3197;
     var_2 = 2;
-    var_0._ID45941 _meth_8119( "anim", var_1["fall"], var_1["root"], 1, 0.15, var_2 );
-    var_3 = _func_067( var_1["fall"] );
+    var_0._ID45941 setflaggedanimknoballrestart( "anim", var_1["fall"], var_1["root"], 1, 0.15, var_2 );
+    var_3 = getanimlength( var_1["fall"] );
     var_3 /= var_2;
     wait(var_3 * 0.5);
     _ID42237::_ID14402( "fade_to_death" );
@@ -1642,11 +1715,11 @@ _ID48918( var_0 )
 _ID43815( var_0, var_1 )
 {
     var_2 = var_0._ID3197;
-    var_0._ID45941 _meth_814B();
-    var_0._ID45941 _meth_8119( "anim", var_2[var_1], var_2["root"], 1, 0.15 );
-    var_3 = _func_067( var_2[var_1] );
-    level._ID794 _meth_80A9( 0.25, 0.125, 0.125, 0, 0, 0, 0 );
-    thread _unknown_2E81( "dof_climb_common_falldeath" );
+    var_0._ID45941 stopanimscripted();
+    var_0._ID45941 setflaggedanimknoballrestart( "anim", var_2[var_1], var_2["root"], 1, 0.15 );
+    var_3 = getanimlength( var_2[var_1] );
+    level._ID794 lerpviewangleclamp( 0.25, 0.125, 0.125, 0, 0, 0, 0 );
+    thread _ID43069( "dof_climb_common_falldeath" );
     wait(var_3 * 0.25);
     _ID42237::_ID14402( "fade_to_death" );
     level waittill( "foreverever" );
@@ -1654,21 +1727,21 @@ _ID43815( var_0, var_1 )
 
 _ID52227( var_0, var_1, var_2 )
 {
-    if ( _unknown_49FD() )
+    if ( _ID53109() )
         return 0;
 
     if ( !var_0 )
         return 0;
 
-    if ( _func_03D() > var_1 )
+    if ( gettime() > var_1 )
         return 1;
 
-    var_2 = _unknown_37A5( var_2 );
+    var_2 = _ID44276( var_2 );
 
     if ( _func_220() < 10000 )
         return 0;
 
-    return !_unknown_4052( var_2 );
+    return !_ID48003( var_2 );
 }
 
 _ID50473( var_0 )
@@ -1684,7 +1757,7 @@ _ID50473( var_0 )
 
 _ID44276( var_0 )
 {
-    var_1 = _unknown_37EF( var_0._ID46602 );
+    var_1 = _ID48513( var_0._ID46602 );
     return var_0._ID54537._ID48348[var_1];
 }
 
@@ -1714,7 +1787,7 @@ _ID53958( var_0 )
 _ID46409( var_0 )
 {
     if ( var_0._ID54537._ID51759 >= var_0._ID54537._ID43562.size )
-        _unknown_387C( var_0 );
+        _ID53958( var_0 );
 
     var_1 = var_0._ID54537._ID43562[var_0._ID54537._ID51759];
     var_0._ID54537._ID51759++;
@@ -1737,20 +1810,20 @@ _ID43055( var_0 )
     var_2[var_5] = var_0._ID3197;
     var_4[var_5]["additive_in"] = var_0._ID3197["additive_in_strength"];
     var_4[var_5]["additive_out"] = var_0._ID3197["additive_out_strength"];
-    var_1[var_5] = _unknown_3FC5( var_0, "stab" );
-    var_1[var_5] _meth_8120( var_2[var_5]["stab"], 1 );
-    var_1[var_5] _unknown_392F();
-    var_1[var_5] _meth_8059();
+    var_1[var_5] = _ID51180( var_0, "stab" );
+    var_1[var_5] setanimtime( var_2[var_5]["stab"], 1 );
+    var_1[var_5] _ID54242();
+    var_1[var_5] show();
     var_1[var_5]._ID740 = ( 230, 200, 200 );
-    var_0 = _unknown_3911( var_0 );
+    var_0 = _ID44276( var_0 );
     var_5 = var_0._ID46602;
     var_2[var_5] = var_0._ID3197;
     var_4[var_5]["additive_in"] = var_0._ID3197["additive_in_strength"];
     var_4[var_5]["additive_out"] = var_0._ID3197["additive_out_strength"];
-    var_1[var_5] = _unknown_402A( var_0, "stab" );
-    var_1[var_5] _meth_8120( var_2[var_5]["stab"], 1 );
-    var_1[var_5] _unknown_3995();
-    var_1[var_5] _meth_8059();
+    var_1[var_5] = _ID51180( var_0, "stab" );
+    var_1[var_5] setanimtime( var_2[var_5]["stab"], 1 );
+    var_1[var_5] _ID54242();
+    var_1[var_5] show();
     var_1[var_5]._ID740 = ( 200, 200, 200 );
     var_6 = 40;
     var_7 = [];
@@ -1761,15 +1834,15 @@ _ID43055( var_0 )
     var_10 = var_1["right"];
     var_11 = var_2["left"];
     var_12 = var_2["right"];
-    var_13 = _unknown_4376( "left" );
-    var_14 = _unknown_437F( "right" );
+    var_13 = _ID51668( "left" );
+    var_14 = _ID51668( "right" );
     var_15 = level._ID49072;
 
     for (;;)
     {
         var_8 = var_7[var_8];
-        var_9 _meth_814D( var_11[var_8], 1, 0, 1 );
-        var_10 _meth_814D( var_12[var_8], 1, 0, 1 );
+        var_9 setanimknob( var_11[var_8], 1, 0, 1 );
+        var_10 setanimknob( var_12[var_8], 1, 0, 1 );
 
         for ( var_16 = 0; var_16 < var_6; var_16++ )
         {
@@ -1781,10 +1854,10 @@ _ID43055( var_0 )
 
             var_18 = 1 - var_18;
             var_18 *= var_15;
-            var_9 _meth_8156( var_11["additive"], var_18 * var_4["left"][var_8], 0, 1 );
-            var_10 _meth_8156( var_12["additive"], var_18 * var_4["right"][var_8], 0, 1 );
-            var_19 = var_9 _meth_818C( var_13 );
-            var_20 = var_10 _meth_818C( var_14 );
+            var_9 setanimlimited( var_11["additive"], var_18 * var_4["left"][var_8], 0, 1 );
+            var_10 setanimlimited( var_12["additive"], var_18 * var_4["right"][var_8], 0, 1 );
+            var_19 = var_9 gettagorigin( var_13 );
+            var_20 = var_10 gettagorigin( var_14 );
             wait 0.05;
         }
     }
@@ -1793,10 +1866,10 @@ _ID43055( var_0 )
 _ID47936( var_0 )
 {
     var_1 = var_0._ID3197;
-    var_2 = _unknown_413D( var_0, "stab" );
-    var_2 _meth_8120( var_1["stab"], 1 );
-    var_2 _unknown_3AA1();
-    var_2 _meth_8059();
+    var_2 = _ID51180( var_0, "stab" );
+    var_2 setanimtime( var_1["stab"], 1 );
+    var_2 _ID54242();
+    var_2 show();
     var_2._ID740 = var_2._ID740 + ( 0, 200, 100 );
     var_3 = [];
     var_3["wrist_in"] = "wrist_in";
@@ -1808,44 +1881,44 @@ _ID47936( var_0 )
     var_5["wrist_out"] = 1.7;
     var_5["wrist_in"] = 8;
     var_6 = "wrist_in";
-    var_2 thread _unknown_44F5();
+    var_2 thread _ID52023();
     wait 0.05;
-    var_7 = _unknown_4496( var_0._ID46602 );
-    var_8 = _unknown_4420( var_2, var_7 );
-    var_8 _meth_8055();
-    var_8 _unknown_3CA4( level._ID43887 );
-    var_9 = _func_11F( var_8._ID65 );
-    var_10 = _unknown_443A( var_2, var_7 );
-    var_10 _meth_8055();
-    var_10 _unknown_3CBE( level._ID43887 );
-    var_10 _meth_8053( var_2, var_7 );
-    _func_036( "climb_float", 2.5 );
-    var_2 thread _unknown_3C6E( var_10, var_8 );
+    var_7 = _ID51668( var_0._ID46602 );
+    var_8 = _ID52045( var_2, var_7 );
+    var_8 unlink();
+    var_8 _ID48945( level._ID43887 );
+    var_9 = anglestoforward( var_8._ID65 );
+    var_10 = _ID52045( var_2, var_7 );
+    var_10 unlink();
+    var_10 _ID48945( level._ID43887 );
+    var_10 linkto( var_2, var_7 );
+    setdynamicdvar( "climb_float", 2.5 );
+    var_2 thread _ID54616( var_10, var_8 );
 
     for (;;)
     {
-        var_11 = _func_0BA( 0, 1 );
+        var_11 = randomfloatrange( 0, 1 );
         var_11 = 1;
         var_12 = [];
         var_12["additive_in"] = "wrist_in";
         var_12["additive_out"] = "wrist_out";
         var_13 = "additive_out";
         var_14 = var_12[var_13];
-        var_2 _meth_814C( var_1["wrist"], 0 );
-        var_2 _meth_8156( var_1["wrist"], 0, 0, 1 );
-        var_2 _meth_814D( var_1[var_13], 1, 0, 1 );
-        var_2 _meth_8156( var_1["additive"], level._ID49072 * var_1[var_13 + "_strength"] * var_11, 0, 1 );
+        var_2 clearanim( var_1["wrist"], 0 );
+        var_2 setanimlimited( var_1["wrist"], 0, 0, 1 );
+        var_2 setanimknob( var_1[var_13], 1, 0, 1 );
+        var_2 setanimlimited( var_1["additive"], level._ID49072 * var_1[var_13 + "_strength"] * var_11, 0, 1 );
         var_15 = var_1[var_13 + "_strength"] * var_11 * level._ID54455;
         var_15 *= 0.2;
         wait 0.7;
         var_16 = 1;
-        var_2 _meth_814C( var_1["additive"], var_16 );
-        var_2 _meth_814D( var_1[var_14], 1, 0, 1 );
-        var_2 _meth_8156( var_1["wrist"], 0, 0, 1 );
-        var_2 _meth_8156( var_1["wrist"], var_15, var_16, 1 );
+        var_2 clearanim( var_1["additive"], var_16 );
+        var_2 setanimknob( var_1[var_14], 1, 0, 1 );
+        var_2 setanimlimited( var_1["wrist"], 0, 0, 1 );
+        var_2 setanimlimited( var_1["wrist"], var_15, var_16, 1 );
         wait(var_16);
         wait 1.5;
-        var_2 _meth_8156( var_1["wrist"], var_15 * 0.35, var_16, 1 );
+        var_2 setanimlimited( var_1["wrist"], var_15 * 0.35, var_16, 1 );
         wait 1.2;
     }
 }
@@ -1868,54 +1941,54 @@ _ID45349( var_0, var_1, var_2 )
     if ( var_0._ID44553 != "up" )
         var_3 = 0;
 
-    var_4 = _unknown_3C2B( var_0 );
+    var_4 = _ID44276( var_0 );
     var_5 = var_4._ID3197;
-    var_4._ID45941 _meth_814C( var_5["wrist_in"], var_2 );
-    var_4._ID45941 _meth_814C( var_5["wrist_out"], var_2 );
-    var_1 _meth_814C( var_5["wrist_in"], var_2 );
-    var_1 _meth_814C( var_5["wrist_out"], var_2 );
+    var_4._ID45941 clearanim( var_5["wrist_in"], var_2 );
+    var_4._ID45941 clearanim( var_5["wrist_out"], var_2 );
+    var_1 clearanim( var_5["wrist_in"], var_2 );
+    var_1 clearanim( var_5["wrist_out"], var_2 );
     var_5 = var_0._ID3197;
     var_6 = [];
     var_6["additive_in"] = "wrist_in";
     var_6["additive_out"] = "wrist_out";
     var_7 = var_6[var_0._ID49159];
     var_0._ID52673 = undefined;
-    var_1 _meth_814C( var_5["additive"], var_2 );
+    var_1 clearanim( var_5["additive"], var_2 );
 
-    if ( _func_02F( var_5["vertical_corrector"] ) )
-        var_1 _meth_814C( var_5["vertical_corrector"], var_2 );
+    if ( isdefined( var_5["vertical_corrector"] ) )
+        var_1 clearanim( var_5["vertical_corrector"], var_2 );
 
-    var_1 _meth_814D( var_5[var_7], 1, 0, 1 );
-    var_1 _meth_8156( var_5["wrist"], 0, 0, 1 );
-    var_1 _meth_8156( var_5["wrist"], var_3, var_2, 1 );
+    var_1 setanimknob( var_5[var_7], 1, 0, 1 );
+    var_1 setanimlimited( var_5["wrist"], 0, 0, 1 );
+    var_1 setanimlimited( var_5["wrist"], var_3, var_2, 1 );
     wait 0.05;
-    var_0._ID45941 _meth_814C( var_5["additive"], var_2 );
+    var_0._ID45941 clearanim( var_5["additive"], var_2 );
 
-    if ( _func_02F( var_5["vertical_corrector"] ) )
-        var_0._ID45941 _meth_814C( var_5["vertical_corrector"], var_2 );
+    if ( isdefined( var_5["vertical_corrector"] ) )
+        var_0._ID45941 clearanim( var_5["vertical_corrector"], var_2 );
 
-    var_0._ID45941 _meth_814D( var_5[var_7], 1, 0, 1 );
-    var_0._ID45941 _meth_8156( var_5["wrist"], 0, 0, 1 );
-    var_0._ID45941 _meth_8156( var_5["wrist"], var_3, var_2, 1 );
+    var_0._ID45941 setanimknob( var_5[var_7], 1, 0, 1 );
+    var_0._ID45941 setanimlimited( var_5["wrist"], 0, 0, 1 );
+    var_0._ID45941 setanimlimited( var_5["wrist"], var_3, var_2, 1 );
     wait(var_2);
     var_1 notify( "stop_fixing_origin" );
 }
 
 _ID48945( var_0 )
 {
-    var_1 = _func_11F( self._ID65 );
+    var_1 = anglestoforward( self._ID65 );
     self._ID740 = self._ID740 + var_1 * var_0;
 }
 
 _ID44714( var_0 )
 {
-    if ( _func_03D() < var_0._ID54537._ID51282 + 500 )
+    if ( gettime() < var_0._ID54537._ID51282 + 500 )
         return 0;
 
     if ( var_0._ID49990 == var_0._ID50361 )
         return 0;
 
-    if ( !_unknown_45F2( var_0 ) )
+    if ( !_ID48003( var_0 ) )
         return 0;
 
     return 1;
@@ -1923,7 +1996,7 @@ _ID44714( var_0 )
 
 _ID43228( var_0, var_1 )
 {
-    if ( _func_03D() < var_0._ID54537._ID51282 + 500 )
+    if ( gettime() < var_0._ID54537._ID51282 + 500 )
         return 0;
 
     if ( var_0._ID49990 == var_0._ID50361 )
@@ -1931,15 +2004,15 @@ _ID43228( var_0, var_1 )
 
     var_0._ID45941 notify( "stop_crack" );
 
-    if ( !_unknown_4626( var_0 ) )
+    if ( !_ID48003( var_0 ) )
         return 0;
 
-    var_2 = _unknown_4097( var_0, var_1 );
+    var_2 = _ID45876( var_0, var_1 );
 
     if ( !var_2 )
         _ID42237::_ID14402( "finished_climbing" );
 
-    if ( _func_03A( "climb_automove" ) )
+    if ( getdvarint( "climb_automove" ) )
         wait 0.5;
 
     return var_2;
@@ -1965,9 +2038,9 @@ _ID44991()
 
 _ID48919( var_0 )
 {
-    var_1 = self _meth_82FE();
+    var_1 = self getnormalizedmovement();
 
-    if ( _func_03A( "climb_automove" ) )
+    if ( getdvarint( "climb_automove" ) )
     {
         if ( var_0._ID44553 == "up" )
             var_1 = ( 1, 0, 0 );
@@ -1984,13 +2057,13 @@ _ID48919( var_0 )
     var_2 = var_1[0];
     var_3 = var_1[1];
 
-    if ( var_0._ID794 _meth_8256( "DPAD_UP" ) )
+    if ( var_0._ID794 buttonpressed( "DPAD_UP" ) )
         var_2 = 1;
 
-    if ( var_0._ID794 _meth_8256( "DPAD_LEFT" ) )
+    if ( var_0._ID794 buttonpressed( "DPAD_LEFT" ) )
         var_3 = -1;
 
-    if ( var_0._ID794 _meth_8256( "DPAD_RIGHT" ) )
+    if ( var_0._ID794 buttonpressed( "DPAD_RIGHT" ) )
         var_3 = 1;
 
     var_1 = ( var_2, var_3, 0 );
@@ -2004,80 +2077,80 @@ _ID46532( var_0 )
 
     if ( !var_0._ID54537._ID53810 )
     {
-        if ( level._ID794 _meth_8188() == "crouch" )
+        if ( level._ID794 getstance() == "crouch" )
         {
-            level._ID794 _meth_8189( "stand" );
+            level._ID794 setstance( "stand" );
             wait 1;
         }
 
         var_2 = "start";
 
-        if ( _func_03D() < level._ID45632 + 22000 )
+        if ( gettime() < level._ID45632 + 22000 )
             var_2 = "early";
 
         var_3 = var_2 + "_climb_left";
         var_0._ID54537._ID45132 = "right";
 
-        if ( level._ID794 _unknown_3875() )
+        if ( level._ID794 _ID47155() )
         {
             var_3 = var_2 + "_climb_right";
             var_0._ID54537._ID45132 = "left";
         }
 
-        thread _unknown_5119( var_0 );
+        thread _ID47123( var_0 );
         var_0 = var_0._ID54537._ID48348[var_0._ID54537._ID45132];
-        var_0._ID45941 _meth_8118( "start_climb", var_1[var_3], var_1["root"], 1, 0, 0 );
-        var_4 = _unknown_3F04( var_0 );
-        thread _unknown_41DD( var_4 );
+        var_0._ID45941 setflaggedanimknoball( "start_climb", var_1[var_3], var_1["root"], 1, 0, 0 );
+        var_4 = _ID44276( var_0 );
+        thread _ID49435( var_4 );
         var_5 = 0.5;
-        var_0._ID794 _meth_8087( var_0._ID45941, "tag_player", var_5, var_5 * 0.2, var_5 * 0.2 );
+        var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_player", var_5, var_5 * 0.2, var_5 * 0.2 );
 
         if ( var_3 == var_2 + "_climb_left" )
         {
-            var_4 = _unknown_3F37( var_0 );
+            var_4 = _ID44276( var_0 );
             var_4._ID49159 = "additive_out";
             var_4._ID43325 = 0.5;
-            thread _unknown_4516( var_4 );
+            thread _ID48714( var_4 );
         }
 
         if ( !var_0._ID54537._ID53810 )
         {
-            var_0._ID794 _meth_8098( var_0._ID54537._ID17430 );
+            var_0._ID794 playersetgroundreferenceent( var_0._ID54537._ID17430 );
             var_0._ID54537._ID53810 = 1;
             wait 0.05;
         }
 
-        level._ID794 _meth_831B();
-        var_0._ID45941 _meth_811A( "start_climb", var_1[var_3], 1, 0, 1 );
+        level._ID794 takeallweapons();
+        var_0._ID45941 setflaggedanim( "start_climb", var_1[var_3], 1, 0, 1 );
         _ID42407::_ID10226( 1.2, _ID42237::_ID14402, "player_begins_to_climb" );
-        _func_0DB( "sm_sunsamplesizenear", 0.0625 );
+        setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
         var_6 = 0;
 
         for (;;)
         {
-            if ( !var_6 && var_0._ID45941 _meth_8159( var_1[var_3] ) > 0.3 )
+            if ( !var_6 && var_0._ID45941 getanimtime( var_1[var_3] ) > 0.3 )
             {
-                var_0._ID45941 _meth_8059();
+                var_0._ID45941 show();
                 var_6 = 1;
             }
 
-            if ( var_0._ID45941 _meth_8159( var_1[var_3] ) > 0.97 )
+            if ( var_0._ID45941 getanimtime( var_1[var_3] ) > 0.97 )
                 break;
 
             wait 0.05;
         }
 
-        var_4 = _unknown_3FDF( var_0 );
-        _unknown_42A9( var_4, "tag_player" );
+        var_4 = _ID44276( var_0 );
+        _ID50911( var_4, "tag_player" );
         return;
     }
 
-    thread _unknown_42DA( var_0 );
-    var_7 = var_0._ID45941 _meth_818D( "tag_view" );
-    var_8 = var_0._ID794 _meth_8346();
-    var_9 = _func_11F( var_7 );
-    var_10 = _func_11F( var_8 );
-    var_11 = _func_0FB( var_9, var_10 );
+    thread _ID54136( var_0 );
+    var_7 = var_0._ID45941 gettagangles( "tag_view" );
+    var_8 = var_0._ID794 getplayerangles();
+    var_9 = anglestoforward( var_7 );
+    var_10 = anglestoforward( var_8 );
+    var_11 = vectordot( var_9, var_10 );
     level._ID11651 = var_11;
 
     if ( var_11 < 0.85 )
@@ -2087,58 +2160,58 @@ _ID46532( var_0 )
 _ID50911( var_0, var_1 )
 {
     if ( var_0._ID46602 == "right" )
-        var_0._ID794 _meth_8084( var_0._ID45941, var_1, 1, 22, 60, 40, 40, 1 );
+        var_0._ID794 playerlinktodelta( var_0._ID45941, var_1, 1, 22, 60, 40, 40, 1 );
     else
-        var_0._ID794 _meth_8084( var_0._ID45941, var_1, 1, 70, 28, 40, 40, 1 );
+        var_0._ID794 playerlinktodelta( var_0._ID45941, var_1, 1, 70, 28, 40, 40, 1 );
 }
 
 _ID49435( var_0 )
 {
     var_0._ID45941 waittillmatch( "start_climb",  "stab"  );
     var_0._ID15244 _ID42407::_ID38044( "player_ice_pick", "tag_origin", 10 );
-    var_0._ID15244 _meth_80A1( "icepick_inactive_cracking" );
+    var_0._ID15244 playsound( "icepick_inactive_cracking" );
     var_0._ID45941 waittill( "stop_crack" );
-    var_0._ID15244 _meth_80B3();
-    var_0._ID15244 _meth_80A1( "icepick_inactive_cracking_stop" );
+    var_0._ID15244 playrumbleonentity();
+    var_0._ID15244 playsound( "icepick_inactive_cracking_stop" );
 }
 
 _ID54136( var_0 )
 {
     var_0._ID794 endon( "stop_climbing" );
     var_1 = 0.3;
-    var_0._ID794 _meth_8087( var_0._ID45941, "tag_player", var_1, var_1 * 0.2, var_1 * 0.2 );
+    var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_player", var_1, var_1 * 0.2, var_1 * 0.2 );
     wait(var_1);
-    var_0._ID794 _meth_8084( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 1 );
+    var_0._ID794 playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 1 );
     wait 0.5;
-    _unknown_43B0( var_0, "tag_player" );
+    _ID50911( var_0, "tag_player" );
 }
 
 _ID45876( var_0, var_1 )
 {
-    if ( !_func_02F( var_1 ) )
-        _unknown_432B( var_0 );
+    if ( !isdefined( var_1 ) )
+        _ID46532( var_0 );
 
     var_2 = [];
     var_2[0] = "left";
     var_2[1] = "right";
     var_0._ID45941 notify( "arm_stabs" );
     var_3 = "up";
-    _unknown_468F( var_0, var_3 );
-    _unknown_46A9( var_0 );
+    _ID53744( var_0, var_3 );
+    _ID43776( var_0 );
     var_4 = var_0._ID3197;
     var_0._ID54537._ID49137 = undefined;
-    thread _unknown_4669( var_0 );
-    var_5 = _func_067( var_4["stab"] );
-    level._ID794 _meth_80A1( "player_climb_effort" );
+    thread _ID49966( var_0 );
+    var_5 = getanimlength( var_4["stab"] );
+    level._ID794 playsound( "player_climb_effort" );
     wait(var_5);
-    var_6 = _unknown_4A71( var_0 );
+    var_6 = _ID45060( var_0 );
     var_7 = var_0._ID53026;
     var_8 = "icepick_impact_" + var_7;
 
     if ( _ID42237::_ID15272( var_8 ) )
-        _func_156( _ID42237::_ID16299( var_8 ), var_0._ID44522, var_0._ID714 );
+        playfx( _ID42237::_ID16299( var_8 ), var_0._ID44522, var_0._ID714 );
 
-    var_0._ID45941 thread _unknown_4C03( var_0, var_0._ID44522, var_0._ID714 );
+    var_0._ID45941 thread _ID48437( var_0, var_0._ID44522, var_0._ID714 );
     thread _ID42237::_ID27077( "icepick_impact_ice", var_0._ID44522 );
     level._ID50568++;
 
@@ -2148,35 +2221,35 @@ _ID45876( var_0, var_1 )
         _ID42237::_ID14402( "price_climb_continues" );
     }
 
-    if ( _unknown_45CE( var_0 ) )
+    if ( _ID47617( var_0 ) )
         return 0;
 
     if ( var_6 )
     {
-        level._ID794 _meth_80B4( "icepick_climb" );
-        var_9 = _unknown_48B4( var_0, "settle", undefined, var_0._ID54537._ID47151 );
-        var_9 thread _unknown_4C08( -60 );
+        level._ID794 playrumblelooponentity( "icepick_climb" );
+        var_9 = _ID51180( var_0, "settle", undefined, var_0._ID54537._ID47151 );
+        var_9 thread _ID52023( -60 );
         var_9._ID740 = var_9._ID740 + var_0._ID54537._ID49137;
         var_0._ID54537._ID47151 = var_9;
         level._ID49685 = var_4["settle"];
-        var_9 _meth_8116( "stabbing", var_4["settle"], 1, 0, 1 );
-        var_0._ID45941 _meth_8116( "stabbing", var_4["settle"], 1, 0, 1 );
-        thread _unknown_45D2( var_0, var_9 );
-        thread _unknown_4778( var_0 );
-        _ID42407::_ID10226( 0.05, ::_unknown_4393, var_0, var_9, 0.5 );
+        var_9 setflaggedanimknobrestart( "stabbing", var_4["settle"], 1, 0, 1 );
+        var_0._ID45941 setflaggedanimknobrestart( "stabbing", var_4["settle"], 1, 0, 1 );
+        thread _ID51146( var_0, var_9 );
+        thread _ID50080( var_0 );
+        _ID42407::_ID10226( 0.05, ::_ID45349, var_0, var_9, 0.5 );
         var_0._ID54537._ID50716++;
 
         if ( var_0._ID54537._ID50716 == 3 )
             _ID42237::_ID14402( "player_climbed_3_steps" );
 
         var_0._ID45941 waittillmatch( "stabbing",  "release"  );
-        level._ID794 _meth_80B4( "icepick_release" );
+        level._ID794 playrumblelooponentity( "icepick_release" );
         var_0._ID45941 waittillmatch( "stabbing",  "settle"  );
-        thread _unknown_47DB( var_0 );
+        thread _ID53986( var_0 );
 
         if ( var_0._ID44553 == "up" || var_0._ID44553 != var_0._ID46602 )
         {
-            var_10 = _unknown_42C3( var_0 );
+            var_10 = _ID46409( var_0 );
 
             if ( var_10 > 0 )
                 wait(var_10);
@@ -2185,11 +2258,11 @@ _ID45876( var_0, var_1 )
     else
     {
         var_11 = "fail";
-        var_0._ID45941 _meth_8116( "stabbing", var_4[var_11], 1, 0, 1 );
+        var_0._ID45941 setflaggedanimknobrestart( "stabbing", var_4[var_11], 1, 0, 1 );
         var_0._ID45941 waittillmatch( "stabbing",  "end"  );
-        var_12 = _unknown_42D3( var_0 );
+        var_12 = _ID44276( var_0 );
         var_4 = var_12._ID3197;
-        var_0._ID45941 _meth_8153( var_4["idle"], var_4["root"], 1, 0.2, 1 );
+        var_0._ID45941 setanimknoballrestart( var_4["idle"], var_4["root"], 1, 0.2, 1 );
     }
 
     return var_6;
@@ -2197,32 +2270,32 @@ _ID45876( var_0, var_1 )
 
 _ID51146( var_0, var_1 )
 {
-    var_2 = _unknown_4CC6( var_0._ID46602 );
-    var_3 = _unknown_4C50( var_1, var_2 );
-    var_3 _meth_8055();
-    var_3 _unknown_44D4( level._ID43887 );
-    var_4 = _func_11F( var_3._ID65 );
-    var_5 = _unknown_4C69( var_1, var_2 );
-    var_5 _meth_8055();
-    var_5 _unknown_44ED( level._ID43887 );
-    var_5 _meth_8053( var_1, var_2 );
-    _unknown_4835( var_0, var_1, var_3, var_5 );
+    var_2 = _ID51668( var_0._ID46602 );
+    var_3 = _ID52045( var_1, var_2 );
+    var_3 unlink();
+    var_3 _ID48945( level._ID43887 );
+    var_4 = anglestoforward( var_3._ID65 );
+    var_5 = _ID52045( var_1, var_2 );
+    var_5 unlink();
+    var_5 _ID48945( level._ID43887 );
+    var_5 linkto( var_1, var_2 );
+    _ID49147( var_0, var_1, var_3, var_5 );
     var_6 = var_0._ID3197;
-    var_1 _meth_814C( var_6["root"], 0 );
-    var_5 _meth_80B7();
-    var_3 _meth_80B7();
+    var_1 clearanim( var_6["root"], 0 );
+    var_5 delete();
+    var_3 delete();
 }
 
 _ID53926( var_0 )
 {
-    var_1 = _func_1A1( "climb_get_on", "targetname" );
+    var_1 = getent( "climb_get_on", "targetname" );
     var_0._ID54537._ID53647 = 1;
     var_0._ID794 notify( "climbing" );
-    _unknown_45A2( var_0 );
-    var_0._ID794 _meth_8084( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 0 );
+    _ID46532( var_0 );
+    var_0._ID794 playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 0 );
     wait 0.05;
-    _unknown_4658( var_0, "tag_player" );
-    var_0._ID45941 _meth_8059();
+    _ID50911( var_0, "tag_player" );
+    var_0._ID45941 show();
 }
 
 _ID48455( var_0 )
@@ -2247,49 +2320,49 @@ _ID48455( var_0 )
 
 _ID45442( var_0 )
 {
-    var_0 _meth_802A( "viewmodel_ice_picker_03", "tag_weapon_left" );
+    var_0 detach( "viewmodel_ice_picker_03", "tag_weapon_left" );
 }
 
 _ID51377( var_0 )
 {
-    var_0 _meth_802A( "viewmodel_ice_picker", "tag_weapon_right" );
-    var_1 = var_0 _meth_818C( "tag_weapon_right" );
-    var_2 = var_0 _meth_818D( "tag_weapon_right" );
-    var_3 = _func_06A( "script_model", var_1 );
-    var_3 _meth_80B8( "viewmodel_ice_picker" );
+    var_0 detach( "viewmodel_ice_picker", "tag_weapon_right" );
+    var_1 = var_0 gettagorigin( "tag_weapon_right" );
+    var_2 = var_0 gettagangles( "tag_weapon_right" );
+    var_3 = spawn( "script_model", var_1 );
+    var_3 setmodel( "viewmodel_ice_picker" );
     var_3._ID65 = var_2;
-    var_3 _meth_82CC( var_3._ID740, ( 0, 0, -1 ) );
+    var_3 physicslaunchclient( var_3._ID740, ( 0, 0, -1 ) );
 }
 
 _ID47643( var_0 )
 {
     wait(var_0);
-    level._ID794 _meth_8098( undefined );
+    level._ID794 playersetgroundreferenceent( undefined );
 }
 
 _ID47617( var_0 )
 {
-    if ( !_unknown_482F( var_0 ) )
+    if ( !_ID48455( var_0 ) )
         return 0;
 
     if ( _ID42237::_ID14385( "final_climb" ) && _ID42237::_ID14385( "climb_pullup" ) )
     {
         var_0._ID45941 notify( "stop_crack" );
         var_1 = var_0._ID3197;
-        thread _unknown_488D( 1.5 );
+        thread _ID47643( 1.5 );
         var_2 = _ID42237::_ID16638( "player_icepicker_bigjump_end_getup", "targetname" );
         var_3 = 0.5;
         var_4 = var_0._ID45941 _ID42407::_ID16120( "climb_finish" );
-        var_5 = _func_071( var_2._ID740, var_2._ID65, var_4 );
-        var_6 = _func_072( var_2._ID740, var_2._ID65, var_4 );
-        var_0._ID45941 _meth_805A();
-        var_0._ID45941 _ID42237::_ID10192( 0.1, ::_meth_8059 );
-        var_0._ID794 _meth_8087( var_0._ID45941, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
+        var_5 = getstartorigin( var_2._ID740, var_2._ID65, var_4 );
+        var_6 = getstartangles( var_2._ID740, var_2._ID65, var_4 );
+        var_0._ID45941 hide();
+        var_0._ID45941 _ID42237::_ID10192( 0.1, ::show );
+        var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
         var_2 _ID42259::_ID3111( var_0._ID45941, "climb_finish" );
-        var_0._ID45941 _meth_805A();
-        var_0._ID794 _meth_8055();
+        var_0._ID45941 hide();
+        var_0._ID794 unlink();
         wait 0.05;
-        var_0._ID794 _meth_81F1( 1 );
+        var_0._ID794 setmovespeedscale( 1 );
         var_0._ID794 notify( "stop_climbing" );
         return 1;
     }
@@ -2301,48 +2374,48 @@ _ID47617( var_0 )
     if ( _ID42237::_ID14385( "climb_pullup" ) && !_ID42237::_ID14385( "final_climb" ) )
     {
         var_0._ID45941 notify( "stop_crack" );
-        level._ID794 _meth_8084( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0 );
-        var_7 = _func_1A1( "climb_jump_org", "targetname" );
+        level._ID794 playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0 );
+        var_7 = getent( "climb_jump_org", "targetname" );
         var_4 = var_0._ID45941 _ID42407::_ID16120( "first_pullup_" + var_0._ID54537._ID45132 );
-        var_5 = _func_071( var_7._ID740, var_7._ID65, var_4 );
-        var_6 = _func_072( var_7._ID740, var_7._ID65, var_4 );
+        var_5 = getstartorigin( var_7._ID740, var_7._ID65, var_4 );
+        var_6 = getstartangles( var_7._ID740, var_7._ID65, var_4 );
         var_0._ID45941._ID740 = var_5;
         var_0._ID45941._ID65 = var_6;
         var_1 = var_0._ID3197;
         var_8 = 0;
-        var_0._ID45941 _meth_814C( var_1["root"], var_8 );
+        var_0._ID45941 clearanim( var_1["root"], var_8 );
         _ID42237::_ID14402( "pause_sleeve_flap" );
-        var_0._ID45941 _meth_815C( "animdone", var_4, 1, var_8, 1 );
+        var_0._ID45941 setflaggedanimknob( "animdone", var_4, 1, var_8, 1 );
         thread _ID42259::_ID35866( var_0._ID45941, "animdone", "climbing" );
         var_0._ID45941 waittillmatch( "animdone",  "end"  );
         _ID42237::_ID14388( "pause_sleeve_flap" );
-        var_0._ID794 _meth_8055();
-        var_0._ID794 _meth_81F1( 1 );
-        var_0._ID45941 _meth_805A();
-        thread _unknown_52FB();
+        var_0._ID794 unlink();
+        var_0._ID794 setmovespeedscale( 1 );
+        var_0._ID45941 hide();
+        thread _ID53240();
         return 1;
     }
 
-    var_0._ID45941 _meth_805A();
-    var_0._ID794 _meth_8098( undefined );
-    var_0._ID794 _meth_81F1( 0.35 );
-    var_9 = _func_1A1( "jump_down_org", "targetname" );
+    var_0._ID45941 hide();
+    var_0._ID794 playersetgroundreferenceent( undefined );
+    var_0._ID794 setmovespeedscale( 0.35 );
+    var_9 = getent( "jump_down_org", "targetname" );
     var_10 = var_9 _ID42237::_ID35164();
     var_10._ID740 = var_9._ID740 + ( 0, 0, 1 );
     var_3 = 0.4;
-    var_0._ID794 _meth_8087( var_10, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
+    var_0._ID794 playerlinktoblend( var_10, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
     wait(var_3);
     wait 0.1;
-    var_0._ID794 _meth_8055();
-    var_10 _meth_80B7();
-    var_11 = _func_1A1( "climb_get_on", "targetname" );
+    var_0._ID794 unlink();
+    var_10 delete();
+    var_11 = getent( "climb_get_on", "targetname" );
     var_0._ID45941._ID740 = var_11._ID740;
     var_0._ID45941._ID65 = var_11._ID65;
     var_0._ID54537._ID45132 = "left";
-    _unknown_4C15( var_0, "up" );
+    _ID53744( var_0, "up" );
     var_1 = var_0._ID3197;
-    var_0._ID45941 _meth_814C( var_1["player_climb_root"], 0 );
-    var_0._ID45941 _meth_8116( "stabbing", var_1["idle"], 1, 0, 1 );
+    var_0._ID45941 clearanim( var_1["player_climb_root"], 0 );
+    var_0._ID45941 setflaggedanimknobrestart( "stabbing", var_1["idle"], 1, 0, 1 );
     return 1;
 }
 
@@ -2354,12 +2427,12 @@ _ID49147( var_0, var_1, var_2, var_3 )
     {
         wait 0.05;
         var_4 = var_2._ID740 - var_3._ID740;
-        var_5 = _func_122( var_2._ID740, var_2._ID65, var_3._ID740, var_3._ID65, var_1._ID740, var_1._ID65 );
+        var_5 = transformmove( var_2._ID740, var_2._ID65, var_3._ID740, var_3._ID65, var_1._ID740, var_1._ID65 );
         var_1._ID740 = var_1._ID740 + var_4;
         var_0._ID45941._ID740 = var_0._ID45941._ID740 + var_4;
-        var_6 = _func_0F3( ( 0, 0, 0 ), var_4 );
+        var_6 = distance( ( 0, 0, 0 ), var_4 );
         var_6 *= 10;
-        var_6 = _func_0C1( var_6 );
+        var_6 = int( var_6 );
         var_6 *= 0.1;
         var_7 = var_5["angles"][0];
 
@@ -2375,21 +2448,21 @@ _ID49966( var_0 )
 {
     wait 0.05;
     var_1 = var_0._ID3197;
-    var_2 = _unknown_4E6D( var_0, "stab" );
-    var_3 = _unknown_4E77( var_0, "settle" );
-    var_2 _meth_8120( var_1["stab"], 1.0 );
-    var_3 _meth_8120( var_1["settle"], 0.0 );
+    var_2 = _ID51180( var_0, "stab" );
+    var_3 = _ID51180( var_0, "settle" );
+    var_2 setanimtime( var_1["stab"], 1.0 );
+    var_3 setanimtime( var_1["settle"], 0.0 );
     wait 0.05;
-    var_4 = var_2 _meth_818C( "tag_player" );
-    var_5 = var_3 _meth_818C( "tag_player" );
+    var_4 = var_2 gettagorigin( "tag_player" );
+    var_5 = var_3 gettagorigin( "tag_player" );
     var_0._ID54537._ID49137 = var_4 - var_5;
-    var_2 _meth_80B7();
-    var_3 _meth_80B7();
+    var_2 delete();
+    var_3 delete();
 }
 
 _ID50080( var_0 )
 {
-    var_0._ID45941 _meth_8099();
+    var_0._ID45941 dontinterpolate();
     var_0._ID45941._ID740 = var_0._ID45941._ID740 + var_0._ID54537._ID49137;
 }
 
@@ -2398,14 +2471,14 @@ _ID53986( var_0 )
     var_1 = var_0._ID3197;
     var_0._ID45941 endon( "arm_stabs" );
     var_0._ID45941 waittillmatch( "stabbing",  "end"  );
-    var_0._ID45941 _meth_8153( var_1["idle"], var_1["root"], 1, 0, 1 );
+    var_0._ID45941 setanimknoballrestart( var_1["idle"], var_1["root"], 1, 0, 1 );
 }
 
 _ID53744( var_0, var_1 )
 {
     var_0._ID3197 = _ID51955::_ID49370( var_0._ID3197, var_1, var_0._ID46602 );
     var_0._ID44553 = var_1;
-    var_2 = _unknown_4850( var_0._ID46602 );
+    var_2 = _ID48513( var_0._ID46602 );
     var_3 = var_0._ID54537._ID48348[var_2];
     var_3._ID3197 = _ID51955::_ID49370( var_3._ID3197, var_1, var_3._ID46602 );
 }
@@ -2414,10 +2487,10 @@ _ID43776( var_0 )
 {
     var_1 = var_0._ID3197;
     var_2 = 0.2;
-    var_0._ID45941 _meth_814C( var_1["root"], var_2 );
-    var_0._ID45941 _meth_8116( "stabbing", var_1["stab"], 1, var_2, 1 );
-    thread _unknown_4E2F( var_0 );
-    thread _unknown_4E73( var_0 );
+    var_0._ID45941 clearanim( var_1["root"], var_2 );
+    var_0._ID45941 setflaggedanimknobrestart( "stabbing", var_1["stab"], 1, var_2, 1 );
+    thread _ID52764( var_0 );
+    thread _ID51543( var_0 );
     var_0._ID25524 = var_0._ID45941._ID740;
 }
 
@@ -2440,26 +2513,26 @@ _ID54027( var_0, var_1 )
 
     if ( var_1 != 0 )
     {
-        _unknown_50DB( var_0, var_1 );
-        var_0._ID45941 _meth_814D( var_2[var_0._ID49159], 1, 0, 1 );
-        var_0._ID45941 _meth_8156( var_2["additive"], var_0._ID43325, 0, 1 );
+        _ID44222( var_0, var_1 );
+        var_0._ID45941 setanimknob( var_2[var_0._ID49159], 1, 0, 1 );
+        var_0._ID45941 setanimlimited( var_2["additive"], var_0._ID43325, 0, 1 );
     }
 
-    var_0._ID45941 _meth_814D( var_2[var_0._ID52673], 1, 0, 1 );
-    var_0._ID45941 _meth_8156( var_2["vertical_corrector"], var_0._ID48122, 0, 1 );
+    var_0._ID45941 setanimknob( var_2[var_0._ID52673], 1, 0, 1 );
+    var_0._ID45941 setanimlimited( var_2["vertical_corrector"], var_0._ID48122, 0, 1 );
 }
 
 _ID48714( var_0 )
 {
     var_1 = var_0._ID3197;
-    var_0._ID45941 _meth_814D( var_1[var_0._ID49159], 1, 0, 1 );
-    var_0._ID45941 _meth_8156( var_1["additive"], var_0._ID43325, 0, 1 );
+    var_0._ID45941 setanimknob( var_1[var_0._ID49159], 1, 0, 1 );
+    var_0._ID45941 setanimlimited( var_1["additive"], var_0._ID43325, 0, 1 );
 }
 
 _ID51543( var_0 )
 {
     var_1 = var_0._ID45941._ID740;
-    var_2 = _func_1A5();
+    var_2 = spawnstruct();
     var_2._ID46165 = [];
     var_2._ID53077 = [];
     var_2._ID51373 = [];
@@ -2476,7 +2549,7 @@ _ID51543( var_0 )
         var_10 = var_9 / var_8 * var_5 * var_6[var_7 + "_strength"];
         var_3[var_9] = var_10;
         var_4[var_9] = var_7;
-        var_2 thread _unknown_5154( var_0, var_9, var_10, var_7 );
+        var_2 thread _ID53366( var_0, var_9, var_10, var_7 );
     }
 
     var_7 = "additive_out";
@@ -2487,7 +2560,7 @@ _ID51543( var_0 )
         var_11 = var_9 + var_8;
         var_3[var_11] = var_10;
         var_4[var_11] = var_7;
-        var_2 thread _unknown_5189( var_0, var_11, var_10, var_7 );
+        var_2 thread _ID53366( var_0, var_11, var_10, var_7 );
     }
 
     wait 0.05;
@@ -2498,17 +2571,15 @@ _ID51543( var_0 )
     var_13 = 0;
     var_14 = 0.98;
     var_15 = 1000;
-    var_16 = var_2._ID46165;
 
-    for ( var_11 = _func_1DA( var_16 ); _func_02F( var_11 ); var_11 = _func_1BF( var_16, var_11 ) )
+    foreach ( var_11, var_17 in var_2._ID46165 )
     {
-        var_17 = var_16[var_11];
-        var_18 = _unknown_535F( var_0, var_2._ID53077[var_11] );
+        var_18 = _ID45060( var_0, var_2._ID53077[var_11] );
 
         if ( !var_18 )
             continue;
 
-        var_19 = _func_0C3( var_17 - var_14 );
+        var_19 = abs( var_17 - var_14 );
 
         if ( var_19 > var_15 )
             continue;
@@ -2521,9 +2592,7 @@ _ID51543( var_0 )
         var_7 = var_4[var_11];
     }
 
-    var_clear_3
-
-    if ( !_func_02F( var_2._ID51868 ) )
+    if ( !isdefined( var_2._ID51868 ) )
     {
         var_10 = 1 * var_5;
         var_7 = "additive_in";
@@ -2539,10 +2608,10 @@ _ID51543( var_0 )
     var_0._ID49159 = var_7;
     var_0._ID43325 = var_10;
 
-    if ( !_unknown_53EA( var_0 ) )
-        _unknown_5124( var_0 );
+    if ( !_ID45060( var_0 ) )
+        _ID51032( var_0 );
 
-    thread _unknown_50A0( var_0 );
+    thread _ID48714( var_0 );
 }
 
 _ID51032( var_0 )
@@ -2553,7 +2622,7 @@ _ID51032( var_0 )
     if ( var_0._ID46602 != var_0._ID44553 )
         return;
 
-    var_1 = _func_1A5();
+    var_1 = spawnstruct();
     var_1._ID46165 = [];
     var_1._ID53077 = [];
     var_1._ID51373 = [];
@@ -2572,7 +2641,7 @@ _ID51032( var_0 )
 
     for ( var_12 = 0; var_12 < var_9; var_12++ )
     {
-        var_13 = var_12 - var_10 / var_9;
+        var_13 = ( var_12 - var_10 ) / var_9;
         var_11 = "correct_up";
 
         for ( var_14 = 0; var_14 < var_8; var_14++ )
@@ -2582,7 +2651,7 @@ _ID51032( var_0 )
             var_3[var_16] = var_15;
             var_4[var_16] = var_11;
             var_2[var_16] = var_13;
-            var_1 thread _unknown_5367( var_0, var_16, var_15, var_11, var_13 );
+            var_1 thread _ID52918( var_0, var_16, var_15, var_11, var_13 );
         }
 
         var_11 = "correct_down";
@@ -2594,7 +2663,7 @@ _ID51032( var_0 )
             var_3[var_16] = var_15;
             var_4[var_16] = var_11;
             var_2[var_16] = var_13;
-            var_1 thread _unknown_53A2( var_0, var_16, var_15, var_11, var_13 );
+            var_1 thread _ID52918( var_0, var_16, var_15, var_11, var_13 );
         }
     }
 
@@ -2604,16 +2673,13 @@ _ID51032( var_0 )
     var_17 = 1000;
     var_1._ID51868 = 0;
     var_13 = 0;
-    var_18 = var_1._ID46165;
 
-    for ( var_16 = _func_1DA( var_18 ); _func_02F( var_16 ); var_16 = _func_1BF( var_18, var_16 ) )
+    foreach ( var_16, var_19 in var_1._ID46165 )
     {
-        var_19 = var_18[var_16];
-
-        if ( !_unknown_5507( var_0, var_1._ID53077[var_16] ) )
+        if ( !_ID45060( var_0, var_1._ID53077[var_16] ) )
             continue;
 
-        if ( !_unknown_52C6( var_19 ) )
+        if ( !_ID50185( var_19 ) )
             continue;
 
         if ( var_19 < var_17 )
@@ -2626,9 +2692,7 @@ _ID51032( var_0 )
         }
     }
 
-    var_clear_1
-
-    if ( !_func_02F( var_1._ID51868 ) )
+    if ( !isdefined( var_1._ID51868 ) )
         return;
     else
     {
@@ -2639,7 +2703,7 @@ _ID51032( var_0 )
 
     var_0._ID52673 = var_11;
     var_0._ID48122 = var_15;
-    thread _unknown_5205( var_0, var_13 );
+    thread _ID54027( var_0, var_13 );
 }
 
 _ID50185( var_0 )
@@ -2671,18 +2735,15 @@ _ID51180( var_0, var_1, var_2, var_3 )
     var_7 = [];
     var_8 = [];
     var_9 = [];
-    var_10 = var_0._ID54537._ID48348;
 
-    for ( var_12 = _func_1DA( var_10 ); _func_02F( var_12 ); var_12 = _func_1BF( var_10, var_12 ) )
+    foreach ( var_12, var_11 in var_0._ID54537._ID48348 )
     {
-        var_11 = var_10[var_12];
-
         if ( var_12 == var_0._ID46602 )
         {
             var_7[var_12] = var_0._ID54537._ID48348[var_12]._ID49159;
             var_6[var_12] = var_0._ID54537._ID48348[var_12]._ID43325;
 
-            if ( _func_02F( var_0._ID54537._ID48348[var_12]._ID52673 ) )
+            if ( isdefined( var_0._ID54537._ID48348[var_12]._ID52673 ) )
             {
                 var_8[var_12] = var_0._ID54537._ID48348[var_12]._ID52673;
                 var_9[var_12] = var_0._ID54537._ID48348[var_12]._ID48122;
@@ -2695,68 +2756,49 @@ _ID51180( var_0, var_1, var_2, var_3 )
         var_6[var_12] = 0;
     }
 
-    var_clear_2
-
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
     {
-        if ( _func_02F( var_2._ID43325 ) )
+        if ( isdefined( var_2._ID43325 ) )
         {
-            var_13 = var_2._ID43325;
-
-            for ( var_12 = _func_1DA( var_13 ); _func_02F( var_12 ); var_12 = _func_1BF( var_13, var_12 ) )
-            {
-                var_14 = var_13[var_12];
+            foreach ( var_12, var_14 in var_2._ID43325 )
                 var_6[var_12] = var_14;
-            }
-
-            var_clear_1
         }
 
-        if ( _func_02F( var_2._ID49159 ) )
+        if ( isdefined( var_2._ID49159 ) )
         {
-            var_15 = var_2._ID49159;
-
-            for ( var_12 = _func_1DA( var_15 ); _func_02F( var_12 ); var_12 = _func_1BF( var_15, var_12 ) )
-            {
-                var_16 = var_15[var_12];
+            foreach ( var_12, var_16 in var_2._ID49159 )
                 var_7[var_12] = var_16;
-            }
-
-            var_clear_1
         }
     }
 
     var_17 = var_3;
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         var_17 = _ID42407::_ID35028( "player_rig" );
 
-    var_17 _meth_805A();
+    var_17 hide();
     var_17._ID740 = var_0._ID45941._ID740;
     var_17._ID65 = var_0._ID45941._ID65;
-    var_17 _meth_814C( var_4["root"], 0 );
-    var_17 _meth_814F( var_4[var_1], 1, 0, 0 );
-    var_18 = var_0._ID54537._ID48348;
+    var_17 clearanim( var_4["root"], 0 );
+    var_17 setanimknobrestart( var_4[var_1], 1, 0, 0 );
 
-    for ( var_12 = _func_1DA( var_18 ); _func_02F( var_12 ); var_12 = _func_1BF( var_18, var_12 ) )
+    foreach ( var_12, var_11 in var_0._ID54537._ID48348 )
     {
-        var_11 = var_18[var_12];
         var_4 = var_11._ID3197;
         var_16 = var_7[var_12];
         var_14 = var_6[var_12];
         var_19 = var_8[var_12];
         var_20 = var_9[var_12];
-        var_17 _meth_8156( var_4["additive"], var_14, 0, 1 );
-        var_17 _meth_8156( var_4[var_16], var_14, 0, 1 );
+        var_17 setanimlimited( var_4["additive"], var_14, 0, 1 );
+        var_17 setanimlimited( var_4[var_16], var_14, 0, 1 );
 
-        if ( _func_02F( var_19 ) )
+        if ( isdefined( var_19 ) )
         {
-            var_17 _meth_8156( var_4["vertical_corrector"], var_20, 0, 1 );
-            var_17 _meth_8156( var_4[var_19], var_20, 0, 1 );
+            var_17 setanimlimited( var_4["vertical_corrector"], var_20, 0, 1 );
+            var_17 setanimlimited( var_4[var_19], var_20, 0, 1 );
         }
     }
 
-    var_clear_4
     return var_17;
 }
 
@@ -2764,18 +2806,18 @@ _ID46447()
 {
     for (;;)
     {
-        var_0 = _func_1A1( self._ID1191, "targetname" );
-        var_1 = _func_06D( self._ID740, var_0._ID740, 0, undefined );
+        var_0 = getent( self._ID1191, "targetname" );
+        var_1 = bullettrace( self._ID740, var_0._ID740, 0, undefined );
         wait 0.05;
     }
 }
 
 _ID51062( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_0._ID51034[var_1] ) )
+    if ( !isdefined( var_0._ID51034[var_1] ) )
         return 1;
 
-    if ( !_func_02F( var_0._ID51034[var_1][var_2] ) )
+    if ( !isdefined( var_0._ID51034[var_1][var_2] ) )
         return 1;
 
     return var_0._ID51034[var_1][var_2];
@@ -2784,8 +2826,8 @@ _ID51062( var_0, var_1, var_2 )
 _ID49295( var_0, var_1, var_2 )
 {
     var_3 = var_0._ID3197;
-    var_4 = _unknown_5607( var_0, var_1, var_2 );
-    self _meth_8120( var_3[var_1], var_4 );
+    var_4 = _ID51062( var_0, var_1, var_2 );
+    self setanimtime( var_3[var_1], var_4 );
 }
 
 _ID53366( var_0, var_1, var_2, var_3 )
@@ -2793,25 +2835,25 @@ _ID53366( var_0, var_1, var_2, var_3 )
     var_4 = var_0._ID3197;
     var_5 = var_0._ID45941;
     var_6 = var_0._ID46602;
-    var_7 = _func_1A5();
+    var_7 = spawnstruct();
     var_7._ID43325[var_6] = var_2;
     var_7._ID49159[var_6] = var_3;
-    var_8 = _unknown_55AA( var_0, "stab", var_7 );
-    var_8 _meth_8120( var_4["stab"], 1.0 );
-    var_9 = _unknown_58A0( var_0._ID46602 );
-    var_10 = _unknown_582A( var_8, var_9 );
+    var_8 = _ID51180( var_0, "stab", var_7 );
+    var_8 setanimtime( var_4["stab"], 1.0 );
+    var_9 = _ID51668( var_0._ID46602 );
+    var_10 = _ID52045( var_8, var_9 );
     wait 0.05;
-    var_11 = _func_11F( var_10._ID65 );
+    var_11 = anglestoforward( var_10._ID65 );
     var_12 = level._ID43887;
-    var_13 = var_10._ID740 + var_11 * var_12 * -5;
+    var_13 = var_10._ID740 + var_11 * ( var_12 * -5 );
     var_14 = var_10._ID740 + var_11 * var_12;
-    var_15 = _func_06D( var_13, var_14, 0, undefined );
+    var_15 = bullettrace( var_13, var_14, 0, undefined );
     self._ID46165[var_1] = var_15["fraction"];
     self._ID53077[var_1] = var_15["surfacetype"];
     self._ID51373[var_1] = var_15["normal"];
     self._ID44522[var_1] = var_15["position"];
-    var_8 _meth_80B7();
-    var_10 _meth_80B7();
+    var_8 delete();
+    var_10 delete();
 }
 
 _ID50593( var_0, var_1, var_2 )
@@ -2849,36 +2891,36 @@ _ID52918( var_0, var_1, var_2, var_3, var_4 )
     var_5 = var_0._ID3197;
     var_6 = var_0._ID45941;
     var_7 = var_0._ID46602;
-    var_8 = _func_1A5();
+    var_8 = spawnstruct();
     var_8._ID43325[var_7] = var_0._ID43325;
     var_8._ID49159[var_7] = var_0._ID49159;
-    _unknown_57C8( var_7, var_8, var_4 );
-    var_9 = _unknown_56EC( var_0, "stab", var_8 );
-    var_9 _meth_8120( var_5["stab"], 1.0 );
-    var_9 _meth_8156( var_5["vertical_corrector"], var_2, 0, 1 );
-    var_9 _meth_814D( var_5[var_3], var_2, 0, 1 );
-    var_10 = _unknown_59FA( var_0._ID46602 );
-    var_11 = _unknown_5984( var_9, var_10 );
+    _ID50593( var_7, var_8, var_4 );
+    var_9 = _ID51180( var_0, "stab", var_8 );
+    var_9 setanimtime( var_5["stab"], 1.0 );
+    var_9 setanimlimited( var_5["vertical_corrector"], var_2, 0, 1 );
+    var_9 setanimknob( var_5[var_3], var_2, 0, 1 );
+    var_10 = _ID51668( var_0._ID46602 );
+    var_11 = _ID52045( var_9, var_10 );
     wait 0.05;
-    var_12 = _func_11F( var_11._ID65 );
+    var_12 = anglestoforward( var_11._ID65 );
     var_13 = level._ID43887;
-    var_14 = var_11._ID740 + var_12 * var_13 * -5;
+    var_14 = var_11._ID740 + var_12 * ( var_13 * -5 );
     var_15 = var_11._ID740 + var_12 * var_13;
-    var_16 = _func_06D( var_14, var_15, 0, undefined );
+    var_16 = bullettrace( var_14, var_15, 0, undefined );
     self._ID46165[var_1] = var_16["fraction"];
     self._ID53077[var_1] = var_16["surfacetype"];
     self._ID51373[var_1] = var_16["normal"];
     self._ID44522[var_1] = var_16["position"];
     wait 0.05;
-    var_9 _meth_80B7();
-    var_11 _meth_80B7();
+    var_9 delete();
+    var_11 delete();
 }
 
 _ID51977( var_0 )
 {
     var_1 = var_0._ID3197;
 
-    if ( var_0._ID45941 _meth_8159( var_1["stab"] ) > 0 )
+    if ( var_0._ID45941 getanimtime( var_1["stab"] ) > 0 )
         return 1;
 
     return 0;
@@ -2886,22 +2928,22 @@ _ID51977( var_0 )
 
 _ID43063( var_0 )
 {
-    var_1 = var_0._ID794 _unknown_52C2( var_0 );
+    var_1 = var_0._ID794 _ID48919( var_0 );
 
-    if ( _func_0C3( var_1[0] ) > 0.5 )
+    if ( abs( var_1[0] ) > 0.5 )
         return 1;
 
-    return _func_0C3( var_1[1] ) > 0.5;
+    return abs( var_1[1] ) > 0.5;
 }
 
 _ID43391( var_0 )
 {
-    var_0._ID6486 = _unknown_5982( var_0 );
+    var_0._ID6486 = _ID48003( var_0 );
     var_0._ID49990 = 0;
     var_0._ID50361 = 0;
     var_1 = 0;
 
-    if ( var_0._ID6486 || _unknown_59A7( var_0 ) )
+    if ( var_0._ID6486 || _ID46251( var_0 ) )
     {
         var_0._ID50361++;
         var_1 = 1;
@@ -2909,12 +2951,12 @@ _ID43391( var_0 )
 
     for (;;)
     {
-        if ( _unknown_59B6( var_0 ) || var_1 )
+        if ( _ID46251( var_0 ) || var_1 )
         {
             var_0._ID49990++;
             var_0._ID6486 = 1;
 
-            while ( _unknown_59CC( var_0 ) )
+            while ( _ID46251( var_0 ) )
                 wait 0.05;
         }
 
@@ -2935,13 +2977,13 @@ _ID52315( var_0 )
 
         if ( var_1._ID794 [[ var_1._ID51876 ]]() )
         {
-            var_1._ID50118 = _func_03D();
+            var_1._ID50118 = gettime();
 
             if ( !_ID42237::_ID14385( "we_care_about_right_icepick" ) )
             {
                 _ID42237::_ID14402( "we_care_about_right_icepick" );
                 var_1 = var_0._ID48348["right"];
-                var_1._ID50118 = _func_03D();
+                var_1._ID50118 = gettime();
             }
         }
 
@@ -2950,7 +2992,7 @@ _ID52315( var_0 )
             var_1 = var_0._ID48348["right"];
 
             if ( var_1._ID794 [[ var_1._ID51876 ]]() )
-                var_1._ID50118 = _func_03D();
+                var_1._ID50118 = gettime();
         }
 
         wait 0.05;
@@ -2959,15 +3001,15 @@ _ID52315( var_0 )
 
 _ID48003( var_0 )
 {
-    if ( var_0._ID794 _meth_8256( var_0._ID47576 ) )
+    if ( var_0._ID794 buttonpressed( var_0._ID47576 ) )
         return 1;
 
-    return var_0._ID50118 + 750 > _func_03D();
+    return var_0._ID50118 + 750 > gettime();
 }
 
 _ID46251( var_0 )
 {
-    if ( var_0._ID794 _meth_8256( var_0._ID47576 ) )
+    if ( var_0._ID794 buttonpressed( var_0._ID47576 ) )
         return 1;
 
     return var_0._ID794 [[ var_0._ID51876 ]]();
@@ -2975,19 +3017,19 @@ _ID46251( var_0 )
 
 _ID51510( var_0 )
 {
-    _func_034( "b1", "0" );
-    _func_034( "b2", "90" );
-    _func_034( "b3", "40" );
+    setdvar( "b1", "0" );
+    setdvar( "b2", "90" );
+    setdvar( "b3", "40" );
 
     for (;;)
     {
-        var_1 = _func_03A( "b1" );
-        var_2 = _func_03A( "b2" );
-        var_3 = _func_03A( "b3" );
-        var_4 = var_0 _meth_818D( "tag_player" );
+        var_1 = getdvarint( "b1" );
+        var_2 = getdvarint( "b2" );
+        var_3 = getdvarint( "b3" );
+        var_4 = var_0 gettagangles( "tag_player" );
         var_5 = var_4[1];
         self._ID65 = ( 0, var_5, 0 );
-        self._ID740 = var_0 _meth_818C( "tag_player" );
+        self._ID740 = var_0 gettagorigin( "tag_player" );
 
         if ( 1 )
             return;
@@ -3002,10 +3044,10 @@ _ID52922( var_0 )
 
     for (;;)
     {
-        var_2 = var_0 _meth_818C( "j_wrist_le" );
-        var_3 = var_0 _meth_818C( "j_wrist_ri" );
+        var_2 = var_0 gettagorigin( "j_wrist_le" );
+        var_3 = var_0 gettagorigin( "j_wrist_ri" );
         var_4 = var_2 * 0.5 + var_3 * 0.5;
-        var_5 = _func_11F( var_0._ID65 );
+        var_5 = anglestoforward( var_0._ID65 );
         var_6 = var_5 * -145;
         var_6 = ( var_6[0], var_6[1], 0 );
         var_4 += var_6;
@@ -3014,9 +3056,9 @@ _ID52922( var_0 )
             var_4 = ( var_4[0], var_4[1], var_1 );
 
         var_1 = var_4[2];
-        self _meth_82B8( var_4 + ( 0, 0, -60 ), 0.3 );
-        var_7 = _func_11A( var_0._ID740 - var_4 );
-        self _meth_82BF( ( 0, var_7[1], 0 ), 0.3 );
+        self moveto( var_4 + ( 0, 0, -60 ), 0.3 );
+        var_7 = vectortoangles( var_0._ID740 - var_4 );
+        self rotateto( ( 0, var_7[1], 0 ), 0.3 );
         wait 0.3;
     }
 }
@@ -3025,15 +3067,15 @@ _ID49088( var_0 )
 {
     for (;;)
     {
-        var_1 = var_0._ID794 _meth_8346();
-        var_2 = self _meth_818D( "tag_player" );
-        var_3 = _func_11F( var_1 );
-        var_4 = _func_11F( var_2 );
-        var_5 = _func_11E( var_1 );
-        var_6 = _func_11D( var_1 );
-        var_0._ID43498 = _func_0FB( var_3, var_4 );
-        var_0._ID45543 = _func_0FB( var_5, var_4 ) < 0;
-        var_0._ID43507 = _func_0FB( var_6, var_4 );
+        var_1 = var_0._ID794 getplayerangles();
+        var_2 = self gettagangles( "tag_player" );
+        var_3 = anglestoforward( var_1 );
+        var_4 = anglestoforward( var_2 );
+        var_5 = anglestoright( var_1 );
+        var_6 = anglestoup( var_1 );
+        var_0._ID43498 = vectordot( var_3, var_4 );
+        var_0._ID45543 = vectordot( var_5, var_4 ) < 0;
+        var_0._ID43507 = vectordot( var_6, var_4 );
         var_0._ID52565 = var_0._ID43507 < 0.2;
         wait 0.05;
     }
@@ -3043,10 +3085,10 @@ _ID45060( var_0, var_1 )
 {
     var_2 = var_0._ID53026;
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         var_2 = var_1;
 
-    if ( var_0._ID44553 == "right" || var_0._ID44553 == "left" && var_0._ID44553 != var_0._ID46602 )
+    if ( ( var_0._ID44553 == "right" || var_0._ID44553 == "left" ) && var_0._ID44553 != var_0._ID46602 )
         return 1;
 
     var_3 = [];
@@ -3054,31 +3096,31 @@ _ID45060( var_0, var_1 )
     var_3["plaster"] = 1;
     var_3["rock"] = 1;
     var_3["snow"] = 1;
-    return _func_02F( var_3[var_2] );
+    return isdefined( var_3[var_2] );
 }
 
 _ID47996()
 {
     for (;;)
     {
-        var_0 = _func_11F( self._ID65 );
-        var_1 = _func_06D( self._ID740, self._ID740 + var_0 * 6.25, 0, undefined );
+        var_0 = anglestoforward( self._ID65 );
+        var_1 = bullettrace( self._ID740, self._ID740 + var_0 * 6.25, 0, undefined );
         wait 0.05;
     }
 }
 
 _ID52045( var_0, var_1, var_2 )
 {
-    var_3 = _func_06A( "script_model", ( 0, 0, 0 ) );
-    var_3 _meth_80B8( "tag_origin" );
-    var_3 _meth_805A();
-    var_3._ID740 = var_0 _meth_818C( var_1 );
+    var_3 = spawn( "script_model", ( 0, 0, 0 ) );
+    var_3 setmodel( "tag_origin" );
+    var_3 hide();
+    var_3._ID740 = var_0 gettagorigin( var_1 );
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         var_3._ID740 = var_3._ID740 + var_2;
 
-    var_3._ID65 = var_0 _meth_818D( var_1 );
-    var_4 = _func_1A5();
+    var_3._ID65 = var_0 gettagangles( var_1 );
+    var_4 = spawnstruct();
     var_4._ID337 = var_3;
     var_4._ID409 = 2;
     var_4._ID1251 = 15.35;
@@ -3086,18 +3128,18 @@ _ID52045( var_0, var_1, var_2 )
     var_4._ID41911 = 0;
     var_4._ID26711 = 41;
     var_4 _ID42407::_ID38694();
-    var_3 _meth_8053( var_0, var_1 );
+    var_3 linkto( var_0, var_1 );
     return var_3;
 }
 
 _ID52662( var_0, var_1 )
 {
-    var_2 = _func_06A( "script_model", ( 25, 25, -25 ) );
-    var_2 _meth_80B8( "tag_origin" );
-    var_2 _meth_805A();
-    var_2._ID740 = var_0 _meth_818C( var_1 );
-    var_2._ID65 = var_0 _meth_818D( var_1 );
-    var_3 = _func_1A5();
+    var_2 = spawn( "script_model", ( 25, 25, -25 ) );
+    var_2 setmodel( "tag_origin" );
+    var_2 hide();
+    var_2._ID740 = var_0 gettagorigin( var_1 );
+    var_2._ID65 = var_0 gettagangles( var_1 );
+    var_3 = spawnstruct();
     var_3._ID337 = var_2;
     var_3._ID409 = 2;
     var_3._ID1251 = 8.35;
@@ -3105,7 +3147,7 @@ _ID52662( var_0, var_1 )
     var_3._ID41911 = 0;
     var_3._ID26711 = 41;
     var_3 _ID42407::_ID38694();
-    var_2 _meth_8053( var_0, var_1 );
+    var_2 linkto( var_0, var_1 );
     return var_2;
 }
 
@@ -3118,8 +3160,8 @@ _ID46315( var_0, var_1 )
     for (;;)
     {
         wait 0.05;
-        var_4 = _func_11F( var_0._ID65 );
-        var_5 = _func_06D( var_0._ID740, var_0._ID740 + var_4 * var_3, 0, undefined );
+        var_4 = anglestoforward( var_0._ID65 );
+        var_5 = bullettrace( var_0._ID740, var_0._ID740 + var_4 * var_3, 0, undefined );
 
         if ( self._ID52433 )
             continue;
@@ -3142,9 +3184,9 @@ _ID46315( var_0, var_1 )
 
         if ( _ID42237::_ID15272( var_7 ) )
         {
-            _func_156( _ID42237::_ID16299( var_7 ), var_5["position"], var_5["normal"] );
-            var_0 _meth_80A1( "icepick_impact_ice" );
-            level._ID794 _meth_80B4( "icepick_climb" );
+            playfx( _ID42237::_ID16299( var_7 ), var_5["position"], var_5["normal"] );
+            var_0 playsound( "icepick_impact_ice" );
+            level._ID794 playrumblelooponentity( "icepick_climb" );
         }
     }
 }
@@ -3157,8 +3199,8 @@ _ID51668( var_0 )
 _ID52572( var_0 )
 {
     var_0._ID44552 = [];
-    _unknown_5F16( var_0, "additive_in" );
-    _unknown_5F1F( var_0, "additive_out" );
+    _ID49511( var_0, "additive_in" );
+    _ID49511( var_0, "additive_out" );
 }
 
 _ID49511( var_0, var_1 )
@@ -3169,7 +3211,7 @@ _ID49511( var_0, var_1 )
     for ( var_3 = 0; var_3 < var_2; var_3++ )
     {
         level._ID52173++;
-        thread _unknown_5F49( var_0, var_1 );
+        thread _ID52612( var_0, var_1 );
     }
 }
 
@@ -3177,14 +3219,14 @@ _ID52612( var_0, var_1 )
 {
     var_2 = _ID42407::_ID35028( "player_rig" );
     var_3 = 2;
-    var_2 _meth_8156( var_0._ID3197["additive"], var_3, 0, 1 );
-    var_2 _meth_8156( var_0._ID3197[var_1], var_3, 0, 1 );
+    var_2 setanimlimited( var_0._ID3197["additive"], var_3, 0, 1 );
+    var_2 setanimlimited( var_0._ID3197[var_1], var_3, 0, 1 );
     var_4 = var_0._ID3197["stab"];
-    var_2 _meth_8116( "anim", var_4, 1, 0, 1 );
+    var_2 setflaggedanimknobrestart( "anim", var_4, 1, 0, 1 );
     var_2 waittillmatch( "anim",  "stab"  );
-    var_2 _meth_8155( var_4, 1.0, 0, 0 );
-    var_5 = _func_06A( "script_origin", ( 0, 0, 0 ) );
-    var_2 _meth_8053( var_5 );
+    var_2 setanim( var_4, 1.0, 0, 0 );
+    var_5 = spawn( "script_origin", ( 0, 0, 0 ) );
+    var_2 linkto( var_5 );
     var_2._ID25988 = var_5;
     var_0._ID44552[var_1][var_0._ID44552[var_1].size] = var_2;
     level._ID52173--;
@@ -3196,23 +3238,23 @@ _ID52612( var_0, var_1 )
 _ID43945( var_0 )
 {
     var_0._ID51034 = [];
-    _unknown_6024( var_0, "stab" );
+    _ID43479( var_0, "stab" );
 }
 
 _ID43479( var_0, var_1 )
 {
     var_2 = var_0._ID3197;
     var_3 = _ID42407::_ID35028( "player_rig" );
-    var_3 _meth_805A();
-    var_3 _meth_8116( "anim", var_2[var_1], 1, 0, 1 );
+    var_3 hide();
+    var_3 setflaggedanimknobrestart( "anim", var_2[var_1], 1, 0, 1 );
     var_0._ID51034[var_1] = [];
-    var_4 = _func_03D();
-    var_5 = _func_067( var_2[var_1] );
+    var_4 = gettime();
+    var_5 = getanimlength( var_2[var_1] );
 
     for (;;)
     {
         var_3 waittill( "anim",  var_6  );
-        var_7 = _func_03D() - var_4;
+        var_7 = gettime() - var_4;
         var_0._ID51034[var_1][var_6] = var_7 / var_5 * 0.001;
 
         if ( var_6 == "end" )
@@ -3227,11 +3269,11 @@ _ID52023( var_0 )
 
 _ID54380( var_0 )
 {
-    var_1 = _unknown_6043( var_0 );
-    var_2 = _unknown_5FCD( self, var_1 );
+    var_1 = _ID51668( var_0 );
+    var_2 = _ID52045( self, var_1 );
     wait 0.05;
     var_3 = 0;
-    var_4 = _func_06A( "script_origin", self._ID740 );
+    var_4 = spawn( "script_origin", self._ID740 );
     var_5 = [];
     var_5[0] = 1;
     var_5[1] = 2;
@@ -3251,14 +3293,14 @@ _ID54380( var_0 )
 
     for ( var_6 = 1; var_6 < var_5.size; var_6++ )
     {
-        var_7 = _func_11F( var_2._ID65 );
+        var_7 = anglestoforward( var_2._ID65 );
         var_8 = level._ID43887;
-        var_9 = var_2._ID740 + var_7 * var_8 * -2;
+        var_9 = var_2._ID740 + var_7 * ( var_8 * -2 );
         var_10 = var_2._ID740 + var_7 * var_8 * 2;
-        var_11 = _func_06D( var_9, var_10, 0, undefined );
+        var_11 = bullettrace( var_9, var_10, 0, undefined );
         var_12 = var_11["position"];
         var_13 = var_11["normal"];
-        _func_156( _ID42237::_ID16299( "climbing_cracks_" + var_5[var_6] ), var_12, var_13 );
+        playfx( _ID42237::_ID16299( "climbing_cracks_" + var_5[var_6] ), var_12, var_13 );
 
         if ( !var_3 )
         {
@@ -3270,23 +3312,23 @@ _ID54380( var_0 )
         wait 0.1;
     }
 
-    var_2 _meth_80B7();
-    var_4 _meth_80B7();
+    var_2 delete();
+    var_4 delete();
 }
 
 _ID48437( var_0, var_1, var_2 )
 {
-    var_3 = _func_06A( "script_origin", var_1 );
-    var_3 thread _unknown_620C( var_0, var_1, var_2 );
+    var_3 = spawn( "script_origin", var_1 );
+    var_3 thread _ID47893( var_0, var_1, var_2 );
     var_4 = _ID42407::_ID15963( "icepick_hang" );
     var_4._ID20129 = 0;
     var_4 _ID42407::_ID10226( 2, _ID42407::_ID30354, 4.5 );
     var_0._ID45941 waittill( "stop_crack" );
-    var_4 _meth_80B7();
-    var_3 _meth_80B3();
-    var_3 _meth_80A1( "icepick_inactive_cracking_stop" );
+    var_4 delete();
+    var_3 playrumbleonentity();
+    var_3 playsound( "icepick_inactive_cracking_stop" );
     wait 0.05;
-    var_3 _meth_80B7();
+    var_3 delete();
 }
 
 _ID47893( var_0, var_1, var_2 )
@@ -3296,16 +3338,16 @@ _ID47893( var_0, var_1, var_2 )
 
     if ( _ID42237::_ID14385( "first_fx_crack_done" ) )
     {
-        if ( _func_02F( level._ID54618[level._ID43077] ) )
+        if ( isdefined( level._ID54618[level._ID43077] ) )
             var_1 = level._ID54618[level._ID43077];
 
-        if ( _func_02F( level._ID50221[level._ID43077] ) )
+        if ( isdefined( level._ID50221[level._ID43077] ) )
             var_2 = level._ID50221[level._ID43077];
     }
     else
     {
         _ID42237::_ID14402( "first_fx_crack_done" );
-        thread _unknown_62D4( var_1, var_2 );
+        thread _ID47934( var_1, var_2 );
         level._ID43077++;
         return;
     }
@@ -3316,12 +3358,12 @@ _ID47893( var_0, var_1, var_2 )
     {
         var_4 = "climbing_cracks_" + var_3;
 
-        if ( var_3 == 1 && level._ID49340 == 1 || _ID42237::_ID14385( "player_climbs_past_safe_point" ) )
+        if ( var_3 == 1 && ( level._ID49340 == 1 || _ID42237::_ID14385( "player_climbs_past_safe_point" ) ) )
             var_4 += "_no_rotation";
 
-        _func_156( _ID42237::_ID16299( var_4 ), var_1, var_2 );
-        self _meth_80A1( "icepick_inactive_cracking" );
-        wait(_func_0BA( 1, 2 ));
+        playfx( _ID42237::_ID16299( var_4 ), var_1, var_2 );
+        self playsound( "icepick_inactive_cracking" );
+        wait(randomfloatrange( 1, 2 ));
 
         if ( !_ID42237::_ID14385( "player_climbs_past_safe_point" ) || _ID42237::_ID14385( "force_single_ice_crack" ) )
             return;
@@ -3332,33 +3374,33 @@ _ID47934( var_0, var_1 )
 {
     var_2 = ( 0, -5, 2 );
     var_0 += var_2;
-    _func_156( _ID42237::_ID16299( "climbing_cracks_1" ), var_0, var_1 );
+    playfx( _ID42237::_ID16299( "climbing_cracks_1" ), var_0, var_1 );
     wait 2;
     var_0 = level._ID54618[0] + ( 0, 0, -2 );
     var_1 = level._ID50221[0];
-    _func_156( _ID42237::_ID16299( "climbing_cracks_1" ), var_0, var_1 );
+    playfx( _ID42237::_ID16299( "climbing_cracks_1" ), var_0, var_1 );
 }
 
 _ID45691( var_0 )
 {
-    if ( !_func_1A7( var_0 ) )
+    if ( !isalive( var_0 ) )
         return;
 
-    if ( _func_02F( var_0._ID22746 ) )
+    if ( isdefined( var_0._ID22746 ) )
         var_0 _ID42407::_ID36519();
 
-    if ( _func_02F( var_0._ID46475 ) )
-        var_0._ID46475 _meth_80B7();
+    if ( isdefined( var_0._ID46475 ) )
+        var_0._ID46475 delete();
 
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID44172()
 {
-    _unknown_63C6( level._ID28543 );
+    _ID45691( level._ID28543 );
     var_0 = level._ID47341;
     var_0._ID216 = 1;
-    var_1 = var_0 _meth_809B();
+    var_1 = var_0 stalingradspawn();
     _ID42407::_ID35060( var_1 );
     var_1._ID3189 = "price";
     level._ID28543 = var_1;
@@ -3366,11 +3408,11 @@ _ID44172()
     level._ID15018 = 1;
     var_1 _ID42407::_ID10949();
     var_1 thread _ID42407::_ID22746();
-    _func_0DB( "g_friendlyfiredist", 0 );
+    setsaveddvar( "g_friendlyfiredist", 0 );
     var_1 _ID42407::_ID17509();
-    var_2 = _func_06A( "script_model", var_1._ID740 );
-    var_2 _meth_80B8( level._ID51708 );
-    var_2 _meth_8053( var_1, "TAG_WEAPON_CHEST", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_2 = spawn( "script_model", var_1._ID740 );
+    var_2 setmodel( level._ID51708 );
+    var_2 linkto( var_1, "TAG_WEAPON_CHEST", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_1._ID46475 = var_2;
     return var_1;
 }
@@ -3387,24 +3429,24 @@ _ID48158()
     thread _ID49359::_ID52175();
 
     if ( var_0 )
-        thread _unknown_4E57();
+        thread _ID49409();
     else
     {
-        thread _unknown_4EE1();
-        thread _unknown_4D1F();
+        thread _ID47195();
+        thread _ID48068();
     }
 
-    _func_0DB( "sm_sunsamplesizenear", 0.0625 );
-    _func_0DB( "cl_accessibilityAkimboEnabled", 0 );
+    setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
+    setsaveddvar( "cl_accessibilityAkimboEnabled", 0 );
     _ID42237::_ID14402( "can_save" );
-    var_2 = _unknown_6493();
-    level._ID28543 _meth_804E( "J_IcePicker" );
-    var_2._ID28069 = ::_unknown_6F5E;
+    var_2 = _ID44172();
+    level._ID28543 hidepart( "J_IcePicker" );
+    var_2._ID28069 = ::_ID43877;
     var_3 = var_2 _ID42407::_ID16120( "price_climb_intro" );
-    var_4 = _func_067( var_3 );
+    var_4 = getanimlength( var_3 );
     var_2 _ID42259::_ID3128( "prop_price_cigar", "tag_inhand" );
-    _func_157( level._ID1426["cigar_glow"], var_2, "tag_cigarglow" );
-    var_5 = _func_1A1( "cliffhanger_cliff", "targetname" );
+    playfxontag( level._ID1426["cigar_glow"], var_2, "tag_cigarglow" );
+    var_5 = getent( "cliffhanger_cliff", "targetname" );
     thread _ID42407::_ID4434();
 
     if ( var_0 )
@@ -3415,7 +3457,7 @@ _ID48158()
     level _ID42407::_ID10226( 10, _ID42407::_ID1601, "g_friendlyNameDist", 0 );
     level._ID794 thread _ID42237::_ID27000( "gear_jacket_flapping_plr_loop" );
     _ID42407::_ID10226( 0.1, _ID42407::_ID4433 );
-    level._ID794 thread _unknown_6D36();
+    level._ID794 thread _ID47835();
     var_5 _ID42259::_ID3111( var_2, "price_climb_intro" );
     var_5 thread _ID42259::_ID3044( var_2, "price_climb_intro_idle", "stop_idle" );
     _ID42237::_ID14388( "keep_cam_on_price" );
@@ -3423,12 +3465,12 @@ _ID48158()
     _ID42237::_ID14388( "price_climb_continues" );
     var_5 notify( "stop_idle" );
     var_6 = 7.2;
-    level._ID794 _ID42237::_ID10192( var_6, ::_meth_8189, "stand" );
-    level._ID794 _ID42237::_ID10192( var_6, ::_meth_8122, 0 );
-    level._ID794 _ID42237::_ID10192( var_6, ::_meth_8123, 0 );
-    level._ID794 thread _unknown_65BB();
-    var_2 thread _unknown_6673();
-    level._ID45632 = _func_03D();
+    level._ID794 _ID42237::_ID10192( var_6, ::setstance, "stand" );
+    level._ID794 _ID42237::_ID10192( var_6, ::allowcrouch, 0 );
+    level._ID794 _ID42237::_ID10192( var_6, ::allowprone, 0 );
+    level._ID794 thread _ID48002();
+    var_2 thread _ID52396();
+    level._ID45632 = gettime();
     var_5 thread _ID42259::_ID3111( var_2, "price_climb_start" );
     var_5 _ID42407::_ID1985( _ID42407::_ID41116, "price_climb_start" );
     level _ID42407::_ID1985( _ID42407::_ID41116, "fourth_swing" );
@@ -3442,18 +3484,18 @@ _ID48158()
         var_5 _ID42259::_ID3018( var_2, "price_climb_mid" );
     }
 
-    _func_0DB( "g_friendlyNameDist", 0 );
+    setsaveddvar( "g_friendlyNameDist", 0 );
     _ID42407::_ID10226( 4.8, _ID42407::_ID1805, "mig_flyover_trigger" );
     _ID42407::_ID10226( 2, _ID42234::_ID13611, 3 );
-    var_7 = _func_067( level._ID30895[var_2._ID3189]["price_climb_mid"] );
+    var_7 = getanimlength( level._ID30895[var_2._ID3189]["price_climb_mid"] );
     var_8 = 7.5;
     var_9 = var_8 / var_7;
-    _ID42407::_ID10226( 0.05, ::_unknown_67E0, var_2, "price_climb_mid", var_9 );
+    _ID42407::_ID10226( 0.05, ::_ID52822, var_2, "price_climb_mid", var_9 );
     thread _ID49359::_ID52463();
     var_5 _ID42259::_ID3111( var_2, "price_climb_mid" );
-    _unknown_663C( var_2 );
+    _ID45691( var_2 );
     _ID42237::_ID14413( "reached_top" );
-    _func_0DB( "cl_accessibilityAkimboEnabled", 1 );
+    setsaveddvar( "cl_accessibilityAkimboEnabled", 1 );
     _ID42407::_ID53910( 1 );
 }
 
@@ -3463,7 +3505,7 @@ _ID52396()
 
     for (;;)
     {
-        if ( self _meth_8159( var_0 ) > 0.5 )
+        if ( self getanimtime( var_0 ) > 0.5 )
             break;
 
         wait 0.05;
@@ -3475,36 +3517,36 @@ _ID52396()
     if ( _ID42237::_ID14385( "price_climbs_past_start" ) )
         return;
 
-    if ( self _meth_8159( var_0 ) < 0.75 )
-        self _meth_8120( var_0, 0.75 );
+    if ( self getanimtime( var_0 ) < 0.75 )
+        self setanimtime( var_0, 0.75 );
 
     _ID42237::_ID14413( "player_climbed_3_steps" );
 
     if ( _ID42237::_ID14385( "price_climbs_past_start" ) )
         return;
 
-    if ( self _meth_8159( var_0 ) < 0.99 )
-        self _meth_8120( var_0, 0.99 );
+    if ( self getanimtime( var_0 ) < 0.99 )
+        self setanimtime( var_0, 0.99 );
 }
 
 _ID54238( var_0 )
 {
     [[ level._ID43641 ]]();
     var_1 = level._ID28543;
-    var_1 _meth_804E( "J_IcePicker" );
-    thread _unknown_7203();
+    var_1 hidepart( "J_IcePicker" );
+    thread _ID47517();
     var_1._ID304 = 1;
-    var_1 _meth_81AF( 1 );
+    var_1 pushplayer( 1 );
     _ID42407::_ID35060( var_1 );
 
-    if ( _func_1A7( level._ID50450 ) && var_1 != level._ID50450 )
+    if ( isalive( level._ID50450 ) && var_1 != level._ID50450 )
     {
-        _unknown_6702( level._ID50450 );
+        _ID45691( level._ID50450 );
         _func_194( _ID42407::_ID25268( "obj_follow_price" ), level._ID28543 );
         var_1 _ID42407::_ID17509();
-        var_2 = _func_06A( "script_model", var_1._ID740 );
-        var_2 _meth_80B8( level._ID51708 );
-        var_2 _meth_8053( var_1, "TAG_WEAPON_CHEST", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+        var_2 = spawn( "script_model", var_1._ID740 );
+        var_2 setmodel( level._ID51708 );
+        var_2 linkto( var_1, "TAG_WEAPON_CHEST", ( 0, 0, 0 ), ( 0, 0, 0 ) );
         var_1._ID46475 = var_2;
     }
     else
@@ -3512,19 +3554,19 @@ _ID54238( var_0 )
 
     level._ID46510 = var_1;
     var_1 endon( "death" );
-    thread _unknown_68C4();
-    var_3 = _func_1A1( "h2_bigjump_catch", "targetname" );
+    thread _ID47965();
+    var_3 = getent( "h2_bigjump_catch", "targetname" );
     var_3 _ID42259::_ID3111( level._ID46510, "climb_catch" );
 
-    if ( !_func_1A7( var_1 ) )
+    if ( !isalive( var_1 ) )
         return;
 
-    var_1._ID46475 _meth_80B7();
+    var_1._ID46475 delete();
     var_1 _ID51955::_ID44585();
     var_1 _ID42407::_ID17508();
     var_1 _ID42407::_ID10871();
     var_1 _ID42407::_ID12445();
-    thread _unknown_68F6();
+    thread _ID53806();
     _ID42237::_ID14413( "reached_top" );
     wait 8;
     var_1._ID304 = 0;
@@ -3532,7 +3574,7 @@ _ID54238( var_0 )
 
 _ID53806()
 {
-    var_0 = _func_1A1( "soap_cliff_climb", "targetname" );
+    var_0 = getent( "soap_cliff_climb", "targetname" );
     var_0 _ID42259::_ID3111( level._ID46510, "soap_cliff_climb" );
     _ID42237::_ID14402( "soap_cliff_climb_finished" );
 }
@@ -3545,14 +3587,14 @@ _ID47965()
         return;
 
     _ID42475::_ID34575( "aud_start_mix_slowmo_jump_event" );
-    level._ID794 _meth_80A1( "scn_cliffhanger_bigjump_slowdown" );
+    level._ID794 playsound( "scn_cliffhanger_bigjump_slowdown" );
     _ID42407::_ID34379();
     _ID42407::_ID34377( 0.25 );
     _ID42407::_ID34374( 0.05 );
     _ID42407::_ID34371();
     wait 0.2;
     _ID42407::_ID34375( 0.01 );
-    level._ID794 _meth_80A1( "scn_cliffhanger_bigjump_speedup" );
+    level._ID794 playsound( "scn_cliffhanger_bigjump_speedup" );
     _ID42407::_ID34372();
     _ID42407::_ID34369();
     _ID42237::_ID14402( "price_caught_player" );
@@ -3570,21 +3612,21 @@ _ID46570()
 
 _ID51118( var_0 )
 {
-    var_1 = _unknown_6863();
-    level._ID28543 _meth_804E( "J_IcePicker" );
+    var_1 = _ID44172();
+    level._ID28543 hidepart( "J_IcePicker" );
     level._ID50450 = var_1;
     var_1 endon( "death" );
     var_0 endon( "stop_idle" );
     _ID51955::_ID47962( var_1 );
     var_0 _ID42259::_ID3018( var_1, "price_jump" );
-    var_0 = _func_1A1( "climb_jump_org", "targetname" );
+    var_0 = getent( "climb_jump_org", "targetname" );
     _ID42407::_ID10226( 1, _ID42407::_ID4422, "price_jump" );
     var_0 _ID42259::_ID3111( var_1, "price_jump" );
     var_0 thread _ID42259::_ID3044( var_1, "price_idle", "stop_idle" );
     _ID42237::_ID14413( "player_makes_the_jump" );
     var_0 notify( "stop_idle" );
     var_0 _ID42259::_ID3111( var_1, "price_reach" );
-    _unknown_68C8( var_1 );
+    _ID45691( var_1 );
     wait 1.0;
     _ID42237::_ID14402( "price_jumped" );
 }
@@ -3592,13 +3634,13 @@ _ID51118( var_0 )
 _ID52822( var_0, var_1, var_2 )
 {
     var_3 = var_0 _ID42407::_ID16120( var_1 );
-    var_0 _meth_8120( var_3, var_2 );
+    var_0 setanimtime( var_3, var_2 );
 }
 
 _ID52632( var_0, var_1, var_2 )
 {
     var_3 = var_0 _ID42407::_ID16120( var_1 );
-    var_0 _meth_811A( "single anim", var_3, 1, 0, var_2 );
+    var_0 setflaggedanim( "single anim", var_3, 1, 0, var_2 );
 }
 
 _ID49536( var_0 )
@@ -3612,16 +3654,16 @@ _ID49536( var_0 )
     if ( !_ID42237::_ID14385( "climb_big_jump" ) )
         return 0;
 
-    if ( level._ID794 _meth_8188() != "stand" )
+    if ( level._ID794 getstance() != "stand" )
         return 0;
 
-    if ( level._ID794._ID45045 || !level._ID794 _meth_83C0() )
+    if ( level._ID794._ID45045 || !level._ID794 _meth_83c0() )
         return 0;
 
-    var_1 = level._ID794 _meth_8346();
+    var_1 = level._ID794 getplayerangles();
     var_1 = ( 0, var_1[1], 0 );
-    var_2 = _func_11F( var_1 );
-    var_3 = _func_0FB( var_2, var_0 );
+    var_2 = anglestoforward( var_1 );
+    var_3 = vectordot( var_2, var_0 );
 
     if ( var_3 < 0.94 )
     {
@@ -3629,8 +3671,8 @@ _ID49536( var_0 )
         return 0;
     }
 
-    var_4 = level._ID794 _meth_8344();
-    var_5 = _func_0F3( ( var_4[0], var_4[1], 0 ), ( 0, 0, 0 ) );
+    var_4 = level._ID794 getvelocity();
+    var_5 = distance( ( var_4[0], var_4[1], 0 ), ( 0, 0, 0 ) );
 
     if ( var_5 < 180 )
     {
@@ -3653,22 +3695,22 @@ _ID53240()
     if ( _ID42237::_ID14385( "player_preps_for_jump" ) )
         return;
 
-    var_0 = _func_1A1( "player_jumpdown_block", "targetname" );
-    var_0 _meth_82C8();
+    var_0 = getent( "player_jumpdown_block", "targetname" );
+    var_0 solid();
     _ID42237::_ID14402( "player_preps_for_jump" );
-    level._ID794 _meth_831B();
-    level._ID794 _meth_8319( level._ID51758, 0, 1 );
-    level._ID794 _meth_8320( level._ID51758 );
+    level._ID794 takeallweapons();
+    level._ID794 giveweapon( level._ID51758, 0, 1 );
+    level._ID794 switchtoweapon( level._ID51758 );
     level._ID794 notify( "stop_climbing" );
-    level._ID794 _meth_8098( undefined );
-    level._ID794 _meth_81F1( 1 );
-    var_1 = _func_1A1( "climb_jump_org", "targetname" );
+    level._ID794 playersetgroundreferenceent( undefined );
+    level._ID794 setmovespeedscale( 1 );
+    var_1 = getent( "climb_jump_org", "targetname" );
     _ID42237::_ID14400( "price_jumped" );
-    thread _unknown_6BA3( var_1 );
-    thread _unknown_704C();
-    level._ID28543 = _func_0DE( "allies" )[0];
+    thread _ID51118( var_1 );
+    thread _ID43394();
+    level._ID28543 = getaiarray( "allies" )[0];
     _func_194( _ID42407::_ID25268( "obj_follow_price" ), level._ID28543 );
-    _func_0DB( "compass", 1 );
+    setsaveddvar( "compass", 1 );
     _ID42237::_ID14413( "climb_jump_prep" );
 
     if ( level._ID15361 <= 1 )
@@ -3679,50 +3721,50 @@ _ID53240()
 
     _ID42237::_ID14388( "climb_big_jump" );
     _ID42237::_ID14413( "climb_big_jump" );
-    var_3 = _func_1A1( "big_jump_yaw", "targetname" );
-    var_4 = _func_1A1( var_3._ID1191, "targetname" );
-    var_5 = _func_11A( var_4._ID740 - var_3._ID740 );
+    var_3 = getent( "big_jump_yaw", "targetname" );
+    var_4 = getent( var_3._ID1191, "targetname" );
+    var_5 = vectortoangles( var_4._ID740 - var_3._ID740 );
     var_5 = ( 0, var_5[1], 0 );
-    var_6 = _func_11F( var_5 );
+    var_6 = anglestoforward( var_5 );
     level notify( "stop_force_sliding_the_player" );
 
     for (;;)
     {
-        if ( _unknown_6C77( var_6 ) )
+        if ( _ID49536( var_6 ) )
             break;
 
         wait 0.05;
     }
 
-    level._ID794 _meth_80A1( "scn_cliffhanger_player_make_bigjump" );
-    _func_034( "hold_on_tight", 1 );
-    var_7 = level._ID794 _meth_8344();
-    var_8 = _func_0F3( var_7, ( 0, 0, 0 ) );
+    level._ID794 playsound( "scn_cliffhanger_player_make_bigjump" );
+    setdvar( "hold_on_tight", 1 );
+    var_7 = level._ID794 getvelocity();
+    var_8 = distance( var_7, ( 0, 0, 0 ) );
     var_9 = 300;
 
     if ( var_8 > var_9 )
     {
         var_10 = var_9 / var_8;
         var_11 = ( var_7[0] * var_10, var_7[1] * var_10, var_7[2] * var_10 );
-        level._ID794 _meth_82FC( var_11 );
+        level._ID794 setvelocity( var_11 );
     }
 
-    level._ID794 _meth_8189( "stand" );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_830F( 0 );
+    level._ID794 setstance( "stand" );
+    level._ID794 allowprone( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 _meth_830f( 0 );
     _ID42237::_ID14402( "player_makes_the_jump" );
     wait 0.4;
     var_12 = _ID42407::_ID35028( "player_rig" );
-    var_12 _unknown_607D();
-    var_12 _meth_805A();
+    var_12 _ID54242();
+    var_12 hide();
     level._ID50383 = var_12;
     var_13 = var_12 _ID42407::_ID16120( "big_jump_both_in" );
     var_14 = var_12 _ID42407::_ID16120( "big_jump_left" );
     var_15 = var_12 _ID42407::_ID16120( "big_jump_right" );
     var_16 = var_12 _ID42407::_ID16120( "big_jump_both_out" );
-    var_17 = _func_071( var_1._ID740, var_1._ID65, var_13 );
-    var_18 = _func_072( var_1._ID740, var_1._ID65, var_13 );
+    var_17 = getstartorigin( var_1._ID740, var_1._ID65, var_13 );
+    var_18 = getstartangles( var_1._ID740, var_1._ID65, var_13 );
     var_12._ID740 = var_17;
     var_12._ID65 = var_18;
     var_19 = var_12 _ID42407::_ID16120( "controller_both_in" );
@@ -3731,74 +3773,74 @@ _ID53240()
     var_22 = var_12 _ID42407::_ID16120( "controller_left" );
     var_23 = var_12 _ID42407::_ID16120( "controller_slide" );
     var_24 = var_12 _ID42407::_ID16120( "controller_climb" );
-    var_12 _meth_8156( var_23, 0.999, 0, 1 );
-    var_12 _meth_8156( var_19, 0.999, 0, 1 );
-    var_12 _meth_8156( var_20, 0.001, 0, 1 );
-    var_12 _meth_8156( var_22, 0.001, 0, 1 );
-    var_12 _meth_8156( var_21, 0.001, 0, 1 );
+    var_12 setanimlimited( var_23, 0.999, 0, 1 );
+    var_12 setanimlimited( var_19, 0.999, 0, 1 );
+    var_12 setanimlimited( var_20, 0.001, 0, 1 );
+    var_12 setanimlimited( var_22, 0.001, 0, 1 );
+    var_12 setanimlimited( var_21, 0.001, 0, 1 );
     level._ID52016 = 1.6;
     var_25 = level._ID52016;
-    var_12 _meth_811B( "slide", var_13, 1, 0, var_25 );
-    var_12 _meth_8156( var_16, 1, 0, var_25 );
-    var_12 _meth_8156( var_14, 1, 0, var_25 );
-    var_12 _meth_8156( var_15, 1, 0, var_25 );
-    _func_0DB( "sm_sunsamplesizenear", 0.0625 );
-    var_12 thread _unknown_72A9();
+    var_12 setflaggedanimlimited( "slide", var_13, 1, 0, var_25 );
+    var_12 setanimlimited( var_16, 1, 0, var_25 );
+    var_12 setanimlimited( var_14, 1, 0, var_25 );
+    var_12 setanimlimited( var_15, 1, 0, var_25 );
+    setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
+    var_12 thread _ID53086();
     var_26 = 0.7;
-    level._ID794 _meth_8087( var_12, "tag_player", var_26, var_26 * 0.7, 0 );
+    level._ID794 playerlinktoblend( var_12, "tag_player", var_26, var_26 * 0.7, 0 );
     wait(var_26 - 0.05);
-    var_12 _meth_8059();
-    thread _unknown_72B1( var_12 );
+    var_12 show();
+    thread _ID52993( var_12 );
     thread _ID42237::_ID27077( "scn_cliffhanger_player_bigjump_bodyfall", level._ID794._ID740 );
     level._ID794._ID46939 = 1;
     wait 0.05;
-    level._ID794 _meth_831B();
-    thread _unknown_72B8();
+    level._ID794 takeallweapons();
+    thread _ID50159();
     wait 0.05;
 
     for (;;)
     {
-        if ( var_12 _meth_8159( var_13 ) >= 0.99 )
+        if ( var_12 getanimtime( var_13 ) >= 0.99 )
             break;
 
         wait 0.05;
     }
 
-    level._ID794 _meth_80A1( "scn_cliffhanger_snow_breakaway" );
-    _func_0DB( "compass", 0 );
+    level._ID794 playsound( "scn_cliffhanger_snow_breakaway" );
+    setsaveddvar( "compass", 0 );
     _ID42237::_ID14402( "player_hangs_on" );
     _ID42234::_ID13611( 5 );
 
     if ( var_12._ID51704 )
-        var_12 _meth_80B2( "scn_cliffhanger_icepick_scrape_left" );
+        var_12 stopsounds( "scn_cliffhanger_icepick_scrape_left" );
 
     if ( var_12._ID52456 )
-        var_12 _meth_80B2( "scn_cliffhanger_icepick_scrape_right" );
+        var_12 stopsounds( "scn_cliffhanger_icepick_scrape_right" );
 
     level._ID794._ID46939 = 0;
     var_12 notify( "stop_weights" );
     var_12 notify( "stop_fx" );
-    var_27 = _func_1A1( "h2_bigjump_catch", "targetname" );
+    var_27 = getent( "h2_bigjump_catch", "targetname" );
     var_27 thread _ID42259::_ID3111( var_12, "big_jump" );
     level._ID30333 = _ID42407::_ID15963( "icepick_hang" );
     level._ID30333._ID20129 = 0;
     level._ID30333 _ID42407::_ID10226( 2, _ID42407::_ID30354, 4.5 );
     var_28 = var_12 _ID42407::_ID16120( "big_jump" );
-    var_29 = _unknown_74B3();
+    var_29 = _ID53109();
     var_30 = 0.95;
 
     for (;;)
     {
-        if ( var_12 _meth_8159( var_28 ) > var_30 )
+        if ( var_12 getanimtime( var_28 ) > var_30 )
             break;
 
         if ( level._ID15361 > 1 )
         {
-            if ( !_ID42237::_ID14385( "player_was_caught" ) && _func_03D() > level._ID794._ID53783 + 1000 )
+            if ( !_ID42237::_ID14385( "player_was_caught" ) && gettime() > level._ID794._ID53783 + 1000 )
             {
                 _ID42237::_ID14388( "player_hangs_on" );
-                level._ID794 _meth_8055();
-                var_12 _meth_805A();
+                level._ID794 unlink();
+                var_12 hide();
                 return;
             }
         }
@@ -3806,23 +3848,23 @@ _ID53240()
         wait 0.05;
     }
 
-    if ( _func_02F( level._ID30333 ) )
-        level._ID30333 _meth_80B7();
+    if ( isdefined( level._ID30333 ) )
+        level._ID30333 delete();
 
     var_12 notify( "stop_weights" );
-    var_31 = _func_1A1( "climb_catch", "targetname" );
+    var_31 = getent( "climb_catch", "targetname" );
     var_17 = var_31._ID740;
     var_18 = var_31._ID65;
-    var_31 _meth_80B7();
+    var_31 delete();
     _ID42237::_ID14388( "climb_pullup" );
     _ID42237::_ID14388( "finished_climbing" );
     _ID42237::_ID14402( "final_climb" );
-    var_12 _meth_805A();
+    var_12 hide();
     var_12 _ID42407::_ID10226( 0.5, _ID42407::_ID31860 );
 
     for (;;)
     {
-        if ( level._ID794 _unknown_6054( var_17, var_18, 1, 1 ) )
+        if ( level._ID794 _ID52973( var_17, var_18, 1, 1 ) )
             break;
 
         if ( _ID42237::_ID14385( "finished_climbing" ) )
@@ -3836,28 +3878,28 @@ _ID53240()
     {
         var_32 = 1.5;
         wait(var_32);
-        thread _unknown_5CE2();
-        level._ID794 _meth_8098( undefined );
+        thread _ID53216();
+        level._ID794 playersetgroundreferenceent( undefined );
     }
 
     _ID42237::_ID14402( "reached_top" );
     _func_194( _ID42407::_ID25268( "obj_follow_price" ), level._ID28543 );
-    _func_0DB( "compass", 1 );
-    _func_0DB( "ammoCounterHide", 0 );
-    _func_0DB( "actionSlotsHide", 0 );
-    _func_0DB( "hud_showStance", 1 );
-    _func_0DB( "hud_drawhud", 1 );
-    _func_0DB( "sm_sunsamplesizenear", 0.25 );
-    _func_0DB( "g_friendlyNameDist", 15000 );
-    level._ID794 _meth_8123( 1 );
-    level._ID794 _meth_8122( 1 );
-    level._ID794 _meth_830F( 1 );
+    setsaveddvar( "compass", 1 );
+    setsaveddvar( "ammoCounterHide", 0 );
+    setsaveddvar( "actionSlotsHide", 0 );
+    setsaveddvar( "hud_showStance", 1 );
+    setsaveddvar( "hud_drawhud", 1 );
+    setsaveddvar( "sm_sunsamplesizenear", 0.25 );
+    setsaveddvar( "g_friendlyNameDist", 15000 );
+    level._ID794 allowprone( 1 );
+    level._ID794 allowcrouch( 1 );
+    level._ID794 _meth_830f( 1 );
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4918( "axis" );
     level._ID794 notify( "stop soundgear_jacket_flapping_plr_loop" );
-    thread _unknown_5D6B();
-    level._ID794 _meth_813A( 1 );
-    var_0 _meth_80B7();
+    thread _ID53216();
+    level._ID794 allowfire( 1 );
+    var_0 delete();
 }
 
 _ID53820()
@@ -3875,8 +3917,8 @@ _ID53820()
     var_0[var_0.size] = "bigjump_left_03_idle";
     var_0[var_0.size] = "bigjump_right_03";
     var_0[var_0.size] = "bigjump_ending";
-    level._ID54618 = _unknown_5DE9( "is_jump_climb" );
-    level._ID50221 = _unknown_5E6F( "is_jump_climb" );
+    level._ID54618 = _ID43885( "is_jump_climb" );
+    level._ID50221 = _ID43684( "is_jump_climb" );
     return var_0;
 }
 
@@ -3885,25 +3927,25 @@ _ID49118()
     if ( _ID42237::_ID14385( "player_preps_for_jump" ) )
         return;
 
-    var_0 = _func_1A1( "player_jumpdown_block", "targetname" );
-    var_0 _meth_82C8();
+    var_0 = getent( "player_jumpdown_block", "targetname" );
+    var_0 solid();
     _ID42237::_ID14402( "player_preps_for_jump" );
-    level._ID794 _meth_831B();
-    level._ID794 _meth_8319( level._ID51758, 0, 1 );
-    level._ID794 _meth_8320( level._ID51758 );
+    level._ID794 takeallweapons();
+    level._ID794 giveweapon( level._ID51758, 0, 1 );
+    level._ID794 switchtoweapon( level._ID51758 );
     level._ID794 notify( "stop_climbing" );
-    level._ID794 _meth_8098( undefined );
-    level._ID794 _meth_81F1( 1 );
-    var_1 = _func_1A1( "climb_jump_org", "targetname" );
+    level._ID794 playersetgroundreferenceent( undefined );
+    level._ID794 setmovespeedscale( 1 );
+    var_1 = getent( "climb_jump_org", "targetname" );
 
-    if ( !_func_02F( level._ID50450 ) )
-        thread _unknown_7106( var_1 );
+    if ( !isdefined( level._ID50450 ) )
+        thread _ID51118( var_1 );
 
     _ID42237::_ID14400( "price_jumped" );
-    thread _unknown_75B6();
-    level._ID28543 = _func_0DE( "allies" )[0];
+    thread _ID43394();
+    level._ID28543 = getaiarray( "allies" )[0];
     _func_194( _ID42407::_ID25268( "obj_follow_price" ), level._ID28543 );
-    _func_0DB( "compass", 1 );
+    setsaveddvar( "compass", 1 );
     _ID42237::_ID14413( "climb_jump_prep" );
 
     if ( level._ID15361 <= 1 )
@@ -3914,80 +3956,80 @@ _ID49118()
 
     _ID42237::_ID14388( "climb_big_jump" );
     _ID42237::_ID14413( "climb_big_jump" );
-    var_3 = _func_1A1( "big_jump_yaw", "targetname" );
-    var_4 = _func_1A1( var_3._ID1191, "targetname" );
-    var_5 = _func_11A( var_4._ID740 - var_3._ID740 );
+    var_3 = getent( "big_jump_yaw", "targetname" );
+    var_4 = getent( var_3._ID1191, "targetname" );
+    var_5 = vectortoangles( var_4._ID740 - var_3._ID740 );
     var_5 = ( 0, var_5[1], 0 );
-    var_6 = _func_11F( var_5 );
+    var_6 = anglestoforward( var_5 );
     level notify( "stop_force_sliding_the_player" );
-    level._ID794._ID45045 = level._ID794 _meth_83C0();
+    level._ID794._ID45045 = level._ID794 _meth_83c0();
 
     for (;;)
     {
-        if ( _unknown_71EC( var_6 ) )
+        if ( _ID49536( var_6 ) )
             break;
 
-        level._ID794._ID45045 = level._ID794 _meth_83C0();
+        level._ID794._ID45045 = level._ID794 _meth_83c0();
         wait 0.05;
     }
 
     waitframe;
-    level._ID794 _meth_80A1( "scn_cliffhanger_player_make_bigjump" );
-    level._ID794 _meth_8189( "stand" );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_830F( 0 );
-    level._ID794 _meth_831B();
+    level._ID794 playsound( "scn_cliffhanger_player_make_bigjump" );
+    level._ID794 setstance( "stand" );
+    level._ID794 allowprone( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 _meth_830f( 0 );
+    level._ID794 takeallweapons();
     var_7 = _ID42407::_ID35028( "worldbody" );
-    var_7 _unknown_65B7();
-    var_8 = _func_1A5();
+    var_7 _ID54242();
+    var_8 = spawnstruct();
     var_8._ID740 = ( 495.615, -29011.4, 839.341 );
     var_8._ID65 = ( 0, 75.41, 0 );
     var_9 = var_7 _ID42407::_ID16120( "h2_cliff_jump" );
-    var_10 = _func_071( var_8._ID740, var_8._ID65, var_9 );
-    var_11 = _func_072( var_8._ID740, var_8._ID65, var_9 ) - level._ID794._ID65;
-    var_12 = _func_1A5();
+    var_10 = getstartorigin( var_8._ID740, var_8._ID65, var_9 );
+    var_11 = getstartangles( var_8._ID740, var_8._ID65, var_9 ) - level._ID794._ID65;
+    var_12 = spawnstruct();
     var_12._ID65 = var_8._ID65 - var_11;
     var_13 = var_10 - level._ID794._ID740;
     var_14 = var_8._ID740 - var_10;
-    var_15 = var_14[0] * _func_0BC( var_11[1] ) - var_14[1] * _func_0BB( var_11[1] );
-    var_16 = var_14[0] * _func_0BB( var_11[1] ) + var_14[1] * _func_0BC( var_11[1] );
+    var_15 = var_14[0] * cos( var_11[1] ) - var_14[1] * sin( var_11[1] );
+    var_16 = var_14[0] * sin( var_11[1] ) + var_14[1] * cos( var_11[1] );
     var_17 = var_14 - ( var_15, var_16, var_14[2] );
     var_12._ID740 = var_8._ID740 - var_13 + var_17 + ( 0, 0, 30 );
-    var_7 _meth_805A();
+    var_7 hide();
     var_12 _ID42259::_ID3018( var_7, "h2_cliff_jump" );
-    level._ID794 _meth_8087( var_7, "tag_player", 0.5, 0.25, 0.25 );
+    level._ID794 playerlinktoblend( var_7, "tag_player", 0.5, 0.25, 0.25 );
     var_18 = "player_jump";
-    var_7 _meth_8148( var_18, var_12._ID740, var_12._ID65, var_9 );
-    var_19 = _func_069( var_9, "collide" );
-    var_20 = _func_067( var_9 ) * var_19[0];
+    var_7 animscripted( var_18, var_12._ID740, var_12._ID65, var_9 );
+    var_19 = getnotetracktimes( var_9, "collide" );
+    var_20 = getanimlength( var_9 ) * var_19[0];
     var_7 thread _ID42259::_ID46811( var_18, var_12, var_8, var_20 );
-    _func_034( "hold_on_tight", 1 );
+    setdvar( "hold_on_tight", 1 );
     _ID42237::_ID14402( "player_makes_the_jump" );
-    thread _unknown_5DA4( "dof_jump_far_side_success" );
+    thread _ID43069( "dof_jump_far_side_success" );
     wait 0.4;
-    _func_0DB( "sm_sunsamplesizenear", 0.0625 );
+    setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
     wait 0.1;
-    level._ID794 _meth_8084( var_7, "tag_player", 1.0, 0, 0, 0, 0, 1 );
-    var_7 _meth_8059();
+    level._ID794 playerlinktodelta( var_7, "tag_player", 1.0, 0, 0, 0, 0, 1 );
+    var_7 show();
     var_7 waittillmatch( var_18,  "collide"  );
     thread _ID42237::_ID27077( "scn_cliffhanger_player_bigjump_bodyfall", level._ID794._ID740 );
     level._ID794._ID46939 = 1;
     var_7 animscripts\shared::_ID11529( var_18 );
-    thread _unknown_7809();
+    thread _ID50159();
     var_21 = "jump_slide";
-    var_7 _meth_8148( var_21, var_8._ID740, var_8._ID65, var_7 _ID42407::_ID16120( "h2_slide_left" ) );
-    var_7 _meth_807C( "scn_cliffhanger_icepick_scrape_left" );
-    level._ID794 thread _unknown_77AE();
-    var_7 thread _unknown_7939();
-    var_7 thread _unknown_7796();
+    var_7 animscripted( var_21, var_8._ID740, var_8._ID65, var_7 _ID42407::_ID16120( "h2_slide_left" ) );
+    var_7 playloopsound( "scn_cliffhanger_icepick_scrape_left" );
+    level._ID794 thread _ID52633();
+    var_7 thread _ID45643();
+    var_7 thread _ID43861();
     var_7 waittill( var_21 );
     level._ID794 notify( "stop_rumble" );
     var_7 notify( "stop_fx" );
     var_7 notify( "stop_bigjump_slide" );
-    var_7 _meth_80B2( "scn_cliffhanger_icepick_scrape_left" );
-    level._ID794 _meth_80A1( "scn_cliffhanger_snow_breakaway" );
-    _func_0DB( "compass", 0 );
+    var_7 stopsounds( "scn_cliffhanger_icepick_scrape_left" );
+    level._ID794 playsound( "scn_cliffhanger_snow_breakaway" );
+    setsaveddvar( "compass", 0 );
     _ID42237::_ID14402( "player_hangs_on" );
     _ID42234::_ID13611( 5 );
     level._ID794._ID46939 = 0;
@@ -4000,49 +4042,49 @@ _ID49118()
 
     for (;;)
     {
-        if ( var_7 _meth_8159( var_22 ) > var_23 )
+        if ( var_7 getanimtime( var_22 ) > var_23 )
             break;
 
         wait 0.05;
     }
 
-    if ( _func_02F( level._ID30333 ) )
-        level._ID30333 _meth_80B7();
+    if ( isdefined( level._ID30333 ) )
+        level._ID30333 delete();
 
-    var_24 = _func_1A1( "climb_catch", "targetname" );
+    var_24 = getent( "climb_catch", "targetname" );
     var_25 = var_24._ID740;
     var_26 = var_24._ID65;
-    var_24 _meth_80B7();
+    var_24 delete();
     _ID42237::_ID14388( "climb_pullup" );
     _ID42237::_ID14388( "finished_climbing" );
     _ID42237::_ID14402( "final_climb" );
-    var_27 = _unknown_7693();
+    var_27 = _ID53820();
     level._ID50036 = var_7;
-    var_28 = _func_03D() + 12000;
-    var_29 = _func_1A5();
+    var_28 = gettime() + 12000;
+    var_29 = spawnstruct();
     var_29._ID794 = level._ID794;
     var_29._ID46602 = "left";
-    var_29._ID54537 = _func_1A5();
-    var_30 = _func_1A5();
+    var_29._ID54537 = spawnstruct();
+    var_30 = spawnstruct();
     var_30._ID46602 = "right";
     var_30._ID47576 = "k";
-    var_30._ID50118 = _func_03D() + 2000;
+    var_30._ID50118 = gettime() + 2000;
     var_30._ID794 = level._ID794;
     var_29._ID54537._ID48348["right"] = var_30;
     var_29._ID45941 = var_7;
     var_29._ID3197 = _ID51955::_ID49370( [], "up", var_29._ID46602 );
 
-    while ( !level._ID794 _unknown_6224() )
+    while ( !level._ID794 _ID53748() )
     {
-        if ( _unknown_6855( 1, var_28, var_29 ) )
-            _unknown_6744( var_29, var_27[0], var_8 );
+        if ( _ID52227( 1, var_28, var_29 ) )
+            _ID47170( var_29, var_27[0], var_8 );
 
         wait 0.05;
     }
 
     for (;;)
     {
-        if ( level._ID794 _unknown_635F( var_8, "left", var_27 ) )
+        if ( level._ID794 _ID45887( var_8, "left", var_27 ) )
             break;
 
         if ( _ID42237::_ID14385( "finished_climbing" ) )
@@ -4054,23 +4096,23 @@ _ID49118()
 
     _ID42237::_ID14402( "reached_top" );
     _func_194( _ID42407::_ID25268( "obj_follow_price" ), level._ID28543 );
-    _func_0DB( "compass", 1 );
-    _func_0DB( "ammoCounterHide", 0 );
-    _func_0DB( "actionSlotsHide", 0 );
-    _func_0DB( "hud_showStance", 1 );
-    _func_0DB( "hud_drawhud", 1 );
-    _func_0DB( "sm_sunsamplesizenear", 0.25 );
-    _func_0DB( "g_friendlyNameDist", 15000 );
-    level._ID794 _meth_8123( 1 );
-    level._ID794 _meth_8122( 1 );
-    level._ID794 _meth_830F( 1 );
-    level._ID794 _meth_832B();
+    setsaveddvar( "compass", 1 );
+    setsaveddvar( "ammoCounterHide", 0 );
+    setsaveddvar( "actionSlotsHide", 0 );
+    setsaveddvar( "hud_showStance", 1 );
+    setsaveddvar( "hud_drawhud", 1 );
+    setsaveddvar( "sm_sunsamplesizenear", 0.25 );
+    setsaveddvar( "g_friendlyNameDist", 15000 );
+    level._ID794 allowprone( 1 );
+    level._ID794 allowcrouch( 1 );
+    level._ID794 _meth_830f( 1 );
+    level._ID794 enableoffhandweapons();
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4918( "axis" );
     level._ID794 notify( "stop soundgear_jacket_flapping_plr_loop" );
-    thread _unknown_62F6();
-    level._ID794 _meth_813A( 1 );
-    var_0 _meth_80B7();
+    thread _ID53216();
+    level._ID794 allowfire( 1 );
+    var_0 delete();
 }
 
 _ID43861()
@@ -4081,10 +4123,10 @@ _ID43861()
 
     for (;;)
     {
-        var_2 = level._ID794 _unknown_630F();
+        var_2 = level._ID794 _ID47155();
 
-        if ( var_2 && !var_0 && self _meth_815A( var_1 ) == 0 && self _meth_8159( _ID42407::_ID16120( "h2_slide_left" ) ) < 0.7 )
-            thread _unknown_7A0F();
+        if ( var_2 && !var_0 && self getanimweight( var_1 ) == 0 && self getanimtime( _ID42407::_ID16120( "h2_slide_left" ) ) < 0.7 )
+            thread _ID45072();
 
         wait 0.05;
     }
@@ -4094,9 +4136,9 @@ _ID45072()
 {
     self endon( "stop_bigjump_slide" );
     var_0 = _ID42407::_ID16120( "fail_icepick" );
-    self _meth_811C( "fail_pick", var_0 );
+    self setflaggedanimrestart( "fail_pick", var_0 );
     self waittill( "fail_pick" );
-    self _meth_814C( var_0, 0.1 );
+    self clearanim( var_0, 0.1 );
 }
 
 _ID52633()
@@ -4105,7 +4147,7 @@ _ID52633()
 
     for (;;)
     {
-        level._ID794 _meth_80B4( "icepick_slide" );
+        level._ID794 playrumblelooponentity( "icepick_slide" );
         wait 0.05;
     }
 }
@@ -4116,7 +4158,7 @@ _ID54190()
 
     for (;;)
     {
-        self _meth_81B2( self._ID740 );
+        self setgoalpos( self._ID740 );
         wait 0.05;
     }
 }
@@ -4138,40 +4180,34 @@ _ID48585()
 
     _ID42237::_ID14402( "mig_c4_planted" );
     _ID42237::_ID14402( "one_c4_planted" );
-    thread _unknown_7B12();
+    thread _ID51060();
     _ID42237::_ID14402( "tarmac_escape" );
     var_0 = 1.5;
     level._ID5261 = _ID42313::_ID9125( "black", 0, level._ID794 );
     level._ID5261._ID55 = 0;
     level._ID52233 = maps\cliffhanger_code::_ID50305( &"CLIFFHANGER_E3_NOT_AS_PLANNED" );
     level._ID52233._ID55 = 0;
-    level._ID5261 _meth_808B( var_0 );
+    level._ID5261 fadeovertime( var_0 );
     level._ID5261._ID55 = 1;
     wait(var_0);
-    level._ID52233 _meth_808B( var_0 );
+    level._ID52233 fadeovertime( var_0 );
     level._ID52233._ID55 = 1;
-    level._ID5261 _ID42237::_ID10192( 0.1, ::_meth_808F );
-    level._ID28543 thread _unknown_7B1A();
+    level._ID5261 _ID42237::_ID10192( 0.1, ::destroy );
+    level._ID28543 thread _ID54190();
 
-    if ( _func_1A7( level._ID28543 ) )
+    if ( isalive( level._ID28543 ) )
     {
-        if ( _func_02F( level._ID28543._ID22746 ) )
+        if ( isdefined( level._ID28543._ID22746 ) )
             level._ID28543 _ID42407::_ID36519();
 
-        level._ID28543 _meth_80B7();
+        level._ID28543 delete();
     }
 
-    var_1 = _func_0DE( "axis" );
-    var_2 = var_1;
+    var_1 = getaiarray( "axis" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 _meth_80B7();
-    }
+    foreach ( var_3 in var_1 )
+        var_3 delete();
 
-    var_clear_2
-    var_clear_0
     thread maps\cliffhanger::_ID45476( 1 );
     wait 3;
     level notify( "stop_spamming_max_health" );
@@ -4185,19 +4221,19 @@ _ID51060()
 
     for (;;)
     {
-        level._ID794 _meth_8056( 100 );
+        level._ID794 setnormalhealth( 100 );
         wait 0.05;
     }
 }
 
 _ID43716( var_0 )
 {
-    thread _unknown_757F( var_0, ( 0, 0, 0 ), ( 1, 0, 0 ) );
+    thread _ID48437( var_0, ( 0, 0, 0 ), ( 1, 0, 0 ) );
     wait 0.1;
-    var_0._ID794 _meth_8087( var_0._ID45941, "tag_player", 0.2 );
+    var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_player", 0.2 );
     wait 0.2;
-    var_0._ID794 _meth_8098( var_0._ID54537._ID17430 );
-    _func_0DB( "sm_sunsamplesizenear", 0.0625 );
+    var_0._ID794 playersetgroundreferenceent( var_0._ID54537._ID17430 );
+    setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
     var_0._ID54537._ID53810 = 1;
 }
 
@@ -4214,17 +4250,17 @@ _ID43394()
 
     for (;;)
     {
-        var_0 = level._ID794 _meth_8349();
-        var_1 = level._ID794 _meth_8348();
+        var_0 = level._ID794 adsbuttonpressed();
+        var_1 = level._ID794 attackbuttonpressed();
 
         if ( !level._ID8534 )
         {
-            var_0 = level._ID794 _unknown_652E();
-            var_1 = level._ID794 _unknown_652F();
+            var_0 = level._ID794 _ID53748();
+            var_1 = level._ID794 _ID47155();
         }
 
         if ( var_0 || var_1 )
-            level._ID794._ID53783 = _func_03D();
+            level._ID794._ID53783 = gettime();
 
         wait 0.05;
     }
@@ -4237,19 +4273,19 @@ _ID52993( var_0 )
 
     for (;;)
     {
-        var_2 = _func_0BA( 1.0, 1.8 );
+        var_2 = randomfloatrange( 1.0, 1.8 );
         _ID42237::_ID14426( "pause_sleeve_flap" );
         wait 0.05;
-        var_0 _meth_8155( var_1["sleeve_flap"], 1, 0, var_2 );
-        wait(_func_0BA( 0.2, 5 ));
+        var_0 setanim( var_1["sleeve_flap"], 1, 0, var_2 );
+        wait(randomfloatrange( 0.2, 5 ));
     }
 }
 
 _ID50869( var_0 )
 {
     wait 0.2;
-    var_0 thread _unknown_7618( "left" );
-    var_0 thread _unknown_7621( "right" );
+    var_0 thread _ID54380( "left" );
+    var_0 thread _ID54380( "right" );
 }
 
 _ID53086()
@@ -4279,23 +4315,23 @@ _ID53086()
     var_10[1] = 2;
     var_10[2] = level._ID52016;
     var_11 = 1;
-    var_12 = _func_1A5();
+    var_12 = spawnstruct();
     var_12._ID54089["left"] = 0;
     var_12._ID54089["right"] = 0;
-    thread _unknown_7EA2( var_12 );
+    thread _ID44000( var_12 );
     self._ID51704 = 0;
     self._ID52456 = 0;
 
     for (;;)
     {
         var_13 = 0;
-        var_14 = level._ID794 _meth_8349();
-        var_15 = level._ID794 _meth_8348();
+        var_14 = level._ID794 adsbuttonpressed();
+        var_15 = level._ID794 attackbuttonpressed();
 
         if ( !level._ID8534 )
         {
-            var_15 = level._ID794 _unknown_6681();
-            var_14 = level._ID794 _unknown_668F();
+            var_15 = level._ID794 _ID47155();
+            var_14 = level._ID794 _ID53748();
         }
 
         var_12._ID54089["left"] = var_14;
@@ -4306,14 +4342,14 @@ _ID53086()
             if ( var_14 )
             {
                 if ( !self._ID51704 )
-                    self _meth_807C( "scn_cliffhanger_icepick_scrape_left" );
+                    self playloopsound( "scn_cliffhanger_icepick_scrape_left" );
 
                 self._ID51704 = 1;
             }
             else
             {
                 if ( self._ID51704 )
-                    self _meth_80B2( "scn_cliffhanger_icepick_scrape_left" );
+                    self stopsounds( "scn_cliffhanger_icepick_scrape_left" );
 
                 self._ID51704 = 0;
             }
@@ -4321,14 +4357,14 @@ _ID53086()
             if ( var_15 )
             {
                 if ( !self._ID52456 )
-                    self _meth_807C( "scn_cliffhanger_icepick_scrape_right" );
+                    self playloopsound( "scn_cliffhanger_icepick_scrape_right" );
 
                 self._ID52456 = 1;
             }
             else
             {
                 if ( self._ID52456 )
-                    self _meth_80B2( "scn_cliffhanger_icepick_scrape_right" );
+                    self stopsounds( "scn_cliffhanger_icepick_scrape_right" );
 
                 self._ID52456 = 0;
             }
@@ -4340,23 +4376,18 @@ _ID53086()
         if ( var_15 )
             var_13++;
 
-        _unknown_7F85( var_13, var_4 );
+        _ID46069( var_13, var_4 );
         var_16 = var_9[var_14][var_15];
-        var_17 = var_8;
 
-        for ( var_19 = _func_1DA( var_17 ); _func_02F( var_19 ); var_19 = _func_1BF( var_17, var_19 ) )
+        foreach ( var_18 in var_8 )
         {
-            var_18 = var_17[var_19];
-
             if ( var_18 == var_16 )
                 continue;
 
-            self _meth_8156( var_18, 0.001, 0.1, 1 );
+            self setanimlimited( var_18, 0.001, 0.1, 1 );
         }
 
-        var_clear_3
-        var_clear_1
-        self _meth_8156( var_16, 0.999, 0.1, 1 );
+        self setanimlimited( var_16, 0.999, 0.1, 1 );
         var_20 = var_10[var_13];
 
         if ( var_20 > var_11 )
@@ -4364,13 +4395,13 @@ _ID53086()
         else
         {
             var_21 = 0.9;
-            var_11 = var_11 * var_21 + var_20 * 1 - var_21;
+            var_11 = var_11 * var_21 + var_20 * ( 1 - var_21 );
         }
 
-        self _meth_8156( var_4, 1, 0, var_11 );
-        self _meth_8156( var_7, 1, 0, var_11 );
-        self _meth_8156( var_5, 1, 0, var_11 );
-        self _meth_8156( var_6, 1, 0, var_11 );
+        self setanimlimited( var_4, 1, 0, var_11 );
+        self setanimlimited( var_7, 1, 0, var_11 );
+        self setanimlimited( var_5, 1, 0, var_11 );
+        self setanimlimited( var_6, 1, 0, var_11 );
         wait 0.05;
     }
 }
@@ -4381,23 +4412,18 @@ _ID44000( var_0 )
 
     for (;;)
     {
-        var_1 = var_0._ID54089;
-
-        for ( var_5 = _func_1DA( var_1 ); _func_02F( var_5 ); var_5 = _func_1BF( var_1, var_5 ) )
+        foreach ( var_5, var_2 in var_0._ID54089 )
         {
-            var_2 = var_1[var_5];
-
             if ( var_2 )
             {
-                var_3 = _unknown_77CC( var_5 );
-                var_4 = _unknown_777D( self, var_3 );
+                var_3 = _ID51668( var_5 );
+                var_4 = _ID52662( self, var_3 );
                 var_4 _ID42407::_ID38044( "slide_fx", "tag_origin", 10 );
-                var_4 _meth_80B7();
-                wait(_func_0BA( 0.05, 0.1 ));
+                var_4 delete();
+                wait(randomfloatrange( 0.05, 0.1 ));
             }
         }
 
-        var_clear_2
         wait 0.05;
     }
 }
@@ -4408,18 +4434,18 @@ _ID45643()
 
     for (;;)
     {
-        var_0 = _unknown_7813( "left" );
-        var_1 = _unknown_77C4( self, var_0 );
+        var_0 = _ID51668( "left" );
+        var_1 = _ID52662( self, var_0 );
         var_1 _ID42407::_ID38044( "slide_fx", "tag_origin", 40 );
-        var_1 _meth_80B7();
-        wait(_func_0BA( 0.05, 0.1 ));
+        var_1 delete();
+        wait(randomfloatrange( 0.05, 0.1 ));
         wait 0.05;
     }
 }
 
 _ID46069( var_0, var_1, var_2 )
 {
-    if ( self _meth_8159( var_1 ) >= 0.9 )
+    if ( self getanimtime( var_1 ) >= 0.9 )
         return;
 
     if ( var_0 == 0 )
@@ -4428,7 +4454,7 @@ _ID46069( var_0, var_1, var_2 )
     if ( !level._ID794._ID46939 )
         return;
 
-    level._ID794 _meth_80B4( "icepick_slide" );
+    level._ID794 playrumblelooponentity( "icepick_slide" );
 }
 
 _ID47123( var_0 )
@@ -4443,7 +4469,7 @@ _ID47123( var_0 )
 
 _ID44848()
 {
-    return _unknown_811D( "left" );
+    return _ID50487( "left" );
 }
 
 _ID47016()
@@ -4453,7 +4479,7 @@ _ID47016()
 
 _ID50487( var_0 )
 {
-    var_1 = _unknown_6EE4( var_0 );
+    var_1 = _ID48513( var_0 );
 
     if ( !level._ID794 [[ level._ID45147._ID48348[var_1]._ID51876 ]]() )
         return 1;
@@ -4494,7 +4520,7 @@ _ID52331( var_0 )
     for (;;)
     {
         _ID42237::_ID14413( "climbing_dof" );
-        _unknown_8204( var_1, var_2, var_0 );
+        _ID52438( var_1, var_2, var_0 );
         _ID42237::_ID14426( "climbing_dof" );
         _ID42262::_ID11338( 1 );
     }
@@ -4520,7 +4546,7 @@ _ID50696( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         else
         {
             var_7 = level._ID50036 _ID42407::_ID16120( var_6 );
-            var_3 = level._ID50036 _meth_8159( var_7 );
+            var_3 = level._ID50036 getanimtime( var_7 );
         }
 
         var_8 = 0;
@@ -4530,9 +4556,9 @@ _ID50696( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         if ( var_3 > 0 )
         {
             var_7 = level._ID50036 _ID42407::_ID16120( var_6 );
-            var_9 = level._ID50036 _meth_8159( var_7 );
+            var_9 = level._ID50036 getanimtime( var_7 );
             var_10 = 0.5;
-            level._ID50036 _meth_8148( "idle", var_5._ID740, var_5._ID65, level._ID50036 _ID42407::_ID16120( var_4 ), "normal", %root, var_10 );
+            level._ID50036 animscripted( "idle", var_5._ID740, var_5._ID65, level._ID50036 _ID42407::_ID16120( var_4 ), "normal", %root, var_10 );
             wait(var_10);
         }
 
@@ -4557,8 +4583,8 @@ _ID51103()
 _ID47974()
 {
     wait 4;
-    level._ID794 _meth_80A9( 0.5, 0.25, 0.25, 22, 65, 30, 30 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 65, 30, 30 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
 }
 
 _ID50255()
@@ -4567,9 +4593,9 @@ _ID50255()
 
     for (;;)
     {
-        level._ID50036 _meth_8155( level._ID50036 _ID42407::_ID16120( "cam_add" ), 1, 0 );
-        level._ID794 _meth_80A9( 0.5, 0.25, 0.25, 22, 65, 30, 37 );
-        level._ID794 _meth_80AA( 50, 50, 20, 20 );
+        level._ID50036 setanim( level._ID50036 _ID42407::_ID16120( "cam_add" ), 1, 0 );
+        level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 65, 30, 37 );
+        level._ID794 setviewangleresistance( 50, 50, 20, 20 );
         level._ID50036 waittillmatch( "looping anim",  "end"  );
         wait 0.05;
     }
@@ -4627,69 +4653,69 @@ _ID47835()
     var_5 = 40;
     var_6 = 5;
     var_7 = 0.05;
-    var_8 = _func_06A( "script_origin", ( 389.489, -29168.6, 185.348 ) );
+    var_8 = spawn( "script_origin", ( 389.489, -29168.6, 185.348 ) );
     var_8._ID65 = ( 0, 27.797, 0 );
     level._ID50036 = _ID42407::_ID35028( "worldbody" );
     var_9 = "intro";
-    level._ID50036._ID740 = _func_071( var_8._ID740, var_8._ID65, level._ID50036 _ID42407::_ID16120( var_9 ) );
-    level._ID50036._ID65 = _func_072( var_8._ID740, var_8._ID65, level._ID50036 _ID42407::_ID16120( var_9 ) );
+    level._ID50036._ID740 = getstartorigin( var_8._ID740, var_8._ID65, level._ID50036 _ID42407::_ID16120( var_9 ) );
+    level._ID50036._ID65 = getstartangles( var_8._ID740, var_8._ID65, level._ID50036 _ID42407::_ID16120( var_9 ) );
     var_8 _ID42259::_ID3018( level._ID50036, var_9 );
-    level._ID50036 _meth_805A();
-    level._ID794 _meth_8328();
-    level._ID794 _meth_832A();
-    level._ID794 _meth_8121( 1 );
-    level._ID794 _meth_8122( 0 );
-    var_10 = _func_06A( "script_origin", ( 0, 0, 0 ) );
-    var_10 _meth_8053( level._ID50036, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 _meth_8098( var_10 );
-    level._ID794 _meth_8084( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 _meth_80A9( 0.5, 0.25, 0.25, 22, 5, 30, 25 );
-    level._ID794 _meth_80AA( 50, 50, 20, 20 );
-    level._ID50036 _meth_8059();
-    level._ID794 thread _unknown_85F2();
+    level._ID50036 hide();
+    level._ID794 disableweapons();
+    level._ID794 disableoffhandweapons();
+    level._ID794 allowstand( 1 );
+    level._ID794 allowcrouch( 0 );
+    var_10 = spawn( "script_origin", ( 0, 0, 0 ) );
+    var_10 linkto( level._ID50036, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    level._ID794 playersetgroundreferenceent( var_10 );
+    level._ID794 playerlinktodelta( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 5, 30, 25 );
+    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level._ID50036 show();
+    level._ID794 thread _ID47974();
     var_8 _ID42259::_ID3111( level._ID50036, "intro" );
     var_8 thread _ID42259::_ID3044( level._ID50036, "intro_idle" );
-    var_11 = _func_0F0( level._ID794._ID65[1] );
+    var_11 = angleclamp180( level._ID794._ID65[1] );
 
     if ( var_11 < 5 && var_11 > -23 )
-        thread _unknown_8630();
+        thread _ID50255();
 
     _ID42237::_ID14413( "breaks_over" );
     wait 4;
     _ID42475::_ID34575( "aud_stop_mix_mig_passby" );
     var_12 = 150;
-    var_13 = level._ID794 _meth_82FE();
+    var_13 = level._ID794 getnormalizedmovement();
 
-    while ( !level._ID794 _meth_83EB() && !level._ID794 _meth_84FA() && _func_0C3( var_13[0] ) + _func_0C3( var_13[1] ) < 0.2 )
+    while ( !level._ID794 jumpbuttonpressed() && !level._ID794 _meth_84fa() && abs( var_13[0] ) + abs( var_13[1] ) < 0.2 )
     {
         if ( var_12 == 0 )
             _ID42407::_ID18684( "how_to_ledge" );
 
         var_12--;
-        var_13 = level._ID794 _meth_82FE();
+        var_13 = level._ID794 getnormalizedmovement();
         waittillframeend;
     }
 
     _ID42237::_ID14402( "ledge_started" );
-    thread _unknown_6ABB( "dof_intro_getup_to_shimmy" );
-    level._ID794 _meth_80A1( "scn_plr_getup_intro" );
-    level._ID50036 thread _unknown_868F();
-    var_14 = _func_1A5();
+    thread _ID43069( "dof_intro_getup_to_shimmy" );
+    level._ID794 playsound( "scn_plr_getup_intro" );
+    level._ID50036 thread _ID51103();
+    var_14 = spawnstruct();
 
     for (;;)
     {
         _ID42237::_ID14388( "leaving_ledge_for_climb" );
         _ID42237::_ID14388( "player_climb_transition" );
-        level._ID794 _meth_80A9( 1, 0.5, 0.5, 0, 0, 0, 0 );
+        level._ID794 lerpviewangleclamp( 1, 0.5, 0.5, 0, 0, 0, 0 );
         var_8 thread _ID42259::_ID3111( level._ID50036, "ledgewalking_in" );
-        level._ID50036 _meth_8155( level._ID50036 _ID42407::_ID16120( "cam_add" ), 1, 0 );
-        level._ID50036 _meth_814C( level._ID50036 _ID42407::_ID16120( "cam_add_root" ), 1.0 );
+        level._ID50036 setanim( level._ID50036 _ID42407::_ID16120( "cam_add" ), 1, 0 );
+        level._ID50036 clearanim( level._ID50036 _ID42407::_ID16120( "cam_add_root" ), 1.0 );
         wait 1;
         level._ID28543 _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
         level._ID50036 waittillmatch( "single anim",  "end"  );
         var_8 thread _ID42259::_ID3111( level._ID50036, "ledgewalking_in_idle" );
-        level._ID794 _meth_80A9( 0.5, 0.5, 0.0, var_3, var_4, var_5, var_6 );
-        level._ID794 _meth_80AA( 50, 50, 20, 20 );
+        level._ID794 lerpviewangleclamp( 0.5, 0.5, 0.0, var_3, var_4, var_5, var_6 );
+        level._ID794 setviewangleresistance( 50, 50, 20, 20 );
         waittillframeend;
         var_15 = "ledgewalking_in_idle";
         var_16 = "";
@@ -4708,7 +4734,7 @@ _ID47835()
             if ( _ID42237::_ID14385( "leaving_ledge_for_climb" ) )
                 break;
 
-            var_13 = level._ID794 _meth_82FE();
+            var_13 = level._ID794 getnormalizedmovement();
             var_13 = ( var_13[0], var_13[1] * -1, 0 );
 
             if ( var_14._ID54093 )
@@ -4730,7 +4756,7 @@ _ID47835()
             var_20 = var_2[var_14._ID53897];
 
             if ( var_20 != "" )
-                var_17 = _unknown_87BA( var_7, var_19, var_13, var_17, var_15, var_8, var_20 );
+                var_17 = _ID50696( var_7, var_19, var_13, var_17, var_15, var_8, var_20 );
 
             if ( var_17 >= 0.95 )
             {
@@ -4746,7 +4772,7 @@ _ID47835()
             if ( var_16 != "" )
             {
                 var_21 = level._ID50036 _ID42407::_ID16120( var_16 );
-                var_22 = level._ID50036 _meth_8159( var_21 );
+                var_22 = level._ID50036 getanimtime( var_21 );
 
                 if ( var_14._ID43612 && var_18 == 0 && !var_14._ID891 && !level._ID50036._ID53580 )
                 {
@@ -4755,8 +4781,8 @@ _ID47835()
                     var_21 = level._ID50036 _ID42407::_ID16120( var_16 );
                     var_8 thread _ID42259::_ID3111( level._ID50036, var_16 );
                     var_22 = 1 - var_22;
-                    level._ID50036 _meth_8120( var_21, var_22 );
-                    level._ID50036 _meth_83D4( var_21, 0.8 );
+                    level._ID50036 setanimtime( var_21, var_22 );
+                    level._ID50036 _meth_83d4( var_21, 0.8 );
                 }
                 else if ( var_14._ID43612 && var_18 != 0 && var_14._ID891 )
                 {
@@ -4765,7 +4791,7 @@ _ID47835()
                     var_21 = level._ID50036 _ID42407::_ID16120( var_16 );
                     var_8 thread _ID42259::_ID3111( level._ID50036, var_16 );
                     var_22 = 1 - var_22;
-                    level._ID50036 _meth_8120( var_21, var_22 );
+                    level._ID50036 setanimtime( var_21, var_22 );
                 }
 
                 var_23 = var_22 == 1 && !var_14._ID891;
@@ -4776,21 +4802,21 @@ _ID47835()
                     var_14._ID43612 = 0;
                     var_16 = "";
                     var_14._ID53897++;
-                    level._ID794 _meth_80A9( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
-                    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+                    level._ID794 lerpviewangleclamp( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
+                    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
 
                     if ( var_14._ID53897 == var_0.size )
                     {
                         _ID42237::_ID14402( "player_in_position_to_climb" );
                         _ID42237::_ID14402( "player_waiting_in_ledge" );
-                        level._ID50036 thread _unknown_8BA0( 0 );
+                        level._ID50036 thread _ID51560( 0 );
                     }
                     else
                     {
                         if ( var_0[var_14._ID53897] == "ledgewalking_blend" )
                         {
                             _ID42237::_ID14402( "price_begins_climbing2" );
-                            thread _unknown_6D7A( "dof_shimmy_turntosoap" );
+                            thread _ID43069( "dof_shimmy_turntosoap" );
                             var_14._ID54093 = 1;
                             var_8 _ID42259::_ID3111( level._ID50036, var_0[var_14._ID53897] );
                             var_14._ID53897++;
@@ -4812,9 +4838,9 @@ _ID47835()
                     var_14._ID891 = 0;
                     var_16 = "";
                     var_14._ID53897--;
-                    level._ID50036 _meth_83D4( var_21, 0 );
-                    level._ID794 _meth_80A9( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
-                    level._ID794 _meth_80AA( 50, 50, 20, 20 );
+                    level._ID50036 _meth_83d4( var_21, 0 );
+                    level._ID794 lerpviewangleclamp( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
+                    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
                     var_8 thread _ID42259::_ID3111( level._ID50036, var_0[var_14._ID53897] );
                     var_15 = var_0[var_14._ID53897];
                 }
@@ -4825,8 +4851,8 @@ _ID47835()
                 var_14._ID53897++;
                 var_16 = var_0[var_14._ID53897];
                 var_21 = level._ID50036 _ID42407::_ID16120( var_16 );
-                level._ID794 _meth_80A9( 1, 0.25, 0.25, 0, 0, 0, 0 );
-                level._ID794 _meth_80AA( 50, 50, 20, 20 );
+                level._ID794 lerpviewangleclamp( 1, 0.25, 0.25, 0, 0, 0, 0 );
+                level._ID794 setviewangleresistance( 50, 50, 20, 20 );
                 var_8 thread _ID42259::_ID3111( level._ID50036, var_16 );
                 var_14._ID43612 = 1;
                 level._ID50036._ID53580 = 0;
@@ -4838,10 +4864,10 @@ _ID47835()
 
         if ( var_14._ID48545 )
         {
-            level._ID50036 _meth_814B();
-            thread _unknown_6E8E( "dof_shimmy_falldeath" );
-            var_25 = _func_067( %h2_cliffhanger_ledgewalking_death );
-            level._ID50036 _meth_814D( %h2_cliffhanger_ledgewalking_death );
+            level._ID50036 stopanimscripted();
+            thread _ID43069( "dof_shimmy_falldeath" );
+            var_25 = getanimlength( %h2_cliffhanger_ledgewalking_death );
+            level._ID50036 setanimknob( %h2_cliffhanger_ledgewalking_death );
             wait(var_25);
             break;
         }
@@ -4850,11 +4876,11 @@ _ID47835()
 
         if ( !var_26 )
         {
-            level._ID794 _meth_8098( undefined );
-            level._ID794 _meth_8055();
-            level._ID794 _ID51560();
-            level._ID50036 _meth_80B7();
-            level._ID794 _meth_8329();
+            level._ID794 playersetgroundreferenceent( undefined );
+            level._ID794 unlink();
+            level._ID794 _ID27327();
+            level._ID50036 delete();
+            level._ID794 enableweapons();
         }
 
         _ID42237::_ID14388( "leaving_ledge_for_climb" );
@@ -4878,39 +4904,39 @@ _ID51560( var_0 )
     }
 
     self endon( "not_end_of_ledge" );
-    self _meth_814B();
-    level._ID794 _meth_80A1( "scn_cliff_intro_plr_ready_climb" );
-    thread _unknown_6F33( "dof_climb1_readyicepick" );
-    self _meth_815C( "getreadyanim", %h2_cliffhanger_ledgewalking_getready, 1, 0.2, 1 );
-    level._ID794 _meth_80A9( 0.5, 0.25, 0.5, var_1, var_2, var_3, var_4 );
+    self stopanimscripted();
+    level._ID794 playsound( "scn_cliff_intro_plr_ready_climb" );
+    thread _ID43069( "dof_climb1_readyicepick" );
+    self setflaggedanimknob( "getreadyanim", %h2_cliffhanger_ledgewalking_getready, 1, 0.2, 1 );
+    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.5, var_1, var_2, var_3, var_4 );
     self waittillmatch( "getreadyanim",  "end"  );
-    self _meth_814D( %h2_cliffhanger_ledgewalking_getready_idle );
+    self setanimknob( %h2_cliffhanger_ledgewalking_getready_idle );
 }
 
 _ID27327()
 {
-    self _meth_8329();
-    self _meth_8121( 1 );
-    self _meth_8122( 1 );
-    self _meth_8123( 1 );
-    self _meth_830F( 1 );
+    self enableweapons();
+    self allowstand( 1 );
+    self allowcrouch( 1 );
+    self allowprone( 1 );
+    self _meth_830f( 1 );
 }
 
 _ID53144( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = 1;
 
-    self _meth_8328();
-    self _meth_8121( 1 );
-    self _meth_8122( 0 );
-    self _meth_8123( 0 );
-    self _meth_830F( 0 );
-    self _meth_8189( "stand" );
+    self disableweapons();
+    self allowstand( 1 );
+    self allowcrouch( 0 );
+    self allowprone( 0 );
+    self _meth_830f( 0 );
+    self setstance( "stand" );
 
     if ( var_0 )
     {
-        while ( self _meth_8188() != "stand" || self _meth_8135() || self _meth_8342() )
+        while ( self getstance() != "stand" || self isthrowinggrenade() || self isswitchingweapon() )
             waittillframeend;
     }
 }
@@ -4919,15 +4945,15 @@ _ID51300( var_0, var_1 )
 {
     var_2 = var_1[0] == "left";
     var_3 = var_1[1] == "large";
-    var_0 _unknown_8E9A( var_2, var_3, ::_unknown_8E89 );
+    var_0 _ID43877( var_2, var_3, ::_ID46355 );
 }
 
 _ID46355()
 {
-    self _meth_80A1( "ledgewalk_plr_fs" );
+    self playsound( "ledgewalk_plr_fs" );
     wait 0.4;
-    self _meth_80A1( "ledgewalk_plr_fs_icecrack" );
-    self _meth_80A1( "ledgewalk_plr_fs_snowfall" );
+    self playsound( "ledgewalk_plr_fs_icecrack" );
+    self playsound( "ledgewalk_plr_fs_snowfall" );
 }
 
 _ID49477( var_0 )
@@ -4939,19 +4965,19 @@ _ID43877( var_0, var_1, var_2 )
 {
     var_3 = 0;
 
-    if ( _func_02F( self._ID44924 ) )
+    if ( isdefined( self._ID44924 ) )
         var_3 = self._ID44924;
 
     var_4 = _ID42237::_ID37527( var_0, [ "J_Ball_LE", -1.0 ], [ "J_Ball_RI", 1.0 ] );
     var_5 = var_4[0];
     var_6 = var_4[1];
     var_clear_2
-    var_7 = self _meth_818C( var_5 );
-    var_8 = _func_11F( self _meth_818D( var_5 ) ) * var_6;
+    var_7 = self gettagorigin( var_5 );
+    var_8 = anglestoforward( self gettagangles( var_5 ) ) * var_6;
     var_9 = ( 0, 0, 16 );
     var_10 = ( 0, 0, -4 );
     var_11 = self._ID65;
-    var_12 = _func_11D( var_11 );
+    var_12 = anglestoup( var_11 );
     var_13 = var_8;
     var_14 = "footstep_ice_snow_ledge";
 
@@ -4964,37 +4990,37 @@ _ID43877( var_0, var_1, var_2 )
         var_14 = "footstep_ice_climbing";
     }
 
-    var_15 = _func_06D( var_7 + var_9, var_7 + var_10, 0 );
+    var_15 = bullettrace( var_7 + var_9, var_7 + var_10, 0 );
 
     if ( var_15["fraction"] < 1 && var_15["fraction"] > 0 )
     {
         var_7 = var_15["position"];
 
-        if ( var_3 && _func_02F( var_15["normal"] ) )
+        if ( var_3 && isdefined( var_15["normal"] ) )
             var_12 = var_15["normal"];
     }
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         self thread [[ var_2 ]]();
     else
     {
         var_16 = "ice";
 
-        if ( _func_02F( self._ID50268 ) )
+        if ( isdefined( self._ID50268 ) )
             var_16 = self._ID50268;
         else if ( var_15["surfacetype"] != "none" )
             var_16 = var_15["surfacetype"];
 
         var_17 = animscripts\notetracks::_ID15861();
-        self _meth_8081( var_17, var_16 );
+        self foley( var_17, var_16 );
     }
 
-    if ( _func_02F( var_14 ) && _func_02F( level._ID1426[var_14] ) )
-        _func_156( level._ID1426[var_14], var_7, var_12, var_13 );
+    if ( isdefined( var_14 ) && isdefined( level._ID1426[var_14] ) )
+        playfx( level._ID1426[var_14], var_7, var_12, var_13 );
 }
 
 _ID47517()
 {
     level._ID28543 _ID42407::_ID41119( "attach_icepick" );
-    level._ID28543 _meth_8051( "J_IcePicker" );
+    level._ID28543 showpart( "J_IcePicker" );
 }

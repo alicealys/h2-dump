@@ -3,12 +3,12 @@
 
 _ID48239()
 {
-    _unknown_000A();
-    _unknown_015D();
-    _unknown_01A7();
-    _unknown_0215();
-    _unknown_019A();
-    _unknown_022A();
+    _ID44936();
+    _ID49466();
+    _ID52619();
+    _ID53363();
+    _ID46829();
+    _ID46789();
 }
 #using_animtree("generic_human");
 
@@ -32,9 +32,9 @@ _ID44936()
     level._ID30895["redshirt"]["price_rescue"] = %h2_gulag_rescueb_soldier;
     level._ID30895["old_soap"]["price_rescue"] = %gulag_rescueb_soldier1_reshoot;
     level._ID30895["price"]["price_rescue_intro"] = %gulag_rescueb_price_intro;
-    _ID42259::_ID2058( "price", "bang", ::_unknown_0277, "price_rescue" );
+    _ID42259::_ID2058( "price", "bang", ::_ID46736, "price_rescue" );
     _ID42259::_ID2066( "price", "bang", "explosion", "price_rescue" );
-    _ID42259::_ID2058( "price", "scn_gulag_evac_jet_attack_incomming", ::_unknown_032E, "price_rescue" );
+    _ID42259::_ID2058( "price", "scn_gulag_evac_jet_attack_incomming", ::_ID46178, "price_rescue" );
     level._ID30895["soap"]["cafe_entrance"] = %h2_gulag_cafeteria_soap;
     level._ID30895["price"]["cafe_entrance"] = %h2_gulag_cafeteria_price;
     level._ID30895["redshirt"]["cafe_entrance"] = %h2_gulag_cafeteria_soldier;
@@ -45,8 +45,8 @@ _ID44936()
     level._ID30895["soap"]["evac"] = %h2_gulag_end_evac_soap;
     _ID42259::_ID2062( "price", "dialog", "evac", "gulag_pri_doitfast" );
     level._ID30895["generic"]["gundrop_death"] = %death_explosion_stand_b_v1;
-    _ID42259::_ID2058( "soap", "fire", ::_unknown_037D, "evac" );
-    _ID42259::_ID2058( "soap", "player", ::_unknown_03B3, "evac" );
+    _ID42259::_ID2058( "soap", "fire", ::_ID54050, "evac" );
+    _ID42259::_ID2058( "soap", "player", ::_ID53196, "evac" );
     level._ID30895["soap"]["escape"] = %h2_gulag_escapesequence_soap;
     level._ID30895["price"]["escape"] = %h2_gulag_escapesequence_price;
     level._ID30895["redshirt"]["escape"] = %h2_gulag_escapesequence_worm;
@@ -68,17 +68,17 @@ _ID46736( var_0 )
 _ID54050( var_0 )
 {
     var_1 = _ID42237::_ID35164();
-    var_1._ID740 = var_0 _meth_818C( "tag_laser" );
-    var_1._ID65 = var_0 _meth_818D( "tag_laser" );
-    var_2 = _func_11F( var_1._ID65 );
+    var_1._ID740 = var_0 gettagorigin( "tag_laser" );
+    var_1._ID65 = var_0 gettagangles( "tag_laser" );
+    var_2 = anglestoforward( var_1._ID65 );
     var_3 = _ID42237::_ID16299( "flare_start_gulag" );
-    _func_157( var_3, var_1, "tag_origin" );
+    playfxontag( var_3, var_1, "tag_origin" );
     var_4 = _ID42237::_ID16299( "flare_gulag" );
-    _func_157( var_4, var_1, "tag_origin" );
+    playfxontag( var_4, var_1, "tag_origin" );
     var_1 thread _ID42407::_ID27080( "scn_evac_soap_fires_flare", "tag_origin" );
-    var_1 _meth_82B8( var_1._ID740 + var_2 * 2000, 3, 0, 0 );
+    var_1 moveto( var_1._ID740 + var_2 * 2000, 3, 0, 0 );
     wait 4;
-    var_1 _meth_80B7();
+    var_1 delete();
 }
 
 _ID53196( var_0 )
@@ -98,7 +98,7 @@ _ID53196( var_0 )
 
     for ( var_4 = 0; var_4 < 25; var_4++ )
     {
-        _func_192( var_2, var_3, level._ID794._ID740, 5000 );
+        earthquake( var_2, var_3, level._ID794._ID740, 5000 );
         wait(var_3);
         var_2 += 0.01;
     }

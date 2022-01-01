@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2, var_3 )
 {
     _ID42411::_ID6255( "hind", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00C0 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_mi24p_hind_desert" );
     _ID42411::_ID6216( "vehicle_mi24p_hind_woodland" );
     _ID42411::_ID6216( "vehicle_mi24p_hind_woodland_opened_door" );
@@ -28,9 +28,9 @@ _ID616( var_0, var_1, var_2, var_3 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "axis" );
-    _ID42411::_ID6204( ::_unknown_025E, ::_unknown_0239 );
-    _ID42411::_ID6206( ::_unknown_03F1 );
-    _ID42411::_ID6262( ::_unknown_03AE );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6206( ::_ID32221 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6234( var_2, "cockpit_blue_cargo01", "tag_light_cargo01", "fx/misc/aircraft_light_cockpit_red", "interior", 0.0 );
     _ID42411::_ID6234( var_2, "cockpit_blue_cockpit01", "tag_light_cockpit01", "fx/misc/aircraft_light_cockpit_blue", "interior", 0.1 );
     _ID42411::_ID6234( var_2, "white_blink", "tag_light_belly", "fx/misc/aircraft_light_white_blink", "running", 0.0 );
@@ -46,7 +46,7 @@ _ID19731()
     self._ID13954 = 792;
     self._ID31066 = 0;
     _ID42411::_ID40197( "running" );
-    _unknown_02CF();
+    _ID17700();
 }
 
 _ID17700()
@@ -55,13 +55,13 @@ _ID17700()
     var_0 = 0;
     var_1 = 144000000;
     _ID52901::_ID53457();
-    thread _unknown_030B();
+    thread _ID23939();
 
     for (;;)
     {
-        if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+        if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_2 = _func_0F5( self._ID740, level._ID794._ID740 );
+            var_2 = distancesquared( self._ID740, level._ID794._ID740 );
 
             if ( var_0 && var_2 > var_1 )
             {
@@ -117,7 +117,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 9; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID19302[0] = %helicopter_pilot1_idle;
     var_0[0]._ID19302[1] = %helicopter_pilot1_twitch_clickpannel;
@@ -203,7 +203,7 @@ _ID32550()
     var_0[6]._ID13955 = "TAG_FastRope_RI";
     var_0[7]._ID13955 = "TAG_FastRope_LE";
     var_0[8]._ID13955 = "TAG_FastRope_RI";
-    return _unknown_07B1( var_0 );
+    return _ID32742( var_0 );
 }
 
 _ID39488()
@@ -233,20 +233,20 @@ _ID39488()
 _ID32221()
 {
     var_0 = [];
-    var_0["TAG_FastRope_LE"] = _func_1A5();
+    var_0["TAG_FastRope_LE"] = spawnstruct();
     var_0["TAG_FastRope_LE"]._ID669 = "rope_test";
     var_0["TAG_FastRope_LE"]._ID1067 = "TAG_FastRope_LE";
     var_0["TAG_FastRope_LE"]._ID19324 = %bh_rope_idle_le;
     var_0["TAG_FastRope_LE"]._ID12144 = %bh_rope_drop_le;
-    var_0["TAG_FastRope_RI"] = _func_1A5();
+    var_0["TAG_FastRope_RI"] = spawnstruct();
     var_0["TAG_FastRope_RI"]._ID669 = "rope_test_ri";
     var_0["TAG_FastRope_RI"]._ID1067 = "TAG_FastRope_RI";
     var_0["TAG_FastRope_RI"]._ID19324 = %bh_rope_idle_ri;
     var_0["TAG_FastRope_RI"]._ID12144 = %bh_rope_drop_ri;
-    var_1 = _func_1D9( var_0 );
+    var_1 = getarraykeys( var_0 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
-        _func_14C( var_0[var_1[var_2]]._ID669 );
+        precachemodel( var_0[var_1[var_2]]._ID669 );
 
     return var_0;
 }

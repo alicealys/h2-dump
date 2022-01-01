@@ -180,6 +180,6 @@ _ID521()
     level._ID11813["axis"]["coverprone_no_pop"]["fire_exposed"] = %exposed_crouch_aim_5;
     level._ID11813["axis"]["coverprone_no_pop"]["death"] = %saw_gunner_prone_death;
     level._ID11813["axis"]["coverprone_no_pop"]["pop_up_chance"] = 0;
-    level._ID1426["pdrone_flash_wv"] = _func_155( "vfx/muzzleflash/pdrone_flash_wv" );
+    level._ID1426["pdrone_flash_wv"] = loadfx( "vfx/muzzleflash/pdrone_flash_wv" );
     _ID42286::_ID19908();
 }

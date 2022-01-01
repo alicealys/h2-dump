@@ -4,27 +4,27 @@
 
 _ID616()
 {
-    _unknown_029C();
-    _unknown_02EA();
-    _unknown_0375();
-    _unknown_007D();
-    _unknown_02E7();
-    _unknown_014F();
+    _ID46912();
+    _ID46888();
+    script_model_animation();
+    _ID10742();
+    c130_anims();
+    _ID44253();
     level._ID30895["generic"]["prone_2_stand"] = %prone_2_stand;
     level._ID30895["rook"]["boneyard_driver_death"] = %h2_boneyard_driver_death;
     level._ID30895["rook"]["boneyard_driver_death_pushed"] = %h2_boneyard_driver_death_pushed;
     level._ID30895["rook"]["jeep_ride_driver"] = %h2_boneyard_jeep_ride_driver;
     level._ID30895["rook"]["jeep_evac_driver"] = %h2_boneyard_jeep_evac_driver;
     level._ID30895["price"]["boneyard_jeep_ride_price"] = %h2_boneyard_jeep_ride_price;
-    _ID42259::_ID2058( "price", "pri_dialog_01", ::_unknown_0428, "boneyard_jeep_ride_price", "byard_pri_thedrivers" );
-    _ID42259::_ID2058( "price", "pri_dialog_02", ::_unknown_043E, "boneyard_jeep_ride_price", "byard_pri_hangon" );
-    _ID42259::_ID2058( "price", "pri_dialog_03", ::_unknown_0455, "boneyard_jeep_ride_price", "byard_pri_behindus" );
-    _ID42259::_ID2058( "price", "pri_dialog_04", ::_unknown_046B, "boneyard_jeep_ride_price", "byard_pri_rightside" );
-    _ID42259::_ID2058( "price", "pri_dialog_05", ::_unknown_0482, "boneyard_jeep_ride_price", "byard_pri_holdon" );
-    _ID42259::_ID2058( "price", "pri_dialog_06", ::_unknown_0498, "boneyard_jeep_ride_price", "byard_pri_droptheramp" );
-    _ID42259::_ID2058( "price", "pri_dialog_07", ::_unknown_04AF, "boneyard_jeep_ride_price", "byard_pri_vehiclesat12" );
-    _ID42259::_ID2058( "price", "pri_dialog_08", ::_unknown_04C5, "boneyard_jeep_ride_price", "byard_pri_takewheel" );
-    _ID42259::_ID2058( "price", "dialog2", ::_unknown_04D2, "boneyard_jeep_ride_price" );
+    _ID42259::_ID2058( "price", "pri_dialog_01", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_thedrivers" );
+    _ID42259::_ID2058( "price", "pri_dialog_02", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_hangon" );
+    _ID42259::_ID2058( "price", "pri_dialog_03", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_behindus" );
+    _ID42259::_ID2058( "price", "pri_dialog_04", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_rightside" );
+    _ID42259::_ID2058( "price", "pri_dialog_05", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_holdon" );
+    _ID42259::_ID2058( "price", "pri_dialog_06", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_droptheramp" );
+    _ID42259::_ID2058( "price", "pri_dialog_07", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_vehiclesat12" );
+    _ID42259::_ID2058( "price", "pri_dialog_08", ::play_price_jeep_ride_vo, "boneyard_jeep_ride_price", "byard_pri_takewheel" );
+    _ID42259::_ID2058( "price", "dialog2", ::playvoprice, "boneyard_jeep_ride_price" );
 }
 
 _ID10742()
@@ -79,11 +79,11 @@ _ID10742()
 
 _ID44253()
 {
-    _ID42411::_ID52468( "script_vehicle_uaz_open_destructible", ::_unknown_0568, ::_unknown_05FD );
+    _ID42411::_ID52468( "script_vehicle_uaz_open_destructible", ::_ID48336, ::_ID44361 );
     _ID42411::_ID48311( "script_vehicle_uaz_open_destructible", maps\boneyard_code::_ID53245 );
-    _ID42411::_ID52468( "script_vehicle_pickup_roobars_physics", ::_unknown_0520, ::_unknown_0638 );
-    _ID42411::_ID52468( "script_vehicle_suburban_technical", ::_unknown_0544, _ID54270::_ID32509 );
-    _ID42411::_ID52468( "script_vehicle_suburban", ::_unknown_0556, _ID44504::_ID32509 );
+    _ID42411::_ID52468( "script_vehicle_pickup_roobars_physics", ::_ID47022, ::_ID54151 );
+    _ID42411::_ID52468( "script_vehicle_suburban_technical", ::_ID44209, _ID54270::_ID32509 );
+    _ID42411::_ID52468( "script_vehicle_suburban", ::_ID53879, _ID44504::_ID32509 );
 }
 
 _ID47022()
@@ -100,14 +100,14 @@ _ID47022()
 _ID44209()
 {
     var_0 = _ID54270::_ID32550();
-    var_0 = _unknown_05BC( var_0 );
+    var_0 = _ID48748( var_0 );
     return var_0;
 }
 
 _ID53879()
 {
     var_0 = _ID44504::_ID32550();
-    var_0 = _unknown_05C9( var_0 );
+    var_0 = _ID48748( var_0 );
     var_0[1]._ID264 = %uaz_rear_driver_death;
     var_0[2]._ID264 = %uaz_rear_driver_death;
     var_0[3]._ID264 = %uaz_rear_driver_death;

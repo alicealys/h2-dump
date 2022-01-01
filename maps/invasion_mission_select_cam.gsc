@@ -11,22 +11,22 @@ _ID50320()
     _ID42323::_ID616();
     maps\invasion_lighting::_ID616();
     maps\invasion::_ID49693();
-    thread _unknown_003E();
-    thread _unknown_006B();
+    thread _ID49243();
+    thread spawn_planes();
 }
 
 _ID49243()
 {
     var_0 = ( -866.1, -2840.8, 2333.5 );
     var_1 = ( -6.9, 26.5, 0 );
-    level._ID794 _meth_8343( var_0 );
-    level._ID794 _meth_8345( var_1 );
-    level._ID794 _meth_8032( 85, 0.1 );
+    level._ID794 setorigin( var_0 );
+    level._ID794 setplayerangles( var_1 );
+    level._ID794 lerpfov( 85, 0.1 );
     level._ID794._ID511 = 1;
-    _func_0DB( "hud_drawhud", 0 );
+    setsaveddvar( "hud_drawhud", 0 );
     _ID42407::_ID32515( "invasion", 1 );
     _ID42407::_ID14689( "invasion", 1 );
-    level._ID794 _meth_83CD( "invasion" );
+    level._ID794 lightset( "invasion" );
     _ID42237::_ID14402( "flag_portal_road_east_wall" );
     _ID42237::_ID14402( "flag_portal_parking_north_entrance" );
     _ID42237::_ID14402( "flag_portal_apartments_road" );
@@ -35,7 +35,7 @@ _ID49243()
 
 spawn_planes()
 {
-    var_0 = _func_1A2( "mission_select", "targetname" );
+    var_0 = getentarray( "mission_select", "targetname" );
     wait 30;
     _ID42237::_ID3350( var_0, _ID42411::_ID35194 );
 }

@@ -15,40 +15,51 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 6 ) )
     {
-
+        case 0:
+            self._ID1302 = "tavor_acog";
+            break;
+        case 1:
+            self._ID1302 = "tavor_mars";
+            break;
+        case 2:
+            self._ID1302 = "fn2000";
+            break;
+        case 3:
+            self._ID1302 = "fn2000_acog";
+            break;
+        case 4:
+            self._ID1302 = "fn2000_reflex";
+            break;
+        case 5:
+            self._ID1302 = "fn2000_scope";
+            break;
     }
 
     _ID45698::_ID616();
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID45698::_ID814();
-    _func_14E( "tavor_acog" );
-    _func_14E( "tavor_mars" );
-    _func_14E( "fn2000" );
-    _func_14E( "fn2000_acog" );
-    _func_14E( "fn2000_reflex" );
-    _func_14E( "fn2000_scope" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "tavor_acog" );
+    precacheitem( "tavor_mars" );
+    precacheitem( "fn2000" );
+    precacheitem( "fn2000_acog" );
+    precacheitem( "fn2000_reflex" );
+    precacheitem( "fn2000_scope" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
 }

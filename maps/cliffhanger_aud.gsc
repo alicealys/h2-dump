@@ -3,16 +3,16 @@
 
 _ID616()
 {
-    _unknown_0010();
-    _unknown_001C();
-    _unknown_0020();
-    _unknown_0025();
-    _unknown_002A();
-    thread _unknown_002F();
-    _unknown_0035();
-    _unknown_0039();
-    _unknown_003E();
-    thread _unknown_0195();
+    _ID8467();
+    _ID19806();
+    _ID19703();
+    _ID22056();
+    _ID22043();
+    thread _ID22042();
+    _ID9159();
+    _ID28366();
+    _ID29419();
+    thread _ID51200();
 }
 
 _ID8467()
@@ -34,7 +34,7 @@ _ID19703()
 
 _ID22056()
 {
-    thread _unknown_01CC();
+    thread _ID44955();
 }
 
 _ID22043()
@@ -59,52 +59,52 @@ _ID28366()
 
 _ID29419()
 {
-    _ID42475::_ID34640( "start_cave_checkpoint", ::_unknown_0126 );
-    _ID42475::_ID34640( "start_e3_checkpoint", ::_unknown_0135 );
-    _ID42475::_ID34640( "start_climb_checkpoint", ::_unknown_0144 );
-    _ID42475::_ID34640( "start_jump_checkpoint", ::_unknown_0153 );
-    _ID42475::_ID34640( "start_clifftop_checkpoint", ::_unknown_0162 );
-    _ID42475::_ID34640( "start_camp_checkpoint", ::_unknown_0171 );
-    _ID42475::_ID34640( "start_c4_checkpoint", ::_unknown_0180 );
-    _ID42475::_ID34640( "start_goto_hanger_checkpoint", ::_unknown_018F );
-    _ID42475::_ID34640( "start_hangerpath_checkpoint", ::_unknown_019E );
-    _ID42475::_ID34640( "start_hanger_checkpoint", ::_unknown_01AD );
-    _ID42475::_ID34640( "start_satellite_checkpoint", ::_unknown_01BC );
-    _ID42475::_ID34640( "start_tarmac_checkpoint", ::_unknown_01CB );
-    _ID42475::_ID34640( "start_icepick_checkpoint", ::_unknown_01DA );
-    _ID42475::_ID34640( "start_snowmobile_checkpoint", ::_unknown_01E9 );
-    _ID42475::_ID34640( "start_fade_out_level", ::_unknown_01F8 );
-    _ID42475::_ID34640( "aud_change_hanger_ambience", ::_unknown_02E3 );
-    _ID42475::_ID34640( "aud_turnoff_hanger_door_transition", ::_unknown_02E5 );
-    _ID42475::_ID34640( "aud_activate_hanger_door_transition", ::_unknown_02F5 );
-    _ID42475::_ID34640( "aud_add_snowstorm_ambience", ::_unknown_02B6 );
-    _ID42475::_ID34640( "aud_remove_snowstorm_ambience", ::_unknown_02E4 );
-    _ID42475::_ID34640( "aud_base_alarm_system", ::_unknown_0326 );
-    _ID42475::_ID34640( "aud_start_mix_mig_passby", ::_unknown_024A );
-    _ID42475::_ID34640( "aud_stop_mix_mig_passby", ::_unknown_025A );
-    _ID42475::_ID34640( "aud_start_mix_player_climbing", ::_unknown_0268 );
-    _ID42475::_ID34640( "aud_stop_mix_player_climbing", ::_unknown_0277 );
-    _ID42475::_ID34640( "aud_start_mix_initial_icepick", ::_unknown_0285 );
-    _ID42475::_ID34640( "aud_stop_mix_initial_icepick", ::_unknown_0294 );
-    _ID42475::_ID34640( "aud_start_mix_slowmo_jump_event", ::_unknown_02A3 );
-    _ID42475::_ID34640( "aud_stop_mix_slowmo_jump_event", ::_unknown_02B2 );
-    _ID42475::_ID34640( "aud_mix_jet_landing", ::_unknown_02C0 );
-    _ID42475::_ID34640( "aud_mix_stealth_takedown", ::_unknown_02D5 );
-    _ID42475::_ID34640( "aud_start_mix_stealth_busted", ::_unknown_02E9 );
-    _ID42475::_ID34640( "aud_stop_mix_stealth_busted", ::_unknown_02F7 );
-    _ID42475::_ID34640( "aud_start_mix_mactavish_trapped", ::_unknown_0306 );
-    _ID42475::_ID34640( "aud_stop_mix_mactavish_trapped", ::_unknown_0314 );
-    _ID42475::_ID34640( "aud_start_mix_slowmo_explosion", ::_unknown_0323 );
-    _ID42475::_ID34640( "aud_stop_mix_slowmo_explosion", ::_unknown_0331 );
-    _ID42475::_ID34640( "aud_handle_explosion", ::_unknown_048A );
-    _ID42475::_ID34640( "aud_start_mix_snowmobile_ride", ::_unknown_034B );
-    _ID42475::_ID34640( "aud_stop_mix_snowmobile_ride", ::_unknown_0359 );
-    _ID42475::_ID34640( "aud_start_mix_snowmobile_descent", ::_unknown_0368 );
-    _ID42475::_ID34640( "aud_stop_mix_snowmobile_descent", ::_unknown_0376 );
-    _ID42475::_ID34640( "aud_start_mix_snowmobile_jump", ::_unknown_0385 );
-    _ID42475::_ID34640( "aud_stop_mix_snowmobile_jump", ::_unknown_0393 );
-    _ID42475::_ID34640( "start_fade_to_death", ::_unknown_03B0 );
-    _ID42475::_ID34640( "start_tarmac_bmp_scripted_sfx", ::_unknown_03AD );
+    _ID42475::_ID34640( "start_cave_checkpoint", ::_ID49052 );
+    _ID42475::_ID34640( "start_e3_checkpoint", ::_ID52373 );
+    _ID42475::_ID34640( "start_climb_checkpoint", ::_ID43020 );
+    _ID42475::_ID34640( "start_jump_checkpoint", ::_ID52333 );
+    _ID42475::_ID34640( "start_clifftop_checkpoint", ::_ID47020 );
+    _ID42475::_ID34640( "start_camp_checkpoint", ::_ID50863 );
+    _ID42475::_ID34640( "start_c4_checkpoint", ::_ID48555 );
+    _ID42475::_ID34640( "start_goto_hanger_checkpoint", ::_ID47955 );
+    _ID42475::_ID34640( "start_hangerpath_checkpoint", ::_ID50874 );
+    _ID42475::_ID34640( "start_hanger_checkpoint", ::_ID48362 );
+    _ID42475::_ID34640( "start_satellite_checkpoint", ::_ID53894 );
+    _ID42475::_ID34640( "start_tarmac_checkpoint", ::_ID50190 );
+    _ID42475::_ID34640( "start_icepick_checkpoint", ::_ID44178 );
+    _ID42475::_ID34640( "start_snowmobile_checkpoint", ::_ID50027 );
+    _ID42475::_ID34640( "start_fade_out_level", ::_ID52274 );
+    _ID42475::_ID34640( "aud_change_hanger_ambience", ::_ID45253 );
+    _ID42475::_ID34640( "aud_turnoff_hanger_door_transition", ::_ID43154 );
+    _ID42475::_ID34640( "aud_activate_hanger_door_transition", ::_ID49150 );
+    _ID42475::_ID34640( "aud_add_snowstorm_ambience", ::_ID54473 );
+    _ID42475::_ID34640( "aud_remove_snowstorm_ambience", ::_ID50943 );
+    _ID42475::_ID34640( "aud_base_alarm_system", ::_ID45894 );
+    _ID42475::_ID34640( "aud_start_mix_mig_passby", ::_ID46032 );
+    _ID42475::_ID34640( "aud_stop_mix_mig_passby", ::_ID54503 );
+    _ID42475::_ID34640( "aud_start_mix_player_climbing", ::_ID43863 );
+    _ID42475::_ID34640( "aud_stop_mix_player_climbing", ::_ID49925 );
+    _ID42475::_ID34640( "aud_start_mix_initial_icepick", ::_ID43584 );
+    _ID42475::_ID34640( "aud_stop_mix_initial_icepick", ::_ID46952 );
+    _ID42475::_ID34640( "aud_start_mix_slowmo_jump_event", ::_ID43850 );
+    _ID42475::_ID34640( "aud_stop_mix_slowmo_jump_event", ::_ID48164 );
+    _ID42475::_ID34640( "aud_mix_jet_landing", ::_ID51564 );
+    _ID42475::_ID34640( "aud_mix_stealth_takedown", ::_ID48524 );
+    _ID42475::_ID34640( "aud_start_mix_stealth_busted", ::_ID48079 );
+    _ID42475::_ID34640( "aud_stop_mix_stealth_busted", ::_ID49845 );
+    _ID42475::_ID34640( "aud_start_mix_mactavish_trapped", ::_ID48757 );
+    _ID42475::_ID34640( "aud_stop_mix_mactavish_trapped", ::_ID45935 );
+    _ID42475::_ID34640( "aud_start_mix_slowmo_explosion", ::_ID50021 );
+    _ID42475::_ID34640( "aud_stop_mix_slowmo_explosion", ::_ID49003 );
+    _ID42475::_ID34640( "aud_handle_explosion", ::_ID45480 );
+    _ID42475::_ID34640( "aud_start_mix_snowmobile_ride", ::_ID53130 );
+    _ID42475::_ID34640( "aud_stop_mix_snowmobile_ride", ::_ID43539 );
+    _ID42475::_ID34640( "aud_start_mix_snowmobile_descent", ::_ID46035 );
+    _ID42475::_ID34640( "aud_stop_mix_snowmobile_descent", ::_ID51833 );
+    _ID42475::_ID34640( "aud_start_mix_snowmobile_jump", ::_ID45247 );
+    _ID42475::_ID34640( "aud_stop_mix_snowmobile_jump", ::_ID48029 );
+    _ID42475::_ID34640( "start_fade_to_death", ::start_fade_to_death );
+    _ID42475::_ID34640( "start_tarmac_bmp_scripted_sfx", ::_ID47477 );
 }
 
 _ID41961( var_0, var_1 )
@@ -312,7 +312,7 @@ _ID47477( var_0 )
 {
     var_0 thread _ID42407::_ID27081( "scn_tarmac_bmp_stop" );
     wait 1.8;
-    var_0 _meth_8295();
+    var_0 vehicle_turnengineoff();
     wait 3.0;
     var_0 thread _ID42407::_ID27001( "bmp_idle_low", undefined, 1, 1, 1.0 );
 }
@@ -340,14 +340,14 @@ _ID47416()
 
 _ID44955()
 {
-    _unknown_0625( "climb_pullup_wind", "scn_cliffhanger_pullup_strong_wind" );
-    _unknown_0631( "2nd_climb_pullup_wind", "scn_cliffhanger_pullup_strong_wind_2nd" );
+    _ID44859( "climb_pullup_wind", "scn_cliffhanger_pullup_strong_wind" );
+    _ID44859( "2nd_climb_pullup_wind", "scn_cliffhanger_pullup_strong_wind_2nd" );
 }
 
 _ID44859( var_0, var_1 )
 {
     _ID42237::_ID14413( var_0 );
-    level._ID794 _meth_80A1( var_1 );
+    level._ID794 playsound( var_1 );
 }
 
 _ID54473( var_0 )
@@ -360,7 +360,7 @@ _ID54473( var_0 )
     _ID42474::_ID4664( "exterior_clifftop", "exterior_storm", var_0 );
     _ID42474::_ID4664( "exterior_camp", "exterior_storm", var_0 );
     _ID42474::_ID4664( "between_hangar", "exterior_storm", var_0 );
-    _unknown_0782();
+    _ID50744();
 }
 
 _ID50943( var_0 )
@@ -373,7 +373,7 @@ _ID50943( var_0 )
     _ID42474::_ID4664( "exterior_clifftop", "exterior", var_0 );
     _ID42474::_ID4664( "exterior_camp", "exterior", var_0 );
     _ID42474::_ID4664( "between_hangar", "exterior", var_0 );
-    _unknown_07FB();
+    _ID53286();
 }
 
 _ID43154()
@@ -394,28 +394,28 @@ _ID45253()
 
 _ID45894()
 {
-    var_0 = _func_1A1( "base_alarm_speaker", "targetname" );
-    var_0 _meth_807C( "emt_cliff_base_alarm" );
+    var_0 = getent( "base_alarm_speaker", "targetname" );
+    var_0 playloopsound( "emt_cliff_base_alarm" );
     _ID42237::_ID14413( "player_snowmobile_available" );
-    var_0 _meth_80B2();
+    var_0 stopsounds();
 }
 
 _ID47705()
 {
     self endon( "death" );
-    var_0 = _unknown_07EF();
+    var_0 = _ID46546();
     _ID42237::_ID14413( "truck_guys_alerted" );
     self waittill( "safe_to_unload" );
-    thread _unknown_0818( var_0 );
-    thread _unknown_0847();
+    thread _ID51982( var_0 );
+    thread _ID51875();
 }
 
 _ID46546()
 {
-    var_0 = _unknown_085C( "emt_cliff_jeep_wheel_lf", self, "tag_wheel_front_left" );
-    var_1 = _unknown_086A( "emt_cliff_jeep_wheel_rf", self, "tag_wheel_front_right" );
-    var_2 = _unknown_0877( "emt_cliff_jeep_wheel_lb", self, "tag_wheel_back_left" );
-    var_3 = _unknown_0885( "emt_cliff_jeep_wheel_rb", self, "tag_wheel_back_right" );
+    var_0 = _ID49451( "emt_cliff_jeep_wheel_lf", self, "tag_wheel_front_left" );
+    var_1 = _ID49451( "emt_cliff_jeep_wheel_rf", self, "tag_wheel_front_right" );
+    var_2 = _ID49451( "emt_cliff_jeep_wheel_lb", self, "tag_wheel_back_left" );
+    var_3 = _ID49451( "emt_cliff_jeep_wheel_rb", self, "tag_wheel_back_right" );
     var_4 = [ var_0, var_2, var_1, var_3 ];
     return var_4;
 }
@@ -424,53 +424,34 @@ _ID51982( var_0 )
 {
     self endon( "death" );
     thread _ID42407::_ID27080( "scn_cliff_jeep_brake", "tag_body", 1 );
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        var_2 _meth_8076( 0, 1 );
-    }
+    foreach ( var_2 in var_0 )
+        var_2 setvolume( 0, 1 );
 
-    var_clear_2
-    var_clear_0
     wait 1.5;
-    var_4 = var_0;
 
-    for ( var_5 = _func_1DA( var_4 ); _func_02F( var_5 ); var_5 = _func_1BF( var_4, var_5 ) )
-    {
-        var_2 = var_4[var_5];
-        var_2 _meth_80B2();
-    }
+    foreach ( var_2 in var_0 )
+        var_2 stopsounds();
 
-    var_clear_1
-    var_clear_0
     wait 0.05;
     self notify( "jeep_stopping" );
-    var_6 = var_0;
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
-    {
-        var_2 = var_6[var_7];
-        var_2 _meth_80B7();
-    }
-
-    var_clear_1
-    var_clear_0
+    foreach ( var_2 in var_0 )
+        var_2 delete();
 }
 
 _ID51875()
 {
-    self _meth_8295();
+    self vehicle_turnengineoff();
     thread _ID42407::_ID27001( "veh_uaz_idle_low", "tag_body", 1 );
 }
 
 _ID49451( var_0, var_1, var_2 )
 {
-    var_3 = _func_06A( "script_origin", ( 0, 0, 0 ) );
-    var_3 _meth_8053( var_1, var_2, ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    var_3 _meth_807C( var_0 );
-    var_1 thread _unknown_096E( var_3 );
+    var_3 = spawn( "script_origin", ( 0, 0, 0 ) );
+    var_3 linkto( var_1, var_2, ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_3 playloopsound( var_0 );
+    var_1 thread handle_entity_link_sound_death( var_3 );
     return var_3;
 }
 
@@ -478,61 +459,42 @@ handle_entity_link_sound_death( var_0 )
 {
     self endon( "jeep_stopping" );
     self waittill( "death" );
-    var_0 _meth_80B2();
+    var_0 stopsounds();
     wait 0.05;
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID50744()
 {
-    var_0 = _func_1A2( "wind_ent", "script_noteworthy" );
-    var_1 = var_0;
+    var_0 = getentarray( "wind_ent", "script_noteworthy" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        var_2 _meth_807C( "emt_wind_interior_wood" );
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_2 in var_0 )
+        var_2 playloopsound( "emt_wind_interior_wood" );
 }
 
 _ID53286()
 {
-    var_0 = _func_1A2( "wind_ent", "script_noteworthy" );
-    var_1 = _func_1A2( "door_ent", "script_noteworthy" );
-    var_2 = var_0;
+    var_0 = getentarray( "wind_ent", "script_noteworthy" );
+    var_1 = getentarray( "door_ent", "script_noteworthy" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 _meth_80B2();
-    }
+    foreach ( var_3 in var_0 )
+        var_3 stopsounds();
 
-    var_clear_2
-    var_clear_0
-    var_5 = var_1;
-
-    for ( var_7 = _func_1DA( var_5 ); _func_02F( var_7 ); var_7 = _func_1BF( var_5, var_7 ) )
-    {
-        var_6 = var_5[var_7];
-        var_6 _meth_80B2();
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_6 in var_1 )
+        var_6 stopsounds();
 }
 
 _ID45480( var_0, var_1 )
 {
     switch ( var_0 )
     {
-
+        case "mig1":
+            var_1 thread _ID42237::_ID27077( "scn_hangar_jet_impact_01" );
+            break;
+        case "mig2":
+            var_1 thread _ID42237::_ID27077( "scn_hangar_jet_impact_02" );
+            break;
     }
-
-    case "mig2":
-    case "mig1":
 }
 
 _ID51792( var_0 )

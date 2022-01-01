@@ -7,7 +7,7 @@ _ID616()
     if ( self._ID1244 == "dog" )
         animscripts\traverse\shared::_ID11456( "wallhop", 40 );
     else
-        _unknown_002A( %windowclimb, 35 );
+        _ID2180( %windowclimb, 35 );
 }
 
 _ID2180( var_0, var_1 )

@@ -4,9 +4,9 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "slamraam", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0029 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_slamraam", "vehicle_slamraam_base" );
-    _func_14C( "projectile_slamraam_missile" );
+    precachemodel( "projectile_slamraam_missile" );
     _ID42411::_ID6213( "fx/explosions/vehicle_explosion_slamraam", undefined, "exp_slamraam_destroyed" );
     _ID42411::_ID6233( 50 );
     _ID42411::_ID6253( "allies" );

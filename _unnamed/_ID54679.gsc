@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "technical", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00B1 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_pickup_technical", "vehicle_pickup_technical_destroyed", 3 );
     var_3 = "50cal_turret_technical";
     _ID42411::_ID6261( var_3, "tag_50cal", "h2_weapon_m2_50cal_pickup_truck_turret", undefined, "auto_ai", 3, 20, -14, undefined, _ID48318::_ID48131 );
@@ -19,8 +19,8 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_01C5, ::_unknown_018B );
-    _ID42411::_ID6262( ::_unknown_021E );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6234( var_2, "headlight_truck_left", "tag_headlight_left", "fx/misc/car_headlight_truck_L", "headlights" );
     _ID42411::_ID6234( var_2, "headlight_truck_right", "tag_headlight_right", "fx/misc/car_headlight_truck_R", "headlights" );
     _ID42411::_ID6234( var_2, "parkinglight_truck_left_f", "tag_parkinglight_left_f", "fx/misc/car_parkinglight_truck_LF", "headlights" );
@@ -41,13 +41,13 @@ _ID32509( var_0 )
 
 _ID19731()
 {
-    if ( !_func_02F( self._ID31030 ) )
+    if ( !isdefined( self._ID31030 ) )
         self._ID31030 = 1;
 
-    if ( !_func_02F( self._ID31028 ) )
+    if ( !isdefined( self._ID31028 ) )
         self._ID31028 = 1;
 
-    thread _unknown_029C();
+    thread _ID17700();
     _ID48318::_ID44743();
 }
 
@@ -58,13 +58,13 @@ _ID17700()
     var_1 = 6000;
     var_2 = 1.0;
     _ID52743::_ID49539();
-    thread _unknown_02E0();
+    thread _ID23939();
 
     for (;;)
     {
-        if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+        if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_3 = _func_0F3( self._ID740, level._ID794._ID740 );
+            var_3 = distance( self._ID740, level._ID794._ID740 );
 
             if ( var_0 && var_3 > var_1 )
             {
@@ -101,7 +101,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 3; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_gunner";

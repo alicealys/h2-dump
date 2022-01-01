@@ -4,26 +4,26 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "snowmobile", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_005D );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_snowmobile", "vehicle_snowmobile_static" );
     _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion" );
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
-    _ID42411::_ID6204( ::_unknown_0262, ::_unknown_025D );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6262( ::_unknown_0514 );
+    _ID42411::_ID6262( ::_ID39488 );
 
-    if ( !_func_02F( anim._ID1426 ) )
+    if ( !isdefined( anim._ID1426 ) )
         anim._ID1426 = [];
 
     _ID42411::_ID6234( var_2, "brakelight_truck_right", "TAG_TAIL_LIGHT_LEFT", "fx/misc/car_brakelight_truck_R_pb", "brakelights" );
     _ID42411::_ID6234( var_2, "brakelight_truck_left", "TAG_TAIL_LIGHT_LEFT", "fx/misc/car_brakelight_truck_L_pb", "brakelights" );
-    anim._ID1426["snowmobile_leftground"] = _func_155( "fx/treadfx/bigair_snow_snowmobile_emitter" );
-    anim._ID1426["snowmobile_bumpbig"] = _func_155( "fx/treadfx/bigjump_land_snow_snowmobile" );
-    anim._ID1426["snowmobile_bump"] = _func_155( "fx/treadfx/smalljump_land_snow_snowmobile" );
-    anim._ID1426["snowmobile_sway_left"] = _func_155( "fx/treadfx/leftturn_snow_snowmobile" );
-    anim._ID1426["snowmobile_sway_right"] = _func_155( "fx/treadfx/rightturn_snow_snowmobile" );
-    anim._ID1426["snowmobile_collision"] = _func_155( "fx/explosions/grenadeExp_snow" );
+    anim._ID1426["snowmobile_leftground"] = loadfx( "fx/treadfx/bigair_snow_snowmobile_emitter" );
+    anim._ID1426["snowmobile_bumpbig"] = loadfx( "fx/treadfx/bigjump_land_snow_snowmobile" );
+    anim._ID1426["snowmobile_bump"] = loadfx( "fx/treadfx/smalljump_land_snow_snowmobile" );
+    anim._ID1426["snowmobile_sway_left"] = loadfx( "fx/treadfx/leftturn_snow_snowmobile" );
+    anim._ID1426["snowmobile_sway_right"] = loadfx( "fx/treadfx/rightturn_snow_snowmobile" );
+    anim._ID1426["snowmobile_collision"] = loadfx( "fx/explosions/grenadeExp_snow" );
     _ID42411::_ID6252();
     _ID42411::_ID47700();
 }
@@ -43,7 +43,7 @@ _ID19731()
     self._ID43031 = 55;
 
     if ( !_ID42407::_ID20614() )
-        thread _unknown_02D5();
+        thread _ID50990();
 
     self._ID52006 = 500;
     self._ID52501 = -1;
@@ -63,20 +63,20 @@ _ID19731()
     self._ID13251["sway_right"] = [];
     self._ID13251["sway_right"]["driver"] = 0;
     self._ID13251["sway_right"]["passenger"] = 0;
-    thread _unknown_028E();
-    thread _unknown_02E2();
-    thread _unknown_02FD();
-    thread _unknown_0324();
-    thread _unknown_0374();
-    thread _unknown_02AC();
-    thread _unknown_02C0();
+    thread _ID53614();
+    thread _ID53917();
+    thread _ID52727();
+    thread _ID54521();
+    thread _ID52863();
+    thread _ID47808();
+    thread _ID49319();
 
-    if ( _func_125( self._ID1282, "player" ) )
+    if ( issubstr( self._ID1282, "player" ) )
     {
-        var_0 = _func_06A( "script_model", ( 0, 0, 0 ) );
-        var_0 _meth_80B8( "h2_viewmodel_glock" );
-        var_0 _meth_8053( self, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-        var_0 _meth_8050();
+        var_0 = spawn( "script_model", ( 0, 0, 0 ) );
+        var_0 setmodel( "h2_viewmodel_glock" );
+        var_0 linkto( self, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+        var_0 hideallparts();
     }
 }
 
@@ -91,12 +91,12 @@ _ID53921()
 _ID53614()
 {
     self endon( "death" );
-    var_0 = self _meth_8291();
+    var_0 = self vehicle_getvelocity();
 
     for (;;)
     {
         self._ID28502 = var_0;
-        var_0 = self _meth_8291();
+        var_0 = self vehicle_getvelocity();
         wait 0.05;
     }
 }
@@ -115,8 +115,8 @@ _ID47808()
 
 _ID43072( var_0 )
 {
-    if ( _func_02F( anim._ID1426[var_0] ) )
-        _func_157( anim._ID1426[var_0], self, "tag_deathfx" );
+    if ( isdefined( anim._ID1426[var_0] ) )
+        playfxontag( anim._ID1426[var_0], self, "tag_deathfx" );
 }
 
 _ID49319()
@@ -125,34 +125,31 @@ _ID49319()
 
     for (;;)
     {
-        if ( _func_02F( self._ID53527 ) && self._ID53527 )
+        if ( isdefined( self._ID53527 ) && self._ID53527 )
         {
             wait 0.05;
             continue;
         }
 
-        var_0 = _func_0F0( self._ID65[0] );
-        var_1 = _func_0F0( self._ID65[2] );
-        var_2 = _func_02F( self._ID43031 ) && _func_0C3( var_1 ) > self._ID43031;
-        var_2 |= _func_02F( self._ID48141 ) && _func_0C3( var_0 ) > self._ID48141;
+        var_0 = angleclamp180( self._ID65[0] );
+        var_1 = angleclamp180( self._ID65[2] );
+        var_2 = isdefined( self._ID43031 ) && abs( var_1 ) > self._ID43031;
+        var_2 |= ( isdefined( self._ID48141 ) && abs( var_0 ) > self._ID48141 );
 
         if ( var_2 )
         {
             var_3 = 0;
             var_4 = 1;
-            var_5 = self._ID29965;
 
-            for ( var_7 = _func_1DA( var_5 ); _func_02F( var_7 ); var_7 = _func_1BF( var_5, var_7 ) )
+            foreach ( var_6 in self._ID29965 )
             {
-                var_6 = var_5[var_7];
-
-                if ( !_func_1A7( var_6 ) )
+                if ( !isalive( var_6 ) )
                     continue;
 
-                if ( !_func_02F( var_6._ID22746 ) )
+                if ( !isdefined( var_6._ID22746 ) )
                 {
                     var_6._ID35375 = animscripts\custom\snowmobile::_ID53889;
-                    var_6 _meth_8058();
+                    var_6 kill();
                     var_3 = 1;
                     continue;
                 }
@@ -160,8 +157,6 @@ _ID49319()
                 var_4 = 0;
             }
 
-            var_clear_2
-            var_clear_0
             var_2 = var_3 && var_4;
         }
 
@@ -180,10 +175,10 @@ _ID53917()
 
         if ( self._ID53940 == 0 )
         {
-            self._ID52501 = _func_03D();
+            self._ID52501 = gettime();
             self._ID13251["jump"]["driver"] = 1;
             self._ID13251["jump"]["passenger"] = 1;
-            _unknown_0447( "snowmobile_leftground" );
+            _ID43072( "snowmobile_leftground" );
             thread _ID51653::_ID48279();
             wait 1;
         }
@@ -200,17 +195,17 @@ _ID52727()
 
         if ( self._ID53940 == 0 )
         {
-            if ( self._ID52501 + self._ID52006 < _func_03D() )
+            if ( self._ID52501 + self._ID52006 < gettime() )
             {
                 self._ID13251["bump_big"]["driver"] = 1;
                 self._ID13251["bump_big"]["passenger"] = 1;
-                _unknown_0490( "snowmobile_bumpbig" );
+                _ID43072( "snowmobile_bumpbig" );
                 continue;
             }
 
             self._ID13251["bump"]["driver"] = 1;
             self._ID13251["bump"]["passenger"] = 1;
-            _unknown_04B7( "snowmobile_bump" );
+            _ID43072( "snowmobile_bump" );
         }
     }
 }
@@ -225,20 +220,20 @@ _ID54521()
     {
         self waittill( "veh_jolt",  var_2  );
 
-        if ( _func_02F( level._ID794._ID40065 ) )
+        if ( isdefined( level._ID794._ID40065 ) )
         {
             var_3 = level._ID794._ID40065._ID740 - self._ID740;
 
-            if ( _func_0F9( var_3 ) < var_0 )
+            if ( length2dsquared( var_3 ) < var_0 )
             {
-                var_4 = _func_256( level._ID794._ID40065._ID65 );
-                var_5 = _func_119( var_3 ) * _func_0F6( var_2 ) * 2.0;
-                var_6 = ( _func_0FB( var_5, var_4["forward"] ), _func_0FB( var_5, var_4["right"] ), _func_0FB( var_5, var_4["up"] ) );
+                var_4 = anglestoaxis( level._ID794._ID40065._ID65 );
+                var_5 = vectornormalize( var_3 ) * length( var_2 ) * 2.0;
+                var_6 = ( vectordot( var_5, var_4["forward"] ), vectordot( var_5, var_4["right"] ), vectordot( var_5, var_4["up"] ) );
                 level._ID794._ID40065 notify( "veh_jolt",  var_6  );
             }
         }
 
-        if ( _func_0F9( var_2 ) >= var_1 || var_2[2] >= var_1 )
+        if ( length2dsquared( var_2 ) >= var_1 || var_2[2] >= var_1 )
         {
             if ( self._ID53940 == 0 )
             {
@@ -246,13 +241,13 @@ _ID54521()
                 {
                     self._ID13251["sway_left"]["driver"] = 1;
                     self._ID13251["sway_left"]["passenger"] = 1;
-                    _unknown_0571( "snowmobile_sway_left" );
+                    _ID43072( "snowmobile_sway_left" );
                     continue;
                 }
 
                 self._ID13251["sway_right"]["driver"] = 1;
                 self._ID13251["sway_right"]["passenger"] = 1;
-                _unknown_0598( "snowmobile_sway_right" );
+                _ID43072( "snowmobile_sway_right" );
             }
         }
     }
@@ -264,42 +259,30 @@ _ID52863()
 
     for (;;)
     {
-        self waittill( "veh_collision",  var_1, var_0  );
-        var_2 = self._ID29965;
+        self waittill( "veh_collision",  var_0, var_1  );
 
-        for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+        foreach ( var_3 in self._ID29965 )
         {
-            var_3 = var_2[var_4];
-
-            if ( _func_1A7( var_3 ) && !_func_02F( var_3._ID22746 ) )
+            if ( isalive( var_3 ) && !isdefined( var_3._ID22746 ) )
             {
                 var_3._ID35375 = animscripts\custom\snowmobile::_ID34876;
-                var_3 _meth_8058();
+                var_3 kill();
             }
         }
 
-        var_clear_2
-        var_clear_0
-
         if ( self._ID53940 == 0 )
-            _unknown_05F4( "snowmobile_collision" );
+            _ID43072( "snowmobile_collision" );
     }
 }
 
 _ID50322()
 {
-    var_0 = self._ID29965;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in self._ID29965 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_1A7( var_1 ) )
+        if ( isalive( var_1 ) )
             return 1;
     }
 
-    var_clear_2
-    var_clear_0
     return 0;
 }
 #using_animtree("vehicles");
@@ -309,32 +292,32 @@ _ID50990()
     self endon( "death" );
     self endon( "kill_anims" );
     wait 0.05;
-    self _meth_8151( %snowmobile, %root, 1, 0 );
-    self _meth_8156( %sm_turn, 1, 0 );
+    self setanimknoball( %snowmobile, %root, 1, 0 );
+    self setanimlimited( %sm_turn, 1, 0 );
 
     for (;;)
     {
         _ID42413::_ID39650( self );
 
-        if ( self._ID36389 && _unknown_073D() )
+        if ( self._ID36389 && _ID50322() )
         {
             if ( self._ID36388 >= 0 )
             {
-                self _meth_814E( %snowmobile_vehicle_lean_r_delta, 1, 0.1, 0 );
-                self _meth_8120( %snowmobile_vehicle_lean_r_delta, self._ID36388 );
+                self setanimknoblimited( %snowmobile_vehicle_lean_r_delta, 1, 0.1, 0 );
+                self setanimtime( %snowmobile_vehicle_lean_r_delta, self._ID36388 );
             }
             else
             {
-                self _meth_814E( %snowmobile_vehicle_lean_l_delta, 1, 0.1, 0 );
-                self _meth_8120( %snowmobile_vehicle_lean_l_delta, _func_0C3( self._ID36388 ) );
+                self setanimknoblimited( %snowmobile_vehicle_lean_l_delta, 1, 0.1, 0 );
+                self setanimtime( %snowmobile_vehicle_lean_l_delta, abs( self._ID36388 ) );
             }
         }
         else
         {
-            self _meth_814C( %snowmobile_vehicle_lean_r_delta, 0.1 );
-            self _meth_814C( %snowmobile_vehicle_lean_l_delta, 0.1 );
+            self clearanim( %snowmobile_vehicle_lean_r_delta, 0.1 );
+            self clearanim( %snowmobile_vehicle_lean_l_delta, 0.1 );
 
-            if ( !_unknown_07AA() )
+            if ( !_ID50322() )
                 break;
         }
 
@@ -347,23 +330,18 @@ _ID44485()
     level._ID34889 = [];
     level._ID34889["snowmobile_passenger"] = [];
     level._ID34889["snowmobile_driver"] = [];
-    var_0 = level._ID30895["generic"];
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_2, var_1 in level._ID30895["generic"] )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_125( var_2, "snowmobile_passenger_mount" ) )
+        if ( issubstr( var_2, "snowmobile_passenger_mount" ) )
         {
             level._ID34889["snowmobile_passenger"][var_2] = 1;
             continue;
         }
 
-        if ( _func_125( var_2, "snowmobile_driver_mount" ) )
+        if ( issubstr( var_2, "snowmobile_driver_mount" ) )
             level._ID34889["snowmobile_driver"][var_2] = 1;
     }
-
-    var_clear_2
 }
 
 _ID32509( var_0 )
@@ -449,22 +427,22 @@ _ID32550()
     level._ID30895["snowmobile"]["small"]["death"]["back"] = %snowmobile_driver_death_b_03;
     level._ID30895["snowmobile"]["small"]["death"]["left"] = %snowmobile_driver_death_l_03;
     level._ID30895["snowmobile"]["small"]["death"]["right"] = %snowmobile_driver_death_r_03;
-    _unknown_0FA9();
+    _ID44485();
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 2; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[0]._ID22432 = 1;
-    var_0[0]._ID29963 = ::_unknown_0E8A;
+    var_0[0]._ID29963 = ::_ID53921;
     var_0[1]._ID34225 = "tag_passenger";
     var_0[1]._ID22432 = 1;
-    var_0[1]._ID29963 = ::_unknown_0EA6;
+    var_0[1]._ID29963 = ::_ID53921;
     var_0[0]._ID16491 = %snowmobile_driver_dismount;
     var_0[1]._ID16491 = %snowmobile_passenger_dismount;
-    var_0[0]._ID16343 = ::_unknown_12C7;
-    var_0[1]._ID16343 = ::_unknown_12D0;
+    var_0[0]._ID16343 = ::_ID43157;
+    var_0[1]._ID16343 = ::_ID43157;
     return var_0;
 }
 

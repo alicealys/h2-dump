@@ -5,9 +5,9 @@
 _ID616( var_0, var_1, var_2, var_3 )
 {
     _ID42411::_ID6255( "stryker", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_003F );
+    _ID42411::_ID6236( ::_ID19731 );
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
     {
         _ID42411::_ID6216( "vehicle_stryker", "vehicle_stryker_destroyed" );
         _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion", undefined, "exp_armor_vehicle" );
@@ -19,13 +19,13 @@ _ID616( var_0, var_1, var_2, var_3 )
     _ID42411::_ID6253( "allies" );
     _ID42411::_ID6237();
     _ID42411::_ID6223( 0.33 );
-    level._ID1426["stryker_shell"] = _func_155( "fx/shellejects/stryker_shell" );
+    level._ID1426["stryker_shell"] = loadfx( "fx/shellejects/stryker_shell" );
     _ID42411::_ID6251( "tankblast" );
 }
 
 _ID19731()
 {
-    thread _unknown_00B5();
+    thread _ID50194();
     self._ID33746 = 170;
 }
 
@@ -40,17 +40,11 @@ _ID50194()
     for (;;)
     {
         self waittill( "weapon_fired" );
-        var_2 = var_0;
 
-        for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-        {
-            var_3 = var_2[var_4];
-            self _meth_8157( var_3, 1, 0, 1 );
-        }
+        foreach ( var_3 in var_0 )
+            self setanimrestart( var_3, 1, 0, 1 );
 
-        var_clear_2
-        var_clear_0
-        _func_157( var_1, self, "tag_ammo_fx" );
+        playfxontag( var_1, self, "tag_ammo_fx" );
     }
 }
 
@@ -64,7 +58,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 11; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID16493 = 1;
     return var_0;

@@ -6,7 +6,7 @@ _ID616()
 {
     _ID42231::_ID10505( "vehicle_taxi", 250, undefined, 32, "no_melee" );
 
-    if ( _func_039( "loc_arabic_sku" ) != "1" )
+    if ( getdvar( "loc_arabic_sku" ) != "1" )
         _ID42231::_ID28950( "tag_ad", "vehicle_taxi_rooftop_ad_base", "vehicle_taxi_rooftop_ad_1" );
 
     _ID42231::_ID28950( "tag_ad", "vehicle_taxi_rooftop_ad_base", "vehicle_taxi_rooftop_ad_2" );

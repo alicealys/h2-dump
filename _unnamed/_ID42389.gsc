@@ -3,18 +3,25 @@
 
 _ID36280()
 {
-    _unknown_001B();
+    _ID36343();
 
-    if ( _func_1B3( self ) )
+    if ( isplayernumber( self ) )
         return;
 
     switch ( self._ID1194 )
     {
-
+        case "axis":
+        case "team3":
+            _ID36352();
+            _ID36299();
+            _ID36344();
+            _ID36345();
+            break;
+        case "allies":
+            _ID36342();
+            _ID36341();
+            _ID36351();
     }
-
-    case "allies":
-    case "axis":
 }
 
 _ID36356( var_0, var_1 )
@@ -24,51 +31,60 @@ _ID36356( var_0, var_1 )
 
 _ID36343( var_0 )
 {
-    if ( _func_1B3( self ) )
+    if ( isplayernumber( self ) )
     {
         _ID42391::_ID36376();
         return;
     }
 
-    if ( !_func_02F( self._ID1644 ) || !_func_02F( self._ID1644._ID28153._ID4894 ) )
+    if ( !isdefined( self._ID1644 ) || !isdefined( self._ID1644._ID28153._ID4894 ) )
     {
         switch ( self._ID1194 )
         {
-
+            case "allies":
+                _ID42391::_ID36376();
+                _ID42378::_ID36250();
+                break;
+            case "axis":
+            case "team3":
+                _ID42390::_ID36375();
+                _ID42377::_ID36249();
+                break;
         }
     }
 
-    if ( _func_02F( var_0 ) )
-        _unknown_00DE( var_0 );
+    if ( isdefined( var_0 ) )
+        _ID36247( var_0 );
 
     self._ID1644._ID28153._ID4894 = 1;
-    case "team3":
-    case "allies":
-    case "axis":
 }
 
 _ID36247( var_0 )
 {
     switch ( self._ID1194 )
     {
-
+        case "allies":
+            _ID42378::_ID14932( var_0 );
+            break;
+        case "axis":
+        case "team3":
+            _ID42377::_ID12828( var_0 );
+            break;
     }
-
-    case "team3":
-    case "allies":
-    case "axis":
 }
 
 _ID36248()
 {
     switch ( self._ID1194 )
     {
-
+        case "allies":
+            _ID42378::_ID14937();
+            break;
+        case "axis":
+        case "team3":
+            _ID42377::_ID12833();
+            break;
     }
-
-    case "team3":
-    case "allies":
-    case "axis":
 }
 
 _ID36353( var_0 )
@@ -83,11 +99,11 @@ _ID36354()
 
 _ID36352( var_0 )
 {
-    if ( !_func_02F( self._ID1644._ID28153._ID37658 ) )
+    if ( !isdefined( self._ID1644._ID28153._ID37658 ) )
         _ID42388::_ID36373();
 
-    if ( _func_02F( var_0 ) )
-        _unknown_01A1( var_0 );
+    if ( isdefined( var_0 ) )
+        _ID36372( var_0 );
 }
 
 _ID36299()
@@ -102,10 +118,10 @@ _ID36285()
 
 _ID36369( var_0, var_1 )
 {
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         _ID42388::_ID12920( var_0 );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         _ID42388::_ID12919( var_1 );
 }
 
@@ -116,11 +132,11 @@ _ID36372( var_0, var_1 )
     var_4 = 1;
     var_5 = var_3 + var_4;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        while ( _func_02F( self._ID1644._ID5029._ID2281[var_2][var_5] ) )
+        while ( isdefined( self._ID1644._ID5029._ID2281[var_2][var_5] ) )
         {
-            if ( !_func_02F( var_0[var_5] ) )
+            if ( !isdefined( var_0[var_5] ) )
                 var_0[var_5] = _ID42386::_ID2284( var_2, var_5 );
 
             var_4++;
@@ -128,13 +144,13 @@ _ID36372( var_0, var_1 )
         }
     }
 
-    _unknown_0205( var_0, var_1 );
+    _ID36369( var_0, var_1 );
 }
 
 _ID36371()
 {
     var_0 = [];
-    _unknown_020E( var_0 );
+    _ID36369( var_0 );
 }
 
 _ID36370()
@@ -150,11 +166,11 @@ _ID36243( var_0 )
 
 _ID36344( var_0 )
 {
-    if ( !_func_02F( self._ID1644._ID28153._ID8751 ) )
+    if ( !isdefined( self._ID1644._ID28153._ID8751 ) )
         _ID42381::_ID36265();
 
-    if ( _func_02F( var_0 ) )
-        _unknown_0277( var_0 );
+    if ( isdefined( var_0 ) )
+        _ID36258( var_0 );
 }
 
 _ID36258( var_0 )
@@ -199,60 +215,53 @@ _ID36270()
 
 _ID36345( var_0, var_1 )
 {
-    _unknown_02D9();
+    _ID36350();
     _ID42385::_ID36310( var_1 );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        var_2 = var_0;
-
-        for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-        {
-            var_3 = var_2[var_4];
+        foreach ( var_4, var_3 in var_0 )
             _ID42385::_ID36309( var_4, var_3 );
-        }
-
-        var_clear_2
     }
 }
 
 _ID36350()
 {
-    if ( !_func_02F( self._ID1644._ID28153._ID13251 ) )
+    if ( !isdefined( self._ID1644._ID28153._ID13251 ) )
         _ID42385::_ID36306();
 }
 
 _ID36349( var_0, var_1 )
 {
-    _unknown_031F();
+    _ID36350();
     _ID42385::_ID36309( "heard_scream", var_0, var_1 );
 }
 
 _ID36348( var_0, var_1 )
 {
-    _unknown_0331();
+    _ID36350();
     _ID42385::_ID36309( "doFlashBanged", var_0, var_1 );
 }
 
 _ID36347( var_0, var_1 )
 {
-    _unknown_0343();
+    _ID36350();
     _ID42385::_ID36309( "explode", var_0, var_1 );
 }
 
 _ID36346( var_0, var_1, var_2, var_3 )
 {
-    _unknown_0358();
+    _ID36350();
     _ID42385::_ID36309( var_0, var_1, var_2, var_3 );
 }
 
 _ID36342( var_0 )
 {
-    if ( !_func_02F( self._ID1644._ID28153._ID8260 ) )
+    if ( !isdefined( self._ID1644._ID28153._ID8260 ) )
         _ID42380::_ID36255();
 
-    if ( _func_02F( var_0 ) )
-        _unknown_03A6( var_0 );
+    if ( isdefined( var_0 ) )
+        _ID36256( var_0 );
 }
 
 _ID36256( var_0 )
@@ -267,11 +276,11 @@ _ID36257()
 
 _ID36341( var_0 )
 {
-    if ( !_func_02F( self._ID1644._ID28153._ID1749 ) )
+    if ( !isdefined( self._ID1644._ID28153._ID1749 ) )
         _ID42374::_ID36229();
 
-    if ( _func_02F( var_0 ) )
-        _unknown_03E1( var_0 );
+    if ( isdefined( var_0 ) )
+        _ID36230( var_0 );
 }
 
 _ID36230( var_0 )
@@ -308,33 +317,24 @@ _ID36303()
 _ID36337()
 {
     var_0 = level._ID1644._ID17437._ID17473;
-    var_1 = var_0;
 
-    for ( var_7 = _func_1DA( var_1 ); _func_02F( var_7 ); var_7 = _func_1BF( var_1, var_7 ) )
+    foreach ( var_7, var_2 in var_0 )
     {
-        var_2 = var_1[var_7];
         var_3 = _ID42386::_ID17448( var_7 );
-        var_4 = var_3;
 
-        for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
+        foreach ( var_5 in var_3 )
         {
-            var_5 = var_4[var_6];
-
             if ( !var_5 _ID42407::_ID13019( "_stealth_normal" ) )
                 return 0;
         }
-
-        var_clear_3
-        var_clear_1
     }
 
-    var_clear_6
     return 1;
 }
 
 _ID36301()
 {
-    _unknown_047F();
+    _ID36303();
     waitframe;
     self notify( "stealth_enemy_endon_alert" );
 }
@@ -410,12 +410,12 @@ _ID36233()
 
 _ID36236( var_0, var_1, var_2, var_3, var_4 )
 {
-    if ( _func_02F( var_4 ) )
+    if ( isdefined( var_4 ) )
     {
 
     }
 
-    var_0 _unknown_05C8();
+    var_0 _ID36336();
     var_5 = var_0 _ID42386::_ID17449( "_stealth_spotted" );
 
     if ( _ID42237::_ID14385( var_5 ) )
@@ -424,15 +424,15 @@ _ID36236( var_0, var_1, var_2, var_3, var_4 )
     var_6 = "stop_loop";
     var_0._ID49 = 1;
 
-    if ( !_func_02F( var_4 ) )
+    if ( !isdefined( var_4 ) )
         thread _ID42259::_ID3022( var_0, "gravity", var_1, var_3 );
     else
         thread _ID42259::_ID3025( var_0, var_1, var_3 );
 
     var_0 _ID42386::_ID2323( self, var_2, var_3, var_6 );
     _ID42407::_ID1985( _ID42407::_ID41116, "stop_idle_proc" );
-    _ID42407::_ID1890( ::_unknown_05B9 );
-    thread _unknown_05E8();
+    _ID42407::_ID1890( ::_ID36232 );
+    thread _ID11234();
 }
 
 _ID11234()
@@ -443,40 +443,40 @@ _ID11234()
 
 _ID36242( var_0, var_1, var_2 )
 {
-    var_0 _unknown_0636();
+    var_0 _ID36336();
     var_0 _ID42386::_ID2323( self, var_1, var_2, "stop_loop" );
 }
 
 _ID36240( var_0, var_1, var_2, var_3, var_4 )
 {
-    var_0 _unknown_0650();
-    thread _unknown_0632( var_0, var_1, var_2, var_3, var_4 );
+    var_0 _ID36336();
+    thread _ID36241( var_0, var_1, var_2, var_3, var_4 );
 }
 
 _ID36241( var_0, var_1, var_2, var_3, var_4 )
 {
-    var_0 _unknown_0666();
-    var_0 thread _unknown_05E0();
+    var_0 _ID36336();
+    var_0 thread _ID36301();
     var_0 endon( "stealth_enemy_endon_alert" );
     var_0 endon( "death" );
     _ID42259::_ID3027( var_0, var_1, var_4 );
-    _unknown_0629( var_0, var_2, var_3, var_4 );
+    _ID36236( var_0, var_2, var_3, var_4 );
 }
 
 _ID36238( var_0, var_1, var_2, var_3, var_4 )
 {
-    var_0 _unknown_0692();
-    thread _unknown_068B( var_0, var_1, var_2, var_3, var_4 );
+    var_0 _ID36336();
+    thread _ID36239( var_0, var_1, var_2, var_3, var_4 );
 }
 
 _ID36239( var_0, var_1, var_2, var_3, var_4 )
 {
-    var_0 _unknown_06A9();
-    var_0 thread _unknown_0622();
+    var_0 _ID36336();
+    var_0 thread _ID36301();
     var_0 endon( "stealth_enemy_endon_alert" );
     var_0 endon( "death" );
     _ID42259::_ID3028( var_0, var_1, var_4 );
-    _unknown_066B( var_0, var_2, var_3, var_4 );
+    _ID36236( var_0, var_2, var_3, var_4 );
 }
 
 _ID36336()
@@ -562,22 +562,22 @@ _ID36320()
 
 _ID36357( var_0 )
 {
-    _unknown_07BD( var_0 );
+    _ID36359( var_0 );
 }
 
 _ID36358()
 {
-    _unknown_07C7( "default" );
+    _ID36359( "default" );
 }
 
 _ID36359( var_0 )
 {
-    if ( _func_02F( self._ID31463 ) )
+    if ( isdefined( self._ID31463 ) )
         level._ID1644._ID17437._ID17473[self._ID31463] = _ID42237::_ID3321( level._ID1644._ID17437._ID17473[self._ID31463], self );
 
     self._ID31463 = _ID42407::_ID36694( var_0 );
 
-    if ( _func_02F( self._ID1644._ID28153._ID4894 ) )
+    if ( isdefined( self._ID1644._ID28153._ID4894 ) )
     {
         _ID42386::_ID17445( "_stealth_spotted" );
         _ID42386::_ID17445( "_stealth_event" );
@@ -594,59 +594,38 @@ _ID36319()
 _ID12536()
 {
     _ID42237::_ID14402( "_stealth_enabled" );
-    var_0 = _func_0DF( "all", "all" );
-    var_1 = var_0;
+    var_0 = getaispeciesarray( "all", "all" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_3, var_2 in var_0 )
+        var_2 _ID12534();
+
+    foreach ( var_5 in level._ID805 )
     {
-        var_2 = var_1[var_3];
-        var_2 _unknown_08B7();
-    }
-
-    var_clear_2
-    var_4 = level._ID805;
-
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
-    {
-        var_5 = var_4[var_6];
-
         if ( var_5 _ID42407::_ID13023( "_stealth_enabled" ) )
             var_5 _ID42407::_ID13025( "_stealth_enabled" );
 
         var_5 _ID42391::_ID14992();
     }
 
-    var_clear_2
-    var_clear_0
     _ID42392::_ID37007( "hidden" );
 }
 
 _ID10971()
 {
     _ID42237::_ID14388( "_stealth_enabled" );
-    var_0 = _func_0DF( "all", "all" );
-    var_1 = var_0;
+    var_0 = getaispeciesarray( "all", "all" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_3, var_2 in var_0 )
+        var_2 _ID10969();
+
+    foreach ( var_5 in level._ID805 )
     {
-        var_2 = var_1[var_3];
-        var_2 _unknown_0933();
-    }
-
-    var_clear_2
-    var_4 = level._ID805;
-
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
-    {
-        var_5 = var_4[var_6];
         var_5._ID630 = 8192;
 
         if ( var_5 _ID42407::_ID13023( "_stealth_enabled" ) )
             var_5 _ID42407::_ID13021( "_stealth_enabled" );
     }
 
-    var_clear_2
-    var_clear_0
     _ID42392::_ID37007( "spotted" );
 }
 

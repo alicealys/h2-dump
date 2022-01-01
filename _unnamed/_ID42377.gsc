@@ -3,12 +3,12 @@
 
 _ID36249()
 {
-    _unknown_0065();
+    _ID12882();
     var_0 = self._ID1644._ID5029._ID2281["state"]["hidden"];
     thread _ID42386::_ID2310( var_0, "enemy_behavior" );
     var_0 = self._ID1644._ID5029._ID2281["state"]["spotted"];
     thread _ID42386::_ID2311( var_0, "enemy_behavior" );
-    thread _unknown_0052();
+    thread _ID12783();
 }
 
 _ID12783()
@@ -42,14 +42,14 @@ _ID12927()
         return;
 
     self._ID287 = 1;
-    self _meth_8172();
+    self clearenemy();
 }
 
 _ID12928( var_0 )
 {
     self._ID411 = 0.01;
 
-    if ( !_func_02F( self._ID11411 ) )
+    if ( !isdefined( self._ID11411 ) )
     {
         self._ID507 = 0;
         thread _ID42407::_ID32226( 1 );
@@ -58,14 +58,14 @@ _ID12928( var_0 )
     self._ID11566 = undefined;
     self._ID11575 = undefined;
 
-    if ( _func_02F( self._ID25550 ) )
+    if ( isdefined( self._ID25550 ) )
         self._ID381 = self._ID25550;
 
     if ( self._ID1244 != "dog" )
     {
         self._ID287 = 0;
 
-        if ( !_func_02F( var_0 ) )
+        if ( !isdefined( var_0 ) )
         {
             _ID42407::_ID7892();
             _ID42386::_ID12929();
@@ -77,15 +77,15 @@ _ID12928( var_0 )
         self._ID31356 = undefined;
     }
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         return;
 
-    if ( _func_02F( level._ID1644._ID17437._ID35477 ) )
+    if ( isdefined( level._ID1644._ID17437._ID35477 ) )
     {
         var_1 = level._ID1644._ID17437._ID35477[self._ID31463];
 
-        if ( _func_02F( var_1 ) )
-            self _meth_8171( var_1 );
+        if ( isdefined( var_1 ) )
+            self getenemyinfo( var_1 );
     }
 }
 
@@ -97,31 +97,31 @@ _ID12882()
     _ID42407::_ID13024( "_stealth_behavior_reaction_anim" );
     _ID42407::_ID13024( "_stealth_behavior_first_reaction" );
     _ID42407::_ID13024( "_stealth_behavior_reaction_anim_in_progress" );
-    self._ID1644._ID5029 = _func_1A5();
+    self._ID1644._ID5029 = spawnstruct();
     self._ID7._ID24902 = 1;
     self._ID1644._ID5029._ID2281 = [];
-    _unknown_023D();
-    _unknown_0249();
-    self._ID1644._ID5029._ID13251 = _func_1A5();
+    _ID12833();
+    _ID12830();
+    self._ID1644._ID5029._ID13251 = spawnstruct();
 
     if ( self._ID1244 == "dog" )
-        _unknown_021C();
+        _ID12838();
 
-    self._ID1644._ID28153 = _func_1A5();
+    self._ID1644._ID28153 = spawnstruct();
     thread _ID42386::_ID2342();
 }
 
 _ID12838()
 {
-    if ( _func_10D( "dog" ) )
-        self _meth_8183( "dog" );
+    if ( threatbiasgroupexists( "dog" ) )
+        self setthreatbiasgroup( "dog" );
 
-    if ( _func_02F( self._ID322 ) || _func_02F( self._ID377 ) )
+    if ( isdefined( self._ID322 ) || isdefined( self._ID377 ) )
         return;
 
     _ID42407::_ID13024( "_stealth_behavior_asleep" );
 
-    if ( _func_02F( self._ID31394 ) || _func_02F( self._ID31391 ) )
+    if ( isdefined( self._ID31394 ) || isdefined( self._ID31391 ) )
         return;
 
     self._ID511 = 1;
@@ -133,15 +133,9 @@ _ID12838()
 
 _ID12828( var_0 )
 {
-    var_1 = var_0;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
+    foreach ( var_3, var_2 in var_0 )
         _ID42386::_ID2261( "state", var_3, var_2 );
-    }
 
-    var_clear_2
     var_4 = self._ID1644._ID5029._ID2281["state"]["hidden"];
     thread _ID42386::_ID2310( var_4, "enemy_behavior" );
     var_4 = self._ID1644._ID5029._ID2281["state"]["spotted"];
@@ -151,9 +145,9 @@ _ID12828( var_0 )
 _ID12833()
 {
     var_0 = [];
-    var_0["hidden"] = ::_unknown_0286;
-    var_0["spotted"] = ::_unknown_029D;
-    _unknown_0314( var_0 );
+    var_0["hidden"] = ::_ID12927;
+    var_0["spotted"] = ::_ID12928;
+    _ID12828( var_0 );
 }
 
 _ID12830()

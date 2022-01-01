@@ -5,6 +5,6 @@ _ID616()
 {
     wait 0;
 
-    if ( _func_02F( self ) )
-        self _meth_80B7();
+    if ( isdefined( self ) )
+        self delete();
 }

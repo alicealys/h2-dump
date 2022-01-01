@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    _unknown_000E();
-    _unknown_07A8();
-    _unknown_03E1();
-    _unknown_0687();
-    _unknown_061A();
-    _unknown_0CA5();
-    _unknown_0BB4();
-    _unknown_0BBC();
-    thread _unknown_031D();
+    _ID53093();
+    _ID45817();
+    _ID49100();
+    _ID49657();
+    _ID54396();
+    _ID46385();
+    _ID51444();
+    _ID47863();
+    thread _ID53378();
 }
 #using_animtree("generic_human");
 
@@ -27,19 +27,15 @@ _ID53093()
     level._ID30895["generic"]["sewer_slide_2"] = %h2_gulag_sewer_slide_guy2;
     level._ID30895["generic"]["sewer_slide_soap"] = %h2_gulag_sewer_slide_soap;
     var_0 = [ "sewer_slide_1", "sewer_slide_2", "sewer_slide_soap" ];
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-        _ID42259::_ID2058( "generic", "slide_start", ::_unknown_045F, var_2 );
-        _ID42259::_ID2058( "generic", "slide_land", ::_unknown_0492, var_2 );
-        _ID42259::_ID2058( "generic", "slide_land_deep", ::_unknown_04B8, var_2 );
-        _ID42259::_ID2058( "generic", "slide_end", ::_unknown_04AF, var_2 );
+        _ID42259::_ID2058( "generic", "slide_start", ::_ID54029, var_2 );
+        _ID42259::_ID2058( "generic", "slide_land", ::_ID53259, var_2 );
+        _ID42259::_ID2058( "generic", "slide_land_deep", ::_ID44878, var_2 );
+        _ID42259::_ID2058( "generic", "slide_end", ::_ID54626, var_2 );
     }
 
-    var_clear_2
-    var_clear_0
     level._ID30895["generic"]["breach_stackL_approach"] = %breach_stackl_approach;
     level._ID30895["generic"]["death_explosion_stand_B_v3"] = %death_explosion_stand_b_v3;
     level._ID30895["generic"]["react_stand_2_run_R45"] = %react_stand_2_run_r45;
@@ -63,8 +59,8 @@ _ID53093()
     level._ID30895["ghost"]["laptop_idle_5"] = %h2_gulag_controlroom_ghost_lookaround;
     level._ID30895["ghost"]["laptop_idle_6"] = %h2_gulag_controlroom_ghost_loop_typing;
     level._ID30895["generic"]["grenade_throw"] = %corner_standr_grenade_b;
-    _ID42259::_ID2058( "generic", "grenade_right", ::_unknown_0618, "grenade_throw" );
-    _ID42259::_ID2058( "generic", "grenade_throw", ::_unknown_0641, "grenade_throw" );
+    _ID42259::_ID2058( "generic", "grenade_right", ::_ID46882, "grenade_throw" );
+    _ID42259::_ID2058( "generic", "grenade_throw", ::_ID45739, "grenade_throw" );
     level._ID30895["guy"]["explosion"] = %death_explosion_run_f_v1;
     level._ID30895["ghost"]["voiceover"] = %h2_gulag_armory_ghost_voiceover;
     level._ID30895["generic"]["armory_jumpdown"] = %h2_gulag_armory_guy1_dropdown;
@@ -78,7 +74,7 @@ _ID53093()
     level._ID30895["soap"]["riotshield"] = %h2_gulag_armory_soap_grabriotshield;
     level._ID30895["generic"]["riotshield_pickup"] = %h2_gulag_armory_guy_grabriotshield;
     level._ID30902["soap"]["riotshield"] = 0.8;
-    _ID42259::_ID2058( "soap", "grab_gun", ::_unknown_10CB, "armory_wait_out" );
+    _ID42259::_ID2058( "soap", "grab_gun", ::_ID51598, "armory_wait_out" );
     _ID42259::_ID2062( "soap", "dialog", "armory_wait_out", "gulag_cmt_seeanything" );
     _ID42259::_ID50350( "ghost", "dialog", "voiceover", "gulag_gst_badnews" );
     _ID42259::_ID2062( "soap", "dialog", "armory_wait_out", "gulag_cmt_hearcoming" );
@@ -157,27 +153,27 @@ _ID53378()
     _ID42259::_ID2075( "generic", "sewer_slide_soap", "scn_gulag_npc_sewer_slide_soap" );
     _ID42259::_ID2075( "h2_active_breacher_rig", "breach_inspect", "scn_gulag_breach_bathroom_player" );
     _ID42259::_ID2075( "h2_active_breacher_rig", "breach_price", "scn_gulag_breach_rescue_player" );
-    _ID42259::_ID2058( "player_rappel", "scn_gulag_intro_player_dismount", ::_unknown_1640, "player_dismount_start" );
+    _ID42259::_ID2058( "player_rappel", "scn_gulag_intro_player_dismount", ::_ID43482, "player_dismount_start" );
 }
 
 _ID46882( var_0 )
 {
-    var_0._ID54030 = _func_06A( "script_model", var_0 _meth_818C( "tag_inhand" ) );
-    var_1 = _func_043( var_0._ID470 );
-    var_0._ID54030 _meth_80B8( var_1 );
-    var_0._ID54030 _meth_8053( var_0, "tag_inhand", ( 0, 0, 3 ), ( 0, 0, 0 ) );
+    var_0._ID54030 = spawn( "script_model", var_0 gettagorigin( "tag_inhand" ) );
+    var_1 = getweaponmodel( var_0._ID470 );
+    var_0._ID54030 setmodel( var_1 );
+    var_0._ID54030 linkto( var_0, "tag_inhand", ( 0, 0, 3 ), ( 0, 0, 0 ) );
 }
 
 _ID45739( var_0 )
 {
     var_1 = var_0._ID54030._ID740;
-    var_0._ID54030 _meth_80B7();
+    var_0._ID54030 delete();
     var_0._ID54030 = undefined;
     var_2 = _ID42237::_ID16638( "flash_org", "targetname" );
     var_3 = _ID42237::_ID16638( var_2._ID1191, "targetname" );
     var_4 = var_3._ID740;
-    var_5 = var_0 _meth_8039( var_1, var_4, 0.9 );
-    var_0._ID7._ID24783 = _func_03D() + 5000;
+    var_5 = var_0 magicgrenade( var_1, var_4, 0.9 );
+    var_0._ID7._ID24783 = gettime() + 5000;
     wait 1.0;
     level notify( "flashed_room" );
 }
@@ -185,13 +181,13 @@ _ID45739( var_0 )
 _ID49186( var_0 )
 {
     if ( _ID42237::_ID14385( "dont_flash_me_pls" ) )
-        var_0 _meth_80B7();
+        var_0 delete();
     else
     {
         _ID42237::_ID40867( "dont_flash_me_pls", 1 );
 
         if ( _ID42237::_ID14385( "dont_flash_me_pls" ) )
-            var_0 _meth_80B7();
+            var_0 delete();
     }
 }
 
@@ -200,14 +196,14 @@ _ID54029( var_0, var_1 )
     var_2 = "water_slide";
     var_3 = 0.0;
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
     {
         var_2 = var_1[0];
 
-        if ( _func_02F( var_1[1] ) )
+        if ( isdefined( var_1[1] ) )
         {
             var_3 = var_1[1];
-            thread _unknown_0E10( var_0 );
+            thread player_slide_end_fx( var_0 );
         }
     }
 
@@ -220,7 +216,7 @@ _ID54029( var_0, var_1 )
 
     for (;;)
     {
-        _func_157( var_4, var_0, "tag_origin" );
+        playfxontag( var_4, var_0, "tag_origin" );
         wait 0.03;
     }
 }
@@ -238,48 +234,45 @@ _ID54626( var_0 )
 
 _ID53259( var_0, var_1 )
 {
-    if ( !_func_02F( var_0._ID48927 ) )
+    if ( !isdefined( var_0._ID48927 ) )
     {
-        var_2 = var_0 _unknown_0E9B();
+        var_2 = var_0 _ID43257();
         var_0._ID48927 = 1;
-        var_0 _meth_80A1( "scn_gulag_sewer_slide_friend" + var_2 );
+        var_0 playsound( "scn_gulag_sewer_slide_friend" + var_2 );
     }
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         var_3 = _ID42237::_ID16299( var_1 );
     else
         var_3 = _ID42237::_ID16299( "water_slide_start" );
 
-    _func_157( var_3, var_0, "tag_origin" );
+    playfxontag( var_3, var_0, "tag_origin" );
 }
 
 _ID44878( var_0, var_1 )
 {
-    if ( !_func_02F( var_0._ID44338 ) )
+    if ( !isdefined( var_0._ID44338 ) )
     {
-        var_2 = var_0 _unknown_0EDE();
+        var_2 = var_0 _ID43257();
         var_0._ID44338 = 1;
-        var_0 _meth_80A1( "scn_gulag_sewer_splash_friend" + var_2 );
+        var_0 playsound( "scn_gulag_sewer_splash_friend" + var_2 );
     }
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         var_3 = _ID42237::_ID16299( var_1 );
     else
         var_3 = _ID42237::_ID16299( "water_slide_splash" );
 
-    _func_157( var_3, var_0, "tag_origin" );
+    playfxontag( var_3, var_0, "tag_origin" );
 }
 
 _ID43257()
 {
-    var_0 = _func_0DE( "allies" );
+    var_0 = getaiarray( "allies" );
     var_1 = 0;
-    var_2 = var_0;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_4, var_3 in var_0 )
     {
-        var_3 = var_2[var_4];
-
         if ( var_3 == self )
         {
             var_1 = var_4;
@@ -287,7 +280,6 @@ _ID43257()
         }
     }
 
-    var_clear_2
     var_1 %= 3;
     var_1++;
     return var_1;
@@ -345,9 +337,9 @@ _ID49100()
     level._ID30895["rat_animations"]["death_03"] = %h1_mp_rat_death_03;
     level._ID30900["me_transmitting_tower"] = #animtree;
     level._ID30895["me_transmitting_tower"]["radiotower_fall"] = %h2_gulag_introride_radiotower_fall;
-    _ID42259::_ID2058( "me_transmitting_tower", "fx_light_flicker", ::_unknown_1B24 );
-    _ID42259::_ID2058( "me_transmitting_tower", "fx_sparks", ::_unknown_1B3E );
-    _ID42259::_ID2058( "me_transmitting_tower", "fx_fall_impact", ::_unknown_1B53 );
+    _ID42259::_ID2058( "me_transmitting_tower", "fx_light_flicker", ::_ID45076 );
+    _ID42259::_ID2058( "me_transmitting_tower", "fx_sparks", ::_ID46672 );
+    _ID42259::_ID2058( "me_transmitting_tower", "fx_fall_impact", ::_ID44570 );
     level._ID30900["h2_chains_01_animated"] = #animtree;
     level._ID30904["h2_chains_01_animated"] = "h2_chains_01_animated";
     level._ID30895["h2_chains_01_animated"]["idle"][0] = %h2_gulag_chains_01;
@@ -423,8 +415,8 @@ _ID54396()
     level._ID30895["worldbody"]["slide_out"] = %h2_gulag_sewer_slide_player_out;
     level._ID30895["worldbody"]["slide_ar"] = %h2_gulag_sewer_slide_player_turnr;
     level._ID30895["worldbody"]["slide_al"] = %h2_gulag_sewer_slide_player_turnl;
-    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_unknown_1639, "slide_in", [ "water_slide_player", 0.25 ] );
-    _ID42259::_ID2058( "worldbody", "slide_fx_land", ::_unknown_1673, "slide_out", "water_slide_splash_player" );
+    _ID42259::_ID2058( "worldbody", "slide_fx_start", ::_ID54029, "slide_in", [ "water_slide_player", 0.25 ] );
+    _ID42259::_ID2058( "worldbody", "slide_fx_land", ::_ID53259, "slide_out", "water_slide_splash_player" );
     level._ID30895["player_rappel"]["player_intro_start"] = %h2_gulag_intro_player;
     level._ID30895["player_rappel"]["player_dismount_start"] = %h2_gulag_intro_player_dismount;
     level._ID30895["player_rappel"]["player_shoot_start"] = %h2_gulag_intro_player_shoot;
@@ -446,7 +438,7 @@ _ID49657()
     level._ID30895["f15"]["intro_1"] = %h2_gulag_f15_intro_1;
     level._ID30895["f15"]["landing_gear"] = %mig_landing_gear_up;
     level._ID30895["f15"]["intro_2"] = %h2_gulag_f15_intro_2;
-    _ID42259::_ID2058( "f15", "explode", ::_unknown_1B7B );
+    _ID42259::_ID2058( "f15", "explode", ::_ID44396 );
     level._ID30900["intro_1_missile"] = #animtree;
     level._ID30904["intro_1_missile"] = "vehicle_f15_missile";
     level._ID30895["intro_1_missile"]["missile_fire_a"] = %gulag_missile_f15_1_a;
@@ -459,9 +451,9 @@ _ID49657()
     level._ID30900["intro_2_missile"] = #animtree;
     level._ID30904["intro_2_missile"] = "vehicle_f15_missile";
     level._ID30895["intro_2_missile"]["missile_fire_b"] = %gulag_missile_f15_2_b;
-    _ID42259::_ID2058( "f15", "missile", ::_unknown_1BD1 );
-    _ID42259::_ID2058( "f15", "missile_fx", ::_unknown_1BFE );
-    _ID42259::_ID2058( "f15", "afterburner", ::_unknown_1C2D );
+    _ID42259::_ID2058( "f15", "missile", ::_ID46303 );
+    _ID42259::_ID2058( "f15", "missile_fx", ::_ID52292 );
+    _ID42259::_ID2058( "f15", "afterburner", ::_ID54125 );
     level._ID30900["littlebird"] = #animtree;
     level._ID30895["littlebird"]["spawn"][0] = %h2_gulag_intro_littlebird_shooter;
     level._ID30895["littlebird"]["spawn"][1] = %h2_gulag_intro_littlebird_soldier01;
@@ -483,22 +475,17 @@ _ID49657()
 _ID46303( var_0 )
 {
     if ( var_0._ID49871 == "intro_1" )
-        var_0._ID23749[0] _meth_80A1( "scn_gulag_f15_missile_fire1" );
+        var_0._ID23749[0] playsound( "scn_gulag_f15_missile_fire1" );
     else
-        var_0._ID23749[0] _meth_80A1( "scn_gulag_f15_missile_fire2" );
+        var_0._ID23749[0] playsound( "scn_gulag_f15_missile_fire2" );
 
     var_1 = _ID42237::_ID16299( "missile_brackets" );
-    var_2 = var_0._ID23749;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_0._ID23749 )
     {
-        var_3 = var_2[var_4];
-        var_3 _meth_8059();
-        _func_157( var_1, var_3, "TAG_FX" );
+        var_3 show();
+        playfxontag( var_1, var_3, "TAG_FX" );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID52292( var_0 )
@@ -513,25 +500,19 @@ _ID52292( var_0 )
         level notify( "switch_look" );
     }
 
-    var_3 = var_0._ID23749;
-
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_0._ID23749 )
     {
-        var_4 = var_3[var_5];
-        var_4 _meth_8059();
-        _func_157( var_1, var_4, "TAG_FX" );
-        _func_157( var_2, var_4, "TAG_FX" );
+        var_4 show();
+        playfxontag( var_1, var_4, "TAG_FX" );
+        playfxontag( var_2, var_4, "TAG_FX" );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID54125( var_0 )
 {
     var_1 = _ID42237::_ID16299( "jet_afterburner_ignite" );
-    _func_157( var_1, var_0, "tag_engine_left" );
-    _func_157( var_1, var_0, "tag_engine_right" );
+    playfxontag( var_1, var_0, "tag_engine_left" );
+    playfxontag( var_1, var_0, "tag_engine_right" );
     var_0 _ID42407::_ID13025( "contrails" );
 }
 
@@ -542,7 +523,7 @@ _ID51441( var_0 )
 
     for (;;)
     {
-        _func_157( var_1, var_0, "tag_weapon" );
+        playfxontag( var_1, var_0, "tag_weapon" );
         wait 0.05;
     }
 }
@@ -550,7 +531,7 @@ _ID51441( var_0 )
 _ID44396( var_0 )
 {
     var_1 = _ID42237::_ID16299( "missile_explosion" );
-    _func_157( var_1, var_0, "le_side_wing_jnt" );
+    playfxontag( var_1, var_0, "le_side_wing_jnt" );
     var_0 thread _ID49653::_ID53311();
 }
 #using_animtree("generic_human");
@@ -833,18 +814,13 @@ _ID47863()
 _ID46385()
 {
     var_0 = [ "trq_tree_pine_snow_045_02_rig", "trq_tree_pine_snow_060_02_rig", "trq_tree_pine_snow_070_02_rig", "trq_tree_pine_snow_080_02_rig", "trq_tree_pine_snow_090_02_rig", "trq_tree_pine_snow_105_02_rig" ];
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
         level._ID3055[var_2]["still"] = %h2_trq_tree_pine_still;
         level._ID3055[var_2]["strong"] = %h2_trq_tree_pine_sway;
         level._ID3055[var_2]["heli"] = %h2_trq_tree_pine_heli_sway;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID43482( var_0 )
@@ -854,13 +830,13 @@ _ID43482( var_0 )
 
 _ID45076( var_0 )
 {
-    _func_159( _ID42237::_ID16299( "radio_tower_red_static_glow" ), self, "tag_fx" );
-    _func_157( _ID42237::_ID16299( "radio_tower_fall_light_flicker" ), self, "tag_fx" );
+    killfxontag( _ID42237::_ID16299( "radio_tower_red_static_glow" ), self, "tag_fx" );
+    playfxontag( _ID42237::_ID16299( "radio_tower_fall_light_flicker" ), self, "tag_fx" );
 }
 
 _ID46672( var_0 )
 {
-    _func_157( _ID42237::_ID16299( "radio_tower_fall_sparks_runner" ), self, "transmitting_tower4" );
+    playfxontag( _ID42237::_ID16299( "radio_tower_fall_sparks_runner" ), self, "transmitting_tower4" );
 }
 
 _ID44570( var_0 )
@@ -871,6 +847,6 @@ _ID44570( var_0 )
 _ID51598( var_0 )
 {
     level._ID53563 _ID42407::_ID14803( "mp5", "primary" );
-    var_1 = _func_1A1( "soap_mp5", "targetname" );
-    var_1 _meth_80B7();
+    var_1 = getent( "soap_mp5", "targetname" );
+    var_1 delete();
 }

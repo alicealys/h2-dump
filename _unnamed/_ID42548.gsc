@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "mi17_noai", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00AB );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_mi17_woodland" );
     _ID42411::_ID6216( "vehicle_mi17_woodland_fly" );
     _ID42411::_ID6216( "vehicle_mi17_woodland_fly_cheap" );
@@ -33,12 +33,12 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6234( var_2, "wingtip_green", "tag_light_L_wing", "fx/misc/aircraft_light_wingtip_green", "running", 0.0 );
     _ID42411::_ID6234( var_2, "wingtip_red", "tag_light_R_wing", "fx/misc/aircraft_light_wingtip_red", "running", 0.0 );
     _ID42411::_ID6232();
-    _unknown_026E();
+    _ID47509();
 }
 
 _ID19731()
 {
-    self._ID26026 = _func_0F3( self _meth_818C( "tag_origin" ), self _meth_818C( "tag_ground" ) );
+    self._ID26026 = distance( self gettagorigin( "tag_origin" ), self gettagorigin( "tag_ground" ) );
     self._ID13954 = 710;
     self._ID31066 = 0;
     _ID42411::_ID40197( "running" );
@@ -47,13 +47,13 @@ _ID19731()
 
 _ID47509()
 {
-    var_0 = _func_1A5();
+    var_0 = spawnstruct();
     var_0._ID3197 = [];
     var_0._ID3197 = _ID42237::_ID3293( var_0._ID3197, %mi17_heli_hitreact_flyin_01 );
     var_0._ID3197 = _ID42237::_ID3293( var_0._ID3197, %mi17_heli_hitreact_flyin_02 );
     var_0._ID53560 = 1;
     _ID42411::_ID6212( var_0 );
-    var_1 = _func_1A5();
+    var_1 = spawnstruct();
     var_1._ID3197 = [];
     var_1._ID3197 = _ID42237::_ID3293( var_1._ID3197, %mi17_heli_hitreact_front );
     var_1._ID3197 = _ID42237::_ID3293( var_1._ID3197, %mi17_heli_hitreact_rear );
@@ -62,7 +62,7 @@ _ID47509()
     var_1._ID47124 = 1;
     var_1._ID53560 = 1;
     _ID42411::_ID6212( var_1, "unloading" );
-    var_2 = _func_1A5();
+    var_2 = spawnstruct();
     var_2._ID3197 = [];
     var_2._ID3197 = _ID42237::_ID3293( var_2._ID3197, %mi17_heli_hitreact_left );
     var_2._ID3197 = _ID42237::_ID3293( var_2._ID3197, %mi17_heli_hitreact_right );

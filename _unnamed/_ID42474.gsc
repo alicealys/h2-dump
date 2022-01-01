@@ -3,31 +3,31 @@
 
 _ID4649()
 {
-    if ( !_func_02F( level._ID1374._ID41964 ) )
+    if ( !isdefined( level._ID1374._ID41964 ) )
     {
-        level._ID1374._ID41964 = _func_1A5();
+        level._ID1374._ID41964 = spawnstruct();
         level._ID1374._ID41964._ID9482 = "";
         level._ID1374._ID41964._ID41977 = [];
-        level._ID1374._ID41964._ID26158 = _func_1A5();
+        level._ID1374._ID41964._ID26158 = spawnstruct();
         level._ID1374._ID41964._ID26158._ID30688 = [];
         level._ID1374._ID41964._ID26158._ID9654 = [];
         level._ID1374._ID41964._ID26158._ID23787 = [];
         level._ID1374._ID41964._ID26158._ID29927 = [];
         level._ID1374._ID41964._ID26158._ID25393 = [];
-        _unknown_022B( 1 );
-        _unknown_023A( 1 );
-        _unknown_024A( 1 );
-        _unknown_025A( 1 );
-        _unknown_026A( 1 );
-        _unknown_0279( 1 );
-        _unknown_0288( 0 );
-        _unknown_0297( 0 );
-        _unknown_02A6( 0 );
-        _unknown_02BA( 0 );
+        _ID4661( 1 );
+        _ID4654( 1 );
+        _ID4658( 1 );
+        _ID4663( 1 );
+        _ID4656( 1 );
+        _ID4660( 1 );
+        _ID4657( 0 );
+        _ID4662( 0 );
+        _ID4655( 0 );
+        _ID4659( 0 );
         level._ID1374._ID41964._ID39914 = 0;
     }
 
-    if ( !_func_02F( level._ID1374._ID39905 ) )
+    if ( !isdefined( level._ID1374._ID39905 ) )
         level._ID1374._ID22203 = undefined;
 }
 
@@ -41,11 +41,11 @@ _ID4669( var_0, var_1, var_2 )
     if ( level._ID1374._ID41964._ID9482 == var_0 )
         return;
     else if ( level._ID1374._ID41964._ID9482 != "" )
-        _unknown_0260( level._ID1374._ID41964._ID9482, var_1 );
+        _ID4670( level._ID1374._ID41964._ID9482, var_1 );
 
     level._ID1374._ID41964._ID9482 = var_0;
 
-    if ( _func_02F( level._ID1374._ID41964._ID41977[var_0] ) && _func_02F( level._ID1374._ID41964._ID41977[var_0]["state"] ) && level._ID1374._ID41964._ID41977[var_0]["state"] != "stopping" )
+    if ( isdefined( level._ID1374._ID41964._ID41977[var_0] ) && isdefined( level._ID1374._ID41964._ID41977[var_0]["state"] ) && level._ID1374._ID41964._ID41977[var_0]["state"] != "stopping" )
     {
         _ID42463::_ID4144( "ZONEM_start_zone(\"" + var_0 + "\") being called even though audio zone, \"" + var_0 + "\", is already started." );
         return;
@@ -53,14 +53,14 @@ _ID4669( var_0, var_1, var_2 )
 
     var_3 = 2.0;
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         var_3 = var_1;
 
-    if ( !_func_02F( level._ID1374._ID41964._ID41977[var_0] ) )
+    if ( !isdefined( level._ID1374._ID41964._ID41977[var_0] ) )
     {
-        var_4 = _unknown_0392( var_0 );
+        var_4 = _ID4680( var_0 );
 
-        if ( !_func_02F( var_4 ) )
+        if ( !isdefined( var_4 ) )
             return;
 
         level._ID1374._ID41964._ID41977[var_0] = var_4;
@@ -72,7 +72,7 @@ _ID4669( var_0, var_1, var_2 )
     var_5 = var_4["priority"];
     var_6 = var_4["interrupt_fade"];
 
-    if ( _func_02F( var_4["streamed_ambience"] ) )
+    if ( isdefined( var_4["streamed_ambience"] ) )
     {
         if ( var_4["streamed_ambience"] != "none" )
             _ID42470::_ID34393( var_4["streamed_ambience"], var_3, var_5, var_6 );
@@ -80,7 +80,7 @@ _ID4669( var_0, var_1, var_2 )
             _ID42470::_ID34394( var_3 );
     }
 
-    if ( _func_02F( var_4["dynamic_ambience"] ) )
+    if ( isdefined( var_4["dynamic_ambience"] ) )
     {
         if ( var_4["dynamic_ambience"] != "none" )
             _ID42464::_ID9675( var_4["dynamic_ambience"], 1.0 );
@@ -88,7 +88,7 @@ _ID4669( var_0, var_1, var_2 )
             _ID42464::_ID9672( 1.0 );
     }
 
-    if ( _func_02F( var_4["occlusion"] ) && !_unknown_043D() )
+    if ( isdefined( var_4["occlusion"] ) && !_ID4644() )
     {
         if ( var_4["occlusion"] != "none" )
             _ID42490::_ID34650( var_4["occlusion"] );
@@ -96,13 +96,13 @@ _ID4669( var_0, var_1, var_2 )
             _ID42490::_ID34650( undefined );
     }
 
-    if ( _func_02F( var_4["filter"] ) && !_unknown_045F() )
+    if ( isdefined( var_4["filter"] ) && !_ID4640() )
     {
         _ID42490::_ID34647( var_4["filter"], 0 );
         _ID42490::_ID34648( 1 );
     }
 
-    if ( _func_02F( var_4["reverb"] ) && !_unknown_0476() )
+    if ( isdefined( var_4["reverb"] ) && !_ID4647() )
     {
         if ( var_4["reverb"] != "none" )
             _ID42469::_ID30454( var_4["reverb"] );
@@ -110,7 +110,7 @@ _ID4669( var_0, var_1, var_2 )
             _ID42469::_ID30449();
     }
 
-    if ( _func_02F( var_4["mix"] ) && !_unknown_049A() )
+    if ( isdefined( var_4["mix"] ) && !_ID4642() )
     {
         if ( var_4["mix"] != "none" )
             _ID42465::_ID23812( var_4["mix"], var_4["context"] );
@@ -118,17 +118,17 @@ _ID4669( var_0, var_1, var_2 )
             _ID42465::_ID23804( undefined, var_4["context"], 1.0 );
     }
 
-    if ( _func_02F( var_4["context"] ) )
+    if ( isdefined( var_4["context"] ) )
         _ID42476::_ID34518( var_4["context"] );
 }
 
 _ID4668( var_0, var_1, var_2 )
 {
-    var_3 = _unknown_0694( var_0, "streamed_ambience", var_1, ::_unknown_063D, var_2 );
+    var_3 = _ID4686( var_0, "streamed_ambience", var_1, ::_ID4685, var_2 );
 
     if ( !var_3 )
     {
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             var_1 = "none";
 
         level._ID1374._ID41964._ID26158._ID30688[var_0] = var_1;
@@ -137,37 +137,37 @@ _ID4668( var_0, var_1, var_2 )
 
 _ID4664( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = "none";
 
-    _unknown_06CF( var_0, "dynamic_ambience", var_1, ::_unknown_0685, var_2 );
+    _ID4686( var_0, "dynamic_ambience", var_1, ::_ID4681, var_2 );
     level._ID1374._ID41964._ID26158._ID9654[var_0] = var_1;
 }
 
 _ID4667( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = "none";
 
-    _unknown_06FB( var_0, "reverb", var_1, ::_unknown_06C5, var_2 );
+    _ID4686( var_0, "reverb", var_1, ::_ID4684, var_2 );
     level._ID1374._ID41964._ID26158._ID29927[var_0] = var_1;
 }
 
 _ID4666( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = "none";
 
-    _unknown_0728( var_0, "occlusion", var_1, ::_unknown_06FE, var_2 );
+    _ID4686( var_0, "occlusion", var_1, ::_ID4683, var_2 );
     level._ID1374._ID41964._ID26158._ID23787[var_1] = var_1;
 }
 
 _ID4665( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = "none";
 
-    _unknown_0754( var_0, "mix", var_1, ::_unknown_0737, var_2 );
+    _ID4686( var_0, "mix", var_1, ::_ID4682, var_2 );
     level._ID1374._ID41964._ID26158._ID23787[var_1] = var_1;
 }
 
@@ -175,54 +175,47 @@ _ID4671( var_0 )
 {
     var_1 = 1.0;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         var_1 = var_0;
 
     _ID42463::_ID4145( "ZONE STOP ALL" );
-    var_2 = level._ID1374._ID41964._ID41977;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        _unknown_0565( var_3["name"], var_1, 0 );
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_3 in level._ID1374._ID41964._ID41977 )
+        _ID4670( var_3["name"], var_1, 0 );
 }
 
 _ID4670( var_0, var_1, var_2 )
 {
-    if ( _func_02F( level._ID1374._ID41964._ID41977[var_0] ) && _func_02F( level._ID1374._ID41964._ID41977[var_0]["state"] ) && level._ID1374._ID41964._ID41977[var_0]["state"] != "stopping" )
+    if ( isdefined( level._ID1374._ID41964._ID41977[var_0] ) && isdefined( level._ID1374._ID41964._ID41977[var_0]["state"] ) && level._ID1374._ID41964._ID41977[var_0]["state"] != "stopping" )
     {
         var_3 = 1.0;
 
-        if ( _func_02F( var_1 ) )
+        if ( isdefined( var_1 ) )
             var_3 = var_1;
 
         var_4 = level._ID1374._ID41964._ID41977[var_0];
         var_5 = 0;
 
-        if ( _func_02F( var_2 ) )
+        if ( isdefined( var_2 ) )
             var_5 = var_2;
 
         if ( var_5 )
             _ID42463::_ID4145( "ZONE STOP ZONE: " + var_0 );
 
-        if ( _func_02F( var_4["streamed_ambience"] ) )
+        if ( isdefined( var_4["streamed_ambience"] ) )
             _ID42470::_ID34395( var_4["streamed_ambience"], var_3 );
 
-        if ( _func_02F( var_4["dynamic_ambience"] ) )
+        if ( isdefined( var_4["dynamic_ambience"] ) )
             _ID42464::_ID9676( var_4["dynamic_ambience"], var_3 );
 
-        if ( _func_02F( var_4["mix"] ) && !_unknown_06A5() )
+        if ( isdefined( var_4["mix"] ) && !_ID4642() )
             _ID42465::_ID23804( var_4["mix"], var_4["context"], var_3 );
 
-        if ( _func_02F( var_4["context"] ) )
+        if ( isdefined( var_4["context"] ) )
             _ID42476::_ID34512( var_4["context"] );
 
         level._ID1374._ID41964._ID41977[var_0]["state"] = "stopping";
-        thread _unknown_08B3( var_0, var_3 );
+        thread _ID4687( var_0, var_3 );
     }
 }
 
@@ -338,7 +331,7 @@ _ID4655( var_0 )
 
 _ID4640()
 {
-    return _func_02F( level._ID24600 ) && level._ID24600 || level._ID1374._ID41964._ID26158._ID14024;
+    return isdefined( level._ID24600 ) && level._ID24600 || level._ID1374._ID41964._ID26158._ID14024;
 }
 
 _ID4659( var_0 )
@@ -353,26 +346,26 @@ _ID4644()
 
 _ID4680( var_0 )
 {
-    if ( _func_02F( level._ID1374._ID41964._ID41977[var_0] ) )
+    if ( isdefined( level._ID1374._ID41964._ID41977[var_0] ) )
         return;
 
-    if ( !_func_02F( level._ID1374._ID41964._ID28450 ) )
+    if ( !isdefined( level._ID1374._ID41964._ID28450 ) )
         level._ID1374._ID41964._ID28450 = [];
 
     var_1 = [];
 
-    if ( _func_02F( level._ID1374._ID41964._ID28450[var_0] ) )
+    if ( isdefined( level._ID1374._ID41964._ID28450[var_0] ) )
         var_1 = level._ID1374._ID41964._ID28450[var_0];
     else
-        var_1 = _unknown_0973( var_0, 1 );
+        var_1 = _ID4675( var_0, 1 );
 
-    if ( !_func_02F( var_1 ) || var_1.size == 0 )
+    if ( !isdefined( var_1 ) || var_1.size == 0 )
         return;
 
     level._ID1374._ID41964._ID28450[var_0] = var_1;
     var_2 = 0;
 
-    if ( _unknown_086A() && _func_02F( level._ID1374._ID41964._ID26158._ID30688[var_0] ) )
+    if ( _ID4646() && isdefined( level._ID1374._ID41964._ID26158._ID30688[var_0] ) )
     {
         if ( level._ID1374._ID41964._ID26158._ID30688[var_0] == "none" )
             var_1["streamed_ambience"] = undefined;
@@ -383,7 +376,7 @@ _ID4680( var_0 )
         level._ID1374._ID41964._ID26158._ID30688[var_0] = undefined;
     }
 
-    if ( _unknown_08CA() && _func_02F( level._ID1374._ID41964._ID26158._ID9654[var_0] ) )
+    if ( _ID4639() && isdefined( level._ID1374._ID41964._ID26158._ID9654[var_0] ) )
     {
         if ( level._ID1374._ID41964._ID26158._ID9654[var_0] == "none" )
             var_1["dynamic_ambience"] = undefined;
@@ -394,7 +387,7 @@ _ID4680( var_0 )
         level._ID1374._ID41964._ID26158._ID9654[var_0] = undefined;
     }
 
-    if ( _unknown_0934() && _func_02F( level._ID1374._ID41964._ID26158._ID29927[var_0] ) )
+    if ( _ID4648() && isdefined( level._ID1374._ID41964._ID26158._ID29927[var_0] ) )
     {
         if ( level._ID1374._ID41964._ID26158._ID29927[var_0] == "none" )
             var_1["reverb"] = undefined;
@@ -405,7 +398,7 @@ _ID4680( var_0 )
         level._ID1374._ID41964._ID26158._ID29927[var_0] = undefined;
     }
 
-    if ( _unknown_099E() && _func_02F( level._ID1374._ID41964._ID26158._ID25393[var_0] ) )
+    if ( _ID4645() && isdefined( level._ID1374._ID41964._ID26158._ID25393[var_0] ) )
     {
         if ( level._ID1374._ID41964._ID26158._ID25393[var_0] == "none" )
             var_1["occlusion"] = undefined;
@@ -416,7 +409,7 @@ _ID4680( var_0 )
         level._ID1374._ID41964._ID26158._ID25393[var_0] = undefined;
     }
 
-    if ( _unknown_09EA() && _func_02F( level._ID1374._ID41964._ID26158._ID23787[var_0] ) )
+    if ( _ID4641() && isdefined( level._ID1374._ID41964._ID26158._ID23787[var_0] ) )
     {
         if ( level._ID1374._ID41964._ID26158._ID23787[var_0] == "none" )
             var_1["mix"] = undefined;
@@ -432,10 +425,10 @@ _ID4680( var_0 )
 
     var_1["name"] = var_0;
 
-    if ( !_func_02F( var_1["priority"] ) )
+    if ( !isdefined( var_1["priority"] ) )
         var_1["priority"] = 1;
 
-    if ( !_func_02F( var_1["interrupt_fade"] ) )
+    if ( !isdefined( var_1["interrupt_fade"] ) )
         var_1["interrupt_fade"] = 0.1;
 
     return var_1;
@@ -448,12 +441,12 @@ _ID4675( var_0, var_1 )
     var_4 = [];
 
     if ( var_1 )
-        var_4 = _unknown_0BA5( var_3, var_0 );
+        var_4 = _ID4676( var_3, var_0 );
 
-    if ( !_func_02F( var_4 ) || var_4.size == 0 )
-        var_4 = _unknown_0BB7( var_2, var_0 );
+    if ( !isdefined( var_4 ) || var_4.size == 0 )
+        var_4 = _ID4676( var_2, var_0 );
 
-    if ( !_func_02F( var_4 ) || var_4.size == 0 )
+    if ( !isdefined( var_4 ) || var_4.size == 0 )
         return;
 
     return var_4;
@@ -464,9 +457,9 @@ _ID4676( var_0, var_1 )
     var_2 = [];
     var_3 = "";
     var_4 = "";
-    var_5 = _func_2A0( var_0, "zone_names", "zone_names;reverb_names;filter_names;occlusion_names;timescale_names;dynamic_ambience_names;components;loop_defs;whizby_preset_names;mix_names;healthfx_params" );
+    var_5 = _func_2a0( var_0, "zone_names", "zone_names;reverb_names;filter_names;occlusion_names;timescale_names;dynamic_ambience_names;components;loop_defs;whizby_preset_names;mix_names;healthfx_params" );
 
-    if ( _func_02F( var_5 ) )
+    if ( isdefined( var_5 ) )
     {
         var_6 = 9;
 
@@ -475,23 +468,37 @@ _ID4676( var_0, var_1 )
             if ( var_3 != "comments" && var_4 != "" )
                 var_2[var_3] = var_4;
 
-            var_3 = _func_2A1( var_0, 0, "zone_names", var_7, var_5[0], var_5[1] );
-            var_4 = _func_2A1( var_0, 0, var_1, var_7, var_5[0], var_5[1] );
+            var_3 = _func_2a1( var_0, 0, "zone_names", var_7, var_5[0], var_5[1] );
+            var_4 = _func_2a1( var_0, 0, var_1, var_7, var_5[0], var_5[1] );
 
             if ( var_3 != "comment" && var_3 != "comments" && var_4 != "" )
             {
                 switch ( var_3 )
                 {
-
+                    case "streamed_ambience":
+                        var_2["streamed_ambience"] = var_4;
+                        continue;
+                    case "dynamic_ambience":
+                        var_2["dynamic_ambience"] = var_4;
+                        continue;
+                    case "mix":
+                        var_2["mix"] = var_4;
+                        continue;
+                    case "reverb":
+                        var_2["reverb"] = var_4;
+                        continue;
+                    case "filter":
+                        var_2["filter"] = var_4;
+                        continue;
+                    case "occlusion":
+                        var_2["occlusion"] = var_4;
+                        continue;
+                    case "context":
+                        var_2["context"] = var_4;
+                        continue;
+                    default:
+                        continue;
                 }
-
-                endswitch( 8 )  case "context" loc_CD4 case "dynamic_ambience" loc_CC8 case "streamed_ambience" loc_CCA case "filter" loc_CDD case "occlusion" loc_CE6 case "mix" loc_CE0 case "reverb" loc_CE9 default loc_CFC
-                case "dynamic_ambience":
-                case "filter":
-                case "occlusion":
-                case "mix":
-                case "reverb":
-                default:
             }
         }
 
@@ -503,7 +510,7 @@ _ID4685( var_0, var_1 )
 {
     var_2 = level._ID1374._ID41964._ID41977[var_0]["streamed_ambience"];
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         _ID42470::_ID34393( var_2, var_1 );
     else
         _ID42470::_ID34394( var_1 );
@@ -513,12 +520,12 @@ _ID4681( var_0, var_1 )
 {
     var_2 = 1.0;
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         var_2 = var_1;
 
     var_3 = level._ID1374._ID41964._ID41977[var_0]["dynamic_ambience"];
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
     {
         _ID42464::_ID9707( "zone", undefined, var_2 );
         _ID42464::_ID9675( var_3 );
@@ -531,7 +538,7 @@ _ID4684( var_0, var_1 )
 {
     var_2 = level._ID1374._ID41964._ID41977[var_0]["reverb"];
 
-    if ( _func_02F( var_2 ) && !_unknown_0C4B() )
+    if ( isdefined( var_2 ) && !_ID4647() )
         _ID42469::_ID30454( var_2 );
 }
 
@@ -539,7 +546,7 @@ _ID4683( var_0, var_1 )
 {
     var_2 = level._ID1374._ID41964._ID41977[var_0]["occlusion"];
 
-    if ( _func_02F( var_2 ) && !_unknown_0C89() )
+    if ( isdefined( var_2 ) && !_ID4644() )
         _ID42490::_ID34650( var_2 );
 }
 
@@ -548,9 +555,9 @@ _ID4682( var_0, var_1 )
     var_2 = level._ID1374._ID41964._ID41977[var_0]["mix"];
     var_3 = level._ID1374._ID41964._ID41977[var_0]["context"];
 
-    if ( !_unknown_0C98() )
+    if ( !_ID4642() )
     {
-        if ( _func_02F( var_2 ) )
+        if ( isdefined( var_2 ) )
             _ID42465::_ID23812( var_2, var_3 );
         else
             _ID42465::_ID23804( undefined, var_3, var_1 );
@@ -559,16 +566,16 @@ _ID4682( var_0, var_1 )
 
 _ID4686( var_0, var_1, var_2, var_3, var_4 )
 {
-    if ( _func_02F( level._ID1374._ID41964._ID41977[var_0] ) )
+    if ( isdefined( level._ID1374._ID41964._ID41977[var_0] ) )
     {
-        if ( _func_02F( level._ID1374._ID41964._ID41977[var_0][var_1] ) && level._ID1374._ID41964._ID41977[var_0][var_1] != var_2 || !_func_02F( level._ID1374._ID41964._ID41977[var_0][var_1] ) && _func_02F( var_2 ) && var_2 != "none" )
+        if ( isdefined( level._ID1374._ID41964._ID41977[var_0][var_1] ) && level._ID1374._ID41964._ID41977[var_0][var_1] != var_2 || !isdefined( level._ID1374._ID41964._ID41977[var_0][var_1] ) && ( isdefined( var_2 ) && var_2 != "none" ) )
         {
             if ( var_2 == "none" )
                 level._ID1374._ID41964._ID41977[var_0][var_1] = undefined;
             else
                 level._ID1374._ID41964._ID41977[var_0][var_1] = var_2;
 
-            if ( var_0 == _unknown_0CE0() )
+            if ( var_0 == _ID4638() )
                 [[ var_3 ]]( var_0, var_4 );
         }
 
@@ -589,7 +596,7 @@ _ID4687( var_0, var_1 )
 
 _ID4674( var_0, var_1 )
 {
-    var_2 = _func_1A5();
+    var_2 = spawnstruct();
     var_2._ID41959 = var_0;
     var_2._ID41969 = var_1;
     var_2._ID30689 = undefined;
@@ -607,11 +614,11 @@ _ID4674( var_0, var_1 )
     var_2._ID53581 = undefined;
     var_2._ID45678 = undefined;
 
-    if ( !_func_02F( level._ID1374._ID41964._ID41977[var_0] ) )
+    if ( !isdefined( level._ID1374._ID41964._ID41977[var_0] ) )
     {
-        var_3 = _unknown_0DD9( var_0 );
+        var_3 = _ID4680( var_0 );
 
-        if ( !_func_02F( var_3 ) )
+        if ( !isdefined( var_3 ) )
         {
             _ID42463::_ID4144( "Couldn't find zone: " + var_0 );
             return;
@@ -622,11 +629,11 @@ _ID4674( var_0, var_1 )
 
     var_4 = level._ID1374._ID41964._ID41977[var_0];
 
-    if ( !_func_02F( level._ID1374._ID41964._ID41977[var_1] ) )
+    if ( !isdefined( level._ID1374._ID41964._ID41977[var_1] ) )
     {
-        var_3 = _unknown_0E15( var_1 );
+        var_3 = _ID4680( var_1 );
 
-        if ( !_func_02F( var_3 ) )
+        if ( !isdefined( var_3 ) )
         {
             _ID42463::_ID4144( "Couldn't find zone: " + var_1 );
             return;
@@ -662,11 +669,11 @@ _ID4678( var_0, var_1 )
 {
     var_2 = 0;
 
-    if ( _func_02F( var_0 ) && _func_02F( var_1 ) && var_0 != var_1 )
+    if ( isdefined( var_0 ) && isdefined( var_1 ) && var_0 != var_1 )
         var_2 = 1;
-    else if ( _func_02F( var_1 ) && !_func_02F( var_0 ) )
+    else if ( isdefined( var_1 ) && !isdefined( var_0 ) )
         var_2 = 1;
-    else if ( _func_02F( var_0 ) && !_func_02F( var_1 ) )
+    else if ( isdefined( var_0 ) && !isdefined( var_1 ) )
         var_2 = 1;
 
     return var_2;
@@ -676,11 +683,11 @@ _ID4677( var_0, var_1 )
 {
     var_2 = 0;
 
-    if ( _func_02F( var_0 ) && _func_02F( var_1 ) && var_0 != var_1 )
+    if ( isdefined( var_0 ) && isdefined( var_1 ) && var_0 != var_1 )
         var_2 = 1;
-    else if ( _func_02F( var_1 ) && !_func_02F( var_0 ) )
+    else if ( isdefined( var_1 ) && !isdefined( var_0 ) )
         var_2 = 1;
-    else if ( _func_02F( var_0 ) && !_func_02F( var_1 ) )
+    else if ( isdefined( var_0 ) && !isdefined( var_1 ) )
         var_2 = 1;
 
     return var_2;
@@ -690,11 +697,11 @@ _ID4679( var_0, var_1 )
 {
     var_2 = 0;
 
-    if ( _func_02F( var_0 ) && _func_02F( var_1 ) && var_0 != var_1 )
+    if ( isdefined( var_0 ) && isdefined( var_1 ) && var_0 != var_1 )
         var_2 = 1;
-    else if ( _func_02F( var_1 ) && !_func_02F( var_0 ) )
+    else if ( isdefined( var_1 ) && !isdefined( var_0 ) )
         var_2 = 1;
-    else if ( _func_02F( var_0 ) && !_func_02F( var_1 ) )
+    else if ( isdefined( var_0 ) && !isdefined( var_1 ) )
         var_2 = 1;
 
     return var_2;
@@ -702,15 +709,15 @@ _ID4679( var_0, var_1 )
 
 _ID4673( var_0, var_1, var_2 )
 {
-    if ( _unknown_120E( var_2._ID30689, var_2._ID30690 ) )
+    if ( _ID4679( var_2._ID30689, var_2._ID30690 ) )
     {
         var_3 = [];
         var_4 = 0;
 
-        if ( _func_02F( var_2._ID30689 ) && var_2._ID30689 != "" )
+        if ( isdefined( var_2._ID30689 ) && var_2._ID30689 != "" )
         {
             var_5 = level._ID1374._ID41964._ID41977[var_2._ID41959];
-            var_3[var_4] = _func_1A5();
+            var_3[var_4] = spawnstruct();
             var_3[var_4]._ID2521 = var_2._ID30689;
             var_3[var_4]._ID40762 = var_0;
             var_3[var_4]._ID13788 = var_5["interrupt_fade"];
@@ -718,10 +725,10 @@ _ID4673( var_0, var_1, var_2 )
             var_4++;
         }
 
-        if ( _func_02F( var_2._ID30690 ) && var_2._ID30690 != "" )
+        if ( isdefined( var_2._ID30690 ) && var_2._ID30690 != "" )
         {
             var_6 = level._ID1374._ID41964._ID41977[var_2._ID41969];
-            var_3[var_4] = _func_1A5();
+            var_3[var_4] = spawnstruct();
             var_3[var_4]._ID2521 = var_2._ID30690;
             var_3[var_4]._ID40762 = var_1;
             var_3[var_4]._ID13788 = var_6["interrupt_fade"];
@@ -732,37 +739,37 @@ _ID4673( var_0, var_1, var_2 )
             _ID42470::_ID34391( var_3 );
     }
 
-    if ( _unknown_12B9( var_2._ID9677, var_2._ID9678 ) )
+    if ( _ID4677( var_2._ID9677, var_2._ID9678 ) )
         _ID42464::_ID9662( var_2._ID9677, var_0, var_2._ID9678, var_1 );
 
-    if ( _unknown_12BF( var_2._ID23792, var_2._ID23794 ) && !_unknown_1071() )
+    if ( _ID4678( var_2._ID23792, var_2._ID23794 ) && !_ID4642() )
         _ID42465::_ID23799( var_2._ID23792, var_0, var_2._ID23794, var_1, var_2._ID53581, var_2._ID45678 );
 
-    if ( _func_02F( var_2._ID14029 ) )
+    if ( isdefined( var_2._ID14029 ) )
     {
-        if ( !_unknown_10A8() )
+        if ( !_ID4640() )
             _ID42490::_ID34647( var_2._ID14029, 0, 0 );
     }
-    else if ( !_unknown_10BB() )
+    else if ( !_ID4640() )
         _ID42490::_ID34647( undefined, 0, 0 );
 
-    if ( _func_02F( var_2._ID14030 ) )
+    if ( isdefined( var_2._ID14030 ) )
     {
-        if ( !_unknown_10CF() )
+        if ( !_ID4640() )
             _ID42490::_ID34647( var_2._ID14030, 1, 0 );
     }
-    else if ( !_unknown_10E3() )
+    else if ( !_ID4640() )
         _ID42490::_ID34647( undefined, 1, 0 );
 
-    if ( _func_02F( var_2._ID14029 ) || _func_02F( var_2._ID14030 ) )
+    if ( isdefined( var_2._ID14029 ) || isdefined( var_2._ID14030 ) )
     {
-        if ( !_unknown_1101() )
+        if ( !_ID4640() )
             _ID42490::_ID34648( var_0 );
     }
 
     if ( var_0 >= 0.75 )
     {
-        if ( _func_02F( var_2._ID29942 ) && !_unknown_1111() )
+        if ( isdefined( var_2._ID29942 ) && !_ID4647() )
         {
             if ( var_2._ID29942 == "none" )
                 _ID42469::_ID30454( undefined );
@@ -770,7 +777,7 @@ _ID4673( var_0, var_1, var_2 )
                 _ID42469::_ID30454( var_2._ID29942 );
         }
 
-        if ( _func_02F( var_2._ID25398 ) && !_unknown_1154() )
+        if ( isdefined( var_2._ID25398 ) && !_ID4644() )
         {
             if ( var_2._ID25398 == "none" )
                 _ID42490::_ID34650( undefined );
@@ -778,15 +785,15 @@ _ID4673( var_0, var_1, var_2 )
                 _ID42490::_ID34650( var_2._ID25398 );
         }
 
-        if ( _func_02F( var_2._ID45678 ) )
+        if ( isdefined( var_2._ID45678 ) )
             _ID42476::_ID34512( var_2._ID45678 );
 
-        if ( _func_02F( var_2._ID53581 ) )
+        if ( isdefined( var_2._ID53581 ) )
             _ID42476::_ID34518( var_2._ID53581 );
     }
     else if ( var_1 >= 0.75 )
     {
-        if ( _func_02F( var_2._ID29943 ) && !_unknown_1191() )
+        if ( isdefined( var_2._ID29943 ) && !_ID4647() )
         {
             if ( var_2._ID29943 == "none" )
                 _ID42469::_ID30454( undefined );
@@ -794,7 +801,7 @@ _ID4673( var_0, var_1, var_2 )
                 _ID42469::_ID30454( var_2._ID29943 );
         }
 
-        if ( _func_02F( var_2._ID25399 ) && !_unknown_11D3() )
+        if ( isdefined( var_2._ID25399 ) && !_ID4644() )
         {
             if ( var_2._ID25399 == "none" )
                 _ID42490::_ID34650( undefined );
@@ -802,10 +809,10 @@ _ID4673( var_0, var_1, var_2 )
                 _ID42490::_ID34650( var_2._ID25399 );
         }
 
-        if ( _func_02F( var_2._ID53581 ) )
+        if ( isdefined( var_2._ID53581 ) )
             _ID42476::_ID34512( var_2._ID53581 );
 
-        if ( _func_02F( var_2._ID45678 ) )
+        if ( isdefined( var_2._ID45678 ) )
             _ID42476::_ID34518( var_2._ID45678 );
     }
 }

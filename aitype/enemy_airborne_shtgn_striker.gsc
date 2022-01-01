@@ -15,32 +15,39 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "pp2000";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 0.0, 0.0 );
-        self _meth_8179( 280.0, 400.0 );
+        self setengagementmindist( 0.0, 0.0 );
+        self setengagementmaxdist( 280.0, 400.0 );
     }
 
     switch ( _ID42226::_ID15950( 2 ) )
     {
-
+        case 0:
+            self._ID1302 = "striker";
+            break;
+        case 1:
+            self._ID1302 = "striker_reflex";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID45960::_ID616();
+            break;
+        case 1:
+            _ID48607::_ID616();
+            break;
+        case 2:
+            _ID51791::_ID616();
+            break;
     }
-
-    case 1:
-    case 0:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -48,8 +55,8 @@ _ID814()
     _ID45960::_ID814();
     _ID48607::_ID814();
     _ID51791::_ID814();
-    _func_14E( "striker" );
-    _func_14E( "striker_reflex" );
-    _func_14E( "pp2000" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "striker" );
+    precacheitem( "striker_reflex" );
+    precacheitem( "pp2000" );
+    precacheitem( "fraggrenade" );
 }

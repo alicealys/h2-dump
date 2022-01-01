@@ -95,8 +95,8 @@ _ID19587()
 _ID616()
 {
     self._ID3155 = [];
-    self._ID3155["hiding"]["stand"] = ::_unknown_063C;
-    self._ID3155["hiding"]["crouch"] = ::_unknown_0663;
+    self._ID3155["hiding"]["stand"] = ::_ID32215;
+    self._ID3155["hiding"]["crouch"] = ::_ID32202;
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "cover_right" );
     animscripts\corner::_ID8741( "right", -90 );
@@ -113,7 +113,7 @@ _ID32215()
     self._ID18567 = -90;
     self._ID7._ID3291 = animscripts\utility::_ID22631( "cover_right_stand" );
 
-    if ( _func_02F( anim._ID28939 ) )
+    if ( isdefined( anim._ID28939 ) )
     {
         self._ID7._ID3291["rambo90"] = anim._ID28939._ID8899;
         self._ID7._ID3291["rambo45"] = anim._ID28939._ID8898;

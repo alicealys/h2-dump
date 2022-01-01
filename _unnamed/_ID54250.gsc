@@ -4,7 +4,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "bradley", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_002E );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_bradley", "vehicle_bradley" );
     _ID42411::_ID6213( "fx/explosions/large_vehicle_explosion", undefined, "exp_armor_vehicle" );
     _ID42411::_ID6257();
@@ -29,7 +29,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 11; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID16493 = 1;
     return var_0;

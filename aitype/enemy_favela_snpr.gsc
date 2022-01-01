@@ -15,35 +15,37 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "glock";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 1250.0, 1024.0 );
-        self _meth_8179( 1600.0, 2400.0 );
+        self setengagementmindist( 1250.0, 1024.0 );
+        self setengagementmaxdist( 1600.0, 2400.0 );
     }
 
     self._ID1302 = "dragunov";
 
     switch ( _ID42226::_ID15942( 2 ) )
     {
-
+        case 0:
+            _ID52867::_ID616();
+            break;
+        case 1:
+            _ID45439::_ID616();
+            break;
     }
-
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID52867::_ID814();
     _ID45439::_ID814();
-    _func_14E( "dragunov" );
-    _func_14E( "glock" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "dragunov" );
+    precacheitem( "glock" );
+    precacheitem( "fraggrenade" );
     _ID42359::_ID616();
     _ID42368::_ID616();
 }

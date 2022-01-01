@@ -3,8 +3,8 @@
 
 _ID36376()
 {
-    _unknown_0145();
-    thread _unknown_0009();
+    _ID14953();
+    thread _ID14992();
 }
 
 _ID14992()
@@ -13,21 +13,21 @@ _ID14992()
     self endon( "pain_death" );
     var_0 = self._ID1644._ID22585._ID9469;
 
-    if ( _func_1B3( self ) )
-        thread _unknown_00E2();
+    if ( isplayernumber( self ) )
+        thread _ID27563();
 
     for (;;)
     {
         _ID42407::_ID13027( "_stealth_enabled" );
         self [[ var_0 ]]();
-        self._ID630 = _unknown_00B7();
+        self._ID630 = _ID14927();
         wait 0.05;
     }
 }
 
 _ID14947()
 {
-    return _func_0F6( self _meth_8344() );
+    return length( self getvelocity() );
 }
 
 _ID14944()
@@ -37,7 +37,7 @@ _ID14944()
 
 _ID27439()
 {
-    var_0 = _func_0F6( self _meth_8344() );
+    var_0 = length( self getvelocity() );
     var_1 = self._ID1644._ID22585._ID35573;
     var_2 = [];
     var_2["stand"] = 30;
@@ -70,20 +70,20 @@ _ID27439()
 
 _ID14941( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
     {
-        if ( _func_02F( self._ID1644 ) )
+        if ( isdefined( self._ID1644 ) )
             var_0 = self._ID1644._ID22585._ID35573;
         else
             var_0 = self._ID7._ID35573;
     }
 
-    if ( _func_02F( var_0 ) && var_0 == "back" )
+    if ( isdefined( var_0 ) && var_0 == "back" )
         var_0 = "prone";
 
-    if ( _func_02F( self._ID1244 ) && self._ID1244 == "dog" )
+    if ( isdefined( self._ID1244 ) && self._ID1244 == "dog" )
     {
-        if ( _func_02F( self._ID35499 ) && self._ID35499 )
+        if ( isdefined( self._ID35499 ) && self._ID35499 )
             var_0 = "crouch";
         else
             var_0 = "prone";
@@ -94,10 +94,10 @@ _ID14941( var_0 )
 
 _ID14927( var_0 )
 {
-    if ( !_func_02F( self._ID1644 ) )
+    if ( !isdefined( self._ID1644 ) )
         return;
 
-    var_0 = _unknown_01F2( var_0 );
+    var_0 = _ID14941( var_0 );
     var_1 = level._ID1644._ID22585._ID10660;
     var_2 = level._ID1644._ID22585._ID10641[var_1][var_0];
 
@@ -111,7 +111,7 @@ _ID14927( var_0 )
 
     var_3 = self._ID1644._ID22585._ID24441[var_1][var_0];
 
-    if ( _func_02F( self._ID1645 ) && var_3 > self._ID1645 )
+    if ( isdefined( self._ID1645 ) && var_3 > self._ID1645 )
         var_3 = self._ID1645;
 
     return var_2 + var_3;
@@ -151,23 +151,12 @@ _ID27563()
         else
             var_3 = self [[ var_1 ]]();
 
-        var_4 = self._ID1644._ID22585._ID24441;
-
-        for ( var_9 = _func_1DA( var_4 ); _func_02F( var_9 ); var_9 = _func_1BF( var_4, var_9 ) )
+        foreach ( var_9, var_5 in self._ID1644._ID22585._ID24441 )
         {
-            var_5 = var_4[var_9];
-            var_6 = var_5;
-
-            for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
-            {
-                var_7 = var_6[var_8];
+            foreach ( var_8, var_7 in var_5 )
                 var_7 = var_3 * self._ID1644._ID22585._ID24443[var_9][var_8];
-            }
-
-            var_clear_3
         }
 
-        var_clear_5
         var_2 = self [[ var_0 ]]();
         wait 0.1;
     }
@@ -175,12 +164,12 @@ _ID27563()
 
 _ID14946()
 {
-    return self _meth_8188();
+    return self getstance();
 }
 
 _ID14943()
 {
-    return self _meth_8346();
+    return self getplayerangles();
 }
 
 _ID14929()
@@ -191,7 +180,16 @@ _ID14929()
     {
         switch ( var_0 )
         {
+            case "prone":
+                if ( self._ID1644._ID22585._ID25574 != "prone" )
+                    self._ID1644._ID22585._ID35577 = self._ID1644._ID22585._ID35578;
 
+                break;
+            case "crouch":
+                if ( self._ID1644._ID22585._ID25574 == "stand" )
+                    self._ID1644._ID22585._ID35577 = self._ID1644._ID22585._ID35578;
+
+                break;
         }
     }
 
@@ -200,23 +198,19 @@ _ID14929()
         self._ID1644._ID22585._ID35573 = self._ID1644._ID22585._ID25574;
 
         if ( self._ID1644._ID22585._ID35577 > 0.05 )
-        {
             self._ID1644._ID22585._ID35577 = self._ID1644._ID22585._ID35577 - 0.05;
-            return;
+        else
+        {
+            self._ID1644._ID22585._ID35577 = 0;
+            self._ID1644._ID22585._ID35573 = var_0;
+            self._ID1644._ID22585._ID25574 = var_0;
         }
-
-        self._ID1644._ID22585._ID35577 = 0;
+    }
+    else
+    {
         self._ID1644._ID22585._ID35573 = var_0;
         self._ID1644._ID22585._ID25574 = var_0;
-        return;
-        return;
     }
-
-    self._ID1644._ID22585._ID35573 = var_0;
-    self._ID1644._ID22585._ID25574 = var_0;
-    return;
-    case "crouch":
-    case "prone":
 }
 
 _ID14953()
@@ -224,33 +218,33 @@ _ID14953()
     _ID42407::_ID13024( "_stealth_in_shadow" );
     _ID42407::_ID13024( "_stealth_enabled" );
     _ID42407::_ID13025( "_stealth_enabled" );
-    self._ID1644 = _func_1A5();
-    self._ID1644._ID22585 = _func_1A5();
+    self._ID1644 = spawnstruct();
+    self._ID1644._ID22585 = spawnstruct();
 
-    if ( _func_1B3( self ) )
+    if ( isplayernumber( self ) )
     {
-        self._ID1644._ID22585._ID16617 = ::_unknown_04EA;
-        self._ID1644._ID22585._ID16119 = ::_unknown_04F8;
+        self._ID1644._ID22585._ID16617 = ::_ID14946;
+        self._ID1644._ID22585._ID16119 = ::_ID14943;
 
         if ( level._ID8534 )
-            self._ID1644._ID22585._ID16730 = ::_unknown_0429;
+            self._ID1644._ID22585._ID16730 = ::_ID14947;
         else
         {
-            self._ID1644._ID22585._ID16730 = ::_unknown_0442;
+            self._ID1644._ID22585._ID16730 = ::_ID27439;
             self._ID1644._ID22585._ID27577 = 0;
         }
 
-        self._ID1644._ID22585._ID9469 = ::_unknown_052F;
+        self._ID1644._ID22585._ID9469 = ::_ID14929;
     }
     else
     {
-        self._ID1644._ID22585._ID16617 = ::_unknown_04F4;
-        self._ID1644._ID22585._ID16119 = ::_unknown_0503;
-        self._ID1644._ID22585._ID16730 = ::_unknown_0476;
-        self._ID1644._ID22585._ID9469 = ::_unknown_051C;
+        self._ID1644._ID22585._ID16617 = ::_ID14945;
+        self._ID1644._ID22585._ID16119 = ::_ID14942;
+        self._ID1644._ID22585._ID16730 = ::_ID14947;
+        self._ID1644._ID22585._ID9469 = ::_ID14928;
     }
 
-    self._ID1644._ID22585._ID16347 = ::_unknown_0491;
+    self._ID1644._ID22585._ID16347 = ::_ID14944;
     self._ID1644._ID22585._ID35578 = 0.2;
     self._ID1644._ID22585._ID35577 = 0;
     self._ID1644._ID22585._ID25574 = self [[ self._ID1644._ID22585._ID16617 ]]();
@@ -266,7 +260,7 @@ _ID14953()
     self._ID1644._ID22585._ID24441["spotted"]["prone"] = 0;
     self._ID1644._ID22585._ID24441["spotted"]["crouch"] = 0;
     self._ID1644._ID22585._ID24441["spotted"]["stand"] = 0;
-    _unknown_073C();
+    _ID14935();
 }
 
 _ID14935()
@@ -279,19 +273,19 @@ _ID14935()
     var_1["prone"] = 2;
     var_1["crouch"] = 2;
     var_1["stand"] = 2;
-    _unknown_0782( var_0, var_1 );
+    _ID14976( var_0, var_1 );
 }
 
 _ID14976( var_0, var_1 )
 {
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
         self._ID1644._ID22585._ID24443["hidden"]["prone"] = var_0["prone"];
         self._ID1644._ID22585._ID24443["hidden"]["crouch"] = var_0["crouch"];
         self._ID1644._ID22585._ID24443["hidden"]["stand"] = var_0["stand"];
     }
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
     {
         self._ID1644._ID22585._ID24443["spotted"]["prone"] = var_1["prone"];
         self._ID1644._ID22585._ID24443["spotted"]["crouch"] = var_1["crouch"];

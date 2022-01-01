@@ -5,10 +5,10 @@
 _ID616( var_0, var_1, var_2, var_3, var_4 )
 {
     _ID42411::_ID6255( "blackhawk_minigun", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00BB );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6220( %bh_rotors, undefined, 0 );
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
     {
         var_5 = [];
         var_5["vehicle_blackhawk_minigun_low"] = "fx/explosions/helicopter_explosion";
@@ -29,10 +29,10 @@ _ID616( var_0, var_1, var_2, var_3, var_4 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_01E0, ::_unknown_01D4 );
-    _ID42411::_ID6206( ::_unknown_0309 );
-    _ID42411::_ID6262( ::_unknown_02CF );
-    var_6 = _func_0BA( 0, 1 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6206( ::_ID32221 );
+    _ID42411::_ID6262( ::_ID39488 );
+    var_6 = randomfloatrange( 0, 1 );
     _ID42411::_ID6234( var_0, "cockpit_blue_cargo01", "tag_light_cargo01", "fx/misc/aircraft_light_cockpit_red", "interior", 0.0 );
     _ID42411::_ID6234( var_0, "cockpit_blue_cockpit01", "tag_light_cockpit01", "fx/misc/aircraft_light_cockpit_blue", "interior", 0.0 );
     _ID42411::_ID6234( var_0, "white_blink", "tag_light_belly", "fx/misc/aircraft_light_white_blink", "running", var_6 );
@@ -40,18 +40,18 @@ _ID616( var_0, var_1, var_2, var_3, var_4 )
     _ID42411::_ID6234( var_0, "wingtip_green", "tag_light_L_wing", "fx/misc/aircraft_light_wingtip_green", "running", var_6 );
     _ID42411::_ID6234( var_0, "wingtip_red", "tag_light_R_wing", "fx/misc/aircraft_light_wingtip_red", "running", var_6 );
 
-    if ( _func_02F( var_4 ) )
+    if ( isdefined( var_4 ) )
         _ID42411::_ID6261( var_4, "tag_doorgun", "weapon_blackhawk_minigun", undefined, undefined, 0.2, 20, -14 );
 
     if ( var_0 == "h2_vehicle_blackhawk_minigun_hero_exterior" )
-        _func_14C( "h2_vehicle_blackhawk_minigun_hero_interior_low" );
+        precachemodel( "h2_vehicle_blackhawk_minigun_hero_interior_low" );
 
     _ID42411::_ID6232();
 }
 
 _ID19731()
 {
-    self._ID26026 = _func_0F3( self _meth_818C( "tag_origin" ), self _meth_818C( "tag_ground" ) );
+    self._ID26026 = distance( self gettagorigin( "tag_origin" ), self gettagorigin( "tag_ground" ) );
     self._ID13954 = 762;
     self._ID31066 = 0;
 }
@@ -70,7 +70,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 8; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID19302 = %bh_pilot_idle;
     var_0[1]._ID19302 = %bh_copilot_idle;
@@ -159,12 +159,12 @@ _ID39488()
 _ID32221()
 {
     var_0 = [];
-    var_0["TAG_FastRope_LE"] = _func_1A5();
+    var_0["TAG_FastRope_LE"] = spawnstruct();
     var_0["TAG_FastRope_LE"]._ID669 = "rope_test";
     var_0["TAG_FastRope_LE"]._ID1067 = "TAG_FastRope_LE";
     var_0["TAG_FastRope_LE"]._ID19324 = %bh_rope_idle_le;
     var_0["TAG_FastRope_LE"]._ID12144 = %bh_rope_drop_le;
-    var_0["TAG_FastRope_RI"] = _func_1A5();
+    var_0["TAG_FastRope_RI"] = spawnstruct();
     var_0["TAG_FastRope_RI"]._ID669 = "rope_test_ri";
     var_0["TAG_FastRope_RI"]._ID1067 = "TAG_FastRope_RI";
     var_0["TAG_FastRope_RI"]._ID19324 = %bh_rope_idle_ri;
@@ -172,70 +172,70 @@ _ID32221()
 
     if ( level._ID40793 == "h2_vehicle_blackhawk_minigun_hero_exterior" )
     {
-        var_0["interior_attach"] = _func_1A5();
+        var_0["interior_attach"] = spawnstruct();
         var_0["interior_attach"]._ID669 = "h2_vehicle_blackhawk_minigun_hero_interior";
         var_0["interior_attach"]._ID1067 = "TAG_ORIGIN";
         var_0["interior_attach"].no_link = 1;
     }
 
-    var_1 = _func_1D9( var_0 );
+    var_1 = getarraykeys( var_0 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
-        _func_14C( var_0[var_1[var_2]]._ID669 );
+        precachemodel( var_0[var_1[var_2]]._ID669 );
 
     return var_0;
 }
 
 _ID49743( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = level._ID794;
 
     self._ID50372 = var_1;
 
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    thread _unknown_0911( var_2 );
-    var_1 _meth_8123( 0 );
-    var_1 _meth_8122( 0 );
+    thread _ID43651( var_2 );
+    var_1 allowprone( 0 );
+    var_1 allowcrouch( 0 );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
     {
-        var_1 _meth_8328( 1 );
-        var_3 = _func_06A( "script_origin", self _meth_818C( "tag_barrel" ) );
-        var_3._ID65 = self _meth_818D( "tag_barrel" );
-        var_3 _meth_8053( self );
+        var_1 disableweapons( 1 );
+        var_3 = spawn( "script_origin", self gettagorigin( "tag_barrel" ) );
+        var_3._ID65 = self gettagangles( "tag_barrel" );
+        var_3 linkto( self );
         self._ID3189 = "minigun";
         level._ID794._ID49929 = _ID42407::_ID35028( "worldhands" );
-        level._ID794._ID49929 _meth_805A();
+        level._ID794._ID49929 hide();
         var_3 _ID42407::_ID49392( "minigun_in_fast", [ self ], undefined, 0.2, 1, undefined, undefined, undefined, undefined, undefined, undefined, 1 );
 
         if ( self._ID669 == "h2_vehicle_blackhawk_minigun_hero_exterior" )
         {
-            self _meth_802A( "h2_vehicle_blackhawk_minigun_hero_interior", "tag_origin" );
-            self _meth_801D( "h2_vehicle_blackhawk_minigun_hero_interior_low", "tag_origin" );
+            self detach( "h2_vehicle_blackhawk_minigun_hero_interior", "tag_origin" );
+            self attach( "h2_vehicle_blackhawk_minigun_hero_interior_low", "tag_origin" );
         }
 
-        if ( !_func_02F( self._ID23875 ) )
+        if ( !isdefined( self._ID23875 ) )
         {
             self._ID23875 = _ID42407::_ID35028( "minigun_dummy", self._ID740, self._ID65 );
-            self._ID23875 _meth_80C5( 0 );
-            self._ID23875 _meth_805A();
-            self._ID23875 _meth_8053( self );
+            self._ID23875 setcontents( 0 );
+            self._ID23875 hide();
+            self._ID23875 linkto( self );
         }
     }
 
-    self _meth_80A0( var_1 );
+    self useby( var_1 );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        var_4 = self _meth_818D( "tag_player" );
-        var_1 _meth_8345( var_4 + ( 0, 0, 0 ) );
+        var_4 = self gettagangles( "tag_player" );
+        var_1 setplayerangles( var_4 + ( 0, 0, 0 ) );
     }
 
-    self _meth_801D( level._ID30904["viewhands"], "tag_barrel" );
-    thread _unknown_09DC();
+    self attach( level._ID30904["viewhands"], "tag_barrel" );
+    thread _ID43238();
     _ID42237::_ID14388( "player_off_minigun" );
     _ID42237::_ID14402( "player_on_minigun" );
     thread _ID45306::_ID49378();
@@ -248,16 +248,16 @@ _ID43238()
     for (;;)
     {
         level waittill( "player_on_minigun" );
-        self _meth_8155( _ID42407::_ID16120( "minigun_idle" ), 1, 0 );
+        self setanim( _ID42407::_ID16120( "minigun_idle" ), 1, 0 );
         level waittill( "player_off_minigun" );
-        self _meth_814C( _ID42407::_ID16120( "minigun_idle" ), 0 );
+        self clearanim( _ID42407::_ID16120( "minigun_idle" ), 0 );
     }
 }
 
 _ID49339()
 {
-    self _meth_80A0( self._ID50372 );
-    self._ID50372 _meth_8055();
+    self useby( self._ID50372 );
+    self._ID50372 unlink();
     level notify( "player_off_blackhawk_gun" );
 }
 
@@ -267,19 +267,19 @@ _ID43651( var_0 )
 
     if ( var_0 )
     {
-        _func_0DB( "ui_hidemap", 1 );
-        _func_0DB( "hud_showStance", "0" );
-        _func_0DB( "compass", "0" );
-        _func_034( "old_compass", "0" );
-        _func_0DB( "ammoCounterHide", "1" );
+        setsaveddvar( "ui_hidemap", 1 );
+        setsaveddvar( "hud_showStance", "0" );
+        setsaveddvar( "compass", "0" );
+        setdvar( "old_compass", "0" );
+        setsaveddvar( "ammoCounterHide", "1" );
     }
     else
     {
-        _func_0DB( "ui_hidemap", 0 );
-        _func_0DB( "hud_drawhud", "1" );
-        _func_0DB( "hud_showStance", "1" );
-        _func_0DB( "compass", "1" );
-        _func_034( "old_compass", "1" );
-        _func_0DB( "ammoCounterHide", "0" );
+        setsaveddvar( "ui_hidemap", 0 );
+        setsaveddvar( "hud_drawhud", "1" );
+        setsaveddvar( "hud_showStance", "1" );
+        setsaveddvar( "compass", "1" );
+        setdvar( "old_compass", "1" );
+        setsaveddvar( "ammoCounterHide", "0" );
     }
 }

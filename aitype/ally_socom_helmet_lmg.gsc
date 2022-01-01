@@ -15,27 +15,31 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "beretta";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     self._ID1302 = "mg4";
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID48907::_ID616();
+            break;
+        case 1:
+            _ID43349::_ID616();
+            break;
+        case 2:
+            _ID52301::_ID616();
+            break;
     }
-
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "allies" );
+    self setspawnerteam( "allies" );
 }
 
 _ID814()
@@ -43,7 +47,7 @@ _ID814()
     _ID48907::_ID814();
     _ID43349::_ID814();
     _ID52301::_ID814();
-    _func_14E( "mg4" );
-    _func_14E( "beretta" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "mg4" );
+    precacheitem( "beretta" );
+    precacheitem( "fraggrenade" );
 }

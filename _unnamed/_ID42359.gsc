@@ -4,14 +4,14 @@
 
 _ID616()
 {
-    if ( _func_02F( anim._ID28939 ) )
+    if ( isdefined( anim._ID28939 ) )
         return;
 
-    if ( !_func_02F( level._ID36742 ) )
+    if ( !isdefined( level._ID36742 ) )
         level._ID36742 = [];
 
-    level._ID36742["militia"] = ::_unknown_00A6;
-    anim._ID28939 = _func_1A5();
+    level._ID36742["militia"] = ::_ID12503;
+    anim._ID28939 = spawnstruct();
     anim._ID28939._ID8876 = animscripts\utility::_ID3291( %favela_chaotic_cornerl_hop90, %favela_chaotic_cornerl_high90, %favela_chaotic_cornerl_mid90 );
     anim._ID28939._ID8875 = animscripts\utility::_ID3291( %favela_chaotic_cornerl_high45, %favela_chaotic_cornerl_mid45 );
     anim._ID28939._ID8877 = %favela_chaotic_cornerl_grenade;
@@ -26,7 +26,7 @@ _ID616()
     anim._ID28939._ID8866 = animscripts\utility::_ID3291( %favela_chaotic_crouchcover_grenadefirea );
     anim._ID28939._ID50825 = animscripts\utility::_ID3291( %favela_chaotic_crouchcover_firea, %favela_chaotic_crouchcover_firec );
     anim._ID28939._ID52690 = animscripts\utility::_ID3291( %favela_chaotic_crouchcover_gunjama );
-    _unknown_01D7();
+    _ID32763();
 }
 
 _ID32763()

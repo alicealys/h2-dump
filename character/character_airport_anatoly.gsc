@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_airport_com_b" );
-    self _meth_801D( "head_airport_anatoly", "", 1 );
+    self setmodel( "body_airport_com_b" );
+    self attach( "head_airport_anatoly", "", 1 );
     self._ID18304 = "head_airport_anatoly";
     self._ID40757 = "seal";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_airport_com_b" );
-    _func_14C( "head_airport_anatoly" );
+    precachemodel( "body_airport_com_b" );
+    precachemodel( "head_airport_anatoly" );
 }

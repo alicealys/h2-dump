@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_forest_tf141_ghost" );
-    self _meth_801D( "head_hero_ghost_forest", "", 1 );
+    self setmodel( "body_forest_tf141_ghost" );
+    self attach( "head_hero_ghost_forest", "", 1 );
     self._ID18304 = "head_hero_ghost_forest";
     self._ID40757 = "taskforce";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_forest_tf141_ghost" );
-    _func_14C( "head_hero_ghost_forest" );
+    precachemodel( "body_forest_tf141_ghost" );
+    precachemodel( "head_hero_ghost_forest" );
 }

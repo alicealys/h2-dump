@@ -15,33 +15,42 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "usp";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 128.0, 0.0 );
-        self _meth_8179( 512.0, 1024.0 );
+        self setengagementmindist( 128.0, 0.0 );
+        self setengagementmaxdist( 512.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 3 ) )
     {
-
+        case 0:
+            self._ID1302 = "rpd";
+            break;
+        case 1:
+            self._ID1302 = "rpd_reflex";
+            break;
+        case 2:
+            self._ID1302 = "rpd_acog";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
-
+        case 0:
+            _ID46503::_ID616();
+            break;
+        case 1:
+            _ID53653::_ID616();
+            break;
+        case 2:
+            _ID48010::_ID616();
+            break;
     }
-
-    case 2:
-    case 1:
-    case 0:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -49,9 +58,9 @@ _ID814()
     _ID46503::_ID814();
     _ID53653::_ID814();
     _ID48010::_ID814();
-    _func_14E( "rpd" );
-    _func_14E( "rpd_reflex" );
-    _func_14E( "rpd_acog" );
-    _func_14E( "usp" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "rpd" );
+    precacheitem( "rpd_reflex" );
+    precacheitem( "rpd_acog" );
+    precacheitem( "usp" );
+    precacheitem( "fraggrenade" );
 }

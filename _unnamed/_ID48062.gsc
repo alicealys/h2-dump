@@ -4,7 +4,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "small_hatchback", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0049 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_small_hatchback_blue", "vehicle_small_hatchback_d_blue" );
     _ID42411::_ID6216( "vehicle_small_hatchback_green", "vehicle_small_hatchback_d_green" );
     _ID42411::_ID6216( "vehicle_small_hatchback_turq", "vehicle_small_hatchback_d_turq" );
@@ -17,7 +17,7 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_00DA, ::_unknown_00D5 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
 }
 
 _ID19731()
@@ -36,7 +36,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 1; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[0]._ID19302 = %luxurysedan_driver_idle;

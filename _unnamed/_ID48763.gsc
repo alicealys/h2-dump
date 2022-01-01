@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "truck", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_008D );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_pickup_roobars", "vehicle_pickup_roobars_destroyed" );
     _ID42411::_ID6216( "vehicle_pickup_4door", "vehicle_pickup_technical_destroyed" );
     _ID42411::_ID6216( "vehicle_opfor_truck", "vehicle_pickup_technical_destroyed" );
@@ -18,8 +18,8 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_0168, ::_unknown_013F );
-    _ID42411::_ID6262( ::_unknown_01CA );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6234( var_2, "headlight_truck_left", "tag_headlight_left", "fx/misc/car_headlight_truck_L", "headlights" );
     _ID42411::_ID6234( var_2, "headlight_truck_right", "tag_headlight_right", "fx/misc/car_headlight_truck_R", "headlights" );
     _ID42411::_ID6234( var_2, "parkinglight_truck_left_f", "tag_parkinglight_left_f", "fx/misc/car_parkinglight_truck_LF", "headlights" );
@@ -32,10 +32,10 @@ _ID616( var_0, var_1, var_2 )
 
 _ID19731()
 {
-    var_0 = _func_03B( "truck_low_breaking_speed" );
+    var_0 = getdvarfloat( "truck_low_breaking_speed" );
 
     if ( var_0 )
-        self _meth_85C1( var_0 );
+        self _meth_85c1( var_0 );
 }
 
 _ID32509( var_0 )
@@ -59,7 +59,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 6; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";

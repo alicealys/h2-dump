@@ -3,5 +3,5 @@
 
 _ID616()
 {
-    level._ID1426["sniper_glint"] = _func_155( "fx/misc/scope_glint" );
+    level._ID1426["sniper_glint"] = loadfx( "fx/misc/scope_glint" );
 }

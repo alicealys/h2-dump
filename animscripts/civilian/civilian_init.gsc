@@ -4,7 +4,7 @@
 _ID616()
 {
     animscripts\init::_ID616();
-    _unknown_0009();
+    _ID7634();
 }
 #using_animtree("generic_human");
 
@@ -15,12 +15,12 @@ _ID7634()
     self._ID11025 = 1;
     self._ID24727 = 1;
     self._ID2832 = 1;
-    self _meth_819B( "face default" );
+    self orientmode( "face default" );
     self._ID199 = "no_cover";
-    self _meth_81AF( 0 );
+    self pushplayer( 0 );
     self._ID7._ID29139 = 1;
 
-    if ( !_func_02F( level._ID19937 ) )
+    if ( !isdefined( level._ID19937 ) )
     {
         level._ID19937 = 1;
         level._ID30895["default_civilian"]["run_combat"][0] = %civilian_run_upright;
@@ -52,21 +52,21 @@ _ID7634()
 
     var_1 = undefined;
 
-    if ( _func_02F( self._ID7680 ) )
+    if ( isdefined( self._ID7680 ) )
     {
         self._ID3189 = self._ID7680;
-        _unknown_0237( self._ID7680 );
+        _ID3596( self._ID7680 );
         self._ID38 = "noncombat";
-        _unknown_02A1();
+        _ID36148();
     }
     else
     {
         self._ID3189 = "default_civilian";
         self._ID38 = "alert";
-        _unknown_02EF( 0 );
+        _ID36103( 0 );
     }
 
-    thread _unknown_033B();
+    thread _ID7419();
     self._ID309 = 0;
     animscripts\shared::_ID12142();
     self._ID30739 = 0;
@@ -74,31 +74,31 @@ _ID7634()
 
 _ID3596( var_0 )
 {
-    if ( _func_02F( self._ID18206 ) )
+    if ( isdefined( self._ID18206 ) )
         return;
 
-    _unknown_029A();
+    _ID19866();
     var_1 = anim._ID7702[var_0];
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
     {
         self._ID3578 = var_1;
         self._ID3579 = "tag_inhand";
-        self _meth_801D( self._ID3578, self._ID3579, 1 );
+        self attach( self._ID3578, self._ID3579, 1 );
         self._ID18206 = 1;
     }
 }
 
 _ID10630()
 {
-    if ( _func_02F( self._ID18206 ) )
+    if ( isdefined( self._ID18206 ) )
     {
-        self _meth_802A( self._ID3578, self._ID3579 );
-        var_0 = _func_06A( "script_model", self _meth_818C( self._ID3579 ) );
-        var_0._ID65 = self _meth_818D( self._ID3579 );
-        var_0 _meth_80B8( self._ID3578 );
-        var_0 _meth_82CC();
-        var_0 thread _unknown_02EE();
+        self detach( self._ID3578, self._ID3579 );
+        var_0 = spawn( "script_model", self gettagorigin( self._ID3579 ) );
+        var_0._ID65 = self gettagangles( self._ID3579 );
+        var_0 setmodel( self._ID3578 );
+        var_0 physicslaunchclient();
+        var_0 thread _ID40988();
         self._ID18206 = undefined;
         self._ID3578 = undefined;
         self._ID3579 = undefined;
@@ -108,12 +108,12 @@ _ID10630()
 _ID40988()
 {
     wait 10;
-    self _meth_80B7();
+    self delete();
 }
 
 _ID19866()
 {
-    if ( _func_02F( anim._ID7702 ) )
+    if ( isdefined( anim._ID7702 ) )
         return;
 
     anim._ID7702 = [];
@@ -137,21 +137,21 @@ _ID36148()
 {
     self._ID1230 = 0.2;
 
-    if ( _func_02F( self._ID7680 ) )
+    if ( isdefined( self._ID7680 ) )
     {
         var_0 = %civilian_briefcase_walk_dodge_l;
         var_1 = %civilian_briefcase_walk_dodge_r;
 
-        if ( _func_02F( level._ID30895[self._ID3189]["dodge_left"] ) )
+        if ( isdefined( level._ID30895[self._ID3189]["dodge_left"] ) )
             var_0 = level._ID30895[self._ID3189]["dodge_left"];
 
-        if ( _func_02F( level._ID30895[self._ID3189]["dodge_right"] ) )
+        if ( isdefined( level._ID30895[self._ID3189]["dodge_right"] ) )
             var_1 = level._ID30895[self._ID3189]["dodge_right"];
 
         animscripts\move::_ID32598( var_0, var_1 );
     }
 
-    if ( _func_02F( level._ID30895[self._ID3189]["turn_left_90"] ) )
+    if ( isdefined( level._ID30895[self._ID3189]["turn_left_90"] ) )
     {
         self._ID26360 = animscripts\civilian\civilian_move::_ID7645;
         self._ID26359 = 0.1;
@@ -178,11 +178,11 @@ _ID36103( var_0 )
     self._ID26359 = undefined;
     _ID42407::_ID12549();
     self._ID1230 = 0.3;
-    self._ID46224 = _func_0B7( 3 ) < 1;
+    self._ID46224 = randomint( 3 ) < 1;
 
-    if ( _func_02F( self._ID14738 ) )
+    if ( isdefined( self._ID14738 ) )
         self._ID46224 = 1;
-    else if ( _func_02F( self._ID14737 ) )
+    else if ( isdefined( self._ID14737 ) )
         self._ID46224 = 0;
 
     if ( self._ID46224 )
@@ -227,9 +227,9 @@ _ID7419()
         var_0 = self._ID39 > 1;
 
         if ( self._ID50211 && !var_0 )
-            _unknown_058F();
+            _ID36148();
         else if ( !self._ID50211 && var_0 )
-            _unknown_05DB( 1 );
+            _ID36103( 1 );
 
         self._ID50211 = var_0;
         wait 0.05;

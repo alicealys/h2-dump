@@ -3,26 +3,26 @@
 
 _ID44293()
 {
-    level._ID54582 = _func_039( "player_sprintSpeedScale" );
-    _ID42407::_ID1951( "run", ::_unknown_0142, "run", ::_unknown_0176 );
-    _ID42407::_ID1951( "cafe", ::_unknown_0260, "cafe", ::_unknown_029A );
-    _ID42407::_ID1951( "evac", ::_unknown_032E, "evac", ::_unknown_0361 );
+    level._ID54582 = getdvar( "player_sprintSpeedScale" );
+    _ID42407::_ID1951( "run", ::_ID43558, "run", ::_ID43090 );
+    _ID42407::_ID1951( "cafe", ::_ID53666, "cafe", ::_ID47024 );
+    _ID42407::_ID1951( "evac", ::_ID53090, "evac", ::_ID49550 );
     waitframe;
-    var_0 = _func_1A2( "cafe_ceiling_chunk", "targetname" );
+    var_0 = getentarray( "cafe_ceiling_chunk", "targetname" );
     _ID42237::_ID3350( var_0, _ID42407::_ID31860 );
-    var_1 = _func_1A2( "cafe_ceiling_chunk_small", "targetname" );
+    var_1 = getentarray( "cafe_ceiling_chunk_small", "targetname" );
     _ID42237::_ID3350( var_1, _ID42407::_ID31860 );
-    var_2 = _func_1A2( "cafe_ceiling_pristine", "targetname" );
+    var_2 = getentarray( "cafe_ceiling_pristine", "targetname" );
     _ID42237::_ID3350( var_2, _ID42407::_ID31860 );
-    var_3 = _func_1A1( "cafeteria_hallway_rubble", "targetname" );
+    var_3 = getent( "cafeteria_hallway_rubble", "targetname" );
     var_3 thread maps\gulag_ending_code::_ID45290();
     maps\gulag_ending_anim::_ID48239();
-    level._ID1426["breach_door"] = _func_155( "fx/explosions/breach_wall_concrete" );
+    level._ID1426["breach_door"] = loadfx( "fx/explosions/breach_wall_concrete" );
     level._ID1553 = 2.5;
-    var_4 = _func_1A1( "hookup_rope_ent", "targetname" );
+    var_4 = getent( "hookup_rope_ent", "targetname" );
 
-    if ( _func_02F( var_4 ) )
-        var_4 _meth_80B7();
+    if ( isdefined( var_4 ) )
+        var_4 delete();
 
     _ID42237::_ID14400( "player_approaches_rescue_breach" );
     _ID42237::_ID14400( "intro_helis_go" );
@@ -62,59 +62,59 @@ _ID44293()
     _ID42237::_ID14400( "evac_begins" );
     _ID42237::_ID14400( "do_cafeteria_anims" );
     _ID42237::_ID14400( "cafeteria_lights_off" );
-    _func_14E( "smoke_grenade_american" );
-    _func_14E( "m4m203_reflex_arctic" );
-    _func_14E( "f15_sam" );
-    _func_14E( "sam" );
-    _func_14E( "cobra_seeker" );
-    _func_14E( "rpg_straight" );
-    _func_14E( "cobra_Sidewinder" );
-    _func_14E( "claymore" );
-    _func_14E( "mp5_silencer_reflex" );
-    _func_001( "player_view_controller" );
-    _func_152( "heavy_1s" );
-    _func_152( "heavy_2s" );
-    _func_152( "heavy_3s" );
-    _func_152( "light_1s" );
-    _func_152( "light_2s" );
-    _func_152( "light_3s" );
-    _func_14E( "m14_scoped_arctic" );
-    _func_14E( "fraggrenade" );
-    _func_14E( "flash_grenade" );
-    _func_14E( "claymore" );
-    _func_14C( "h1_cs_light_alarm_blue_on" );
-    _func_14C( "h1_cs_light_alarm_on" );
-    _func_14E( "m4m203_acog" );
+    precacheitem( "smoke_grenade_american" );
+    precacheitem( "m4m203_reflex_arctic" );
+    precacheitem( "f15_sam" );
+    precacheitem( "sam" );
+    precacheitem( "cobra_seeker" );
+    precacheitem( "rpg_straight" );
+    precacheitem( "cobra_Sidewinder" );
+    precacheitem( "claymore" );
+    precacheitem( "mp5_silencer_reflex" );
+    precacheturret( "player_view_controller" );
+    precacherumble( "heavy_1s" );
+    precacherumble( "heavy_2s" );
+    precacherumble( "heavy_3s" );
+    precacherumble( "light_1s" );
+    precacherumble( "light_2s" );
+    precacherumble( "light_3s" );
+    precacheitem( "m14_scoped_arctic" );
+    precacheitem( "fraggrenade" );
+    precacheitem( "flash_grenade" );
+    precacheitem( "claymore" );
+    precachemodel( "h1_cs_light_alarm_blue_on" );
+    precachemodel( "h1_cs_light_alarm_on" );
+    precacheitem( "m4m203_acog" );
     thread maps\gulag_ending_code::_ID49706();
-    var_5 = _func_1A2( "turnaround_trigger", "targetname" );
+    var_5 = getentarray( "turnaround_trigger", "targetname" );
     _ID42237::_ID3350( var_5, maps\gulag_ending_code::_ID46626 );
-    var_6 = _func_1A2( "ceiling_collapse", "targetname" );
+    var_6 = getentarray( "ceiling_collapse", "targetname" );
     _ID42237::_ID3350( var_6, maps\gulag_ending_code::_ID50448 );
-    var_7 = _func_1A1( "chase_brush", "targetname" );
-    var_7 _meth_805A();
-    var_7 _meth_805F();
-    var_8 = _func_1A1( "price_spawner", "targetname" );
+    var_7 = getent( "chase_brush", "targetname" );
+    var_7 hide();
+    var_7 connectpaths();
+    var_8 = getent( "price_spawner", "targetname" );
     var_8 thread _ID42407::_ID1947( maps\gulag_ending_code::_ID44629 );
     var_9 = _ID42237::_ID16638( "set_friendly_endpoint", "targetname" );
     var_9 thread maps\gulag_ending_code::_ID51861();
     _ID42407::_ID3344( "endlog_redshirt_spawner", maps\gulag_ending_code::_ID44567 );
-    var_10 = _func_1A1( "ending_window_littlebird", "script_noteworthy" );
+    var_10 = getent( "ending_window_littlebird", "script_noteworthy" );
     var_10 _ID42407::_ID1947( maps\gulag_ending_code::_ID47589 );
-    var_11 = _func_1A2( "delete_tree", "targetname" );
+    var_11 = getentarray( "delete_tree", "targetname" );
     _ID42237::_ID3350( var_11, maps\gulag_ending_code::_ID47891 );
     thread maps\gulag_ending_code::_ID46444();
     _ID42237::_ID14413( "rescue_begins" );
-    var_12 = _func_1A1( "evac_rock", "targetname" );
-    var_12 _meth_82C9();
+    var_12 = getent( "evac_rock", "targetname" );
+    var_12 notsolid();
     thread maps\gulag_ending_code::_ID44732();
     _ID42407::_ID29534( "allies", _ID42407::_ID12467 );
     thread maps\gulag_ending_code::_ID47526();
-    var_13 = _func_1A2( "trigger_damage", "targetname" );
+    var_13 = getentarray( "trigger_damage", "targetname" );
     _ID42237::_ID3350( var_13, maps\gulag_ending_code::_ID54305 );
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4917( "axis" );
     _ID42237::_ID14413( "escape_the_gulag" );
-    var_14 = _func_1A2( "stumble_trigger", "targetname" );
+    var_14 = getentarray( "stumble_trigger", "targetname" );
     _ID42237::_ID3350( var_14, maps\gulag_ending_code::_ID43283 );
 }
 
@@ -124,30 +124,25 @@ _ID43558()
     _ID42475::_ID34575( "start_run_checkpoint" );
     maps\gulag_lighting::_ID46054( "gulag_hallways" );
     var_0 = [];
-    var_1 = _func_1A1( "price_spawner", "targetname" );
+    var_1 = getent( "price_spawner", "targetname" );
     var_0[var_0.size] = var_1;
-    var_1 = _func_1A1( "endlog_soap_spawner", "targetname" );
+    var_1 = getent( "endlog_soap_spawner", "targetname" );
     var_0[var_0.size] = var_1;
-    var_1 = _func_1A2( "endlog_redshirt_spawner", "targetname" )[0];
+    var_1 = getentarray( "endlog_redshirt_spawner", "targetname" )[0];
     var_0[var_0.size] = var_1;
     var_2 = _ID42407::_ID3339( var_0 );
     var_3 = _ID42237::_ID16638( "ending_breach_org", "targetname" );
-    level._ID794 _meth_8343( var_3._ID740 );
-    level._ID794 _meth_8345( var_3._ID65 );
+    level._ID794 setorigin( var_3._ID740 );
+    level._ID794 setplayerangles( var_3._ID65 );
     maps\gulag_ending_code::_ID54691();
     var_3 thread _ID42259::_ID3099( var_2, "price_rescue" );
     wait 0.05;
-    var_4 = var_2;
 
-    for ( var_7 = _func_1DA( var_4 ); _func_02F( var_7 ); var_7 = _func_1BF( var_4, var_7 ) )
+    foreach ( var_5 in var_2 )
     {
-        var_5 = var_4[var_7];
         var_6 = var_5 _ID42407::_ID16120( "price_rescue" );
-        var_5 _meth_8120( var_6, 0.75 );
+        var_5 setanimtime( var_6, 0.75 );
     }
-
-    var_clear_3
-    var_clear_0
 }
 
 _ID43090()
@@ -156,48 +151,30 @@ _ID43090()
         wait 0.05;
 
     maps\gulag_ending_code::_ID54628();
-    _func_0DB( "ai_friendlyFireBlockDuration", 0 );
+    setsaveddvar( "ai_friendlyFireBlockDuration", 0 );
     thread maps\gulag_ending_code::_ID43761();
-    var_0 = _func_1A2( "hillside_brushmodel", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "hillside_brushmodel", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        var_2 _meth_805A();
-    }
+    foreach ( var_2 in var_0 )
+        var_2 hide();
 
-    var_clear_2
-    var_clear_0
-    var_4 = _func_1A2( "hillside_model", "targetname" );
-    var_5 = var_4;
+    var_4 = getentarray( "hillside_model", "targetname" );
 
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
-    {
-        var_2 = var_5[var_6];
-        var_2 _meth_805A();
-    }
+    foreach ( var_2 in var_4 )
+        var_2 hide();
 
-    var_clear_1
-    var_clear_0
     var_7 = _ID42237::_ID16640( "friendly_escape_org", "targetname" );
     var_7 = _ID42407::_ID3310( var_7 );
-    var_8 = _func_0DE( "allies" );
+    var_8 = getaiarray( "allies" );
     var_9 = [];
     var_9["soap"] = ( 0, 1, 1 );
     var_9["price"] = ( 1, 0.501961, 0 );
     var_9["redshirt"] = ( 1, 0, 0.501961 );
     thread maps\gulag_ending_code::_ID47856( var_8 );
-    var_10 = var_8;
 
-    for ( var_12 = _func_1DA( var_10 ); _func_02F( var_12 ); var_12 = _func_1BF( var_10, var_12 ) )
-    {
-        var_11 = var_10[var_12];
+    foreach ( var_11 in var_8 )
         var_11 thread maps\gulag_ending_code::_ID45885();
-    }
 
-    var_clear_2
-    var_clear_0
     thread maps\gulag_ending_code::_ID45227();
     thread maps\gulag_ending_code::_ID54280();
     _ID42237::_ID14400( "modify_ai_moveplaybackrate" );
@@ -206,13 +183,13 @@ _ID43090()
     _ID42407::_ID1805( "friendly_escape_trigger" );
     _ID42407::_ID4422( "run_autosave" );
     wait 1;
-    var_13 = _func_1A1( "ending_window_littlebird", "script_noteworthy" );
+    var_13 = getent( "ending_window_littlebird", "script_noteworthy" );
     var_14 = _ID42237::_ID16638( var_13._ID1191, "targetname" );
     var_13._ID740 = var_14._ID740;
     _ID42237::_ID14413( "there_is_chopper" );
     _ID42237::_ID14413( "exit_collapses" );
-    _ID42237::_ID24938( 1.5, ::_func_0DB, "player_sprintSpeedScale", level._ID54582 );
-    _func_0DB( "player_sprintUnlimited", 1 );
+    _ID42237::_ID24938( 1.5, ::setsaveddvar, "player_sprintSpeedScale", level._ID54582 );
+    setsaveddvar( "player_sprintUnlimited", 1 );
     _ID42237::_ID14402( "soap_speed_boost" );
     level._ID54653 = 1;
     maps\gulag_ending_code::_ID43994( 0.25, 4, level._ID28543._ID740, 5000 );
@@ -227,11 +204,11 @@ _ID43090()
 
 _ID46241()
 {
-    var_0 = _func_1A1( "endlog_soap_spawner", "targetname" );
+    var_0 = getent( "endlog_soap_spawner", "targetname" );
     var_1 = var_0 _ID42407::_ID35014();
-    var_2 = _func_1A1( "price_spawner", "targetname" );
+    var_2 = getent( "price_spawner", "targetname" );
     var_3 = var_2 _ID42407::_ID35014();
-    var_4 = _func_1A2( "endlog_redshirt_spawner", "targetname" );
+    var_4 = getentarray( "endlog_redshirt_spawner", "targetname" );
     var_5 = var_4[0] _ID42407::_ID35014();
     var_6 = _ID42407::_ID35028( "player_rig" );
     var_7 = [];
@@ -245,16 +222,16 @@ _ID46241()
     var_6._ID3189 = "player_rig";
     _ID42237::_ID9137( "altview", 0 );
 
-    if ( _func_03A( "altview" ) )
+    if ( getdvarint( "altview" ) )
     {
-        level._ID794 _meth_8343( ( -4594, -765, 180 ) );
-        level._ID794 _meth_8345( ( -21, -88, 0 ) );
+        level._ID794 setorigin( ( -4594, -765, 180 ) );
+        level._ID794 setplayerangles( ( -21, -88, 0 ) );
     }
     else
-        level._ID794 _meth_8087( var_6, "tag_player", 0, 0, 0 );
+        level._ID794 playerlinktoblend( var_6, "tag_player", 0, 0, 0 );
 
-    level._ID794 _meth_831B();
-    var_8 = _func_1A1( "mound_scene_export", "targetname" );
+    level._ID794 takeallweapons();
+    var_8 = getent( "mound_scene_export", "targetname" );
 
     for (;;)
         var_8 _ID42259::_ID3099( var_7, "ending" );
@@ -267,29 +244,23 @@ _ID53666()
     var_0 = _ID42237::_ID16640( "start_cafe_friendly", "targetname" );
     var_1 = _ID42407::_ID3310( var_0 );
     maps\gulag_ending_code::_ID47048( var_1 );
-    var_2 = _func_0DE( "allies" );
-    var_3 = var_2;
+    var_2 = getaiarray( "allies" );
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
-    {
-        var_4 = var_3[var_5];
+    foreach ( var_4 in var_2 )
         var_4 thread maps\gulag_ending_code::_ID45885();
-    }
 
-    var_clear_2
-    var_clear_0
     var_6 = _ID42237::_ID16638( "start_cafe_player", "targetname" );
-    level._ID794 _meth_8343( var_6._ID740 );
-    level._ID794 _meth_8345( var_6._ID65 );
+    level._ID794 setorigin( var_6._ID740 );
+    level._ID794 setplayerangles( var_6._ID65 );
     maps\gulag_ending_code::_ID54691();
-    level._ID43155 = _func_1A2( "cafe_table", "targetname" );
+    level._ID43155 = getentarray( "cafe_table", "targetname" );
     _ID42237::_ID3350( level._ID43155, maps\gulag_ending_code::_ID52256 );
     var_7 = _ID42237::_ID16640( "cafe_table_org", "targetname" );
     _ID42237::_ID3350( var_7, maps\gulag_ending_code::_ID46074 );
     var_8 = _ID42237::_ID16640( "cafe_table_eq_org", "targetname" );
     _ID42237::_ID3350( var_8, maps\gulag_ending_code::_ID53575 );
     thread maps\gulag_ending_code::_ID49389();
-    var_9 = _func_1A1( "hunted_swing_light", "targetname" );
+    var_9 = getent( "hunted_swing_light", "targetname" );
 }
 
 _ID47024()
@@ -303,48 +274,38 @@ _ID47024()
     var_0["price"] = level._ID28543;
     var_0["redshirt"] = level._ID46875;
     var_0["chains"] = level._ID46553;
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
         var_2._ID465 = 0;
 
-        if ( !_func_02F( var_2._ID22746 ) )
+        if ( !isdefined( var_2._ID22746 ) )
             var_2 thread _ID42407::_ID22746();
 
         var_2._ID512 = 1;
         var_2._ID86 = 0;
     }
 
-    var_clear_2
-    var_clear_0
     var_4 = [];
     var_4[var_4.size] = level._ID28543;
     var_4[var_4.size] = level._ID46875;
-    var_5 = _func_1A1( "mound_scene_export", "targetname" );
+    var_5 = getent( "mound_scene_export", "targetname" );
     _ID42237::_ID14413( "do_cafeteria_anims" );
     level notify( "cafeteria_sequence_begins" );
-    var_6 = var_0;
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
-    {
-        var_2 = var_6[var_7];
+    foreach ( var_2 in var_0 )
         var_2._ID24424 = 1;
-    }
 
-    var_clear_1
-    var_clear_0
     maps\gulag_ending_code::_ID43169();
     _ID42407::_ID10226( 1.5, maps\gulag_ending_code::_ID44720 );
-    level._ID37750 = _func_03D();
+    level._ID37750 = gettime();
 
     for ( var_8 = 0; var_8 < 3; var_8++ )
         _ID42407::_ID10226( 4.7, _ID42234::_ID13611, "end_scene_rock" );
 
     _ID42407::_ID10226( 4.75, _ID42234::_ID13611, "end_scene_rock" );
     _ID42407::_ID10226( 4.85, _ID42234::_ID13611, "end_scene_rock" );
-    var_9 = _func_1A1( "cafeteria_scriptednode", "targetname" );
+    var_9 = getent( "cafeteria_scriptednode", "targetname" );
     var_9 thread _ID42259::_ID3099( var_0, "cafe_entrance" );
     wait 4.2;
     maps\gulag_ending_code::_ID43994( 0.25, 4, level._ID794._ID740, 5000 );
@@ -361,11 +322,11 @@ _ID53090()
 {
     _ID42475::_ID34575( "start_evac_checkpoint" );
     maps\gulag_lighting::_ID46054( "gulag_ending" );
-    var_0 = _func_1A1( "price_spawner", "targetname" );
+    var_0 = getent( "price_spawner", "targetname" );
     var_0 _ID42407::_ID35014();
-    var_0 = _func_1A1( "endlog_soap_spawner", "targetname" );
+    var_0 = getent( "endlog_soap_spawner", "targetname" );
     var_0 _ID42407::_ID35014();
-    var_0 = _func_1A2( "endlog_redshirt_spawner", "targetname" )[0];
+    var_0 = getentarray( "endlog_redshirt_spawner", "targetname" )[0];
     var_0 _ID42407::_ID35014();
 }
 
@@ -373,17 +334,12 @@ _ID47587( var_0, var_1 )
 {
     for (;;)
     {
-        var_2 = var_0;
-
-        for ( var_6 = _func_1DA( var_2 ); _func_02F( var_6 ); var_6 = _func_1BF( var_2, var_6 ) )
+        foreach ( var_3 in var_0 )
         {
-            var_3 = var_2[var_6];
             var_4 = var_3 _ID42407::_ID16120( var_1 );
-            var_5 = var_3 _meth_8159( var_4 );
+            var_5 = var_3 getanimtime( var_4 );
         }
 
-        var_clear_4
-        var_clear_0
         wait 0.05;
     }
 }
@@ -393,32 +349,26 @@ _ID50480( var_0 )
     level._ID794 endon( "death" );
     _ID42237::_ID14413( "player_uses_rig" );
     var_0["ending_rope1"] waittillmatch( "single anim",  "switch_rope"  );
-    var_0["ending_rope1"] _meth_805A();
-    var_0["ending_rope"] _meth_8059();
+    var_0["ending_rope1"] hide();
+    var_0["ending_rope"] show();
 }
 
 _ID49550()
 {
-    _func_0DB( "ui_hidemap", 1 );
-    var_0 = _func_1A1( "cafeteria_stagelight", "targetname" );
+    setsaveddvar( "ui_hidemap", 1 );
+    var_0 = getent( "cafeteria_stagelight", "targetname" );
     var_0 thread _ID42407::_ID25088( "staging_on", 1 );
-    level._ID794 _meth_81F1( 1 );
-    var_1 = _func_0DE( "allies" );
-    var_2 = var_1;
+    level._ID794 setmovespeedscale( 1 );
+    var_1 = getaiarray( "allies" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
+    foreach ( var_3 in var_1 )
         var_3 _ID42407::_ID3136();
-    }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14402( "time_to_evac" );
-    level._ID794 _meth_82E4( 0, 1 );
-    level._ID794 _meth_8098( undefined );
+    level._ID794 setblurforplayer( 0, 1 );
+    level._ID794 playersetgroundreferenceent( undefined );
     level notify( "stop_cavein" );
-    _func_0DB( "g_friendlyNameDist", 0 );
+    setsaveddvar( "g_friendlyNameDist", 0 );
 
     if ( level._ID35897 == "evac" )
         wait 0.05;
@@ -428,27 +378,27 @@ _ID49550()
     var_5._ID55 = 1;
     _ID42475::_ID34575( "start_evac_rock_falling_black_screen" );
 
-    if ( _func_02F( level._ID5261 ) )
+    if ( isdefined( level._ID5261 ) )
         level._ID5261._ID55 = 0;
 
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
     wait 5.2;
     thread maps\gulag_ending_code::_ID43462();
     thread maps\gulag_ending_code::_ID43267();
-    var_5 _meth_808B( 0.15 );
+    var_5 fadeovertime( 0.15 );
     var_5._ID55 = 0;
     _ID42475::_ID34575( "stop_evac_rock_falling_black_screen" );
-    _func_0DB( "compass", "0" );
-    _func_0DB( "ammoCounterHide", 1 );
-    _func_0DB( "hud_showStance", 0 );
-    _func_0DB( "actionSlotsHide", 1 );
+    setsaveddvar( "compass", "0" );
+    setsaveddvar( "ammoCounterHide", 1 );
+    setsaveddvar( "hud_showStance", 0 );
+    setsaveddvar( "actionSlotsHide", 1 );
     var_6 = _ID42407::_ID35028( "player_rig" );
     var_7 = _ID42407::_ID35028( "player_rig" );
-    var_7 _meth_805A();
+    var_7 hide();
     level._ID27625 = var_6;
     var_8 = _ID42407::_ID35028( "player_carabiner" );
-    var_9 = _func_1A1( "mound_scene_export", "targetname" );
+    var_9 = getent( "mound_scene_export", "targetname" );
     level._ID53563 _ID42407::_ID14803( "m4m203_acog", "primary" );
     var_10 = [];
     var_10["price"] = level._ID28543;
@@ -456,70 +406,70 @@ _ID49550()
     var_10["player_rig"] = var_6;
     var_10["strangle_chain"] = level._ID46553;
     var_11 = _ID42407::_ID35028( "rock" );
-    var_11 _meth_805A();
+    var_11 hide();
     var_10["anim_rock"] = var_11;
     var_12 = _ID42407::_ID35028( "pavelow" );
     var_10["pavelow"] = var_12;
     var_13 = _ID42407::_ID35028( "ending_rope1" );
     var_14 = _ID42407::_ID35028( "ending_rope" );
-    var_14 _meth_805A();
+    var_14 hide();
     var_10["ending_rope1"] = var_13;
     var_10["ending_rope"] = var_14;
-    thread _unknown_0E54( var_10 );
-    var_10["ending_rope1"] _meth_80C6();
-    var_13 _meth_848A( level._ID53563._ID740 );
-    var_8 _meth_848A( level._ID53563._ID740 );
-    var_15 = _func_1A1( "evac_rock", "targetname" );
+    thread _ID50480( var_10 );
+    var_10["ending_rope1"] makeusable();
+    var_13 _meth_848a( level._ID53563._ID740 );
+    var_8 _meth_848a( level._ID53563._ID740 );
+    var_15 = getent( "evac_rock", "targetname" );
     var_15 _ID42407::_ID1958();
-    var_15 _meth_8096();
-    var_15._ID26717 _meth_8053( var_11, "body_animate", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_15 castshadows();
+    var_15._ID26717 linkto( var_11, "body_animate", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_16 = 15;
     var_17 = 15;
     var_18 = 15;
     var_19 = 15;
     thread _ID42263::_ID1376();
-    level._ID794 _meth_8084( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 _meth_831B();
+    level._ID794 playerlinktodelta( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level._ID794 takeallweapons();
     _ID42234::_ID13611( "bomb_exploder" );
     _ID42407::_ID10226( 20, _ID42234::_ID13611, "evac_exploder" );
     var_9 _ID42259::_ID3018( var_7, "fly_away" );
     var_9 _ID42407::_ID10226( 20.16, _ID42259::_ID3111, var_7, "fly_away" );
-    var_20 = _func_03D();
+    var_20 = gettime();
     var_9 thread _ID42259::_ID3099( var_10, "evac" );
     var_9 thread _ID42259::_ID3111( level._ID53563, "evac" );
     _ID42237::_ID14402( "evac_begins" );
     _ID42407::_ID10226( 6.7, _ID42407::_ID28864, "gulag_plp_seeflare" );
-    level._ID53563 thread _unknown_119B();
+    level._ID53563 thread _ID51148();
     var_6 waittillmatch( "single anim",  "end"  );
     var_0 notify( "staging_off" );
-    level._ID794 _meth_8055();
-    level._ID794 _meth_8122( 1 );
-    level._ID794 _meth_8123( 1 );
-    _func_0DB( "ui_hidemap", 0 );
-    _func_0DB( "g_friendlyNameDist", 175 );
+    level._ID794 unlink();
+    level._ID794 allowcrouch( 1 );
+    level._ID794 allowprone( 1 );
+    setsaveddvar( "ui_hidemap", 0 );
+    setsaveddvar( "g_friendlyNameDist", 175 );
     thread maps\gulag_ending_code::_ID45617();
     var_21 = [];
     var_21["carabiner"] = var_8;
     var_21["rig"] = var_6;
     var_9 _ID42259::_ID3016( var_21, "hookup" );
-    var_6 _meth_805A();
-    var_8 _meth_805A();
+    var_6 hide();
+    var_8 hide();
     var_22 = _ID42237::_ID35164();
-    var_22 _meth_8053( var_7, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_22 linkto( var_7, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_23 = _ID42407::_ID16268( "player_uses_rig" );
     var_23 thread _ID42237::_ID44574( level._ID794, &"GULAG_SPIE_HINT", &"GULAG_SPIE_HINT_PC", "trigger" );
-    _func_0DB( "hud_drawhud", 1 );
+    setsaveddvar( "hud_drawhud", 1 );
     _ID42237::_ID14413( "player_uses_rig" );
-    thread _unknown_1172();
+    thread _ID49461();
     var_23 _ID42237::_ID38863();
     _ID42475::_ID34575( "start_evac_player" );
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
 
-    if ( _func_02F( level._ID53563._ID53196 ) )
+    if ( isdefined( level._ID53563._ID53196 ) )
         return;
 
-    var_24 = _func_03D() - var_20;
+    var_24 = gettime() - var_20;
     var_24 *= 0.001;
     var_25 = 0;
 
@@ -527,29 +477,29 @@ _ID49550()
     {
         var_25 = 1;
         var_26 = 0.5;
-        level._ID794 _meth_8087( var_6, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
-        _ID42407::_ID10226( var_26, ::_unknown_1283, var_22, var_6 );
+        level._ID794 playerlinktoblend( var_6, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
+        _ID42407::_ID10226( var_26, ::_ID48339, var_22, var_6 );
         wait(var_26);
-        level._ID794 _meth_8084( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
-        thread _unknown_12AD( var_9, var_21 );
+        level._ID794 playerlinktodelta( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
+        thread _ID54094( var_9, var_21 );
     }
     else
     {
         var_26 = 0.5;
-        level._ID794 _meth_8087( var_7, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
-        level._ID794 _ID42237::_ID10192( var_26, ::_meth_8098, var_22 );
-        level._ID794 _ID42237::_ID10192( var_26 + 0.05, ::_meth_8084, var_6, "tag_player", 1, 35, 10, 55, 15, 1 );
+        level._ID794 playerlinktoblend( var_7, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
+        level._ID794 _ID42237::_ID10192( var_26, ::playersetgroundreferenceent, var_22 );
+        level._ID794 _ID42237::_ID10192( var_26 + 0.05, ::playerlinktodelta, var_6, "tag_player", 1, 35, 10, 55, 15, 1 );
     }
 
     _ID42237::_ID14413( "player_gets_pulled" );
-    thread _unknown_1286();
-    _func_0DB( "g_friendlyNameDist", 0 );
+    thread _ID51818();
+    setsaveddvar( "g_friendlyNameDist", 0 );
     var_9 notify( "stop_loop" );
     level._ID794 notify( "stop_opening_fov" );
-    level._ID28543 _ID42237::_ID10192( 5.05, ::_meth_80A1, "gulag_pri_yes" );
+    level._ID28543 _ID42237::_ID10192( 5.05, ::playsound, "gulag_pri_yes" );
     var_9 thread _ID42259::_ID3111( var_6, "fly_away" );
     var_6 thread _ID42407::_ID27079( "scn_gulag_evac_player_leaving" );
-    thread _unknown_1311();
+    thread _ID45623();
     thread maps\gulag_ending_code::_ID45151();
     _ID42407::_ID10226( 3.0, maps\gulag_lighting::_ID46054, "gulag_rappel" );
     var_27 = var_6 _ID42407::_ID16120( "fly_away" );
@@ -594,35 +544,35 @@ _ID51818()
 _ID45623()
 {
     wait 1;
-    _func_1CD( "heavy_3s", level._ID794._ID740 );
-    level._ID794 _meth_80B4( "damage_heavy" );
-    level._ID794 _meth_80B5( "light_1s" );
+    playrumbleonposition( "heavy_3s", level._ID794._ID740 );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level._ID794 _meth_80b5( "light_1s" );
 }
 
 _ID45864( var_0, var_1 )
 {
     _ID42237::_ID14413( "player_evac" );
-    _unknown_1555( var_0, var_1 );
+    _ID52351( var_0, var_1 );
 }
 
 _ID52351( var_0, var_1 )
 {
-    level._ID794 _meth_8087( var_0, "tag_player", var_1, var_1 * 0.4, var_1 * 0.4 );
+    level._ID794 playerlinktoblend( var_0, "tag_player", var_1, var_1 * 0.4, var_1 * 0.4 );
     wait(var_1);
     var_2 = 18;
-    level._ID794 _meth_8084( var_0, "tag_player", var_2, var_2, var_2, var_2, 1 );
+    level._ID794 playerlinktodelta( var_0, "tag_player", var_2, var_2, var_2, var_2, 1 );
 }
 
 _ID48339( var_0, var_1 )
 {
-    level._ID794 _meth_8098( var_0 );
+    level._ID794 playersetgroundreferenceent( var_0 );
     wait 1;
     _ID42407::_ID25888( 0.5, var_1, "tag_player", 35, 10, 55, 15 );
 }
 
 _ID47741( var_0, var_1 )
 {
-    level._ID794 _meth_8098( var_0 );
+    level._ID794 playersetgroundreferenceent( var_0 );
 }
 
 _ID54094( var_0, var_1 )
@@ -631,8 +581,8 @@ _ID54094( var_0, var_1 )
         return;
 
     level endon( "player_gets_pulled" );
-    var_1["carabiner"] _meth_8059();
-    var_1["rig"] _meth_8059();
+    var_1["carabiner"] show();
+    var_1["rig"] show();
     var_0 _ID42259::_ID3099( var_1, "hookup" );
     var_0 _ID42259::_ID3044( var_1["rig"], "idle" );
 }
@@ -661,11 +611,11 @@ _ID45125()
     _ID42237::_ID14402( "rescue_begins" );
     _ID42237::_ID14402( "escape_the_gulag" );
     wait 0.05;
-    _func_053();
+    disableforcedsunshadows();
 
     if ( level._ID912 != "endlog" )
     {
-        var_1 = _func_1A1( "gulag_endlog_destructibles", "script_noteworthy" );
+        var_1 = getent( "gulag_endlog_destructibles", "script_noteworthy" );
         var_1 _ID42407::_ID1786();
         var_1 _ID42407::_ID1794();
     }
@@ -688,7 +638,7 @@ _ID45125()
         return;
 
     level notify( "stop_minor_earthquakes" );
-    level._ID794 _meth_831B();
+    level._ID794 takeallweapons();
     _ID42237::_ID14402( "player_falls_down" );
 
     if ( var_0 == "evac" )

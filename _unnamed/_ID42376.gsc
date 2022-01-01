@@ -3,8 +3,8 @@
 
 _ID616()
 {
-    _unknown_0005();
-    _unknown_00A1();
+    _ID19206();
+    _ID11483();
 }
 #using_animtree("generic_human");
 

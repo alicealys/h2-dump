@@ -3,14 +3,14 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_forest_tf141_assault_b" );
+    self setmodel( "body_forest_tf141_assault_b" );
     _ID42226::_ID3584( "alias_tf141_heads_forest", _ID49211::_ID616() );
     self._ID40757 = "taskforce";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_forest_tf141_assault_b" );
+    precachemodel( "body_forest_tf141_assault_b" );
     _ID42226::_ID28388( _ID49211::_ID616() );
 }

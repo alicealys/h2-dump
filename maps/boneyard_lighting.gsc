@@ -3,10 +3,10 @@
 
 _ID616()
 {
-    _unknown_0019();
-    thread _unknown_0023();
-    thread _unknown_0028();
-    thread _unknown_001A();
+    _ID19720();
+    thread _ID32969();
+    thread _ID32363();
+    thread _ID43873();
     maps\_thermal_scope_lightset::_ID521( "boneyard_thermal" );
     level._ID40576 = "boneyard_thermal";
 }
@@ -14,12 +14,12 @@ _ID616()
 _ID43873()
 {
     _ID42237::_ID14413( "lighting_kickoff_threads" );
-    thread _unknown_0089();
-    thread _unknown_0084();
-    thread _unknown_00BD();
-    thread _unknown_00B0();
-    thread _unknown_00DC();
-    thread _unknown_006B();
+    thread _ID45874();
+    thread _ID44411();
+    thread _ID44927();
+    thread _ID49148();
+    thread _ID45406();
+    thread _ID46792();
 }
 
 _ID19720()
@@ -44,20 +44,20 @@ _ID32363()
 _ID46792()
 {
     _ID42237::_ID14413( "flyby_c130" );
-    level._ID794 _meth_80B4( "c130_flyby" );
+    level._ID794 playrumblelooponentity( "c130_flyby" );
     level thread maps\boneyard_code::_ID54203( 0.2, 5, 1, 4 );
     wait 1.5;
     level._ID794 thread _ID42407::_ID5278( 0.1, 1.5 );
-    var_0 = _func_0C1( 15.0 );
+    var_0 = int( 15.0 );
     var_1 = -8;
 
     for ( var_2 = 0; var_2 < var_0; var_2++ )
     {
-        var_3 = level._ID794 _meth_8346();
+        var_3 = level._ID794 getplayerangles();
         var_4 = var_3[0];
-        var_5 = var_1 - var_4 / var_0 - var_2;
-        var_5 = _func_0EE( var_5, -1.5, 1.5 );
-        level._ID794 _meth_8345( var_3 + ( var_5, 0, 0 ) );
+        var_5 = ( var_1 - var_4 ) / ( var_0 - var_2 );
+        var_5 = clamp( var_5, -1.5, 1.5 );
+        level._ID794 setplayerangles( var_3 + ( var_5, 0, 0 ) );
         wait 0.05;
     }
 
@@ -76,7 +76,7 @@ _ID45874()
     _ID42237::_ID14413( "ride_uaz_arriving" );
     var_0 = 0.65;
     var_1 = 3;
-    var_2 = _func_03B( "sm_sunSampleSizeNear" );
+    var_2 = getdvarfloat( "sm_sunSampleSizeNear" );
     var_3 = var_2 - var_0;
     var_4 = var_1 * 20;
 
@@ -86,7 +86,7 @@ _ID45874()
         var_6 = 1 - var_6;
         var_7 = var_6 * var_3;
         var_8 = var_0 + var_7;
-        _func_0DB( "sm_sunSampleSizeNear", var_8 );
+        setsaveddvar( "sm_sunSampleSizeNear", var_8 );
         wait 0.05;
     }
 }
@@ -119,6 +119,6 @@ _ID45406()
 {
     _ID42237::_ID14413( "uaz_park" );
     wait 0.15;
-    _func_192( 0.35, 0.5, level._ID794._ID740, 5000 );
-    level._ID794 _meth_80B4( "damage_heavy" );
+    earthquake( 0.35, 0.5, level._ID794._ID740, 5000 );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
 }

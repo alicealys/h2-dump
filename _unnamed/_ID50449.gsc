@@ -3,177 +3,482 @@
 
 _ID47340( var_0 )
 {
-    var_1 = _unknown_0354( var_0 );
+    var_1 = _ID48765( var_0 );
 
     if ( var_1 >= 0 )
         return var_1;
 
     switch ( var_0 )
     {
-
+        case "toy_glass120x110":
+            _ID43038( "120x110" );
+            break;
+        case "toy_glass120x44":
+            _ID43038( "120x44" );
+            break;
+        case "toy_glass56x59":
+            _ID43038( "56x59" );
+            break;
+        case "toy_glass74x110":
+            _ID43038( "74x110" );
+            break;
+        case "toy_glass74x44":
+            _ID43038( "74x44" );
+            break;
+        case "toy_dt_mirror":
+            _ID44737( "" );
+            break;
+        case "toy_dt_mirror_large":
+            _ID44737( "_large" );
+            break;
+        case "toy_tubetv_tv1":
+            _ID54408( "tv1" );
+            break;
+        case "toy_tubetv_tv2":
+            _ID54408( "tv2" );
+            break;
+        case "toy_tv_flatscreen_01":
+            _ID45798( "01", "" );
+            break;
+        case "toy_tv_flatscreen_02":
+            _ID45798( "02", "" );
+            break;
+        case "toy_tv_flatscreen_wallmount_01":
+            _ID45798( "01", "wallmount_" );
+            break;
+        case "toy_tv_flatscreen_wallmount_02":
+            _ID45798( "02", "wallmount_" );
+            break;
+        case "toy_transformer_ratnest01":
+            _ID50168( var_0, "utility_transformer_ratnest01_dest" );
+            break;
+        case "toy_transformer_small01":
+            _ID54229( var_0, "h1_utility_transformer_sm_dest_01" );
+            break;
+        case "toy_telegraphpole_transformer01":
+            _ID54229( var_0, "h2_fav_telegraphpole_transformer_destroy_01" );
+            break;
+        case "toy_telegraphpole_transformer02":
+            _ID54229( var_0, "h2_fav_telegraphpole_transformer_destroy_02" );
+            break;
+        case "toy_generator":
+            _ID50512( var_0 );
+            break;
+        case "toy_generator_on":
+            _ID47916( var_0 );
+            break;
+        case "toy_oxygen_tank_01":
+            _ID54348( "01" );
+            break;
+        case "toy_oxygen_tank_02":
+            _ID54348( "02" );
+            break;
+        case "toy_electricbox2":
+            _ID44025( var_0 );
+            break;
+        case "toy_electricbox4":
+            _ID45783( var_0 );
+            break;
+        case "toy_airconditioner":
+            _ID48256( var_0 );
+            break;
+        case "toy_ceiling_fan":
+            _ID44619( var_0 );
+            break;
+        case "toy_ceiling_fan_blades01":
+            _ID43065( var_0 );
+            break;
+        case "toy_ceiling_fan_blades02":
+            _ID48975( var_0 );
+            break;
+        case "toy_ceiling_fan_housing01":
+            _ID43567( var_0 );
+            break;
+        case "toy_ceiling_fan_housing01_lit":
+            toy_ceiling_fan_housing01_lit( var_0 );
+            break;
+        case "toy_ceiling_fan_housing02":
+            _ID43895( var_0 );
+            break;
+        case "toy_wall_fan":
+            _ID48852( var_0 );
+            break;
+        case "toy_propane_tank02":
+            _ID44546( var_0 );
+            break;
+        case "toy_propane_tank02_small":
+            _ID50510( var_0 );
+            break;
+        case "toy_copier":
+            _ID43290( var_0 );
+            break;
+        case "toy_firehydrant":
+            _ID49702( var_0 );
+            break;
+        case "toy_parkingmeter":
+            _ID44312( var_0 );
+            break;
+        case "toy_mailbox":
+            _ID52725( var_0 );
+            break;
+        case "toy_mailbox2_black":
+            _ID45826( "black" );
+            break;
+        case "toy_mailbox2_green":
+            _ID45826( "green" );
+            break;
+        case "toy_mailbox2_yellow":
+            _ID45826( "yellow" );
+            break;
+        case "toy_newspaper_stand_red":
+            _ID52699( var_0 );
+            break;
+        case "toy_newspaper_stand_blue":
+            _ID47749( var_0 );
+            break;
+        case "toy_filecabinet":
+            _ID53258( var_0 );
+            break;
+        case "toy_trashbin_01":
+            _ID53572( var_0 );
+            break;
+        case "toy_trashbin_02":
+            _ID46442( var_0 );
+            break;
+        case "toy_recyclebin_01":
+            _ID43547( var_0 );
+            break;
+        case "toy_trashcan_metal_closed":
+            _ID50859( var_0 );
+            break;
+        case "toy_water_collector":
+            _ID45066( var_0 );
+            break;
+        case "toy_foliage_tree_oak_1":
+            _ID52677( var_0 );
+            break;
+        case "toy_usa_gas_station_trash_bin_01":
+            _ID52493( var_0 );
+            break;
+        case "toy_usa_gas_station_trash_bin_02":
+            _ID44588( var_0 );
+            break;
+        case "toy_light_ceiling_round":
+            _ID48453( var_0 );
+            break;
+        case "toy_light_ceiling_fluorescent":
+            _ID47272( var_0 );
+            break;
+        case "toy_light_ceiling_fluorescent_spotlight":
+            _ID50845( var_0 );
+            break;
+        case "toy_light_ceiling_fluorescent_single":
+            _ID45291( var_0 );
+            break;
+        case "toy_light_ceiling_fluorescent_single_spotlight":
+            _ID50302( var_0 );
+            break;
+        case "toy_bookstore_bookstand4_books":
+            _ID51116( var_0 );
+            break;
+        case "toy_locker_double":
+            _ID54610( var_0 );
+            break;
+        case "toy_chicken":
+            _ID50365( "" );
+            break;
+        case "toy_chicken_white":
+            _ID50365( "_white" );
+            break;
+        case "toy_chicken_black_white":
+            _ID50365( "_black_white" );
+            break;
+        case "vehicle_bus_destructible":
+            _ID46509();
+            break;
+        case "vehicle_80s_sedan1_green":
+            _ID45383( "green" );
+            break;
+        case "vehicle_80s_sedan1_red":
+            _ID45383( "red" );
+            break;
+        case "vehicle_80s_sedan1_silv":
+            _ID45383( "silv" );
+            break;
+        case "vehicle_80s_sedan1_tan":
+            _ID45383( "tan" );
+            break;
+        case "vehicle_80s_sedan1_yel":
+            _ID45383( "yel" );
+            break;
+        case "vehicle_80s_sedan1_brn":
+            _ID45383( "brn" );
+            break;
+        case "vehicle_80s_hatch1_green":
+            _ID51830( "green" );
+            break;
+        case "vehicle_80s_hatch1_red":
+            _ID51830( "red" );
+            break;
+        case "vehicle_80s_hatch1_silv":
+            _ID51830( "silv" );
+            break;
+        case "vehicle_80s_hatch1_tan":
+            _ID51830( "tan" );
+            break;
+        case "vehicle_80s_hatch1_yel":
+            _ID51830( "yel" );
+            break;
+        case "vehicle_80s_hatch1_brn":
+            _ID51830( "brn" );
+            break;
+        case "vehicle_80s_hatch2_green":
+            _ID51485( "green" );
+            break;
+        case "vehicle_80s_hatch2_red":
+            _ID51485( "red" );
+            break;
+        case "vehicle_80s_hatch2_silv":
+            _ID51485( "silv" );
+            break;
+        case "vehicle_80s_hatch2_tan":
+            _ID51485( "tan" );
+            break;
+        case "vehicle_80s_hatch2_yel":
+            _ID51485( "yel" );
+            break;
+        case "vehicle_80s_hatch2_brn":
+            _ID51485( "brn" );
+            break;
+        case "vehicle_80s_wagon1_green":
+            _ID50288( "green" );
+            break;
+        case "vehicle_80s_wagon1_red":
+            _ID50288( "red" );
+            break;
+        case "vehicle_80s_wagon1_silv":
+            _ID50288( "silv" );
+            break;
+        case "vehicle_80s_wagon1_tan":
+            _ID50288( "tan" );
+            break;
+        case "vehicle_80s_wagon1_yel":
+            _ID50288( "yel" );
+            break;
+        case "vehicle_80s_wagon1_brn":
+            _ID50288( "brn" );
+            break;
+        case "vehicle_small_hatch_blue":
+            _ID47779( "blue" );
+            break;
+        case "vehicle_small_hatch_green":
+            _ID47779( "green" );
+            break;
+        case "vehicle_small_hatch_turq":
+            _ID47779( "turq" );
+            break;
+        case "vehicle_small_hatch_white":
+            _ID47779( "white" );
+            break;
+        case "vehicle_pickup":
+            _ID51688( var_0 );
+            break;
+        case "vehicle_laatpv":
+            _ID50685( var_0 );
+            break;
+        case "vehicle_moving_truck":
+            _ID52758( var_0 );
+            break;
+        case "vehicle_bm21_mobile_bed":
+            _ID48438( var_0, "vehicle_bm21_mobile_bed_dstry" );
+            break;
+        case "vehicle_bm21_cover":
+            _ID48438( var_0, "vehicle_bm21_mobile_cover_dstry" );
+            break;
+        case "vehicle_luxurysedan_2008":
+            _ID40204( "" );
+            break;
+        case "vehicle_luxurysedan_2008_gray":
+            _ID40204( "_gray" );
+            break;
+        case "vehicle_luxurysedan_2008_white":
+            _ID40204( "_white" );
+            break;
+        case "vehicle_uaz_winter":
+            _ID53377( var_0 );
+            break;
+        case "vehicle_uaz_fabric":
+            _ID47515( var_0 );
+            break;
+        case "vehicle_uaz_hardtop":
+            _ID50470( var_0 );
+            break;
+        case "vehicle_uaz_open":
+            _ID49715( var_0 );
+            break;
+        case "vehicle_policecar":
+            _ID49692( var_0 );
+            break;
+        case "vehicle_policecar_russia":
+            _ID54032( var_0 );
+            break;
+        case "vehicle_taxi":
+            _ID54241( "" );
+            break;
+        case "vehicle_taxi_dcburning":
+            _ID54241( "_dcburning" );
+            break;
+        case "vehicle_taxi_van":
+            vehicle_taxi_van( var_0 );
+        case "vehicle_mig29_landed":
+            _ID44879( var_0 );
+            break;
+        case "vehicle_mack_truck_short_snow":
+            _ID45624( "snow" );
+            break;
+        case "vehicle_mack_truck_short_green":
+            _ID45624( "green" );
+            break;
+        case "vehicle_mack_truck_short_white":
+            _ID45624( "white" );
+            break;
+        case "vehicle_motorcycle_01":
+            _ID45339( "01" );
+            break;
+        case "vehicle_motorcycle_02":
+            _ID45339( "02" );
+            break;
+        case "vehicle_subcompact_black":
+            _ID51462( "black" );
+            break;
+        case "vehicle_subcompact_blue":
+            _ID51462( "blue" );
+            break;
+        case "vehicle_subcompact_dark_gray":
+            _ID51462( "dark_gray" );
+            break;
+        case "vehicle_subcompact_deep_blue":
+            _ID51462( "deep_blue" );
+            break;
+        case "vehicle_subcompact_gold":
+            _ID51462( "gold" );
+            break;
+        case "vehicle_subcompact_gray":
+            _ID51462( "gray" );
+            break;
+        case "vehicle_subcompact_green":
+            _ID51462( "green" );
+            break;
+        case "vehicle_subcompact_mica":
+            _ID51462( "mica" );
+            break;
+        case "vehicle_subcompact_slate":
+            _ID51462( "slate" );
+            break;
+        case "vehicle_subcompact_tan":
+            _ID51462( "tan" );
+            break;
+        case "vehicle_subcompact_white":
+            _ID51462( "white" );
+            break;
+        case "vehicle_coupe_black":
+            _ID46161( "black" );
+            break;
+        case "vehicle_coupe_blue":
+            _ID46161( "blue" );
+            break;
+        case "vehicle_coupe_dark_gray":
+            _ID46161( "dark_gray" );
+            break;
+        case "vehicle_coupe_deep_blue":
+            _ID46161( "deep_blue" );
+            break;
+        case "vehicle_coupe_gold":
+            _ID46161( "gold" );
+            break;
+        case "vehicle_coupe_gray":
+            _ID46161( "gray" );
+            break;
+        case "vehicle_coupe_green":
+            _ID46161( "green" );
+            break;
+        case "vehicle_coupe_mica":
+            _ID46161( "mica" );
+            break;
+        case "vehicle_coupe_slate":
+            _ID46161( "slate" );
+            break;
+        case "vehicle_coupe_tan":
+            _ID46161( "tan" );
+            break;
+        case "vehicle_coupe_white":
+            _ID46161( "white" );
+            break;
+        case "vehicle_van_black":
+            _ID51077( "black" );
+            break;
+        case "vehicle_van_blue":
+            _ID51077( "blue" );
+            break;
+        case "vehicle_van_dark_gray":
+            _ID51077( "dark_gray" );
+            break;
+        case "vehicle_van_deep_blue":
+            _ID51077( "deep_blue" );
+            break;
+        case "vehicle_van_gold":
+            _ID51077( "gold" );
+            break;
+        case "vehicle_van_gray":
+            _ID51077( "gray" );
+            break;
+        case "vehicle_van_green":
+            _ID51077( "green" );
+            break;
+        case "vehicle_van_mica":
+            _ID51077( "mica" );
+            break;
+        case "vehicle_van_slate":
+            _ID51077( "slate" );
+            break;
+        case "vehicle_van_tan":
+            _ID51077( "tan" );
+            break;
+        case "vehicle_van_white":
+            _ID51077( "white" );
+            break;
+        case "vehicle_suburban":
+            _ID48654( var_0, "" );
+            break;
+        case "vehicle_suburban_beige":
+            _ID48654( var_0, "_beige" );
+            break;
+        case "vehicle_suburban_dull":
+            _ID48654( var_0, "_dull" );
+            break;
+        case "vehicle_suburban_red":
+            _ID48654( var_0, "_red" );
+            break;
+        case "vehicle_snowmobile":
+            _ID45866( var_0 );
+            break;
+        case "destructible_gaspump":
+            _ID52705( var_0 );
+            break;
+        case "destructible_electrical_transformer_large":
+            _ID45368( var_0 );
+            break;
+        default:
+            break;
     }
 
-    var_1 = _unknown_0D37( var_0 );
+    var_1 = _ID48765( var_0 );
     return var_1;
-    case "destructible_electrical_transformer_large":
-    case "destructible_gaspump":
-    case "vehicle_snowmobile":
-    case "vehicle_suburban_red":
-    case "vehicle_suburban_dull":
-    case "vehicle_suburban_beige":
-    case "vehicle_suburban":
-    case "vehicle_van_white":
-    case "vehicle_van_tan":
-    case "vehicle_van_slate":
-    case "vehicle_van_mica":
-    case "vehicle_van_green":
-    case "vehicle_van_gray":
-    case "vehicle_van_gold":
-    case "vehicle_van_deep_blue":
-    case "vehicle_van_dark_gray":
-    case "vehicle_van_blue":
-    case "vehicle_van_black":
-    case "vehicle_coupe_white":
-    case "vehicle_coupe_tan":
-    case "vehicle_coupe_slate":
-    case "vehicle_coupe_mica":
-    case "vehicle_coupe_green":
-    case "vehicle_coupe_gray":
-    case "vehicle_coupe_gold":
-    case "vehicle_coupe_deep_blue":
-    case "vehicle_coupe_dark_gray":
-    case "vehicle_coupe_blue":
-    case "vehicle_coupe_black":
-    case "vehicle_subcompact_white":
-    case "vehicle_subcompact_tan":
-    case "vehicle_subcompact_slate":
-    case "vehicle_subcompact_mica":
-    case "vehicle_subcompact_green":
-    case "vehicle_subcompact_gray":
-    case "vehicle_subcompact_gold":
-    case "vehicle_subcompact_deep_blue":
-    case "vehicle_subcompact_dark_gray":
-    case "vehicle_subcompact_blue":
-    case "vehicle_subcompact_black":
-    case "vehicle_motorcycle_02":
-    case "vehicle_motorcycle_01":
-    case "vehicle_mack_truck_short_white":
-    case "vehicle_mack_truck_short_green":
-    case "vehicle_mack_truck_short_snow":
-    case "vehicle_mig29_landed":
-    case "vehicle_taxi_van":
-    case "vehicle_taxi_dcburning":
-    case "vehicle_taxi":
-    case "vehicle_policecar_russia":
-    case "vehicle_policecar":
-    case "vehicle_uaz_open":
-    case "vehicle_uaz_hardtop":
-    case "vehicle_uaz_fabric":
-    case "vehicle_uaz_winter":
-    case "vehicle_luxurysedan_2008_white":
-    case "vehicle_luxurysedan_2008_gray":
-    case "vehicle_luxurysedan_2008":
-    case "vehicle_bm21_cover":
-    case "vehicle_bm21_mobile_bed":
-    case "vehicle_moving_truck":
-    case "vehicle_laatpv":
-    case "vehicle_pickup":
-    case "vehicle_small_hatch_white":
-    case "vehicle_small_hatch_turq":
-    case "vehicle_small_hatch_green":
-    case "vehicle_small_hatch_blue":
-    case "vehicle_80s_wagon1_brn":
-    case "vehicle_80s_wagon1_yel":
-    case "vehicle_80s_wagon1_tan":
-    case "vehicle_80s_wagon1_silv":
-    case "vehicle_80s_wagon1_red":
-    case "vehicle_80s_wagon1_green":
-    case "vehicle_80s_hatch2_brn":
-    case "vehicle_80s_hatch2_yel":
-    case "vehicle_80s_hatch2_tan":
-    case "vehicle_80s_hatch2_silv":
-    case "vehicle_80s_hatch2_red":
-    case "vehicle_80s_hatch2_green":
-    case "vehicle_80s_hatch1_brn":
-    case "vehicle_80s_hatch1_yel":
-    case "vehicle_80s_hatch1_tan":
-    case "vehicle_80s_hatch1_silv":
-    case "vehicle_80s_hatch1_red":
-    case "vehicle_80s_hatch1_green":
-    case "vehicle_80s_sedan1_brn":
-    case "vehicle_80s_sedan1_yel":
-    case "vehicle_80s_sedan1_tan":
-    case "vehicle_80s_sedan1_silv":
-    case "vehicle_80s_sedan1_red":
-    case "vehicle_80s_sedan1_green":
-    case "vehicle_bus_destructible":
-    case "toy_chicken_black_white":
-    case "toy_chicken_white":
-    case "toy_chicken":
-    case "toy_locker_double":
-    case "toy_bookstore_bookstand4_books":
-    case "toy_light_ceiling_fluorescent_single_spotlight":
-    case "toy_light_ceiling_fluorescent_single":
-    case "toy_light_ceiling_fluorescent_spotlight":
-    case "toy_light_ceiling_fluorescent":
-    case "toy_light_ceiling_round":
-    case "toy_usa_gas_station_trash_bin_02":
-    case "toy_usa_gas_station_trash_bin_01":
-    case "toy_foliage_tree_oak_1":
-    case "toy_water_collector":
-    case "toy_trashcan_metal_closed":
-    case "toy_recyclebin_01":
-    case "toy_trashbin_02":
-    case "toy_trashbin_01":
-    case "toy_filecabinet":
-    case "toy_newspaper_stand_blue":
-    case "toy_newspaper_stand_red":
-    case "toy_mailbox2_yellow":
-    case "toy_mailbox2_green":
-    case "toy_mailbox2_black":
-    case "toy_mailbox":
-    case "toy_parkingmeter":
-    case "toy_firehydrant":
-    case "toy_copier":
-    case "toy_propane_tank02_small":
-    case "toy_propane_tank02":
-    case "toy_wall_fan":
-    case "toy_ceiling_fan_housing02":
-    case "toy_ceiling_fan_housing01_lit":
-    case "toy_ceiling_fan_housing01":
-    case "toy_ceiling_fan_blades02":
-    case "toy_ceiling_fan_blades01":
-    case "toy_ceiling_fan":
-    case "toy_airconditioner":
-    case "toy_electricbox4":
-    case "toy_electricbox2":
-    case "toy_oxygen_tank_02":
-    case "toy_oxygen_tank_01":
-    case "toy_generator_on":
-    case "toy_generator":
-    case "toy_telegraphpole_transformer02":
-    case "toy_telegraphpole_transformer01":
-    case "toy_transformer_small01":
-    case "toy_tv_flatscreen_01":
-    case "toy_tv_flatscreen_02":
-    case "toy_tv_flatscreen_wallmount_01":
-    case "toy_tv_flatscreen_wallmount_02":
-    case "toy_transformer_ratnest01":
-    case "toy_tubetv_tv2":
-    case "toy_tubetv_tv1":
-    case "toy_dt_mirror_large":
-    case "toy_dt_mirror":
-    case "toy_glass74x44":
-    case "toy_glass74x110":
-    case "toy_glass56x59":
-    case "toy_glass120x44":
-    case "toy_glass120x110":
-    default:
 }
 
 _ID48765( var_0 )
 {
-    if ( !_func_02F( level._ID279 ) )
+    if ( !isdefined( level._ID279 ) )
         return -1;
 
     if ( level._ID279.size == 0 )
@@ -307,7 +612,7 @@ _ID50512( var_0 )
     _ID42231::_ID10517( "tag_fx", "fx/fire/generator_des_fire" );
     _ID42231::_ID10541( "generator01_explode" );
     _ID42231::_ID10512( 7000, 8000, 128, 128, 16, 50, undefined, 0 );
-    _ID42231::_ID10493( _unknown_2CA1( "generator_explode" ), #animtree, "setanimknob", undefined, undefined, "generator_explode" );
+    _ID42231::_ID10493( _ID15933( "generator_explode" ), #animtree, "setanimknob", undefined, undefined, "generator_explode" );
     _ID42231::_ID10548( undefined, "machinery_generator_des", undefined, undefined, "no_melee" );
 }
 
@@ -316,7 +621,7 @@ _ID47916( var_0 )
     _ID42231::_ID10505( var_0, "tag_vibrate", 0, undefined, 32, "no_melee" );
     _ID42231::_ID10544( 15 );
     _ID42231::_ID10531( "tag_fx2", "fx/smoke/generator_exhaust", 0.4 );
-    _ID42231::_ID10493( _unknown_2CEE( "generator_vibration" ), #animtree, "setanimknob", undefined, undefined, "generator_vibration" );
+    _ID42231::_ID10493( _ID15933( "generator_vibration" ), #animtree, "setanimknob", undefined, undefined, "generator_vibration" );
     _ID42231::_ID10532( "generator_running" );
     _ID42231::_ID10548( "tag_origin", "machinery_generator", 150 );
     _ID42231::_ID10531( "tag_fx2", "fx/smoke/generator_damage_whitesmoke", 0.4 );
@@ -336,9 +641,9 @@ _ID47916( var_0 )
     _ID42231::_ID10517( "tag_fx", "fx/fire/generator_des_fire" );
     _ID42231::_ID10541( "generator01_explode" );
     _ID42231::_ID10512( 7000, 8000, 128, 128, 16, 50, undefined, 0 );
-    _ID42231::_ID10493( _unknown_2DF4( "generator_explode" ), #animtree, "setanimknob", undefined, 0, "generator_explode" );
-    _ID42231::_ID10493( _unknown_2E0A( "generator_explode_02" ), #animtree, "setanimknob", undefined, 0, "generator_explode_02" );
-    _ID42231::_ID10493( _unknown_2E21( "generator_explode_03" ), #animtree, "setanimknob", undefined, 0, "generator_explode_03" );
+    _ID42231::_ID10493( _ID15933( "generator_explode" ), #animtree, "setanimknob", undefined, 0, "generator_explode" );
+    _ID42231::_ID10493( _ID15933( "generator_explode_02" ), #animtree, "setanimknob", undefined, 0, "generator_explode_02" );
+    _ID42231::_ID10493( _ID15933( "generator_explode_03" ), #animtree, "setanimknob", undefined, 0, "generator_explode_03" );
     _ID42231::_ID10548( undefined, "machinery_generator_des", undefined, undefined, "no_melee" );
 }
 
@@ -382,7 +687,7 @@ _ID45783( var_0 )
 _ID48256( var_0 )
 {
     _ID42231::_ID10505( var_0, "tag_origin", 0, undefined, 32 );
-    _ID42231::_ID10493( _unknown_2FE1( "ex_airconditioner_fan" ), #animtree, "setanimknob", undefined, undefined, "ex_airconditioner_fan" );
+    _ID42231::_ID10493( _ID15933( "ex_airconditioner_fan" ), #animtree, "setanimknob", undefined, undefined, "ex_airconditioner_fan" );
     _ID42231::_ID10532( "airconditioner_running_loop" );
     _ID42231::_ID10548( "tag_origin", "com_ex_airconditioner", 300 );
     _ID42231::_ID10517( "tag_fx", "fx/explosions/airconditioner_ex_explode", undefined, undefined, undefined, 1 );
@@ -395,9 +700,9 @@ _ID48256( var_0 )
 _ID44619( var_0 )
 {
     _ID42231::_ID10505( var_0, "tag_origin", 0, undefined, 32 );
-    _ID42231::_ID10493( _unknown_306A( "me_fanceil1_spin" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin" );
+    _ID42231::_ID10493( _ID15933( "me_fanceil1_spin" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin" );
     _ID42231::_ID10548( "tag_origin", "me_fanceil1", 150 );
-    _ID42231::_ID10493( _unknown_308E( "me_fanceil1_spin_stop" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin_stop" );
+    _ID42231::_ID10493( _ID15933( "me_fanceil1_spin_stop" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin_stop" );
     _ID42231::_ID10517( "tag_fx", "fx/explosions/ceiling_fan_explosion" );
     _ID42231::_ID10541( "ceiling_fan_sparks" );
     _ID42231::_ID10512( 1000, 2000, 32, 32, 5, 32, undefined, 0 );
@@ -409,9 +714,9 @@ _ID44619( var_0 )
 _ID43065( var_0 )
 {
     _ID42231::_ID10505( var_0, "tag_origin", 0, undefined, 32 );
-    _ID42231::_ID10493( _unknown_310B( "me_fanceil1_spin" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin" );
+    _ID42231::_ID10493( _ID15933( "me_fanceil1_spin" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin" );
     _ID42231::_ID10548( "tag_origin", "h2_us_ceiling_fan_blades_01_animated", 150 );
-    _ID42231::_ID10493( _unknown_312F( "me_fanceil1_spin_stop" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin_stop" );
+    _ID42231::_ID10493( _ID15933( "me_fanceil1_spin_stop" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin_stop" );
     _ID42231::_ID10517( "tag_fx", "fx/explosions/h2_us_ceiling_fan_01_dest" );
     _ID42231::_ID10541( "ceiling_fan_blades" );
     _ID42231::_ID10512( 1000, 2000, 32, 32, 5, 32, undefined, 0 );
@@ -422,9 +727,9 @@ _ID43065( var_0 )
 _ID48975( var_0 )
 {
     _ID42231::_ID10505( var_0, "tag_origin", 0, undefined, 32 );
-    _ID42231::_ID10493( _unknown_3198( "me_fanceil1_spin" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin" );
+    _ID42231::_ID10493( _ID15933( "me_fanceil1_spin" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin" );
     _ID42231::_ID10548( "tag_origin", "h2_us_ceiling_fan_blades_02_animated", 150 );
-    _ID42231::_ID10493( _unknown_31BC( "me_fanceil1_spin_stop" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin_stop" );
+    _ID42231::_ID10493( _ID15933( "me_fanceil1_spin_stop" ), #animtree, "setanimknob", undefined, undefined, "me_fanceil1_spin_stop" );
     _ID42231::_ID10517( "tag_fx", "fx/explosions/h2_us_ceiling_fan_02_dest" );
     _ID42231::_ID10541( "ceiling_fan_blades" );
     _ID42231::_ID10512( 1000, 2000, 32, 32, 5, 32, undefined, 0 );
@@ -465,10 +770,10 @@ _ID43895( var_0 )
 _ID48852( var_0 )
 {
     _ID42231::_ID10505( var_0, "tag_swivel", 0, undefined, 32 );
-    _ID42231::_ID10493( _unknown_3312( "wall_fan_rotate" ), #animtree, "setanimknob", undefined, undefined, "wall_fan_rotate" );
+    _ID42231::_ID10493( _ID15933( "wall_fan_rotate" ), #animtree, "setanimknob", undefined, undefined, "wall_fan_rotate" );
     _ID42231::_ID10532( "wall_fan_fanning" );
     _ID42231::_ID10548( "tag_wobble", "cs_wallfan1", 150 );
-    _ID42231::_ID10493( _unknown_333E( "wall_fan_stop" ), #animtree, "setanimknob", undefined, undefined, "wall_fan_wobble" );
+    _ID42231::_ID10493( _ID15933( "wall_fan_stop" ), #animtree, "setanimknob", undefined, undefined, "wall_fan_wobble" );
     _ID42231::_ID10517( "tag_fx", "fx/explosions/wallfan_explosion_dmg" );
     _ID42231::_ID10541( "wall_fan_sparks" );
     _ID42231::_ID10548( "tag_wobble", "cs_wallfan1", 150, undefined, "no_melee" );
@@ -758,13 +1063,13 @@ _ID47272( var_0 )
     _ID42231::_ID10517( "tag_swing_fx", "fx/misc/light_blowout_swinging_runner" );
     _ID42231::_ID10530( 16 );
     _ID42231::_ID10512( 20, 2000, 64, 64, 40, 80 );
-    _ID42231::_ID10493( _unknown_3F40( "light_fluorescent_swing" ), #animtree, "setanimknob", undefined, 0, "light_fluorescent_swing" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_swing" ), #animtree, "setanimknob", undefined, 0, "light_fluorescent_swing" );
     _ID42231::_ID10541( "fluorescent_light_fall", undefined, 0 );
     _ID42231::_ID10541( "fluorescent_light_bulb", undefined, 0 );
-    _ID42231::_ID10493( _unknown_3F6A( "light_fluorescent_swing_02" ), #animtree, "setanimknob", undefined, 1, "light_fluorescent_swing_02" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_swing_02" ), #animtree, "setanimknob", undefined, 1, "light_fluorescent_swing_02" );
     _ID42231::_ID10541( "fluorescent_light_fall", undefined, 1 );
     _ID42231::_ID10541( "fluorescent_light_bulb", undefined, 1 );
-    _ID42231::_ID10493( _unknown_3F97( "light_fluorescent_null" ), #animtree, "setanimknob", undefined, 2, "light_fluorescent_null" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_null" ), #animtree, "setanimknob", undefined, 2, "light_fluorescent_null" );
     _ID42231::_ID10548( undefined, "me_lightfluohang_double_destroyed", undefined, undefined, "no_melee" );
 }
 
@@ -777,7 +1082,7 @@ _ID50845( var_0 )
     _ID42231::_ID10517( "tag_swing_fx", "fx/misc/light_blowout_swinging_runner" );
     _ID42231::_ID10530( 16 );
     _ID42231::_ID10512( 20, 2000, 64, 64, 40, 80 );
-    _ID42231::_ID10493( _unknown_4009( "light_fluorescent_swing" ), #animtree, "setanimknob", undefined, 0, "light_fluorescent_swing" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_swing" ), #animtree, "setanimknob", undefined, 0, "light_fluorescent_swing" );
     _ID42231::_ID10541( "fluorescent_light_fall", undefined, 0 );
     _ID42231::_ID10541( "fluorescent_light_bulb", undefined, 0 );
     _ID42231::_ID10546( "tag_swing_r_far" );
@@ -793,16 +1098,16 @@ _ID45291( var_0 )
     _ID42231::_ID10517( "tag_swing_center_fx", "fx/misc/light_blowout_swinging_runner" );
     _ID42231::_ID10517( "tag_swing_center_fx_far", "fx/misc/light_blowout_swinging_runner" );
     _ID42231::_ID10512( 20, 2000, 64, 64, 40, 80 );
-    _ID42231::_ID10493( _unknown_409E( "light_fluorescent_single_swing" ), #animtree, "setanimknob", undefined, 0, "light_fluorescent_single_swing" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_single_swing" ), #animtree, "setanimknob", undefined, 0, "light_fluorescent_single_swing" );
     _ID42231::_ID10541( "fluorescent_light_fall", undefined, 0 );
     _ID42231::_ID10541( "fluorescent_light_bulb", undefined, 0 );
-    _ID42231::_ID10493( _unknown_40C9( "light_fluorescent_single_swing_02" ), #animtree, "setanimknob", undefined, 1, "light_fluorescent_single_swing_02" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_single_swing_02" ), #animtree, "setanimknob", undefined, 1, "light_fluorescent_single_swing_02" );
     _ID42231::_ID10541( "fluorescent_light_hinge", undefined, 1 );
     _ID42231::_ID10541( "fluorescent_light_bulb", undefined, 1 );
-    _ID42231::_ID10493( _unknown_40F5( "light_fluorescent_single_swing_03" ), #animtree, "setanimknob", undefined, 2, "light_fluorescent_single_swing_03" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_single_swing_03" ), #animtree, "setanimknob", undefined, 2, "light_fluorescent_single_swing_03" );
     _ID42231::_ID10541( "fluorescent_light_fall", undefined, 2 );
     _ID42231::_ID10541( "fluorescent_light_bulb", undefined, 2 );
-    _ID42231::_ID10493( _unknown_4121( "light_fluorescent_single_null" ), #animtree, "setanimknob", undefined, 3, "light_fluorescent_single_null" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_single_null" ), #animtree, "setanimknob", undefined, 3, "light_fluorescent_single_null" );
     _ID42231::_ID10548( undefined, "me_lightfluohang_single_destroyed", undefined, undefined, "no_melee" );
 }
 
@@ -816,7 +1121,7 @@ _ID50302( var_0 )
     _ID42231::_ID10517( "tag_swing_center_fx", "fx/misc/light_blowout_swinging_runner" );
     _ID42231::_ID10517( "tag_swing_center_fx_far", "fx/misc/light_blowout_swinging_runner" );
     _ID42231::_ID10512( 20, 2000, 64, 64, 40, 80 );
-    _ID42231::_ID10493( _unknown_41A0( "light_fluorescent_single_swing_02" ), #animtree, "setanimknob", undefined, undefined, "light_fluorescent_single_swing_02" );
+    _ID42231::_ID10493( _ID15933( "light_fluorescent_single_swing_02" ), #animtree, "setanimknob", undefined, undefined, "light_fluorescent_single_swing_02" );
     _ID42231::_ID10541( "fluorescent_light_fall" );
     _ID42231::_ID10546( "tag_swing_center_fx_far" );
     _ID42231::_ID10548( undefined, "me_lightfluohang_single_destroyed", undefined, undefined, "no_melee" );
@@ -836,28 +1141,28 @@ _ID51116( var_0 )
 _ID54610( var_0 )
 {
     _ID42231::_ID10505( var_0, "tag_origin", 150, undefined, 32, "no_melee" );
-    _ID42231::_ID10493( _unknown_4256( "locker_broken_both_doors_1" ), #animtree, "setanimknob", undefined, 0, "locker_broken_both_doors_1" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_both_doors_1" ), #animtree, "setanimknob", undefined, 0, "locker_broken_both_doors_1" );
     _ID42231::_ID10517( "tag_fx", "fx/props/locker_double_des_02_right", undefined, undefined, 0 );
     _ID42231::_ID10541( "lockers_fast", undefined, 0 );
-    _ID42231::_ID10493( _unknown_4285( "locker_broken_both_doors_2" ), #animtree, "setanimknob", undefined, 1, "locker_broken_both_doors_2" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_both_doors_2" ), #animtree, "setanimknob", undefined, 1, "locker_broken_both_doors_2" );
     _ID42231::_ID10517( "tag_fx", "fx/props/locker_double_des_01_left", undefined, undefined, 1 );
     _ID42231::_ID10541( "lockers_fast", undefined, 1 );
-    _ID42231::_ID10493( _ID50288( "locker_broken_both_doors_4" ), #animtree, "setanimknob", undefined, 2, "locker_broken_both_doors_4" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_both_doors_4" ), #animtree, "setanimknob", undefined, 2, "locker_broken_both_doors_4" );
     _ID42231::_ID10517( "tag_fx", "fx/props/locker_double_des_03_both", undefined, undefined, 2 );
     _ID42231::_ID10541( "lockers_double", undefined, 2 );
-    _ID42231::_ID10493( _unknown_42E7( "locker_broken_door1_fast" ), #animtree, "setanimknob", undefined, 3, "locker_broken_door1_fast" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_door1_fast" ), #animtree, "setanimknob", undefined, 3, "locker_broken_door1_fast" );
     _ID42231::_ID10517( "tag_fx", "fx/props/locker_double_des_01_left", undefined, undefined, 3 );
     _ID42231::_ID10541( "lockers_fast", undefined, 3 );
-    _ID42231::_ID10493( _unknown_4318( "locker_broken_door2_fast" ), #animtree, "setanimknob", undefined, 4, "locker_broken_door2_fast" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_door2_fast" ), #animtree, "setanimknob", undefined, 4, "locker_broken_door2_fast" );
     _ID42231::_ID10517( "tag_fx", "fx/props/locker_double_des_02_right", undefined, undefined, 4 );
     _ID42231::_ID10541( "lockers_fast", undefined, 4 );
-    _ID42231::_ID10493( _unknown_4348( "locker_broken_both_doors_3" ), #animtree, "setanimknob", undefined, 5, "locker_broken_both_doors_3" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_both_doors_3" ), #animtree, "setanimknob", undefined, 5, "locker_broken_both_doors_3" );
     _ID42231::_ID10517( "tag_fx", "fx/misc/no_effect", undefined, undefined, 5 );
     _ID42231::_ID10541( "lockers_minor", undefined, 5 );
-    _ID42231::_ID10493( _unknown_4379( "locker_broken_door1_slow" ), #animtree, "setanimknob", undefined, 6, "locker_broken_door1_slow" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_door1_slow" ), #animtree, "setanimknob", undefined, 6, "locker_broken_door1_slow" );
     _ID42231::_ID10517( "tag_fx", "fx/misc/no_effect", undefined, undefined, 6 );
     _ID42231::_ID10541( "lockers_minor", undefined, 6 );
-    _ID42231::_ID10493( _unknown_43AA( "locker_broken_door2_slow" ), #animtree, "setanimknob", undefined, 7, "locker_broken_door2_slow" );
+    _ID42231::_ID10493( _ID15933( "locker_broken_door2_slow" ), #animtree, "setanimknob", undefined, 7, "locker_broken_door2_slow" );
     _ID42231::_ID10517( "tag_fx", "fx/misc/no_effect", undefined, undefined, 7 );
     _ID42231::_ID10541( "lockers_minor", undefined, 7 );
     _ID42231::_ID10548( undefined, "com_locker_double_destroyed", undefined, undefined, "no_melee" );
@@ -866,13 +1171,13 @@ _ID54610( var_0 )
 _ID50365( var_0 )
 {
     _ID42231::_ID10505( "toy_chicken" + var_0, "tag_origin", 0, undefined, 32 );
-    _ID42231::_ID10493( _unknown_43FF( "chicken_cage_loop_01" ), #animtree, "setanimknob", undefined, 0, "chicken_cage_loop_01", 1.6 );
-    _ID42231::_ID10493( _unknown_441A( "chicken_cage_loop_02" ), #animtree, "setanimknob", undefined, 1, "chicken_cage_loop_02", 1.6 );
+    _ID42231::_ID10493( _ID15933( "chicken_cage_loop_01" ), #animtree, "setanimknob", undefined, 0, "chicken_cage_loop_01", 1.6 );
+    _ID42231::_ID10493( _ID15933( "chicken_cage_loop_02" ), #animtree, "setanimknob", undefined, 1, "chicken_cage_loop_02", 1.6 );
     _ID42231::_ID10532( "animal_chicken_idle_loop" );
     _ID42231::_ID10548( "tag_origin", "chicken" + var_0, 25 );
     _ID42231::_ID10517( "tag_origin", "fx/props/chicken_exp" + var_0 );
-    _ID42231::_ID10493( _unknown_4456( "chicken_cage_death" ), #animtree, "setanimknob", undefined, 0, "chicken_cage_death" );
-    _ID42231::_ID10493( _unknown_446D( "chicken_cage_death_02" ), #animtree, "setanimknob", undefined, 1, "chicken_cage_death_02" );
+    _ID42231::_ID10493( _ID15933( "chicken_cage_death" ), #animtree, "setanimknob", undefined, 0, "chicken_cage_death" );
+    _ID42231::_ID10493( _ID15933( "chicken_cage_death_02" ), #animtree, "setanimknob", undefined, 1, "chicken_cage_death_02" );
     _ID42231::_ID10541( "animal_chicken_death" );
     _ID42231::_ID10548( undefined, "chicken" + var_0, undefined, undefined, "no_melee" );
 }
@@ -1631,7 +1936,7 @@ _ID45624( var_0 )
 _ID45339( var_0 )
 {
     var_1 = undefined;
-    var_1 = _unknown_6687( "vehicle_motorcycle_destroy_" + var_0 );
+    var_1 = _ID15933( "vehicle_motorcycle_destroy_" + var_0 );
     _ID42231::_ID10505( "vehicle_motorcycle_" + var_0, "body_animate_jnt", 250, undefined, 32, "no_melee" );
     _ID42231::_ID10531( "tag_death_fx", "fx/smoke/car_damage_whitesmoke", 0.4 );
     _ID42231::_ID10548( undefined, undefined, 200, undefined, 32, "no_melee" );
@@ -1888,7 +2193,7 @@ _ID45866( var_0 )
     _ID42231::_ID10517( "tag_death_fx", "fx/explosions/small_vehicle_explosion", 1 );
     _ID42231::_ID10541( "car_explode" );
     _ID42231::_ID10512( 4000, 5000, 150, 150, 50, 300, undefined, undefined, 0.3, 500 );
-    _ID42231::_ID10493( _unknown_7251( "vehicle_snowmobile_destroy_01" ), #animtree, "setanimknob", undefined, undefined, "vehicle_snowmobile_destroy_01" );
+    _ID42231::_ID10493( _ID15933( "vehicle_snowmobile_destroy_01" ), #animtree, "setanimknob", undefined, undefined, "vehicle_snowmobile_destroy_01" );
     _ID42231::_ID10548( undefined, "vehicle_snowmobile_destroyed", undefined, 32, "no_melee" );
     var_1 = "right_wheel_01_jnt";
     _ID42231::_ID10535( var_1, "vehicle_snowmobile_ski_right", 800, undefined, undefined, undefined, 1.0, 2.5 );
@@ -2449,7 +2754,7 @@ vehicle_taxi_van( var_0 )
 {
     _ID42231::_ID10505( "vehicle_taxi_van", "tag_body", 250, undefined, 32, "no_melee" );
 
-    if ( _func_039( "loc_arabic_sku" ) != "1" )
+    if ( getdvar( "loc_arabic_sku" ) != "1" )
         _ID42231::_ID28950( "tag_ad", "vehicle_taxi_rooftop_ad_base", "vehicle_taxi_rooftop_ad_1" );
 
     _ID42231::_ID28950( "tag_ad", "vehicle_taxi_rooftop_ad_base", "vehicle_taxi_rooftop_ad_2" );
@@ -2526,7 +2831,7 @@ _ID54241( var_0 )
 {
     _ID42231::_ID10505( "vehicle_taxi" + var_0, "tag_body", 250, undefined, 32, "no_melee" );
 
-    if ( _func_039( "loc_arabic_sku" ) != "1" )
+    if ( getdvar( "loc_arabic_sku" ) != "1" )
         _ID42231::_ID28950( "tag_ad", "vehicle_taxi_rooftop_ad_base", "vehicle_taxi_rooftop_ad_1" );
 
     _ID42231::_ID28950( "tag_ad", "vehicle_taxi_rooftop_ad_base", "vehicle_taxi_rooftop_ad_2" );

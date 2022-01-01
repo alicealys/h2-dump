@@ -4,49 +4,49 @@
 _ID19737()
 {
     level._ID1400._ID25935 = [];
-    _unknown_036D( "vector", "origin", "Origin", ( 0, 0, 0 ), "fx", 1 );
-    _unknown_038C( "vector", "angles", "Angles", ( 0, 0, 0 ), "fx", 1 );
-    _unknown_03A3( "string", "fxid", "FX id", "nil", "fx" );
-    _unknown_03BA( "float", "delay", "Repeat rate/start delay", 0.5, "fx" );
-    _unknown_03D1( "string", "flag", "Flag", "nil", "exploder" );
-    _unknown_03E9( "string", "platform", "Platform", "all", "all" );
+    _ID2076( "vector", "origin", "Origin", ( 0, 0, 0 ), "fx", 1 );
+    _ID2076( "vector", "angles", "Angles", ( 0, 0, 0 ), "fx", 1 );
+    _ID2076( "string", "fxid", "FX id", "nil", "fx" );
+    _ID2076( "float", "delay", "Repeat rate/start delay", 0.5, "fx" );
+    _ID2076( "string", "flag", "Flag", "nil", "exploder" );
+    _ID2076( "string", "platform", "Platform", "all", "all" );
 
     if ( !level._ID24495 )
     {
-        _unknown_040A( "vector", "tintcolor", "Tint Color", ( 1, 1, 1 ), "fx" );
-        _unknown_0422( "float", "tintalpha", "Tint Alpha", 1.0, "fx" );
-        _unknown_0439( "float", "emissive", "Emissive", 1.0, "fx" );
-        _unknown_0450( "float", "sizescale", "Scale", 1.0, "fx" );
-        _unknown_0467( "string", "firefx", "2nd FX id", "nil", "exploder" );
-        _unknown_047F( "float", "firefxdelay", "2nd FX id repeat rate", 0.5, "exploder" );
-        _unknown_0494( "float", "firefxtimeout", "2nd FX timeout", 5, "exploder" );
-        _unknown_04AB( "string", "firefxsound", "2nd FX soundalias", "nil", "exploder" );
-        _unknown_04C0( "float", "damage", "Radius damage", 150, "exploder" );
-        _unknown_04D5( "float", "damage_radius", "Radius of radius damage", 250, "exploder" );
-        _unknown_04EC( "string", "earthquake", "Earthquake", "nil", "exploder" );
-        _unknown_0503( "string", "ender", "Level notify for ending 2nd FX", "nil", "exploder" );
+        _ID2076( "vector", "tintcolor", "Tint Color", ( 1, 1, 1 ), "fx" );
+        _ID2076( "float", "tintalpha", "Tint Alpha", 1.0, "fx" );
+        _ID2076( "float", "emissive", "Emissive", 1.0, "fx" );
+        _ID2076( "float", "sizescale", "Scale", 1.0, "fx" );
+        _ID2076( "string", "firefx", "2nd FX id", "nil", "exploder" );
+        _ID2076( "float", "firefxdelay", "2nd FX id repeat rate", 0.5, "exploder" );
+        _ID2076( "float", "firefxtimeout", "2nd FX timeout", 5, "exploder" );
+        _ID2076( "string", "firefxsound", "2nd FX soundalias", "nil", "exploder" );
+        _ID2076( "float", "damage", "Radius damage", 150, "exploder" );
+        _ID2076( "float", "damage_radius", "Radius of radius damage", 250, "exploder" );
+        _ID2076( "string", "earthquake", "Earthquake", "nil", "exploder" );
+        _ID2076( "string", "ender", "Level notify for ending 2nd FX", "nil", "exploder" );
     }
 
-    _unknown_0518( "float", "delay_min", "Minimimum time between repeats", 1, "soundfx_interval" );
-    _unknown_052D( "float", "delay_max", "Maximum time between repeats", 2, "soundfx_interval" );
-    _unknown_0542( "int", "repeat", "Number of times to repeat", 5, "exploder" );
-    _unknown_055A( "string", "exploder", "Exploder", "1", "exploder" );
-    _unknown_0571( "string", "stop_on_exploder", "Stop on exploder", "1", "all" );
-    _unknown_0755();
-    _unknown_058C( "string", "soundalias", "Soundalias", "nil", "all" );
-    _unknown_05A3( "string", "loopsound", "Loopsound", "nil", "exploder" );
-    _unknown_05BC( "int", "reactive_radius", "Reactive Radius", 100, "reactive_fx", undefined, ::_unknown_05D6 );
-    _unknown_05D3( "string", "ambiencename", "Ambience Name", "nil", "soundfx_dynamic" );
-    _unknown_05E9( "int", "dynamic_distance", "Dynamic Max Distance", 1000, "soundfx_dynamic" );
+    _ID2076( "float", "delay_min", "Minimimum time between repeats", 1, "soundfx_interval" );
+    _ID2076( "float", "delay_max", "Maximum time between repeats", 2, "soundfx_interval" );
+    _ID2076( "int", "repeat", "Number of times to repeat", 5, "exploder" );
+    _ID2076( "string", "exploder", "Exploder", "1", "exploder" );
+    _ID2076( "string", "stop_on_exploder", "Stop on exploder", "1", "all" );
+    _ID33088();
+    _ID2076( "string", "soundalias", "Soundalias", "nil", "all" );
+    _ID2076( "string", "loopsound", "Loopsound", "nil", "exploder" );
+    _ID2076( "int", "reactive_radius", "Reactive Radius", 100, "reactive_fx", undefined, ::_ID20096 );
+    _ID2076( "string", "ambiencename", "Ambience Name", "nil", "soundfx_dynamic" );
+    _ID2076( "int", "dynamic_distance", "Dynamic Max Distance", 1000, "soundfx_dynamic" );
 
     if ( !level._ID24495 )
     {
-        _unknown_0605( "string", "rumble", "Rumble", "nil", "exploder" );
-        _unknown_061C( "int", "stoppable", "Can be stopped from script", "1", "all" );
+        _ID2076( "string", "rumble", "Rumble", "nil", "exploder" );
+        _ID2076( "int", "stoppable", "Can be stopped from script", "1", "all" );
     }
 
-    _unknown_0631( "int", "kill_on_delete", "Kill FX on delete", 1, "fx" );
-    _unknown_0646( "int", "ignore_fx_volume_groups", "Ignore FX volume groups", 1, "fx" );
+    _ID2076( "int", "kill_on_delete", "Kill FX on delete", 1, "fx" );
+    _ID2076( "int", "ignore_fx_volume_groups", "Ignore FX volume groups", 1, "fx" );
     level._ID12317 = 0;
     level._ID12318 = 10;
     level._ID12316 = 0;
@@ -82,13 +82,13 @@ _ID19737()
     level._ID9247["soundfx_dynamic"] = [];
     level._ID9247["soundfx_dynamic"]["soundfx_dynamic"] = 1;
     var_0 = [];
-    var_0["creation"] = ::_unknown_05E3;
-    var_0["create_oneshot"] = ::_unknown_062B;
-    var_0["create_loopfx"] = ::_unknown_0633;
-    var_0["change_fxid"] = ::_unknown_063C;
-    var_0["none"] = ::_unknown_0651;
-    var_0["add_options"] = ::_unknown_067C;
-    var_0["select_by_name"] = ::_unknown_0690;
+    var_0["creation"] = ::_ID23471;
+    var_0["create_oneshot"] = ::_ID23470;
+    var_0["create_loopfx"] = ::_ID23470;
+    var_0["change_fxid"] = ::_ID23470;
+    var_0["none"] = ::_ID23474;
+    var_0["add_options"] = ::_ID23468;
+    var_0["select_by_name"] = ::_ID23475;
     level._ID1400._ID23479 = var_0;
 }
 
@@ -106,11 +106,11 @@ _ID9148()
 {
     if ( _ID42229::_ID6479( "escape", "x" ) )
     {
-        _unknown_06CE();
+        _ID1448();
         return;
     }
 
-    if ( _func_02F( level._ID1400._ID23479[level._ID9148] ) )
+    if ( isdefined( level._ID1400._ID23479[level._ID9148] ) )
         [[ level._ID1400._ID23479[level._ID9148] ]]();
 }
 
@@ -123,47 +123,47 @@ _ID23471()
 
     if ( _ID42229::_ID6479( "1" ) )
     {
-        _unknown_0665( "create_oneshot" );
-        _unknown_0976();
+        _ID32685( "create_oneshot" );
+        _ID11702();
         return;
     }
     else if ( _ID42229::_ID6479( "2" ) )
     {
-        _unknown_067C( "create_loopfx" );
-        _unknown_098D();
+        _ID32685( "create_loopfx" );
+        _ID11702();
         return;
     }
     else if ( _ID42229::_ID6479( "3" ) )
     {
-        _unknown_0693( "create_loopsound" );
+        _ID32685( "create_loopsound" );
         var_0 = _ID42229::_ID9260();
-        _unknown_0780( var_0 );
+        _ID14225( var_0 );
         return;
     }
     else if ( _ID42229::_ID6479( "4" ) )
     {
-        _unknown_06B1( "create_exploder" );
+        _ID32685( "create_exploder" );
         var_0 = _ID42229::_ID9264();
-        _unknown_079E( var_0 );
+        _ID14225( var_0 );
         return;
     }
     else if ( _ID42229::_ID6479( "5" ) )
     {
-        _unknown_06CE( "create_interval_sound" );
+        _ID32685( "create_interval_sound" );
         var_0 = _ID42229::_ID9253();
-        _unknown_07BB( var_0 );
+        _ID14225( var_0 );
         return;
     }
     else if ( _ID42229::_ID6479( "6" ) )
     {
         var_0 = _ID42229::_ID9275();
-        _unknown_07D0( var_0 );
+        _ID14225( var_0 );
         return;
     }
     else if ( _ID42229::_ID6479( "7" ) )
     {
         var_0 = _ID42229::_ID9212();
-        _unknown_07E5( var_0 );
+        _ID14225( var_0 );
         return;
     }
 }
@@ -175,29 +175,29 @@ _ID23470()
 
     level._ID9235 = 1;
 
-    if ( _unknown_07AE() )
-        _unknown_0A53();
-    else if ( _unknown_07BE() )
-        _unknown_0A68();
+    if ( _ID24763() )
+        _ID19516();
+    else if ( _ID28507() )
+        _ID10079();
 
-    _unknown_0A39();
-    _unknown_07DF();
+    _ID11702();
+    _ID23472();
 }
 
 _ID23474()
 {
     if ( _ID42229::_ID6479( "m" ) )
-        _unknown_0A77();
+        _ID19516();
 
-    _unknown_0841();
+    _ID23469();
 
-    if ( _unknown_0842() && !level._ID9230 )
+    if ( _ID13073() && !level._ID9230 )
     {
-        var_0 = _unknown_0B5E();
+        var_0 = _ID15798();
 
-        if ( !_func_02F( level._ID21788 ) || var_0 != level._ID21788 || level._ID1400._ID21199 == 1 )
+        if ( !isdefined( level._ID21788 ) || var_0 != level._ID21788 || level._ID1400._ID21199 == 1 )
         {
-            _unknown_0A13( var_0 );
+            _ID11084( var_0 );
             level._ID21788 = var_0;
             level._ID1400._ID21199 = 0;
         }
@@ -205,7 +205,7 @@ _ID23474()
         if ( _ID42229::_ID6479( "a" ) )
         {
             _ID42229::_ID7897();
-            _unknown_078F( "add_options" );
+            _ID32685( "add_options" );
             return;
         }
     }
@@ -215,17 +215,17 @@ _ID23474()
 
 _ID23468()
 {
-    if ( !_unknown_0897() )
+    if ( !_ID13073() )
     {
         _ID42229::_ID7868();
-        _unknown_07A9( "none" );
+        _ID32685( "none" );
         return;
     }
 
-    _unknown_09DD( _unknown_0BBB() );
+    _ID11083( _ID15798() );
 
-    if ( _unknown_084D() )
-        _unknown_0AF2();
+    if ( _ID24763() )
+        _ID19516();
 }
 
 _ID23475()
@@ -233,13 +233,13 @@ _ID23475()
     if ( level._ID9230 )
         return;
 
-    if ( _unknown_085D() )
-        _unknown_0B03();
-    else if ( _unknown_086D() )
-        _unknown_0B18();
+    if ( _ID24763() )
+        _ID19516();
+    else if ( _ID28507() )
+        _ID10079();
 
     _ID42229::_ID54132();
-    _unknown_0BBE();
+    _ID31837();
 }
 
 _ID24763()
@@ -265,13 +265,13 @@ _ID1448()
 
     _ID42229::_ID7868();
 
-    if ( _unknown_080B( "add_options" ) )
+    if ( _ID23467( "add_options" ) )
         level._ID21788 = undefined;
     else
         _ID42229::_ID7864();
 
     _ID42229::_ID39647();
-    _unknown_0825( "none" );
+    _ID32685( "none" );
 }
 
 _ID23472()
@@ -298,15 +298,15 @@ _ID23472()
             break;
     }
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
-    if ( _unknown_0875( "change_fxid" ) )
+    if ( _ID23467( "change_fxid" ) )
     {
-        _ID13073( _unknown_0A65( "fxid" ), var_1 );
+        _ID3240( _ID15877( "fxid" ), var_1 );
         level._ID12317 = 0;
         _ID42229::_ID7868();
-        _unknown_0894( "none" );
+        _ID32685( "none" );
         level._ID9235 = 0;
         level._ID9233 = 0;
         return;
@@ -314,24 +314,24 @@ _ID23472()
 
     var_5 = undefined;
 
-    if ( _unknown_08A3( "create_loopfx" ) )
+    if ( _ID23467( "create_loopfx" ) )
         var_5 = _ID42237::_ID9259( var_1 );
 
-    if ( _unknown_08B2( "create_oneshot" ) )
+    if ( _ID23467( "create_oneshot" ) )
         var_5 = _ID42237::_ID9265( var_1 );
 
-    _unknown_09A4( var_5 );
+    _ID14225( var_5 );
 }
 
 _ID14225( var_0 )
 {
-    var_0._ID40005["angles"] = _func_11A( var_0._ID40005["origin"] + ( 0, 0, 100 ) - var_0._ID40005["origin"] );
+    var_0._ID40005["angles"] = vectortoangles( var_0._ID40005["origin"] + ( 0, 0, 100 ) - var_0._ID40005["origin"] );
     var_0 _ID42229::_ID28272();
     _ID42229::_ID7864();
     _ID42229::_ID31842();
     _ID42229::_ID24361();
     _ID42229::_ID39647();
-    _unknown_0907( "none" );
+    _ID32685( "none" );
     level._ID9235 = 0;
 }
 
@@ -347,13 +347,13 @@ _ID23469()
 
     var_0 = 0;
     var_1 = 0;
-    var_2 = _unknown_0D33();
+    var_2 = _ID15798();
 
     for ( var_3 = 0; var_3 < level._ID1400._ID25935.size; var_3++ )
     {
         var_4 = level._ID1400._ID25935[var_3];
 
-        if ( !_func_02F( var_2._ID40005[var_4["name"]] ) )
+        if ( !isdefined( var_2._ID40005[var_4["name"]] ) )
             continue;
 
         var_0++;
@@ -369,7 +369,7 @@ _ID23469()
 
         if ( _ID42229::_ID6479( var_5 + "" ) )
         {
-            _unknown_0AA3( var_4, var_1 );
+            _ID28440( var_4, var_1 );
             break;
         }
 
@@ -385,15 +385,15 @@ _ID28440( var_0, var_1 )
 {
     if ( var_0["name"] == "fxid" )
     {
-        _unknown_09AA( "change_fxid" );
-        _unknown_0CBB();
+        _ID32685( "change_fxid" );
+        _ID11702();
         return;
     }
 
     level._ID9232 = 1;
     level._ID1400._ID19180[var_1 + 1][0]._ID196 = ( 1, 1, 0 );
 
-    if ( _func_02F( var_0["input_func"] ) )
+    if ( isdefined( var_0["input_func"] ) )
         thread [[ var_0["input_func"] ]]( var_1 + 1 );
     else
     {
@@ -401,41 +401,41 @@ _ID28440( var_0, var_1 )
         _ID42229::_ID9224( var_2 );
     }
 
-    _unknown_0BBC( var_0["name"] );
-    _func_034( "fx", "nil" );
+    _ID32400( var_0["name"] );
+    setdvar( "fx", "nil" );
 }
 
 _ID23473()
 {
-    if ( _func_039( "fx" ) == "nil" )
+    if ( getdvar( "fx" ) == "nil" )
         return;
 
-    if ( _func_039( "fx" ) == "del" )
+    if ( getdvar( "fx" ) == "del" )
         _ID42229::_ID29569();
     else
     {
-        var_0 = _unknown_0BFA();
+        var_0 = _ID15968();
         var_1 = undefined;
 
         if ( var_0["type"] == "string" )
-            var_1 = _func_039( "fx" );
+            var_1 = getdvar( "fx" );
 
         if ( var_0["type"] == "int" )
-            var_1 = _func_03A( "fx" );
+            var_1 = getdvarint( "fx" );
 
         if ( var_0["type"] == "float" )
-            var_1 = _func_03B( "fx" );
+            var_1 = getdvarfloat( "fx" );
 
         if ( var_0["type"] == "vector" )
-            var_1 = _func_03C( "fx" );
+            var_1 = getdvarvector( "fx" );
 
-        if ( _func_02F( var_1 ) )
+        if ( isdefined( var_1 ) )
         {
-            _unknown_0C1E( var_0, var_1 );
+            _ID3240( var_0, var_1 );
             return;
         }
 
-        _func_034( "fx", "nil" );
+        setdvar( "fx", "nil" );
     }
 }
 
@@ -447,7 +447,7 @@ _ID3240( var_0, var_1 )
     {
         var_3 = level._ID1400._ID31849[var_2];
 
-        if ( _unknown_0C93( var_0["mask"], var_3._ID40005["type"] ) )
+        if ( _ID22997( var_0["mask"], var_3._ID40005["type"] ) )
             var_3._ID40005[var_0["name"]] = var_1;
     }
 
@@ -486,7 +486,7 @@ _ID15968()
 
 _ID22997( var_0, var_1 )
 {
-    return _func_02F( level._ID9247[var_0][var_1] );
+    return isdefined( level._ID9247[var_0][var_1] );
 }
 
 _ID2076( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
@@ -498,12 +498,12 @@ _ID2076( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     var_7["default"] = var_3;
     var_7["mask"] = var_4;
 
-    if ( _func_02F( var_5 ) && var_5 )
+    if ( isdefined( var_5 ) && var_5 )
         var_7["nowrite"] = 1;
     else
         var_7["nowrite"] = 0;
 
-    if ( _func_02F( var_6 ) )
+    if ( isdefined( var_6 ) )
         var_7["input_func"] = var_6;
 
     level._ID1400._ID25935[level._ID1400._ID25935.size] = var_7;
@@ -527,33 +527,26 @@ _ID20096( var_0 )
         if ( level._ID45459 )
             continue;
 
-        if ( level._ID794 _meth_8256( "escape" ) || level._ID794 _meth_8256( "x" ) )
+        if ( level._ID794 buttonpressed( "escape" ) || level._ID794 buttonpressed( "x" ) )
             break;
 
         var_1 = 0;
 
-        if ( level._ID794 _meth_8256( "-" ) )
+        if ( level._ID794 buttonpressed( "-" ) )
             var_1 = -10;
-        else if ( level._ID794 _meth_8256( "=" ) )
+        else if ( level._ID794 buttonpressed( "=" ) )
             var_1 = 10;
 
         if ( var_1 != 0 )
         {
-            var_2 = level._ID1400._ID31849;
-
-            for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+            foreach ( var_3 in level._ID1400._ID31849 )
             {
-                var_3 = var_2[var_4];
-
-                if ( _func_02F( var_3._ID40005["reactive_radius"] ) )
+                if ( isdefined( var_3._ID40005["reactive_radius"] ) )
                 {
                     var_3._ID40005["reactive_radius"] = var_3._ID40005["reactive_radius"] + var_1;
-                    var_3._ID40005["reactive_radius"] = _func_0EE( var_3._ID40005["reactive_radius"], 10, 1000 );
+                    var_3._ID40005["reactive_radius"] = clamp( var_3._ID40005["reactive_radius"], 10, 1000 );
                 }
             }
-
-            var_clear_2
-            var_clear_0
         }
     }
 
@@ -584,10 +577,10 @@ _ID11083( var_0 )
     {
         var_5 = level._ID1400._ID25935[var_4];
 
-        if ( _func_02F( var_0._ID40005[var_5["name"]] ) )
+        if ( isdefined( var_0._ID40005[var_5["name"]] ) )
             continue;
 
-        if ( !_unknown_0EFD( var_5["mask"], var_0._ID40005["type"] ) )
+        if ( !_ID22997( var_5["mask"], var_0._ID40005["type"] ) )
             continue;
 
         var_1++;
@@ -606,8 +599,8 @@ _ID11083( var_0 )
 
         if ( _ID42229::_ID6479( var_6 + "" ) )
         {
-            _unknown_0FFE( var_5 );
-            _unknown_1018();
+            _ID1924( var_5 );
+            _ID23478();
             level._ID21788 = undefined;
             return;
         }
@@ -632,7 +625,7 @@ _ID1924( var_0 )
     {
         var_3 = level._ID1400._ID31849[var_2];
 
-        if ( _unknown_0F97( var_0["mask"], var_3._ID40005["type"] ) )
+        if ( _ID22997( var_0["mask"], var_3._ID40005["type"] ) )
             var_3._ID40005[var_0["name"]] = var_0["default"];
     }
 }
@@ -641,12 +634,12 @@ _ID23478()
 {
     level._ID12317 = 0;
     _ID42229::_ID7868();
-    _unknown_0E00( "none" );
+    _ID32685( "none" );
 }
 
 _ID11084( var_0 )
 {
-    if ( !_unknown_0E09( "none" ) )
+    if ( !_ID23467( "none" ) )
         return;
 
     if ( level._ID9230 )
@@ -656,7 +649,7 @@ _ID11084( var_0 )
     _ID42229::_ID32325( "Name: " + var_0._ID40005["fxid"] );
     _ID42229::_ID32325( "Type: " + var_0._ID40005["type"] );
 
-    if ( _unknown_0F38() )
+    if ( _ID13073() )
     {
         var_1 = 0;
         var_2 = 0;
@@ -666,7 +659,7 @@ _ID11084( var_0 )
         {
             var_5 = level._ID1400._ID25935[var_4];
 
-            if ( !_func_02F( var_0._ID40005[var_5["name"]] ) )
+            if ( !isdefined( var_0._ID40005[var_5["name"]] ) )
                 continue;
 
             var_1++;
@@ -702,7 +695,7 @@ _ID11084( var_0 )
         {
             var_5 = level._ID1400._ID25935[var_4];
 
-            if ( !_func_02F( var_0._ID40005[var_5["name"]] ) )
+            if ( !isdefined( var_0._ID40005[var_5["name"]] ) )
                 continue;
 
             var_1++;
@@ -716,10 +709,10 @@ _ID11084( var_0 )
 
 _ID11081()
 {
-    var_0 = _unknown_133F();
+    var_0 = _ID15798();
 
-    if ( _func_02F( var_0 ) )
-        _unknown_11E1( var_0 );
+    if ( isdefined( var_0 ) )
+        _ID11084( var_0 );
 }
 
 _ID11702( var_0 )
@@ -730,7 +723,7 @@ _ID11702( var_0 )
     var_3 = _ID42229::_ID15083();
     level._ID12316 = var_3.size;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = "Pick an effect";
 
     _ID42229::_ID32325( var_0 + " [" + level._ID12317 + " - " + var_3.size + "]:" );
@@ -783,13 +776,13 @@ _ID11705( var_0 )
     var_1 = 0;
     var_2 = level._ID9231;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = "Help";
 
     if ( var_2.size > level._ID18491 )
     {
-        var_3 = _func_0E8( var_2.size / level._ID18491 );
-        var_4 = _func_0E7( level._ID18490 / level._ID18491 ) + 1;
+        var_3 = ceil( var_2.size / level._ID18491 );
+        var_4 = floor( level._ID18490 / level._ID18491 ) + 1;
         _ID42229::_ID32325( "[" + var_0 + " (page " + var_4 + " of " + var_3 + ")]" );
     }
     else
@@ -833,22 +826,22 @@ _ID10078()
     if ( level._ID18490 < 0 )
     {
         var_0 = level._ID9231;
-        var_1 = _func_0E8( var_0.size / level._ID18491 );
-        level._ID18490 = _func_0C1( var_1 - 1 * level._ID18491 );
+        var_1 = ceil( var_0.size / level._ID18491 );
+        level._ID18490 = int( ( var_1 - 1 ) * level._ID18491 );
     }
 }
 
 _ID18492()
 {
-    if ( _unknown_117F() )
+    if ( _ID24763() )
     {
-        _unknown_1471();
-        _unknown_143C();
+        _ID19513();
+        _ID11705();
     }
-    else if ( _unknown_1190() )
+    else if ( _ID28507() )
     {
-        _unknown_1486();
-        _unknown_144A();
+        _ID10078();
+        _ID11705();
     }
 }
 
@@ -881,21 +874,17 @@ _ID31837()
             break;
     }
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
     var_5 = [];
-    var_6 = level._ID9242;
 
-    for ( var_3 = _func_1DA( var_6 ); _func_02F( var_3 ); var_3 = _func_1BF( var_6, var_3 ) )
+    foreach ( var_3, var_7 in level._ID9242 )
     {
-        var_7 = var_6[var_3];
-
-        if ( _func_125( var_7._ID40005["fxid"], var_1 ) )
+        if ( issubstr( var_7._ID40005["fxid"], var_1 ) )
             var_5[var_5.size] = var_3;
     }
 
-    var_clear_1
     _ID42229::_ID10421();
     _ID42229::_ID31841( var_5 );
     level._ID1400._ID31837 = 1;

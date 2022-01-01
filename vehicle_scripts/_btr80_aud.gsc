@@ -3,23 +3,23 @@
 
 snd_init_btr80()
 {
-    _ID42471::_ID4518( "about_to_stop", ::_unknown_013B );
-    _ID42475::_ID34575( "snd_register_vehicle", "btr80", ::_unknown_003D );
+    _ID42471::_ID4518( "about_to_stop", ::btr80_input_callback_about_to_stop );
+    _ID42475::_ID34575( "snd_register_vehicle", "btr80", ::snd_btr80_constructor );
 }
 
 snd_start_btr80()
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         wait 1;
-        _unknown_004E();
+        snd_stop_btr80();
     }
 
-    thread _unknown_0043();
-    var_0 = _func_1A5();
+    thread _ID34578();
+    var_0 = spawnstruct();
     var_0._ID28452 = "btr80";
     _ID42475::_ID34575( "snd_start_vehicle", var_0 );
-    thread _unknown_01BD();
+    thread snd_handle_treads();
 }
 
 _ID34578()
@@ -32,7 +32,7 @@ _ID34578()
     {
         wait(var_0 - 1.0);
 
-        if ( !_func_02F( self ) )
+        if ( !isdefined( self ) )
             return;
     }
 
@@ -41,7 +41,7 @@ _ID34578()
 
 snd_stop_btr80()
 {
-    if ( _func_02F( self._ID34561 ) )
+    if ( isdefined( self._ID34561 ) )
     {
         _ID42475::_ID34575( "snd_stop_vehicle" );
         self notify( "snd_stop_vehicle" );
@@ -72,17 +72,17 @@ snd_btr80_constructor()
     _ID42471::_ID4509();
     _ID42471::_ID4508();
     _ID42471::_ID4488();
-    _ID42471::_ID4489( "to_state_idle_initial", ::_unknown_0283 );
+    _ID42471::_ID4489( "to_state_idle_initial", ::btr80_condition_callback_to_idle_initial );
     _ID42471::_ID4483( [ "btr80_idle", "btr80_engine_sustain" ] );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_idle_from_rampdown", ::_unknown_02AC, [ "about_to_stop", "speed_mph" ] );
+    _ID42471::_ID4489( "to_state_idle_from_rampdown", ::btr80_condition_callback_to_idle_from_rampdown, [ "about_to_stop", "speed_mph" ] );
     _ID42471::_ID4483( [ "btr80_idle", "btr80_engine_sustain" ] );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_rampup", ::_unknown_02DD, [ "about_to_stop", "speed_mph" ] );
+    _ID42471::_ID4489( "to_state_rampup", ::btr80_condition_callback_to_rampup, [ "about_to_stop", "speed_mph" ] );
     _ID42471::_ID4483( [ "btr80_idle", "btr80_engine_sustain" ] );
     _ID42471::_ID4485( [ "btr80_rampup" ] );
     _ID42471::_ID4505();
-    _ID42471::_ID4489( "to_state_rampdown", ::_unknown_0326, [ "about_to_stop", "speed_mph" ] );
+    _ID42471::_ID4489( "to_state_rampdown", ::btr80_condition_callback_to_rampdown, [ "about_to_stop", "speed_mph" ] );
     _ID42471::_ID4483( [ "btr80_idle", "btr80_engine_sustain" ] );
     _ID42471::_ID4485( [ "btr80_rampdown" ] );
     _ID42471::_ID4505();
@@ -115,7 +115,7 @@ snd_btr80_constructor()
 btr80_input_callback_about_to_stop()
 {
     var_0 = _ID42471::_ID4557();
-    return _func_02F( var_0._ID1732 );
+    return isdefined( var_0._ID1732 );
 }
 
 btr80_condition_callback_to_idle_initial( var_0, var_1 )
@@ -142,7 +142,7 @@ btr80_condition_callback_to_rampup( var_0, var_1 )
     var_4 = var_0["speed_mph"];
     var_5 = _ID42471::_ID4557();
 
-    if ( _func_02F( var_1._ID28488 ) && var_4 > 1.0 && var_4 - var_1._ID28488 > 0.15 && var_3 <= 0.5 )
+    if ( isdefined( var_1._ID28488 ) && var_4 > 1.0 && var_4 - var_1._ID28488 > 0.15 && var_3 <= 0.5 )
         var_2 = 1;
 
     var_1._ID28488 = var_4;
@@ -156,7 +156,7 @@ btr80_condition_callback_to_rampdown( var_0, var_1 )
     var_4 = var_0["speed_mph"];
     var_5 = _ID42471::_ID4557();
 
-    if ( _func_02F( var_1._ID28488 ) && var_4 > 1.0 && var_4 - var_1._ID28488 < -0.15 || var_3 > 0.5 )
+    if ( isdefined( var_1._ID28488 ) && var_4 > 1.0 && var_4 - var_1._ID28488 < -0.15 || var_3 > 0.5 )
         var_2 = 1;
 
     var_1._ID28488 = var_4;
@@ -168,15 +168,15 @@ snd_handle_treads()
     self endon( "death" );
     self endon( "snd_stop_vehicle" );
     var_0 = [ "TAG_WHEEL_FRONT_LEFT", "TAG_WHEEL_FRONT_RIGHT" ];
-    var_1 = _func_06A( "script_origin", ( 0, 0, 0 ) );
+    var_1 = spawn( "script_origin", ( 0, 0, 0 ) );
     var_2 = [ "TAG_WHEEL_BACK_LEFT", "TAG_WHEEL_BACK_RIGHT" ];
-    var_3 = _func_06A( "script_origin", self._ID740 );
-    _unknown_0654( var_1, var_0 );
-    _unknown_065A( var_3, var_2 );
-    var_1 _meth_807C( "btr80_technical_treads" );
-    var_3 _meth_807C( "btr80_technical_treads" );
-    thread _unknown_065E( var_1, var_3 );
-    thread _unknown_0693( var_1, var_3 );
+    var_3 = spawn( "script_origin", self._ID740 );
+    link_ent_between_wheels( var_1, var_0 );
+    link_ent_between_wheels( var_3, var_2 );
+    var_1 playloopsound( "btr80_technical_treads" );
+    var_3 playloopsound( "btr80_technical_treads" );
+    thread monitor_treads_volume_and_pitch( var_1, var_3 );
+    thread stop_treads_on_death( var_1, var_3 );
 }
 
 monitor_treads_volume_and_pitch( var_0, var_1 )
@@ -187,10 +187,10 @@ monitor_treads_volume_and_pitch( var_0, var_1 )
 
     for (;;)
     {
-        var_2 = self _meth_8290();
-        var_3 = _func_0EE( var_2 / 10, 0, 1 );
-        var_0 _meth_8076( var_3 );
-        var_1 _meth_8076( var_3 );
+        var_2 = self vehicle_getspeed();
+        var_3 = clamp( var_2 / 10, 0, 1 );
+        var_0 setvolume( var_3 );
+        var_1 setvolume( var_3 );
         wait 0.15;
     }
 }
@@ -199,30 +199,24 @@ link_ent_between_wheels( var_0, var_1 )
 {
     var_2 = var_1[0];
     var_3 = ( 0, 0, 0 );
-    var_4 = var_1;
 
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
-    {
-        var_5 = var_4[var_6];
-        var_3 += self _meth_818C( var_5 );
-    }
+    foreach ( var_5 in var_1 )
+        var_3 += self gettagorigin( var_5 );
 
-    var_clear_2
-    var_clear_0
     var_3 /= var_1.size;
     var_3 = _ID42407::_ID41812( var_3 );
-    var_7 = self _meth_818C( var_2 );
+    var_7 = self gettagorigin( var_2 );
     var_7 = _ID42407::_ID41812( var_7 );
     var_7 = var_3 - var_7;
-    var_0 _meth_8053( self, var_2, var_7, ( 0, 0, 0 ) );
+    var_0 linkto( self, var_2, var_7, ( 0, 0, 0 ) );
 }
 
 stop_treads_on_death( var_0, var_1 )
 {
     _ID42237::_ID41098( "death", "snd_stop_vehicle" );
-    var_0 _meth_80B2();
-    var_1 _meth_80B2();
+    var_0 stopsounds();
+    var_1 stopsounds();
     wait 0.05;
-    var_0 _meth_80B7();
-    var_1 _meth_80B7();
+    var_0 delete();
+    var_1 delete();
 }

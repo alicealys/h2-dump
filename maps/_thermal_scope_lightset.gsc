@@ -4,7 +4,7 @@
 _ID521( var_0 )
 {
     level.thermal_scope_lightset = var_0;
-    thread _unknown_000A();
+    thread update_lightset();
 }
 
 update_lightset()
@@ -15,11 +15,11 @@ update_lightset()
     for (;;)
     {
         var_2 = "";
-        var_3 = level._ID794 _meth_834B();
+        var_3 = level._ID794 playerads();
 
-        if ( _func_02F( level.thermal_scope_lightset ) && !level._ID794 _ID42237::_ID20747() && var_3 > 0.6 && var_3 > var_1 || var_3 == 1 )
+        if ( isdefined( level.thermal_scope_lightset ) && !level._ID794 _ID42237::_ID20747() && ( var_3 > 0.6 && var_3 > var_1 || var_3 == 1 ) )
         {
-            var_4 = level._ID794 _meth_831C();
+            var_4 = level._ID794 getcurrentweapon();
 
             if ( _ID42323::_ID41653( var_4 ) )
                 var_2 = level.thermal_scope_lightset;
@@ -28,9 +28,9 @@ update_lightset()
         if ( var_2 != var_0 )
         {
             if ( var_2 != "" )
-                level._ID794 _meth_83CE( var_2, 1.0 );
+                level._ID794 lightset2( var_2, 1.0 );
             else
-                level._ID794 _meth_83CF( 0.5 );
+                level._ID794 lightset3( 0.5 );
 
             var_0 = var_2;
         }

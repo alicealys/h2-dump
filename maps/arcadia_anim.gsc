@@ -3,11 +3,11 @@
 
 _ID616()
 {
-    _unknown_0009();
-    _unknown_00FC();
-    _unknown_0111();
-    _unknown_0140();
-    _unknown_01E4();
+    _ID15518();
+    _ID27230();
+    _ID40317();
+    _ID921();
+    _ID10730();
 }
 #using_animtree("generic_human");
 

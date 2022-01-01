@@ -4,7 +4,7 @@
 
 _ID616()
 {
-    var_0 = self _meth_81A0();
+    var_0 = self getturret();
     self._ID10423 = "stand";
     animscripts\utility::_ID39672();
     self._ID28561 = %latveegunner_aim;
@@ -33,14 +33,14 @@ _ID616()
     var_1["latvee_turret_flinchB"] = %latvee_turret_flinchb;
     var_1["latvee_turret_rechamber"] = %latvee_turret_rechamber;
     self._ID39363 = var_1;
-    var_0 _unknown_016D();
+    var_0 _ID33507();
     thread animscripts\laatpv_turret\minigun_code::_ID616( var_0 );
 }
 #using_animtree("vehicles");
 
 _ID33507()
 {
-    self _meth_811E( #animtree );
+    self useanimtree( #animtree );
     self._ID26298 = %latvee_passenger_2_turret_minigun;
     self._ID39335 = %latvee_turret_2_passenger_minigun;
 }

@@ -15,10 +15,10 @@ _ID616()
     self._ID949 = "dog_bite";
     self._ID34144 = "";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     self._ID1302 = "dog_bite";
@@ -27,13 +27,13 @@ _ID616()
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
 {
     _ID46187::_ID814();
-    _func_14E( "dog_bite" );
-    _func_14E( "dog_bite" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "dog_bite" );
+    precacheitem( "dog_bite" );
+    precacheitem( "fraggrenade" );
 }

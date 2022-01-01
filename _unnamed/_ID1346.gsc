@@ -3,8 +3,8 @@
 
 _ID183( var_0 )
 {
-    if ( _func_02F( level._ID16949 ) )
+    if ( isdefined( level._ID16949 ) )
         [[ level._ID16949 ]]( var_0 );
     else
-        _func_19F( "no level handler for: " + var_0 );
+        iprintlnbold( "no level handler for: " + var_0 );
 }

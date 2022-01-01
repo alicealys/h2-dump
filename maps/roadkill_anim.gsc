@@ -4,13 +4,13 @@
 
 _ID616()
 {
-    _unknown_0709();
-    _unknown_07E1();
-    _unknown_06C0();
-    _unknown_0674();
-    _unknown_0C33();
-    thread _unknown_0D54();
-    _unknown_0D5F();
+    _ID44455();
+    _ID47619();
+    _ID47173();
+    _ID51346();
+    _ID47863();
+    thread roadkill_init_animsounds();
+    turret_animations();
     _ID52007::_ID51189();
     level._ID30895["shepherd"]["player_shep_intro"] = %h2_roadkill_intro_pickup_shepherd;
     _ID42259::_ID2062( "shepherd", "dialog", "player_shep_intro", "roadkill_shp_ontheline" );
@@ -24,14 +24,14 @@ _ID616()
     _ID42259::_ID2063( "foley", "slam", "slam_hood" );
     level._ID30895["shepherd"]["roadkill_cover_active_leader"] = %roadkill_cover_active_leader;
     level._ID30895["shepherd"]["shepherd_cover"][0] = %roadkill_cover_active_leader_idle;
-    _ID42259::_ID2058( "shepherd", "lookat on", ::_unknown_06DD );
-    _ID42259::_ID2058( "shepherd", "lookat off", ::_unknown_06ED );
+    _ID42259::_ID2058( "shepherd", "lookat on", ::_ID49785 );
+    _ID42259::_ID2058( "shepherd", "lookat off", ::_ID45260 );
     _ID42259::_ID2062( "shepherd", "dialog", "roadkill_cover_active_leader", "roadkill_shp_ontheline" );
     level._ID30895["shepherd"]["roadkill_riverbank_intro"] = %roadkill_opening_shepherd;
     level._ID30895["shepherd"]["intro_idle"][0] = %roadkill_opening_shepherd_idle;
     _ID42259::_ID2062( "shepherd", "roadkill_shp_dontcare_ps", "roadkill_riverbank_intro", "roadkill_shp_dontcare" );
 
-    if ( _func_03A( "use_old_foley_intro" ) )
+    if ( getdvarint( "use_old_foley_intro" ) )
     {
         level._ID30895["foley"]["roadkill_riverbank_intro"] = %roadkill_opening_foley;
         level._ID30895["foley"]["intro_idle"][0] = %roadkill_opening_foley_idle;
@@ -39,7 +39,7 @@ _ID616()
     else
         level._ID30895["foley"]["roadkill_riverbank_intro"] = %h2_roadkill_opening_foley;
 
-    _ID42259::_ID2058( "foley", "m203", ::_unknown_0811, "roadkill_riverbank_intro" );
+    _ID42259::_ID2058( "foley", "m203", ::_ID50180, "roadkill_riverbank_intro" );
     level._ID30895["shepherd"]["walk"] = %roadkill_opening_shepherd_walk;
     level._ID30895["shepherd"]["ending"] = %h2_roadkill_ending_pt1_shepherd;
     level._ID30895["shepherd"]["ending_idle"][0] = %h2_roadkill_ending_shepherd_idle;
@@ -65,7 +65,7 @@ _ID616()
     level._ID30895["generic"]["stair_ranger_idle_loop"] = %h2_roadkill_onerangernearstairs_ranger_idle;
     level._ID30895["generic"]["stair_ranger_idle_to_wave"] = %h2_roadkill_onerangernearstairs_ranger_idleout;
     level._ID30895["generic"]["stair_wave"][0] = %h2_roadkill_onerangernearstairs_ranger_waves;
-    _ID42259::_ID2058( "generic", "moveup_vo", ::_unknown_10FF, "stair_wave" );
+    _ID42259::_ID2058( "generic", "moveup_vo", ::stairs_ranger_moveup_vo, "stair_wave" );
     level._ID30895["generic"]["end_ranger_pointing1"] = %h2_roadkill_endingranger_pointing_ranger01;
     level._ID30895["generic"]["end_ranger_pointing2"] = %h2_roadkill_endingranger_pointing_ranger02;
     level._ID30895["generic"]["end_ranger_idle1"][0] = %h2_roadkill_endingranger_idle_ranger01;
@@ -86,8 +86,8 @@ _ID616()
     level._ID30895["soldier"]["out"] = %h2_roadkill_cover_soldier_out;
     level._ID30895["spotter"]["binoc_scene"] = %h2_roadkill_cover_spotter_shooting;
     level._ID30895["soldier"]["binoc_scene"] = %h2_roadkill_cover_soldier_shooting;
-    _ID42259::_ID2058( "spotter", "detach binoc", ::_unknown_0B24, "binoc_scene" );
-    _ID42259::_ID2058( "spotter", "attach binoc", ::_unknown_0B3F, "binoc_scene" );
+    _ID42259::_ID2058( "spotter", "detach binoc", ::_ID51735, "binoc_scene" );
+    _ID42259::_ID2058( "spotter", "attach binoc", ::_ID45515, "binoc_scene" );
     level._ID30895["cover_attack1"]["idle"][0] = %h2_roadkill_behindrock_ranger01_idle;
     level._ID30895["cover_attack2"]["idle"][0] = %h2_roadkill_behindrock_ranger02_idle;
     level._ID30895["cover_attack3"]["idle"][0] = %h2_roadkill_behindrock_ranger01_idle;
@@ -95,7 +95,7 @@ _ID616()
     level._ID30895["cover_attack2"]["out"] = %h2_roadkill_behindrock_ranger02_out;
     level._ID30895["cover_attack3"]["out"] = %h2_roadkill_behindrock_ranger01_out;
 
-    if ( _func_03A( "use_old_radio_scene" ) )
+    if ( getdvarint( "use_old_radio_scene" ) )
     {
         level._ID30895["cover_radio1"]["idle"][0] = %roadkill_cover_radio_soldier1;
         level._ID30895["cover_radio2"]["idle"][0] = %roadkill_cover_radio_soldier2;
@@ -164,7 +164,7 @@ _ID616()
     level._ID30895["generic"]["exposed_reload"] = %exposed_reloadb;
     level._ID30895["generic"]["cqb_wave"] = %cqb_stand_signal_move_out;
 
-    if ( _func_03A( "use_old_stairblock_anims" ) )
+    if ( getdvarint( "use_old_stairblock_anims" ) )
     {
         level._ID30895["sit_1"]["sit_around"][0] = %sitting_guard_loadak_idle;
         level._ID30895["sit_2"]["sit_around"][0] = %civilian_texting_sitting;
@@ -208,7 +208,7 @@ _ID616()
     level._ID30895["generic"]["idle_patrol2_out"] = %h2_roadkill_rangersblockingroad_soldier02_react;
     level._ID30895["generic"]["idle_patrol3_out"] = %h2_roadkill_rangersblockingroad_soldier03_react;
 
-    if ( _func_03A( "use_old_getinlaatpv_anims" ) )
+    if ( getdvarint( "use_old_getinlaatpv_anims" ) )
         level._ID30895["generic"]["help_player_getin"] = %roadkill_laatpv_soldier_getin;
     else
         level._ID30895["generic"]["help_player_getin"] = %h2_roadkill_laatpv_soldier_opendoor;
@@ -281,19 +281,19 @@ _ID45260( var_0 )
 
 _ID51735( var_0 )
 {
-    if ( !_func_02F( var_0._ID53451 ) )
+    if ( !isdefined( var_0._ID53451 ) )
         return;
 
-    var_0 _meth_802A( "weapon_binocular", "tag_inhand" );
+    var_0 detach( "weapon_binocular", "tag_inhand" );
     var_0._ID53451 = undefined;
 }
 
 _ID45515( var_0 )
 {
-    if ( _func_02F( var_0._ID53451 ) )
+    if ( isdefined( var_0._ID53451 ) )
         return;
 
-    var_0 _meth_801D( "weapon_binocular", "tag_inhand" );
+    var_0 attach( "weapon_binocular", "tag_inhand" );
     var_0._ID53451 = 1;
 }
 
@@ -307,7 +307,7 @@ _ID54256( var_0 )
 _ID54054( var_0 )
 {
     var_0._ID50547 = 1;
-    var_0 _unknown_17DB();
+    var_0 _ID46664();
 }
 
 _ID46664()
@@ -321,14 +321,14 @@ _ID46664()
     for (;;)
     {
         var_4 = _ID42407::_ID16120( "ending" );
-        var_5 = _func_11E( self._ID65 );
-        var_6 = _func_119( level._ID794._ID740 - self._ID740 );
-        var_7 = _func_11F( self._ID65 );
-        var_5 = _func_11E( self._ID65 );
-        var_8 = _func_0FB( var_7, var_6 );
-        var_9 = _func_0FB( var_5, var_6 );
-        var_10 = _func_0BF( var_8 );
-        var_10 = _func_0C3( var_10 );
+        var_5 = anglestoright( self._ID65 );
+        var_6 = vectornormalize( level._ID794._ID740 - self._ID740 );
+        var_7 = anglestoforward( self._ID65 );
+        var_5 = anglestoright( self._ID65 );
+        var_8 = vectordot( var_7, var_6 );
+        var_9 = vectordot( var_5, var_6 );
+        var_10 = acos( var_8 );
+        var_10 = abs( var_10 );
         var_11 = 0;
 
         if ( var_9 > 0 )
@@ -337,8 +337,8 @@ _ID46664()
                 var_10 = var_3;
 
             var_11 = var_10 / var_3;
-            self _meth_8155( var_1, 0, 0.2, 1 );
-            self _meth_8155( var_2, 1, 0.2, 1 );
+            self setanim( var_1, 0, 0.2, 1 );
+            self setanim( var_2, 1, 0.2, 1 );
         }
         else
         {
@@ -348,19 +348,19 @@ _ID46664()
                 var_10 = var_3;
 
             var_11 = var_10 / var_3;
-            self _meth_8155( var_1, 1, 0.2, 1 );
-            self _meth_8155( var_2, 0, 0.2, 1 );
+            self setanim( var_1, 1, 0.2, 1 );
+            self setanim( var_2, 0, 0.2, 1 );
         }
 
-        if ( _func_02F( self._ID50547 ) )
+        if ( isdefined( self._ID50547 ) )
         {
-            if ( _func_0C3( var_11 ) >= 1 )
-                self _meth_820F( level._ID794 );
+            if ( abs( var_11 ) >= 1 )
+                self setlookatentity( level._ID794 );
             else
-                self _meth_820F();
+                self setlookatentity();
         }
 
-        self _meth_8155( var_0, var_11, 0.2, 1 );
+        self setanim( var_0, var_11, 0.2, 1 );
         wait 0.05;
     }
 }
@@ -369,20 +369,20 @@ _ID47743( var_0 )
 {
     wait 2.9;
     var_0._ID50547 = undefined;
-    var_0 _meth_820F();
+    var_0 setlookatentity();
     var_0 notify( "point_end" );
     var_1 = var_0 _ID42407::_ID16120( "ending_additive_controller" );
-    var_0 _meth_814C( var_1, 0.2 );
+    var_0 clearanim( var_1, 0.2 );
 }
 
 _ID50180( var_0 )
 {
     var_1 = _ID42237::_ID16299( "m203" );
-    var_2 = var_0 _meth_818C( "tag_flash" );
-    var_3 = var_0 _meth_818D( "tag_flash" );
-    _func_157( var_1, var_0, "tag_flash" );
+    var_2 = var_0 gettagorigin( "tag_flash" );
+    var_3 = var_0 gettagangles( "tag_flash" );
+    playfxontag( var_1, var_0, "tag_flash" );
     var_4 = ( -1734, -1205, 740 );
-    _func_1C8( "m203_m16", var_2, var_4 );
+    magicbullet( "m203_m16", var_2, var_4 );
 }
 #using_animtree("script_model");
 
@@ -408,7 +408,7 @@ _ID51346()
 
 _ID47173()
 {
-    if ( _func_03A( "use_old_getinlaatpv_anims" ) )
+    if ( getdvarint( "use_old_getinlaatpv_anims" ) )
         level._ID30895["player_rig"]["player_getin"] = %roadkill_laatpv_player_getin;
     else
         level._ID30895["player_rig"]["player_getin"] = %h2_roadkill_laatpv_player_getin;
@@ -427,10 +427,10 @@ _ID47173()
 
 h2_intro_clear_cam_movement( var_0 )
 {
-    var_1 = var_0 _meth_818C( "tag_player" );
-    var_2 = var_0 _meth_818D( "tag_player" );
+    var_1 = var_0 gettagorigin( "tag_player" );
+    var_2 = var_0 gettagangles( "tag_player" );
     level._ID794 _ID42407::_ID22166( var_1, var_2, 0.2, 1, 0, 0, 0, 0, 0 );
-    level._ID794 _meth_8084( var_0, "tag_player", 0.2, 1, 0, 0, 0, 0, 1 );
+    level._ID794 playerlinktodelta( var_0, "tag_player", 0.2, 1, 0, 0, 0, 0, 1 );
 }
 #using_animtree("vehicles");
 
@@ -448,18 +448,18 @@ _ID44455()
     level._ID30900["player_latvee"] = #animtree;
     level._ID30895["player_latvee"]["roadkill_intro_orders"] = %roadkill_orders_laatpv;
 
-    if ( _func_03A( "use_old_getinlaatpv_anims" ) )
+    if ( getdvarint( "use_old_getinlaatpv_anims" ) )
         level._ID30895["player_latvee"]["roadkill_player_door_open"] = %roadkill_laatpv_door_soldier;
     else
         level._ID30895["player_latvee"]["roadkill_player_door_open"] = %h2_roadkill_laatpv_soldier_opendoor_door;
 
     level._ID30895["player_latvee"]["technical_pushed"] = %h2_roadkill_pushed_truck_latvee;
     _ID42259::_ID2058( "player_latvee", "start_latvee_reverse", maps\roadkill_aud::player_laatpv_flee_area_04, "technical_pushed" );
-    _ID42259::_ID2058( "player_latvee", "h2_impact_1", ::_unknown_1DE5, "technical_pushed", 1 );
-    _ID42259::_ID2058( "player_latvee", "h2_impact_2", ::_unknown_1DF9, "technical_pushed", 2 );
-    _ID42259::_ID2058( "player_latvee", "h2_impact_3", ::_unknown_1E0D, "technical_pushed", 3 );
+    _ID42259::_ID2058( "player_latvee", "h2_impact_1", ::impact_camera_shake, "technical_pushed", 1 );
+    _ID42259::_ID2058( "player_latvee", "h2_impact_2", ::impact_camera_shake, "technical_pushed", 2 );
+    _ID42259::_ID2058( "player_latvee", "h2_impact_3", ::impact_camera_shake, "technical_pushed", 3 );
 
-    if ( _func_03A( "use_old_getinlaatpv_anims" ) )
+    if ( getdvarint( "use_old_getinlaatpv_anims" ) )
         level._ID30895["turret"]["player_getin"] = %roadkill_laatpv_gun_getin;
     else
         level._ID30895["turret"]["player_getin"] = %h2_roadkill_laatpv_player_getin_minigun;
@@ -480,11 +480,11 @@ _ID44455()
 impact_camera_shake( var_0, var_1 )
 {
     if ( var_1 == 1 )
-        _func_192( 0.5, 1.5, level._ID794._ID740, 10000 );
+        earthquake( 0.5, 1.5, level._ID794._ID740, 10000 );
     else if ( var_1 == 2 )
-        _func_192( 0.4, 1.5, level._ID794._ID740, 10000 );
+        earthquake( 0.4, 1.5, level._ID794._ID740, 10000 );
     else
-        _func_192( 0.3, 1.2, level._ID794._ID740, 10000 );
+        earthquake( 0.3, 1.2, level._ID794._ID740, 10000 );
 }
 
 _ID54329( var_0 )
@@ -755,7 +755,7 @@ _ID50120()
 {
     var_0 = _ID49744::_ID32550();
 
-    if ( _func_03A( "use_old_getinlaatpv_anims" ) )
+    if ( getdvarint( "use_old_getinlaatpv_anims" ) )
         return var_0;
 
     var_0[1]._ID16341 = %h2_roadkill_laatpv_dunn_getin;
@@ -777,7 +777,7 @@ _ID49234( var_0 )
 {
     var_0 = _ID49744::_ID32509( var_0 );
 
-    if ( _func_03A( "use_old_getinlaatpv_anims" ) )
+    if ( getdvarint( "use_old_getinlaatpv_anims" ) )
         return var_0;
 
     var_0[1]._ID40147 = %h2_roadkill_laatpv_dunn_getin_door;

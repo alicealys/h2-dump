@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "suburban_minigun", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_0052 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_suburban_minigun_viewmodel", "vehicle_suburban_technical_destroyed" );
     _ID42411::_ID6216( "vehicle_suburban_technical", "vehicle_suburban_technical_destroyed" );
     _ID42411::_ID6213( "fx/fire/firelp_med_pm", "TAG_CAB_FIRE", "fire_metal_medium", undefined, undefined, 1, 0 );
@@ -14,8 +14,8 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 3000, 500, 3000 );
     _ID42411::_ID6253( "allies" );
-    _ID42411::_ID6204( ::_unknown_00E4, ::_unknown_00C0 );
-    _ID42411::_ID6262( ::_unknown_0173 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6261( "suburban_minigun", "tag_turret", "weapon_suburban_minigun", undefined, "sentry", 0.2 );
     _ID42411::_ID6207( 1 );
     _ID42411::_ID6245( ( 0, 0, 32 ), 300, 200, 0, 0 );
@@ -45,7 +45,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 7; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";

@@ -4,12 +4,12 @@
 _ID616()
 {
     self._ID3155 = [];
-    self._ID3155["hiding"]["stand"] = ::_unknown_002C;
-    self._ID3155["hiding"]["crouch"] = ::_unknown_003B;
+    self._ID3155["hiding"]["stand"] = ::_ID32551;
+    self._ID3155["hiding"]["crouch"] = ::_ID32551;
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "cover_swim_left" );
 
-    if ( !_func_02F( self._ID3263 ) || self._ID3263 != "cover_corner_l" )
+    if ( !isdefined( self._ID3263 ) || self._ID3263 != "cover_corner_l" )
         self._ID3263 = "cover_corner_l";
 
     var_0 = anim._ID3277["soldier"]["swim"]["arrival_cover_corner_l_angleDelta"][4][4];

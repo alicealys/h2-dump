@@ -6,7 +6,7 @@ _ID616()
 {
     level._ID30895["generic"]["coffee_idle"][0] = %cargoship_stunned_coffee_react_idle;
     level._ID30895["generic"]["coffee_react"] = %exposed_idle_twitch_v4;
-    _unknown_0038();
+    _ID31296();
 }
 #using_animtree("script_model");
 

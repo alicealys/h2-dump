@@ -3,15 +3,15 @@
 
 _ID616()
 {
-    _unknown_000E();
-    _unknown_001B();
-    _unknown_001F();
-    _unknown_0023();
-    _unknown_0029();
-    thread _unknown_002D();
-    _unknown_0034();
-    _unknown_0038();
-    _unknown_003C();
+    _ID8467();
+    _ID19806();
+    _ID19703();
+    _ID22056();
+    _ID22043();
+    thread _ID22042();
+    _ID9159();
+    _ID28366();
+    _ID29419();
 }
 
 _ID8467()
@@ -33,7 +33,7 @@ _ID19703()
 
 _ID22056()
 {
-    thread _unknown_0128();
+    thread _ID52479();
 }
 
 _ID22043()
@@ -58,26 +58,26 @@ _ID28366()
 
 _ID29419()
 {
-    _ID42475::_ID34640( "start_intro_checkpoint", ::_unknown_00BE );
-    _ID42475::_ID34640( "start_iss_checkpoint", ::_unknown_00D0 );
-    _ID42475::_ID34640( "start_emp_checkpoint", ::_unknown_00E2 );
-    _ID42475::_ID34640( "start_street_checkpoint", ::_unknown_00F4 );
-    _ID42475::_ID34640( "start_corner_checkpoint", ::_unknown_0105 );
-    _ID42475::_ID34640( "start_meetup_checkpoint", ::_unknown_0117 );
-    _ID42475::_ID34640( "start_lobby_checkpoint", ::_unknown_0129 );
-    _ID42475::_ID34640( "start_office_checkpoint", ::_unknown_0138 );
-    _ID42475::_ID34640( "start_parking_checkpoint", ::_unknown_0147 );
-    _ID42475::_ID34640( "start_plaza_checkpoint", ::_unknown_0156 );
-    _ID42475::_ID34640( "start_tunnels_checkpoint", ::_unknown_0165 );
-    _ID42475::_ID34640( "start_iss_ambience", ::_unknown_0174 );
-    _ID42475::_ID34640( "stop_iss_ambience", ::_unknown_0182 );
-    _ID42475::_ID34640( "start_exterior_ambience", ::_unknown_0194 );
-    _ID42475::_ID34640( "stop_heli_crash_black_screen", ::_unknown_01A5 );
-    _ID42475::_ID34640( "start_building_shellshock_filter", ::_unknown_01B6 );
-    _ID42475::_ID34640( "start_iss_fadeout_mix", ::_unknown_01D0 );
-    _ID42475::_ID34640( "start_jet_crash_mix", ::_unknown_01E2 );
-    _ID42475::_ID34640( "start_emp_mix", ::_unknown_01F5 );
-    _ID42475::_ID34640( "start_space_transition_in_mix", ::_unknown_0204 );
+    _ID42475::_ID34640( "start_intro_checkpoint", ::_ID52384 );
+    _ID42475::_ID34640( "start_iss_checkpoint", ::_ID50945 );
+    _ID42475::_ID34640( "start_emp_checkpoint", ::_ID47569 );
+    _ID42475::_ID34640( "start_street_checkpoint", ::_ID45162 );
+    _ID42475::_ID34640( "start_corner_checkpoint", ::_ID48024 );
+    _ID42475::_ID34640( "start_meetup_checkpoint", ::_ID43403 );
+    _ID42475::_ID34640( "start_lobby_checkpoint", ::_ID51487 );
+    _ID42475::_ID34640( "start_office_checkpoint", ::_ID47548 );
+    _ID42475::_ID34640( "start_parking_checkpoint", ::_ID48130 );
+    _ID42475::_ID34640( "start_plaza_checkpoint", ::_ID43766 );
+    _ID42475::_ID34640( "start_tunnels_checkpoint", ::_ID51154 );
+    _ID42475::_ID34640( "start_iss_ambience", ::_ID53337 );
+    _ID42475::_ID34640( "stop_iss_ambience", ::_ID46689 );
+    _ID42475::_ID34640( "start_exterior_ambience", ::_ID48883 );
+    _ID42475::_ID34640( "stop_heli_crash_black_screen", ::_ID51612 );
+    _ID42475::_ID34640( "start_building_shellshock_filter", ::start_building_shellshock_filter );
+    _ID42475::_ID34640( "start_iss_fadeout_mix", ::start_iss_fadeout_mix );
+    _ID42475::_ID34640( "start_jet_crash_mix", ::start_jet_crash_mix );
+    _ID42475::_ID34640( "start_emp_mix", ::start_emp_mix );
+    _ID42475::_ID34640( "start_space_transition_in_mix", ::start_space_transition_in_mix );
 }
 
 _ID41961( var_0, var_1 )
@@ -171,15 +171,15 @@ _ID48883()
 _ID51612()
 {
     _ID42465::_ID23801( "heli_crash_black_screen_mix" );
-    level._ID794 _meth_80A1( "scn_heli_intro_plr" );
+    level._ID794 playsound( "scn_heli_intro_plr" );
 }
 
 start_building_shellshock_filter()
 {
-    thread _unknown_0375();
+    thread start_shellshock_filter();
     _ID42465::_ID23801( "emp_sequence_mix" );
     _ID42465::_ID23797( "emp_building_shellshock_mix" );
-    level._ID794 _meth_80A1( "scn_dcemp_emp_building_shellshock" );
+    level._ID794 playsound( "scn_dcemp_emp_building_shellshock" );
     wait 2.5;
     _ID42465::_ID23801( "emp_building_shellshock_mix" );
 }
@@ -213,20 +213,20 @@ start_space_transition_in_mix()
 _ID51203()
 {
     wait 0.1;
-    self _meth_8295();
+    self vehicle_turnengineoff();
     self._ID31138 = 1;
 }
 
 _ID52479()
 {
     wait 1;
-    _ID42237::_ID3350( _func_1A2( "amb_emitters_window", "targetname" ), _ID42237::_ID27000, "amb_emt_windows", undefined, undefined, 5 );
-    _ID42237::_ID3350( _func_1A2( "amb_emitters_door", "targetname" ), _ID42237::_ID27000, "amb_emt_doors", undefined, undefined, 5 );
-    _ID42237::_ID3350( _func_1A2( "amb_emitters_wall", "targetname" ), _ID42237::_ID27000, "amb_emt_walls", undefined, undefined, 5 );
+    _ID42237::_ID3350( getentarray( "amb_emitters_window", "targetname" ), _ID42237::_ID27000, "amb_emt_windows", undefined, undefined, 5 );
+    _ID42237::_ID3350( getentarray( "amb_emitters_door", "targetname" ), _ID42237::_ID27000, "amb_emt_doors", undefined, undefined, 5 );
+    _ID42237::_ID3350( getentarray( "amb_emitters_wall", "targetname" ), _ID42237::_ID27000, "amb_emt_walls", undefined, undefined, 5 );
     _ID42237::_ID14413( "start_rain_ambience" );
-    _ID42237::_ID3350( _func_1A2( "amb_emitters_window", "targetname" ), ::_unknown_042F, "amb_emt_windows_rain", "amb_emt_windows" );
-    _ID42237::_ID3350( _func_1A2( "amb_emitters_door", "targetname" ), ::_unknown_0448, "amb_emt_doors_rain", "amb_emt_doors" );
-    _ID42237::_ID3350( _func_1A2( "amb_emitters_wall", "targetname" ), ::_unknown_0461, "amb_emt_walls_rain", "amb_emt_walls" );
+    _ID42237::_ID3350( getentarray( "amb_emitters_window", "targetname" ), ::amb_emitters_rain_transition, "amb_emt_windows_rain", "amb_emt_windows" );
+    _ID42237::_ID3350( getentarray( "amb_emitters_door", "targetname" ), ::amb_emitters_rain_transition, "amb_emt_doors_rain", "amb_emt_doors" );
+    _ID42237::_ID3350( getentarray( "amb_emitters_wall", "targetname" ), ::amb_emitters_rain_transition, "amb_emt_walls_rain", "amb_emt_walls" );
     level._ID794 thread _ID42237::_ID27000( "ambient_dcemp_heavy_rain", undefined, 10, undefined );
     _ID42465::_ID23801( "emt_rain_mix" );
     _ID42474::_ID4668( "exterior", "none", 10 );
@@ -264,41 +264,41 @@ start_shellshock_filter()
 
 crashsite_heli_rappel()
 {
-    var_0 = _func_1A1( "heli_crash_rappel_01", "script_noteworthy" );
-    var_1 = _func_1A1( "heli_crash_rappel_02", "script_noteworthy" );
-    var_0 _ID42407::_ID1947( ::_unknown_058A, "scn_dcemp_heli1_arrival", "scn_dcemp_heli1_idle", "scn_dcemp_heli1_leaving" );
-    var_1 _ID42407::_ID1947( ::_unknown_05A1, "scn_dcemp_heli2_arrival", "scn_dcemp_heli2_idle", "scn_dcemp_heli2_leaving", "heli_rappel_mix" );
+    var_0 = getent( "heli_crash_rappel_01", "script_noteworthy" );
+    var_1 = getent( "heli_crash_rappel_02", "script_noteworthy" );
+    var_0 _ID42407::_ID1947( ::crashsite_heli_rappel_snd, "scn_dcemp_heli1_arrival", "scn_dcemp_heli1_idle", "scn_dcemp_heli1_leaving" );
+    var_1 _ID42407::_ID1947( ::crashsite_heli_rappel_snd, "scn_dcemp_heli2_arrival", "scn_dcemp_heli2_idle", "scn_dcemp_heli2_leaving", "heli_rappel_mix" );
 }
 
 crashsite_heli_rappel_snd( var_0, var_1, var_2, var_3 )
 {
-    thread _unknown_0526();
-    self _meth_80A1( var_0 );
+    thread _ID51203();
+    self playsound( var_0 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
         _ID42465::_ID23797( var_3 );
 
     self waittill( "near_goal" );
     thread _ID42237::_ID27000( var_1, undefined, 1, 1 );
     self waittill( "unloaded" );
     _ID42237::_ID36516( var_1 );
-    self _meth_80A1( var_2 );
+    self playsound( var_2 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
         _ID42465::_ID23801( var_3 );
 }
 
 street_crash_heli_building()
 {
-    var_0 = _func_1A1( "street_crash_heli_building", "targetname" );
-    var_0 _meth_80A1( "scn_dcemp_building_heli_crash_anticipation" );
+    var_0 = getent( "street_crash_heli_building", "targetname" );
+    var_0 playsound( "scn_dcemp_building_heli_crash_anticipation" );
 }
 
 iss_emp_exp_interrupt()
 {
     _ID42465::_ID23797( "iss_emp_vo_interrupt_mix" );
-    level._ID794 _meth_80A1( "scn_iss_emp_explosion" );
-    level._ID794 _meth_80A1( "scn_dcemp_is_emp_comm_interrupt" );
+    level._ID794 playsound( "scn_iss_emp_explosion" );
+    level._ID794 playsound( "scn_dcemp_is_emp_comm_interrupt" );
     wait 8;
     _ID42465::_ID23801( "iss_emp_vo_interrupt_mix" );
 }

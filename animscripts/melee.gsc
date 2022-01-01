@@ -36,18 +36,18 @@ _ID19617()
 
 _ID23396()
 {
-    _func_14C( "weapon_parabolic_knife" );
-    level._ID1426["melee_knife_ai"] = _func_155( "vfx/weaponimpact/flesh_impact_knife" );
+    precachemodel( "weapon_parabolic_knife" );
+    level._ID1426["melee_knife_ai"] = loadfx( "vfx/weaponimpact/flesh_impact_knife" );
 }
 
 _ID23419()
 {
-    if ( !_func_02F( self._ID1644 ) )
+    if ( !isdefined( self._ID1644 ) )
         return 0;
 
-    if ( _func_02F( self._ID13019 ) && _func_02F( self._ID13019["_stealth_enabled"] ) && self._ID13019["_stealth_enabled"] )
+    if ( isdefined( self._ID13019 ) && isdefined( self._ID13019["_stealth_enabled"] ) && self._ID13019["_stealth_enabled"] )
     {
-        if ( _func_02F( self._ID13019["_stealth_attack"] ) && !self._ID13019["_stealth_attack"] )
+        if ( isdefined( self._ID13019["_stealth_attack"] ) && !self._ID13019["_stealth_attack"] )
             return 1;
     }
 
@@ -56,27 +56,27 @@ _ID23419()
 
 _ID23422()
 {
-    if ( !_func_02F( self._ID322 ) )
+    if ( !isdefined( self._ID322 ) )
         return 0;
 
-    if ( _func_02F( self._ID11579 ) )
+    if ( isdefined( self._ID11579 ) )
         return 0;
 
-    if ( _unknown_0225() )
+    if ( _ID23419() )
         return 0;
 
-    if ( !_unknown_0A5A( self._ID322 ) )
+    if ( !_ID23355( self._ID322 ) )
         return 0;
 
-    _unknown_0260();
+    _ID23406();
 
-    if ( !_unknown_026B() )
+    if ( !_ID23373() )
     {
-        _unknown_0A78( self._ID322 );
+        _ID23405( self._ID322 );
         return 0;
     }
 
-    self _meth_81A6( ::_unknown_03C4, ::_unknown_0A60 );
+    self animcustom( ::_ID23398, ::_ID23383 );
 }
 
 _ID23406()
@@ -88,29 +88,29 @@ _ID23406()
 
 _ID23373()
 {
-    if ( !_unknown_0337() )
+    if ( !_ID23397() )
         return 0;
 
     self._ID23353._ID19946 = 1;
 
-    if ( _unknown_0769() )
+    if ( _ID23357() )
     {
-        self._ID23353._ID15079 = ::_unknown_07D5;
+        self._ID23353._ID15079 = ::_ID23368;
         return 1;
     }
 
-    if ( _unknown_042E() )
+    if ( _ID23411() )
     {
-        if ( _func_02F( self._ID35380 ) )
+        if ( isdefined( self._ID35380 ) )
             self._ID23353._ID15079 = self._ID35380;
         else
-            self._ID23353._ID15079 = ::_unknown_046E;
+            self._ID23353._ID15079 = ::_ID23414;
 
         return 1;
     }
 
     self._ID23353._ID15079 = undefined;
-    self._ID24789 = _func_03D() + 150;
+    self._ID24789 = gettime() + 150;
     self._ID24788 = self._ID23353._ID1191;
     return 0;
 }
@@ -118,57 +118,57 @@ _ID23373()
 _ID23425()
 {
     var_0 = 1;
-    var_1 = _func_0F4( self._ID23353._ID36155, self._ID23353._ID1191._ID740 );
+    var_1 = distance2d( self._ID23353._ID36155, self._ID23353._ID1191._ID740 );
 
     if ( var_1 < 32 )
     {
-        var_2 = _func_119( ( self._ID23353._ID36155[0] - self._ID23353._ID1191._ID740[0], self._ID23353._ID36155[1] - self._ID23353._ID1191._ID740[1], 0 ) );
-        self._ID23353._ID36155 = self._ID23353._ID36155 + var_2 * 32 - var_1;
+        var_2 = vectornormalize( ( self._ID23353._ID36155[0] - self._ID23353._ID1191._ID740[0], self._ID23353._ID36155[1] - self._ID23353._ID1191._ID740[1], 0 ) );
+        self._ID23353._ID36155 = self._ID23353._ID36155 + var_2 * ( 32 - var_1 );
 
-        if ( _func_0F3( self._ID23353._ID36155, self._ID23353._ID1191._ID740 ) < 31.9 )
+        if ( distance( self._ID23353._ID36155, self._ID23353._ID1191._ID740 ) < 31.9 )
             return 0;
 
         var_0 = 0;
     }
 
-    var_3 = self _meth_8146( self._ID23353._ID36155 );
+    var_3 = self getdroptofloorposition( self._ID23353._ID36155 );
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         return 0;
 
-    if ( _func_0C3( self._ID23353._ID36155[2] - var_3[2] ) > 51.2 )
+    if ( abs( self._ID23353._ID36155[2] - var_3[2] ) > 51.2 )
         return 0;
 
-    if ( _func_0C3( self._ID740[2] - var_3[2] ) > 51.2 )
+    if ( abs( self._ID740[2] - var_3[2] ) > 51.2 )
         return 0;
 
     self._ID23353._ID36155 = var_3;
 
-    if ( !self _meth_81CF( self._ID23353._ID36155, 1, var_0 ) )
+    if ( !self maymovetopoint( self._ID23353._ID36155, 1, var_0 ) )
         return 0;
 
-    if ( _func_02F( self._ID23353._ID36166 ) )
+    if ( isdefined( self._ID23353._ID36166 ) )
     {
         var_4 = self._ID23353._ID36155 - self._ID23353._ID1191._ID740;
-        var_5 = _func_11F( self._ID23353._ID36166 );
-        var_6 = _func_0FB( var_5, var_4 );
+        var_5 = anglestoforward( self._ID23353._ID36166 );
+        var_6 = vectordot( var_5, var_4 );
         var_7 = self._ID23353._ID36155 - var_5 * var_6;
         var_8 = self._ID23353._ID1191._ID740 - var_7;
-        var_9 = _func_0F4( self._ID23353._ID1191._ID740, var_7 );
+        var_9 = distance2d( self._ID23353._ID1191._ID740, var_7 );
 
         if ( var_9 < 32 )
-            var_7 -= var_8 * 32 - var_9 / 32;
+            var_7 -= var_8 * ( 32 - var_9 ) / 32;
     }
     else
     {
-        var_2 = _func_119( ( self._ID23353._ID36155[0] - self._ID23353._ID1191._ID740[0], self._ID23353._ID36155[1] - self._ID23353._ID1191._ID740[1], 0 ) );
+        var_2 = vectornormalize( ( self._ID23353._ID36155[0] - self._ID23353._ID1191._ID740[0], self._ID23353._ID36155[1] - self._ID23353._ID1191._ID740[1], 0 ) );
         var_7 = self._ID23353._ID1191._ID740 + var_2 * 32;
     }
 
-    if ( !self _meth_81D0( self._ID23353._ID36155, var_7, 1, 0 ) )
+    if ( !self maymovefrompointtopoint( self._ID23353._ID36155, var_7, 1, 0 ) )
         return 0;
 
-    if ( !self _meth_81D0( var_7, self._ID23353._ID1191._ID740, 1, 1 ) )
+    if ( !self maymovefrompointtopoint( var_7, self._ID23353._ID1191._ID740, 1, 1 ) )
         return 0;
 
     return 1;
@@ -176,19 +176,19 @@ _ID23425()
 
 _ID23397()
 {
-    if ( !_func_02F( self._ID23353._ID1191 ) )
+    if ( !isdefined( self._ID23353._ID1191 ) )
         return 0;
 
     var_0 = self._ID23353._ID1191;
 
-    if ( _func_02F( var_0._ID11579 ) )
+    if ( isdefined( var_0._ID11579 ) )
         return 0;
 
-    var_1 = _func_0F5( self._ID740, var_0._ID740 );
+    var_1 = distancesquared( self._ID740, var_0._ID740 );
 
-    if ( _func_02F( self._ID23429 ) )
+    if ( isdefined( self._ID23429 ) )
         var_2 = self._ID23429;
-    else if ( _func_1B3( var_0 ) )
+    else if ( isplayernumber( var_0 ) )
         var_2 = 40000;
     else
         var_2 = 25600;
@@ -196,60 +196,60 @@ _ID23397()
     if ( !self._ID23353._ID19946 && var_1 > var_2 )
         return 0;
 
-    if ( !_func_1A7( self ) )
+    if ( !isalive( self ) )
         return 0;
 
-    if ( _func_02F( self._ID7._ID24902 ) && self._ID7._ID31561 >= _func_03D() + 50 )
+    if ( isdefined( self._ID7._ID24902 ) && self._ID7._ID31561 >= gettime() + 50 )
         return 0;
 
-    if ( _func_02F( self._ID24789 ) && _func_02F( self._ID24788 ) && _func_03D() < self._ID24789 && self._ID24788 == var_0 )
+    if ( isdefined( self._ID24789 ) && isdefined( self._ID24788 ) && gettime() < self._ID24789 && self._ID24788 == var_0 )
         return 0;
 
-    if ( _func_02F( self._ID7._ID25684 ) || self._ID7._ID28253 == "prone" )
+    if ( isdefined( self._ID7._ID25684 ) || self._ID7._ID28253 == "prone" )
         return 0;
 
     if ( animscripts\utility::_ID39997() )
         return 0;
 
-    if ( _func_02F( self._ID458 ) && self._ID426 == 1 )
+    if ( isdefined( self._ID458 ) && self._ID426 == 1 )
         return 0;
 
-    if ( !_func_1A7( var_0 ) )
+    if ( !isalive( var_0 ) )
         return 0;
 
-    if ( _func_02F( var_0._ID11566 ) || _func_02F( var_0._ID511 ) && var_0._ID511 )
+    if ( isdefined( var_0._ID11566 ) || isdefined( var_0._ID511 ) && var_0._ID511 )
         return 0;
 
-    if ( !_func_0D4( var_0 ) && !_func_1B3( var_0 ) )
+    if ( !isai( var_0 ) && !isplayernumber( var_0 ) )
         return 0;
 
-    if ( _func_0D4( var_0 ) )
+    if ( isai( var_0 ) )
     {
-        if ( var_0 _meth_81A7() )
+        if ( var_0 isinscriptedstate() )
             return 0;
 
         if ( var_0 _ID42407::_ID11498() || var_0._ID274 )
         {
-            if ( !_func_02F( self._ID36736 ) || self._ID36736 != "riotshield" )
+            if ( !isdefined( self._ID36736 ) || self._ID36736 != "riotshield" )
                 return 0;
         }
     }
 
-    if ( _func_1B3( var_0 ) )
-        var_3 = var_0 _meth_8188();
+    if ( isplayernumber( var_0 ) )
+        var_3 = var_0 getstance();
     else
         var_3 = var_0._ID7._ID28253;
 
     if ( var_3 != "stand" && var_3 != "crouch" )
     {
-        if ( !_func_02F( self._ID36736 ) || self._ID36736 != "riotshield" )
+        if ( !isdefined( self._ID36736 ) || self._ID36736 != "riotshield" )
             return 0;
     }
 
-    if ( _func_02F( self._ID22746 ) && _func_02F( var_0._ID22746 ) )
+    if ( isdefined( self._ID22746 ) && isdefined( var_0._ID22746 ) )
         return 0;
 
-    if ( _func_02F( var_0._ID458 ) )
+    if ( isdefined( var_0._ID458 ) )
         return 0;
 
     if ( self._ID23353._ID20038 )
@@ -257,9 +257,9 @@ _ID23397()
     else
         var_4 = 60;
 
-    var_5 = _func_0F0( self._ID65[1] - animscripts\utility::_ID16756( var_0._ID740 ) );
+    var_5 = angleclamp180( self._ID65[1] - animscripts\utility::_ID16756( var_0._ID740 ) );
 
-    if ( _func_0C3( var_5 ) > var_4 )
+    if ( abs( var_5 ) > var_4 )
         return 0;
 
     if ( var_1 <= 4096 )
@@ -268,7 +268,7 @@ _ID23397()
     if ( self._ID23353._ID20038 )
         return 0;
 
-    if ( _func_02F( self._ID24787 ) && _func_02F( self._ID24786 ) && _func_03D() < self._ID24787 && self._ID24786 == var_0 )
+    if ( isdefined( self._ID24787 ) && isdefined( self._ID24786 ) && gettime() < self._ID24787 && self._ID24786 == var_0 )
         return 0;
 
     return 1;
@@ -282,10 +282,10 @@ _ID23418()
 
 _ID23420()
 {
-    self _meth_814C( %body, 0.2 );
+    self clearanim( %body, 0.2 );
     self._ID23353._ID28091 = undefined;
     self._ID7._ID24414 = "stop";
-    self _meth_819B( "face default" );
+    self orientmode( "face default" );
 }
 
 _ID23398()
@@ -298,25 +298,25 @@ _ID23398()
         var_0 = self._ID23353._ID15079;
         [[ self._ID23353._ID15079 ]]();
 
-        if ( !_func_02F( self._ID23353._ID15079 ) || var_0 == self._ID23353._ID15079 )
+        if ( !isdefined( self._ID23353._ID15079 ) || var_0 == self._ID23353._ID15079 )
             break;
     }
 }
 
 _ID23412( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
-    self._ID24791 = _func_03D() + 2500;
+    self._ID24791 = gettime() + 2500;
     self._ID24790 = var_0;
 }
 
 _ID23410()
 {
-    var_0 = _func_0F5( self._ID23353._ID1191._ID740, self._ID740 );
+    var_0 = distancesquared( self._ID23353._ID1191._ID740, self._ID740 );
 
-    if ( var_0 > 4096 && _func_02F( self._ID24791 ) && _func_02F( self._ID24790 ) && _func_03D() < self._ID24791 && self._ID24790 == self._ID23353._ID1191 )
+    if ( var_0 > 4096 && isdefined( self._ID24791 ) && isdefined( self._ID24790 ) && gettime() < self._ID24791 && self._ID24790 == self._ID23353._ID1191 )
         return 0;
 
     return 1;
@@ -324,67 +324,67 @@ _ID23410()
 
 _ID23411()
 {
-    if ( _func_02F( self._ID23353._ID1191._ID22746 ) )
+    if ( isdefined( self._ID23353._ID1191._ID22746 ) )
         return 0;
 
-    if ( !_unknown_0867() )
+    if ( !_ID23410() )
         return 0;
 
-    if ( _func_02F( self._ID23353._ID1191._ID35381 ) )
+    if ( isdefined( self._ID23353._ID1191._ID35381 ) )
         return 0;
 
-    return _unknown_0915();
+    return _ID23417();
 }
 
 _ID23416()
 {
-    if ( _func_02F( self._ID23429 ) )
+    if ( isdefined( self._ID23429 ) )
         var_0 = self._ID23429;
-    else if ( _func_1B3( self._ID23353._ID1191 ) )
+    else if ( isplayernumber( self._ID23353._ID1191 ) )
         var_0 = 40000;
     else
         var_0 = 25600;
 
-    if ( _func_0F5( self._ID740, self._ID23353._ID1191._ID740 ) > var_0 )
-        self._ID23353._ID16914 = _func_03D() + 3000;
+    if ( distancesquared( self._ID740, self._ID23353._ID1191._ID740 ) > var_0 )
+        self._ID23353._ID16914 = gettime() + 3000;
     else
-        self._ID23353._ID16914 = _func_03D() + 1000;
+        self._ID23353._ID16914 = gettime() + 1000;
 }
 
 _ID23414()
 {
-    self _meth_819A( "zonly_physics" );
+    self animmode( "zonly_physics" );
 
-    if ( _func_02F( self._ID23353._ID1191 ) )
-        _unknown_0902();
+    if ( isdefined( self._ID23353._ID1191 ) )
+        _ID23416();
 
-    while ( _func_02F( self._ID23353._ID1191 ) )
+    while ( isdefined( self._ID23353._ID1191 ) )
     {
-        if ( !_unknown_099E() )
+        if ( !_ID23413() )
         {
-            self._ID24787 = _func_03D() + 1500;
+            self._ID24787 = gettime() + 1500;
             self._ID24786 = self._ID23353._ID1191;
             break;
         }
 
-        if ( !_func_02F( self._ID23353._ID1191 ) )
+        if ( !isdefined( self._ID23353._ID1191 ) )
             break;
 
         animscripts\battlechatter_ai::_ID13239();
-        self _meth_819B( "face point", self._ID23353._ID1191._ID740 );
+        self orientmode( "face point", self._ID23353._ID1191._ID740 );
         var_0 = animscripts\utility::_ID22630( "melee", "standard" );
-        self _meth_8119( "meleeanim", var_0, %body, 1, 0.2, 1 );
-        _unknown_0FF5( var_0 );
+        self setflaggedanimknoballrestart( "meleeanim", var_0, %body, 1, 0.2, 1 );
+        _ID23403( var_0 );
         self._ID23353._ID20038 = 1;
 
-        if ( !_unknown_09CA() )
+        if ( !_ID23415() )
         {
-            _unknown_095C( self._ID23353._ID1191 );
+            _ID23412( self._ID23353._ID1191 );
             break;
         }
     }
 
-    self _meth_819A( "none" );
+    self animmode( "none" );
 }
 
 _ID23415()
@@ -398,48 +398,48 @@ _ID23415()
 
         if ( var_0 == "stop" )
         {
-            if ( !_unknown_082F() )
+            if ( !_ID23373() )
                 return 0;
 
-            if ( self._ID23353._ID15079 != ::_unknown_09D7 )
+            if ( self._ID23353._ID15079 != ::_ID23414 )
                 return 1;
         }
 
         if ( var_0 == "fire" )
         {
-            if ( _func_02F( self._ID23353._ID1191 ) )
+            if ( isdefined( self._ID23353._ID1191 ) )
             {
                 var_1 = self._ID23353._ID1191._ID486;
-                self _meth_81F9();
+                self melee();
 
-                if ( _func_02F( self._ID23353._ID1191 ) && self._ID23353._ID1191._ID486 < var_1 )
-                    _unknown_09FB();
+                if ( isdefined( self._ID23353._ID1191 ) && self._ID23353._ID1191._ID486 < var_1 )
+                    _ID23416();
             }
 
-            _unknown_0B5E();
+            melee_playeffortsound();
         }
     }
 }
 
 _ID23417()
 {
-    if ( !_func_02F( self._ID23353._ID1191 ) )
+    if ( !isdefined( self._ID23353._ID1191 ) )
         return 0;
 
-    if ( !_func_02F( self._ID322 ) )
+    if ( !isdefined( self._ID322 ) )
         return 0;
 
-    if ( !_unknown_0935() )
+    if ( !_ID23397() )
         return 0;
 
-    var_0 = _func_119( self._ID23353._ID1191._ID740 - self._ID740 );
+    var_0 = vectornormalize( self._ID23353._ID1191._ID740 - self._ID740 );
     self._ID23353._ID36155 = self._ID23353._ID1191._ID740 - 40.0 * var_0;
-    return _unknown_08E0();
+    return _ID23425();
 }
 
 _ID23413()
 {
-    if ( !_unknown_0AC1() )
+    if ( !_ID23417() )
         return 0;
 
     var_0 = _ID42237::_ID11126( self._ID740, self._ID23353._ID1191._ID740 );
@@ -447,50 +447,50 @@ _ID23413()
     if ( var_0 <= 4096 )
     {
         var_1 = animscripts\utility::_ID22630( "melee", "standard_stand_to_melee" );
-        self _meth_8118( "readyanim", var_1, %body, 1, 0.3, 1 );
-        _ID23361( var_1 );
+        self setflaggedanimknoball( "readyanim", var_1, %body, 1, 0.3, 1 );
+        _ID23403( var_1 );
         animscripts\shared::_ID11529( "readyanim" );
         return 1;
     }
 
-    _unknown_0BD9();
+    _ID23402();
     var_2 = self._ID23353._ID1191._ID740;
     var_3 = 0.1;
     var_4 = animscripts\utility::_ID22630( "melee", "standard_run_to_melee" );
-    var_5 = _func_0F6( _func_094( var_4, 0, 1 ) );
+    var_5 = length( getangledelta( var_4, 0, 1 ) );
     var_6 = 32;
     var_7 = 48.0 + var_6 + var_5;
     var_8 = var_7 * var_7;
     var_9 = 64 + var_6;
     var_10 = var_9 * var_9;
-    var_11 = _func_067( var_4 ) * 1000;
+    var_11 = getanimlength( var_4 ) * 1000;
     var_12 = var_11 - 100;
     var_13 = var_11 - 200;
     var_14 = 0;
     var_15 = undefined;
     var_16 = animscripts\utility::_ID22630( "run", "straight" );
 
-    if ( _func_1B3( self._ID23353._ID1191 ) && self._ID23353._ID1191 == self._ID322 )
-        self _meth_819B( "face enemy" );
+    if ( isplayernumber( self._ID23353._ID1191 ) && self._ID23353._ID1191 == self._ID322 )
+        self orientmode( "face enemy" );
     else
-        self _meth_819B( "face point", self._ID23353._ID1191._ID740 );
+        self orientmode( "face point", self._ID23353._ID1191._ID740 );
 
-    self _meth_8118( "chargeanim", var_16, %body, 1, 0.2, 1 );
-    _unknown_11CC( var_16 );
+    self setflaggedanimknoball( "chargeanim", var_16, %body, 1, 0.2, 1 );
+    _ID23403( var_16 );
     var_17 = 0;
 
     for (;;)
     {
-        var_18 = _func_03D();
-        var_19 = _func_02F( var_15 ) && var_15 <= var_8;
+        var_18 = gettime();
+        var_19 = isdefined( var_15 ) && var_15 <= var_8;
 
         if ( !var_17 )
         {
             if ( var_19 )
             {
-                _unknown_0B19();
-                self _meth_8119( "chargeanim", var_4, %body, 1, 0.1, 1 );
-                _unknown_120B( var_4 );
+                _ID23418();
+                self setflaggedanimknoballrestart( "chargeanim", var_4, %body, 1, 0.1, 1 );
+                _ID23403( var_4 );
                 var_14 = var_18;
                 var_17 = 1;
             }
@@ -501,70 +501,70 @@ _ID23413()
 
             if ( var_18 - var_14 >= var_12 || !var_19 && !var_20 )
             {
-                _unknown_0B59();
-                self _meth_8118( "chargeanim", var_16, %body, 1, 0.3, 1 );
-                _unknown_124A( var_16 );
+                _ID23418();
+                self setflaggedanimknoball( "chargeanim", var_16, %body, 1, 0.3, 1 );
+                _ID23403( var_16 );
                 var_17 = 0;
             }
         }
 
         animscripts\notetracks::_ID11534( var_3, "chargeanim" );
 
-        if ( !_unknown_0C4B() )
+        if ( !_ID23417() )
         {
-            _unknown_0B93();
+            _ID23420();
             return 0;
         }
 
         var_0 = _ID42237::_ID11126( self._ID740, self._ID23353._ID1191._ID740 );
-        var_21 = self._ID23353._ID1191._ID740 - var_2 * 1 / _func_03D() - var_18;
+        var_21 = ( self._ID23353._ID1191._ID740 - var_2 ) * 1 / ( gettime() - var_18 );
         var_2 = self._ID23353._ID1191._ID740;
         var_22 = self._ID23353._ID1191._ID740 + var_21 * var_13;
         var_15 = _ID42237::_ID11126( self._ID740, var_22 );
 
-        if ( var_17 && var_0 <= var_10 && _func_03D() - var_14 >= var_12 || !_func_1B3( self._ID23353._ID1191 ) )
+        if ( var_17 && var_0 <= var_10 && ( gettime() - var_14 >= var_12 || !isplayernumber( self._ID23353._ID1191 ) ) )
             break;
 
-        if ( !var_17 && _func_03D() >= self._ID23353._ID16914 )
+        if ( !var_17 && gettime() >= self._ID23353._ID16914 )
         {
-            _unknown_0C0B();
+            _ID23420();
             return 0;
         }
     }
 
-    _unknown_0C12();
+    _ID23420();
     return 1;
 }
 
 _ID23402()
 {
-    if ( !_func_02F( self._ID7._ID24785 ) )
+    if ( !isdefined( self._ID7._ID24785 ) )
         self._ID7._ID24785 = 0;
 
-    if ( _func_02F( self._ID322 ) && _func_1B3( self._ID322 ) || _func_0B7( 3 ) == 0 )
+    if ( isdefined( self._ID322 ) && isplayernumber( self._ID322 ) || randomint( 3 ) == 0 )
     {
-        if ( _func_03D() > self._ID7._ID24785 )
+        if ( gettime() > self._ID7._ID24785 )
         {
             animscripts\face::_ID30759( "meleecharge" );
-            self._ID7._ID24785 = _func_03D() + 8000;
+            self._ID7._ID24785 = gettime() + 8000;
 
-            if ( !_func_02F( self._ID7.nextmeleesound ) )
-                self._ID7.nextmeleesound = _func_03D() + 1900;
+            if ( !isdefined( self._ID7.nextmeleesound ) )
+                self._ID7.nextmeleesound = gettime() + 1900;
         }
     }
 }
 
 melee_playeffortsound()
 {
-    if ( !_func_02F( self._ID7.nextmeleesound ) )
+    if ( !isdefined( self._ID7.nextmeleesound ) )
         self._ID7.nextmeleesound = 0;
 
-    if ( _func_02F( self._ID322 ) && _func_1B3( self._ID322 ) || _func_0B7( 3 ) == 0 )
+    if ( isdefined( self._ID322 ) && isplayernumber( self._ID322 ) || randomint( 3 ) == 0 )
     {
-        if ( _func_03D() > self._ID7.nextmeleesound )
+        if ( gettime() > self._ID7.nextmeleesound )
         {
             animscripts\face::_ID30759( "meleeattack" );
-            self._ID7.nextmeleesound = _func_03D() + 500;
+            self._ID7.nextmeleesound = gettime() + 500;
         }
     }
 }
@@ -578,15 +578,15 @@ _ID23362( var_0, var_1 )
     if ( self._ID23353._ID20038 )
         var_2 += 50;
 
-    if ( _func_0C3( var_0 ) < var_2 )
+    if ( abs( var_0 ) < var_2 )
         return 0;
 
     var_5 = self._ID23353._ID1191;
-    _unknown_0F91();
+    _ID23378();
 
     if ( self._ID23353._ID41797 )
     {
-        if ( _func_0F9( var_1 ) < var_3 )
+        if ( length2dsquared( var_1 ) < var_3 )
             return 0;
 
         self._ID23353._ID3189 = animscripts\utility::_ID22630( "melee", "aivai_exposed_attackerwins_attack" );
@@ -595,7 +595,7 @@ _ID23362( var_0, var_1 )
     }
     else
     {
-        if ( _func_0F9( var_1 ) < var_4 )
+        if ( length2dsquared( var_1 ) < var_4 )
             return 0;
 
         self._ID23353._ID3189 = animscripts\utility::_ID22630( "melee", "aivai_exposed_defenderwins_attack" );
@@ -612,15 +612,15 @@ _ID23363( var_0, var_1 )
     if ( self._ID23353._ID20038 )
         var_2 += 50;
 
-    if ( _func_0C3( var_0 ) < var_2 )
+    if ( abs( var_0 ) < var_2 )
         return 0;
 
     var_3 = self._ID23353._ID1191;
 
-    if ( _func_02F( var_3._ID22746 ) )
+    if ( isdefined( var_3._ID22746 ) )
         return 0;
 
-    if ( _func_02F( var_3._ID23426 ) )
+    if ( isdefined( var_3._ID23426 ) )
         return 0;
 
     self._ID23353._ID41797 = 1;
@@ -638,18 +638,18 @@ _ID52288( var_0, var_1 )
     if ( self._ID23353._ID20038 )
         var_2 += 50;
 
-    if ( _func_0C3( var_0 ) < var_2 )
+    if ( abs( var_0 ) < var_2 )
         return 0;
 
-    if ( _func_02F( self._ID22746 ) )
+    if ( isdefined( self._ID22746 ) )
         return 0;
 
     var_4 = self._ID23353._ID1191;
 
-    if ( _func_02F( self._ID23426 ) )
+    if ( isdefined( self._ID23426 ) )
         return 0;
 
-    if ( _func_0F9( var_1 ) < var_3 )
+    if ( length2dsquared( var_1 ) < var_3 )
         return 0;
 
     self._ID23353._ID41797 = 0;
@@ -666,10 +666,10 @@ _ID23360( var_0, var_1 )
 
     var_2 = self._ID23353._ID1191;
 
-    if ( _func_02F( var_2._ID22746 ) )
+    if ( isdefined( var_2._ID22746 ) )
         return 0;
 
-    if ( _func_02F( var_2._ID23426 ) )
+    if ( isdefined( var_2._ID23426 ) )
         return 0;
 
     self._ID23353._ID41797 = 1;
@@ -680,20 +680,20 @@ _ID23360( var_0, var_1 )
 
 _ID23361()
 {
-    if ( _func_02F( self._ID23435 ) )
-        var_0[0] = ::_unknown_1075;
-    else if ( _func_02F( self._ID23436 ) )
-        var_0[0] = ::_unknown_10BD;
+    if ( isdefined( self._ID23435 ) )
+        var_0[0] = ::_ID23362;
+    else if ( isdefined( self._ID23436 ) )
+        var_0[0] = ::_ID23363;
     else
     {
-        var_0[0] = ::_unknown_108F;
-        var_0[1] = ::_unknown_10CD;
-        var_0[2] = ::_unknown_10FA;
-        var_0[3] = ::_unknown_112A;
+        var_0[0] = ::_ID23362;
+        var_0[1] = ::_ID23363;
+        var_0[2] = ::_ID52288;
+        var_0[3] = ::_ID23360;
 
         for ( var_1 = 2; var_1 > 0; var_1-- )
         {
-            var_2 = _func_0B7( var_1 + 1 );
+            var_2 = randomint( var_1 + 1 );
             var_3 = var_0[var_1];
             var_0[var_1] = var_0[var_2];
             var_0[var_2] = var_3;
@@ -705,23 +705,23 @@ _ID23361()
 
 _ID23359()
 {
-    if ( _func_02F( self._ID44480 ) && !self._ID44480 )
+    if ( isdefined( self._ID44480 ) && !self._ID44480 )
         return 0;
 
     var_0 = self._ID23353._ID1191;
     var_1 = var_0._ID740 - self._ID740;
-    var_2 = _func_11A( var_1 );
-    var_3 = _func_0F0( var_0._ID65[1] - var_2[1] );
-    var_4 = _unknown_11A3();
+    var_2 = vectortoangles( var_1 );
+    var_3 = angleclamp180( var_0._ID65[1] - var_2[1] );
+    var_4 = _ID23361();
 
     for ( var_5 = 0; var_5 < var_4.size; var_5++ )
     {
         if ( [[ var_4[var_5] ]]( var_3, var_1 ) )
         {
             self._ID23353._ID36098 = ( 0, var_2[1], 0 );
-            self._ID23353._ID36155 = _func_071( var_0._ID740, var_0._ID65, self._ID23353._ID3189 );
+            self._ID23353._ID36155 = getstartorigin( var_0._ID740, var_0._ID65, self._ID23353._ID3189 );
 
-            if ( _unknown_0E56() )
+            if ( _ID23425() )
                 return 1;
         }
     }
@@ -733,20 +733,20 @@ _ID23378()
 {
     var_0 = self._ID23353._ID1191;
 
-    if ( _func_02F( self._ID23426 ) )
+    if ( isdefined( self._ID23426 ) )
     {
         self._ID23353._ID41797 = 1;
         return;
     }
-    else if ( _func_02F( var_0._ID23426 ) )
+    else if ( isdefined( var_0._ID23426 ) )
     {
         self._ID23353._ID41797 = 0;
         return;
     }
 
-    if ( _func_02F( self._ID22746 ) )
+    if ( isdefined( self._ID22746 ) )
         self._ID23353._ID41797 = 1;
-    else if ( _func_02F( var_0._ID22746 ) )
+    else if ( isdefined( var_0._ID22746 ) )
         self._ID23353._ID41797 = 0;
     else if ( var_0 _ID42407::_ID11498() || var_0._ID274 )
         self._ID23353._ID41797 = 1;
@@ -757,7 +757,7 @@ _ID23378()
 _ID23371()
 {
     var_0 = self._ID23353._ID1191;
-    _unknown_129D();
+    _ID23378();
     var_1 = var_0._ID8893._ID1244;
 
     if ( var_1 == "Cover Multi" )
@@ -789,12 +789,12 @@ _ID23371()
         var_0._ID23353._ID3189 = animscripts\utility::_ID22630( "melee", "aivai_coverright_defenderwins_defend" );
     }
 
-    self._ID23353._ID36155 = _func_071( var_0._ID8893._ID740, var_0._ID8893._ID65, self._ID23353._ID3189 );
-    self._ID23353._ID36098 = ( var_0._ID8893._ID65[0], _func_0F0( var_0._ID8893._ID65[1] + 180 ), var_0._ID8893._ID65[2] );
+    self._ID23353._ID36155 = getstartorigin( var_0._ID8893._ID740, var_0._ID8893._ID65, self._ID23353._ID3189 );
+    self._ID23353._ID36098 = ( var_0._ID8893._ID65[0], angleclamp180( var_0._ID8893._ID65[1] + 180 ), var_0._ID8893._ID65[2] );
     var_0._ID23353._ID13763 = animscripts\utility::_ID16462( var_0._ID8893 );
     self._ID23353._ID36166 = var_0._ID8893._ID65;
 
-    if ( !_unknown_1024() )
+    if ( !_ID23425() )
     {
         self._ID23353._ID36166 = undefined;
         return 0;
@@ -805,19 +805,19 @@ _ID23371()
 
 _ID23370()
 {
-    if ( _func_02F( self._ID44480 ) && !self._ID44480 )
+    if ( isdefined( self._ID44480 ) && !self._ID44480 )
         return 0;
 
     var_0 = self._ID23353._ID1191._ID8893;
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( _func_0F5( var_0._ID740, self._ID23353._ID1191._ID740 ) > 16 && _func_02F( self._ID23353._ID1191._ID7._ID8878 ) && self._ID23353._ID1191._ID7._ID8878 != "hide" && self._ID23353._ID1191._ID7._ID8878 != "lean" )
+    if ( distancesquared( var_0._ID740, self._ID23353._ID1191._ID740 ) > 16 && isdefined( self._ID23353._ID1191._ID7._ID8878 ) && ( self._ID23353._ID1191._ID7._ID8878 != "hide" && self._ID23353._ID1191._ID7._ID8878 != "lean" ) )
         return 0;
 
-    var_1 = _func_11A( self._ID740 - var_0._ID740 );
-    var_2 = _func_0F0( var_0._ID65[1] - var_1[1] );
+    var_1 = vectortoangles( self._ID740 - var_0._ID740 );
+    var_2 = angleclamp180( var_0._ID65[1] - var_1[1] );
     var_3 = var_0._ID1244;
 
     if ( var_3 == "Cover Multi" )
@@ -841,41 +841,41 @@ _ID23357()
 {
     var_0 = self._ID23353._ID1191;
 
-    if ( !_func_0D4( var_0 ) || var_0._ID1244 != "human" )
+    if ( !isai( var_0 ) || var_0._ID1244 != "human" )
         return 0;
 
     if ( self._ID1012 != "none" || var_0._ID1012 != "none" )
         return 0;
 
-    if ( _func_02F( self._ID23426 ) && _func_02F( var_0._ID23426 ) )
+    if ( isdefined( self._ID23426 ) && isdefined( var_0._ID23426 ) )
         return 0;
 
-    if ( _func_02F( self._ID22746 ) && _func_02F( var_0._ID22746 ) )
+    if ( isdefined( self._ID22746 ) && isdefined( var_0._ID22746 ) )
         return 0;
 
-    if ( _func_02F( self._ID23426 ) && _func_02F( var_0._ID22746 ) || _func_02F( var_0._ID23426 ) && _func_02F( self._ID22746 ) )
+    if ( isdefined( self._ID23426 ) && isdefined( var_0._ID22746 ) || isdefined( var_0._ID23426 ) && isdefined( self._ID22746 ) )
         return 0;
 
-    if ( _func_02F( self._ID35381 ) )
+    if ( isdefined( self._ID35381 ) )
     {
         if ( ![[ self._ID35381 ]]() )
             return 0;
 
         self._ID23353._ID28396 = 1;
     }
-    else if ( _func_02F( var_0._ID35381 ) )
+    else if ( isdefined( var_0._ID35381 ) )
         return 0;
-    else if ( _unknown_15F2() && _unknown_1580() )
+    else if ( _ID23370() && _ID23371() )
         self._ID23353._ID28396 = 1;
     else
     {
-        if ( !_unknown_1548() )
+        if ( !_ID23359() )
             return 0;
 
         self._ID23353._ID28396 = 0;
     }
 
-    if ( !_func_02F( var_0._ID23353._ID13763 ) )
+    if ( !isdefined( var_0._ID23353._ID13763 ) )
         var_0._ID23353._ID13763 = var_0._ID65[1];
 
     self._ID23353._ID36156 = self._ID23353._ID36155 - var_0._ID740;
@@ -890,36 +890,36 @@ _ID23369( var_0 )
 
 _ID23372( var_0 )
 {
-    if ( !_func_02F( var_0._ID23353 ) )
+    if ( !isdefined( var_0._ID23353 ) )
         return;
 
-    _unknown_14A0();
+    _ID23402();
 
-    if ( !_func_1A7( var_0 ) )
+    if ( !isalive( var_0 ) )
         return;
 
     self._ID1065 = var_0;
     var_0._ID1065 = self;
     self._ID23353._ID22409 = 1;
     var_0._ID23353._ID22409 = 1;
-    self _meth_8054( var_0, "tag_sync", 1, 1 );
+    self linktoblendtotag( var_0, "tag_sync", 1, 1 );
 }
 
 _ID23368()
 {
-    if ( !_unknown_17F0() )
+    if ( !_ID23364() )
     {
-        self._ID24787 = _func_03D() + 1500;
+        self._ID24787 = gettime() + 1500;
         self._ID24786 = self._ID23353._ID1191;
         return;
     }
 
     var_0 = self._ID23353._ID1191;
 
-    if ( !_func_068( self._ID23353._ID3189, "sync" ) )
+    if ( !animhasnotetrack( self._ID23353._ID3189, "sync" ) )
         return;
 
-    _unknown_1747( var_0 );
+    _ID23369( var_0 );
 
     if ( self._ID23353._ID41797 )
     {
@@ -952,10 +952,10 @@ _ID23368()
     var_0._ID23353._ID1302 = var_0._ID1302;
     var_0._ID23353._ID41708 = var_0 animscripts\utility::_ID16202();
     self._ID23353._ID20038 = 1;
-    var_0 _meth_81A6( ::_unknown_18E9, ::_unknown_1ABB );
-    var_0 thread _unknown_1850( self );
+    var_0 animcustom( ::_ID23358, ::_ID23383 );
+    var_0 thread _ID23356( self );
     self._ID23353._ID1191 = undefined;
-    _unknown_18FB();
+    _ID23358();
 }
 
 _ID23356( var_0 )
@@ -964,7 +964,7 @@ _ID23356( var_0 )
     self endon( "melee_aivsai_execute" );
     wait 0.1;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         var_0 notify( "end_melee" );
 
     self notify( "end_melee" );
@@ -972,14 +972,14 @@ _ID23356( var_0 )
 
 _ID23367( var_0, var_1 )
 {
-    if ( _func_02F( var_1 ) && var_1 <= _func_03D() )
+    if ( isdefined( var_1 ) && var_1 <= gettime() )
         return 0;
 
-    if ( !_unknown_13BE() )
+    if ( !_ID23397() )
         return 0;
 
     var_2 = self._ID23353._ID1191;
-    var_3 = _func_0F5( var_2._ID740, var_0 );
+    var_3 = distancesquared( var_2._ID740, var_0 );
 
     if ( self._ID23353._ID28396 )
         var_4 = 256;
@@ -991,7 +991,7 @@ _ID23367( var_0, var_1 )
 
     self._ID23353._ID36155 = var_2._ID740 + self._ID23353._ID36156;
 
-    if ( !_unknown_137E() )
+    if ( !_ID23425() )
         return 0;
 
     return 1;
@@ -999,15 +999,15 @@ _ID23367( var_0, var_1 )
 
 _ID23366( var_0 )
 {
-    var_1 = _func_0F5( ( self._ID740[0], self._ID740[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
+    var_1 = distancesquared( ( self._ID740[0], self._ID740[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
 
-    if ( var_1 < 64 && _func_0C3( self._ID23353._ID36155[2] - self._ID740[2] ) < 64 )
+    if ( var_1 < 64 && abs( self._ID23353._ID36155[2] - self._ID740[2] ) < 64 )
         return 1;
 
-    var_2 = _func_0F5( ( var_0[0], var_0[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
-    var_3 = _func_0F5( ( self._ID740[0], self._ID740[1], 0 ), ( self._ID23353._ID1191._ID740[0], self._ID23353._ID1191._ID740[1], 0 ) );
+    var_2 = distancesquared( ( var_0[0], var_0[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
+    var_3 = distancesquared( ( self._ID740[0], self._ID740[1], 0 ), ( self._ID23353._ID1191._ID740[0], self._ID23353._ID1191._ID740[1], 0 ) );
 
-    if ( var_2 > var_3 && _func_0C3( self._ID23353._ID1191._ID740[2] - self._ID740[2] ) < 64 )
+    if ( var_2 > var_3 && abs( self._ID23353._ID1191._ID740[2] - self._ID740[2] ) < 64 )
         return 1;
 
     return 0;
@@ -1015,50 +1015,50 @@ _ID23366( var_0 )
 
 _ID23365( var_0 )
 {
-    _unknown_1541();
+    _ID23420();
 
     if ( self._ID23353._ID28396 )
     {
-        self _meth_81D2( self._ID23353._ID36155, self._ID23353._ID36098 );
+        self forceteleport( self._ID23353._ID36155, self._ID23353._ID36098 );
         wait 0.05;
     }
     else
     {
-        self _meth_819B( "face angle", self._ID23353._ID36098[1] );
+        self orientmode( "face angle", self._ID23353._ID36098[1] );
         wait 0.05;
     }
 
-    return _unknown_19B9( var_0 );
+    return _ID23367( var_0 );
 }
 
 _ID23364()
 {
-    if ( !_unknown_14DD() )
+    if ( !_ID23397() )
         return 0;
 
-    _unknown_157D();
-    self _meth_814C( %body, 0.2 );
-    self _meth_8151( animscripts\run::_ID16576(), %body, 1, 0.2 );
-    self _meth_819A( "zonly_physics" );
+    _ID23418();
+    self clearanim( %body, 0.2 );
+    self setanimknoball( animscripts\run::_ID16576(), %body, 1, 0.2 );
+    self animmode( "zonly_physics" );
     self._ID561 = 1;
 
-    if ( _func_02F( self._ID36736 ) && self._ID36736 == "riotshield" )
-        var_0 = _func_03D() + 2500;
+    if ( isdefined( self._ID36736 ) && self._ID36736 == "riotshield" )
+        var_0 = gettime() + 2500;
     else
-        var_0 = _func_03D() + 1500;
+        var_0 = gettime() + 1500;
 
     var_1 = self._ID23353._ID1191._ID740;
 
-    while ( _ID23364( var_1, var_0 ) )
+    while ( _ID23367( var_1, var_0 ) )
     {
-        if ( _unknown_1A47( var_1 ) )
-            return _unknown_1A81( var_1 );
+        if ( _ID23366( var_1 ) )
+            return _ID23365( var_1 );
 
-        self _meth_819B( "face point", self._ID23353._ID36155 );
+        self orientmode( "face point", self._ID23353._ID36155 );
         wait 0.05;
     }
 
-    _unknown_1606();
+    _ID23420();
     return 0;
 }
 
@@ -1067,37 +1067,37 @@ _ID23358()
     self endon( "killanimscript" );
     self endon( "end_melee" );
     self notify( "melee_aivsai_execute" );
-    self _meth_819A( "zonly_physics" );
+    self animmode( "zonly_physics" );
     self._ID7._ID35357 = "none";
     self._ID35375 = undefined;
-    thread _unknown_1B92();
-    thread _unknown_1BAB();
+    thread _ID23381();
+    thread _ID23400();
 
-    if ( _func_02F( self._ID23353._ID13763 ) )
-        self _meth_819B( "face angle", self._ID23353._ID13763 );
+    if ( isdefined( self._ID23353._ID13763 ) )
+        self orientmode( "face angle", self._ID23353._ID13763 );
     else
-        self _meth_819B( "face current" );
+        self orientmode( "face current" );
 
     self._ID7._ID28253 = "stand";
-    self _meth_814C( %body, 0.2 );
+    self clearanim( %body, 0.2 );
 
-    if ( _func_02F( self._ID23353._ID264 ) )
-        _unknown_1BAE();
+    if ( isdefined( self._ID23353._ID264 ) )
+        _ID23379();
 
-    self _meth_8119( "meleeAnim", self._ID23353._ID3189, %body, 1, 0.2 );
-    _unknown_1D6F( self._ID23353._ID3189 );
-    var_0 = animscripts\shared::_ID11529( "meleeAnim", ::_unknown_1C88 );
+    self setflaggedanimknoballrestart( "meleeAnim", self._ID23353._ID3189, %body, 1, 0.2 );
+    _ID23403( self._ID23353._ID3189 );
+    var_0 = animscripts\shared::_ID11529( "meleeAnim", ::_ID23391 );
 
-    if ( var_0 == "melee_death" && _func_02F( self._ID23353._ID36860 ) || _func_02F( self._ID22746 ) && self._ID22746 )
+    if ( var_0 == "melee_death" && ( isdefined( self._ID23353._ID36860 ) || isdefined( self._ID22746 ) && self._ID22746 ) )
     {
-        _unknown_1C14();
-        self _meth_8119( "meleeAnim", self._ID23353._ID36862, %body, 1, 0.2 );
-        _unknown_1DC0( self._ID23353._ID36862 );
-        var_0 = animscripts\shared::_ID11529( "meleeAnim", ::_unknown_1CD9 );
+        _ID23382();
+        self setflaggedanimknoballrestart( "meleeAnim", self._ID23353._ID36862, %body, 1, 0.2 );
+        _ID23403( self._ID23353._ID36862 );
+        var_0 = animscripts\shared::_ID11529( "meleeAnim", ::_ID23391 );
     }
 
-    if ( _func_02F( self._ID23353 ) && _func_02F( self._ID23353._ID264 ) )
-        self _meth_8058();
+    if ( isdefined( self._ID23353 ) && isdefined( self._ID23353._ID264 ) )
+        self kill();
 
     self._ID561 = 0;
 }
@@ -1112,7 +1112,7 @@ _ID23379()
 
 _ID23399()
 {
-    return _func_02F( self._ID23353._ID1302 ) && self._ID23353._ID1302 != "none" && self._ID1302 != self._ID23353._ID1302;
+    return isdefined( self._ID23353._ID1302 ) && self._ID23353._ID1302 != "none" && self._ID1302 != self._ID23353._ID1302;
 }
 
 _ID23382()
@@ -1120,14 +1120,14 @@ _ID23382()
     if ( self._ID1302 != "none" && self._ID22034 != "none" )
         return;
 
-    if ( !_func_02F( self._ID23353._ID1302 ) || self._ID23353._ID1302 == "none" )
+    if ( !isdefined( self._ID23353._ID1302 ) || self._ID23353._ID1302 == "none" )
         return;
 
     _ID42407::_ID14803( self._ID23353._ID1302, self._ID23353._ID41708 );
 
-    if ( _func_02F( self._ID23353._ID12152 ) )
+    if ( isdefined( self._ID23353._ID12152 ) )
     {
-        self._ID23353._ID12152 _meth_80B7();
+        self._ID23353._ID12152 delete();
         self._ID23353._ID12152 = undefined;
     }
 }
@@ -1138,16 +1138,16 @@ _ID23381()
     self endon( "end_melee" );
     self waittill( "weapon_dropped",  var_0  );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         self._ID23353._ID12152 = var_0;
 }
 
 _ID23401()
 {
-    if ( !_func_02F( self._ID23353._ID36862 ) )
+    if ( !isdefined( self._ID23353._ID36862 ) )
         return 0;
 
-    if ( !_func_02F( self._ID23353._ID36861 ) )
+    if ( !isdefined( self._ID23353._ID36861 ) )
         return 0;
 
     return 1;
@@ -1159,25 +1159,25 @@ _ID23400()
     self endon( "end_melee" );
     self waittill( "partner_end_melee" );
 
-    if ( _func_02F( self._ID23353._ID264 ) )
+    if ( isdefined( self._ID23353._ID264 ) )
     {
-        if ( _func_02F( self._ID23353._ID3173 ) || _func_02F( self._ID23353._ID20164 ) )
-            self _meth_8058();
+        if ( isdefined( self._ID23353._ID3173 ) || isdefined( self._ID23353._ID20164 ) )
+            self kill();
         else
         {
             self._ID23353._ID264 = undefined;
 
-            if ( _unknown_1D8C() )
+            if ( _ID23401() )
                 self._ID23353._ID36860 = 1;
             else
                 self notify( "end_melee" );
         }
     }
-    else if ( !_func_02F( self._ID23353._ID39579 ) )
+    else if ( !isdefined( self._ID23353._ID39579 ) )
     {
-        if ( !_func_02F( self._ID28253 ) || self._ID28253 != "stand" && _func_02F( self._ID7._ID25684 ) && self._ID7._ID25684 == 1 )
+        if ( ( !isdefined( self._ID28253 ) || self._ID28253 != "stand" ) && ( isdefined( self._ID7._ID25684 ) && self._ID7._ID25684 == 1 ) )
         {
-            self _meth_819B( "face default" );
+            self orientmode( "face default" );
             animscripts\utility::_ID13390( 1.0 );
             animscripts\notetracks::_ID32755( "stand" );
         }
@@ -1188,48 +1188,48 @@ _ID23400()
 
 _ID23423()
 {
-    if ( !_func_02F( self._ID23353._ID22409 ) )
+    if ( !isdefined( self._ID23353._ID22409 ) )
         return;
 
-    if ( _func_02F( self._ID1065 ) )
-        self._ID1065 _unknown_1E4E();
+    if ( isdefined( self._ID1065 ) )
+        self._ID1065 _ID23424();
 
-    _unknown_1E52();
+    _ID23424();
 }
 
 _ID23424()
 {
-    self _meth_8055();
+    self unlink();
     self._ID1065 = undefined;
 
-    if ( !_func_1A7( self ) )
+    if ( !isalive( self ) )
         return;
 
     self._ID23353._ID22409 = undefined;
-    self _meth_819A( "zonly_physics" );
-    self _meth_819B( "face angle", self._ID65[1] );
+    self animmode( "zonly_physics" );
+    self orientmode( "face angle", self._ID65[1] );
 }
 
 _ID23394()
 {
-    _unknown_1E74();
+    _ID23423();
     self._ID23353._ID39579 = 1;
 
-    if ( _func_02F( self._ID23353._ID26280 ) && _func_02F( self._ID23353._ID26280._ID23353 ) )
+    if ( isdefined( self._ID23353._ID26280 ) && isdefined( self._ID23353._ID26280._ID23353 ) )
         self._ID23353._ID26280._ID23353._ID39579 = 1;
 }
 
 _ID23393()
 {
-    if ( _func_068( self._ID23353._ID3189, "melee_death" ) )
+    if ( animhasnotetrack( self._ID23353._ID3189, "melee_death" ) )
         return 0;
 
-    return _func_02F( self._ID23353._ID264 );
+    return isdefined( self._ID23353._ID264 );
 }
 
 _ID23392( var_0 )
 {
-    if ( _func_02F( var_0 ) && var_0 )
+    if ( isdefined( var_0 ) && var_0 )
         self._ID23353._ID20164 = 1;
     else
         self._ID23353._ID3173 = 1;
@@ -1237,33 +1237,33 @@ _ID23392( var_0 )
 
 _ID23391( var_0 )
 {
-    if ( _func_125( var_0, "ps_" ) )
+    if ( issubstr( var_0, "ps_" ) )
     {
-        var_1 = _func_127( var_0, 3 );
-        self _meth_80A1( var_1 );
+        var_1 = getsubstr( var_0, 3 );
+        self playsound( var_1 );
     }
     else if ( var_0 == "sync" )
     {
-        if ( _func_02F( self._ID23353._ID37003 ) )
+        if ( isdefined( self._ID23353._ID37003 ) )
         {
-            _unknown_1D37( self._ID23353._ID37003 );
+            _ID23372( self._ID23353._ID37003 );
             self._ID23353._ID37003 = undefined;
         }
     }
     else if ( var_0 == "unsync" )
     {
-        _unknown_1F32();
+        _ID23394();
 
-        if ( _unknown_1F46() )
-            _unknown_1F54();
+        if ( _ID23393() )
+            _ID23392();
     }
     else if ( var_0 == "melee_interact" )
         self._ID23353._ID36861 = 1;
     else if ( var_0 == "melee_death" )
     {
-        var_2 = _func_02F( self._ID22746 ) && self._ID22746;
+        var_2 = isdefined( self._ID22746 ) && self._ID22746;
 
-        if ( _func_02F( self._ID23353._ID36860 ) || var_2 )
+        if ( isdefined( self._ID23353._ID36860 ) || var_2 )
         {
             if ( var_2 )
                 self._ID23353._ID264 = undefined;
@@ -1271,9 +1271,9 @@ _ID23391( var_0 )
             return var_0;
         }
 
-        _unknown_1F93();
+        _ID23392();
 
-        if ( _func_02F( self._ID23353._ID3173 ) )
+        if ( isdefined( self._ID23353._ID3173 ) )
         {
             return var_0;
             return;
@@ -1281,32 +1281,32 @@ _ID23391( var_0 )
     }
     else if ( var_0 == "attach_knife" )
     {
-        self _meth_801D( "weapon_parabolic_knife", "TAG_INHAND", 1 );
+        self attach( "weapon_parabolic_knife", "TAG_INHAND", 1 );
         self._ID23353._ID18229 = 1;
     }
     else if ( var_0 == "detach_knife" )
     {
-        self _meth_802A( "weapon_parabolic_knife", "TAG_INHAND", 1 );
+        self detach( "weapon_parabolic_knife", "TAG_INHAND", 1 );
         self._ID23353._ID18229 = undefined;
     }
     else if ( var_0 == "stab" )
     {
-        self _meth_80A1( "melee_knife_hit_body" );
+        self playsound( "melee_knife_hit_body" );
 
         if ( _ID42407::_ID18252( self._ID669, "TAG_KNIFE_FX" ) )
         {
-            _func_157( level._ID1426["melee_knife_ai"], self, "TAG_KNIFE_FX" );
+            playfxontag( level._ID1426["melee_knife_ai"], self, "TAG_KNIFE_FX" );
             jump loc_2066
         }
 
-        if ( _func_02F( self._ID23353._ID26280 ) && _func_02F( self._ID23353._ID26280._ID23353 ) )
-            self._ID23353._ID26280 _unknown_2027( 1 );
+        if ( isdefined( self._ID23353._ID26280 ) && isdefined( self._ID23353._ID26280._ID23353 ) )
+            self._ID23353._ID26280 _ID23392( 1 );
     }
     else
     {
         if ( var_0 == "melee_effort_vo" )
         {
-            var_3 = _unknown_20B1();
+            var_3 = getnpcid();
             var_1 = "melee_effort_" + var_3;
             thread _ID42407::_ID27080( var_1 );
             return;
@@ -1314,7 +1314,7 @@ _ID23391( var_0 )
 
         if ( var_0 == "melee_pain_vo" )
         {
-            var_3 = _unknown_20CB();
+            var_3 = getnpcid();
             var_1 = "melee_pain_" + var_3;
             thread _ID42407::_ID27080( var_1 );
         }
@@ -1323,20 +1323,20 @@ _ID23391( var_0 )
 
 getnpcid()
 {
-    if ( _func_02F( self._ID25173 ) )
+    if ( isdefined( self._ID25173 ) )
     {
         switch ( self._ID25173 )
         {
-
+            case "pri":
+            case "mct":
+            case "gst":
+            case "cpd":
+            case "mcy":
+                return self._ID25173;
         }
     }
 
     return "generic";
-    case "mcy":
-    case "cpd":
-    case "gst":
-    case "mct":
-    case "pri":
 }
 
 _ID23377()
@@ -1351,33 +1351,33 @@ _ID23376()
     self endon( "end_melee" );
     animscripts\notetracks::_ID11543( "meleeAnim", 10.0 );
     animscripts\shared::_ID12143();
-    self _meth_8023();
+    self startragdoll();
     return 1;
 }
 
 _ID23384()
 {
-    if ( !_func_1A7( self ) && _func_02F( self._ID23353._ID264 ) )
+    if ( !isalive( self ) && isdefined( self._ID23353._ID264 ) )
     {
-        if ( _func_02F( self._ID23353._ID3173 ) )
-            self._ID9827 = ::_unknown_216E;
+        if ( isdefined( self._ID23353._ID3173 ) )
+            self._ID9827 = ::_ID23376;
         else
-            self._ID9827 = ::_unknown_2170;
+            self._ID9827 = ::_ID23377;
     }
 }
 
 _ID23385()
 {
-    if ( !_func_1A7( self ) )
+    if ( !isalive( self ) )
         return;
 
-    if ( _func_02F( self._ID23353._ID28091 ) )
-        _unknown_1B20();
+    if ( isdefined( self._ID23353._ID28091 ) )
+        _ID23420();
 
-    var_0 = self _meth_8146();
+    var_0 = self getdroptofloorposition();
 
-    if ( _func_02F( var_0 ) )
-        self _meth_81D2( var_0, self._ID65 );
+    if ( isdefined( var_0 ) )
+        self forceteleport( var_0, self._ID65 );
     else
     {
 
@@ -1386,16 +1386,16 @@ _ID23385()
 
 _ID23387()
 {
-    if ( _func_02F( self._ID23353._ID18229 ) )
-        self _meth_802A( "weapon_parabolic_knife", "TAG_INHAND", 1 );
+    if ( isdefined( self._ID23353._ID18229 ) )
+        self detach( "weapon_parabolic_knife", "TAG_INHAND", 1 );
 
-    if ( _func_1A7( self ) )
-        _unknown_2098();
+    if ( isalive( self ) )
+        _ID23382();
 }
 
 _ID23386()
 {
-    if ( _func_02F( self._ID23353._ID41410 ) )
+    if ( isdefined( self._ID23353._ID41410 ) )
     {
         if ( self._ID23353._ID41410 )
             _ID42407::_ID12508();
@@ -1403,35 +1403,35 @@ _ID23386()
             _ID42407::_ID10949();
     }
 
-    if ( _func_02F( self._ID23353._ID41420 ) )
+    if ( isdefined( self._ID23353._ID41420 ) )
         _ID42407::_ID32628( self._ID23353._ID41420 );
 }
 
 _ID23383()
 {
-    _unknown_2135();
-    _unknown_2204();
-    _unknown_2216();
-    _unknown_2226();
-    _unknown_2235();
+    _ID23423();
+    _ID23384();
+    _ID23385();
+    _ID23387();
+    _ID23386();
 
-    if ( _func_02F( self._ID23353._ID26280 ) )
+    if ( isdefined( self._ID23353._ID26280 ) )
         self._ID23353._ID26280 notify( "partner_end_melee" );
 
-    _unknown_2282( self._ID23353._ID1191 );
-    _unknown_2290();
+    _ID23405( self._ID23353._ID1191 );
+    _ID23374();
 }
 
 _ID23355( var_0 )
 {
-    if ( _func_02F( self._ID23353 ) )
+    if ( isdefined( self._ID23353 ) )
         return 0;
 
-    if ( _func_02F( var_0._ID23353 ) )
+    if ( isdefined( var_0._ID23353 ) )
         return 0;
 
-    self._ID23353 = _func_1A5();
-    var_0._ID23353 = _func_1A5();
+    self._ID23353 = spawnstruct();
+    var_0._ID23353 = spawnstruct();
     return 1;
 }
 
@@ -1439,7 +1439,7 @@ _ID23405( var_0 )
 {
     self._ID23353 = undefined;
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         var_0._ID23353 = undefined;
 }
 
@@ -1451,5 +1451,5 @@ _ID23403( var_0 )
 _ID23374()
 {
     self._ID13770 = undefined;
-    self _meth_814C( %head, 0.2 );
+    self clearanim( %head, 0.2 );
 }

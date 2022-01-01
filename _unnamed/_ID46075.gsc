@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "btr80", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00AE );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_btr80", "vehicle_btr80_d", 0.1 );
     _ID42411::_ID6216( "vehicle_btr80_snow", "vehicle_btr80_snow_d" );
     _ID42411::_ID6216( "vehicle_btr80_low", "vehicle_btr80_d" );
@@ -24,9 +24,9 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6234( var_2, "spotlight_turret", "TAG_TURRET_LIGHT", "fx/misc/spotlight_btr80", "spotlight_turret", 0.0 );
     _ID42411::_ID6220( %btr80_movement, %btr80_movement_backwards, 10 );
 
-    if ( _func_125( var_0, "_snow" ) )
+    if ( issubstr( var_0, "_snow" ) )
         _ID42411::_ID6261( "btr80_turret2", "tag_turret2", "vehicle_btr80_machine_gun_snow" );
-    else if ( _func_125( var_2, "_ac130" ) )
+    else if ( issubstr( var_2, "_ac130" ) )
         _ID42411::_ID6261( "btr80_ac130_turret", "tag_turret2", "vehicle_btr80_machine_gun" );
     else
         _ID42411::_ID6261( "btr80_turret2", "tag_turret2", "vehicle_btr80_machine_gun" );
@@ -35,8 +35,8 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257();
     _ID42411::_ID6233( 999, 500, 1500 );
     _ID42411::_ID6253( "axis" );
-    _ID42411::_ID6262( ::_unknown_0289 );
-    _ID42411::_ID6204( ::_unknown_02D4, ::_unknown_02B7 );
+    _ID42411::_ID6262( ::_ID39488 );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6223( 0.33 );
     _ID42411::_ID6207( 1 );
     _ID42411::_ID6226( 1 );
@@ -46,7 +46,7 @@ _ID19731()
 {
     _ID42407::_ID13024( "no_riders_until_unload" );
     _ID42411::_ID40197( "running" );
-    thread _unknown_028C();
+    thread _ID17700();
 }
 
 _ID17700()
@@ -56,13 +56,13 @@ _ID17700()
     var_1 = 36000000;
     var_2 = 1.0;
     vehicle_scripts\_btr80_aud::snd_init_btr80();
-    thread _unknown_02CD();
+    thread _ID23939();
 
     for (;;)
     {
-        if ( !_func_02F( self._ID31138 ) || !self._ID31138 )
+        if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_3 = _func_0F5( self._ID740, level._ID794._ID740 );
+            var_3 = distancesquared( self._ID740, level._ID794._ID740 );
 
             if ( var_0 && var_3 > var_1 )
             {
@@ -144,7 +144,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 4; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_detach";
     var_0[1]._ID34225 = "tag_detach";

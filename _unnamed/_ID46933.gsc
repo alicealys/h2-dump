@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "apache", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00A3 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6216( "vehicle_apache" );
     _ID42411::_ID6216( "vehicle_apache_dark" );
     var_3 = [];
@@ -32,13 +32,13 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6257( var_2, "default", "vfx/treadfx/heli_dust_default", 0 );
     _ID42411::_ID6253( "allies" );
 
-    if ( _func_02F( var_2 ) && _func_125( var_2, "_mg" ) )
+    if ( isdefined( var_2 ) && issubstr( var_2, "_mg" ) )
         _ID42411::_ID6261( "apache_turret", "tag_turret", "vehicle_apache_mg", undefined, "auto_nonai", 0.0, 20, -14 );
 
-    if ( !_func_125( var_2, "_berlin" ) )
+    if ( !issubstr( var_2, "_berlin" ) )
     {
-        _func_14E( "zippy_rockets_apache" );
-        _func_14E( "zippy_rockets_apache_nodamage" );
+        precacheitem( "zippy_rockets_apache" );
+        precacheitem( "zippy_rockets_apache_nodamage" );
     }
 
     _ID42411::_ID6232();
@@ -49,12 +49,12 @@ _ID19731()
     self._ID31066 = 0;
     _ID42411::_ID40197( "running" );
 
-    if ( _func_125( self._ID170, "_mg" ) )
+    if ( issubstr( self._ID170, "_mg" ) )
     {
-        self _meth_804E( "turret_animate_jnt" );
-        self _meth_804E( "tag_turret" );
-        self _meth_804E( "tag_barrel" );
-        self _meth_804E( "barrel_animate_jnt" );
+        self hidepart( "turret_animate_jnt" );
+        self hidepart( "tag_turret" );
+        self hidepart( "tag_barrel" );
+        self hidepart( "barrel_animate_jnt" );
     }
 }
 
@@ -68,7 +68,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 11; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID16493 = 1;
     return var_0;

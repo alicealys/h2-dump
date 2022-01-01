@@ -3,14 +3,14 @@
 
 _ID616()
 {
-    self _meth_80B8( "body_us_army_smg" );
+    self setmodel( "body_us_army_smg" );
     _ID42226::_ID3584( "alias_us_army_heads", _ID43164::_ID616() );
     self._ID40757 = "american";
-    self _meth_83E8( "vestlight" );
+    self setclothtype( "vestlight" );
 }
 
 _ID814()
 {
-    _func_14C( "body_us_army_smg" );
+    precachemodel( "body_us_army_smg" );
     _ID42226::_ID28388( _ID43164::_ID616() );
 }

@@ -4,7 +4,7 @@
 _ID616()
 {
     if ( level._ID912 == "dcburning" )
-        _unknown_055F();
+        _ID36815();
 
     var_0 = _ID42407::_ID9186( "dcburning" );
     var_0._ID36107 = 17346.3;

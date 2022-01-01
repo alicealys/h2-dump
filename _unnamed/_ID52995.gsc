@@ -5,7 +5,7 @@
 _ID616( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "bm21_troops", var_0, var_1, var_2 );
-    _ID42411::_ID6236( ::_unknown_00B3 );
+    _ID42411::_ID6236( ::_ID19731 );
     _ID42411::_ID6219( "vehicle_bm21_mobile_bed_destructible", "vehicle_bm21_mobile_bed" );
     _ID42411::_ID6219( "vehicle_bm21_bed_under_destructible", "vehicle_bm21_bed_under" );
     _ID42411::_ID6219( "vehicle_bm21_cover_destructible", "vehicle_bm21_cover" );
@@ -24,8 +24,8 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6253( "axis" );
     _ID42411::_ID6257();
     _ID42411::_ID6207( 1 );
-    _ID42411::_ID6204( ::_unknown_020C, ::_unknown_0198 );
-    _ID42411::_ID6262( ::_unknown_02BB );
+    _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
+    _ID42411::_ID6262( ::_ID39488 );
     _ID42411::_ID6234( var_2, "headlight_truck_left", "tag_headlight_left", "fx/misc/lighthaze", "headlights" );
     _ID42411::_ID6234( var_2, "headlight_truck_right", "tag_headlight_right", "fx/misc/lighthaze", "headlights" );
     _ID42411::_ID6234( var_2, "headlight_truck_left2", "tag_headlight_left", "fx/misc/car_headlight_bm21", "headlights" );
@@ -87,7 +87,7 @@ _ID32550()
     var_0 = [];
 
     for ( var_1 = 0; var_1 < 10; var_1++ )
-        var_0[var_1] = _func_1A5();
+        var_0[var_1] = spawnstruct();
 
     var_0[0]._ID34225 = "tag_driver";
     var_0[1]._ID34225 = "tag_passenger";

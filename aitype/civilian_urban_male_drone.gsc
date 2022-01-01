@@ -15,31 +15,43 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     self._ID1302 = "none";
 
     switch ( _ID42226::_ID15942( 7 ) )
     {
-
+        case 0:
+            _ID53017::_ID616();
+            break;
+        case 1:
+            _ID45928::_ID616();
+            break;
+        case 2:
+            _ID53538::_ID616();
+            break;
+        case 3:
+            _ID50684::_ID616();
+            break;
+        case 4:
+            _ID50750::_ID616();
+            break;
+        case 5:
+            _ID47209::_ID616();
+            break;
+        case 6:
+            _ID45740::_ID616();
+            break;
     }
-
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "neutral" );
+    self setspawnerteam( "neutral" );
 }
 
 _ID814()

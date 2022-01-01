@@ -15,40 +15,63 @@ _ID616()
     self._ID949 = "";
     self._ID34144 = "glock";
 
-    if ( _func_0D4( self ) )
+    if ( isai( self ) )
     {
-        self _meth_8178( 256.0, 0.0 );
-        self _meth_8179( 768.0, 1024.0 );
+        self setengagementmindist( 256.0, 0.0 );
+        self setengagementmaxdist( 768.0, 1024.0 );
     }
 
     switch ( _ID42226::_ID15950( 2 ) )
     {
-
+        case 0:
+            self._ID1302 = "uzi";
+            break;
+        case 1:
+            self._ID1302 = "mp5";
+            break;
     }
 
     switch ( _ID42226::_ID15942( 11 ) )
     {
-
+        case 0:
+            _ID51316::_ID616();
+            break;
+        case 1:
+            _ID45439::_ID616();
+            break;
+        case 2:
+            _ID49730::_ID616();
+            break;
+        case 3:
+            _ID53930::_ID616();
+            break;
+        case 4:
+            _ID44765::_ID616();
+            break;
+        case 5:
+            _ID54019::_ID616();
+            break;
+        case 6:
+            _ID47374::_ID616();
+            break;
+        case 7:
+            _ID45943::_ID616();
+            break;
+        case 8:
+            _ID48226::_ID616();
+            break;
+        case 9:
+            _ID47555::_ID616();
+            break;
+        case 10:
+            _ID43317::_ID616();
+            break;
     }
-
-    case 1:
-    case 0:
-    case 10:
-    case 9:
-    case 8:
-    case 7:
-    case 6:
-    case 5:
-    case 4:
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID988()
 {
-    self _meth_8042( "axis" );
+    self setspawnerteam( "axis" );
 }
 
 _ID814()
@@ -64,9 +87,9 @@ _ID814()
     _ID48226::_ID814();
     _ID47555::_ID814();
     _ID43317::_ID814();
-    _func_14E( "uzi" );
-    _func_14E( "mp5" );
-    _func_14E( "glock" );
-    _func_14E( "fraggrenade" );
+    precacheitem( "uzi" );
+    precacheitem( "mp5" );
+    precacheitem( "glock" );
+    precacheitem( "fraggrenade" );
     _ID42359::_ID616();
 }

@@ -3,7 +3,7 @@
 
 _ID51150()
 {
-    level._ID52535["ai"] = _func_1A5();
+    level._ID52535["ai"] = spawnstruct();
     level._ID52535["ai"]._ID47398 = 3.0;
     level._ID52535["ai"]._ID49600 = 3.0;
     level._ID52535["ai"]._ID37298 = 300;
@@ -16,7 +16,7 @@ _ID51150()
     level._ID52535["ai"]._ID50505 = 15.0;
     level._ID52535["ai"]._ID44723 = 0.1;
     level._ID52535["ai"]._ID45945 = 0;
-    level._ID52535["manual"] = _func_1A5();
+    level._ID52535["manual"] = spawnstruct();
     level._ID52535["manual"]._ID47398 = 4.0;
     level._ID52535["manual"]._ID49600 = 0.2;
     level._ID52535["manual"]._ID37298 = 0;
@@ -35,7 +35,7 @@ _ID48063()
 {
     self._ID45980 = "ai";
     self._ID53756 = undefined;
-    thread _unknown_01DA();
+    thread _ID43251();
 }
 
 _ID49367( var_0 )
@@ -45,11 +45,11 @@ _ID49367( var_0 )
     self endon( "stryker_setmode_manual" );
     self._ID45980 = "manual";
     self._ID53756 = var_0;
-    thread _unknown_01FB();
+    thread _ID43251();
     wait 20;
-    thread _unknown_0314();
-    thread _unknown_0329();
-    thread _unknown_01F6();
+    thread _ID52193();
+    thread _ID45939();
+    thread _ID48063();
 }
 
 _ID43251()
@@ -57,21 +57,21 @@ _ID43251()
     self notify( "stryker_turret_think" );
     self endon( "stryker_turret_think" );
     self endon( "death" );
-    thread _unknown_025C();
+    thread _ID52962();
 
     for (;;)
     {
-        var_0 = _unknown_0266();
+        var_0 = _ID51635();
 
-        if ( !_func_02F( var_0 ) )
+        if ( !isdefined( var_0 ) )
         {
-            thread _unknown_0248();
+            thread _ID43880();
             wait(level._ID52535[self._ID45980]._ID49600);
-            _unknown_0278();
+            _ID52962();
             continue;
         }
 
-        _unknown_0311( var_0 );
+        _ID48148( var_0 );
         wait(level._ID52535[self._ID45980]._ID49600);
     }
 }
@@ -85,30 +85,30 @@ _ID43880()
 
     for (;;)
     {
-        var_1 = _func_11F( self._ID65 ) * 1000;
+        var_1 = anglestoforward( self._ID65 ) * 1000;
 
         if ( var_0 == 0 )
         {
             var_0 = 1;
-            var_2 = _func_0B9( -1500, -200 );
+            var_2 = randomintrange( -1500, -200 );
         }
         else
         {
             var_0 = 0;
-            var_2 = _func_0B9( 200, 1500 );
+            var_2 = randomintrange( 200, 1500 );
         }
 
-        var_3 = _func_11E( self._ID65 ) * var_2;
+        var_3 = anglestoright( self._ID65 ) * var_2;
         var_4 = self._ID740 + var_1 + var_3;
         var_4 = ( var_4[0], var_4[1], self._ID740[2] );
-        self _meth_826B( var_4 );
-        wait(_func_0BA( 2.0, 5.0 ));
+        self setturrettargetvec( var_4 );
+        wait(randomfloatrange( 2.0, 5.0 ));
     }
 }
 
 _ID52962()
 {
-    self _meth_826D();
+    self clearturrettargetent();
     self._ID30808 = undefined;
     self notify( "stop_scanning" );
 }
@@ -117,7 +117,7 @@ _ID51635()
 {
     var_0 = self._ID740;
 
-    if ( _func_02F( self._ID53756 ) )
+    if ( isdefined( self._ID53756 ) )
         var_0 = self._ID53756;
 
     var_1 = level._ID52535[self._ID45980]._ID37298;
@@ -136,26 +136,21 @@ _ID51635()
     {
         var_9 = level._ID40317[var_7];
         var_9 = _ID42237::_ID15566( var_0, var_9, undefined, undefined, var_4, var_3 );
-        var_12 = _func_1A2( "destructible_vehicle", "targetname" );
-        var_13 = var_12;
+        var_12 = getentarray( "destructible_vehicle", "targetname" );
 
-        for ( var_15 = _func_1DA( var_13 ); _func_02F( var_15 ); var_15 = _func_1BF( var_13, var_15 ) )
+        foreach ( var_14 in var_12 )
         {
-            var_14 = var_13[var_15];
-
-            if ( _func_02F( var_14._ID13610 ) )
+            if ( isdefined( var_14._ID13610 ) )
                 continue;
 
             var_10[var_10.size] = var_14;
         }
 
-        var_clear_2
-        var_clear_0
         var_12 = undefined;
         var_10 = _ID42237::_ID15566( var_0, var_10, undefined, undefined, var_4, var_3 );
     }
 
-    var_11 = _func_0DE( var_7 );
+    var_11 = getaiarray( var_7 );
     var_11 = _ID42237::_ID15566( var_0, var_11, undefined, undefined, var_2, var_1 );
     var_8 = _ID42237::_ID3296( var_8, var_9 );
     var_8 = _ID42237::_ID3296( var_8, var_10 );
@@ -163,47 +158,42 @@ _ID51635()
     var_9 = undefined;
     var_10 = undefined;
     var_11 = undefined;
-    var_16 = var_8;
 
-    for ( var_19 = _func_1DA( var_16 ); _func_02F( var_19 ); var_19 = _func_1BF( var_16, var_19 ) )
+    foreach ( var_17 in var_8 )
     {
-        var_17 = var_16[var_19];
-
-        if ( _func_02F( self._ID1205 ) && _func_0D6( var_17 ) )
+        if ( isdefined( self._ID1205 ) && issentient( var_17 ) )
         {
-            var_18 = _func_10E( var_17 _meth_8184(), self._ID1205 );
+            var_18 = getthreatbias( var_17 getthreatbiasgroup(), self._ID1205 );
 
             if ( var_18 <= -1000000 )
                 continue;
         }
 
-        if ( _func_02F( var_17._ID511 ) && var_17._ID511 == 1 )
+        if ( isdefined( var_17._ID511 ) && var_17._ID511 == 1 )
             continue;
 
-        if ( _func_0D4( var_17 ) )
+        if ( isai( var_17 ) )
         {
-            if ( !_func_090( self _meth_818C( "tag_flash" ), var_17 _meth_80AF(), 0, self ) )
+            if ( !sighttracepassed( self gettagorigin( "tag_flash" ), var_17 geteye(), 0, self ) )
                 continue;
         }
 
         return var_17;
     }
 
-    var_clear_3
-    var_clear_0
     return undefined;
 }
 
 _ID44877( var_0 )
 {
-    if ( _func_0D4( var_0 ) )
+    if ( isai( var_0 ) )
     {
-        var_1 = var_0 _meth_80AF();
+        var_1 = var_0 geteye();
         var_2 = var_1[2] - var_0._ID740[2];
         return ( 0, 0, var_2 );
     }
 
-    if ( _func_02F( var_0._ID1282 ) )
+    if ( isdefined( var_0._ID1282 ) )
     {
         if ( var_0 _ID42411::_ID20763() )
             return ( 0, 0, -80 );
@@ -211,7 +201,7 @@ _ID44877( var_0 )
         return ( 0, 0, 30 );
     }
 
-    if ( _func_02F( var_0._ID10556 ) )
+    if ( isdefined( var_0._ID10556 ) )
         return ( 0, 0, 30 );
 
     return ( 0, 0, 0 );
@@ -222,27 +212,27 @@ _ID48148( var_0 )
     self notify( "stryker_shoot_target" );
     self endon( "stryker_shoot_target" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return;
 
-    var_1 = _unknown_052D( var_0 );
-    self _meth_826C( var_0, var_1 );
+    var_1 = _ID44877( var_0 );
+    self setturrettargetent( var_0, var_1 );
 
     if ( self._ID53781 != var_0 )
         _ID42237::_ID41123( "turret_rotate_stopped", 1.0 );
 
     self._ID53781 = var_0;
-    var_2 = _func_03D();
+    var_2 = gettime();
 
-    while ( _func_02F( var_0 ) )
+    while ( isdefined( var_0 ) )
     {
-        var_3 = _func_03D() - var_2;
+        var_3 = gettime() - var_2;
 
         if ( var_3 >= level._ID52535[self._ID45980]._ID47398 * 1000 )
             return;
 
-        _unknown_05B1( var_0, var_1 );
-        wait(_func_0BA( level._ID52535[self._ID45980]._ID53796, level._ID52535[self._ID45980]._ID50505 ));
+        _ID50254( var_0, var_1 );
+        wait(randomfloatrange( level._ID52535[self._ID45980]._ID53796, level._ID52535[self._ID45980]._ID50505 ));
     }
 }
 
@@ -250,14 +240,14 @@ _ID50254( var_0, var_1 )
 {
     self notify( "stryker_fire_shots" );
     self endon( "stryker_fire_shots" );
-    var_2 = _func_0B9( level._ID52535[self._ID45980]._ID43298, level._ID52535[self._ID45980]._ID51251 );
+    var_2 = randomintrange( level._ID52535[self._ID45980]._ID43298, level._ID52535[self._ID45980]._ID51251 );
 
     for ( var_3 = 0; var_3 < var_2; var_3++ )
     {
-        if ( _func_02F( var_0 ) && _func_02F( var_1 ) )
-            self _meth_8272( "tag_flash", var_0, var_1, 0.0 );
+        if ( isdefined( var_0 ) && isdefined( var_1 ) )
+            self fireweapon( "tag_flash", var_0, var_1, 0.0 );
         else
-            self _meth_8272( "tag_flash", undefined, ( 0, 0, 0 ), 0.0 );
+            self fireweapon( "tag_flash", undefined, ( 0, 0, 0 ), 0.0 );
 
         wait(level._ID52535[self._ID45980]._ID44723);
     }
@@ -270,10 +260,10 @@ _ID52193()
     var_0[var_0.size] = "arcadia_str_areasuppressed";
     var_0[var_0.size] = "arcadia_str_tasuppressed";
 
-    if ( _ID42237::_ID14385( "disable_stryker_dialog" ) || _func_1FB() )
+    if ( _ID42237::_ID14385( "disable_stryker_dialog" ) || _func_1fb() )
         return;
 
-    thread _ID42407::_ID28864( var_0[_func_0B7( var_0.size )] );
+    thread _ID42407::_ID28864( var_0[randomint( var_0.size )] );
 }
 
 _ID45939()
@@ -286,30 +276,38 @@ _ID45939()
 
     for (;;)
     {
-        wait(_func_0B9( 30, 60 ));
+        wait(randomintrange( 30, 60 ));
 
-        if ( !_func_1A7( level._ID51107 ) )
+        if ( !isalive( level._ID51107 ) )
             return;
 
-        if ( _ID42237::_ID14385( "disable_stryker_dialog" ) || _func_1FB() )
+        if ( _ID42237::_ID14385( "disable_stryker_dialog" ) || _func_1fb() )
             continue;
 
         if ( _ID42237::_ID14396( "no_living_enemies" ) && _ID42237::_ID14385( "no_living_enemies" ) )
             continue;
 
         thread maps\arcadia_code::_ID43423();
-        var_0 = _func_0B7( 5 );
+        var_0 = randomint( 5 );
 
         switch ( var_0 )
         {
-
+            case 0:
+                level._ID388 thread _ID42259::_ID3108( level._ID388, "arcadia_fly_usedesignator" );
+                continue;
+            case 1:
+                level._ID388 thread _ID42259::_ID3108( level._ID388, "arcadia_fly_painttargets" );
+                continue;
+            case 2:
+                thread _ID42407::_ID28864( "arcadia_str_lasetarget" );
+                continue;
+            case 3:
+                thread _ID42407::_ID28864( "arcadia_str_standingby" );
+                continue;
+            case 4:
+                thread _ID42407::_ID28864( "arcadia_str_painttarget" );
+                continue;
         }
-
-        case 4:
-        case 3:
-        case 0:
-        case 1:
-        case 2:
     }
 }
 
@@ -324,8 +322,8 @@ _ID49881()
 achievement_target_confirmed_init()
 {
     level.achievementstrikerkill = 0;
-    _ID42407::_ID1892( "axis", ::_unknown_07DE );
-    thread _unknown_07FE();
+    _ID42407::_ID1892( "axis", ::achievement_target_confirmed_ai_spawned );
+    thread achievement_target_confirmed_manager();
 }
 
 achievement_target_confirmed_ai_spawned()
@@ -333,9 +331,9 @@ achievement_target_confirmed_ai_spawned()
     level endon( "golf_course_mansion" );
     level endon( "achievement_striker_done" );
     level._ID51107 endon( "death" );
-    self waittill( "death",  var_2, var_2, var_2  );
+    self waittill( "death",  var_0, var_1, var_2  );
 
-    if ( _func_02F( var_0 ) && var_0._ID170 == "script_vehicle_stryker50cal" )
+    if ( isdefined( var_0 ) && var_0._ID170 == "script_vehicle_stryker50cal" )
     {
         if ( var_0._ID45980 == "manual" )
             level.achievementstrikerkill++;
@@ -351,6 +349,6 @@ achievement_target_confirmed_manager()
         waittillframeend;
 
     _ID42407::_ID16864( "TARGET_CONFIRMED" );
-    _ID42407::_ID29534( "axis", ::_unknown_084F );
+    _ID42407::_ID29534( "axis", ::achievement_target_confirmed_ai_spawned );
     level notify( "achievement_striker_done" );
 }

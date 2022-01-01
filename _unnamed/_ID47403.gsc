@@ -4,10 +4,10 @@
 
 _ID616()
 {
-    if ( !_func_02F( level._ID3055 ) )
+    if ( !isdefined( level._ID3055 ) )
         level._ID3055 = [];
 
-    var_0 = _func_128( _func_039( "mapname" ) );
+    var_0 = tolower( getdvar( "mapname" ) );
     var_1 = 1;
 
     if ( _ID42237::_ID36698( var_0, "mp_" ) )

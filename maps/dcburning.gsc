@@ -3,33 +3,33 @@
 
 _ID616()
 {
-    if ( _func_039( "mission_select_cam" ) == "1" )
+    if ( getdvar( "mission_select_cam" ) == "1" )
     {
         maps\dcburning_mission_select_cam::_ID50320();
         return;
     }
 
-    if ( _func_039( "beautiful_corner" ) == "1" || _func_039( "beautiful_corner_demo" ) == "1" )
+    if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
         maps\dcburning_beautiful_corner::_ID616();
         return;
     }
 
     _ID42411::_ID6235( "script_vehicle_btr80_low", "spotlight", "TAG_FRONT_LIGHT_RIGHT", "fx/misc/spotlight_btr80_dcburning", "spotlight", 0.2 );
-    _unknown_0395();
-    _func_0DB( "fx_cast_shadow", 0 );
+    _ID44217();
+    setsaveddvar( "fx_cast_shadow", 0 );
     var_0 = undefined;
-    _func_036( "cheap_spot", "1" );
-    _unknown_2FF2();
+    setdynamicdvar( "cheap_spot", "1" );
+    _ID45768();
     _ID46668::_ID616();
     _ID54230::_ID616( "h2_vehicle_blackhawk_minigun_hero_exterior", undefined, "script_vehicle_blackhawk_minigun" );
     level._ID45155 = [];
-    level._ID44271 = _func_1A2( "interior_bcs", "targetname" );
-    level._ID48952 = _func_1A2( "exterior_bcs", "targetname" );
+    level._ID44271 = getentarray( "interior_bcs", "targetname" );
+    level._ID48952 = getentarray( "exterior_bcs", "targetname" );
     _ID42237::_ID3350( level._ID48952, _ID42237::_ID38863 );
     _ID42237::_ID3350( level._ID44271, _ID42237::_ID38863 );
-    level._ID53489 = _func_1A1( "monument_target", "targetname" );
-    level._ID44323 = _func_1A2( "latvee_spotlight_targets", "targetname" );
+    level._ID53489 = getent( "monument_target", "targetname" );
+    level._ID44323 = getentarray( "latvee_spotlight_targets", "targetname" );
     level._ID51057 = [];
     level._ID50946 = 4;
     level._ID43469 = 0;
@@ -47,50 +47,45 @@ _ID616()
     level._ID47026 = [];
     level._ID49081 = [];
     level._ID50122 = [];
-    _func_036( "bog_camerashake", "1" );
-    level._ID35278 = ::_unknown_2D1B;
-    level._ID12029 = ::_unknown_2FBE;
+    setdynamicdvar( "bog_camerashake", "1" );
+    level._ID35278 = ::_ID53576;
+    level._ID12029 = ::_ID46754;
     level._ID43315 = 262144;
-    _func_036( "dc_debug", "0" );
-    _func_036( "dc_dialog", "1" );
-    level._ID8760["25"] = _func_0BC( 25 );
-    level._ID8760["35"] = _func_0BC( 35 );
-    level._ID8760["45"] = _func_0BC( 45 );
-    level._ID8760["60"] = _func_0BC( 60 );
-    level._ID8760["90"] = _func_0BC( 90 );
-    level._ID8760["180"] = _func_0BC( 180 );
+    setdynamicdvar( "dc_debug", "0" );
+    setdynamicdvar( "dc_dialog", "1" );
+    level._ID8760["25"] = cos( 25 );
+    level._ID8760["35"] = cos( 35 );
+    level._ID8760["45"] = cos( 45 );
+    level._ID8760["60"] = cos( 60 );
+    level._ID8760["90"] = cos( 90 );
+    level._ID8760["180"] = cos( 180 );
     level._ID48681 = level._ID8760["35"];
-    var_1 = _func_1A2( "trigger_multiple", "classname" );
+    var_1 = getentarray( "trigger_multiple", "classname" );
     level._ID46473 = [];
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_4];
-
-        if ( _func_02F( var_3._ID922 ) && _func_127( var_3._ID922, 0, 10 ) == "colornodes" )
+        if ( isdefined( var_3._ID922 ) && getsubstr( var_3._ID922, 0, 10 ) == "colornodes" )
             level._ID46473 = _ID42237::_ID3293( level._ID46473, var_3 );
     }
 
-    var_clear_2
-    var_clear_0
-    _unknown_31E1();
+    _ID46797();
     level._ID54335 = 2000;
     level._ID52661 = 0.05;
     level._ID43124 = 0.4;
     level._ID51047 = 1;
     level._ID44935 = _ID42260::_ID45726;
-    _ID42407::_ID1951( "debug", ::_unknown_056B, "debug" );
-    _ID42407::_ID1951( "elevator_bottom", ::_unknown_0583, "elevator_bottom" );
-    _ID42407::_ID1951( "elevator_top", ::_unknown_05AA, "elevator_top" );
-    _ID42407::_ID1951( "crows_nest", ::_unknown_05D2, "crows_nest" );
-    _ID42407::_ID1951( "crows_nest_armor", ::_unknown_05FE, "crows_nest_armor" );
-    _ID42407::_ID1951( "barrett", ::_unknown_062C, "barrett" );
-    _ID42407::_ID1951( "to_roof", ::_unknown_0657, "to_roof" );
-    _ID42407::_ID1951( "roof", ::_unknown_0683, "roof" );
-    _ID42407::_ID1951( "heliride2", ::_unknown_06AE, "heliride2" );
-    _ID42407::_ID1951( "crash", ::_unknown_06F3, "crash" );
-    _ID42407::_ID10126( ::_unknown_05F6 );
+    _ID42407::_ID1951( "debug", ::_ID46468, "debug" );
+    _ID42407::_ID1951( "elevator_bottom", ::_ID44920, "elevator_bottom" );
+    _ID42407::_ID1951( "elevator_top", ::_ID43762, "elevator_top" );
+    _ID42407::_ID1951( "crows_nest", ::_ID43208, "crows_nest" );
+    _ID42407::_ID1951( "crows_nest_armor", ::_ID47843, "crows_nest_armor" );
+    _ID42407::_ID1951( "barrett", ::_ID53971, "barrett" );
+    _ID42407::_ID1951( "to_roof", ::_ID44006, "to_roof" );
+    _ID42407::_ID1951( "roof", ::_ID35930, "roof" );
+    _ID42407::_ID1951( "heliride2", ::_ID43871, "heliride2" );
+    _ID42407::_ID1951( "crash", ::_ID35711, "crash" );
+    _ID42407::_ID10126( ::_ID47474 );
     maps\dc_crashsite::_ID616();
     _ID53918::_ID616();
     _ID42265::_ID616();
@@ -112,108 +107,103 @@ _ID616()
     maps\dcburning_anim::_ID616();
     thread _ID54017::_ID49310( "explosion_mortar" );
     thread _ID54017::_ID53823();
-    _ID42237::_ID3350( _func_1A2( "animated_vehicle", "script_noteworthy" ), ::_unknown_3A0F );
-    _ID42237::_ID3350( _func_1A2( "vehicles_crowsnest_defend", "targetname" ), ::_unknown_3A14 );
-    _ID42237::_ID3350( _func_1F3( "plane_bomb", "script_noteworthy" ), _ID42549::_ID26737 );
-    _unknown_056F();
-    _unknown_344E();
-    thread _unknown_3FA6();
-    thread _unknown_3FBC();
-    thread _unknown_3FD0();
-    thread _unknown_406E();
-    _func_0DB( "r_corpseRemovalThreshold", "0.65" );
-    _ID42407::_ID1895( "grenade_launcher", &"SCRIPT_LEARN_GRENADE_LAUNCHER", ::_unknown_3EC0 );
-    _ID42407::_ID1895( "javelin_pickup", &"DCBURNING_HINT_JAVELIN_PICKUP", ::_unknown_1EA6 );
-    _ID42407::_ID1895( "javelin_switch", &"DCBURNING_HINT_JAVELIN_SWITCH", ::_unknown_1EB4, undefined, "medium_background" );
-    _ID42407::_ID1895( "javelin_shoot", &"DCBURNING_HINT_JAVELIN_FIRE", ::_unknown_1EBD, undefined, "medium_background" );
-    _ID42237::_ID3350( _func_1A2( "destructible_trigger", "targetname" ), ::_unknown_3F6A );
-    thread _unknown_177A();
-    _unknown_3A4A();
-    _unknown_3DB5();
-    _func_0DB( "r_lightGridEnableTweaks", 0 );
-    _func_0DB( "r_lightGridIntensity", 1.2 );
-    _func_0DB( "r_lightGridContrast", 0 );
-    thread _unknown_33A6();
-    thread _unknown_33E6();
-    _unknown_070A();
-    _ID42237::_ID3350( _func_1A2( "ai_cleanup_trigger", "targetname" ), ::_unknown_3D76 );
-    _ID42237::_ID3350( _func_1A2( "redshirt_trigger", "targetname" ), ::_unknown_3D9E );
-    _ID42237::_ID3350( _func_1A2( "rpg_targets", "targetname" ), ::_unknown_3DDE );
-    _ID42237::_ID3350( _func_1A2( "dest_cheap", "targetname" ), ::_unknown_3EBB );
-    _func_10C( "player" );
-    _func_10C( "ignored" );
-    _func_10C( "oblivious" );
-    level._ID794 _meth_8183( "player" );
-    _func_111( "allies", "oblivious" );
-    _func_111( "axis", "oblivious" );
-    _func_111( "player", "oblivious" );
-    _func_111( "oblivious", "allies" );
-    _func_111( "oblivious", "axis" );
-    _func_111( "oblivious", "oblivious" );
-    _ID42237::_ID3350( _func_1A2( "compassTriggers", "targetname" ), ::_unknown_3E51 );
+    _ID42237::_ID3350( getentarray( "animated_vehicle", "script_noteworthy" ), ::_ID53415 );
+    _ID42237::_ID3350( getentarray( "vehicles_crowsnest_defend", "targetname" ), ::vehicles_crowsnest_defend_animated_think );
+    _ID42237::_ID3350( getvehiclenodearray( "plane_bomb", "script_noteworthy" ), _ID42549::_ID26737 );
+    _ID49693();
+    achievement_bird_hunter_init();
+    thread performance_interior_exterior_transition();
+    thread heli_ride_perf_helpers();
+    thread misc_model_group_think();
+    thread cloth_wibble_think();
+    setsaveddvar( "r_corpseRemovalThreshold", "0.65" );
+    _ID42407::_ID1895( "grenade_launcher", &"SCRIPT_LEARN_GRENADE_LAUNCHER", ::_ID51178 );
+    _ID42407::_ID1895( "javelin_pickup", &"DCBURNING_HINT_JAVELIN_PICKUP", ::_ID48000 );
+    _ID42407::_ID1895( "javelin_switch", &"DCBURNING_HINT_JAVELIN_SWITCH", ::_ID43218, undefined, "medium_background" );
+    _ID42407::_ID1895( "javelin_shoot", &"DCBURNING_HINT_JAVELIN_FIRE", ::_ID51222, undefined, "medium_background" );
+    _ID42237::_ID3350( getentarray( "destructible_trigger", "targetname" ), ::_ID48110 );
+    thread _ID44211();
+    _ID18542();
+    _ID50972();
+    setsaveddvar( "r_lightGridEnableTweaks", 0 );
+    setsaveddvar( "r_lightGridIntensity", 1.2 );
+    setsaveddvar( "r_lightGridContrast", 0 );
+    thread _ID47940();
+    thread _ID22343();
+    _ID53488();
+    _ID42237::_ID3350( getentarray( "ai_cleanup_trigger", "targetname" ), ::_ID43809 );
+    _ID42237::_ID3350( getentarray( "redshirt_trigger", "targetname" ), ::_ID48960 );
+    _ID42237::_ID3350( getentarray( "rpg_targets", "targetname" ), ::_ID50637 );
+    _ID42237::_ID3350( getentarray( "dest_cheap", "targetname" ), ::_ID48611 );
+    createthreatbiasgroup( "player" );
+    createthreatbiasgroup( "ignored" );
+    createthreatbiasgroup( "oblivious" );
+    level._ID794 setthreatbiasgroup( "player" );
+    setignoremegroup( "allies", "oblivious" );
+    setignoremegroup( "axis", "oblivious" );
+    setignoremegroup( "player", "oblivious" );
+    setignoremegroup( "oblivious", "allies" );
+    setignoremegroup( "oblivious", "axis" );
+    setignoremegroup( "oblivious", "oblivious" );
+    _ID42237::_ID3350( getentarray( "compassTriggers", "targetname" ), ::_ID48500 );
     var_5 = _ID42413::_ID1473();
-    _ID42237::_ID3350( var_5, _ID42407::_ID1947, ::_unknown_35D2 );
-    _ID42237::_ID3350( _func_1A2( "ai_ambient", "script_noteworthy" ), _ID42407::_ID1947, ::_unknown_38ED );
-    _ID42237::_ID3350( _func_1A2( "ai_ambient_prop", "script_noteworthy" ), _ID42407::_ID1947, ::_unknown_3801 );
-    _ID42237::_ID3350( _func_1A2( "monitor_destruct1", "targetname" ), ::_unknown_3086 );
-    _ID42237::_ID3350( _func_1A2( "monitor_destruct2", "targetname" ), ::_ID44799 );
-    _ID42237::_ID3350( _func_1A2( "monitor_destruct_on1", "targetname" ), ::_unknown_30BA );
-    _ID42237::_ID3350( _func_1A2( "monitor_destruct_on2", "targetname" ), ::_unknown_30D4 );
-    _ID42237::_ID3350( _func_1A2( "monitor_destruct_on3", "targetname" ), ::_unknown_30EE );
-    _ID42237::_ID3350( _func_1A2( "wired_light", "targetname" ), ::_unknown_3A07, "light_idle", "wired_light" );
-    _ID42237::_ID3350( _func_1A2( "wired_light_broken", "targetname" ), ::_unknown_3A1F, "light_idle_broken", "wired_light" );
-    _func_1A1( "suspended_light1", "targetname" ) thread _unknown_3A41( "light_idle1", "suspended_light" );
-    _func_1A1( "suspended_light2", "targetname" ) thread _unknown_3A57( "light_idle2", "suspended_light" );
-    _func_1A1( "suspended_light3", "targetname" ) thread _unknown_3A6D( "light_idle3", "suspended_light" );
-    _func_1A1( "suspended_light4", "targetname" ) thread _unknown_3A82( "light_idle4", "suspended_light" );
-    _func_1A1( "suspended_light5", "targetname" ) thread _unknown_3A98( "light_idle5", "suspended_light" );
-    _ID42237::_ID3350( _func_1A2( "curtain_red_wind", "targetname" ), ::_unknown_3AA5, "curtains_wind", "curtains" );
-    _ID42237::_ID3350( _func_1A2( "curtain_closed_wind", "targetname" ), ::_unknown_3ABE, "curtains_closed_wind_calm", "curtains" );
-    _ID42237::_ID3350( _func_1A2( "curtain_open_idle", "targetname" ), ::_unknown_3AD6, "curtains_wind_calm", "curtains" );
-    _ID42407::_ID3343( "door_breaker", ::_unknown_3E19 );
-    _ID42407::_ID3344( "hostiles_commerce_samsite", ::_unknown_18CA );
-    _ID42407::_ID3344( "commerce_sector_2_guys", ::_unknown_1AE4 );
-    _ID42407::_ID3344( "crowsnest_assault_guys_wave1", ::_unknown_1CEC );
-    _ID42407::_ID3344( "commerce_flare_guys", ::_unknown_32B2 );
-    _ID42407::_ID3344( "ww2_heli", ::_unknown_2AB1 );
-    _ID42407::_ID3343( "no_suppress", ::_unknown_325F );
-    _ID42407::_ID3343( "friendly_fodder", ::_unknown_3C4B );
-    _ID42407::_ID3343( "enemy_spotter_prone", ::_unknown_32F9 );
-    _ID42407::_ID3343( "enemy_spotter_crouched", ::_unknown_3304 );
-    _ID42407::_ID3343( "enemy_javelin", ::_unknown_330F );
-    _ID42407::_ID3343( "enemy_stinger", ::_unknown_331A );
-    _ID42407::_ID3343( "waittill_damaged_and_set_flag", ::_unknown_34FE );
-    _ID42407::_ID3343( "invisible_patrol_fodder", ::_unknown_3FC8 );
-    _ID42407::_ID3343( "at4_friendly", ::_unknown_3FE3 );
-    _ID42407::_ID3343( "player_seek", ::_unknown_3F2B );
-    _ID42407::_ID3343( "roof_escape_redshirts", ::_unknown_25F8 );
-    _ID42407::_ID3343( "redshirt", ::_unknown_32E3 );
-    _ID42407::_ID3343( "glass_building_enemies", ::_unknown_3033 );
-    _ID42407::_ID3343( "ambush", ::_unknown_3031 );
-    _ID42407::_ID3343( "laatpv_gunner", ::_unknown_3041 );
-    _ID42407::_ID3344( "commerce_rpg_upper", ::_unknown_0EF5 );
-    _ID42407::_ID3344( "hostiles_courtyard", ::_unknown_1880 );
-    var_6 = _func_0E2( "axis" );
+    _ID42237::_ID3350( var_5, _ID42407::_ID1947, ::_ID47372 );
+    _ID42237::_ID3350( getentarray( "ai_ambient", "script_noteworthy" ), _ID42407::_ID1947, ::_ID53409 );
+    _ID42237::_ID3350( getentarray( "ai_ambient_prop", "script_noteworthy" ), _ID42407::_ID1947, ::_ID47783 );
+    _ID42237::_ID3350( getentarray( "monitor_destruct1", "targetname" ), ::_ID46656 );
+    _ID42237::_ID3350( getentarray( "monitor_destruct2", "targetname" ), ::_ID54547 );
+    _ID42237::_ID3350( getentarray( "monitor_destruct_on1", "targetname" ), ::_ID48761 );
+    _ID42237::_ID3350( getentarray( "monitor_destruct_on2", "targetname" ), ::_ID43437 );
+    _ID42237::_ID3350( getentarray( "monitor_destruct_on3", "targetname" ), ::_ID50807 );
+    _ID42237::_ID3350( getentarray( "wired_light", "targetname" ), ::scripted_anim_props, "light_idle", "wired_light" );
+    _ID42237::_ID3350( getentarray( "wired_light_broken", "targetname" ), ::scripted_anim_props, "light_idle_broken", "wired_light" );
+    getent( "suspended_light1", "targetname" ) thread scripted_anim_props( "light_idle1", "suspended_light" );
+    getent( "suspended_light2", "targetname" ) thread scripted_anim_props( "light_idle2", "suspended_light" );
+    getent( "suspended_light3", "targetname" ) thread scripted_anim_props( "light_idle3", "suspended_light" );
+    getent( "suspended_light4", "targetname" ) thread scripted_anim_props( "light_idle4", "suspended_light" );
+    getent( "suspended_light5", "targetname" ) thread scripted_anim_props( "light_idle5", "suspended_light" );
+    _ID42237::_ID3350( getentarray( "curtain_red_wind", "targetname" ), ::scripted_anim_props, "curtains_wind", "curtains" );
+    _ID42237::_ID3350( getentarray( "curtain_closed_wind", "targetname" ), ::scripted_anim_props, "curtains_closed_wind_calm", "curtains" );
+    _ID42237::_ID3350( getentarray( "curtain_open_idle", "targetname" ), ::scripted_anim_props, "curtains_wind_calm", "curtains" );
+    _ID42407::_ID3343( "door_breaker", ::_ID44403 );
+    _ID42407::_ID3344( "hostiles_commerce_samsite", ::_ID44531 );
+    _ID42407::_ID3344( "commerce_sector_2_guys", ::_ID49619 );
+    _ID42407::_ID3344( "crowsnest_assault_guys_wave1", ::_ID53643 );
+    _ID42407::_ID3344( "commerce_flare_guys", ::_ID52458 );
+    _ID42407::_ID3344( "ww2_heli", ::_ID51816 );
+    _ID42407::_ID3343( "no_suppress", ::_ID44297 );
+    _ID42407::_ID3343( "friendly_fodder", ::_ID45378 );
+    _ID42407::_ID3343( "enemy_spotter_prone", ::_ID48491 );
+    _ID42407::_ID3343( "enemy_spotter_crouched", ::_ID48491 );
+    _ID42407::_ID3343( "enemy_javelin", ::_ID48491 );
+    _ID42407::_ID3343( "enemy_stinger", ::_ID48491 );
+    _ID42407::_ID3343( "waittill_damaged_and_set_flag", ::_ID48566 );
+    _ID42407::_ID3343( "invisible_patrol_fodder", ::_ID46951 );
+    _ID42407::_ID3343( "at4_friendly", ::_ID48916 );
+    _ID42407::_ID3343( "player_seek", ::_ID43811 );
+    _ID42407::_ID3343( "roof_escape_redshirts", ::_ID47467 );
+    _ID42407::_ID3343( "redshirt", ::_ID45840 );
+    _ID42407::_ID3343( "glass_building_enemies", ::_ID49892 );
+    _ID42407::_ID3343( "ambush", ::_ID53905 );
+    _ID42407::_ID3343( "laatpv_gunner", ::_ID47521 );
+    _ID42407::_ID3344( "commerce_rpg_upper", ::_ID49396 );
+    _ID42407::_ID3344( "hostiles_courtyard", ::ai_hostiles_courtyard );
+    var_6 = getspawnerteamarray( "axis" );
     var_7 = [];
-    var_8 = var_6;
 
-    for ( var_10 = _func_1DA( var_8 ); _func_02F( var_10 ); var_10 = _func_1BF( var_8, var_10 ) )
+    foreach ( var_9 in var_6 )
     {
-        var_9 = var_8[var_10];
-
-        if ( !_func_02F( var_9._ID31388 ) )
+        if ( !isdefined( var_9._ID31388 ) )
             continue;
 
         var_7[var_7.size] = var_9;
     }
 
-    var_clear_2
-    var_clear_0
-    _ID42407::_ID3342( var_7, ::_unknown_30A6 );
-    thread _unknown_4394();
-    thread _unknown_43A9();
-    thread _unknown_443B();
-    thread _unknown_4493();
+    _ID42407::_ID3342( var_7, ::_ID53477 );
+    thread ai_force_ignore_supression();
+    thread ai_restore_ignore_supression();
+    thread setsunlight_dcburning();
+    thread moving_fire_lights_setup();
 }
 
 _ID49693()
@@ -304,56 +294,50 @@ _ID49693()
 
 _ID44217()
 {
-    var_0 = _func_1A2();
-    var_1 = var_0;
+    var_0 = getentarray();
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_125( var_2._ID170, "trigger_multiple_bcs" ) )
-            var_2 _meth_80B7();
+        if ( issubstr( var_2._ID170, "trigger_multiple_bcs" ) )
+            var_2 delete();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID53488()
 {
-    var_0 = _func_1A2( "script_origin", "classname" );
+    var_0 = getentarray( "script_origin", "classname" );
     var_1 = _ID42407::_ID3317( var_0, level._ID36707 );
-    _ID42237::_ID3350( var_1, ::_unknown_0D7D );
+    _ID42237::_ID3350( var_1, ::_ID44414 );
 }
 
 _ID44414()
 {
-    if ( !_func_02F( self._ID31190 ) )
+    if ( !isdefined( self._ID31190 ) )
         return;
 
     _ID42237::_ID14400( self._ID31190 );
 
-    if ( _func_039( "dc_debug" ) == "1" )
+    if ( getdvar( "dc_debug" ) == "1" )
         thread _ID42407::_ID9904( self._ID31190, self._ID740, 9999 );
 
     self waittill( "trigger" );
     _ID42237::_ID14402( self._ID31190 );
 
-    if ( _func_039( "dc_debug" ) == "1" )
-        _func_19F( "flag: " + self._ID31190 + " has been set" );
+    if ( getdvar( "dc_debug" ) == "1" )
+        iprintlnbold( "flag: " + self._ID31190 + " has been set" );
 }
 
 _ID47474()
 {
     _ID42475::_ID34575( "start_debug_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_bunker" );
-    thread _unknown_0F1A();
+    thread _ID48277();
 }
 
 _ID46468()
 {
     _ID42475::_ID34575( "start_debug_checkpoint" );
-    _unknown_3B10( "elevator_bottom" );
+    _ID45905( "elevator_bottom" );
     maps\dcburning_lighting::_ID51844( "dcburning_bunker" );
 }
 
@@ -361,23 +345,23 @@ _ID44920()
 {
     _ID42475::_ID34575( "start_elevator_bottom_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_commerce" );
-    _unknown_3B32( "elevator_bottom" );
-    thread _unknown_34C6();
+    _ID45905( "elevator_bottom" );
+    thread _ID49099();
     _ID42237::_ID14402( "obj_commerce_given" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "on" );
-    _unknown_4199( "colornodes_commerce_bot_to_top", "script_noteworthy", 1 );
-    thread _unknown_1A16();
+    _ID38942( "colornodes_commerce_bot_to_top", "script_noteworthy", 1 );
+    thread _ID43857();
 }
 
 _ID43762()
 {
     _ID42475::_ID34575( "start_elevator_top_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_commerce" );
-    _unknown_3B79( "elevator_top" );
+    _ID45905( "elevator_top" );
     _ID42407::_ID4917( "allies" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "on" );
     _ID42237::_ID14402( "player_at_commerce_crows_floor" );
-    thread _unknown_1F54();
+    thread _ID46175();
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -386,12 +370,12 @@ _ID43208()
 {
     _ID42475::_ID34575( "start_crows_nest_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_rooftops" );
-    _unknown_3BC6( "crows_nest" );
+    _ID45905( "crows_nest" );
     _ID42407::_ID4917( "allies" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "on" );
     _ID42237::_ID14402( "player_approaching_crowsnest" );
     _ID42237::_ID14402( "player_approaching_crowsnest2" );
-    thread _unknown_20B7();
+    thread _ID43417();
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -400,13 +384,13 @@ _ID47843()
 {
     _ID42475::_ID34575( "start_crows_nest_armor_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_rooftops" );
-    _unknown_3C1C( "crows_nest" );
+    _ID45905( "crows_nest" );
     _ID42407::_ID4917( "allies" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "on" );
     _ID42237::_ID14402( "start_crow_armor_sequence" );
     _ID42237::_ID14402( "player_approaching_crowsnest" );
     _ID42237::_ID14402( "player_approaching_crowsnest2" );
-    thread _unknown_26FB();
+    thread _ID51890();
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -415,14 +399,14 @@ _ID53971()
 {
     _ID42475::_ID34575( "start_barrett_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_rooftops" );
-    _unknown_3C79( "crows_nest" );
+    _ID45905( "crows_nest" );
     _ID42407::_ID4917( "allies" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "on" );
-    var_0 = _unknown_220A();
+    var_0 = _ID51469();
     var_1 = var_0[0];
     var_2 = var_0[1];
     var_clear_2
-    thread _unknown_2642( var_1, var_2 );
+    thread _ID47433( var_1, var_2 );
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -431,12 +415,12 @@ _ID44006()
 {
     _ID42475::_ID34575( "start_to_roof_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_rooftops" );
-    _unknown_3CCE( "to_roof" );
+    _ID45905( "to_roof" );
     _ID42407::_ID4918( "allies" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "on" );
     _ID42237::_ID14402( "only_2_javelin_enemies_remaining" );
     _ID42237::_ID14402( "crowsnest_sequence_finished" );
-    thread _unknown_2A6B();
+    thread _ID43705();
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -445,12 +429,12 @@ _ID35930()
 {
     _ID42475::_ID34575( "start_roof_checkpoint" );
     maps\dcburning_lighting::_ID51844( "dcburning_rooftops" );
-    _unknown_3D24( "Roof" );
+    _ID45905( "Roof" );
     _ID42237::_ID3350( level._ID35507, _ID42407::_ID8925, "off" );
     _ID42237::_ID14402( "player_headed_to_roof" );
     _ID42237::_ID14402( "player_approaching_outer_balcony" );
-    _unknown_2C3E( "trigger_dummy_roof_colornode" );
-    thread _unknown_2D49();
+    _ID47491( "trigger_dummy_roof_colornode" );
+    thread _ID50242();
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -461,16 +445,16 @@ _ID43871()
     maps\dcburning_lighting::_ID51844( "dcburning_heliride_takeoff" );
     var_0 = _ID42237::_ID16638( "player_heli_ww2_end", "script_noteworthy" );
     var_0._ID65 = ( 0, 256, 0 );
-    _unknown_318F( var_0 );
+    _ID49059( var_0 );
     level._ID52945._ID50372 = level._ID794;
-    level._ID52945._ID50372 _meth_8328( 1 );
-    level._ID52945 _meth_801D( level._ID30904["viewhands"], "tag_barrel" );
+    level._ID52945._ID50372 disableweapons( 1 );
+    level._ID52945 attach( level._ID30904["viewhands"], "tag_barrel" );
     level._ID52945 thread _ID54230::_ID43238();
     level._ID52945._ID23875 = _ID42407::_ID35028( "minigun_dummy", level._ID52945._ID740, level._ID52945._ID65 );
-    level._ID52945._ID23875 _meth_805A();
-    level._ID52945._ID23875 _meth_8053( level._ID52945 );
+    level._ID52945._ID23875 hide();
+    level._ID52945._ID23875 linkto( level._ID52945 );
     level._ID52945 thread _ID45306::_ID49378();
-    thread _unknown_33D4();
+    thread _ID53939();
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14402( "flag_reduce_sunlight" );
 }
@@ -488,31 +472,31 @@ _ID35711()
 
 _ID48277()
 {
-    var_0 = _func_1A1( "player_gun_down", "targetname" );
-    var_0 thread _unknown_129D();
-    thread _unknown_37B6();
-    _unknown_3E4F( "Bunker" );
-    thread _unknown_169F();
-    thread _unknown_12C1();
-    thread _unknown_12D5();
-    thread _unknown_12E0();
-    thread _unknown_37DB();
-    thread _unknown_37F9();
-    thread _unknown_18CE();
-    thread _unknown_192B();
-    thread _unknown_1AEF();
-    thread _unknown_1B02();
-    thread _unknown_1B2F();
-    thread _unknown_1C5F();
-    thread _unknown_1AC5();
-    thread _unknown_1ADB();
-    thread _unknown_1AEC();
-    thread _unknown_1B91();
-    thread _unknown_1B0C();
-    thread _unknown_22B0();
-    thread _unknown_12EB();
+    var_0 = getent( "player_gun_down", "targetname" );
+    var_0 thread _ID47051();
+    thread _ID44336();
+    _ID45905( "Bunker" );
+    thread _ID52072();
+    thread _ID43078();
+    thread _ID47314();
+    thread _ID52371();
+    thread _ID53750();
+    thread _ID49099();
+    thread _ID44179();
+    thread _ID51286();
+    thread _ID54725();
+    thread _ID43067();
+    thread _ID43166();
+    thread _ID50872();
+    thread _ID43579();
+    thread _ID45863();
+    thread _ID54617();
+    thread _ID47551();
+    thread _ID43075();
+    thread animate_wires();
+    thread monitor_bunker_exit_no_team_move();
     _ID42237::_ID14413( "player_commerce_trench_02" );
-    thread _unknown_1D68();
+    thread _ID43857();
 }
 
 monitor_bunker_exit_no_team_move()
@@ -534,9 +518,9 @@ _ID47051()
     for (;;)
     {
         _ID42237::_ID14413( "bunker_gun_down" );
-        _func_0DB( "cg_gunDownAnimDelayTime", 250 );
+        setsaveddvar( "cg_gunDownAnimDelayTime", 250 );
         _ID42237::_ID14426( "bunker_gun_down" );
-        _func_0DB( "cg_gunDownAnimDelayTime", -1 );
+        setsaveddvar( "cg_gunDownAnimDelayTime", -1 );
     }
 }
 
@@ -558,38 +542,38 @@ _ID47314()
 
 _ID52371()
 {
-    if ( _func_03A( "r_dcburning_culldist" ) == 1 )
-        _func_08E( 28500 );
+    if ( getdvarint( "r_dcburning_culldist" ) == 1 )
+        setculldist( 28500 );
 
-    thread _unknown_44EA();
+    thread _ID48994();
     _ID42407::_ID14543( "allies" );
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4917( "axis" );
-    level._ID44035 thread _unknown_4380( "bunker_radio_door_guy" );
-    level._ID49792 thread _unknown_438A( "gun_toss_guy2" );
-    level._ID48061 thread _unknown_4395( "gun_toss_guy1" );
-    var_0 = _ID42407::_ID3339( _func_1A2( "bunker_laptop_guys", "targetname" ) );
-    thread _unknown_181C();
-    var_1 = _ID42407::_ID3339( _func_1A2( "bunker_hallway_injured_guys", "targetname" ) );
-    var_2 = _ID42407::_ID3339( _func_1A2( "bunker_hallway_injured_guys2", "targetname" ) );
-    var_3 = _ID42407::_ID3339( _func_1A2( "bunker_sleeping_guys", "targetname" ) );
-    var_4 = _ID42407::_ID3339( _func_1A2( "bunker_doctor_and_patient", "targetname" ) );
-    thread _unknown_173C( var_4 );
-    var_5 = _func_1A1( "bunker_hallway_injured_carrier", "targetname" );
+    level._ID44035 thread _ID51021( "bunker_radio_door_guy" );
+    level._ID49792 thread _ID51021( "gun_toss_guy2" );
+    level._ID48061 thread _ID51021( "gun_toss_guy1" );
+    var_0 = _ID42407::_ID3339( getentarray( "bunker_laptop_guys", "targetname" ) );
+    thread _ID45387();
+    var_1 = _ID42407::_ID3339( getentarray( "bunker_hallway_injured_guys", "targetname" ) );
+    var_2 = _ID42407::_ID3339( getentarray( "bunker_hallway_injured_guys2", "targetname" ) );
+    var_3 = _ID42407::_ID3339( getentarray( "bunker_sleeping_guys", "targetname" ) );
+    var_4 = _ID42407::_ID3339( getentarray( "bunker_doctor_and_patient", "targetname" ) );
+    thread create_medic_props( var_4 );
+    var_5 = getent( "bunker_hallway_injured_carrier", "targetname" );
     var_6 = var_5 _ID42407::_ID35014();
-    var_7 = _ID42407::_ID3339( _func_1A2( "bunker_sitting_guys", "targetname" ) );
-    var_8 = _ID42407::_ID3339( _func_1A2( "bunker_injured_soldier", "targetname" ) );
-    var_9 = _ID42407::_ID3339( _func_1A2( "bunker_wounded_check", "targetname" ) );
+    var_7 = _ID42407::_ID3339( getentarray( "bunker_sitting_guys", "targetname" ) );
+    var_8 = _ID42407::_ID3339( getentarray( "bunker_injured_soldier", "targetname" ) );
+    var_9 = _ID42407::_ID3339( getentarray( "bunker_wounded_check", "targetname" ) );
     _ID42237::_ID14413( "introscreen_complete" );
     _ID42237::_ID14413( "player_bunker_comm_room" );
-    _unknown_4697( "colornodes_trenches", "script_noteworthy", 1 );
+    _ID38942( "colornodes_trenches", "script_noteworthy", 1 );
     _ID42237::_ID14413( "player_approaching_bunker_exit_hall" );
-    thread _unknown_1C47();
-    var_10 = _func_1A2( "drones_flood_monument", "targetname" );
-    thread _unknown_4924( var_10, "drones_flood_monument" );
-    thread _unknown_4BBA();
+    thread _ID50558();
+    var_10 = getentarray( "drones_flood_monument", "targetname" );
+    thread _ID52188( var_10, "drones_flood_monument" );
+    thread _ID44875();
 
-    if ( _func_03A( "r_dcburning_culldist" ) != 1 )
+    if ( getdvarint( "r_dcburning_culldist" ) != 1 )
     {
         level._ID52924 = _ID42411::_ID35200( "helis_ambient_trenches" );
         level._ID46159 = _ID42411::_ID35200( "helis_ambient_capitol" );
@@ -600,102 +584,84 @@ _ID52371()
     thread _ID54017::_ID43738( 2 );
     thread _ID54017::_ID43738( 3 );
     thread _ID54017::_ID43738( 4 );
-    var_11 = _ID42407::_ID12076( _func_1A1( "drone_warrior_hydrant", "targetname" ) );
-    var_11 thread _unknown_18D2();
-    var_12 = _func_1A1( "seaknight_loader_start", "targetname" );
+    var_11 = _ID42407::_ID12076( getent( "drone_warrior_hydrant", "targetname" ) );
+    var_11 thread _ID44096();
+    var_12 = getent( "seaknight_loader_start", "targetname" );
     var_12 notify( "spawn" );
-    var_13 = _func_1A1( "seaknight_loader_start2", "targetname" );
+    var_13 = getent( "seaknight_loader_start2", "targetname" );
     var_13 notify( "spawn" );
     var_12 thread maps\dcburning_aud::_ID46717( "scn_seaknight_loader_taking_off_02" );
     var_13 thread maps\dcburning_aud::_ID46717( "scn_seaknight_loader_taking_off_01" );
     var_14 = _ID42411::_ID35196( "littlebird_monument" );
-    var_15 = _ID42407::_ID3339( _func_1A2( "littlebird_monument_riders_left", "targetname" ) );
+    var_15 = _ID42407::_ID3339( getentarray( "littlebird_monument_riders_left", "targetname" ) );
     var_14 thread maps\dcburning_aud::littlebird_monument_idle_sound();
-    _ID42237::_ID3350( var_15, ::_unknown_3D23 );
+    _ID42237::_ID3350( var_15, ::_ID48332 );
     _ID42237::_ID3350( var_15, _ID42407::_ID22746 );
-    var_16 = _ID42407::_ID3339( _func_1A2( "littlebird_monument_riders_right", "targetname" ) );
-    _ID42237::_ID3350( var_16, ::_unknown_3D42 );
+    var_16 = _ID42407::_ID3339( getentarray( "littlebird_monument_riders_right", "targetname" ) );
+    _ID42237::_ID3350( var_16, ::_ID48332 );
     _ID42237::_ID3350( var_16, _ID42407::_ID22746 );
     var_17 = _ID42237::_ID16638( "pickup_node_before_stage_monument", "script_noteworthy" );
     var_14 _ID42411::_ID32450( var_17, var_15, "left" );
     var_14 _ID42411::_ID32450( var_17, var_16, "right" );
-    var_18 = _func_1A2( "littlebird_monument_riders_pilot", "script_noteworthy" );
+    var_18 = getentarray( "littlebird_monument_riders_pilot", "script_noteworthy" );
     _ID42237::_ID3350( var_18, _ID42407::_ID22746 );
     var_19 = [];
-    var_20 = _func_1A2( "monument_spotters", "targetname" );
+    var_20 = getentarray( "monument_spotters", "targetname" );
     var_21 = _ID42407::_ID3339( var_20, 1 );
     var_19 = _ID42407::_ID3317( var_19, var_21 );
     _ID42237::_ID14413( "player_approaching_monument" );
-    var_5 = _func_1A1( "drones_seaknight", "targetname" );
-    thread _unknown_1999( var_5, "seaknight_drones_loaded", "player_exiting_start_trench2" );
-    var_5 = _func_1A1( "drones_seaknight2", "targetname" );
-    thread _unknown_19B1( var_5, "seaknight_drones2_loaded", "player_exiting_start_trench" );
+    var_5 = getent( "drones_seaknight", "targetname" );
+    thread _ID47042( var_5, "seaknight_drones_loaded", "player_exiting_start_trench2" );
+    var_5 = getent( "drones_seaknight2", "targetname" );
+    thread _ID47042( var_5, "seaknight_drones2_loaded", "player_exiting_start_trench" );
     _ID42237::_ID14413( "player_exiting_start_trench" );
-    thread _unknown_1E1B();
-    thread _unknown_1DFE();
-    var_12 thread _unknown_4DDA( "seaknight_drones_loaded", "load_riders" );
-    var_12 thread _unknown_4DE2( "riders_loaded", "play_anim" );
-    var_13 thread _unknown_4DF5( "seaknight_drones2_loaded", "load_riders" );
-    var_13 thread _unknown_4DFD( "riders_loaded", "play_anim" );
-    var_22 = _func_1A2( "spot_targets", "script_noteworthy" );
-    _ID42237::_ID3350( var_22, ::_unknown_1A5A );
-    var_23 = _func_1A2( "bunker_door_up", "targetname" );
-    var_24 = var_23;
+    thread ch46_takeoff_fire();
+    thread _ID48591();
+    var_12 thread _ID47828( "seaknight_drones_loaded", "load_riders" );
+    var_12 thread _ID48998( "riders_loaded", "play_anim" );
+    var_13 thread _ID47828( "seaknight_drones2_loaded", "load_riders" );
+    var_13 thread _ID48998( "riders_loaded", "play_anim" );
+    var_22 = getentarray( "spot_targets", "script_noteworthy" );
+    _ID42237::_ID3350( var_22, ::_ID46576 );
+    var_23 = getentarray( "bunker_door_up", "targetname" );
 
-    for ( var_26 = _func_1DA( var_24 ); _func_02F( var_26 ); var_26 = _func_1BF( var_24, var_26 ) )
-    {
-        var_25 = var_24[var_26];
+    foreach ( var_25 in var_23 )
         var_25 _ID42407::_ID18512();
-    }
 
-    var_clear_2
-    var_clear_0
-    var_27 = _func_1A2( "bunker_door", "targetname" );
+    var_27 = getentarray( "bunker_door", "targetname" );
     _ID42237::_ID3350( var_27, _ID42407::_ID33997 );
     _ID42237::_ID14402( "bunker_door_closed" );
     var_28 = _ID42237::_ID16640( "mortar_bunker", "targetname" );
-    var_29 = _func_1A2( "mortar_bunker", "targetname" );
-    _ID42237::_ID3294( var_29, ::_meth_80B7 );
-    thread _unknown_4DEB( var_28, "delete_bunker_mortars" );
-    var_30 = _func_1A1( "bunker_radio_org_room2", "targetname" );
-    var_30 _meth_80B7();
-    var_31 = _func_1A1( "volume_bunker", "targetname" );
-    var_32 = var_31 _unknown_4BF7();
+    var_29 = getentarray( "mortar_bunker", "targetname" );
+    _ID42237::_ID3294( var_29, ::delete );
+    thread _ID53157( var_28, "delete_bunker_mortars" );
+    var_30 = getent( "bunker_radio_org_room2", "targetname" );
+    var_30 delete();
+    var_31 = getent( "volume_bunker", "targetname" );
+    var_32 = var_31 _ID43959();
     var_33 = var_31 _ID42407::_ID15692( "allies" );
     var_32 = _ID42407::_ID3317( var_32, var_33 );
-    _ID42237::_ID3350( var_32, ::_unknown_4929 );
+    _ID42237::_ID3350( var_32, ::_ID47688 );
     _ID42237::_ID3350( level._ID48904, _ID42237::_ID26402 );
-    var_5 = _func_1A1( "monument_waver", "targetname" );
+    var_5 = getent( "monument_waver", "targetname" );
     var_34 = var_5 _ID42407::_ID35014( 1 );
-    var_20 = _func_1A2( "friendlies_commerce_street", "targetname" );
+    var_20 = getentarray( "friendlies_commerce_street", "targetname" );
     var_35 = [];
-    var_36 = var_20;
 
-    for ( var_37 = _func_1DA( var_36 ); _func_02F( var_37 ); var_37 = _func_1BF( var_36, var_37 ) )
-    {
-        var_5 = var_36[var_37];
+    foreach ( var_5 in var_20 )
         var_35[var_35.size] = var_5 _ID42407::_ID35014( 1 );
-    }
 
-    var_clear_1
-    var_clear_0
-    _ID42237::_ID3350( var_35, ::_unknown_3F26 );
-    var_20 = _func_1A2( "friendlies_commerce_wall", "targetname" );
+    _ID42237::_ID3350( var_35, ::_ID50012 );
+    var_20 = getentarray( "friendlies_commerce_wall", "targetname" );
     var_38 = [];
-    var_39 = var_20;
 
-    for ( var_40 = _func_1DA( var_39 ); _func_02F( var_40 ); var_40 = _func_1BF( var_39, var_40 ) )
-    {
-        var_5 = var_39[var_40];
+    foreach ( var_5 in var_20 )
         var_38[var_38.size] = var_5 _ID42407::_ID35014( 1 );
-    }
 
-    var_clear_1
-    var_clear_0
-    thread _unknown_1A85( _ID42237::array_flatten( [ var_35, var_38 ] ) );
+    thread ai_commerce_reduce_sightrace( _ID42237::array_flatten( [ var_35, var_38 ] ) );
     level.battlechattermaxcanseeperframe = 5;
     _ID42237::_ID14413( "player_exiting_start_trench2" );
-    var_20 = _func_1A2( "monument_mortarguys", "targetname" );
+    var_20 = getentarray( "monument_mortarguys", "targetname" );
     var_41 = _ID42407::_ID3339( var_20, 1 );
     _ID42237::_ID14413( "commerce_enemy_javeling_failsafe" );
     var_19 = _ID42237::_ID3293( var_19, var_34 );
@@ -703,9 +669,9 @@ _ID52371()
     var_14 thread _ID42411::_ID22484( "left", var_15 );
     var_14 thread _ID42411::_ID22484( "right", var_16 );
     var_42 = _ID42237::_ID16638( "littlebird_monument_path", "targetname" );
-    var_14 thread _unknown_1BC2( "player_exiting_start_trench", var_42 );
-    var_43 = _func_1A2( "drones_flood_monument2", "targetname" );
-    thread _unknown_4C93( var_43, "drones_flood_monument2" );
+    var_14 thread _ID51626( "player_exiting_start_trench", var_42 );
+    var_43 = getentarray( "drones_flood_monument2", "targetname" );
+    thread _ID52188( var_43, "drones_flood_monument2" );
     _ID42237::_ID14413( "player_trench_capitol_failsafe" );
     var_44 = _ID42411::_ID35196( "heli_trench" );
     var_45 = _ID42411::_ID35196( "heli_commerce_front" );
@@ -713,36 +679,31 @@ _ID52371()
     var_45 thread maps\dcburning_aud::_ID46244( "scn_mi28_commerce_01" );
     _ID42237::_ID14413( "player_commerce_trench_01" );
     level._ID794._ID511 = 0;
-    level._ID794 _unknown_4A8D( 1500 );
+    level._ID794 _ID32474( 1500 );
     _ID42237::_ID14413( "player_commerce_trench_03" );
     _ID42237::_ID14421( "player_touching_commerce_wall_left", "player_touching_commerce_wall_right" );
     thread _ID42407::_ID4422( "commerce_wall" );
-    thread _unknown_49D9();
-    thread _unknown_1BC1();
+    thread _ID54322();
+    thread bradley_commerce_targets();
     level._ID43166._ID49533 = 1;
     _ID42237::_ID3350( var_35, _ID42407::_ID36519 );
-    _ID42237::_ID3350( var_35, ::_unknown_402F );
+    _ID42237::_ID3350( var_35, ::_ID45840 );
     _ID42237::_ID14425( "player_approaching_commerce", 5 );
-    _unknown_4ABD( "colornodes_commerce_approach", "script_noteworthy", 1 );
-    var_46 = _func_1A2( "colornodes_commerce_approach", "script_noteworthy" );
-    thread _unknown_1E3C();
+    _ID38942( "colornodes_commerce_approach", "script_noteworthy", 1 );
+    var_46 = getentarray( "colornodes_commerce_approach", "script_noteworthy" );
+    thread _ID53455();
     _ID42237::_ID14402( "lav_is_suppressing" );
-    var_47 = _func_0DE( "axis" );
-    var_48 = var_47;
+    var_47 = getaiarray( "axis" );
 
-    for ( var_50 = _func_1DA( var_48 ); _func_02F( var_50 ); var_50 = _func_1BF( var_48, var_50 ) )
+    foreach ( var_49 in var_47 )
     {
-        var_49 = var_48[var_50];
-
-        if ( !_func_02F( var_49 ) )
+        if ( !isdefined( var_49 ) )
             continue;
 
         var_49._ID513 = 0;
         var_49._ID2219 = 0;
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14415( "leader_orders_everyone_across_street", "player_entered_commerce_right", "player_entered_commerce_left" );
 
     if ( !_ID42237::_ID14385( "player_crossing_street" ) )
@@ -752,231 +713,178 @@ _ID52371()
     }
 
     level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-    _ID42237::_ID3350( level._ID35507, ::_unknown_410A );
-    thread _unknown_1C91();
+    _ID42237::_ID3350( level._ID35507, ::_ID48332 );
+    thread ai_commerce_entrance_ignore_suppression();
     _ID42237::_ID14413( "player_entering_commerce" );
     level.battlechattermaxcanseeperframe = undefined;
-    _func_034( "ai_GrenadeThrowAllowedInStairs", 0 );
+    setdvar( "ai_GrenadeThrowAllowedInStairs", 0 );
     level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-    _ID42237::_ID3350( level._ID35507, ::_unknown_4145 );
-    var_52 = level._ID35507;
+    _ID42237::_ID3350( level._ID35507, ::_ID43214 );
 
-    for ( var_53 = _func_1DA( var_52 ); _func_02F( var_53 ); var_53 = _func_1BF( var_52, var_53 ) )
-    {
-        var_49 = var_52[var_53];
+    foreach ( var_49 in level._ID35507 )
         var_49 _ID42407::_ID10973();
-    }
 
-    var_clear_1
-    var_clear_0
-    var_54 = _func_1A1( "commerce_blocker_right", "targetname" );
-    var_55 = _func_1A1( "commerce_blocker_left", "targetname" );
+    var_54 = getent( "commerce_blocker_right", "targetname" );
+    var_55 = getent( "commerce_blocker_left", "targetname" );
     var_56 = [];
     var_56[0] = var_54;
     var_56[1] = var_55;
     var_57 = _ID42237::_ID16276( level._ID794._ID740, var_56 );
-    var_57 _meth_8059();
-    var_57 _meth_82C8();
-    var_57 _meth_805E();
+    var_57 show();
+    var_57 solid();
+    var_57 disconnectpaths();
     _ID42237::_ID14421( "player_entered_commerce_left", "player_entered_commerce_right" );
-    thread _unknown_4E5F( "drones_flood_monument" );
-    thread _unknown_4E67( "drones_flood_monument2" );
+    thread _ID48047( "drones_flood_monument" );
+    thread _ID48047( "drones_flood_monument2" );
     _ID42237::_ID3350( level._ID48952, _ID42237::_ID38863 );
     _ID42237::_ID3350( level._ID44271, _ID42237::_ID38865 );
-    _unknown_4C07( "colornodes_commerce_bot_to_top", "script_noteworthy", 1 );
+    _ID38942( "colornodes_commerce_bot_to_top", "script_noteworthy", 1 );
     _ID42237::_ID14388( "lav_is_suppressing" );
-    var_47 = _func_0DE( "axis" );
-    var_58 = var_47;
+    var_47 = getaiarray( "axis" );
 
-    for ( var_59 = _func_1DA( var_58 ); _func_02F( var_59 ); var_59 = _func_1BF( var_58, var_59 ) )
+    foreach ( var_49 in var_47 )
     {
-        var_49 = var_58[var_59];
-
-        if ( !_func_02F( var_49 ) )
+        if ( !isdefined( var_49 ) )
             continue;
 
         var_49._ID513 = 1;
         var_49._ID2219 = 1;
     }
 
-    var_clear_1
-    var_clear_0
     thread _ID42407::_ID4422( "commerce_entered" );
     _ID42237::_ID14402( "obj_follow_sgt_macey_complete" );
-    _unknown_4C64( "colornodes_elevators", "script_noteworthy", 1 );
+    _ID38942( "colornodes_elevators", "script_noteworthy", 1 );
     thread _ID42407::_ID2265( var_35, 1024 );
-    thread _unknown_203C();
-    var_60 = _func_1A1( "volume_commerce_lobby_upper", "targetname" );
+    thread _ID47359();
+    var_60 = getent( "volume_commerce_lobby_upper", "targetname" );
     var_61 = var_60 _ID42407::_ID15547( "axis" );
 
-    if ( _func_02F( var_61 ) && var_61.size > 0 )
+    if ( isdefined( var_61 ) && var_61.size > 0 )
         level._ID48825 = var_61;
 
     wait 1;
-    thread _unknown_20AB();
+    thread _ID49071();
     level._ID43166._ID43839 = 0;
-    _ID42407::_ID10226( 4, ::_unknown_1E43 );
+    _ID42407::_ID10226( 4, ::_ID50622 );
     _ID42237::_ID14421( "commerce_first_floor_enemies_dead", "player_middle_commerce_first_floor" );
     level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-    var_62 = level._ID35507;
 
-    for ( var_63 = _func_1DA( var_62 ); _func_02F( var_63 ); var_63 = _func_1BF( var_62, var_63 ) )
-    {
-        var_49 = var_62[var_63];
+    foreach ( var_49 in level._ID35507 )
         var_49 _ID42407::_ID12538();
-    }
 
-    var_clear_1
-    var_clear_0
-    level._ID794 _unknown_4D11();
+    level._ID794 _ID47046();
 
     if ( !_ID42237::_ID14385( "player_middle_commerce_first_floor" ) )
     {
-        var_51 = _func_1A1( "colornodes_elevators", "script_noteworthy" );
+        var_51 = getent( "colornodes_elevators", "script_noteworthy" );
         var_51 notify( "trigger",  level._ID794  );
     }
 
     _ID42237::_ID14413( "player_heading_up_to_mezzanine" );
-    thread _unknown_4E78( "all", 1024, 1 );
+    thread _ID47411( "all", 1024, 1 );
     level._ID48825 = undefined;
     level._ID43166._ID49533 = 1;
     level._ID43166._ID43839 = 1;
-    var_64 = _func_1A2( "mezzanine_blockers", "targetname" );
+    var_64 = getentarray( "mezzanine_blockers", "targetname" );
     _ID42237::_ID3350( var_64, _ID42407::_ID33997 );
     _ID42237::_ID14413( "ask_bradley_to_stop_firing" );
     level._ID43166._ID43839 = 0;
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
-    thread _unknown_4F66( "all", 128 );
+    thread _ID52268( "all", 128 );
 }
 
 ai_commerce_reduce_sightrace( var_0 )
 {
-    var_1 = var_0;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             continue;
 
         var_2._ID967 = 1000;
         var_2._ID968 = 1000;
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14415( "leader_orders_everyone_across_street", "player_entered_commerce_right", "player_entered_commerce_left" );
-    var_4 = var_0;
 
-    for ( var_5 = _func_1DA( var_4 ); _func_02F( var_5 ); var_5 = _func_1BF( var_4, var_5 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_4[var_5];
-
-        if ( !_func_02F( var_2 ) || !_func_1A7( var_2 ) )
+        if ( !isdefined( var_2 ) || !isalive( var_2 ) )
             continue;
 
         var_2._ID967 = 100;
         var_2._ID968 = 250;
     }
-
-    var_clear_1
-    var_clear_0
 }
 
 create_medic_props( var_0 )
 {
-    level.medic_clipboard = _func_1A1( "medic_clipboard", "targetname" );
-    level.medic_pen = _func_1A1( "medic_pen", "targetname" );
-    var_1 = var_0;
+    level.medic_clipboard = getent( "medic_clipboard", "targetname" );
+    level.medic_pen = getent( "medic_pen", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
         if ( var_2._ID172 == "actor_ally_us_army_paramedic" )
         {
             level.medic = var_2;
             break;
         }
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 detach_syringe( var_0, var_1 )
 {
-    var_2 = _func_06A( "script_model", var_0 _meth_818C( var_1 ) );
-    var_2._ID65 = var_0 _meth_818D( var_1 );
-    var_2 _meth_80B8( "h2_adrenaline_syringe_phys" );
-    var_2 _meth_82CC( var_2._ID740, ( -500, 500, 0 ) );
+    var_2 = spawn( "script_model", var_0 gettagorigin( var_1 ) );
+    var_2._ID65 = var_0 gettagangles( var_1 );
+    var_2 setmodel( "h2_adrenaline_syringe_phys" );
+    var_2 physicslaunchclient( var_2._ID740, ( -500, 500, 0 ) );
 }
 
 attach_clipboard( var_0, var_1 )
 {
-    level.medic_clipboard _meth_80B7();
-    var_0 _meth_801D( "h2_com_clipboard_wpaper_anim", var_1 );
+    level.medic_clipboard delete();
+    var_0 attach( "h2_com_clipboard_wpaper_anim", var_1 );
 }
 
 attach_pen( var_0, var_1 )
 {
-    level.medic_pen _meth_80B7();
-    var_0 _meth_801D( "h2_characters_accessories_pencil_anim", var_1 );
+    level.medic_pen delete();
+    var_0 attach( "h2_characters_accessories_pencil_anim", var_1 );
 }
 
 bradley_commerce_targets()
 {
-    var_0 = _func_1A1( "volume_commerce_lobby", "targetname" );
+    var_0 = getent( "volume_commerce_lobby", "targetname" );
     var_1 = var_0 _ID42407::_ID15547( "axis" );
 
-    if ( _func_02F( var_1 ) && var_1.size > 0 )
+    if ( isdefined( var_1 ) && var_1.size > 0 )
         level._ID48825 = var_1;
 }
 
 ai_commerce_entrance_ignore_suppression()
 {
-    var_0 = level._ID35507;
-
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
-    {
-        var_1 = var_0[var_2];
+    foreach ( var_1 in level._ID35507 )
         var_1._ID513 = 1;
-    }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "player_crossing_street" );
-    var_3 = _func_0DE( "allies" );
-    var_4 = var_3;
+    var_3 = getaiarray( "allies" );
 
-    for ( var_5 = _func_1DA( var_4 ); _func_02F( var_5 ); var_5 = _func_1BF( var_4, var_5 ) )
+    foreach ( var_1 in var_3 )
     {
-        var_1 = var_4[var_5];
-
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
         var_1._ID513 = 1;
     }
 
-    var_clear_1
-    var_clear_0
     _ID42237::_ID14413( "player_commerce_past_desks" );
-    var_6 = var_3;
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
+    foreach ( var_1 in var_3 )
     {
-        var_1 = var_6[var_7];
-
-        if ( !_func_02F( var_1 ) || !_func_1A7( var_1 ) )
+        if ( !isdefined( var_1 ) || !isalive( var_1 ) )
             continue;
 
         var_1._ID513 = 0;
     }
-
-    var_clear_1
-    var_clear_0
 }
 
 _ID49396()
@@ -986,18 +894,18 @@ _ID49396()
     _ID42407::_ID32355( 1 );
     level endon( "player_approaching_commerce" );
     _ID42237::_ID14413( "player_commerce_trench_03" );
-    var_0 = _func_0C9( "commerce_lobby_teleport_nodes", "targetname" );
+    var_0 = getnodearray( "commerce_lobby_teleport_nodes", "targetname" );
     var_1 = _ID42237::_ID16182( level._ID794._ID740, var_0 );
-    self _meth_81D2( var_1._ID740, var_1._ID65 );
+    self forceteleport( var_1._ID740, var_1._ID65 );
     _ID42407::_ID32355( 0 );
-    self _meth_81B2( self._ID740 );
+    self setgoalpos( self._ID740 );
     self._ID86 = 0;
-    var_2 = _func_1A1( "volume_commerce_front", "targetname" );
-    self _meth_81B5( var_2 );
+    var_2 = getent( "volume_commerce_front", "targetname" );
+    self setgoalvolumeauto( var_2 );
     _ID42237::_ID14421( "player_crossing_street", "leader_orders_everyone_across_street" );
-    wait(_func_0BA( 0, 1 ));
-    thread _unknown_4E97( self._ID740 );
-    self _meth_8058();
+    wait(randomfloatrange( 0, 1 ));
+    thread _ID52645( self._ID740 );
+    self kill();
 }
 
 _ID50622()
@@ -1012,7 +920,7 @@ _ID47042( var_0, var_1, var_2 )
     while ( !_ID42237::_ID14385( var_2 ) )
     {
         var_4 = var_0 _ID42407::_ID12076();
-        wait(_func_0BA( 1, 2.5 ));
+        wait(randomfloatrange( 1, 2.5 ));
     }
 
     var_5 = _ID42407::_ID15693( var_0._ID1193 );
@@ -1029,14 +937,14 @@ _ID51626( var_0, var_1 )
     _ID42237::_ID14413( var_0 );
     thread _ID42411::_ID40218( var_1 );
     thread maps\dcburning_aud::littlebird_monument_taking_off_sound();
-    self _meth_829E( 20, 50 );
+    self setmaxpitchroll( 20, 50 );
     wait 2;
     _ID42411::_ID40066( "idle_alert_to_casual" );
-    self _meth_828D( 25 );
+    self vehicle_setspeed( 25 );
     self._ID31507 = 1;
     wait 5;
     _ID42237::_ID3350( self._ID29965, _ID42407::_ID36519 );
-    thread _unknown_55BE();
+    thread _ID50096();
 }
 
 _ID44096()
@@ -1044,13 +952,13 @@ _ID44096()
     self endon( "death" );
     _ID42237::_ID14413( "player_mid_trench" );
     _ID42237::_ID27077( "mortar_incoming", self._ID740 );
-    _func_156( level._ID1426["mortar"]["dirt"], self._ID740 );
-    _func_192( 0.25, 0.75, self._ID740, 1250 );
+    playfx( level._ID1426["mortar"]["dirt"], self._ID740 );
+    earthquake( 0.25, 0.75, self._ID740, 1250 );
     thread _ID42237::_ID27077( level._ID30909["mortar"]["dirt"], self._ID740 );
     self notify( "stop_drone_fighting" );
     thread _ID42237::_ID27077( "generic_death_american_1", self._ID740 );
     self._ID9813 = level._ID30895["generic"]["deathanim_mortar_00"];
-    self _meth_8058();
+    self kill();
 }
 
 _ID46576()
@@ -1062,17 +970,17 @@ _ID46576()
 
     while ( !_ID42237::_ID14385( "obj_commerce_defend_snipe_given" ) )
     {
-        self _meth_82B8( self._ID740 + ( 0, 0, var_1 ), var_0, 1, 1 );
+        self moveto( self._ID740 + ( 0, 0, var_1 ), var_0, 1, 1 );
         wait(var_0);
-        self _meth_82B8( self._ID740 + ( var_2, 0, 0 ), var_0, 1, 1 );
+        self moveto( self._ID740 + ( var_2, 0, 0 ), var_0, 1, 1 );
         wait(var_0);
-        self _meth_82B8( self._ID740 + ( 0, 0, var_1 * -1 ), var_0, 1, 1 );
+        self moveto( self._ID740 + ( 0, 0, var_1 * -1 ), var_0, 1, 1 );
         wait(var_0);
-        self _meth_82B8( self._ID740 + ( var_2 * -1, 0, 0 ), var_0, 1, 1 );
+        self moveto( self._ID740 + ( var_2 * -1, 0, 0 ), var_0, 1, 1 );
         wait(var_0);
     }
 
-    self _meth_80B7();
+    self delete();
 }
 
 _ID52072()
@@ -1101,113 +1009,113 @@ _ID52072()
 
 _ID45387()
 {
-    level._ID48827 = _func_06A( "script_origin", level._ID794._ID740 );
-    level._ID48827 _meth_8053( level._ID794 );
+    level._ID48827 = spawn( "script_origin", level._ID794._ID740 );
+    level._ID48827 linkto( level._ID794 );
     level._ID48827._ID22409 = 1;
     level endon( "javelin_is_owning_fools" );
-    _unknown_24C9( "dcburn_rm1_report1dash3" );
-    _unknown_24D1( "dcburn_rm2_sendtraffic" );
-    _unknown_24D9( "dcburn_rm1_40personnel" );
-    _unknown_24E1( "dcburn_rm1_lineyankee" );
-    _unknown_24EA( "dcburn_rm1_linezulu" );
-    _unknown_24F2( "dcburn_rm1_linealpha" );
-    _unknown_24FA( "dcburn_rm2_sayagain" );
-    _unknown_2502( "dcburn_rm1_sayagain" );
-    _unknown_250B( "dcburn_rm2_remarks" );
-    _unknown_2513( "dcburn_rm1_noremarks" );
-    _unknown_251B( "dcburn_rm2_needintel" );
-    _unknown_2523( "dcburn_rm3_engparatroop" );
-    _unknown_252C( "dcburn_rm4_footmobiles" );
-    _unknown_2534( "dcburn_rm5_thermlaws" );
-    _unknown_253C( "dcburn_rm4_whattarget" );
-    _unknown_2544( "dcburn_rm5_dropbuilding" );
-    _unknown_254D( "dcburn_rm4_fedresbuild" );
-    _unknown_2555( "dcburn_rm5_allover" );
-    _unknown_255D( "dcburn_rm4_checkin" );
-    _unknown_2565( "dcburn_rm5_roger" );
-    _unknown_256E( "dcburn_rm4_thermlaws" );
-    _unknown_2576( "dcburn_rm6_copiesall" );
-    _unknown_257E( "dcburn_rm4_stndingby" );
-    _unknown_2586( "dcburn_rm6_thermlawsauth" );
-    _unknown_258F( "dcburn_rm4_approved" );
-    _unknown_2597( "dcburn_rm5_solidcopy" );
-    _unknown_259F( "dcburn_rm5_apprengage" );
-    _unknown_25A7( "dcburn_rm1_engagingtarg" );
-    _unknown_25B0( "dcburn_rm1_targetsupp" );
-    _unknown_25B8( "dcburn_rm4_saddleup" );
-    _unknown_25C0( "dcburn_rm5_btr60" );
-    _unknown_25C8( "dcburn_rm6_lawrocket" );
-    _unknown_25D1( "dcburn_rm1_logancircpark" );
-    _unknown_25D9( "dcburn_rm2_22isdown" );
-    _unknown_25E1( "dcburn_rm3_airsupport" );
-    _unknown_25E9( "dcburn_rm5_mark19down" );
-    _unknown_25F2( "dcburn_rm4_retrograde" );
-    _unknown_25FA( "dcburn_rm3_lowammo" );
-    _unknown_2602( "dcburn_rm3_5btr60s" );
-    _unknown_260A( "dcburn_rm2_callingitin" );
-    _unknown_2613( "dcburn_ra2_standingby" );
-    _unknown_261B( "dcburn_rm2_gridtomark" );
-    _unknown_2623( "dcburn_ra2_gridtosuppress" );
-    _unknown_262B( "dcburn_rm2_reqsplash" );
-    _unknown_2634( "dcburn_ra2_dangerclose" );
-    _unknown_263C( "dcburn_ra2_mess2ob" );
-    _unknown_2644( "dcburn_rm2_2gunseffect" );
-    _unknown_264C( "dcburn_ra2_shot" );
-    _unknown_2655( "dcburn_rm2_shot" );
-    _unknown_265D( "dcburn_rm2_splash" );
-    _unknown_2665( "dcburn_ra2_splash" );
-    _unknown_266D( "dcburn_rm3_takeitout" );
-    _unknown_2676( "dcburn_rm2_linkup" );
-    _unknown_267E( "dcburn_rm4_dugin" );
-    _unknown_2686( "dcburn_rm2_sitrep" );
-    _unknown_268E( "dcburn_rm4_brokenarrow" );
-    _unknown_2697( "dcburn_rm2_brokearrow" );
-    _unknown_269F( "dcburn_rm5_sitrep" );
-    _unknown_26A7( "dcburn_rm6_kia" );
-    _unknown_26AF( "dcburn_rm5_tacfreq" );
-    _unknown_26B8( "dcburn_rm6_switching" );
-    _unknown_26C0( "dcburn_rm1_12klicksnorth" );
-    _unknown_26C8( "dcburn_rm2_contactleft" );
-    _unknown_26D0( "dcburn_rm3_takingfire" );
-    _unknown_26D9( "dcburn_rm4_tookahit" );
-    _unknown_26E1( "dcburn_rm5_status" );
-    _unknown_26E9( "dcburn_rm1_heavyfire" );
-    _unknown_26F1( "dcburn_rm2_ambush" );
-    _unknown_26FA( "dcburn_rm3_contactleft" );
-    _unknown_2702( "dcburn_rm4_rpg" );
-    _unknown_270A( "dcburn_rm5_coversector" );
-    _unknown_2712( "dcburn_rp1_tasking" );
-    _unknown_271B( "dcburn_fac_pushtoipbuick" );
-    _unknown_2723( "dcburn_rp1_mapgrid" );
-    _unknown_272B( "dcburn_fac_2a10s" );
-    _unknown_2733( "dcburn_rm2_stalkercopies" );
-    _unknown_273C( "dcburn_rm2_standby" );
-    _unknown_2744( "dcburn_rp1_stndingby" );
-    _unknown_274C( "dcburn_rm2_talktotarg" );
-    _unknown_2754( "dcburn_rp1_goahead" );
-    _unknown_275D( "dcburn_rm2_ovaltrack" );
-    _unknown_2765( "dcburn_rp1_contact" );
-    _unknown_276D( "dcburn_rm2_ewaxis" );
-    _unknown_2775( "dcburn_rp1_contact" );
-    _unknown_277E( "dcburn_rm2_logancircpark" );
-    _unknown_2786( "dcburn_rp1_contact" );
-    _unknown_278E( "dcburn_rm2_yourtarget" );
-    _unknown_2796( "dcburn_rp1_rollingin" );
-    _unknown_279F( "dcburn_rm2_bringrain" );
-    _unknown_27A7( "dcburn_rp1_offsafe" );
-    _unknown_27AF( "dcburn_rp1_guns" );
-    _unknown_27B7( "dcburn_rp2_offsafe" );
-    _unknown_27C0( "dcburn_rp1_ejecting" );
-    _unknown_27C8( "dcburn_rp2_cantseeit" );
-    _unknown_27D0( "dcburn_rm2_onechute" );
-    _unknown_27D8( "dcburn_fac_southkstreet" );
+    _ID51656( "dcburn_rm1_report1dash3" );
+    _ID51656( "dcburn_rm2_sendtraffic" );
+    _ID51656( "dcburn_rm1_40personnel" );
+    _ID51656( "dcburn_rm1_lineyankee" );
+    _ID51656( "dcburn_rm1_linezulu" );
+    _ID51656( "dcburn_rm1_linealpha" );
+    _ID51656( "dcburn_rm2_sayagain" );
+    _ID51656( "dcburn_rm1_sayagain" );
+    _ID51656( "dcburn_rm2_remarks" );
+    _ID51656( "dcburn_rm1_noremarks" );
+    _ID51656( "dcburn_rm2_needintel" );
+    _ID51656( "dcburn_rm3_engparatroop" );
+    _ID51656( "dcburn_rm4_footmobiles" );
+    _ID51656( "dcburn_rm5_thermlaws" );
+    _ID51656( "dcburn_rm4_whattarget" );
+    _ID51656( "dcburn_rm5_dropbuilding" );
+    _ID51656( "dcburn_rm4_fedresbuild" );
+    _ID51656( "dcburn_rm5_allover" );
+    _ID51656( "dcburn_rm4_checkin" );
+    _ID51656( "dcburn_rm5_roger" );
+    _ID51656( "dcburn_rm4_thermlaws" );
+    _ID51656( "dcburn_rm6_copiesall" );
+    _ID51656( "dcburn_rm4_stndingby" );
+    _ID51656( "dcburn_rm6_thermlawsauth" );
+    _ID51656( "dcburn_rm4_approved" );
+    _ID51656( "dcburn_rm5_solidcopy" );
+    _ID51656( "dcburn_rm5_apprengage" );
+    _ID51656( "dcburn_rm1_engagingtarg" );
+    _ID51656( "dcburn_rm1_targetsupp" );
+    _ID51656( "dcburn_rm4_saddleup" );
+    _ID51656( "dcburn_rm5_btr60" );
+    _ID51656( "dcburn_rm6_lawrocket" );
+    _ID51656( "dcburn_rm1_logancircpark" );
+    _ID51656( "dcburn_rm2_22isdown" );
+    _ID51656( "dcburn_rm3_airsupport" );
+    _ID51656( "dcburn_rm5_mark19down" );
+    _ID51656( "dcburn_rm4_retrograde" );
+    _ID51656( "dcburn_rm3_lowammo" );
+    _ID51656( "dcburn_rm3_5btr60s" );
+    _ID51656( "dcburn_rm2_callingitin" );
+    _ID51656( "dcburn_ra2_standingby" );
+    _ID51656( "dcburn_rm2_gridtomark" );
+    _ID51656( "dcburn_ra2_gridtosuppress" );
+    _ID51656( "dcburn_rm2_reqsplash" );
+    _ID51656( "dcburn_ra2_dangerclose" );
+    _ID51656( "dcburn_ra2_mess2ob" );
+    _ID51656( "dcburn_rm2_2gunseffect" );
+    _ID51656( "dcburn_ra2_shot" );
+    _ID51656( "dcburn_rm2_shot" );
+    _ID51656( "dcburn_rm2_splash" );
+    _ID51656( "dcburn_ra2_splash" );
+    _ID51656( "dcburn_rm3_takeitout" );
+    _ID51656( "dcburn_rm2_linkup" );
+    _ID51656( "dcburn_rm4_dugin" );
+    _ID51656( "dcburn_rm2_sitrep" );
+    _ID51656( "dcburn_rm4_brokenarrow" );
+    _ID51656( "dcburn_rm2_brokearrow" );
+    _ID51656( "dcburn_rm5_sitrep" );
+    _ID51656( "dcburn_rm6_kia" );
+    _ID51656( "dcburn_rm5_tacfreq" );
+    _ID51656( "dcburn_rm6_switching" );
+    _ID51656( "dcburn_rm1_12klicksnorth" );
+    _ID51656( "dcburn_rm2_contactleft" );
+    _ID51656( "dcburn_rm3_takingfire" );
+    _ID51656( "dcburn_rm4_tookahit" );
+    _ID51656( "dcburn_rm5_status" );
+    _ID51656( "dcburn_rm1_heavyfire" );
+    _ID51656( "dcburn_rm2_ambush" );
+    _ID51656( "dcburn_rm3_contactleft" );
+    _ID51656( "dcburn_rm4_rpg" );
+    _ID51656( "dcburn_rm5_coversector" );
+    _ID51656( "dcburn_rp1_tasking" );
+    _ID51656( "dcburn_fac_pushtoipbuick" );
+    _ID51656( "dcburn_rp1_mapgrid" );
+    _ID51656( "dcburn_fac_2a10s" );
+    _ID51656( "dcburn_rm2_stalkercopies" );
+    _ID51656( "dcburn_rm2_standby" );
+    _ID51656( "dcburn_rp1_stndingby" );
+    _ID51656( "dcburn_rm2_talktotarg" );
+    _ID51656( "dcburn_rp1_goahead" );
+    _ID51656( "dcburn_rm2_ovaltrack" );
+    _ID51656( "dcburn_rp1_contact" );
+    _ID51656( "dcburn_rm2_ewaxis" );
+    _ID51656( "dcburn_rp1_contact" );
+    _ID51656( "dcburn_rm2_logancircpark" );
+    _ID51656( "dcburn_rp1_contact" );
+    _ID51656( "dcburn_rm2_yourtarget" );
+    _ID51656( "dcburn_rp1_rollingin" );
+    _ID51656( "dcburn_rm2_bringrain" );
+    _ID51656( "dcburn_rp1_offsafe" );
+    _ID51656( "dcburn_rp1_guns" );
+    _ID51656( "dcburn_rp2_offsafe" );
+    _ID51656( "dcburn_rp1_ejecting" );
+    _ID51656( "dcburn_rp2_cantseeit" );
+    _ID51656( "dcburn_rm2_onechute" );
+    _ID51656( "dcburn_fac_southkstreet" );
 }
 
 _ID48922()
 {
     level endon( "bunker_door_closed" );
     _ID42237::_ID14413( "player_bunker_walk_01" );
-    var_0 = _func_1A1( "bunker_radio_org_room2", "targetname" );
+    var_0 = getent( "bunker_radio_org_room2", "targetname" );
     var_1 = _ID42237::_ID16638( "bunker_radio_org_room1", "targetname" );
     var_0 endon( "death" );
     var_1 endon( "death" );
@@ -1226,13 +1134,13 @@ _ID48922()
 
 _ID51656( var_0 )
 {
-    if ( !_func_02F( level._ID48827 ) )
+    if ( !isdefined( level._ID48827 ) )
         return;
 
-    if ( _func_02F( level._ID48827._ID10329 ) )
-        level._ID48827 _meth_80B7();
+    if ( isdefined( level._ID48827._ID10329 ) )
+        level._ID48827 delete();
 
-    level._ID48827 _meth_80A1( var_0, "done" );
+    level._ID48827 playsound( var_0, "done" );
     level._ID48827 waittill( "done" );
 }
 
@@ -1245,52 +1153,52 @@ _ID53455()
     for (;;)
     {
         if ( !_ID42237::_ID14385( "player_crossing_street" ) )
-            level._ID44035 _unknown_557E( "dcburn_mcy_latveesupp" );
+            level._ID44035 _ID10760( "dcburn_mcy_latveesupp" );
 
         if ( !_ID42237::_ID14385( "player_crossing_street" ) )
         {
-            level._ID44035 _unknown_5593( "dcburn_mcy_ready" );
-            level._ID44035 _unknown_559D( "dcburn_mcy_gomoveup" );
+            level._ID44035 _ID10760( "dcburn_mcy_ready" );
+            level._ID44035 _ID10760( "dcburn_mcy_gomoveup" );
         }
 
         _ID42237::_ID14402( "leader_orders_everyone_across_street" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
 
         _ID42407::_ID28864( "dcburn_mcy_lineoffire" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
 
         _ID42407::_ID28864( "dcburn_mcy_movemove" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
 
         _ID42407::_ID28864( "dcburn_mcy_50calsupp" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
 
         _ID42407::_ID28864( "dcburn_mcy_sittingducks" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
 
         _ID42407::_ID28864( "dcburn_mcy_blownoff" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
 
         _ID42407::_ID28864( "dcburn_mcy_moveup" );
-        wait(_func_0B9( 7, 11 ));
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_entering_commerce" ) )
             break;
@@ -1302,54 +1210,54 @@ _ID53455()
 _ID47359()
 {
     var_0 = 0;
-    level._ID44035 _unknown_5678( "dcburn_mcy_lobby_move_nag_00" );
+    level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_00" );
     _ID42237::_ID14402( "obj_commerce_given" );
     level endon( "player_approaching_bottom_elevators" );
     level endon( "stop_nag_get_to_elevator" );
 
     while ( !_ID42237::_ID14385( "player_approaching_bottom_elevators" ) )
     {
-        wait(_func_0B9( 5, 8 ));
+        wait(randomintrange( 5, 8 ));
 
         if ( _ID42237::_ID14385( "player_approaching_bottom_elevators" ) )
             break;
 
         if ( var_0 == 0 )
         {
-            level._ID44035 _unknown_56B7( "dcburn_mcy_grenadelaunch" );
+            level._ID44035 _ID10760( "dcburn_mcy_grenadelaunch" );
             var_0 = 1;
-            wait(_func_0B9( 7, 11 ));
+            wait(randomintrange( 7, 11 ));
         }
 
         if ( _ID42237::_ID14385( "player_approaching_bottom_elevators" ) )
             break;
 
-        level._ID44035 _unknown_56D7( "dcburn_mcy_lobby_move_nag_01" );
-        wait(_func_0B9( 7, 11 ));
+        level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_01" );
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_approaching_bottom_elevators" ) )
             break;
 
-        level._ID44035 _unknown_56F5( "dcburn_mcy_lobby_move_nag_02" );
-        wait(_func_0B9( 7, 11 ));
+        level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_02" );
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_approaching_bottom_elevators" ) )
             break;
 
-        level._ID44035 _unknown_5713( "dcburn_mcy_lobby_move_nag_03" );
-        wait(_func_0B9( 7, 11 ));
+        level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_03" );
+        wait(randomintrange( 7, 11 ));
 
         if ( _ID42237::_ID14385( "player_approaching_bottom_elevators" ) )
             break;
 
-        level._ID44035 _unknown_5731( "dcburn_mcy_lobby_move_nag_04" );
-        wait(_func_0B9( 7, 11 ));
+        level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_04" );
+        wait(randomintrange( 7, 11 ));
     }
 }
 
 _ID49071()
 {
-    var_0 = _func_1A1( "volume_commerce_lobby_lower", "targetname" );
+    var_0 = getent( "volume_commerce_lobby_lower", "targetname" );
 
     for ( var_1 = var_0 _ID42407::_ID15547( "axis" ); var_1.size > 0; var_1 = var_0 _ID42407::_ID15547( "axis" ) )
         wait 0.5;
@@ -1359,7 +1267,7 @@ _ID49071()
 
 _ID44179()
 {
-    var_0 = _func_1A1( "bunker_radio_org_room2", "targetname" );
+    var_0 = getent( "bunker_radio_org_room2", "targetname" );
     _ID42237::_ID14413( "player_bunker_walk_02" );
     _ID42237::_ID14413( "player_bunker_walk_03" );
     _ID42237::_ID14413( "player_approaching_bunker_exit_hall" );
@@ -1374,15 +1282,15 @@ _ID44179()
     _ID42407::_ID14544( "allies" );
     level._ID48827._ID10329 = 1;
     wait 2;
-    level._ID44035 _unknown_57F3( "dcburn_mcy_reqairstrike" );
+    level._ID44035 _ID10760( "dcburn_mcy_reqairstrike" );
     _ID42407::_ID28864( "dcburn_hqr_alongpotomac" );
     wait 2;
-    thread _unknown_56CF();
+    thread _ID50312();
     wait 0.75;
     thread _ID42407::_ID4422( "trench_start" );
-    level._ID44035 _unknown_5819( "dcburn_mcy_buytime" );
+    level._ID44035 _ID10760( "dcburn_mcy_buytime" );
     _ID42237::_ID14413( "player_trench_capitol_failsafe" );
-    level._ID44035 _unknown_582C( "dcburn_mcy_haulingpastus" );
+    level._ID44035 _ID10760( "dcburn_mcy_haulingpastus" );
     thread _ID42407::_ID28864( "dcburn_hqr_latvee" );
     wait 3;
     _ID42237::_ID14402( "bradley_can_start_firing" );
@@ -1393,7 +1301,7 @@ _ID44179()
         _ID42407::_ID28864( "dcburn_hqr_linkup" );
 
     if ( !_ID42237::_ID14385( "player_commerce_trench_03" ) )
-        level._ID44035 _unknown_586F( "dcburn_mcy_firelow" );
+        level._ID44035 _ID10760( "dcburn_mcy_firelow" );
 
     _ID42237::_ID14402( "trenches_dialogue_done" );
 }
@@ -1405,16 +1313,16 @@ _ID51286()
     var_0 = _ID42411::_ID35195( "m1a1_trench" );
     _ID42237::_ID14413( "player_leaving_bunker" );
     _ID42411::_ID35200( "apache_01" );
-    thread _unknown_2D9A();
-    var_1 = _func_1A1( "javelin_source_org", "targetname" );
+    thread _ID43980();
+    var_1 = getent( "javelin_source_org", "targetname" );
     var_2 = _ID42411::_ID35195( "monument_heli_owned" );
-    var_2 _meth_8295();
+    var_2 vehicle_turnengineoff();
     var_3 = _ID42411::_ID35195( "m1a1_owned" );
-    var_3 thread _unknown_5F81();
+    var_3 thread tank_player_collisions();
     var_4 = _ID42411::_ID35195( "m1a1_owned2" );
     var_4 _ID42411::_ID16988();
-    var_5 = _func_1A2( "javelin_vehicle_targets", "targetname" );
-    _ID42237::_ID3350( var_5, ::_unknown_3CBB );
+    var_5 = getentarray( "javelin_vehicle_targets", "targetname" );
+    _ID42237::_ID3350( var_5, ::_ID46708 );
     var_3 thread maps\dcburning_aud::_ID47644();
     _ID42237::_ID14413( "player_exiting_start_trench" );
     _ID42411::_ID35200( "jets_monument_01" );
@@ -1422,11 +1330,11 @@ _ID51286()
     thread _ID42411::_ID17021( var_3 );
     var_3 thread maps\dcburning_aud::_ID46612();
     _ID42237::_ID14421( "looking_commerce_enemy_javelin", "commerce_enemy_javeling_failsafe" );
-    var_6 = _func_1C8( "javelin_noimpact", var_1._ID740, var_2._ID740 );
-    _func_156( _ID42237::_ID16299( "javelin_muzzle" ), var_1._ID740 );
-    var_6 thread _unknown_5813();
-    var_6 _meth_81E6( var_2._ID740 );
-    var_6 _meth_81E9();
+    var_6 = magicbullet( "javelin_noimpact", var_1._ID740, var_2._ID740 );
+    playfx( _ID42237::_ID16299( "javelin_muzzle" ), var_1._ID740 );
+    var_6 thread _ID52536();
+    var_6 missile_settargetpos( var_2._ID740 );
+    var_6 missile_setflightmodetop();
     var_7 = _ID42407::_ID16053( "seaknight_monument_takeoff_01", "script_noteworthy" );
     var_8 = _ID42237::_ID16638( "heli_monument_path_01", "targetname" );
     var_7 thread _ID42411::_ID40218( var_8 );
@@ -1435,25 +1343,25 @@ _ID51286()
     wait 2.5;
     thread _ID42411::_ID17021( var_4 );
     var_4 _ID42411::_ID16987();
-    var_3 _meth_826C( var_1 );
-    var_3 thread _unknown_2ED9( var_1 );
-    var_3 thread _unknown_2EAD();
+    var_3 setturrettargetent( var_1 );
+    var_3 thread _ID51330( var_1 );
+    var_3 thread _ID47570();
 
     for (;;)
     {
-        var_2 waittill( "damage",  var_10, var_9  );
+        var_2 waittill( "damage",  var_9, var_10  );
 
-        if ( _func_02F( var_10 ) && !_func_1B3( var_10 ) )
+        if ( isdefined( var_10 ) && !isplayernumber( var_10 ) )
             break;
     }
 
     thread _ID44311::_ID49210( var_2 );
     wait 10;
-    var_4 _meth_826C( var_1 );
-    var_4 thread _unknown_2F13( var_1 );
-    var_4 _ID42407::_ID10226( 0, ::_unknown_58BE, var_1 );
+    var_4 setturrettargetent( var_1 );
+    var_4 thread _ID51330( var_1 );
+    var_4 _ID42407::_ID10226( 0, ::_ID51869, var_1 );
     wait 8;
-    var_0 _ID42407::_ID10226( 0, ::_unknown_58CB, var_1 );
+    var_0 _ID42407::_ID10226( 0, ::_ID51869, var_1 );
     _ID42237::_ID14402( "second_abrams_killed" );
     wait 8;
     var_11 = _ID42237::_ID16640( "javelin_targets_trench", "targetname" );
@@ -1461,69 +1369,64 @@ _ID51286()
     var_13 = undefined;
     var_14 = undefined;
     var_15 = 1;
-    var_16 = _func_06A( "script_origin", ( 0, 0, 0 ) );
+    var_16 = spawn( "script_origin", ( 0, 0, 0 ) );
 
     while ( !_ID42237::_ID14385( "player_entering_top_elevator_area" ) )
     {
-        wait(_func_0BA( 5, 8 ));
-        var_17 = _func_0B7( var_11.size );
+        wait(randomfloatrange( 5, 8 ));
+        var_17 = randomint( var_11.size );
         var_14 = var_11[var_17];
         var_16._ID740 = var_14._ID740;
-        var_6 = _func_1C8( "javelin_dcburn", var_1._ID740, var_16._ID740 );
-        _func_156( _ID42237::_ID16299( "javelin_muzzle" ), var_1._ID740 );
-        var_6 thread _unknown_5939();
-        var_6 _meth_81E5( var_16 );
-        var_6 _meth_81E9();
+        var_6 = magicbullet( "javelin_dcburn", var_1._ID740, var_16._ID740 );
+        playfx( _ID42237::_ID16299( "javelin_muzzle" ), var_1._ID740 );
+        var_6 thread _ID52536();
+        var_6 missile_settargetent( var_16 );
+        var_6 missile_setflightmodetop();
         var_15 = 1;
-        wait(_func_0BA( 5, 10 ));
+        wait(randomfloatrange( 5, 10 ));
     }
 
-    var_16 _meth_80B7();
+    var_16 delete();
 }
 
 _ID43980()
 {
     wait 2.0;
-    var_0 = _func_1A2( "apache_rumble", "script_noteworthy" );
-    var_1 = var_0;
+    var_0 = getentarray( "apache_rumble", "script_noteworthy" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_0F3( var_2._ID740, level._ID794._ID740 ) < 2000 )
-            level._ID794 _meth_80B5( "Heli_pass_above" );
+        if ( distance( var_2._ID740, level._ID794._ID740 ) < 2000 )
+            level._ID794 _meth_80b5( "Heli_pass_above" );
     }
 
-    var_clear_2
-    var_clear_0
     wait 4.0;
-    _func_1CF();
+    stopallrumbles();
 }
 
 _ID47570()
 {
     wait 2;
-    var_0 = _func_1A1( "javelin_source_org", "targetname" );
-    self _meth_826C( var_0, ( 0, 0, -60 ) );
+    var_0 = getent( "javelin_source_org", "targetname" );
+    self setturrettargetent( var_0, ( 0, 0, -60 ) );
     _ID42237::_ID41123( "turret_rotate_stopped", 1.0 );
     self notify( "turret_fire" );
 
-    if ( _func_0F3( self._ID740, level._ID794._ID740 ) < 1500 )
-        level._ID794 _meth_80B4( "damage_heavy" );
+    if ( distance( self._ID740, level._ID794._ID740 ) < 1500 )
+        level._ID794 playrumblelooponentity( "damage_heavy" );
 
     _ID42234::_ID13611( "m1a1_fires" );
     _ID42237::_ID14421( "player_trench_capitol_failsafe", "blow_up_abrams" );
-    thread _unknown_305B();
-    _ID42407::_ID10226( 0, ::_unknown_5A14, var_0 );
+    thread _ID47575();
+    _ID42407::_ID10226( 0, ::_ID51869, var_0 );
 }
 
 _ID47575()
 {
     self waittill( "death" );
 
-    if ( _func_0F3( self._ID740, level._ID794._ID740 ) < 1024 )
-        level._ID794 _meth_8057( 50 / level._ID794._ID255, level._ID794._ID740 );
+    if ( distance( self._ID740, level._ID794._ID740 ) < 1024 )
+        level._ID794 dodamage( 50 / level._ID794._ID255, level._ID794._ID740 );
 }
 
 _ID44799()
@@ -1536,14 +1439,14 @@ _ID51330( var_0 )
     self endon( "death" );
     var_1 = self._ID23512[0];
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        var_1 _meth_810F( var_0 );
-        var_2 = _func_0BA( 1.5, 3 );
-        var_1 _meth_80E9();
+        var_1 settargetentity( var_0 );
+        var_2 = randomfloatrange( 1.5, 3 );
+        var_1 startfiring();
         wait(var_2);
-        var_1 _meth_80EA();
-        wait(_func_0BA( 3, 6 ));
+        var_1 stopfiring();
+        wait(randomfloatrange( 3, 6 ));
     }
 }
 
@@ -1554,73 +1457,68 @@ _ID46491( var_0 )
     self endon( "stop_firing_turret" );
     var_1 = 0.1;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        var_2 = _func_0B9( 10, 20 );
+        var_2 = randomintrange( 10, 20 );
 
         if ( !self._ID14344 )
         {
             for ( var_3 = 0; var_3 < var_2; var_3++ )
             {
-                self _meth_826C( var_0, _ID42237::_ID28976( 50 ) + ( 0, 0, 32 ) );
-                self _meth_8272();
+                self setturrettargetent( var_0, _ID42237::_ID28976( 50 ) + ( 0, 0, 32 ) );
+                self fireweapon();
                 wait(var_1);
             }
         }
         else
             wait 0.5;
 
-        wait(_func_0BA( 2, 3 ));
+        wait(randomfloatrange( 2, 3 ));
     }
 }
 
 _ID50558()
 {
-    var_0 = _func_1A1( "obelisk_chunk", "targetname" );
+    var_0 = getent( "obelisk_chunk", "targetname" );
     _ID42237::_ID14413( "obelisk_destruction" );
     _ID42234::_ID13611( "obelisk_falling_dirt" );
-    var_0 _meth_805A();
-    var_1 = _func_06A( "script_model", var_0._ID740 );
+    var_0 hide();
+    var_1 = spawn( "script_model", var_0._ID740 );
     var_1._ID3189 = "obelisk";
     var_1 _ID42259::_ID32556();
-    var_1 _meth_80B8( "h2_dcburning_obelisk_break_a" );
+    var_1 setmodel( "h2_dcburning_obelisk_break_a" );
     var_1._ID65 = var_0._ID65;
     var_1 thread _ID42259::_ID3111( var_1, "h2_dcburning_obelisk_break_a_anim" );
-    var_2 = _func_06A( "script_model", var_0._ID740 );
+    var_2 = spawn( "script_model", var_0._ID740 );
     var_2._ID3189 = "obelisk";
     var_2 _ID42259::_ID32556();
-    var_2 _meth_80B8( "h2_dcburning_obelisk_break_b" );
+    var_2 setmodel( "h2_dcburning_obelisk_break_b" );
     var_2._ID65 = var_0._ID65;
     var_2 thread _ID42259::_ID3111( var_2, "h2_dcburning_obelisk_break_b_anim" );
     thread _ID42237::_ID27077( "scn_obelisk_destruction_a", var_1._ID740 );
-    var_0 _meth_80B7();
+    var_0 delete();
     wait 10;
-    var_1 _meth_80B7();
-    var_2 _meth_80B7();
+    var_1 delete();
+    var_2 delete();
 }
 
 _ID48591()
 {
     level endon( "leader_orders_everyone_across_street" );
-    var_0 = _func_1A1( "destructible_trigger", "targetname" );
+    var_0 = getent( "destructible_trigger", "targetname" );
     var_1 = level._ID35507;
     var_0 waittill( "trigger" );
-    var_2 = var_1;
 
-    for ( var_5 = _func_1DA( var_2 ); _func_02F( var_5 ); var_5 = _func_1BF( var_2, var_5 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_5];
         var_3 _ID42407::_ID32628( 0 );
-        var_4 = _func_0BA( 4.5, 6.5 );
+        var_4 = randomfloatrange( 4.5, 6.5 );
 
-        if ( _func_0F5( var_0._ID740, var_3._ID740 ) < 90000 )
+        if ( distancesquared( var_0._ID740, var_3._ID740 ) < 90000 )
             var_3 thread _ID42407::_ID14510( var_4 );
 
         var_3 _ID42407::_ID32628( 0 );
     }
-
-    var_clear_3
-    var_clear_0
 }
 
 ch46_takeoff_fire()
@@ -1634,7 +1532,7 @@ _ID43579()
     _ID42237::_ID14413( "player_leaving_bunker" );
     var_0 = _ID42411::_ID35199( "helisquad_monument" );
     _ID42237::_ID14413( "player_approaching_monument" );
-    _ID42237::_ID3294( var_0, ::_meth_828D, 100 );
+    _ID42237::_ID3294( var_0, ::vehicle_setspeed, 100 );
     _ID42237::_ID3350( var_0, _ID42411::_ID17021 );
     _ID42237::_ID3350( var_0, maps\dcburning_aud::heli_array_scripted_sound );
 }
@@ -1655,7 +1553,7 @@ _ID54617()
     _ID42237::_ID3350( var_0, maps\dcburning_aud::heli_array_scripted_sound );
     _ID42237::_ID3350( var_1, maps\dcburning_aud::heli_array_scripted_sound );
     _ID42237::_ID14413( "player_approaching_monument" );
-    _ID42237::_ID3350( var_0, ::_unknown_57C3 );
+    _ID42237::_ID3350( var_0, ::_ID47735 );
     _ID42237::_ID3350( var_1, _ID42411::_ID17021 );
 }
 
@@ -1672,7 +1570,7 @@ _ID54725()
     _ID42237::_ID14402( "latvee_commerce_left_done_with_spotlight" );
     var_0 thread _ID42411::_ID17021();
     var_0 waittill( "reached_end_node" );
-    var_0 _unknown_5934();
+    var_0 _ID44705();
 }
 
 _ID43067()
@@ -1685,13 +1583,13 @@ _ID43067()
     var_2._ID507 = 0;
     var_2._ID511 = 1;
     var_2._ID54743 = 1;
-    var_3 = _func_1A2( "ai_mezzanine_target", "targetname" );
-    var_0 thread _unknown_3653( var_2, var_3, "player_entering_courtyard2" );
+    var_3 = getentarray( "ai_mezzanine_target", "targetname" );
+    var_0 thread latvee_shoot( var_2, var_3, "player_entering_courtyard2" );
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
     _ID42237::_ID14413( "player_in_crowsnest_room" );
     var_4 = var_0._ID29965;
-    _ID42237::_ID3350( var_4, ::_unknown_5E29 );
-    var_0 _unknown_59A5();
+    _ID42237::_ID3350( var_4, ::_ID47688 );
+    var_0 _ID44705();
     _ID42237::_ID14402( "latvee_spotlight_deleted" );
 }
 
@@ -1701,23 +1599,23 @@ _ID43166()
     level._ID43166 = _ID42411::_ID35195( "bradley_commerce" );
     level._ID43166 _ID42411::_ID16988();
     _ID42237::_ID14413( "bradley_can_start_firing" );
-    var_0 = _func_1A2( "bradley_default_targets", "targetname" );
-    level._ID43166 thread _unknown_3669( var_0, "player_entering_commerce" );
+    var_0 = getentarray( "bradley_default_targets", "targetname" );
+    level._ID43166 thread bradley_shoot( var_0, "player_entering_commerce" );
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
-    level._ID43166 _unknown_59F5();
+    level._ID43166 _ID44705();
 }
 
 _ID52655( var_0 )
 {
     var_0 endon( "death" );
 
-    if ( !_func_02F( var_0 ) || !_func_1A7( var_0 ) )
+    if ( !isdefined( var_0 ) || !isalive( var_0 ) )
         return;
 
-    var_1 = var_0 _meth_818C( "tag_eye" );
-    _func_1C8( "m14_scoped", self._ID740, var_1 );
-    _func_01E( self._ID740, var_1, 1 );
-    _func_157( _ID42237::_ID16299( "headshot" ), var_0, "tag_eye" );
+    var_1 = var_0 gettagorigin( "tag_eye" );
+    magicbullet( "m14_scoped", self._ID740, var_1 );
+    bullettracer( self._ID740, var_1, 1 );
+    playfxontag( _ID42237::_ID16299( "headshot" ), var_0, "tag_eye" );
 }
 
 _ID45022()
@@ -1726,23 +1624,26 @@ _ID45022()
 
     switch ( self._ID1282 )
     {
-
-    }
-
-    if ( _func_02F( var_0 ) )
-    {
-        return var_0;
-        return;
-        case "btr80":
         case "zpu_antiair":
+            var_0 = self._ID43820[randomint( self._ID43820.size )];
+            break;
+        case "bradley":
+            var_0 = _ID42306::_ID16258( self._ID44150, level._ID8760["180"], 1, 0, 0, 1 );
+            break;
+        case "btr80":
+            var_0 = _ID42306::_ID16258( level._ID44957, level._ID8760["180"], 1, 1, 0, 1 );
+            break;
     }
+
+    if ( isdefined( var_0 ) )
+        return var_0;
 }
 
 _ID47551()
 {
     _ID42237::_ID14413( "player_commerce_trench_01" );
 
-    if ( _func_03A( "r_dcburning_culldist" ) == 1 )
+    if ( getdvarint( "r_dcburning_culldist" ) == 1 )
     {
         _ID42237::_ID14402( "commerce_rappelers_inserting" );
         _ID42237::_ID14402( "commerce_rappelers_rappeling" );
@@ -1752,7 +1653,7 @@ _ID47551()
     {
         var_0 = _ID42411::_ID35196( "blackhawk_commerce_rappel" );
         level._ID44605 = var_0._ID29965;
-        _ID42237::_ID3350( level._ID44605, ::_unknown_362A );
+        _ID42237::_ID3350( level._ID44605, ::_ID51752 );
         _ID42237::_ID14402( "commerce_rappelers_inserting" );
         _ID42237::_ID14413( "commerce_rappelers_rappeling" );
         var_0 thread maps\dcburning_aud::_ID46244( "scn_blackhawk_commerce_01" );
@@ -1764,31 +1665,25 @@ _ID47551()
 _ID51752()
 {
     self endon( "death" );
-    self _meth_8183( "oblivious" );
+    self setthreatbiasgroup( "oblivious" );
     self._ID54743 = 1;
-    var_0 = _func_1A1( self._ID1191, "targetname" );
+    var_0 = getent( self._ID1191, "targetname" );
     var_1 = var_0._ID70;
     self._ID54401 = undefined;
 
-    if ( _func_02F( var_0._ID1191 ) )
+    if ( isdefined( var_0._ID1191 ) )
     {
-        var_2 = _func_1A2( var_0._ID1191, "targetname" );
-        var_3 = var_2;
+        var_2 = getentarray( var_0._ID1191, "targetname" );
 
-        for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+        foreach ( var_4 in var_2 )
         {
-            var_4 = var_3[var_5];
-
-            if ( _func_02F( var_4._ID31170 ) )
+            if ( isdefined( var_4._ID31170 ) )
             {
                 self._ID19357 = var_4._ID31170;
                 self._ID44464 = var_4._ID740;
                 break;
             }
         }
-
-        var_clear_2
-        var_clear_0
     }
 
     self waittill( "jumpedout" );
@@ -1798,7 +1693,7 @@ _ID51752()
         _ID42237::_ID14402( "commerce_rappelers_rappeling" );
 
     var_0 _ID42259::_ID3020( self, var_1 );
-    self _meth_80B7();
+    self delete();
 }
 
 _ID50560( var_0 )
@@ -1806,33 +1701,33 @@ _ID50560( var_0 )
     var_1 = var_0._ID44464;
     _ID42234::_ID13611( var_0._ID19357 );
     thread _ID42237::_ID27077( "glass_break", var_1 );
-    _func_156( _ID42237::_ID16299( "commerce_window_shatter" ), var_1 );
+    playfx( _ID42237::_ID16299( "commerce_window_shatter" ), var_1 );
 }
 
 _ID45636()
 {
     self endon( "death" );
     self._ID47706 = undefined;
-    thread _unknown_37A1( self );
+    thread _ID49057( self );
     _ID42237::_ID14421( "player_touching_commerce_lobby_right", "player_touching_commerce_lobby_left" );
-    var_0 = _func_1A1( "volume_commerce_lobby_lower", "targetname" );
-    var_1 = _func_1A1( "volume_commerce_lobby_upper", "targetname" );
+    var_0 = getent( "volume_commerce_lobby_lower", "targetname" );
+    var_1 = getent( "volume_commerce_lobby_upper", "targetname" );
     var_2 = var_0 _ID42407::_ID15547( "axis" );
     var_3 = var_1 _ID42407::_ID15547( "axis" );
 
-    for ( var_4 = undefined; _func_02F( self ) && !_ID42237::_ID14385( "player_entering_top_elevator_area" ); var_2 = var_0 _ID42407::_ID15547( "axis" ) )
+    for ( var_4 = undefined; isdefined( self ) && !_ID42237::_ID14385( "player_entering_top_elevator_area" ); var_2 = var_0 _ID42407::_ID15547( "axis" ) )
     {
         var_4 = _ID42407::_ID3317( var_2, var_3 );
         var_4 = _ID42407::_ID29506( var_4 );
 
-        if ( _func_02F( level._ID46771 ) && _ID42407::_ID20542( var_4, level._ID46771 ) )
+        if ( isdefined( level._ID46771 ) && _ID42407::_ID20542( var_4, level._ID46771 ) )
             self._ID47706 = level._ID46771;
         else if ( var_4.size > 0 )
             self._ID47706 = _ID42237::_ID16182( level._ID794._ID740, var_4 );
 
-        if ( _func_02F( self._ID47706 ) )
+        if ( isdefined( self._ID47706 ) )
         {
-            wait(_func_0BA( 3, 5 ));
+            wait(randomfloatrange( 3, 5 ));
             continue;
         }
 
@@ -1840,10 +1735,10 @@ _ID45636()
     }
 
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
-    var_5 = _func_1A2( "latvee_spotlight_targets_upper", "targetname" );
+    var_5 = getentarray( "latvee_spotlight_targets_upper", "targetname" );
 
-    for ( var_4 = undefined; _func_02F( self ); self._ID47706 = var_5[_func_0B7( var_5.size )] )
-        wait(_func_0BA( 2, 4 ));
+    for ( var_4 = undefined; isdefined( self ); self._ID47706 = var_5[randomint( var_5.size )] )
+        wait(randomfloatrange( 2, 4 ));
 }
 
 _ID49057( var_0 )
@@ -1851,17 +1746,17 @@ _ID49057( var_0 )
     self endon( "death" );
     level._ID46771 = undefined;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        level._ID794 waittill( "damage",  var_2, var_1  );
+        level._ID794 waittill( "damage",  var_1, var_2  );
 
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             continue;
 
-        if ( _func_02F( var_2._ID1194 ) && var_2._ID1194 == "axis" )
+        if ( isdefined( var_2._ID1194 ) && var_2._ID1194 == "axis" )
         {
             level._ID46771 = var_2;
-            _unknown_6293( 4 );
+            _ID46711( 4 );
 
             if ( level._ID46771 == self )
                 level._ID46771 = undefined;
@@ -1873,96 +1768,82 @@ _ID45576( var_0, var_1 )
 {
     self endon( "death" );
 
-    while ( _func_02F( var_1 ) )
+    while ( isdefined( var_1 ) )
     {
-        var_2 = var_0;
-
-        for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+        foreach ( var_3 in var_0 )
         {
-            var_3 = var_2[var_4];
             var_1._ID53556 = var_3;
-            wait(_func_0BA( 3, 6 ));
+            wait(randomfloatrange( 3, 6 ));
         }
-
-        var_clear_2
-        var_clear_0
     }
 
-    var_5 = var_0;
-
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
-    {
-        var_3 = var_5[var_6];
-        var_3 _meth_80B7();
-    }
-
-    var_clear_1
-    var_clear_0
+    foreach ( var_3 in var_0 )
+        var_3 delete();
 }
 
 _ID50872()
 {
     _ID42237::_ID14413( "player_approaching_bunker_exit" );
-    var_0 = _func_1A2( "latvee_convoy_00", "targetname" );
+    var_0 = getentarray( "latvee_convoy_00", "targetname" );
 
-    if ( _func_03A( "r_dcburning_culldist" ) == 1 )
-        thread _unknown_645B( var_0, "latvee_convoy_00", 7, 10, 1 );
+    if ( getdvarint( "r_dcburning_culldist" ) == 1 )
+        thread _ID50817( var_0, "latvee_convoy_00", 7, 10, 1 );
     else
-        thread _unknown_6471( var_0, "latvee_convoy_00", 3.1, 4.8, 1 );
+        thread _ID50817( var_0, "latvee_convoy_00", 3.1, 4.8, 1 );
 
     _ID42237::_ID14413( "approaching_main_trench" );
     wait 2.5;
-    _unknown_649E( "latvee_convoy_00" );
+    _ID44742( "latvee_convoy_00" );
     wait 7.0;
-    thread _unknown_39E2();
-    thread _unknown_39F7();
-    thread _unknown_3A0D();
-    thread _unknown_3A56();
+    thread _ID44668();
+    thread _ID54065();
+    thread bradley_side();
+    thread latvee_side();
 }
 
 _ID54695( var_0, var_1, var_2 )
 {
-    var_3 = _func_1C8( "javelin_noimpact", var_0._ID740, var_1._ID740 );
-    _func_156( _ID42237::_ID16299( "javelin_muzzle" ), var_0._ID740 );
-    var_3 thread _unknown_6147();
-    var_3 _meth_81E5( var_2 );
-    var_3 _meth_81E9();
+    var_3 = magicbullet( "javelin_noimpact", var_0._ID740, var_1._ID740 );
+    playfx( _ID42237::_ID16299( "javelin_muzzle" ), var_0._ID740 );
+    var_3 thread _ID52536();
+    var_3 missile_settargetent( var_2 );
+    var_3 missile_setflightmodetop();
     var_2 waittill( "damage" );
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         var_2 notify( "death" );
 }
 
 _ID44668()
 {
     level endon( "player_headed_to_atrium_side_hall" );
-    var_0 = _func_1A1( "convoy_javelin_source_org", "targetname" );
-    var_1 = _func_1A1( "latvee_goal1", "targetname" );
+    var_0 = getent( "convoy_javelin_source_org", "targetname" );
+    var_1 = getent( "latvee_goal1", "targetname" );
     var_2 = _ID42411::_ID35196( "latvee_convoy_owned1" );
     wait 26.0;
-    _unknown_3A4E( var_0, var_1, var_2 );
+    _ID54695( var_0, var_1, var_2 );
 }
 
 _ID54065()
 {
     level endon( "player_headed_to_atrium_side_hall" );
-    var_0 = _func_1A1( "convoy_javelin_source_org", "targetname" );
-    var_1 = _func_1A1( "latvee_goal2", "targetname" );
+    var_0 = getent( "convoy_javelin_source_org", "targetname" );
+    var_1 = getent( "latvee_goal2", "targetname" );
     wait 5.0;
     var_2 = _ID42411::_ID35196( "latvee_convoy_owned2" );
     wait 24.0;
-    _unknown_3A84( var_0, var_1, var_2 );
+    _ID54695( var_0, var_1, var_2 );
 }
 
 bradley_side()
 {
     level endon( "player_headed_to_atrium_side_hall" );
-    var_0 = _func_1A2( "tank_targets", "targetname" );
+    var_0 = getentarray( "tank_targets", "targetname" );
     wait 5;
     var_1 = _ID42411::_ID35196( "tank_convoy_shoot" );
     var_1 waittill( "reached_end_node" );
     wait 3.0;
-    var_1 thread _unknown_3AFE( var_0, "player_entering_commerce" );
+    var_1 thread bradley_shoot( var_0, "player_entering_commerce" );
 }
 
 bradley_shoot( var_0, var_1 )
@@ -1971,34 +1852,29 @@ bradley_shoot( var_0, var_1 )
         return;
 
     level endon( var_1 );
-    var_2 = _func_06A( "script_origin", ( -20919, 6628, -110 ) );
-    self _meth_826C( var_2 );
+    var_2 = spawn( "script_origin", ( -20919, 6628, -110 ) );
+    self setturrettargetent( var_2 );
 
     for (;;)
     {
         var_3 = _ID42237::_ID3320( var_0 );
-        var_4 = var_3;
 
-        for ( var_9 = _func_1DA( var_4 ); _func_02F( var_9 ); var_9 = _func_1BF( var_4, var_9 ) )
+        foreach ( var_5 in var_3 )
         {
-            var_5 = var_4[var_9];
-            var_2 _meth_82B8( var_5._ID740, 2 );
+            var_2 moveto( var_5._ID740, 2 );
             wait 2.0;
-            var_6 = _func_0B9( 2, 6 );
+            var_6 = randomintrange( 2, 6 );
 
             for ( var_7 = 0; var_7 < var_6; var_7++ )
             {
-                var_8 = _func_1B6( "bradley_turret" );
+                var_8 = weaponfiretime( "bradley_turret" );
                 wait(var_8);
-                self _meth_8272( undefined, undefined, undefined, 0.1 );
-                _func_192( 0.25, 0.13, self._ID740, 1024 );
+                self fireweapon( undefined, undefined, undefined, 0.1 );
+                earthquake( 0.25, 0.13, self._ID740, 1024 );
             }
 
-            wait(_func_0BA( 1.5, 5 ));
+            wait(randomfloatrange( 1.5, 5 ));
         }
-
-        var_clear_5
-        var_clear_0
     }
 }
 
@@ -2010,11 +1886,11 @@ latvee_side()
     var_1 = var_0._ID3575[0];
     var_0 waittill( "reached_end_node" );
     var_0 _ID42411::_ID40298( "passengers_and_driver" );
-    var_2 = _func_1A2( "ai_mezzanine_target", "targetname" );
+    var_2 = getentarray( "ai_mezzanine_target", "targetname" );
     var_1._ID507 = 0;
     var_1._ID511 = 1;
     var_1._ID54743 = 1;
-    var_0 thread _unknown_3C39( var_1, var_2, "player_entering_courtyard2" );
+    var_0 thread latvee_shoot( var_1, var_2, "player_entering_courtyard2" );
 }
 
 latvee_shoot( var_0, var_1, var_2 )
@@ -2028,62 +1904,50 @@ latvee_shoot( var_0, var_1, var_2 )
     for (;;)
     {
         var_1 = _ID42237::_ID3320( var_1 );
-        var_4 = var_1;
 
-        for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
+        foreach ( var_5 in var_1 )
         {
-            var_5 = var_4[var_6];
-            var_3 _meth_806C( "manual" );
-            var_3 _meth_810F( var_5 );
+            var_3 setmode( "manual" );
+            var_3 settargetentity( var_5 );
             wait 1;
             var_0._ID507 = 0;
-            wait(_func_0B9( 3, 5 ));
+            wait(randomintrange( 3, 5 ));
             var_0._ID507 = 1;
-            wait(_func_0B9( 3, 5 ));
+            wait(randomintrange( 3, 5 ));
         }
-
-        var_clear_2
-        var_clear_0
     }
 }
 
 _ID43857()
 {
-    thread _unknown_3CCA();
-    thread _unknown_3E8B();
-    thread _unknown_412A();
-    thread _unknown_3CF3();
-    thread _unknown_3CFF();
+    thread _ID51285();
+    thread _ID44560();
+    thread _ID46687();
+    thread _ID49939();
+    thread _ID53946();
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
-    thread _unknown_41DE();
+    thread _ID46175();
 }
 
 _ID51285()
 {
     _ID42237::_ID14413( "capitol_building_reveal" );
-    _unknown_667F( "allies", 128 );
+    _ID52268( "allies", 128 );
 }
 
 remove_latvee_gunners()
 {
-    var_0 = _func_1A2( "laatpv_gunner", "script_noteworthy" );
+    var_0 = getentarray( "laatpv_gunner", "script_noteworthy" );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        var_1 = var_0;
-
-        for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+        foreach ( var_2 in var_0 )
         {
-            var_2 = var_1[var_3];
-
-            if ( _func_02F( var_2._ID22746 ) )
+            if ( isdefined( var_2._ID22746 ) )
                 var_2 _ID42407::_ID36519();
 
-            var_2 _meth_80B7();
+            var_2 delete();
         }
-
-        var_clear_2
-        var_clear_0
     }
 }
 
@@ -2097,76 +1961,61 @@ _ID49939()
 _ID53946()
 {
     _ID42237::_ID14421( "player_touching_commerce_lobby_right", "player_touching_commerce_lobby_left" );
-    thread _unknown_5F17();
+    thread _ID52395();
     var_0 = [];
     var_1 = undefined;
 
     if ( _ID42237::_ID14385( "player_touching_commerce_lobby_left" ) )
-        var_1 = _func_1A2( "friendlies_commerce_lobby_left", "targetname" );
+        var_1 = getentarray( "friendlies_commerce_lobby_left", "targetname" );
     else
-        var_1 = _func_1A2( "friendlies_commerce_lobby_right", "targetname" );
+        var_1 = getentarray( "friendlies_commerce_lobby_right", "targetname" );
 
-    var_2 = var_1;
-
-    for ( var_5 = _func_1DA( var_2 ); _func_02F( var_5 ); var_5 = _func_1BF( var_2, var_5 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_5];
         var_4 = var_3 _ID42407::_ID35014( 1 );
 
-        if ( _func_02F( var_4 ) )
+        if ( isdefined( var_4 ) )
             var_0 = _ID42237::_ID3293( var_0, var_4 );
     }
 
-    var_clear_3
-    var_clear_0
-    _ID42237::_ID3350( var_0, ::_unknown_5B21 );
-    _ID42237::_ID3350( var_0, ::_unknown_5AFD );
-    var_6 = var_0;
+    _ID42237::_ID3350( var_0, ::_ID51434 );
+    _ID42237::_ID3350( var_0, ::_ID50012 );
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
+    foreach ( var_4 in var_0 )
     {
-        var_4 = var_6[var_7];
-
-        if ( !_func_02F( var_4 ) )
+        if ( !isdefined( var_4 ) )
             continue;
 
         var_4._ID86 = 0;
     }
 
-    var_clear_1
-    var_clear_0
-    thread _unknown_41E8();
+    thread _ID44433();
     _ID42237::_ID14413( "player_approaching_bottom_elevators" );
-    _func_034( "ai_GrenadeThrowAllowedInStairs", 1 );
+    setdvar( "ai_GrenadeThrowAllowedInStairs", 1 );
     thread _ID42407::_ID4422( "bottom_elevators" );
     _ID42237::_ID3350( var_0, _ID42407::_ID36519 );
-    var_8 = var_0;
 
-    for ( var_9 = _func_1DA( var_8 ); _func_02F( var_9 ); var_9 = _func_1BF( var_8, var_9 ) )
+    foreach ( var_4 in var_0 )
     {
-        var_4 = var_8[var_9];
-
-        if ( !_func_02F( var_4 ) )
+        if ( !isdefined( var_4 ) )
             continue;
 
         var_4._ID86 = 0.1;
     }
 
-    var_clear_1
-    var_clear_0
-    _ID42237::_ID3350( var_0, ::_unknown_5B50 );
+    _ID42237::_ID3350( var_0, ::_ID45840 );
     _ID42237::_ID14413( "player_entering_courtyard" );
 
-    if ( _func_03A( "r_dcburning_culldist" ) == 1 )
-        _func_08E( 0 );
+    if ( getdvarint( "r_dcburning_culldist" ) == 1 )
+        setculldist( 0 );
 
-    thread _unknown_6821( "volume_commerce_lobby_upper", "axis" );
-    thread _unknown_682D( "volume_commerce_lobby_lower", "axis" );
+    thread _ID43162( "volume_commerce_lobby_upper", "axis" );
+    thread _ID43162( "volume_commerce_lobby_lower", "axis" );
     _ID42237::_ID14413( "player_headed_to_atrium_side_hall" );
-    var_10 = _func_0DE( "axis" );
-    _ID42237::_ID3350( var_10, ::_unknown_58CF );
+    var_10 = getaiarray( "axis" );
+    _ID42237::_ID3350( var_10, ::_ID53905 );
     _ID42237::_ID14413( "player_entering_commerce_side_hall" );
-    thread _unknown_3FA9();
+    thread ceiling_tile_fall();
     _ID42237::_ID14402( "stop_elevator_doors" );
     wait 8;
     thread _ID42407::_ID41152( "volume_courtyard_windows", "courtyard_has_been_cleared" );
@@ -2174,66 +2023,66 @@ _ID53946()
     _ID42237::_ID14413( "player_entering_mezzanine_top" );
     thread _ID42407::_ID41152( "volume_commerce_lobby_upper", "mezzanine_top_has_been_cleared" );
     _ID42411::_ID35200( "jets_mezz_01" );
-    thread _unknown_3FF6();
+    thread _ID44551();
     _ID42237::_ID14413( "player_approaching_pavlov_hole" );
     _ID42407::_ID10226( 0, _ID42411::_ID35200, "helis_mezzanine" );
     _ID42234::_ID13611( 60 );
     _ID42237::_ID14413( "player_at_bottom_of_pavlovs_ramp" );
-    thread _unknown_67D1( "axis" );
-    thread _unknown_3F15();
-    thread _unknown_418C();
+    thread _ID54724( "axis" );
+    thread remove_latvee_gunners();
+    thread _ID48286();
     _ID42407::_ID4917( "allies" );
-    var_11 = _ID42407::_ID3339( _func_1A2( "commerce_allied_fodder_4", "targetname" ), 1 );
-    var_12 = _ID42407::_ID3339( _func_1A2( "hostiles_commerce_samsite", "targetname" ), 1 );
-    var_13 = _unknown_423E( "samsite_commerce_01", "player_at_top_of_pavlovs_ramp", "commerce_samsite_revealed" );
-    var_14 = _func_0C9( "commerce_samsite_nodes", "targetname" );
+    var_11 = _ID42407::_ID3339( getentarray( "commerce_allied_fodder_4", "targetname" ), 1 );
+    var_12 = _ID42407::_ID3339( getentarray( "hostiles_commerce_samsite", "targetname" ), 1 );
+    var_13 = _ID48716( "samsite_commerce_01", "player_at_top_of_pavlovs_ramp", "commerce_samsite_revealed" );
+    var_14 = getnodearray( "commerce_samsite_nodes", "targetname" );
     var_15 = _ID42237::_ID16182( var_13._ID50308._ID740, var_14 );
     var_14 = _ID42237::_ID3321( var_14, var_15 );
-    var_13._ID50308 thread _unknown_4218( var_15 );
-    var_13._ID52615 thread _unknown_4222( var_14[0] );
-    var_13._ID39235 thread _unknown_423C();
-    var_13 thread _unknown_40D9();
+    var_13._ID50308 thread _ID43076( var_15 );
+    var_13._ID52615 thread _ID43076( var_14[0] );
+    var_13._ID39235 thread _ID52126();
+    var_13 thread _ID45319();
     _ID42237::_ID14415( "player_entering_fourth_floor", "player_shot_at_samsite_guys", "player_gawking_at_fourth_floor_guys" );
     _ID42237::_ID14402( "player_shot_at_samsite_guys" );
     _ID42407::_ID4918( "allies" );
 
     if ( !_ID42237::_ID14385( "player_entering_fourth_floor" ) )
     {
-        thread _unknown_4FEE( "dummy_colornodes_pavlov_end" );
+        thread _ID47491( "dummy_colornodes_pavlov_end" );
         _ID42407::_ID1801( "spawner_hostiles_commerce_floor4", "targetname", level._ID794 );
     }
 
-    _ID42237::_ID3350( var_11, ::_unknown_6761 );
+    _ID42237::_ID3350( var_11, ::_ID47688 );
     wait 4;
     thread _ID42407::_ID41152( "volume_commerce_fourth_floor", "floor_four_has_been_cleared" );
     _ID42237::_ID14421( "floor_four_has_been_cleared", "player_headed_to_fifth_floor" );
     _ID42237::_ID14413( "player_headed_to_fifth_floor" );
     _ID42407::_ID4917( "allies" );
-    thread _unknown_6989( "all" );
+    thread _ID52268( "all" );
 }
 
 ceiling_tile_fall()
 {
-    var_0 = _func_1A1( "ceiling_tile01", "targetname" );
+    var_0 = getent( "ceiling_tile01", "targetname" );
     _ID42237::_ID14413( "ceiling_tile_trigger" );
-    var_0 _meth_82CC( var_0._ID740, ( 0, 0, 0 ) );
+    var_0 physicslaunchclient( var_0._ID740, ( 0, 0, 0 ) );
 }
 
 _ID44551()
 {
-    var_0 = _func_1A2( "mezzanine_trenches", "targetname" );
-    var_1 = _func_1A2( "ai_mezzanine_target", "targetname" );
-    _ID42237::_ID3350( var_0, _ID42407::_ID1947, ::_unknown_4175, var_1 );
+    var_0 = getentarray( "mezzanine_trenches", "targetname" );
+    var_1 = getentarray( "ai_mezzanine_target", "targetname" );
+    _ID42237::_ID3350( var_0, _ID42407::_ID1947, ::_ID51402, var_1 );
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
-    _unknown_419C();
-    thread _unknown_41AA( var_0 );
+    _ID52861();
+    thread _ID53715( var_0 );
 }
 
 _ID51402( var_0 )
 {
     level endon( "player_at_top_of_pavlovs_ramp" );
     var_1 = undefined;
-    var_2 = var_0[_func_0B7( var_0.size )];
+    var_2 = var_0[randomint( var_0.size )];
     var_3 = 1;
 
     for (;;)
@@ -2241,24 +2090,24 @@ _ID51402( var_0 )
         if ( !var_3 )
         {
             while ( var_2 == var_1 )
-                var_2 = var_0[_func_0B7( var_0.size )];
+                var_2 = var_0[randomint( var_0.size )];
         }
         else
             var_3 = 0;
 
-        if ( _func_1A7( self ) )
-            self _meth_8173( var_2 );
+        if ( isalive( self ) )
+            self setentitytarget( var_2 );
 
         var_1 = var_2;
-        wait(_func_0B9( 5, 8 ));
+        wait(randomintrange( 5, 8 ));
     }
 }
 
 _ID52861()
 {
-    var_0 = _func_1A2( "mezzanine_trenches_run", "targetname" );
+    var_0 = getentarray( "mezzanine_trenches_run", "targetname" );
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
-    thread _unknown_4202( var_0 );
+    thread _ID53715( var_0 );
 }
 
 _ID53715( var_0 )
@@ -2270,49 +2119,37 @@ _ID53715( var_0 )
 _ID45319()
 {
     _ID42237::_ID14413( "samsite_allow_C4_spawn" );
-    var_0 = _func_1A1( "tarp_collision", "script_noteworthy" );
-    var_0 _meth_82C9();
-    var_0 _meth_805F();
+    var_0 = getent( "tarp_collision", "script_noteworthy" );
+    var_0 notsolid();
+    var_0 connectpaths();
     var_1 = _ID42237::_ID16640( "c4_slamraam", "script_noteworthy" );
     level._ID46915 = self._ID4851;
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        level._ID45155[level._ID45155.size] = self._ID4851 _ID43691::_ID53929( undefined, undefined, undefined, var_3._ID740, undefined, undefined, var_3._ID70, ::_unknown_42D7, var_3._ID31151, 30, undefined, var_3._ID65 );
-    }
+    foreach ( var_3 in var_1 )
+        level._ID45155[level._ID45155.size] = self._ID4851 _ID43691::_ID53929( undefined, undefined, undefined, var_3._ID740, undefined, undefined, var_3._ID70, ::_ID47942, var_3._ID31151, 30, undefined, var_3._ID65 );
 
-    var_clear_2
-    var_clear_0
     self._ID4851 waittill( "c4_detonation" );
     self._ID4851 notify( "death" );
     _ID42237::_ID14402( "slamraam_c4_detonated" );
-    self._ID4851 _meth_80B8( "vehicle_slamraam_destroyed" );
-    _func_156( _ID42237::_ID16299( "c4_slamraam_explosion" ), self._ID4851._ID740 );
+    self._ID4851 setmodel( "vehicle_slamraam_destroyed" );
+    playfx( _ID42237::_ID16299( "c4_slamraam_explosion" ), self._ID4851._ID740 );
     thread _ID42237::_ID27077( "exp_slamraam_destroyed", self._ID4851._ID740 );
-    self._ID39235 _meth_80B7();
-    _func_18F( self._ID4851._ID740 + ( 0, 0, 96 ), 180, 1000, 50 );
+    self._ID39235 delete();
+    radiusdamage( self._ID4851._ID740 + ( 0, 0, 96 ), 180, 1000, 50 );
     var_5 = _ID42237::_ID16640( "damage_window", "targetname" );
-    var_6 = var_5;
 
-    for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
-    {
-        var_7 = var_6[var_8];
-        _func_18F( var_7._ID740, 50, 35, 35, level._ID794 );
-    }
+    foreach ( var_7 in var_5 )
+        radiusdamage( var_7._ID740, 50, 35, 35, level._ID794 );
 
-    var_clear_2
-    var_clear_0
-    var_9 = _func_15B( _ID42237::_ID16299( "fire_tarp_dcburning" ), self._ID4851._ID740 );
-    _func_15C( var_9 );
-    _func_192( 0.6, 1.2, self._ID4851._ID740, 1600 );
+    var_9 = spawnfx( _ID42237::_ID16299( "fire_tarp_dcburning" ), self._ID4851._ID740 );
+    triggerfx( var_9 );
+    earthquake( 0.6, 1.2, self._ID4851._ID740, 1600 );
 
-    if ( _func_0F3( self._ID4851._ID740, level._ID794._ID740 ) < 2048 )
-        level._ID794 _meth_80B4( "damage_heavy" );
+    if ( distance( self._ID4851._ID740, level._ID794._ID740 ) < 2048 )
+        level._ID794 playrumblelooponentity( "damage_heavy" );
 
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
-    var_9 _meth_80B7();
+    var_9 delete();
 }
 
 _ID47942()
@@ -2323,15 +2160,13 @@ _ID47942()
 _ID44560()
 {
     _ID42237::_ID14413( "player_approaching_bottom_elevators" );
-    var_0 = _func_1A2( "atrium_guys", "targetname" );
+    var_0 = getentarray( "atrium_guys", "targetname" );
     var_1 = [];
     var_2 = undefined;
     var_3 = undefined;
-    var_4 = var_0;
 
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
+    foreach ( var_5 in var_0 )
     {
-        var_5 = var_4[var_6];
         var_2 = var_5 _ID42407::_ID12076();
         var_2 thread _ID42407::_ID22746( 1 );
         var_2._ID24924 = 1;
@@ -2352,58 +2187,47 @@ _ID44560()
         var_2._ID29359 _ID42259::_ID3023( var_2, var_2._ID70 );
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "player_entering_courtyard" );
     var_1[0]._ID29359 thread _ID42259::_ID3020( var_1[0], var_1[0]._ID70 );
     var_1[1]._ID29359 thread _ID42259::_ID3020( var_1[1], var_1[1]._ID70 );
     var_3 thread _ID42407::_ID27081( "scn_dcburning_soldier_pull_wounded", "J_Head" );
     wait 0.05;
-    var_1[0] _meth_8120( level._ID30895["generic"][var_1[0]._ID70], 0.5 );
-    var_1[1] _meth_8120( level._ID30895["generic"][var_1[1]._ID70], 0.5 );
-    _ID42237::_ID3350( var_1, ::_unknown_45A6 );
+    var_1[0] setanimtime( level._ID30895["generic"][var_1[0]._ID70], 0.5 );
+    var_1[1] setanimtime( level._ID30895["generic"][var_1[1]._ID70], 0.5 );
+    _ID42237::_ID3350( var_1, ::_ID52454 );
     _ID42237::_ID14421( "atrium_guys_at_end_of_anim", "player_entering_courtyard2" );
-    var_7 = _func_1A1( "atrium_bullet", "targetname" );
-    var_8 = var_3 _meth_818C( "tag_eye" );
+    var_7 = getent( "atrium_bullet", "targetname" );
+    var_8 = var_3 gettagorigin( "tag_eye" );
     thread _ID42237::_ID27077( "scn_dcburning_soldier_death", var_8 );
-    var_9 = _func_119( var_8 - var_7._ID740 );
+    var_9 = vectornormalize( var_8 - var_7._ID740 );
     thread _ID42237::_ID27077( "scn_dcburning_gunshot_npc_close", var_7._ID740 );
-    _func_156( _ID42237::_ID16299( "headshot" ), var_8, var_9 );
-    _func_1C8( "m14_scoped", var_7._ID740, var_8 );
-    _func_01E( var_7._ID740, var_8, 1 );
-    var_10 = var_1;
+    playfx( _ID42237::_ID16299( "headshot" ), var_8, var_9 );
+    magicbullet( "m14_scoped", var_7._ID740, var_8 );
+    bullettracer( var_7._ID740, var_8, 1 );
 
-    for ( var_11 = _func_1DA( var_10 ); _func_02F( var_11 ); var_11 = _func_1BF( var_10, var_11 ) )
+    foreach ( var_2 in var_1 )
     {
-        var_2 = var_10[var_11];
         var_2 _ID42407::_ID36519();
-        var_2 _meth_8058();
+        var_2 kill();
     }
 
-    var_clear_1
-    var_clear_0
-    var_12 = _func_1A1( "atrium_drag_blocker", "targetname" );
+    var_12 = getent( "atrium_drag_blocker", "targetname" );
     var_12 _ID42407::_ID18512();
     var_13 = undefined;
-    var_14 = _func_1A2( "hostiles_courtyard", "targetname" );
-    var_15 = var_14;
+    var_14 = getentarray( "hostiles_courtyard", "targetname" );
 
-    for ( var_17 = _func_1DA( var_15 ); _func_02F( var_17 ); var_17 = _func_1BF( var_15, var_17 ) )
+    foreach ( var_16 in var_14 )
     {
-        var_16 = var_15[var_17];
-
-        if ( var_16._ID170 == "actor_enemy_airborne_SMG" || var_16._ID170 == "actor_enemy_airborne_AR" && !_ID42407::_ID27291( var_16 ) )
+        if ( ( var_16._ID170 == "actor_enemy_airborne_SMG" || var_16._ID170 == "actor_enemy_airborne_AR" ) && !_ID42407::_ID27291( var_16 ) )
         {
             var_13 = var_16;
             break;
         }
     }
 
-    var_clear_2
-    var_clear_0
-    var_18 = _func_0C8( "teleport_node", "script_noteworthy" );
+    var_18 = getnode( "teleport_node", "script_noteworthy" );
 
-    if ( _func_02F( var_13 ) )
+    if ( isdefined( var_13 ) )
         var_13 _ID42407::_ID37393( var_18 );
 }
 
@@ -2422,25 +2246,25 @@ _ID52454()
 
 _ID48286()
 {
-    var_0 = _func_1A1( "samsite_chater_org", "targetname" );
+    var_0 = getent( "samsite_chater_org", "targetname" );
     var_1 = var_0._ID740;
     var_2 = "player_shot_at_samsite_guys";
     level endon( var_2 );
 
     while ( !_ID42237::_ID14385( var_2 ) )
     {
-        _unknown_7115( "dcburn_ra1_acquiredtwo", var_1, var_2 );
-        _unknown_711F( "dcburn_ra2_lockon", var_1, var_2 );
+        _ID44154( "dcburn_ra1_acquiredtwo", var_1, var_2 );
+        _ID44154( "dcburn_ra2_lockon", var_1, var_2 );
         wait 1;
-        _unknown_712B( "dcburn_ra3_missilelocked", var_1, var_2 );
+        _ID44154( "dcburn_ra3_missilelocked", var_1, var_2 );
         wait 0.5;
-        _unknown_7139( "dcburn_ra1_2moresouthbound", var_1, var_2 );
-        _unknown_7143( "dcburn_ra2_firemissile", var_1, var_2 );
-        _unknown_714C( "dcburn_ra3_firingmissile", var_1, var_2 );
+        _ID44154( "dcburn_ra1_2moresouthbound", var_1, var_2 );
+        _ID44154( "dcburn_ra2_firemissile", var_1, var_2 );
+        _ID44154( "dcburn_ra3_firingmissile", var_1, var_2 );
         wait 1.5;
-        _unknown_715B( "dcburn_ra1_movingnorth", var_1, var_2 );
+        _ID44154( "dcburn_ra1_movingnorth", var_1, var_2 );
         wait 1;
-        _unknown_7167( "dcburn_ra2_10degrees", var_1, var_2 );
+        _ID44154( "dcburn_ra2_10degrees", var_1, var_2 );
     }
 }
 
@@ -2448,14 +2272,14 @@ _ID43076( var_0 )
 {
     self endon( "death" );
     self._ID512 = 1;
-    thread _unknown_4888();
+    thread _ID44531();
     _ID42237::_ID41098( "damage", "alerted" );
     _ID42407::_ID3136();
     self._ID512 = 0;
     self._ID511 = 0;
     self._ID511 = 0;
     self notify( "alerted" );
-    self _meth_81B1( var_0 );
+    self setgoalnode( var_0 );
 }
 
 _ID52126()
@@ -2470,40 +2294,37 @@ _ID52126()
 
     _ID42237::_ID14402( "samsite_allow_C4_spawn" );
     var_0 = 4.5;
-    self _meth_82BF( self._ID65 + ( 0, -50, 0 ), var_0, 2, 2 );
+    self rotateto( self._ID65 + ( 0, -50, 0 ), var_0, 2, 2 );
     thread maps\dcburning_aud::_ID47236();
     wait(var_0 / 2);
-    var_1 = _func_1A1( "slamraam_missile_target", "targetname" );
+    var_1 = getent( "slamraam_missile_target", "targetname" );
 
     while ( !_ID42237::_ID14385( "player_approaching_fourth_floor_sam" ) )
     {
-        self _meth_802A( "projectile_slamraam_missile", self._ID23757[0] );
-        _func_192( 0.3, 0.5, self._ID740, 1600 );
-        var_2 = _func_1C8( "slamraam_missile_dcburning", self _meth_818C( self._ID23757[0] ), var_1._ID740 );
+        self detach( "projectile_slamraam_missile", self._ID23757[0] );
+        earthquake( 0.3, 0.5, self._ID740, 1600 );
+        var_2 = magicbullet( "slamraam_missile_dcburning", self gettagorigin( self._ID23757[0] ), var_1._ID740 );
         thread maps\dcburning_aud::_ID53638( var_2 );
         self._ID23757 = _ID42237::_ID3321( self._ID23757, self._ID23757[0] );
 
         if ( self._ID23757.size < 1 )
             break;
 
-        wait(_func_0BA( 0.3, 2 ));
+        wait(randomfloatrange( 0.3, 2 ));
     }
 }
 
 _ID48716( var_0, var_1, var_2 )
 {
-    var_3 = _func_1A2( var_0, "targetname" );
+    var_3 = getentarray( var_0, "targetname" );
     var_4 = undefined;
     var_5 = undefined;
     var_6 = undefined;
     var_7 = [];
-    var_8 = var_3;
 
-    for ( var_10 = _func_1DA( var_8 ); _func_02F( var_10 ); var_10 = _func_1BF( var_8, var_10 ) )
+    foreach ( var_9 in var_3 )
     {
-        var_9 = var_8[var_10];
-
-        if ( _func_1A8( var_9 ) )
+        if ( isspawner( var_9 ) )
         {
             var_7[var_7.size] = var_9;
             continue;
@@ -2513,30 +2334,28 @@ _ID48716( var_0, var_1, var_2 )
         {
             switch ( var_9._ID669 )
             {
-
+                case "slamraam_tarp":
+                    var_5 = var_9;
+                    continue;
+                case "vehicle_slamraam_launcher_no_spike":
+                    var_6 = var_9;
+                    continue;
+                case "vehicle_slamraam_base":
+                    var_4 = var_9;
+                    continue;
             }
-
-            case "vehicle_slamraam_base":
-            case "vehicle_slamraam_launcher_no_spike":
-            case "slamraam_tarp":
         }
     }
 
-    var_clear_2
-    var_clear_0
     var_11 = _ID42407::_ID3339( var_7, 1 );
-    var_12 = var_11;
 
-    for ( var_14 = _func_1DA( var_12 ); _func_02F( var_14 ); var_14 = _func_1BF( var_12, var_14 ) )
+    foreach ( var_13 in var_11 )
     {
-        var_13 = var_12[var_14];
         var_13._ID49 = 1;
         var_13._ID511 = 1;
         var_13._ID507 = 1;
     }
 
-    var_clear_2
-    var_clear_0
     var_5._ID3189 = "tarp";
     var_5 _ID42407::_ID3428();
     var_11[0]._ID3189 = "operator";
@@ -2551,36 +2370,30 @@ _ID48716( var_0, var_1, var_2 )
     var_6._ID23757[5] = "tag_missle6";
     var_6._ID23757[6] = "tag_missle7";
     var_6._ID23757[7] = "tag_missle8";
-    var_16 = var_6._ID23757;
 
-    for ( var_18 = _func_1DA( var_16 ); _func_02F( var_18 ); var_18 = _func_1BF( var_16, var_18 ) )
-    {
-        var_17 = var_16[var_18];
-        var_6 _meth_801D( "projectile_slamraam_missile", var_17, 1 );
-    }
+    foreach ( var_17 in var_6._ID23757 )
+        var_6 attach( "projectile_slamraam_missile", var_17, 1 );
 
-    var_clear_2
-    var_clear_0
-    var_19 = _func_1A5();
+    var_19 = spawnstruct();
     var_19._ID50308 = var_11[0];
     var_19._ID52615 = var_11[1];
     var_19._ID39235 = var_6;
     var_19._ID4851 = var_4;
-    var_20 = _func_1A1( "tarp_anim_node", "targetname" );
-    var_20 thread _unknown_4AB2( var_15, var_1, var_2, var_5 );
+    var_20 = getent( "tarp_anim_node", "targetname" );
+    var_20 thread _ID44010( var_15, var_1, var_2, var_5 );
     return var_19;
 }
 
 _ID44010( var_0, var_1, var_2, var_3 )
 {
-    var_4 = _func_1A1( "tarp_guys_anim_node", "targetname" );
+    var_4 = getent( "tarp_guys_anim_node", "targetname" );
     thread _ID42259::_ID3018( var_3, "pulldown" );
     var_4 _ID42259::_ID3016( var_0, "pulldown" );
     _ID42237::_ID14413( var_1 );
     var_3 _ID42407::_ID10226( 2, _ID42407::_ID31877, "no_return_tarp_removal" );
     thread _ID42259::_ID3111( var_3, "pulldown" );
     var_4 thread _ID42259::_ID3099( var_0, "pulldown" );
-    thread _unknown_4B21( var_3, var_0 );
+    thread _ID48630( var_3, var_0 );
     _ID42237::_ID14402( var_2 );
 }
 
@@ -2589,17 +2402,10 @@ _ID48630( var_0, var_1 )
     var_0 endon( "no_return_tarp_removal" );
     _ID42237::_ID14413( "player_shot_at_samsite_guys" );
     _ID42237::_ID14402( "dead_tarp_guys" );
-    var_0 _meth_814B();
-    var_2 = var_1;
+    var_0 stopanimscripted();
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 _meth_814B();
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_3 in var_1 )
+        var_3 stopanimscripted();
 }
 
 _ID44531()
@@ -2609,8 +2415,8 @@ _ID44531()
     self._ID507 = 1;
     self._ID25510 = self._ID452;
     self._ID452 = 16;
-    thread _unknown_5119( "player_shot_at_samsite_guys" );
-    thread _unknown_4BAD();
+    thread _ID46701( "player_shot_at_samsite_guys" );
+    thread _ID46822();
     self waittill( "alerted" );
     self._ID452 = self._ID25510;
     self._ID199 = "ambush";
@@ -2624,7 +2430,7 @@ _ID46822()
     self endon( "alerted" );
     _ID42237::_ID14415( "player_entering_fourth_floor", "player_shot_at_samsite_guys", "player_gawking_at_fourth_floor_guys" );
     _ID42237::_ID14402( "player_shot_at_samsite_guys" );
-    thread _unknown_6784();
+    thread _ID48687();
 }
 
 _ID54189( var_0 )
@@ -2635,12 +2441,12 @@ _ID54189( var_0 )
     self._ID11572 = 1;
     self._ID31276 = 0;
     _ID42407::_ID17509();
-    self _meth_80C5( 0 );
+    self setcontents( 0 );
     self._ID511 = 1;
-    self _meth_8041( "", &"" );
+    self setlookattext( "", &"" );
     var_3 = var_0;
     var_4 = 0;
-    self _meth_814B();
+    self stopanimscripted();
 
     while ( !_ID42237::_ID14385( "stop_elevator_doors" ) )
     {
@@ -2648,7 +2454,7 @@ _ID54189( var_0 )
         self waittill( "doors_closing" );
         var_3 notify( "stop_idle" );
 
-        if ( _ID42237::_ID14385( "player_looking_at_elevator" ) && _func_02F( var_4 ) )
+        if ( _ID42237::_ID14385( "player_looking_at_elevator" ) && isdefined( var_4 ) )
         {
             var_4 = undefined;
             var_3 _ID42259::_ID3020( self, "dcburning_elevator_corpse_trans_A_2_B" );
@@ -2659,50 +2465,50 @@ _ID54189( var_0 )
         var_3 _ID42259::_ID3020( self, var_2 );
     }
 
-    self _meth_80B7();
+    self delete();
 }
 
 _ID44433()
 {
-    var_0 = _func_1A1( "elevator_dude", "targetname" );
+    var_0 = getent( "elevator_dude", "targetname" );
     var_1 = var_0 _ID42407::_ID12076();
-    var_1 thread _unknown_4C9B( var_0 );
-    var_2 = _func_1A1( "elevator_door_left", "targetname" );
-    var_3 = _func_1A1( "elevator_door_right", "targetname" );
+    var_1 thread _ID54189( var_0 );
+    var_2 = getent( "elevator_door_left", "targetname" );
+    var_3 = getent( "elevator_door_right", "targetname" );
     var_2._ID36155 = var_2._ID740;
     var_3._ID36155 = var_3._ID740;
-    var_4 = _func_1A1( "elevator_clip_left", "targetname" );
-    var_5 = _func_1A1( "elevator_clip_right", "targetname" );
+    var_4 = getent( "elevator_clip_left", "targetname" );
+    var_5 = getent( "elevator_clip_right", "targetname" );
     var_4._ID36155 = var_4._ID740;
     var_5._ID36155 = var_5._ID740;
     var_6 = 28;
     var_7 = -28;
     var_8 = 2;
-    var_9 = _func_1A1( "musak_org", "targetname" );
-    var_9 _meth_807C( "elev_musak_loop" );
+    var_9 = getent( "musak_org", "targetname" );
+    var_9 playloopsound( "elev_musak_loop" );
 
     while ( !_ID42237::_ID14385( "stop_elevator_doors" ) )
     {
         thread _ID42237::_ID27077( "elev_bell_ding", var_2._ID740 );
         thread _ID42237::_ID27077( "elev_door_close", var_2._ID740 );
-        var_2 _meth_82BA( var_6, var_8, var_8 / 2 );
-        var_3 _meth_82BA( var_7, var_8, var_8 / 2 );
-        var_4 _meth_82BA( var_6, var_8, var_8 / 2 );
-        var_5 _meth_82BA( var_7, var_8, var_8 / 2 );
+        var_2 movey( var_6, var_8, var_8 / 2 );
+        var_3 movey( var_7, var_8, var_8 / 2 );
+        var_4 movey( var_6, var_8, var_8 / 2 );
+        var_5 movey( var_7, var_8, var_8 / 2 );
         wait(var_8 - 0.25);
         var_1 notify( "doors_closing" );
         wait 0.25;
         thread _ID42237::_ID27077( "elev_door_open", var_2._ID740 );
-        var_2 _meth_82B8( var_2._ID36155, var_8, var_8 / 2, var_8 / 2 );
-        var_3 _meth_82B8( var_3._ID36155, var_8, var_8 / 2, var_8 / 2 );
-        var_4 _meth_82B8( var_4._ID36155, var_8, var_8 / 2, var_8 / 2 );
-        var_5 _meth_82B8( var_5._ID36155, var_8, var_8 / 2, var_8 / 2 );
+        var_2 moveto( var_2._ID36155, var_8, var_8 / 2, var_8 / 2 );
+        var_3 moveto( var_3._ID36155, var_8, var_8 / 2, var_8 / 2 );
+        var_4 moveto( var_4._ID36155, var_8, var_8 / 2, var_8 / 2 );
+        var_5 moveto( var_5._ID36155, var_8, var_8 / 2, var_8 / 2 );
         wait(var_8);
         wait 1.25;
     }
 
-    var_9 _meth_80B2();
-    var_9 _meth_80B7();
+    var_9 stopsounds();
+    var_9 delete();
 }
 
 _ID46687()
@@ -2733,7 +2539,7 @@ _ID46687()
     }
 
     _ID42407::_ID14543( "allies" );
-    level._ID49792 _unknown_7247( "dcburn_cpd_capitolbuild" );
+    level._ID49792 _ID10760( "dcburn_cpd_capitolbuild" );
     _ID42407::_ID28864( "dcburn_ar1_lincolnmemorial" );
     _ID42407::_ID14544( "allies" );
     _ID42237::_ID14413( "player_at_bottom_of_pavlovs_ramp" );
@@ -2761,14 +2567,14 @@ _ID46687()
 
 _ID44211()
 {
-    thread _unknown_4FDD();
+    thread _ID53278();
 }
 
 _ID53278()
 {
     _ID42237::_ID14413( "obj_commerce_defend_snipe_complete" );
-    var_0 = _func_1A2( "bmp_flood_south", "targetname" );
-    thread _unknown_5003( var_0 );
+    var_0 = getentarray( "bmp_flood_south", "targetname" );
+    thread _ID47598( var_0 );
     _ID42237::_ID14413( "obj_commerce_defend_javelin_complete" );
 }
 
@@ -2778,17 +2584,10 @@ _ID47598( var_0 )
 
     for (;;)
     {
-        var_1 = var_0;
+        foreach ( var_2 in var_0 )
+            thread _ID52488( var_2 );
 
-        for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-        {
-            var_2 = var_1[var_3];
-            thread _unknown_503D( var_2 );
-        }
-
-        var_clear_2
-        var_clear_0
-        wait(_func_0BA( 40, 41 ));
+        wait(randomfloatrange( 40, 41 ));
     }
 }
 
@@ -2798,25 +2597,25 @@ _ID52488( var_0 )
         return;
 
     level endon( "obj_commerce_defend_javelin_complete" );
-    wait(_func_0BA( 40, 41 ));
+    wait(randomfloatrange( 40, 41 ));
     var_1 = var_0 _ID42411::_ID35194();
-    _func_0A2( var_1, ( 0, 0, 0 ) );
-    _func_0AD( var_1, 1 );
-    _func_0AC( var_1, "top" );
-    var_1 thread _unknown_6759();
+    target_set( var_1, ( 0, 0, 0 ) );
+    target_setjavelinonly( var_1, 1 );
+    target_setattackmode( var_1, "top" );
+    var_1 thread _ID50671();
     var_1 endon( "death" );
     var_1 waittill( "reached_end_node" );
     var_1 notify( "deleted_through_script" );
-    var_1 _meth_80B7();
+    var_1 delete();
 }
 
 _ID46175()
 {
-    thread _unknown_50CC();
-    thread _unknown_518C();
-    thread _unknown_50DC();
+    thread _ID45989();
+    thread _ID51853();
+    thread _ID44146();
     _ID42237::_ID14413( "player_approaching_crowsnest" );
-    thread _unknown_51E7();
+    thread _ID43417();
 }
 
 _ID45989()
@@ -2828,67 +2627,62 @@ _ID45989()
 _ID44146()
 {
     _ID42237::_ID14413( "player_at_commerce_crows_floor" );
-    _unknown_738A( "colornodes_commerce_to_crowsnest", "script_noteworthy", 1 );
+    _ID38942( "colornodes_commerce_to_crowsnest", "script_noteworthy", 1 );
     _ID42234::_ID13611( "battlefield_smk" );
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
     thread _ID42407::_ID4422( "elevator_top" );
-    thread _unknown_75B1( "all" );
+    thread _ID52268( "all" );
 
-    if ( _func_02F( level._ID52924 ) )
-        _ID42237::_ID3350( level._ID52924, ::_unknown_6F3D );
+    if ( isdefined( level._ID52924 ) )
+        _ID42237::_ID3350( level._ID52924, ::_ID44705 );
 
-    if ( _func_02F( level._ID52549 ) )
-        _ID42237::_ID3350( level._ID52549, ::_unknown_6F4E );
+    if ( isdefined( level._ID52549 ) )
+        _ID42237::_ID3350( level._ID52549, ::_ID44705 );
 
-    var_0 = _func_1A1( "volume_commerce_sector_2", "targetname" );
-    var_1 = _func_1A1( "volume_commerce_sector_3", "targetname" );
-    var_2 = _func_1A1( "flare_dynamic_01", "targetname" );
+    var_0 = getent( "volume_commerce_sector_2", "targetname" );
+    var_1 = getent( "volume_commerce_sector_3", "targetname" );
+    var_2 = getent( "flare_dynamic_01", "targetname" );
     _ID42237::_ID14421( "player_approaching_flare_moment", "player_looking_at_flare_moment" );
-    var_3 = _ID42407::_ID3339( _func_1A2( "commerce_flare_guys", "targetname" ), 1 );
+    var_3 = _ID42407::_ID3339( getentarray( "commerce_flare_guys", "targetname" ), 1 );
     _ID42237::_ID14413( "player_approaching_crowsnest" );
-    thread _unknown_5213();
+    thread _ID43663();
     var_4 = _ID42411::_ID35200( "helis_ambient_crowsnest" );
     var_5 = _ID42411::_ID35200( "helis_crows_snipe" );
-    _ID42237::_ID3350( var_5, ::_unknown_5216 );
+    _ID42237::_ID3350( var_5, ::_ID53471 );
 
-    if ( _func_02F( level._ID46159 ) )
-        _ID42237::_ID3350( level._ID46159, ::_unknown_5231 );
+    if ( isdefined( level._ID46159 ) )
+        _ID42237::_ID3350( level._ID46159, ::_ID49450 );
 
-    thread _unknown_7651( "allies", 128 );
+    thread _ID52268( "allies", 128 );
 }
 
 animate_wires()
 {
     self endon( "death" );
-    var_0 = _func_1A2( "animated_wires", "script_noteworthy" );
-    var_1 = var_0;
+    var_0 = getentarray( "animated_wires", "script_noteworthy" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
         var_2._ID3189 = "wire";
         var_2 _ID42259::_ID32556();
         var_2 thread _ID42259::_ID3044( var_2, var_2._ID669 );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID53471()
 {
     self endon( "death" );
     _ID42237::_ID14413( "obj_commerce_defend_crow_given" );
-    thread _unknown_7A17( "start" );
+    thread _ID44638( "start" );
     _ID42237::_ID14413( "obj_commerce_defend_javelin_given" );
-    thread _unknown_5B62();
+    thread _ID54675();
 }
 
 _ID49450()
 {
     self endon( "death" );
     _ID42237::_ID14413( "player_shot_at_crowsnest_guys" );
-    thread _unknown_7A3B( "start" );
+    thread _ID44638( "start" );
 }
 
 _ID43663()
@@ -2900,22 +2694,22 @@ _ID43663()
 
     while ( !_ID42237::_ID14385( var_2 ) )
     {
-        _unknown_7A0F( "dcburn_ra3_gridsquare", var_1, var_2 );
-        _unknown_7A19( "dcburn_ra1_dontworry", var_1, var_2 );
+        _ID44154( "dcburn_ra3_gridsquare", var_1, var_2 );
+        _ID44154( "dcburn_ra1_dontworry", var_1, var_2 );
         wait 0.5;
-        _unknown_7A27( "dcburn_ra2_60kph", var_1, var_2 );
-        _unknown_7A31( "dcburn_ra3_standbyforlaunch", var_1, var_2 );
+        _ID44154( "dcburn_ra2_60kph", var_1, var_2 );
+        _ID44154( "dcburn_ra3_standbyforlaunch", var_1, var_2 );
         wait 0.5;
-        _unknown_7A3F( "dcburn_ra1_bygreencar", var_1, var_2 );
-        _unknown_7A49( "dcburn_ra2_trackingitnow", var_1, var_2 );
+        _ID44154( "dcburn_ra1_bygreencar", var_1, var_2 );
+        _ID44154( "dcburn_ra2_trackingitnow", var_1, var_2 );
         wait 0.75;
-        _unknown_7A57( "dcburn_ra3_tooeasy", var_1, var_2 );
-        _unknown_7A61( "dcburn_ra1_confirmhostile", var_1, var_2 );
-        _unknown_7A6A( "dcburn_ra2_25kph", var_1, var_2 );
-        _unknown_7A74( "dcburn_ra3_range572meters", var_1, var_2 );
-        _unknown_7A7E( "dcburn_ra1_destroyit", var_1, var_2 );
-        _unknown_7A88( "dcburn_ra2_clearedtoengage", var_1, var_2 );
-        _unknown_7A91( "dcburn_ra3_runfromus", var_1, var_2 );
+        _ID44154( "dcburn_ra3_tooeasy", var_1, var_2 );
+        _ID44154( "dcburn_ra1_confirmhostile", var_1, var_2 );
+        _ID44154( "dcburn_ra2_25kph", var_1, var_2 );
+        _ID44154( "dcburn_ra3_range572meters", var_1, var_2 );
+        _ID44154( "dcburn_ra1_destroyit", var_1, var_2 );
+        _ID44154( "dcburn_ra2_clearedtoengage", var_1, var_2 );
+        _ID44154( "dcburn_ra3_runfromus", var_1, var_2 );
     }
 }
 
@@ -2972,38 +2766,38 @@ _ID51853()
 
 _ID43417()
 {
-    thread _unknown_5508();
-    thread _unknown_55D5();
-    thread _unknown_69F5();
-    thread _unknown_6A2D();
-    thread _unknown_59F7();
+    thread _ID47006();
+    thread _ID47149();
+    thread _ID47819();
+    thread _ID47909();
+    thread _ID50265();
     _ID42237::_ID14413( "start_crow_armor_sequence" );
-    thread _unknown_5B01();
+    thread _ID51890();
 }
 
 _ID47006()
 {
-    _unknown_76A2( "colornodes_crowsnest", "script_noteworthy", 1 );
-    var_0 = _func_1A1( "volume_crowsnest", "targetname" );
+    _ID38942( "colornodes_crowsnest", "script_noteworthy", 1 );
+    var_0 = getent( "volume_crowsnest", "targetname" );
     _ID42237::_ID14413( "player_approaching_crowsnest" );
-    var_1 = _ID42407::_ID3339( _func_1A2( "hostiles_crowsnest", "targetname" ), 1 );
-    thread _unknown_56B8();
-    thread _unknown_7702( var_1, "crowsnest_has_been_cleared" );
-    _ID42237::_ID3350( var_1, ::_unknown_5888, "player_shot_at_crowsnest_guys" );
-    _ID42237::_ID3350( var_1, ::_unknown_58DF );
-    _ID42237::_ID3350( level._ID35507, ::_unknown_55FB );
+    var_1 = _ID42407::_ID3339( getentarray( "hostiles_crowsnest", "targetname" ), 1 );
+    thread _ID44874();
+    thread _ID46880( var_1, "crowsnest_has_been_cleared" );
+    _ID42237::_ID3350( var_1, ::_ID46701, "player_shot_at_crowsnest_guys" );
+    _ID42237::_ID3350( var_1, ::_ID44082 );
+    _ID42237::_ID3350( level._ID35507, ::_ID46542 );
     _ID42237::_ID14413( "player_shot_at_crowsnest_guys" );
-    thread _unknown_55DD();
+    thread _ID47136();
     var_2 = _ID42411::_ID35199( "tanks_crowsnest_wave1" );
-    thread _unknown_5DAF( var_2 );
-    _ID42237::_ID3350( var_2, ::_unknown_5E1D );
-    _ID42237::_ID3350( level._ID35507, ::_unknown_61CE, "crowsnest_has_been_cleared" );
+    thread _ID51426( var_2 );
+    _ID42237::_ID3350( var_2, ::_ID48557 );
+    _ID42237::_ID3350( level._ID35507, ::_ID49771, "crowsnest_has_been_cleared" );
     _ID42237::_ID14413( "crowsnest_has_been_cleared" );
     thread _ID42407::_ID14403( "obj_commerce_complete", 1 );
-    var_3 = _func_1A1( "colornodes_crowsnest", "script_noteworthy" );
+    var_3 = getent( "colornodes_crowsnest", "script_noteworthy" );
     var_3 notify( "trigger",  level._ID794  );
-    thread _unknown_6005( "dummy_colornodes_crows1" );
-    thread _unknown_600D( "dummy_colornodes_crows2" );
+    thread _ID47491( "dummy_colornodes_crows1" );
+    thread _ID47491( "dummy_colornodes_crows2" );
     _ID42237::_ID14413( "latvee_spotlight_deleted" );
     _ID42237::_ID14413( "obj_commerce_defend_snipe_given" );
     var_4 = _ID42411::_ID35200( "jets_crow_01" );
@@ -3011,9 +2805,9 @@ _ID47006()
 
 _ID47136()
 {
-    var_0 = _func_0C8( "foley_crowsnest_radio", "script_noteworthy" );
+    var_0 = getnode( "foley_crowsnest_radio", "script_noteworthy" );
     var_1 = _ID42237::_ID16638( "foley_anim_origin", "targetname" );
-    level._ID44035 _meth_81B1( var_0 );
+    level._ID44035 setgoalnode( var_0 );
     level._ID44035 waittill( "goal" );
     _ID42237::_ID14413( "crowsnest_has_been_cleared" );
     var_1 thread _ID42259::_ID3111( level._ID44035, "h2_dc_burning_crowsnest_foley_enter" );
@@ -3028,7 +2822,7 @@ _ID47136()
     }
     else
     {
-        level._ID44035 thread _unknown_7822( "dcburn_mcy_scanfortargets" );
+        level._ID44035 thread _ID10760( "dcburn_mcy_scanfortargets" );
         level._ID44035 thread _ID42259::_ID37173( 6 );
     }
 
@@ -3040,48 +2834,42 @@ _ID46542()
     self endon( "death" );
     level endon( "player_shot_at_crowsnest_guys" );
     _ID42237::_ID14413( "player_approaching_crowsnest_door" );
-    var_0 = _func_1A1( "player_in_crowsnest_room", "targetname" );
+    var_0 = getent( "player_in_crowsnest_room", "targetname" );
 
     while ( !_ID42237::_ID14385( "player_shot_at_crowsnest_guys" ) )
     {
         wait 0.1;
 
-        if ( !_func_02F( self ) )
+        if ( !isdefined( self ) )
             return;
 
-        if ( self _meth_80B0( var_0 ) )
+        if ( self istouching( var_0 ) )
             break;
     }
 
-    thread _unknown_576B();
+    thread _ID43826();
     _ID42237::_ID14402( "player_shot_at_crowsnest_guys" );
 }
 
 _ID43826()
 {
-    var_0 = _func_0DE( "axis" );
-    var_1 = var_0;
+    var_0 = getaiarray( "axis" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             continue;
 
         var_2._ID511 = 0;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID51469()
 {
-    var_0 = _func_1A1( "model_barrett", "targetname" );
-    level._ID53428 = _func_06A( "script_origin", var_0._ID740 );
-    var_1 = _func_06A( "script_model", var_0._ID740 );
-    var_1 _meth_80B8( "weapon_m82_MG_Setup_obj" );
+    var_0 = getent( "model_barrett", "targetname" );
+    level._ID53428 = spawn( "script_origin", var_0._ID740 );
+    var_1 = spawn( "script_model", var_0._ID740 );
+    var_1 setmodel( "weapon_m82_MG_Setup_obj" );
     var_1._ID65 = var_0._ID65;
     var_0._ID3189 = "barrett";
     var_0 _ID42259::_ID32556();
@@ -3089,77 +2877,72 @@ _ID51469()
     var_1 _ID42259::_ID32556();
     level._ID53428 _ID42259::_ID3018( var_0, "barrett_in" );
     level._ID53428 _ID42259::_ID3018( var_1, "barrett_in" );
-    var_1 _meth_805A();
+    var_1 hide();
     return [ var_0, var_1 ];
 }
 
 _ID47149()
 {
     _ID42237::_ID14413( "player_approaching_crowsnest2" );
-    thread _unknown_5B71();
-    var_0 = _unknown_5835();
+    thread _ID43835();
+    var_0 = _ID51469();
     var_1 = var_0[0];
     var_2 = var_0[1];
     var_clear_2
-    level._ID49081 = _func_1A2( "vehicles_crowsnest_defend", "targetname" );
-    _ID42237::_ID3350( level._ID49081, ::_unknown_5CA8 );
-    thread _unknown_5BB6();
-    level._ID47026 = _ID42407::_ID3339( _func_1A2( "hostiles_ww2_barret", "targetname" ), 1 );
-    _ID42237::_ID3350( level._ID47026, ::_unknown_6CD2 );
-    _ID42237::_ID3350( level._ID47026, ::_unknown_6EA9 );
-    var_3 = level._ID47026;
+    level._ID49081 = getentarray( "vehicles_crowsnest_defend", "targetname" );
+    _ID42237::_ID3350( level._ID49081, ::_ID44131 );
+    thread _ID52423();
+    level._ID47026 = _ID42407::_ID3339( getentarray( "hostiles_ww2_barret", "targetname" ), 1 );
+    _ID42237::_ID3350( level._ID47026, ::_ID54341 );
+    _ID42237::_ID3350( level._ID47026, ::_ID45242 );
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in level._ID47026 )
     {
-        var_4 = var_3[var_5];
-
-        if ( !_func_02F( var_4._ID22746 ) || !var_4._ID22746 )
+        if ( !isdefined( var_4._ID22746 ) || !var_4._ID22746 )
             var_4 _ID42407::_ID22746();
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "crowsnest_has_been_cleared" );
     _ID42237::_ID3350( level._ID47026, _ID42407::_ID36519 );
     _ID42237::_ID14413( "obj_commerce_defend_snipe_given" );
-    thread _unknown_5ADA();
-    thread _unknown_5CFD( var_1, var_2 );
-    thread _unknown_5BC0();
+    thread _ID47442();
+    thread _ID47433( var_1, var_2 );
+    thread _ID52094();
     _ID42237::_ID14425( "player_is_on_turret", 5 );
-    thread _unknown_5BB8();
+    thread _ID50319();
     _ID42237::_ID14413( "only_2_sniper_enemies_remaining" );
-    thread _unknown_599E();
+    thread _ID44695();
     _ID42237::_ID14388( "can_talk" );
     _ID42407::_ID28864( "dcburn_hqr_stayfrosty" );
     _ID42237::_ID14402( "can_talk" );
     _ID42237::_ID14413( "obj_commerce_defend_snipe_complete" );
-    thread _unknown_5B56();
+    thread _ID47057();
     thread _ID42407::_ID4433( 1 );
     thread _ID42407::_ID14403( "obj_commerce_defend_crow_given", 3 );
-    _ID42237::_ID3350( level._ID35507, ::_unknown_64AA, "perimeter_enemies_have_retreated" );
+    _ID42237::_ID3350( level._ID35507, ::_ID49771, "perimeter_enemies_have_retreated" );
     _ID42407::_ID4918( "allies" );
-    thread _unknown_7CBE( "dummy_spawner_crowsnest_assault_guys_wave1" );
-    thread _unknown_5B9C();
-    thread _unknown_5A17();
+    thread _ID47645( "dummy_spawner_crowsnest_assault_guys_wave1" );
+    thread _ID53843();
+    thread _ID45325();
     level._ID46720 = 0;
-    _unknown_7A29( "colornodes_crowsnest_surrounded", "script_noteworthy", 1 );
-    var_6 = _func_1A1( "colornodes_crowsnest_surrounded", "script_noteworthy" );
+    _ID38942( "colornodes_crowsnest_surrounded", "script_noteworthy", 1 );
+    var_6 = getent( "colornodes_crowsnest_surrounded", "script_noteworthy" );
     var_6 notify( "trigger",  level._ID794  );
     _ID42237::_ID14413( "player_killed_enough" );
     _ID42237::_ID14402( "start_crow_armor_sequence" );
     _ID42237::_ID14402( "obj_commerce_defend_crow_complete" );
     thread _ID42407::_ID4422( "defend_crow_complete" );
-    _unknown_7DAF( 12 );
-    var_7 = _func_0DE( "axis" );
+    _ID21376( 12 );
+    var_7 = getaiarray( "axis" );
     thread _ID42407::_ID2265( var_7, 512 );
-    _ID42237::_ID3350( var_7, ::_unknown_5A9E );
+    _ID42237::_ID3350( var_7, ::_ID53876 );
 }
 
 _ID44695()
 {
     level endon( "player_getting_on_minigun" );
     _ID42237::_ID14413( "player_abandoning_crowsnest" );
-    _func_034( "ui_deadquote", &"DCBURNING_MISSIONFAIL_CROWSNEST_SNIPE" );
+    setdvar( "ui_deadquote", &"DCBURNING_MISSIONFAIL_CROWSNEST_SNIPE" );
     level notify( "mission failed" );
     _ID42407::_ID23778();
 }
@@ -3172,11 +2955,11 @@ _ID44874()
     {
         if ( _ID42237::_ID14385( "player_is_on_turret" ) )
         {
-            level._ID794 _meth_8057( 20 / level._ID794._ID255, level._ID794._ID740 );
-            level._ID794 _meth_80A1( "bullet_large_flesh_plr" );
+            level._ID794 dodamage( 20 / level._ID794._ID255, level._ID794._ID740 );
+            level._ID794 playsound( "bullet_large_flesh_plr" );
         }
 
-        wait(_func_0BA( 2, 3 ));
+        wait(randomfloatrange( 2, 3 ));
     }
 }
 
@@ -3187,9 +2970,9 @@ _ID45325()
 
     while ( _ID42237::_ID14385( "player_is_on_turret" ) )
     {
-        level._ID794 _meth_8057( 20 / level._ID794._ID255, level._ID794._ID740 );
-        level._ID794 _meth_80A1( "bullet_large_flesh_plr" );
-        wait(_func_0BA( 1, 2 ));
+        level._ID794 dodamage( 20 / level._ID794._ID255, level._ID794._ID740 );
+        level._ID794 playsound( "bullet_large_flesh_plr" );
+        wait(randomfloatrange( 1, 2 ));
         var_0++;
 
         if ( var_0 > 3 )
@@ -3199,7 +2982,7 @@ _ID45325()
     if ( _ID42237::_ID14385( "player_is_on_turret" ) )
     {
         var_1 = _ID42237::_ID16638( "obj_commerce_defend_javelin", "targetname" );
-        _func_074( "fraggrenade", var_1._ID740 + ( 0, 0, 144 ), var_1._ID740 + ( 0, 0, 32 ) );
+        magicgrenade( "fraggrenade", var_1._ID740 + ( 0, 0, 144 ), var_1._ID740 + ( 0, 0, 32 ) );
     }
 }
 
@@ -3207,26 +2990,26 @@ _ID53876()
 {
     self endon( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self notify( "stop_seeking" );
     var_0 = _ID42237::_ID16638( "obj_commerce_sector_1d", "targetname" );
-    self _meth_81B2( var_0._ID740 );
+    self setgoalpos( var_0._ID740 );
 }
 
 _ID53643()
 {
     level endon( "player_killed_enough" );
 
-    if ( !_func_1A7( self ) )
+    if ( !isalive( self ) )
         return;
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
         self waittill( "death",  var_0  );
 
-        if ( _func_02F( var_0 ) && _func_1B3( var_0 ) )
+        if ( isdefined( var_0 ) && isplayernumber( var_0 ) )
         {
             level._ID46720++;
 
@@ -3246,9 +3029,9 @@ _ID51944()
     var_0 = [];
     var_0[0] = level._ID44035;
     var_0[1] = level._ID49792;
-    var_1 = _func_1A2( "friendlies_crowsnest_stage", "targetname" );
-    var_0[0] thread _unknown_5C2F( var_1[0] );
-    var_0[1] thread _unknown_5C39( var_1[1] );
+    var_1 = getentarray( "friendlies_crowsnest_stage", "targetname" );
+    var_0[0] thread _ID51115( var_1[0] );
+    var_0[1] thread _ID51115( var_1[1] );
 }
 
 _ID51115( var_0 )
@@ -3256,7 +3039,7 @@ _ID51115( var_0 )
     self._ID50645 = [];
     var_1 = var_0 _ID42237::_ID15808();
     var_2 = var_0 _ID42407::_ID15811();
-    _ID42237::_ID3350( var_2, ::_unknown_5D0F, self );
+    _ID42237::_ID3350( var_2, ::_ID43306, self );
     var_3 = 0;
 
     while ( !_ID42237::_ID14385( "only_1_javelin_enemies_remaining" ) )
@@ -3272,7 +3055,7 @@ _ID51115( var_0 )
         break;
     }
 
-    _unknown_5DE5();
+    _ID44512();
 
     if ( _ID42237::_ID14385( "only_1_javelin_enemies_remaining" ) )
         return;
@@ -3285,50 +3068,50 @@ _ID51115( var_0 )
 
     if ( var_0._ID70 == "stinger_idle" )
     {
-        var_4 = _func_1A1( "volume_stinger_safezone", "targetname" );
-        _unknown_7317();
+        var_4 = getent( "volume_stinger_safezone", "targetname" );
+        _ID47210();
     }
     else
     {
-        var_4 = _func_1A1( "volume_javelin_safezone", "targetname" );
+        var_4 = getent( "volume_javelin_safezone", "targetname" );
         var_3 = 1;
         self._ID70 = var_0._ID70;
-        _unknown_733B();
+        _ID46601();
         var_5 = "javelin_dcburn";
         var_7 = "javelin_muzzle";
         var_6 = "weapon_javelin_sp";
     }
 
-    self _meth_805A();
+    self hide();
     self._ID29359 _ID42259::_ID3023( self, self._ID44964 );
-    self _meth_8059();
+    self show();
     var_8 = undefined;
     var_9 = undefined;
     var_10 = undefined;
-    self _meth_801D( var_6, "TAG_INHAND", 1 );
+    self attach( var_6, "TAG_INHAND", 1 );
     var_11 = 8;
     self._ID511 = 1;
 
     while ( !_ID42237::_ID14385( "only_1_javelin_enemies_remaining" ) )
     {
-        var_11 = _func_0BA( 6, 9 );
+        var_11 = randomfloatrange( 6, 9 );
         self._ID29359 thread _ID42259::_ID3025( self, self._ID49335, "stop_idle" );
         _ID42237::_ID41123( "new_target", var_11 );
         self._ID29359 notify( "stop_idle" );
         self._ID29359 thread _ID42259::_ID3020( self, self._ID50813 );
         self waittillmatch( "single anim",  "fire_weapon"  );
-        var_8 = _unknown_5E3B( var_1 );
+        var_8 = _ID43727( var_1 );
 
-        if ( _func_02F( var_8 ) && !level._ID794 _meth_80B0( var_4 ) )
+        if ( isdefined( var_8 ) && !level._ID794 istouching( var_4 ) )
         {
-            var_10 = self _meth_818C( "tag_inhand" );
-            var_9 = _func_1C8( var_5, var_10, var_8._ID740 );
-            var_9 _meth_81E5( var_8 );
+            var_10 = self gettagorigin( "tag_inhand" );
+            var_9 = magicbullet( var_5, var_10, var_8._ID740 );
+            var_9 missile_settargetent( var_8 );
 
             if ( var_3 )
             {
-                var_9 _meth_81E9();
-                _func_157( _ID42237::_ID16299( var_7 ), self, "TAG_FLASH" );
+                var_9 missile_setflightmodetop();
+                playfxontag( _ID42237::_ID16299( var_7 ), self, "TAG_FLASH" );
             }
         }
 
@@ -3343,14 +3126,14 @@ _ID51115( var_0 )
     self notify( "stop_first_frame" );
     self._ID29359 notify( "stop_idle" );
     _ID42407::_ID3136();
-    self _meth_802A( var_6, "TAG_INHAND" );
+    self detach( var_6, "TAG_INHAND" );
     self._ID29359 = undefined;
     self._ID50645 = undefined;
 }
 
 _ID48097( var_0 )
 {
-    if ( _func_0F3( var_0, level._ID794._ID740 ) > 64 )
+    if ( distance( var_0, level._ID794._ID740 ) > 64 )
         return 1;
     else
         return 0;
@@ -3363,18 +3146,18 @@ _ID45040()
 
 _ID43727( var_0 )
 {
-    if ( !_func_02F( self._ID50645 ) )
-        return var_0[_func_0B7( var_0.size )];
+    if ( !isdefined( self._ID50645 ) )
+        return var_0[randomint( var_0.size )];
 
     if ( self._ID50645.size == 0 )
-        return var_0[_func_0B7( var_0.size )];
+        return var_0[randomint( var_0.size )];
 
     self._ID50645 = _ID42407::_ID29506( self._ID50645 );
 
     if ( level._ID53717 > 0 && level._ID51365 && self._ID50645.size > 0 )
         return self._ID50645[0];
     else
-        return var_0[_func_0B7( var_0.size )];
+        return var_0[randomint( var_0.size )];
 }
 
 _ID43306( var_0 )
@@ -3383,21 +3166,21 @@ _ID43306( var_0 )
     var_0 endon( "stop_shooting_stingers_and_javs" );
     self endon( "death" );
 
-    while ( !_ID42237::_ID14385( "only_1_javelin_enemies_remaining" ) && _func_02F( var_0._ID50645 ) )
+    while ( !_ID42237::_ID14385( "only_1_javelin_enemies_remaining" ) && isdefined( var_0._ID50645 ) )
     {
         self waittill( "trigger",  var_1  );
 
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             break;
 
-        if ( !_func_02F( var_0._ID50645 ) )
+        if ( !isdefined( var_0._ID50645 ) )
             break;
 
         var_0._ID50645 = _ID42237::_ID3293( var_0._ID50645, var_1 );
         var_0 notify( "new_target" );
         wait 2;
 
-        if ( _func_02F( var_1 ) )
+        if ( isdefined( var_1 ) )
             var_0._ID50645 = _ID42237::_ID3321( var_0._ID50645, var_1 );
 
         if ( _ID42237::_ID14385( "only_1_javelin_enemies_remaining" ) || _ID42237::_ID14385( "obj_commerce_defend_javelin_complete" ) )
@@ -3407,28 +3190,24 @@ _ID43306( var_0 )
 
 _ID47442()
 {
-    var_0 = _func_0C9( "crow_nodes_drone_fire", "targetname" );
-    var_1 = _func_1A1( "hostiles_fodder_crowsnest", "targetname" );
+    var_0 = getnodearray( "crow_nodes_drone_fire", "targetname" );
+    var_1 = getent( "hostiles_fodder_crowsnest", "targetname" );
     level._ID48019 = var_1 _ID42407::_ID35014();
     var_2 = [];
     var_2[0] = level._ID44035;
     var_2[1] = level._ID49792;
-    var_3 = var_2;
 
-    for ( var_6 = _func_1DA( var_3 ); _func_02F( var_6 ); var_6 = _func_1BF( var_3, var_6 ) )
+    foreach ( var_4 in var_2 )
     {
-        var_4 = var_3[var_6];
         var_4 _ID42407::_ID10871();
         var_5 = _ID42237::_ID16276( level._ID794._ID740, var_0 );
         var_0 = _ID42237::_ID3321( var_0, var_5 );
         var_4._ID381 = 0;
         var_4._ID452 = 16;
-        var_4 _meth_81B1( var_5 );
+        var_4 setgoalnode( var_5 );
     }
 
-    var_clear_3
-    var_clear_0
-    _ID42237::_ID3350( var_2, ::_unknown_6080 );
+    _ID42237::_ID3350( var_2, ::_ID50457 );
 }
 
 _ID50457()
@@ -3437,22 +3216,22 @@ _ID50457()
 
     for (;;)
     {
-        wait(_func_0BA( 3, 6 ));
+        wait(randomfloatrange( 3, 6 ));
         self._ID507 = 1;
-        wait(_func_0BA( 3, 6 ));
+        wait(randomfloatrange( 3, 6 ));
         self._ID507 = 0;
     }
 }
 
 _ID47057()
 {
-    if ( _func_02F( level._ID48019 ) )
-        level._ID48019 _unknown_7F57();
+    if ( isdefined( level._ID48019 ) )
+        level._ID48019 _ID47688();
 
     var_0 = [];
     var_0[0] = level._ID44035;
     var_0[1] = level._ID49792;
-    _ID42237::_ID3350( var_0, ::_unknown_60D4 );
+    _ID42237::_ID3350( var_0, ::_ID44512 );
 }
 
 _ID44512()
@@ -3473,33 +3252,33 @@ _ID53843()
         if ( _ID42237::_ID14385( "player_killed_enough" ) )
             break;
 
-        level._ID49792 _unknown_7FCA( "dcburn_cpd_inperimeter" );
-        wait(_func_0BA( 8, 14 ));
+        level._ID49792 _ID10760( "dcburn_cpd_inperimeter" );
+        wait(randomfloatrange( 8, 14 ));
 
         if ( _ID42237::_ID14385( "player_killed_enough" ) )
             break;
 
-        level._ID49792 _unknown_7FE8( "dcburn_cpd_takingfire" );
-        wait(_func_0BA( 8, 14 ));
+        level._ID49792 _ID10760( "dcburn_cpd_takingfire" );
+        wait(randomfloatrange( 8, 14 ));
 
         if ( _ID42237::_ID14385( "player_killed_enough" ) )
             break;
 
-        level._ID49792 _unknown_8006( "dcburn_cpd_hostatsix" );
-        wait(_func_0BA( 8, 14 ));
+        level._ID49792 _ID10760( "dcburn_cpd_hostatsix" );
+        wait(randomfloatrange( 8, 14 ));
     }
 }
 
 _ID46701( var_0 )
 {
     self endon( "alerted" );
-    thread _unknown_61A3();
+    thread _ID47179();
     wait 0.5;
     _ID42237::_ID41068( "damage", "death", "shot_at" );
     _ID42237::_ID14402( var_0 );
 
-    if ( _func_02F( self ) )
-        thread _unknown_77DE();
+    if ( isdefined( self ) )
+        thread _ID48687();
 }
 
 _ID47179()
@@ -3507,21 +3286,21 @@ _ID47179()
     var_0 = 262144;
     self endon( "death" );
     self endon( "alerted" );
-    self _meth_8043( "grenade danger" );
-    self _meth_8043( "gunshot" );
-    self _meth_8043( "silenced_shot" );
-    self _meth_8043( "bulletwhizby" );
-    self _meth_8043( "projectile_impact" );
+    self addaieventlistener( "grenade danger" );
+    self addaieventlistener( "gunshot" );
+    self addaieventlistener( "silenced_shot" );
+    self addaieventlistener( "bulletwhizby" );
+    self addaieventlistener( "projectile_impact" );
     wait 0.5;
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
         self waittill( "ai_event",  var_1  );
 
         if ( var_1 == "grenade danger" || var_1 == "damage" || var_1 == "projectile_impact" || var_1 == "explode" )
             break;
 
-        if ( _func_0F5( self._ID740, level._ID794._ID740 ) > var_0 )
+        if ( distancesquared( self._ID740, level._ID794._ID740 ) > var_0 )
             continue;
 
         if ( var_1 == "grenade danger" || var_1 == "damage" || var_1 == "gunshot" || var_1 == "bulletwhizby" || var_1 == "projectile_impact" || var_1 == "explode" )
@@ -3537,7 +3316,7 @@ _ID44082()
     self endon( "alerted" );
     _ID42237::_ID14415( "player_entering_wall_hole", "player_shot_at_crowsnest_guys", "player_gawking_at_crowsnest_guys" );
     _ID42237::_ID14402( "player_shot_at_crowsnest_guys" );
-    thread _unknown_78C2();
+    thread _ID48687();
 }
 
 _ID50319()
@@ -3548,27 +3327,20 @@ _ID50319()
     if ( level._ID15361 == 2 || level._ID15361 == 3 )
         var_0 = 0.1;
 
-    var_1 = level._ID47026;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in level._ID47026 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_1A7( var_2 ) )
+        if ( isalive( var_2 ) )
         {
             var_2._ID53511 = 1;
             wait(var_0);
         }
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID52094()
 {
-    var_0 = _func_1A1( "volume_crowsnest", "targetname" );
-    level._ID52350 = _func_03D();
+    var_0 = getent( "volume_crowsnest", "targetname" );
+    level._ID52350 = gettime();
     var_1 = 0;
     var_2 = 2;
     var_3 = 0;
@@ -3588,16 +3360,16 @@ _ID52094()
         if ( var_5 > var_6 )
             var_5 = 0;
 
-        _unknown_83DB();
+        _ID49563();
         _ID42237::_ID14413( "can_start_crow_nags" );
 
         if ( _ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) )
             break;
 
-        if ( !level._ID794 _meth_80B0( var_0 ) && _ID42237::_ID14385( "can_talk" ) && !_ID42237::_ID14385( "player_is_on_turret" ) )
+        if ( !level._ID794 istouching( var_0 ) && _ID42237::_ID14385( "can_talk" ) && !_ID42237::_ID14385( "player_is_on_turret" ) )
         {
             _ID42237::_ID14388( "can_talk" );
-            level._ID44035 _unknown_81F8( "stay_in_nest_nag_" + var_3 );
+            level._ID44035 _ID10760( "stay_in_nest_nag_" + var_3 );
             var_3++;
             _ID42237::_ID14402( "can_talk" );
             continue;
@@ -3606,16 +3378,16 @@ _ID52094()
         if ( !_ID42237::_ID14385( "player_is_on_turret" ) && _ID42237::_ID14385( "can_talk" ) )
         {
             _ID42237::_ID14388( "can_talk" );
-            level._ID44035 _unknown_8230( "barret_nag_" + var_1 );
+            level._ID44035 _ID10760( "barret_nag_" + var_1 );
             var_1++;
             _ID42237::_ID14402( "can_talk" );
             continue;
         }
 
-        if ( !_unknown_8471() && _ID42237::_ID14385( "can_talk" ) )
+        if ( !_ID48407() && _ID42237::_ID14385( "can_talk" ) )
         {
             _ID42237::_ID14388( "can_talk" );
-            level._ID44035 _unknown_8264( "barret_shoot_nag_" + var_5 );
+            level._ID44035 _ID10760( "barret_shoot_nag_" + var_5 );
             var_5++;
             _ID42237::_ID14402( "can_talk" );
         }
@@ -3624,8 +3396,8 @@ _ID52094()
 
 _ID43835()
 {
-    var_0 = _func_1A1( "crowsnest_seaknight_01", "targetname" );
-    var_1 = _func_1A1( "crowsnest_seaknight_02", "targetname" );
+    var_0 = getent( "crowsnest_seaknight_01", "targetname" );
+    var_1 = getent( "crowsnest_seaknight_02", "targetname" );
     var_0 notify( "spawn" );
     var_1 notify( "spawn" );
     _ID42237::_ID14413( "player_in_crowsnest_room" );
@@ -3647,25 +3419,25 @@ _ID52423()
     var_2._ID196 = var_1;
     var_2._ID55 = 0;
     _ID42237::_ID14413( "obj_commerce_defend_snipe_given" );
-    var_2 _meth_80D1( &"DCBURNING_INFO_EVAC_SITE_HEALTH" );
+    var_2 settext( &"DCBURNING_INFO_EVAC_SITE_HEALTH" );
     var_3 = _ID42313::_ID9220( "default", 1.5 );
     var_3 _ID42313::_ID32753( "TOP", undefined, 45, 30 );
     var_3._ID196 = var_1;
     var_3._ID55 = 0;
 
-    if ( _func_039( "dc_debug" ) == "1" )
+    if ( getdvar( "dc_debug" ) == "1" )
     {
-        var_3 _meth_808B( 1 );
-        var_2 _meth_808B( 1 );
+        var_3 fadeovertime( 1 );
+        var_2 fadeovertime( 1 );
         var_2._ID55 = 1;
         var_3._ID55 = 1;
     }
 
-    thread _unknown_660C();
+    thread _ID44296();
 
     while ( !_ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) )
     {
-        var_0 = _unknown_6688();
+        var_0 = _ID52038();
 
         if ( _ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) )
             break;
@@ -3676,11 +3448,11 @@ _ID52423()
             break;
 
         if ( level._ID49081.size < 2 )
-            thread _unknown_66AA();
+            thread _ID45079();
     }
 
-    var_2 _meth_808B( 1 );
-    var_3 _meth_808B( 1 );
+    var_2 fadeovertime( 1 );
+    var_3 fadeovertime( 1 );
     var_2._ID55 = 0;
     var_3._ID55 = 0;
     var_2 _ID42313::_ID10476();
@@ -3750,14 +3522,14 @@ _ID45079()
 
 _ID43182()
 {
-    _func_034( "ui_deadquote", &"DCBURNING_MISSIONFAIL_CROWSNEST_SNIPE" );
+    setdvar( "ui_deadquote", &"DCBURNING_MISSIONFAIL_CROWSNEST_SNIPE" );
     level notify( "mission failed" );
     _ID42407::_ID23778();
 }
 
 _ID52885()
 {
-    _func_034( "ui_deadquote", &"DCBURNING_MISSIONFAIL_CROWSNEST_SNIPE" );
+    setdvar( "ui_deadquote", &"DCBURNING_MISSIONFAIL_CROWSNEST_SNIPE" );
     level notify( "mission failed" );
     _ID42407::_ID23778();
 }
@@ -3776,11 +3548,11 @@ _ID47433( var_0, var_1 )
 {
     if ( !_ID42237::_ID14385( "player_get_on_turret" ) && !_ID42237::_ID14385( "only_2_sniper_enemies_remaining" ) )
     {
-        var_0 _meth_805A();
-        var_1 _meth_8059();
+        var_0 hide();
+        var_1 show();
         _ID42237::_ID14413( "player_get_on_turret" );
-        var_1 _meth_805A();
-        var_0 _meth_8059();
+        var_1 hide();
+        var_0 show();
     }
 }
 
@@ -3806,29 +3578,29 @@ _ID50265()
 _ID44131()
 {
     level endon( "obj_commerce_defend_snipe_complete" );
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
     var_0 = self._ID740;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        self waittill( "damage",  var_5, var_4, var_3, var_2, var_1  );
+        self waittill( "damage",  var_1, var_2, var_3, var_4, var_5  );
 
-        if ( !_func_02F( var_5 ) )
+        if ( !isdefined( var_5 ) )
             continue;
 
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             continue;
 
-        if ( _func_02F( var_2._ID172 ) && var_2._ID172 == "misc_turret" )
+        if ( isdefined( var_2._ID172 ) && var_2._ID172 == "misc_turret" )
             continue;
 
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
-        if ( _func_1B3( var_2 ) )
+        if ( isplayernumber( var_2 ) )
             continue;
 
-        if ( _func_02F( var_2._ID1194 ) && var_2._ID1194 != "axis" )
+        if ( isdefined( var_2._ID1194 ) && var_2._ID1194 != "axis" )
             continue;
 
         if ( var_5 == "MOD_PROJECTILE" && var_1 > 999 )
@@ -3850,50 +3622,58 @@ _ID44131()
     var_7 = "large_vehicle_explosion";
     var_8 = "exp_tanker_vehicle";
 
-    if ( _func_02F( self._ID31273 ) )
+    if ( isdefined( self._ID31273 ) )
     {
-        var_6 = _func_1A1( self._ID31273, "script_linkname" );
-        var_6 _meth_8059();
-        self _meth_80B7();
+        var_6 = getent( self._ID31273, "script_linkname" );
+        var_6 show();
+        self delete();
     }
     else
     {
         switch ( self._ID669 )
         {
-
+            case "vehicle_laatpv":
+                var_6 = "vehicle_laatpv_destroyed";
+                var_8 = "exp_armor_vehicle";
+                break;
+            case "vehicle_bradley_static_low":
+            case "vehicle_bradley_static":
+                var_6 = "vehicle_bradley_destroyed";
+                var_8 = "exp_armor_vehicle";
+                break;
+            case "vehicle_ch46e_low":
+                var_6 = "vehicle_ch46e_crash_site_dcburning";
+                var_8 = "exp_armor_vehicle";
+                break;
         }
 
-        endswitch( 5 )  case "vehicle_ch46e_low" loc_6AA2 case "vehicle_bradley_static" loc_6AA3 case "vehicle_bradley_static_low" loc_6AA8 case "vehicle_laatpv" loc_6AA9 default loc_6ABC
-        self _meth_80B8( var_6 );
+        endswitch( 5 )  case "vehicle_ch46e_low" loc_6A90 case "vehicle_bradley_static" loc_6A7E case "vehicle_bradley_static_low" loc_6A7E case "vehicle_laatpv" loc_6A6C default loc_6AA2
+        self setmodel( var_6 );
     }
 
-    _func_156( _ID42237::_ID16299( var_7 ), var_0 );
+    playfx( _ID42237::_ID16299( var_7 ), var_0 );
     thread _ID42237::_ID27077( var_8, var_0 );
-    case "vehicle_bradley_static":
-    case "vehicle_bradley_static_low":
-    case "vehicle_laatpv":
-    default:
 }
 
 _ID46708()
 {
     self endon( "death" );
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        self waittill( "damage",  var_4, var_3, var_2, var_1, var_0  );
+        self waittill( "damage",  var_0, var_1, var_2, var_3, var_4  );
 
-        if ( !_func_02F( var_4 ) )
+        if ( !isdefined( var_4 ) )
             continue;
 
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
-        if ( !_func_02F( var_0 ) )
+        if ( !isdefined( var_0 ) )
             continue;
 
-        if ( _func_1B3( var_1 ) )
+        if ( isplayernumber( var_1 ) )
             continue;
 
         if ( var_4 == "MOD_PROJECTILE" && var_0 > 999 )
@@ -3909,53 +3689,63 @@ _ID46708()
     var_8 = "tanker_fire";
     var_9 = 0;
 
-    if ( _func_02F( self._ID31273 ) )
+    if ( isdefined( self._ID31273 ) )
     {
-        var_5 = _func_1A1( self._ID31273, "script_linkname" );
-        var_5 _meth_8059();
-        self _meth_80B7();
+        var_5 = getent( self._ID31273, "script_linkname" );
+        var_5 show();
+        self delete();
     }
     else
     {
         switch ( self._ID669 )
         {
-
+            case "vehicle_laatpv":
+                var_5 = "vehicle_laatpv_destroyed";
+                var_7 = "exp_armor_vehicle";
+                var_8 = undefined;
+                break;
+            case "vehicle_bradley":
+                var_5 = "vehicle_bradley";
+                var_7 = "exp_armor_vehicle";
+                var_8 = undefined;
+                break;
+            case "vehicle_m1a1_abrams":
+                var_5 = "vehicle_m1a1_abrams_dmg";
+                var_7 = "exp_armor_vehicle";
+                var_8 = undefined;
+                break;
         }
 
-        self _meth_80B8( var_5 );
+        endswitch( 4 )  case "vehicle_m1a1_abrams" loc_6BED case "vehicle_bradley" loc_6BD7 case "vehicle_laatpv" loc_6BC1 default loc_6C03
+        self setmodel( var_5 );
     }
 
-    _func_156( _ID42237::_ID16299( var_6 ), self._ID740 );
+    playfx( _ID42237::_ID16299( var_6 ), self._ID740 );
     thread _ID42237::_ID27077( var_7 );
 
-    if ( _func_02F( var_8 ) )
+    if ( isdefined( var_8 ) )
     {
-        var_10 = _func_06A( "script_origin", self._ID740 + ( 0, 0, 0 ) );
+        var_10 = spawn( "script_origin", self._ID740 + ( 0, 0, 0 ) );
         var_10._ID65 = self._ID65;
-        var_11 = _func_15B( _ID42237::_ID16299( var_8 ), var_10._ID740 );
-        _func_15C( var_11 );
+        var_11 = spawnfx( _ID42237::_ID16299( var_8 ), var_10._ID740 );
+        triggerfx( var_11 );
         _ID42237::_ID14413( "player_heli_19" );
-        var_11 _meth_80B7();
-        var_10 _meth_80B7();
-        return;
-        case "vehicle_laatpv":
-        case "vehicle_bradley":
-        case "vehicle_m1a1_abrams":
-        default:
+        var_11 delete();
+        var_10 delete();
     }
 }
 
 _ID51890()
 {
-    thread _unknown_6D1D();
-    thread _unknown_6CA8();
-    thread _unknown_6D0F();
-    thread _unknown_6D0A();
-    thread _unknown_7C2C();
-    thread _unknown_6D9C();
-    thread _unknown_6FAB();
+    thread _ID45220();
+    thread _ID43995();
+    thread _ID49126();
+    thread _ID53962();
+    thread _ID45013();
+    thread _ID48485();
+    thread _ID53827();
     _ID42237::_ID14413( "crowsnest_sequence_finished" );
-    thread _unknown_6F82();
+    thread _ID43705();
 }
 
 _ID43995()
@@ -3970,19 +3760,19 @@ _ID43995()
     {
         wait 20;
 
-        if ( _unknown_6D32() )
+        if ( _ID54283() )
             wait 10;
 
         if ( _ID42237::_ID14385( "player_has_killed_at_least_one_javelin_target" ) )
             return;
 
-        if ( !_unknown_6D44() )
+        if ( !_ID54283() )
         {
             level._ID794 thread _ID42407::_ID11085( "javelin_pickup" );
             continue;
         }
 
-        if ( _unknown_6D58() && _unknown_6D6F() )
+        if ( _ID54283() && _ID43952() )
         {
             level._ID794 thread _ID42407::_ID11085( "javelin_shoot" );
             continue;
@@ -3997,10 +3787,10 @@ _ID51222()
     if ( _ID42237::_ID14385( "player_has_killed_at_least_one_javelin_target" ) )
         return 1;
 
-    if ( !_unknown_6D8C() )
+    if ( !_ID54283() )
         return 1;
 
-    if ( !_ID48000() )
+    if ( !_ID43952() )
         return 1;
 
     return _ID44133::_ID48317();
@@ -4011,7 +3801,7 @@ _ID43218()
     if ( _ID42237::_ID14385( "player_has_killed_at_least_one_javelin_target" ) )
         return 1;
 
-    return _unknown_6DBE();
+    return _ID43952();
 }
 
 _ID48000()
@@ -4019,41 +3809,35 @@ _ID48000()
     if ( _ID42237::_ID14385( "player_has_killed_at_least_one_javelin_target" ) )
         return 1;
 
-    if ( _unknown_6DCF() )
+    if ( _ID43952() )
         return 1;
 
-    var_0 = level._ID794 _meth_8317();
+    var_0 = level._ID794 getweaponslistprimaries();
     var_1 = 0;
-    return _unknown_6DCD();
+    return _ID54283();
 }
 
 _ID54283()
 {
-    var_0 = level._ID794 _meth_8316();
+    var_0 = level._ID794 getweaponslistall();
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         return 0;
 
-    var_1 = var_0;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_125( var_2, "javelin" ) )
+        if ( issubstr( var_2, "javelin" ) )
             return 1;
     }
 
-    var_clear_2
-    var_clear_0
     return 0;
 }
 
 _ID43952()
 {
-    var_0 = level._ID794 _meth_831C();
+    var_0 = level._ID794 getcurrentweapon();
 
-    if ( _func_125( var_0, "javelin" ) )
+    if ( issubstr( var_0, "javelin" ) )
         return 1;
     else
         return 0;
@@ -4070,13 +3854,13 @@ _ID53962()
 _ID49126()
 {
     _ID42237::_ID14413( "obj_commerce_defend_javelin_given" );
-    thread _unknown_6E71();
+    thread _ID49062();
     wait 1;
 
     if ( level._ID51057.size < 5 )
     {
         var_0 = _ID42411::_ID35200( "tanks_crowsnest_wave2" );
-        _ID42237::_ID3350( var_0, ::_unknown_70B5 );
+        _ID42237::_ID3350( var_0, ::_ID50269 );
     }
 }
 
@@ -4085,69 +3869,66 @@ _ID49062()
     if ( level._ID15361 > 1 )
         return;
 
-    level._ID794 _meth_80F6();
+    level._ID794 enableinvulnerability();
     _ID42237::_ID14413( "player_has_killed_at_least_one_javelin_target" );
-    level._ID794 _meth_80F7();
+    level._ID794 disableinvulnerability();
 }
 
 _ID45220()
 {
     _ID42237::_ID14413( "start_crow_armor_sequence" );
-    var_0 = _func_1A1( "barrett_trigger", "targetname" );
+    var_0 = getent( "barrett_trigger", "targetname" );
     var_0._ID740 = var_0._ID740 + ( 0, 0, -20 );
-    var_0 _meth_8187();
+    var_0 usetriggerrequirelookat();
     var_0 notify( "stop_hint_text" );
-    level._ID53489 thread _unknown_6FD2();
+    level._ID53489 thread _ID52024();
     var_1 = _ID42411::_ID35200( "helis_crowsnest" );
     var_2 = _ID42411::_ID35200( "helis_crowsnest_respawners" );
-    _ID42237::_ID3350( var_1, ::_unknown_70B9 );
-    _ID42237::_ID3350( var_2, ::_unknown_70C2 );
-    thread _unknown_6F45();
-    var_3 = _func_1A1( "perimeter_enemies", "targetname" );
-    thread _unknown_8FDD( var_3, "perimeter_enemies_have_retreated" );
+    _ID42237::_ID3350( var_1, ::_ID54675 );
+    _ID42237::_ID3350( var_2, ::_ID54675 );
+    thread _ID47894();
+    var_3 = getent( "perimeter_enemies", "targetname" );
+    thread _ID50922( var_3, "perimeter_enemies_have_retreated" );
     wait 25;
     level._ID51365 = 1;
     _ID42237::_ID14413( "only_2_javelin_enemies_remaining" );
     _ID42237::_ID14413( "obj_commerce_defend_javelin_complete" );
     thread _ID42407::_ID4433();
     _ID42237::_ID14402( "crowsnest_sequence_finished" );
-    _unknown_6F87();
+    _ID52795();
 }
 
 _ID47894()
 {
     _ID42237::_ID14413( "perimeter_enemies_have_retreated" );
-    thread _unknown_6BA7();
-    thread _unknown_6AB2();
+    thread _ID47442();
+    thread _ID51944();
 }
 
 _ID52795()
 {
-    if ( !_unknown_6F2C() )
+    if ( !_ID54283() )
         return;
 
     var_0 = 0;
     var_1 = 0;
-    var_2 = level._ID794 _meth_8317();
+    var_2 = level._ID794 getweaponslistprimaries();
     var_3 = 0;
-    var_4 = var_2;
 
-    for ( var_6 = _func_1DA( var_4 ); _func_02F( var_6 ); var_6 = _func_1BF( var_4, var_6 ) )
+    foreach ( var_5 in var_2 )
     {
-        var_5 = var_4[var_6];
-
-        if ( _func_125( var_5, "avelin" ) )
+        if ( issubstr( var_5, "avelin" ) )
         {
             var_1 = 1;
 
-            if ( _func_125( level._ID794 _meth_831C(), "avelin" ) )
+            if ( issubstr( level._ID794 getcurrentweapon(), "avelin" ) )
             {
                 var_3 = 1;
-                level._ID794 _meth_8328();
+                level._ID794 disableweapons();
                 wait 1.5;
             }
 
-            level._ID794 _meth_831A( var_5 );
+            level._ID794 takeweapon( var_5 );
             continue;
         }
 
@@ -4155,56 +3936,53 @@ _ID52795()
             var_0 = 1;
     }
 
-    var_clear_2
-    var_clear_0
-
     if ( !var_1 )
         return;
 
-    level._ID794 _meth_8329();
+    level._ID794 enableweapons();
 
     if ( !var_0 )
-        level._ID794 _meth_8319( "m4m203_eotech" );
+        level._ID794 giveweapon( "m4m203_eotech" );
 
     if ( var_3 )
-        level._ID794 _meth_8320( "m4m203_eotech" );
+        level._ID794 switchtoweapon( "m4m203_eotech" );
 }
 
 _ID48485()
 {
     _ID42237::_ID14413( "start_crow_armor_sequence" );
     _ID42407::_ID28864( "dcburn_hqr_clearout" );
-    level._ID44035 _unknown_8B44( "dcburn_mcy_negative" );
+    level._ID44035 _ID10760( "dcburn_mcy_negative" );
     _ID42237::_ID14402( "obj_commerce_defend_javelin_given" );
-    level._ID44035 _unknown_8B57( "dcburn_mcy_useordnance" );
-    thread _unknown_70B0();
-    thread _unknown_716F();
+    level._ID44035 _ID10760( "dcburn_mcy_useordnance" );
+    thread _ID49787();
+    thread _ID48676();
 }
 
 _ID45585( var_0 )
 {
-    var_1 = _func_06A( "script_model", var_0._ID740 );
-    var_1 _meth_80B8( "h2_weapon_javelin_base_obj" );
+    var_1 = spawn( "script_model", var_0._ID740 );
+    var_1 setmodel( "h2_weapon_javelin_base_obj" );
     var_1._ID740 = var_0._ID740;
     var_1._ID65 = var_0._ID65;
-    var_1 _meth_8059();
+    var_1 show();
 
     for (;;)
     {
-        if ( _unknown_7017() )
+        if ( _ID54283() )
             break;
 
         wait 0.1;
     }
 
     _ID42237::_ID14402( "player_has_javelin" );
-    var_1 _meth_80B7();
+    var_1 delete();
 }
 
 _ID49787()
 {
-    var_0 = _func_1A1( "volume_crowsnest", "targetname" );
-    level._ID52350 = _func_03D();
+    var_0 = getent( "volume_crowsnest", "targetname" );
+    level._ID52350 = gettime();
     var_1 = 0;
     var_2 = 3;
     var_3 = 0;
@@ -4224,15 +4002,15 @@ _ID49787()
         if ( var_5 > var_6 )
             var_5 = 0;
 
-        _unknown_8E18();
+        _ID49563();
 
         if ( _ID42237::_ID14385( "obj_commerce_defend_javelin_complete" ) )
             break;
 
-        if ( !level._ID794 _meth_80B0( var_0 ) && _ID42237::_ID14385( "can_talk" ) && !_ID42237::_ID14385( "player_is_on_turret" ) )
+        if ( !level._ID794 istouching( var_0 ) && _ID42237::_ID14385( "can_talk" ) && !_ID42237::_ID14385( "player_is_on_turret" ) )
         {
             _ID42237::_ID14388( "can_talk" );
-            level._ID44035 _unknown_8C2D( "stay_in_nest_nag_" + var_3 );
+            level._ID44035 _ID10760( "stay_in_nest_nag_" + var_3 );
             var_3++;
             _ID42237::_ID14402( "can_talk" );
             continue;
@@ -4241,16 +4019,16 @@ _ID49787()
         if ( !level._ID794 _ID42407::_ID27729() && _ID42237::_ID14385( "can_talk" ) )
         {
             _ID42237::_ID14388( "can_talk" );
-            level._ID44035 _unknown_8C64( "rocket_nag_" + var_1 );
+            level._ID44035 _ID10760( "rocket_nag_" + var_1 );
             var_1++;
             _ID42237::_ID14402( "can_talk" );
             continue;
         }
 
-        if ( !_unknown_8EA5() && _ID42237::_ID14385( "can_talk" ) )
+        if ( !_ID48407() && _ID42237::_ID14385( "can_talk" ) )
         {
             _ID42237::_ID14388( "can_talk" );
-            level._ID44035 _unknown_8C98( "rocket_shoot_nag_" + var_5 );
+            level._ID44035 _ID10760( "rocket_shoot_nag_" + var_5 );
             var_5++;
             _ID42237::_ID14402( "can_talk" );
         }
@@ -4262,12 +4040,23 @@ _ID52024()
     level._ID48957 = 0;
     level endon( "mission failed" );
     level endon( "missionfailed" );
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
     self._ID47357 = undefined;
 
     switch ( level._ID15361 )
     {
-
+        case 0:
+            self._ID47357 = 5000;
+            break;
+        case 1:
+            self._ID47357 = 5000;
+            break;
+        case 2:
+            self._ID47357 = 5000;
+            break;
+        case 3:
+            self._ID47357 = 5000;
+            break;
     }
 
     self._ID43720 = self._ID47357;
@@ -4275,26 +4064,26 @@ _ID52024()
 
     while ( !_ID42237::_ID14385( "obj_commerce_defend_javelin_complete" ) )
     {
-        self waittill( "damage",  var_4, var_3, var_2, var_1, var_0  );
+        self waittill( "damage",  var_0, var_1, var_2, var_3, var_4  );
 
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             continue;
 
-        if ( !_func_02F( var_0 ) )
+        if ( !isdefined( var_0 ) )
             continue;
 
-        if ( _func_1B3( var_1 ) )
+        if ( isplayernumber( var_1 ) )
             continue;
 
-        if ( _func_02F( var_1._ID1194 ) && var_1._ID1194 != "axis" )
+        if ( isdefined( var_1._ID1194 ) && var_1._ID1194 != "axis" )
             continue;
 
-        if ( !_func_02F( var_4 ) )
+        if ( !isdefined( var_4 ) )
             continue;
 
         if ( var_4 == "MOD_PROJECTILE" )
         {
-            _unknown_736E( 100 );
+            _ID44908( 100 );
 
             if ( self._ID47357 < 1 )
                 break;
@@ -4302,7 +4091,7 @@ _ID52024()
 
         if ( var_4 == "MOD_PROJECTILE_SPLASH" )
         {
-            _unknown_7386( 50 );
+            _ID44908( 50 );
 
             if ( self._ID47357 < 1 )
                 break;
@@ -4310,14 +4099,7 @@ _ID52024()
     }
 
     if ( !_ID42237::_ID14385( "obj_commerce_defend_javelin_complete" ) )
-    {
-        thread _unknown_70BA();
-        return;
-        case 3:
-        case 2:
-        case 1:
-        case 0:
-    }
+        thread _ID52885();
 }
 
 _ID44908( var_0 )
@@ -4329,7 +4111,7 @@ _ID44908( var_0 )
     level._ID48957 = var_2;
     level notify( "monument_dummy_hit" );
 
-    if ( _func_039( "dc_debug" ) == "1" )
+    if ( getdvar( "dc_debug" ) == "1" )
         return;
 }
 
@@ -4392,56 +4174,44 @@ _ID48676()
 
 _ID51426( var_0 )
 {
-    var_1 = var_0;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
         wait 5;
         thread _ID42411::_ID17021( var_2 );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID54675()
 {
     self endon( "death" );
-    thread _unknown_75A6();
-    thread _unknown_831D();
+    thread _ID53631();
+    thread _ID50671();
     var_0 = _ID42411::_ID40142();
-    _ID42237::_ID3350( var_0, ::_unknown_75D9, self );
+    _ID42237::_ID3350( var_0, ::_ID43745, self );
 }
 
 _ID53631()
 {
-    if ( _func_02F( self._ID922 ) && _func_125( self._ID922, "crow_heli_respawner_" ) )
+    if ( isdefined( self._ID922 ) && issubstr( self._ID922, "crow_heli_respawner_" ) )
     {
         var_0 = self._ID922;
         self waittill( "death" );
         wait 1;
-        var_1 = _func_1A2( var_0, "script_noteworthy" );
-        var_2 = var_1;
+        var_1 = getentarray( var_0, "script_noteworthy" );
 
-        for ( var_5 = _func_1DA( var_2 ); _func_02F( var_5 ); var_5 = _func_1BF( var_2, var_5 ) )
+        foreach ( var_3 in var_1 )
         {
-            var_3 = var_2[var_5];
-
-            if ( !_func_02F( var_3._ID40264 ) )
+            if ( !isdefined( var_3._ID40264 ) )
             {
                 if ( !_ID42237::_ID14385( "obj_commerce_defend_javelin_complete" ) )
                 {
                     var_4 = _ID42411::_ID40260( var_3 );
                     thread _ID42411::_ID17021( var_4 );
-                    var_4 thread _unknown_760A();
+                    var_4 thread _ID54675();
                     break;
                 }
             }
         }
-
-        var_clear_2
-        var_clear_0
     }
 }
 
@@ -4449,7 +4219,7 @@ _ID43745( var_0 )
 {
     var_0 endon( "death" );
 
-    if ( !_func_02F( self._ID922 ) )
+    if ( !isdefined( self._ID922 ) )
         return;
 
     var_1 = undefined;
@@ -4457,30 +4227,38 @@ _ID43745( var_0 )
 
     switch ( self._ID922 )
     {
-
+        case "target_nothing":
+            var_1 = undefined;
+            break;
+        case "target_evac":
+            var_1 = getent( "monument_target", "targetname" );
+            var_2 = var_1;
+            break;
+        case "target_crowsnest":
+            var_1 = getent( "javelin_source_org", "targetname" );
+            var_2 = level._ID794;
+            break;
+        default:
+            return;
     }
 
-    while ( _func_02F( var_0 ) )
+    while ( isdefined( var_0 ) )
     {
         self waittill( "trigger" );
 
-        if ( !_func_02F( var_1 ) )
-            var_0 _meth_8270();
+        if ( !isdefined( var_1 ) )
+            var_0 clearlookatent();
         else
-            var_0 _meth_826F( var_1 );
+            var_0 setlookatent( var_1 );
 
-        if ( _func_02F( var_2 ) )
+        if ( isdefined( var_2 ) )
         {
-            var_0 thread _unknown_656F( var_2 );
+            var_0 thread _ID46491( var_2 );
             continue;
         }
 
         var_0 notify( "stop_firing_turret" );
     }
-
-    case "target_evac":
-    case "target_nothing":
-    default:
 }
 
 _ID48557()
@@ -4488,9 +4266,9 @@ _ID48557()
     self endon( "death" );
     _ID42407::_ID13024( "start_firing" );
     _ID42407::_ID13027( "start_firing" );
-    thread _unknown_773B();
+    thread _ID45600();
     _ID42237::_ID14413( "obj_commerce_defend_javelin_given" );
-    thread _unknown_844C();
+    thread _ID50671();
 }
 
 _ID50269()
@@ -4498,50 +4276,50 @@ _ID50269()
     self endon( "death" );
     _ID42407::_ID13024( "start_firing" );
     _ID42237::_ID14413( "obj_commerce_defend_javelin_given" );
-    thread _unknown_8468();
+    thread _ID50671();
     _ID42407::_ID13027( "start_firing" );
-    thread _unknown_7770();
+    thread _ID45600();
 }
 
 _ID45600()
 {
     self endon( "death" );
     _ID42411::_ID40292();
-    thread _unknown_65CD( level._ID53489 );
+    thread _ID51330( level._ID53489 );
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        self _meth_826C( level._ID53489 );
-        wait(_func_0BA( 3, 6 ));
-        self _meth_8272();
+        self setturrettargetent( level._ID53489 );
+        wait(randomfloatrange( 3, 6 ));
+        self fireweapon();
     }
 }
 
 _ID43705()
 {
-    thread _unknown_793F();
-    thread _unknown_84DA();
+    thread _ID54212();
+    thread _ID53171();
     _ID42237::_ID14413( "player_approaching_outer_balcony" );
-    thread _unknown_7A45();
+    thread _ID50242();
 }
 
 _ID52605()
 {
     _ID42237::_ID14413( "roof_door_kicked" );
-    var_0 = _func_1A1( "door_to_roof_swing", "targetname" );
-    var_1 = _func_1A1( var_0._ID1191, "targetname" );
-    var_1 _meth_8053( var_0 );
+    var_0 = getent( "door_to_roof_swing", "targetname" );
+    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 linkto( var_0 );
     var_0._ID48297 = self._ID740;
     var_0._ID44067 = self._ID65;
-    var_0 _meth_82C1( -170, 0.5 );
-    var_0 _meth_82B8( var_0._ID740 + ( 11, 0, 0 ), 0.1 );
-    var_1 _meth_805F();
+    var_0 rotateyaw( -170, 0.5 );
+    var_0 moveto( var_0._ID740 + ( 11, 0, 0 ), 0.1 );
+    var_1 connectpaths();
 }
 
 _ID43041()
 {
     self endon( "death" );
-    thread _unknown_86A3();
+    thread _ID50012();
     self._ID24727 = 1;
     self._ID452 = 16;
     self._ID4867 = 1000;
@@ -4556,72 +4334,55 @@ _ID43041()
 _ID53827()
 {
     _ID42237::_ID14413( "spawn_door_allies" );
-    var_0 = _func_1A1( "trigger_volume_breach_stairwell", "targetname" );
+    var_0 = getent( "trigger_volume_breach_stairwell", "targetname" );
     var_0 _ID42237::_ID38863();
-    var_1 = _func_1A1( "volume_breach_stairwell", "targetname" );
-    thread _unknown_79FE( var_1 );
-    var_2 = _ID42407::_ID3339( _func_1A2( "crowsnest_breachers", "targetname" ) );
-    var_3 = _ID42407::_ID3339( _func_1A2( "friendlies_breach_defend", "targetname" ) );
-    _ID42237::_ID3350( var_3, ::_unknown_78B9 );
+    var_1 = getent( "volume_breach_stairwell", "targetname" );
+    thread _ID53388( var_1 );
+    var_2 = _ID42407::_ID3339( getentarray( "crowsnest_breachers", "targetname" ) );
+    var_3 = _ID42407::_ID3339( getentarray( "friendlies_breach_defend", "targetname" ) );
+    _ID42237::_ID3350( var_3, ::_ID43041 );
     var_4 = "shotgunhinges_breach_left";
     var_1 thread _ID42265::_ID6064( var_2, var_4 );
-    var_5 = var_2;
 
-    for ( var_7 = _func_1DA( var_5 ); _func_02F( var_7 ); var_7 = _func_1BF( var_5, var_7 ) )
+    foreach ( var_6 in var_2 )
     {
-        var_6 = var_5[var_7];
-        var_6._ID47609 = _func_0C8( var_6._ID1191, "targetname" );
-        var_6 thread _unknown_8757();
+        var_6._ID47609 = getnode( var_6._ID1191, "targetname" );
+        var_6 thread _ID48332();
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "crowsnest_sequence_finished" );
-    _unknown_91B3( "colornodes_start_to_roof", "script_noteworthy", 1 );
-    var_8 = _func_1A1( "colornodes_start_to_roof", "script_noteworthy" );
+    _ID38942( "colornodes_start_to_roof", "script_noteworthy", 1 );
+    var_8 = getent( "colornodes_start_to_roof", "script_noteworthy" );
     var_8 notify( "trigger",  level._ID794  );
     level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-    thread _unknown_790F();
+    thread _ID52605();
     var_0 _ID42237::_ID38865();
-    _ID42407::_ID10226( 3, ::_unknown_9491, "dummy_spawner_roof_wave_01" );
+    _ID42407::_ID10226( 3, ::_ID47645, "dummy_spawner_roof_wave_01" );
     _ID42237::_ID14413( "obj_rooftop_given" );
 
-    if ( _func_02F( level._ID51057 ) && level._ID51057.size > 0 )
-        _ID42237::_ID3350( level._ID51057, ::_unknown_7AA6 );
+    if ( isdefined( level._ID51057 ) && level._ID51057.size > 0 )
+        _ID42237::_ID3350( level._ID51057, ::_ID46349 );
 
-    var_9 = _func_0DE( "allies" );
+    var_9 = getaiarray( "allies" );
     _ID42237::_ID3350( var_9, _ID42407::_ID8925, "off" );
-    var_10 = var_9;
 
-    for ( var_11 = _func_1DA( var_10 ); _func_02F( var_11 ); var_11 = _func_1BF( var_10, var_11 ) )
-    {
-        var_6 = var_10[var_11];
+    foreach ( var_6 in var_9 )
         var_6._ID24727 = 1;
-    }
 
-    var_clear_1
-    var_clear_0
     _ID42237::_ID14413( "roof_breach_complete" );
-    var_12 = var_2;
 
-    for ( var_13 = _func_1DA( var_12 ); _func_02F( var_13 ); var_13 = _func_1BF( var_12, var_13 ) )
+    foreach ( var_6 in var_2 )
     {
-        var_6 = var_12[var_13];
-        var_6 _meth_81B1( var_6._ID47609 );
+        var_6 setgoalnode( var_6._ID47609 );
         var_6._ID452 = 64;
     }
 
-    var_clear_1
-    var_clear_0
-    _unknown_9276( "colornodes_to_roof", "script_noteworthy", 1 );
-    _func_0DB( "ai_friendlyFireBlockDuration", 0 );
-    var_14 = level._ID35507;
+    _ID38942( "colornodes_to_roof", "script_noteworthy", 1 );
+    setsaveddvar( "ai_friendlyFireBlockDuration", 0 );
 
-    for ( var_15 = _func_1DA( var_14 ); _func_02F( var_15 ); var_15 = _func_1BF( var_14, var_15 ) )
+    foreach ( var_6 in level._ID35507 )
     {
-        var_6 = var_14[var_15];
-
-        if ( !_func_1A7( var_6 ) )
+        if ( !isalive( var_6 ) )
             continue;
 
         var_6._ID7._ID11043 = 1;
@@ -4637,53 +4398,45 @@ _ID53827()
         }
     }
 
-    var_clear_1
-    var_clear_0
     wait 2;
-    _ID42237::_ID3350( var_2, ::_unknown_7B8F );
-    var_16 = var_2;
+    _ID42237::_ID3350( var_2, ::_ID47467 );
 
-    for ( var_17 = _func_1DA( var_16 ); _func_02F( var_17 ); var_17 = _func_1BF( var_16, var_17 ) )
-    {
-        var_6 = var_16[var_17];
-        var_6 thread _unknown_88D1();
-    }
+    foreach ( var_6 in var_2 )
+        var_6 thread _ID43214();
 
-    var_clear_1
-    var_clear_0
-    _unknown_95BD( "dummy_spawner_roof_wave_02" );
+    _ID47645( "dummy_spawner_roof_wave_02" );
 
     if ( !_ID42237::_ID14385( "player_roof_stairs_00" ) )
-        thread _unknown_7BD4( "dummy_colornodes_to_roof" );
+        thread _ID47491( "dummy_colornodes_to_roof" );
 
     _ID42237::_ID14413( "player_roof_stairs_01" );
 
-    if ( _func_02F( level._ID47026 ) && level._ID47026.size > 0 )
-        _ID42237::_ID3350( level._ID47026, ::_unknown_934F );
+    if ( isdefined( level._ID47026 ) && level._ID47026.size > 0 )
+        _ID42237::_ID3350( level._ID47026, ::_ID47688 );
 
-    thread _unknown_95C9( "hostiles_drones_comm_south" );
-    thread _unknown_97FE();
-    thread _unknown_94B8( "all", 1024, 1 );
+    thread _ID48047( "hostiles_drones_comm_south" );
+    thread _ID44575();
+    thread _ID47411( "all", 1024, 1 );
     _ID42237::_ID14413( "player_roof_stairs_02" );
     var_18 = _ID42411::_ID35200( "jets_tenches_01" );
-    var_19 = _func_0C8( "node_roof_leader", "targetname" );
-    var_20 = _func_0C8( "node_roof_friendly02", "targetname" );
-    level._ID44035 thread _unknown_811B( var_19 );
-    level._ID49792 thread _unknown_8123( var_20 );
+    var_19 = getnode( "node_roof_leader", "targetname" );
+    var_20 = getnode( "node_roof_friendly02", "targetname" );
+    level._ID44035 thread _ID48609( var_19 );
+    level._ID49792 thread _ID48609( var_20 );
     _ID42237::_ID14413( "player_top_floor_commerce" );
-    level._ID50577 = _func_03B( "ai_pathNegotiationOverlapCost" );
-    _func_0DB( "ai_pathNegotiationOverlapCost", 5000 );
+    level._ID50577 = getdvarfloat( "ai_pathNegotiationOverlapCost" );
+    setsaveddvar( "ai_pathNegotiationOverlapCost", 5000 );
     var_21 = _ID42411::_ID35200( "jets_tenches_02" );
     _ID42237::_ID14413( "player_outer_balcony_top_commerce" );
     var_22 = _ID42411::_ID35195( "heli_deck2" );
     thread _ID42411::_ID17021( var_22 );
-    var_22 thread _unknown_7C30();
-    var_22 thread _unknown_7C44();
+    var_22 thread _ID54411();
+    var_22 thread _ID47925();
     _ID42237::_ID14413( "player_at_commerce_rooftop" );
-    _func_0DB( "ai_pathNegotiationOverlapCost", level._ID50577 );
+    setsaveddvar( "ai_pathNegotiationOverlapCost", level._ID50577 );
 
-    if ( _func_02F( var_22 ) )
-        var_22 _meth_80B7();
+    if ( isdefined( var_22 ) )
+        var_22 delete();
 
     _ID42237::_ID14402( "obj_rooftop_complete" );
     thread _ID42407::_ID4422( "rooftop" );
@@ -4692,13 +4445,13 @@ _ID53827()
 _ID54411()
 {
     self endon( "death" );
-    self _meth_826F( level._ID794 );
+    self setlookatent( level._ID794 );
     _ID42237::_ID14413( "balcony_heli_raised_up" );
-    self _meth_8270();
+    self clearlookatent();
     _ID42237::_ID14413( "player_at_commerce_rooftop" );
 
-    if ( _func_02F( self ) )
-        self _meth_80B7();
+    if ( isdefined( self ) )
+        self delete();
 }
 
 _ID47925()
@@ -4717,21 +4470,21 @@ _ID47925()
     var_11 = var_7 - var_6;
     wait 0.8;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        var_12 = _func_0F3( level._ID794._ID740, self._ID740 );
+        var_12 = distance( level._ID794._ID740, self._ID740 );
 
         if ( var_12 < var_1 )
             var_13 = 1;
         else if ( var_12 > var_0 )
             var_13 = 0;
         else
-            var_13 = var_12 - var_0 / var_1 - var_0;
+            var_13 = ( var_12 - var_0 ) / ( var_1 - var_0 );
 
         var_9 = var_2 + var_9 * var_13;
         var_10 = var_4 + var_10 * var_13;
         var_11 = var_6 + var_11 * var_13;
-        _func_241( level._ID794._ID740, var_9, var_10, var_11, var_8, 0, 0, 0, 9, 11, 10 );
+        screenshake( level._ID794._ID740, var_9, var_10, var_11, var_8, 0, 0, 0, 9, 11, 10 );
         wait 0.1;
     }
 }
@@ -4741,8 +4494,8 @@ _ID46349()
     self endon( "death" );
     _ID42237::_ID14413( "player_roof_stairs_01" );
 
-    if ( _func_02F( self ) )
-        _unknown_9063();
+    if ( isdefined( self ) )
+        _ID44705();
 }
 
 _ID47467()
@@ -4756,10 +4509,10 @@ _ID47467()
 
 _ID47491( var_0 )
 {
-    var_1 = _func_1A1( var_0, "targetname" );
-    var_2 = _func_1A1( var_1._ID31273, "script_linkname" );
+    var_1 = getent( var_0, "targetname" );
+    var_2 = getent( var_1._ID31273, "script_linkname" );
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
         var_2 notify( "trigger",  level._ID794  );
 }
 
@@ -4774,38 +4527,38 @@ _ID54212()
     _ID42237::_ID14413( "crowsnest_sequence_finished" );
     _ID42407::_ID28864( "dcburn_hqr_roofasap" );
     _ID42237::_ID14402( "obj_rooftop_given" );
-    level._ID44035 _unknown_9583( "dcburn_mcy_rooftop" );
-    thread _unknown_9AAC( 90 );
+    level._ID44035 _ID10760( "dcburn_mcy_rooftop" );
+    thread _ID53050( 90 );
     _ID42407::_ID28864( "dcburn_hqr_urgentsurgicals" );
 
     while ( !_ID42237::_ID14385( "roof_breach_complete" ) )
     {
-        level._ID44035 _unknown_95A6( "dcburn_mcy_rvwithseals" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_rvwithseals" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "roof_breach_complete" ) )
             break;
 
-        level._ID44035 _unknown_95C4( "dcburn_mcy_crawlin" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_crawlin" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "roof_breach_complete" ) )
             break;
 
-        level._ID44035 _unknown_95E2( "dcburn_mcy_letsmoveout" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_letsmoveout" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "roof_breach_complete" ) )
             break;
 
-        level._ID44035 _unknown_9600( "dcburn_mcy_gettoroofnow" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_gettoroofnow" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "roof_breach_complete" ) )
             break;
 
-        level._ID44035 _unknown_961E( "dcburn_mcy_overrunningpos" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_overrunningpos" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "roof_breach_complete" ) )
             break;
@@ -4816,35 +4569,35 @@ _ID54212()
 
     while ( !_ID42237::_ID14385( "player_roof_stairs_00" ) )
     {
-        level._ID44035 _unknown_9658( "dcburn_mcy_outnumbered" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_outnumbered" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "player_roof_stairs_00" ) )
             break;
 
-        level._ID44035 _unknown_9676( "dcburn_mcy_upthestairsgo" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_upthestairsgo" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "player_roof_stairs_00" ) )
             break;
 
-        level._ID44035 _unknown_9694( "dcburn_mcy_waitallday" );
-        wait(_func_0BA( 8, 12 ));
+        level._ID44035 _ID10760( "dcburn_mcy_waitallday" );
+        wait(randomfloatrange( 8, 12 ));
 
         if ( _ID42237::_ID14385( "player_roof_stairs_00" ) )
             break;
 
-        level._ID44035 _unknown_96B2( "dcburn_mcy_gettingoverrun" );
+        level._ID44035 _ID10760( "dcburn_mcy_gettingoverrun" );
     }
 
-    _func_0DB( "r_useLightGridDefaultFXLightingLookup", "1" );
-    _func_0DB( "r_lightGridDefaultFXLightingLookup", "-21956 1185 -235" );
+    setsaveddvar( "r_useLightGridDefaultFXLightingLookup", "1" );
+    setsaveddvar( "r_lightGridDefaultFXLightingLookup", "-21956 1185 -235" );
     wait 2;
-    level._ID44035 _unknown_96D6( "dcburn_mcy_outoftimego" );
+    level._ID44035 _ID10760( "dcburn_mcy_outoftimego" );
     wait 2;
-    level._ID49792 _unknown_96E3( "dcburn_cpd_closingin" );
+    level._ID49792 _ID10760( "dcburn_cpd_closingin" );
     _ID42237::_ID14413( "player_roof_stairs_02" );
-    level._ID44035 _unknown_96F6( "dcburn_mcy_lobby_move_nag_00" );
+    level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_00" );
     _ID42407::_ID14543( "allies" );
     level._ID794 _ID42407::_ID27079( "dcburn_ar3_gottatouchdown" );
     _ID42407::_ID14544( "allies" );
@@ -4852,9 +4605,9 @@ _ID54212()
 
     while ( !_ID42237::_ID14385( "player_headed_to_roof" ) )
     {
-        level._ID44035 _unknown_972D( "dcburn_mcy_lobby_move_nag_02" );
+        level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_02" );
         wait 2;
-        level._ID44035 _unknown_973A( "dcburn_mcy_notime" );
+        level._ID44035 _ID10760( "dcburn_mcy_notime" );
 
         if ( _ID42237::_ID14385( "player_headed_to_roof" ) )
             break;
@@ -4864,13 +4617,13 @@ _ID54212()
         if ( _ID42237::_ID14385( "player_headed_to_roof" ) )
             break;
 
-        level._ID44035 _unknown_9762( "dcburn_mcy_keepmoving" );
+        level._ID44035 _ID10760( "dcburn_mcy_keepmoving" );
         wait 2;
     }
 
     _ID42237::_ID14413( "player_headed_to_roof" );
     _ID42407::_ID28864( "dcburn_bhp_whatsyourstatus" );
-    level._ID44035 _unknown_9781( "dcburn_mcy_hostilesclose" );
+    level._ID44035 _ID10760( "dcburn_mcy_hostilesclose" );
 
     while ( !_ID42237::_ID14385( "player_at_commerce_rooftop" ) )
     {
@@ -4884,7 +4637,7 @@ _ID54212()
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
             break;
 
-        level._ID44035 _unknown_97B5( "dcburn_mcy_overrun" );
+        level._ID44035 _ID10760( "dcburn_mcy_overrun" );
         wait 1;
 
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
@@ -4895,7 +4648,7 @@ _ID54212()
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
             break;
 
-        level._ID44035 _unknown_97DF( "dcburn_mcy_lobby_move_nag_00" );
+        level._ID44035 _ID10760( "dcburn_mcy_lobby_move_nag_00" );
         wait 1;
 
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
@@ -4906,7 +4659,7 @@ _ID54212()
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
             break;
 
-        level._ID44035 _unknown_9809( "dcburn_mcy_outoftimego" );
+        level._ID44035 _ID10760( "dcburn_mcy_outoftimego" );
         wait 1;
 
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
@@ -4917,7 +4670,7 @@ _ID54212()
         if ( _ID42237::_ID14385( "player_at_commerce_rooftop" ) )
             break;
 
-        level._ID44035 _unknown_9833( "dcburn_mcy_outnumbered" );
+        level._ID44035 _ID10760( "dcburn_mcy_outnumbered" );
     }
 
     _ID42237::_ID14402( "rooftop_run_dialogue_finished" );
@@ -4925,17 +4678,17 @@ _ID54212()
 
 _ID50242()
 {
-    thread _unknown_8CC8();
-    thread _unknown_81EC();
-    thread _unknown_81E6();
-    thread _unknown_863E();
-    thread _unknown_82F0();
-    thread _unknown_8738();
-    thread _unknown_879C();
-    thread _unknown_8D17();
-    thread _unknown_8D31();
+    thread _ID51605();
+    thread _ID54302();
+    thread _ID51518();
+    thread _ID52592();
+    thread _ID51737();
+    thread _ID45588();
+    thread _ID47952();
+    thread _ID53654();
+    thread enter_smoke_column();
     _ID42237::_ID14413( "player_heli_18" );
-    _unknown_87E6();
+    _ID53939();
 }
 
 _ID51518()
@@ -4950,11 +4703,11 @@ _ID54302()
     _ID42237::_ID14413( "player_at_commerce_rooftop" );
     _ID42237::_ID14413( "blackhawk_landed" );
     _ID42237::_ID14402( "obj_heli_mount_given" );
-    thread _unknown_82B2();
+    thread _ID53371();
     _ID42237::_ID14413( "player_getting_on_minigun" );
-    _func_0DB( "actionSlotsHide", "1" );
-    level._ID794 _meth_8313( 1, "" );
-    level._ID794 _meth_80F5();
+    setsaveddvar( "actionSlotsHide", "1" );
+    level._ID794 setactionslot( 1, "" );
+    level._ID794 nightvisiongogglesforceoff();
 
     while ( !_ID42237::_ID14385( "can_talk" ) )
         wait 0.5;
@@ -4996,7 +4749,7 @@ _ID53371()
     while ( !_ID42237::_ID14385( "player_getting_on_minigun" ) )
     {
         _ID42237::_ID14388( "can_talk" );
-        level._ID44035 _unknown_99D9( "dcburn_mcy_moveminigun" );
+        level._ID44035 _ID10760( "dcburn_mcy_moveminigun" );
         _ID42237::_ID14402( "can_talk" );
 
         if ( _ID42237::_ID14385( "player_getting_on_minigun" ) )
@@ -5008,7 +4761,7 @@ _ID53371()
             break;
 
         _ID42237::_ID14388( "can_talk" );
-        level._ID44035 _unknown_9A12( "dcburn_mcy_getonminigun" );
+        level._ID44035 _ID10760( "dcburn_mcy_getonminigun" );
         _ID42237::_ID14402( "can_talk" );
 
         if ( _ID42237::_ID14385( "player_getting_on_minigun" ) )
@@ -5020,7 +4773,7 @@ _ID53371()
             break;
 
         _ID42237::_ID14388( "can_talk" );
-        level._ID44035 _unknown_9A4A( "dcburn_mcy_getinchopper" );
+        level._ID44035 _ID10760( "dcburn_mcy_getinchopper" );
         _ID42237::_ID14402( "can_talk" );
 
         if ( _ID42237::_ID14385( "player_getting_on_minigun" ) )
@@ -5032,7 +4785,7 @@ _ID53371()
             break;
 
         _ID42237::_ID14388( "can_talk" );
-        level._ID44035 _unknown_9A82( "dcburn_mcy_wayoutnumbered" );
+        level._ID44035 _ID10760( "dcburn_mcy_wayoutnumbered" );
         _ID42237::_ID14402( "can_talk" );
 
         if ( _ID42237::_ID14385( "player_getting_on_minigun" ) )
@@ -5044,7 +4797,7 @@ _ID53371()
             break;
 
         _ID42237::_ID14388( "can_talk" );
-        level._ID44035 _unknown_9ABA( "dcburn_mcy_forgetaboutit" );
+        level._ID44035 _ID10760( "dcburn_mcy_forgetaboutit" );
         _ID42237::_ID14402( "can_talk" );
 
         if ( _ID42237::_ID14385( "player_getting_on_minigun" ) )
@@ -5056,7 +4809,7 @@ _ID53371()
             break;
 
         _ID42237::_ID14388( "can_talk" );
-        level._ID44035 _unknown_9AF3( "dcburn_mcy_brassontitanic" );
+        level._ID44035 _ID10760( "dcburn_mcy_brassontitanic" );
         _ID42237::_ID14402( "can_talk" );
 
         if ( _ID42237::_ID14385( "player_getting_on_minigun" ) )
@@ -5073,21 +4826,21 @@ _ID49771( var_0 )
 {
     self endon( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self._ID25499 = self._ID4867;
     self._ID4867 = 1000;
     _ID42237::_ID14413( var_0 );
 
-    if ( _func_02F( self ) )
+    if ( isdefined( self ) )
         self._ID4867 = self._ID25499;
 }
 
 _ID52451()
 {
     self endon( "death" );
-    thread _unknown_90D2();
+    thread _ID50012();
     self._ID24727 = 1;
     self._ID452 = 16;
     self._ID4867 = 1000;
@@ -5103,64 +4856,64 @@ _ID51737()
 {
     _ID42237::_ID14413( "player_headed_to_roof" );
     level._ID45204 = [];
-    var_0 = _func_1A1( "rooftop_helirider", "targetname" );
+    var_0 = getent( "rooftop_helirider", "targetname" );
     var_1 = var_0 _ID42407::_ID35014();
 
-    if ( _func_02F( var_1 ) )
-        var_1 thread _unknown_88B6();
+    if ( isdefined( var_1 ) )
+        var_1 thread _ID45823();
 
-    var_0 = _func_1A1( "rooftop_defender", "targetname" );
+    var_0 = getent( "rooftop_defender", "targetname" );
     var_2 = var_0 _ID42407::_ID35014();
 
-    if ( _func_02F( var_2 ) )
-        var_2 thread _unknown_8643();
+    if ( isdefined( var_2 ) )
+        var_2 thread _ID52451();
 
-    var_3 = _func_1A1( "turret2", "targetname" );
+    var_3 = getent( "turret2", "targetname" );
 
-    if ( _func_02F( var_3 ) )
-        var_3 _meth_80B7();
+    if ( isdefined( var_3 ) )
+        var_3 delete();
 
-    _unknown_9BA8( "colornodes_roof", "script_noteworthy", 1 );
-    var_4 = _func_1A2( "allied_drones_heliride_01", "targetname" );
-    var_5 = _func_1A2( "allied_drones_heliride_02", "targetname" );
-    var_6 = _func_1A2( "allied_drones_heliride_03", "targetname" );
-    var_6 = _func_1A2( "allied_drones_heliride_04", "targetname" );
-    thread _unknown_9E49( var_4, "allied_drones_heliride_01" );
-    thread _unknown_9E52( var_5, "allied_drones_heliride_02" );
-    thread _unknown_9E5B( var_6, "allied_drones_heliride_03" );
-    thread _unknown_9E64( var_6, "allied_drones_heliride_04" );
-    _unknown_89BB();
-    level._ID52945 _meth_828D( 5, 20 );
-    var_7 = _func_1A1( "heli_roof_approach_01_end", "targetname" );
-    level._ID52945 _meth_826F( var_7 );
+    _ID38942( "colornodes_roof", "script_noteworthy", 1 );
+    var_4 = getentarray( "allied_drones_heliride_01", "targetname" );
+    var_5 = getentarray( "allied_drones_heliride_02", "targetname" );
+    var_6 = getentarray( "allied_drones_heliride_03", "targetname" );
+    var_6 = getentarray( "allied_drones_heliride_04", "targetname" );
+    thread _ID52188( var_4, "allied_drones_heliride_01" );
+    thread _ID52188( var_5, "allied_drones_heliride_02" );
+    thread _ID52188( var_6, "allied_drones_heliride_03" );
+    thread _ID52188( var_6, "allied_drones_heliride_04" );
+    _ID49059();
+    level._ID52945 vehicle_setspeed( 5, 20 );
+    var_7 = getent( "heli_roof_approach_01_end", "targetname" );
+    level._ID52945 setlookatent( var_7 );
     level._ID52945.rooftop_helirider = var_1;
     _ID42237::_ID14413( "roof_littlebird_lifted_off" );
-    thread _unknown_A2B0();
-    level._ID52945 _meth_8270();
-    var_8 = _func_1A1( "heli_roof_approach_01", "targetname" );
+    thread heliblackhawk_deathvolume();
+    level._ID52945 clearlookatent();
+    var_8 = getent( "heli_roof_approach_01", "targetname" );
     level._ID52945 thread _ID42411::_ID40218( var_8 );
-    level._ID52945 _meth_828D( 100 );
-    level._ID52945 thread _unknown_96AC( _func_1A1( "heli_roof_land_01", "script_noteworthy" ) );
+    level._ID52945 vehicle_setspeed( 100 );
+    level._ID52945 thread _ID43426( getent( "heli_roof_land_01", "script_noteworthy" ) );
     level._ID52945 waittill( "landed" );
     _ID42237::_ID14402( "blackhawk_landed" );
-    var_9 = level._ID52945 _meth_818C( "tag_player" );
+    var_9 = level._ID52945 gettagorigin( "tag_player" );
     var_10 = 160;
     var_11 = 100;
     var_12 = 0;
-    var_13 = _func_06A( "trigger_radius", var_9, var_12, var_10, var_11 );
-    thread _unknown_899C( var_13 );
-    var_9 = level._ID52945 _meth_818C( "tag_player" );
+    var_13 = spawn( "trigger_radius", var_9, var_12, var_10, var_11 );
+    thread _ID44382( var_13 );
+    var_9 = level._ID52945 gettagorigin( "tag_player" );
     var_10 = 40;
     var_11 = 100;
     var_12 = 0;
-    level._ID52945._ID1224 = _func_06A( "trigger_radius", var_9, var_12, var_10, var_11 );
-    var_14 = level._ID52945 _meth_818C( "TAG_ORIGIN" );
+    level._ID52945._ID1224 = spawn( "trigger_radius", var_9, var_12, var_10, var_11 );
+    var_14 = level._ID52945 gettagorigin( "TAG_ORIGIN" );
 
     for (;;)
     {
         level._ID52945._ID1224 waittill( "trigger" );
 
-        if ( _ID42237::_ID41802( level._ID794 _meth_80AF(), level._ID794 _meth_8346(), var_14, level._ID8760["90"] ) )
+        if ( _ID42237::_ID41802( level._ID794 geteye(), level._ID794 getplayerangles(), var_14, level._ID8760["90"] ) )
             break;
     }
 
@@ -5168,30 +4921,30 @@ _ID51737()
     _ID42407::_ID4917( "axis" );
     _ID42237::_ID14402( "player_getting_on_minigun" );
 
-    if ( _func_03A( "r_dcburning_culldist" ) == 1 )
-        _func_08E( 20000 );
+    if ( getdvarint( "r_dcburning_culldist" ) == 1 )
+        setculldist( 20000 );
 
     _ID42237::_ID14402( "obj_heli_mount_complete" );
     _ID42313::_ID52053();
-    thread _unknown_A2C1();
+    thread _ID47930();
     level._ID52945 thread maps\dcburning_aud::_ID54551();
     maps\dcburning_lighting::_ID51844( "dcburning_heliride" );
     _ID42297::_ID39221();
     level._ID10901 = 1;
-    _unknown_A07D( 7 );
-    _unknown_A083( 8 );
-    _unknown_A089( 10 );
-    var_15 = _func_1A1( "volume_roof", "targetname" );
+    _ID21376( 7 );
+    _ID21376( 8 );
+    _ID21376( 10 );
+    var_15 = getent( "volume_roof", "targetname" );
     var_16 = var_15 _ID42407::_ID15547( "axis" );
-    _ID42237::_ID3350( var_16, ::_unknown_9D6B );
-    _ID42407::_ID10226( 1.5, ::_unknown_8A6E );
-    var_17 = _func_1A1( "roof_seaknight_01", "targetname" );
-    var_18 = _func_1A1( "roof_seaknight_02", "targetname" );
+    _ID42237::_ID3350( var_16, ::_ID47688 );
+    _ID42407::_ID10226( 1.5, ::_ID52170 );
+    var_17 = getent( "roof_seaknight_01", "targetname" );
+    var_18 = getent( "roof_seaknight_02", "targetname" );
     var_17 notify( "spawn" );
     var_18 notify( "spawn" );
     var_17 thread _ID42407::_ID25088( "play_anim", 1 );
     var_18 thread _ID42407::_ID25088( "play_anim", 1 );
-    _unknown_8B1E();
+    _ID43870();
     _ID42407::_ID24584( 5 );
     _ID42237::_ID14413( "roof_heli_about_to_be_owned" );
     _ID42237::_ID14402( "player_heli_ready_to_take_off" );
@@ -5199,86 +4952,86 @@ _ID51737()
     var_19 = _ID42411::_ID35195( "ww2_heli" );
     var_20 = _ID42237::_ID16638( "path_player_heli", "targetname" );
     level._ID52945 _ID42407::_ID40191( 76 );
-    level._ID52945 _unknown_8BBC();
-    level._ID52945 thread _unknown_8BC2();
+    level._ID52945 _ID54208();
+    level._ID52945 thread _ID54208();
     level._ID52945 thread _ID42411::_ID40218( var_20 );
-    var_21 = _func_1A1( "abrams_street", "targetname" );
-    var_21 _meth_80B7();
+    var_21 = getent( "abrams_street", "targetname" );
+    var_21 delete();
     var_22 = _ID42411::_ID35196( "m1a1_heliride_01" );
     var_23 = _ID42411::_ID35196( "m1a1_heliride_02" );
-    var_24 = _func_1A1( var_22._ID31273, "script_linkname" );
-    var_25 = _func_1C8( "javelin_dcburn", var_24._ID740, var_22._ID740 );
-    var_25 thread _unknown_9D3A();
-    var_25 _meth_81E5( var_22 );
-    var_25 _meth_81E9();
+    var_24 = getent( var_22._ID31273, "script_linkname" );
+    var_25 = magicbullet( "javelin_dcburn", var_24._ID740, var_22._ID740 );
+    var_25 thread _ID52536();
+    var_25 missile_settargetent( var_22 );
+    var_25 missile_setflightmodetop();
     var_26 = _ID42411::_ID35195( "latvee_heliride_01" );
     _ID42237::_ID14413( "player_heli_02" );
-    level._ID52945 _meth_828D( 75 );
-    level._ID47577 _meth_828D( 70 );
+    level._ID52945 vehicle_setspeed( 75 );
+    level._ID47577 vehicle_setspeed( 70 );
     _ID42237::_ID3350( level._ID44593, _ID42237::_ID26402 );
     _ID42237::_ID3350( level._ID48904, _ID42237::_ID26402 );
     var_27 = _ID42237::_ID16638( "helipath_to_ww2_littlebird_wingman_armed", "targetname" );
     var_28 = "littlebird_wingman_armed";
-    level._ID52695 = level._ID52695 _unknown_98F7( var_28, var_27 );
-    level._ID52695 _meth_828D( 100 );
-    level._ID47577 _unknown_9A1E();
+    level._ID52695 = level._ID52695 _ID45307( var_28, var_27 );
+    level._ID52695 vehicle_setspeed( 100 );
+    level._ID47577 _ID44705();
     level._ID47577 = _ID42411::_ID35196( "littlebird_wingman_02_drone_roof" );
     var_27 = _ID42237::_ID16638( "helipath_to_ww2_littlebird_wingman_01", "targetname" );
     var_28 = "littlebird_wingman_01";
-    level._ID48377 = level._ID48377 _unknown_9929( var_28, var_27 );
-    level._ID48377 _meth_828D( 55 );
-    var_29 = _func_1A2( "axis_ww2_drones_01", "targetname" );
-    var_30 = _func_1A2( "axis_ww2_drones_02", "targetname" );
-    var_31 = _func_1A2( "axis_ww2_drones_03", "targetname" );
-    var_32 = _func_1A2( "axis_ww2_drones_04", "targetname" );
-    thread _unknown_A165( var_29, "axis_ww2_drones_01" );
-    thread _unknown_A16E( var_30, "axis_ww2_drones_02" );
-    thread _unknown_A177( var_31, "axis_ww2_drones_03" );
-    thread _unknown_A180( var_32, "axis_ww2_drones_04" );
+    level._ID48377 = level._ID48377 _ID45307( var_28, var_27 );
+    level._ID48377 vehicle_setspeed( 55 );
+    var_29 = getentarray( "axis_ww2_drones_01", "targetname" );
+    var_30 = getentarray( "axis_ww2_drones_02", "targetname" );
+    var_31 = getentarray( "axis_ww2_drones_03", "targetname" );
+    var_32 = getentarray( "axis_ww2_drones_04", "targetname" );
+    thread _ID52188( var_29, "axis_ww2_drones_01" );
+    thread _ID52188( var_30, "axis_ww2_drones_02" );
+    thread _ID52188( var_31, "axis_ww2_drones_03" );
+    thread _ID52188( var_32, "axis_ww2_drones_04" );
     waitframe;
-    var_33 = _func_0DE();
+    var_33 = getaiarray();
     var_34 = level._ID47577._ID29965;
     var_34[var_34.size] = var_1;
-    _ID42237::_ID3350( var_33, ::_unknown_9F3D, var_34 );
+    _ID42237::_ID3350( var_33, ::_ID47688, var_34 );
     _ID42407::_ID1801( "spawner_ww2_guys", "targetname", level._ID794 );
-    _unknown_A1F3( "dummy_spawner_ww2_street_guys" );
+    _ID47645( "dummy_spawner_ww2_street_guys" );
     level._ID44303 = 1;
     level._ID49598 = ( 0, 40, 0 );
-    level._ID1426["mortar"]["dirt"] = _func_155( "fx/explosions/artilleryExp_dirt_brown_2_dcburning" );
+    level._ID1426["mortar"]["dirt"] = loadfx( "fx/explosions/artilleryExp_dirt_brown_2_dcburning" );
     _ID42407::_ID10226( 3, _ID54017::_ID43738, 2 );
     _ID42237::_ID14413( "player_heli_03a" );
-    var_25 = _func_1C8( "javelin_dcburn", var_24._ID740, var_26._ID740 );
-    var_25 thread _unknown_9E93();
-    var_25 _meth_81E5( var_26 );
-    var_25 _meth_81E9();
+    var_25 = magicbullet( "javelin_dcburn", var_24._ID740, var_26._ID740 );
+    var_25 thread _ID52536();
+    var_25 missile_settargetent( var_26 );
+    var_25 missile_setflightmodetop();
     var_35 = _ID42237::_ID16638( "sam_launch_ww2", "targetname" );
-    _ID42407::_ID10226( 1.5, ::_unknown_8C8E, 8, var_35, level._ID47577 );
+    _ID42407::_ID10226( 1.5, ::_ID45728, 8, var_35, level._ID47577 );
     _ID42237::_ID14413( "player_heli_05" );
-    level._ID52945 _meth_828D( 90 );
+    level._ID52945 vehicle_setspeed( 90 );
     thread _ID42411::_ID17021( var_26 );
-    level._ID48377 _meth_828D( 100 );
-    level._ID47577 _meth_828D( 100 );
-    level._ID52695 _meth_828D( 150 );
+    level._ID48377 vehicle_setspeed( 100 );
+    level._ID47577 vehicle_setspeed( 100 );
+    level._ID52695 vehicle_setspeed( 150 );
     var_36 = _ID42237::_ID16638( "javelin_littlebird_monument", "targetname" );
-    var_37 = _func_1C8( "javelin_dcburn", var_36._ID740, level._ID47577._ID740 );
-    var_37 _meth_81E5( level._ID47577 );
+    var_37 = magicbullet( "javelin_dcburn", var_36._ID740, level._ID47577._ID740 );
+    var_37 missile_settargetent( level._ID47577 );
     var_38 = _ID42237::_ID16638( "littlebird_monument_crash", "targetname" );
     level._ID47577 thread _ID44311::_ID46706( var_38 );
     level._ID47577 thread maps\dcburning_aud::_ID50541();
     var_27 = _ID42237::_ID16638( "helipath_to_ww2_strafing_littlebird_wingman_armed", "targetname" );
     var_28 = "littlebird_wingman_armed";
-    level._ID52695 = level._ID52695 _unknown_9AA5( var_28, var_27 );
-    level._ID52695 _meth_828D( 90 );
+    level._ID52695 = level._ID52695 _ID45307( var_28, var_27 );
+    level._ID52695 vehicle_setspeed( 90 );
     _ID42237::_ID14413( "player_heli_06" );
-    thread _unknown_A2D0( "allied_drones_heliride_01" );
-    thread _unknown_A2D8( "allied_drones_heliride_02" );
-    thread _unknown_A2E0( "allied_drones_heliride_03" );
-    thread _unknown_A2E9( "allied_drones_heliride_04" );
+    thread _ID48047( "allied_drones_heliride_01" );
+    thread _ID48047( "allied_drones_heliride_02" );
+    thread _ID48047( "allied_drones_heliride_03" );
+    thread _ID48047( "allied_drones_heliride_04" );
     _ID42237::_ID14413( "player_heli_10" );
     level._ID794._ID511 = 1;
-    level._ID52945 _meth_828D( 25 );
+    level._ID52945 vehicle_setspeed( 25 );
     _ID42407::_ID1801( "spawner_ww2_guys_middle", "targetname", level._ID794 );
-    level._ID52695 _meth_828D( 120 );
+    level._ID52695 vehicle_setspeed( 120 );
     _ID42237::_ID14413( "player_heli_10a" );
     level._ID9277 = 0;
     var_39 = _ID42411::_ID35200( "bmps_heli_ride_ww2_02" );
@@ -5288,88 +5041,83 @@ _ID51737()
     _ID42237::_ID14413( "player_heli_10c" );
     _ID42237::_ID3350( level._ID53293, _ID42237::_ID26402 );
 
-    if ( _func_02F( var_19 ) )
+    if ( isdefined( var_19 ) )
         var_19 thread _ID42407::_ID25088( "liftoff", 3 );
 
     _ID42237::_ID14413( "player_heli_14" );
     wait 0.5;
-    level._ID52945 _meth_828D( 50 );
+    level._ID52945 vehicle_setspeed( 50 );
     var_40 = _ID42407::_ID16057( "crows_nest_bmps", "script_noteworthy" );
-    var_41 = var_40;
 
-    for ( var_43 = _func_1DA( var_41 ); _func_02F( var_43 ); var_43 = _func_1BF( var_41, var_43 ) )
+    foreach ( var_42 in var_40 )
     {
-        var_42 = var_41[var_43];
-
-        if ( _func_02F( var_42 ) )
+        if ( isdefined( var_42 ) )
         {
             var_42 _ID42411::_ID16987();
-            var_42 _unknown_9CB1();
+            var_42 _ID44705();
         }
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "player_heli_15" );
-    level._ID52945 _meth_828D( 30 );
-    _unknown_A494( 11 );
-    thread _unknown_A3D0( "axis_ww2_drones_01" );
-    thread _unknown_A3D9( "axis_ww2_drones_02" );
-    thread _unknown_A3E1( "axis_ww2_drones_03" );
-    thread _unknown_A3E9( "axis_ww2_drones_04" );
+    level._ID52945 vehicle_setspeed( 30 );
+    _ID21376( 11 );
+    thread _ID48047( "axis_ww2_drones_01" );
+    thread _ID48047( "axis_ww2_drones_02" );
+    thread _ID48047( "axis_ww2_drones_03" );
+    thread _ID48047( "axis_ww2_drones_04" );
     _ID42237::_ID14413( "player_heli_16" );
-    level._ID52945 _meth_828D( 20 );
+    level._ID52945 vehicle_setspeed( 20 );
 }
 
 _ID45728( var_0, var_1, var_2 )
 {
     var_2 endon( "death" );
     var_3 = ( 0, 0, 250 );
-    var_4 = _func_06A( "script_origin", var_2._ID740 );
+    var_4 = spawn( "script_origin", var_2._ID740 );
     var_2 thread _ID42237::_ID10280( var_4 );
     var_4._ID740 = var_2._ID740;
     var_4._ID65 = var_2._ID65;
-    var_4 _meth_8053( var_2, "tag_origin", var_3, ( 0, 0, 0 ) );
-    var_4 thread _unknown_A420( var_2 );
+    var_4 linkto( var_2, "tag_origin", var_3, ( 0, 0, 0 ) );
+    var_4 thread _ID51301( var_2 );
 
-    for ( var_5 = _func_1A9( var_4, 8000, 3000 ); var_0 > 0; var_0-- )
+    for ( var_5 = missile_createattractorent( var_4, 8000, 3000 ); var_0 > 0; var_0-- )
     {
-        var_6 = _func_1C8( "slamraam_missile_dcburning", var_1._ID740, var_2._ID740 );
+        var_6 = magicbullet( "slamraam_missile_dcburning", var_1._ID740, var_2._ID740 );
         var_1 thread maps\dcburning_aud::_ID53638( var_6 );
         wait 0.25;
     }
 
-    if ( _func_02F( var_4 ) )
-        var_4 _meth_80B7();
+    if ( isdefined( var_4 ) )
+        var_4 delete();
 }
 
 _ID52170()
 {
-    _ID42237::_ID3350( level._ID35507, ::_unknown_A21B );
+    _ID42237::_ID3350( level._ID35507, ::_ID47688 );
 }
 
 _ID44382( var_0 )
 {
     level._ID44035 endon( "death" );
     wait 2;
-    var_1 = _func_06A( "script_origin", level._ID52945._ID740 );
+    var_1 = spawn( "script_origin", level._ID52945._ID740 );
     var_1._ID740 = level._ID52945._ID740;
     var_1._ID65 = level._ID52945._ID65;
-    var_2 = _func_1A5();
+    var_2 = spawnstruct();
     var_2._ID337 = var_1;
     var_2._ID1251 = -100;
     var_2._ID893 = -72;
     var_2._ID409 = -50;
     var_2._ID41911 = 180;
     var_2 _ID42407::_ID38694();
-    var_1 _meth_8053( level._ID52945 );
+    var_1 linkto( level._ID52945 );
     level._ID44035 notify( "stop_teleport_hack" );
     var_1 _ID42259::_ID3027( level._ID44035, "leader_blackhawk_getin" );
-    level._ID44035 _meth_81B2( level._ID44035._ID740 );
+    level._ID44035 setgoalpos( level._ID44035._ID740 );
     level._ID44035._ID452 = 16;
     var_0 waittill( "trigger" );
     var_1 _ID42259::_ID3027( level._ID44035, "leader_blackhawk_getin" );
-    level._ID44035 _meth_8053( var_1 );
+    level._ID44035 linkto( var_1 );
     var_1 _ID42259::_ID3020( level._ID44035, "leader_blackhawk_getin" );
     var_1 thread _ID42259::_ID3025( level._ID44035, "leader_blackhawk_idle", "stop_idle" );
 }
@@ -5377,39 +5125,39 @@ _ID44382( var_0 )
 _ID45823()
 {
     self endon( "death" );
-    thread _unknown_987F();
+    thread _ID50012();
     self._ID24727 = 1;
     self._ID452 = 16;
     self._ID4867 = 1000;
     self._ID86 = 0;
     _ID42237::_ID14413( "blackhawk_landed" );
     wait 1;
-    var_0 = _func_06A( "script_origin", level._ID52945._ID740 );
+    var_0 = spawn( "script_origin", level._ID52945._ID740 );
     var_0._ID740 = level._ID52945._ID740;
     var_0._ID65 = level._ID52945._ID65;
-    var_1 = _func_1A5();
+    var_1 = spawnstruct();
     var_1._ID337 = var_0;
     var_1._ID1251 = -100;
     var_1._ID893 = 78;
     var_1._ID409 = 21;
     var_1 _ID42407::_ID38694();
-    var_0 _meth_8053( level._ID52945 );
+    var_0 linkto( level._ID52945 );
     var_0 _ID42259::_ID3027( self, "redshirt_blackhawk_getin" );
-    self _meth_8053( var_0 );
+    self linkto( var_0 );
     var_0 _ID42259::_ID3020( self, "redshirt_blackhawk_getin" );
     var_0 thread _ID42259::_ID3025( self, "redshirt_blackhawk_idle", "stop_idle" );
 }
 
 _ID43870( var_0 )
 {
-    level._ID794 _meth_8122( 0 );
-    level._ID794 _meth_8123( 0 );
-    level._ID794 _meth_830F( 0 );
-    level._ID794 _meth_830C( 0 );
+    level._ID794 allowcrouch( 0 );
+    level._ID794 allowprone( 0 );
+    level._ID794 _meth_830f( 0 );
+    level._ID794 allowjump( 0 );
     level._ID794 thread _ID42407::_ID27079( "scn_player_mount_bh_minigun" );
-    level._ID52945 _ID42407::_ID10226( 0.5, ::_unknown_A9F7 );
+    level._ID52945 _ID42407::_ID10226( 0.5, ::blackhawk_play_rotors_anim );
     level._ID52945 _ID54230::_ID49743( var_0 );
-    _func_0DB( "r_reactiveMotionHelicopterLimit", 0 );
+    setsaveddvar( "r_reactiveMotionHelicopterLimit", 0 );
     level._ID43469 = 1;
 }
 
@@ -5420,14 +5168,14 @@ _ID48609( var_0 )
     self endon( "stop_teleport_hack" );
     var_1 = 90000;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
         wait 0.1;
 
-        if ( _func_0F5( level._ID794._ID740, self._ID740 ) < var_1 )
+        if ( distancesquared( level._ID794._ID740, self._ID740 ) < var_1 )
             continue;
 
-        var_2 = level._ID794 _meth_80AF();
+        var_2 = level._ID794 geteye();
 
         if ( _ID42237::_ID41802( var_2, level._ID794._ID65, self._ID740 + ( 0, 0, 32 ), level._ID8760["90"] ) )
         {
@@ -5438,34 +5186,34 @@ _ID48609( var_0 )
         break;
     }
 
-    self _meth_81D2( var_0._ID740, var_0._ID65 );
+    self forceteleport( var_0._ID740, var_0._ID65 );
     self notify( "end_melee" );
     _ID42407::_ID10871();
-    self _meth_81B1( var_0 );
+    self setgoalnode( var_0 );
 }
 
 _ID49059( var_0 )
 {
     level._ID52945 = _ID42411::_ID35196( "heli_player" );
     level._ID52945.spawn_extra_bullet = 1;
-    level._ID52945 thread _unknown_9339();
+    level._ID52945 thread _ID47073();
     level._ID52945 thread maps\dcburning_aud::_ID50906();
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        level._ID52945 _meth_8286( var_0._ID740, var_0._ID65 );
+        level._ID52945 vehicle_teleport( var_0._ID740, var_0._ID65 );
         level._ID52945 thread _ID42411::_ID40218( var_0 );
-        level._ID52945 _meth_80A0( level._ID794 );
-        level._ID52945 _unknown_9232();
+        level._ID52945 useby( level._ID794 );
+        level._ID52945 _ID54208();
     }
 }
 
 _ID54208()
 {
-    level._ID52945 _meth_8267();
-    level._ID52945 _meth_828D( 30 );
-    level._ID52945 _meth_825D( 32, 10, 3 );
-    level._ID52945 _meth_829E( 5, 10 );
+    level._ID52945 cleargoalyaw();
+    level._ID52945 vehicle_setspeed( 30 );
+    level._ID52945 sethoverparams( 32, 10, 3 );
+    level._ID52945 setmaxpitchroll( 5, 10 );
 }
 
 _ID51816()
@@ -5476,12 +5224,12 @@ _ID51816()
     var_1._ID740 = self._ID740;
     self._ID26573 = var_1;
     self waittill( "liftoff" );
-    thread _unknown_929F();
+    thread _ID48984();
     var_2 = _ID42237::_ID16638( self._ID31273, "script_linkname" );
-    var_3 = _func_0F3( self._ID740, var_2._ID740 );
-    self _meth_828D( 10 );
+    var_3 = distance( self._ID740, var_2._ID740 );
+    self vehicle_setspeed( 10 );
     _ID42407::_ID40191( var_3 );
-    self _meth_828D( 50 );
+    self vehicle_setspeed( 50 );
     thread _ID42411::_ID40218( var_2 );
 }
 
@@ -5491,10 +5239,10 @@ _ID48984()
     level._ID794 endon( "death" );
     _ID42407::_ID13024( "stop_firing" );
 
-    while ( _func_1A7( self ) && !_ID42407::_ID13019( "stop_firing" ) )
+    while ( isalive( self ) && !_ID42407::_ID13019( "stop_firing" ) )
     {
         wait 0.5;
-        self _meth_826F( level._ID794 );
+        self setlookatent( level._ID794 );
 
         if ( !_ID42237::_ID41802( self._ID740, self._ID65, level._ID794._ID740 + ( 0, 0, 32 ), level._ID8760["35"] ) )
         {
@@ -5502,51 +5250,51 @@ _ID48984()
             continue;
         }
 
-        thread _unknown_7AB1( level._ID794 );
+        thread _ID46491( level._ID794 );
     }
 
     self notify( "stop_firing_turret" );
-    self _meth_8270();
+    self clearlookatent();
 }
 
 _ID52592()
 {
     _ID42237::_ID14413( "player_getting_on_minigun" );
-    thread _unknown_93D5();
-    var_0 = _func_1A1( "roof_rocket_guy", "targetname" );
+    thread heli_ride_cinematic();
+    var_0 = getent( "roof_rocket_guy", "targetname" );
     var_1 = var_0 _ID42407::_ID35014( 1 );
-    var_1 thread _unknown_9B24();
-    var_1 thread _unknown_9B20();
+    var_1 thread _ID48332();
+    var_1 thread _ID50012();
     var_2 = var_0;
     var_2 _ID42259::_ID3023( var_1, var_1._ID70 );
-    var_1 _meth_801D( "weapon_stinger", "TAG_INHAND" );
+    var_1 attach( "weapon_stinger", "TAG_INHAND" );
     var_2 thread _ID42259::_ID3020( var_1, var_1._ID70 );
-    var_1 _meth_8120( level._ID30895["generic"][var_1._ID70], 0.6 );
+    var_1 setanimtime( level._ID30895["generic"][var_1._ID70], 0.6 );
     var_3 = _ID42411::_ID35196( "heli_roof" );
-    var_3 thread _unknown_94A1();
-    var_3 _meth_826F( level._ID794 );
-    var_4 = _func_06A( "script_origin", var_3._ID740 + ( 0, 0, -20 ) );
-    var_4 _meth_8053( var_3 );
-    var_4 thread _unknown_A825( var_3 );
-    var_5 = _func_1A9( var_4, 2000, 10000, var_1 );
+    var_3 thread _ID43089();
+    var_3 setlookatent( level._ID794 );
+    var_4 = spawn( "script_origin", var_3._ID740 + ( 0, 0, -20 ) );
+    var_4 linkto( var_3 );
+    var_4 thread _ID51301( var_3 );
+    var_5 = missile_createattractorent( var_4, 2000, 10000, var_1 );
     var_1 waittillmatch( "single anim",  "fire"  );
-    _func_192( 0.3, 0.5, level._ID794._ID740, 1600 );
-    var_6 = var_1 _meth_818C( "TAG_INHAND" );
-    _func_1C8( "stinger", var_6, var_4._ID740 );
+    earthquake( 0.3, 0.5, level._ID794._ID740, 1600 );
+    var_6 = var_1 gettagorigin( "TAG_INHAND" );
+    magicbullet( "stinger", var_6, var_4._ID740 );
     _ID42237::_ID14402( "roof_heli_about_to_be_owned" );
-    var_3 thread _unknown_951F();
+    var_3 thread _ID46418();
     var_1 waittillmatch( "single anim",  "end"  );
-    var_6 = var_1 _meth_818C( "TAG_INHAND" );
-    var_7 = var_1 _meth_818D( "TAG_INHAND" );
-    var_1 _meth_802A( "weapon_stinger", "TAG_INHAND" );
-    var_8 = _func_06A( "script_model", var_6 );
-    var_8 _meth_80B8( "weapon_stinger" );
+    var_6 = var_1 gettagorigin( "TAG_INHAND" );
+    var_7 = var_1 gettagangles( "TAG_INHAND" );
+    var_1 detach( "weapon_stinger", "TAG_INHAND" );
+    var_8 = spawn( "script_model", var_6 );
+    var_8 setmodel( "weapon_stinger" );
     var_1 thread _ID42237::_ID10280( var_8 );
     var_8._ID65 = var_7;
-    var_9 = _func_0C8( "at4_guy_retreat", "targetname" );
-    var_1 _meth_81B1( var_9 );
+    var_9 = getnode( "at4_guy_retreat", "targetname" );
+    var_1 setgoalnode( var_9 );
     var_1 thread _ID42407::_ID36519();
-    var_1 thread _unknown_9C4B();
+    var_1 thread _ID43214();
     var_1._ID486 = 1;
 }
 
@@ -5572,15 +5320,15 @@ _ID43089()
     self._ID52722 = 1;
     self waittill( "death" );
     _ID42237::_ID14402( "roof_heli_owned" );
-    _func_192( 0.6, 1.2, level._ID794._ID740, 1600 );
-    level._ID794 _meth_80B4( "damage_heavy" );
+    earthquake( 0.6, 1.2, level._ID794._ID740, 1600 );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
 }
 
 _ID46418()
 {
     self endon( "death" );
     wait 1.5;
-    self _meth_8058();
+    self kill();
 }
 
 _ID47073()
@@ -5592,11 +5340,11 @@ _ID47073()
 _ID45588()
 {
     _ID42237::_ID14413( "player_approaching_outer_balcony" );
-    var_0 = _ID42407::_ID3339( _func_1A2( "littlebird_roof_riders_left", "targetname" ) );
-    _ID42237::_ID3350( var_0, ::_unknown_9DED );
+    var_0 = _ID42407::_ID3339( getentarray( "littlebird_roof_riders_left", "targetname" ) );
+    _ID42237::_ID3350( var_0, ::_ID48332 );
     _ID42237::_ID3350( var_0, _ID42407::_ID22746 );
-    var_1 = _ID42407::_ID3339( _func_1A2( "littlebird_roof_riders_right", "targetname" ) );
-    _ID42237::_ID3350( var_1, ::_unknown_9E0D );
+    var_1 = _ID42407::_ID3339( getentarray( "littlebird_roof_riders_right", "targetname" ) );
+    _ID42237::_ID3350( var_1, ::_ID48332 );
     _ID42237::_ID3350( var_1, _ID42407::_ID22746 );
     level._ID47577 = _ID42411::_ID35195( "littlebird_wingman_02" );
     level._ID47577 thread _ID42411::_ID17021();
@@ -5620,56 +5368,45 @@ _ID45588()
     var_3 = _ID42237::_ID16638( "heli_roof_loop_01", "targetname" );
     wait 1;
     level._ID47577 thread _ID42411::_ID40218( var_3 );
-    level._ID47577 _meth_829E( 20, 50 );
+    level._ID47577 setmaxpitchroll( 20, 50 );
     wait 2;
     level._ID47577 _ID42411::_ID40066( "idle_alert_to_casual" );
-    level._ID47577 _meth_828D( 25 );
+    level._ID47577 vehicle_setspeed( 25 );
 }
 
 _ID47952()
 {
     _ID42237::_ID14413( "player_approach_commerce_roof_02" );
     level._ID52695 = _ID42411::_ID35196( "littlebird_wingman_armed" );
-    level._ID52695 _meth_828D( 25 );
+    level._ID52695 vehicle_setspeed( 25 );
     var_0 = _ID42237::_ID16638( "wingman_roof_node_01", "script_noteworthy" );
     var_0 waittill( "trigger" );
-    var_1 = _func_1A1( "roof_target_for_helis", "targetname" );
-    level._ID52695 _meth_826F( var_1 );
-    level._ID52695 _meth_828D( 10 );
+    var_1 = getent( "roof_target_for_helis", "targetname" );
+    level._ID52695 setlookatent( var_1 );
+    level._ID52695 vehicle_setspeed( 10 );
     waitframe;
-    var_2 = level._ID52695._ID23512;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 _meth_806C( "auto_nonai" );
-    }
+    foreach ( var_3 in level._ID52695._ID23512 )
+        var_3 setmode( "auto_nonai" );
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "player_getting_on_minigun" );
-    var_5 = level._ID52695._ID23512;
 
-    for ( var_6 = _func_1DA( var_5 ); _func_02F( var_6 ); var_6 = _func_1BF( var_5, var_6 ) )
+    foreach ( var_3 in level._ID52695._ID23512 )
     {
-        var_3 = var_5[var_6];
-        var_3 _meth_806C( "manual" );
-        var_3 _meth_80EA();
+        var_3 setmode( "manual" );
+        var_3 stopfiring();
     }
-
-    var_clear_1
-    var_clear_0
 }
 
 _ID53939()
 {
-    thread _unknown_99AC();
-    thread _unknown_9986();
+    thread _ID51048();
+    thread _ID52144();
     _ID42237::_ID14413( "player_crash_starting" );
     thread maps\dc_crashsite::_ID49092();
     _ID42237::_ID14413( "player_crash_done" );
-    _func_31C( 7 );
-    level._ID794 _meth_834E( "viewhands_us_army_dmg" );
+    _func_31c( 7 );
+    level._ID794 setviewmodel( "viewhands_us_army_dmg" );
 }
 
 _ID52144()
@@ -5686,239 +5423,224 @@ _ID52144()
     _ID42237::_ID14413( "player_crash_starting" );
     wait 0.3;
     var_0 = _ID42237::_ID35164();
-    var_0 _meth_8053( level._ID794 );
+    var_0 linkto( level._ID794 );
     var_0 thread _ID42407::_ID27081( "dcburn_lbp1_maydaymayday", "tag_origin" );
     _ID42237::_ID14413( "player_heli_crash" );
     var_0 notify( "death" );
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID51048()
 {
     _ID42237::_ID14413( "player_heli_18" );
     thread _ID42407::_ID4433();
-    level._ID52945 _meth_828D( 70 );
+    level._ID52945 vehicle_setspeed( 70 );
 
-    if ( _func_02F( level._ID52695 ) )
-        level._ID52695 _unknown_A61F();
+    if ( isdefined( level._ID52695 ) )
+        level._ID52695 _ID44705();
 
-    if ( _func_02F( level._ID48377 ) )
-        level._ID48377 _unknown_A62C();
+    if ( isdefined( level._ID48377 ) )
+        level._ID48377 _ID44705();
 
-    if ( _func_02F( level._ID47577 ) )
-        level._ID47577 _ID53477();
+    if ( isdefined( level._ID47577 ) )
+        level._ID47577 _ID44705();
 
-    var_0 = _func_1A2( "vehicles_crowsnest_defend", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "vehicles_crowsnest_defend", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_02F( var_2 ) )
-            var_2 _meth_80B7();
+        if ( isdefined( var_2 ) )
+            var_2 delete();
     }
 
-    var_clear_2
-    var_clear_0
     var_4 = _ID42411::_ID35196( "littlebird_wingman_02_drone_crash" );
-    var_4 _meth_828D( 70 );
+    var_4 vehicle_setspeed( 70 );
     var_5 = ( 0, 0, 250 );
-    var_6 = _func_06A( "script_origin", var_4._ID740 );
+    var_6 = spawn( "script_origin", var_4._ID740 );
     var_6._ID740 = var_4._ID740;
     var_6._ID65 = var_4._ID65;
-    var_6 _meth_8053( var_4, "tag_origin", var_5, ( 0, 0, 0 ) );
-    var_6 thread _unknown_AD86( var_4 );
-    var_7 = _func_1A9( var_6, 8000, 3000 );
-    var_8 = _func_1A1( "missile_org_lincoln", "targetname" );
-    var_9 = _func_1C8( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
+    var_6 linkto( var_4, "tag_origin", var_5, ( 0, 0, 0 ) );
+    var_6 thread _ID51301( var_4 );
+    var_7 = missile_createattractorent( var_6, 8000, 3000 );
+    var_8 = getent( "missile_org_lincoln", "targetname" );
+    var_9 = magicbullet( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
     var_8 thread maps\dcburning_aud::_ID53638( var_9 );
     wait 0.5;
-    var_10 = _func_1C8( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
+    var_10 = magicbullet( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
     var_8 thread maps\dcburning_aud::_ID53638( var_10 );
     wait 0.5;
-    var_11 = _func_1C8( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
+    var_11 = magicbullet( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
     var_8 thread maps\dcburning_aud::_ID53638( var_11 );
     wait 0.5;
-    var_12 = _func_1C8( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
+    var_12 = magicbullet( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
     var_8 thread maps\dcburning_aud::_ID53638( var_12 );
     wait 0.5;
-    var_13 = _func_1C8( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
+    var_13 = magicbullet( "slamraam_missile_dcburning", var_8._ID740, var_6._ID740 );
     var_8 thread maps\dcburning_aud::_ID53638( var_13 );
-    var_14 = _func_1C8( "javelin_dcburn", var_8._ID740, var_4._ID740 );
-    var_14 _meth_81E5( var_4 );
+    var_14 = magicbullet( "javelin_dcburn", var_8._ID740, var_4._ID740 );
+    var_14 missile_settargetent( var_4 );
     var_15 = _ID42237::_ID16638( "littlebird_crash_ww2", "targetname" );
     var_4 thread _ID44311::_ID46706( var_15 );
     _ID42237::_ID14413( "player_heli_18b" );
     wait 2;
-    _func_192( 0.5, 1.5, level._ID794._ID740, 1600 );
+    earthquake( 0.5, 1.5, level._ID794._ID740, 1600 );
     level._ID52945 thread maps\dcburning_aud::_ID53429();
     _ID42237::_ID49667( level._ID1426["heli_hit"], level._ID52945, "side_door_r_jnt", ( -20, -10, 0 ) );
-    level._ID794 _meth_80B4( "damage_heavy" );
-    level._ID794 _meth_8057( 10, level._ID794._ID740 );
-    thread _unknown_9EAE();
-    thread _unknown_9ED1();
-    level._ID52945 thread _unknown_9E1A();
-    level._ID52945 thread _unknown_9EEF( "smoke_trail_black_heli" );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level._ID794 dodamage( 10, level._ID794._ID740 );
+    thread _ID46730();
+    thread _ID47877();
+    level._ID52945 thread _ID44843();
+    level._ID52945 thread _ID51029( "smoke_trail_black_heli" );
     wait 0.5;
     _ID42237::_ID14413( "player_heli_18d" );
-    level._ID52945 _meth_828D( 25, 60, 60 );
+    level._ID52945 vehicle_setspeed( 25, 60, 60 );
     _ID42237::_ID3350( level._ID52835, _ID42237::_ID26402 );
-    thread _unknown_ADDE( "axis", undefined, 1 );
-    thread _unknown_ADD5( "axis", undefined, 1 );
-    var_16 = _func_1A2( "axis_window_drones_01", "targetname" );
-    thread _unknown_AF09( var_16, "axis_window_drones_01" );
-    var_16 = _func_1A2( "axis_window_drones_02", "targetname" );
-    thread _unknown_AF1D( var_16, "axis_window_drones_02" );
+    thread _ID47411( "axis", undefined, 1 );
+    thread _ID54724( "axis", undefined, 1 );
+    var_16 = getentarray( "axis_window_drones_01", "targetname" );
+    thread _ID52188( var_16, "axis_window_drones_01" );
+    var_16 = getentarray( "axis_window_drones_02", "targetname" );
+    thread _ID52188( var_16, "axis_window_drones_02" );
     _ID42407::_ID1801( "spawner_enemies_glass_02", "targetname", level._ID794 );
     _ID42407::_ID1801( "spawner_enemies_glass_03", "targetname", level._ID794 );
-    var_16 = _func_1A2( "axis_lincoln_drones_01", "targetname" );
-    thread _unknown_AF4D( var_16, "axis_lincoln_drones_01" );
-    var_16 = _func_1A2( "axis_lincoln_drones_02", "targetname" );
-    thread _unknown_AF60( var_16, "axis_lincoln_drones_02" );
-    var_16 = _func_1A2( "axis_lincoln_drones_03", "targetname" );
-    thread _unknown_AF74( var_16, "axis_lincoln_drones_03" );
-    var_16 = _func_1A2( "axis_lincoln_drones_04", "targetname" );
-    thread _unknown_AF87( var_16, "axis_lincoln_drones_04" );
+    var_16 = getentarray( "axis_lincoln_drones_01", "targetname" );
+    thread _ID52188( var_16, "axis_lincoln_drones_01" );
+    var_16 = getentarray( "axis_lincoln_drones_02", "targetname" );
+    thread _ID52188( var_16, "axis_lincoln_drones_02" );
+    var_16 = getentarray( "axis_lincoln_drones_03", "targetname" );
+    thread _ID52188( var_16, "axis_lincoln_drones_03" );
+    var_16 = getentarray( "axis_lincoln_drones_04", "targetname" );
+    thread _ID52188( var_16, "axis_lincoln_drones_04" );
     _ID42237::_ID14413( "player_heli_19a" );
-    _unknown_B1A9();
-    thread _unknown_AF6B( "volume_enemies_glass_02", "axis" );
-    thread _unknown_AFBC( "axis_window_drones_01" );
+    _ID44864();
+    thread _ID43162( "volume_enemies_glass_02", "axis" );
+    thread _ID48047( "axis_window_drones_01" );
     _ID42407::_ID1801( "spawner_enemies_glass_04", "targetname", level._ID794 );
     _ID42237::_ID14413( "player_heli_19b" );
-    thread _unknown_AF96( "volume_enemies_glass_03", "axis" );
+    thread _ID43162( "volume_enemies_glass_03", "axis" );
     _ID42237::_ID14413( "player_heli_19c" );
     var_17 = _ID42411::_ID35196( "littlebird_wingman_armed_lincoln" );
-    var_17 _meth_828D( 90 );
-    thread _unknown_AFB8( "volume_enemies_glass_04a", "axis" );
-    thread _unknown_AFC4( "volume_enemies_glass_04", "axis" );
+    var_17 vehicle_setspeed( 90 );
+    thread _ID43162( "volume_enemies_glass_04a", "axis" );
+    thread _ID43162( "volume_enemies_glass_04", "axis" );
     _ID42407::_ID1801( "spawner_enemies_balcony_01", "targetname", level._ID794 );
     var_18 = _ID42411::_ID35199( "slamraam_lincoln" );
     _ID42407::_ID1801( "spawner_axis_lincoln_01", "targetname", level._ID794 );
     _ID42237::_ID14413( "player_heli_19d" );
-    level._ID52945 _meth_828D( 80, 20, 20 );
+    level._ID52945 vehicle_setspeed( 80, 20, 20 );
     _ID42237::_ID14413( "player_heli_20" );
     var_18 = _ID42237::_ID15566( level._ID794._ID740, var_18 );
     var_19 = 0;
-    var_20 = var_18;
 
-    for ( var_22 = _func_1DA( var_20 ); _func_02F( var_22 ); var_22 = _func_1BF( var_20, var_22 ) )
+    foreach ( var_21 in var_18 )
     {
-        var_21 = var_20[var_22];
-
-        if ( _func_02F( var_21 ) )
+        if ( isdefined( var_21 ) )
         {
             var_21 thread _ID42407::_ID25088( "fire", var_19 );
             var_19 += 0.25;
         }
     }
 
-    var_clear_2
-    var_clear_0
     _ID42237::_ID14413( "player_heli_21" );
     var_18 = _ID42237::_ID15566( level._ID794._ID740, var_18 );
     var_19 = 0;
-    var_23 = var_18;
 
-    for ( var_24 = _func_1DA( var_23 ); _func_02F( var_24 ); var_24 = _func_1BF( var_23, var_24 ) )
+    foreach ( var_21 in var_18 )
     {
-        var_21 = var_23[var_24];
-
-        if ( _func_02F( var_21 ) )
+        if ( isdefined( var_21 ) )
         {
             var_21 thread _ID42407::_ID25088( "fire", var_19 );
             var_19 += 0.25;
         }
     }
 
-    var_clear_1
-    var_clear_0
     _ID42237::_ID14413( "player_heli_22" );
-    _unknown_B0DF( "axis_lincoln_drones_01" );
-    _unknown_B0E7( "axis_lincoln_drones_02" );
-    _unknown_B0F0( "axis_lincoln_drones_03" );
-    _unknown_B0F8( "axis_lincoln_drones_04" );
+    _ID48047( "axis_lincoln_drones_01" );
+    _ID48047( "axis_lincoln_drones_02" );
+    _ID48047( "axis_lincoln_drones_03" );
+    _ID48047( "axis_lincoln_drones_04" );
     _ID42237::_ID14402( "player_crash_starting" );
     level._ID52945 thread _ID42407::_ID27079( "scn_dcburning_plr_heli_missile_hit_02" );
     level._ID794 thread _ID42407::_ID27079( "scn_player_heli_hit_vo" );
-    level._ID52945 _meth_8295();
+    level._ID52945 vehicle_turnengineoff();
     level._ID52945 thread _ID42237::_ID27000( "scn_dcburning_plr_heli_dying_loop" );
     level._ID52945 thread maps\dcburning_aud::_ID45199();
-    level._ID52945 _meth_828D( 150, 50, 50 );
+    level._ID52945 vehicle_setspeed( 150, 50, 50 );
     _ID42237::_ID49667( level._ID1426["heli_hit_2"], level._ID52945, "side_door_r_jnt", ( -20, -10, 0 ) );
-    level._ID52945 thread _unknown_A174( "smoke_trail_black_heli_fire" );
-    level._ID794 _meth_80B4( "damage_heavy" );
-    level._ID52945 _meth_80A0( level._ID794 );
-    level._ID794 _meth_8055();
-    level._ID794 _meth_8328();
-    level._ID52945 _meth_80C7();
+    level._ID52945 thread _ID51029( "smoke_trail_black_heli_fire" );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level._ID52945 useby( level._ID794 );
+    level._ID794 unlink();
+    level._ID794 disableweapons();
+    level._ID52945 makeunusable();
     _ID42237::_ID14388( "player_on_minigun" );
     _ID42237::_ID14402( "player_off_minigun" );
     level notify( "player_off_blackhawk_gun" );
-    level._ID52945 thread _unknown_A12F();
-    level._ID52945 thread _unknown_A1C6();
-    _func_192( 0.7, 2.5, level._ID794._ID740, 1600 );
-    level._ID52945 thread _unknown_A1EA();
+    level._ID52945 thread _ID48291();
+    level._ID52945 thread _ID44785();
+    earthquake( 0.7, 2.5, level._ID794._ID740, 1600 );
+    level._ID52945 thread _ID52153();
     wait 1;
     _ID42407::_ID14543( "allies" );
-    thread _unknown_B098( "all", undefined, 1 );
-    thread _unknown_B0B5( "axis", undefined, 1 );
+    thread _ID54724( "all", undefined, 1 );
+    thread _ID47411( "axis", undefined, 1 );
     _ID42237::_ID14413( "player_heli_crash" );
     _ID42407::_ID4918( "allies" );
     _ID42407::_ID4918( "axis" );
-    _func_192( 0.7, 2.5, level._ID794._ID740, 1600 );
-    level._ID794 _meth_80B4( "damage_heavy" );
+    earthquake( 0.7, 2.5, level._ID794._ID740, 1600 );
+    level._ID794 playrumblelooponentity( "damage_heavy" );
     level._ID794 notify( "stop sounddcburning_heli_alarm" );
     wait 0.1;
-    var_17 _unknown_AB23();
+    var_17 _ID44705();
     wait 0.3;
     _ID42407::_ID24584();
     _ID42475::_ID34575( "start_heli_crash_black_screen" );
     thread maps\dcburning_aud::crashsite_heli_rappel();
     level._ID5261 = _ID42313::_ID9125( "black", 1 );
-    level._ID794 _meth_8055();
+    level._ID794 unlink();
     wait 0.1;
-    level._ID52945 _unknown_AB54();
+    level._ID52945 _ID44705();
     wait 2;
     maps\dcburning_lighting::_ID51844( "dcburning_helicrash" );
     var_25 = "-42263 6917 183";
-    _func_0DB( "r_useLightGridDefaultFXLightingLookup", 1 );
-    _func_0DB( "r_lightGridDefaultFXLightingLookup", var_25 );
-    _func_0DB( "r_useLightGridDefaultModelLightingLookup", 1 );
-    _func_0DB( "r_useLightGridDefaultModelLightingSmoothing", 1 );
-    _func_0DB( "r_lightGridDefaultModelLightingLookup", var_25 );
+    setsaveddvar( "r_useLightGridDefaultFXLightingLookup", 1 );
+    setsaveddvar( "r_lightGridDefaultFXLightingLookup", var_25 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingLookup", 1 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingSmoothing", 1 );
+    setsaveddvar( "r_lightGridDefaultModelLightingLookup", var_25 );
     _ID42237::_ID14402( "player_crash_done" );
-    level._ID794 _meth_8313( 1, "nightvision" );
+    level._ID794 setactionslot( 1, "nightvision" );
 
-    if ( _func_03A( "sm_enable" ) && _func_039( "r_zfeather" ) != "0" )
-        level._ID1426["_attack_heli_spotlight"] = _func_155( "fx/misc/spotlight_large_dcburning" );
+    if ( getdvarint( "sm_enable" ) && getdvar( "r_zfeather" ) != "0" )
+        level._ID1426["_attack_heli_spotlight"] = loadfx( "fx/misc/spotlight_large_dcburning" );
     else
-        level._ID1426["_attack_heli_spotlight"] = _func_155( "fx/misc/spotlight_large" );
+        level._ID1426["_attack_heli_spotlight"] = loadfx( "fx/misc/spotlight_large" );
 }
 
 _ID44843()
 {
-    thread _unknown_A25D();
+    thread first_impact_cinematic();
     _ID42237::_ID14388( "player_on_minigun" );
     _ID42237::_ID14402( "player_off_minigun" );
-    level._ID794 _meth_8334( 1 );
-    self _meth_80A0( level._ID794 );
-    level._ID794 _meth_8084( self._ID23875, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 _meth_8099();
-    self _meth_805A();
-    self._ID23875 _meth_8059();
-    self._ID23875 _unknown_B715();
+    level._ID794 freezecontrols( 1 );
+    self useby( level._ID794 );
+    level._ID794 playerlinktodelta( self._ID23875, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level._ID794 dontinterpolate();
+    self hide();
+    self._ID23875 show();
+    self._ID23875 blackhawk_play_rotors_anim();
     var_0 = self._ID23875 _ID42407::_ID16120( "minigun_first_impact" );
-    self._ID23875 _meth_811A( "minigun_first_impact", var_0, 1, 0 );
+    self._ID23875 setflaggedanim( "minigun_first_impact", var_0, 1, 0 );
     self._ID23875 waittill( "minigun_first_impact" );
-    self._ID23875 _meth_814C( var_0, 0.1 );
-    self _meth_8155( _ID42407::_ID16120( "minigun_idle" ), 0.1 );
+    self._ID23875 clearanim( var_0, 0.1 );
+    self setanim( _ID42407::_ID16120( "minigun_idle" ), 0.1 );
     wait 0.05;
-    self._ID23875 _meth_805A();
-    self _meth_8059();
-    self _meth_80A0( level._ID794 );
-    level._ID794 _meth_8099();
-    level._ID794 _meth_8334( 0 );
+    self._ID23875 hide();
+    self show();
+    self useby( level._ID794 );
+    level._ID794 dontinterpolate();
+    level._ID794 freezecontrols( 0 );
     _ID42237::_ID14388( "player_off_minigun" );
     _ID42237::_ID14402( "player_on_minigun" );
     level._ID52945 thread _ID45306::_ID49378();
@@ -5933,26 +5655,26 @@ first_impact_cinematic()
 
 _ID48291()
 {
-    thread _unknown_A362();
-    level._ID794 _meth_8334( 1 );
-    level._ID794 _meth_8084( self._ID23875, "tag_player", 1, 0, 0, 0, 0 );
-    level._ID794 _meth_8099();
-    self _meth_805A();
-    self._ID23875 _meth_8059();
-    self._ID23875 _unknown_B7D3();
+    thread second_impact_cinematic();
+    level._ID794 freezecontrols( 1 );
+    level._ID794 playerlinktodelta( self._ID23875, "tag_player", 1, 0, 0, 0, 0 );
+    level._ID794 dontinterpolate();
+    self hide();
+    self._ID23875 show();
+    self._ID23875 blackhawk_play_rotors_anim();
 
-    if ( _func_02F( self.rooftop_helirider ) )
-        self.rooftop_helirider _meth_805A();
+    if ( isdefined( self.rooftop_helirider ) )
+        self.rooftop_helirider hide();
 
     var_0 = self._ID23875 _ID42407::_ID16120( "minigun_second_impact" );
-    self._ID23875 _meth_8155( var_0, 1, 0 );
-    wait(_func_067( var_0 ));
+    self._ID23875 setanim( var_0, 1, 0 );
+    wait(getanimlength( var_0 ));
 
-    if ( _func_02F( self._ID23875 ) )
-        self._ID23875 _meth_814C( var_0, 0 );
+    if ( isdefined( self._ID23875 ) )
+        self._ID23875 clearanim( var_0, 0 );
 
-    level._ID794 _meth_8055();
-    level._ID794 _meth_8334( 0 );
+    level._ID794 unlink();
+    level._ID794 freezecontrols( 0 );
 }
 
 second_impact_cinematic()
@@ -5963,33 +5685,33 @@ second_impact_cinematic()
     var_0 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 22.0, 30, 32, 32 ) _ID54167::_ID44956();
     var_0 _ID54167::_ID48800( 0.05 ) _ID54167::_ID50321( 14.0, 30, 2.0, 2.0 );
     var_0 _ID54167::_ID48800( 7.5 ) _ID54167::_ID46727() _ID54167::_ID48959();
-    var_0 _ID54167::_ID48800( 0.5 ) _ID54167::_ID43376( ::_func_032, undefined, "ui_consciousness_init", 1 );
-    var_0 _ID54167::_ID48800( 0.5 ) _ID54167::_ID43376( ::_func_032, undefined, "ui_consciousness_play", 1 );
+    var_0 _ID54167::_ID48800( 0.5 ) _ID54167::_ID43376( ::setomnvar, undefined, "ui_consciousness_init", 1 );
+    var_0 _ID54167::_ID48800( 0.5 ) _ID54167::_ID43376( ::setomnvar, undefined, "ui_consciousness_play", 1 );
     var_0 _ID54167::_ID48166();
 }
 
 _ID46730()
 {
     var_0 = _ID42237::_ID35164();
-    var_0 _meth_8053( level._ID52945, "tag_guy5", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    var_0 linkto( level._ID52945, "tag_guy5", ( 0, 0, 0 ), ( 0, 0, 0 ) );
 
     while ( !_ID42237::_ID14385( "player_crash_done" ) )
     {
-        _func_157( _ID42237::_ID16299( "dlight_red" ), var_0, "tag_origin" );
+        playfxontag( _ID42237::_ID16299( "dlight_red" ), var_0, "tag_origin" );
         wait 1;
-        _func_158( _ID42237::_ID16299( "dlight_red" ), var_0, "tag_origin" );
+        stopfxontag( _ID42237::_ID16299( "dlight_red" ), var_0, "tag_origin" );
         wait 0.5;
     }
 
-    var_0 _meth_8055();
-    var_0 _meth_80B7();
+    var_0 unlink();
+    var_0 delete();
 }
 
 _ID47877()
 {
     while ( !_ID42237::_ID14385( "player_crash_starting" ) )
     {
-        _func_192( 0.18, 0.05, level._ID794._ID740, 80000 );
+        earthquake( 0.18, 0.05, level._ID794._ID740, 80000 );
         wait 0.05;
     }
 }
@@ -6002,7 +5724,7 @@ _ID51029( var_0 )
 
     for (;;)
     {
-        _func_157( _ID42237::_ID16299( var_0 ), level._ID52945, "tag_gun_r" );
+        playfxontag( _ID42237::_ID16299( var_0 ), level._ID52945, "tag_gun_r" );
         wait 0.05;
     }
 }
@@ -6011,31 +5733,31 @@ _ID44785()
 {
     while ( !_ID42237::_ID14385( "player_heli_crash" ) )
     {
-        _func_157( _ID42237::_ID16299( "heat_shimmer_door" ), self, "tag_player" );
+        playfxontag( _ID42237::_ID16299( "heat_shimmer_door" ), self, "tag_player" );
         wait 0.1;
     }
 }
 
 _ID52153()
 {
-    self _meth_829E( 50, 100 );
-    self _meth_82A0( 1 );
+    self setmaxpitchroll( 50, 100 );
+    self setturningability( 1 );
     var_0 = 1400;
     var_1 = 200;
     var_2 = undefined;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
         var_2 = self._ID65[1] + 100;
-        self _meth_829C( var_0, var_1 );
-        self _meth_8268( var_2 );
+        self setyawspeed( var_0, var_1 );
+        self settargetyaw( var_2 );
         wait 0.1;
     }
 }
 
 _ID53905()
 {
-    if ( !_func_0D6( self ) )
+    if ( !issentient( self ) )
         return;
 
     self._ID199 = "ambush";
@@ -6062,11 +5784,11 @@ _ID49892()
 
 _ID53477()
 {
-    if ( !_func_02F( self._ID31388 ) )
+    if ( !isdefined( self._ID31388 ) )
         return;
 
     self._ID3189 = "enemy_death";
-    thread _unknown_A642();
+    thread _ID49892();
 
     if ( self._ID31388 == "windows" )
     {
@@ -6075,37 +5797,47 @@ _ID53477()
         var_0[1] = "h2_favela_backalleys_death_rooftop_B";
         var_0[2] = "h2_favela_backalleys_death_rooftop_C";
         var_0[3] = "h2_favela_backalleys_death_rooftop_D";
-        _ID42407::_ID32265( var_0[_func_0B9( 0, 3 )] );
+        _ID42407::_ID32265( var_0[randomintrange( 0, 3 )] );
     }
     else
-        thread _unknown_A698();
+        thread _ID46002();
 }
 
 _ID46002()
 {
-    var_0 = _func_0C8( self._ID31388, "targetname" );
+    var_0 = getnode( self._ID31388, "targetname" );
     thread _ID42407::_ID22746( 1 );
     self waittill( "damage" );
     self._ID24924 = undefined;
 
-    if ( _func_02F( self._ID31388 ) )
+    if ( isdefined( self._ID31388 ) )
     {
         switch ( self._ID31388 )
         {
-
+            case "balcony_fall1":
+            case "balcony_fall3":
+                _ID42407::_ID32265( "h2_favela_backalleys_death_window_B" );
+                thread _ID47793( var_0 );
+                self._ID256 = 0;
+                self._ID35375 = ::_ID43962;
+                self kill();
+                break;
+            case "balcony_fall2":
+            case "balcony_fall4":
+            case "balcony_fall6":
+                self._ID9813 = undefined;
+                thread _ID47793( var_0 );
+                var_0 thread _ID42259::_ID3111( self, "h2_favela_backalleys_death_window_A" );
+                wait 0.8;
+                self._ID256 = 0;
+                self._ID35375 = ::_ID43962;
+                self kill();
+                break;
         }
     }
 
-    if ( _func_1A7( self ) )
-    {
+    if ( isalive( self ) )
         _ID42407::_ID36519();
-        return;
-        case "balcony_fall6":
-        case "balcony_fall4":
-        case "balcony_fall1":
-        case "balcony_fall2":
-        case "balcony_fall3":
-    }
 }
 
 _ID43962()
@@ -6120,8 +5852,8 @@ _ID47793( var_0 )
 
     while ( var_2 != var_1 )
     {
-        var_3 = _func_11C( self._ID65, var_0._ID65, var_2 / var_1 );
-        self _meth_81D1( self._ID740, var_3 );
+        var_3 = vectorlerp( self._ID65, var_0._ID65, var_2 / var_1 );
+        self teleport( self._ID740, var_3 );
         var_2 += 0.05;
         waittillframeend;
     }
@@ -6131,21 +5863,21 @@ _ID44336()
 {
     wait 6;
     var_0 = 1;
-    _func_1E3( var_0, "current", &"DCBURNING_OBJ_REGROUP_WITH_TEAM" );
+    objective_add( var_0, "current", &"DCBURNING_OBJ_REGROUP_WITH_TEAM" );
 }
 
 _ID53750()
 {
     _ID42237::_ID14413( "obj_follow_sgt_macey_given" );
-    _func_116( 1, &"DCBURNING_OBJ_MACRO_SECURE_DEPARTMENT_OF_COMMERCE_BUILDING" );
+    objective_string_nomessage( 1, &"DCBURNING_OBJ_MACRO_SECURE_DEPARTMENT_OF_COMMERCE_BUILDING" );
     var_0 = 2;
     var_1 = level._ID44035;
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_FOLLOW_SGT_MACEY" );
-    _func_1E9( var_0 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_FOLLOW_SGT_MACEY" );
+    _func_1e9( var_0 );
     _func_194( var_0, level._ID44035, ( 0, 0, 70 ) );
-    _func_1E7( var_0, 1 );
+    objective_position( var_0, 1 );
     _ID42237::_ID14413( "obj_follow_sgt_macey_complete" );
-    _func_114( var_0, "done" );
+    objective_state_nomessage( var_0, "done" );
 }
 
 _ID49099()
@@ -6153,39 +5885,39 @@ _ID49099()
     _ID42237::_ID14413( "obj_commerce_given" );
     var_0 = 2;
     var_1 = _ID42237::_ID16638( "obj_commerce_sector_1", "targetname" );
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_COMMERCE" );
-    _func_1E9( var_0 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_COMMERCE" );
+    _func_1e9( var_0 );
     _func_194( var_0, level._ID44035, ( 0, 0, 70 ) );
-    _func_1E7( var_0, 1 );
+    objective_position( var_0, 1 );
     _ID42237::_ID14413( "player_around_corner_to_crows_nest" );
-    _func_1E8( var_0, ( 0, 0, 0 ) );
+    objective_current( var_0, ( 0, 0, 0 ) );
     var_1 = _ID42237::_ID16638( "obj_commerce_sector_3", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "obj_commerce_complete" );
-    _func_1E5( var_0, "done" );
+    objective_state( var_0, "done" );
 }
 
 _ID47819()
 {
     _ID42237::_ID14413( "obj_commerce_defend_snipe_given" );
-    _func_1E3( 3, "invisible", &"DCBURNING_OBJ_COMMERCE_SUPPORT_EVAC_SITE" );
-    _func_114( 3, "active" );
+    objective_add( 3, "invisible", &"DCBURNING_OBJ_COMMERCE_SUPPORT_EVAC_SITE" );
+    objective_state_nomessage( 3, "active" );
     var_0 = 4;
     var_1 = _ID42237::_ID16638( "obj_commerce_defend_snipe", "targetname" );
     var_2 = ( 19, 0, -5 );
     var_3 = var_1._ID740 + var_2;
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_COMMERCE_DEFEND_SNIPE", var_3 );
-    _func_1E9( var_0 );
-    _func_1E7( var_0, 1 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_COMMERCE_DEFEND_SNIPE", var_3 );
+    _func_1e9( var_0 );
+    objective_position( var_0, 1 );
     _ID42237::_ID14413( "obj_commerce_defend_snipe_complete" );
-    _func_1E5( var_0, "done" );
+    objective_state( var_0, "done" );
 }
 
 _ID54341()
 {
     level endon( "obj_commerce_defend_snipe_complete" );
     self waittill( "death" );
-    level._ID52350 = _func_03D();
+    level._ID52350 = gettime();
     level._ID50946 = level._ID50946 - 1;
 
     if ( level._ID50946 < 3 )
@@ -6198,38 +5930,38 @@ _ID54341()
 _ID47909()
 {
     _ID42237::_ID14413( "obj_commerce_defend_crow_given" );
-    _func_1E4( 3 );
-    _func_1E4( 4 );
-    _func_1E3( 4, "invisible", &"DCBURNING_OBJ_COMMERCE_SUPPORT_EVAC_SITE" );
-    _func_1E3( 5, "invisible", &"DCBURNING_OBJ_COMMERCE_DEFEND_SNIPE" );
-    _func_1E7( 4, 0 );
-    _func_1E7( 5, 1 );
-    _func_114( 4, "active" );
-    _func_114( 5, "done" );
+    objective_delete( 3 );
+    objective_delete( 4 );
+    objective_add( 4, "invisible", &"DCBURNING_OBJ_COMMERCE_SUPPORT_EVAC_SITE" );
+    objective_add( 5, "invisible", &"DCBURNING_OBJ_COMMERCE_DEFEND_SNIPE" );
+    objective_position( 4, 0 );
+    objective_position( 5, 1 );
+    objective_state_nomessage( 4, "active" );
+    objective_state_nomessage( 5, "done" );
     var_0 = 3;
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_COMMERCE_DEFEND_CROW" );
-    var_1 = _func_1A1( "crow_defend_obj1", "targetname" );
-    var_2 = _func_1A1( "crow_defend_obj2", "targetname" );
-    _func_117( var_0, 0, var_1._ID740 );
-    _func_117( var_0, 1, var_2._ID740 );
-    _func_0C7( var_0, &"DCBURNING_OBJ_TEXT_DEFEND" );
-    _func_1E5( var_0, "current" );
-    _func_1E7( var_0, 1 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_COMMERCE_DEFEND_CROW" );
+    var_1 = getent( "crow_defend_obj1", "targetname" );
+    var_2 = getent( "crow_defend_obj2", "targetname" );
+    objective_additionalposition( var_0, 0, var_1._ID740 );
+    objective_additionalposition( var_0, 1, var_2._ID740 );
+    objective_setpointertextoverride( var_0, &"DCBURNING_OBJ_TEXT_DEFEND" );
+    objective_state( var_0, "current" );
+    objective_position( var_0, 1 );
     _ID42237::_ID14413( "obj_commerce_defend_crow_complete" );
-    _func_1E5( var_0, "done" );
-    _func_114( 1, "done" );
+    objective_state( var_0, "done" );
+    objective_state_nomessage( 1, "done" );
 }
 
 _ID53452()
 {
-    var_0 = _func_1A1( "javelin_obj", "script_noteworthy" );
+    var_0 = getent( "javelin_obj", "script_noteworthy" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
     {
-        var_1 = _func_1A2( "javelins_crowsnest", "targetname" );
+        var_1 = getentarray( "javelins_crowsnest", "targetname" );
 
         if ( var_1.size )
-            var_0 = _ID42237::_ID16182( level._ID794 _meth_809C(), var_1, 300 );
+            var_0 = _ID42237::_ID16182( level._ID794 getorigin(), var_1, 300 );
     }
 
     return var_0;
@@ -6241,33 +5973,33 @@ _ID45013()
     wait 0.5;
     var_0 = 6;
     var_1 = _ID42237::_ID16638( "obj_defend_javelin", "targetname" );
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_COMMERCE_DEFEND_JAVELIN" );
-    _func_1E9( var_0 );
-    _func_1E7( var_0, 1 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_COMMERCE_DEFEND_JAVELIN" );
+    _func_1e9( var_0 );
+    objective_position( var_0, 1 );
 
-    if ( !_unknown_9BB8() )
+    if ( !_ID43952() )
     {
-        var_2 = _unknown_AAD2();
+        var_2 = _ID53452();
 
-        if ( _func_02F( var_2 ) )
+        if ( isdefined( var_2 ) )
         {
             var_3 = var_2._ID740 + ( 0, 0, 25 );
-            thread _unknown_9C7A( var_2 );
+            thread _ID45585( var_2 );
             var_1._ID740 = var_3;
-            _func_1E8( var_0, var_1._ID740 );
+            objective_current( var_0, var_1._ID740 );
         }
 
         _ID42237::_ID14413( "player_has_javelin" );
-        _func_1E8( var_0, ( 0, 0, 0 ) );
+        objective_current( var_0, ( 0, 0, 0 ) );
     }
 
-    var_4 = level._ID794 _meth_831C();
+    var_4 = level._ID794 getcurrentweapon();
 
-    if ( !_func_125( var_4, "javelin" ) )
+    if ( !issubstr( var_4, "javelin" ) )
         level._ID794 thread _ID42407::_ID11085( "javelin_switch" );
 
     _ID42237::_ID14413( "obj_commerce_defend_javelin_complete" );
-    _func_1E5( var_0, "done" );
+    objective_state( var_0, "done" );
 }
 
 _ID50671()
@@ -6280,9 +6012,9 @@ _ID50671()
     level._ID51057 = _ID42237::_ID3293( level._ID51057, self );
     self waittill( "death",  var_0  );
 
-    if ( _func_02F( var_0 ) && _func_1B3( var_0 ) )
+    if ( isdefined( var_0 ) && isplayernumber( var_0 ) )
     {
-        level._ID52350 = _func_03D();
+        level._ID52350 = gettime();
 
         if ( !_ID42237::_ID14385( "player_has_killed_at_least_one_javelin_target" ) )
             _ID42237::_ID14402( "player_has_killed_at_least_one_javelin_target" );
@@ -6306,70 +6038,70 @@ _ID50671()
 _ID53171()
 {
     _ID42237::_ID14413( "obj_rooftop_given" );
-    _func_114( 1, "done" );
+    objective_state_nomessage( 1, "done" );
     var_0 = 7;
     var_1 = _ID42237::_ID16638( "obj_commerce_roof", "targetname" );
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_ROOFTOP", var_1._ID740 );
-    _func_1E9( var_0 );
-    _func_1E7( var_0, 1 );
-    _func_1E7( 7, 1 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_ROOFTOP", var_1._ID740 );
+    _func_1e9( var_0 );
+    objective_position( var_0, 1 );
+    objective_position( 7, 1 );
     _ID42237::_ID14413( "player_roof_stairs_00" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof02", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "player_roof_stairs_01" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof03", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "player_roof_stairs_02" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof03a", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "player_outer_balcony_top_commerce" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof03b", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "player_headed_to_roof" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof03c", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "player_approach_commerce_roof_01" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof03d", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "player_approach_commerce_roof_02" );
     var_1 = _ID42237::_ID16638( "obj_commerce_roof04", "targetname" );
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "obj_rooftop_complete" );
-    _func_1E5( var_0, "done" );
+    objective_state( var_0, "done" );
 }
 
 _ID51605()
 {
     _ID42237::_ID14413( "obj_rooftop_complete" );
     var_0 = 8;
-    var_1 = _func_06A( "script_origin", ( 0, 0, 0 ) );
-    var_1._ID740 = level._ID52945 _meth_818C( "tag_player" );
-    var_1 _meth_8053( level._ID52945, "tag_player", ( 0, 0, 25 ), ( 0, 0, 0 ) );
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_HELI_MOUNT", var_1._ID740 );
-    _func_1E9( var_0 );
-    _func_1E7( var_0, 1 );
+    var_1 = spawn( "script_origin", ( 0, 0, 0 ) );
+    var_1._ID740 = level._ID52945 gettagorigin( "tag_player" );
+    var_1 linkto( level._ID52945, "tag_player", ( 0, 0, 25 ), ( 0, 0, 0 ) );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_HELI_MOUNT", var_1._ID740 );
+    _func_1e9( var_0 );
+    objective_position( var_0, 1 );
 
     while ( !_ID42237::_ID14385( "blackhawk_landed" ) )
     {
-        _func_1E8( var_0, var_1._ID740 );
+        objective_current( var_0, var_1._ID740 );
         wait 0.05;
     }
 
-    _func_1E8( var_0, var_1._ID740 );
+    objective_current( var_0, var_1._ID740 );
     _ID42237::_ID14413( "obj_heli_mount_complete" );
-    _func_1E5( var_0, "done" );
+    objective_state( var_0, "done" );
 }
 
 _ID53654()
 {
     _ID42237::_ID14413( "obj_heli_ride_given" );
     var_0 = 9;
-    _func_1E3( var_0, "active", &"DCBURNING_OBJ_HELI_RIDE", level._ID794._ID740 );
-    _func_1E9( var_0 );
-    _func_1E7( 9, 1 );
+    objective_add( var_0, "active", &"DCBURNING_OBJ_HELI_RIDE", level._ID794._ID740 );
+    _func_1e9( var_0 );
+    objective_position( 9, 1 );
     _ID42237::_ID14413( "obj_heli_ride_complete" );
-    _func_114( var_0, "done" );
-    _func_114( 4, "done" );
+    objective_state_nomessage( var_0, "done" );
+    objective_state_nomessage( 4, "done" );
 }
 
 enter_smoke_column()
@@ -6385,55 +6117,55 @@ _ID54109()
 
 _ID49488( var_0, var_1, var_2, var_3, var_4 )
 {
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
 
     for (;;)
     {
-        self waittill( "damage",  var_11, var_10, var_9, var_8, var_7, var_6, var_5  );
+        self waittill( "damage",  var_5, var_6, var_7, var_8, var_9, var_10, var_11  );
 
         if ( var_5 <= 0 )
             continue;
 
-        if ( _func_02F( var_4 ) && var_4 )
+        if ( isdefined( var_4 ) && var_4 )
         {
-            var_12 = _func_1A1( self._ID1191, "targetname" );
-            var_12 _meth_80B7();
+            var_12 = getent( self._ID1191, "targetname" );
+            var_12 delete();
         }
 
-        if ( _func_02F( var_3 ) && var_3 )
-            self _meth_82CC( self._ID740, var_7 * var_5 );
+        if ( isdefined( var_3 ) && var_3 )
+            self physicslaunchclient( self._ID740, var_7 * var_5 );
 
-        self _meth_80B8( var_0 );
-        var_13 = self _meth_809C();
+        self setmodel( var_0 );
+        var_13 = self getorigin();
         var_14 = var_13 + var_2;
-        _func_156( _ID42237::_ID16299( var_1 ), var_14 );
+        playfx( _ID42237::_ID16299( var_1 ), var_14 );
         break;
     }
 }
 
 _ID46656()
 {
-    _unknown_AF80( "h1_mwr_com_widescreen_monitor_des", "tv_explosion", ( 0, 0, 25 ), 1, 1 );
+    _ID49488( "h1_mwr_com_widescreen_monitor_des", "tv_explosion", ( 0, 0, 25 ), 1, 1 );
 }
 
 _ID54547()
 {
-    _unknown_AF98( "h1_mwr_com_widescreen_monitor_2_des", "tv_explosion", ( 0, 0, 30 ), 1 );
+    _ID49488( "h1_mwr_com_widescreen_monitor_2_des", "tv_explosion", ( 0, 0, 30 ), 1 );
 }
 
 _ID48761()
 {
-    _unknown_AFB3( "com_widescreen_monitor_on_1_des", "tv_explosion", ( 0, 0, 25 ), 1, 1 );
+    _ID49488( "com_widescreen_monitor_on_1_des", "tv_explosion", ( 0, 0, 25 ), 1, 1 );
 }
 
 _ID43437()
 {
-    _unknown_AFCD( "com_widescreen_monitor_on_2_des", "tv_explosion", ( 0, 0, 30 ), 1, 1 );
+    _ID49488( "com_widescreen_monitor_on_2_des", "tv_explosion", ( 0, 0, 30 ), 1, 1 );
 }
 
 _ID50807()
 {
-    _unknown_AFE7( "com_widescreen_monitor_on_3_des", "tv_explosion", ( 0, 0, 28 ), 1, 1 );
+    _ID49488( "com_widescreen_monitor_on_3_des", "tv_explosion", ( 0, 0, 28 ), 1, 1 );
 }
 
 _ID43576()
@@ -6444,10 +6176,10 @@ _ID43576()
 _ID53576( var_0 )
 {
     if ( var_0._ID1194 == "axis" )
-        var_0 thread _unknown_B05D();
+        var_0 thread _ID52457();
 
     if ( var_0._ID1194 == "allies" )
-        var_0 thread _unknown_B06C();
+        var_0 thread _ID45781();
 }
 
 _ID45781()
@@ -6462,19 +6194,19 @@ _ID52457()
 
 _ID45242()
 {
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
-        self waittill( "damage",  var_3, var_2, var_1, var_0  );
+        self waittill( "damage",  var_0, var_1, var_2, var_3  );
 
-        if ( _func_02F( var_1 ) && _func_02F( var_1._ID170 ) && var_1._ID170 == "misc_turret" )
+        if ( isdefined( var_1 ) && ( isdefined( var_1._ID170 ) && var_1._ID170 == "misc_turret" ) )
         {
-            if ( !_func_02F( var_3 ) )
+            if ( !isdefined( var_3 ) )
                 break;
 
-            if ( !_func_02F( var_2 ) )
+            if ( !isdefined( var_2 ) )
                 var_2 = ( 0, 0, 1 );
 
-            _func_156( _ID42237::_ID16299( "thermal_body_gib" ), var_3 );
+            playfx( _ID42237::_ID16299( "thermal_body_gib" ), var_3 );
         }
     }
 }
@@ -6494,38 +6226,38 @@ _ID45840()
 {
     self endon( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    thread _unknown_B149( 1 );
+    thread _ID50012( 1 );
     self._ID4867 = 0.01;
     self._ID86 = 10;
     self._ID2219 = 1;
     var_0 = undefined;
     var_1 = undefined;
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
-        self waittill( "damage",  var_5, var_4, var_1, var_3, var_0, var_2  );
+        self waittill( "damage",  var_2, var_0, var_3, var_1, var_4, var_5  );
 
-        if ( _func_02F( var_0 ) && _func_1B3( var_0 ) )
+        if ( isdefined( var_0 ) && isplayernumber( var_0 ) )
             continue;
 
         if ( _ID42237::_ID41802( level._ID794._ID740, level._ID794._ID65, self._ID740 + ( 0, 0, 32 ), level._ID8760["90"] ) )
             break;
     }
 
-    if ( _func_02F( self._ID22746 ) )
+    if ( isdefined( self._ID22746 ) )
         _ID42407::_ID36519();
 
-    self _meth_8058( var_1, var_0 );
+    self kill( var_1, var_0 );
 }
 
 _ID50012( var_0 )
 {
     self endon( "death" );
 
-    while ( _func_02F( self._ID23353 ) )
+    while ( isdefined( self._ID23353 ) )
         wait 0.1;
 
     thread _ID42407::_ID22746( var_0 );
@@ -6535,25 +6267,25 @@ _ID48332()
 {
     self endon( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    if ( _func_02F( self._ID172 ) && self._ID172 == "script_model" )
+    if ( isdefined( self._ID172 ) && self._ID172 == "script_model" )
         return;
 
     _ID42407::_ID32628( 1 );
     self._ID511 = 1;
     self._ID507 = 1;
     self._ID465 = 0;
-    self _meth_8183( "oblivious" );
+    self setthreatbiasgroup( "oblivious" );
 }
 
 _ID43214()
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    if ( _func_02F( self._ID172 ) && self._ID172 == "script_model" )
+    if ( isdefined( self._ID172 ) && self._ID172 == "script_model" )
         return;
 
     self endon( "death" );
@@ -6561,12 +6293,12 @@ _ID43214()
     self._ID511 = 0;
     self._ID507 = 0;
     self._ID465 = 1;
-    self _meth_8183( "allies" );
+    self setthreatbiasgroup( "allies" );
 }
 
 _ID51434()
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self._ID381 = 0;
@@ -6574,7 +6306,7 @@ _ID51434()
 
 _ID43163()
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self._ID381 = 1;
@@ -6586,14 +6318,14 @@ _ID52458()
     self._ID511 = 1;
     self._ID11025 = 1;
     _ID42407::_ID8925( "on" );
-    var_0 = _func_0C8( self._ID1191, "targetname" );
+    var_0 = getnode( self._ID1191, "targetname" );
     self._ID452 = 16;
-    self _meth_81B1( var_0 );
+    self setgoalnode( var_0 );
     wait 1;
     _ID42237::_ID41098( "goal", "damage" );
     self._ID511 = 0;
     self._ID11025 = 0;
-    thread _unknown_AFA5();
+    thread _ID53905();
     var_1 = [];
     var_1[0] = self;
     thread _ID42407::_ID2265( var_1, 512 );
@@ -6619,20 +6351,20 @@ _ID48491()
     var_0 = undefined;
     var_1 = undefined;
 
-    if ( _func_02F( self._ID1191 ) )
+    if ( isdefined( self._ID1191 ) )
     {
         self._ID465 = 0;
         self._ID507 = 1;
         self._ID52325 = [];
-        self._ID52325[0] = _func_0C8( self._ID1191, "targetname" );
+        self._ID52325[0] = getnode( self._ID1191, "targetname" );
         var_0 = self._ID52325[0] _ID42237::_ID15808();
         var_2 = 1;
 
         for (;;)
         {
-            if ( _func_02F( self._ID52325[var_2 - 1]._ID1191 ) )
+            if ( isdefined( self._ID52325[var_2 - 1]._ID1191 ) )
             {
-                var_1 = _func_0C8( self._ID52325[var_2 - 1]._ID1191, "targetname" );
+                var_1 = getnode( self._ID52325[var_2 - 1]._ID1191, "targetname" );
                 self._ID52325[var_2] = var_1;
                 var_2++;
                 continue;
@@ -6646,12 +6378,9 @@ _ID48491()
 
     self._ID50129 = var_0;
     self._ID48691 = [];
-    var_3 = var_0;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_0 )
     {
-        var_4 = var_3[var_5];
-
         if ( var_4._ID172 == "script_origin" )
         {
             self._ID50129 = _ID42237::_ID3321( self._ID50129, var_4 );
@@ -6659,21 +6388,33 @@ _ID48491()
         }
     }
 
-    var_clear_2
-    var_clear_0
-
     if ( self._ID50129.size > 0 )
         level._ID52873 = _ID42407::_ID3317( level._ID52873, self._ID50129 );
 
     switch ( self._ID922 )
     {
-
+        case "enemy_javelin":
+            _ID42407::_ID17509();
+            _ID46601();
+            thread _ID47524();
+            break;
+        case "enemy_stinger":
+            _ID47210();
+            thread _ID43173();
+            break;
+        case "enemy_spotter_prone":
+            _ID42407::_ID17509();
+            self._ID49335 = "enemy_spotter_prone_idle";
+            self._ID53396 = "enemy_spotter_prone_react";
+            thread _ID53492();
+            break;
+        case "enemy_spotter_crouched":
+            _ID42407::_ID17509();
+            self._ID49335 = "enemy_spotter_crouched_idle";
+            self._ID53396 = "enemy_spotter_crouched_react";
+            thread _ID53492();
+            break;
     }
-
-    case "enemy_javelin":
-    case "enemy_stinger":
-    case "enemy_spotter_crouched":
-    case "enemy_spotter_prone":
 }
 
 _ID47210()
@@ -6698,7 +6439,7 @@ _ID46601()
     self._ID52785 = level._ID30895["generic"]["javelin_death" + var_0];
     self._ID49082 = level._ID30895["generic"]["javelin_death_reloading" + var_0];
 
-    if ( _func_02F( self._ID52325 ) )
+    if ( isdefined( self._ID52325 ) )
     {
         self._ID50813 = "javelin_fire_short";
         self._ID52785 = level._ID30895["generic"]["javelin_death_barrett"];
@@ -6709,30 +6450,30 @@ _ID46601()
 _ID43173()
 {
     self endon( "death" );
-    thread _unknown_B67B();
-    thread _unknown_B5C0();
+    thread _ID54740();
+    thread _ID44797();
     self endon( "alerted" );
     self._ID29359 _ID42259::_ID3023( self, self._ID44964 );
     var_0 = undefined;
     var_1 = undefined;
     var_2 = undefined;
-    self _meth_801D( "weapon_stinger", "TAG_INHAND", 1 );
+    self attach( "weapon_stinger", "TAG_INHAND", 1 );
     self._ID54388 = 1;
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
         self._ID29359 thread _ID42259::_ID3025( self, self._ID49335, "stop_idle" );
-        wait(_func_0BA( 2, 5 ));
+        wait(randomfloatrange( 2, 5 ));
         self._ID29359 notify( "stop_idle" );
         self._ID29359 thread _ID42259::_ID3020( self, self._ID50813 );
         self waittillmatch( "single anim",  "fire_weapon"  );
-        var_0 = _unknown_B6AF();
+        var_0 = _ID54023();
 
-        if ( _func_02F( var_0 ) )
+        if ( isdefined( var_0 ) )
         {
-            var_2 = self _meth_818C( "tag_inhand" );
-            var_1 = _func_1C8( "stinger", var_2, var_0._ID740 );
-            var_1 _meth_81E5( var_0 );
+            var_2 = self gettagorigin( "tag_inhand" );
+            var_1 = magicbullet( "stinger", var_2, var_0._ID740 );
+            var_1 missile_settargetent( var_0 );
         }
 
         self waittillmatch( "single anim",  "end"  );
@@ -6744,25 +6485,25 @@ _ID44797()
     self waittill( "death" );
     self endon( "weapon_detached" );
 
-    if ( _func_02F( self._ID48667 ) && !_func_02F( self._ID52603 ) )
+    if ( isdefined( self._ID48667 ) && !isdefined( self._ID52603 ) )
         _ID42407::_ID41115( "deathanim", "end", 4 );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    if ( _func_02F( self._ID54388 ) )
+    if ( isdefined( self._ID54388 ) )
     {
-        if ( _func_02F( self ) )
+        if ( isdefined( self ) )
         {
-            self _meth_802A( "weapon_stinger", "TAG_INHAND" );
+            self detach( "weapon_stinger", "TAG_INHAND" );
             self._ID54388 = undefined;
         }
     }
-    else if ( _func_02F( self._ID48667 ) )
+    else if ( isdefined( self._ID48667 ) )
     {
-        if ( _func_02F( self ) )
+        if ( isdefined( self ) )
         {
-            self _meth_802A( "weapon_javelin_sp", "TAG_INHAND" );
+            self detach( "weapon_javelin_sp", "TAG_INHAND" );
             self._ID48667 = undefined;
         }
     }
@@ -6771,23 +6512,23 @@ _ID44797()
 _ID47524()
 {
     self endon( "death" );
-    thread _unknown_B77D();
-    thread _unknown_B6C2();
+    thread _ID54740();
+    thread _ID44797();
     self endon( "alerted" );
-    var_0 = _func_0C9( "javelin_death_node", "targetname" );
+    var_0 = getnodearray( "javelin_death_node", "targetname" );
 
-    if ( !_func_02F( self._ID52325 ) )
+    if ( !isdefined( self._ID52325 ) )
         self._ID29359 _ID42259::_ID3023( self, self._ID44964 );
 
     var_1 = undefined;
     var_2 = undefined;
-    self _meth_801D( "weapon_javelin_sp", "TAG_INHAND", 1 );
+    self attach( "weapon_javelin_sp", "TAG_INHAND", 1 );
     self._ID48667 = 1;
     var_3 = 0;
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
-        if ( _func_02F( self._ID52325 ) )
+        if ( isdefined( self._ID52325 ) )
         {
             self._ID9813 = undefined;
 
@@ -6796,22 +6537,22 @@ _ID47524()
 
             self._ID452 = 16;
 
-            if ( _ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) && !_func_02F( self._ID31388 ) )
+            if ( _ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) && !isdefined( self._ID31388 ) )
             {
                 var_4 = _ID42237::_ID16182( self._ID740, var_0 );
-                self _meth_81B1( var_4 );
+                self setgoalnode( var_4 );
                 self waittill( "goal" );
-                self _meth_80B7();
+                self delete();
                 return;
             }
 
-            self _meth_81B1( self._ID52325[var_3] );
+            self setgoalnode( self._ID52325[var_3] );
             self._ID29359 = self._ID52325[var_3];
             var_3++;
             self waittill( "goal" );
         }
 
-        if ( _ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) && _func_02F( self._ID31388 ) )
+        if ( _ID42237::_ID14385( "obj_commerce_defend_snipe_complete" ) && isdefined( self._ID31388 ) )
         {
             var_5 = [];
             var_5[0] = self;
@@ -6821,22 +6562,22 @@ _ID47524()
         self._ID29359 thread _ID42259::_ID3025( self, self._ID49335, "stop_idle" );
         self._ID9813 = self._ID52785;
 
-        if ( _func_02F( self._ID52325 ) )
+        if ( isdefined( self._ID52325 ) )
             wait 0.25;
         else
-            wait(_func_0BA( 2, 7 ));
+            wait(randomfloatrange( 2, 7 ));
 
         self._ID29359 notify( "stop_idle" );
         thread _ID42259::_ID3020( self, self._ID50813 );
         self waittillmatch( "single anim",  "fire_weapon"  );
-        var_1 = _unknown_B84B();
+        var_1 = _ID54023();
 
-        if ( _func_02F( var_1 ) )
+        if ( isdefined( var_1 ) )
         {
-            var_2 = _func_1C8( "javelin_dcburn", self _meth_818C( "tag_inhand" ), var_1._ID740 );
-            _func_157( _ID42237::_ID16299( "javelin_muzzle" ), self, "TAG_FLASH" );
-            var_2 _meth_81E5( var_1 );
-            var_2 _meth_81E9();
+            var_2 = magicbullet( "javelin_dcburn", self gettagorigin( "tag_inhand" ), var_1._ID740 );
+            playfxontag( _ID42237::_ID16299( "javelin_muzzle" ), self, "TAG_FLASH" );
+            var_2 missile_settargetent( var_1 );
+            var_2 missile_setflightmodetop();
         }
 
         self waittillmatch( "single anim",  "end"  );
@@ -6847,24 +6588,24 @@ _ID54023()
 {
     self endon( "death" );
     self endon( "alerted" );
-    self._ID50129 = _unknown_C65C( self._ID50129 );
-    level._ID52873 = _unknown_C665( level._ID52873 );
+    self._ID50129 = _ID52455( self._ID50129 );
+    level._ID52873 = _ID52455( level._ID52873 );
     var_0 = undefined;
 
     if ( self._ID54201 == 1 && self._ID53511 == 1 )
     {
         if ( self._ID50129.size > 0 )
-            var_0 = self._ID50129[_func_0B7( self._ID50129.size )];
+            var_0 = self._ID50129[randomint( self._ID50129.size )];
         else if ( level._ID52873.size > 0 )
-            var_0 = level._ID52873[_func_0B7( level._ID52873.size )];
+            var_0 = level._ID52873[randomint( level._ID52873.size )];
         else
-            var_0 = self._ID48691[_func_0B7( self._ID48691.size )];
+            var_0 = self._ID48691[randomint( self._ID48691.size )];
 
         self._ID54201 = 0;
     }
     else
     {
-        var_0 = self._ID48691[_func_0B7( self._ID48691.size )];
+        var_0 = self._ID48691[randomint( self._ID48691.size )];
         self._ID54201 = 1;
     }
 
@@ -6874,27 +6615,27 @@ _ID54023()
 _ID53492()
 {
     self endon( "death" );
-    thread _unknown_B934();
+    thread _ID54740();
     self endon( "alerted" );
     self._ID29359 _ID42259::_ID3025( self, self._ID49335, "stop_idle" );
 }
 
 _ID54740()
 {
-    if ( _func_02F( self._ID1194 ) && self._ID1194 == "allies" )
+    if ( isdefined( self._ID1194 ) && self._ID1194 == "allies" )
         return;
 
     self endon( "death" );
     self waittill( "alerted" );
     self._ID452 = self._ID25510;
 
-    if ( _func_02F( self._ID54388 ) )
+    if ( isdefined( self._ID54388 ) )
     {
-        if ( _func_02F( self._ID7._ID28253 ) && self._ID7._ID28253 == "crouch" )
+        if ( isdefined( self._ID7._ID28253 ) && self._ID7._ID28253 == "crouch" )
             self._ID53396 = "stinger_react_crouch";
     }
 
-    if ( _func_02F( self._ID29359 ) )
+    if ( isdefined( self._ID29359 ) )
         self._ID29359 notify( "stop_idle" );
 
     self notify( "stop_idle" );
@@ -6902,15 +6643,15 @@ _ID54740()
     _ID42259::_ID3020( self, self._ID53396 );
     self._ID9813 = undefined;
 
-    if ( _func_02F( self._ID54388 ) )
+    if ( isdefined( self._ID54388 ) )
     {
-        self _meth_802A( "weapon_stinger", "TAG_INHAND" );
+        self detach( "weapon_stinger", "TAG_INHAND" );
         self notify( "weapon_detached" );
         self._ID54388 = undefined;
     }
-    else if ( _func_02F( self._ID48667 ) )
+    else if ( isdefined( self._ID48667 ) )
     {
-        self _meth_802A( "weapon_javelin_sp", "TAG_INHAND" );
+        self detach( "weapon_javelin_sp", "TAG_INHAND" );
         self notify( "weapon_detached" );
         self._ID48667 = undefined;
     }
@@ -6922,7 +6663,7 @@ _ID48687()
 {
     self endon( "death" );
 
-    if ( _func_02F( self ) && _func_1A7( self ) && !_func_02F( self._ID54440 ) )
+    if ( isdefined( self ) && isalive( self ) && !isdefined( self._ID54440 ) )
     {
         self notify( "alerted" );
         wait 1;
@@ -6938,7 +6679,7 @@ _ID48566()
     if ( !_ID42237::_ID14396( self._ID31190 ) )
         _ID42237::_ID14400( self._ID31190 );
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
         if ( _ID42237::_ID14385( self._ID31190 ) )
             break;
@@ -6956,16 +6697,16 @@ _ID48566()
 _ID46754()
 {
     self endon( "death" );
-    thread _ID47301( 1 );
+    thread _ID53895( 1 );
     self endon( "stop_default_drone_mi" );
 
-    if ( _func_02F( self._ID922 ) && self._ID922 == "drone_warrior_fodder" )
+    if ( isdefined( self._ID922 ) && self._ID922 == "drone_warrior_fodder" )
         self._ID24866 = 1;
 
-    if ( _func_02F( self._ID24866 ) )
-        thread _unknown_BB17();
+    if ( isdefined( self._ID24866 ) )
+        thread _ID47301();
 
-    if ( _func_02F( self._ID922 ) && self._ID922 == "ai_ambient" )
+    if ( isdefined( self._ID922 ) && self._ID922 == "ai_ambient" )
     {
         self._ID11572 = 1;
         self._ID31276 = 0;
@@ -6973,43 +6714,46 @@ _ID46754()
 
     self waittill( "goal" );
 
-    if ( _func_02F( self._ID922 ) )
+    if ( isdefined( self._ID922 ) )
     {
         switch ( self._ID922 )
         {
-
+            case "death_by_mortar":
+                thread _ID45664();
+                break;
+            case "drone_warrior":
+                thread _ID52095();
+                break;
+            case "drone_warrior_fodder":
+                thread _ID52107();
+                break;
+            default:
+                self delete();
         }
-
-        return;
     }
-
-    self _meth_80B7();
-    return;
-    case "drone_warrior":
-    case "death_by_mortar":
-    case "drone_warrior_fodder":
-    default:
+    else
+        self delete();
 }
 
 _ID47301()
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     thread _ID42286::_ID11846();
     self waittill( "death" );
     wait 10;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        if ( !_ID42237::_ID41802( level._ID794 _meth_80AF(), level._ID794 _meth_8346(), self._ID740, level._ID8760["90"] ) )
+        if ( !_ID42237::_ID41802( level._ID794 geteye(), level._ID794 getplayerangles(), self._ID740, level._ID8760["90"] ) )
             break;
 
         wait 5;
     }
 
-    if ( _func_02F( self ) )
-        self _meth_80B7();
+    if ( isdefined( self ) )
+        self delete();
 }
 
 _ID52095()
@@ -7028,14 +6772,14 @@ _ID52107()
     if ( _ID42237::_ID8201() )
     {
         var_4 = 720;
-        var_3 = _func_06A( "trigger_radius", var_0, var_2, var_4, var_1 );
-        thread _unknown_BC3F( var_3 );
+        var_3 = spawn( "trigger_radius", var_0, var_2, var_4, var_1 );
+        thread _ID45664( var_3 );
     }
     else
     {
-        var_4 = _func_0B9( 400, 512 );
-        var_3 = _func_06A( "trigger_radius", var_0, var_2, var_4, var_1 );
-        thread _unknown_BC30( var_3 );
+        var_4 = randomintrange( 400, 512 );
+        var_3 = spawn( "trigger_radius", var_0, var_2, var_4, var_1 );
+        thread _ID43260( var_3 );
     }
 }
 
@@ -7043,69 +6787,69 @@ _ID43260( var_0 )
 {
     self endon( "death" );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         var_0 waittill( "trigger" );
 
     var_1 = _ID42237::_ID28945( level._ID44323 )._ID740;
     thread _ID42237::_ID27077( "h2_wpn_desert_eagle_npc_close", self._ID740 );
     thread _ID42237::_ID27077( "bullet_large_flesh", self._ID740 );
-    var_2 = self _meth_818C( "tag_eye" );
-    var_3 = _func_119( var_2 - var_1 );
-    _func_156( _ID42237::_ID16299( "headshot" ), var_2, var_3 );
-    _func_157( _ID42237::_ID16299( "bodyshot" ), self, "tag_eye" );
+    var_2 = self gettagorigin( "tag_eye" );
+    var_3 = vectornormalize( var_2 - var_1 );
+    playfx( _ID42237::_ID16299( "headshot" ), var_2, var_3 );
+    playfxontag( _ID42237::_ID16299( "bodyshot" ), self, "tag_eye" );
     self notify( "stop_drone_fighting" );
 
     if ( _ID42237::_ID8201() )
         thread _ID42237::_ID27077( "generic_death_american_1", self._ID740 );
 
-    self _meth_8058();
+    self kill();
 }
 
 _ID45664( var_0 )
 {
     self endon( "death" );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
         var_0 waittill( "trigger" );
 
     if ( !level._ID43469 )
         _ID42237::_ID27077( "mortar_incoming", self._ID740 );
 
-    thread _unknown_C36A( self._ID740 );
+    thread _ID52645( self._ID740 );
     self notify( "stop_drone_fighting" );
 
     if ( _ID42237::_ID8201() )
         thread _ID42237::_ID27077( "generic_death_american_1", self._ID740 );
 
-    if ( !_func_02F( self._ID3203 ) )
-        var_1 = level._ID30895["generic"]["deathanim_mortar_0" + _func_0B7( 2 )];
-    else if ( _func_125( self._ID3203, "stand" ) || _func_125( self._ID3203, "crouch" ) )
+    if ( !isdefined( self._ID3203 ) )
+        var_1 = level._ID30895["generic"]["deathanim_mortar_0" + randomint( 2 )];
+    else if ( issubstr( self._ID3203, "stand" ) || issubstr( self._ID3203, "crouch" ) )
         var_1 = level._ID30895["generic"]["deathanim_mortar_01"];
     else
-        var_1 = level._ID30895["generic"]["deathanim_mortar_0" + _func_0B7( 2 )];
+        var_1 = level._ID30895["generic"]["deathanim_mortar_0" + randomint( 2 )];
 
-    if ( _func_02F( self._ID9813 ) )
+    if ( isdefined( self._ID9813 ) )
     {
         if ( _ID42237::_ID8201() )
             var_1 = self._ID9813;
     }
 
     self._ID9813 = var_1;
-    self _meth_8058();
+    self kill();
 }
 
 _ID53895( var_0 )
 {
-    self waittill( "death",  var_2, var_2  );
+    self waittill( "death",  var_1, var_2  );
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         return;
 
-    if ( _func_02F( var_1._ID1193 ) && var_1._ID1193 == "heli_player" && _ID42237::_ID14385( "player_on_minigun" ) )
+    if ( isdefined( var_1._ID1193 ) && var_1._ID1193 == "heli_player" && _ID42237::_ID14385( "player_on_minigun" ) )
     {
         self._ID34237 = 1;
 
-        if ( _func_02F( var_0 ) && var_0 == 1 )
+        if ( isdefined( var_0 ) && var_0 == 1 )
             _ID42407::_ID54515( self._ID740, "explosive", 50 );
     }
 }
@@ -7120,56 +6864,56 @@ _ID44534()
 
 _ID45768()
 {
-    _func_152( "crash_heli_rumble" );
-    _func_152( "Heli_pass_above" );
-    _func_14E( "missile_attackheli_dcburn" );
-    _func_14C( "viewhands_us_army_dmg" );
-    _func_14E( "slamraam_missile_dcburning" );
-    _func_14C( "vehicle_slamraam_destroyed" );
-    _func_14C( "vehicle_bradley_destroyed" );
-    _func_14C( "mil_mre_chocolate01" );
-    _func_14C( "weapon_binocular" );
-    _func_14E( "slamraam_missile_dcburning" );
-    _func_14C( "weapon_bullet_02" );
-    _func_14C( "weapon_m82_MG_Setup_obj" );
-    _func_14C( "projectile_cbu97_clusterbomb" );
-    _func_14C( "weapon_m4m203_acog" );
-    _func_14C( "weapon_stinger" );
-    _func_14C( "weapon_javelin_sp" );
-    _func_14C( "h2_weapon_javelin_base_obj" );
-    _func_14C( "h2_dcburning_obelisk_break_a" );
-    _func_14C( "h2_dcburning_obelisk_break_b" );
-    _func_14C( "h2_dcburning_crutch_animated" );
-    _func_14C( "com_blackhawk_spotlight_on_mg_setup" );
-    _func_150( &"DCBURNING_INFO_EVAC_SITE_HEALTH" );
-    _func_150( &"DCBURNING_OBJ_FOLLOW_SGT_MACEY" );
-    _func_150( &"DCBURNING_OBJ_COMMERCE" );
-    _func_150( &"DCBURNING_OBJ_ROOFTOP" );
-    _func_150( &"DCBURNING_OBJ_HELI_RIDE" );
-    _func_150( &"DCBURNING_OBJ_LINCOLN" );
-    _func_150( &"DCBURNINGINFO_EVAC_SITE_HEALTH" );
-    _func_150( &"DCBURNING_MISSIONFAIL_LEFT_CHOPPER" );
-    _func_150( &"DCBURNING_RAN_OUT_OF_TIME" );
-    _func_150( &"DCBURNING_TIME_REMAINING" );
-    _func_150( &"DCBURNING_OBJ_REGROUP_WITH_TEAM" );
-    _func_150( &"DCBURNING_OBJ_COMMERCE_SUPPORT_EVAC_SITE" );
-    _func_14C( "adrenaline_syringe_animated" );
-    _func_14C( "clotting_powder_animated" );
-    _func_14C( "com_folding_chair" );
-    _func_14C( "com_laptop_rugged_open" );
-    _func_14C( "vehicle_mack_truck_short_destroy" );
-    _func_14C( "vehicle_uaz_fabric_dsr" );
-    _func_14C( "vehicle_luxurysedan_2008_destroy" );
-    _func_14E( "javelin_dcburn" );
-    _func_14E( "javelin_noimpact" );
-    _func_14E( "stinger" );
+    precacherumble( "crash_heli_rumble" );
+    precacherumble( "Heli_pass_above" );
+    precacheitem( "missile_attackheli_dcburn" );
+    precachemodel( "viewhands_us_army_dmg" );
+    precacheitem( "slamraam_missile_dcburning" );
+    precachemodel( "vehicle_slamraam_destroyed" );
+    precachemodel( "vehicle_bradley_destroyed" );
+    precachemodel( "mil_mre_chocolate01" );
+    precachemodel( "weapon_binocular" );
+    precacheitem( "slamraam_missile_dcburning" );
+    precachemodel( "weapon_bullet_02" );
+    precachemodel( "weapon_m82_MG_Setup_obj" );
+    precachemodel( "projectile_cbu97_clusterbomb" );
+    precachemodel( "weapon_m4m203_acog" );
+    precachemodel( "weapon_stinger" );
+    precachemodel( "weapon_javelin_sp" );
+    precachemodel( "h2_weapon_javelin_base_obj" );
+    precachemodel( "h2_dcburning_obelisk_break_a" );
+    precachemodel( "h2_dcburning_obelisk_break_b" );
+    precachemodel( "h2_dcburning_crutch_animated" );
+    precachemodel( "com_blackhawk_spotlight_on_mg_setup" );
+    precachestring( &"DCBURNING_INFO_EVAC_SITE_HEALTH" );
+    precachestring( &"DCBURNING_OBJ_FOLLOW_SGT_MACEY" );
+    precachestring( &"DCBURNING_OBJ_COMMERCE" );
+    precachestring( &"DCBURNING_OBJ_ROOFTOP" );
+    precachestring( &"DCBURNING_OBJ_HELI_RIDE" );
+    precachestring( &"DCBURNING_OBJ_LINCOLN" );
+    precachestring( &"DCBURNINGINFO_EVAC_SITE_HEALTH" );
+    precachestring( &"DCBURNING_MISSIONFAIL_LEFT_CHOPPER" );
+    precachestring( &"DCBURNING_RAN_OUT_OF_TIME" );
+    precachestring( &"DCBURNING_TIME_REMAINING" );
+    precachestring( &"DCBURNING_OBJ_REGROUP_WITH_TEAM" );
+    precachestring( &"DCBURNING_OBJ_COMMERCE_SUPPORT_EVAC_SITE" );
+    precachemodel( "adrenaline_syringe_animated" );
+    precachemodel( "clotting_powder_animated" );
+    precachemodel( "com_folding_chair" );
+    precachemodel( "com_laptop_rugged_open" );
+    precachemodel( "vehicle_mack_truck_short_destroy" );
+    precachemodel( "vehicle_uaz_fabric_dsr" );
+    precachemodel( "vehicle_luxurysedan_2008_destroy" );
+    precacheitem( "javelin_dcburn" );
+    precacheitem( "javelin_noimpact" );
+    precacheitem( "stinger" );
     _ID42313::_ID54261();
-    _func_14C( "h1_mwr_com_widescreen_monitor_des" );
-    _func_14C( "h1_mwr_com_widescreen_monitor_2_des" );
-    _func_14C( "com_widescreen_monitor_on_1_des" );
-    _func_14C( "com_widescreen_monitor_on_2_des" );
-    _func_14C( "com_widescreen_monitor_on_3_des" );
-    _func_14C( "h2_adrenaline_syringe_phys" );
+    precachemodel( "h1_mwr_com_widescreen_monitor_des" );
+    precachemodel( "h1_mwr_com_widescreen_monitor_2_des" );
+    precachemodel( "com_widescreen_monitor_on_1_des" );
+    precachemodel( "com_widescreen_monitor_on_2_des" );
+    precachemodel( "com_widescreen_monitor_on_3_des" );
+    precachemodel( "h2_adrenaline_syringe_phys" );
 }
 
 _ID47940()
@@ -7179,14 +6923,25 @@ _ID47940()
 
     switch ( level._ID15361 )
     {
-
+        case 0:
+            level._ID53836 = 3;
+            level._ID53717 = 1;
+            break;
+        case 1:
+            level._ID53836 = 4;
+            level._ID53717 = 1;
+            break;
+        case 2:
+            level._ID53836 = 4;
+            level._ID53717 = 1;
+            break;
+        case 3:
+            level._ID53836 = 4;
+            level._ID53717 = 1;
+            break;
     }
 
     _ID42237::_ID14402( "difficulty_initialized" );
-    case 3:
-    case 2:
-    case 1:
-    case 0:
 }
 
 _ID46797()
@@ -7198,8 +6953,8 @@ _ID53561()
 {
     for (;;)
     {
-        wait(_func_0BA( 0.05, 0.1 ));
-        self _meth_81EB( _func_0BA( 1, 1.5 ) );
+        wait(randomfloatrange( 0.05, 0.1 ));
+        self setlightintensity( randomfloatrange( 1, 1.5 ) );
     }
 }
 
@@ -7207,8 +6962,8 @@ _ID48168()
 {
     for (;;)
     {
-        wait(_func_0BA( 0.05, 0.1 ));
-        self _meth_81EB( _func_0BA( 0.8, 1.1 ) );
+        wait(randomfloatrange( 0.05, 0.1 ));
+        self setlightintensity( randomfloatrange( 0.8, 1.1 ) );
     }
 }
 
@@ -7216,74 +6971,49 @@ _ID47332()
 {
     for (;;)
     {
-        self _meth_81EB( 0 );
+        self setlightintensity( 0 );
         wait 1;
-        self _meth_81EB( 1.4 );
+        self setlightintensity( 1.4 );
         wait 0.1;
     }
 }
 
 _ID22343()
 {
-    var_0 = _func_1A2( "firelight_flicker", "targetname" );
-    _ID42237::_ID3350( var_0, ::_unknown_C6EB );
-    var_1 = _func_1A2( "flickerlight1", "targetname" );
-    var_2 = var_1;
+    var_0 = getentarray( "firelight_flicker", "targetname" );
+    _ID42237::_ID3350( var_0, ::_ID51970 );
+    var_1 = getentarray( "flickerlight1", "targetname" );
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
-        var_3 thread _unknown_C705();
-    }
+    foreach ( var_3 in var_1 )
+        var_3 thread _ID47366();
 
-    var_clear_2
-    var_clear_0
-    var_5 = _func_1A2( "fluorescentFlicker", "targetname" );
-    var_6 = var_5;
+    var_5 = getentarray( "fluorescentFlicker", "targetname" );
 
-    for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
-    {
-        var_7 = var_6[var_8];
-        var_7 thread _unknown_C123();
-    }
+    foreach ( var_7 in var_5 )
+        var_7 thread _ID53561();
 
-    var_clear_2
-    var_clear_0
-    var_5 = _func_1A2( "fluorescentFlickerBig", "targetname" );
-    var_9 = var_5;
+    var_5 = getentarray( "fluorescentFlickerBig", "targetname" );
 
-    for ( var_10 = _func_1DA( var_9 ); _func_02F( var_10 ); var_10 = _func_1BF( var_9, var_10 ) )
-    {
-        var_7 = var_9[var_10];
-        var_7 thread _unknown_C155();
-    }
+    foreach ( var_7 in var_5 )
+        var_7 thread _ID48168();
 
-    var_clear_1
-    var_clear_0
-    var_11 = _func_1A2( "strobe1", "targetname" );
-    var_12 = var_11;
+    var_11 = getentarray( "strobe1", "targetname" );
 
-    for ( var_14 = _func_1DA( var_12 ); _func_02F( var_14 ); var_14 = _func_1BF( var_12, var_14 ) )
-    {
-        var_13 = var_12[var_14];
-        var_13 thread _unknown_C189();
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_13 in var_11 )
+        var_13 thread _ID47332();
 }
 
 _ID45905( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = 0;
 
     waitframe;
 
-    if ( _func_02F( var_1 ) && var_1 != 1 )
+    if ( isdefined( var_1 ) && var_1 != 1 )
     {
         level._ID35507 = [];
         level._ID44035 = _ID42407::_ID35168( "teamLeader" );
@@ -7292,7 +7022,7 @@ _ID45905( var_0, var_1, var_2 )
         level._ID35507[0] = level._ID44035;
         level._ID35507[1] = level._ID49792;
         level._ID35507[2] = level._ID48061;
-        _ID42237::_ID3350( level._ID35507, ::_unknown_C2A2 );
+        _ID42237::_ID3350( level._ID35507, ::_ID46555 );
         level._ID13290 = [];
         level._ID13290[0] = level._ID44035;
     }
@@ -7302,14 +7032,14 @@ _ID45905( var_0, var_1, var_2 )
     if ( var_0 == "Bunker" )
         return;
 
-    if ( _func_02F( var_2 ) && var_2 == 1 )
+    if ( isdefined( var_2 ) && var_2 == 1 )
     {
-        var_3 = _func_0C9( "playerStart" + var_0, "targetname" );
+        var_3 = getnodearray( "playerStart" + var_0, "targetname" );
         _ID42407::_ID37442( var_3 );
     }
 
     var_4 = level._ID35507;
-    var_5 = _func_0C9( "friendlyStart" + var_0, "targetname" );
+    var_5 = getnodearray( "friendlyStart" + var_0, "targetname" );
 
     while ( var_4.size > 0 )
     {
@@ -7317,17 +7047,28 @@ _ID45905( var_0, var_1, var_2 )
 
         for ( var_6 = 0; var_6 < var_5.size; var_6++ )
         {
-            if ( _func_02F( var_5[var_6]._ID922 ) )
+            if ( isdefined( var_5[var_6]._ID922 ) )
             {
                 switch ( var_5[var_6]._ID922 )
                 {
-
+                    case "nodeLeader":
+                        level._ID44035 _ID42407::_ID37393( var_5[var_6] );
+                        var_4 = _ID42237::_ID3321( var_4, level._ID44035 );
+                        var_5 = _ID42237::_ID3321( var_5, var_5[var_6] );
+                        continue;
+                    case "nodeFriendly02":
+                        level._ID49792 _ID42407::_ID37393( var_5[var_6] );
+                        var_4 = _ID42237::_ID3321( var_4, level._ID49792 );
+                        var_5 = _ID42237::_ID3321( var_5, var_5[var_6] );
+                        continue;
+                    case "nodeFriendly03":
+                        level._ID48061 _ID42407::_ID37393( var_5[var_6] );
+                        var_4 = _ID42237::_ID3321( var_4, level._ID48061 );
+                        var_5 = _ID42237::_ID3321( var_5, var_5[var_6] );
+                        continue;
+                    default:
+                        continue;
                 }
-
-                case "nodeFriendly03":
-                case "nodeFriendly02":
-                case "nodeLeader":
-                default:
             }
         }
     }
@@ -7347,35 +7088,23 @@ _ID46555()
 _ID52395()
 {
     level._ID14382 = 128;
-    var_0 = level._ID35507;
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in level._ID35507 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_02F( self ) )
+        if ( isdefined( self ) )
             self._ID382 = level._ID14382;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID44608()
 {
     level._ID14382 = undefined;
-    var_0 = level._ID35507;
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in level._ID35507 )
     {
-        var_1 = var_0[var_2];
-
-        if ( _func_02F( self ) )
+        if ( isdefined( self ) )
             self._ID382 = 64;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID43426( var_0 )
@@ -7384,7 +7113,7 @@ _ID43426( var_0 )
     var_0 waittill( "trigger" );
     self notify( "landing" );
     _ID42407::_ID40118();
-    self _meth_8266( var_0._ID65[1] );
+    self setgoalyaw( var_0._ID65[1] );
     _ID42544::_ID40185( undefined, var_0 );
     self notify( "landed" );
 }
@@ -7392,19 +7121,19 @@ _ID43426( var_0 )
 _ID47735()
 {
     var_0 = _ID42237::_ID16638( self._ID922, "script_noteworthy" );
-    var_1 = _func_0F3( self._ID740, var_0._ID740 );
+    var_1 = distance( self._ID740, var_0._ID740 );
     _ID42407::_ID40191( var_1 );
     thread _ID42411::_ID40218( var_0 );
 }
 
 _ID45307( var_0, var_1 )
 {
-    _unknown_C5AF();
+    _ID44705();
     var_2 = _ID42407::_ID16728( var_0 );
     var_2._ID1191 = var_1._ID1193;
     var_2._ID740 = var_1._ID740;
 
-    if ( _func_02F( var_1._ID65 ) )
+    if ( isdefined( var_1._ID65 ) )
         var_2._ID65 = ( var_1._ID65[0], var_1._ID65[1], var_2._ID65[2] );
 
     var_3 = _ID42411::_ID35195( var_0 );
@@ -7416,7 +7145,7 @@ _ID45307( var_0, var_1 )
 achievement_bird_hunter_init()
 {
     level.birdhunterkill = 0;
-    thread _unknown_C509();
+    thread achievement_bird_hunter_manager();
 }
 
 achievement_bird_hunter_manager()
@@ -7432,13 +7161,13 @@ achievement_bird_hunter_manager()
 achievement_bird_hunter()
 {
     level endon( "achievement_bird_hunter_done" );
-    self waittill( "death",  var_2, var_2, var_2  );
+    self waittill( "death",  var_0, var_1, var_2  );
 
-    if ( _func_02F( var_0 ) && _func_1B3( var_0 ) )
+    if ( isdefined( var_0 ) && isplayernumber( var_0 ) )
     {
-        if ( _func_02F( var_1 ) && var_1 == "MOD_PROJECTILE" )
+        if ( isdefined( var_1 ) && var_1 == "MOD_PROJECTILE" )
         {
-            if ( _func_02F( var_2 ) && var_2 == "javelin_dcburn" )
+            if ( isdefined( var_2 ) && var_2 == "javelin_dcburn" )
                 level.birdhunterkill++;
         }
     }
@@ -7446,92 +7175,100 @@ achievement_bird_hunter()
 
 _ID47372()
 {
-    if ( _func_039( "dc_debug" ) == "1" && _func_02F( self._ID988._ID1193 ) )
+    if ( getdvar( "dc_debug" ) == "1" && isdefined( self._ID988._ID1193 ) )
         thread _ID42407::_ID9904( self._ID988._ID1193, self._ID740, 9999, self );
 
     if ( _ID42413::_ID20706() )
         thread _ID42413::_ID15010();
 
     if ( _ID42411::_ID20763() && !_ID42237::_ID14385( "achievement_bird_hunter_done" ) )
-        thread _unknown_C5BF();
+        thread achievement_bird_hunter();
 
     switch ( self._ID1282 )
     {
-
+        case "latvee":
+        case "laatpv_minigun":
+        case "laatpv":
+            thread _ID53799();
+            break;
+        case "mi17":
+            thread _ID43334();
+            break;
+        case "littlebird":
+            thread _ID47879();
+            break;
+        case "m1a1":
+            thread _ID48430();
+            break;
+        case "btr80":
+            thread _ID54076();
+            break;
+        case "cobra":
+            thread _ID44060();
+            break;
+        case "mi28":
+            thread _ID45533();
+            break;
+        case "slamraam":
+            thread _ID54210();
+            break;
     }
-
-    case "m1a1":
-    case "laatpv":
-    case "laatpv_minigun":
-    case "slamraam":
-    case "latvee":
-    case "btr80":
-    case "mi28":
-    case "littlebird":
-    case "cobra":
-    case "mi17":
 }
 
 _ID54210()
 {
     self endon( "death" );
-    self _meth_826C( level._ID794 );
-    var_0 = self._ID23757;
+    self setturrettargetent( level._ID794 );
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
-    {
-        var_1 = var_0[var_2];
-        self _meth_801D( self._ID23746, var_1 );
-    }
+    foreach ( var_1 in self._ID23757 )
+        self attach( self._ID23746, var_1 );
 
-    var_clear_2
-    var_clear_0
     self._ID51170 = 3;
-    thread _unknown_C7A8();
+    thread _ID51046();
     var_3 = undefined;
     var_1 = undefined;
     var_4 = level._ID794;
 
-    while ( _func_02F( self ) && self._ID23757.size > 0 )
+    while ( isdefined( self ) && self._ID23757.size > 0 )
     {
         self waittill( "fire" );
         var_1 = _ID42237::_ID28945( self._ID23757 );
         self._ID23757 = _ID42237::_ID3321( self._ID23757, var_1 );
-        self _meth_802A( self._ID23746, var_1 );
-        var_3 = _func_1C8( "slamraam_missile_dcburning", self _meth_818C( var_1 ), var_4._ID740 );
+        self detach( self._ID23746, var_1 );
+        var_3 = magicbullet( "slamraam_missile_dcburning", self gettagorigin( var_1 ), var_4._ID740 );
         thread maps\dcburning_aud::_ID53638( var_3 );
 
         if ( self._ID23757.size < 1 )
             break;
     }
 
-    self _meth_826D();
+    self clearturrettargetent();
 }
 
 _ID46808()
 {
-    var_0 = _func_06A( "script_origin", self._ID740 + ( 0, 0, 0 ) );
-    var_0 _meth_8053( self );
+    var_0 = spawn( "script_origin", self._ID740 + ( 0, 0, 0 ) );
+    var_0 linkto( self );
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        var_0 _meth_80B4( "crash_heli_rumble" );
+        var_0 playrumblelooponentity( "crash_heli_rumble" );
         wait 0.4;
     }
 
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID45533()
 {
-    self _meth_829E( 20, 40 );
+    self setmaxpitchroll( 20, 40 );
 
-    if ( _func_02F( self._ID31388 ) && self._ID31388 == "custom_rumble" )
-        thread _unknown_C7A3();
+    if ( isdefined( self._ID31388 ) && self._ID31388 == "custom_rumble" )
+        thread _ID46808();
 
-    if ( _func_02F( self._ID1193 ) && _func_125( self._ID1193, "ambient" ) )
+    if ( isdefined( self._ID1193 ) && issubstr( self._ID1193, "ambient" ) )
     {
-        thread _unknown_C7FF();
+        thread _ID52944();
         return;
     }
 
@@ -7541,24 +7278,24 @@ _ID45533()
     self._ID51170 = 3;
     thread _ID42508::_ID18360( "missile_attackheli_dcburn" );
 
-    if ( _func_02F( self._ID922 ) && self._ID922 == "ambient" )
+    if ( isdefined( self._ID922 ) && self._ID922 == "ambient" )
     {
 
     }
-    else if ( _func_02F( self._ID922 ) && self._ID922 == "ambient_attacker" )
+    else if ( isdefined( self._ID922 ) && self._ID922 == "ambient_attacker" )
     {
 
     }
     else
     {
-        _func_0A2( self, ( 0, 0, -80 ) );
-        _func_0AD( self, 1 );
+        target_set( self, ( 0, 0, -80 ) );
+        target_setjavelinonly( self, 1 );
     }
 
-    if ( _func_02F( self._ID922 ) && self._ID922 == "regular" )
+    if ( isdefined( self._ID922 ) && self._ID922 == "regular" )
         return;
 
-    thread _unknown_C8D0();
+    thread _ID51046();
 }
 
 _ID52944()
@@ -7587,48 +7324,36 @@ _ID47879()
     {
         thread _ID42508::_ID18360( "missile_attackheli_dcburn" );
         waitframe;
-        var_0 = self._ID23512;
 
-        for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+        foreach ( var_1 in self._ID23512 )
         {
-            var_1 = var_0[var_2];
-            var_1 _meth_806C( "manual" );
-            var_1 _meth_80EA();
+            var_1 setmode( "manual" );
+            var_1 stopfiring();
         }
-
-        var_clear_2
-        var_clear_0
     }
 }
 
 _ID44705()
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self endon( "death" );
 
-    if ( _func_02F( self._ID29965 ) && self._ID29965.size )
-        _ID42237::_ID3350( self._ID29965, ::_unknown_CD9B );
+    if ( isdefined( self._ID29965 ) && self._ID29965.size )
+        _ID42237::_ID3350( self._ID29965, ::_ID47688 );
 
-    if ( _func_02F( self._ID23512 ) )
+    if ( isdefined( self._ID23512 ) )
     {
-        var_0 = self._ID23512;
-
-        for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+        foreach ( var_1 in self._ID23512 )
         {
-            var_1 = var_0[var_2];
-
-            if ( _func_02F( var_1 ) )
-                var_1 _meth_80B7();
+            if ( isdefined( var_1 ) )
+                var_1 delete();
         }
-
-        var_clear_2
-        var_clear_0
     }
 
     _ID42411::_ID16987();
-    self _meth_80B7();
+    self delete();
 }
 
 _ID48430()
@@ -7638,25 +7363,25 @@ _ID48430()
 
 _ID54076()
 {
-    if ( _func_02F( self._ID1193 ) && self._ID1193 == "btr80s_end" )
+    if ( isdefined( self._ID1193 ) && self._ID1193 == "btr80s_end" )
         return;
 
     self._ID51170 = 3;
-    _func_0A2( self, ( 0, 0, 0 ) );
-    _func_0AD( self, 1 );
-    _func_0AC( self, "top" );
-    thread _unknown_C9C8();
+    target_set( self, ( 0, 0, 0 ) );
+    target_setjavelinonly( self, 1 );
+    target_setattackmode( self, "top" );
+    thread _ID51046();
 
-    if ( _func_02F( self._ID922 ) && self._ID922 == "no_ai" )
+    if ( isdefined( self._ID922 ) && self._ID922 == "no_ai" )
         return;
 
-    if ( _func_02F( self._ID922 ) && self._ID922 == "crows_nest_bmps" )
+    if ( isdefined( self._ID922 ) && self._ID922 == "crows_nest_bmps" )
         return;
 
     if ( !level._ID43469 )
         return;
     else
-        thread _unknown_CA5C();
+        thread _ID44442();
 }
 
 _ID44060()
@@ -7676,28 +7401,28 @@ _ID51046()
     var_0 = undefined;
     var_1 = undefined;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        self waittill( "damage",  var_10, var_9, var_8, var_7, var_6, var_5, var_4, var_3, var_0, var_2  );
+        self waittill( "damage",  var_2, var_0, var_3, var_4, var_5, var_6, var_7, var_8, var_9, var_10  );
 
-        if ( !_func_02F( var_0 ) )
+        if ( !isdefined( var_0 ) )
             continue;
 
-        if ( _func_031( var_0 ) )
+        if ( isstring( var_0 ) )
             continue;
 
-        if ( _func_02F( var_0._ID172 ) && var_0._ID172 == "misc_turret" )
+        if ( isdefined( var_0._ID172 ) && var_0._ID172 == "misc_turret" )
             continue;
 
-        if ( _func_02F( var_0._ID31474 ) && var_0._ID31474 == "axis" )
+        if ( isdefined( var_0._ID31474 ) && var_0._ID31474 == "axis" )
             continue;
 
-        if ( _func_02F( var_0._ID1194 ) && var_0._ID1194 == "axis" )
+        if ( isdefined( var_0._ID1194 ) && var_0._ID1194 == "axis" )
             continue;
 
-        if ( _func_02F( level._ID52945 ) && var_0 == level._ID52945 )
+        if ( isdefined( level._ID52945 ) && var_0 == level._ID52945 )
         {
-            if ( _func_02F( self._ID52722 ) )
+            if ( isdefined( self._ID52722 ) )
                 continue;
 
             self._ID51170--;
@@ -7708,12 +7433,12 @@ _ID51046()
                 continue;
         }
 
-        if ( !_func_02F( var_5 ) || !_func_02F( var_10 ) )
+        if ( !isdefined( var_5 ) || !isdefined( var_10 ) )
             continue;
 
-        if ( var_5 == "MOD_PROJECTILE" && _func_125( var_10, "javelin" ) )
+        if ( var_5 == "MOD_PROJECTILE" && issubstr( var_10, "javelin" ) )
         {
-            if ( _func_1B3( var_0 ) )
+            if ( isplayernumber( var_0 ) )
             {
                 var_1 = 1;
                 self.attackerweaponname = var_10;
@@ -7724,22 +7449,22 @@ _ID51046()
         }
     }
 
-    if ( _func_02F( level._ID52945 ) && var_0 == level._ID52945 )
+    if ( isdefined( level._ID52945 ) && var_0 == level._ID52945 )
     {
 
     }
-    else if ( !_func_1B3( var_0 ) )
+    else if ( !isplayernumber( var_0 ) )
     {
         self notify( "killed_by_friendly" );
 
-        if ( _func_039( "dc_debug" ) == "1" )
-            _func_19F( "friendly just owned a vehicle" );
+        if ( getdvar( "dc_debug" ) == "1" )
+            iprintlnbold( "friendly just owned a vehicle" );
 
         level._ID53717--;
-        thread _unknown_CC02();
+        thread _ID50856();
     }
 
-    thread _unknown_CC13( var_1 );
+    thread _ID40100( var_1 );
 }
 
 _ID44442()
@@ -7749,7 +7474,7 @@ _ID44442()
     self._ID48977 = 0;
     var_0 = undefined;
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
         if ( level._ID794._ID511 )
         {
@@ -7759,46 +7484,46 @@ _ID44442()
 
         wait 0.05;
 
-        if ( _func_0F5( level._ID794._ID740, self._ID740 ) > level._ID50161 )
+        if ( distancesquared( level._ID794._ID740, self._ID740 ) > level._ID50161 )
             var_0 = undefined;
         else
             var_0 = level._ID794;
 
-        if ( _func_02F( var_0 ) && _func_1B3( var_0 ) )
+        if ( isdefined( var_0 ) && isplayernumber( var_0 ) )
         {
             var_1 = 0;
-            var_1 = _func_090( self._ID740, level._ID794._ID740 + ( 0, 0, 0 ), 0, self );
+            var_1 = sighttracepassed( self._ID740, level._ID794._ID740 + ( 0, 0, 0 ), 0, self );
 
             if ( !var_1 )
                 var_0 = undefined;
         }
 
-        if ( !_func_02F( var_0 ) )
-            var_0 = _unknown_A67C();
+        if ( !isdefined( var_0 ) )
+            var_0 = _ID45022();
 
-        if ( _func_02F( var_0 ) && _func_1A7( var_0 ) )
+        if ( isdefined( var_0 ) && isalive( var_0 ) )
         {
             var_2 = var_0._ID740 + ( 0, 0, 32 );
-            self _meth_826B( var_2 );
-            var_3 = _func_0BA( 2, 3 );
+            self setturrettargetvec( var_2 );
+            var_3 = randomfloatrange( 2, 3 );
             _ID42237::_ID41123( "turret_rotate_stopped", var_3 );
 
-            if ( _func_02F( var_0 ) && _func_1B3( var_0 ) )
+            if ( isdefined( var_0 ) && isplayernumber( var_0 ) )
             {
-                var_4 = level._ID794 _meth_80AF();
+                var_4 = level._ID794 geteye();
                 var_5 = _ID42237::_ID41802( var_4, level._ID52945._ID65 + ( 0, -90, 0 ), self._ID740, level._ID8760["45"] );
 
                 if ( var_5 )
                 {
                     if ( !self._ID48977 )
-                        thread _unknown_CCCF();
+                        thread _ID45058();
                 }
             }
 
-            if ( _func_02F( var_0 ) && !_func_1B3( var_0 ) )
+            if ( isdefined( var_0 ) && !isplayernumber( var_0 ) )
             {
                 if ( !self._ID48977 )
-                    thread _unknown_CCE5();
+                    thread _ID45058();
             }
         }
     }
@@ -7812,10 +7537,13 @@ _ID45058()
 
     switch ( self._ID1282 )
     {
-
+        case "btr80":
+            var_0 = 0.5;
+            var_1 = randomintrange( 3, 6 );
+            break;
     }
 
-    endswitch( 2 )  case "btr80" loc_CD18 default loc_CD22
+    endswitch( 2 )  case "btr80" loc_CD04 default loc_CD18
     self._ID48977 = 1;
     var_2 = 0;
 
@@ -7823,11 +7551,10 @@ _ID45058()
     {
         var_2++;
         wait(var_0);
-        self _meth_8272();
+        self fireweapon();
     }
 
     self._ID48977 = 0;
-    default:
 }
 
 _ID50856()
@@ -7849,62 +7576,162 @@ _ID40100( var_0 )
 {
     if ( !level._ID43469 )
     {
-        if ( _func_0AB( self ) )
-            _func_0A3( self );
+        if ( target_istarget( self ) )
+            target_remove( self );
     }
 
     _ID42411::_ID16987();
     self notify( "death",  level._ID794, self.attackertype, self.attackerweaponname  );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        _func_192( 0.25, 0.75, level._ID794._ID740, 1250 );
-        level._ID794 _meth_80B4( "damage_light" );
+        earthquake( 0.25, 0.75, level._ID794._ID740, 1250 );
+        level._ID794 playrumblelooponentity( "damage_light" );
     }
 }
 
 _ID47783()
 {
     self endon( "death" );
-    var_0 = _func_1A1( self._ID1191, "targetname" );
+    var_0 = getent( self._ID1191, "targetname" );
     thread _ID42237::_ID10280( var_0 );
     var_1 = self._ID70;
-    self._ID12293 = _func_06A( "script_origin", var_0._ID740 );
+    self._ID12293 = spawn( "script_origin", var_0._ID740 );
     thread _ID42237::_ID10280( self._ID12293 );
     var_2 = undefined;
 
     switch ( var_0._ID669 )
     {
+        case "com_folding_table":
+            if ( isdefined( self._ID31388 ) )
+                self._ID12293._ID740 = self._ID12293._ID740 + ( 0, -40, 0 );
 
+            self._ID12293._ID65 = var_0._ID65 + ( 0, 0, 0 );
+            self._ID12293 _ID42259::_ID3023( self, var_1 + "_start" );
+            var_3 = spawn( "script_model", self._ID740 );
+            var_3 setmodel( "weapon_uav_control_unit" );
+            thread _ID42237::_ID10280( var_3 );
+            var_3._ID65 = self._ID65 + ( 0, 0, 0 );
+            var_4 = spawnstruct();
+            var_4._ID337 = var_3;
+            var_4._ID409 = 23;
+            var_4._ID1251 = 33.5;
+            var_4._ID893 = 1;
+            var_4._ID41911 = 0;
+            var_4 _ID42407::_ID38694();
+            var_5 = spawn( "script_model", self._ID740 );
+            var_5 setmodel( "com_folding_chair" );
+            var_5._ID65 = self._ID65 + ( 0, 0, 0 );
+            thread _ID42237::_ID10280( var_5 );
+            var_4 = spawnstruct();
+            var_4._ID337 = var_5;
+            var_4._ID409 = -5;
+            var_4 _ID42407::_ID38694();
+
+            if ( var_1 == "laptop_officer_idle" )
+            {
+                var_5 delete();
+                var_3 delete();
+            }
+
+            break;
+        case "mil_bunker_bed2":
+            _ID42407::_ID17509();
+            self._ID12293._ID65 = var_0._ID65 + ( 0, 90, 0 );
+            var_4 = spawnstruct();
+            var_4._ID337 = self._ID12293;
+            var_4._ID1251 = 28;
+            var_4 _ID42407::_ID38694();
+            self._ID12293 _ID42259::_ID3023( self, var_1 + "_start" );
+            break;
+        case "bc_cot":
+            _ID42407::_ID17509();
+            var_4 = spawnstruct();
+            var_4._ID337 = self._ID12293;
+
+            if ( var_1 == "cargoship_sleeping_guy_idle_1" || var_1 == "cargoship_sleeping_guy_idle_2" )
+            {
+                var_4._ID1251 = 22;
+                var_4._ID41911 = 180;
+                var_4._ID409 = 4;
+                var_4 _ID42407::_ID38694();
+            }
+            else if ( var_1 == "afgan_caves_sleeping_guard_idle" )
+            {
+                var_4._ID41911 = 180;
+                var_4 _ID42407::_ID38694();
+            }
+            else if ( var_1 == "DC_Burning_CPR_wounded" || var_1 == "DC_Burning_CPR_medic" )
+            {
+                var_2 = "player_bunker_walk_01";
+                var_4._ID41911 = 195;
+                var_4 _ID42407::_ID38694();
+            }
+            else
+            {
+                var_4._ID41911 = 90;
+                var_4 _ID42407::_ID38694();
+            }
+
+            break;
+        case "stretcher_animated":
+            _ID42407::_ID17509();
+            self._ID12293._ID65 = var_0._ID65 + ( 0, 90, 0 );
+            var_4 = spawnstruct();
+            var_4._ID337 = self._ID12293;
+            var_4._ID1251 = -1;
+            var_4 _ID42407::_ID38694();
+            self._ID12293 _ID42259::_ID3023( self, var_1 + "_start" );
+            break;
+        case "bc_stretcher":
+            _ID42407::_ID17509();
+            self._ID12293._ID65 = var_0._ID65 + ( 0, 0, 0 );
+
+            if ( var_1 == "afgan_caves_sleeping_guard_idle" )
+            {
+                var_4 = spawnstruct();
+                var_4._ID337 = self._ID12293;
+                var_4._ID1251 = -12;
+                var_4._ID893 = 2;
+                var_4 _ID42407::_ID38694();
+            }
+            else
+            {
+                var_4 = spawnstruct();
+                var_4._ID337 = self._ID12293;
+                var_4._ID1251 = 8;
+                var_4 _ID42407::_ID38694();
+            }
+
+            self._ID12293 _ID42259::_ID3023( self, var_1 + "_start" );
+            break;
+        default:
+            _ID42407::_ID17509();
+            self._ID12293._ID65 = var_0._ID65;
+            break;
     }
 
-    thread _unknown_D227( var_1, var_2 );
-    case "bc_stretcher":
-    case "stretcher_animated":
-    case "bc_cot":
-    case "mil_bunker_bed2":
-    case "com_folding_table":
-    default:
+    thread _ID48033( var_1, var_2 );
 }
 
 _ID51288()
 {
     self waittill( "death" );
 
-    if ( _func_02F( self._ID12293 ) && !_func_1A8( self._ID12293 ) )
-        self._ID12293 _meth_80B7();
+    if ( isdefined( self._ID12293 ) && !isspawner( self._ID12293 ) )
+        self._ID12293 delete();
 }
 
 _ID51021( var_0 )
 {
-    var_1 = _func_1A1( var_0, "targetname" );
+    var_1 = getent( var_0, "targetname" );
     self._ID31190 = var_1._ID31190;
     self._ID70 = var_1._ID70;
     self._ID12293 = var_1;
     self._ID1191 = var_1._ID1191;
     var_2 = self._ID70;
     var_3 = undefined;
-    thread _unknown_D270( var_2, var_3 );
+    thread _ID48033( var_2, var_3 );
 }
 
 _ID53409()
@@ -7913,41 +7740,94 @@ _ID53409()
     var_0 = self._ID70;
     var_1 = 0;
 
-    if ( !_func_02F( self._ID12293 ) )
+    if ( !isdefined( self._ID12293 ) )
         self._ID12293 = self._ID988;
 
     var_2 = "player_bunker_walk_01";
 
     switch ( var_0 )
     {
-
+        case "death_explosion_run_F_v1":
+        case "civilian_run_2_crawldeath":
+            _ID42407::_ID17509();
+            self._ID34237 = 1;
+            self._ID24924 = 1;
+            break;
+        case "DC_Burning_artillery_reaction_v1_idle":
+        case "DC_Burning_artillery_reaction_v2_idle":
+        case "DC_Burning_artillery_reaction_v3_idle":
+        case "DC_Burning_artillery_reaction_v4_idle":
+        case "h2_dc_burning_bunker_stumble":
+        case "training_latvee_wounded":
+        case "training_latvee_soldier":
+            var_2 = "player_bunker_walk_01";
+            _ID42407::_ID17509();
+            break;
+        case "bunker_toss_idle_guy1":
+            _ID42407::_ID8925( "on" );
+            break;
+        case "unarmed_panickedrun_loop_V2":
+            _ID42407::_ID32328( "unarmed_panickedrun_loop_V2" );
+            _ID42407::_ID17509();
+            self._ID10998 = 1;
+            self._ID11025 = 1;
+            self._ID452 = 16;
+            self waittill( "goal" );
+            _ID42407::_ID7892();
+            wait 1;
+            _ID42407::_ID17508();
+            var_1 = 1;
+            return;
+        case "roadkill_cover_radio_soldier2":
+            break;
+        case "roadkill_cover_spotter":
+            self attach( "weapon_binocular", "TAG_INHAND", 1 );
+            break;
+        case "roadkill_cover_radio_soldier3":
+            self._ID12293._ID740 = self._ID12293._ID740 + ( 0, 0, 8 );
+            self attach( "mil_mre_chocolate01", "TAG_INHAND", 1 );
+            break;
+        case "favela_run_and_wave":
+            break;
+        case "h2_dcburning_controlroom_ranger05":
+            self._ID12293 _ID42259::_ID3023( self, var_0 );
+            wait 9.5;
+            break;
+        case "h2_dcburning_controlroom_ranger06":
+            _ID42407::_ID17509();
+            self._ID12293 _ID42259::_ID3023( self, var_0 );
+            wait 9.5;
+            break;
+        case "h2_dcburning_medicalbay_soldier_B":
+            _ID42407::_ID17509();
+            _ID32651( "head_us_army_d" );
+            break;
+        case "h2_dc_burning_carrying_Injured_wounded":
+            _ID42407::_ID17509();
+            _ID32651( "head_us_army_a" );
+            break;
+        case "h2_dcburning_medicalbay_soldier_J_idle":
+            _ID42407::_ID17509();
+            self attach( "h2_weapon_m4_base", "tag_weapon_left" );
+            break;
+        case "h2_dcburning_controlroom_ranger01":
+            _ID42407::_ID17509();
+            self attach( "h2_dcburning_crutch_animated", "tag_weapon_right" );
+            break;
+        default:
+            _ID42407::_ID17509();
+            break;
     }
 
-    thread _unknown_D40E( var_0, var_2 );
-    case "h2_dcburning_controlroom_ranger01":
-    case "roadkill_cover_radio_soldier2":
-    case "h2_dcburning_controlroom_ranger06":
-    case "h2_dcburning_controlroom_ranger05":
-    case "favela_run_and_wave":
-    case "bunker_toss_idle_guy1":
-    case "training_latvee_soldier":
-    case "training_latvee_wounded":
-    case "h2_dc_burning_bunker_stumble":
-    case "DC_Burning_artillery_reaction_v4_idle":
-    case "DC_Burning_artillery_reaction_v3_idle":
-    case "DC_Burning_artillery_reaction_v2_idle":
-    case "civilian_run_2_crawldeath":
-    case "DC_Burning_artillery_reaction_v1_idle":
-    case "death_explosion_run_F_v1":
-    default:
+    thread _ID48033( var_0, var_2 );
 }
 
 _ID32651( var_0 )
 {
-    if ( _func_02F( self._ID18304 ) )
-        self _meth_802A( self._ID18304 );
+    if ( isdefined( self._ID18304 ) )
+        self detach( self._ID18304 );
 
-    self _meth_801D( var_0, "", 1 );
+    self attach( var_0, "", 1 );
     self._ID18304 = var_0;
 }
 
@@ -7955,7 +7835,7 @@ scripted_anim_props( var_0, var_1 )
 {
     self._ID3189 = var_1;
     _ID42407::_ID3428();
-    var_2 = _func_0B7( 3 );
+    var_2 = randomint( 3 );
     _ID42407::_ID10226( var_2, _ID42259::_ID3044, self, var_0 );
 }
 
@@ -7973,23 +7853,23 @@ _ID53834( var_0 )
 _ID48033( var_0, var_1 )
 {
     self endon( "death" );
-    _unknown_CBCF();
+    _ID48332();
     var_2 = undefined;
     var_3 = undefined;
     var_4 = 0;
 
-    if ( _func_02F( self._ID1191 ) )
-        var_2 = _func_0C8( self._ID1191, "targetname" );
+    if ( isdefined( self._ID1191 ) )
+        var_2 = getnode( self._ID1191, "targetname" );
 
-    thread _unknown_D3CC();
+    thread _ID51288();
 
-    if ( _func_0D3( level._ID30895["generic"][var_0] ) )
+    if ( isarray( level._ID30895["generic"][var_0] ) )
     {
         var_4 = 1;
         self._ID12293 thread _ID42259::_ID3025( self, var_0, "stop_idle" );
         var_3 = var_0 + "_go";
 
-        if ( _unknown_D634( var_3 ) )
+        if ( _ID3012( var_3 ) )
             var_0 = var_3;
         else
             var_3 = undefined;
@@ -7997,9 +7877,9 @@ _ID48033( var_0, var_1 )
     else
         self._ID12293 _ID42259::_ID3023( self, var_0 );
 
-    if ( _func_02F( self._ID31190 ) )
+    if ( isdefined( self._ID31190 ) )
     {
-        if ( _func_02F( var_1 ) )
+        if ( isdefined( var_1 ) )
             _ID42237::_ID14421( self._ID31190, var_1 );
         else
             _ID42237::_ID14413( self._ID31190 );
@@ -8007,10 +7887,13 @@ _ID48033( var_0, var_1 )
 
     switch ( var_0 )
     {
-
+        case "death_explosion_run_F_v1":
+        case "civilian_run_2_crawldeath":
+            thread _ID52645( self._ID740 );
+            break;
     }
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
     {
         self._ID10998 = 1;
         self._ID11025 = 1;
@@ -8019,7 +7902,7 @@ _ID48033( var_0, var_1 )
     if ( !var_4 )
         self._ID12293 _ID42259::_ID3020( self, var_0 );
 
-    if ( _func_02F( var_3 ) )
+    if ( isdefined( var_3 ) )
     {
         self._ID12293 notify( "stop_idle" );
         self._ID12293 _ID42259::_ID3020( self, var_3 );
@@ -8027,97 +7910,94 @@ _ID48033( var_0, var_1 )
 
     switch ( var_0 )
     {
-
+        case "civilian_run_2_crawldeath":
+            self kill();
+            break;
     }
 
-    if ( _func_02F( var_2 ) )
+    if ( isdefined( var_2 ) )
     {
-        self _meth_81B1( var_2 );
+        self setgoalnode( var_2 );
         wait 1;
         self._ID10998 = 0;
         self._ID11025 = 0;
         self waittill( "goal" );
 
-        if ( _func_02F( self._ID8931 ) && self._ID8931 )
+        if ( isdefined( self._ID8931 ) && self._ID8931 )
             _ID42407::_ID8925( "off" );
     }
-    else if ( _func_02F( level._ID30895["generic"][var_0 + "_idle"] ) )
+    else if ( isdefined( level._ID30895["generic"][var_0 + "_idle"] ) )
         self._ID12293 thread _ID42259::_ID3025( self, var_0 + "_idle", "stop_idle" );
 
-    if ( _unknown_D720( var_0 + "_react" ) )
+    if ( _ID3012( var_0 + "_react" ) )
     {
         if ( !var_4 )
             var_0 += "_idle";
 
         var_5 = var_0 + "_react";
 
-        if ( _unknown_D73B( var_0 + "_react2" ) )
+        if ( _ID3012( var_0 + "_react2" ) )
             var_6 = var_0 + "_react2";
         else
             var_6 = var_5;
 
-        while ( _func_02F( self ) )
+        while ( isdefined( self ) )
         {
             level waittill( "mortar_hit" );
             self._ID12293 notify( "stop_idle" );
             self notify( "stop_idle" );
             waitframe;
 
-            if ( _func_0B7( 100 ) > 50 )
+            if ( randomint( 100 ) > 50 )
                 self._ID12293 _ID42259::_ID3020( self, var_5 );
             else
                 self._ID12293 _ID42259::_ID3020( self, var_6 );
 
             self._ID12293 thread _ID42259::_ID3025( self, var_0, "stop_idle" );
         }
-
-        return;
-        case "civilian_run_2_crawldeath":
-        case "death_explosion_run_F_v1":
-        case "civilian_run_2_crawldeath":
     }
 }
 
 _ID52645( var_0 )
 {
-    _func_156( level._ID1426["mortar"]["dirt"], var_0 );
+    playfx( level._ID1426["mortar"]["dirt"], var_0 );
     thread _ID42237::_ID27077( level._ID30909["mortar"]["dirt"], var_0 );
-    _func_192( 0.25, 0.75, var_0, 1250 );
+    earthquake( 0.25, 0.75, var_0, 1250 );
 }
 
 _ID50312()
 {
-    var_0 = _func_0B7( 2 );
-    _unknown_D7DA( "dcburn_javelins_incoming_0" + var_0 );
+    var_0 = randomint( 2 );
+    _ID44278( "dcburn_javelins_incoming_0" + var_0 );
 }
 
 _ID52536()
 {
-    var_0 = _func_06A( "script_origin", self._ID740 );
-    var_0 _meth_8053( self );
+    var_0 = spawn( "script_origin", self._ID740 );
+    var_0 linkto( self );
     self waittill( "death" );
-    _func_192( 1.2, 1.5, var_0._ID740, 1600 );
+    earthquake( 1.2, 1.5, var_0._ID740, 1600 );
     wait 0.05;
-    var_0 _meth_80B7();
+    var_0 delete();
 }
 
 _ID51869( var_0 )
 {
-    var_1 = _func_1C8( "javelin_noimpact", var_0._ID740, self._ID740 );
-    _func_156( _ID42237::_ID16299( "javelin_muzzle" ), var_0._ID740 );
-    var_1 thread _unknown_D743();
-    var_1 _meth_81E5( self );
-    var_1 _meth_81E9();
+    var_1 = magicbullet( "javelin_noimpact", var_0._ID740, self._ID740 );
+    playfx( _ID42237::_ID16299( "javelin_muzzle" ), var_0._ID740 );
+    var_1 thread _ID52536();
+    var_1 missile_settargetent( self );
+    var_1 missile_setflightmodetop();
 
     for (;;)
     {
-        self waittill( "damage",  var_6, var_5, var_4, var_3, var_2  );
+        self waittill( "damage",  var_2, var_3, var_4, var_5, var_6  );
 
-        if ( _func_02F( var_3._ID170 ) && var_3._ID170 == "worldspawn" && _func_02F( var_2 ) && var_2 > 24 )
+        if ( isdefined( var_3._ID170 ) && var_3._ID170 == "worldspawn" && isdefined( var_2 ) && var_2 > 24 )
             break;
     }
 
-    if ( _func_02F( self ) )
+    if ( isdefined( self ) )
         self notify( "death" );
 }
 
@@ -8128,11 +8008,11 @@ _ID48994()
 
     for ( var_0 = 0; var_0 < level._ID35507.size; var_0++ )
     {
-        if ( !_func_02F( level._ID35507[var_0] ) )
+        if ( !isdefined( level._ID35507[var_0] ) )
             continue;
 
         level._ID35507[var_0]._ID511 = 1;
-        level._ID35507[var_0] _meth_8183( "oblivious" );
+        level._ID35507[var_0] setthreatbiasgroup( "oblivious" );
     }
 }
 
@@ -8143,75 +8023,75 @@ _ID54322()
 
     for ( var_0 = 0; var_0 < level._ID35507.size; var_0++ )
     {
-        if ( !_func_02F( level._ID35507[var_0] ) )
+        if ( !isdefined( level._ID35507[var_0] ) )
             continue;
 
         level._ID35507[var_0]._ID511 = 0;
-        level._ID35507[var_0] _meth_8183( "allies" );
+        level._ID35507[var_0] setthreatbiasgroup( "allies" );
     }
 }
 
 _ID45378()
 {
-    thread _unknown_CEC6();
+    thread _ID50012();
     _ID42407::_ID32628( 1 );
     self._ID4867 = 0.1;
     self._ID507 = 1;
-    var_0 = _func_0C8( self._ID1191, "targetname" );
+    var_0 = getnode( self._ID1191, "targetname" );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
-        self _meth_81B1( var_0 );
+        self setgoalnode( var_0 );
         self._ID452 = 16;
     }
 }
 
 _ID47366()
 {
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        wait(_func_0BA( 0.05, 0.1 ));
-        self _meth_81EB( _func_0BA( 0.6, 1.8 ) );
+        wait(randomfloatrange( 0.05, 0.1 ));
+        self setlightintensity( randomfloatrange( 0.6, 1.8 ) );
     }
 }
 
 _ID51970()
 {
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        wait(_func_0BA( 0.05, 0.1 ));
-        self _meth_81EB( _func_0BA( 1.2, 2.2 ) );
+        wait(randomfloatrange( 0.05, 0.1 ));
+        self setlightintensity( randomfloatrange( 1.2, 2.2 ) );
     }
 }
 
 _ID45102( var_0, var_1, var_2 )
 {
-    var_3 = _func_1A1( self._ID1191, "targetname" );
-    _func_157( _ID42237::_ID16299( "flare_ambient" ), self, "TAG_FIRE_FX" );
+    var_3 = getent( self._ID1191, "targetname" );
+    playfxontag( _ID42237::_ID16299( "flare_ambient" ), self, "TAG_FIRE_FX" );
     thread _ID42237::_ID27077( "flare_ignite", self._ID740 );
-    var_3 _unknown_D944( var_0, var_2 );
-    var_3 _unknown_D963( var_1 );
-    thread _unknown_D97F();
+    var_3 _ID53117( var_0, var_2 );
+    var_3 _ID47752( var_1 );
+    thread _ID48656();
 }
 
 _ID53117( var_0, var_1 )
 {
-    self _meth_81EB( 0 );
+    self setlightintensity( 0 );
     var_2 = 0;
-    var_3 = var_1 - 0 / var_0 / 0.05;
+    var_3 = ( var_1 - 0 ) / ( var_0 / 0.05 );
     var_4 = 0;
     var_5 = undefined;
 
     while ( var_4 < var_0 )
     {
         var_2 += var_3;
-        var_5 = _func_0BA( -0.05, 0.05 );
+        var_5 = randomfloatrange( -0.05, 0.05 );
         var_2 += var_5;
 
         if ( var_2 < 0 )
             break;
 
-        self _meth_81EB( var_2 );
+        self setlightintensity( var_2 );
         var_4 += 0.05;
         wait 0.05;
     }
@@ -8219,21 +8099,21 @@ _ID53117( var_0, var_1 )
 
 _ID47752( var_0 )
 {
-    var_1 = self _meth_81EA();
-    var_2 = var_1 - 0 / var_0 / 0.05;
+    var_1 = self getlightintensity();
+    var_2 = ( var_1 - 0 ) / ( var_0 / 0.05 );
     var_3 = 0;
     var_4 = undefined;
 
     while ( var_3 < var_0 )
     {
         var_1 -= var_2;
-        var_4 = _func_0BA( -0.05, 0.05 );
+        var_4 = randomfloatrange( -0.05, 0.05 );
         var_1 += var_4;
 
         if ( var_1 < 2 )
             break;
 
-        self _meth_81EB( var_1 );
+        self setlightintensity( var_1 );
         var_3 += 0.05;
         wait 0.05;
     }
@@ -8241,29 +8121,29 @@ _ID47752( var_0 )
 
 _ID48656( var_0, var_1 )
 {
-    var_2 = _func_1A1( self._ID1191, "targetname" );
+    var_2 = getent( self._ID1191, "targetname" );
 
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = 0.6;
 
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = 1.8;
 
     thread _ID42237::_ID27000( "flare_burn_loop" );
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
-        wait(_func_0BA( 0.05, 0.1 ));
-        var_2 _meth_81EB( _func_0BA( var_0, var_1 ) );
+        wait(randomfloatrange( 0.05, 0.1 ));
+        var_2 setlightintensity( randomfloatrange( var_0, var_1 ) );
     }
 }
 
 _ID3012( var_0, var_1 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = "generic";
 
-    if ( _func_02F( level._ID30895[var_1][var_0] ) )
+    if ( isdefined( level._ID30895[var_1][var_0] ) )
         return 1;
     else
         return 0;
@@ -8273,15 +8153,15 @@ _ID44278( var_0 )
 {
     var_1 = _ID42407::_ID15602( level._ID794._ID740, "allies", level._ID13290 );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         var_1 _ID42237::_ID27077( level._ID30909[var_0] );
     else
-        _func_19E( "unable to play random friendly dialogue " + var_0 + " because couldn't find an AI" );
+        iprintln( "unable to play random friendly dialogue " + var_0 + " because couldn't find an AI" );
 }
 
 _ID38942( var_0, var_1, var_2 )
 {
-    var_3 = _func_1A2( var_0, var_1 );
+    var_3 = getentarray( var_0, var_1 );
 
     if ( var_2 == 1 )
         _ID42237::_ID3350( var_3, _ID42237::_ID38865 );
@@ -8291,8 +8171,8 @@ _ID38942( var_0, var_1, var_2 )
 
 _ID18542( var_0 )
 {
-    if ( !_func_02F( var_0 ) )
-        var_0 = _func_1A2( "hide", "script_noteworthy" );
+    if ( !isdefined( var_0 ) )
+        var_0 = getentarray( "hide", "script_noteworthy" );
 
     _ID42237::_ID3350( var_0, _ID42407::_ID18512 );
 }
@@ -8301,24 +8181,24 @@ _ID47688( var_0 )
 {
     self endon( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    if ( _func_02F( var_0 ) && var_0.size > 0 )
+    if ( isdefined( var_0 ) && var_0.size > 0 )
     {
         if ( _ID42407::_ID20542( var_0, self ) )
             return;
     }
 
-    if ( _func_02F( self._ID22746 ) )
+    if ( isdefined( self._ID22746 ) )
         _ID42407::_ID36519();
 
-    if ( !_func_0D6( self ) )
+    if ( !issentient( self ) )
     {
 
     }
 
-    self _meth_80B7();
+    self delete();
 }
 
 _ID32474( var_0 )
@@ -8329,7 +8209,7 @@ _ID32474( var_0 )
 
 _ID47046()
 {
-    if ( _func_02F( self._ID51636 ) )
+    if ( isdefined( self._ID51636 ) )
         self._ID1204 = self._ID51636;
 }
 
@@ -8341,7 +8221,7 @@ _ID46880( var_0, var_1 )
 
 _ID10760( var_0 )
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self endon( "death" );
@@ -8350,8 +8230,8 @@ _ID10760( var_0 )
 
 _ID49522( var_0 )
 {
-    if ( _func_039( "dc_dialog" ) == "1" )
-        _unknown_DBE2( level._ID30909[var_0], level._ID49736 );
+    if ( getdvar( "dc_dialog" ) == "1" )
+        _ID52910( level._ID30909[var_0], level._ID49736 );
 }
 
 _ID52910( var_0, var_1 )
@@ -8359,26 +8239,26 @@ _ID52910( var_0, var_1 )
     var_2 = 0.5;
     level endon( "clearing_hints" );
 
-    if ( _func_02F( level._ID48851 ) )
+    if ( isdefined( level._ID48851 ) )
         level._ID48851 _ID42313::_ID10476();
 
     level._ID48851 = _ID42313::_ID9220( "default", 1.5 );
     level._ID48851 _ID42313::_ID32753( "BOTTOM", undefined, 0, -40 );
     level._ID48851._ID196 = ( 1, 1, 1 );
-    level._ID48851 _meth_80D1( var_0 );
+    level._ID48851 settext( var_0 );
     level._ID48851._ID55 = 0;
-    level._ID48851 _meth_808B( 0.5 );
+    level._ID48851 fadeovertime( 0.5 );
     level._ID48851._ID55 = 1;
     level._ID48851._ID983 = 1;
     wait 0.5;
     level._ID48851 endon( "death" );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         wait(var_1);
     else
         return;
 
-    level._ID48851 _meth_808B( var_2 );
+    level._ID48851 fadeovertime( var_2 );
     level._ID48851._ID55 = 0;
     wait(var_2);
     level._ID48851 _ID42313::_ID10476();
@@ -8386,127 +8266,117 @@ _ID52910( var_0, var_1 )
 
 vehicles_crowsnest_defend_animated_think()
 {
-    if ( !_func_02F( self._ID669 ) || self._ID669 != "vehicle_ch46e_low" )
+    if ( !isdefined( self._ID669 ) || self._ID669 != "vehicle_ch46e_low" )
         return;
 
     _ID42407::_ID3428( "seaknight" );
     self _meth_8571();
-    thread _unknown_DD97();
+    thread _ID44590();
 }
 
 _ID53415()
 {
-    self _meth_805A();
+    self hide();
     var_0 = undefined;
 
-    if ( _func_02F( self._ID1191 ) )
-        var_0 = _func_1A2( self._ID1191, "targetname" );
+    if ( isdefined( self._ID1191 ) )
+        var_0 = getentarray( self._ID1191, "targetname" );
 
-    var_1 = _func_06A( "script_origin", self._ID740 );
+    var_1 = spawn( "script_origin", self._ID740 );
     thread _ID42237::_ID10280( var_1 );
     var_1._ID740 = self._ID740;
     var_1._ID65 = self._ID65;
     var_2 = undefined;
     var_3 = "sniper_escape_ch46_take_off_idle";
-    var_4 = _func_06A( "script_origin", self._ID740 );
-    var_1 thread _unknown_DEFD( self );
-    var_4 thread _unknown_DF03( self );
+    var_4 = spawn( "script_origin", self._ID740 );
+    var_1 thread _ID51301( self );
+    var_4 thread _ID51301( self );
     var_5 = undefined;
     var_6 = undefined;
     var_7 = 0;
 
     switch ( self._ID70 )
     {
-
+        case "h2_sniper_escape_ch46_takeoff":
+            self._ID3189 = "seaknight";
+            var_5 = self._ID43356;
+            var_6 = "ch46_take_off";
+            var_7 = 1;
+            break;
     }
 
     _ID42407::_ID3428( self._ID3189 );
     var_1 _ID42259::_ID3018( self, self._ID70 );
     self waittill( "spawn" );
 
-    if ( _func_02F( var_0 ) )
+    if ( isdefined( var_0 ) )
     {
         var_8 = [];
-        var_9 = var_0;
 
-        for ( var_11 = _func_1DA( var_9 ); _func_02F( var_11 ); var_11 = _func_1BF( var_9, var_11 ) )
-        {
-            var_10 = var_9[var_11];
+        foreach ( var_10 in var_0 )
             var_8[var_8.size] = thread _ID42407::_ID12076( var_10 );
-        }
 
-        var_clear_2
-        var_clear_0
-        _ID42407::_ID10226( 0.05, ::_unknown_DE11, var_8 );
+        _ID42407::_ID10226( 0.05, ::_ID49810, var_8 );
     }
 
-    self _meth_8059();
+    self show();
 
-    if ( _unknown_DD15( var_3, self._ID3189 ) )
+    if ( _ID3012( var_3, self._ID3189 ) )
         var_1 thread _ID42259::_ID3044( self, var_3, "stop_idle" );
 
     if ( var_7 )
-        thread _unknown_DE80();
+        thread _ID44590();
 
-    if ( _func_02F( var_5 ) )
+    if ( isdefined( var_5 ) )
         thread _ID42237::_ID27000( var_5, undefined, 0.5, 3 );
 
-    if ( _func_02F( var_6 ) )
-        thread _unknown_DE8F( var_4, var_6 );
+    if ( isdefined( var_6 ) )
+        thread _ID43602( var_4, var_6 );
 
     self waittill( "play_anim" );
     _ID42407::_ID25088( "taking_off", 4 );
     var_1 notify( "stop_idle" );
 
-    if ( _func_02F( self._ID1193 ) && self._ID1193 == "seaknight_loader_start2" )
+    if ( isdefined( self._ID1193 ) && self._ID1193 == "seaknight_loader_start2" )
     {
-        self _meth_8053( var_1 );
-        var_1 thread _unknown_DE7E();
+        self linkto( var_1 );
+        var_1 thread _ID49136();
     }
 
     var_1 _ID42259::_ID3111( self, self._ID70 );
-    self _meth_80B7();
-    case "h2_sniper_escape_ch46_takeoff":
+    self delete();
 }
 
 _ID49136()
 {
     wait 5;
-    self _meth_82B8( self._ID740 + ( 0, 0, 550 ), 10 );
+    self moveto( self._ID740 + ( 0, 0, 550 ), 10 );
 }
 
 _ID49810( var_0 )
 {
     var_1 = 0;
-    var_2 = var_0;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_0 )
     {
-        var_3 = var_2[var_4];
         var_1++;
         var_3._ID11572 = 1;
         var_3._ID47750 = var_1;
         _ID42259::_ID3023( var_3, "ch46_load_" + var_3._ID47750, "tag_detach" );
     }
 
-    var_clear_2
-    var_clear_0
     self waittill( "load_riders" );
     var_5 = undefined;
     self notify( "stop_rider_idle" );
-    var_6 = var_0;
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
+    foreach ( var_3 in var_0 )
     {
-        var_3 = var_6[var_7];
         thread _ID42259::_ID3020( var_3, "ch46_load_" + var_3._ID47750, "tag_detach" );
-        var_3 thread _unknown_DF50();
+        var_3 thread _ID54477();
         var_5 = "ch46_load_" + var_3._ID47750;
     }
 
-    var_clear_1
-    var_clear_0
-    var_8 = _func_067( level._ID30895["generic"][var_5] );
+    var_8 = getanimlength( level._ID30895["generic"][var_5] );
     wait(var_8 - 2);
     self notify( "riders_loaded" );
 }
@@ -8515,7 +8385,7 @@ _ID54477()
 {
     self endon( "death" );
     self waittillmatch( "single anim",  "end"  );
-    _unknown_DE7A();
+    _ID47688();
 }
 
 _ID43602( var_0, var_1 )
@@ -8523,9 +8393,9 @@ _ID43602( var_0, var_1 )
     self endon( "death" );
     self endon( "taking_off" );
 
-    while ( _func_02F( var_0 ) )
+    while ( isdefined( var_0 ) )
     {
-        _func_156( _ID42237::_ID16299( var_1 ), var_0._ID740 );
+        playfx( _ID42237::_ID16299( var_1 ), var_0._ID740 );
         wait 0.1;
     }
 }
@@ -8534,14 +8404,14 @@ _ID44590()
 {
     self endon( "death" );
     var_0 = _ID42407::_ID16120( "rotors" );
-    var_1 = _func_067( var_0 );
+    var_1 = getanimlength( var_0 );
 
     for (;;)
     {
-        if ( !_func_02F( self ) )
+        if ( !isdefined( self ) )
             break;
 
-        self _meth_8155( var_0 );
+        self setanim( var_0 );
         wait(var_1);
     }
 }
@@ -8557,15 +8427,15 @@ _ID54724( var_0, var_1, var_2 )
     var_3 = undefined;
 
     if ( var_0 == "all" )
-        var_3 = _func_0DE();
+        var_3 = getaiarray();
     else
-        var_3 = _func_0DE( var_0 );
+        var_3 = getaiarray( var_0 );
 
-    if ( _func_02F( var_2 ) )
-        _ID42237::_ID3350( var_3, ::_unknown_DEF3 );
+    if ( isdefined( var_2 ) )
+        _ID42237::_ID3350( var_3, ::_ID47688 );
     else
     {
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             var_1 = 1024;
 
         thread _ID42407::_ID2265( var_3, var_1 );
@@ -8574,7 +8444,7 @@ _ID54724( var_0, var_1, var_2 )
 
 _ID47411( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_0 ) )
+    if ( !isdefined( var_0 ) )
         var_0 = "all";
 
     var_3 = [];
@@ -8587,11 +8457,11 @@ _ID47411( var_0, var_1, var_2 )
     else
         var_3 = level._ID12061[var_0]._ID3291;
 
-    if ( _func_02F( var_2 ) )
-        _ID42237::_ID3350( var_3, ::_unknown_DF5E );
+    if ( isdefined( var_2 ) )
+        _ID42237::_ID3350( var_3, ::_ID47688 );
     else
     {
-        if ( !_func_02F( var_1 ) )
+        if ( !isdefined( var_1 ) )
             var_1 = 1024;
 
         thread _ID42407::_ID2265( var_3, var_1 );
@@ -8602,19 +8472,16 @@ _ID44403()
 {
     self endon( "death" );
     thread _ID42407::_ID22746();
-    self _meth_81B2( self._ID740 );
-    var_0 = _func_1A2( "roof_door", "targetname" );
+    self setgoalpos( self._ID740 );
+    var_0 = getentarray( "roof_door", "targetname" );
     var_1 = undefined;
     var_2 = undefined;
     var_3 = undefined;
-    var_4 = _func_0C8( self._ID1191, "targetname" );
+    var_4 = getnode( self._ID1191, "targetname" );
     var_5 = undefined;
-    var_6 = var_0;
 
-    for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
+    foreach ( var_7 in var_0 )
     {
-        var_7 = var_6[var_8];
-
         if ( var_7._ID172 == "script_origin" )
         {
             var_2 = var_7;
@@ -8646,14 +8513,11 @@ _ID44403()
         var_4 = var_7;
     }
 
-    var_clear_2
-    var_clear_0
-
     for (;;)
     {
         wait 0.05;
 
-        if ( level._ID794 _meth_80B0( var_1 ) )
+        if ( level._ID794 istouching( var_1 ) )
             continue;
 
         if ( _ID42237::_ID14385( "door_being_blocked" ) )
@@ -8662,24 +8526,24 @@ _ID44403()
         break;
     }
 
-    var_5 _meth_8053( var_3 );
-    var_5 _meth_805F();
+    var_5 linkto( var_3 );
+    var_5 connectpaths();
     var_2._ID65 = var_3._ID65;
-    self _meth_8071( "scn_npc_scream", "dialogue_done", 1 );
-    var_3 thread _unknown_E218( var_2 );
+    self playsoundatviewheight( "scn_npc_scream", "dialogue_done", 1 );
+    var_3 thread _ID11592( var_2 );
     thread _ID42407::_ID36519();
     self._ID452 = 16;
-    self _meth_81B1( var_4 );
+    self setgoalnode( var_4 );
     wait 4;
-    thread _unknown_E241();
+    thread _ID43811();
 }
 
 _ID11592( var_0 )
 {
-    var_1 = _func_11F( var_0._ID65 );
+    var_1 = anglestoforward( var_0._ID65 );
     thread _ID42237::_ID27077( "door_wood_double_kick" );
-    _func_156( _ID42237::_ID16299( "door_kick_dust" ), var_0._ID740, var_1 );
-    _func_192( 0.2, 0.75, self._ID740, 1024 );
+    playfx( _ID42237::_ID16299( "door_kick_dust" ), var_0._ID740, var_1 );
+    earthquake( 0.2, 0.75, self._ID740, 1024 );
     _ID42407::_ID3428( "breakable_door" );
     var_0 thread _ID42259::_ID3111( self, "door_breaking" );
 }
@@ -8694,13 +8558,13 @@ _ID43811()
     self._ID513 = 1;
     self._ID450 = 100;
     self._ID2219 = 1;
-    var_0 = _func_0F3( self._ID740, level._ID794._ID740 );
+    var_0 = distance( self._ID740, level._ID794._ID740 );
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
         wait 1;
         self._ID452 = var_0;
-        self _meth_81B3( level._ID794 );
+        self setgoalentity( level._ID794 );
         var_0 -= 175;
 
         if ( var_0 < 512 )
@@ -8713,40 +8577,27 @@ _ID43811()
 
 _ID52268( var_0, var_1 )
 {
-    if ( !_func_02F( var_1 ) )
+    if ( !isdefined( var_1 ) )
         var_1 = 1024;
 
     if ( var_0 == "all" )
-        var_2 = _func_0DE();
+        var_2 = getaiarray();
     else
-        var_2 = _func_0DE( var_0 );
+        var_2 = getaiarray( var_0 );
 
     if ( var_0 == "allies" || var_0 == "all" )
     {
-        var_3 = level._ID35507;
-
-        for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+        foreach ( var_4 in level._ID35507 )
         {
-            var_4 = var_3[var_5];
-
             if ( _ID42407::_ID20542( var_2, var_4 ) )
                 var_2 = _ID42237::_ID3321( var_2, var_4 );
         }
 
-        var_clear_2
-        var_clear_0
-        var_6 = var_2;
-
-        for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
+        foreach ( var_4 in var_2 )
         {
-            var_4 = var_6[var_7];
-
-            if ( _func_02F( var_4._ID922 ) && var_4._ID922 == "laatpv_gunner" )
+            if ( isdefined( var_4._ID922 ) && var_4._ID922 == "laatpv_gunner" )
                 var_2 = _ID42237::_ID3321( var_2, var_4 );
         }
-
-        var_clear_1
-        var_clear_0
     }
 
     thread _ID42407::_ID2265( var_2, var_1 );
@@ -8754,27 +8605,21 @@ _ID52268( var_0, var_1 )
 
 _ID43162( var_0, var_1, var_2 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 1024;
 
-    var_3 = _func_1A1( var_0, "targetname" );
+    var_3 = getent( var_0, "targetname" );
     var_4 = var_3 _ID42407::_ID15547( var_1 );
 
     if ( var_1 != "axis" )
     {
         level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-        var_5 = level._ID35507;
 
-        for ( var_7 = _func_1DA( var_5 ); _func_02F( var_7 ); var_7 = _func_1BF( var_5, var_7 ) )
+        foreach ( var_6 in level._ID35507 )
         {
-            var_6 = var_5[var_7];
-
             if ( _ID42407::_ID20542( var_4, var_6 ) )
                 var_4 = _ID42237::_ID3321( var_4, var_6 );
         }
-
-        var_clear_2
-        var_clear_0
     }
 
     thread _ID42407::_ID2265( var_4, var_2 );
@@ -8785,18 +8630,18 @@ _ID51301( var_0 )
     var_0 waittill( "death" );
     var_0 endon( "death" );
 
-    if ( _func_02F( self ) )
-        self _meth_80B7();
+    if ( isdefined( self ) )
+        self delete();
 }
 
 _ID49563()
 {
-    wait(_func_0BA( 13, 19 ));
+    wait(randomfloatrange( 13, 19 ));
 }
 
 _ID48407()
 {
-    var_0 = _func_03D();
+    var_0 = gettime();
     var_1 = var_0 - level._ID52350;
 
     if ( var_0 == level._ID52350 )
@@ -8813,17 +8658,10 @@ _ID52188( var_0, var_1 )
 
     for (;;)
     {
-        var_2 = var_0;
+        foreach ( var_3 in var_0 )
+            _ID42407::_ID10226( randomfloatrange( 5, 6 ), _ID42407::_ID12076, var_3 );
 
-        for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-        {
-            var_3 = var_2[var_4];
-            _ID42407::_ID10226( _func_0BA( 5, 6 ), _ID42407::_ID12076, var_3 );
-        }
-
-        var_clear_2
-        var_clear_0
-        wait(_func_0BA( 5, 6 ));
+        wait(randomfloatrange( 5, 6 ));
     }
 }
 
@@ -8839,18 +8677,13 @@ _ID50817( var_0, var_1, var_2, var_3, var_4 )
 
     for (;;)
     {
-        var_6 = var_0;
-
-        for ( var_8 = _func_1DA( var_6 ); _func_02F( var_8 ); var_8 = _func_1BF( var_6, var_8 ) )
+        foreach ( var_7 in var_0 )
         {
-            var_7 = var_6[var_8];
             var_5 = var_7 thread _ID42411::_ID35194();
             var_5 = undefined;
-            wait(_func_0BA( var_2, var_3 ));
+            wait(randomfloatrange( var_2, var_3 ));
         }
 
-        var_clear_2
-        var_clear_0
         var_0 = _ID42237::_ID3320( var_0 );
     }
 }
@@ -8863,13 +8696,13 @@ _ID44742( var_0 )
 _ID46951()
 {
     self endon( "death" );
-    self _meth_805A();
+    self hide();
     thread _ID42407::_ID22746();
     self._ID7._ID11043 = 1;
     self._ID507 = 1;
     self._ID1298 = 1000;
     self._ID10998 = 1;
-    self _meth_8172();
+    self clearenemy();
     wait 0.1;
     thread _ID42338::_ID26367();
 }
@@ -8881,31 +8714,26 @@ _ID48916()
 
 _ID47645( var_0 )
 {
-    var_1 = _func_1A1( var_0, "targetname" );
-    var_2 = _func_1A1( var_1._ID31273, "script_linkname" );
+    var_1 = getent( var_0, "targetname" );
+    var_2 = getent( var_1._ID31273, "script_linkname" );
     var_2 notify( "trigger",  level._ID794  );
 }
 
 _ID50236()
 {
     level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-    _ID42237::_ID3350( level._ID35507, ::_unknown_E5E2 );
+    _ID42237::_ID3350( level._ID35507, ::_ID54181 );
 }
 
 _ID51102()
 {
     level._ID35507 = _ID42407::_ID29506( level._ID35507 );
-    var_0 = level._ID35507;
 
-    for ( var_2 = _func_1DA( var_0 ); _func_02F( var_2 ); var_2 = _func_1BF( var_0, var_2 ) )
+    foreach ( var_1 in level._ID35507 )
     {
-        var_1 = var_0[var_2];
         var_1 notify( "stop_adjust_movement_speed" );
         var_1._ID24424 = 1.0;
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID54181()
@@ -8914,11 +8742,11 @@ _ID54181()
     self endon( "death" );
     self endon( "stop_adjust_movement_speed" );
 
-    while ( _func_1A7( self ) )
+    while ( isalive( self ) )
     {
-        wait(_func_0BA( 0.5, 1.5 ));
+        wait(randomfloatrange( 0.5, 1.5 ));
 
-        while ( _unknown_E654() )
+        while ( _ID53164() )
         {
             self._ID24424 = 3.5;
             wait 0.05;
@@ -8932,13 +8760,13 @@ _ID53164()
 {
     self endon( "death" );
 
-    if ( !_func_02F( self._ID451 ) )
+    if ( !isdefined( self._ID451 ) )
         return 0;
 
-    if ( _func_0F5( self._ID740, self._ID451 ) <= level._ID47460 )
+    if ( distancesquared( self._ID740, self._ID451 ) <= level._ID47460 )
         return 0;
 
-    if ( _ID42237::_ID41802( level._ID794._ID740, level._ID794 _meth_8346(), self._ID740, level._ID8760["90"] ) )
+    if ( _ID42237::_ID41802( level._ID794._ID740, level._ID794 getplayerangles(), self._ID740, level._ID8760["90"] ) )
         return 0;
 
     return 1;
@@ -8947,18 +8775,13 @@ _ID53164()
 _ID43959()
 {
     var_0 = _ID42407::_ID15547();
-    var_1 = level._ID35507;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in level._ID35507 )
     {
-        var_2 = var_1[var_3];
-
         if ( _ID42407::_ID20542( var_0, var_2 ) )
             var_0 = _ID42237::_ID3321( var_0, var_2 );
     }
 
-    var_clear_2
-    var_clear_0
     return var_0;
 }
 
@@ -8967,22 +8790,18 @@ _ID43809()
     var_0 = _ID42237::_ID15808();
     self waittill( "trigger" );
     var_1 = undefined;
-    var_2 = var_0;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_0 )
     {
-        var_3 = var_2[var_4];
         var_1 = var_3 _ID42407::_ID15547( "axis" );
 
         if ( !var_1.size )
             continue;
 
-        _ID42237::_ID3294( var_1, ::_meth_80B7 );
+        _ID42237::_ID3294( var_1, ::delete );
     }
 
-    var_clear_2
-    var_clear_0
-    self _meth_80B7();
+    self delete();
 }
 
 _ID48960()
@@ -8997,18 +8816,18 @@ _ID48960()
 
         if ( level._ID35507.size < level._ID46370 )
         {
-            var_1 = _func_1A2( self._ID1191, "targetname" );
+            var_1 = getentarray( self._ID1191, "targetname" );
             var_0 = level._ID46370 - level._ID35507.size;
 
             for ( var_3 = 0; var_3 < var_0; var_3++ )
             {
                 var_2 = var_1[var_3] _ID42407::_ID35014();
 
-                if ( _func_02F( var_2 ) )
+                if ( isdefined( var_2 ) )
                 {
                     var_2 _ID42407::_ID32315( "p" );
                     level._ID35507 = _ID42237::_ID3293( level._ID35507, var_2 );
-                    var_2 thread _unknown_DEC0();
+                    var_2 thread _ID46555();
                 }
             }
         }
@@ -9023,7 +8842,7 @@ _ID48500()
     {
         wait 1;
         self waittill( "trigger" );
-        _func_0DB( "ui_hidemap", 0 );
+        setsaveddvar( "ui_hidemap", 0 );
         _ID42272::_ID33575( self._ID922 );
     }
 }
@@ -9035,8 +8854,8 @@ _ID21376( var_0 )
 
 _ID50637()
 {
-    var_0 = _func_1A1( self._ID31273, "script_linkname" );
-    var_1 = _func_1A1( self._ID1191, "targetname" );
+    var_0 = getent( self._ID31273, "script_linkname" );
+    var_1 = getent( self._ID1191, "targetname" );
     var_2 = self._ID31190;
     level endon( var_2 );
 
@@ -9050,9 +8869,9 @@ _ID50637()
             continue;
         }
 
-        if ( _ID42237::_ID41802( level._ID794 _meth_80AF(), level._ID794 _meth_8346(), self._ID740, level._ID8760["60"] ) )
+        if ( _ID42237::_ID41802( level._ID794 geteye(), level._ID794 getplayerangles(), self._ID740, level._ID8760["60"] ) )
         {
-            _func_1C8( "rpg", var_1._ID740, self._ID740 );
+            magicbullet( "rpg", var_1._ID740, self._ID740 );
             level._ID47175 = 0;
             wait 4;
             level._ID47175 = 1;
@@ -9066,7 +8885,7 @@ _ID50637()
 
 _ID50972()
 {
-    if ( _func_039( "r_reflectionProbeGenerate" ) == "1" )
+    if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
         return;
 
     level._ID44593 = [];
@@ -9074,104 +8893,87 @@ _ID50972()
     level._ID48904 = [];
     level._ID52835 = [];
     level._ID45412 = [];
-    var_0 = _func_1A2( "triggered_fx_volumes", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "triggered_fx_volumes", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
+    foreach ( var_2 in var_0 )
         var_2._ID15142 = [];
-    }
 
-    var_clear_2
-    var_clear_0
-    var_4 = _func_1A1( "effects_commerce", "script_noteworthy" );
-    var_5 = _func_1A1( "effects_trenches", "script_noteworthy" );
-    var_6 = _func_1A1( "effects_bunker", "script_noteworthy" );
-    var_7 = _func_1A1( "effects_ww2", "script_noteworthy" );
-    var_8 = _func_1A1( "effects_lincoln", "script_noteworthy" );
-    var_9 = _func_06A( "script_origin", ( 0, 0, 0 ) );
+    var_4 = getent( "effects_commerce", "script_noteworthy" );
+    var_5 = getent( "effects_trenches", "script_noteworthy" );
+    var_6 = getent( "effects_bunker", "script_noteworthy" );
+    var_7 = getent( "effects_ww2", "script_noteworthy" );
+    var_8 = getent( "effects_lincoln", "script_noteworthy" );
+    var_9 = spawn( "script_origin", ( 0, 0, 0 ) );
 
     for ( var_10 = 0; var_10 < level._ID9242.size; var_10++ )
     {
         var_11 = level._ID9242[var_10];
         var_9._ID740 = var_11._ID40005["origin"];
-        var_12 = var_0;
 
-        for ( var_13 = _func_1DA( var_12 ); _func_02F( var_13 ); var_13 = _func_1BF( var_12, var_13 ) )
+        foreach ( var_2 in var_0 )
         {
-            var_2 = var_12[var_13];
-
-            if ( var_9 _meth_80B0( var_2 ) )
+            if ( var_9 istouching( var_2 ) )
                 var_2._ID15142[var_2._ID15142.size] = var_11;
         }
 
-        var_clear_1
-        var_clear_0
-
-        if ( var_9 _meth_80B0( var_4 ) )
+        if ( var_9 istouching( var_4 ) )
         {
             level._ID44593[level._ID44593.size] = var_11;
             continue;
         }
 
-        if ( var_9 _meth_80B0( var_5 ) )
+        if ( var_9 istouching( var_5 ) )
         {
             level._ID53293[level._ID53293.size] = var_11;
             continue;
         }
 
-        if ( var_9 _meth_80B0( var_6 ) )
+        if ( var_9 istouching( var_6 ) )
         {
             level._ID48904[level._ID48904.size] = var_11;
             continue;
         }
 
-        if ( var_9 _meth_80B0( var_7 ) )
+        if ( var_9 istouching( var_7 ) )
         {
             level._ID52835[level._ID52835.size] = var_11;
             continue;
         }
 
-        if ( var_9 _meth_80B0( var_8 ) )
+        if ( var_9 istouching( var_8 ) )
         {
             level._ID45412[level._ID45412.size] = var_11;
             continue;
         }
     }
 
-    var_9 _meth_80B7();
-    var_14 = var_0;
+    var_9 delete();
 
-    for ( var_16 = _func_1DA( var_14 ); _func_02F( var_16 ); var_16 = _func_1BF( var_14, var_16 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_14[var_16];
-        var_15 = _func_1A2( var_2._ID1191, "targetname" );
+        var_15 = getentarray( var_2._ID1191, "targetname" );
 
         if ( var_15[0]._ID922 == "stopFx" )
         {
-            var_15[0] thread _unknown_EAAB( var_2 );
-            var_15[1] thread _unknown_EAAB( var_2 );
+            var_15[0] thread _ID47624( var_2 );
+            var_15[1] thread _ID44547( var_2 );
             continue;
         }
 
-        var_15[1] thread _unknown_EAC0( var_2 );
-        var_15[0] thread _unknown_EAC0( var_2 );
+        var_15[1] thread _ID47624( var_2 );
+        var_15[0] thread _ID44547( var_2 );
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 restarteffectsafe()
 {
-    if ( !_func_02F( self._ID22654 ) || _func_2A5( self._ID22654 ) )
+    if ( !isdefined( self._ID22654 ) || _func_2a5( self._ID22654 ) )
         _ID42407::_ID29840();
 }
 
 pauseeffectsafe()
 {
-    if ( _func_02F( self._ID22654 ) )
+    if ( isdefined( self._ID22654 ) )
         _ID42237::_ID26402();
 }
 
@@ -9180,7 +8982,7 @@ _ID44547( var_0 )
     for (;;)
     {
         self waittill( "trigger" );
-        _ID42237::_ID3350( var_0._ID15142, ::_unknown_EAEE );
+        _ID42237::_ID3350( var_0._ID15142, ::restarteffectsafe );
         wait 1;
     }
 }
@@ -9188,12 +8990,12 @@ _ID44547( var_0 )
 _ID47624( var_0 )
 {
     wait 1;
-    _ID42237::_ID3350( var_0._ID15142, ::_unknown_EB0A );
+    _ID42237::_ID3350( var_0._ID15142, ::pauseeffectsafe );
 
     for (;;)
     {
         self waittill( "trigger" );
-        _ID42237::_ID3350( var_0._ID15142, ::_unknown_EB1B );
+        _ID42237::_ID3350( var_0._ID15142, ::pauseeffectsafe );
         wait 1;
     }
 }
@@ -9201,7 +9003,7 @@ _ID47624( var_0 )
 _ID48611()
 {
     _ID42237::_ID14413( "player_heli_10a" );
-    self _meth_82CA( 1 );
+    self setcandamage( 1 );
     var_0 = 5;
     var_1 = "cheap_vehicle_explosion";
     var_2 = undefined;
@@ -9213,17 +9015,34 @@ _ID48611()
 
     switch ( self._ID669 )
     {
-
+        case "vehicle_mack_truck_short_green":
+            var_0 = 10;
+            var_2 = "vehicle_mack_truck_short_destroy";
+            var_1 = "cheap_mack_truck_explosion";
+            var_4 = "exp_tanker_vehicle";
+            var_5 = "tanker_fire";
+            var_6 = ( 0, 0, 110 );
+            var_3 = 1;
+            break;
+        case "vehicle_uaz_fabric_static":
+            var_2 = "vehicle_uaz_fabric_dsr";
+            break;
+        case "vehicle_luxurysedan_2008_destructible":
+            var_2 = "vehicle_luxurysedan_2008_destroy";
+            break;
+        case "vehicle_pickup_technical":
+            var_2 = "vehicle_pickup_technical_destroyed";
+            break;
     }
 
     for (;;)
     {
-        self waittill( "damage",  var_9, var_8  );
+        self waittill( "damage",  var_8, var_9  );
 
-        if ( !_func_02F( var_9 ) )
+        if ( !isdefined( var_9 ) )
             continue;
 
-        if ( _func_02F( level._ID52945 ) && var_9 != level._ID52945 )
+        if ( isdefined( level._ID52945 ) && var_9 != level._ID52945 )
             continue;
 
         var_0--;
@@ -9232,31 +9051,26 @@ _ID48611()
             break;
     }
 
-    _func_156( _ID42237::_ID16299( var_1 ), self._ID740 );
+    playfx( _ID42237::_ID16299( var_1 ), self._ID740 );
     thread _ID42237::_ID27077( var_4 );
 
     if ( var_3 )
-        _func_192( 0.4, 1.53, self._ID740, 1024 );
+        earthquake( 0.4, 1.53, self._ID740, 1024 );
 
-    if ( _func_02F( var_2 ) )
-        self _meth_80B8( var_2 );
+    if ( isdefined( var_2 ) )
+        self setmodel( var_2 );
     else
-        self _meth_80B7();
+        self delete();
 
-    if ( _func_02F( var_5 ) )
+    if ( isdefined( var_5 ) )
     {
-        var_10 = _func_06A( "script_origin", self._ID740 + var_6 );
+        var_10 = spawn( "script_origin", self._ID740 + var_6 );
         var_10._ID65 = self._ID65;
-        var_11 = _func_15B( _ID42237::_ID16299( var_5 ), var_10._ID740 );
-        _func_15C( var_11 );
+        var_11 = spawnfx( _ID42237::_ID16299( var_5 ), var_10._ID740 );
+        triggerfx( var_11 );
         _ID42237::_ID14413( "player_heli_19" );
-        var_11 _meth_80B7();
-        var_10 _meth_80B7();
-        return;
-        case "vehicle_pickup_technical":
-        case "vehicle_luxurysedan_2008_destructible":
-        case "vehicle_uaz_fabric_static":
-        case "vehicle_mack_truck_short_green":
+        var_11 delete();
+        var_10 delete();
     }
 }
 
@@ -9265,38 +9079,27 @@ _ID44864()
     var_0 = level._ID40317["axis"];
     var_1 = level._ID40317["allies"];
     var_1 = _ID42237::_ID3321( var_1, level._ID52945 );
-    var_2 = var_1;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_1 )
     {
-        var_3 = var_2[var_4];
-
-        if ( !_func_02F( var_3 ) )
+        if ( !isdefined( var_3 ) )
             continue;
 
-        if ( _func_02F( var_3._ID1282 ) && _func_127( var_3._ID1282, 0 ) == "littlebird" )
+        if ( isdefined( var_3._ID1282 ) && getsubstr( var_3._ID1282, 0 ) == "littlebird" )
             var_1 = _ID42237::_ID3321( var_1, var_3 );
     }
 
-    var_clear_2
-    var_clear_0
     var_5 = _ID42407::_ID3317( var_0, var_1 );
     var_5 = _ID42407::_ID29506( var_5 );
-    var_6 = var_5;
 
-    for ( var_7 = _func_1DA( var_6 ); _func_02F( var_7 ); var_7 = _func_1BF( var_6, var_7 ) )
+    foreach ( var_3 in var_5 )
     {
-        var_3 = var_6[var_7];
-
-        if ( !_func_02F( var_3 ) )
+        if ( !isdefined( var_3 ) )
             continue;
 
         var_3 _ID42411::_ID16987();
-        var_3 _meth_80B7();
+        var_3 delete();
     }
-
-    var_clear_1
-    var_clear_0
 }
 
 _ID44575()
@@ -9304,117 +9107,87 @@ _ID44575()
     var_0 = level._ID40317["axis"];
     var_1 = level._ID40317["allies"];
     var_2 = _ID42407::_ID3317( var_0, var_1 );
-    var_3 = var_2;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_2 )
     {
-        var_4 = var_3[var_5];
-
-        if ( !_func_02F( var_4 ) )
+        if ( !isdefined( var_4 ) )
             continue;
 
         var_4 _ID42411::_ID16987();
-        var_4 _unknown_E4AE();
+        var_4 _ID44705();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID46739()
 {
     var_0 = level._ID40317["axis"];
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_3];
-
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             continue;
 
         var_2 _ID42411::_ID16987();
-        var_2 _unknown_E4E6();
+        var_2 _ID44705();
     }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID51178( var_0 )
 {
     var_1 = _ID42407::_ID15912();
 
-    if ( _func_03D() > level._ID47637 )
+    if ( gettime() > level._ID47637 )
         return 1;
 
-    var_2 = var_1 _meth_831C();
-    var_3 = _func_127( var_2, 0, 4 );
+    var_2 = var_1 getcurrentweapon();
+    var_3 = getsubstr( var_2, 0, 4 );
 
     if ( var_3 == "m203" )
         return 1;
 
-    var_4 = var_1 _meth_8316();
-    var_5 = var_4;
+    var_4 = var_1 getweaponslistall();
 
-    for ( var_7 = _func_1DA( var_5 ); _func_02F( var_7 ); var_7 = _func_1BF( var_5, var_7 ) )
+    foreach ( var_2 in var_4 )
     {
-        var_2 = var_5[var_7];
-        var_3 = _func_127( var_2, 0, 4 );
+        var_3 = getsubstr( var_2, 0, 4 );
 
         if ( var_3 != "m203" )
             continue;
 
-        var_6 = var_1 _meth_8303( var_2 );
+        var_6 = var_1 getweaponammoclip( var_2 );
 
         if ( var_6 > 0 )
             return 0;
     }
 
-    var_clear_2
-    var_clear_0
     return 1;
 }
 
 _ID44875()
 {
-    var_0 = _func_1A2( "drone_warriors_trenches", "targetname" );
-    var_1 = var_0;
+    var_0 = getentarray( "drone_warriors_trenches", "targetname" );
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
+    foreach ( var_2 in var_0 )
         thread _ID42407::_ID12076( var_2 );
-    }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID53157( var_0, var_1 )
 {
     _ID42237::_ID14413( var_1 );
-    var_2 = var_0;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
-    {
-        var_3 = var_2[var_4];
+    foreach ( var_3 in var_0 )
         var_3 = undefined;
-    }
-
-    var_clear_2
-    var_clear_0
 }
 
 _ID44154( var_0, var_1, var_2 )
 {
     var_3 = _ID42237::_ID35164();
     var_3._ID740 = var_1;
-    var_3 thread _unknown_EF5C( var_2 );
+    var_3 thread _ID21288( var_2 );
     var_3 _ID42407::_ID27081( var_0, "tag_origin" );
 
-    if ( _func_02F( var_3 ) )
-        var_3 _meth_80B7();
+    if ( isdefined( var_3 ) )
+        var_3 delete();
 }
 
 _ID21288( var_0 )
@@ -9422,38 +9195,33 @@ _ID21288( var_0 )
     self endon( "death" );
     _ID42237::_ID14413( var_0 );
 
-    if ( _func_02F( self ) )
-        self _meth_80B7();
+    if ( isdefined( self ) )
+        self delete();
 }
 
 _ID52455( var_0 )
 {
     var_1 = [];
-    var_2 = var_0;
 
-    for ( var_4 = _func_1DA( var_2 ); _func_02F( var_4 ); var_4 = _func_1BF( var_2, var_4 ) )
+    foreach ( var_3 in var_0 )
     {
-        var_3 = var_2[var_4];
-
-        if ( !_func_02F( var_3 ) )
+        if ( !isdefined( var_3 ) )
             continue;
 
-        if ( !_func_02F( var_3._ID263 ) )
+        if ( !isdefined( var_3._ID263 ) )
             var_1[var_1.size] = var_3;
     }
 
-    var_clear_2
-    var_clear_0
     return var_1;
 }
 
 _ID48110()
 {
     self waittill( "trigger" );
-    _func_156( level._ID1426["mortar"]["dirt"], self._ID740 );
-    _func_192( 0.25, 0.75, self._ID740, 1250 );
+    playfx( level._ID1426["mortar"]["dirt"], self._ID740 );
+    earthquake( 0.25, 0.75, self._ID740, 1250 );
     thread _ID42237::_ID27077( level._ID30909["mortar"]["dirt"], self._ID740 );
-    _func_18F( self._ID740, self._ID382, 1000, 1000 );
+    radiusdamage( self._ID740, self._ID382, 1000, 1000 );
 }
 
 _ID53050( var_0 )
@@ -9461,7 +9229,7 @@ _ID53050( var_0 )
     level endon( "obj_heli_mount_complete" );
     level endon( "kill_timer" );
     level._ID37750 = _ID42313::_ID47327( var_0, &"DCBURNING_TIME_REMAINING", 1, 1 );
-    level thread _unknown_F05E();
+    level thread _ID43057();
 }
 
 _ID43057()
@@ -9469,8 +9237,8 @@ _ID43057()
     level._ID794 endon( "death" );
     level endon( "kill_timer" );
     level notify( "mission failed" );
-    _func_078( 1 );
-    _func_034( "ui_deadquote", &"DCBURNING_RAN_OUT_OF_TIME" );
+    musicstop( 1 );
+    setdvar( "ui_deadquote", &"DCBURNING_RAN_OUT_OF_TIME" );
     _ID42407::_ID23778();
     level notify( "kill_timer" );
 }
@@ -9480,35 +9248,30 @@ _ID44638( var_0 )
     self endon( "death" );
     var_1 = _ID42411::_ID40142();
     var_2 = undefined;
-    var_3 = var_1;
 
-    for ( var_5 = _func_1DA( var_3 ); _func_02F( var_5 ); var_5 = _func_1BF( var_3, var_5 ) )
+    foreach ( var_4 in var_1 )
     {
-        var_4 = var_3[var_5];
-
-        if ( _func_02F( var_4._ID922 ) && var_4._ID922 == var_0 )
+        if ( isdefined( var_4._ID922 ) && var_4._ID922 == var_0 )
         {
             var_2 = var_4;
             break;
         }
     }
 
-    var_clear_2
-    var_clear_0
     var_2 waittill( "trigger" );
     self notify( "deleted_through_script" );
     wait 0.05;
-    thread _unknown_E703();
+    thread _ID44705();
 }
 
 _ID50096()
 {
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
     self endon( "death" );
 
-    while ( _func_02F( self ) )
+    while ( isdefined( self ) )
     {
         wait 2;
 
@@ -9518,7 +9281,7 @@ _ID50096()
         break;
     }
 
-    thread _unknown_E73F();
+    thread _ID44705();
 }
 
 _ID48998( var_0, var_1 )
@@ -9537,7 +9300,7 @@ _ID47828( var_0, var_1 )
 
 _ID47930()
 {
-    level._ID794 _meth_80F6();
+    level._ID794 enableinvulnerability();
 }
 
 _ID50922( var_0, var_1 )
@@ -9547,7 +9310,7 @@ _ID50922( var_0, var_1 )
         wait 1;
         var_2 = var_0 _ID42407::_ID15547( "axis" );
 
-        if ( !_func_02F( var_2 ) )
+        if ( !isdefined( var_2 ) )
             break;
 
         if ( var_2.size )
@@ -9564,26 +9327,26 @@ _ID50922( var_0, var_1 )
 
 ai_force_ignore_supression()
 {
-    var_0 = _func_1A1( "force_supression_trigger", "targetname" );
+    var_0 = getent( "force_supression_trigger", "targetname" );
 
     for (;;)
     {
         var_0 waittill( "trigger",  var_1  );
 
-        if ( var_1._ID1194 == "allies" && !_func_1B3( var_1 ) )
+        if ( var_1._ID1194 == "allies" && !isplayernumber( var_1 ) )
             var_1._ID513 = 1;
     }
 }
 
 ai_restore_ignore_supression()
 {
-    var_0 = _func_1A1( "remove_force_supression_trigger", "targetname" );
+    var_0 = getent( "remove_force_supression_trigger", "targetname" );
 
     for (;;)
     {
         var_0 waittill( "trigger",  var_1  );
 
-        if ( var_1._ID1194 == "allies" && !_func_1B3( var_1 ) )
+        if ( var_1._ID1194 == "allies" && !isplayernumber( var_1 ) )
             var_1._ID513 = 0;
     }
 }
@@ -9595,7 +9358,7 @@ performance_interior_exterior_transition()
     for (;;)
     {
         level waittill( "player_interior_transition" );
-        _func_0DB( "fx_marks_nearlimit", "1" );
+        setsaveddvar( "fx_marks_nearlimit", "1" );
 
         while ( _ID42237::_ID14385( "player_interior_transition" ) )
         {
@@ -9603,62 +9366,50 @@ performance_interior_exterior_transition()
             continue;
         }
 
-        _func_0DB( "fx_marks_nearlimit", "5" );
+        setsaveddvar( "fx_marks_nearlimit", "5" );
     }
 }
 
 heli_ride_perf_helpers()
 {
-    _func_31C( 2 );
+    _func_31c( 2 );
     _ID42237::_ID14413( "player_getting_on_minigun" );
-    _func_0DB( "fx_marks_nearlimit", "1" );
-    _func_31B( 2 );
-    _func_31C( 9 );
+    setsaveddvar( "fx_marks_nearlimit", "1" );
+    _func_31b( 2 );
+    _func_31c( 9 );
     _ID42237::_ID14413( "player_crash_done" );
-    _func_31C( 2 );
+    _func_31c( 2 );
 }
 
 misc_model_group_think()
 {
     level endon( "player_getting_on_minigun" );
-    var_0 = _func_1A2( "misc_model_group_togglers", "targetname" );
+    var_0 = getentarray( "misc_model_group_togglers", "targetname" );
     level.static_model_group_states = [];
-    var_1 = var_0;
 
-    for ( var_4 = _func_1DA( var_1 ); _func_02F( var_4 ); var_4 = _func_1BF( var_1, var_4 ) )
+    foreach ( var_2 in var_0 )
     {
-        var_2 = var_1[var_4];
         var_3 = var_2._ID922;
 
-        if ( !_func_02F( level.static_model_group_states[var_3] ) )
+        if ( !isdefined( level.static_model_group_states[var_3] ) )
             level.static_model_group_states[var_3] = 0;
 
-        thread _unknown_F35D( var_3, var_2 );
+        thread static_model_group_trigger_count( var_3, var_2 );
     }
 
-    var_clear_3
-    var_clear_0
-    var_5 = level.static_model_group_states;
-
-    for ( var_3 = _func_1DA( var_5 ); _func_02F( var_3 ); var_3 = _func_1BF( var_5, var_3 ) )
+    foreach ( var_3, var_6 in level.static_model_group_states )
     {
-        var_6 = var_5[var_3];
-        _func_31C( _func_0C1( var_3 ) );
+        _func_31c( int( var_3 ) );
         _ID42237::_ID14400( "static_model_group_flag_" + var_3 );
-        thread _unknown_F380( var_3 );
+        thread misc_model_group_monitor( var_3 );
     }
-
-    var_clear_1
 
     for (;;)
     {
         self waittill( "model_group_count_changed" );
-        var_7 = level.static_model_group_states;
 
-        for ( var_3 = _func_1DA( var_7 ); _func_02F( var_3 ); var_3 = _func_1BF( var_7, var_3 ) )
+        foreach ( var_3, var_6 in level.static_model_group_states )
         {
-            var_6 = var_7[var_3];
-
             if ( var_6 == 0 )
             {
                 _ID42237::_ID14388( "static_model_group_flag_" + var_3 );
@@ -9667,8 +9418,6 @@ misc_model_group_think()
 
             _ID42237::_ID14402( "static_model_group_flag_" + var_3 );
         }
-
-        var_clear_0
     }
 }
 
@@ -9680,9 +9429,9 @@ misc_model_group_monitor( var_0 )
     for (;;)
     {
         _ID42237::_ID14413( var_1 );
-        _func_31B( _func_0C1( var_0 ) );
+        _func_31b( int( var_0 ) );
         _ID42237::_ID14426( var_1 );
-        _func_31C( _func_0C1( var_0 ) );
+        _func_31c( int( var_0 ) );
     }
 }
 
@@ -9692,13 +9441,13 @@ static_model_group_trigger_count( var_0, var_1 )
     {
         var_2 = undefined;
 
-        while ( !_func_1B3( var_2 ) )
+        while ( !isplayernumber( var_2 ) )
             var_1 waittill( "trigger",  var_2  );
 
         level.static_model_group_states[var_0]++;
         level notify( "model_group_count_changed" );
 
-        while ( var_2 _meth_80B0( var_1 ) )
+        while ( var_2 istouching( var_1 ) )
             waittillframeend;
 
         level.static_model_group_states[var_0]--;
@@ -9709,41 +9458,41 @@ static_model_group_trigger_count( var_0, var_1 )
 
 setsunlight_dcburning()
 {
-    var_0 = _func_046();
+    var_0 = _func_46();
     var_1 = 0.04;
     var_2 = var_0[0] * var_1;
     var_3 = var_0[1] * var_1 * 0.6;
     var_4 = var_0[2] * var_1 * 0.4;
     var_5 = "-23057 3727 -213";
-    _func_0DB( "r_useLightGridDefaultFXLightingLookup", 1 );
-    _func_0DB( "r_lightGridDefaultFXLightingLookup", var_5 );
-    _func_0DB( "r_useLightGridDefaultModelLightingLookup", 1 );
-    _func_0DB( "r_useLightGridDefaultModelLightingSmoothing", 1 );
-    _func_0DB( "r_lightGridDefaultModelLightingLookup", var_5 );
+    setsaveddvar( "r_useLightGridDefaultFXLightingLookup", 1 );
+    setsaveddvar( "r_lightGridDefaultFXLightingLookup", var_5 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingLookup", 1 );
+    setsaveddvar( "r_useLightGridDefaultModelLightingSmoothing", 1 );
+    setsaveddvar( "r_lightGridDefaultModelLightingLookup", var_5 );
     _ID42237::_ID14413( "flag_reduce_sunlight" );
-    _func_047( var_2, var_3, var_4 );
+    _func_47( var_2, var_3, var_4 );
     _ID42237::_ID14426( "flag_reduce_sunlight" );
-    _func_048();
-    _unknown_F4B7();
+    _func_48();
+    setsunlight_dcburning();
 }
 #using_animtree("vehicles");
 
 blackhawk_play_rotors_anim()
 {
-    self _meth_8155( %bh_rotors, 1, 0, 1 );
+    self setanim( %bh_rotors, 1, 0, 1 );
 }
 
 heliblackhawk_deathvolume()
 {
     wait 3.9;
-    var_0 = _func_1A1( "blackhawk_deathvolume", "targetname" );
+    var_0 = getent( "blackhawk_deathvolume", "targetname" );
 
     while ( !_ID42237::_ID14385( "blackhawk_landed" ) )
     {
-        if ( level._ID794 _meth_80B0( var_0 ) )
+        if ( level._ID794 istouching( var_0 ) )
         {
-            level._ID794 _meth_8058();
-            level._ID52945 _meth_828D( 0.05 );
+            level._ID794 kill();
+            level._ID52945 vehicle_setspeed( 0.05 );
             break;
         }
 
@@ -9780,16 +9529,9 @@ moving_fire_lights_setup()
 {
     var_0 = _ID42237::_ID16640( "moving_fire_lights", "script_noteworthy" );
     _ID42237::_ID14413( "player_middle_commerce_first_floor" );
-    var_1 = var_0;
 
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
-    {
-        var_2 = var_1[var_3];
-        _ID42237::_ID3350( _func_1A2( var_2._ID1191, "targetname" ), ::_unknown_F5D7 );
-    }
-
-    var_clear_2
-    var_clear_0
+    foreach ( var_2 in var_0 )
+        _ID42237::_ID3350( getentarray( var_2._ID1191, "targetname" ), ::move_fire_light );
 }
 
 move_fire_light()
@@ -9801,28 +9543,28 @@ move_fire_light()
 
     for (;;)
     {
-        var_4 = _func_0BA( var_2, var_3 );
-        var_5 = _func_0BA( 0.1, 1 );
-        var_6 = _func_0BA( 0.045, 1.35 );
-        var_7 = _func_0BA( 0.035, 0.95 );
-        var_8 = _func_0BA( 0.25, 1.45 );
+        var_4 = randomfloatrange( var_2, var_3 );
+        var_5 = randomfloatrange( 0.1, 1 );
+        var_6 = randomfloatrange( 0.045, 1.35 );
+        var_7 = randomfloatrange( 0.035, 0.95 );
+        var_8 = randomfloatrange( 0.25, 1.45 );
         var_9 = var_0 + ( var_6, var_7, var_8 );
-        self _meth_82B8( var_9, var_4, 0.018, 0.027 );
+        self moveto( var_9, var_4, 0.018, 0.027 );
         wait(var_4);
     }
 }
 
 tank_player_collisions()
 {
-    var_0 = _func_1A1( "tank_turret_clip", "targetname" );
-    var_0._ID740 = self _meth_818C( "tag_turret" ) + ( 15, -25, -10 );
-    var_0._ID65 = self _meth_818D( "tag_turret" );
-    var_0 _meth_8053( self, "tag_turret" );
-    var_1 = _func_1A1( "tank_gun_clip", "targetname" );
-    var_1._ID740 = self _meth_818C( "tag_barrel" ) + ( -45, 75, 0 );
-    var_1._ID65 = self _meth_818D( "tag_barrel" );
-    var_1 _meth_8053( self, "tag_barrel" );
+    var_0 = getent( "tank_turret_clip", "targetname" );
+    var_0._ID740 = self gettagorigin( "tag_turret" ) + ( 15, -25, -10 );
+    var_0._ID65 = self gettagangles( "tag_turret" );
+    var_0 linkto( self, "tag_turret" );
+    var_1 = getent( "tank_gun_clip", "targetname" );
+    var_1._ID740 = self gettagorigin( "tag_barrel" ) + ( -45, 75, 0 );
+    var_1._ID65 = self gettagangles( "tag_barrel" );
+    var_1 linkto( self, "tag_barrel" );
     self waittill( "death" );
-    var_0 _meth_8055();
-    var_1 _meth_8055();
+    var_0 unlink();
+    var_1 unlink();
 }

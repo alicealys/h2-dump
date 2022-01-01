@@ -3,19 +3,19 @@
 
 _ID616()
 {
-    _func_14C( "com_cellphone_on" );
-    _func_14C( "com_metal_briefcase" );
-    _unknown_0022();
-    _unknown_00C2();
-    _unknown_0096();
-    _unknown_0209();
-    _unknown_0221();
-    _unknown_0259();
-    _unknown_0291();
-    _unknown_0554();
-    _unknown_0587();
-    _unknown_05BD();
-    _unknown_03C4();
+    precachemodel( "com_cellphone_on" );
+    precachemodel( "com_metal_briefcase" );
+    _ID48690();
+    _ID52904();
+    _ID50267();
+    _ID45998();
+    _ID40078();
+    _ID27230();
+    _ID23866();
+    _ID51721();
+    _ID46978();
+    _ID46961();
+    _ID10730();
 }
 #using_animtree("generic_human");
 
@@ -358,7 +358,7 @@ _ID46961()
     _ID42259::_ID2062( "ghost", "dialog", "ending_takedown", "favela_gst_sendchopper" );
     _ID42259::_ID2062( "ghost", "dialog", "ending_takedown", "favela_gst_skiesareclear" );
     _ID42259::_ID2062( "ghost", "dialog", "ending_takedown", "favela_gst_onourown" );
-    _ID42259::_ID2058( "ghost", "mus_play_stinger_02", ::_unknown_1783, "ending_takedown" );
+    _ID42259::_ID2058( "ghost", "mus_play_stinger_02", ::_ID45289, "ending_takedown" );
 }
 
 _ID45289( var_0 )

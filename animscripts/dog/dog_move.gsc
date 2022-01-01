@@ -5,49 +5,49 @@
 _ID616()
 {
     self endon( "killanimscript" );
-    self _meth_814C( %root, 0.2 );
-    self _meth_814C( %german_shepherd_run_stop, 0 );
+    self clearanim( %root, 0.2 );
+    self clearanim( %german_shepherd_run_stop, 0 );
 
-    if ( !_func_02F( self._ID51512 ) && !_func_02F( self._ID34246 ) && self._ID7._ID24414 == "run" && !_func_02F( self._ID11025 ) || self._ID11025 == 0 )
-        _unknown_0225();
+    if ( !isdefined( self._ID51512 ) && !isdefined( self._ID34246 ) && self._ID7._ID24414 == "run" && ( !isdefined( self._ID11025 ) || self._ID11025 == 0 ) )
+        _ID36143();
 
-    thread _unknown_0263();
+    thread _ID53231();
     self._ID51512 = undefined;
     self._ID34246 = undefined;
 
     if ( self._ID7._ID24414 == "run" )
     {
         var_0 = undefined;
-        var_0 = _unknown_0296();
-        self _meth_8157( %german_shepherd_run, var_0["center"], 0.2, 1 );
-        self _meth_8157( %german_shepherd_run_lean_l, var_0["left"], 0.1, 1 );
-        self _meth_8157( %german_shepherd_run_lean_r, var_0["right"], 0.1, 1 );
-        self _meth_815C( "dog_run", %german_shepherd_run_knob, 1, 0.2, self._ID24424 );
+        var_0 = _ID45217();
+        self setanimrestart( %german_shepherd_run, var_0["center"], 0.2, 1 );
+        self setanimrestart( %german_shepherd_run_lean_l, var_0["left"], 0.1, 1 );
+        self setanimrestart( %german_shepherd_run_lean_r, var_0["right"], 0.1, 1 );
+        self setflaggedanimknob( "dog_run", %german_shepherd_run_knob, 1, 0.2, self._ID24424 );
         animscripts\notetracks::_ID11534( 0.1, "dog_run" );
     }
     else
     {
         var_1 = %german_shepherd_walk;
 
-        if ( _func_02F( self.slowdog ) && self.slowdog == 1 )
+        if ( isdefined( self.slowdog ) && self.slowdog == 1 )
             var_1 = %german_shepherd_walk_slow;
 
-        self _meth_811C( "dog_walk", var_1, 1, 0.2, self._ID24424 );
+        self setflaggedanimrestart( "dog_walk", var_1, 1, 0.2, self._ID24424 );
     }
 
-    thread _unknown_01E9();
+    thread _ID50004();
 
     for (;;)
     {
-        _unknown_0170();
+        _ID43118();
 
         if ( self._ID7._ID24414 == "run" )
         {
             if ( self._ID10998 == 0 )
-                thread _unknown_0315();
+                thread _ID44184();
 
             _ID42237::_ID41068( "run", "path_set" );
-            self _meth_814C( %german_shepherd_run_stop, 0.1 );
+            self clearanim( %german_shepherd_run_stop, 0.1 );
         }
     }
 }
@@ -65,19 +65,19 @@ _ID43118()
         else
             self._ID1044 = anim._ID11489;
 
-        if ( _func_02F( self._ID24408 ) )
+        if ( isdefined( self._ID24408 ) )
         {
             self [[ self._ID24408 ]]();
             self._ID24408 = undefined;
         }
 
-        if ( _func_02F( self._ID24409 ) )
+        if ( isdefined( self._ID24409 ) )
         {
             self [[ self._ID24409 ]]();
             continue;
         }
 
-        _unknown_01FB();
+        _ID50244();
     }
 }
 
@@ -86,37 +86,37 @@ _ID50244()
     self endon( "move_loop_restart" );
     var_0 = %german_shepherd_walk;
 
-    if ( _func_02F( self.slowdog ) && self.slowdog == 1 )
+    if ( isdefined( self.slowdog ) && self.slowdog == 1 )
         var_0 = %german_shepherd_walk_slow;
 
     if ( self._ID7._ID24414 == "run" )
     {
-        var_1 = _unknown_03DE();
-        self _meth_814C( var_0, 0.3 );
-        self _meth_8155( %german_shepherd_run, var_1["center"], 0.2, 1 );
-        self _meth_8155( %german_shepherd_run_lean_l, var_1["left"], 0.2, 1 );
-        self _meth_8155( %german_shepherd_run_lean_r, var_1["right"], 0.2, 1 );
-        self _meth_815C( "dog_run", %german_shepherd_run_knob, 1, 0.2, self._ID24424 );
+        var_1 = _ID45217();
+        self clearanim( var_0, 0.3 );
+        self setanim( %german_shepherd_run, var_1["center"], 0.2, 1 );
+        self setanim( %german_shepherd_run_lean_l, var_1["left"], 0.2, 1 );
+        self setanim( %german_shepherd_run_lean_r, var_1["right"], 0.2, 1 );
+        self setflaggedanimknob( "dog_run", %german_shepherd_run_knob, 1, 0.2, self._ID24424 );
         animscripts\notetracks::_ID11534( 0.2, "dog_run" );
     }
     else
     {
-        self _meth_814C( %german_shepherd_run_knob, 0.3 );
-        var_0 = _unknown_04A5();
+        self clearanim( %german_shepherd_run_knob, 0.3 );
+        var_0 = _ID16734();
 
         if ( var_0 == %h2_german_shepherd_rotate_90l || var_0 == %h2_german_shepherd_rotate_90r )
         {
-            self _meth_814C( %root, 0.2 );
-            self _meth_819A( "zonly_physics", 0 );
-            self _meth_811C( "dog_walk", var_0, 1, 0.2, 1 );
-            animscripts\notetracks::_ID11534( _func_067( var_0 ), "dog_walk" );
-            self _meth_819B( "face motion" );
-            self _meth_819A( "none", 0 );
-            self _meth_814C( %root, 0.2 );
+            self clearanim( %root, 0.2 );
+            self animmode( "zonly_physics", 0 );
+            self setflaggedanimrestart( "dog_walk", var_0, 1, 0.2, 1 );
+            animscripts\notetracks::_ID11534( getanimlength( var_0 ), "dog_walk" );
+            self orientmode( "face motion" );
+            self animmode( "none", 0 );
+            self clearanim( %root, 0.2 );
         }
         else
         {
-            self _meth_811A( "dog_walk", var_0, 1, 0.2, self._ID24424 );
+            self setflaggedanim( "dog_walk", var_0, 1, 0.2, self._ID24424 );
             animscripts\notetracks::_ID11534( 0.2, "dog_walk" );
         }
     }
@@ -129,22 +129,22 @@ _ID50004()
 
     for (;;)
     {
-        self waittill( "path_changed",  var_1, var_0  );
+        self waittill( "path_changed",  var_0, var_1  );
 
-        if ( _func_02F( self._ID19386 ) || _func_02F( self._ID25154 ) )
+        if ( isdefined( self._ID19386 ) || isdefined( self._ID25154 ) )
             continue;
 
         if ( self._ID7._ID24414 != "run" )
             continue;
 
-        var_2 = _func_0F0( self._ID65[1] - _func_11B( var_1 ) );
-        var_3 = _unknown_042B( var_2 );
+        var_2 = angleclamp180( self._ID65[1] - vectortoyaw( var_1 ) );
+        var_3 = _ID53699( var_2 );
 
-        if ( _func_02F( var_3 ) )
+        if ( isdefined( var_3 ) )
         {
             self._ID39216 = var_3;
-            self._ID39230 = _func_03D();
-            self._ID24409 = ::_unknown_0452;
+            self._ID39230 = gettime();
+            self._ID24409 = ::_ID54286;
             self notify( "move_loop_restart" );
         }
     }
@@ -157,17 +157,17 @@ _ID53713()
 
     for (;;)
     {
-        if ( self._ID602 > 40 && !_func_02F( self._ID24409 ) && !_func_02F( self._ID19386 ) && !_func_02F( self._ID25154 ) && self._ID7._ID24414 == "run" )
+        if ( self._ID602 > 40 && !isdefined( self._ID24409 ) && !isdefined( self._ID19386 ) && !isdefined( self._ID25154 ) && self._ID7._ID24414 == "run" )
         {
-            var_0 = _func_11B( self._ID601 );
-            var_1 = _func_0F0( self._ID65[1] - var_0 );
-            var_2 = _unknown_0490( var_1 );
+            var_0 = vectortoyaw( self._ID601 );
+            var_1 = angleclamp180( self._ID65[1] - var_0 );
+            var_2 = _ID53699( var_1 );
 
-            if ( _func_02F( var_2 ) )
+            if ( isdefined( var_2 ) )
             {
                 self._ID39216 = var_2;
-                self._ID39230 = _func_03D();
-                self._ID24409 = ::_unknown_04B8;
+                self._ID39230 = gettime();
+                self._ID24409 = ::_ID54286;
                 self notify( "move_loop_restart" );
             }
         }
@@ -198,29 +198,29 @@ _ID54286()
     self._ID24409 = undefined;
     var_0 = self._ID39216;
 
-    if ( _func_03D() > self._ID39230 + 50 )
+    if ( gettime() > self._ID39230 + 50 )
         return;
 
-    self _meth_819A( "zonly_physics", 0 );
-    self _meth_814C( %root, 0.2 );
-    self._ID24408 = ::_unknown_056B;
+    self animmode( "zonly_physics", 0 );
+    self clearanim( %root, 0.2 );
+    self._ID24408 = ::_ID44239;
     self._ID19386 = 1;
-    self _meth_811C( "turnAnim", var_0, 1, 0.2, self._ID24424 );
-    self _meth_819B( "face current" );
-    var_1 = _func_067( var_0 ) * self._ID24424;
+    self setflaggedanimrestart( "turnAnim", var_0, 1, 0.2, self._ID24424 );
+    self orientmode( "face current" );
+    var_1 = getanimlength( var_0 ) * self._ID24424;
     animscripts\notetracks::_ID11534( var_1 * 0.6, "turnAnim" );
     self._ID19386 = undefined;
-    self _meth_819B( "face motion" );
-    self _meth_819A( "none", 0 );
+    self orientmode( "face motion" );
+    self animmode( "none", 0 );
     animscripts\notetracks::_ID11534( var_1 * 0.25, "turnAnim" );
 }
 
 _ID44239()
 {
     self._ID19386 = undefined;
-    self _meth_819B( "face default" );
-    self _meth_814C( %root, 0.2 );
-    self _meth_819A( "none", 0 );
+    self orientmode( "face default" );
+    self clearanim( %root, 0.2 );
+    self animmode( "none", 0 );
 }
 
 _ID53891()
@@ -229,8 +229,8 @@ _ID53891()
 
     for ( var_0 = 0; var_0 < 2; var_0++ )
     {
-        var_1 = _func_11A( self._ID601 );
-        self _meth_819B( "face angle", var_1 );
+        var_1 = vectortoangles( self._ID601 );
+        self orientmode( "face angle", var_1 );
     }
 }
 
@@ -238,12 +238,12 @@ _ID52576()
 {
     var_0 = self._ID740;
     var_0 += _ID42407::_ID49965( self._ID601, anim._ID11487 );
-    var_1 = _func_0F5( self._ID740, self._ID762 ) < anim._ID11487 * anim._ID11487;
+    var_1 = distancesquared( self._ID740, self._ID762 ) < anim._ID11487 * anim._ID11487;
 
-    if ( !var_1 && self _meth_81CF( var_0 ) )
+    if ( !var_1 && self maymovetopoint( var_0 ) )
     {
-        var_2 = _func_11A( self._ID601 );
-        var_3 = _func_0F0( var_2[1] - self._ID65[1] );
+        var_2 = vectortoangles( self._ID601 );
+        var_3 = angleclamp180( var_2[1] - self._ID65[1] );
 
         if ( var_3 >= 0 )
         {
@@ -261,47 +261,47 @@ _ID52576()
         else
             var_4 = 1;
 
-        self _meth_8157( anim._ID46461[var_4], 1, 0.2, 1 );
+        self setanimrestart( anim._ID46461[var_4], 1, 0.2, 1 );
         var_5 = self._ID65[1] + anim._ID43853[var_4];
-        var_6 = _func_0F0( var_2[1] - var_5 );
-        self _meth_819B( "face angle", self._ID65[1] + var_6 );
-        self _meth_819A( "zonly_physics", 0 );
-        var_7 = _func_067( anim._ID46461[var_4] ) * self._ID24424;
+        var_6 = angleclamp180( var_2[1] - var_5 );
+        self orientmode( "face angle", self._ID65[1] + var_6 );
+        self animmode( "zonly_physics", 0 );
+        var_7 = getanimlength( anim._ID46461[var_4] ) * self._ID24424;
         animscripts\notetracks::_ID11534( var_7 * 0.6, "turnAnim" );
-        self _meth_819B( "face motion" );
-        self _meth_819A( "none", 0 );
+        self orientmode( "face motion" );
+        self animmode( "none", 0 );
         animscripts\notetracks::_ID11534( var_7 * 0.25, "turnAnim" );
-        self _meth_814C( %root, 0.2 );
+        self clearanim( %root, 0.2 );
     }
 }
 
 _ID36143()
 {
-    if ( _func_02F( self._ID762 ) )
+    if ( isdefined( self._ID762 ) )
     {
         wait 0.05;
 
-        if ( _func_02F( self._ID762 ) )
+        if ( isdefined( self._ID762 ) )
         {
-            _unknown_0724();
-            self _meth_814C( %root, 0.2 );
+            _ID52576();
+            self clearanim( %root, 0.2 );
             return;
         }
     }
 
-    self _meth_819B( "face default" );
-    self _meth_8116( "dog_prerun", %german_shepherd_run_start, 1, 0.2, self._ID24424 );
+    self orientmode( "face default" );
+    self setflaggedanimknobrestart( "dog_prerun", %german_shepherd_run_start, 1, 0.2, self._ID24424 );
     animscripts\shared::_ID11529( "dog_prerun" );
-    self _meth_819A( "none", 0 );
-    self _meth_814C( %root, 0.2 );
+    self animmode( "none", 0 );
+    self clearanim( %root, 0.2 );
 }
 
 _ID44184()
 {
     self endon( "killanimscript" );
     self endon( "run" );
-    self _meth_814C( %german_shepherd_run_knob, 0.1 );
-    self _meth_811C( "stop_anim", %german_shepherd_run_stop, 1, 0.2, 1 );
+    self clearanim( %german_shepherd_run_knob, 0.1 );
+    self setflaggedanimrestart( "stop_anim", %german_shepherd_run_stop, 1, 0.2, 1 );
     animscripts\shared::_ID11529( "stop_anim" );
 }
 
@@ -309,7 +309,7 @@ _ID43276( var_0, var_1 )
 {
     _ID42407::_ID27081( var_0, "tag_eye" );
 
-    if ( _func_1A7( self ) )
+    if ( isalive( self ) )
         self notify( var_1 );
 }
 
@@ -322,17 +322,17 @@ _ID53231()
     {
         var_0 = undefined;
 
-        if ( _func_02F( self._ID31246 ) )
+        if ( isdefined( self._ID31246 ) )
             var_0 = "anml_dog_growl";
-        else if ( !_func_02F( self._ID31356 ) )
+        else if ( !isdefined( self._ID31356 ) )
             var_0 = "anml_dog_bark";
 
-        if ( !_func_02F( var_0 ) )
+        if ( !isdefined( var_0 ) )
             break;
 
-        thread _unknown_087B( var_0, "randomRunSound" );
+        thread _ID43276( var_0, "randomRunSound" );
         self waittill( "randomRunSound" );
-        wait(_func_0BA( 0.1, 0.3 ));
+        wait(randomfloatrange( 0.1, 0.3 ));
     }
 }
 
@@ -349,7 +349,7 @@ _ID45217()
             self._ID587 = 0.95;
 
         var_0["left"] = 0;
-        var_0["right"] = 1 - self._ID587 * 20;
+        var_0["right"] = ( 1 - self._ID587 ) * 20;
 
         if ( var_0["right"] > 1 )
             var_0["right"] = 1;
@@ -364,7 +364,7 @@ _ID45217()
             self._ID587 = -0.95;
 
         var_0["right"] = 0;
-        var_0["left"] = 1 + self._ID587 * 20;
+        var_0["left"] = ( 1 + self._ID587 ) * 20;
 
         if ( var_0["left"] > 1 )
             var_0["left"] = 1;
@@ -388,11 +388,11 @@ _ID16734()
 {
     var_0 = %german_shepherd_walk;
 
-    if ( _func_02F( self.slowdog ) && self.slowdog == 1 )
+    if ( isdefined( self.slowdog ) && self.slowdog == 1 )
     {
         var_0 = %german_shepherd_walk_slow;
-        var_1 = _func_11A( self._ID601 );
-        var_2 = _func_0F0( var_1[1] - self._ID65[1] );
+        var_1 = vectortoangles( self._ID601 );
+        var_2 = angleclamp180( var_1[1] - self._ID65[1] );
 
         if ( var_2 < -47 )
             var_0 = %h2_german_shepherd_rotate_90r;
