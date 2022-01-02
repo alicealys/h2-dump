@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -188,8 +188,8 @@ aud_bone_intro_littlebirds( var_0 )
     var_0 vehicle_turnengineoff();
     var_0._ID31138 = 1;
 
-    if ( isdefined( var_0._ID922 ) )
-        var_0 thread _ID42407::_ID27001( "scn_bone_" + var_0._ID922 + "_lp", undefined, 1 );
+    if ( isdefined( var_0.script_noteworthy ) )
+        var_0 thread _ID42407::_ID27001( "scn_bone_" + var_0.script_noteworthy + "_lp", undefined, 1 );
 }
 
 aud_bone_intro_btr80()
@@ -269,7 +269,7 @@ aud_bone_afterslide_turret_suburban( var_0 )
 aud_bone_afterslide_btr( var_0 )
 {
     var_0 vehicle_turnengineoff();
-    var_1 = spawn( "script_origin", self._ID740 );
+    var_1 = spawn( "script_origin", self.origin );
     var_1 linkto( self );
     var_1 playloopsound( "scn_bone_afterslide_btr_idle" );
     var_1 setvolume( 0, 0 );
@@ -365,7 +365,7 @@ scn_ride_jeep_passby_front_01( var_0 )
 
 scn_ride_suburban_front_passby_01( var_0 )
 {
-    while ( distancesquared( level._ID794._ID740, var_0._ID740 ) > 9000000 )
+    while ( distancesquared( level.player.origin, var_0.origin ) > 9000000 )
         wait 0.1;
 
     var_0 thread _ID42407::_ID27079( "scn_ride_suburban_front_passby_01" );
@@ -373,7 +373,7 @@ scn_ride_suburban_front_passby_01( var_0 )
 
 scn_ride_suburban_front_passby_02( var_0 )
 {
-    while ( distancesquared( level._ID794._ID740, var_0._ID740 ) > 9000000 )
+    while ( distancesquared( level.player.origin, var_0.origin ) > 9000000 )
         wait 0.1;
 
     var_0 thread _ID42407::_ID27079( "scn_ride_suburban_front_passby_02" );

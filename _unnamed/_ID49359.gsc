@@ -66,7 +66,7 @@ _ID45946()
         if ( _ID42407::_ID20495() )
             playfxontagforclients( level._ID1426["blizzard_main"], self, "tag_origin", self );
         else
-            playfx( level._ID1426["blizzard_main"], self._ID740 );
+            playfx( level._ID1426["blizzard_main"], self.origin );
 
         wait 0.3;
     }
@@ -263,7 +263,7 @@ _ID53955( var_0, var_1, var_2 )
     var_3 = self;
 
     if ( !isplayernumber( var_3 ) )
-        var_3 = level._ID794;
+        var_3 = level.player;
 
     if ( !isdefined( var_1 ) )
         var_1 = 1;
@@ -285,49 +285,49 @@ _ID46211( var_0 )
 
 _ID49741( var_0, var_1, var_2 )
 {
-    var_0._ID1331 = 0;
-    var_0._ID44 = "left";
-    var_0._ID499 = "fullscreen";
+    var_0.x = 0;
+    var_0.alignx = "left";
+    var_0.horzalign = "fullscreen";
     _ID54714( var_0, var_1, var_2 );
 }
 
 _ID50814( var_0, var_1, var_2 )
 {
-    var_0._ID1331 = 640;
-    var_0._ID44 = "right";
-    var_0._ID499 = "fullscreen";
+    var_0.x = 640;
+    var_0.alignx = "right";
+    var_0.horzalign = "fullscreen";
     _ID54714( var_0, var_1, var_2 );
 }
 
 _ID51904( var_0, var_1 )
 {
-    var_0._ID1331 = 320;
-    var_0._ID44 = "center";
-    var_0._ID499 = "fullscreen";
+    var_0.x = 320;
+    var_0.alignx = "center";
+    var_0.horzalign = "fullscreen";
     _ID54714( var_0, 640, var_1 );
 }
 
 _ID54714( var_0, var_1, var_2 )
 {
     var_0._ID4892 = var_1;
-    var_0._ID1339 = -240;
-    var_0._ID45 = "middle";
-    var_0._ID612 = 1;
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 1;
+    var_0.y = -240;
+    var_0.aligny = "middle";
+    var_0.lowresbackground = 1;
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 1;
     var_0 setshader( var_2, var_1, 480 );
 }
 
 _ID43493( var_0 )
 {
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
-    var_0._ID612 = 1;
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
+    var_0.lowresbackground = 1;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 0;
 }
 
 _ID50649( var_0 )
@@ -342,7 +342,7 @@ _ID50649( var_0 )
 
 _ID43842()
 {
-    level._ID794 endon( "snowgogglesOff" );
+    level.player endon( "snowgogglesOff" );
 
     for (;;)
     {
@@ -371,7 +371,7 @@ _ID47801( var_0, var_1, var_2 )
         setomnvar( "ui_snowgoggles", 1 );
 
     level._ID51628 = 1;
-    level._ID794 notify( "snowgogglesOff" );
+    level.player notify( "snowgogglesOff" );
     var_0 thread _ID45766();
     var_0 thread _ID43842();
     var_0 playsound( "goggles_wear_plr" );
@@ -382,7 +382,7 @@ _ID48243( var_0, var_1 )
 {
     setomnvar( "ui_snowgoggles", 2 );
     level._ID51628 = 0;
-    level._ID794 notify( "snowgogglesOff" );
+    level.player notify( "snowgogglesOff" );
     var_0 playsound( "goggles_remove_plr" );
 
     if ( isdefined( level._ID44988 ) )
@@ -421,7 +421,7 @@ _ID46556()
 
 _ID45766()
 {
-    level._ID794 endon( "snowgogglesOff" );
+    level.player endon( "snowgogglesOff" );
     _ID42237::_ID14388( "fade_to_death" );
     _ID42237::_ID14413( "fade_to_death" );
     setomnvar( "ui_snowgogglesfade", 1 );

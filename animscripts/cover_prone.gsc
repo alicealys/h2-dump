@@ -51,41 +51,41 @@ _ID45673( var_0 )
     self endon( "killanimscript" );
     self endon( "killsetAnimModeDelayed" );
     wait(var_0);
-    self orientmode( "face angle", self._ID8893._ID65[1] );
+    self orientmode( "face angle", self._ID8893.angles[1] );
 }
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "cover_prone" );
 
-    if ( weaponclass( self._ID1302 ) == "rocketlauncher" )
+    if ( weaponclass( self.weapon ) == "rocketlauncher" )
     {
-        animscripts\combat::_ID616();
+        animscripts\combat::main();
         return;
     }
 
     if ( isdefined( self._ID7._ID3372 ) && self._ID7._ID3372 == "prone_saw" )
         animscripts\cover_wall::_ID39957( "saw_bipod_prone", "weapon_saw_MG_Setup", 0 );
-    else if ( isdefined( self._ID700._ID39235 ) )
+    else if ( isdefined( self.node._ID39235 ) )
         animscripts\cover_wall::_ID39960();
 
-    if ( isdefined( self._ID322 ) && lengthsquared( self._ID740 - self._ID322._ID740 ) < squared( 512 ) )
+    if ( isdefined( self.enemy ) && lengthsquared( self.origin - self.enemy.origin ) < squared( 512 ) )
     {
-        thread animscripts\combat::_ID616();
+        thread animscripts\combat::main();
         return;
     }
 
     _ID32934();
     self._ID39229 = 50;
-    self._ID8893 = self._ID700;
-    self orientmode( "face angle", self._ID65[1] );
+    self._ID8893 = self.node;
+    self orientmode( "face angle", self.angles[1] );
     self._ID7._ID16990 = 1;
     self setproneanimnodes( -45, 45, %prone_legs_down, %exposed_aiming, %prone_legs_up );
 
     if ( self._ID7._ID28253 != "prone" )
     {
-        self orientmode( "face angle", self._ID8893._ID65[1] );
+        self orientmode( "face angle", self._ID8893.angles[1] );
         _ID28706( "prone" );
     }
     else
@@ -99,7 +99,7 @@ _ID616()
 
         if ( var_0 != 0 )
         {
-            var_1 = animscripts\utility::_ID1735( self._ID65[1] - self._ID8893._ID65[1] );
+            var_1 = animscripts\utility::_ID1735( self.angles[1] - self._ID8893.angles[1] );
             var_2 = %h1_crawl_2_prone;
             var_3 = 0.4;
 
@@ -127,7 +127,7 @@ _ID616()
     thread animscripts\combat_utility::_ID2428();
     _ID33590( 0.2 );
     self setanim( %prone_aim_5, 1, 0.1 );
-    self orientmode( "face angle", self._ID65[1] );
+    self orientmode( "face angle", self.angles[1] );
     self animmode( "zonly_physics" );
     _ID28709();
     self notify( "stop_deciding_how_to_shoot" );
@@ -163,7 +163,7 @@ _ID11659( var_0, var_1 )
     var_2 = isdefined( self._ID33810 );
     var_3 = 1;
     var_4 = 0.2;
-    var_5 = isdefined( self._ID322 ) && !isdefined( self._ID39233 ) && self seerecently( self._ID322, 2 ) && distancesquared( self._ID322._ID740, self._ID740 ) < 262144;
+    var_5 = isdefined( self.enemy ) && !isdefined( self._ID39233 ) && self seerecently( self.enemy, 2 ) && distancesquared( self.enemy.origin, self.origin ) < 262144;
 
     if ( self._ID7._ID31561 + 500 > gettime() )
     {
@@ -174,7 +174,7 @@ _ID11659( var_0, var_1 )
     }
     else if ( var_5 )
     {
-        var_6 = 1.0 - distance( self._ID322._ID740, self._ID740 ) / 512;
+        var_6 = 1.0 - distance( self.enemy.origin, self.origin ) / 512;
         var_3 = 1 + var_6 * 1;
 
         if ( var_3 > 2 )
@@ -199,7 +199,7 @@ _ID11659( var_0, var_1 )
 
     if ( isdefined( self._ID39233 ) )
         self animmode( "angle deltas", 0 );
-    else if ( isdefined( self._ID700 ) && isdefined( anim._ID20710[self._ID700._ID1244] ) && distancesquared( self._ID740, self._ID700._ID740 ) < 256 )
+    else if ( isdefined( self.node ) && isdefined( anim._ID20710[self.node.type] ) && distancesquared( self.origin, self.node.origin ) < 256 )
         self animmode( "angle deltas", 0 );
     else if ( animscripts\combat::_ID20667( var_9 ) )
         animscripts\combat::_ID29767();
@@ -239,8 +239,8 @@ _ID24717()
     if ( !isdefined( var_0 ) )
         return 0;
 
-    var_1 = self._ID65[1] - vectortoyaw( var_0 - self._ID740 );
-    var_2 = distancesquared( self._ID740, var_0 );
+    var_1 = self.angles[1] - vectortoyaw( var_0 - self.origin );
+    var_2 = distancesquared( self.origin, var_0 );
 
     if ( var_2 < 65536 )
     {
@@ -321,14 +321,14 @@ _ID28709()
             continue;
         }
 
-        var_1 = lengthsquared( self._ID740 - self._ID33810 );
+        var_1 = lengthsquared( self.origin - self._ID33810 );
 
         if ( self._ID7._ID28253 != "crouch" && self isstanceallowed( "crouch" ) && var_1 < squared( 400 ) )
         {
             if ( var_1 < squared( 285 ) )
             {
                 _ID28706( "crouch" );
-                thread animscripts\combat::_ID616();
+                thread animscripts\combat::main();
                 return;
             }
         }
@@ -360,7 +360,7 @@ _ID28713( var_0 )
 
 _ID32934()
 {
-    self setdefaultaimlimits( self._ID700 );
+    self setdefaultaimlimits( self.node );
     self._ID7._ID3291 = animscripts\utility::_ID22631( "cover_prone" );
 }
 
@@ -374,36 +374,36 @@ _ID39080( var_0, var_1 )
         var_2 = animscripts\utility::_ID3156( "grenade_exposed" );
 
     self animmode( "zonly_physics" );
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_3 = ( 32, 20, 64 );
     var_4 = animscripts\combat_utility::_ID39072( var_0, var_2 );
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return var_4;
 }
 
 _ID8533()
 {
-    if ( isdefined( anim._ID37694 ) && isalive( level._ID794 ) )
+    if ( isdefined( anim._ID37694 ) && isalive( level.player ) )
     {
-        if ( _ID39080( level._ID794, 200 ) )
+        if ( _ID39080( level.player, 200 ) )
             return 1;
     }
 
-    if ( isdefined( self._ID322 ) )
-        return _ID39080( self._ID322, 850 );
+    if ( isdefined( self.enemy ) )
+        return _ID39080( self.enemy, 850 );
 
     return 0;
 }
 
 _ID33948()
 {
-    if ( !isdefined( self._ID1302 ) || !weaponisauto( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) || !weaponisauto( self.weapon ) )
         return 0;
 
-    if ( isdefined( self._ID700 ) && distancesquared( self._ID740, self._ID700._ID740 ) < 256 )
+    if ( isdefined( self.node ) && distancesquared( self.origin, self.node.origin ) < 256 )
         return 0;
 
-    if ( isdefined( self._ID322 ) && self cansee( self._ID322 ) && !isdefined( self._ID458 ) && animscripts\shared::_ID16103() < 20 )
+    if ( isdefined( self.enemy ) && self cansee( self.enemy ) && !isdefined( self.grenade ) && animscripts\shared::_ID16103() < 20 )
         return animscripts\move::_ID23140();
 
     return 0;

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "snowmobile_player", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -37,7 +37,7 @@ _ID17700()
     self endon( "death" );
     var_0 = 0;
     var_1 = 1.0;
-    _ID44111::_ID521();
+    _ID44111::init();
     thread _ID23939();
 
     for (;;)

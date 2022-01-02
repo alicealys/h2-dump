@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "allies";
-    self._ID1244 = "human";
+    self.team = "allies";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 3600;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 4;
+    self.accuracy = 0.2;
+    self.health = 3600;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 4;
     self._ID949 = "beretta";
     self._ID34144 = "beretta";
 
@@ -24,20 +24,20 @@ _ID616()
     switch ( _ID42226::_ID15950( 4 ) )
     {
         case 0:
-            self._ID1302 = "mp5";
+            self.weapon = "mp5";
             break;
         case 1:
-            self._ID1302 = "mp5_reflex";
+            self.weapon = "mp5_reflex";
             break;
         case 2:
-            self._ID1302 = "mp5_silencer";
+            self.weapon = "mp5_silencer";
             break;
         case 3:
-            self._ID1302 = "mp5_silencer_reflex";
+            self.weapon = "mp5_silencer_reflex";
             break;
     }
 
-    character\character_airport_anatoly::_ID616();
+    character\character_airport_anatoly::main();
 }
 
 _ID988()

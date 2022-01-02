@@ -12,7 +12,7 @@ _ID49665()
     waitframe;
     _ID42407::_ID10226( 0.5, _ID42422::_ID28924, 0.1 );
     _ID42407::_ID10226( 0.5, _ID42422::_ID22327, _ID52596::_ID22335, _ID52596::_ID22333 );
-    maps\dcemp_code::_ID44803( level._ID1194, _ID42237::_ID16640( "tunnels_start_points", "targetname" ) );
+    maps\dcemp_code::_ID44803( level.team, _ID42237::_ID16640( "tunnels_start_points", "targetname" ) );
     maps\dcemp_code::_ID47900();
     level._ID43168 delete();
     _ID42407::_ID10226( 0.25, _ID42407::_ID1804, "tunnels_spawn_trigger" );
@@ -45,7 +45,7 @@ _ID46100()
     level thread _ID52169();
     maps\dcemp_endpart_code::_ID53326();
     thread _ID42407::_ID4917( "allies" );
-    level._ID1194["marine1"] _ID42407::_ID32315( "g" );
+    level.team["marine1"] _ID42407::_ID32315( "g" );
     level._ID388 _ID42407::_ID32315( "y" );
     level._ID44224 _ID42407::_ID32315( "o" );
 
@@ -115,7 +115,7 @@ _ID51006()
         var_5._ID7._ID50527 = undefined;
 
     _ID42237::_ID14402( "tunnels_door_open" );
-    level._ID388 setgoalpos( level._ID388._ID740 );
+    level._ID388 setgoalpos( level._ID388.origin );
     _ID42237::_ID14402( "tunnels_foley_dialogue" );
 }
 
@@ -147,16 +147,16 @@ _ID47702()
     var_2 = getent( "tunnels_door_volume", "targetname" );
 
     if ( !level._ID388 istouching( var_2 ) )
-        level._ID388 forceteleport( var_0._ID740, var_0._ID65 );
+        level._ID388 forceteleport( var_0.origin, var_0.angles );
 
     if ( !level._ID44224 istouching( var_2 ) )
-        level._ID44224 forceteleport( var_1._ID740, var_1._ID65 );
+        level._ID44224 forceteleport( var_1.origin, var_1.angles );
 }
 
 _ID52169()
 {
     _ID42237::_ID14413( "tunnels_indoor" );
-    level._ID1194["marine1"] _ID42407::_ID10805( "dcemp_ar1_feetdry" );
+    level.team["marine1"] _ID42407::_ID10805( "dcemp_ar1_feetdry" );
     wait 0.5;
     level._ID44224 _ID42407::_ID10805( "dcemp_cpd_huah3" );
     level._ID388 _ID42407::_ID10805( "dcemp_fly_cutchatter" );
@@ -175,7 +175,7 @@ _ID52169()
 _ID51484()
 {
     maps\dcemp_endpart_code::_ID52941();
-    var_0 = getent( self._ID1191, "targetname" );
+    var_0 = getent( self.target, "targetname" );
     var_0 _ID42259::_ID3023( self, "death_sitting_pose_v1" );
     _ID42237::_ID14413( "tunnels_dunn_anim_end" );
     self delete();
@@ -187,7 +187,7 @@ _ID48421()
     level endon( "tunnels_dunn_anim_end" );
     self._ID3189 = "dead_guy";
     maps\dcemp_endpart_code::_ID52941();
-    var_0 = getent( self._ID1191, "targetname" );
+    var_0 = getent( self.target, "targetname" );
     var_0 thread _ID42259::_ID3044( self, "hunted_woundedhostage_idle_start" );
     level thread _ID46617( self, var_0 );
     _ID42237::_ID14413( "tunnels_main" );

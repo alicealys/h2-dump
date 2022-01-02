@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -180,7 +180,7 @@ _ID52654()
 
 _ID51459()
 {
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID42476::_ID34518( "slomo" );
     _ID42465::_ID23797( "ending_slowmo_mix" );
 }
@@ -188,7 +188,7 @@ _ID51459()
 _ID51763()
 {
     _ID42465::_ID23801( "ending_slowmo_mix" );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID42476::_ID34512( "slomo" );
     _ID42495::_ID34653( "default" );
 }
@@ -209,7 +209,7 @@ _ID51200()
 {
     _ID42237::_ID14413( "introscreen_activate" );
     _ID42465::_ID23797( "fade_in_level_mix" );
-    level._ID794 playsound( "mus_favela_intro_stinger" );
+    level.player playsound( "mus_favela_intro_stinger" );
     _ID42237::_ID14413( "introscreen_remove_submix" );
     _ID42465::_ID23801( "fade_in_level_mix" );
 }
@@ -251,7 +251,7 @@ _ID47993()
 
     for (;;)
     {
-        var_0 = distancesquared( level._ID794._ID740, self._ID740 );
+        var_0 = distancesquared( level.player.origin, self.origin );
 
         if ( var_0 < 1000000 )
         {
@@ -287,7 +287,7 @@ _ID43900()
 
     foreach ( var_2 in var_0 )
     {
-        var_3 = spawn( "script_origin", var_2._ID740 );
+        var_3 = spawn( "script_origin", var_2.origin );
         var_3 thread _ID42237::_ID27000( "car_alarm" );
         var_2 thread _ID51035( var_3 );
     }
@@ -312,7 +312,7 @@ _ID54641()
     var_0 = getent( "shockwave_ent", "targetname" );
     var_1 = getent( "shockwave_stop", "targetname" );
     var_0 thread _ID42407::_ID27079( "scn_favela_tanker_explosion_shockwave" );
-    var_0 moveto( var_1._ID740, 3.2, 0.5, 0.05 );
+    var_0 moveto( var_1.origin, 3.2, 0.5, 0.05 );
 }
 
 set_ending_slowmo_timescale()

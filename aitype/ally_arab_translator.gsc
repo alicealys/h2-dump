@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "allies";
-    self._ID1244 = "human";
+    self.team = "allies";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 100;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 100;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "beretta";
 
@@ -24,44 +24,44 @@ _ID616()
     switch ( _ID42226::_ID15950( 12 ) )
     {
         case 0:
-            self._ID1302 = "m16_basic";
+            self.weapon = "m16_basic";
             break;
         case 1:
-            self._ID1302 = "m240";
+            self.weapon = "m240";
             break;
         case 2:
-            self._ID1302 = "m16_grenadier";
+            self.weapon = "m16_grenadier";
             break;
         case 3:
-            self._ID1302 = "m240_reflex";
+            self.weapon = "m240_reflex";
             break;
         case 4:
-            self._ID1302 = "m16_acog";
+            self.weapon = "m16_acog";
             break;
         case 5:
-            self._ID1302 = "m240_acog";
+            self.weapon = "m240_acog";
             break;
         case 6:
-            self._ID1302 = "m4_grenadier";
+            self.weapon = "m4_grenadier";
             break;
         case 7:
-            self._ID1302 = "scar_h_acog";
+            self.weapon = "scar_h_acog";
             break;
         case 8:
-            self._ID1302 = "m4_grunt";
+            self.weapon = "m4_grunt";
             break;
         case 9:
-            self._ID1302 = "scar_h_shotgun";
+            self.weapon = "scar_h_shotgun";
             break;
         case 10:
-            self._ID1302 = "scar_h_reflex";
+            self.weapon = "scar_h_reflex";
             break;
         case 11:
-            self._ID1302 = "scar_h_grenadier";
+            self.weapon = "scar_h_grenadier";
             break;
     }
 
-    character\character_hamed::_ID616();
+    character\character_hamed::main();
 }
 
 _ID988()

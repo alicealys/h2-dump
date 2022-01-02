@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0[0] = "head_militia_ba_blk";
     var_0[1] = "head_militia_bb_blk_hat";

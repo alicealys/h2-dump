@@ -13,10 +13,10 @@ _ID36250()
 _ID14989()
 {
     thread _ID42407::_ID32226( 0 );
-    self._ID1644._ID5029._ID25553 = self._ID464;
-    self._ID464 = 0;
+    self._ID1644._ID5029._ID25553 = self.grenadeammo;
+    self.grenadeammo = 0;
     self._ID14794 = undefined;
-    self._ID511 = 1;
+    self.ignoreme = 1;
 }
 
 _ID14990()
@@ -24,17 +24,17 @@ _ID14990()
     thread _ID42407::_ID32226( 1 );
 
     if ( isdefined( self._ID1644._ID5029._ID25553 ) )
-        self._ID464 = self._ID1644._ID5029._ID25553;
+        self.grenadeammo = self._ID1644._ID5029._ID25553;
     else
-        self._ID464 = 3;
+        self.grenadeammo = 3;
 
-    self._ID511 = 0;
+    self.ignoreme = 0;
     self pushplayer( 0 );
     _ID42407::_ID10896();
     thread _ID14979();
     self allowedstances( "prone", "crouch", "stand" );
 
-    if ( self._ID1244 != "dog" || !isdefined( self._ID19464 ) || !self._ID19464 )
+    if ( self.type != "dog" || !isdefined( self._ID19464 ) || !self._ID19464 )
         _ID42407::_ID3136();
 }
 

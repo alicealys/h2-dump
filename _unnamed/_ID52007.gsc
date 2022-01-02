@@ -39,7 +39,7 @@ play_additive_idle()
 
         for (;;)
         {
-            var_0 = clamp( self._ID26175._ID1276 / 50.0, 0.0, 1.0 );
+            var_0 = clamp( self._ID26175.veh_speed / 50.0, 0.0, 1.0 );
             self setanim( _ID42407::_ID16120( "idle_add" ), var_0, 0.2, 1.0 );
             waittillframeend;
         }
@@ -121,11 +121,11 @@ _ID47675( var_0 )
 
     for (;;)
     {
-        if ( level._ID794 [[ var_2 ]]() )
+        if ( level.player [[ var_2 ]]() )
         {
             thread _ID46163( var_0 );
 
-            while ( level._ID794 [[ var_2 ]]() )
+            while ( level.player [[ var_2 ]]() )
                 wait 0.05;
         }
         else
@@ -133,7 +133,7 @@ _ID47675( var_0 )
             if ( var_1 )
                 thread _ID46713( var_0 );
 
-            while ( !level._ID794 [[ var_2 ]]() )
+            while ( !level.player [[ var_2 ]]() )
                 wait 0.05;
         }
 
@@ -143,10 +143,10 @@ _ID47675( var_0 )
 
 _ID46127()
 {
-    if ( level._ID794 adsbuttonpressed() )
+    if ( level.player adsbuttonpressed() )
         return 1;
 
-    if ( level._ID794 attackbuttonpressed() )
+    if ( level.player attackbuttonpressed() )
         return 1;
 
     return 0;
@@ -154,7 +154,7 @@ _ID46127()
 
 _ID45974()
 {
-    return level._ID794 attackbuttonpressed();
+    return level.player attackbuttonpressed();
 }
 
 _ID46713( var_0 )

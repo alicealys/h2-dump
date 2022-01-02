@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "mission_select_cam" ) == "1" )
     {
@@ -41,22 +41,22 @@ _ID616()
     precacheitem( "usp_laserdesignator" );
     _ID43597();
     _ID42407::_ID1885( "b2bomb", 0.5, 0.5, 2000 );
-    _ID49242::_ID616();
-    _ID51176::_ID616();
-    _ID44499::_ID616();
-    maps\arcadia_lighting::_ID616();
+    _ID49242::main();
+    _ID51176::main();
+    _ID44499::main();
+    maps\arcadia_lighting::main();
     var_0 = getentarray( "volume_second_half", "targetname" );
     _ID42407::_ID22998( var_0 );
     _ID42407::_ID23000( var_0 );
     thread _ID44594();
     setsaveddvar( "fx_cast_shadow", 0 );
     maps\arcadia_code::init_scope_fov_setup();
-    _ID42323::_ID616();
-    maps\arcadia_anim::_ID616();
-    _ID42287::_ID521();
-    _ID53924::_ID616();
+    _ID42323::main();
+    maps\arcadia_anim::main();
+    _ID42287::init();
+    _ID53924::main();
     _ID42272::_ID33575( "compass_map_arcadia" );
-    maps\arcadia_aud::_ID616();
+    maps\arcadia_aud::main();
     _ID42237::_ID14400( "used_laser" );
     _ID42237::_ID14400( "used_laser_attack" );
     _ID42237::_ID14400( "used_laser_golf" );
@@ -127,7 +127,7 @@ _ID616()
     level._ID51107 thread maps\arcadia_code::_ID53156();
     level._ID51107 thread maps\arcadia_stryker::achievement_target_confirmed_init();
     level._ID51107 setvehiclelookattext( "Honey Badger", &"" );
-    level._ID51107._ID23735 = spawn( "script_origin", level._ID51107._ID740 + ( 0, 0, 70 ) );
+    level._ID51107._ID23735 = spawn( "script_origin", level._ID51107.origin + ( 0, 0, 70 ) );
     level._ID51107._ID23735 linkto( level._ID51107 );
     missile_createattractorent( level._ID51107._ID23735, 10000, 3000, undefined, undefined, undefined, "axis" );
     thread maps\arcadia_code::_ID54226();
@@ -157,7 +157,7 @@ _ID616()
     thread maps\arcadia_code::_ID54278();
     thread _ID49515();
     thread _ID43693();
-    thread maps\arcadia_code::_ID21733( level._ID794 );
+    thread maps\arcadia_code::_ID21733( level.player );
     thread maps\arcadia_code::_ID43364();
     thread maps\arcadia_code::_ID45504();
     thread maps\arcadia_code::_ID46833();
@@ -369,7 +369,7 @@ _ID53780()
     _ID42475::_ID34575( "startCheckpoint_checkpoint" );
     maps\arcadia_lighting::_ID49155( "arcadia_checkpoint" );
     _ID42237::_ID14402( "used_laser" );
-    getent( "friendlyspawn_trigger_checkpoint", "script_noteworthy" ) notify( "trigger",  level._ID794  );
+    getent( "friendlyspawn_trigger_checkpoint", "script_noteworthy" ) notify( "trigger",  level.player  );
     maps\arcadia_code::_ID48221( "playerstart_checkpoint" );
     thread _ID46693();
 }
@@ -391,10 +391,10 @@ _ID46037()
     var_1 = getentarray( "start_golf_friendly_teleport", "targetname" );
 
     foreach ( var_4, var_3 in var_0 )
-        var_3 forceteleport( var_1[var_4]._ID740, var_1[var_4]._ID65 );
+        var_3 forceteleport( var_1[var_4].origin, var_1[var_4].angles );
 
     var_5 = getent( "start_golf_friendly_trigger", "script_noteworthy" );
-    var_5 notify( "trigger",  level._ID794  );
+    var_5 notify( "trigger",  level.player  );
     _ID42234::_ID13611( "c130_crash_leftovers" );
     thread maps\arcadia_code::_ID44320();
 }
@@ -417,13 +417,13 @@ _ID51224()
 
     foreach ( var_4, var_3 in var_0 )
     {
-        var_3 forceteleport( var_1[var_4]._ID740, var_1[var_4]._ID65 );
-        var_3._ID452 = 32;
-        var_3 setgoalpos( var_1[var_4]._ID740 );
+        var_3 forceteleport( var_1[var_4].origin, var_1[var_4].angles );
+        var_3.goalradius = 32;
+        var_3 setgoalpos( var_1[var_4].origin );
     }
 
     var_5 = getent( "start_crash_friendly_respawn_trigger", "script_noteworthy" );
-    var_5 notify( "trigger",  level._ID794  );
+    var_5 notify( "trigger",  level.player  );
     thread _ID43058();
     thread maps\arcadia_code::_ID44320();
 }
@@ -450,8 +450,8 @@ _ID51929()
     objective_string( 0, &"ARCADIA_OBJECTIVE_NEUTRALIZE_AA_GUNS" );
     objective_state( 0, "current" );
     objective_current( 0, ( 0, 0, 0 ) );
-    objective_additionalposition( 0, 0, getent( "obj_location_stealth_0", "targetname" )._ID740 );
-    objective_additionalposition( 0, 1, getent( "obj_location_stealth_1", "targetname" )._ID740 );
+    objective_additionalposition( 0, 0, getent( "obj_location_stealth_0", "targetname" ).origin );
+    objective_additionalposition( 0, 1, getent( "obj_location_stealth_1", "targetname" ).origin );
     thread maps\arcadia_code::_ID48319();
     _ID42237::_ID14413( "stealth_bombed_0" );
     _ID42237::_ID14413( "stealth_bombed_1" );
@@ -468,7 +468,7 @@ _ID43058()
     thread _ID54265();
     wait 3;
     var_0 = getent( "objective_brookmere_location", "targetname" );
-    objective_add( 1, "current", &"ARCADIA_OBJECTIVE_BROOKMERE", var_0._ID740 );
+    objective_add( 1, "current", &"ARCADIA_OBJECTIVE_BROOKMERE", var_0.origin );
     objective_state( 1, "current" );
     thread _ID53734();
 }
@@ -487,7 +487,7 @@ _ID53734()
 {
     _ID42237::_ID14413( "player_can_pick_up_briefcase" );
     var_0 = getent( "objective_intel_location", "targetname" );
-    objective_add( 3, "current", &"ARCADIA_OBJECTIVE_INTEL_BRIEFCASE", var_0._ID740 );
+    objective_add( 3, "current", &"ARCADIA_OBJECTIVE_INTEL_BRIEFCASE", var_0.origin );
 }
 
 _ID50064()
@@ -520,7 +520,7 @@ _ID53268()
         if ( var_3 == var_0.size - 2 || var_3 == var_0.size - 1 )
         {
             var_2 thread _ID42407::_ID10959();
-            var_2._ID486 = 1;
+            var_2.health = 1;
         }
 
         var_2 thread _ID42407::_ID32315( "g" );
@@ -685,7 +685,7 @@ _ID50562()
     var_1 = getent( "fridge", "targetname" );
     var_1._ID3189 = "fridge";
     var_1 _ID42259::_ID32556();
-    var_2 = spawn( "script_model", var_0._ID740 );
+    var_2 = spawn( "script_model", var_0.origin );
     var_2 setmodel( "cs_vodkabottle01" );
     var_2 linkto( var_0, "tag_inhand", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_0 thread _ID44756( var_2 );
@@ -693,7 +693,7 @@ _ID50562()
     var_3[0] = var_0;
     var_3[1] = var_1;
     var_1 thread _ID42259::_ID3040( var_3, "fridge_idle", "stop_idle" );
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_1 thread _ID48293( var_3 );
 }
 
@@ -772,15 +772,15 @@ _ID52604()
     level._ID388 pushplayer( 1 );
     level._ID44224 pushplayer( 1 );
     wait 0.1;
-    level._ID388._ID452 = 16;
+    level._ID388.goalradius = 16;
     level._ID388 setgoalnode( var_4 );
-    level._ID44224._ID452 = 16;
+    level._ID44224.goalradius = 16;
     level._ID44224 setgoalnode( var_5 );
     _ID42237::_ID14413( "player_approaching_house" );
-    level._ID388._ID452 = 16;
+    level._ID388.goalradius = 16;
     level._ID388 setgoalnode( var_6 );
     wait 0.5;
-    level._ID44224._ID452 = 16;
+    level._ID44224.goalradius = 16;
     level._ID44224 setgoalnode( var_7 );
     _ID42237::_ID14413( "end_dialog_done" );
     _ID42407::_ID24793();
@@ -791,10 +791,10 @@ _ID48283( var_0 )
     level._ID44224 allowedstances( "stand" );
     var_0 _ID42259::_ID3142( level._ID44224, "ending" );
     var_0 _ID42259::_ID3111( level._ID44224, "ending" );
-    level._ID44224._ID38 = "noncombat";
-    level._ID44224._ID452 = 16;
+    level._ID44224.alertlevel = "noncombat";
+    level._ID44224.goalradius = 16;
     level._ID44224 allowedstances( "stand" );
-    level._ID44224 setgoalpos( level._ID44224._ID740 );
+    level._ID44224 setgoalpos( level._ID44224.origin );
 }
 
 _ID52496( var_0, var_1, var_2, var_3 )
@@ -814,9 +814,9 @@ _ID44398( var_0 )
 {
     var_1 = var_0 _ID42407::_ID35014( 1 );
     var_1 _ID42407::_ID17509();
-    var_2 = spawn( "script_model", var_1._ID740 );
-    var_2._ID65 = var_1._ID65;
-    var_2 setmodel( var_1._ID669 );
+    var_2 = spawn( "script_model", var_1.origin );
+    var_2.angles = var_1.angles;
+    var_2 setmodel( var_1.model );
     var_3 = var_1 getattachsize();
 
     for ( var_4 = 0; var_4 < var_3; var_4++ )
@@ -901,7 +901,7 @@ _ID50887()
     var_0 = getent( "ending_node_hvi", "targetname" );
     var_1 = var_0 h2_hvi_spawn();
     var_2 = getent( "briefcase_trigger", "targetname" );
-    var_2 thread _ID42237::_ID44574( level._ID794, &"ARCADIA_PICK_UP_BRIEFCASE_HINT", &"ARCADIA_PICK_UP_BRIEFCASE_HINT_PC", "trigger", thisthread );
+    var_2 thread _ID42237::_ID44574( level.player, &"ARCADIA_PICK_UP_BRIEFCASE_HINT", &"ARCADIA_PICK_UP_BRIEFCASE_HINT_PC", "trigger", thisthread );
     var_2 setcursorhint( "HINT_ACTIVATE" );
     var_3 = getent( "briefcase", "targetname" );
     var_3 _ID42407::_ID3428( "briefcase" );
@@ -915,10 +915,10 @@ _ID50887()
     var_3 setmodel( "com_metal_briefcase_opened" );
     var_4 = 0.6;
 
-    if ( level._ID794 getstance() == "prone" )
+    if ( level.player getstance() == "prone" )
         var_4 = 0.8;
 
-    level._ID794 setstance( "stand" );
+    level.player setstance( "stand" );
     var_5 = [ var_3, var_1 ];
     thread briefcase_pickup_bodysense_cinematic( var_4 );
     var_0 _ID42407::_ID49392( "h2_briefcase_pickup", var_5, 0, var_4, 1 );
@@ -931,21 +931,21 @@ briefcase_pickup_bodysense_cinematic( var_0 )
 {
     var_1 = _ID54167::_ID43386( "briefcase_pickup_bodysense" );
     waitframe;
-    var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.0, -1, 32, 32 ) _ID54167::_ID52391( level._ID794._ID49929, "tag_dof" ) _ID54167::_ID44545( 1 ) _ID54167::_ID44956();
+    var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.0, -1, 32, 32 ) _ID54167::_ID52391( level.player._ID49929, "tag_dof" ) _ID54167::_ID44545( 1 ) _ID54167::_ID44956();
     var_1 _ID54167::_ID48800( 5.0 + var_0 ) _ID54167::_ID48959();
-    var_1 _ID54167::_ID48800( 0.85 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 1.1 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 2.55 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 3.1 + var_0 ) _ID54167::_ID47198( 0.12, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
-    var_1 _ID54167::_ID48800( 3.65 + var_0 ) _ID54167::_ID47198( 0.08, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 4.35 + var_0 ) _ID54167::_ID47198( 0.04, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 4.6 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+    var_1 _ID54167::_ID48800( 0.85 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 1.1 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 2.55 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 3.1 + var_0 ) _ID54167::_ID47198( 0.12, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
+    var_1 _ID54167::_ID48800( 3.65 + var_0 ) _ID54167::_ID47198( 0.08, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 4.35 + var_0 ) _ID54167::_ID47198( 0.04, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 4.6 + var_0 ) _ID54167::_ID47198( 0.06, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
     var_1 _ID54167::_ID48166();
 }
 
 _ID44076()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     _ID42237::_ID14413( "vip_gun_down" );
     setsaveddvar( "cg_gunDownAnimDelayTime", 250 );
 }
@@ -999,12 +999,12 @@ _ID49488( var_0, var_1, var_2, var_3, var_4 )
 
         if ( isdefined( var_4 ) && var_4 )
         {
-            var_8 = getent( self._ID1191, "targetname" );
+            var_8 = getent( self.target, "targetname" );
             var_8 delete();
         }
 
         if ( isdefined( var_3 ) && var_3 )
-            self physicslaunchclient( self._ID740, var_7 * var_5 );
+            self physicslaunchclient( self.origin, var_7 * var_5 );
 
         self setmodel( var_0 );
         var_9 = self getorigin();

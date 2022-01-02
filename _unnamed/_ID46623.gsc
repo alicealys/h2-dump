@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2, var_3, var_4, var_5 )
+main( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
     level thread _ID51576( var_0, var_1, var_2, var_3, var_4, var_5 );
 }
@@ -27,40 +27,40 @@ _ID51576( var_0, var_1, var_2, var_3, var_4, var_5 )
     else
         var_6 = var_5;
 
-    var_7 = level._ID794 getorigin() + ( 0, 8, 2 );
+    var_7 = level.player getorigin() + ( 0, 8, 2 );
     var_8 = 320;
     var_9 = var_1 + randomint( var_2 );
     var_10 = var_3;
-    level._ID794 playsound( "weapons_rocket_explosion" );
+    level.player playsound( "weapons_rocket_explosion" );
     wait 0.25;
     radiusdamage( var_7, var_8, var_9, var_10 );
     earthquake( 0.75, 2, var_7, 2250 );
 
-    if ( isalive( level._ID794 ) )
+    if ( isalive( level.player ) )
     {
-        level._ID794 allowstand( 0 );
-        level._ID794 allowcrouch( 0 );
-        level._ID794 allowprone( 1 );
+        level.player allowstand( 0 );
+        level.player allowcrouch( 0 );
+        level.player allowprone( 1 );
         wait 0.15;
-        level._ID794 viewkick( 127, level._ID794._ID740 );
-        level._ID794 shellshock( var_6, var_0 );
+        level.player viewkick( 127, level.player.origin );
+        level.player shellshock( var_6, var_0 );
 
         if ( !isdefined( var_4 ) )
-            level._ID794 thread _ID50149( var_0 );
+            level.player thread _ID50149( var_0 );
 
         wait 1.5;
-        level._ID794 allowstand( 1 );
-        level._ID794 allowcrouch( 1 );
+        level.player allowstand( 1 );
+        level.player allowcrouch( 1 );
     }
 }
 
 _ID50149( var_0 )
 {
     self._ID33728 = 1;
-    self._ID511 = 1;
+    self.ignoreme = 1;
     self notify( "player is shell shocked" );
     self endon( "player is shell shocked" );
     wait(var_0 - 1);
     self._ID33728 = 0;
-    self._ID511 = 0;
+    self.ignoreme = 0;
 }

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2, var_3 )
+main( var_0, var_1, var_2, var_3 )
 {
     _ID42411::_ID6255( "hind", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -61,7 +61,7 @@ _ID17700()
     {
         if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_2 = distancesquared( self._ID740, level._ID794._ID740 );
+            var_2 = distancesquared( self.origin, level.player.origin );
 
             if ( var_0 && var_2 > var_1 )
             {
@@ -234,19 +234,19 @@ _ID32221()
 {
     var_0 = [];
     var_0["TAG_FastRope_LE"] = spawnstruct();
-    var_0["TAG_FastRope_LE"]._ID669 = "rope_test";
+    var_0["TAG_FastRope_LE"].model = "rope_test";
     var_0["TAG_FastRope_LE"]._ID1067 = "TAG_FastRope_LE";
     var_0["TAG_FastRope_LE"]._ID19324 = %bh_rope_idle_le;
     var_0["TAG_FastRope_LE"]._ID12144 = %bh_rope_drop_le;
     var_0["TAG_FastRope_RI"] = spawnstruct();
-    var_0["TAG_FastRope_RI"]._ID669 = "rope_test_ri";
+    var_0["TAG_FastRope_RI"].model = "rope_test_ri";
     var_0["TAG_FastRope_RI"]._ID1067 = "TAG_FastRope_RI";
     var_0["TAG_FastRope_RI"]._ID19324 = %bh_rope_idle_ri;
     var_0["TAG_FastRope_RI"]._ID12144 = %bh_rope_drop_ri;
     var_1 = getarraykeys( var_0 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
-        precachemodel( var_0[var_1[var_2]]._ID669 );
+        precachemodel( var_0[var_1[var_2]].model );
 
     return var_0;
 }

@@ -6,7 +6,7 @@ _ID17848()
     self endon( "death" );
     _ID42475::_ID34575( "rec_littlebird_formation_spawn", self );
 
-    if ( issubstr( self._ID170, "sentinel" ) || issubstr( self._ID170, "armed" ) || issubstr( self._ID170, "atlas_bench" ) )
+    if ( issubstr( self.classname, "sentinel" ) || issubstr( self.classname, "armed" ) || issubstr( self.classname, "atlas_bench" ) )
     {
         var_0 = 0.25;
 
@@ -25,7 +25,7 @@ _ID17848()
         {
             if ( !isdefined( self._ID31138 ) || !self._ID31138 )
             {
-                var_4 = distance( self._ID740, level._ID794._ID740 );
+                var_4 = distance( self.origin, level.player.origin );
 
                 if ( !var_1 && var_4 < 5400 )
                 {

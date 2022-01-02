@@ -150,8 +150,8 @@ _ID13629( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
     }
 
     var_20 = spawn( "script_origin", ( 0, 0, 0 ) );
-    var_20._ID740 = var_2;
-    var_20._ID65 = vectortoangles( var_4 - var_2 );
+    var_20.origin = var_2;
+    var_20.angles = vectortoangles( var_4 - var_2 );
     var_20._ID31170 = var_0;
     var_20._ID31220 = var_1;
     var_20._ID916 = var_3;
@@ -168,7 +168,7 @@ _ID13629( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
     var_20._ID31121 = var_13;
     var_20._ID31120 = var_14;
     var_20._ID31172 = var_17;
-    var_21 = anglestoforward( var_20._ID65 );
+    var_21 = anglestoforward( var_20.angles );
     var_21 *= 150;
     var_20._ID37339 = var_2 + var_21;
 
@@ -274,11 +274,11 @@ _ID9138()
         _ID42237::_ID14413( "createfx_started" );
 
     if ( isdefined( self._ID9679 ) )
-        level._ID794 _meth_848d( self._ID9679._ID39468 );
+        level.player _meth_848d( self._ID9679._ID39468 );
 
     self._ID9679 = spawnstruct();
     self._ID9679 _ID42237::_ID3442();
-    level._ID794 _meth_848c( self._ID40005["ambiencename"], self._ID40005["origin"], self._ID40005["dynamic_distance"], self._ID9679._ID39468 );
+    level.player _meth_848c( self._ID40005["ambiencename"], self._ID40005["origin"], self._ID40005["dynamic_distance"], self._ID9679._ID39468 );
     return;
 }
 
@@ -327,7 +327,7 @@ _ID22659( var_0 )
     for (;;)
     {
         var_0 waittill( "effect org changed",  var_1  );
-        self._ID740 = var_1;
+        self.origin = var_1;
     }
 }
 
@@ -359,7 +359,7 @@ _ID22675( var_0, var_1, var_2 )
 _ID22677( var_0, var_1, var_2 )
 {
     var_3 = spawn( "script_origin", var_1 );
-    var_3._ID740 = var_1;
+    var_3.origin = var_1;
     var_3 playloopsound( var_0 );
 }
 
@@ -496,9 +496,9 @@ _ID33057()
     if ( !isdefined( self._ID31220 ) || !isdefined( self._ID31219 ) || !isdefined( self._ID916 ) )
         return;
 
-    if ( isdefined( self._ID669 ) )
+    if ( isdefined( self.model ) )
     {
-        if ( self._ID669 == "toilet" )
+        if ( self.model == "toilet" )
         {
             thread _ID6444();
             return;
@@ -507,12 +507,12 @@ _ID33057()
 
     var_0 = undefined;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        var_1 = getent( self._ID1191, "targetname" );
+        var_1 = getent( self.target, "targetname" );
 
         if ( isdefined( var_1 ) )
-            var_0 = var_1._ID740;
+            var_0 = var_1.origin;
     }
 
     var_2 = undefined;
@@ -526,22 +526,22 @@ _ID33057()
         var_3 = self._ID31222;
 
     if ( self._ID31219 == "OneShotfx" )
-        _ID25762( self._ID31220, self._ID740, self._ID916, var_0 );
+        _ID25762( self._ID31220, self.origin, self._ID916, var_0 );
 
     if ( self._ID31219 == "loopfx" )
-        _ID22655( self._ID31220, self._ID740, self._ID916, var_0, var_2, var_3 );
+        _ID22655( self._ID31220, self.origin, self._ID916, var_0, var_2, var_3 );
 
     if ( self._ID31219 == "loopsound" )
-        _ID22675( self._ID31220, self._ID740, self._ID916 );
+        _ID22675( self._ID31220, self.origin, self._ID916 );
 
     self delete();
 }
 
 _ID6444()
 {
-    var_0 = ( 0, 0, self._ID65[1] );
+    var_0 = ( 0, 0, self.angles[1] );
     var_1 = level._ID1426[self._ID31220];
-    var_2 = self._ID740;
+    var_2 = self.origin;
     wait 1;
     level thread _ID6445( var_0, var_2, var_1 );
     self delete();
@@ -708,8 +708,8 @@ _ID34965( var_0, var_1 )
 
     foreach ( var_5 in var_2 )
     {
-        var_9 = _ID40052( var_5._ID40005["origin"] - level._ID794._ID740 );
-        var_10 = _ID40052( var_0 - level._ID794._ID740 );
+        var_9 = _ID40052( var_5._ID40005["origin"] - level.player.origin );
+        var_10 = _ID40052( var_0 - level.player.origin );
         var_11 = vectornormalize( var_9 );
         var_12 = vectornormalize( var_10 );
         var_5._ID11651 = vectordot( var_11, var_12 );
@@ -730,7 +730,7 @@ _ID34965( var_0, var_1 )
 
     foreach ( var_5 in var_2 )
     {
-        var_5._ID740 = undefined;
+        var_5.origin = undefined;
         var_5._ID11651 = undefined;
     }
 
@@ -748,7 +748,7 @@ _ID27035( var_0 )
         return;
 
     self._ID24771 = gettime() + 3000;
-    var_1._ID740 = self._ID40005["origin"];
+    var_1.origin = self._ID40005["origin"];
     var_1._ID20591 = 1;
     wait(var_0 * randomfloatrange( 0.05, 0.1 ));
 

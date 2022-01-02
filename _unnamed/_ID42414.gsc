@@ -85,8 +85,8 @@ _ID7772( var_0 )
 
     level._ID12875 = undefined;
 
-    if ( isdefined( level._ID794._ID11803 ) && isdefined( level._ID794._ID11803._ID28679 ) )
-        level._ID794._ID11803._ID28679 = undefined;
+    if ( isdefined( level.player._ID11803 ) && isdefined( level.player._ID11803._ID28679 ) )
+        level.player._ID11803._ID28679 = undefined;
 }
 
 _ID35193( var_0, var_1, var_2, var_3 )
@@ -108,18 +108,18 @@ _ID35193( var_0, var_1, var_2, var_3 )
 
     if ( var_2 && var_3 )
     {
-        var_4 = getentarray( self._ID1191, "targetname" );
+        var_4 = getentarray( self.target, "targetname" );
         var_5 = [];
 
         foreach ( var_7 in var_4 )
         {
-            if ( var_7._ID172 == "info_vehicle_node" )
+            if ( var_7.code_classname == "info_vehicle_node" )
                 continue;
 
             var_5[var_5.size] = var_7;
         }
 
-        var_5 = _ID42237::_ID15566( self._ID740, var_5 );
+        var_5 = _ID42237::_ID15566( self.origin, var_5 );
 
         foreach ( var_11, var_10 in var_5 )
             var_10 thread _ID42407::_ID1947( ::_ID17587, self, var_11 );
@@ -166,7 +166,7 @@ _ID22121( var_0, var_1 )
         _ID42237::_ID41098( "enable_free_path", "reached_end_node" );
     }
 
-    var_2 = _ID15843( self._ID740 );
+    var_2 = _ID15843( self.origin );
 
     if ( isdefined( level._ID11775 ) )
         var_2 thread [[ level._ID11775 ]]( self, var_1 );
@@ -216,10 +216,10 @@ _ID9172( var_0 )
     {
         var_5 = var_1;
 
-        if ( isdefined( var_1._ID1191 ) )
-            var_5 = _ID42237::_ID16638( var_1._ID1191, "targetname" );
+        if ( isdefined( var_1.target ) )
+            var_5 = _ID42237::_ID16638( var_1.target, "targetname" );
 
-        var_1._ID740 = _ID12136( var_1._ID740 );
+        var_1.origin = _ID12136( var_1.origin );
         var_2[var_2.size] = var_1;
         var_1._ID24768 = var_5;
         var_1._ID28484 = var_4;
@@ -227,10 +227,10 @@ _ID9172( var_0 )
         var_1._ID8214 = [];
         var_1._ID8212 = [];
         var_1._ID26027 = [];
-        var_1._ID26027["left"] = var_1._ID740;
+        var_1._ID26027["left"] = var_1.origin;
         var_6 = _ID42237::_ID16638( var_1._ID31273, "script_linkname" );
-        var_6._ID740 = _ID12136( var_6._ID740 );
-        var_1._ID26027["right"] = var_6._ID740;
+        var_6.origin = _ID12136( var_6.origin );
+        var_1._ID26027["right"] = var_6.origin;
         var_1._ID30057 = distance( var_1._ID26027["right"], var_1._ID26027["left"] );
         var_1._ID23570 = ( var_1._ID26027["left"] + var_1._ID26027["right"] ) * 0.5;
         var_1._ID517 = var_3;
@@ -271,9 +271,9 @@ _ID1862( var_0 )
 
     foreach ( var_3 in var_1 )
     {
-        var_4 = _ID42237::_ID16638( var_3._ID1191, "targetname" );
-        var_3._ID740 = _ID12136( var_3._ID740 );
-        var_4._ID740 = _ID12136( var_4._ID740 );
+        var_4 = _ID42237::_ID16638( var_3.target, "targetname" );
+        var_3.origin = _ID12136( var_3.origin );
+        var_4.origin = _ID12136( var_4.origin );
         var_3._ID26035 = var_4;
         var_4._ID26035 = var_3;
     }
@@ -297,8 +297,8 @@ _ID1863( var_0, var_1 )
         return;
 
     var_2 = var_1._ID26035;
-    var_3 = _ID15937( var_1._ID740, var_0._ID23570, var_0._ID24768._ID23570 );
-    var_4 = _ID15937( var_2._ID740, var_0._ID23570, var_0._ID24768._ID23570 );
+    var_3 = _ID15937( var_1.origin, var_0._ID23570, var_0._ID24768._ID23570 );
+    var_4 = _ID15937( var_2.origin, var_0._ID23570, var_0._ID24768._ID23570 );
     var_1._ID28675 = var_3["progress"];
     var_1._ID25468 = var_3["offset"];
     var_2._ID28675 = var_4["progress"];
@@ -324,8 +324,8 @@ _ID37544( var_0, var_1 )
     var_2[1] = var_0._ID26027["right"];
     var_2[2] = var_0._ID24768._ID26027["right"];
     var_2[3] = var_0._ID24768._ID26027["left"];
-    var_3[0] = var_1._ID740;
-    var_3[1] = var_1._ID26035._ID740;
+    var_3[0] = var_1.origin;
+    var_3[1] = var_1._ID26035.origin;
 
     for ( var_4 = 0; var_4 < var_3.size; var_4++ )
     {
@@ -476,18 +476,18 @@ _ID39631()
     level endon( "stop_vehicle_free_path" );
     self._ID13016 endon( "moving_obstacle_removed" );
     self._ID13016 endon( "death" );
-    self._ID700 = self._ID13016 _ID15843( self._ID13016._ID740 );
-    var_0 = self._ID13016 _ID15937( self._ID13016._ID740, self._ID700._ID23570, self._ID700._ID24768._ID23570 );
-    var_1 = self._ID13016 _ID24374( self._ID700, var_0["progress"], var_0["offset"] );
-    self._ID700 = var_1._ID700;
+    self.node = self._ID13016 _ID15843( self._ID13016.origin );
+    var_0 = self._ID13016 _ID15937( self._ID13016.origin, self.node._ID23570, self.node._ID24768._ID23570 );
+    var_1 = self._ID13016 _ID24374( self.node, var_0["progress"], var_0["offset"] );
+    self.node = var_1.node;
 
     for (;;)
     {
-        var_0 = self._ID13016 _ID15937( self._ID13016._ID740, self._ID700._ID23570, self._ID700._ID24768._ID23570 );
-        var_1 = self._ID13016 _ID24374( self._ID700, var_0["progress"], var_0["offset"] );
+        var_0 = self._ID13016 _ID15937( self._ID13016.origin, self.node._ID23570, self.node._ID24768._ID23570 );
+        var_1 = self._ID13016 _ID24374( self.node, var_0["progress"], var_0["offset"] );
 
-        if ( self._ID700 != var_1._ID700 )
-            self._ID700 = var_1._ID700;
+        if ( self.node != var_1.node )
+            self.node = var_1.node;
 
         _ID39630();
         wait 0.1;
@@ -496,18 +496,18 @@ _ID39631()
 
 _ID39630()
 {
-    var_0 = anglestoforward( self._ID13016._ID65 );
-    var_1 = anglestoright( self._ID13016._ID65 );
+    var_0 = anglestoforward( self._ID13016.angles );
+    var_1 = anglestoright( self._ID13016.angles );
     self._ID8749 = [];
-    self._ID8749[0] = _ID12136( self._ID13016._ID740 + -1 * self._ID5978["width"] / 2 * var_1 + self._ID5978["length"] / 2 * var_0 );
-    self._ID8749[1] = _ID12136( self._ID13016._ID740 + self._ID5978["width"] / 2 * var_1 + self._ID5978["length"] / 2 * var_0 );
-    self._ID8749[2] = _ID12136( self._ID13016._ID740 + -1 * self._ID5978["width"] / 2 * var_1 + -1 * self._ID5978["length"] / 2 * var_0 );
-    self._ID8749[3] = _ID12136( self._ID13016._ID740 + self._ID5978["width"] / 2 * var_1 + -1 * self._ID5978["length"] / 2 * var_0 );
+    self._ID8749[0] = _ID12136( self._ID13016.origin + -1 * self._ID5978["width"] / 2 * var_1 + self._ID5978["length"] / 2 * var_0 );
+    self._ID8749[1] = _ID12136( self._ID13016.origin + self._ID5978["width"] / 2 * var_1 + self._ID5978["length"] / 2 * var_0 );
+    self._ID8749[2] = _ID12136( self._ID13016.origin + -1 * self._ID5978["width"] / 2 * var_1 + -1 * self._ID5978["length"] / 2 * var_0 );
+    self._ID8749[3] = _ID12136( self._ID13016.origin + self._ID5978["width"] / 2 * var_1 + -1 * self._ID5978["length"] / 2 * var_0 );
     var_2 = [];
-    var_2[0] = _ID15937( self._ID8749[0], self._ID700._ID23570, self._ID700._ID24768._ID23570 );
-    var_2[1] = _ID15937( self._ID8749[1], self._ID700._ID23570, self._ID700._ID24768._ID23570 );
-    var_2[2] = _ID15937( self._ID8749[2], self._ID700._ID23570, self._ID700._ID24768._ID23570 );
-    var_2[3] = _ID15937( self._ID8749[3], self._ID700._ID23570, self._ID700._ID24768._ID23570 );
+    var_2[0] = _ID15937( self._ID8749[0], self.node._ID23570, self.node._ID24768._ID23570 );
+    var_2[1] = _ID15937( self._ID8749[1], self.node._ID23570, self.node._ID24768._ID23570 );
+    var_2[2] = _ID15937( self._ID8749[2], self.node._ID23570, self.node._ID24768._ID23570 );
+    var_2[3] = _ID15937( self._ID8749[3], self.node._ID23570, self.node._ID24768._ID23570 );
     var_3 = var_2[0]["offset"];
     var_4 = var_3;
     var_5 = var_2[0]["progress"];
@@ -540,7 +540,7 @@ _ID29412( var_0, var_1, var_2, var_3 )
     var_5 = var_1;
     var_6 = var_2;
     var_7 = var_3;
-    var_8 = self._ID700;
+    var_8 = self.node;
     var_9 = var_8;
 
     for (;;)
@@ -610,7 +610,7 @@ _ID39514()
     {
         foreach ( var_3 in var_1._ID8212 )
         {
-            if ( var_3._ID743 == self )
+            if ( var_3.owner == self )
                 var_1._ID8212 = _ID42237::_ID3321( var_1._ID8212, var_3 );
         }
     }
@@ -620,7 +620,7 @@ _ID1914( var_0, var_1, var_2, var_3, var_4 )
 {
     var_5 = spawnstruct();
     var_5._ID8286 = [];
-    var_5._ID743 = self;
+    var_5.owner = self;
     var_5._ID8286["max"] = var_1;
     var_5._ID8286["min"] = var_2;
 
@@ -662,7 +662,7 @@ _ID40128( var_0, var_1 )
     var_0._ID41798 = 0;
     var_0._ID28679 = var_2;
     var_0._ID28675 = 0;
-    var_0._ID12735 = var_0._ID740;
+    var_0._ID12735 = var_0.origin;
     var_0._ID13730 = 0;
     var_0._ID24337 = 0;
     var_0._ID26321 = gettime();
@@ -718,13 +718,13 @@ _ID32513()
     if ( var_1 == var_1._ID24768 )
         return;
 
-    var_2 = _ID15937( var_0._ID740, var_1._ID23570, var_1._ID24768._ID23570 );
+    var_2 = _ID15937( var_0.origin, var_1._ID23570, var_1._ID24768._ID23570 );
     var_3 = var_2["offset"];
     var_4 = var_1._ID30057;
     var_5 = _ID24374( var_1, var_2["progress"], var_3 );
     var_6 = var_5._ID28675;
     var_7 = var_5._ID25468;
-    var_1 = var_5._ID700;
+    var_1 = var_5.node;
     var_0._ID28679 = var_1;
     var_0._ID28675 = var_6;
 
@@ -734,7 +734,7 @@ _ID32513()
     var_8 = _ID24374( var_1, var_6 + var_0._ID13730, var_7 );
     var_9 = var_8._ID28675;
     var_10 = var_8._ID25468;
-    var_11 = var_8._ID700;
+    var_11 = var_8.node;
     var_12 = _ID15696( var_11, var_9 );
     var_13 = _ID15873( var_11, var_9, var_10, 1 );
     var_14 = 0;
@@ -765,7 +765,7 @@ _ID32513()
 
     var_15 = 0;
     var_0._ID12735 = var_0 _ID16060( var_11, var_9, var_10, var_15 );
-    var_16 = _ID42407::_ID15689( var_0._ID740, var_0._ID65, var_0._ID12735 );
+    var_16 = _ID42407::_ID15689( var_0.origin, var_0.angles, var_0._ID12735 );
     var_17 = 1.0;
 
     if ( var_16 > 0.9659 )
@@ -782,7 +782,7 @@ _ID32513()
     var_18 = max( var_0._ID36136 * var_17, level._ID14888 );
     var_0 vehicledriveto( var_0._ID12735, var_18 );
 
-    if ( isdefined( level._ID794._ID11803 ) )
+    if ( isdefined( level.player._ID11803 ) )
         var_0 _ID23008( var_17 );
 }
 
@@ -805,7 +805,7 @@ _ID15873( var_0, var_1, var_2, var_3 )
         if ( var_5._ID18197 == 1 )
             continue;
 
-        if ( isdefined( var_5._ID743 ) && isdefined( var_5._ID743._ID13016 ) && var_5._ID743._ID13016 == self )
+        if ( isdefined( var_5.owner ) && isdefined( var_5.owner._ID13016 ) && var_5.owner._ID13016 == self )
             continue;
 
         if ( var_1 < var_5._ID8286["min"] )
@@ -924,22 +924,22 @@ _ID16029()
     if ( !isdefined( var_2 ) || !isdefined( self._ID28675 ) )
         return 0;
 
-    var_3 = _ID42407::_ID16261( var_2._ID1191, "targetname" );
+    var_3 = _ID42407::_ID16261( var_2.target, "targetname" );
     var_0 = self._ID28675;
 
     for (;;)
     {
-        if ( !isdefined( var_2._ID1193 ) )
+        if ( !isdefined( var_2.targetname ) )
             break;
 
         var_3 = var_2;
-        var_2 = _ID42407::_ID16261( var_2._ID1193, "target" );
+        var_2 = _ID42407::_ID16261( var_2.targetname, "target" );
 
         if ( !isdefined( var_2 ) )
             break;
 
         var_1++;
-        var_0 += distance2d( var_3._ID740, var_2._ID740 );
+        var_0 += distance2d( var_3.origin, var_2.origin );
     }
 
     return var_0;
@@ -947,7 +947,7 @@ _ID16029()
 
 _ID11132()
 {
-    return distance2dsquared( self._ID740, level._ID794._ID740 );
+    return distance2dsquared( self.origin, level.player.origin );
 }
 
 _ID40111()
@@ -991,15 +991,15 @@ _ID41798( var_0 )
 
 _ID23008( var_0 )
 {
-    if ( !isdefined( level._ID794._ID11803._ID28679 ) )
-        level._ID794._ID11803._ID28679 = _ID15843( level._ID794._ID11803._ID740 );
+    if ( !isdefined( level.player._ID11803._ID28679 ) )
+        level.player._ID11803._ID28679 = _ID15843( level.player._ID11803.origin );
 
-    var_1 = _ID15937( level._ID794._ID11803._ID740, level._ID794._ID11803._ID28679._ID23570, level._ID794._ID11803._ID28679._ID24768._ID23570 );
-    var_2 = _ID24374( level._ID794._ID11803._ID28679, var_1["progress"], var_1["offset"] );
+    var_1 = _ID15937( level.player._ID11803.origin, level.player._ID11803._ID28679._ID23570, level.player._ID11803._ID28679._ID24768._ID23570 );
+    var_2 = _ID24374( level.player._ID11803._ID28679, var_1["progress"], var_1["offset"] );
     var_3 = var_2._ID28675;
     var_4 = var_2._ID25468;
-    level._ID794._ID11803._ID28679 = var_2._ID700;
-    var_5 = _ID28677( self._ID28679, self._ID28675, var_2._ID700, var_2._ID28675 );
+    level.player._ID11803._ID28679 = var_2.node;
+    var_5 = _ID28677( self._ID28679, self._ID28675, var_2.node, var_2._ID28675 );
     var_5 -= self._ID27305;
 
     if ( var_5 < level._ID14880 )
@@ -1025,7 +1025,7 @@ _ID23008( var_0 )
         return;
 
     var_6 = _ID15842( var_5 );
-    var_7 = max( level._ID794._ID11803 vehicle_getspeed() * var_6, level._ID14888 );
+    var_7 = max( level.player._ID11803 vehicle_getspeed() * var_6, level._ID14888 );
 
     if ( self vehicle_isphysveh() )
         self vehphys_setspeed( var_7 );
@@ -1216,7 +1216,7 @@ _ID24374( var_0, var_1, var_2 )
         break;
     }
 
-    var_3._ID700 = var_0;
+    var_3.node = var_0;
     var_3._ID28675 = var_1;
     var_3._ID25468 = var_2;
     return var_3;
@@ -1266,8 +1266,8 @@ _ID9876()
 
             foreach ( var_11 in var_4._ID8211 )
             {
-                var_12 = var_11._ID740;
-                var_13 = var_11._ID26035._ID740;
+                var_12 = var_11.origin;
+                var_13 = var_11._ID26035.origin;
             }
         }
 

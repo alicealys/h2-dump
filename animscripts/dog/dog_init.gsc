@@ -2,17 +2,17 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("dog");
 
-_ID616()
+main()
 {
     self useanimtree( #animtree );
     _ID19886();
     animscripts\init::_ID14369();
-    self._ID513 = 1;
-    self._ID686 = 0;
+    self.ignoresuppression = 1;
+    self.newenemyreactiondistsq = 0;
     self._ID7336 = 0;
-    self._ID706 = 1;
+    self.nododgemove = 1;
     self._ID30178 = %root;
-    self._ID633 = 0;
+    self.meleeattackdist = 0;
     thread _ID32684();
     self._ID7 = spawnstruct();
     self._ID7._ID28253 = "stand";
@@ -21,13 +21,13 @@ _ID616()
     animscripts\init::_ID32193();
     self._ID36847 = 1;
     self._ID10998 = 0;
-    self._ID1044 = anim._ID11489;
-    self._ID1258 = 0;
-    self._ID1230 = 0.2;
+    self.stopanimdistsq = anim._ID11489;
+    self.usechokepoints = 0;
+    self.turnrate = 0.2;
     thread animscripts\combat_utility::_ID24161();
-    self._ID760 = 512;
+    self.pathenemyfightdist = 512;
     self settalktospecies( "dog" );
-    self._ID486 = int( anim._ID11431 * self._ID486 );
+    self.health = int( anim._ID11431 * self.health );
 }
 
 _ID32684()
@@ -36,10 +36,10 @@ _ID32684()
 
     for (;;)
     {
-        if ( isdefined( self._ID322 ) && isplayernumber( self._ID322 ) )
-            self._ID633 = anim._ID11462;
+        if ( isdefined( self.enemy ) && isplayernumber( self.enemy ) )
+            self.meleeattackdist = anim._ID11462;
         else
-            self._ID633 = anim._ID11460;
+            self.meleeattackdist = anim._ID11460;
 
         self waittill( "enemy" );
     }

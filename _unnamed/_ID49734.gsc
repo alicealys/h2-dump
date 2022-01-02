@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "firelp_med_pm_nolight_dcwhite" );
     var_0 _ID42229::_ID32402( ( -6026.67, 11307.5, -334.215 ), ( 281.698, 248.199, 113.055 ) );

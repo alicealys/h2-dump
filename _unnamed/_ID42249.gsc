@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_locker_double", "tag_origin", 150, undefined, 32, "no_melee" );
     _ID42231::_ID10493( %locker_broken_both_doors_1, #animtree, "setanimknob", undefined, 0, "locker_broken_both_doors_1" );

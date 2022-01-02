@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     self orientmode( "face default" );
     self endon( "killanimscript" );
@@ -20,7 +20,7 @@ _ID616()
 
     if ( var_1 )
     {
-        animscripts\shared::_ID26732( self._ID1302, "left" );
+        animscripts\shared::_ID26732( self.weapon, "left" );
         thread _ID28779();
         thread _ID25135( "throwanim", "grenade_left" );
         thread _ID25135( "throwanim", "grenade_right" );
@@ -36,7 +36,7 @@ _ID616()
         animscripts\battlechatter_ai::_ID13236( "grenade" );
     }
 
-    if ( isdefined( self._ID458 ) )
+    if ( isdefined( self.grenade ) )
         self throwgrenade();
 
     self waittillmatch( "throwanim",  "finish"  );
@@ -44,7 +44,7 @@ _ID616()
     if ( var_1 )
     {
         self notify( "put_weapon_back_in_right_hand" );
-        animscripts\shared::_ID26732( self._ID1302, "right" );
+        animscripts\shared::_ID26732( self.weapon, "right" );
     }
 }
 
@@ -52,8 +52,8 @@ _ID45354()
 {
     var_1 = 1000;
 
-    if ( isdefined( self._ID322 ) )
-        var_1 = distance( self._ID740, self._ID322._ID740 );
+    if ( isdefined( self.enemy ) )
+        var_1 = distance( self.origin, self.enemy.origin );
 
     var_2 = [];
 
@@ -86,18 +86,18 @@ _ID45354()
 _ID49154()
 {
     var_0 = [];
-    var_1 = self._ID469;
+    var_1 = self.grenadetossvel;
 
-    if ( self._ID468 )
-        var_1 = self._ID467 - self._ID458._ID740;
+    if ( self.grenadetargetvalid )
+        var_1 = self.grenadetargetpos - self.grenade.origin;
 
     var_2 = length2d( var_1 );
 
     if ( var_2 > 0 )
         var_1 = ( var_1[0] / var_2, var_1[1] / var_2, 0 );
 
-    var_3 = length2dsquared( self._ID1283 );
-    var_4 = anglestoforward( self._ID65 );
+    var_3 = length2dsquared( self.velocity );
+    var_4 = anglestoforward( self.angles );
 
     if ( var_3 > 1 )
     {
@@ -110,21 +110,21 @@ _ID49154()
 
     if ( self._ID7._ID28253 == "crouch" )
     {
-        if ( self._ID823 == "cover_left" )
+        if ( self.prevscript == "cover_left" )
         {
             if ( animscripts\corner::_ID49559() )
                 var_0 = animscripts\utility::_ID22630( "grenade", "return_cornercrl_1knee_throw" );
             else
                 var_0 = animscripts\utility::_ID22630( "grenade", "return_cornercrl_2knee_throw" );
         }
-        else if ( self._ID823 == "cover_right" )
+        else if ( self.prevscript == "cover_right" )
         {
             if ( animscripts\corner::_ID49559() )
                 var_0 = animscripts\utility::_ID22630( "grenade", "return_cornercrr_1knee_throw" );
             else
                 var_0 = animscripts\utility::_ID22630( "grenade", "return_cornercrr_2knee_throw" );
         }
-        else if ( self._ID823 == "cover_crouch" )
+        else if ( self.prevscript == "cover_crouch" )
             var_0 = animscripts\utility::_ID22630( "grenade", "return_covercrouch_throw" );
 
         if ( var_0.size == 0 )
@@ -144,8 +144,8 @@ _ID49154()
 
 _ID20817()
 {
-    var_0 = ( self._ID740[0], self._ID740[1], self._ID740[2] + 20 );
-    var_1 = var_0 + anglestoforward( self._ID65 ) * 50;
+    var_0 = ( self.origin[0], self.origin[1], self.origin[2] + 20 );
+    var_1 = var_0 + anglestoforward( self.angles ) * 50;
     return sighttracepassed( var_0, var_1, 0, undefined );
 }
 
@@ -154,7 +154,7 @@ _ID28779()
     self endon( "death" );
     self endon( "put_weapon_back_in_right_hand" );
     self waittill( "killanimscript" );
-    animscripts\shared::_ID26732( self._ID1302, "right" );
+    animscripts\shared::_ID26732( self.weapon, "right" );
 }
 
 _ID25135( var_0, var_1 )

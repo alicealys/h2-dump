@@ -32,18 +32,18 @@ _ID41405()
     if ( isdefined( self._ID10839 ) && self._ID10839 )
         return 1;
 
-    if ( !isdefined( self._ID253 ) )
+    if ( !isdefined( self.damagelocation ) )
         return 0;
 
-    return self._ID253 == "helmet" || self._ID253 == "head" || self._ID253 == "neck";
+    return self.damagelocation == "helmet" || self.damagelocation == "head" || self.damagelocation == "neck";
 }
 
 _ID29408( var_0, var_1 )
 {
     var_2 = self;
 
-    if ( isdefined( self._ID743 ) )
-        var_2 = self._ID743;
+    if ( isdefined( self.owner ) )
+        var_2 = self.owner;
 
     if ( !isplayernumber( var_2 ) )
         return;
@@ -64,8 +64,8 @@ _ID29411( var_0 )
 {
     var_1 = self;
 
-    if ( isdefined( self._ID743 ) )
-        var_1 = self._ID743;
+    if ( isdefined( self.owner ) )
+        var_1 = self.owner;
 
     if ( !isplayernumber( var_1 ) )
         return;
@@ -78,8 +78,8 @@ _ID37852( var_0 )
 {
     var_1 = self;
 
-    if ( isdefined( self._ID743 ) )
-        var_1 = self._ID743;
+    if ( isdefined( self.owner ) )
+        var_1 = self.owner;
 
     if ( !isplayernumber( var_1 ) )
         return;
@@ -94,8 +94,8 @@ _ID33911()
 {
     var_0 = self;
 
-    if ( isdefined( self._ID743 ) )
-        var_0 = self._ID743;
+    if ( isdefined( self.owner ) )
+        var_0 = self.owner;
 
     if ( !isplayernumber( var_0 ) )
         return 1;
@@ -111,8 +111,8 @@ _ID29410( var_0, var_1, var_2, var_3 )
     var_4 = self;
     var_5 = 0;
 
-    if ( isdefined( self._ID743 ) )
-        var_4 = self._ID743;
+    if ( isdefined( self.owner ) )
+        var_4 = self.owner;
 
     if ( !isplayernumber( var_4 ) )
     {
@@ -128,21 +128,21 @@ _ID29410( var_0, var_1, var_2, var_3 )
 
     var_4._ID36218["kills"]++;
     var_4 _ID7052( "kills", 1 );
-    var_6 = level._ID794 getplayerdata( _ID42237::_ID44046(), "career", "kills_total" );
+    var_6 = level.player getplayerdata( _ID42237::_ID44046(), "career", "kills_total" );
 
     if ( isdefined( var_6 ) )
-        level._ID794 setplayerdata( _ID42237::_ID44046(), "career", "kills_total", var_6 + 1 );
+        level.player setplayerdata( _ID42237::_ID44046(), "career", "kills_total", var_6 + 1 );
 
-    var_7 = level._ID23779 _ID42291::_ID16387( level._ID912 );
+    var_7 = level._ID23779 _ID42291::_ID16387( level.script );
 
     if ( isdefined( var_7 ) )
     {
-        var_8 = level._ID794 getplayerdata( _ID42237::_ID44046(), "career", "campaign", level._ID15361, "levels", level._ID912, "current_playtrough_kills" );
+        var_8 = level.player getplayerdata( _ID42237::_ID44046(), "career", "campaign", level._ID15361, "levels", level.script, "current_playtrough_kills" );
 
         if ( isdefined( var_8 ) )
         {
             var_8++;
-            level._ID794 setplayerdata( _ID42237::_ID44046(), "career", "campaign", level._ID15361, "levels", level._ID912, "current_playtrough_kills", var_8 );
+            level.player setplayerdata( _ID42237::_ID44046(), "career", "campaign", level._ID15361, "levels", level.script, "current_playtrough_kills", var_8 );
         }
     }
 
@@ -167,7 +167,7 @@ _ID29410( var_0, var_1, var_2, var_3 )
         if ( isdefined( var_0._ID20896 ) )
             var_4._ID36218["kills_sentry"]++;
 
-        if ( var_0._ID172 == "script_vehicle" )
+        if ( var_0.code_classname == "script_vehicle" )
         {
             var_4._ID36218["kills_vehicle"]++;
 
@@ -348,7 +348,7 @@ _ID7130( var_0, var_1 )
 _ID29413( var_0 )
 {
     self._ID36218["weapon"][var_0] = spawnstruct();
-    self._ID36218["weapon"][var_0]._ID680 = var_0;
+    self._ID36218["weapon"][var_0].name = var_0;
     self._ID36218["weapon"][var_0]._ID33865 = 0;
     self._ID36218["weapon"][var_0]._ID33867 = 0;
     self._ID36218["weapon"][var_0]._ID570 = 0;
@@ -370,10 +370,10 @@ _ID32456()
 
         foreach ( var_5 in var_3 )
         {
-            var_5._ID10 = 0;
+            var_5.accuracy = 0;
 
             if ( var_5._ID33865 > 0 )
-                var_5._ID10 = int( var_5._ID33867 / var_5._ID33865 * 100 );
+                var_5.accuracy = int( var_5._ID33867 / var_5._ID33865 * 100 );
         }
 
         for ( var_7 = 1; var_7 < 6; var_7++ )
@@ -389,10 +389,10 @@ _ID32456()
             if ( !isdefined( var_3[var_7] ) )
                 break;
 
-            setdvar( "stats_" + var_0 + "_weapon" + ( var_7 + 1 ) + "_name", var_3[var_7]._ID680 );
+            setdvar( "stats_" + var_0 + "_weapon" + ( var_7 + 1 ) + "_name", var_3[var_7].name );
             setdvar( "stats_" + var_0 + "_weapon" + ( var_7 + 1 ) + "_kills", var_3[var_7]._ID570 );
             setdvar( "stats_" + var_0 + "_weapon" + ( var_7 + 1 ) + "_shots", var_3[var_7]._ID33865 );
-            setdvar( "stats_" + var_0 + "_weapon" + ( var_7 + 1 ) + "_accuracy", var_3[var_7]._ID10 + "%" );
+            setdvar( "stats_" + var_0 + "_weapon" + ( var_7 + 1 ) + "_accuracy", var_3[var_7].accuracy + "%" );
         }
 
         var_0++;
@@ -422,7 +422,7 @@ _ID16075( var_0 )
 
         foreach ( var_6 in var_0 )
         {
-            if ( var_3._ID680 == var_6._ID680 )
+            if ( var_3.name == var_6.name )
             {
                 var_4 = 1;
                 break;

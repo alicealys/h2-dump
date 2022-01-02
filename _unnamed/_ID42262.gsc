@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42407::_ID32246();
     level._ID11390["nearStart"] = 1;
@@ -32,11 +32,11 @@ _ID616()
     if ( !isdefined( level._ID40560 ) )
     {
         level._ID40560 = [];
-        _ID9133( level._ID912 );
+        _ID9133( level.script );
     }
 
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 }
 
 _ID54386()
@@ -164,7 +164,7 @@ _ID11355()
     foreach ( var_7 in level._ID805 )
         var_7 thread _ID11386();
 
-    level._ID794 _ID42407::_ID10226( 1, ::_ID44612 );
+    level.player _ID42407::_ID10226( 1, ::_ID44612 );
 }
 
 _ID11375( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
@@ -367,7 +367,7 @@ _ID11370()
     var_11 = self getplayerangles();
 
     if ( isdefined( self._ID11372 ) )
-        var_12 = combineangles( self._ID11372._ID65, var_11 );
+        var_12 = combineangles( self._ID11372.angles, var_11 );
     else
         var_12 = var_11;
 
@@ -403,13 +403,13 @@ _ID11370()
         if ( !var_21 && !var_22 )
             continue;
 
-        var_23 = vectornormalize( var_20._ID740 - var_10 );
+        var_23 = vectornormalize( var_20.origin - var_10 );
         var_24 = vectordot( var_13, var_23 );
 
         if ( var_24 < 0.923 )
             continue;
 
-        var_25 = distance( var_10, var_20._ID740 );
+        var_25 = distance( var_10, var_20.origin );
 
         if ( var_25 - 30 < var_17 )
             var_17 = var_25 - 30;
@@ -449,7 +449,7 @@ _ID11371( var_0 )
     var_5 = self getplayerangles();
 
     if ( isdefined( self._ID11372 ) )
-        var_6 = combineangles( self._ID11372._ID65, var_5 );
+        var_6 = combineangles( self._ID11372.angles, var_5 );
     else
         var_6 = var_5;
 
@@ -472,13 +472,13 @@ _ID11371( var_0 )
         if ( !var_14 && !var_15 )
             continue;
 
-        var_16 = vectornormalize( var_13._ID740 - var_4 );
+        var_16 = vectornormalize( var_13.origin - var_4 );
         var_17 = vectordot( var_7, var_16 );
 
         if ( var_17 < 0.923 )
             continue;
 
-        var_18 = distance( var_4, var_13._ID740 );
+        var_18 = distance( var_4, var_13.origin );
 
         if ( var_18 < var_11["start"] )
             var_11["start"] = var_18;
@@ -513,14 +513,14 @@ _ID44612()
 
 _ID52607()
 {
-    level._ID794 _meth_84b9();
+    level.player _meth_84b9();
 }
 
 _ID49761()
 {
-    level._ID794 _meth_84b8();
-    level._ID794 _meth_84ba( 3.0, 800.0, 20, 20 );
-    level._ID794 _meth_84cb( 12.0, 900.0 );
+    level.player _meth_84b8();
+    level.player _meth_84ba( 3.0, 800.0, 20, 20 );
+    level.player _meth_84cb( 12.0, 900.0 );
 }
 
 _ID21033( var_0, var_1, var_2, var_3, var_4 )
@@ -538,13 +538,13 @@ _ID21033( var_0, var_1, var_2, var_3, var_4 )
 
     for ( var_8 = 0; var_8 < var_1.size; var_8++ )
     {
-        var_9 = vectornormalize( var_1[var_8]._ID740 - var_2 );
+        var_9 = vectornormalize( var_1[var_8].origin - var_2 );
         var_10 = vectordot( var_3, var_9 );
 
         if ( var_10 < 0.923 )
             continue;
 
-        var_11 = distance( var_2, var_1[var_8]._ID740 );
+        var_11 = distance( var_2, var_1[var_8].origin );
 
         if ( var_11 < 2500 )
             var_11 = 2500;

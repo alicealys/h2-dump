@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42229::_ID9260();
     var_0 _ID42229::_ID32402( ( 2626.8, -5096.19, 3262 ), ( 270, 0, 0 ) );

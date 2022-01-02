@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID3197();
     _ID27230();
@@ -473,12 +473,12 @@ _ID27230()
 
 _ID48187( var_0 )
 {
-    level._ID794._ID49479._ID740 = var_0 gettagorigin( "tag_weapon_left" );
-    level._ID794._ID49479._ID65 = var_0 gettagangles( "tag_weapon_left" );
-    level._ID794._ID49479._ID25567 = level._ID794._ID49479._ID740;
+    level.player._ID49479.origin = var_0 gettagorigin( "tag_weapon_left" );
+    level.player._ID49479.angles = var_0 gettagangles( "tag_weapon_left" );
+    level.player._ID49479._ID25567 = level.player._ID49479.origin;
     waittillframeend;
     var_0 detach( "weapon_c4", "tag_weapon_left" );
-    level._ID794._ID49479 show();
+    level.player._ID49479 show();
 }
 #using_animtree("generic_human");
 
@@ -517,7 +517,7 @@ dcburning_mortar_notify( var_0 )
 
     if ( _ID42407::_ID27540( var_0 gettagorigin( "tag_eye" ), 0.8, 1 ) )
     {
-        var_2 = distancesquared( var_0._ID740, level._ID794._ID740 );
+        var_2 = distancesquared( var_0.origin, level.player.origin );
 
         if ( var_2 < var_1 )
             level notify( "explosion_mortar",  var_2  );

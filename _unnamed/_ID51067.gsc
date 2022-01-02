@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     precacheshellshock( "slowview" );
     precacheshellshock( "aftermath" );
@@ -19,7 +19,7 @@ _ID616()
     _ID42237::_ID14400( "player_is_in_dizzy_stumble" );
     waitframe;
     level._ID47469 = 0.8;
-    level._ID794._ID24445 = 1;
+    level.player._ID24445 = 1;
 }
 
 _ID48476()
@@ -32,9 +32,9 @@ _ID48476()
 
     level endon( "stop_aftermath_player" );
     level._ID17430 = spawn( "script_model", ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( level._ID17430 );
+    level.player playersetgroundreferenceent( level._ID17430 );
     level._ID53970 = spawn( "script_model", ( 0, 0, 0 ) );
-    level._ID794 _meth_85b5( level._ID53970 );
+    level.player _meth_85b5( level._ID53970 );
 
     if ( _ID42237::_ID14385( "aftermath_dont_do_wakeup" ) )
         return;
@@ -76,9 +76,9 @@ _ID27474()
 
             if ( _ID42237::_ID14385( "player_heartbeat_sound" ) )
             {
-                level._ID794 thread _ID42407::_ID27079( "breathing_heartbeat" );
+                level.player thread _ID42407::_ID27079( "breathing_heartbeat" );
                 wait 0.05;
-                level._ID794 playrumblelooponentity( "damage_light" );
+                level.player playrumblelooponentity( "damage_light" );
             }
 
             wait(level._ID47469);
@@ -86,7 +86,7 @@ _ID27474()
 
         wait(0 + randomfloat( 0.1 ));
 
-        if ( randomint( 50 ) > level._ID794._ID24445 * 190 )
+        if ( randomint( 50 ) > level.player._ID24445 * 190 )
             wait(randomfloat( 1 ));
     }
 }
@@ -98,23 +98,23 @@ _ID15917()
 
 _ID46025()
 {
-    level._ID794 _ID42407::_ID27079( "sprint_gasp" );
+    level.player _ID42407::_ID27079( "sprint_gasp" );
     _ID42237::_ID14413( "start_doing_aftermath_walk" );
     thread _ID48829();
 
     if ( getdvar( "enable_heartbeat_overlay" ) == "0" )
-        level._ID794 _ID42407::_ID27079( "breathing_hurt_start" );
+        level.player _ID42407::_ID27079( "breathing_hurt_start" );
 
-    level._ID794 thread _ID42407::_ID27079( "breathing_better" );
-    level._ID794 childthread _ID47031();
+    level.player thread _ID42407::_ID27079( "breathing_better" );
+    level.player childthread _ID47031();
 }
 
 _ID2141( var_0 )
 {
     var_1 = var_0[0];
     var_2 = var_0[2];
-    var_3 = anglestoright( level._ID794._ID65 );
-    var_4 = anglestoforward( level._ID794._ID65 );
+    var_3 = anglestoright( level.player.angles );
+    var_4 = anglestoforward( level.player.angles );
     var_5 = ( var_3[0], 0, var_3[1] * -1 );
     var_6 = ( var_4[0], 0, var_4[1] * -1 );
     var_7 = _ID42407::_ID49965( var_5, var_1 );
@@ -152,7 +152,7 @@ _ID48312( var_0 )
             var_3 *= -1;
         }
 
-        var_5 = var_3 - var_0._ID740[0];
+        var_5 = var_3 - var_0.origin[0];
         var_5 = abs( var_5 );
         var_6 = var_5 * 0.05;
 
@@ -166,7 +166,7 @@ _ID48312( var_0 )
 
         for (;;)
         {
-            var_8 = distance( ( 0, 0, 0 ), level._ID794 getvelocity() );
+            var_8 = distance( ( 0, 0, 0 ), level.player getvelocity() );
 
             if ( var_8 >= 80 )
                 break;
@@ -183,7 +183,7 @@ _ID47237()
     level._ID17430 rotateto( ( 0, 0, 0 ), var_0, var_0 * 0.5, var_0 * 0.5 );
     wait(var_0);
     level._ID17430 delete();
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playersetgroundreferenceent( undefined );
     setslowmotion( 0.95, 1, 0.5 );
 }
 
@@ -203,23 +203,23 @@ _ID48829()
     var_4 = 3;
     var_5 = 3500;
     var_6 = 0.1;
-    var_7 = level._ID794 getplayerangles()[1];
+    var_7 = level.player getplayerangles()[1];
 
     for (;;)
     {
-        var_8 = level._ID794 getplayerangles();
+        var_8 = level.player getplayerangles();
         var_9 = var_8 - var_7;
         var_10 = var_9[1];
 
-        if ( isdefined( level._ID794._ID46030 ) && level._ID794._ID46030 )
+        if ( isdefined( level.player._ID46030 ) && level.player._ID46030 )
         {
             var_10 = 0;
             var_9 = ( 0, 0, 0 );
         }
 
-        var_11 = var_0._ID740[0] + var_10;
+        var_11 = var_0.origin[0] + var_10;
         var_7 = var_8;
-        var_12 = distance( ( 0, 0, 0 ), level._ID794 getvelocity() );
+        var_12 = distance( ( 0, 0, 0 ), level.player getvelocity() );
         var_2 += var_12 * 0.06;
 
         if ( var_12 > 80 )
@@ -235,8 +235,8 @@ _ID48829()
                 level._ID44483++;
                 var_15 = getanimlength( level._ID30895["dizzy_stumble"][var_14] );
                 var_16 = getaiarray( "axis" );
-                var_17 = _ID42237::_ID16182( level._ID794._ID740, var_16 );
-                var_18 = isalive( var_17 ) && distance( level._ID794._ID740, var_17._ID740 ) < 400;
+                var_17 = _ID42237::_ID16182( level.player.origin, var_16 );
+                var_18 = isalive( var_17 ) && distance( level.player.origin, var_17.origin ) < 400;
 
                 if ( !var_18 )
                 {
@@ -245,9 +245,9 @@ _ID48829()
                     _ID42237::_ID14402( "player_is_in_dizzy_stumble" );
                     _ID42407::_ID10226( 5, _ID42237::_ID14388, "player_is_in_dizzy_stumble" );
                     thread _ID47827();
-                    level._ID794 _meth_84c4( level._ID30912[var_14] );
-                    level._ID794 thread _ID42407::_ID27079( "scn_" + var_14 );
-                    level._ID794 thread _ID53201( var_15 );
+                    level.player _meth_84c4( level._ID30912[var_14] );
+                    level.player thread _ID42407::_ID27079( "scn_" + var_14 );
+                    level.player thread _ID53201( var_15 );
                     var_5 = randomintrange( 5000, 7500 );
                 }
             }
@@ -255,7 +255,7 @@ _ID48829()
 
         var_19 = sin( var_2 ) * 4 * level._ID52313;
 
-        if ( !_ID42237::_ID14385( "player_limping" ) && level._ID794 _ID42237::_ID20583() )
+        if ( !_ID42237::_ID14385( "player_limping" ) && level.player _ID42237::_ID20583() )
         {
             level._ID17430 rotateto( ( var_19 * 0.15, var_11 * -1, var_19 * 0.85 ), var_6, var_6 * 0.5, var_6 * 0.5 );
             level._ID53970 rotateto( ( clamp( var_9[0] * 3, -15, 15 ), clamp( var_9[1] * 3, -15, 15 ), 0 ), var_6 * 3, var_6 * 1.5, var_6 * 1.5 );
@@ -269,7 +269,7 @@ _ID47827()
 {
     var_0 = _ID54167::_ID43386( "stumble" );
     var_0 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 16, 500, 16, 16 ) _ID54167::_ID44191( 50, 0.55, 0 ) _ID54167::_ID44956();
-    var_0 _ID54167::_ID48800( 0.0 ) _ID54167::_ID43376( ::shellshock, level._ID794, "af_chase_ending_wakeup", 5 );
+    var_0 _ID54167::_ID48800( 0.0 ) _ID54167::_ID43376( ::shellshock, level.player, "af_chase_ending_wakeup", 5 );
     var_0 _ID54167::_ID48800( 0.05 ) _ID54167::_ID50321( 0.6, 100, 6, 6 );
     var_0 _ID54167::_ID48800( 0.5 ) _ID54167::_ID43500( 1.0, 0 );
     var_0 _ID54167::_ID48800( 0.65 ) _ID54167::_ID50321( 10, 500, 2, 4 );
@@ -281,16 +281,16 @@ _ID47932( var_0 )
 {
     level notify( "swivel_stunplayer" );
     level endon( "swivel_stunplayer" );
-    level._ID794._ID52561 = 0;
-    level._ID794 allowmelee( 0 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
+    level.player._ID52561 = 0;
+    level.player allowmelee( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
     wait(var_0);
-    level._ID794._ID52561 = 1;
+    level.player._ID52561 = 1;
     waittillframeend;
     var_1 = 1;
 
-    foreach ( var_3 in level._ID794._ID47654 )
+    foreach ( var_3 in level.player._ID47654 )
     {
         if ( !var_3 )
         {
@@ -300,10 +300,10 @@ _ID47932( var_0 )
     }
 
     if ( !isdefined( level._ID50570 ) || !level._ID50570 )
-        level._ID794 allowmelee( var_1 );
+        level.player allowmelee( var_1 );
 
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
 }
 
 _ID53509()
@@ -321,7 +321,7 @@ _ID53509()
 
     for (;;)
     {
-        var_10 = level._ID794 getnormalizedcameramovement();
+        var_10 = level.player getnormalizedcameramovement();
         var_11 = var_10[0];
         var_12 = var_10[1];
         var_13 = _ID42237::_ID37527( abs( var_11 ) > 0.001, 1, -3 );
@@ -329,17 +329,17 @@ _ID53509()
         var_7 = clamp( var_7 + var_5 * var_13, var_1, var_3 );
         var_8 = clamp( var_8 + var_6 * var_14, var_2, var_4 );
 
-        if ( level._ID794 _ID42237::_ID20583() )
+        if ( level.player _ID42237::_ID20583() )
         {
             setsaveddvar( "aim_turnrate_yaw", var_8 );
             setsaveddvar( "aim_turnrate_pitch", var_7 );
-            level._ID794 disableslowaim();
+            level.player disableslowaim();
             var_9 = 0;
         }
         else
         {
             if ( !var_9 )
-                level._ID794 enableslowaim();
+                level.player enableslowaim();
 
             var_9 = 1;
         }
@@ -375,16 +375,16 @@ _ID46325( var_0 )
     var_1 = 0;
     var_2 = 140;
     var_3 = _ID42237::_ID16638( "limp_yaw_ent", "targetname" );
-    var_4 = _ID42237::_ID16638( var_3._ID1191, "targetname" );
-    var_5 = vectortoangles( var_4._ID740 - var_3._ID740 );
+    var_4 = _ID42237::_ID16638( var_3.target, "targetname" );
+    var_5 = vectortoangles( var_4.origin - var_3.origin );
     var_6 = anglestoforward( var_5 );
     var_7 = 0;
 
     for (;;)
     {
-        var_8 = distance( ( 0, 0, 0 ), level._ID794 getvelocity() );
+        var_8 = distance( ( 0, 0, 0 ), level.player getvelocity() );
         var_9 = var_8 > 80;
-        var_10 = level._ID794 getplayerangles();
+        var_10 = level.player getplayerangles();
         var_11 = anglestoforward( var_10 );
         var_12 = vectordot( var_11, var_6 ) >= 0.8;
 
@@ -409,12 +409,12 @@ _ID46325( var_0 )
             _ID53254();
             var_13 = 2;
             var_14 = _ID42237::_ID35164();
-            var_14._ID740 = ( level._ID52313, 0, 0 );
+            var_14.origin = ( level._ID52313, 0, 0 );
             var_14 moveto( ( 1, 0, 0 ), var_13, var_13 * 0.5, var_13 * 0.5 );
 
             for (;;)
             {
-                level._ID52313 = var_14._ID740[0];
+                level._ID52313 = var_14.origin[0];
 
                 if ( level._ID52313 == 1 )
                     break;
@@ -445,7 +445,7 @@ _ID51027()
 
     for (;;)
     {
-        var_0 = distance( ( 0, 0, 0 ), level._ID794 getvelocity() );
+        var_0 = distance( ( 0, 0, 0 ), level.player getvelocity() );
 
         if ( var_0 < 80 )
         {
@@ -454,8 +454,8 @@ _ID51027()
         }
 
         var_1 = 2.3;
-        level._ID794 thread _ID47932( var_1 );
-        level._ID794 thread _ID42407::_ID27079( "breathing_hurt" );
+        level.player thread _ID47932( var_1 );
+        level.player thread _ID42407::_ID27079( "breathing_hurt" );
         thread maps\af_chase_knife_fight::_ID48057( 0.5 );
         level notify( "not_random_blur" );
         _ID42237::_ID24938( 0.5, ::setblur, 4, 0.25 );
@@ -463,9 +463,9 @@ _ID51027()
         _ID42407::_ID10226( var_1, ::_ID47031 );
         _ID42407::_ID10226( 1, maps\af_chase_knife_fight_code::_ID43249, var_1 * 4 );
         _ID42407::_ID10226( var_1, maps\af_chase_knife_fight_code::_ID46058, var_1 );
-        level._ID794 playrumblelooponentity( "damage_light" );
-        level._ID794 _ID42407::_ID5278( 0.25, 0.3 );
-        level._ID794 _ID42407::_ID10226( var_1 * 0.5, _ID42407::_ID5278, 0.45, var_1 );
+        level.player playrumblelooponentity( "damage_light" );
+        level.player _ID42407::_ID5278( 0.25, 0.3 );
+        level.player _ID42407::_ID10226( var_1 * 0.5, _ID42407::_ID5278, 0.45, var_1 );
         _ID42237::_ID14388( "force_limp" );
         wait(var_1);
         break;
@@ -481,7 +481,7 @@ _ID51287()
     {
         var_2 = randomfloatrange( 2, 4 );
         wait(var_2);
-        var_3 = level._ID794 getvelocity();
+        var_3 = level.player getvelocity();
         var_4 = abs( var_3[0] ) + abs( var_3[1] );
 
         if ( var_4 < 10 && !_ID42237::_ID14385( "force_limp" ) )
@@ -490,7 +490,7 @@ _ID51287()
             continue;
         }
 
-        var_5 = var_4 / level._ID794._ID24445 * 190;
+        var_5 = var_4 / level.player._ID24445 * 190;
         var_6 = randomfloatrange( 3, 5 );
 
         if ( randomint( 100 ) < 20 )
@@ -533,7 +533,7 @@ _ID47031()
     {
         wait 0.05;
 
-        if ( randomint( 100 ) > 10 || isdefined( level._ID794._ID46030 ) && level._ID794._ID46030 )
+        if ( randomint( 100 ) > 10 || isdefined( level.player._ID46030 ) && level.player._ID46030 )
             continue;
 
         var_0 = randomint( 3 ) + 2;
@@ -552,7 +552,7 @@ _ID52957()
 
     for (;;)
     {
-        if ( level._ID794 isonground() )
+        if ( level.player isonground() )
             break;
 
         wait 0.05;
@@ -562,12 +562,12 @@ _ID52957()
     {
         wait 0.05;
 
-        if ( level._ID794 isonground() )
+        if ( level.player isonground() )
             continue;
 
         wait 0.2;
 
-        if ( level._ID794 isonground() )
+        if ( level.player isonground() )
             continue;
 
         level notify( "stop_stumble" );
@@ -611,15 +611,15 @@ _ID29328()
 _ID9171( var_0, var_1 )
 {
     var_2 = newhudelem();
-    var_2._ID1331 = 0;
-    var_2._ID1339 = 0;
+    var_2.x = 0;
+    var_2.y = 0;
     var_2 setshader( var_0, 640, 480 );
-    var_2._ID44 = "left";
-    var_2._ID45 = "top";
-    var_2._ID499 = "fullscreen";
-    var_2._ID1284 = "fullscreen";
-    var_2._ID55 = var_1;
-    var_2._ID408 = 1;
+    var_2.alignx = "left";
+    var_2.aligny = "top";
+    var_2.horzalign = "fullscreen";
+    var_2.vertalign = "fullscreen";
+    var_2.alpha = var_1;
+    var_2.foreground = 1;
     return var_2;
 }
 

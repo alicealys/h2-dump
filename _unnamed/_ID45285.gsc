@@ -19,9 +19,9 @@ _ID46946()
         var_1 = self._ID31388;
 
     var_2 = getentarray( "hiding_door_guy_org", "targetname" );
-    var_3 = _ID42237::_ID16182( self._ID740, var_2 );
-    var_3._ID1193 = undefined;
-    var_4 = getentarray( var_3._ID1191, "targetname" );
+    var_3 = _ID42237::_ID16182( self.origin, var_2 );
+    var_3.targetname = undefined;
+    var_4 = getentarray( var_3.target, "targetname" );
     var_5 = undefined;
     var_6 = undefined;
     var_7 = undefined;
@@ -35,30 +35,30 @@ _ID46946()
     {
         foreach ( var_9 in var_4 )
         {
-            if ( var_9._ID172 == "script_brushmodel" )
+            if ( var_9.code_classname == "script_brushmodel" )
             {
                 var_6 = var_9;
                 continue;
             }
 
-            if ( var_9._ID172 == "script_model" )
+            if ( var_9.code_classname == "script_model" )
                 var_5 = var_9;
         }
     }
 
-    if ( !isdefined( var_6 ) && isdefined( var_5 ) && isdefined( var_5._ID922 ) && var_5._ID922 == "keep_door" )
+    if ( !isdefined( var_6 ) && isdefined( var_5 ) && isdefined( var_5.script_noteworthy ) && var_5.script_noteworthy == "keep_door" )
     {
-        var_6 = spawn( "script_model", var_5._ID740 );
-        var_6 setmodel( var_5._ID669 );
-        var_6._ID65 = var_5._ID65;
-        var_6._ID922 = var_5._ID922;
+        var_6 = spawn( "script_model", var_5.origin );
+        var_6 setmodel( var_5.model );
+        var_6.angles = var_5.angles;
+        var_6.script_noteworthy = var_5.script_noteworthy;
     }
 
-    var_11 = getent( var_5._ID1191, "targetname" );
+    var_11 = getent( var_5.target, "targetname" );
     var_12 = undefined;
 
-    if ( isdefined( var_11._ID1191 ) )
-        var_12 = getent( var_11._ID1191, "targetname" );
+    if ( isdefined( var_11.target ) )
+        var_12 = getent( var_11.target, "targetname" );
 
     if ( isdefined( var_12 ) )
     {
@@ -91,11 +91,11 @@ _ID46946()
 
     var_14 = undefined;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        var_14 = getent( self._ID1191, "targetname" );
+        var_14 = getent( self.target, "targetname" );
 
-        if ( !issubstr( var_14._ID170, "trigger" ) )
+        if ( !issubstr( var_14.classname, "trigger" ) )
             var_14 = undefined;
     }
 
@@ -103,10 +103,10 @@ _ID46946()
     {
         var_15 = 200;
 
-        if ( isdefined( self._ID851 ) )
-            var_15 = self._ID851;
+        if ( isdefined( self.radius ) )
+            var_15 = self.radius;
 
-        var_14 = spawn( "trigger_radius", var_3._ID740, 0, var_15, 48 );
+        var_14 = spawn( "trigger_radius", var_3.origin, 0, var_15, 48 );
     }
 
     if ( isdefined( var_7 ) )
@@ -125,7 +125,7 @@ _ID53486( var_0 )
 
     for (;;)
     {
-        var_1 = _ID46363( var_0._ID65, self._ID740, level._ID794._ID740 );
+        var_1 = _ID46363( var_0.angles, self.origin, level.player.origin );
 
         if ( _ID50258( var_1 ) )
         {
@@ -146,10 +146,10 @@ _ID51857( var_0, var_1, var_2, var_3, var_4 )
     self._ID3189 = "hiding_door_guy";
     self endon( "death" );
     self endon( "damage" );
-    self._ID464 = 2;
+    self.grenadeammo = 2;
     _ID42407::_ID32265( "death_2" );
-    self._ID49 = 1;
-    self._ID486 = 50000;
+    self.allowdeath = 1;
+    self.health = 50000;
     self.alwaysredhitmarker = 1;
     var_6 = [];
     var_6[var_6.size] = var_2;
@@ -181,12 +181,12 @@ _ID51857( var_0, var_1, var_2, var_3, var_4 )
 
     for (;;)
     {
-        var_9 = level._ID794;
+        var_9 = level.player;
 
-        if ( isdefined( self._ID322 ) )
-            var_9 = self._ID322;
+        if ( isdefined( self.enemy ) )
+            var_9 = self.enemy;
 
-        var_10 = _ID46363( var_2._ID65, self._ID740, var_9._ID740 );
+        var_10 = _ID46363( var_2.angles, self.origin, var_9.origin );
 
         if ( _ID50258( var_10 ) )
         {
@@ -234,8 +234,8 @@ _ID51857( var_0, var_1, var_2, var_3, var_4 )
             thread _ID52270( var_3, var_4 );
             var_0 notify( "push_player" );
             self notify( "charge" );
-            self._ID49 = 1;
-            self._ID486 = 100;
+            self.allowdeath = 1;
+            self.health = 100;
             _ID42407::_ID7854();
             var_0 _ID42259::_ID3099( var_6, var_11 );
             _ID45555();
@@ -244,7 +244,7 @@ _ID51857( var_0, var_1, var_2, var_3, var_4 )
 
         if ( _ID48149( var_10, var_8 ) )
         {
-            self._ID464--;
+            self.grenadeammo--;
             var_11 = "grenade";
         }
 
@@ -254,7 +254,7 @@ _ID51857( var_0, var_1, var_2, var_3, var_4 )
         var_13 = undefined;
 
         if ( isdefined( var_12 ) )
-            var_13 = _ID42237::_ID16182( self._ID740, var_12, 256 );
+            var_13 = _ID42237::_ID16182( self.origin, var_12, 256 );
 
         if ( isdefined( var_13 ) )
         {
@@ -279,14 +279,14 @@ _ID45555( var_0, var_1 )
 
     if ( var_0 )
     {
-        if ( !sighttracepassed( level._ID794 geteye(), self geteye(), 0, self ) )
+        if ( !sighttracepassed( level.player geteye(), self geteye(), 0, self ) )
             return 0;
     }
 
-    self._ID486 = 100;
+    self.health = 100;
     _ID42407::_ID7854();
-    self._ID452 = 512;
-    self setgoalpos( self._ID740 );
+    self.goalradius = 512;
+    self setgoalpos( self.origin );
     self notify( "quit_door_behavior" );
     self stopanimscripted();
     self notify( "killanimscript" );
@@ -299,12 +299,12 @@ _ID50258( var_0 )
     if ( var_0 != "behind" )
         return 0;
 
-    var_1 = distance( self._ID740, level._ID794._ID740 );
+    var_1 = distance( self.origin, level.player.origin );
 
     if ( var_1 > 250 )
         return 0;
 
-    if ( !sighttracepassed( level._ID794 geteye(), self geteye(), 0, self ) )
+    if ( !sighttracepassed( level.player geteye(), self geteye(), 0, self ) )
         return 0;
 
     return 1;
@@ -319,13 +319,13 @@ _ID45444( var_0, var_1, var_2 )
     if ( var_2 < var_3 )
         return 0;
 
-    if ( var_1 != level._ID794 )
+    if ( var_1 != level.player )
         return 0;
 
     if ( var_0 != "front" )
         return 0;
 
-    var_6 = distance( self._ID740, level._ID794._ID740 );
+    var_6 = distance( self.origin, level.player.origin );
 
     if ( var_6 < var_4 )
         return 0;
@@ -344,7 +344,7 @@ _ID48149( var_0, var_1 )
     if ( var_0 == "behind" )
         return 0;
 
-    if ( randomint( 100 ) < 25 * self._ID464 )
+    if ( randomint( 100 ) < 25 * self.grenadeammo )
         return 1;
 
     return 0;
@@ -407,7 +407,7 @@ _ID53624( var_0, var_1, var_2, var_3, var_4 )
 _ID48813( var_0 )
 {
     self waittill( "push_player" );
-    var_0 moveto( self._ID740, 1.5 );
+    var_0 moveto( self.origin, 1.5 );
     wait 1.5;
     var_0 delete();
 }
@@ -447,7 +447,7 @@ _ID45341( var_0 )
 _ID54272( var_0 )
 {
     var_1 = var_0 gettagorigin( "J_Wrist_RI" );
-    var_2 = distance( level._ID794._ID740, var_0._ID740 ) * 2.0;
+    var_2 = distance( level.player.origin, var_0.origin ) * 2.0;
 
     if ( var_2 < 300 )
         var_2 = 300;
@@ -455,7 +455,7 @@ _ID54272( var_0 )
     if ( var_2 > 1000 )
         var_2 = 1000;
 
-    var_3 = vectornormalize( level._ID794._ID740 - var_0._ID740 );
+    var_3 = vectornormalize( level.player.origin - var_0.origin );
     var_4 = var_3 * var_2;
     var_0 magicgrenademanual( var_1, var_4, randomfloatrange( 3.0, 5.0 ) );
 }
@@ -475,7 +475,7 @@ _ID51197( var_0, var_1, var_2, var_3, var_4 )
     var_8 = undefined;
 
     if ( isdefined( var_7 ) )
-        var_8 = _ID42237::_ID16182( self._ID740, var_7, 256 );
+        var_8 = _ID42237::_ID16182( self.origin, var_7, 256 );
 
     if ( isdefined( var_8 ) )
         var_8 thread _ID42259::_ID3111( var_2, "death_2" );
@@ -511,5 +511,5 @@ _ID52270( var_0, var_1 )
 
 _ID53024( var_0 )
 {
-    return isdefined( var_0._ID922 ) && var_0._ID922 == "starts_open";
+    return isdefined( var_0.script_noteworthy ) && var_0.script_noteworthy == "starts_open";
 }

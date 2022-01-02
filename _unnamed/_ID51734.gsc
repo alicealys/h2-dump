@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "vehicle_mig29_landed", "TAG_ORIGIN", 250, undefined, 32, "splash" );
     _ID42231::_ID10544( 11 );

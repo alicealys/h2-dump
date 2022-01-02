@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( !isdefined( self._ID217 ) )
         self._ID217 = spawnstruct();
@@ -10,7 +10,7 @@ _ID616()
     self._ID217._ID22013 = 0;
     self._ID217._ID20941 = 0;
     self._ID217._ID18563 = _ID8879();
-    self._ID8893 = self._ID700;
+    self._ID8893 = self.node;
     _ID8892();
     self waittill( "killanimscript" );
 }
@@ -42,17 +42,17 @@ _ID8892()
         }
     }
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
     {
         _ID8889( _ID8886( var_0 ) );
         return;
     }
 
-    var_2 = self._ID8893._ID740;
-    var_3 = self._ID322._ID740;
+    var_2 = self._ID8893.origin;
+    var_3 = self.enemy.origin;
     var_4 = var_3 - var_2;
     var_5 = vectortoangles( var_4 );
-    var_6 = angleclamp180( var_5[1] - self._ID8893._ID65[1] );
+    var_6 = angleclamp180( var_5[1] - self._ID8893.angles[1] );
     var_7 = undefined;
 
     if ( var_6 > 12 )
@@ -82,7 +82,7 @@ _ID8892()
 _ID8888( var_0, var_1 )
 {
     if ( !isdefined( var_1 ) )
-        var_1 = self._ID700 getvalidcoverpeekouts();
+        var_1 = self.node getvalidcoverpeekouts();
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
     {
@@ -96,7 +96,7 @@ _ID8888( var_0, var_1 )
 _ID8884( var_0, var_1 )
 {
     if ( !isdefined( var_1 ) )
-        var_1 = self._ID700 getvalidcoverpeekouts();
+        var_1 = self.node getvalidcoverpeekouts();
 
     var_2 = [];
 
@@ -126,7 +126,7 @@ _ID8884( var_0, var_1 )
 _ID8886( var_0 )
 {
     if ( !isdefined( var_0 ) )
-        var_0 = self._ID700 getvalidcoverpeekouts();
+        var_0 = self.node getvalidcoverpeekouts();
 
     var_1 = randomint( var_0.size );
     return var_0[var_1];
@@ -152,8 +152,8 @@ _ID8889( var_0, var_1 )
 {
     if ( var_0 == "over" )
     {
-        var_2 = self._ID700 doesnodeallowstance( "stand" );
-        var_3 = self._ID700 doesnodeallowstance( "crouch" );
+        var_2 = self.node doesnodeallowstance( "stand" );
+        var_3 = self.node doesnodeallowstance( "crouch" );
 
         if ( var_2 )
         {
@@ -214,13 +214,13 @@ _ID8891( var_0 )
 _ID8881( var_0 )
 {
     if ( var_0 == "left" )
-        animscripts\cover_left::_ID616();
+        animscripts\cover_left::main();
     else if ( var_0 == "right" )
-        animscripts\cover_right::_ID616();
+        animscripts\cover_right::main();
     else if ( var_0 == "stand" )
-        animscripts\cover_stand::_ID616();
+        animscripts\cover_stand::main();
     else if ( var_0 == "crouch" )
-        animscripts\cover_crouch::_ID616();
+        animscripts\cover_crouch::main();
     else
     {
 

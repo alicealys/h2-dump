@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "vehicle_laatpv", "tag_body", 400, undefined, 32, "no_melee" );
     _ID42231::_ID10531( "tag_hood_fx", "fx/smoke/car_damage_whitesmoke", 0.4 );

@@ -3,21 +3,21 @@
 
 _ID50320()
 {
-    _ID46856::_ID616();
-    _ID48864::_ID616();
-    _ID50975::_ID616();
-    _ID51081::_ID616();
-    _ID49653::_ID616();
-    maps\gulag_anim::_ID616();
-    _ID42542::_ID616( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_1" );
-    _ID42542::_ID616( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_2" );
-    _ID42323::_ID616();
+    _ID46856::main();
+    _ID48864::main();
+    _ID50975::main();
+    _ID51081::main();
+    _ID49653::main();
+    maps\gulag_anim::main();
+    _ID42542::main( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_1" );
+    _ID42542::main( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_2" );
+    _ID42323::main();
     var_0 = getent( "cb2_stagelight", "targetname" );
     var_0 notify( "staging_on" );
-    _ID43797::_ID521();
-    maps\gulag_aud::_ID616();
-    maps\gulag_lighting::_ID616();
-    _ID42337::_ID616( level._ID805 );
+    _ID43797::init();
+    maps\gulag_aud::main();
+    maps\gulag_lighting::main();
+    _ID42337::main( level._ID805 );
     thread _ID49243();
     return 1;
 }
@@ -25,15 +25,15 @@ _ID50320()
 _ID49243()
 {
     var_0 = spawn( "script_origin", ( 5036.8, 2152.1, 3979.1 ) );
-    var_0._ID65 = ( 19.9, -135.5, 0 );
-    level._ID794 setorigin( var_0._ID740 );
-    level._ID794 setplayerangles( var_0._ID65 );
-    level._ID794 lerpfov( 85, 0.1 );
-    level._ID794._ID511 = 1;
+    var_0.angles = ( 19.9, -135.5, 0 );
+    level.player setorigin( var_0.origin );
+    level.player setplayerangles( var_0.angles );
+    level.player lerpfov( 85, 0.1 );
+    level.player.ignoreme = 1;
     setsaveddvar( "hud_drawhud", 0 );
     level _ID42407::_ID40561( "gulag_intro_flight", 0 );
-    level._ID794 _ID42407::_ID40561( "gulag_intro_flight", 0 );
-    level._ID794 lightset( "gulag_intro_flight" );
+    level.player _ID42407::_ID40561( "gulag_intro_flight", 0 );
+    level.player lightset( "gulag_intro_flight" );
     _ID42237::_ID14400( "castle_tower_event" );
     _ID42407::_ID10226( 1, _ID42234::_ID13611, "main_building" );
     thread maps\gulag_code::_ID50384( "castle_tower_event", "castletower_2" );
@@ -77,7 +77,7 @@ _ID47287()
         var_7 thread maps\gulag_code::_ID45124();
         var_7 thread maps\gulag_code::_ID52832();
 
-        if ( !issubstr( var_7._ID170, "armed" ) )
+        if ( !issubstr( var_7.classname, "armed" ) )
             continue;
 
         level._ID47232 = var_7;

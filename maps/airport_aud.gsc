@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -143,9 +143,9 @@ start_fade_to_white_sequence()
 
 start_escape_kill_player_sequence()
 {
-    level._ID794 thread _ID42237::_ID27000( "scn_player_get_shot_death_loop", undefined, 0.5, 2.0 );
+    level.player thread _ID42237::_ID27000( "scn_player_get_shot_death_loop", undefined, 0.5, 2.0 );
     wait 8;
-    level._ID794 _ID42237::_ID36516( "scn_player_get_shot_death_loop" );
+    level.player _ID42237::_ID36516( "scn_player_get_shot_death_loop" );
 }
 
 turn_off_vehicle_engine()
@@ -231,11 +231,11 @@ start_emergency_convoy_arrival_sfx()
     var_0 = getent( "trig_emergency_convoy", "targetname" );
     var_0 waittill( "trigger" );
     var_1 = _ID42237::_ID16638( "scn_airport_emergency_arriving", "targetname" );
-    thread _ID42237::_ID27077( "scn_airport_emergency_arriving", var_1._ID740 );
+    thread _ID42237::_ID27077( "scn_airport_emergency_arriving", var_1.origin );
     var_2 = getent( "trig_emergency_convoy_group_6", "targetname" );
     var_2 waittill( "trigger" );
     var_1 = _ID42237::_ID16638( "scn_emergency_convoy_door_arriving", "targetname" );
-    thread _ID42237::_ID27077( "scn_emergency_convoy_door_arriving", var_1._ID740 );
+    thread _ID42237::_ID27077( "scn_emergency_convoy_door_arriving", var_1.origin );
 }
 
 start_scripted_escape_van()

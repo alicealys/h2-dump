@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID50899();
     _ID32951();
@@ -132,7 +132,7 @@ _ID51349( var_0 )
     else
         var_1 = "wobble_faust";
 
-    level._ID54453._ID700 _ID42259::_ID3111( level._ID54453._ID29975, var_1 );
+    level._ID54453.node _ID42259::_ID3111( level._ID54453._ID29975, var_1 );
 }
 
 _ID32951()

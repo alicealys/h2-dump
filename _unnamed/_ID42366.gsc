@@ -38,8 +38,8 @@ _ID35071( var_0, var_1, var_2, var_3 )
         if ( var_2 )
             var_15 thread _ID42407::_ID29701();
 
-        var_15 forceteleport( var_11._ID740, var_11._ID65 );
-        var_15 setgoalpos( var_15._ID740 );
+        var_15 forceteleport( var_11.origin, var_11.angles );
+        var_15 setgoalpos( var_15.origin );
         var_7 = _ID42237::_ID3293( var_7, var_15 );
         var_12++;
 
@@ -101,16 +101,16 @@ _ID24255()
         if ( !isdefined( var_1._ID34789 ) )
         {
             var_1._ID34789 = var_1 _ID42313::_ID9200( "default", 1.75 );
-            var_1._ID34789._ID499 = "center";
-            var_1._ID34789._ID1284 = "top";
-            var_1._ID34789._ID44 = "center";
-            var_1._ID34789._ID45 = "top";
-            var_1._ID34789._ID1331 = 0;
-            var_1._ID34789._ID1339 = 20;
+            var_1._ID34789.horzalign = "center";
+            var_1._ID34789.vertalign = "top";
+            var_1._ID34789.alignx = "center";
+            var_1._ID34789.aligny = "top";
+            var_1._ID34789.x = 0;
+            var_1._ID34789.y = 20;
             var_1._ID34789 settext( &"VARIABLE_SCOPE_SNIPER_ZOOM" );
-            var_1._ID34789._ID55 = 0;
-            var_1._ID34789._ID983 = 0.5;
-            var_1._ID34789._ID408 = 1;
+            var_1._ID34789.alpha = 0;
+            var_1._ID34789.sort = 0.5;
+            var_1._ID34789.foreground = 1;
         }
 
         var_1._ID14854 = 1;
@@ -168,7 +168,7 @@ _ID24255()
                     var_14 = undefined;
                     var_15 = undefined;
                     var_16 = anglestoforward( var_6 getplayerangles() );
-                    var_17 = var_6._ID740;
+                    var_17 = var_6.origin;
 
                     foreach ( var_19 in level._ID40038 )
                     {
@@ -214,7 +214,7 @@ _ID39228( var_0 )
 {
     self disableoffhandweapons();
     setsaveddvar( self._ID34773, self._ID14854 );
-    self._ID34789._ID55 = 1;
+    self._ID34789.alpha = 1;
 
     if ( !var_0 )
         level notify( "variable_sniper_hud_enter" );
@@ -225,7 +225,7 @@ _ID39222()
     level notify( "variable_sniper_hud_exit" );
     self enableoffhandweapons();
     setsaveddvar( self._ID34773, 1 );
-    self._ID34789._ID55 = 0;
+    self._ID34789.alpha = 0;
 }
 
 _ID24193()
@@ -237,7 +237,7 @@ _ID24193()
     {
         self waittill( "mag_cycle" );
 
-        if ( self._ID34789._ID55 )
+        if ( self._ID34789.alpha )
         {
             if ( self._ID14854 == 0.5 )
             {
@@ -460,19 +460,19 @@ _ID16652( var_0 )
 
     foreach ( var_2 in level._ID21735 )
     {
-        var_3 = distance2d( var_0, var_2._ID740 );
-        var_4 = var_0[2] - var_2._ID740[2];
+        var_3 = distance2d( var_0, var_2.origin );
+        var_4 = var_0[2] - var_2.origin[2];
 
-        if ( !isdefined( var_2._ID851 ) )
+        if ( !isdefined( var_2.radius ) )
             continue;
 
         if ( !isdefined( var_2._ID488 ) )
             continue;
 
-        if ( var_3 <= var_2._ID851 && var_4 <= var_2._ID488 && var_4 >= 0 )
+        if ( var_3 <= var_2.radius && var_4 <= var_2._ID488 && var_4 >= 0 )
         {
             level._ID21735 = _ID42237::_ID3321( level._ID21735, var_2 );
-            return getent( var_2._ID1191, "script_noteworthy" );
+            return getent( var_2.target, "script_noteworthy" );
         }
     }
 
@@ -489,18 +489,18 @@ _ID15795()
     var_5 = var_4["entity"];
 
     if ( isdefined( var_5 ) )
-        var_4["position"] = var_5._ID740;
+        var_4["position"] = var_5.origin;
 
     return var_4;
 }
 
 _ID21702( var_0 )
 {
-    level._ID794 endon( "remove_laser_targeting_device" );
-    level._ID794._ID21745 = 0;
+    level.player endon( "remove_laser_targeting_device" );
+    level.player._ID21745 = 0;
     self setweaponhudiconoverride( "actionslot4", "dpad_killstreak_hellfire_missile_inactive" );
     _ID42407::_ID14543( "allies" );
-    var_1 = level._ID794;
+    var_1 = level.player;
     wait 2.5;
 
     if ( !isdefined( var_0._ID31259 ) )
@@ -521,8 +521,8 @@ _ID21702( var_0 )
             _ID42237::_ID3294( var_3, ::show );
     }
 
-    wait(level._ID794._ID21746);
-    level._ID794._ID21745 = 1;
+    wait(level.player._ID21746);
+    level.player._ID21745 = 1;
     self setweaponhudiconoverride( "actionslot4", "dpad_laser_designator" );
 }
 
@@ -557,7 +557,7 @@ _ID10841()
     if ( !isdefined( self._ID10846 ) )
     {
         self._ID10846 = var_0;
-        self._ID10845 = self._ID740;
+        self._ID10845 = self.origin;
         self._ID10847 = ( 0, 0, 0 );
         self._ID10844 = ( 0, 0, 0 );
         self._ID10843 = ( 0, 0, 0 );
@@ -573,8 +573,8 @@ _ID10841()
         self._ID10844 = self._ID10842;
         self._ID10842 = ( self._ID10849 - self._ID10847 ) / var_1;
         self._ID10847 = self._ID10849;
-        self._ID10849 = ( self._ID740 - self._ID10845 ) / var_1;
-        self._ID10845 = self._ID740;
+        self._ID10849 = ( self.origin - self._ID10845 ) / var_1;
+        self._ID10845 = self.origin;
         self._ID10848 = length( self._ID10849 );
     }
 }
@@ -671,7 +671,7 @@ _ID12484( var_0 )
 
 _ID17918( var_0, var_1, var_2 )
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "missionfailed" );
 
     if ( isdefined( var_2 ) && isstring( var_2 ) )
@@ -705,7 +705,7 @@ _ID17918( var_0, var_1, var_2 )
 
 _ID28249( var_0, var_1 )
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "missionfailed" );
 
     if ( !isdefined( var_0 ) || !isstring( var_0 ) )
@@ -729,7 +729,7 @@ _ID28249( var_0, var_1 )
 
 _ID28248( var_0, var_1 )
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "missionfailed" );
 
     if ( !isdefined( var_0 ) || !isstring( var_0 ) )
@@ -812,7 +812,7 @@ _ID18629( var_0, var_1 )
     if ( !isdefined( var_1 ) )
         var_1 = 200;
 
-    return _ID18625( var_0, self._ID740, undefined, var_1, undefined, self );
+    return _ID18625( var_0, self.origin, undefined, var_1, undefined, self );
 }
 
 _ID18628( var_0, var_1, var_2, var_3, var_4, var_5 )
@@ -827,23 +827,23 @@ _ID18625( var_0, var_1, var_2, var_3, var_4, var_5 )
     if ( !isdefined( var_1 ) )
     {
         if ( isdefined( var_5 ) )
-            var_1 = var_5._ID740;
+            var_1 = var_5.origin;
         else
-            var_1 = self._ID740;
+            var_1 = self.origin;
     }
 
-    var_6._ID740 = var_1;
+    var_6.origin = var_1;
     return var_6 _ID18619( var_0, "tag_origin", var_2, var_3, 1, var_4, var_5 );
 }
 
 _ID18619( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 {
-    var_7 = newclienthudelem( level._ID794 );
-    var_7._ID44 = "center";
-    var_7._ID45 = "middle";
-    var_7._ID393 = 3;
-    var_7._ID392 = "buttonprompt";
-    var_7._ID812 = 1;
+    var_7 = newclienthudelem( level.player );
+    var_7.alignx = "center";
+    var_7.aligny = "middle";
+    var_7.fontscale = 3;
+    var_7.font = "buttonprompt";
+    var_7.positioninworld = 1;
 
     if ( isdefined( self ) )
     {
@@ -855,12 +855,12 @@ _ID18619( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 
     var_8 = _ID18626( var_0 );
     var_7 settext( var_8 );
-    var_7._ID493 = 1;
-    var_7._ID983 = -1;
-    var_7._ID55 = 1;
+    var_7.hidewheninmenu = 1;
+    var_7.sort = -1;
+    var_7.alpha = 1;
 
     if ( !isdefined( var_5 ) || !var_5 )
-        var_7 thread _ID30769( self, var_1, level._ID794, var_2, var_3, var_6 );
+        var_7 thread _ID30769( self, var_1, level.player, var_2, var_3, var_6 );
 
     var_7._ID25316 = self;
 
@@ -882,8 +882,8 @@ _ID30769( var_0, var_1, var_2, var_3, var_4, var_5 )
         var_4 = 0;
 
     var_6 = 0;
-    self._ID393 = 2;
-    self._ID392 = "buttonprompt";
+    self.fontscale = 2;
+    self.font = "buttonprompt";
 
     for (;;)
     {
@@ -893,25 +893,25 @@ _ID30769( var_0, var_1, var_2, var_3, var_4, var_5 )
             var_6 = distance( var_0, var_2 geteye() );
 
         if ( var_4 != 0 && var_6 > var_4 )
-            self._ID55 = 0;
+            self.alpha = 0;
         else if ( var_3 != 0 && var_6 > var_3 )
         {
             if ( var_4 - var_3 > 0 )
-                self._ID55 = ( 1 - ( var_6 - var_3 ) / ( var_4 - var_3 ) ) * 0.3;
+                self.alpha = ( 1 - ( var_6 - var_3 ) / ( var_4 - var_3 ) ) * 0.3;
             else
-                self._ID55 = 0.3;
+                self.alpha = 0.3;
         }
-        else if ( isdefined( var_5 ) && isdefined( var_5._ID170 ) && issubstr( var_5._ID170, "trigger" ) )
+        else if ( isdefined( var_5 ) && isdefined( var_5.classname ) && issubstr( var_5.classname, "trigger" ) )
         {
             var_7 = var_2 _meth_852a();
 
             if ( isdefined( var_7 ) && var_7 == var_5 )
-                self._ID55 = 1;
+                self.alpha = 1;
             else
-                self._ID55 = 0.3;
+                self.alpha = 0.3;
         }
         else
-            self._ID55 = 1;
+            self.alpha = 1;
 
         waittillframeend;
     }
@@ -959,7 +959,7 @@ _ID18626( var_0 )
         case "ads":
             if ( level._ID765 )
                 return "^3[{+ads}]^7";
-            else if ( level._ID794 _meth_835b() )
+            else if ( level.player _meth_835b() )
                 return "^3[{+speed_throw}]^7";
             else
                 return "^3[{+toggleads_throw}]^7";
@@ -998,16 +998,16 @@ _ID18621( var_0, var_1 )
 {
     while ( isdefined( self ) )
     {
-        var_2 = self._ID55;
+        var_2 = self.alpha;
         self fadeovertime( var_0 / 3 );
-        self._ID55 = var_1;
+        self.alpha = var_1;
         wait(var_0);
 
         if ( !isdefined( self ) )
             return;
 
         self fadeovertime( var_0 / 3 );
-        self._ID55 = var_2;
+        self.alpha = var_2;
         wait(var_0);
     }
 }
@@ -1015,22 +1015,22 @@ _ID18621( var_0, var_1 )
 _ID6483( var_0, var_1, var_2, var_3 )
 {
     self endon( var_2 );
-    level._ID794 endon( var_2 );
+    level.player endon( var_2 );
     self endon( "death" );
     thread _ID42407::_ID18611( var_0 );
     var_4 = var_1 + "_button_mash_dynamic_hint";
     thread _ID6497( var_2, var_4, var_1, var_3 );
-    level._ID794 notifyonplayercommand( var_4, var_1 );
+    level.player notifyonplayercommand( var_4, var_1 );
 
     if ( isdefined( var_3 ) )
-        level._ID794 notifyonplayercommand( var_4, var_3 );
+        level.player notifyonplayercommand( var_4, var_3 );
 
     for (;;)
     {
         self waittill( var_4 );
-        level._ID18694._ID55 = 0.2;
+        level._ID18694.alpha = 0.2;
         level._ID18694 fadeovertime( 0.3 );
-        level._ID18694._ID55 = 1;
+        level._ID18694.alpha = 1;
         waittillframeend;
     }
 }
@@ -1038,12 +1038,12 @@ _ID6483( var_0, var_1, var_2, var_3 )
 _ID6497( var_0, var_1, var_2, var_3 )
 {
     self endon( "death" );
-    _ID42237::_ID41069( self, var_0, level._ID794, var_0 );
+    _ID42237::_ID41069( self, var_0, level.player, var_0 );
     thread _ID42407::_ID18638();
-    level._ID794 _meth_84ab( var_1, var_2 );
+    level.player _meth_84ab( var_1, var_2 );
 
     if ( isdefined( var_3 ) )
-        level._ID794 _meth_84ab( var_1, var_3 );
+        level.player _meth_84ab( var_1, var_3 );
 }
 
 _ID18620( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
@@ -1053,16 +1053,16 @@ _ID18620( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 
     self endon( "death" );
     var_7 = _ID42237::_ID35164();
-    var_7._ID740 = self gettagorigin( var_0 );
-    var_7._ID740 = var_7._ID740 + var_3;
+    var_7.origin = self gettagorigin( var_0 );
+    var_7.origin = var_7.origin + var_3;
     var_7 linkto( self, var_0 );
     var_1 = var_7 _ID18619( var_1, "TAG_ORIGIN", var_4, var_5, 1, 1 );
 
     if ( isdefined( var_6 ) )
-        var_1._ID393 = var_6;
+        var_1.fontscale = var_6;
 
     var_1 thread _ID18621( 0.15, 0.1 );
-    _ID42237::_ID41069( self, var_2, level._ID794, var_2 );
+    _ID42237::_ID41069( self, var_2, level.player, var_2 );
     var_1 _ID18617();
 }
 
@@ -1148,12 +1148,12 @@ _ID36566()
 _ID26800( var_0, var_1, var_2 )
 {
     _ID42237::_ID14400( "chyron_video_done" );
-    var_3 = newclienthudelem( level._ID794 );
+    var_3 = newclienthudelem( level.player );
     var_3 setshader( "black", 1280, 720 );
-    var_3._ID499 = "fullscreen";
-    var_3._ID1284 = "fullscreen";
-    var_3._ID55 = 1;
-    var_3._ID408 = 0;
+    var_3.horzalign = "fullscreen";
+    var_3.vertalign = "fullscreen";
+    var_3.alpha = 1;
+    var_3.foreground = 0;
     cinematicingame( var_0 );
     var_4 = getdvarint( "cg_cinematicCanPause", 0 );
     setsaveddvar( "cg_cinematicCanPause", 1 );
@@ -1172,7 +1172,7 @@ _ID26800( var_0, var_1, var_2 )
     if ( isdefined( var_2 ) )
     {
         var_3 fadeovertime( var_2 );
-        var_3._ID55 = 0;
+        var_3.alpha = 0;
         wait(var_2);
     }
 
@@ -1183,12 +1183,12 @@ _ID26800( var_0, var_1, var_2 )
 _ID28189( var_0, var_1, var_2 )
 {
     if ( !isdefined( var_2 ) )
-        var_2 = level._ID794;
+        var_2 = level.player;
 
     return vectordot( vectornormalize( var_0 - var_2 geteye() ), anglestoforward( var_2 getplayerangles() ) ) > cos( var_1 );
 }
 
 _ID13078( var_0, var_1, var_2, var_3 )
 {
-    return _ID28189( var_0._ID740, atan( tan( 0.5 * var_2 ) * var_3 / 320.0 ), var_1 );
+    return _ID28189( var_0.origin, atan( tan( 0.5 * var_2 ) * var_3 / 320.0 ), var_1 );
 }

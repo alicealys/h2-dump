@@ -1,10 +1,10 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_militia_lmg_ac_blk" );
-    _ID42226::_ID3584( "alias_opforce_militia_heads_blk", _ID47864::_ID616() );
+    _ID42226::_ID3584( "alias_opforce_militia_heads_blk", _ID47864::main() );
     self._ID40757 = "portuguese";
     self setclothtype( "vestlight" );
 }
@@ -12,5 +12,5 @@ _ID616()
 _ID814()
 {
     precachemodel( "body_militia_lmg_ac_blk" );
-    _ID42226::_ID28388( _ID47864::_ID616() );
+    _ID42226::_ID28388( _ID47864::main() );
 }

@@ -2,14 +2,14 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("dog");
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
 
-    if ( isdefined( self._ID322 ) && isdefined( self._ID322._ID1065 ) && self._ID322._ID1065 == self )
+    if ( isdefined( self.enemy ) && isdefined( self.enemy.syncedmeleetarget ) && self.enemy.syncedmeleetarget == self )
     {
         self unlink();
-        self._ID322._ID1065 = undefined;
+        self.enemy.syncedmeleetarget = undefined;
     }
 
     self clearanim( %root, 0.2 );

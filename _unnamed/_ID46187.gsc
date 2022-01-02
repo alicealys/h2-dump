@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "german_sheperd_dog" );
     self._ID40757 = "arab";

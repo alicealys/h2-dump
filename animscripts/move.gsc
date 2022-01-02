@@ -60,7 +60,7 @@ _ID19631()
     anim._ID3277["soldier"]["smg_shoot_while_moving"] = var_0;
 }
 
-_ID616()
+main()
 {
     if ( isdefined( self._ID9526 ) )
     {
@@ -133,7 +133,7 @@ _ID319()
 {
     if ( isdefined( self._ID25556 ) )
     {
-        self._ID470 = self._ID25556;
+        self.grenadeweapon = self._ID25556;
         self._ID25556 = undefined;
     }
 
@@ -155,7 +155,7 @@ _ID319()
     self._ID24409 = undefined;
     animscripts\run::_ID32784( 0 );
 
-    if ( self._ID1063 )
+    if ( self.swimmer )
         animscripts\swim::_ID36937();
 
     self clearanim( %head, 0.2 );
@@ -184,7 +184,7 @@ _ID16717( var_0 )
             self animmode( "zonly_physics", 0 );
             var_2 = 1;
 
-            if ( isdefined( self._ID458 ) )
+            if ( isdefined( self.grenade ) )
                 var_2 = 2;
 
             animscripts\cover_prone::_ID28718( var_1, var_2, var_0 );
@@ -199,7 +199,7 @@ _ID16717( var_0 )
 
 _ID41426()
 {
-    switch ( self._ID823 )
+    switch ( self.prevscript )
     {
         case "cover_crouch":
         case "turret":
@@ -224,7 +224,7 @@ _ID41426()
 
 _ID24448( var_0 )
 {
-    if ( self._ID675 == "run" )
+    if ( self.movemode == "run" )
         animscripts\battlechatter_ai::_ID13240( var_0 );
 }
 
@@ -254,7 +254,7 @@ _ID39743( var_0 )
         {
             self._ID7._ID24390 = animscripts\utility::_ID22631( var_0 );
 
-            if ( ( self._ID199 == "ambush" || self._ID199 == "ambush_nodes_only" ) && ( isdefined( self._ID762 ) && distancesquared( self._ID740, self._ID762 ) > squared( 100 ) ) )
+            if ( ( self.combatmode == "ambush" || self.combatmode == "ambush_nodes_only" ) && ( isdefined( self.pathgoalpos ) && distancesquared( self.origin, self.pathgoalpos ) > squared( 100 ) ) )
             {
                 self._ID34146 = 1;
                 animscripts\animset::_ID32189();
@@ -288,7 +288,7 @@ _ID24411( var_0 )
             self._ID7._ID30423++;
 
         var_1 = var_2;
-        var_3 = self._ID675;
+        var_3 = self.movemode;
 
         if ( isdefined( self._ID52882 ) )
             var_3 = self._ID52882;
@@ -334,7 +334,7 @@ _ID24412( var_0 )
         self [[ self._ID28152 ]]();
     else if ( animscripts\utility::_ID33934() )
         animscripts\cqb::_ID24399();
-    else if ( self._ID1063 )
+    else if ( self.swimmer )
         animscripts\swim::_ID24451();
     else if ( var_0 == "run" )
         animscripts\run::_ID24435();
@@ -346,23 +346,23 @@ _ID24412( var_0 )
 
 _ID23140()
 {
-    if ( self._ID1302 == "none" )
+    if ( self.weapon == "none" )
         return 0;
 
     if ( isdefined( self._ID23165 ) && self._ID23165 )
     {
-        if ( self._ID675 == "run" )
+        if ( self.movemode == "run" )
             return 0;
     }
 
-    var_0 = weaponclass( self._ID1302 );
+    var_0 = weaponclass( self.weapon );
 
     if ( !animscripts\utility::_ID39992() )
         return 0;
 
     if ( animscripts\combat_utility::_ID20910() )
     {
-        if ( !animscripts\utility::_ID20716() && self._ID373 )
+        if ( !animscripts\utility::_ID20716() && self.facemotion )
             return 0;
     }
 
@@ -391,7 +391,7 @@ _ID33822()
     if ( isdefined( self._ID8374 ) && isdefined( self._ID8374["fire"] ) )
         self._ID7._ID3291["fire"] = self._ID8374["fire"];
 
-    if ( isdefined( self._ID1302 ) && animscripts\utility::_ID41682() )
+    if ( isdefined( self.weapon ) && animscripts\utility::_ID41682() )
         self._ID7._ID3291["single"] = animscripts\utility::_ID22630( "shotgun_stand", "single" );
 
     for (;;)
@@ -452,7 +452,7 @@ _ID29843( var_0 )
     self clearanim( %animscript_root, 0.1 );
     self orientmode( "face default" );
     self animmode( "none", 0 );
-    self._ID875 = 1;
+    self.requestarrivalnotify = 1;
     _ID24410( !var_0 );
 }
 
@@ -477,7 +477,7 @@ _ID26332()
 
     self._ID54393 = 0;
     self._ID48871 = getdvarint( "ai_turnAnim_handleEarlyNotifies", 1 ) == 0;
-    self._ID1229 = 0;
+    self.turnanimactive = 0;
 
     for (;;)
     {
@@ -500,7 +500,7 @@ _ID26332()
         if ( isdefined( var_0 ) && var_0 )
             continue;
 
-        if ( !self._ID373 && !self shouldfacemotion() )
+        if ( !self.facemotion && !self shouldfacemotion() )
         {
             if ( !isdefined( self._ID23165 ) )
                 continue;
@@ -512,8 +512,8 @@ _ID26332()
         self notify( "stop_move_anim_update" );
         self._ID39628 = undefined;
         var_3 = vectortoangles( var_1 );
-        var_4 = angleclamp180( self._ID65[1] - var_3[1] );
-        var_5 = angleclamp180( self._ID65[0] - var_3[0] );
+        var_4 = angleclamp180( self.angles[1] - var_3[1] );
+        var_5 = angleclamp180( self.angles[0] - var_3[0] );
         var_6 = _ID26330( var_4, var_5 );
 
         if ( isdefined( var_6 ) )
@@ -539,7 +539,7 @@ _ID48814()
         if ( self._ID7._ID28253 != "stand" )
             continue;
 
-        if ( self._ID373 )
+        if ( self.facemotion )
         {
             if ( self getanimweight( %combatrun_backward ) > 0.1 )
             {
@@ -577,7 +577,7 @@ _ID51909()
 {
     var_0 = 0;
 
-    if ( self._ID1063 )
+    if ( self.swimmer )
         var_1 = animscripts\swim::_ID16643( "turn" );
     else if ( animscripts\utility::_ID20961() )
         var_1 = animscripts\utility::_ID22631( "unstable_run_turn" );
@@ -611,7 +611,7 @@ _ID51909()
 
         var_0 = 0;
     }
-    else if ( self._ID675 == "walk" )
+    else if ( self.movemode == "walk" )
     {
         var_4 = "cqb_turn";
         var_0 = 1;
@@ -741,7 +741,7 @@ pathchange_getturnanim_impl( var_0, var_1 )
 
 _ID26327( var_0 )
 {
-    if ( !isdefined( self._ID762 ) )
+    if ( !isdefined( self.pathgoalpos ) )
         return 0;
 
     var_1 = getnotetracktimes( var_0, "code_move" );
@@ -755,13 +755,13 @@ _ID26327( var_0 )
     var_3 = getangledelta( var_0, 0, var_2 );
     var_4 = self localtoworldcoords( var_3 );
 
-    if ( isdefined( self._ID3371 ) && squared( self._ID3371 ) > distancesquared( self._ID762, var_4 ) )
+    if ( isdefined( self._ID3371 ) && squared( self._ID3371 ) > distancesquared( self.pathgoalpos, var_4 ) )
         return 0;
 
     var_3 = getangledelta( var_0, 0, 1 );
     var_5 = self localtoworldcoords( var_3 );
     var_5 = var_4 + vectornormalize( var_5 - var_4 ) * 20;
-    var_6 = !self._ID1063;
+    var_6 = !self.swimmer;
     var_7 = self maymovefrompointtopoint( var_4, var_5, var_6, 1 );
     var_8 = !animscripts\utility::_ID48067() && getdvarint( "ai_turnAnim_checkFullTrace", 0 );
 
@@ -784,7 +784,7 @@ _ID26327( var_0 )
         jump loc_11A4
     }
 
-    var_7 = self maymovefrompointtopoint( self._ID740, var_9, var_6, 1 );
+    var_7 = self maymovefrompointtopoint( self.origin, var_9, var_6, 1 );
     return var_7;
 }
 
@@ -798,7 +798,7 @@ _ID26329()
     if ( gettime() > self._ID39230 + 50 )
         return;
 
-    if ( self._ID1063 )
+    if ( self.swimmer )
         self animmode( "nogravity", 0 );
     else
         self animmode( "zonly_physics", 0 );
@@ -829,7 +829,7 @@ _ID26329()
     }
 
     self notify( "turn_start" );
-    self._ID1229 = 1;
+    self.turnanimactive = 1;
     var_3 = self._ID24424;
 
     if ( isdefined( self._ID7111 ) && self._ID7111 && self._ID24424 > 1 )
@@ -838,9 +838,9 @@ _ID26329()
     self setflaggedanimrestart( "turnAnim", var_0, 1, var_1, var_3 );
 
     if ( animscripts\utility::_ID20915() )
-        self orientmode( "face angle 3d", self._ID65 );
+        self orientmode( "face angle 3d", self.angles );
     else
-        self orientmode( "face angle", self._ID65[1] );
+        self orientmode( "face angle", self.angles[1] );
 
     if ( isdefined( self._ID12278 ) )
         childthread _ID22880( var_0, 1, "code_move" );
@@ -857,7 +857,7 @@ _ID26329()
 
     _ID42407::_ID10194( var_5, animscripts\stairs_utility::_ID50503, var_0, 0, var_4, undefined, "inOnly" );
     animscripts\shared::_ID11529( "turnAnim" );
-    self._ID1229 = 0;
+    self.turnanimactive = 0;
     self._ID19386 = undefined;
     self orientmode( "face motion" );
     self animmode( "none", 0 );
@@ -882,7 +882,7 @@ _ID49710()
     self._ID24408 = ::_ID48399;
     self._ID19386 = 1;
     self setflaggedanimrestart( "facemotion_reorient_anim", var_0, 1, 0.05, self._ID24424 );
-    self orientmode( "face angle", self._ID65[1] );
+    self orientmode( "face angle", self.angles[1] );
     animscripts\shared::_ID11529( "facemotion_reorient_anim" );
     self._ID19386 = undefined;
     self orientmode( "face motion" );
@@ -930,8 +930,8 @@ _ID22880( var_0, var_1, var_2 )
     self endon( "death" );
     var_3 = 45;
     var_4 = getnotetracktimes( var_0, var_2 );
-    var_5 = self._ID740;
-    var_6 = self._ID65;
+    var_5 = self.origin;
+    var_6 = self.angles;
     var_5 = getstartorigin( var_5, var_6, var_0 );
     var_6 = getstartangles( var_5, var_6, var_0 );
     var_7 = getanimlength( var_0 ) * var_4[0];
@@ -942,7 +942,7 @@ _ID22880( var_0, var_1, var_2 )
 
     var_9 = 1.0 / var_8;
     var_10 = 0;
-    var_11 = self._ID740;
+    var_11 = self.origin;
 
     for (;;)
     {
@@ -958,13 +958,13 @@ _ID22880( var_0, var_1, var_2 )
         var_16 = transformmove( var_5, var_6, ( 0, 0, 0 ), ( 0, 0, 0 ), var_14, var_15 );
         var_17 = var_16["origin"];
         var_18 = var_16["angles"];
-        var_19 = self._ID601;
-        var_20 = vectortoangles( self._ID601 )[1];
+        var_19 = self.lookaheaddir;
+        var_20 = vectortoangles( self.lookaheaddir )[1];
         var_21 = var_18[1];
         var_22 = angleclamp180( var_20 - var_21 );
         var_23 = var_22 * var_13;
         var_23 = abs( clamp( var_23, -1 * var_3, var_3 ) );
-        var_19 = vectorlerp( anglestoforward( var_18 ), self._ID601, var_23 / var_3 * var_13 );
+        var_19 = vectorlerp( anglestoforward( var_18 ), self.lookaheaddir, var_23 / var_3 * var_13 );
         self orientmode( "face direction", var_19 );
         waittillframeend;
     }
@@ -973,7 +973,7 @@ _ID22880( var_0, var_1, var_2 )
 _ID26328()
 {
     self._ID19386 = undefined;
-    self._ID1229 = 0;
+    self.turnanimactive = 0;
     self orientmode( "face default" );
     var_0 = [[ self._ID7497 ]]();
     var_1 = 0.1;
@@ -984,7 +984,7 @@ _ID26328()
     self clearanim( %animscript_root, var_1 );
     self animmode( "none", 0 );
 
-    if ( self._ID1063 )
+    if ( self.swimmer )
         animscripts\swim::_ID36918();
 }
 
@@ -1010,10 +1010,10 @@ _ID11312()
 
 _ID39068( var_0, var_1 )
 {
-    var_2 = ( self._ID601[1], -1 * self._ID601[0], 0 );
-    var_3 = self._ID601 * var_1[0];
+    var_2 = ( self.lookaheaddir[1], -1 * self.lookaheaddir[0], 0 );
+    var_3 = self.lookaheaddir * var_1[0];
     var_4 = var_2 * var_1[1];
-    var_5 = self._ID740 + var_3 - var_4;
+    var_5 = self.origin + var_3 - var_4;
     self pushplayer( 1 );
 
     if ( self maymovetopoint( var_5 ) )
@@ -1043,26 +1043,26 @@ _ID3181()
 
         if ( animscripts\utility::_ID20775() )
         {
-            if ( self._ID1244 == "civilian" )
+            if ( self.type == "civilian" )
             {
-                if ( lengthsquared( self._ID1283 ) < 1 )
+                if ( lengthsquared( self.velocity ) < 1 )
                     continue;
 
-                var_2 = self._ID740 + ( 0, 0, 15 );
-                var_3 = var_2 + self._ID1283;
+                var_2 = self.origin + ( 0, 0, 15 );
+                var_3 = var_2 + self.velocity;
                 var_4 = bullettrace( var_2, var_3, 1, self, 0, 0, 0, 0, 0, 0, 0, 1 );
                 var_5 = var_4["entity"];
 
                 if ( !isdefined( var_5 ) )
                     continue;
-                else if ( !isdefined( var_5._ID1283 ) )
+                else if ( !isdefined( var_5.velocity ) )
                     continue;
-                else if ( var_5 != level._ID794 && vectordot( self._ID1283, var_5._ID1283 ) > 0 )
+                else if ( var_5 != level.player && vectordot( self.velocity, var_5.velocity ) > 0 )
                     continue;
             }
             else
             {
-                self._ID706 = 0;
+                self.nododgemove = 0;
                 return;
             }
         }
@@ -1070,12 +1070,12 @@ _ID3181()
         if ( !issentient( var_0 ) )
             continue;
 
-        if ( self._ID1244 == "civilian" && animscripts\utility::_ID20775() )
+        if ( self.type == "civilian" && animscripts\utility::_ID20775() )
             self._ID46224 = 1;
 
-        var_6 = vectornormalize( var_1 - self._ID740 );
+        var_6 = vectornormalize( var_1 - self.origin );
 
-        if ( self._ID601[0] * var_6[1] - var_6[0] * self._ID601[1] > 0 )
+        if ( self.lookaheaddir[0] * var_6[1] - var_6[0] * self.lookaheaddir[1] > 0 )
         {
             if ( !_ID39068( self._ID11313, self._ID11314 ) )
                 _ID39068( self._ID11309, self._ID11310 );
@@ -1095,7 +1095,7 @@ _ID3181()
 
 _ID32598( var_0, var_1 )
 {
-    self._ID706 = 1;
+    self.nododgemove = 1;
     self._ID11309 = var_0;
     self._ID11313 = var_1;
     var_2 = 1;
@@ -1110,12 +1110,12 @@ _ID32598( var_0, var_1 )
         var_2 = getnotetracktimes( var_1, "code_move" )[0];
 
     self._ID11314 = getangledelta( var_1, 0, var_2 );
-    self._ID525 = 80;
+    self.interval = 80;
 }
 
 _ID7915()
 {
-    self._ID706 = 0;
+    self.nododgemove = 0;
     self._ID11309 = undefined;
     self._ID11313 = undefined;
     self._ID11310 = undefined;
@@ -1128,7 +1128,7 @@ _ID23427()
 
     for (;;)
     {
-        if ( isdefined( self._ID322 ) && ( isai( self._ID322 ) || isdefined( self._ID23440 ) ) )
+        if ( isdefined( self.enemy ) && ( isai( self.enemy ) || isdefined( self._ID23440 ) ) )
         {
             if ( abs( self getmotionangle() ) <= 135 )
                 animscripts\melee::_ID23422();
@@ -1157,7 +1157,7 @@ _ID6325()
         if ( isdefined( self._ID11002 ) )
             return;
 
-        if ( self._ID675 != "run" || !self._ID373 || self._ID7._ID28253 != "stand" || isdefined( self._ID29054 ) )
+        if ( self.movemode != "run" || !self.facemotion || self._ID7._ID28253 != "stand" || isdefined( self._ID29054 ) )
             continue;
 
         if ( animscripts\stairs_utility::_ID54360() )
@@ -1166,17 +1166,17 @@ _ID6325()
         if ( !_ID47001() )
             continue;
 
-        if ( !isdefined( self._ID322 ) && !self._ID507 && self getthreatbiasgroup() != "oblivious" && isdefined( var_0._ID1194 ) && isenemyteam( self._ID1194, var_0._ID1194 ) )
+        if ( !isdefined( self.enemy ) && !self.ignoreall && self getthreatbiasgroup() != "oblivious" && isdefined( var_0.team ) && isenemyteam( self.team, var_0.team ) )
         {
             self._ID41753 = var_0;
             self animcustom( animscripts\reactions::_ID6327 );
             continue;
         }
 
-        if ( self._ID603 || self._ID602 < 100 || self._ID602 < anim._ID46216 )
+        if ( self.lookaheadhitsstairs || self.lookaheaddist < 100 || self.lookaheaddist < anim._ID46216 )
             continue;
 
-        if ( isdefined( self._ID762 ) && distancesquared( self._ID740, self._ID762 ) < 10000 )
+        if ( isdefined( self.pathgoalpos ) && distancesquared( self.origin, self.pathgoalpos ) < 10000 )
         {
             wait 0.2;
             continue;
@@ -1191,7 +1191,7 @@ _ID6325()
 
 _ID15972( var_0, var_1 )
 {
-    var_2 = var_1._ID1244;
+    var_2 = var_1.type;
 
     if ( var_2 == "Cover Multi" )
         var_2 = animscripts\utility::_ID16194( var_1 );
@@ -1209,7 +1209,7 @@ _ID15972( var_0, var_1 )
 _ID33442( var_0, var_1, var_2 )
 {
     var_3 = [];
-    var_4 = var_2._ID1244;
+    var_4 = var_2.type;
 
     if ( var_4 == "Cover Multi" )
         var_4 = animscripts\utility::_ID16194( var_2 );
@@ -1226,7 +1226,7 @@ _ID33442( var_0, var_1, var_2 )
         var_3["shuffle"] = animscripts\utility::_ID22630( "shuffle", "shuffle_to_cover_right" );
         var_3["shuffle_end"] = animscripts\utility::_ID22630( "shuffle", "shuffle_end_to_cover_right" );
     }
-    else if ( var_4 == "Cover Stand" && var_1._ID1244 == var_4 )
+    else if ( var_4 == "Cover Stand" && var_1.type == var_4 )
     {
         if ( var_0 )
         {
@@ -1267,7 +1267,7 @@ _ID33442( var_0, var_1, var_2 )
 
 _ID24397( var_0, var_1 )
 {
-    if ( self._ID7._ID28253 == "stand" && ( var_1._ID1244 != "Cover Stand" || var_0._ID1244 != "Cover Stand" ) )
+    if ( self._ID7._ID28253 == "stand" && ( var_1.type != "Cover Stand" || var_0.type != "Cover Stand" ) )
     {
         self._ID7._ID28253 = "crouch";
         return 0;
@@ -1278,7 +1278,7 @@ _ID24397( var_0, var_1 )
 
 _ID24396( var_0 )
 {
-    if ( self._ID7._ID28253 == "crouch" && var_0._ID1244 == "Cover Stand" )
+    if ( self._ID7._ID28253 == "crouch" && var_0.type == "Cover Stand" )
     {
         self._ID7._ID28253 = "stand";
         return 0;
@@ -1296,21 +1296,21 @@ _ID24395()
     self._ID34124 = undefined;
     self._ID34123 = 1;
 
-    if ( !isdefined( self._ID822 ) )
+    if ( !isdefined( self.prevnode ) )
         return;
 
-    if ( !isdefined( self._ID700 ) || !isdefined( var_0 ) || self._ID700 != var_0 )
+    if ( !isdefined( self.node ) || !isdefined( var_0 ) || self.node != var_0 )
         return;
 
-    var_1 = self._ID822;
-    var_2 = self._ID700;
-    var_3 = var_2._ID740 - self._ID740;
+    var_1 = self.prevnode;
+    var_2 = self.node;
+    var_3 = var_2.origin - self.origin;
 
     if ( lengthsquared( var_3 ) < 1 )
         return;
 
     var_3 = vectornormalize( var_3 );
-    var_4 = anglestoforward( var_2._ID65 );
+    var_4 = anglestoforward( var_2.angles );
     var_5 = var_4[0] * var_3[1] - var_4[1] * var_3[0] > 0;
 
     if ( _ID24400( var_5, var_1, var_2 ) )
@@ -1336,7 +1336,7 @@ _ID24395()
     var_11 = length( getangledelta( var_7, 0, var_10 ) );
     var_12 = length( getangledelta( var_8, 0, 1 ) );
     var_13 = length( getangledelta( var_9, 0, 1 ) );
-    var_14 = distance( self._ID740, var_2._ID740 );
+    var_14 = distance( self.origin, var_2.origin );
 
     if ( var_14 > var_11 )
     {
@@ -1348,7 +1348,7 @@ _ID24395()
         var_6 = 0.2;
     }
     else
-        self orientmode( "face angle", var_2._ID65[1] );
+        self orientmode( "face angle", var_2.angles[1] );
 
     var_15 = 0;
 
@@ -1366,7 +1366,7 @@ _ID24395()
 
     for ( var_18 = 0; var_18 < 2; var_18++ )
     {
-        var_14 = distance( self._ID740, var_2._ID740 );
+        var_14 = distance( self.origin, var_2.origin );
 
         if ( var_15 )
             var_14 -= var_13;
@@ -1395,7 +1395,7 @@ _ID24395()
         animscripts\shared::_ID11529( "shuffle_end" );
     }
 
-    self safeteleport( var_2._ID740 );
+    self safeteleport( var_2.origin );
     self animmode( "normal" );
     self._ID34123 = undefined;
 }
@@ -1420,9 +1420,9 @@ _ID24400( var_0, var_1, var_2 )
 {
     var_3 = undefined;
 
-    if ( var_1._ID1244 == "Cover Right" && var_2._ID1244 == "Cover Left" && !var_0 )
+    if ( var_1.type == "Cover Right" && var_2.type == "Cover Left" && !var_0 )
         var_3 = %corner_standr_door_r2l;
-    else if ( var_1._ID1244 == "Cover Left" && var_2._ID1244 == "Cover Right" && var_0 )
+    else if ( var_1.type == "Cover Left" && var_2.type == "Cover Right" && var_0 )
         var_3 = %corner_standl_door_l2r;
 
     if ( !isdefined( var_3 ) )
@@ -1433,10 +1433,10 @@ _ID24400( var_0, var_1, var_2 )
     self setflaggedanimrestart( "sideToSide", var_3, 1, 0.2 );
     animscripts\shared::_ID11529( "sideToSide", ::_ID18049 );
     var_4 = self getanimtime( var_3 );
-    var_5 = var_2._ID740 - var_1._ID740;
+    var_5 = var_2.origin - var_1.origin;
     var_5 = vectornormalize( ( var_5[0], var_5[1], 0 ) );
     var_6 = getangledelta( var_3, var_4, 1 );
-    var_7 = var_2._ID740 - self._ID740;
+    var_7 = var_2.origin - self.origin;
     var_7 = ( var_7[0], var_7[1], 0 );
     var_8 = vectordot( var_7, var_5 ) - abs( var_6[1] );
 
@@ -1450,7 +1450,7 @@ _ID24400( var_0, var_1, var_2 )
     }
 
     animscripts\shared::_ID11529( "sideToSide" );
-    self safeteleport( var_2._ID740 );
+    self safeteleport( var_2.origin );
     self animmode( "none" );
     self orientmode( "face default" );
     self._ID34123 = undefined;
@@ -1471,7 +1471,7 @@ _ID34344( var_0, var_1 )
 
     while ( var_1 > 0 )
     {
-        self safeteleport( self._ID740 + var_0 );
+        self safeteleport( self.origin + var_0 );
         var_1--;
         wait 0.05;
     }
@@ -1572,7 +1572,7 @@ _ID45955()
         var_0["anim"] = animscripts\cqb::_ID10665();
         var_0["updateTime"] = 0.2;
     }
-    else if ( self._ID675 == "walk" || self._ID7._ID24414 == "walk" )
+    else if ( self.movemode == "walk" || self._ID7._ID24414 == "walk" )
     {
         if ( isdefined( self._ID7._ID24390 ) )
             var_0["anim"] = animscripts\walk::_ID16734( "straight" );

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     level._ID1410["light_fluorescent_single_swing"] = %light_fluorescent_single_swing;
     level._ID1410["light_fluorescent_single_null"] = %light_fluorescent_single_null;

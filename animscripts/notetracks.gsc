@@ -23,7 +23,7 @@ notetrack_play_npc_reload_sound( var_0 )
             var_1 = self._ID3195;
 
         var_1 = clamp( var_1, 0.7, 1.3 );
-        var_2 = spawn( "script_origin", self._ID740 );
+        var_2 = spawn( "script_origin", self.origin );
         var_2 linkto( self );
         thread stop_sound_on_reload_interrupt( var_2 );
         var_2 setpitch( var_1 );
@@ -68,9 +68,9 @@ _ID18011( var_0 )
         case "fs_bk_r_lg":
             var_1 = undefined;
 
-            if ( isdefined( self._ID474 ) )
+            if ( isdefined( self.groundtype ) )
             {
-                var_1 = self._ID474;
+                var_1 = self.groundtype;
                 self._ID21930 = var_1;
             }
             else if ( isdefined( self._ID21930 ) )
@@ -270,11 +270,11 @@ _ID53861( var_0, var_1, var_2 )
 
 _ID25034( var_0, var_1 )
 {
-    if ( !isdefined( self._ID912 ) )
+    if ( !isdefined( self.script ) )
         return;
 
-    if ( isdefined( anim._ID14274[self._ID912] ) )
-        thread [[ anim._ID14274[self._ID912] ]]();
+    if ( isdefined( anim._ID14274[self.script] ) )
+        thread [[ anim._ID14274[self.script] ]]();
     else
         thread [[ ::_ID33808 ]]();
 }
@@ -353,11 +353,11 @@ notetrackstartpreparedragdoll( var_0, var_1 )
     else
     {
         var_4 = 50;
-        var_5 = self geteye() - self._ID740;
+        var_5 = self geteye() - self.origin;
     }
 
     var_5 = _ID42237::_ID45487( var_5, 1000 / var_4 );
-    self startragdollfromimpact( self._ID740, var_5 );
+    self startragdollfromimpact( self.origin, var_5 );
 }
 
 _ID25050( var_0, var_1 )
@@ -471,23 +471,23 @@ _ID25041( var_0, var_1 )
 {
     if ( issubstr( var_0, "left" ) )
     {
-        animscripts\shared::_ID26732( self._ID1302, "left" );
+        animscripts\shared::_ID26732( self.weapon, "left" );
         self notify( "weapon_switch_done" );
     }
     else if ( issubstr( var_0, "right" ) )
     {
-        animscripts\shared::_ID26732( self._ID1302, "right" );
+        animscripts\shared::_ID26732( self.weapon, "right" );
         self notify( "weapon_switch_done" );
     }
     else if ( issubstr( var_0, "none" ) )
-        animscripts\shared::_ID26732( self._ID1302, "none" );
+        animscripts\shared::_ID26732( self.weapon, "none" );
 }
 
 _ID46318( var_0, var_1 )
 {
     self notify( "weapon_switch_done" );
     thread _ID44158( self._ID949, "right" );
-    self._ID1302 = self._ID949;
+    self.weapon = self._ID949;
 }
 
 _ID44158( var_0, var_1 )
@@ -501,33 +501,33 @@ _ID44158( var_0, var_1 )
 _ID25040( var_0, var_1 )
 {
     animscripts\shared::_ID12142();
-    self._ID22034 = self._ID1302;
+    self._ID22034 = self.weapon;
 }
 
 _ID25043( var_0, var_1 )
 {
-    animscripts\shared::_ID26732( self._ID1302, "chest" );
+    animscripts\shared::_ID26732( self.weapon, "chest" );
 }
 
 _ID25042( var_0, var_1 )
 {
-    animscripts\shared::_ID26732( self._ID1302, "back" );
-    self._ID1302 = animscripts\utility::_ID16541();
-    self._ID6323 = weaponclipsize( self._ID1302 );
+    animscripts\shared::_ID26732( self.weapon, "back" );
+    self.weapon = animscripts\utility::_ID16541();
+    self._ID6323 = weaponclipsize( self.weapon );
 }
 
 _ID25053( var_0, var_1 )
 {
     animscripts\shared::_ID26732( self._ID34144, "right" );
-    self._ID6323 = weaponclipsize( self._ID1302 );
+    self._ID6323 = weaponclipsize( self.weapon );
     self notify( "weapon_switch_done" );
 }
 
 _ID25054( var_0, var_1 )
 {
-    animscripts\shared::_ID26732( self._ID1302, "none" );
-    self._ID1302 = animscripts\utility::_ID16541();
-    self._ID6323 = weaponclipsize( self._ID1302 );
+    animscripts\shared::_ID26732( self.weapon, "none" );
+    self.weapon = animscripts\utility::_ID16541();
+    self._ID6323 = weaponclipsize( self.weapon );
 }
 
 _ID25032( var_0, var_1 )
@@ -692,7 +692,7 @@ _ID25080( var_0, var_1 )
                     var_5 = randomint( 8 );
                     var_6 = var_2[var_5];
 
-                    if ( _ID42407::_ID18252( self._ID669, var_6 ) )
+                    if ( _ID42407::_ID18252( self.model, var_6 ) )
                     {
                         if ( !isdefined( self._ID4341 ) )
                             self._ID4341 = 0;
@@ -715,7 +715,7 @@ _ID25080( var_0, var_1 )
             {
                 foreach ( var_6 in var_2 )
                 {
-                    if ( isdefined( var_6 ) && _ID42407::_ID18252( self._ID669, var_6 ) )
+                    if ( isdefined( var_6 ) && _ID42407::_ID18252( self.model, var_6 ) )
                     {
                         if ( !isdefined( self._ID4341 ) )
                             self._ID4341 = 0;
@@ -739,8 +739,8 @@ _ID25080( var_0, var_1 )
 
 _ID9577( var_0, var_1 )
 {
-    if ( isdefined( self._ID474 ) )
-        var_2 = self._ID474;
+    if ( isdefined( self.groundtype ) )
+        var_2 = self.groundtype;
     else
         var_2 = "dirt";
 
@@ -770,8 +770,8 @@ _ID9577( var_0, var_1 )
 
 _ID25036( var_0, var_1 )
 {
-    if ( isdefined( self._ID474 ) )
-        var_2 = self._ID474;
+    if ( isdefined( self.groundtype ) )
+        var_2 = self.groundtype;
     else
         var_2 = "dirt";
 
@@ -780,8 +780,8 @@ _ID25036( var_0, var_1 )
 
 _ID25045( var_0, var_1 )
 {
-    if ( isdefined( self._ID474 ) )
-        var_2 = self._ID474;
+    if ( isdefined( self.groundtype ) )
+        var_2 = self.groundtype;
     else
         var_2 = "dirt";
 
@@ -795,18 +795,18 @@ _ID25029( var_0, var_1 )
 
 _ID25033( var_0, var_1 )
 {
-    if ( self._ID912 != "reactions" )
+    if ( self.script != "reactions" )
         self orientmode( "face enemy" );
-    else if ( isdefined( self._ID322 ) && distancesquared( self._ID322._ID740, self._ID859 ) < 4096 )
+    else if ( isdefined( self.enemy ) && distancesquared( self.enemy.origin, self.reactiontargetpos ) < 4096 )
         self orientmode( "face enemy" );
     else
-        self orientmode( "face point", self._ID859 );
+        self orientmode( "face point", self.reactiontargetpos );
 }
 
 _ID49636( var_0, var_1 )
 {
-    if ( isdefined( self._ID474 ) )
-        var_2 = self._ID474;
+    if ( isdefined( self.groundtype ) )
+        var_2 = self.groundtype;
     else
         var_2 = "default";
 
@@ -831,8 +831,8 @@ _ID25028( var_0, var_1 )
     if ( issubstr( var_0, "large" ) )
         var_2 = "_large";
 
-    if ( isdefined( self._ID474 ) )
-        var_3 = self._ID474;
+    if ( isdefined( self.groundtype ) )
+        var_3 = self.groundtype;
     else
         var_3 = "dirt";
 
@@ -870,9 +870,9 @@ _ID18045()
 
 _ID25062()
 {
-    self._ID30099 = spawn( "script_model", self._ID740 );
+    self._ID30099 = spawn( "script_model", self.origin );
 
-    if ( issubstr( tolower( self._ID1302 ), "panzerfaust" ) )
+    if ( issubstr( tolower( self.weapon ), "panzerfaust" ) )
         self._ID30099 setmodel( "weapon_panzerfaust3_missle" );
     else
         self._ID30099 setmodel( "projectile_rpg7" );
@@ -893,13 +893,13 @@ _ID25063()
     if ( isai( self ) && !isalive( self ) )
         return;
 
-    if ( _ID42407::_ID18252( getweaponmodel( self._ID1302 ), "tag_rocket" ) )
+    if ( _ID42407::_ID18252( getweaponmodel( self.weapon ), "tag_rocket" ) )
         self showpart( "tag_rocket" );
 }
 
 _ID18031( var_0, var_1, var_2, var_3 )
 {
-    if ( isai( self ) && self._ID1244 == "dog" )
+    if ( isai( self ) && self.type == "dog" )
     {
         if ( _ID18012( var_0 ) )
             return;
@@ -954,7 +954,7 @@ _ID18031( var_0, var_1, var_2, var_3 )
         case "undefined":
             return var_0;
         case "finish early":
-            if ( isdefined( self._ID322 ) )
+            if ( isdefined( self.enemy ) )
                 return var_0;
 
             break;
@@ -965,7 +965,7 @@ _ID18031( var_0, var_1, var_2, var_3 )
             thread _ID42237::_ID27077( "melee_swing_large", self gettagorigin( "TAG_WEAPON_RIGHT" ) );
             break;
         case "torso_mvmnt":
-            thread _ID42237::_ID27077( "foly_mvmnt_cloth_npc", self._ID740 );
+            thread _ID42237::_ID27077( "foly_mvmnt_cloth_npc", self.origin );
             break;
         case "rechamber":
             if ( animscripts\utility::_ID41682() )
@@ -979,10 +979,10 @@ _ID18031( var_0, var_1, var_2, var_3 )
 
             break;
         case "no pain":
-            self._ID52 = 0;
+            self.allowpain = 0;
             break;
         case "allow pain":
-            self._ID52 = 1;
+            self.allowpain = 1;
             break;
         case "anim_melee = right":
         case "anim_melee = "right"":
@@ -1161,7 +1161,7 @@ _ID28066( var_0, var_1 )
         var_2 = _ID15861();
         var_3 = undefined;
 
-        if ( !isdefined( self._ID474 ) )
+        if ( !isdefined( self.groundtype ) )
         {
             if ( !isdefined( self._ID21930 ) )
             {
@@ -1173,8 +1173,8 @@ _ID28066( var_0, var_1 )
         }
         else
         {
-            var_3 = self._ID474;
-            self._ID21930 = self._ID474;
+            var_3 = self.groundtype;
+            self._ID21930 = self.groundtype;
         }
 
         var_4 = "J_Ball_RI";
@@ -1237,7 +1237,7 @@ _ID45544( var_0, var_1, var_2, var_3 )
     if ( !isdefined( var_2 ) )
         var_2 = self gettagorigin( var_0 );
 
-    var_4 = self._ID65;
+    var_4 = self.angles;
     var_5 = anglestoforward( var_4 );
     var_6 = var_5 * -1;
 
@@ -1257,7 +1257,7 @@ _ID33808()
         animscripts\utility::_ID33781();
         animscripts\combat_utility::_ID10082();
 
-        if ( weaponclass( self._ID1302 ) == "rocketlauncher" )
+        if ( weaponclass( self.weapon ) == "rocketlauncher" )
             self._ID7._ID30103--;
     }
 }
@@ -1290,7 +1290,7 @@ _ID25035( var_0, var_1 )
         self._ID7298 = 1;
         var_2["axis"] = "team3";
         var_2["team3"] = "axis";
-        self._ID1194 = var_2[self._ID1194];
+        self.team = var_2[self.team];
     }
 
     if ( !issentient( self ) )
@@ -1311,9 +1311,9 @@ _ID25035( var_0, var_1 )
 
     var_6 = 0;
 
-    if ( isalive( self._ID322 ) && issentient( self._ID322 ) && self canshootenemy() )
+    if ( isalive( self.enemy ) && issentient( self.enemy ) && self canshootenemy() )
     {
-        var_7 = vectornormalize( self._ID322 geteye() - var_3 );
+        var_7 = vectornormalize( self.enemy geteye() - var_3 );
 
         if ( vectordot( var_4, var_7 ) > cos( var_5 ) )
             var_6 = 1;
@@ -1352,7 +1352,7 @@ notetrackheadtracktype( var_0, var_1 )
     {
         var_2 = getsubstr( var_0, "headtrack_type_".size );
         var_3 = _ID45995::_ID50687( var_2 );
-        _ID45995::_ID46948( var_3, self._ID49521._ID1191, self._ID49521._ID48751, self._ID49521._ID54118 );
+        _ID45995::_ID46948( var_3, self._ID49521.target, self._ID49521._ID48751, self._ID49521._ID54118 );
     }
 }
 

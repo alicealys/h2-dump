@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "team3";
-    self._ID1244 = "human";
+    self.team = "team3";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 150;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 150;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "pp2000";
 
@@ -24,44 +24,44 @@ _ID616()
     switch ( _ID42226::_ID15950( 9 ) )
     {
         case 0:
-            self._ID1302 = "tavor_woodland_acog";
+            self.weapon = "tavor_woodland_acog";
             break;
         case 1:
-            self._ID1302 = "tavor_mars";
+            self.weapon = "tavor_mars";
             break;
         case 2:
-            self._ID1302 = "tavor_woodland_eotech";
+            self.weapon = "tavor_woodland_eotech";
             break;
         case 3:
-            self._ID1302 = "tavor_reflex";
+            self.weapon = "tavor_reflex";
             break;
         case 4:
-            self._ID1302 = "fn2000";
+            self.weapon = "fn2000";
             break;
         case 5:
-            self._ID1302 = "fn2000_acog";
+            self.weapon = "fn2000_acog";
             break;
         case 6:
-            self._ID1302 = "fn2000_eotech";
+            self.weapon = "fn2000_eotech";
             break;
         case 7:
-            self._ID1302 = "fn2000_reflex";
+            self.weapon = "fn2000_reflex";
             break;
         case 8:
-            self._ID1302 = "fn2000_thermal";
+            self.weapon = "fn2000_thermal";
             break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
         case 0:
-            _ID45139::_ID616();
+            _ID45139::main();
             break;
         case 1:
-            _ID49398::_ID616();
+            _ID49398::main();
             break;
         case 2:
-            _ID46819::_ID616();
+            _ID46819::main();
             break;
     }
 }

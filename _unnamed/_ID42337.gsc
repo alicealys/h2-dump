@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1 )
+main( var_0, var_1 )
 {
     if ( !isdefined( var_0 ) )
         var_0 = level._ID805;
@@ -53,8 +53,8 @@ _ID24814()
     {
         self waittill( "night_vision_on" );
         _ID24811();
-        var_0 = spawnfx( level._ID43965, level._ID794._ID740 );
-        var_1 = spawnfx( level._ID47159, level._ID794._ID740 );
+        var_0 = spawnfx( level._ID43965, level.player.origin );
+        var_1 = spawnfx( level._ID47159, level.player.origin );
         triggerfx( var_0 );
         triggerfx( var_1 );
         setomnvar( "ui_nightvision", 1 );
@@ -70,23 +70,23 @@ _ID24814()
 _ID24805( var_0 )
 {
     if ( !isdefined( var_0 ) )
-        var_0 = level._ID794;
+        var_0 = level.player;
 
     return isdefined( var_0._ID24809 );
 }
 
 _ID24811()
 {
-    level._ID794 _meth_84a0( "disabled", 0 );
+    level.player _meth_84a0( "disabled", 0 );
     self._ID24813 = 1;
     _ID42407::_ID13025( "nightvision_on" );
     self._ID24809 = 1;
     thread _ID44830();
-    level._ID794 lightset2( level._ID44391, 0 );
+    level.player lightset2( level._ID44391, 0 );
 
     if ( _ID42407::_ID13019( "nightvision_dlight_enabled" ) )
     {
-        level._ID24806 = spawnfx( level._ID24807, level._ID794._ID740 );
+        level._ID24806 = spawnfx( level._ID24807, level.player.origin );
         triggerfx( level._ID24806 );
     }
 
@@ -184,8 +184,8 @@ _ID24810()
     self notify( "nightvision_shellshock_off" );
     _ID42407::_ID13021( "nightvision_on" );
     self._ID24809 = undefined;
-    level._ID794 lightset3();
-    level._ID794 _meth_84a1( 0 );
+    level.player lightset3();
+    level.player _meth_84a1( 0 );
     var_0 = 0;
 
     for ( var_1 = 0; var_1 < level._ID805.size; var_1++ )
@@ -230,11 +230,11 @@ _ID33876()
 
 _ID46624()
 {
-    level._ID794 _meth_80fa( level._ID794 getcurrentweapon(), "nvg_up" );
+    level.player _meth_80fa( level.player getcurrentweapon(), "nvg_up" );
     wait 0.5;
     setsaveddvar( "nightVisionDisableEffects", 1 );
     wait 0.5;
-    level._ID794 nightvisiongogglesforceoff();
+    level.player nightvisiongogglesforceoff();
     wait 1;
     setsaveddvar( "nightVisionDisableEffects", 0 );
 }
@@ -246,16 +246,16 @@ _ID44326()
 
     for (;;)
     {
-        level._ID794 _ID42407::_ID13027( "nightvision_on" );
+        level.player _ID42407::_ID13027( "nightvision_on" );
         thread _ID42407::_ID22175( "r_ssrBlendScale", level._ID54523, 0.25 );
-        level._ID794 _ID42407::_ID13031( "nightvision_on" );
+        level.player _ID42407::_ID13031( "nightvision_on" );
         thread _ID42407::_ID22175( "r_ssrBlendScale", level._ID50066, 0.25 );
     }
 }
 
 _ID48707( var_0 )
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "blackout":
             return 0.1;

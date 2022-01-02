@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "leaves_fall" );
     var_0 _ID42229::_ID32402( ( 339.535, -3017.21, 2694.67 ), ( 270, 1.14576, 158.854 ) );

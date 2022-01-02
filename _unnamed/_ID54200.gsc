@@ -11,13 +11,13 @@ _ID51026()
 
 _ID51266()
 {
-    var_0 = anglestoforward( self._ID65 );
-    var_1 = anglestoup( self._ID65 );
-    var_2 = self._ID740;
+    var_0 = anglestoforward( self.angles );
+    var_1 = anglestoup( self.angles );
+    var_2 = self.origin;
     var_3 = undefined;
 
-    if ( isdefined( self._ID1191 ) )
-        var_3 = getent( self._ID1191, "targetname" );
+    if ( isdefined( self.target ) )
+        var_3 = getent( self.target, "targetname" );
 
     thread _ID44286();
 
@@ -27,7 +27,7 @@ _ID51266()
     self waittill( "fall" );
     var_4 = undefined;
 
-    switch ( self._ID669 )
+    switch ( self.model )
     {
         case "com_potted_plant_small":
             var_4 = _ID42237::_ID16299( "plant_small_thrower" );

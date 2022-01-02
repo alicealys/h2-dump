@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -366,7 +366,7 @@ _ID54565( var_0 )
 
 _ID51106()
 {
-    level._ID794 thread _ID42407::_ID27001( "predator_drone_ambient_lp", undefined, 1, 1, 0.5, 0.5 );
+    level.player thread _ID42407::_ID27001( "predator_drone_ambient_lp", undefined, 1, 1, 0.5, 0.5 );
     _ID42465::_ID23797( "predator_missile_mix" );
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( "predator_missile_filter", 0.5 );
@@ -384,7 +384,7 @@ _ID50400()
 
 aud_price_open_sub_hatch( var_0 )
 {
-    _ID42237::_ID27077( "scn_con_price_open_sub_hatch", level._ID18258._ID740 + ( -40, 3, 35 ) );
+    _ID42237::_ID27077( "scn_con_price_open_sub_hatch", level._ID18258.origin + ( -40, 3, 35 ) );
 }
 
 aud_defend_sub_jeep( var_0 )

@@ -48,7 +48,7 @@ _ID2047( var_0, var_1 )
         var_1 = level._ID22392;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "lefttitle";
+    var_2.type = "lefttitle";
     var_2._ID37792 = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
@@ -62,8 +62,8 @@ _ID2046( var_0, var_1 )
         var_1 = level._ID22392;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "leftname";
-    var_2._ID680 = var_0;
+    var_2.type = "leftname";
+    var_2.name = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
 }
@@ -81,8 +81,8 @@ _ID2102( var_0, var_1 )
         var_1 = level._ID22392;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "subleftname";
-    var_2._ID680 = var_0;
+    var_2.type = "subleftname";
+    var_2.name = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
 }
@@ -95,7 +95,7 @@ _ID2092( var_0, var_1 )
         var_1 = level._ID22392;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "righttitle";
+    var_2.type = "righttitle";
     var_2._ID37792 = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
@@ -109,8 +109,8 @@ _ID2091( var_0, var_1 )
         var_1 = level._ID22392;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "rightname";
-    var_2._ID680 = var_0;
+    var_2.type = "rightname";
+    var_2.name = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
 }
@@ -123,7 +123,7 @@ _ID2004( var_0, var_1 )
         var_1 = level._ID18302;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "centerheading";
+    var_2.type = "centerheading";
     var_2._ID18300 = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
@@ -138,9 +138,9 @@ _ID2002( var_0, var_1, var_2 )
         var_2 = level._ID22392;
 
     var_3 = spawnstruct();
-    var_3._ID1244 = "castname";
+    var_3.type = "castname";
     var_3._ID37792 = var_1;
-    var_3._ID680 = var_0;
+    var_3.name = var_0;
     var_3._ID37572 = var_2;
     level._ID22388[level._ID22388.size] = var_3;
 }
@@ -153,8 +153,8 @@ _ID2006( var_0, var_1 )
         var_1 = level._ID22392;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = "centername";
-    var_2._ID680 = var_0;
+    var_2.type = "centername";
+    var_2.name = var_0;
     var_2._ID37572 = var_1;
     level._ID22388[level._ID22388.size] = var_2;
 }
@@ -168,7 +168,7 @@ _ID2007( var_0, var_1, var_2 )
         var_2 = level._ID22392;
 
     var_3 = spawnstruct();
-    var_3._ID1244 = "centernamedouble";
+    var_3.type = "centernamedouble";
     var_3._ID24643 = var_0;
     var_3._ID24644 = var_1;
     var_3._ID37572 = var_2;
@@ -184,9 +184,9 @@ _ID2003( var_0, var_1, var_2 )
         var_2 = level._ID22392;
 
     var_3 = spawnstruct();
-    var_3._ID1244 = "centerdual";
+    var_3.type = "centerdual";
     var_3._ID37792 = var_0;
-    var_3._ID680 = var_1;
+    var_3.name = var_1;
     var_3._ID37572 = var_2;
     level._ID22388[level._ID22388.size] = var_3;
 }
@@ -201,7 +201,7 @@ _ID2009( var_0, var_1, var_2, var_3 )
         var_3 = level._ID22392;
 
     var_4 = spawnstruct();
-    var_4._ID1244 = "centertriple";
+    var_4.type = "centertriple";
     var_4._ID24643 = var_0;
     var_4._ID24644 = var_1;
     var_4._ID24645 = var_2;
@@ -212,14 +212,14 @@ _ID2009( var_0, var_1, var_2, var_3 )
 _ID2096()
 {
     var_0 = spawnstruct();
-    var_0._ID1244 = "space";
+    var_0.type = "space";
     level._ID22388[level._ID22388.size] = var_0;
 }
 
 _ID2097()
 {
     var_0 = spawnstruct();
-    var_0._ID1244 = "spacesmall";
+    var_0.type = "spacesmall";
     level._ID22388[level._ID22388.size] = var_0;
 }
 
@@ -227,12 +227,12 @@ addcentergradientimage( var_0, var_1, var_2 )
 {
     precacheshader( var_0 );
     var_3 = spawnstruct();
-    var_3._ID1244 = "centergradientimage";
+    var_3.type = "centergradientimage";
     var_3._ID19452 = var_0;
     var_3._ID1319 = 1080;
     var_3._ID488 = 126;
-    var_3._ID45 = var_1;
-    var_3._ID1284 = var_1;
+    var_3.aligny = var_1;
+    var_3.vertalign = var_1;
     var_3._ID41917 = var_2;
     level._ID22388[level._ID22388.size] = var_3;
 }
@@ -241,11 +241,11 @@ _ID2005( var_0, var_1, var_2, var_3, var_4 )
 {
     precacheshader( var_0 );
     var_5 = spawnstruct();
-    var_5._ID1244 = "centerimage";
+    var_5.type = "centerimage";
     var_5._ID19452 = var_0;
     var_5._ID1319 = var_1;
     var_5._ID488 = var_2;
-    var_5._ID983 = 2;
+    var_5.sort = 2;
 
     if ( isdefined( var_3 ) )
         var_5._ID10179 = var_3;
@@ -260,11 +260,11 @@ _ID44739( var_0, var_1, var_2, var_3 )
 {
     precacheshader( var_0 );
     var_4 = spawnstruct();
-    var_4._ID1244 = "leftimage";
+    var_4.type = "leftimage";
     var_4._ID19452 = var_0;
     var_4._ID1319 = var_1;
     var_4._ID488 = var_2;
-    var_4._ID983 = 2;
+    var_4.sort = 2;
 
     if ( isdefined( var_3 ) )
         var_4._ID10179 = var_3;
@@ -283,40 +283,40 @@ _ID27197()
     if ( isdefined( var_0 ) && var_0 == "credits_1" )
     {
         var_1 = newhudelem();
-        var_1._ID1331 = 0;
-        var_1._ID1339 = 0;
-        var_1._ID44 = "center";
-        var_1._ID45 = "middle";
-        var_1._ID499 = "center";
-        var_1._ID1284 = "middle";
-        var_1._ID983 = 3;
-        var_1._ID408 = 1;
+        var_1.x = 0;
+        var_1.y = 0;
+        var_1.alignx = "center";
+        var_1.aligny = "middle";
+        var_1.horzalign = "center";
+        var_1.vertalign = "middle";
+        var_1.sort = 3;
+        var_1.foreground = 1;
         var_1 settext( &"CREDITS_UI_DEVELOPED_BY" );
-        var_1._ID55 = 1;
-        var_1._ID493 = 0;
-        var_1._ID393 = 1.7;
-        var_1._ID392 = "objective";
-        var_1._ID196 = level.remastertextcolorwhite;
+        var_1.alpha = 1;
+        var_1.hidewheninmenu = 0;
+        var_1.fontscale = 1.7;
+        var_1.font = "objective";
+        var_1.color = level.remastertextcolorwhite;
         var_2 = 3000;
         var_1 setpulsefx( 0, var_2, 700 );
         wait 3;
         var_1 _ID42237::_ID10192( 1, ::destroy );
         wait 1;
         var_1 = newhudelem();
-        var_1._ID1331 = 0;
-        var_1._ID1339 = 0;
-        var_1._ID44 = "center";
-        var_1._ID45 = "middle";
-        var_1._ID499 = "center";
-        var_1._ID1284 = "middle";
-        var_1._ID983 = 3;
-        var_1._ID408 = 1;
+        var_1.x = 0;
+        var_1.y = 0;
+        var_1.alignx = "center";
+        var_1.aligny = "middle";
+        var_1.horzalign = "center";
+        var_1.vertalign = "middle";
+        var_1.sort = 3;
+        var_1.foreground = 1;
         var_1 settext( &"CREDITS_UI_REMASTERED_BY" );
-        var_1._ID55 = 1;
-        var_1._ID493 = 0;
-        var_1._ID393 = 1.7;
-        var_1._ID392 = "objective";
-        var_1._ID196 = level.remastertextcolorwhite;
+        var_1.alpha = 1;
+        var_1.hidewheninmenu = 0;
+        var_1.fontscale = 1.7;
+        var_1.font = "objective";
+        var_1.color = level.remastertextcolorwhite;
         var_2 = 3000;
         var_1 setpulsefx( 0, var_2, 700 );
         wait 3;
@@ -329,7 +329,7 @@ _ID27197()
     for ( var_4 = 0; var_4 < level._ID22388.size; var_4++ )
     {
         var_5 = var_3;
-        var_6 = level._ID22388[var_4]._ID1244;
+        var_6 = level._ID22388[var_4].type;
 
         if ( var_6 == "centerimage" )
         {
@@ -344,15 +344,15 @@ _ID27197()
             var_9 = level._ID22388[var_4]._ID488;
             var_10 = newhudelem();
             var_10 setshader( var_7, var_8, var_9 );
-            var_10._ID44 = "center";
-            var_10._ID499 = "center";
-            var_10._ID1331 = 0;
-            var_10._ID1339 = 480;
-            var_10._ID983 = 2;
-            var_10._ID408 = 1;
+            var_10.alignx = "center";
+            var_10.horzalign = "center";
+            var_10.x = 0;
+            var_10.y = 480;
+            var_10.sort = 2;
+            var_10.foreground = 1;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
 
             if ( isdefined( level._ID22388[var_4]._ID10179 ) )
                 var_5 = level._ID22388[var_4]._ID10179;
@@ -366,15 +366,15 @@ _ID27197()
             var_9 = level._ID22388[var_4]._ID488;
             var_10 = newhudelem();
             var_10 setshader( var_7, var_8, var_9 );
-            var_10._ID44 = "center";
-            var_10._ID499 = "left";
-            var_10._ID1331 = 128;
-            var_10._ID1339 = 480;
-            var_10._ID983 = 2;
-            var_10._ID408 = 1;
+            var_10.alignx = "center";
+            var_10.horzalign = "left";
+            var_10.x = 128;
+            var_10.y = 480;
+            var_10.sort = 2;
+            var_10.foreground = 1;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
             var_5 = 0.037 * var_9;
         }
         else if ( var_6 == "lefttitle" )
@@ -383,114 +383,114 @@ _ID27197()
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_11 );
-            var_10._ID44 = "left";
-            var_10._ID499 = "left";
-            var_10._ID1331 = 28;
-            var_10._ID1339 = 480;
+            var_10.alignx = "left";
+            var_10.horzalign = "left";
+            var_10.x = 28;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorwhite;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorwhite;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
             var_10 thread _ID28754();
         }
         else if ( var_6 == "leftname" )
         {
-            var_13 = level._ID22388[var_4]._ID680;
+            var_13 = level._ID22388[var_4].name;
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_13 );
-            var_10._ID44 = "left";
-            var_10._ID499 = "left";
-            var_10._ID1331 = 60;
-            var_10._ID1339 = 480;
+            var_10.alignx = "left";
+            var_10.horzalign = "left";
+            var_10.x = 60;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorgrey;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorgrey;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
             var_10 thread _ID28754();
         }
         else if ( var_6 == "castname" )
         {
             var_11 = level._ID22388[var_4]._ID37792;
-            var_13 = level._ID22388[var_4]._ID680;
+            var_13 = level._ID22388[var_4].name;
             var_12 = level._ID22388[var_4]._ID37572;
             var_14 = newhudelem();
             var_14 settext( var_11 );
-            var_14._ID44 = "left";
-            var_14._ID499 = "left";
-            var_14._ID1331 = 60;
-            var_14._ID1339 = 480;
+            var_14.alignx = "left";
+            var_14.horzalign = "left";
+            var_14.x = 60;
+            var_14.y = 480;
 
             if ( !level._ID8534 )
-                var_14._ID392 = "default";
+                var_14.font = "default";
             else
-                var_14._ID392 = "small";
+                var_14.font = "small";
 
-            var_14._ID393 = var_12;
-            var_14._ID983 = 2;
-            var_14._ID196 = level.remastertextcolorgrey;
+            var_14.fontscale = var_12;
+            var_14.sort = 2;
+            var_14.color = level.remastertextcolorgrey;
             var_15 = newhudelem();
             var_15 settext( var_13 );
-            var_15._ID44 = "right";
-            var_15._ID499 = "left";
-            var_15._ID1331 = 275;
-            var_15._ID1339 = 480;
+            var_15.alignx = "right";
+            var_15.horzalign = "left";
+            var_15.x = 275;
+            var_15.y = 480;
 
             if ( !level._ID8534 )
-                var_15._ID392 = "default";
+                var_15.font = "default";
             else
-                var_15._ID392 = "small";
+                var_15.font = "small";
 
-            var_15._ID393 = var_12;
-            var_15._ID983 = 2;
-            var_15._ID196 = level.remastertextcolorgrey;
+            var_15.fontscale = var_12;
+            var_15.sort = 2;
+            var_15.color = level.remastertextcolorgrey;
             var_14 thread _ID10200( level._ID9303 );
             var_14 moveovertime( level._ID9303 );
-            var_14._ID1339 = level._ID9302;
+            var_14.y = level._ID9302;
             var_15 thread _ID10200( level._ID9303 );
             var_15 moveovertime( level._ID9303 );
-            var_15._ID1339 = level._ID9302;
+            var_15.y = level._ID9302;
             var_14 thread _ID28754();
             var_15 thread _ID28754();
         }
         else if ( var_6 == "subleftname" )
         {
-            var_13 = level._ID22388[var_4]._ID680;
+            var_13 = level._ID22388[var_4].name;
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_13 );
-            var_10._ID44 = "left";
-            var_10._ID499 = "left";
-            var_10._ID1331 = 92;
-            var_10._ID1339 = 480;
+            var_10.alignx = "left";
+            var_10.horzalign = "left";
+            var_10.x = 92;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorgrey;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorgrey;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
             var_10 thread _ID28754();
         }
         else if ( var_6 == "righttitle" )
@@ -499,45 +499,45 @@ _ID27197()
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_11 );
-            var_10._ID44 = "left";
-            var_10._ID499 = "right";
-            var_10._ID1331 = -132;
-            var_10._ID1339 = 480;
+            var_10.alignx = "left";
+            var_10.horzalign = "right";
+            var_10.x = -132;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorwhite;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorwhite;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
         }
         else if ( var_6 == "rightname" )
         {
-            var_13 = level._ID22388[var_4]._ID680;
+            var_13 = level._ID22388[var_4].name;
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_13 );
-            var_10._ID44 = "left";
-            var_10._ID499 = "right";
-            var_10._ID1331 = -100;
-            var_10._ID1339 = 480;
+            var_10.alignx = "left";
+            var_10.horzalign = "right";
+            var_10.x = -100;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorgrey;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorgrey;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
         }
         else if ( var_6 == "centerheading" )
         {
@@ -545,64 +545,64 @@ _ID27197()
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_16 );
-            var_10._ID44 = "center";
-            var_10._ID499 = "center";
-            var_10._ID1331 = 0;
-            var_10._ID1339 = 480;
+            var_10.alignx = "center";
+            var_10.horzalign = "center";
+            var_10.x = 0;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorwhite;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorwhite;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
         }
         else if ( var_6 == "centerdual" )
         {
             var_11 = level._ID22388[var_4]._ID37792;
-            var_13 = level._ID22388[var_4]._ID680;
+            var_13 = level._ID22388[var_4].name;
             var_12 = level._ID22388[var_4]._ID37572;
             var_14 = newhudelem();
             var_14 settext( var_11 );
-            var_14._ID44 = "right";
-            var_14._ID499 = "center";
-            var_14._ID1331 = -8;
-            var_14._ID1339 = 480;
+            var_14.alignx = "right";
+            var_14.horzalign = "center";
+            var_14.x = -8;
+            var_14.y = 480;
 
             if ( !level._ID8534 )
-                var_14._ID392 = "default";
+                var_14.font = "default";
             else
-                var_14._ID392 = "small";
+                var_14.font = "small";
 
-            var_14._ID393 = var_12;
-            var_14._ID983 = 2;
-            var_14._ID196 = level.remastertextcolorwhite;
+            var_14.fontscale = var_12;
+            var_14.sort = 2;
+            var_14.color = level.remastertextcolorwhite;
             var_15 = newhudelem();
             var_15 settext( var_13 );
-            var_15._ID44 = "left";
-            var_15._ID499 = "center";
-            var_15._ID1331 = 8;
-            var_15._ID1339 = 480;
+            var_15.alignx = "left";
+            var_15.horzalign = "center";
+            var_15.x = 8;
+            var_15.y = 480;
 
             if ( !level._ID8534 )
-                var_15._ID392 = "default";
+                var_15.font = "default";
             else
-                var_15._ID392 = "small";
+                var_15.font = "small";
 
-            var_15._ID393 = var_12;
-            var_15._ID983 = 2;
-            var_15._ID196 = level.remastertextcolorgrey;
+            var_15.fontscale = var_12;
+            var_15.sort = 2;
+            var_15.color = level.remastertextcolorgrey;
             var_14 thread _ID10200( level._ID9303 );
             var_14 moveovertime( level._ID9303 );
-            var_14._ID1339 = level._ID9302;
+            var_14.y = level._ID9302;
             var_15 thread _ID10200( level._ID9303 );
             var_15 moveovertime( level._ID9303 );
-            var_15._ID1339 = level._ID9302;
+            var_15.y = level._ID9302;
         }
         else if ( var_6 == "centertriple" )
         {
@@ -612,81 +612,81 @@ _ID27197()
             var_12 = level._ID22388[var_4]._ID37572;
             var_14 = newhudelem();
             var_14 settext( var_17 );
-            var_14._ID44 = "center";
-            var_14._ID499 = "center";
-            var_14._ID1331 = -160;
-            var_14._ID1339 = 480;
+            var_14.alignx = "center";
+            var_14.horzalign = "center";
+            var_14.x = -160;
+            var_14.y = 480;
 
             if ( !level._ID8534 )
-                var_14._ID392 = "default";
+                var_14.font = "default";
             else
-                var_14._ID392 = "small";
+                var_14.font = "small";
 
-            var_14._ID393 = var_12;
-            var_14._ID983 = 2;
-            var_14._ID196 = level.remastertextcolorwhite;
+            var_14.fontscale = var_12;
+            var_14.sort = 2;
+            var_14.color = level.remastertextcolorwhite;
             var_15 = newhudelem();
             var_15 settext( var_18 );
-            var_15._ID44 = "center";
-            var_15._ID499 = "center";
-            var_15._ID1331 = 0;
-            var_15._ID1339 = 480;
+            var_15.alignx = "center";
+            var_15.horzalign = "center";
+            var_15.x = 0;
+            var_15.y = 480;
 
             if ( !level._ID8534 )
-                var_15._ID392 = "default";
+                var_15.font = "default";
             else
-                var_15._ID392 = "small";
+                var_15.font = "small";
 
-            var_15._ID393 = var_12;
-            var_15._ID983 = 2;
-            var_15._ID196 = level.remastertextcolorwhite;
+            var_15.fontscale = var_12;
+            var_15.sort = 2;
+            var_15.color = level.remastertextcolorwhite;
             var_20 = newhudelem();
             var_20 settext( var_19 );
-            var_20._ID44 = "center";
-            var_20._ID499 = "center";
-            var_20._ID1331 = 160;
-            var_20._ID1339 = 480;
+            var_20.alignx = "center";
+            var_20.horzalign = "center";
+            var_20.x = 160;
+            var_20.y = 480;
 
             if ( !level._ID8534 )
-                var_20._ID392 = "default";
+                var_20.font = "default";
             else
-                var_20._ID392 = "small";
+                var_20.font = "small";
 
-            var_20._ID393 = var_12;
-            var_20._ID983 = 2;
-            var_20._ID196 = level.remastertextcolorwhite;
+            var_20.fontscale = var_12;
+            var_20.sort = 2;
+            var_20.color = level.remastertextcolorwhite;
             var_14 thread _ID10200( level._ID9303 );
             var_14 moveovertime( level._ID9303 );
-            var_14._ID1339 = level._ID9302;
+            var_14.y = level._ID9302;
             var_15 thread _ID10200( level._ID9303 );
             var_15 moveovertime( level._ID9303 );
-            var_15._ID1339 = level._ID9302;
+            var_15.y = level._ID9302;
             var_20 thread _ID10200( level._ID9303 );
             var_20 moveovertime( level._ID9303 );
-            var_20._ID1339 = level._ID9302;
+            var_20.y = level._ID9302;
         }
         else if ( var_6 == "centername" )
         {
-            var_13 = level._ID22388[var_4]._ID680;
+            var_13 = level._ID22388[var_4].name;
             var_12 = level._ID22388[var_4]._ID37572;
             var_10 = newhudelem();
             var_10 settext( var_13 );
-            var_10._ID44 = "left";
-            var_10._ID499 = "center";
-            var_10._ID1331 = 8;
-            var_10._ID1339 = 480;
+            var_10.alignx = "left";
+            var_10.horzalign = "center";
+            var_10.x = 8;
+            var_10.y = 480;
 
             if ( !level._ID8534 )
-                var_10._ID392 = "default";
+                var_10.font = "default";
             else
-                var_10._ID392 = "small";
+                var_10.font = "small";
 
-            var_10._ID393 = var_12;
-            var_10._ID983 = 2;
-            var_10._ID196 = level.remastertextcolorwhite;
+            var_10.fontscale = var_12;
+            var_10.sort = 2;
+            var_10.color = level.remastertextcolorwhite;
             var_10 thread _ID10200( level._ID9303 );
             var_10 moveovertime( level._ID9303 );
-            var_10._ID1339 = level._ID9302;
+            var_10.y = level._ID9302;
         }
         else if ( var_6 == "centernamedouble" )
         {
@@ -695,40 +695,40 @@ _ID27197()
             var_12 = level._ID22388[var_4]._ID37572;
             var_14 = newhudelem();
             var_14 settext( var_17 );
-            var_14._ID44 = "center";
-            var_14._ID499 = "center";
-            var_14._ID1331 = -100;
-            var_14._ID1339 = 480;
+            var_14.alignx = "center";
+            var_14.horzalign = "center";
+            var_14.x = -100;
+            var_14.y = 480;
 
             if ( !level._ID8534 )
-                var_14._ID392 = "default";
+                var_14.font = "default";
             else
-                var_14._ID392 = "small";
+                var_14.font = "small";
 
-            var_14._ID393 = var_12;
-            var_14._ID983 = 2;
-            var_14._ID196 = level.remastertextcolorwhite;
+            var_14.fontscale = var_12;
+            var_14.sort = 2;
+            var_14.color = level.remastertextcolorwhite;
             var_15 = newhudelem();
             var_15 settext( var_18 );
-            var_15._ID44 = "center";
-            var_15._ID499 = "center";
-            var_15._ID1331 = 100;
-            var_15._ID1339 = 480;
+            var_15.alignx = "center";
+            var_15.horzalign = "center";
+            var_15.x = 100;
+            var_15.y = 480;
 
             if ( !level._ID8534 )
-                var_15._ID392 = "default";
+                var_15.font = "default";
             else
-                var_15._ID392 = "small";
+                var_15.font = "small";
 
-            var_15._ID393 = var_12;
-            var_15._ID983 = 2;
-            var_15._ID196 = level.remastertextcolorwhite;
+            var_15.fontscale = var_12;
+            var_15.sort = 2;
+            var_15.color = level.remastertextcolorwhite;
             var_14 thread _ID10200( level._ID9303 );
             var_14 moveovertime( level._ID9303 );
-            var_14._ID1339 = level._ID9302;
+            var_14.y = level._ID9302;
             var_15 thread _ID10200( level._ID9303 );
             var_15 moveovertime( level._ID9303 );
-            var_15._ID1339 = level._ID9302;
+            var_15.y = level._ID9302;
         }
         else if ( var_6 == "spacesmall" )
             var_5 = 0.1875;
@@ -749,10 +749,10 @@ _ID10200( var_0 )
 
 _ID28754()
 {
-    self._ID55 = 0;
+    self.alpha = 0;
     wait(level._ID9303 * 0.08);
     self fadeovertime( 0.2 );
-    self._ID55 = 1;
+    self.alpha = 1;
     self setpulsefx( 50, int( level._ID9303 * 0.6 * 1000 ), 500 );
 }
 

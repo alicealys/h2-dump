@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "vehicle_bus_destructible", "tag_body", 250, undefined, 32, "no_melee" );
     var_0 = "tag_window_front_left";

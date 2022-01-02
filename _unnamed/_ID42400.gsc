@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0 )
+main( var_0 )
 {
     if ( !isdefined( var_0 ) )
         return;

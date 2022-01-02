@@ -1,30 +1,30 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    level._ID794 thread _ID27699();
+    level.player thread _ID27699();
     thread _ID47982();
     thread _ID47326();
 }
 
 _ID47982()
 {
-    level._ID794 waittill( "death",  var_0, var_1, var_2, var_3  );
+    level.player waittill( "death",  var_0, var_1, var_2, var_3  );
     _ID42475::_ID34575( "player_death" );
 
     if ( isdefined( var_3 ) )
     {
-        var_4 = level._ID794._ID740 - level._ID794 geteye() + ( 0, 0, 35 );
-        var_5 = spawn( "script_model", level._ID794._ID740 + ( 0, 0, var_4[2] ) );
-        var_5._ID65 = ( -10, level._ID794._ID65[2], 30 );
+        var_4 = level.player.origin - level.player geteye() + ( 0, 0, 35 );
+        var_5 = spawn( "script_model", level.player.origin + ( 0, 0, var_4[2] ) );
+        var_5.angles = ( -10, level.player.angles[2], 30 );
         var_5 linkto( var_3 );
 
         if ( var_1 != "MOD_CRUSH" )
-            level._ID794 playerlinkto( var_5 );
+            level.player playerlinkto( var_5 );
     }
 
-    level._ID794 allowprone( 1 );
+    level.player allowprone( 1 );
     _ID42371::_ID29407( var_2, var_1 );
 }
 
@@ -48,7 +48,7 @@ _ID27699()
 _ID47326()
 {
     level endon( "new_quote_string" );
-    level._ID794 waittill( "death",  var_0, var_1, var_2  );
+    level.player waittill( "death",  var_0, var_1, var_2  );
 
     if ( getdvar( "limited_mode" ) == "1" )
         return;
@@ -80,22 +80,22 @@ _ID35361( var_0, var_1, var_2 )
     switch ( var_1 )
     {
         case "MOD_SUICIDE":
-            if ( level._ID794._ID21929 - gettime() > 3500.0 )
+            if ( level.player._ID21929 - gettime() > 3500.0 )
                 return;
 
             thread _ID17384( &"SCRIPT_GRENADE_SUICIDE_LINE1", &"SCRIPT_GRENADE_SUICIDE_LINE2" );
             break;
         case "MOD_EXPLOSIVE":
-            if ( level._ID794 _ID10509( var_0 ) )
+            if ( level.player _ID10509( var_0 ) )
                 return;
 
-            if ( level._ID794 _ID43833( var_0 ) )
+            if ( level.player _ID43833( var_0 ) )
                 return;
 
-            if ( level._ID794 _ID40100( var_0 ) )
+            if ( level.player _ID40100( var_0 ) )
                 return;
 
-            if ( level._ID794 _ID13633( var_0 ) )
+            if ( level.player _ID13633( var_0 ) )
                 return;
 
             break;
@@ -117,7 +117,7 @@ _ID40100( var_0 )
     if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( var_0._ID172 != "script_vehicle" || var_0._ID170 == "script_vehicle_zodiac_player" )
+    if ( var_0.code_classname != "script_vehicle" || var_0.classname == "script_vehicle_zodiac_player" )
         return 0;
 
     _ID32262( "@SCRIPT_EXPLODING_VEHICLE_DEATH" );
@@ -149,7 +149,7 @@ _ID10509( var_0 )
 
 _ID43833( var_0 )
 {
-    if ( level._ID912 != "af_chase" )
+    if ( level.script != "af_chase" )
         return 0;
 
     return _ID13633( var_0 );
@@ -162,7 +162,7 @@ _ID13633( var_0 )
         if ( gettime() != level._ID21923["time"] )
             return 0;
 
-        var_1 = distance( self._ID740, level._ID21923["origin"] );
+        var_1 = distance( self.origin, level._ID21923["origin"] );
 
         if ( var_1 > level._ID21923["radius"] )
             return 0;
@@ -235,7 +235,7 @@ _ID22633( var_0 )
 
 _ID17384( var_0, var_1 )
 {
-    level._ID794._ID13848 = 1;
+    level.player._ID13848 = 1;
 
     if ( getdvar( "limited_mode" ) == "1" )
         return;
@@ -245,39 +245,39 @@ _ID17384( var_0, var_1 )
     wait 2.5;
     var_2 = newhudelem();
     var_2._ID12329 = "font";
-    var_2._ID392 = "default";
-    var_2._ID393 = 1;
-    var_2._ID1331 = 0;
-    var_2._ID1339 = -30;
-    var_2._ID44 = "center";
-    var_2._ID45 = "middle";
-    var_2._ID499 = "center";
-    var_2._ID1284 = "middle";
+    var_2.font = "default";
+    var_2.fontscale = 1;
+    var_2.x = 0;
+    var_2.y = -30;
+    var_2.alignx = "center";
+    var_2.aligny = "middle";
+    var_2.horzalign = "center";
+    var_2.vertalign = "middle";
     var_2 settext( var_0 );
-    var_2._ID408 = 1;
-    var_2._ID55 = 0;
+    var_2.foreground = 1;
+    var_2.alpha = 0;
     var_2 fadeovertime( 2 );
-    var_2._ID55 = 1;
-    var_2._ID493 = 1;
+    var_2.alpha = 1;
+    var_2.hidewheninmenu = 1;
 
     if ( isdefined( var_1 ) )
     {
         var_2 = newhudelem();
         var_2._ID12329 = "font";
-        var_2._ID392 = "default";
-        var_2._ID393 = 1;
-        var_2._ID1331 = 0;
-        var_2._ID1339 = -25 + level._ID14720 * var_2._ID393;
-        var_2._ID44 = "center";
-        var_2._ID45 = "middle";
-        var_2._ID499 = "center";
-        var_2._ID1284 = "middle";
+        var_2.font = "default";
+        var_2.fontscale = 1;
+        var_2.x = 0;
+        var_2.y = -25 + level._ID14720 * var_2.fontscale;
+        var_2.alignx = "center";
+        var_2.aligny = "middle";
+        var_2.horzalign = "center";
+        var_2.vertalign = "middle";
         var_2 settext( var_1 );
-        var_2._ID408 = 1;
-        var_2._ID55 = 0;
+        var_2.foreground = 1;
+        var_2.alpha = 0;
         var_2 fadeovertime( 2 );
-        var_2._ID55 = 1;
-        var_2._ID493 = 1;
+        var_2.alpha = 1;
+        var_2.hidewheninmenu = 1;
     }
 }
 
@@ -288,31 +288,31 @@ _ID17385()
 
     wait 2.5;
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 20;
+    var_0.x = 0;
+    var_0.y = 20;
     var_0 setshader( "hud_grenadeicon", 25, 25 );
-    var_0._ID44 = "center";
-    var_0._ID45 = "middle";
-    var_0._ID499 = "center";
-    var_0._ID1284 = "middle";
-    var_0._ID408 = 1;
-    var_0._ID55 = 0;
+    var_0.alignx = "center";
+    var_0.aligny = "middle";
+    var_0.horzalign = "center";
+    var_0.vertalign = "middle";
+    var_0.foreground = 1;
+    var_0.alpha = 0;
     var_0 fadeovertime( 2 );
-    var_0._ID55 = 1;
-    var_0._ID493 = 1;
+    var_0.alpha = 1;
+    var_0.hidewheninmenu = 1;
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "hud_grenadepointer", 25, 13 );
-    var_0._ID44 = "center";
-    var_0._ID45 = "middle";
-    var_0._ID499 = "center";
-    var_0._ID1284 = "middle";
-    var_0._ID408 = 1;
-    var_0._ID55 = 0;
+    var_0.alignx = "center";
+    var_0.aligny = "middle";
+    var_0.horzalign = "center";
+    var_0.vertalign = "middle";
+    var_0.foreground = 1;
+    var_0.alpha = 0;
     var_0 fadeovertime( 2 );
-    var_0._ID55 = 1;
-    var_0._ID493 = 1;
+    var_0.alpha = 1;
+    var_0.hidewheninmenu = 1;
 }
 
 _ID32263( var_0, var_1, var_2, var_3 )
@@ -322,16 +322,16 @@ _ID32263( var_0, var_1, var_2, var_3 )
 
     wait(var_3);
     var_4 = newhudelem();
-    var_4._ID1331 = 0;
-    var_4._ID1339 = 25;
+    var_4.x = 0;
+    var_4.y = 25;
     var_4 setshader( var_0, var_1, var_2 );
-    var_4._ID44 = "center";
-    var_4._ID45 = "middle";
-    var_4._ID499 = "center";
-    var_4._ID1284 = "middle";
-    var_4._ID408 = 1;
-    var_4._ID55 = 0;
+    var_4.alignx = "center";
+    var_4.aligny = "middle";
+    var_4.horzalign = "center";
+    var_4.vertalign = "middle";
+    var_4.foreground = 1;
+    var_4.alpha = 0;
     var_4 fadeovertime( 2 );
-    var_4._ID55 = 1;
-    var_4._ID493 = 1;
+    var_4.alpha = 1;
+    var_4.hidewheninmenu = 1;
 }

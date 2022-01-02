@@ -93,7 +93,7 @@ _ID46386( var_0, var_1 )
 
     foreach ( var_5 in var_1 )
     {
-        if ( !isdefined( var_5._ID1191 ) )
+        if ( !isdefined( var_5.target ) )
             continue;
 
         var_5._ID51712 = var_2._ID51712;
@@ -103,16 +103,16 @@ _ID46386( var_0, var_1 )
         var_5._ID49248 = var_2._ID49248;
         var_5._ID51934 = var_2._ID51934;
         var_5._ID54303 = var_2._ID54303;
-        var_6 = getentarray( var_5._ID1191, "targetname" );
+        var_6 = getentarray( var_5.target, "targetname" );
 
         if ( var_6.size == 0 )
             continue;
 
         foreach ( var_8 in var_6 )
         {
-            if ( isdefined( var_8._ID922 ) )
+            if ( isdefined( var_8.script_noteworthy ) )
             {
-                if ( var_8._ID922 == "flickering_lights" )
+                if ( var_8.script_noteworthy == "flickering_lights" )
                 {
                     var_8._ID53272 = var_2._ID53272 * var_8 getlightintensity();
                     var_8._ID48403 = var_2._ID48403 * var_8 getlightintensity();
@@ -128,7 +128,7 @@ _ID46386( var_0, var_1 )
 
 _ID20556( var_0 )
 {
-    return var_0._ID170 == "light_spot" || var_0._ID170 == "light_omni" || var_0._ID170 == "light";
+    return var_0.classname == "light_spot" || var_0.classname == "light_omni" || var_0.classname == "light";
 }
 
 _ID14555( var_0, var_1, var_2, var_3 )
@@ -173,7 +173,7 @@ _ID21263( var_0 )
 
     foreach ( var_5 in var_1 )
     {
-        var_6 = distance( self._ID740, var_5._ID740 );
+        var_6 = distance( self.origin, var_5.origin );
 
         if ( var_6 < var_3 )
         {
@@ -252,9 +252,9 @@ _ID15505()
     var_5 = 0;
     var_6 = [];
 
-    if ( isdefined( self._ID922 ) )
+    if ( isdefined( self.script_noteworthy ) )
     {
-        var_7 = getentarray( self._ID922, "targetname" );
+        var_7 = getentarray( self.script_noteworthy, "targetname" );
 
         for ( var_8 = 0; var_8 < var_7.size; var_8++ )
         {
@@ -264,10 +264,10 @@ _ID15505()
                 var_6[var_6.size] = var_7[var_8];
             }
 
-            if ( var_7[var_8]._ID170 == "script_model" )
+            if ( var_7[var_8].classname == "script_model" )
             {
                 var_3 = var_7[var_8];
-                var_4 = getent( var_3._ID1191, "targetname" );
+                var_4 = getent( var_3.target, "targetname" );
                 var_2 = 1;
             }
         }
@@ -331,31 +331,31 @@ _ID48424( var_0 )
     self endon( "stop_dynamic_light_behavior" );
     self endon( "death" );
 
-    if ( !isdefined( self._ID1191 ) )
+    if ( !isdefined( self.target ) )
         return;
 
-    self._ID47454 = getentarray( self._ID1191, "targetname" );
+    self._ID47454 = getentarray( self.target, "targetname" );
     self._ID43670 = undefined;
     self._ID47812 = undefined;
     self._ID52890 = [];
 
     foreach ( var_2 in self._ID47454 )
     {
-        if ( isdefined( var_2._ID922 ) )
+        if ( isdefined( var_2.script_noteworthy ) )
         {
-            if ( var_2._ID922 == "flickering_model_on" )
+            if ( var_2.script_noteworthy == "flickering_model_on" )
             {
                 self._ID43670 = var_2;
                 continue;
             }
 
-            if ( var_2._ID922 == "flickering_model_off" )
+            if ( var_2.script_noteworthy == "flickering_model_off" )
             {
                 self._ID47812 = var_2;
                 continue;
             }
 
-            if ( var_2._ID922 == "flickering_lights" )
+            if ( var_2.script_noteworthy == "flickering_lights" )
                 self._ID52890[self._ID52890.size] = var_2;
         }
     }
@@ -457,7 +457,7 @@ _ID15511()
 
         foreach ( var_1 in self._ID22417 )
         {
-            if ( isdefined( var_1._ID922 ) && var_1._ID922 == "on" )
+            if ( isdefined( var_1.script_noteworthy ) && var_1.script_noteworthy == "on" )
             {
                 if ( !isdefined( self._ID22441 ) )
                     self._ID22441[0] = var_1;
@@ -467,7 +467,7 @@ _ID15511()
                 continue;
             }
 
-            if ( isdefined( var_1._ID922 ) && var_1._ID922 == "off" )
+            if ( isdefined( var_1.script_noteworthy ) && var_1.script_noteworthy == "off" )
             {
                 if ( !isdefined( self._ID39484 ) )
                     self._ID39484[0] = var_1;
@@ -488,11 +488,11 @@ _ID15511()
         self._ID22415 = 1;
     }
 
-    if ( isdefined( self._ID922 ) )
-        self._ID22419 = getentarray( self._ID922, "targetname" );
+    if ( isdefined( self.script_noteworthy ) )
+        self._ID22419 = getentarray( self.script_noteworthy, "targetname" );
 
     if ( !self._ID22419.size && !isdefined( self._ID22417 ) )
-        self._ID22419 = _ID16189( self._ID740 );
+        self._ID22419 = _ID16189( self.origin );
 
     for ( var_3 = 0; var_3 < self._ID22419.size; var_3++ )
     {
@@ -502,7 +502,7 @@ _ID15511()
             self._ID22412[self._ID22412.size] = self._ID22419[var_3];
         }
 
-        if ( self._ID22419[var_3]._ID170 == "script_model" )
+        if ( self._ID22419[var_3].classname == "script_model" )
         {
             var_4 = self._ID22419[var_3];
 
@@ -512,9 +512,9 @@ _ID15511()
                 self._ID22441[self._ID22441.size] = var_4;
 
             if ( !isdefined( self._ID39484 ) )
-                self._ID39484[0] = getent( var_4._ID1191, "targetname" );
+                self._ID39484[0] = getent( var_4.target, "targetname" );
             else
-                self._ID39484[self._ID39484.size] = getent( var_4._ID1191, "targetname" );
+                self._ID39484[self._ID39484.size] = getent( var_4.target, "targetname" );
 
             self._ID22415 = 1;
         }
@@ -558,8 +558,8 @@ _ID15511()
                     }
                 }
 
-                var_4._ID12315._ID40005["origin"] = var_4._ID740 + var_6;
-                var_4._ID12315._ID40005["angles"] = var_4._ID65 + var_7;
+                var_4._ID12315._ID40005["origin"] = var_4.origin + var_6;
+                var_4._ID12315._ID40005["angles"] = var_4.angles + var_7;
             }
         }
     }
@@ -702,7 +702,7 @@ _ID43288()
     if ( isdefined( self._ID31523 ) )
         wait(self._ID31523);
 
-    switch ( self._ID1193 )
+    switch ( self.targetname )
     {
         case "h2_flickering_flare":
         case "h2_flickering_fire":
@@ -719,7 +719,7 @@ _ID43288()
                     break;
             }
 
-            self._ID34523 = spawn( "script_origin", self._ID740 );
+            self._ID34523 = spawn( "script_origin", self.origin );
             self._ID34523 playloopsound( var_0 );
             thread _ID54364();
     }
@@ -1356,9 +1356,9 @@ _ID19726()
     self._ID39484 = [];
     self._ID22413 = [];
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        var_0 = getentarray( self._ID1191, "targetname" );
+        var_0 = getentarray( self.target, "targetname" );
 
         if ( var_0.size == 0 )
             return;
@@ -1374,14 +1374,14 @@ _ID19726()
 
             var_3 = 1;
 
-            if ( isdefined( var_2._ID922 ) )
+            if ( isdefined( var_2.script_noteworthy ) )
             {
-                if ( var_2._ID922 == "on" )
+                if ( var_2.script_noteworthy == "on" )
                 {
                     var_3 = 0;
                     _ID19727( var_2 );
                 }
-                else if ( var_2._ID922 == "off" )
+                else if ( var_2.script_noteworthy == "off" )
                 {
                     var_3 = 0;
                     self._ID39484[self._ID39484.size] = var_2;
@@ -1391,7 +1391,7 @@ _ID19726()
             if ( var_3 )
             {
                 _ID19727( var_2 );
-                var_4 = getentarray( var_2._ID1191, "targetname" );
+                var_4 = getentarray( var_2.target, "targetname" );
 
                 foreach ( var_6 in var_4 )
                     self._ID39484[self._ID39484.size] = var_6;
@@ -1419,21 +1419,21 @@ _ID19727( var_0 )
     if ( isdefined( var_0._ID31220 ) )
     {
         var_1 = self._ID31220;
-        var_2 = var_0._ID740;
-        var_3 = var_0._ID65;
+        var_2 = var_0.origin;
+        var_3 = var_0.angles;
     }
-    else if ( isdefined( var_0._ID1191 ) )
+    else if ( isdefined( var_0.target ) )
     {
-        var_4 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
+        var_4 = _ID42237::_ID16638( var_0.target, "targetname" );
 
         if ( isdefined( var_4 ) && isdefined( var_4._ID31220 ) )
         {
             var_1 = var_4._ID31220;
-            var_2 = var_4._ID740;
+            var_2 = var_4.origin;
             var_3 = ( 0, 0, 0 );
 
-            if ( isdefined( var_4._ID65 ) )
-                var_3 = var_4._ID65;
+            if ( isdefined( var_4.angles ) )
+                var_3 = var_4.angles;
         }
     }
 

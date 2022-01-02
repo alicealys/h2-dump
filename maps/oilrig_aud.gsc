@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -197,7 +197,7 @@ _ID45335( var_0 )
 
 _ID49708()
 {
-    var_0 = spawn( "script_origin", self._ID740 );
+    var_0 = spawn( "script_origin", self.origin );
     var_0 linkto( self, "TAG_PROPELLER" );
     var_0 playloopsound( "scn_oilrig_diveboat_plr_layer2" );
     var_0 setvolume( 0, 0 );
@@ -211,12 +211,12 @@ _ID49708()
 
 _ID47470()
 {
-    level._ID794 _ID42407::_ID27079( "elm_oilrig_fish" );
-    level._ID794 _ID42407::_ID27079( "elm_oilrig_whales" );
+    level.player _ID42407::_ID27079( "elm_oilrig_fish" );
+    level.player _ID42407::_ID27079( "elm_oilrig_whales" );
     wait 1.0;
-    level._ID794 _ID42407::_ID27079( "elm_oilrig_fish" );
+    level.player _ID42407::_ID27079( "elm_oilrig_fish" );
     wait 1.0;
-    level._ID794 _ID42407::_ID27079( "elm_oilrig_whales" );
+    level.player _ID42407::_ID27079( "elm_oilrig_whales" );
 }
 
 _ID48248( var_0, var_1, var_2, var_3, var_4, var_5 )
@@ -232,10 +232,10 @@ _ID48248( var_0, var_1, var_2, var_3, var_4, var_5 )
 _ID52625( var_0, var_1, var_2, var_3 )
 {
     thread _ID42407::_ID4917( "axis" );
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID42476::_ID34518( "slomo" );
-    level._ID794 playsound( var_1 );
-    level._ID794 thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
+    level.player playsound( var_1 );
+    level.player thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
     _ID42465::_ID23797( var_0 );
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( var_3, 0.5 );
@@ -246,10 +246,10 @@ _ID52625( var_0, var_1, var_2, var_3 )
 _ID52851( var_0, var_1, var_2, var_3 )
 {
     _ID42465::_ID23801( var_0 );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID42476::_ID34512( "slomo" );
-    level._ID794 _ID42237::_ID36516( var_1 );
-    level._ID794 playsound( var_2 );
+    level.player _ID42237::_ID36516( var_1 );
+    level.player playsound( var_2 );
     _ID42490::_ID34527( 1.0 );
     _ID42407::_ID10226( 1.0, _ID42490::_ID34501 );
     _ID42407::_ID10226( 1.05, _ID42474::_ID4655, 0 );
@@ -289,12 +289,12 @@ _ID46817()
 
 _ID46154()
 {
-    level._ID794 thread _ID42407::_ID27079( "scn_player_mount_escape_heli" );
+    level.player thread _ID42407::_ID27079( "scn_player_mount_escape_heli" );
     wait 0.5;
     _ID42474::_ID4669( "helicopter" );
     _ID42237::_ID14413( "littlebird_escape_lifted_off" );
     _ID42465::_ID23797( "mix_player_heli_liftoff" );
-    level._ID794 thread _ID42407::_ID27079( "scn_player_heli_liftoff" );
+    level.player thread _ID42407::_ID27079( "scn_player_heli_liftoff" );
 }
 
 heli_patrol_02_flyby()
@@ -396,9 +396,9 @@ heli_deck2_audio()
     self.scripted_move_sfx = 1;
     thread _ID42407::_ID27079( "scn_oilrig_chopper_appear" );
     var_0 = 0;
-    var_1 = spawn( "script_origin", self._ID740 );
+    var_1 = spawn( "script_origin", self.origin );
     var_1 linkto( self );
-    var_2 = spawn( "script_origin", self._ID740 );
+    var_2 = spawn( "script_origin", self.origin );
     var_2 linkto( self );
     thread heli_deck2_handle_death( var_1 );
     thread heli_deck2_handle_death( var_2 );

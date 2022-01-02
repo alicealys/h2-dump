@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     level._ID1410["chicken_cage_loop_01"] = %chicken_cage_loop_01;
     level._ID1410["chicken_cage_loop_02"] = %chicken_cage_loop_02;

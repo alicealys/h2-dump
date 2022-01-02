@@ -12,7 +12,7 @@ _ID34528()
 _ID34648( var_0 )
 {
     level._ID1632._ID9447._ID22152 = var_0;
-    level._ID794 seteqlerp( var_0, 0 );
+    level.player seteqlerp( var_0, 0 );
 }
 
 _ID34533()
@@ -43,19 +43,19 @@ _ID34644( var_0, var_1 )
 _ID34554()
 {
     var_0 = spawnstruct();
-    var_0._ID680 = "";
+    var_0.name = "";
     level._ID1632._ID9461 = var_0;
     _ID34645( "" );
 }
 
 _ID34535()
 {
-    return level._ID1632._ID9461._ID680;
+    return level._ID1632._ID9461.name;
 }
 
 _ID34645( var_0 )
 {
-    level._ID1632._ID9461._ID680 = var_0;
+    level._ID1632._ID9461.name = var_0;
 }
 
 _ID34567()
@@ -73,7 +73,7 @@ _ID34537()
     var_0 = [];
 
     foreach ( var_2 in level._ID1632._ID12209 )
-        var_0[var_0.size] = var_2._ID680;
+        var_0[var_0.size] = var_2.name;
 
     return var_0;
 }
@@ -93,13 +93,13 @@ _ID34568()
     level._ID1632._ID14032 = spawnstruct();
     var_0 = [];
     var_0[var_0.size] = "soundtables/sp_defaults.csv";
-    var_0[var_0.size] = "soundtables/" + level._ID912 + ".csv";
+    var_0[var_0.size] = "soundtables/" + level.script + ".csv";
     level._ID1632._ID14032._ID28453 = _ID42475::_ID34590( "Filter", var_0, 7, "filter_names", "zone_names;reverb_names;filter_names;occlusion_names;timescale_names;dynamic_ambience_names;components;loop_defs;whizby_preset_names;mix_names;healthfx_params" );
 }
 
 _ID34647( var_0, var_1, var_2 )
 {
-    if ( isdefined( level._ID794._ID13019 ) && isdefined( level._ID794._ID13019["player_has_red_flashing_overlay"] ) && level._ID794 _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
+    if ( isdefined( level.player._ID13019 ) && isdefined( level.player._ID13019["player_has_red_flashing_overlay"] ) && level.player _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
         return;
 
     var_3 = 0;
@@ -110,7 +110,7 @@ _ID34647( var_0, var_1, var_2 )
     if ( !isdefined( var_0 ) || isdefined( var_0 ) && ( var_0 == "" || var_0 == "none" ) )
     {
         _ID34644( var_3, "" );
-        level._ID794 deactivateeq( var_3 );
+        level.player deactivateeq( var_3 );
         return;
     }
 
@@ -187,7 +187,7 @@ _ID34718( var_0, var_1, var_2 )
     var_3 = spawnstruct();
     var_3._ID12208 = var_1;
     var_3._ID517 = var_0;
-    var_3._ID1244 = var_2["type"];
+    var_3.type = var_2["type"];
     var_3._ID15316 = var_2["gain"];
     var_3._ID40762 = var_2["vol"];
     var_3._ID14905 = var_2["freq"];
@@ -223,7 +223,7 @@ _ID34649( var_0, var_1 )
 
     foreach ( var_13 in var_3 )
     {
-        level._ID794 seteq( var_13._ID12208, var_13._ID517, var_13._ID1244, var_13._ID15316, var_13._ID40762, var_13._ID14905, var_13._ID28789 );
+        level.player seteq( var_13._ID12208, var_13._ID517, var_13.type, var_13._ID15316, var_13._ID40762, var_13._ID14905, var_13._ID28789 );
         var_2 _ID42475::_ID34685();
     }
 }
@@ -243,13 +243,13 @@ _ID34569()
     level._ID1632._ID25395 = spawnstruct();
     var_0 = [];
     var_0[var_0.size] = "soundtables/sp_defaults.csv";
-    var_0[var_0.size] = "soundtables/" + level._ID912 + ".csv";
+    var_0[var_0.size] = "soundtables/" + level.script + ".csv";
     level._ID1632._ID25395._ID28453 = _ID42475::_ID34590( "Filter", var_0, 7, "occlusion_names", "zone_names;reverb_names;filter_names;occlusion_names;timescale_names;dynamic_ambience_names;components;loop_defs;whizby_preset_names;mix_names;healthfx_params" );
 }
 
 _ID34650( var_0 )
 {
-    if ( isdefined( level._ID794._ID13019 ) && isdefined( level._ID794._ID13019["player_has_red_flashing_overlay"] ) && level._ID794 _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
+    if ( isdefined( level.player._ID13019 ) && isdefined( level.player._ID13019["player_has_red_flashing_overlay"] ) && level.player _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
         return;
 
     if ( !isdefined( var_0 ) )
@@ -293,7 +293,7 @@ _ID34651( var_0 )
 
             foreach ( var_7 in var_5 )
             {
-                level._ID794 setocclusion( var_7, var_3["freq"], var_3["type"], var_3["gain"], var_3["vol"], var_3["q"] );
+                level.player setocclusion( var_7, var_3["freq"], var_3["type"], var_3["gain"], var_3["vol"], var_3["q"] );
                 var_1 _ID42475::_ID34685();
             }
 
@@ -303,7 +303,7 @@ _ID34651( var_0 )
 
         if ( _ID34562( var_4 ) )
         {
-            level._ID794 setocclusion( var_4, var_3["freq"], var_3["type"], var_3["gain"], var_3["vol"], var_3["q"] );
+            level.player setocclusion( var_4, var_3["freq"], var_3["type"], var_3["gain"], var_3["vol"], var_3["q"] );
             jump loc_6AC
         }
 
@@ -323,7 +323,7 @@ _ID34511()
 
     foreach ( var_3 in var_1 )
     {
-        level._ID794 deactivateocclusion( var_3 );
+        level.player deactivateocclusion( var_3 );
         var_0 _ID42475::_ID34685();
     }
 }

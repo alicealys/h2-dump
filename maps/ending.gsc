@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42237::_ID14400( "startPoint_boatDrive" );
     precachestring( &"AF_CHASE_PURSUE" );
@@ -93,10 +93,10 @@ _ID616()
     precacherumble( "damage_heavy" );
     setdynamicdvar( "ui_char_museum_mode", "credits_1" );
 
-    if ( !isdefined( level._ID794 ) )
-        level._ID794 = getentarray( "player", "classname" )[0];
+    if ( !isdefined( level.player ) )
+        level.player = getentarray( "player", "classname" )[0];
 
-    var_0 = level._ID794 getweaponslistall();
+    var_0 = level.player getweaponslistall();
 
     if ( isdefined( var_0 ) && var_0.size )
         setdvar( "ui_char_museum_mode", "credits_1" );
@@ -116,17 +116,17 @@ _ID616()
 
     if ( level._ID44088 == "credits_1" )
     {
-        _ID52272::_ID616();
+        _ID52272::main();
         maps\af_chase_knife_fight::_ID52726();
-        maps\char_museum::_ID616();
+        maps\char_museum::main();
         maps\af_chase_knife_fight::_ID53376();
         maps\af_chase_anim::_ID43266();
-        _ID51748::_ID616();
-        _ID45371::_ID616();
-        maps\ending_lighting::_ID616();
+        _ID51748::main();
+        _ID45371::main();
+        maps\ending_lighting::main();
         var_1 = "ending_wakeup";
         maps\ending_lighting::_ID49627( var_1 );
-        _ID42323::_ID616();
+        _ID42323::main();
         thread maps\af_chase_knife_fight::_ID45160();
         thread _ID42234::_ID13611( "heli_fire" );
         thread maps\af_chase_knife_fight::_ID52987();
@@ -136,12 +136,12 @@ _ID616()
     }
     else
     {
-        _ID46544::_ID616();
-        _ID49679::_ID616();
-        _ID53014::_ID616();
-        _ID45371::_ID616();
-        maps\char_museum::_ID616();
-        maps\ending_lighting::_ID616();
+        _ID46544::main();
+        _ID49679::main();
+        _ID53014::main();
+        _ID45371::main();
+        maps\char_museum::main();
+        maps\ending_lighting::main();
         maps\ending_lighting::_ID49627( "ending_museum" );
         var_2 = getspawnerarray();
         _ID42237::_ID3350( var_2, _ID42407::_ID1947, maps\char_museum::danger_close_fix );

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("animated_props");
 
-_ID616()
+main()
 {
     waitframe;
     _ID19836();
@@ -29,13 +29,13 @@ _ID616()
 
     foreach ( var_6 in var_0 )
     {
-        if ( isdefined( level._ID3054[var_6._ID669] ) )
+        if ( isdefined( level._ID3054[var_6.model] ) )
         {
-            var_6 thread [[ level._ID3054[var_6._ID669] ]]();
+            var_6 thread [[ level._ID3054[var_6.model] ]]();
             continue;
         }
 
-        var_7 = getarraykeys( level._ID3055[var_6._ID669] );
+        var_7 = getarraykeys( level._ID3055[var_6.model] );
         var_8 = 0;
 
         foreach ( var_10 in var_7 )
@@ -67,10 +67,10 @@ _ID19836()
 
 _ID23870()
 {
-    if ( !isdefined( level._ID3055[self._ID669] ) )
+    if ( !isdefined( level._ID3055[self.model] ) )
     {
-        if ( !_ID2814( level._ID19579, self._ID669 ) )
-            level._ID19579[level._ID19579.size] = self._ID669;
+        if ( !_ID2814( level._ID19579, self.model ) )
+            level._ID19579[level._ID19579.size] = self.model;
     }
 }
 
@@ -91,9 +91,9 @@ _ID2814( var_0, var_1 )
 _ID3175()
 {
     self useanimtree( #animtree );
-    var_0 = getarraykeys( level._ID3055[self._ID669] );
+    var_0 = getarraykeys( level._ID3055[self.model] );
     var_1 = var_0[randomint( var_0.size )];
-    var_2 = level._ID3055[self._ID669][var_1];
+    var_2 = level._ID3055[self.model][var_1];
     self setanim( var_2, 1, self getanimtime( var_2 ), 1 );
     self setanimtime( var_2, randomfloatrange( 0, 1 ) );
 }
@@ -117,13 +117,13 @@ _ID5289( var_0 )
     level endon( "windchange" );
     var_1 = level._ID41775._ID1318;
     var_2 = level._ID41775._ID855 + randomfloat( level._ID41775._ID40040 );
-    self setanim( level._ID3055[self._ID669]["still"], 1, self getanimtime( level._ID3055[self._ID669]["still"] ), var_2 );
-    self setanim( level._ID3055[self._ID669][var_0], var_1, self getanimtime( level._ID3055[self._ID669][var_0] ), var_2 );
+    self setanim( level._ID3055[self.model]["still"], 1, self getanimtime( level._ID3055[self.model]["still"] ), var_2 );
+    self setanim( level._ID3055[self.model][var_0], var_1, self getanimtime( level._ID3055[self.model][var_0] ), var_2 );
 }
 
 _ID49623()
 {
-    var_0 = getarraykeys( level._ID3055[self._ID669] );
+    var_0 = getarraykeys( level._ID3055[self.model] );
     return _ID42237::_ID3303( var_0, "heli" );
 }
 
@@ -153,15 +153,15 @@ _ID45950( var_0, var_1, var_2 )
 
 _ID50594( var_0 )
 {
-    var_1 = distancesquared( var_0._ID740, self._ID740 );
-    self._ID45250 = var_0._ID740;
+    var_1 = distancesquared( var_0.origin, self.origin );
+    self._ID45250 = var_0.origin;
     return 1.0 - clamp( var_1 / self._ID45020, 0.0, 1.0 );
 }
 
 _ID45726( var_0 )
 {
-    var_1 = distancesquared( var_0._ID740, self._ID740 );
-    self._ID45250 = var_0._ID740;
+    var_1 = distancesquared( var_0.origin, self.origin );
+    self._ID45250 = var_0.origin;
     return 1.0 - clamp( sqrt( var_1 / self._ID45020 ), 0.0, 1.0 );
 }
 
@@ -177,7 +177,7 @@ _ID54156()
         if ( !isdefined( var_3 ) )
             continue;
 
-        var_4 = distancesquared( var_3._ID740, self._ID740 );
+        var_4 = distancesquared( var_3.origin, self.origin );
 
         if ( var_4 < var_0 )
         {
@@ -240,9 +240,9 @@ _ID54689()
 _ID49629()
 {
     self useanimtree( #animtree );
-    self setanim( level._ID3055[self._ID669]["strong"], 1.0, 0.05, 1.0 );
-    self setanim( level._ID3055[self._ID669]["heli"], 0.0, 0.05, 1.0 );
-    self clearanim( level._ID3055[self._ID669]["still"], 0.0 );
+    self setanim( level._ID3055[self.model]["strong"], 1.0, 0.05, 1.0 );
+    self setanim( level._ID3055[self.model]["heli"], 0.0, 0.05, 1.0 );
+    self clearanim( level._ID3055[self.model]["still"], 0.0 );
     var_0 = 0.15;
 
     if ( isdefined( level._ID52661 ) && level._ID52661 )
@@ -252,20 +252,20 @@ _ID49629()
 
     for (;;)
     {
-        var_2 = self getanimweight( level._ID3055[self._ID669]["heli"] );
+        var_2 = self getanimweight( level._ID3055[self.model]["heli"] );
         var_3 = self._ID50300 - var_2;
         var_4 = clamp( var_3, -1 * self._ID43834, self._ID43834 );
         var_5 = var_2 + var_4;
 
         if ( isdefined( level._ID51047 ) && level._ID51047 )
-            self clearanim( level._ID3055[self._ID669]["still"], 0.0 );
+            self clearanim( level._ID3055[self.model]["still"], 0.0 );
 
         if ( var_5 != var_1 )
         {
             var_1 = var_5;
-            self setanim( level._ID3055[self._ID669]["strong"], 1.0 - var_5, var_0, 1.0 );
-            self setanim( level._ID3055[self._ID669]["heli"], var_5, var_0, 1.0 );
-            self setanim( level._ID3055[self._ID669]["still"], 0.0, var_0, 1.0 );
+            self setanim( level._ID3055[self.model]["strong"], 1.0 - var_5, var_0, 1.0 );
+            self setanim( level._ID3055[self.model]["heli"], var_5, var_0, 1.0 );
+            self setanim( level._ID3055[self.model]["still"], 0.0, var_0, 1.0 );
             wait(var_0);
             continue;
         }

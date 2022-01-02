@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_desert_tf141_lmg" );
     self attach( "head_seal_soccom_rook", "", 1 );

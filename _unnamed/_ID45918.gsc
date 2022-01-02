@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_mailbox", "tag_origin", 200 );
     _ID42231::_ID10517( "tag_fx", "fx/props/mail_box_explode", 1 );

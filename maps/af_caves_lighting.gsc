@@ -1,12 +1,12 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID32363();
     _ID51110( "af_caves_start" );
     level._ID44391 = "af_caves_nvg";
-    maps\_thermal_scope_lightset::_ID521( "af_caves_thermal" );
+    maps\_thermal_scope_lightset::init( "af_caves_thermal" );
     level._ID40576 = "af_caves_thermal";
 }
 
@@ -141,6 +141,6 @@ _ID51110( var_0 )
 
     _ID42407::_ID32515( var_2, var_1 );
     _ID42407::_ID14689( var_3, var_1 );
-    level._ID794 _ID42407::_ID48929( var_0 );
-    level._ID794 _meth_849f( "af_caves", var_1 );
+    level.player _ID42407::_ID48929( var_0 );
+    level.player _meth_849f( "af_caves", var_1 );
 }

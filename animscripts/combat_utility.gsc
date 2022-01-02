@@ -12,8 +12,8 @@ _ID16648( var_0 )
 
 _ID16593()
 {
-    if ( isplayernumber( self._ID322 ) )
-        return randomfloatrange( self._ID322._ID17476._ID23609, self._ID322._ID17476._ID23066 );
+    if ( isplayernumber( self.enemy ) )
+        return randomfloatrange( self.enemy._ID17476._ID23609, self.enemy._ID17476._ID23066 );
     else
         return randomfloatrange( anim._ID23609, anim._ID23066 );
 }
@@ -64,15 +64,15 @@ _ID6451()
 
 _ID7345()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
-    if ( self._ID1194 != "allies" )
+    if ( self.team != "allies" )
     {
-        if ( !isplayernumber( self._ID322 ) )
+        if ( !isplayernumber( self.enemy ) )
             return 0;
 
-        if ( self._ID322 _ID42407::_ID13019( "player_is_invulnerable" ) )
+        if ( self.enemy _ID42407::_ID13019( "player_is_invulnerable" ) )
             return 0;
     }
 
@@ -82,13 +82,13 @@ _ID7345()
     if ( gettime() - self._ID2939 < self._ID2938 )
         return 0;
 
-    if ( !self cansee( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) > 65536 )
+    if ( !self cansee( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) > 65536 )
         return 0;
 
-    self._ID6323 = int( weaponclipsize( self._ID1302 ) / 2 );
+    self._ID6323 = int( weaponclipsize( self.weapon ) / 2 );
 
-    if ( self._ID6323 > weaponclipsize( self._ID1302 ) )
-        self._ID6323 = weaponclipsize( self._ID1302 );
+    if ( self._ID6323 > weaponclipsize( self.weapon ) )
+        self._ID6323 = weaponclipsize( self.weapon );
 
     self._ID2939 = gettime();
     self notify( "cheated_reload_level_stats" );
@@ -99,7 +99,7 @@ _ID2424()
 {
     for ( var_0 = int( 60.0 ); var_0 > 0; var_0-- )
     {
-        if ( isdefined( self._ID11575 ) || isdefined( self._ID322 ) && isdefined( self._ID322._ID11566 ) )
+        if ( isdefined( self._ID11575 ) || isdefined( self.enemy ) && isdefined( self.enemy._ID11566 ) )
         {
             wait 0.05;
             continue;
@@ -118,14 +118,14 @@ _ID33818()
 
     if ( _ID20813() )
     {
-        if ( isdefined( self._ID322 ) && isai( self._ID322 ) && distancesquared( level._ID794._ID740, self._ID322._ID740 ) < 147456 )
-            self._ID322 animscripts\battlechatter_ai::_ID2115( "infantry", self, 1.0 );
+        if ( isdefined( self.enemy ) && isai( self.enemy ) && distancesquared( level.player.origin, self.enemy.origin ) < 147456 )
+            self.enemy animscripts\battlechatter_ai::_ID2115( "infantry", self, 1.0 );
 
-        if ( animscripts\utility::_ID39993() && issentient( self._ID322 ) )
+        if ( animscripts\utility::_ID39993() && issentient( self.enemy ) )
             wait(randomfloat( 2.0 ));
     }
 
-    if ( isdefined( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) > squared( 400 ) )
+    if ( isdefined( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) > squared( 400 ) )
         var_0 = randomintrange( 1, 5 );
     else
         var_0 = 10;
@@ -313,7 +313,7 @@ _ID14321( var_0, var_1, var_2 )
 
     self setflaggedanimknobrestart( var_3, var_0, 1, 0.2, var_4 );
     self updateplayersightaccuracy();
-    var_5 = weaponfiretime( self._ID1302 );
+    var_5 = weaponfiretime( self.weapon );
     _ID14323( var_3, var_0, var_1, var_2, var_5 );
     _ID18550();
 }
@@ -344,7 +344,7 @@ _ID14323( var_0, var_1, var_2, var_3, var_4 )
 {
     self endon( "enemy" );
 
-    if ( isplayernumber( self._ID322 ) && ( self._ID33816 == "full" || self._ID33816 == "semi" ) )
+    if ( isplayernumber( self.enemy ) && ( self._ID33816 == "full" || self._ID33816 == "semi" ) )
         level endon( "player_becoming_invulnerable" );
 
     if ( var_2 )
@@ -359,7 +359,7 @@ _ID14323( var_0, var_1, var_2, var_3, var_4 )
     var_5 = 0;
     var_6 = getanimlength( var_1 );
     var_7 = animhasnotetrack( var_1, "fire" );
-    var_8 = weaponclass( self._ID1302 ) == "rocketlauncher";
+    var_8 = weaponclass( self.weapon ) == "rocketlauncher";
     thread _ID14322();
 
     while ( var_5 < var_3 && var_3 > 0 )
@@ -380,7 +380,7 @@ _ID14323( var_0, var_1, var_2, var_3, var_4 )
 
         _ID33774();
 
-        if ( isplayernumber( self._ID322 ) && self._ID322 _ID42407::_ID13019( "player_is_invulnerable" ) )
+        if ( isplayernumber( self.enemy ) && self.enemy _ID42407::_ID13019( "player_is_invulnerable" ) )
         {
             if ( randomint( 3 ) == 0 )
                 self._ID6323--;
@@ -392,7 +392,7 @@ _ID14323( var_0, var_1, var_2, var_3, var_4 )
         {
             self._ID7._ID30103--;
 
-            if ( issubstr( tolower( self._ID1302 ), "rpg" ) || issubstr( tolower( self._ID1302 ), "panzerfaust" ) )
+            if ( issubstr( tolower( self.weapon ), "rpg" ) || issubstr( tolower( self.weapon ), "panzerfaust" ) )
             {
                 self hidepart( "tag_rocket" );
                 self._ID7._ID30106 = 0;
@@ -457,9 +457,9 @@ _ID25138( var_0, var_1 )
 
 _ID20908()
 {
-    if ( weaponburstcount( self._ID1302 ) > 0 )
+    if ( weaponburstcount( self.weapon ) > 0 )
         return 0;
-    else if ( weaponisauto( self._ID1302 ) )
+    else if ( weaponisauto( self.weapon ) )
         return 0;
 
     return 1;
@@ -471,7 +471,7 @@ _ID33774()
 
     if ( isdefined( self._ID33785 ) )
     {
-        if ( isdefined( self._ID322 ) && self._ID33785 == self._ID322 )
+        if ( isdefined( self.enemy ) && self._ID33785 == self.enemy )
             animscripts\utility::_ID33781( var_0 );
     }
     else
@@ -513,13 +513,13 @@ _ID29286( var_0 )
 
 _ID24716( var_0 )
 {
-    if ( self._ID1302 == "none" )
+    if ( self.weapon == "none" )
         return 0;
 
     if ( isdefined( self._ID24926 ) )
     {
-        if ( self._ID6323 < weaponclipsize( self._ID1302 ) * 0.5 )
-            self._ID6323 = int( weaponclipsize( self._ID1302 ) * 0.5 );
+        if ( self._ID6323 < weaponclipsize( self.weapon ) * 0.5 )
+            self._ID6323 = int( weaponclipsize( self.weapon ) * 0.5 );
 
         if ( self._ID6323 <= 0 )
             self._ID6323 = 1;
@@ -529,8 +529,8 @@ _ID24716( var_0 )
 
     if ( animscripts\stairs_utility::_ID54507( 100 ) )
     {
-        if ( self._ID6323 < weaponclipsize( self._ID1302 ) * 0.5 )
-            self._ID6323 = int( weaponclipsize( self._ID1302 ) * 0.5 );
+        if ( self._ID6323 < weaponclipsize( self.weapon ) * 0.5 )
+            self._ID6323 = int( weaponclipsize( self.weapon ) * 0.5 );
 
         if ( self._ID6323 <= 0 )
             self._ID6323 = 1;
@@ -538,7 +538,7 @@ _ID24716( var_0 )
         return 0;
     }
 
-    if ( self._ID6323 <= weaponclipsize( self._ID1302 ) * var_0 )
+    if ( self._ID6323 <= weaponclipsize( self.weapon ) * var_0 )
     {
         if ( var_0 == 0 )
         {
@@ -716,13 +716,13 @@ _ID32536( var_0 )
     if ( isplayernumber( var_0 ) )
     {
         self._ID1826._ID20863 = 1;
-        self._ID1826._ID794 = var_0;
-        self._ID1826._ID37755 = self._ID470;
+        self._ID1826.player = var_0;
+        self._ID1826._ID37755 = self.grenadeweapon;
     }
     else
     {
         self._ID1826._ID20863 = 0;
-        self._ID1826._ID37755 = "AI_" + self._ID470;
+        self._ID1826._ID37755 = "AI_" + self.grenadeweapon;
     }
 }
 
@@ -735,7 +735,7 @@ _ID32643( var_0, var_1 )
 {
     if ( var_0._ID20863 )
     {
-        var_2 = var_0._ID794;
+        var_2 = var_0.player;
         var_3 = var_2._ID17424[var_0._ID37755];
         var_2._ID17424[var_0._ID37755] = max( var_1, var_3 );
     }
@@ -752,7 +752,7 @@ _ID16216()
 
     if ( _ID39989() )
     {
-        var_1 = self._ID1826._ID794;
+        var_1 = self._ID1826.player;
         var_0 = gettime() + var_1._ID17476._ID27830 + randomint( var_1._ID17476._ID27831 );
     }
     else
@@ -764,7 +764,7 @@ _ID16216()
 _ID16309( var_0 )
 {
     if ( var_0._ID20863 )
-        return var_0._ID794._ID17424[var_0._ID37755];
+        return var_0.player._ID17424[var_0._ID37755];
     else
         return anim._ID17424[var_0._ID37755];
 }
@@ -775,28 +775,28 @@ _ID8532( var_0 )
     {
         if ( gettime() < _ID16309( self._ID1826 ) )
         {
-            if ( level._ID794._ID511 )
+            if ( level.player.ignoreme )
                 return var_0;
 
             var_1 = self getthreatbiasgroup();
-            var_2 = level._ID794 getthreatbiasgroup();
+            var_2 = level.player getthreatbiasgroup();
 
             if ( var_1 != "" && var_2 != "" && getthreatbias( var_2, var_1 ) < -10000 )
                 return var_0;
 
-            if ( self cansee( level._ID794 ) || isai( var_0 ) && var_0 cansee( level._ID794 ) )
+            if ( self cansee( level.player ) || isai( var_0 ) && var_0 cansee( level.player ) )
             {
                 if ( isdefined( self._ID8893 ) )
                 {
-                    var_3 = vectortoangles( level._ID794._ID740 - self._ID740 );
-                    var_4 = angleclamp180( self._ID8893._ID65[1] - var_3[1] );
+                    var_3 = vectortoangles( level.player.origin - self.origin );
+                    var_4 = angleclamp180( self._ID8893.angles[1] - var_3[1] );
                 }
                 else
-                    var_4 = animscripts\utility::_ID16762( level._ID794._ID740 );
+                    var_4 = animscripts\utility::_ID16762( level.player.origin );
 
                 if ( abs( var_4 ) < 60 )
                 {
-                    var_0 = level._ID794;
+                    var_0 = level.player;
                     _ID32536( var_0 );
                 }
             }
@@ -857,7 +857,7 @@ _ID39073( var_0, var_1, var_2, var_3 )
 {
     if ( !self isgrenadepossafe( var_0, var_1 ) && !_ID49347::iswolf( self ) )
         return 0;
-    else if ( distancesquared( self._ID740, var_1 ) < 40000 )
+    else if ( distancesquared( self.origin, var_1 ) < 40000 )
         return 0;
 
     var_4 = physicstrace( var_1 + ( 0, 0, 1 ), var_1 + ( 0, 0, -500 ) );
@@ -871,7 +871,7 @@ _ID39073( var_0, var_1, var_2, var_3 )
 
 _ID39072( var_0, var_1 )
 {
-    if ( self._ID1302 == "mg42" || self._ID464 <= 0 )
+    if ( self.weapon == "mg42" || self.grenadeammo <= 0 )
         return 0;
 
     _ID32536( var_0 );
@@ -882,17 +882,17 @@ _ID39072( var_0, var_1 )
 
     var_2 = _ID16308( var_1 );
 
-    if ( isdefined( self._ID322 ) && var_0 == self._ID322 )
+    if ( isdefined( self.enemy ) && var_0 == self.enemy )
     {
         if ( !_ID7436() )
             return 0;
 
-        if ( isplayernumber( self._ID322 ) && _ID42407::_ID20581( self._ID322 ) )
+        if ( isplayernumber( self.enemy ) && _ID42407::_ID20581( self.enemy ) )
             return 0;
 
         if ( animscripts\utility::_ID6885() )
         {
-            if ( !self isgrenadepossafe( var_0, var_0._ID740 ) && !_ID49347::iswolf( self ) )
+            if ( !self isgrenadepossafe( var_0, var_0.origin ) && !_ID49347::iswolf( self ) )
                 return 0;
 
             return _ID39074( var_0, undefined, var_1, var_2 );
@@ -904,7 +904,7 @@ _ID39072( var_0, var_1 )
             if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
                 var_3 = self lastknownpos( var_0 );
             else
-                var_3 = var_0._ID740;
+                var_3 = var_0.origin;
 
             if ( !self isgrenadepossafe( var_0, var_3 ) && !_ID49347::iswolf( self ) )
                 return 0;
@@ -919,7 +919,7 @@ _ID39072( var_0, var_1 )
         if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
             var_3 = self lastknownpos( var_0 );
         else
-            var_3 = var_0._ID740;
+            var_3 = var_0.origin;
 
         return _ID39073( var_0, var_3, var_1, var_2 );
     }
@@ -986,7 +986,7 @@ _ID39074( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         var_10 = self checkgrenadethrowpos( var_3, self lastknownpos( var_0 ), var_5, "min energy", "min time", "max time" );
     else
     {
-        var_11 = distance( var_0._ID740, self._ID740 );
+        var_11 = distance( var_0.origin, self.origin );
         var_12 = self._ID28963;
 
         if ( var_11 < 800 )
@@ -1011,9 +1011,9 @@ _ID39074( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     if ( isdefined( var_10 ) )
     {
         if ( !isdefined( self._ID25557 ) )
-            self._ID25557 = self._ID465;
+            self._ID25557 = self.grenadeawareness;
 
-        self._ID465 = 0;
+        self.grenadeawareness = 0;
         var_13 = _ID16216();
         _ID32643( self._ID1826, min( gettime() + 3000, var_13 ) );
         var_14 = 0;
@@ -1056,7 +1056,7 @@ _ID11482( var_0, var_1, var_2, var_3 )
 {
     self endon( "killanimscript" );
 
-    if ( self._ID912 == "combat" || self._ID912 == "move" )
+    if ( self.script == "combat" || self.script == "move" )
         self orientmode( "face direction", var_1 );
 
     animscripts\battlechatter_ai::_ID13236( "grenade" );
@@ -1081,7 +1081,7 @@ _ID11482( var_0, var_1, var_2, var_3 )
 
         if ( var_6 == "end" )
         {
-            self._ID1826._ID794._ID25254--;
+            self._ID1826.player._ID25254--;
             self notify( "dont_reduce_giptp_on_killanimscript" );
             return 0;
         }
@@ -1090,7 +1090,7 @@ _ID11482( var_0, var_1, var_2, var_3 )
     self notify( "dont_reduce_giptp_on_killanimscript" );
 
     if ( _ID39989() )
-        thread _ID41522( self._ID1826._ID794, var_2 );
+        thread _ID41522( self._ID1826.player, var_2 );
 
     self throwgrenade();
 
@@ -1099,7 +1099,7 @@ _ID11482( var_0, var_1, var_2, var_3 )
 
     if ( var_3 )
     {
-        var_13 = self._ID1826._ID794;
+        var_13 = self._ID1826.player;
 
         if ( var_13._ID25254 > 1 || gettime() - var_13._ID21927 < 2000 )
             var_13._ID17424["double_grenade"] = gettime() + min( 5000, var_13._ID17476._ID27800 );
@@ -1114,7 +1114,7 @@ _ID11482( var_0, var_1, var_2, var_3 )
     }
 
     self._ID20766 = undefined;
-    self._ID465 = self._ID25557;
+    self.grenadeawareness = self._ID25557;
     self._ID25557 = undefined;
     self waittillmatch( "throwanim",  "end"  );
     self notify( "done_grenade_throw" );
@@ -1137,7 +1137,7 @@ _ID41523( var_0 )
     var_2 = spawnstruct();
     var_2 thread _ID41524( 5 );
     var_2 endon( "watchGrenadeTowardsPlayerTimeout" );
-    var_3 = self._ID470;
+    var_3 = self.grenadeweapon;
     var_4 = _ID16306();
 
     if ( !isdefined( var_4 ) )
@@ -1154,7 +1154,7 @@ _ID41523( var_0 )
     }
 
     var_7 = level._ID805;
-    var_8 = var_4._ID740;
+    var_8 = var_4.origin;
 
     for (;;)
     {
@@ -1163,14 +1163,14 @@ _ID41523( var_0 )
         if ( !isdefined( var_4 ) )
             break;
 
-        if ( distancesquared( var_4._ID740, var_8 ) < 400 )
+        if ( distancesquared( var_4.origin, var_8 ) < 400 )
         {
             var_9 = [];
 
             for ( var_10 = 0; var_10 < var_7.size; var_10++ )
             {
                 var_11 = var_7[var_10];
-                var_12 = distancesquared( var_4._ID740, var_11._ID740 );
+                var_12 = distancesquared( var_4.origin, var_11.origin );
 
                 if ( var_12 < var_5 )
                 {
@@ -1188,7 +1188,7 @@ _ID41523( var_0 )
                 break;
         }
 
-        var_8 = var_4._ID740;
+        var_8 = var_4.origin;
     }
 }
 
@@ -1235,7 +1235,7 @@ _ID10628( var_0, var_1 )
 
     if ( isdefined( self._ID25557 ) )
     {
-        self._ID465 = self._ID25557;
+        self.grenadeawareness = self._ID25557;
         self._ID25557 = undefined;
     }
 
@@ -1244,9 +1244,9 @@ _ID10628( var_0, var_1 )
 
 _ID25479( var_0 )
 {
-    var_1 = anglestoforward( self._ID65 );
-    var_2 = anglestoright( self._ID65 );
-    var_3 = anglestoup( self._ID65 );
+    var_1 = anglestoforward( self.angles );
+    var_2 = anglestoright( self.angles );
+    var_3 = anglestoup( self.angles );
     var_1 *= var_0[0];
     var_2 *= var_0[1];
     var_3 *= var_0[2];
@@ -1257,7 +1257,7 @@ _ID17414( var_0, var_1 )
 {
     level notify( "armoffset" );
     level endon( "armoffset" );
-    var_0 = self._ID740 + _ID25479( var_0 );
+    var_0 = self.origin + _ID25479( var_0 );
 
     for (;;)
         wait 0.05;
@@ -1285,10 +1285,10 @@ _ID12146()
 
 _ID22626()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
-    if ( self._ID381 || self._ID302 )
+    if ( self.fixednode || self.doingambush )
         return 0;
 
     var_0 = _ID16152();
@@ -1316,7 +1316,7 @@ _ID16152()
 
     if ( isdefined( self.dontchangefloor ) && self.dontchangefloor )
     {
-        var_2 = var_0._ID740 - self._ID740;
+        var_2 = var_0.origin - self.origin;
 
         if ( abs( var_2[2] ) > 140 )
             return undefined;
@@ -1327,10 +1327,10 @@ _ID16152()
 
 _ID39926( var_0 )
 {
-    var_1 = self._ID562;
-    var_2 = self._ID561;
-    self._ID562 = 0;
-    self._ID561 = 0;
+    var_1 = self.keepclaimednodeifvalid;
+    var_2 = self.keepclaimednode;
+    self.keepclaimednodeifvalid = 0;
+    self.keepclaimednode = 0;
 
     if ( self usecovernode( var_0 ) )
     {
@@ -1338,22 +1338,22 @@ _ID39926( var_0 )
         jump loc_1D38
     }
 
-    self._ID562 = var_1;
-    self._ID561 = var_2;
+    self.keepclaimednodeifvalid = var_1;
+    self.keepclaimednode = var_2;
     return 0;
 }
 
 _ID33951()
 {
-    if ( level._ID2182[self._ID1194] > 0 && level._ID2182[self._ID1194] < level._ID2183 )
+    if ( level._ID2182[self.team] > 0 && level._ID2182[self.team] < level._ID2183 )
     {
-        if ( gettime() - level._ID21879[self._ID1194] > 4000 )
+        if ( gettime() - level._ID21879[self.team] > 4000 )
             return 0;
 
-        var_0 = level._ID21876[self._ID1194];
-        var_1 = isdefined( var_0 ) && distancesquared( self._ID740, var_0._ID740 ) < 65536;
+        var_0 = level._ID21876[self.team];
+        var_1 = isdefined( var_0 ) && distancesquared( self.origin, var_0.origin ) < 65536;
 
-        if ( ( var_1 || distancesquared( self._ID740, level._ID21878[self._ID1194] ) < 65536 ) && ( !isdefined( self._ID322 ) || distancesquared( self._ID322._ID740, level._ID21877[self._ID1194] ) < 262144 ) )
+        if ( ( var_1 || distancesquared( self.origin, level._ID21878[self.team] ) < 65536 ) && ( !isdefined( self.enemy ) || distancesquared( self.enemy.origin, level._ID21877[self.team] ) < 262144 ) )
             return 1;
     }
 
@@ -1362,24 +1362,24 @@ _ID33951()
 
 _ID7411()
 {
-    if ( !isdefined( level._ID21879[self._ID1194] ) )
+    if ( !isdefined( level._ID21879[self.team] ) )
         return 0;
 
     if ( _ID33951() )
         return 1;
 
-    if ( gettime() - level._ID21879[self._ID1194] < level._ID2184 )
+    if ( gettime() - level._ID21879[self.team] < level._ID2184 )
         return 0;
 
-    if ( !issentient( self._ID322 ) )
+    if ( !issentient( self.enemy ) )
         return 0;
 
-    if ( level._ID2182[self._ID1194] )
-        level._ID2182[self._ID1194] = 0;
+    if ( level._ID2182[self.team] )
+        level._ID2182[self.team] = 0;
 
     var_0 = isdefined( self._ID2177 ) && self._ID2177;
 
-    if ( !var_0 && getaicount( self._ID1194 ) < getaicount( self._ID322._ID1194 ) )
+    if ( !var_0 && getaicount( self.team ) < getaicount( self.enemy.team ) )
         return 0;
 
     return 1;
@@ -1387,16 +1387,16 @@ _ID7411()
 
 _ID39079( var_0 )
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
-    if ( self._ID381 )
+    if ( self.fixednode )
         return 0;
 
-    if ( self._ID199 == "ambush" || self._ID199 == "ambush_nodes_only" )
+    if ( self.combatmode == "ambush" || self.combatmode == "ambush_nodes_only" )
         return 0;
 
-    if ( !self isingoal( self._ID322._ID740 ) )
+    if ( !self isingoal( self.enemy.origin ) )
         return 0;
 
     if ( _ID20813() )
@@ -1409,19 +1409,19 @@ _ID39079( var_0 )
 
     if ( self reacquiremove() )
     {
-        self._ID562 = 0;
-        self._ID561 = 0;
+        self.keepclaimednodeifvalid = 0;
+        self.keepclaimednode = 0;
         self._ID7._ID22753 = 1;
 
-        if ( level._ID2182[self._ID1194] == 0 )
+        if ( level._ID2182[self.team] == 0 )
         {
-            level._ID21879[self._ID1194] = gettime();
-            level._ID21876[self._ID1194] = self;
+            level._ID21879[self.team] = gettime();
+            level._ID21876[self.team] = self;
         }
 
-        level._ID21878[self._ID1194] = self._ID740;
-        level._ID21877[self._ID1194] = self._ID322._ID740;
-        level._ID2182[self._ID1194]++;
+        level._ID21878[self.team] = self.origin;
+        level._ID21877[self.team] = self.enemy.origin;
+        level._ID2182[self.team]++;
         return 1;
     }
 
@@ -1433,7 +1433,7 @@ _ID10209( var_0 )
     self endon( "death" );
     wait 0.5;
     var_1 = "" + anim._ID4714;
-    badplace_cylinder( var_1, 5, var_0, 16, 64, self._ID1194 );
+    badplace_cylinder( var_1, 5, var_0, 16, 64, self.team );
     anim._ID4717[anim._ID4717.size] = var_1;
 
     if ( anim._ID4717.size >= 10 )
@@ -1483,13 +1483,13 @@ _ID16321()
 
 _ID16517()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
-        var_0 = _ID15797( self._ID322 );
+        var_0 = _ID15797( self.enemy );
     else
-        var_0 = self._ID322 getshootatpos();
+        var_0 = self.enemy getshootatpos();
 
     var_1 = var_0 - self getshootatpos();
     var_1 = vectornormalize( var_1 );
@@ -1515,9 +1515,9 @@ _ID16518( var_0, var_1 )
 
     if ( isdefined( self ) && animscripts\utility::_ID20915() )
     {
-        var_2 = anglestoforward( self._ID65 );
-        var_3 = rotatepointaroundvector( var_2, var_0 - self._ID740, self._ID65[2] * -1 );
-        var_0 = var_3 + self._ID740;
+        var_2 = anglestoforward( self.angles );
+        var_3 = rotatepointaroundvector( var_2, var_0 - self.origin, self.angles[2] * -1 );
+        var_0 = var_3 + self.origin;
     }
 
     var_4 = var_0 - var_1;
@@ -1571,10 +1571,10 @@ _ID37733( var_0, var_1 )
 
 _ID7436()
 {
-    var_0 = self._ID322._ID740 - self._ID740;
+    var_0 = self.enemy.origin - self.origin;
     var_1 = lengthsquared( ( var_0[0], var_0[1], 0 ) );
 
-    if ( self._ID470 == "flash_grenade" )
+    if ( self.grenadeweapon == "flash_grenade" )
         return var_1 < 589824;
 
     if ( isdefined( level._ID46221 ) && level._ID46221 )
@@ -1608,7 +1608,7 @@ _ID24161()
         if ( isdefined( self._ID25834 ) )
             continue;
 
-        if ( isdefined( self._ID1194 ) && isdefined( var_4 ) && self._ID1194 == var_4 )
+        if ( isdefined( self.team ) && isdefined( var_4 ) && self.team == var_4 )
         {
             var_0 = 3 * ( var_0 - 0.75 );
 
@@ -1726,6 +1726,6 @@ _ID27650()
 _ID15797( var_0 )
 {
     var_1 = self lastknownpos( var_0 );
-    var_2 = var_0 getshootatpos() - var_0._ID740;
+    var_2 = var_0 getshootatpos() - var_0.origin;
     return var_1 + var_2;
 }

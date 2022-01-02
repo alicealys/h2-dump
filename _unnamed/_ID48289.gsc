@@ -48,7 +48,7 @@ _ID52286( var_0 )
     foreach ( var_2 in level._ID805 )
     {
         var_3 = _ID42237::_ID35164();
-        var_3._ID740 = self._ID740;
+        var_3.origin = self.origin;
         var_3._ID49526 = self;
         var_3 thread _ID50736::_ID53491( var_0, var_2 );
         var_2 _ID49607( var_3 );

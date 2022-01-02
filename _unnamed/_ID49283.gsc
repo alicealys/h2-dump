@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9259( "snow_climb_bg" );
     var_0 _ID42229::_ID32402( ( 2940.59, -27371.2, 1481.97 ), ( 270, 0, 0 ) );

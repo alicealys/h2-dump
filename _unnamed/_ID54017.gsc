@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
 
 }
@@ -27,11 +27,11 @@ _ID54010()
         for ( var_2 = 0; var_2 < var_0.size; var_2++ )
         {
             var_4 = ( var_2 + var_3 ) % var_0.size;
-            var_5 = distance( level._ID794 getorigin(), var_0[var_4]._ID740 );
+            var_5 = distance( level.player getorigin(), var_0[var_4].origin );
             var_6 = undefined;
 
             if ( isdefined( level._ID388 ) )
-                var_6 = distance( level._ID388._ID740, var_0[var_4]._ID740 );
+                var_6 = distance( level._ID388.origin, var_0[var_4].origin );
             else
                 var_6 = 360;
 
@@ -41,7 +41,7 @@ _ID54010()
                 var_1 = var_4;
 
                 if ( var_5 < 500 )
-                    _ID46623::_ID616( 4 );
+                    _ID46623::main( 4 );
 
                 break;
             }
@@ -71,7 +71,7 @@ _ID43484( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
 
     for ( var_13 = 0; var_13 < var_11.size; var_13++ )
     {
-        if ( isdefined( var_11[var_13]._ID1191 ) && var_9 == 0 )
+        if ( isdefined( var_11[var_13].target ) && var_9 == 0 )
             var_11[var_13] _ID48357();
     }
 
@@ -98,7 +98,7 @@ _ID43484( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
             for ( var_13 = 0; var_13 < var_11.size; var_13++ )
             {
                 var_15 = ( var_13 + var_14 ) % var_11.size;
-                var_16 = distance( level._ID794 getorigin(), var_11[var_15]._ID740 );
+                var_16 = distance( level.player getorigin(), var_11[var_15].origin );
 
                 if ( var_16 < var_1 && var_16 > var_2 && var_15 != var_12 )
                 {
@@ -126,14 +126,14 @@ _ID46437()
                 level._ID48347[var_2[var_3]._ID31297] = [];
 
             var_4 = spawnstruct();
-            var_4._ID740 = var_2[var_3]._ID740;
-            var_4._ID65 = var_2[var_3]._ID65;
+            var_4.origin = var_2[var_3].origin;
+            var_4.angles = var_2[var_3].angles;
 
-            if ( isdefined( var_2[var_3]._ID1193 ) )
-                var_4._ID1193 = var_2[var_3]._ID1193;
+            if ( isdefined( var_2[var_3].targetname ) )
+                var_4.targetname = var_2[var_3].targetname;
 
-            if ( isdefined( var_2[var_3]._ID1191 ) )
-                var_4._ID1191 = var_2[var_3]._ID1191;
+            if ( isdefined( var_2[var_3].target ) )
+                var_4.target = var_2[var_3].target;
 
             level._ID48347[var_2[var_3]._ID31297][level._ID48347[var_2[var_3]._ID31297].size] = var_4;
             var_2[var_3] delete();
@@ -249,18 +249,18 @@ _ID49860()
 
         if ( randomint( 100 ) < 75 )
         {
-            var_12 = anglestoforward( level._ID794._ID65 );
+            var_12 = anglestoforward( level.player.angles );
             var_13 = [];
 
             for ( var_14 = 0; var_14 < level._ID48347[self._ID31297].size; var_14++ )
             {
-                if ( var_3 > 0 && distance( level._ID794._ID740, level._ID48347[self._ID31297][var_14]._ID740 ) > var_3 )
+                if ( var_3 > 0 && distance( level.player.origin, level._ID48347[self._ID31297][var_14].origin ) > var_3 )
                     continue;
 
                 if ( _ID54387( level._ID48347[self._ID31297][var_14], var_0 ) )
                     continue;
 
-                var_15 = vectornormalize( level._ID48347[self._ID31297][var_14]._ID740 - level._ID794._ID740 );
+                var_15 = vectornormalize( level._ID48347[self._ID31297][var_14].origin - level.player.origin );
 
                 if ( vectordot( var_12, var_15 ) > 0.3 )
                     var_13[var_13.size] = var_14;
@@ -278,9 +278,9 @@ _ID49860()
 
         if ( var_2 && gettime() > var_1 )
         {
-            if ( isdefined( self._ID1191 ) )
+            if ( isdefined( self.target ) )
             {
-                var_16 = getent( self._ID1191, "targetname" );
+                var_16 = getent( self.target, "targetname" );
 
                 if ( isdefined( var_16 ) )
                 {
@@ -307,16 +307,16 @@ _ID54387( var_0, var_1 )
 
 _ID45991()
 {
-    if ( isdefined( self._ID1193 ) && isdefined( level._ID51089[self._ID1193] ) )
-        level thread [[ level._ID51089[self._ID1193] ]]( self );
+    if ( isdefined( self.targetname ) && isdefined( level._ID51089[self.targetname] ) )
+        level thread [[ level._ID51089[self.targetname] ]]( self );
     else
         thread _ID43158( undefined, undefined, undefined, undefined, undefined, undefined, 1 );
 
     self waittill( "mortar" );
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        var_0 = getent( self._ID1191, "targetname" );
+        var_0 = getent( self.target, "targetname" );
 
         if ( isdefined( var_0 ) )
             var_0 notify( "trigger" );
@@ -359,11 +359,11 @@ _ID52063()
 
 _ID54459( var_0 )
 {
-    var_1 = getentarray( level._ID53999[var_0]._ID1191, "targetname" );
+    var_1 = getentarray( level._ID53999[var_0].target, "targetname" );
 
     for (;;)
     {
-        if ( level._ID794 istouching( level._ID53999[var_0] ) )
+        if ( level.player istouching( level._ID53999[var_0] ) )
         {
             var_2 = randomint( var_1.size );
 
@@ -471,17 +471,17 @@ _ID52197( var_0, var_1, var_2, var_3, var_4, var_5 )
     {
         if ( var_4.size >= 3 )
         {
-            var_15 = sortbydistance( var_4, level._ID794._ID740 );
+            var_15 = sortbydistance( var_4, level.player.origin );
             var_16 = randomint( 3 );
             var_17 = var_15[var_16];
         }
         else
-            var_17 = _ID42237::_ID16182( level._ID794._ID740, var_4 );
+            var_17 = _ID42237::_ID16182( level.player.origin, var_4 );
 
         if ( !isdefined( level._ID49353 ) )
-            _ID42237::_ID27077( "mortar_incoming_bunker", var_17._ID740 );
+            _ID42237::_ID27077( "mortar_incoming_bunker", var_17.origin );
 
-        thread _ID42237::_ID27077( "exp_artillery_underground", var_17._ID740 );
+        thread _ID42237::_ID27077( "exp_artillery_underground", var_17.origin );
         _ID42237::_ID3350( var_0, ::_ID50032 );
 
         if ( isdefined( var_6 ) )
@@ -497,7 +497,7 @@ _ID52197( var_0, var_1, var_2, var_3, var_4, var_5 )
         }
 
         if ( !isdefined( level._ID51139 ) )
-            earthquake( var_13, var_14, var_17._ID740, var_12 );
+            earthquake( var_13, var_14, var_17.origin, var_12 );
 
         level notify( "mortar_hit" );
 
@@ -535,26 +535,26 @@ _ID50032( var_0, var_1 )
         var_2 = 1024;
 
     var_3 = var_2 * var_2;
-    var_4 = distancesquared( level._ID794._ID740, self._ID740 );
+    var_4 = distancesquared( level.player.origin, self.origin );
 
     if ( var_4 > var_3 )
         return;
 
-    if ( isdefined( self._ID170 ) && self._ID170 == "trigger_radius" )
+    if ( isdefined( self.classname ) && self.classname == "trigger_radius" )
     {
-        if ( !level._ID794 istouching( self ) && distance( level._ID794._ID740, self._ID740 ) < level._ID50592 )
+        if ( !level.player istouching( self ) && distance( level.player.origin, self.origin ) < level._ID50592 )
         {
-            radiusdamage( self._ID740, self._ID851, 500, 500 );
+            radiusdamage( self.origin, self.radius, 500, 500 );
             self delete();
             return;
         }
     }
     else
     {
-        playfx( level._ID1426["mortar"][self._ID31220], self._ID740 );
+        playfx( level._ID1426["mortar"][self._ID31220], self.origin );
 
         if ( var_4 < 262144 )
-            thread _ID42237::_ID27077( "emt_single_ceiling_debris", self._ID740 );
+            thread _ID42237::_ID27077( "emt_single_ceiling_debris", self.origin );
     }
 }
 
@@ -649,14 +649,14 @@ _ID43447( var_0, var_1, var_2, var_3 )
             if ( isdefined( var_0[var_6]._ID51567 ) )
                 continue;
 
-            var_7 = distance( level._ID794._ID740, var_0[var_6]._ID740 );
+            var_7 = distance( level.player.origin, var_0[var_6].origin );
 
             if ( var_7 < var_4 )
                 continue;
 
             if ( isdefined( level._ID47286 ) && level._ID47286.size > 0 )
             {
-                var_5._ID740 = var_0[var_6]._ID740;
+                var_5.origin = var_0[var_6].origin;
 
                 if ( _ID47414( level._ID47286, var_5 ) )
                     continue;
@@ -707,13 +707,13 @@ _ID47414( var_0, var_1 )
 
 _ID44980( var_0 )
 {
-    var_1 = level._ID794 geteye();
+    var_1 = level.player geteye();
     var_2 = ( 0, 0, 0 );
 
     if ( isdefined( level._ID49598 ) )
         var_2 = level._ID49598;
 
-    var_3 = _ID42237::_ID41802( var_1, level._ID794 getplayerangles() + var_2, self._ID740, var_0 );
+    var_3 = _ID42237::_ID41802( var_1, level.player getplayerangles() + var_2, self.origin, var_0 );
     return var_3;
 }
 
@@ -739,19 +739,19 @@ _ID44507( var_0, var_1 )
         thread _ID42237::_ID27077( level._ID30909["mortar"][self._ID31220] );
 
     setplayerignoreradiusdamage( 1 );
-    radiusdamage( self._ID740, level._ID50184, 150, 50 );
+    radiusdamage( self.origin, level._ID50184, 150, 50 );
     setplayerignoreradiusdamage( 0 );
-    playfx( level._ID1426["mortar"][self._ID31220], self._ID740 );
+    playfx( level._ID1426["mortar"][self._ID31220], self.origin );
 
     if ( isdefined( level._ID53514 ) )
-        earthquake( 0.3, 1, level._ID794._ID740, 2000 );
+        earthquake( 0.3, 1, level.player.origin, 2000 );
 
     if ( getdvarint( "bog_camerashake" ) > 0 )
     {
-        if ( level._ID794 getcurrentweapon() == "dragunov" && level._ID794 playerads() > 0.8 )
+        if ( level.player getcurrentweapon() == "dragunov" && level.player playerads() > 0.8 )
             return;
 
-        earthquake( 0.25, 0.75, self._ID740, level._ID49801 );
+        earthquake( 0.25, 0.75, self.origin, level._ID49801 );
     }
 }
 
@@ -822,7 +822,7 @@ _ID43532()
 
     for (;;)
     {
-        if ( distance( level._ID794 getorigin(), self._ID740 ) < 600 )
+        if ( distance( level.player getorigin(), self.origin ) < 600 )
         {
             _ID43158( undefined, undefined, undefined, undefined, undefined, undefined, 0 );
             break;
@@ -835,7 +835,7 @@ _ID43532()
 
     for (;;)
     {
-        if ( distance( level._ID794 getorigin(), self._ID740 ) < 1200 && distance( level._ID794 getorigin(), self._ID740 ) > 400 )
+        if ( distance( level.player getorigin(), self.origin ) < 1200 && distance( level.player getorigin(), self.origin ) > 400 )
         {
             _ID43158( undefined, undefined, undefined, undefined, undefined, undefined, 0 );
             wait(3 + randomfloat( 14 ));
@@ -849,9 +849,9 @@ _ID48357()
 {
     self._ID43056 = 0;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        self._ID51579 = getentarray( self._ID1191, "targetname" );
+        self._ID51579 = getentarray( self.target, "targetname" );
         self._ID43056 = 1;
         jump loc_11E3
     }
@@ -865,16 +865,16 @@ _ID48357()
     {
         if ( isdefined( self._ID31249 ) )
             self._ID52340 = getent( self._ID31249, "targetname" );
-        else if ( isdefined( self._ID51579 ) && isdefined( self._ID51579[0]._ID1191 ) )
-            self._ID52340 = getent( self._ID51579[0]._ID1191, "targetname" );
+        else if ( isdefined( self._ID51579 ) && isdefined( self._ID51579[0].target ) )
+            self._ID52340 = getent( self._ID51579[0].target, "targetname" );
 
         if ( isdefined( self._ID52340 ) )
             self._ID52340 hide();
     }
     else if ( isdefined( self._ID43056 ) )
     {
-        if ( isdefined( self._ID51579 ) && isdefined( self._ID51579[0]._ID1191 ) )
-            self._ID52340 = getent( self._ID51579[0]._ID1191, "targetname" );
+        if ( isdefined( self._ID51579 ) && isdefined( self._ID51579[0].target ) )
+            self._ID52340 = getent( self._ID51579[0].target, "targetname" );
 
         if ( isdefined( self._ID52340 ) )
             self._ID52340 hide();
@@ -896,7 +896,7 @@ _ID43158( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     if ( !isdefined( var_2 ) )
         var_2 = 25;
 
-    radiusdamage( self._ID740, var_0, var_1, var_2 );
+    radiusdamage( self.origin, var_0, var_1, var_2 );
 
     if ( isdefined( self._ID43056 ) && self._ID43056 == 1 && isdefined( self._ID51579 ) )
     {
@@ -911,7 +911,7 @@ _ID43158( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         self._ID52340 show();
 
     self._ID43056 = 0;
-    _ID50894( self._ID740, var_3, var_4, var_5, undefined, var_6 );
+    _ID50894( self.origin, var_3, var_4, var_5, undefined, var_6 );
 }
 
 _ID50894( var_0, var_1, var_2, var_3, var_4, var_5 )
@@ -937,12 +937,12 @@ _ID50894( var_0, var_1, var_2, var_3, var_4, var_5 )
     if ( isdefined( level._ID51181 ) )
         return;
 
-    if ( distance( level._ID794._ID740, var_0 ) > 300 )
+    if ( distance( level.player.origin, var_0 ) > 300 )
         return;
 
     level._ID51181 = 1;
     level notify( "shell shock player",  var_2 * 4  );
-    _ID46623::_ID616( var_2 * 4 );
+    _ID46623::main( var_2 * 4 );
 }
 
 _ID52724( var_0 )
@@ -960,7 +960,7 @@ _ID52724( var_0 )
     if ( !var_0 )
         self playsound( "mortar_explosion" + var_1 );
     else
-        _ID42237::_ID27077( "mortar_explosion" + var_1, self._ID740 );
+        _ID42237::_ID27077( "mortar_explosion" + var_1, self.origin );
 }
 
 _ID53348( var_0, var_1 )
@@ -983,7 +983,7 @@ _ID53348( var_0, var_1 )
     if ( var_0 == 1 )
     {
         if ( var_1 )
-            thread _ID42237::_ID27077( "mortar_incoming1", self._ID740 );
+            thread _ID42237::_ID27077( "mortar_incoming1", self.origin );
         else
             self playsound( "mortar_incoming1" );
 
@@ -992,7 +992,7 @@ _ID53348( var_0, var_1 )
     else if ( var_0 == 2 )
     {
         if ( var_1 )
-            thread _ID42237::_ID27077( "mortar_incoming2", self._ID740 );
+            thread _ID42237::_ID27077( "mortar_incoming2", self.origin );
         else
             self playsound( "mortar_incoming2" );
 
@@ -1001,7 +1001,7 @@ _ID53348( var_0, var_1 )
     else
     {
         if ( var_1 )
-            thread _ID42237::_ID27077( "mortar_incoming3", self._ID740 );
+            thread _ID42237::_ID27077( "mortar_incoming3", self.origin );
         else
             self playsound( "mortar_incoming3" );
 
@@ -1070,7 +1070,7 @@ _ID44679( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 
     for ( var_11 = 0; var_11 < var_10.size; var_11++ )
     {
-        if ( isdefined( var_10[var_11]._ID1191 ) && !var_6 )
+        if ( isdefined( var_10[var_11].target ) && !var_6 )
             var_10[var_11] _ID48357();
     }
 
@@ -1094,7 +1094,7 @@ _ID44679( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
                 for ( var_11 = 0; var_11 < var_10.size; var_11++ )
                 {
                     var_14 = ( var_11 + var_13 ) % var_10.size;
-                    var_15 = distance( level._ID794 getorigin(), var_10[var_14]._ID740 );
+                    var_15 = distance( level.player getorigin(), var_10[var_14].origin );
 
                     if ( var_15 < var_8 && var_15 > var_9 && var_14 != var_7 )
                     {
@@ -1158,13 +1158,13 @@ _ID52980( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     var_8 = undefined;
     var_9 = self;
 
-    if ( isdefined( self._ID50121 ) && distance( level._ID794._ID740, self._ID740 ) < self._ID50121 )
+    if ( isdefined( self._ID50121 ) && distance( level.player.origin, self.origin ) < self._ID50121 )
     {
         var_10 = getentarray( var_0, "targetname" );
 
         for ( var_11 = 0; var_11 < var_10.size; var_11++ )
         {
-            var_12 = distance( level._ID794 getorigin(), var_10[var_11]._ID740 );
+            var_12 = distance( level.player getorigin(), var_10[var_11].origin );
 
             if ( var_12 > self._ID50121 )
             {
@@ -1181,7 +1181,7 @@ _ID52980( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     }
 
     if ( var_7 )
-        radiusdamage( var_9._ID740, var_1, var_3, var_2 );
+        radiusdamage( var_9.origin, var_1, var_3, var_2 );
 
     if ( isdefined( var_9._ID43056 ) && var_9._ID43056 == 1 && isdefined( var_9._ID51579 ) )
     {
@@ -1211,16 +1211,16 @@ _ID45326( var_0, var_1, var_2, var_3 )
         var_3 = 850;
 
     _ID47097( var_0 );
-    var_4 = self._ID740;
+    var_4 = self.origin;
     playfx( level._ID1426[var_0], var_4 );
     earthquake( var_1, var_2, var_4, var_3 );
 
-    if ( distance( level._ID794._ID740, var_4 ) > 300 )
+    if ( distance( level.player.origin, var_4 ) > 300 )
         return;
 
     level._ID51181 = 1;
     level notify( "shell shock player",  var_2 * 4  );
-    _ID46623::_ID616( var_2 * 4 );
+    _ID46623::main( var_2 * 4 );
 }
 
 _ID47097( var_0 )

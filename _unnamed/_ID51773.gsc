@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID48222();
     level._ID1426["technical_gate_shatter"] = loadfx( "fx/explosions/wood_explosion_fence" );
@@ -131,7 +131,7 @@ playdustmotes()
 {
     for (;;)
     {
-        playfx( level._ID1426["dust_motes_lrg_runner_bolted"], level._ID794._ID740 );
+        playfx( level._ID1426["dust_motes_lrg_runner_bolted"], level.player.origin );
         wait 0.8;
     }
 }

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = [];
     var_1 = 0;
@@ -98,7 +98,7 @@ _ID1538( var_0 )
 {
     level notify( "achievements_level_complete" );
 
-    if ( level._ID912 == "ending" && level._ID44088 != "credits_1" )
+    if ( level.script == "ending" && level._ID44088 != "credits_1" )
         changelevel( "" );
     else
     {
@@ -106,9 +106,9 @@ _ID1538( var_0 )
             var_0 = 0;
 
         level notify( "nextmission" );
-        level._ID794 notify( "levelComplete" );
+        level.player notify( "levelComplete" );
         level._ID24793 = 1;
-        level._ID794 enableinvulnerability();
+        level.player enableinvulnerability();
 
         if ( _ID42407::_ID3270() )
         {
@@ -122,40 +122,40 @@ _ID1538( var_0 )
         setdvar( "ui_showPopup", "0" );
         setdvar( "ui_popupString", "" );
 
-        if ( level._ID912 == "ending" )
+        if ( level.script == "ending" )
         {
-            level._ID912 = "af_chase";
+            level.script = "af_chase";
             _ID1538( 1 );
-            level._ID912 = "ending";
+            level.script = "ending";
         }
 
-        game["previous_map"] = level._ID912;
-        var_1 = level._ID23779 _ID16387( level._ID912 );
+        game["previous_map"] = level.script;
+        var_1 = level._ID23779 _ID16387( level.script );
 
-        if ( !( level._ID912 == "af_chase" && var_0 ) && !_ID42407::achievement_conditions( "IMMORTAL" ) )
+        if ( !( level.script == "af_chase" && var_0 ) && !_ID42407::achievement_conditions( "IMMORTAL" ) )
         {
-            _func_1fc( level._ID912, var_1 );
+            _func_1fc( level.script, var_1 );
             updategamerprofileall();
             check_immortal_achievement();
         }
 
-        _ID42298::_ID4390( "aa_main_" + level._ID912 );
+        _ID42298::_ID4390( "aa_main_" + level.script );
 
         if ( !isdefined( var_1 ) )
         {
-            missionsuccess( level._ID912 );
+            missionsuccess( level.script );
             return;
         }
 
-        if ( level._ID912 != "ending" && !( level._ID912 == "af_chase" && var_0 ) )
+        if ( level.script != "ending" && !( level.script == "af_chase" && var_0 ) )
         {
-            level._ID794 thread _ID42313::_ID13798( 1, undefined );
+            level.player thread _ID42313::_ID13798( 1, undefined );
             _ID42475::_ID34575( "end_mission_fade_to_black" );
             wait 2;
             _ID42407::_ID22211();
         }
 
-        if ( level._ID912 != "af_chase" || var_0 )
+        if ( level.script != "af_chase" || var_0 )
         {
             level._ID23779 _ID32674( var_1 );
             var_3 = _ID39798();
@@ -174,18 +174,18 @@ _ID1538( var_0 )
             var_4 = level._ID23779._ID22248.size;
         }
 
-        if ( level._ID912 == "af_chase" && var_0 )
+        if ( level.script == "af_chase" && var_0 )
             return;
 
-        if ( level._ID912 == "ending" && level._ID44088 == "credits_1" )
+        if ( level.script == "ending" && level._ID44088 == "credits_1" )
             _ID42237::_ID14413( "af_chase_nextmission" );
 
-        if ( level._ID912 == "airplane" || level._ID912 == "ending" )
+        if ( level.script == "airplane" || level.script == "ending" )
         {
             if ( getdvarint( "arcademode_full" ) )
             {
-                level._ID794 openluimenu( &"AIRPLANE_CAMPAIGN_COMPLETED" );
-                level._ID794 waittill( "menuresponse" );
+                level.player openluimenu( &"AIRPLANE_CAMPAIGN_COMPLETED" );
+                level.player waittill( "menuresponse" );
             }
 
             setsaveddvar( "ui_nextMission", "0" );
@@ -211,17 +211,17 @@ _ID1538( var_0 )
                 return;
             }
 
-            if ( level._ID912 == "cargoship" )
+            if ( level.script == "cargoship" )
             {
                 changelevel( "blackout", level._ID23779 _ID16353( var_0 ) );
                 return;
             }
-            else if ( level._ID912 == "airlift" )
+            else if ( level.script == "airlift" )
             {
                 changelevel( "village_assault", level._ID23779 _ID16353( var_0 ) );
                 return;
             }
-            else if ( level._ID912 == "jeepride" )
+            else if ( level.script == "jeepride" )
             {
                 changelevel( "airplane", level._ID23779 _ID16353( var_0 ) );
                 return;
@@ -243,7 +243,7 @@ _ID39798()
     var_0 = int( _ID16696() * 100 );
 
     if ( getdvarint( "mis_cheat" ) == 0 )
-        level._ID794 setlocalplayerprofiledata( "percentCompleteSP", var_0 );
+        level.player setlocalplayerprofiledata( "percentCompleteSP", var_0 );
 
     return var_0;
 }
@@ -268,7 +268,7 @@ _ID16696()
 
 _ID16627( var_0 )
 {
-    var_1 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_1 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
     var_2 = 0;
     var_3 = [];
     var_4 = 0;
@@ -310,18 +310,18 @@ _ID16629()
 _ID16626()
 {
     var_0 = 45;
-    var_1 = level._ID794 getlocalplayerprofiledata( "cheatPoints" ) / var_0 * 100;
+    var_1 = level.player getlocalplayerprofiledata( "cheatPoints" ) / var_0 * 100;
     return var_1;
 }
 
 _ID16386( var_0 )
 {
-    return int( level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" )[var_0] );
+    return int( level.player getlocalplayerprofiledata( "missionHighestDifficulty" )[var_0] );
 }
 
 _ID16594( var_0 )
 {
-    return int( level._ID794 getlocalplayerprofiledata( "missionSOHighestDifficulty" )[var_0] );
+    return int( level.player getlocalplayerprofiledata( "missionSOHighestDifficulty" )[var_0] );
 }
 
 _ID45570( var_0 )
@@ -339,7 +339,7 @@ _ID45570( var_0 )
             var_2 += max( 0, int( var_0[var_3] ) - 1 );
     }
 
-    if ( int( tablelookup( "sp/specOpsTable.csv", 1, level._ID912, 14 ) ) == 0 )
+    if ( int( tablelookup( "sp/specOpsTable.csv", 1, level.script, 14 ) ) == 0 )
         return 0;
 
     return var_2 == 1;
@@ -347,11 +347,11 @@ _ID45570( var_0 )
 
 _ID32674( var_0 )
 {
-    var_1 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_1 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
     var_2 = "";
     var_3 = level._ID15361;
 
-    if ( level._ID912 == "killhouse" || level._ID912 == "coup" || level._ID912 == "aftermath" )
+    if ( level.script == "killhouse" || level.script == "coup" || level.script == "aftermath" )
         var_3 = 3;
 
     for ( var_4 = 0; var_4 < var_1.size; var_4++ )
@@ -381,7 +381,7 @@ _ID32674( var_0 )
 
     _ID1593( var_5 );
     _ID1597( var_2 );
-    level._ID794 _meth_85d2();
+    level.player _meth_85d2();
 }
 
 _ID1593( var_0 )
@@ -392,7 +392,7 @@ _ID1593( var_0 )
     if ( getdvar( "mis_cheat" ) == "1" )
         return;
 
-    level._ID794 setlocalplayerprofiledata( "highestMission", var_0 );
+    level.player setlocalplayerprofiledata( "highestMission", var_0 );
 }
 
 _ID1597( var_0 )
@@ -403,12 +403,12 @@ _ID1597( var_0 )
     if ( getdvar( "mis_cheat" ) == "1" )
         return;
 
-    level._ID794 setlocalplayerprofiledata( "missionHighestDifficulty", var_0 );
+    level.player setlocalplayerprofiledata( "missionHighestDifficulty", var_0 );
 }
 
 _ID16389( var_0 )
 {
-    var_1 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_1 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
     return int( var_1[var_0] );
 }
 
@@ -422,12 +422,12 @@ _ID16424( var_0 )
 
 _ID16407()
 {
-    var_0 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_0 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
     var_1 = 4;
 
     for ( var_2 = 0; var_2 < self._ID22248.size; var_2++ )
     {
-        if ( level._ID23779._ID22248[var_2]._ID680 != "airport" )
+        if ( level._ID23779._ID22248[var_2].name != "airport" )
         {
             if ( int( var_0[var_2] ) < var_1 )
                 var_1 = int( var_0[var_2] );
@@ -439,7 +439,7 @@ _ID16407()
 
 _ID49519()
 {
-    var_0 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_0 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
 
     for ( var_1 = 0; var_1 < self._ID22248.size; var_1++ )
     {
@@ -452,7 +452,7 @@ _ID49519()
 
 _ID53689()
 {
-    var_0 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_0 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
     var_1 = 1;
     var_2 = 1;
 
@@ -485,7 +485,7 @@ _ID2048( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 {
     var_7 = self._ID22248.size;
     self._ID22248[var_7] = spawnstruct();
-    self._ID22248[var_7]._ID680 = var_0;
+    self._ID22248[var_7].name = var_0;
     self._ID22248[var_7]._ID21223 = var_1;
     self._ID22248[var_7]._ID1762 = var_2;
     self._ID22248[var_7]._ID34245 = var_3;
@@ -499,10 +499,10 @@ _ID43348( var_0, var_1, var_2 )
 {
     var_3 = self._ID22248.size;
     self._ID22248[var_3] = spawnstruct();
-    self._ID22248[var_3]._ID680 = var_0;
+    self._ID22248[var_3].name = var_0;
     self._ID22248[var_3]._ID1762 = var_1;
     self._ID22248[var_3]._ID40342 = var_2;
-    var_4 = tablelookup( "sp/specopstable.csv", 1, level._ID912, 13 );
+    var_4 = tablelookup( "sp/specopstable.csv", 1, level.script, 13 );
 
     if ( var_4 == "" )
         return;
@@ -524,7 +524,7 @@ _ID16387( var_0 )
 {
     foreach ( var_3, var_2 in self._ID22248 )
     {
-        if ( var_2._ID680 == var_0 )
+        if ( var_2.name == var_0 )
             return var_3;
     }
 
@@ -533,7 +533,7 @@ _ID16387( var_0 )
 
 _ID16388( var_0 )
 {
-    return self._ID22248[var_0]._ID680;
+    return self._ID22248[var_0].name;
 }
 
 _ID16353( var_0 )
@@ -629,7 +629,7 @@ _ID16449()
 
 _ID14731()
 {
-    var_0 = level._ID794 getlocalplayerprofiledata( "missionHighestDifficulty" );
+    var_0 = level.player getlocalplayerprofiledata( "missionHighestDifficulty" );
     var_1 = "";
 
     for ( var_2 = 0; var_2 < var_0.size; var_2++ )
@@ -643,22 +643,22 @@ _ID14731()
         var_1 += 0;
     }
 
-    level._ID794 setlocalplayerprofiledata( "missionHighestDifficulty", var_1 );
-    level._ID794 setlocalplayerprofiledata( "highestMission", 20 );
+    level.player setlocalplayerprofiledata( "missionHighestDifficulty", var_1 );
+    level.player setlocalplayerprofiledata( "highestMission", 20 );
 }
 
 _ID7909()
 {
-    level._ID794 setlocalplayerprofiledata( "missionHighestDifficulty", "00000000000000000000000000000000000000000000000000" );
-    level._ID794 setlocalplayerprofiledata( "highestMission", 1 );
+    level.player setlocalplayerprofiledata( "missionHighestDifficulty", "00000000000000000000000000000000000000000000000000" );
+    level.player setlocalplayerprofiledata( "highestMission", 1 );
 }
 
 _ID9301()
 {
     if ( isdefined( level._ID44088 ) && level._ID44088 == "credits_1" )
     {
-        level._ID794 openluimenu( &"MENU_CAMPAIGN_COMPLETED" );
-        level._ID794 waittill( "menuresponse" );
+        level.player openluimenu( &"MENU_CAMPAIGN_COMPLETED" );
+        level.player waittill( "menuresponse" );
     }
 
     changelevel( "" );
@@ -676,7 +676,7 @@ _ID44664()
 
     foreach ( var_5 in level._ID805 )
     {
-        setdvar( "player_" + var_0 + "_name", var_5._ID803 );
+        setdvar( "player_" + var_0 + "_name", var_5.playername );
         setdvar( "player_" + var_0 + "_kills", var_5._ID36218["kills"] );
         var_6 = var_2.size;
         var_2[var_6] = var_5 _ID42407::_ID15913();
@@ -710,20 +710,20 @@ _ID44664()
     {
         _ID54561();
 
-        if ( isdefined( level._ID794._ID54247 ) && level._ID794._ID54247 )
-            setdvar( "ui_first_star_player1", level._ID794._ID54247 );
+        if ( isdefined( level.player._ID54247 ) && level.player._ID54247 )
+            setdvar( "ui_first_star_player1", level.player._ID54247 );
 
-        if ( isdefined( level._ID794._ID44473 ) && level._ID794._ID44473 )
-            setdvar( "ui_eog_player1_stars", level._ID794._ID48261 );
+        if ( isdefined( level.player._ID44473 ) && level.player._ID44473 )
+            setdvar( "ui_eog_player1_stars", level.player._ID48261 );
 
-        if ( isdefined( level._ID794._ID48982 ) && level._ID794._ID48982 )
-            setdvar( "ui_eog_player1_unlock", level._ID794._ID45463 );
+        if ( isdefined( level.player._ID48982 ) && level.player._ID48982 )
+            setdvar( "ui_eog_player1_unlock", level.player._ID45463 );
 
-        if ( isdefined( level._ID794._ID45916 ) && level._ID794._ID45916 )
-            setdvar( "ui_eog_player1_besttime", level._ID794._ID54418 );
+        if ( isdefined( level.player._ID45916 ) && level.player._ID45916 )
+            setdvar( "ui_eog_player1_besttime", level.player._ID54418 );
 
-        if ( isdefined( level._ID794._ID44694 ) && level._ID794._ID44694 )
-            setdvar( "ui_eog_player1_noreward", level._ID794._ID44694 );
+        if ( isdefined( level.player._ID44694 ) && level.player._ID44694 )
+            setdvar( "ui_eog_player1_noreward", level.player._ID44694 );
 
         if ( isdefined( level._ID27742._ID54247 ) && level._ID27742._ID54247 )
             setdvar( "ui_first_star_player2", level._ID27742._ID54247 );
@@ -741,27 +741,27 @@ _ID44664()
             setdvar( "ui_eog_player2_noreward", level._ID27742._ID44694 );
 
         wait 0.05;
-        level._ID794 openpopupmenu( "coop_eog_summary" );
+        level.player openpopupmenu( "coop_eog_summary" );
         level._ID27742 openpopupmenu( "coop_eog_summary2" );
     }
     else
     {
         _ID54561();
 
-        if ( isdefined( level._ID794._ID54247 ) && level._ID794._ID54247 )
-            setdvar( "ui_first_star_player1", level._ID794._ID54247 );
+        if ( isdefined( level.player._ID54247 ) && level.player._ID54247 )
+            setdvar( "ui_first_star_player1", level.player._ID54247 );
 
-        if ( isdefined( level._ID794._ID44473 ) && level._ID794._ID44473 )
-            setdvar( "ui_eog_player1_stars", level._ID794._ID48261 );
+        if ( isdefined( level.player._ID44473 ) && level.player._ID44473 )
+            setdvar( "ui_eog_player1_stars", level.player._ID48261 );
 
-        if ( isdefined( level._ID794._ID48982 ) && level._ID794._ID48982 )
-            setdvar( "ui_eog_player1_unlock", level._ID794._ID45463 );
+        if ( isdefined( level.player._ID48982 ) && level.player._ID48982 )
+            setdvar( "ui_eog_player1_unlock", level.player._ID45463 );
 
-        if ( isdefined( level._ID794._ID45916 ) && level._ID794._ID45916 )
-            setdvar( "ui_eog_player1_besttime", level._ID794._ID54418 );
+        if ( isdefined( level.player._ID45916 ) && level.player._ID45916 )
+            setdvar( "ui_eog_player1_besttime", level.player._ID54418 );
 
         wait 0.05;
-        level._ID794 openpopupmenu( "sp_eog_summary" );
+        level.player openpopupmenu( "sp_eog_summary" );
     }
 }
 
@@ -860,10 +860,10 @@ _ID12604( var_0 )
         return;
 
     _ID42475::_ID34575( "finish_mission_fade", var_0 );
-    var_1 = _ID42313::_ID9125( "black", 0, level._ID794 );
-    var_1._ID983 = 100;
+    var_1 = _ID42313::_ID9125( "black", 0, level.player );
+    var_1.sort = 100;
     var_1 fadeovertime( var_0 );
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
     wait(var_0);
 }
 
@@ -871,9 +871,9 @@ check_immortal_achievement()
 {
     for ( var_0 = 0; var_0 < level._ID23779._ID22248.size; var_0++ )
     {
-        if ( level._ID23779._ID22248[var_0]._ID680 != "airport" )
+        if ( level._ID23779._ID22248[var_0].name != "airport" )
         {
-            var_1 = level._ID794 getlocalplayerprofiledata( "sp_immortal", var_0 );
+            var_1 = level.player getlocalplayerprofiledata( "sp_immortal", var_0 );
 
             if ( var_1 == "0" )
                 return;

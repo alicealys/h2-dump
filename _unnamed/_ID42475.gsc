@@ -11,7 +11,7 @@ _ID34551()
         thread _ID34555();
         _ID34505();
         _ID42492::_ID34549();
-        _ID34652( level._ID912 );
+        _ID34652( level.script );
         _ID42490::_ID34567();
         _ID42490::_ID34528();
         _ID42495::_ID34687();
@@ -110,16 +110,16 @@ _ID34571( var_0, var_1 )
 _ID34530()
 {
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "white", 640, 480 );
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID983 = 1;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 1.0;
-    var_0._ID408 = 1;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.sort = 1;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 1.0;
+    var_0.foreground = 1;
     wait 0.05;
     var_0 destroy();
 }
@@ -131,10 +131,10 @@ _ID34659( var_0 )
 
 _ID34685()
 {
-    if ( self._ID216 >= self._ID23037 )
+    if ( self.count >= self._ID23037 )
         wait 0.05;
     else
-        self._ID216++;
+        self.count++;
 
     if ( !self._ID29754 )
         thread _ID34686();
@@ -145,14 +145,14 @@ _ID34686()
     self._ID29754 = 1;
     waitframe;
     self._ID29754 = 0;
-    self._ID216 = 0;
+    self.count = 0;
 }
 
 _ID34545( var_0 )
 {
     var_1 = spawnstruct();
-    var_1._ID680 = "throttle_waiter";
-    var_1._ID216 = 0;
+    var_1.name = "throttle_waiter";
+    var_1.count = 0;
     var_1._ID29754 = 0;
     var_2 = 10;
 
@@ -231,7 +231,7 @@ _ID34590( var_0, var_1, var_2, var_3, var_4 )
                         if ( var_16 )
                         {
                             var_12 = spawnstruct();
-                            var_12._ID680 = var_15;
+                            var_12.name = var_15;
                             var_12._ID32823 = [];
                             var_13 = var_15;
                         }

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("script_model");
 
-_ID616()
+main()
 {
     level._ID30900["hiding_door"] = #animtree;
     level._ID30904["hiding_door"] = "com_door_01_handleleft";

@@ -5,7 +5,7 @@ _ID24479()
 {
     var_0 = undefined;
 
-    if ( isdefined( self._ID762 ) && distancesquared( self._ID740, self._ID762 ) > 4096 )
+    if ( isdefined( self.pathgoalpos ) && distancesquared( self.origin, self.pathgoalpos ) > 4096 )
         var_0 = "stand";
 
     var_1 = [[ self._ID7497 ]]( var_0 );
@@ -122,7 +122,7 @@ _ID11665( var_0 )
 
     if ( self._ID7._ID28253 == "stand" )
     {
-        if ( isdefined( self._ID322 ) )
+        if ( isdefined( self.enemy ) )
         {
             animscripts\cqb::_ID8930();
 

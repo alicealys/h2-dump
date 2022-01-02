@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     level._ID30895["generic"]["sleep_idle"][0] = %parabolic_guard_sleeper_idle;
     level._ID30895["generic"]["sleep_react"] = %parabolic_guard_sleeper_react;

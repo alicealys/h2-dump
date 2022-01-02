@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -175,7 +175,7 @@ _ID54198()
 {
     _ID42465::_ID23797( "escape_cave_collapse_mix" );
     _ID42465::_ID23797( "escape_cave_collapse_bs_mix" );
-    level._ID794 thread _ID42237::_ID27000( "scn_afcaves_cave_collapse_tinnitus", undefined, 0.5, 4.0 );
+    level.player thread _ID42237::_ID27000( "scn_afcaves_cave_collapse_tinnitus", undefined, 0.5, 4.0 );
 }
 
 _ID49565()
@@ -191,7 +191,7 @@ _ID52647()
 _ID45041()
 {
     _ID42465::_ID23801( "escape_cave_collapse_bs2_mix" );
-    level._ID794 _ID42237::_ID36516( "scn_afcaves_cave_collapse_tinnitus" );
+    level.player _ID42237::_ID36516( "scn_afcaves_cave_collapse_tinnitus" );
 }
 
 _ID54336()
@@ -207,7 +207,7 @@ _ID51160()
 
 start_player_fall_death()
 {
-    level._ID794 thread _ID42407::_ID27079( "afcaves_plyr_fall_scream" );
+    level.player thread _ID42407::_ID27079( "afcaves_plyr_fall_scream" );
     _ID42465::_ID23797( "player_fall_death_mix" );
 }
 
@@ -230,10 +230,10 @@ _ID48248( var_0, var_1, var_2, var_3, var_4, var_5 )
 _ID52625( var_0, var_1, var_2, var_3 )
 {
     thread _ID42407::_ID4917( "axis" );
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID42476::_ID34518( "slomo" );
-    level._ID794 playsound( var_1 );
-    level._ID794 thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
+    level.player playsound( var_1 );
+    level.player thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
     _ID42474::_ID4668( "af_caves_int", "ambient_af_caves_int", 1.0 );
     _ID42465::_ID23797( var_0 );
     _ID42474::_ID4655( 1 );
@@ -245,10 +245,10 @@ _ID52625( var_0, var_1, var_2, var_3 )
 _ID52851( var_0, var_1, var_2, var_3 )
 {
     _ID42465::_ID23801( var_0 );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID42476::_ID34512( "slomo" );
-    level._ID794 _ID42237::_ID36516( var_1 );
-    level._ID794 playsound( var_2 );
+    level.player _ID42237::_ID36516( var_1 );
+    level.player playsound( var_2 );
     _ID42490::_ID34527( 1.0 );
     _ID42474::_ID4655( 0 );
     _ID42474::_ID4662( 0 );

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_parkingmeter", "tag_meter", 120 );
     _ID42231::_ID10517( "tag_fx", "fx/props/parking_meter_coins", 1 );

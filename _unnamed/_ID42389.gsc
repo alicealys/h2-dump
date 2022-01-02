@@ -8,7 +8,7 @@ _ID36280()
     if ( isplayernumber( self ) )
         return;
 
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "axis":
         case "team3":
@@ -39,7 +39,7 @@ _ID36343( var_0 )
 
     if ( !isdefined( self._ID1644 ) || !isdefined( self._ID1644._ID28153._ID4894 ) )
     {
-        switch ( self._ID1194 )
+        switch ( self.team )
         {
             case "allies":
                 _ID42391::_ID36376();
@@ -61,7 +61,7 @@ _ID36343( var_0 )
 
 _ID36247( var_0 )
 {
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "allies":
             _ID42378::_ID14932( var_0 );
@@ -75,7 +75,7 @@ _ID36247( var_0 )
 
 _ID36248()
 {
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "allies":
             _ID42378::_ID14937();
@@ -422,7 +422,7 @@ _ID36236( var_0, var_1, var_2, var_3, var_4 )
         return;
 
     var_6 = "stop_loop";
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
 
     if ( !isdefined( var_4 ) )
         thread _ID42259::_ID3022( var_0, "gravity", var_1, var_3 );
@@ -620,7 +620,7 @@ _ID10971()
 
     foreach ( var_5 in level._ID805 )
     {
-        var_5._ID630 = 8192;
+        var_5.maxvisibledist = 8192;
 
         if ( var_5 _ID42407::_ID13023( "_stealth_enabled" ) )
             var_5 _ID42407::_ID13021( "_stealth_enabled" );
@@ -634,7 +634,7 @@ _ID12534()
     if ( _ID42407::_ID13023( "_stealth_enabled" ) )
         _ID42407::_ID13025( "_stealth_enabled" );
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         thread _ID42391::_ID14992();
 }
 
@@ -643,5 +643,5 @@ _ID10969()
     if ( _ID42407::_ID13023( "_stealth_enabled" ) )
         _ID42407::_ID13021( "_stealth_enabled" );
 
-    self._ID630 = 8192;
+    self.maxvisibledist = 8192;
 }

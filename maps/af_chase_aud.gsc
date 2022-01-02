@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -273,7 +273,7 @@ _ID52473()
 {
     var_0 = getentarray( "rocks_falling", "script_noteworthy" );
     _ID42237::_ID14413( "distant_explosion" );
-    level._ID794 playsound( "scn_afchase_explosion_far_front" );
+    level.player playsound( "scn_afchase_explosion_far_front" );
     wait 0.5;
 
     foreach ( var_2 in var_0 )
@@ -286,7 +286,7 @@ _ID48012()
         return;
 
     self._ID47282 = gettime() + 500;
-    var_0 = spawn( "script_origin", self._ID740 );
+    var_0 = spawn( "script_origin", self.origin );
     var_0 linkto( self );
     var_1 = _ID42237::_ID37527( self == level._ID46392, "zodiac_jumping_one_shot_plr", "zodiac_jumping_one_shot" );
     var_0 playsound( var_1 );
@@ -309,14 +309,14 @@ _ID46309()
 _ID44859( var_0, var_1 )
 {
     _ID42237::_ID14413( var_0 );
-    level._ID794 playsound( var_1 );
+    level.player playsound( var_1 );
 }
 
 _ID45496()
 {
     wait 0.1;
-    var_0 = spawn( "script_origin", self._ID740 + vectornormalize( anglestoright( self._ID65 ) ) * 90 );
-    var_1 = spawn( "script_origin", self._ID740 + vectornormalize( anglestoright( self._ID65 ) ) * -90 );
+    var_0 = spawn( "script_origin", self.origin + vectornormalize( anglestoright( self.angles ) ) * 90 );
+    var_1 = spawn( "script_origin", self.origin + vectornormalize( anglestoright( self.angles ) ) * -90 );
     var_0 linkto( self );
     var_1 linkto( self );
     var_2 = "zodiac_player_wind_loop";
@@ -334,12 +334,12 @@ _ID44450( var_0, var_1 )
 
     for (;;)
     {
-        var_2 = vectornormalize( anglestoright( self._ID65 ) );
+        var_2 = vectornormalize( anglestoright( self.angles ) );
 
         if ( !isdefined( var_1 ) || var_1 == 0 )
             var_2 *= -1;
 
-        var_3 = self._ID740 + ( 0, 0, 50 );
+        var_3 = self.origin + ( 0, 0, 50 );
         var_4 = bullettrace( var_3, var_3 + var_2 * level._ID3674._ID45915, 0, self );
 
         if ( var_4["fraction"] < 1 )
@@ -396,5 +396,5 @@ _ID44780()
     _ID42465::_ID23797( "over_waterfall_mix" );
     level._ID46392 _meth_8561( "scn_afchase_plr_boat_switch_reverse" );
     level._ID46392 thread _ID42407::_ID27081( "scn_boat_falling_over_waterfall" );
-    level._ID794 thread _ID42407::_ID27079( "scn_player_falling_over_waterfall" );
+    level.player thread _ID42407::_ID27079( "scn_player_falling_over_waterfall" );
 }

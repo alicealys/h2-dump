@@ -23,23 +23,23 @@ _ID52372( var_0 )
     animscripts\shared::_ID12142();
     self._ID43688 = var_0;
     self._ID43688 thread _ID42259::_ID3025( self, "wounded_idle", "stop_wounded_idle" );
-    self._ID49 = 1;
+    self.allowdeath = 1;
 }
 
 _ID48009( var_0, var_1 )
 {
     level notify( "end_carry_ai_logic" );
     setsaveddvar( "ai_friendlyFireBlockDuration", 2000 );
-    var_0._ID52 = 1;
+    var_0.allowpain = 1;
     var_0._ID11002 = 0;
-    var_0._ID507 = 0;
-    var_0._ID465 = 1;
+    var_0.ignoreall = 0;
+    var_0.grenadeawareness = 1;
     var_0 _ID42407::_ID32628( 0 );
     var_0._ID11579 = undefined;
     var_0._ID24727 = undefined;
     var_0._ID10998 = undefined;
     var_0._ID11025 = undefined;
-    var_0._ID706 = 0;
+    var_0.nododgemove = 0;
     var_0 pushplayer( 0 );
     var_1 notify( "stop_carried_loop" );
     var_1 unlink();
@@ -57,7 +57,7 @@ _ID44201( var_0, var_1 )
 
 _ID44032( var_0, var_1 )
 {
-    var_0 forceteleport( self._ID740, self._ID65 );
+    var_0 forceteleport( self.origin, self.angles );
     _ID45846( var_0, var_1 );
 }
 
@@ -68,7 +68,7 @@ _ID47172( var_0, var_1 )
     var_0._ID43688 _ID42259::_ID3027( self, "pickup_carrier" );
     var_0 notify( "stop_wounded_idle" );
     var_0._ID43688 notify( "stop_wounded_idle" );
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0._ID43688 thread _ID42259::_ID3020( var_0, "pickup_wounded" );
     var_0._ID43688 _ID42259::_ID3020( self, "pickup_carrier" );
     self._ID11579 = 1;
@@ -95,35 +95,35 @@ _ID45846( var_0, var_1 )
     wait 0.05;
     setsaveddvar( "ai_friendlyFireBlockDuration", 0 );
     self animmode( "none" );
-    self._ID52 = 0;
+    self.allowpain = 0;
     self._ID11002 = 1;
-    self._ID507 = 1;
-    self._ID511 = 1;
-    self._ID465 = 0;
+    self.ignoreall = 1;
+    self.ignoreme = 1;
+    self.grenadeawareness = 0;
     _ID42407::_ID32628( 1 );
     self._ID24727 = 1;
     self._ID10998 = 1;
     self._ID11025 = 1;
-    self._ID706 = 1;
+    self.nododgemove = 1;
     _ID42407::_ID10896();
-    self._ID49838 = self._ID452;
+    self._ID49838 = self.goalradius;
     thread _ID52142( var_0 );
 
-    while ( isdefined( var_1._ID1191 ) )
+    while ( isdefined( var_1.target ) )
     {
-        self._ID513 = 1;
+        self.ignoresuppression = 1;
         self._ID10998 = 1;
-        var_2 = getent( var_1._ID1191, "targetname" );
-        var_2 = _ID42237::_ID37527( isdefined( var_2 ), var_2, getnode( var_1._ID1191, "targetname" ) );
+        var_2 = getent( var_1.target, "targetname" );
+        var_2 = _ID42237::_ID37527( isdefined( var_2 ), var_2, getnode( var_1.target, "targetname" ) );
 
-        if ( !isdefined( var_2._ID1191 ) )
+        if ( !isdefined( var_2.target ) )
         {
             var_1 = var_2;
             break;
         }
 
-        self._ID452 = 64;
-        self setgoalpos( var_2._ID740 );
+        self.goalradius = 64;
+        self setgoalpos( var_2.origin );
         self waittill( "goal" );
         var_1 = var_2;
     }
@@ -133,28 +133,28 @@ _ID45846( var_0, var_1 )
     var_0 notify( "stop_carried_loop" );
     var_1 notify( "stop_wounded_idle" );
     var_0 unlink();
-    self._ID513 = 0;
+    self.ignoresuppression = 0;
     self._ID10998 = 0;
-    self._ID452 = self._ID49838;
+    self.goalradius = self._ID49838;
     thread _ID42407::_ID7892();
     _ID42475::_ID34575( "start_carrier_putdown" );
     var_0._ID43688 thread _ID42259::_ID3020( self, "putdown_carrier" );
     var_0._ID43688 _ID42259::_ID3020( var_0, "putdown_wounded" );
     setsaveddvar( "ai_friendlyFireBlockDuration", 2000 );
-    self._ID52 = 1;
+    self.allowpain = 1;
     self._ID11002 = 0;
-    self._ID507 = 0;
-    self._ID465 = 1;
+    self.ignoreall = 0;
+    self.grenadeawareness = 1;
     _ID42407::_ID32628( 0 );
     self._ID11579 = undefined;
     self._ID24727 = undefined;
     self._ID10998 = undefined;
     self._ID11025 = undefined;
-    self._ID706 = 0;
+    self.nododgemove = 0;
     self pushplayer( 0 );
     var_0 visiblesolid();
     var_0._ID43688 thread _ID42259::_ID3025( var_0, "wounded_idle", "stop_wounded_idle" );
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0 notify( "stop_putdown" );
     var_0._ID50669 = undefined;
 }

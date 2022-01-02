@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
 
 }
@@ -51,21 +51,21 @@ _ID29407( var_0, var_1 )
     var_2 = _func_2b5( "checkpoints", "deaths_total" ) + 1;
     _func_2b4( "checkpoints", "deaths_total", var_2 );
     _ID42407::_ID54275();
-    var_3 = level._ID794 getplayerdata( _ID42237::_ID44046(), "career", "deaths_total" );
+    var_3 = level.player getplayerdata( _ID42237::_ID44046(), "career", "deaths_total" );
 
     if ( isdefined( var_3 ) )
-        level._ID794 setplayerdata( _ID42237::_ID44046(), "career", "deaths_total", var_3 + 1 );
+        level.player setplayerdata( _ID42237::_ID44046(), "career", "deaths_total", var_3 + 1 );
 
-    var_4 = level._ID23779 _ID42291::_ID16387( level._ID912 );
+    var_4 = level._ID23779 _ID42291::_ID16387( level.script );
 
     if ( isdefined( var_4 ) )
     {
-        var_5 = level._ID794 getplayerdata( _ID42237::_ID44046(), "career", "campaign", level._ID15361, "levels", level._ID912, "current_playtrough_deaths" );
+        var_5 = level.player getplayerdata( _ID42237::_ID44046(), "career", "campaign", level._ID15361, "levels", level.script, "current_playtrough_deaths" );
 
         if ( isdefined( var_5 ) )
         {
             var_5++;
-            level._ID794 setplayerdata( _ID42237::_ID44046(), "career", "deaths_total", var_5 );
+            level.player setplayerdata( _ID42237::_ID44046(), "career", "deaths_total", var_5 );
         }
     }
 }
@@ -107,11 +107,11 @@ _ID29420()
 
 _ID22208( var_0 )
 {
-    var_1 = level._ID794 _meth_850e();
+    var_1 = level.player _meth_850e();
     _func_2b4( "timestamp_end", var_1 );
     _func_2b4( "career", "level_completion_timestamp", var_0, var_1 );
     _func_2b4( "career", "levels_completed", var_0, 1 );
-    var_2 = level._ID794 getplayersetting( "gameskill" );
+    var_2 = level.player getplayersetting( "gameskill" );
     var_3 = level._ID10854[int( var_2 )];
     _func_2b4( "final_difficulty", var_3 );
     _ID42407::_ID54275();

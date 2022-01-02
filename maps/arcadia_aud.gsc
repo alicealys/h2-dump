@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -81,7 +81,7 @@ _ID24576( var_0, var_1 )
 _ID43912( var_0 )
 {
     _ID42474::_ID4669( "exterior" );
-    level._ID794 thread _ID42407::_ID27079( "scn_stryker_lvl_fade_in" );
+    level.player thread _ID42407::_ID27079( "scn_stryker_lvl_fade_in" );
     thread _ID47651();
 }
 
@@ -211,7 +211,7 @@ _ID47993()
 
     for (;;)
     {
-        var_0 = distancesquared( level._ID794._ID740, self._ID740 );
+        var_0 = distancesquared( level.player.origin, self.origin );
 
         if ( var_0 < 1000000 )
         {
@@ -283,7 +283,7 @@ _ID52296()
 
 ambient_chopper_snd()
 {
-    var_0 = spawn( "script_origin", self._ID740 );
+    var_0 = spawn( "script_origin", self.origin );
     var_0 linkto( self );
     var_0 playloopsound( "veh_helicopter_loop" );
     thread ambient_chopper_death( var_0 );

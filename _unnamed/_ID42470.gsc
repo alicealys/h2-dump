@@ -27,7 +27,7 @@ _ID34393( var_0, var_1, var_2, var_3, var_4 )
     if ( isdefined( var_4 ) )
         var_7 = max( var_4, 0 );
 
-    _ID34460( level._ID1374._ID36658._ID2841._ID28470, level._ID1374._ID36658._ID2841._ID9421._ID680, level._ID1374._ID36658._ID2841._ID9421._ID40762, level._ID1374._ID36658._ID2841._ID9421._ID13788 );
+    _ID34460( level._ID1374._ID36658._ID2841._ID28470, level._ID1374._ID36658._ID2841._ID9421.name, level._ID1374._ID36658._ID2841._ID9421._ID40762, level._ID1374._ID36658._ID2841._ID9421._ID13788 );
     _ID34460( level._ID1374._ID36658._ID2841._ID9421, var_0, var_7, var_6 );
     ambientplay( var_0, var_6, var_7 );
 }
@@ -52,7 +52,7 @@ _ID34392( var_0, var_1, var_2, var_3, var_4 )
     if ( isdefined( var_3 ) )
         var_8 = max( var_3, 0 );
 
-    _ID34460( level._ID1374._ID36658._ID24574._ID28470, level._ID1374._ID36658._ID24574._ID9421._ID680, level._ID1374._ID36658._ID24574._ID9421._ID40762, level._ID1374._ID36658._ID24574._ID9421._ID13788 );
+    _ID34460( level._ID1374._ID36658._ID24574._ID28470, level._ID1374._ID36658._ID24574._ID9421.name, level._ID1374._ID36658._ID24574._ID9421._ID40762, level._ID1374._ID36658._ID24574._ID9421._ID13788 );
     _ID34460( level._ID1374._ID36658._ID24574._ID9421, var_0, var_8, var_6 );
 
     if ( isdefined( var_4 ) )
@@ -76,12 +76,12 @@ _ID34395( var_0, var_1 )
         if ( isdefined( var_1 ) )
             var_3 = max( var_1, 0 );
 
-        if ( level._ID1374._ID36658._ID2841._ID9421._ID680 == var_0 )
+        if ( level._ID1374._ID36658._ID2841._ID9421.name == var_0 )
         {
             level._ID1374._ID36658._ID2841._ID9421 = level._ID1374._ID36658._ID2841._ID28470;
             _ID34458( level._ID1374._ID36658._ID2841._ID28470 );
         }
-        else if ( level._ID1374._ID36658._ID2841._ID28470._ID680 == var_0 )
+        else if ( level._ID1374._ID36658._ID2841._ID28470.name == var_0 )
             _ID34458( level._ID1374._ID36658._ID2841._ID28470 );
 
         ambientstop( var_3, var_0 );
@@ -98,12 +98,12 @@ _ID34397( var_0, var_1 )
     if ( isdefined( var_1 ) )
         var_3 = max( var_1, 0 );
 
-    if ( level._ID1374._ID36658._ID24574._ID9421._ID680 == var_0 )
+    if ( level._ID1374._ID36658._ID24574._ID9421.name == var_0 )
     {
         level._ID1374._ID36658._ID24574._ID9421 = level._ID1374._ID36658._ID24574._ID28470;
         _ID34458( level._ID1374._ID36658._ID24574._ID28470 );
     }
-    else if ( level._ID1374._ID36658._ID2841._ID28470._ID680 == var_0 )
+    else if ( level._ID1374._ID36658._ID2841._ID28470.name == var_0 )
         _ID34458( level._ID1374._ID36658._ID24574._ID28470 );
 
     musicstop( var_3, var_0 );
@@ -167,17 +167,17 @@ _ID34391( var_0 )
 
 _ID34388()
 {
-    return level._ID1374._ID36658._ID2841._ID9421._ID680;
+    return level._ID1374._ID36658._ID2841._ID9421.name;
 }
 
 _ID34389()
 {
-    return level._ID1374._ID36658._ID24574._ID9421._ID680;
+    return level._ID1374._ID36658._ID24574._ID9421.name;
 }
 
 _ID34460( var_0, var_1, var_2, var_3 )
 {
-    var_0._ID680 = var_1;
+    var_0.name = var_1;
     var_0._ID40762 = var_2;
     var_0._ID13788 = var_3;
 }
@@ -185,7 +185,7 @@ _ID34460( var_0, var_1, var_2, var_3 )
 _ID34459()
 {
     var_0 = spawnstruct();
-    var_0._ID680 = "";
+    var_0.name = "";
     var_0._ID40762 = 0.0;
     var_0._ID13788 = 0.0;
     return var_0;
@@ -193,7 +193,7 @@ _ID34459()
 
 _ID34458( var_0 )
 {
-    var_0._ID680 = "";
+    var_0.name = "";
     var_0._ID40762 = 0.0;
     var_0._ID13788 = 0.0;
 }

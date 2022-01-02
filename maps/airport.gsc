@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "mission_select_cam" ) == "1" )
     {
@@ -161,32 +161,32 @@ _ID49840()
     level._ID44282 = 1.5;
     setdvar( "scr_elevator_speed", "64" );
     setsaveddvar( "ai_friendlyFireBlockDuration", 0 );
-    _ID45908::_ID616();
-    _ID47439::_ID616();
-    _ID47204::_ID616();
+    _ID45908::main();
+    _ID47439::main();
+    _ID47204::main();
     var_0 = [];
     var_1 = getentarray( "destructible_vehicle", "targetname" );
 
     foreach ( var_3 in var_1 )
     {
-        if ( var_3._ID669 == "vehicle_policecar_russia_destructible" )
+        if ( var_3.model == "vehicle_policecar_russia_destructible" )
             var_0 = _ID42237::_ID3293( var_0, var_3 );
     }
 
     _ID42237::_ID3350( var_0, ::_ID50103 );
-    _ID43172::_ID616();
-    _ID48878::_ID616();
-    _ID53660::_ID616();
-    maps\airport_anim::_ID616();
-    _ID42323::_ID616();
-    _ID45526::_ID616();
-    maps\airport_lighting::_ID616();
-    _ID42289::_ID521();
-    _ID42287::_ID521();
+    _ID43172::main();
+    _ID48878::main();
+    _ID53660::main();
+    maps\airport_anim::main();
+    _ID42323::main();
+    _ID45526::main();
+    maps\airport_lighting::main();
+    _ID42289::init();
+    _ID42287::init();
     level._ID11917 = 60;
     level._ID51803 = 2.75;
     level._ID52178 = 1;
-    maps\airport_aud::_ID616();
+    maps\airport_aud::main();
     thread _ID47549();
     thread maps\airport_code::_ID51732();
     _ID42237::_ID3350( getentarray( "glass_delete", "targetname" ), maps\airport_code::_ID53222 );
@@ -253,7 +253,7 @@ _ID49840()
 handle_widescreen_monitor()
 {
     self setcandamage( 1 );
-    var_0 = getent( self._ID1191, "targetname" );
+    var_0 = getent( self.target, "targetname" );
     self waittill( "damage",  var_1, var_2, var_3, var_4, var_5  );
 
     if ( isdefined( var_0 ) )
@@ -311,13 +311,13 @@ _ID20294()
     var_1 = _ID42237::_ID16638( "intro_elevator_anim_node", "targetname" );
     var_2 = getnodearray( "lobby_moveup_nodes", "targetname" );
 
-    foreach ( var_4 in level._ID1194 )
+    foreach ( var_4 in level.team )
         var_4 thread _ID53516( var_1, var_2 );
 
     var_2 = getnodearray( "prestairs_nodes", "targetname" );
 
     foreach ( var_7 in var_2 )
-        level._ID1194[var_7._ID922] thread maps\airport_code::_ID43748( var_7 );
+        level.team[var_7.script_noteworthy] thread maps\airport_code::_ID43748( var_7 );
 
     _ID42407::_ID1985( _ID42237::_ID14413, "player_set_speed_lobby" );
     _ID42407::_ID1890( _ID42407::_ID14389, "_escalator_on", 3 );
@@ -331,10 +331,10 @@ _ID53516( var_0, var_1 )
 
     foreach ( var_3 in var_1 )
     {
-        if ( level._ID1194[var_3._ID922] == self )
+        if ( level.team[var_3.script_noteworthy] == self )
         {
-            level._ID1194[var_3._ID922]._ID11025 = 1;
-            level._ID1194[var_3._ID922] thread maps\airport_code::_ID52145( var_3 );
+            level.team[var_3.script_noteworthy]._ID11025 = 1;
+            level.team[var_3.script_noteworthy] thread maps\airport_code::_ID52145( var_3 );
         }
     }
 }
@@ -343,10 +343,10 @@ _ID43563()
 {
     thread _ID48363();
 
-    if ( level._ID794 getlocalplayerprofiledata( "canSkipOffensiveMissions" ) != 1 )
+    if ( level.player getlocalplayerprofiledata( "canSkipOffensiveMissions" ) != 1 )
         return 0;
 
-    level._ID794 openluimenu( &"disturbing_content_in_game_popup" );
+    level.player openluimenu( &"disturbing_content_in_game_popup" );
     return 1;
 }
 
@@ -459,10 +459,10 @@ _ID46104()
     wait 3.25;
     _ID42237::_ID14413( "lobby_open_fire" );
     var_5 = getent( "intro_line_of_fire_trig", "targetname" );
-    var_5 thread maps\airport_code::_ID44544( "lobby_to_stairs_go", level._ID1194 );
+    var_5 thread maps\airport_code::_ID44544( "lobby_to_stairs_go", level.team );
     _ID42407::_ID1985( _ID42407::_ID38929, "intro_line_of_fire_trig_final" );
     _ID42407::_ID1841( _ID42237::_ID14413, "lobby_to_stairs_go" );
-    level._ID794 _ID42407::_ID1855( ::kill );
+    level.player _ID42407::_ID1855( ::kill );
     thread _ID42407::_ID11231();
     _ID42237::_ID3350( getentarray( "intro_bank_poll", "targetname" ), maps\airport_code::_ID48820 );
     var_1 _ID42237::_ID10192( 4, ::show );
@@ -476,7 +476,7 @@ _ID46527()
     var_0 = _ID42237::_ID16638( "intro_elevator_anim_node", "targetname" );
     var_1 = [];
 
-    foreach ( var_3 in level._ID1194 )
+    foreach ( var_3 in level.team )
         var_3 thread _ID54121( var_0 );
 
     var_5 = getent( "snd_origin_intro_crowd", "targetname" );
@@ -497,12 +497,12 @@ _ID53880()
     var_0 = getnodearray( "intro_initial_firing_positions", "targetname" );
 
     foreach ( var_2 in var_0 )
-        level._ID1194[var_2._ID922] thread maps\airport_code::_ID49219( var_2 );
+        level.team[var_2.script_noteworthy] thread maps\airport_code::_ID49219( var_2 );
 
     _ID42237::_ID14413( "lobby_open_fire" );
 
-    foreach ( var_5 in level._ID1194 )
-        var_5._ID507 = 0;
+    foreach ( var_5 in level.team )
+        var_5.ignoreall = 0;
 
     var_7 = getent( "snd_origin_intro_crowd", "targetname" );
     var_7 playsound( "scn_airport_crowd_opening_terror" );
@@ -540,12 +540,12 @@ _ID45012()
     thread maps\airport_code::_ID43122();
     var_0 = getent( "stairs_line_of_fire_trig_l", "targetname" );
     var_1 = [];
-    var_1[var_1.size] = level._ID1194["makarov"];
-    var_1[var_1.size] = level._ID1194["m4"];
+    var_1[var_1.size] = level.team["makarov"];
+    var_1[var_1.size] = level.team["m4"];
     var_2 = getent( "stairs_line_of_fire_trig_r", "targetname" );
     var_3 = [];
-    var_3[var_3.size] = level._ID1194["saw"];
-    var_3[var_3.size] = level._ID1194["shotgun"];
+    var_3[var_3.size] = level.team["saw"];
+    var_3[var_3.size] = level.team["shotgun"];
     var_1[0] _ID42407::_ID1985( _ID42407::_ID13027, "stairs_at_top" );
     var_1[1] _ID42407::_ID1985( _ID42407::_ID13027, "stairs_at_top" );
     var_0 _ID42407::_ID1890( maps\airport_code::_ID44544, "stairs_upperdeck_civs_dead", var_1 );
@@ -583,14 +583,14 @@ _ID45012()
     var_8 = getnodearray( "upperdeck_start_nodes", "targetname" );
 
     foreach ( var_10 in var_8 )
-        level._ID1194[var_10._ID922] thread maps\airport_code::_ID49232( var_10 );
+        level.team[var_10.script_noteworthy] thread maps\airport_code::_ID49232( var_10 );
 
     _ID42237::_ID14413( "stairs_upperdeck_civs_dead" );
     _ID42237::_ID14413( "player_set_speed_stairs" );
     var_8 = _ID42237::_ID16640( "upperdeck_team_path", "targetname" );
 
     foreach ( var_10 in var_8 )
-        level._ID1194[var_10._ID922] thread maps\airport_code::_ID47629( var_10 );
+        level.team[var_10.script_noteworthy] thread maps\airport_code::_ID47629( var_10 );
 
     _ID42237::_ID14413( "upperdeck_save" );
 
@@ -619,10 +619,10 @@ _ID47265()
     var_0 = _ID42237::_ID16640( "massacre_nodes", "targetname" );
 
     foreach ( var_2 in var_0 )
-        level._ID1194[var_2._ID922] thread maps\airport_code::_ID45269( var_2 );
+        level.team[var_2.script_noteworthy] thread maps\airport_code::_ID45269( var_2 );
 
     var_4 = getent( "massacre_rentacop_rush_guy", "target" );
-    var_4._ID740 = var_4._ID740 + ( 0, 0, -10000 );
+    var_4.origin = var_4.origin + ( 0, 0, -10000 );
 
     foreach ( var_6 in level.entities_to_delete_before_massacre )
     {
@@ -680,10 +680,10 @@ _ID47265()
     level _ID42407::_ID1985( _ID42237::_ID14413, "massacre_rentacop_rush" );
     _ID42407::_ID1890( _ID42237::_ID3350, var_13, _ID42407::_ID35014, 1 );
     thread _ID42407::_ID11231();
-    level._ID1194["m4"] _ID42407::_ID1985( _ID42407::_ID13027, "massacre_firing_into_crowd" );
+    level.team["m4"] _ID42407::_ID1985( _ID42407::_ID13027, "massacre_firing_into_crowd" );
     _ID42407::_ID1890( _ID42407::_ID14403, "massacre_play_sounds", 1.25 );
     thread _ID42407::_ID11232();
-    level._ID1194["m4"] _ID42407::_ID1985( _ID42407::_ID13027, "massacre_firing_into_crowd" );
+    level.team["m4"] _ID42407::_ID1985( _ID42407::_ID13027, "massacre_firing_into_crowd" );
     _ID42407::_ID1890( _ID42407::_ID14403, "massacre_civ_animate", 10 );
     thread _ID42407::_ID11232();
     _ID42407::_ID38928( "massacre_rentacops_rear", "target" );
@@ -702,7 +702,7 @@ _ID47265()
         var_16 _ID42407::_ID1890( _ID42407::_ID31877, "stop_blindfire" );
         var_16 _ID42407::_ID1890( _ID42407::_ID3136 );
         var_16 _ID42407::_ID1890( _ID42407::_ID32352, 0 );
-        var_16 _ID42407::_ID1890( _ID42407::_ID32291, level._ID794 );
+        var_16 _ID42407::_ID1890( _ID42407::_ID32291, level.player );
         var_16 _ID42407::_ID1841( _ID42407::_ID41116, "death" );
         level _ID42407::_ID1841( _ID42237::_ID14413, "massacre_nadethrow" );
         thread _ID42407::_ID11231();
@@ -780,7 +780,7 @@ _ID53603()
     var_0 = getnodearray( "gate_moveup_nodes", "targetname" );
 
     foreach ( var_2 in var_0 )
-        level._ID1194[var_2._ID922] thread maps\airport_code::_ID47677( var_2 );
+        level.team[var_2.script_noteworthy] thread maps\airport_code::_ID47677( var_2 );
 
     _ID42237::_ID3350( getentarray( "gate_canned_deaths", "targetname" ), maps\airport_code::_ID44643, "gate_canned_deaths" );
     _ID42237::_ID3350( getentarray( "gate_crawler", "targetname" ), _ID42407::_ID1947, maps\airport_code::_ID47998 );
@@ -824,7 +824,7 @@ _ID51525()
     _ID42237::_ID3350( getentarray( "basement_sec_runner", "targetname" ), _ID42407::_ID1947, maps\airport_code::_ID49482 );
     _ID42237::_ID3350( getentarray( "basement_flicker_light", "targetname" ), maps\airport_code::_ID48560 );
 
-    foreach ( var_1 in level._ID1194 )
+    foreach ( var_1 in level.team )
     {
         var_1.minimumcorneridletimebeforetwitch = 10000;
         var_1 thread maps\airport_code::_ID46359();
@@ -842,7 +842,7 @@ _ID51525()
     level _ID42237::_ID41117( var_3, var_4, var_5, var_6 );
     _ID42237::_ID14413( "basement_moveout" );
 
-    foreach ( var_1 in level._ID1194 )
+    foreach ( var_1 in level.team )
         var_1 notify( "basement_moveout" );
 
     setsaveddvar( "xanim_disableFootIK", 0 );
@@ -854,7 +854,7 @@ _ID51525()
     _ID42237::_ID14400( level.permanentclipflag );
     _ID42237::_ID14402( level.permanentclipflag );
     var_9 = _ID42237::_ID16638( "tarmac_breach_origin", "targetname" );
-    var_9 _ID42259::_ID3099( level._ID1194, "first_breach_idle" );
+    var_9 _ID42259::_ID3099( level.team, "first_breach_idle" );
     level.permanentclipflag = undefined;
     thread maps\airport_code::_ID53994();
     thread maps\airport_code::_ID53147( 68, 1 );
@@ -862,7 +862,7 @@ _ID51525()
     _ID42237::_ID14388( "permanent_clip_sequence" );
     _ID42237::_ID14402( "basement_moveout2" );
 
-    foreach ( var_1 in level._ID1194 )
+    foreach ( var_1 in level.team )
         var_1.minimumcorneridletimebeforetwitch = undefined;
 
     maps\airport_code::_ID46852();
@@ -885,11 +885,11 @@ _ID49145()
     wait 0.5;
     level._ID54299._ID6323 = 0;
     wait 1;
-    level._ID1194["saw"]._ID6323 = 0;
+    level.team["saw"]._ID6323 = 0;
     wait 0.5;
-    level._ID1194["m4"]._ID6323 = 0;
+    level.team["m4"]._ID6323 = 0;
     wait 0.25;
-    level._ID1194["shotgun"]._ID6323 = 0;
+    level.team["shotgun"]._ID6323 = 0;
 }
 
 _ID54182()
@@ -918,10 +918,10 @@ _ID54182()
     thread maps\airport_code::_ID54088();
     thread maps\airport_code::_ID51138();
     _ID42407::_ID1985( _ID42407::_ID38929, "tarmac_advance3" );
-    level._ID1194["saw"] _ID42407::_ID1890( maps\airport_code::_ID52900 );
+    level.team["saw"] _ID42407::_ID1890( maps\airport_code::_ID52900 );
     thread _ID42407::_ID11231();
     _ID42407::_ID1985( _ID42407::_ID38929, "tarmac_advance4" );
-    level._ID1194["shotgun"] _ID42407::_ID1890( maps\airport_code::_ID52900 );
+    level.team["shotgun"] _ID42407::_ID1890( maps\airport_code::_ID52900 );
     thread _ID42407::_ID11231();
     _ID42407::_ID1985( _ID42407::_ID38929, "tarmac_advance8" );
     _ID42407::_ID1890( _ID42237::_ID14402, "tarmac_advance8" );
@@ -948,14 +948,14 @@ _ID54182()
     var_0 = _ID42407::_ID3317( var_0, getnodearray( "tarmac_moveout_nodes", "targetname" ) );
 
     foreach ( var_2 in var_0 )
-        level._ID1194[var_2._ID922] thread maps\airport_code::_ID45505( var_2 );
+        level.team[var_2.script_noteworthy] thread maps\airport_code::_ID45505( var_2 );
 
     thread maps\airport_code::_ID45852();
     thread _ID47937();
     thread _ID48523();
     thread kill_godrays_vfx();
     _ID42237::_ID14413( "tarmac_heat_fight" );
-    _ID42237::_ID3350( level._ID1194, maps\airport_code::_ID46402 );
+    _ID42237::_ID3350( level.team, maps\airport_code::_ID46402 );
     _ID42237::_ID3350( getentarray( "tarmac_bcs_enemy", "targetname" ), maps\airport_code::_ID47148 );
     thread _ID50843();
     thread _ID54491();
@@ -986,11 +986,11 @@ _ID50843()
     {
         var_1 = "tarmac_advance" + var_0 + "_flag";
         var_2 = getent( var_1, "targetname" );
-        var_2 = getent( var_2._ID1191, "targetname" );
+        var_2 = getent( var_2.target, "targetname" );
         _ID42237::_ID14413( var_1 );
 
-        if ( isdefined( var_2._ID1191 ) )
-            _ID42407::_ID1805( var_2._ID1191 );
+        if ( isdefined( var_2.target ) )
+            _ID42407::_ID1805( var_2.target );
 
         var_3 = var_2 _ID42407::_ID15633();
         var_3 _ID42407::_ID41163();
@@ -1004,8 +1004,8 @@ _ID48523()
     level endon( "friendly_fire_warning" );
     _ID42237::_ID14413( "tarmac_hear_fsb" );
     var_0 = _ID42237::_ID16638( "tarmac_riot_node_retreat1_group1", "targetname" );
-    level thread _ID42407::_ID15093( _ID42237::_ID27077, "airport_fsb1_moveingo", var_0._ID740 );
-    level thread _ID42407::_ID15093( _ID42237::_ID27077, "airport_fsbr_servicetunnels", var_0._ID740 );
+    level thread _ID42407::_ID15093( _ID42237::_ID27077, "airport_fsb1_moveingo", var_0.origin );
+    level thread _ID42407::_ID15093( _ID42237::_ID27077, "airport_fsbr_servicetunnels", var_0.origin );
     _ID42237::_ID14413( "tarmac_heat_fight" );
 
     if ( !_ID42237::_ID14385( "tarmac_open_fire" ) )
@@ -1051,7 +1051,7 @@ _ID50944()
     wait 3;
     _ID42237::_ID14426( "tarmac_bcs" );
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_0 _ID42407::_ID10805( "contact_2nd_floor" );
     var_1 _ID42407::_ID10805( "contact_2nd_floor" );
@@ -1075,7 +1075,7 @@ _ID49285()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_0 _ID42407::_ID10805( "go1" );
     var_1 _ID42407::_ID10805( "moving1" );
@@ -1090,7 +1090,7 @@ _ID43311()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_0 _ID42407::_ID10805( "ready1" );
     var_1 _ID42407::_ID10805( "go2" );
@@ -1106,7 +1106,7 @@ _ID47182()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_1 _ID42407::_ID10805( "ready1" );
     var_0 _ID42407::_ID10805( "go2" );
@@ -1122,7 +1122,7 @@ _ID49700()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_1 _ID42407::_ID10805( "ready1" );
     var_0 _ID42407::_ID10805( "go2" );
@@ -1142,7 +1142,7 @@ _ID48094()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_1 _ID42407::_ID10805( "go3" );
     var_0 _ID42407::_ID10805( "moving1" );
@@ -1157,7 +1157,7 @@ _ID46337()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_0 _ID42407::_ID10805( "go3" );
     var_1 _ID42407::_ID10805( "moving3" );
@@ -1170,7 +1170,7 @@ _ID46337()
 _ID46898()
 {
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_1 _ID42407::_ID10805( "ready2" );
     _ID42237::_ID14388( "tarmac_bcs" );
@@ -1184,7 +1184,7 @@ _ID46004()
         return;
 
     var_0 = level._ID54299;
-    var_1 = level._ID1194["m4"];
+    var_1 = level.team["m4"];
     _ID42237::_ID14402( "tarmac_bcs" );
     var_0 _ID42407::_ID10805( "ready2" );
     var_1 _ID42407::_ID10805( "go1" );
@@ -1299,7 +1299,7 @@ _ID47937()
     _ID42407::_ID10226( 1, maps\airport_code::_ID53147, 68, 1 );
     _ID42407::_ID1985( _ID42237::_ID14413, "tarmac_pre_heat_fight" );
     _ID42407::_ID1890( _ID42237::_ID14402, "player_DMS_allow_sprint" );
-    level._ID794 _ID42407::_ID1855( ::allowjump, 1 );
+    level.player _ID42407::_ID1855( ::allowjump, 1 );
     _ID42407::_ID1890( _ID42407::_ID10226, 0.1, maps\airport_code::_ID53147, 80, 1 );
     _ID42407::_ID1890( _ID42237::_ID14388, "player_dynamic_move_speed" );
     _ID42407::_ID1841( _ID42237::_ID14413, "tarmac_heat_fight" );
@@ -1343,9 +1343,9 @@ _ID42998()
     {
         var_1 _ID42407::_ID10926();
         var_1 _ID42407::_ID10871();
-        var_1._ID507 = 1;
-        var_1._ID511 = 1;
-        var_1._ID381 = 0;
+        var_1.ignoreall = 1;
+        var_1.ignoreme = 1;
+        var_1.fixednode = 0;
         var_1._ID14383 = 0;
         var_1._ID28530 = "none";
     }
@@ -1379,13 +1379,13 @@ _ID42998()
     var_8 thread _ID42407::_ID27079( "scn_makarov_opening_door" );
     var_9[1] = var_5;
     var_4 thread _ID42259::_ID3111( var_5, "opening_door" );
-    var_8 _ID42237::_ID10192( 2.5, ::rotateto, var_8._ID65 + ( 0, 90, 0 ), 2, 0.5, 0 );
+    var_8 _ID42237::_ID10192( 2.5, ::rotateto, var_8.angles + ( 0, 90, 0 ), 2, 0.5, 0 );
     var_4 _ID42259::_ID3111( level._ID54299, "opening_door" );
     _ID42237::_ID14402( "escape_doorkick" );
     var_10 = getnode( "escape_moveup_1b", "targetname" );
     level._ID54299 _ID42407::_ID14701( var_10, 260 );
-    _ID42237::_ID3350( level._ID1194, _ID42407::_ID12467 );
-    _ID42237::_ID3350( level._ID1194, _ID42407::_ID10226, 4, _ID42407::_ID10896 );
+    _ID42237::_ID3350( level.team, _ID42407::_ID12467 );
+    _ID42237::_ID3350( level.team, _ID42407::_ID10226, 4, _ID42407::_ID10896 );
     level._ID54299 _ID42407::_ID10226( 3.5, _ID42407::_ID10805, "airport_mkv_hallway" );
     _ID45468();
     wait 2;
@@ -1403,7 +1403,7 @@ _ID42998()
 
 _ID45785( var_0 )
 {
-    level._ID43936 = level._ID1194["m4"];
+    level._ID43936 = level.team["m4"];
     level._ID43936._ID3189 = "comrad";
     var_0 _ID42259::_ID3074( level._ID43936, "get_ready" );
     var_0 _ID42259::_ID3111( level._ID43936, "get_ready" );
@@ -1422,10 +1422,10 @@ _ID50299( var_0 )
     else
         self playsound( "door_wood_slow_open" );
 
-    self rotateto( self._ID65 + ( 0, 70, 0 ), 2, 0.5, 0 );
+    self rotateto( self.angles + ( 0, 70, 0 ), 2, 0.5, 0 );
     self connectpaths();
     self waittill( "rotatedone" );
-    self rotateto( self._ID65 + ( 0, 40, 0 ), 1.5, 0, 1.5 );
+    self rotateto( self.angles + ( 0, 40, 0 ), 1.5, 0, 1.5 );
 }
 
 spawn_cops()
@@ -1449,12 +1449,12 @@ _ID45468()
 
     foreach ( var_2 in var_0 )
     {
-        var_2._ID507 = 1;
-        var_2._ID706 = 1;
+        var_2.ignoreall = 1;
+        var_2.nododgemove = 1;
         var_2 pushplayer( 1 );
         var_2._ID11568 = 1;
-        var_2._ID465 = 0;
-        var_2._ID709 = 1;
+        var_2.grenadeawareness = 0;
+        var_2.nogrenadereturnthrow = 1;
     }
 
     level._ID54299 _ID42407::_ID1985( _ID42407::_ID41116, "goal" );
@@ -1500,16 +1500,16 @@ _ID45468()
 
     foreach ( var_11 in var_0 )
     {
-        var_14 = getstartorigin( var_4._ID740, var_4._ID65, var_11 _ID42407::_ID16120( "end_get_in" ) );
-        var_15 = getstartangles( var_4._ID740, var_4._ID65, var_11 _ID42407::_ID16120( "end_get_in" ) );
-        var_16 = var_11._ID740 - var_14;
-        var_17 = spawn( "script_origin", var_4._ID740 + var_16 );
-        var_17._ID65 = var_4._ID65;
-        var_18 = var_11._ID65[1] - var_15[1];
-        var_19 = var_4._ID740 - var_14;
+        var_14 = getstartorigin( var_4.origin, var_4.angles, var_11 _ID42407::_ID16120( "end_get_in" ) );
+        var_15 = getstartangles( var_4.origin, var_4.angles, var_11 _ID42407::_ID16120( "end_get_in" ) );
+        var_16 = var_11.origin - var_14;
+        var_17 = spawn( "script_origin", var_4.origin + var_16 );
+        var_17.angles = var_4.angles;
+        var_18 = var_11.angles[1] - var_15[1];
+        var_19 = var_4.origin - var_14;
         var_19 = rotatevector( var_19, ( 0.0, var_18, 0.0 ) );
-        var_20 = spawn( "script_origin", var_11._ID740 + var_19 );
-        var_20._ID65 = var_11._ID65 + var_4._ID65 - var_15;
+        var_20 = spawn( "script_origin", var_11.origin + var_19 );
+        var_20.angles = var_11.angles + var_4.angles - var_15;
         var_20 thread _ID42259::_ID3111( var_11, "end_get_in" );
         var_21 = _ID42237::_ID37527( var_11._ID3189 == "makarov", 2.0, 1.0 );
         var_11 _ID42407::_ID10226( 0.05, _ID42259::_ID46811, undefined, var_20, var_17, var_21 );
@@ -1520,9 +1520,9 @@ _ID45468()
     var_23 = 0.25;
     _ID42237::_ID14413( "end_player_ready" );
     _ID42237::_ID14402( "escape_player_get_in" );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 setstance( "stand" );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player setstance( "stand" );
     thread maps\airport_code::_ID49445();
 
     if ( _ID42237::_ID14385( "player_ready_for_proper_ending" ) )
@@ -1586,19 +1586,19 @@ _ID46863( var_0 )
     _ID42475::_ID34575( "start_escape_kill_player_sequence" );
     var_1 = 0.5;
     var_2 = 6;
-    level._ID794 _ID42407::_ID10226( 0.1, _ID42407::_ID27079, "breathing_hurt_start" );
-    level._ID794 _ID42407::_ID10226( var_1, _ID42407::_ID27079, "breathing_hurt" );
-    level._ID794 _ID42407::_ID10226( 3, _ID42407::_ID27079, "breathing_hurt" );
-    level._ID794 _ID42407::_ID10226( 6, _ID42407::_ID27079, "breathing_hurt" );
-    level._ID794 _ID42407::_ID10226( 9, _ID42407::_ID27079, "breathing_hurt" );
-    level._ID794 _ID42407::_ID10226( 1.5, _ID42407::_ID27079, "breathing_heartbeat" );
-    level._ID794 _ID42407::_ID10226( 3, _ID42407::_ID27079, "breathing_heartbeat" );
-    level._ID794 _ID42407::_ID10226( 5, _ID42407::_ID27079, "breathing_heartbeat" );
-    level._ID794 _ID42407::_ID10226( 8, _ID42407::_ID27079, "breathing_heartbeat" );
-    level._ID794 _ID42407::_ID10226( 12, _ID42407::_ID27079, "breathing_heartbeat" );
-    level._ID794 _ID42407::_ID10226( 17, _ID42407::_ID27079, "breathing_heartbeat" );
-    level._ID794._ID486 = 100;
-    level._ID794 dodamage( 90, level._ID54299 gettagorigin( "tag_flash" ), level._ID54299 );
+    level.player _ID42407::_ID10226( 0.1, _ID42407::_ID27079, "breathing_hurt_start" );
+    level.player _ID42407::_ID10226( var_1, _ID42407::_ID27079, "breathing_hurt" );
+    level.player _ID42407::_ID10226( 3, _ID42407::_ID27079, "breathing_hurt" );
+    level.player _ID42407::_ID10226( 6, _ID42407::_ID27079, "breathing_hurt" );
+    level.player _ID42407::_ID10226( 9, _ID42407::_ID27079, "breathing_hurt" );
+    level.player _ID42407::_ID10226( 1.5, _ID42407::_ID27079, "breathing_heartbeat" );
+    level.player _ID42407::_ID10226( 3, _ID42407::_ID27079, "breathing_heartbeat" );
+    level.player _ID42407::_ID10226( 5, _ID42407::_ID27079, "breathing_heartbeat" );
+    level.player _ID42407::_ID10226( 8, _ID42407::_ID27079, "breathing_heartbeat" );
+    level.player _ID42407::_ID10226( 12, _ID42407::_ID27079, "breathing_heartbeat" );
+    level.player _ID42407::_ID10226( 17, _ID42407::_ID27079, "breathing_heartbeat" );
+    level.player.health = 100;
+    level.player dodamage( 90, level._ID54299 gettagorigin( "tag_flash" ), level._ID54299 );
     setomnvar( "ui_consciousness_init", 1 );
     setsaveddvar( "ui_consciousnessVignetteDarkness", 0.5 );
     setomnvar( "ui_consciousness_play", 1 );
@@ -1648,11 +1648,11 @@ _ID49998()
 
     foreach ( var_2 in var_0 )
     {
-        level._ID1194[var_2._ID922] orientmode( "face angle", var_2._ID65[1] );
-        level._ID1194[var_2._ID922] maps\airport_code::_ID44489();
-        level._ID1194[var_2._ID922]._ID507 = 0;
-        level._ID1194[var_2._ID922] thread _ID42407::_ID13026( "prestairs_nodes", 0.5 );
-        level._ID1194[var_2._ID922] thread maps\airport_code::_ID43748( var_2 );
+        level.team[var_2.script_noteworthy] orientmode( "face angle", var_2.angles[1] );
+        level.team[var_2.script_noteworthy] maps\airport_code::_ID44489();
+        level.team[var_2.script_noteworthy].ignoreall = 0;
+        level.team[var_2.script_noteworthy] thread _ID42407::_ID13026( "prestairs_nodes", 0.5 );
+        level.team[var_2.script_noteworthy] thread maps\airport_code::_ID43748( var_2 );
     }
 
     thread _ID42407::_ID14403( "player_set_speed_lobby", 0.5 );
@@ -1663,12 +1663,12 @@ _ID49998()
 
 _ID48265()
 {
-    var_0 = getglass( self._ID1193 );
+    var_0 = getglass( self.targetname );
 
     if ( isdefined( var_0 ) )
     {
         level waittillmatch( "glass_destroyed",  var_0  );
-        _ID42237::_ID27077( "scn_airport_skylight_glass", self._ID740 );
+        _ID42237::_ID27077( "scn_airport_skylight_glass", self.origin );
     }
 }
 
@@ -1716,12 +1716,12 @@ _ID44933()
     maps\airport_code::_ID46202( _ID42237::_ID16640( "massacre_start_nodes", "targetname" ) );
     thread maps\airport_code::_ID53147( 35 );
 
-    foreach ( var_1 in level._ID1194 )
+    foreach ( var_1 in level.team )
     {
         var_1 thread _ID42407::_ID13026( "massacre_ready", 0.5 );
-        var_1._ID452 = 8;
+        var_1.goalradius = 8;
         var_1._ID24424 = 1.3;
-        var_1._ID507 = 0;
+        var_1.ignoreall = 0;
         var_1 maps\airport_code::_ID44489();
         var_1 thread _ID47984::_ID53591( "massacre_rentacop_stop_dead" );
     }
@@ -1751,7 +1751,7 @@ _ID44281()
     maps\airport_code::_ID46202( _ID42237::_ID16640( "gate_start_nodes", "targetname" ) );
     _ID42237::_ID14402( "gate_main" );
 
-    foreach ( var_1 in level._ID1194 )
+    foreach ( var_1 in level.team )
         var_1 thread _ID42407::_ID13026( "gate_ready_to_go", 0.5 );
 }
 
@@ -1793,20 +1793,20 @@ _ID54612()
     var_1[var_1.size] = getnode( "basement_start_m4", "targetname" );
     wait 0.2;
 
-    foreach ( var_3 in level._ID1194 )
+    foreach ( var_3 in level.team )
     {
         var_3 maps\airport_code::_ID44489();
-        var_3._ID507 = 1;
-        var_3._ID511 = 1;
+        var_3.ignoreall = 1;
+        var_3.ignoreme = 1;
         var_3._ID24424 = 1.2;
         var_3 _ID42407::_ID10877();
         var_3 _ID42407::_ID10912();
         var_3 thread maps\airport_code::_ID46088();
-        var_3._ID452 = 16;
+        var_3.goalradius = 16;
     }
 
     foreach ( var_6 in var_1 )
-        level._ID1194[var_6._ID922] thread _ID42407::_ID14701( var_6 );
+        level.team[var_6.script_noteworthy] thread _ID42407::_ID14701( var_6 );
 }
 
 _ID52277()
@@ -1853,18 +1853,18 @@ _ID35741()
     thread _ID42407::_ID4917( "allies" );
     _ID42237::_ID14413( "team_initialized" );
 
-    foreach ( var_1 in level._ID1194 )
+    foreach ( var_1 in level.team )
     {
         var_1 _ID42407::_ID12492();
         var_1 pushplayer( 0 );
         var_1 _ID47984::casual_killer_setup_custom_turns( 0 );
     }
 
-    level._ID1194["saw"] _ID42407::_ID36519();
-    level._ID1194["shotgun"] _ID42407::_ID36519();
-    level._ID1194["saw"] kill();
-    level._ID1194["shotgun"] kill();
-    level._ID1194 = _ID42407::_ID3329( level._ID1194 );
+    level.team["saw"] _ID42407::_ID36519();
+    level.team["shotgun"] _ID42407::_ID36519();
+    level.team["saw"] kill();
+    level.team["shotgun"] kill();
+    level.team = _ID42407::_ID3329( level.team );
     maps\airport_code::_ID44563();
     maps\airport_code::_ID46202( _ID42237::_ID16640( "escape_start_nodes", "targetname" ) );
     _ID42237::_ID14402( "player_DMS_allow_sprint" );
@@ -1874,7 +1874,7 @@ _ID35741()
     _ID42237::_ID14402( "tarmac_enemies_wave2_dead" );
     _ID42237::_ID14402( "tarmac_van_guys_dead" );
     _ID42237::_ID14402( "tarmac_van_guys2_dead" );
-    level._ID794 allowjump( 1 );
+    level.player allowjump( 1 );
     _ID42237::_ID14402( "player_DMS_allow_sprint" );
 }
 
@@ -1902,14 +1902,14 @@ _ID47216()
     var_0[var_0.size] = "g36c_reflex";
     var_0[var_0.size] = "striker";
     var_1 = _ID42237::_ID16638( "escape_ending_node", "targetname" );
-    level._ID49338 = spawn( "script_model", var_1._ID740 );
-    level._ID49338._ID65 = var_1._ID65;
+    level._ID49338 = spawn( "script_model", var_1.origin );
+    level._ID49338.angles = var_1.angles;
     level._ID49338 setmodel( "vehicle_ambulance_swat" );
-    level._ID43574 = level._ID1194["saw"];
+    level._ID43574 = level.team["saw"];
     level._ID43574._ID3189 = "van_mate";
-    level._ID43936 = level._ID1194["m4"];
+    level._ID43936 = level.team["m4"];
     level._ID43936._ID3189 = "comrad";
-    level._ID794 _ID42407::_ID12569( 0 );
+    level.player _ID42407::_ID12569( 0 );
 
     for (;;)
     {
@@ -1957,9 +1957,9 @@ _ID49964()
     {
         var_6 hide();
 
-        if ( isdefined( var_6._ID1191 ) )
+        if ( isdefined( var_6.target ) )
         {
-            var_11 = getent( var_6._ID1191, "targetname" );
+            var_11 = getent( var_6.target, "targetname" );
             var_11 hide();
         }
     }
@@ -2051,8 +2051,8 @@ _ID47549()
             _ID42407::_ID24577( "mus_airport_escape", 150 );
             _ID42237::_ID14413( "escape_hold_your_fire" );
             thread _ID42407::_ID24584( 2 );
-            var_0 = spawn( "script_origin", level._ID794._ID740 );
-            var_0 linkto( level._ID794 );
+            var_0 = spawn( "script_origin", level.player.origin );
+            var_0 linkto( level.player );
             var_0 playsound( "mus_airport_doublecross_sfx" );
         case "grigs":
             break;

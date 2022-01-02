@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "snowmobile", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -84,8 +84,8 @@ _ID53921()
 {
     self._ID29969._ID36388 = 0;
     self._ID25834 = 1;
-    self._ID9526["combat"] = animscripts\custom\snowmobile::_ID616;
-    self._ID9526["stop"] = animscripts\custom\snowmobile::_ID616;
+    self._ID9526["combat"] = animscripts\custom\snowmobile::main;
+    self._ID9526["stop"] = animscripts\custom\snowmobile::main;
 }
 
 _ID53614()
@@ -131,8 +131,8 @@ _ID49319()
             continue;
         }
 
-        var_0 = angleclamp180( self._ID65[0] );
-        var_1 = angleclamp180( self._ID65[2] );
+        var_0 = angleclamp180( self.angles[0] );
+        var_1 = angleclamp180( self.angles[2] );
         var_2 = isdefined( self._ID43031 ) && abs( var_1 ) > self._ID43031;
         var_2 |= ( isdefined( self._ID48141 ) && abs( var_0 ) > self._ID48141 );
 
@@ -220,16 +220,16 @@ _ID54521()
     {
         self waittill( "veh_jolt",  var_2  );
 
-        if ( isdefined( level._ID794._ID40065 ) )
+        if ( isdefined( level.player._ID40065 ) )
         {
-            var_3 = level._ID794._ID40065._ID740 - self._ID740;
+            var_3 = level.player._ID40065.origin - self.origin;
 
             if ( length2dsquared( var_3 ) < var_0 )
             {
-                var_4 = anglestoaxis( level._ID794._ID40065._ID65 );
+                var_4 = anglestoaxis( level.player._ID40065.angles );
                 var_5 = vectornormalize( var_3 ) * length( var_2 ) * 2.0;
                 var_6 = ( vectordot( var_5, var_4["forward"] ), vectordot( var_5, var_4["right"] ), vectordot( var_5, var_4["up"] ) );
-                level._ID794._ID40065 notify( "veh_jolt",  var_6  );
+                level.player._ID40065 notify( "veh_jolt",  var_6  );
             }
         }
 
@@ -450,8 +450,8 @@ _ID43157( var_0, var_1 )
 {
     var_0._ID29969._ID36388 = 0;
     var_0._ID25834 = 1;
-    var_0._ID9526["combat"] = animscripts\custom\snowmobile::_ID616;
-    var_0._ID9526["stop"] = animscripts\custom\snowmobile::_ID616;
+    var_0._ID9526["combat"] = animscripts\custom\snowmobile::main;
+    var_0._ID9526["stop"] = animscripts\custom\snowmobile::main;
 }
 
 _ID39488()

@@ -52,7 +52,7 @@ _ID50469( var_0, var_1 )
     }
 
     var_3._ID40065 = var_2;
-    var_2._ID52578 = var_2._ID669;
+    var_2._ID52578 = var_2.model;
     var_2._ID45078 = 32;
     var_2._ID3189 = "zodiac_player";
     var_2 _ID42407::_ID3428();
@@ -202,13 +202,13 @@ _ID53325()
     {
         if ( _ID42237::_ID14385( "player_zodiac_on_ground" ) )
         {
-            if ( self._ID1278 != self._ID46229 )
-                self._ID1278 = self._ID46229;
+            if ( self.veh_topspeed != self._ID46229 )
+                self.veh_topspeed = self._ID46229;
         }
         else if ( !_ID42237::_ID14385( "boat_start_rubber_band" ) )
         {
-            if ( isdefined( self._ID51804 ) && self._ID1278 != self._ID51804 )
-                self._ID1278 = self._ID51804;
+            if ( isdefined( self._ID51804 ) && self.veh_topspeed != self._ID51804 )
+                self.veh_topspeed = self._ID51804;
         }
 
         waittillframeend;
@@ -269,9 +269,9 @@ _ID40851( var_0 )
 
         if ( var_6 == "MOD_PROJECTILE_SPLASH" || var_6 == "MOD_PROJECTILE" )
         {
-            var_7 = vectornormalize( var_5 - var_0._ID740 );
-            var_8 = anglestoforward( var_0._ID65 );
-            var_9 = anglestoright( var_0._ID65 );
+            var_7 = vectornormalize( var_5 - var_0.origin );
+            var_8 = anglestoforward( var_0.angles );
+            var_9 = anglestoright( var_0.angles );
             var_10 = vectordot( var_7, var_8 );
 
             if ( var_10 >= 0 )
@@ -336,9 +336,9 @@ _ID54374( var_0 )
 
         if ( var_5 > var_6 && var_4[0] < 0 && var_5 > var_1 )
         {
-            var_7 = anglestoright( var_0._ID65 );
-            var_8 = anglestoforward( var_0._ID65 );
-            var_9 = var_0._ID740 + ( 0, 0, 40 );
+            var_7 = anglestoright( var_0.angles );
+            var_8 = anglestoforward( var_0.angles );
+            var_9 = var_0.origin + ( 0, 0, 40 );
             var_10 = var_9 - var_7 * 12;
             var_11 = var_9 + var_7 * 12;
             var_12 = var_8 * 175;
@@ -348,7 +348,7 @@ _ID54374( var_0 )
             if ( !( var_13["fraction"] >= 1 && var_14["fraction"] >= 1 ) )
             {
                 var_15 = var_8 * 30;
-                var_16 = var_0._ID740 + var_15;
+                var_16 = var_0.origin + var_15;
                 var_17 = clamp( var_5, var_2, var_3 );
                 var_18 = ( var_17 - var_2 ) / ( var_3 - var_2 );
                 var_19 = 12 + 35 * var_18;
@@ -426,7 +426,7 @@ _ID51137( var_0, var_1, var_2 )
         if ( var_8 == "price" )
             var_13 = level._ID28543;
 
-        var_14 = var_13._ID740;
+        var_14 = var_13.origin;
         var_15 = var_7["player"];
 
         if ( var_8 == "price" )
@@ -443,7 +443,7 @@ _ID51137( var_0, var_1, var_2 )
 
         foreach ( var_17 in var_10 )
         {
-            var_18 = var_17._ID740;
+            var_18 = var_17.origin;
 
             if ( isdefined( var_17._ID29969 ) )
             {
@@ -466,7 +466,7 @@ _ID51137( var_0, var_1, var_2 )
             if ( abs( var_21 ) > 15 )
                 continue;
 
-            var_22 = angleclamp180( var_20[1] - var_13._ID65[1] );
+            var_22 = angleclamp180( var_20[1] - var_13.angles[1] );
 
             if ( var_22 < var_15._ID23586 || var_22 > var_15._ID23033 )
                 continue;
@@ -644,7 +644,7 @@ _ID51901( var_0 )
 
     foreach ( var_3 in var_1 )
     {
-        if ( distance( var_3._ID740, var_0._ID740 ) < var_3._ID851 )
+        if ( distance( var_3.origin, var_0.origin ) < var_3.radius )
             return;
     }
 
@@ -663,17 +663,17 @@ _ID43183( var_0, var_1, var_2 )
 {
     var_3 = spawnstruct();
 
-    if ( level._ID794 _ID42407::_ID13019( "zodiac_aim_helicopter" ) )
+    if ( level.player _ID42407::_ID13019( "zodiac_aim_helicopter" ) )
     {
         var_3._ID25268 = level._ID52084;
-        var_3._ID740 = level._ID52084._ID740;
+        var_3.origin = level._ID52084.origin;
         return var_3;
     }
 
     if ( isalive( self._ID45197 ) )
     {
         var_3._ID25268 = self._ID45197;
-        var_3._ID740 = self._ID45197 getshootatpos() + _ID42237::_ID28978( -10, 10 ) + ( 0, 0, -1 * randomfloat( 40 ) );
+        var_3.origin = self._ID45197 getshootatpos() + _ID42237::_ID28978( -10, 10 ) + ( 0, 0, -1 * randomfloat( 40 ) );
         return var_3;
     }
 
@@ -681,17 +681,17 @@ _ID43183( var_0, var_1, var_2 )
 
     foreach ( var_6 in var_4 )
     {
-        if ( distance( level._ID794._ID740, var_6._ID740 ) > 2300 )
+        if ( distance( level.player.origin, var_6.origin ) > 2300 )
             continue;
 
-        if ( !_ID42407::_ID41803( level._ID794._ID740, level._ID794._ID65, var_6._ID740, 0.965925 ) )
+        if ( !_ID42407::_ID41803( level.player.origin, level.player.angles, var_6.origin, 0.965925 ) )
             continue;
 
-        if ( !level._ID794 sightconetrace( var_6 getshootatpos(), var_6 ) )
+        if ( !level.player sightconetrace( var_6 getshootatpos(), var_6 ) )
             continue;
 
         var_3._ID25268 = var_6;
-        var_3._ID740 = var_6._ID740;
+        var_3.origin = var_6.origin;
         thread _ID51901( var_6 );
         return var_3;
     }
@@ -700,17 +700,17 @@ _ID43183( var_0, var_1, var_2 )
 
     foreach ( var_6 in var_8 )
     {
-        if ( distance( level._ID794._ID740, var_6._ID740 ) > 1300 )
+        if ( distance( level.player.origin, var_6.origin ) > 1300 )
             continue;
 
-        if ( !_ID42407::_ID41803( level._ID794._ID740, level._ID794._ID65, var_6._ID740, cos( 15 ) ) )
+        if ( !_ID42407::_ID41803( level.player.origin, level.player.angles, var_6.origin, cos( 15 ) ) )
             continue;
 
-        if ( !level._ID794 sightconetrace( var_6._ID740 + ( 0, 0, 16 ), var_6 ) )
+        if ( !level.player sightconetrace( var_6.origin + ( 0, 0, 16 ), var_6 ) )
             continue;
 
         var_3._ID25268 = var_6;
-        var_3._ID740 = var_6._ID740;
+        var_3.origin = var_6.origin;
         var_3._ID44118 = 1;
         return var_3;
     }
@@ -718,8 +718,8 @@ _ID43183( var_0, var_1, var_2 )
     if ( isdefined( var_2 ) )
         return var_3;
 
-    var_11 = anglestoforward( self._ID65 );
-    var_3._ID740 = var_1 + var_11 * 1500;
+    var_11 = anglestoforward( self.angles );
+    var_3.origin = var_1 + var_11 * 1500;
     return var_3;
 }
 
@@ -748,7 +748,7 @@ _ID49468()
         if ( !var_3._ID29965.size )
             continue;
 
-        if ( isdefined( var_3._ID922 ) && var_3._ID922 == "bobbing_boat" )
+        if ( isdefined( var_3.script_noteworthy ) && var_3.script_noteworthy == "bobbing_boat" )
             continue;
 
         var_3 thread _ID46903();
@@ -764,7 +764,7 @@ _ID46903()
     self endon( "wipeout_when_not_in_fov" );
     self endon( "death" );
 
-    while ( _ID42407::_ID41804( self._ID740, 0.5 ) )
+    while ( _ID42407::_ID41804( self.origin, 0.5 ) )
         wait 0.05;
 
     self._ID41798 = 1;
@@ -793,17 +793,17 @@ _ID51581( var_0, var_1 )
     if ( _ID42237::_ID14385( "player_in_sight_of_boarding" ) )
         magicbullet( level._ID45615, var_2, var_2 + ( 0, 0, 255 ), self );
     else
-        magicbullet( level._ID45615, var_2, var_1._ID740, self );
+        magicbullet( level._ID45615, var_2, var_1.origin, self );
 
     playfxontag( level._ID44916, var_0, "tag_flash" );
     playfxontag( level._ID44902, var_0, "tag_brass" );
-    level._ID794 playrumblelooponentity( "smg_fire" );
+    level.player playrumblelooponentity( "smg_fire" );
 
     if ( !isdefined( var_1._ID25268 ) )
         return;
 
     if ( !isai( var_1._ID25268 ) )
-        var_1._ID25268 notify( "damage",  50, level._ID794, self._ID740, var_1._ID25268._ID740, "MOD_PISTOL_BULLET", "", ""  );
+        var_1._ID25268 notify( "damage",  50, level.player, self.origin, var_1._ID25268.origin, "MOD_PISTOL_BULLET", "", ""  );
 
     if ( isdefined( var_1._ID44118 ) )
     {
@@ -875,16 +875,16 @@ _ID45584( var_0 )
 
         var_6 = _ID20608();
 
-        if ( level._ID794 _ID42407::_ID13019( "disable_shooting" ) )
+        if ( level.player _ID42407::_ID13019( "disable_shooting" ) )
             var_6 = 0;
 
         var_7 = var_0 gettagorigin( "tag_flash" );
         var_8 = _ID43183( var_0, var_7 );
         var_9 = var_0 gettagangles( "tag_flash" );
-        var_10 = vectortoangles( var_8._ID740 - var_7 );
+        var_10 = vectortoangles( var_8.origin - var_7 );
         var_11 = var_10[1];
         var_12 = var_10[0];
-        var_13 = angleclamp( self._ID65[1] );
+        var_13 = angleclamp( self.angles[1] );
         var_14 = 15;
         var_15 = angleclamp180( var_11 - var_13 );
         var_3[var_1 % var_2] = var_15;
@@ -893,7 +893,7 @@ _ID45584( var_0 )
         var_18 = abs( clamp( var_16 / var_14, -1, 0 ) );
         var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_right" ), var_18, var_5 );
         var_0 setanimlimited( var_0 _ID42407::_ID16120( "gun_left" ), var_17, var_5 );
-        var_13 = angleclamp( self._ID65[0] );
+        var_13 = angleclamp( self.angles[0] );
         var_14 = 10;
         var_15 = angleclamp180( var_12 - var_13 );
         var_4[var_1 % var_2] = var_15;
@@ -962,7 +962,7 @@ _ID47689( var_0, var_1 )
     {
         var_2 = _ID20608();
 
-        if ( level._ID794 _ID42407::_ID13019( "disable_shooting" ) )
+        if ( level.player _ID42407::_ID13019( "disable_shooting" ) )
             var_2 = 0;
 
         if ( var_2 )
@@ -979,7 +979,7 @@ _ID47689( var_0, var_1 )
 
 _ID20608()
 {
-    if ( !level._ID8534 && !level._ID794 _meth_835b() )
+    if ( !level._ID8534 && !level.player _meth_835b() )
         return self attackbuttonpressed();
 
     return self _meth_8108();
@@ -1033,7 +1033,7 @@ _ID44461()
 
 _ID51514()
 {
-    if ( !isdefined( level._ID794._ID40065 ) )
+    if ( !isdefined( level.player._ID40065 ) )
         return 1;
 
     if ( _ID42237::_ID14385( "shepherd_got_away" ) )
@@ -1044,13 +1044,13 @@ _ID51514()
 
 _ID46985()
 {
-    if ( !isdefined( level._ID794._ID40065 ) )
+    if ( !isdefined( level.player._ID40065 ) )
         return 1;
 
     if ( _ID42237::_ID14385( "shepherd_got_away" ) )
         return 1;
 
-    return level._ID794._ID40065._ID1276 > 10;
+    return level.player._ID40065.veh_speed > 10;
 }
 
 _ID54207( var_0 )
@@ -1064,7 +1064,7 @@ _ID54207( var_0 )
 
     for (;;)
     {
-        if ( abs( var_0._ID1276 ) < 5 )
+        if ( abs( var_0.veh_speed ) < 5 )
         {
             var_0._ID45638++;
 
@@ -1082,7 +1082,7 @@ _ID49316()
 {
     for (;;)
     {
-        if ( self._ID1276 > 40 )
+        if ( self.veh_speed > 40 )
             return;
 
         wait 1;

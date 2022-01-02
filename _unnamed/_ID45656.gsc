@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_opforce_sniper_ghillie" );
     self attach( "head_opforce_sniper_ghillie", "", 1 );

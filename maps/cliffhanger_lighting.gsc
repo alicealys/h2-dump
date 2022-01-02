@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID32363();
     level.blizzard_sunflare_threadid = undefined;
@@ -203,7 +203,7 @@ _ID53242( var_0, var_1, var_2 )
     else if ( var_15 )
         _ID42237::_ID14388( "pause_blizzard_ground_fx" );
 
-    level._ID794 _ID42407::_ID48929( var_5 );
+    level.player _ID42407::_ID48929( var_5 );
 
     if ( var_7 )
         _func_48();
@@ -213,7 +213,7 @@ _ID53242( var_0, var_1, var_2 )
     _ID49359::_ID53955( var_1, var_10 );
 
     if ( isdefined( var_9 ) )
-        level._ID794 _meth_849f( var_9, var_1 );
+        level.player _meth_849f( var_9, var_1 );
 
     if ( getdvarint( "blizzard_light_debug" ) == 1 )
         iprintln( "blizzard vision transition to :  " + var_0 );
@@ -234,7 +234,7 @@ _ID47950()
     {
         if ( level._ID51628 && !_ID42237::_ID14385( "player_indoors" ) )
         {
-            var_2 = vectornormalize( anglestoforward( level._ID794._ID65 ) );
+            var_2 = vectornormalize( anglestoforward( level.player.angles ) );
             var_3 = vectornormalize( anglestoforward( var_0 ) );
             var_4 = vectordot( var_2, var_3 );
             var_5 = var_4 < -0.5;
@@ -248,7 +248,7 @@ _ID47950()
         {
             if ( !var_6 )
             {
-                var_1 = spawnfx( level._ID1426["vfx_screen_google_snowflakes_addon"], level._ID794._ID740 );
+                var_1 = spawnfx( level._ID1426["vfx_screen_google_snowflakes_addon"], level.player.origin );
                 triggerfx( var_1 );
             }
         }
@@ -280,9 +280,9 @@ _ID45932( var_0 )
         while ( var_1 )
         {
             wait 0.5;
-            var_4 = level._ID794 getplayerangles();
+            var_4 = level.player getplayerangles();
             var_2 = vectornormalize( anglestoforward( var_4 ) );
-            var_3 = vectornormalize( level._ID49429._ID40005["origin"] - level._ID794._ID740 );
+            var_3 = vectornormalize( level._ID49429._ID40005["origin"] - level.player.origin );
 
             if ( vectordot( var_2, var_3 ) < 0 )
                 var_1 = 0;
@@ -309,7 +309,7 @@ _ID48518()
 
         if ( !_ID42237::_ID14385( "starting_hanger_backdoor_path" ) )
         {
-            level._ID44988 = spawnfx( level._ID1426[level._ID52573], level._ID794._ID740 );
+            level._ID44988 = spawnfx( level._ID1426[level._ID52573], level.player.origin );
             triggerfx( level._ID44988 );
         }
 
@@ -333,23 +333,23 @@ _ID43891()
     for (;;)
     {
         level waittill( "player_indoors",  var_3, var_4  );
-        var_5 = var_4._ID922;
-        var_6 = var_4._ID922;
+        var_5 = var_4.script_noteworthy;
+        var_6 = var_4.script_noteworthy;
         var_7 = 1;
 
-        if ( var_4._ID922 == "cliffhanger_snowmobile_int" )
+        if ( var_4.script_noteworthy == "cliffhanger_snowmobile_int" )
             var_7 = 0;
 
         if ( isdefined( var_4._ID31388 ) && isdefined( level._ID40560[var_4._ID31388] ) )
             var_8 = var_4._ID31388;
         else
-            var_8 = var_4._ID922;
+            var_8 = var_4.script_noteworthy;
 
         _ID45336( var_6, var_5, var_8, var_7 );
 
         while ( _ID42237::_ID14385( "player_indoors" ) )
         {
-            if ( level._ID794._ID46646 != var_6 )
+            if ( level.player._ID46646 != var_6 )
             {
                 if ( !_ID42237::_ID14385( "acs_picked_up" ) )
                     _ID45336( var_6, var_5, var_8 );
@@ -381,7 +381,7 @@ _ID45336( var_0, var_1, var_2, var_3 )
         _ID42407::_ID32515( var_1, 0.5 );
 
     if ( isdefined( var_0 ) )
-        level._ID794 _ID42407::_ID48929( var_0 );
+        level.player _ID42407::_ID48929( var_0 );
 
     _ID49359::_ID53955( 0.5, 0.0 );
 }

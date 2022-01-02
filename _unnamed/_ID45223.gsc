@@ -1,13 +1,13 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID53720();
     _ID28382();
 
     if ( getdvar( "createfx" ) != "on" || level._ID44088 == "free" )
-        _ID43496::_ID616();
+        _ID43496::main();
 }
 
 _ID53720()

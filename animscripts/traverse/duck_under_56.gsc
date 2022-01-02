@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     var_0 = [];
     var_0["traverseAnim"] = %gulag_pipe_traverse;

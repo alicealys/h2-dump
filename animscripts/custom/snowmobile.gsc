@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID9444 = "none";
     self._ID33769 = undefined;
@@ -29,10 +29,10 @@ _ID46580()
 
 _ID34883()
 {
-    self._ID465 = 0;
+    self.grenadeawareness = 0;
     self._ID7._ID28253 = "crouch";
     _ID42407::_ID10973();
-    self._ID52 = 0;
+    self.allowpain = 0;
     self._ID16482 = ::_ID34882;
     self._ID35375 = ::_ID34890;
     self._ID11002 = 1;
@@ -40,7 +40,7 @@ _ID34883()
 
 _ID34882()
 {
-    self._ID52 = 1;
+    self.allowpain = 1;
     self._ID16482 = undefined;
     self._ID35375 = undefined;
     self._ID7._ID35385 = undefined;
@@ -59,8 +59,8 @@ _ID22767()
     if ( var_0 )
     {
         animscripts\shared::_ID26732( self._ID834, "left" );
-        self._ID894 = 90;
-        self._ID590 = -90;
+        self.rightaimlimit = 90;
+        self.leftaimlimit = -90;
         animscripts\track::_ID32548( 1, 0.2 );
         thread _ID34899();
         thread _ID34886();
@@ -80,8 +80,8 @@ _ID22783()
 
     if ( self._ID29969._ID26297 )
     {
-        self._ID894 = 180;
-        self._ID590 = -180;
+        self.rightaimlimit = 180;
+        self.leftaimlimit = -180;
         self._ID10860 = 1;
         animscripts\track::_ID32548( 1, 0.2 );
         thread _ID34900();
@@ -176,7 +176,7 @@ _ID34886()
 
     for (;;)
     {
-        if ( isdefined( self._ID40065 ) && isdefined( self._ID40065._ID1276 ) && self._ID40065._ID1276 > 0 )
+        if ( isdefined( self._ID40065 ) && isdefined( self._ID40065.veh_speed ) && self._ID40065.veh_speed > 0 )
             self setanimknob( animscripts\utility::_ID3153( "idle" ), 1, 0 );
         else
             self setanimknob( %h2_snowmobile_soap_waiting, 1, 0 );
@@ -255,7 +255,7 @@ _ID34888()
         self setanimlimited( animscripts\utility::_ID3153( "add_aim_backright_left" ), var_3, var_0 );
         self setanimlimited( animscripts\utility::_ID3153( "add_aim_backright_right" ), var_4, var_0 );
 
-        if ( isplayernumber( self._ID322 ) )
+        if ( isplayernumber( self.enemy ) )
             self updateplayersightaccuracy();
 
         wait 0.05;
@@ -373,7 +373,7 @@ _ID34879()
 
 _ID34904()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
     {
         self._ID33785 = undefined;
         self._ID33810 = undefined;
@@ -381,9 +381,9 @@ _ID34904()
         return;
     }
 
-    self._ID33785 = self._ID322;
-    self._ID33810 = self._ID322 getshootatpos();
-    var_0 = distancesquared( self._ID740, self._ID322._ID740 );
+    self._ID33785 = self.enemy;
+    self._ID33810 = self.enemy getshootatpos();
+    var_0 = distancesquared( self.origin, self.enemy.origin );
 
     if ( var_0 < 1000000 )
         self._ID33816 = "full";
@@ -392,14 +392,14 @@ _ID34904()
     else
         self._ID33816 = "single";
 
-    if ( isdefined( self._ID322._ID40065 ) )
+    if ( isdefined( self.enemy._ID40065 ) )
     {
         var_1 = 0.5;
         var_2 = self._ID33785._ID40065;
         var_3 = self._ID29969;
-        var_4 = var_3._ID740 - var_2._ID740;
-        var_5 = anglestoforward( var_2._ID65 );
-        var_6 = anglestoright( var_2._ID65 );
+        var_4 = var_3.origin - var_2.origin;
+        var_5 = anglestoforward( var_2.angles );
+        var_6 = anglestoright( var_2.angles );
         var_7 = vectordot( var_4, var_5 );
 
         if ( var_7 < 0 )
@@ -423,7 +423,7 @@ _ID34904()
                     var_9 = -128 - var_9;
 
                 self._ID33785 = undefined;
-                self._ID33810 = var_2._ID740 + var_8 * var_5 + var_9 * var_6;
+                self._ID33810 = var_2.origin + var_8 * var_5 + var_9 * var_6;
                 return;
             }
         }
@@ -524,7 +524,7 @@ _ID34899()
     for (;;)
     {
         animscripts\track::_ID19507();
-        var_5 = ( self._ID740[0], self._ID740[1], self geteye()[2] );
+        var_5 = ( self.origin[0], self.origin[1], self geteye()[2] );
         var_6 = self._ID33810;
 
         if ( isdefined( self._ID33785 ) )
@@ -536,17 +536,17 @@ _ID34899()
             var_7 = self getanglestolikelyenemypath();
 
             if ( isdefined( var_7 ) )
-                var_3 = angleclamp180( self._ID65[1] - var_7[1] );
+                var_3 = angleclamp180( self.angles[1] - var_7[1] );
         }
         else
         {
             var_8 = var_6 - var_5;
             var_9 = vectortoangles( var_8 );
-            var_3 = self._ID65[1] - var_9[1];
+            var_3 = self.angles[1] - var_9[1];
             var_3 = angleclamp180( var_3 );
         }
 
-        if ( var_3 > self._ID894 || var_3 < self._ID590 )
+        if ( var_3 > self.rightaimlimit || var_3 < self.leftaimlimit )
             var_3 = 0;
 
         if ( var_4 )
@@ -585,7 +585,7 @@ _ID34900()
     for (;;)
     {
         animscripts\track::_ID19507();
-        var_9 = ( self._ID740[0], self._ID740[1], self geteye()[2] );
+        var_9 = ( self.origin[0], self.origin[1], self geteye()[2] );
         var_10 = self._ID33810;
 
         if ( isdefined( self._ID33785 ) )
@@ -597,17 +597,17 @@ _ID34900()
             var_11 = self getanglestolikelyenemypath();
 
             if ( isdefined( var_11 ) )
-                var_7 = angleclamp180( self._ID65[1] - var_11[1] );
+                var_7 = angleclamp180( self.angles[1] - var_11[1] );
         }
         else
         {
             var_12 = var_10 - var_9;
             var_13 = vectortoangles( var_12 );
-            var_7 = self._ID65[1] - var_13[1];
+            var_7 = self.angles[1] - var_13[1];
             var_7 = angleclamp180( var_7 );
         }
 
-        if ( isdefined( self._ID36450 ) || var_7 > 0 && ( var_7 - self._ID894 ) * self._ID10860 > 0 || var_7 < 0 && ( var_7 - self._ID590 ) * self._ID10860 < 0 )
+        if ( isdefined( self._ID36450 ) || var_7 > 0 && ( var_7 - self.rightaimlimit ) * self._ID10860 > 0 || var_7 < 0 && ( var_7 - self.leftaimlimit ) * self._ID10860 < 0 )
             var_7 = 0;
 
         if ( var_8 )
@@ -691,7 +691,7 @@ _ID34877()
     if ( lengthsquared( var_1 ) > 1000000 )
         var_1 = vectornormalize( var_1 ) * 1000;
 
-    var_2 = spawn( "script_origin", self._ID740 );
+    var_2 = spawn( "script_origin", self.origin );
     var_2 moveslide( ( 0, 0, 40 ), 15, var_1 );
     self linkto( var_2 );
     var_2 thread _ID10350();
@@ -713,7 +713,7 @@ _ID34890()
     var_1[0] = -180;
     var_1[1] = -90;
     var_1[2] = 90;
-    var_2 = _ID34881( var_0, var_1, self._ID259 );
+    var_2 = _ID34881( var_0, var_1, self.damageyaw );
     animscripts\death::_ID27200( var_2 );
     return 1;
 }
@@ -728,7 +728,7 @@ _ID34876()
     var_1 = var_0._ID28502;
     _ID34877();
     var_2 = vectortoangles( var_1 );
-    var_3 = angleclamp180( var_2[1] - self._ID65[1] );
+    var_3 = angleclamp180( var_2[1] - self.angles[1] );
     var_4 = [];
     var_4[0] = level._ID30895["snowmobile"]["big"]["death"]["back"];
     var_4[1] = level._ID30895["snowmobile"]["big"]["death"]["left"];
@@ -757,10 +757,10 @@ _ID53889()
     var_1[1] = level._ID30895["snowmobile"]["big"]["death"]["right"];
     var_1[2] = level._ID30895["snowmobile"]["big"]["death"]["left"];
     var_2 = [];
-    var_2[0] = self._ID65[2];
-    var_2[1] = self._ID65[2] - 90;
-    var_2[2] = self._ID65[2] + 90;
-    var_3 = _ID34881( var_1, var_2, self._ID65[2] );
+    var_2[0] = self.angles[2];
+    var_2[1] = self.angles[2] - 90;
+    var_2[2] = self.angles[2] + 90;
+    var_3 = _ID34881( var_1, var_2, self.angles[2] );
     self unlink();
     animscripts\death::_ID27200( var_3 );
     return 1;
@@ -768,12 +768,12 @@ _ID53889()
 
 _ID10350()
 {
-    var_0 = self._ID740;
+    var_0 = self.origin;
 
     for ( var_1 = 0; var_1 < 60; var_1++ )
     {
         wait 0.05;
-        var_0 = self._ID740;
+        var_0 = self.origin;
     }
 
     wait 3;

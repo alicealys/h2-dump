@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_ceiling_fan_housing02", "tag_origin", 0, undefined, 32 );
     _ID42231::_ID10548( "tag_origin", "h2_us_ceiling_fan_housing_02", 150 );

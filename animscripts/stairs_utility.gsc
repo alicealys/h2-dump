@@ -179,8 +179,8 @@ _ID48001( var_0, var_1, var_2, var_3, var_4, var_5 )
             }
             else
             {
-                var_11 = vectornormalize( ( self._ID601[0], self._ID601[1], 0 ) );
-                var_12 = _ID46290( self._ID740, var_11, var_6, var_7 );
+                var_11 = vectornormalize( ( self.lookaheaddir[0], self.lookaheaddir[1], 0 ) );
+                var_12 = _ID46290( self.origin, var_11, var_6, var_7 );
                 self._ID50387["wantedPos"] = var_12["intersectionLine2"];
             }
         }
@@ -189,18 +189,18 @@ _ID48001( var_0, var_1, var_2, var_3, var_4, var_5 )
 
         if ( var_13 >= var_3 )
         {
-            var_14 = anglestoforward( self._ID65 );
+            var_14 = anglestoforward( self.angles );
             var_15 = getangledelta( var_0, var_3, var_13 );
             var_16 = var_15[0] * var_14 + ( 0, 0, var_15[2] );
             var_17 = self._ID50387["wantedPos"] + var_16;
-            self._ID31298 = length( var_17 - self._ID740 );
+            self.script_move_distance_override = length( var_17 - self.origin );
             return;
         }
 
-        var_18 = self._ID50387["wantedPos"] - self._ID740;
+        var_18 = self._ID50387["wantedPos"] - self.origin;
         var_19 = 0.001;
 
-        if ( vectordot( var_18, self._ID601 ) > var_19 )
+        if ( vectordot( var_18, self.lookaheaddir ) > var_19 )
         {
             var_20 = getangledelta( var_0, var_9, var_13 );
             var_21 = length( var_20 ) / var_8;
@@ -212,10 +212,10 @@ _ID48001( var_0, var_1, var_2, var_3, var_4, var_5 )
             var_27 = var_23 / var_22;
             var_28 = var_26 / var_27 * var_22;
             var_29 = var_21 * var_28;
-            self._ID31298 = min( var_29, var_23 );
+            self.script_move_distance_override = min( var_29, var_23 );
         }
         else
-            self._ID31298 = 0;
+            self.script_move_distance_override = 0;
 
         waittillframeend;
         var_9 = self getanimtime( var_0 );
@@ -283,19 +283,19 @@ _ID51670( var_0, var_1 )
 
     if ( isdefined( var_4 ) )
     {
-        var_5 = anglestoforward( self._ID65 );
+        var_5 = anglestoforward( self.angles );
         var_6 = getangledelta( var_0, var_1, var_3 );
         var_7 = var_6[0] * var_5 + ( 0, 0, var_6[2] );
         var_8 = var_4 + var_7;
 
-        if ( lengthsquared( self._ID740 - var_8 ) < squared( 20 ) )
+        if ( lengthsquared( self.origin - var_8 ) < squared( 20 ) )
         {
-            var_9 = self._ID740 + ( 0, 0, 15 );
+            var_9 = self.origin + ( 0, 0, 15 );
             var_10 = var_8 + ( 0, 0, 15 );
             var_11 = self aiphysicstrace( var_9, var_10, 15, 30, 0, 1 );
 
             if ( var_11["fraction"] == 1 )
-                self forceteleport( var_8, self._ID65, 100 );
+                self forceteleport( var_8, self.angles, 100 );
         }
     }
 
@@ -398,7 +398,7 @@ _ID54120( var_0, var_1, var_2, var_3, var_4, var_5 )
             return undefined;
 
         var_9 = var_10["pos"];
-        var_11 = _ID46864( self._ID601, self._ID602, var_9, var_0["normal"], self._ID740, ( 0, 0, 1 ), 15 );
+        var_11 = _ID46864( self.lookaheaddir, self.lookaheaddist, var_9, var_0["normal"], self.origin, ( 0, 0, 1 ), 15 );
         var_12["wantedPos"] = var_11["position"];
         var_12["stairEdgeDir"] = var_11["stairEdgeDirection"];
         var_12["inStairTransitionIn"] = 1;
@@ -407,14 +407,14 @@ _ID54120( var_0, var_1, var_2, var_3, var_4, var_5 )
         return var_12;
     }
 
-    if ( var_1 < self._ID602 )
+    if ( var_1 < self.lookaheaddist )
         return undefined;
 
-    if ( var_1 - self._ID602 > 15 )
+    if ( var_1 - self.lookaheaddist > 15 )
         var_4 -= var_3 * 15;
     else
     {
-        var_13 = ( var_1 + self._ID602 ) * 0.5;
+        var_13 = ( var_1 + self.lookaheaddist ) * 0.5;
         var_4 -= var_3 * var_13;
     }
 
@@ -463,7 +463,7 @@ _ID50074( var_0, var_1, var_2, var_3 )
     var_12 = animscripts\run::_ID16616( var_3, "down", var_11 );
     var_13 = _ID46788( var_12 );
     var_9 = _ID50341( var_6, var_7, var_8, 0, 48 );
-    var_14 = _ID46864( self._ID601, self._ID602, var_9, var_10, self._ID740, ( 0, 0, 1 ), 15 );
+    var_14 = _ID46864( self.lookaheaddir, self.lookaheaddist, var_9, var_10, self.origin, ( 0, 0, 1 ), 15 );
     var_15["wantedPos"] = var_14["position"];
     var_15["stairEdgeDir"] = var_14["stairEdgeDirection"];
     var_15["inStairTransitionIn"] = 1;
@@ -472,7 +472,7 @@ _ID50074( var_0, var_1, var_2, var_3 )
 
     if ( getdvarint( "ai_useStairsTraceErrorOffset", 1 ) )
     {
-        var_16 = ( self._ID601[0], self._ID601[1], 0 );
+        var_16 = ( self.lookaheaddir[0], self.lookaheaddir[1], 0 );
         var_16 = vectornormalize( var_16 );
 
         if ( vectordot( var_10, var_16 ) > 0 )
@@ -489,15 +489,15 @@ _ID50074( var_0, var_1, var_2, var_3 )
 
 _ID53143( var_0 )
 {
-    var_1 = _ID47492( self._ID740 );
-    var_2 = _ID45811( var_1, self._ID740 );
+    var_1 = _ID47492( self.origin );
+    var_2 = _ID45811( var_1, self.origin );
     var_3 = animscripts\run::_ID16616( "up", "none", var_2 );
     var_4 = _ID46788( var_3 );
     var_5 = var_4[0];
     var_6 = 21;
     var_7 = var_5 * 1.333;
     var_8 = var_0 * 15;
-    var_9 = self._ID740 + var_5 * var_0 + var_8;
+    var_9 = self.origin + var_5 * var_0 + var_8;
     var_10 = var_9 + ( 0, 0, var_7 + var_6 );
     var_11 = var_9 - ( 0, 0, var_6 );
     var_12 = self aiphysicstrace( var_10, var_11, 0, 0, 1, 1 );
@@ -512,7 +512,7 @@ _ID53143( var_0 )
 
     if ( var_1["normal"][2] > 0.9962 )
     {
-        var_1 = _ID47492( self._ID740 - var_0 );
+        var_1 = _ID47492( self.origin - var_0 );
 
         if ( var_1["normal"][2] > 0.9962 )
             return undefined;
@@ -521,7 +521,7 @@ _ID53143( var_0 )
     if ( vectordot( var_1["normal"], var_0 ) > 0 )
         return undefined;
 
-    var_14 = _ID46864( self._ID601, self._ID602, var_1["pos"], var_1["normal"], var_13, ( 0, 0, 1 ), 15 );
+    var_14 = _ID46864( self.lookaheaddir, self.lookaheaddist, var_1["pos"], var_1["normal"], var_13, ( 0, 0, 1 ), 15 );
     var_15["wantedPos"] = var_14["position"];
     var_15["stairEdgeDir"] = var_14["stairEdgeDirection"];
     var_15["transitionAnim"] = var_3;
@@ -531,15 +531,15 @@ _ID53143( var_0 )
 
 _ID44583( var_0 )
 {
-    var_1 = _ID47492( self._ID740 );
-    var_2 = _ID45811( var_1, self._ID740 );
+    var_1 = _ID47492( self.origin );
+    var_2 = _ID45811( var_1, self.origin );
     var_3 = animscripts\run::_ID16616( "down", "none", var_2 );
     var_4 = _ID46788( var_3 );
     var_5 = var_4[0];
     var_6 = 18;
     var_7 = 22;
     var_8 = var_5 * 1.333;
-    var_9 = self._ID740 + var_5 * var_0;
+    var_9 = self.origin + var_5 * var_0;
     var_10 = var_9;
     var_11 = var_9 - ( 0, 0, var_8 + var_7 );
     var_12 = self aiphysicstrace( var_10, var_11, 0, 0, 1, 1 );
@@ -554,7 +554,7 @@ _ID44583( var_0 )
 
     if ( var_1["normal"][2] >= 0.9962 )
     {
-        var_1 = _ID47492( self._ID740 - var_0 );
+        var_1 = _ID47492( self.origin - var_0 );
 
         if ( var_1["normal"][2] >= 0.9962 )
             return undefined;
@@ -563,7 +563,7 @@ _ID44583( var_0 )
     if ( vectordot( var_1["normal"], var_0 ) < 0 )
         return undefined;
 
-    var_14 = _ID46864( self._ID601, self._ID602, var_1["pos"], var_1["normal"], var_13, ( 0, 0, 1 ), 15 );
+    var_14 = _ID46864( self.lookaheaddir, self.lookaheaddist, var_1["pos"], var_1["normal"], var_13, ( 0, 0, 1 ), 15 );
     var_15["wantedPos"] = var_14["position"];
     var_15["stairEdgeDir"] = var_14["stairEdgeDirection"];
     var_15["transitionAnim"] = var_3;
@@ -575,10 +575,10 @@ _ID48324( var_0, var_1, var_2, var_3 )
 {
     var_4 = undefined;
 
-    if ( !isdefined( self._ID601 ) )
+    if ( !isdefined( self.lookaheaddir ) )
         return undefined;
 
-    if ( !self._ID373 && !self shouldfacemotion() )
+    if ( !self.facemotion && !self shouldfacemotion() )
     {
         var_5 = abs( self getmotionangle() );
 
@@ -587,14 +587,14 @@ _ID48324( var_0, var_1, var_2, var_3 )
     }
 
     var_6 = _ID54002( var_0 );
-    var_7 = vectornormalize( ( self._ID601[0], self._ID601[1], 0 ) );
+    var_7 = vectornormalize( ( self.lookaheaddir[0], self.lookaheaddir[1], 0 ) );
     var_8 = !isdefined( var_3 ) || var_3 == "inOnly";
     var_9 = !isdefined( var_3 ) || var_3 == "outOnly";
 
-    if ( self._ID1012 == "none" && var_8 )
+    if ( self.stairsstate == "none" && var_8 )
     {
         var_10 = _ID51980( var_0, var_1, var_2 );
-        var_11 = self._ID740 + ( 0, 0, 1 );
+        var_11 = self.origin + ( 0, 0, 1 );
         var_12 = var_11 + var_10 * var_7;
         var_13 = self aiphysicstrace( var_11, var_12, 15, 48, 1, 1 );
 
@@ -605,9 +605,9 @@ _ID48324( var_0, var_1, var_2, var_3 )
     }
     else if ( var_9 )
     {
-        if ( self._ID1012 == "up" )
+        if ( self.stairsstate == "up" )
             var_4 = _ID53143( var_7 );
-        else if ( self._ID1012 == "down" )
+        else if ( self.stairsstate == "down" )
             var_4 = _ID44583( var_7 );
     }
 
@@ -618,7 +618,7 @@ _ID48324( var_0, var_1, var_2, var_3 )
         if ( var_14 <= 0 )
             return undefined;
 
-        var_15 = var_4["wantedPos"] - self._ID740;
+        var_15 = var_4["wantedPos"] - self.origin;
         var_4["stairs_old_moveplaybackrate"] = self._ID24424;
         var_4["moveplaybackrate"] = length( var_15 ) / var_14;
         var_4["currentContext"] = var_6;
@@ -728,7 +728,7 @@ _ID48637()
         if ( _ID50800() )
             continue;
 
-        if ( self._ID1012 != "none" )
+        if ( self.stairsstate != "none" )
             continue;
 
         if ( _ID49868() )
@@ -749,7 +749,7 @@ _ID47003()
 
 _ID48439()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "boneyard":
         case "invasion":
@@ -762,12 +762,12 @@ _ID48439()
 
 _ID54360()
 {
-    return self._ID1012 != "none" && _ID48439();
+    return self.stairsstate != "none" && _ID48439();
 }
 
 ismovingonstairs()
 {
-    return self._ID1012 != "none" && self._ID1012 != "idle" && _ID48439();
+    return self.stairsstate != "none" && self.stairsstate != "idle" && _ID48439();
 }
 
 _ID45811( var_0, var_1 )
@@ -794,7 +794,7 @@ _ID49687( var_0 )
 
 _ID53776()
 {
-    var_0 = _ID47492( self._ID740 );
-    var_1 = _ID45811( var_0, self._ID740 );
-    return "stairs_" + self._ID1012 + "_" + var_1;
+    var_0 = _ID47492( self.origin );
+    var_1 = _ID45811( var_0, self.origin );
+    return "stairs_" + self.stairsstate + "_" + var_1;
 }

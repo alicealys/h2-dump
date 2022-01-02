@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID19720();
     thread _ID32969();
@@ -25,7 +25,7 @@ _ID32969()
 _ID32363()
 {
     _ID42407::_ID40561( "roadkill", 0 );
-    level._ID794 _ID42407::_ID48929( "roadkill" );
+    level.player _ID42407::_ID48929( "roadkill" );
     level._ID51424 = "roadkill";
     level._ID49027 = "roadkill";
 }
@@ -37,10 +37,10 @@ _ID52366()
     thread _ID42407::_ID40561( "roadkill_ambush", 0.8 );
     var_0 = 5;
     thread maps\roadkill_aud::_ID46869( var_0, "scn_shellshock_latvee_ambush_01", "shellshock_latvee_ambush_01_mix" );
-    level._ID794 shellshock( "default", var_0 );
+    level.player shellshock( "default", var_0 );
     _ID42475::_ID34575( "start_ambush_flee_mix" );
-    earthquake( 0.7, 1.2, level._ID794._ID740, 5000 );
-    level._ID794 playrumblelooponentity( "damage_heavy" );
+    earthquake( 0.7, 1.2, level.player.origin, 5000 );
+    level.player playrumblelooponentity( "damage_heavy" );
 }
 
 _ID49662()
@@ -63,18 +63,18 @@ _ID43556()
         thread maps\roadkill_aud::_ID46869( var_0, "scn_shellshock_intro", "shellshock_intro_mix" );
         _ID42475::_ID34575( "start_shellshock_mix" );
         _ID42407::_ID4917( "allies" );
-        level._ID794 shellshock( "default", var_0 );
-        level._ID794 disableweapons();
-        var_1 = _ID42313::_ID9125( "black", 0, level._ID794 );
-        var_1._ID55 = 1;
+        level.player shellshock( "default", var_0 );
+        level.player disableweapons();
+        var_1 = _ID42313::_ID9125( "black", 0, level.player );
+        var_1.alpha = 1;
         _ID42237::_ID14402( "intro_latvee_complete" );
         setomnvar( "ui_expireHUD", 1 );
         setsaveddvar( "compass", 0 );
         wait 1;
         var_1 fadeovertime( 2.0 );
-        var_1._ID55 = 0;
+        var_1.alpha = 0;
         level waittill( "get_on_the_line" );
-        level._ID794 enableweapons();
+        level.player enableweapons();
         _ID42475::_ID34575( "stop_shellshock_mix" );
         setsaveddvar( "compass", 1 );
         _ID42407::_ID4918( "allies" );

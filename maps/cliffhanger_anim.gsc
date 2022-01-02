@@ -19,8 +19,8 @@ _ID47212()
     level._ID53525["planting_c4"]["origin"] = ( -5621, -28756, 896 );
     level._ID53525["planting_c4"]["angles"] = ( 0, 0, 0 );
     var_0 = getent( "acs_node", "targetname" );
-    level._ID53525["pickup_acs"]["origin"] = var_0._ID740;
-    level._ID53525["pickup_acs"]["angles"] = var_0._ID65;
+    level._ID53525["pickup_acs"]["origin"] = var_0.origin;
+    level._ID53525["pickup_acs"]["angles"] = var_0.angles;
 }
 
 _ID53378()
@@ -437,7 +437,7 @@ _ID54351( var_0 )
     var_1 = getentarray( "locker_dyn_explosion_org", "targetname" );
 
     foreach ( var_3 in var_1 )
-        physicsexplosionsphere( var_3._ID740, 100, 80, 0.3 );
+        physicsexplosionsphere( var_3.origin, 100, 80, 0.3 );
 }
 #using_animtree("animated_props");
 
@@ -732,7 +732,7 @@ _ID43098( var_0 )
     var_2 = var_0 gettagangles( "TAG_INHAND" );
     var_3 = spawn( "script_model", var_1 );
     var_3 setmodel( "weapon_c4" );
-    var_3._ID65 = var_2;
+    var_3.angles = var_2;
     var_3 thread _ID43691::_ID27192();
 }
 
@@ -743,7 +743,7 @@ _ID46816( var_0 )
 
 _ID46921( var_0 )
 {
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
     _ID42237::_ID14402( "locker_brawl_becomes_uninteruptable" );
 }
 
@@ -752,7 +752,7 @@ _ID2290( var_0 )
     if ( !isalive( var_0 ) )
         return;
 
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0._ID7._ID24881 = 1;
     var_0 _ID42407::_ID32226( 0 );
     _ID45456::_ID54623( var_0 );
@@ -994,16 +994,16 @@ _ID48833( var_0 )
 {
     var_1 = getdvar( "r_znear" );
     setsaveddvar( "r_znear", 1 );
-    _ID49359::_ID47801( level._ID794, 0.25, 1 );
+    _ID49359::_ID47801( level.player, 0.25, 1 );
     setsaveddvar( "r_znear", var_1 );
 }
 
 _ID48187( var_0 )
 {
     var_1 = getentarray( "possible_c4_models", "targetname" );
-    var_2 = _ID42237::_ID16182( level._ID794._ID740, var_1 );
-    var_2._ID740 = var_0 gettagorigin( "tag_weapon" );
-    var_2._ID65 = var_0 gettagangles( "tag_weapon" );
+    var_2 = _ID42237::_ID16182( level.player.origin, var_1 );
+    var_2.origin = var_0 gettagorigin( "tag_weapon" );
+    var_2.angles = var_0 gettagangles( "tag_weapon" );
     waittillframeend;
     var_0 detach( "weapon_c4", "tag_weapon" );
     var_2 show();

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("dog");
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     self clearanim( %root, 0.2 );
@@ -61,9 +61,9 @@ _ID43118()
     for (;;)
     {
         if ( self._ID10998 )
-            self._ID1044 = 0;
+            self.stopanimdistsq = 0;
         else
-            self._ID1044 = anim._ID11489;
+            self.stopanimdistsq = anim._ID11489;
 
         if ( isdefined( self._ID24408 ) )
         {
@@ -137,7 +137,7 @@ _ID50004()
         if ( self._ID7._ID24414 != "run" )
             continue;
 
-        var_2 = angleclamp180( self._ID65[1] - vectortoyaw( var_1 ) );
+        var_2 = angleclamp180( self.angles[1] - vectortoyaw( var_1 ) );
         var_3 = _ID53699( var_2 );
 
         if ( isdefined( var_3 ) )
@@ -157,10 +157,10 @@ _ID53713()
 
     for (;;)
     {
-        if ( self._ID602 > 40 && !isdefined( self._ID24409 ) && !isdefined( self._ID19386 ) && !isdefined( self._ID25154 ) && self._ID7._ID24414 == "run" )
+        if ( self.lookaheaddist > 40 && !isdefined( self._ID24409 ) && !isdefined( self._ID19386 ) && !isdefined( self._ID25154 ) && self._ID7._ID24414 == "run" )
         {
-            var_0 = vectortoyaw( self._ID601 );
-            var_1 = angleclamp180( self._ID65[1] - var_0 );
+            var_0 = vectortoyaw( self.lookaheaddir );
+            var_1 = angleclamp180( self.angles[1] - var_0 );
             var_2 = _ID53699( var_1 );
 
             if ( isdefined( var_2 ) )
@@ -229,21 +229,21 @@ _ID53891()
 
     for ( var_0 = 0; var_0 < 2; var_0++ )
     {
-        var_1 = vectortoangles( self._ID601 );
+        var_1 = vectortoangles( self.lookaheaddir );
         self orientmode( "face angle", var_1 );
     }
 }
 
 _ID52576()
 {
-    var_0 = self._ID740;
-    var_0 += _ID42407::_ID49965( self._ID601, anim._ID11487 );
-    var_1 = distancesquared( self._ID740, self._ID762 ) < anim._ID11487 * anim._ID11487;
+    var_0 = self.origin;
+    var_0 += _ID42407::_ID49965( self.lookaheaddir, anim._ID11487 );
+    var_1 = distancesquared( self.origin, self.pathgoalpos ) < anim._ID11487 * anim._ID11487;
 
     if ( !var_1 && self maymovetopoint( var_0 ) )
     {
-        var_2 = vectortoangles( self._ID601 );
-        var_3 = angleclamp180( var_2[1] - self._ID65[1] );
+        var_2 = vectortoangles( self.lookaheaddir );
+        var_3 = angleclamp180( var_2[1] - self.angles[1] );
 
         if ( var_3 >= 0 )
         {
@@ -262,9 +262,9 @@ _ID52576()
             var_4 = 1;
 
         self setanimrestart( anim._ID46461[var_4], 1, 0.2, 1 );
-        var_5 = self._ID65[1] + anim._ID43853[var_4];
+        var_5 = self.angles[1] + anim._ID43853[var_4];
         var_6 = angleclamp180( var_2[1] - var_5 );
-        self orientmode( "face angle", self._ID65[1] + var_6 );
+        self orientmode( "face angle", self.angles[1] + var_6 );
         self animmode( "zonly_physics", 0 );
         var_7 = getanimlength( anim._ID46461[var_4] ) * self._ID24424;
         animscripts\notetracks::_ID11534( var_7 * 0.6, "turnAnim" );
@@ -277,11 +277,11 @@ _ID52576()
 
 _ID36143()
 {
-    if ( isdefined( self._ID762 ) )
+    if ( isdefined( self.pathgoalpos ) )
     {
         wait 0.05;
 
-        if ( isdefined( self._ID762 ) )
+        if ( isdefined( self.pathgoalpos ) )
         {
             _ID52576();
             self clearanim( %root, 0.2 );
@@ -343,13 +343,13 @@ _ID45217()
     var_0["left"] = 0;
     var_0["right"] = 0;
 
-    if ( self._ID587 > 0 )
+    if ( self.leanamount > 0 )
     {
-        if ( self._ID587 < 0.95 )
-            self._ID587 = 0.95;
+        if ( self.leanamount < 0.95 )
+            self.leanamount = 0.95;
 
         var_0["left"] = 0;
-        var_0["right"] = ( 1 - self._ID587 ) * 20;
+        var_0["right"] = ( 1 - self.leanamount ) * 20;
 
         if ( var_0["right"] > 1 )
             var_0["right"] = 1;
@@ -358,13 +358,13 @@ _ID45217()
 
         var_0["center"] = 1 - var_0["right"];
     }
-    else if ( self._ID587 < 0 )
+    else if ( self.leanamount < 0 )
     {
-        if ( self._ID587 > -0.95 )
-            self._ID587 = -0.95;
+        if ( self.leanamount > -0.95 )
+            self.leanamount = -0.95;
 
         var_0["right"] = 0;
-        var_0["left"] = ( 1 + self._ID587 ) * 20;
+        var_0["left"] = ( 1 + self.leanamount ) * 20;
 
         if ( var_0["left"] > 1 )
             var_0["left"] = 1;
@@ -391,8 +391,8 @@ _ID16734()
     if ( isdefined( self.slowdog ) && self.slowdog == 1 )
     {
         var_0 = %german_shepherd_walk_slow;
-        var_1 = vectortoangles( self._ID601 );
-        var_2 = angleclamp180( var_1[1] - self._ID65[1] );
+        var_1 = vectortoangles( self.lookaheaddir );
+        var_2 = angleclamp180( var_1[1] - self.angles[1] );
 
         if ( var_2 < -47 )
             var_0 = %h2_german_shepherd_rotate_90r;

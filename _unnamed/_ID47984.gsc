@@ -11,23 +11,23 @@ _ID44498()
     _ID42407::_ID10973();
     self._ID7111 = 1;
     self._ID24844 = 1;
-    self._ID513 = 1;
-    self._ID625 = 0;
+    self.ignoresuppression = 1;
+    self.maxfaceenemydist = 0;
     self._ID24935 = 1;
     self._ID2938 = 2000;
     self._ID11002 = 1;
-    self._ID1258 = 0;
+    self.usechokepoints = 0;
     self._ID11017 = 1;
-    self._ID199 = "no_cover";
-    self._ID25554 = self._ID465;
-    self._ID465 = 0;
-    self._ID25555 = self._ID709;
-    self._ID709 = 1;
+    self.combatmode = "no_cover";
+    self._ID25554 = self.grenadeawareness;
+    self.grenadeawareness = 0;
+    self._ID25555 = self.nogrenadereturnthrow;
+    self.nogrenadereturnthrow = 1;
     self.noslopeanimation = 1;
-    self._ID25538 = self._ID1298;
-    self._ID25539 = self._ID1299;
-    self._ID1298 = 0;
-    self._ID1299 = 0;
+    self._ID25538 = self.walkdist;
+    self._ID25539 = self.walkdistfacingmotion;
+    self.walkdist = 0;
+    self.walkdistfacingmotion = 0;
     _ID51537();
     self._ID7._ID28253 = "stand";
     self allowedstances( "stand" );
@@ -39,7 +39,7 @@ _ID44498()
     self._ID11007 = 1;
     self._ID9568 = [];
 
-    switch ( self._ID922 )
+    switch ( self.script_noteworthy )
     {
         case "shotgun":
             self._ID3152 = "casual_killer_shotgun";
@@ -70,18 +70,18 @@ _ID46279()
     self._ID3152 = undefined;
     self._ID7111 = undefined;
     self._ID24844 = undefined;
-    self._ID513 = 0;
-    self._ID625 = 512;
+    self.ignoresuppression = 0;
+    self.maxfaceenemydist = 512;
     self._ID24935 = undefined;
     self._ID11002 = undefined;
-    self._ID1258 = 1;
+    self.usechokepoints = 1;
     self._ID11017 = undefined;
-    self._ID199 = "cover";
-    self._ID465 = self._ID25554;
-    self._ID709 = self._ID25555;
+    self.combatmode = "cover";
+    self.grenadeawareness = self._ID25554;
+    self.nogrenadereturnthrow = self._ID25555;
     self.noslopeanimation = undefined;
-    self._ID1298 = self._ID25538;
-    self._ID1299 = self._ID25539;
+    self.walkdist = self._ID25538;
+    self.walkdistfacingmotion = self._ID25539;
     animscripts\animset::_ID7851();
     self._ID28530 = "none";
     self allowedstances( "stand", "crouch", "prone" );
@@ -425,7 +425,7 @@ _ID51657()
     if ( isdefined( self._ID11025 ) )
         return;
 
-    self orientmode( "face angle", self._ID65[1] );
+    self orientmode( "face angle", self.angles[1] );
     self animmode( "zonly_physics", 0 );
     var_0 = randomfloatrange( 0.9, 1.1 );
     var_0 *= self._ID24424;
@@ -437,8 +437,8 @@ _ID51657()
     }
     else
     {
-        if ( isdefined( self._ID700 ) )
-            var_2 = self._ID65[1] - vectortoyaw( self._ID700._ID740 - self._ID740 );
+        if ( isdefined( self.node ) )
+            var_2 = self.angles[1] - vectortoyaw( self.node.origin - self.origin );
         else
             var_2 = 0;
 
@@ -526,21 +526,21 @@ _ID53591( var_0 )
 
 casual_killer_setup_custom_turns( var_0 )
 {
-    self._ID1262 = var_0;
+    self.usepathsmoothingvalues = var_0;
 
     if ( var_0 )
     {
         self._ID26360 = ::casual_killer_get_turn_anim;
-        self._ID763 = 70;
-        self._ID629 = 19;
-        self._ID960 = 0.94;
-        self._ID963 = 24;
+        self.pathlookaheaddist = 70;
+        self.maxturnspeed = 19;
+        self.sharpturn = 0.94;
+        self.sharpturntooclosetodestdist = 24;
         self._ID26359 = 0.35;
     }
     else
     {
         self._ID26360 = undefined;
-        self._ID963 = 64;
+        self.sharpturntooclosetodestdist = 64;
         self._ID26359 = undefined;
     }
 }

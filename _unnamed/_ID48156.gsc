@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42407::_ID9145( "cliffhanger" );
     var_0._ID36107 = 750;

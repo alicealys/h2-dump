@@ -99,12 +99,12 @@ _ID17362( var_0, var_1, var_2 )
 {
     var_3 = gettime() * 0.001;
 
-    while ( self._ID740[2] > var_1[2] )
+    while ( self.origin[2] > var_1[2] )
     {
         var_4 = var_2 * 0.5;
         var_5 = 1 * var_4 / 2;
         var_6 = gettime() * 0.001 - var_3;
-        self._ID740 = self._ID740 + ( 0, 0, var_5 * var_6 - 0.5 * var_4 * squared( var_6 ) );
+        self.origin = self.origin + ( 0, 0, var_5 * var_6 - 0.5 * var_4 * squared( var_6 ) );
         waittillframeend;
     }
 }
@@ -128,10 +128,10 @@ _ID17361( var_0, var_1, var_2, var_3, var_4 )
 
     while ( isdefined( self ) && gettime() * 0.001 <= var_5 + var_2 )
     {
-        self._ID21875 = self._ID740[2];
-        self._ID740 = _ID3268( var_5, var_0, var_1, var_2, var_3, var_4 );
+        self._ID21875 = self.origin[2];
+        self.origin = _ID3268( var_5, var_0, var_1, var_2, var_3, var_4 );
 
-        if ( self._ID740[2] < self._ID21875 )
+        if ( self.origin[2] < self._ID21875 )
             self._ID3231 = 1;
 
         wait 0.05;
@@ -201,7 +201,7 @@ _ID29538()
 _ID18511()
 {
     if ( isdefined( level._ID9455 ) )
-        level._ID9455._ID55 = 0;
+        level._ID9455.alpha = 0;
 }
 
 _ID3098( var_0, var_1, var_2 )
@@ -219,7 +219,7 @@ _ID20993( var_0 )
     if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( var_0._ID486 < 1 )
+    if ( var_0.health < 1 )
         return 0;
 
     return 1;
@@ -230,19 +230,19 @@ _ID41742( var_0, var_1, var_2 )
     var_3 = self;
 
     if ( !isplayernumber( var_3 ) )
-        var_3 = level._ID794;
+        var_3 = level.player;
 
     if ( !isdefined( var_2 ) )
         var_2 = 1;
 
     var_4 = newclienthudelem( var_3 );
     var_4 setshader( "white", 1280, 720 );
-    var_4._ID499 = "fullscreen";
-    var_4._ID1284 = "fullscreen";
-    var_4._ID55 = var_2;
+    var_4.horzalign = "fullscreen";
+    var_4.vertalign = "fullscreen";
+    var_4.alpha = var_2;
     wait(var_0);
     var_4 fadeovertime( var_1 );
-    var_4._ID55 = 0;
+    var_4.alpha = 0;
 }
 
 _ID13805( var_0, var_1, var_2, var_3 )
@@ -250,16 +250,16 @@ _ID13805( var_0, var_1, var_2, var_3 )
     var_4 = self;
 
     if ( !isplayernumber( var_4 ) )
-        var_4 = level._ID794;
+        var_4 = level.player;
 
     var_4._ID4468 = newclienthudelem( var_4 );
     var_4._ID4468 setshader( "black", 1280, 720 );
-    var_4._ID4468._ID499 = "fullscreen";
-    var_4._ID4468._ID1284 = "fullscreen";
-    var_4._ID4468._ID55 = var_2;
+    var_4._ID4468.horzalign = "fullscreen";
+    var_4._ID4468.vertalign = "fullscreen";
+    var_4._ID4468.alpha = var_2;
     wait(var_0);
     var_4._ID4468 fadeovertime( var_1 );
-    var_4._ID4468._ID55 = var_3;
+    var_4._ID4468.alpha = var_3;
 }
 
 _ID9175( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
@@ -275,7 +275,7 @@ _ID9175( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         var_7 = _ID15939( -60, undefined, undefined, 1, var_4, var_5 );
 
     var_8 = var_7 _ID19169( var_0, var_1 );
-    var_8._ID578 = var_2;
+    var_8.label = var_2;
     return var_8;
 }
 
@@ -312,37 +312,37 @@ _ID15939( var_0, var_1, var_2, var_3, var_4, var_5 )
     if ( !isdefined( var_5 ) )
         var_5 = ( 0.3, 0.6, 0.3 );
 
-    var_8._ID44 = "left";
-    var_8._ID45 = "middle";
-    var_8._ID499 = "right";
-    var_8._ID1284 = "top";
-    var_8._ID1331 = var_6;
-    var_8._ID1339 = var_7;
-    var_8._ID393 = 1.6;
-    var_8._ID196 = var_4;
-    var_8._ID392 = "objective";
-    var_8._ID445 = var_5;
-    var_8._ID444 = 1;
-    var_8._ID408 = 1;
-    var_8._ID493 = 0;
-    var_8._ID491 = 1;
+    var_8.alignx = "left";
+    var_8.aligny = "middle";
+    var_8.horzalign = "right";
+    var_8.vertalign = "top";
+    var_8.x = var_6;
+    var_8.y = var_7;
+    var_8.fontscale = 1.6;
+    var_8.color = var_4;
+    var_8.font = "objective";
+    var_8.glowcolor = var_5;
+    var_8.glowalpha = 1;
+    var_8.foreground = 1;
+    var_8.hidewheninmenu = 0;
+    var_8.hidewhendead = 1;
     return var_8;
 }
 
 _ID19169( var_0, var_1 )
 {
-    self._ID44 = "center";
-    self._ID45 = "top";
-    self._ID499 = "center";
-    self._ID1284 = "middle";
-    self._ID1331 = var_1;
-    self._ID1339 = -160 + 15 * var_0;
-    self._ID392 = "objective";
-    self._ID408 = 1;
-    self._ID493 = 1;
-    self._ID491 = 1;
-    self._ID983 = 2;
-    self._ID393 = 1.15;
+    self.alignx = "center";
+    self.aligny = "top";
+    self.horzalign = "center";
+    self.vertalign = "middle";
+    self.x = var_1;
+    self.y = -160 + 15 * var_0;
+    self.font = "objective";
+    self.foreground = 1;
+    self.hidewheninmenu = 1;
+    self.hidewhendead = 1;
+    self.sort = 2;
+    self.fontscale = 1.15;
     return self;
 }
 
@@ -384,11 +384,11 @@ _ID29550( var_0 )
 
 _ID2973( var_0 )
 {
-    if ( isdefined( var_0._ID740 ) )
-        self._ID740 = var_0._ID740;
+    if ( isdefined( var_0.origin ) )
+        self.origin = var_0.origin;
 
-    if ( isdefined( var_0._ID65 ) )
-        self._ID65 = var_0._ID65;
+    if ( isdefined( var_0.angles ) )
+        self.angles = var_0.angles;
 }
 
 _ID3299( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
@@ -422,23 +422,23 @@ _ID3299( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
 _ID22190( var_0, var_1, var_2, var_3 )
 {
     self endon( "death" );
-    var_4 = distance( var_0, self._ID740 );
+    var_4 = distance( var_0, self.origin );
     var_5 = 0;
-    var_6 = self._ID740;
+    var_6 = self.origin;
 
     while ( var_5 < var_4 )
     {
-        var_7 = _ID16385( self._ID740, var_0, var_1, var_2 );
+        var_7 = _ID16385( self.origin, var_0, var_1, var_2 );
 
         if ( var_7 == 0 )
             break;
 
-        self._ID740 = vectorlerp( self._ID740, var_0, var_7 );
+        self.origin = vectorlerp( self.origin, var_0, var_7 );
 
         if ( isdefined( var_3 ) )
-            self._ID65 = self._ID65 + var_3;
+            self.angles = self.angles + var_3;
 
-        var_5 = distance( self._ID740, var_6 );
+        var_5 = distance( self.origin, var_6 );
         waittillframeend;
     }
 
@@ -484,11 +484,11 @@ _ID16514( var_0, var_1, var_2, var_3, var_4 )
 
 _ID2976( var_0 )
 {
-    if ( isdefined( var_0._ID740 ) )
-        self._ID740 = var_0._ID740;
+    if ( isdefined( var_0.origin ) )
+        self.origin = var_0.origin;
 
-    if ( isdefined( var_0._ID65 ) )
-        self._ID65 = var_0._ID65;
+    if ( isdefined( var_0.angles ) )
+        self.angles = var_0.angles;
 }
 
 _ID10239()
@@ -515,8 +515,8 @@ _ID26569( var_0 )
 
 _ID1839( var_0 )
 {
-    if ( !isdefined( self._ID216 ) || self._ID216 < 1 )
-        self._ID216 = 1;
+    if ( !isdefined( self.count ) || self.count < 1 )
+        self.count = 1;
 
     var_1 = _ID42407::_ID35014( 1 );
     _ID42407::_ID35060( var_1 );
@@ -525,7 +525,7 @@ _ID1839( var_0 )
     {
         while ( !isdefined( var_1 ) )
         {
-            self._ID216 = 1;
+            self.count = 1;
             var_1 = _ID42407::_ID35014( 1 );
             _ID42407::_ID35060( var_1 );
             waittillframeend;
@@ -610,7 +610,7 @@ _ID19457( var_0, var_1, var_2, var_3 )
 
     foreach ( var_6 in var_0 )
     {
-        if ( distance( var_6._ID740, var_2 ) < var_1 )
+        if ( distance( var_6.origin, var_2 ) < var_1 )
             var_4[var_4.size] = var_6;
     }
 
@@ -627,14 +627,14 @@ _ID19457( var_0, var_1, var_2, var_3 )
 
         if ( var_6 _ID42411::_ID20992() )
         {
-            var_6 dodamage( var_6._ID486 * 2, var_2 );
+            var_6 dodamage( var_6.health * 2, var_2 );
             continue;
         }
 
-        var_10 = distance( var_8, var_6._ID740 );
+        var_10 = distance( var_8, var_6.origin );
         var_11 = var_10 / var_3 * 0.05;
         wait(var_11);
-        var_8 = var_6._ID740;
+        var_8 = var_6.origin;
         var_12 = vectornormalize( var_6 gettagorigin( "tag_eye" ) - var_2 );
         var_12 = vectornormalize( var_12 + ( 0, 0, 0.2 ) );
         var_6 startragdollfromimpact( "torso_lower", var_12 * 7000 );
@@ -744,7 +744,7 @@ _ID16184( var_0, var_1, var_2 )
         if ( !isdefined( var_5 ) )
             continue;
 
-        var_6 = distance( var_5._ID740, var_0 );
+        var_6 = distance( var_5.origin, var_0 );
 
         if ( var_6 >= var_2 )
             continue;
@@ -812,29 +812,29 @@ _ID22809( var_0 )
 
 _ID20402( var_0, var_1 )
 {
-    if ( !isdefined( level._ID794._ID36744 ) )
+    if ( !isdefined( level.player._ID36744 ) )
     {
-        level._ID794._ID36744 = [];
+        level.player._ID36744 = [];
         level._ID36743 = 0;
     }
 
-    var_2 = newclienthudelem( level._ID794 );
-    var_2._ID1331 = 320;
-    var_2._ID1339 = 325;
-    var_2._ID44 = "center";
-    var_2._ID45 = "middle";
-    var_2._ID393 = 1.5;
+    var_2 = newclienthudelem( level.player );
+    var_2.x = 320;
+    var_2.y = 325;
+    var_2.alignx = "center";
+    var_2.aligny = "middle";
+    var_2.fontscale = 1.5;
     var_2 settext( var_0 );
-    var_2._ID55 = 0;
-    var_2._ID196 = ( 1, 1, 1 );
-    var_2._ID445 = ( 0.6, 0.6, 0.9 );
-    var_2._ID444 = 0.4;
-    var_2._ID983 = -10;
-    var_2._ID392 = "objective";
-    level._ID794._ID36744[level._ID794._ID36744.size] = var_2;
+    var_2.alpha = 0;
+    var_2.color = ( 1, 1, 1 );
+    var_2.glowcolor = ( 0.6, 0.6, 0.9 );
+    var_2.glowalpha = 0.4;
+    var_2.sort = -10;
+    var_2.font = "objective";
+    level.player._ID36744[level.player._ID36744.size] = var_2;
     level notify( "new_subtitle_created" );
-    level._ID794 thread _ID10299( 10, var_2, level._ID36743 );
-    level._ID794 thread _ID34037( var_2, level._ID36743 );
+    level.player thread _ID10299( 10, var_2, level._ID36743 );
+    level.player thread _ID34037( var_2, level._ID36743 );
     level._ID36743 = ( level._ID36743 + 1 ) % 10;
 
     if ( isdefined( var_1 ) )
@@ -847,7 +847,7 @@ _ID34037( var_0, var_1 )
     var_3 = 0;
     var_4 = 19;
     var_0 fadeovertime( 0.5 );
-    var_0._ID55 = 1;
+    var_0.alpha = 1;
     level endon( var_2 );
 
     while ( isdefined( var_0 ) )
@@ -859,10 +859,10 @@ _ID34037( var_0, var_1 )
             break;
 
         var_0 moveovertime( 0.35 );
-        var_0._ID1339 = 325 + var_3 * var_4;
-        var_0._ID196 = ( 1, 1, 1 );
-        var_0._ID444 = 0;
-        var_0._ID55 = 0.9 - var_3 / 5;
+        var_0.y = 325 + var_3 * var_4;
+        var_0.color = ( 1, 1, 1 );
+        var_0.glowalpha = 0;
+        var_0.alpha = 0.9 - var_3 / 5;
         waittillframeend;
     }
 }
@@ -904,21 +904,21 @@ _ID15986( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
     if ( !isdefined( var_9 ) )
         var_9 = "middle";
 
-    var_12 = newclienthudelem( level._ID794 );
-    var_12._ID44 = var_3;
-    var_12._ID45 = var_4;
-    var_12._ID499 = var_8;
-    var_12._ID1284 = var_9;
-    var_12._ID1331 = var_10;
-    var_12._ID1339 = var_11;
-    var_12._ID393 = 1.6;
-    var_12._ID196 = var_6;
-    var_12._ID392 = "objective";
-    var_12._ID445 = var_7;
-    var_12._ID444 = 1;
-    var_12._ID408 = 1;
-    var_12._ID493 = 1;
-    var_12._ID491 = 1;
+    var_12 = newclienthudelem( level.player );
+    var_12.alignx = var_3;
+    var_12.aligny = var_4;
+    var_12.horzalign = var_8;
+    var_12.vertalign = var_9;
+    var_12.x = var_10;
+    var_12.y = var_11;
+    var_12.fontscale = 1.6;
+    var_12.color = var_6;
+    var_12.font = "objective";
+    var_12.glowcolor = var_7;
+    var_12.glowalpha = 1;
+    var_12.foreground = 1;
+    var_12.hidewheninmenu = 1;
+    var_12.hidewhendead = 1;
     return var_12;
 }
 

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0[0] = "head_opforce_arctic_a_L1";
     var_0[1] = "head_opforce_arctic_b_L1";

@@ -8,7 +8,7 @@ _ID34503()
     _ID29417();
     _ID48536();
     level._ID24600 = 0;
-    level._ID794._ID47915 = "radiation_none";
+    level.player._ID47915 = "radiation_none";
     level._ID1632._ID8549 = [ [ "mute", 0 ], [ "predator", 0 ], [ "credits", 0 ], [ "slomo", 0 ], [ "deathsdoor", 0 ], [ "underwater", 0 ], [ "diveboat", 0 ], [ "interior_vehicle", 0 ], [ "wpn_int_med", 0 ], [ "wpn_int_sml", 0 ], [ "wpn_semi_open", 0 ], [ "bullet_metal_vehicle", 0 ], [ "bullet_whizby_glass", 0 ], [ "finale_handgun", 0 ] ];
     soundtime( "interface", 0 );
     soundtime( "notimescale", 0 );
@@ -197,10 +197,10 @@ _ID41823( var_0 )
 
 _ID41817( var_0 )
 {
-    var_1 = _ID42463::_ID10401( "wpn_deam160_charge_hi", level._ID794, "oneshot" );
+    var_1 = _ID42463::_ID10401( "wpn_deam160_charge_hi", level.player, "oneshot" );
     thread _ID41822();
-    level._ID794 thread _ID41824();
-    level._ID794 thread _ID41821();
+    level.player thread _ID41824();
+    level.player thread _ID41821();
     level waittill( "aud_deam160_charge_break" );
 
     if ( isdefined( var_1 ) )
@@ -244,7 +244,7 @@ _ID41821()
 _ID41822()
 {
     level endon( "aud_deam160_charge_break" );
-    var_0 = _ID42463::_ID10401( "wpn_deam160_charge_hi_lp", level._ID794, "loop", "aud_deam160_charge_break" );
+    var_0 = _ID42463::_ID10401( "wpn_deam160_charge_hi_lp", level.player, "loop", "aud_deam160_charge_break" );
     var_0 setvolume( 0, 0.05 );
     wait 2;
 
@@ -259,7 +259,7 @@ _ID41818( var_0 )
 
 _ID41819()
 {
-    var_0 = _ID42463::_ID10401( "wpn_deam160_full_charge_beep_lp", level._ID794, "loop", "aud_deam160_charge_break" );
+    var_0 = _ID42463::_ID10401( "wpn_deam160_full_charge_beep_lp", level.player, "loop", "aud_deam160_charge_break" );
     level waittill( "aud_deam160_charge_break" );
 }
 
@@ -272,26 +272,26 @@ _ID40035( var_0 )
 _ID26207()
 {
     var_0 = self;
-    _ID42494::_ID34609( "wpn_paint_grenade_exp", var_0._ID740 );
+    _ID42494::_ID34609( "wpn_paint_grenade_exp", var_0.origin );
 }
 
 _ID12399()
 {
     var_0 = self;
-    _ID42494::_ID34609( "wpn_emp_grenade_exp", var_0._ID740 );
+    _ID42494::_ID34609( "wpn_emp_grenade_exp", var_0.origin );
 }
 
 _ID34403()
 {
     level notify( "kill_tracking_loop" );
     var_0 = self;
-    _ID42494::_ID34609( "wpn_smart_grenade_exp", var_0._ID740 );
+    _ID42494::_ID34609( "wpn_smart_grenade_exp", var_0.origin );
 }
 
 _ID14653( var_0 )
 {
     _ID42465::_ID23797( "foam_grenade_mix", 0.5 );
-    var_1 = self._ID740;
+    var_1 = self.origin;
     wait 2.1;
     _ID42463::_ID10401( "foam_bomb_equip", var_0 );
     wait 1.1;
@@ -306,7 +306,7 @@ _ID14653( var_0 )
 
 _ID4052()
 {
-    var_0 = self._ID740;
+    var_0 = self.origin;
     thread _ID42494::_ID34609( "wpn_mw_grenade_exp", var_0 );
     var_1 = thread _ID42494::_ID34627( "wpn_mw_grenade_pulse_sweeps_lp", var_0, "mw_nade_death", 0.2, 0.45 );
     var_2 = thread _ID42494::_ID34627( "wpn_mw_grenade_pulse_big_lp", var_0, "mw_nade_death", 0.2, 0.45 );
@@ -342,18 +342,18 @@ _ID4053( var_0 )
 
 _ID53626()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
-        while ( !level._ID794 _ID42407::_ID20652() )
+        while ( !level.player _ID42407::_ID20652() )
             waittillframeend;
 
         var_0 = 0;
 
-        while ( level._ID794 _ID42407::_ID20652() )
+        while ( level.player _ID42407::_ID20652() )
         {
-            var_1 = level._ID794 _ID42407::_ID43898();
+            var_1 = level.player _ID42407::_ID43898();
 
             if ( !var_0 && var_1 )
                 _ID42465::_ID23797( "sniper_ads_holdbreath_mix" );
@@ -398,7 +398,7 @@ _ID34586( var_0, var_1, var_2, var_3, var_4, var_5 )
 
     while ( isdefined( self._ID3674._ID24605 ) )
     {
-        var_8 = distance( self._ID740, level._ID794._ID740 );
+        var_8 = distance( self.origin, level.player.origin );
 
         if ( var_8 < var_1 )
         {
@@ -600,11 +600,11 @@ _ID4249()
 _ID26489()
 {
     var_0 = self;
-    var_1 = var_0._ID740;
+    var_1 = var_0.origin;
 
     while ( isdefined( var_0 ) )
     {
-        var_1 = var_0._ID740;
+        var_1 = var_0.origin;
         wait 0.05;
     }
 
@@ -681,7 +681,7 @@ _ID5500()
 
     var_0 = self;
 
-    if ( var_0 == level._ID794 )
+    if ( var_0 == level.player )
         level._ID1632._ID5493._ID20551 = 1;
 }
 
@@ -699,7 +699,7 @@ _ID5516( var_0 )
 
     var_3 = self;
 
-    if ( var_3 == level._ID794 )
+    if ( var_3 == level.player )
     {
         if ( level._ID1632._ID5493._ID20551 == 1 )
         {
@@ -714,7 +714,7 @@ _ID5516( var_0 )
             if ( var_0 < var_2 )
                 return;
 
-            var_7 = _func_245( var_3._ID740 + ( 0, 0, 16 ), var_3._ID740 + ( 0, 0, -16 ), var_3 )["surfacetype"];
+            var_7 = _func_245( var_3.origin + ( 0, 0, 16 ), var_3.origin + ( 0, 0, -16 ), var_3 )["surfacetype"];
             var_8 = _ID34566( var_7, level._ID1632._ID5493._ID36853 );
 
             if ( var_8 )
@@ -746,7 +746,7 @@ _ID5499()
 {
     var_0 = self;
 
-    if ( level._ID912 == "recovery" )
+    if ( level.script == "recovery" )
         _ID42463::_ID10401( "npc_boost_jump_rec", var_0 );
     else
         _ID42463::_ID10401( "npc_boost_jump", var_0 );
@@ -756,7 +756,7 @@ _ID5512()
 {
     var_0 = self;
 
-    if ( level._ID912 == "recovery" )
+    if ( level.script == "recovery" )
         _ID42463::_ID10401( "npc_boost_land_med_rec", var_0 );
     else
         _ID42463::_ID10401( "npc_boost_land_med", var_0 );
@@ -788,7 +788,7 @@ _ID5520( var_0 )
     {
         level._ID3674._ID5513 = 1;
         thread _ID5515();
-        level._ID794 _ID42494::_ID34629( "tac_pc_boost_land_assist_jet_lp", var_0, 0.1, 0.2 );
+        level.player _ID42494::_ID34629( "tac_pc_boost_land_assist_jet_lp", var_0, 0.1, 0.2 );
         level waittill( var_0 );
         var_2 = getlevelticks();
 
@@ -811,7 +811,7 @@ _ID5521()
 {
     for (;;)
     {
-        var_0 = length( level._ID794 getvelocity() );
+        var_0 = length( level.player getvelocity() );
         iprintlnbold( var_0 );
         wait 0.05;
     }
@@ -829,7 +829,7 @@ _ID5515()
     if ( !isdefined( level._ID3674._ID5510 ) )
         level._ID3674._ID5510 = 0;
 
-    var_3 = length( level._ID794 getvelocity() );
+    var_3 = length( level.player getvelocity() );
 
     if ( var_3 >= var_0 || level._ID3674._ID5507 == 1 )
     {
@@ -947,7 +947,7 @@ _ID3219( var_0 )
     self._ID34548 = "anml_doberman_" + _ID42475::_ID34587();
 
     if ( var_0 == "death" )
-        _ID42494::_ID34609( var_1, self._ID740, self._ID34548, 0, 0.1 );
+        _ID42494::_ID34609( var_1, self.origin, self._ID34548, 0, 0.1 );
     else
         _ID42494::_ID34619( var_1, self._ID34548, 0, 0.15 );
 }
@@ -972,8 +972,8 @@ _ID13431()
     if ( !_ID42237::_ID14385( "snd_cloak_is_enabled" ) )
     {
         _ID42237::_ID14402( "snd_cloak_is_enabled" );
-        _ID42463::_ID10401( "exo_cloak_enable_click", level._ID794 );
-        _ID42463::_ID10401( "exo_cloak_enable", level._ID794 );
+        _ID42463::_ID10401( "exo_cloak_enable_click", level.player );
+        _ID42463::_ID10401( "exo_cloak_enable", level.player );
         _ID42463::_ID10389( "exo_cloak_enable_wide", 0.4 );
     }
 
@@ -983,8 +983,8 @@ _ID13431()
 _ID13430()
 {
     _ID42237::_ID14388( "snd_cloak_is_enabled" );
-    _ID42463::_ID10401( "exo_cloak_enable_click", level._ID794 );
-    _ID42463::_ID10401( "exo_cloak_disable", level._ID794 );
+    _ID42463::_ID10401( "exo_cloak_enable_click", level.player );
+    _ID42463::_ID10401( "exo_cloak_disable", level.player );
     _ID42463::_ID10389( "exo_cloak_disable_wide", 0.2 );
     wait 1;
     thread _ID13428();
@@ -1002,7 +1002,7 @@ _ID13427()
         var_2 = level._ID1396._ID8096;
 
         if ( var_2 <= 0.26 && var_0 > 0.26 )
-            var_1 = _ID42463::_ID10401( "exo_cloak_battery_low", level._ID794, "loop", "notify_stop_exo_cloak_battery_low" );
+            var_1 = _ID42463::_ID10401( "exo_cloak_battery_low", level.player, "loop", "notify_stop_exo_cloak_battery_low" );
         else if ( var_2 >= 0.26 && var_0 < 0.26 )
             level notify( "notify_stop_exo_cloak_battery_low" );
 
@@ -1021,7 +1021,7 @@ _ID13427()
 _ID13426()
 {
     _ID42237::_ID14388( "snd_cloak_is_enabled" );
-    _ID42463::_ID10401( "exo_cloak_disable", level._ID794 );
+    _ID42463::_ID10401( "exo_cloak_disable", level.player );
     _ID42463::_ID10389( "exo_cloak_battery_dead", 0.25 );
     wait 3;
     thread _ID13428();
@@ -1070,17 +1070,17 @@ _ID25162()
 
 _ID26092()
 {
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID34518( "slomo" );
     _ID42474::_ID4662( 1 );
-    level._ID794 setreverb( "snd_enveffectsprio_level", "sewer", 1, 0.7, 1 );
+    level.player setreverb( "snd_enveffectsprio_level", "sewer", 1, 0.7, 1 );
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( "overdrive", 1 );
     _ID42465::_ID23797( "overdrive", 1 );
     _ID42495::_ID34653( "overdrive_timescale" );
     _ID42494::_ID34606( "overdrive_start", undefined, undefined, 0.25 );
     _ID42494::_ID34626( "overdrive_loop", "kill_overdrive_loop", 1, 2 );
-    level._ID794 waittill( "death" );
+    level.player waittill( "death" );
     _ID42465::_ID23801( "overdrive", 2.5 );
     level notify( "kill_overdrive_loop" );
 }
@@ -1091,12 +1091,12 @@ _ID26091()
     level notify( "kill_overdrive_loop" );
     _ID42465::_ID23801( "overdrive", 2 );
     _ID42495::_ID34653( "default" );
-    level._ID794 deactivatereverb( "snd_enveffectsprio_level", 1 );
+    level.player deactivatereverb( "snd_enveffectsprio_level", 1 );
     _ID42474::_ID4662( 0 );
     _ID42490::_ID34527( 2 );
     _ID42474::_ID4655( 0 );
     _ID34512( "slomo" );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
 }
 
 _ID34948()
@@ -1130,45 +1130,45 @@ _ID13554()
 _ID53730()
 {
     _ID42465::_ID23797( "ragtime_warfare_cheat_mix" );
-    level._ID794 thread _ID42237::_ID27000( "cheat_chaplin_music" );
-    level._ID794 thread _ID42237::_ID27000( "cheat_chaplin_projector_loop" );
+    level.player thread _ID42237::_ID27000( "cheat_chaplin_music" );
+    level.player thread _ID42237::_ID27000( "cheat_chaplin_projector_loop" );
 }
 
 _ID45070()
 {
     _ID42465::_ID23801( "ragtime_warfare_cheat_mix" );
-    level._ID794 _ID42237::_ID36516( "cheat_chaplin_music" );
-    level._ID794 _ID42237::_ID36516( "cheat_chaplin_projector_loop" );
+    level.player _ID42237::_ID36516( "cheat_chaplin_music" );
+    level.player _ID42237::_ID36516( "cheat_chaplin_projector_loop" );
 }
 
 aud_start_slowmo_cheat()
 {
     _ID42465::_ID23797( "slowmo_cheat_mix" );
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID34518( "slomo" );
-    level._ID794 playsound( "scn_cheat_slomo_in" );
-    level._ID794 thread _ID42237::_ID27000( "scn_cheat_slomo_lp", undefined, 0.8, 0.8 );
+    level.player playsound( "scn_cheat_slomo_in" );
+    level.player thread _ID42237::_ID27000( "scn_cheat_slomo_lp", undefined, 0.8, 0.8 );
 }
 
 aud_stop_slowmo_cheat()
 {
     _ID42465::_ID23801( "slowmo_cheat_mix" );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID34512( "slomo" );
-    level._ID794 _ID42237::_ID36516( "scn_cheat_slomo_lp" );
-    level._ID794 playsound( "scn_cheat_slomo_out" );
+    level.player _ID42237::_ID36516( "scn_cheat_slomo_lp" );
+    level.player playsound( "scn_cheat_slomo_out" );
 }
 
 _ID43409( var_0, var_1 )
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     _ID42474::_ID4655( 1 );
 
-    if ( level._ID794._ID47915 != var_0 )
+    if ( level.player._ID47915 != var_0 )
     {
-        level._ID794._ID47915 = var_0;
+        level.player._ID47915 = var_0;
 
-        switch ( level._ID794._ID47915 )
+        switch ( level.player._ID47915 )
         {
             case "radiation_high":
                 _ID51528( "rad_shellshock_high", "item_geigercounter_high", "breathing_hurt" );
@@ -1192,8 +1192,8 @@ _ID51528( var_0, var_1, var_2 )
     _ID42490::_ID34527( var_3 );
     _ID42490::_ID34526( var_0, var_3 );
     _ID47581();
-    level._ID794 thread _ID42237::_ID27000( var_1 );
-    level._ID794 playsound( var_2 );
+    level.player thread _ID42237::_ID27000( var_1 );
+    level.player playsound( var_2 );
 }
 
 _ID45483( var_0, var_1 )
@@ -1204,13 +1204,13 @@ _ID45483( var_0, var_1 )
     wait 1.0;
     _ID42474::_ID4655( 0 );
     _ID47581();
-    level._ID794 playsound( var_1 );
+    level.player playsound( var_1 );
 }
 
 _ID47581()
 {
-    level._ID794 _ID42237::_ID36516( "item_geigercounter_high" );
-    level._ID794 _ID42237::_ID36516( "item_geigercounter_med" );
+    level.player _ID42237::_ID36516( "item_geigercounter_high" );
+    level.player _ID42237::_ID36516( "item_geigercounter_med" );
 }
 
 _ID34499( var_0, var_1, var_2, var_3, var_4 )
@@ -1228,13 +1228,13 @@ _ID34499( var_0, var_1, var_2, var_3, var_4 )
     while ( isdefined( self ) )
     {
         if ( var_6 )
-            var_7 = distance( self._ID740, level._ID794._ID740 );
+            var_7 = distance( self.origin, level.player.origin );
         else
-            var_7 = distance2d( self._ID740, level._ID794._ID740 );
+            var_7 = distance2d( self.origin, level.player.origin );
 
         if ( var_7 < var_1 )
         {
-            var_8 = spawn( "script_origin", self._ID740 );
+            var_8 = spawn( "script_origin", self.origin );
             var_8 linkto( self );
             var_8 playsound( var_0, "sounddone" );
             var_8 thread _ID34705( self, var_4 );
@@ -1271,7 +1271,7 @@ _ID34705( var_0, var_1 )
 
     if ( isdefined( var_1 ) )
     {
-        var_2 = spawn( "script_origin", self._ID740 );
+        var_2 = spawn( "script_origin", self.origin );
         var_2 linkto( self );
         var_2 playsound( var_1, "sounddone" );
         var_2 waittill( "sounddone" );
@@ -1307,7 +1307,7 @@ _ID34498( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
 
     if ( isdefined( var_6 ) )
     {
-        var_12 = spawn( "script_origin", self._ID740 );
+        var_12 = spawn( "script_origin", self.origin );
         var_12 linkto( self );
         thread _ID34700( var_12, var_6, var_10 );
     }
@@ -1397,9 +1397,9 @@ _ID34701( var_0 )
         var_1 = var_0;
 
     if ( var_1 )
-        var_2 = distance( self._ID740, level._ID794._ID740 );
+        var_2 = distance( self.origin, level.player.origin );
     else
-        var_2 = distance2d( self._ID740, level._ID794._ID740 );
+        var_2 = distance2d( self.origin, level.player.origin );
 
     return var_2;
 }
@@ -1414,7 +1414,7 @@ _ID34698( var_0, var_1, var_2, var_3 )
     {
         if ( isarray( var_2 ) )
         {
-            var_7 = level._ID794 getvelocity();
+            var_7 = level.player getvelocity();
             var_8 = var_5 - var_7;
             var_9 = length( var_8 ) * 0.0568182;
 
@@ -1477,7 +1477,7 @@ _ID34699( var_0, var_1 )
 _ID34700( var_0, var_1, var_2 )
 {
     self waittill( "crash_done" );
-    var_3 = spawn( "script_origin", var_0._ID740 );
+    var_3 = spawn( "script_origin", var_0.origin );
     var_3 _ID42494::_ID34605( var_1, "sounddone" );
     var_3 waittill( "sounddone" );
     var_3 delete();
@@ -1550,7 +1550,7 @@ _ID34634( var_0, var_1, var_2 )
 
 _ID51454( var_0 )
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     var_1 = 1.0;
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( "vehicle_shellshock", 0.5 );
@@ -1630,16 +1630,16 @@ _ID34747( var_0 )
     var_7 = ( var_5[0], var_5[1], 0 );
     var_8 = length( var_7 );
     var_9 = abs( var_5[2] ) * self._ID4339._ID13932;
-    var_10 = distance( var_3, level._ID794._ID740 );
+    var_10 = distance( var_3, level.player.origin );
     var_11 = gettime();
     var_12 = var_11 - self._ID4339._ID28483;
     var_13 = undefined;
     var_14 = undefined;
     var_15 = 0;
 
-    if ( isdefined( level._ID794._ID11803 ) )
+    if ( isdefined( level.player._ID11803 ) )
     {
-        var_13 = level._ID794._ID11803;
+        var_13 = level.player._ID11803;
 
         if ( isdefined( var_2 ) && var_2 == var_13 || var_1 == var_13 )
         {
@@ -1775,7 +1775,7 @@ _ID34757( var_0 )
     {
         if ( isdefined( var_0 ) )
         {
-            var_1 = var_0._ID740;
+            var_1 = var_0.origin;
 
             if ( isdefined( level._ID1632._ID1267._ID30996 ) )
                 var_1 = level._ID1632._ID1267._ID30996;
@@ -1911,10 +1911,10 @@ _ID34566( var_0, var_1 )
 
 _ID34516( var_0, var_1, var_2, var_3 )
 {
-    level._ID794 notifyonplayercommand( "dpad_action_01", "+actionslot 1" );
-    level._ID794 notifyonplayercommand( "dpad_action_02", "+actionslot 2" );
-    level._ID794 notifyonplayercommand( "dpad_action_03", "+actionslot 3" );
-    level._ID794 notifyonplayercommand( "dpad_action_04", "+actionslot 4" );
+    level.player notifyonplayercommand( "dpad_action_01", "+actionslot 1" );
+    level.player notifyonplayercommand( "dpad_action_02", "+actionslot 2" );
+    level.player notifyonplayercommand( "dpad_action_03", "+actionslot 3" );
+    level.player notifyonplayercommand( "dpad_action_04", "+actionslot 4" );
     thread _ID34714( "dpad_action_01", var_0 );
     thread _ID34714( "dpad_action_02", var_1 );
     thread _ID34714( "dpad_action_03", var_2 );
@@ -1927,7 +1927,7 @@ _ID34714( var_0, var_1 )
     {
         for (;;)
         {
-            level._ID794 waittill( var_0 );
+            level.player waittill( var_0 );
 
             if ( isdefined( var_1 ) )
                 thread [[ var_1 ]]();
@@ -1947,10 +1947,10 @@ _ID34693( var_0, var_1, var_2 )
     {
         if ( var_1 )
         {
-            if ( distance( self._ID740, level._ID794._ID740 ) < var_0 )
+            if ( distance( self.origin, level.player.origin ) < var_0 )
                 var_3 = 1;
         }
-        else if ( distance2d( self._ID740, level._ID794._ID740 ) < var_0 )
+        else if ( distance2d( self.origin, level.player.origin ) < var_0 )
             var_3 = 1;
 
         wait(var_2);
@@ -2034,7 +2034,7 @@ _ID34692( var_0 )
 
         foreach ( var_3 in var_1 )
         {
-            if ( var_3 cansee( level._ID794 ) )
+            if ( var_3 cansee( level.player ) )
             {
                 if ( isstring( var_0 ) )
                     level notify( var_0 );
@@ -2054,7 +2054,7 @@ _ID34522()
 
     foreach ( var_3 in var_1 )
     {
-        if ( var_3 cansee( level._ID794 ) )
+        if ( var_3 cansee( level.player ) )
         {
             var_0 = 1;
             break;
@@ -2151,12 +2151,12 @@ _ID53404()
 
 snd_monitor_no_ammo_mix()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     var_0 = 0;
 
     for (;;)
     {
-        var_1 = level._ID794 getcurrentweaponclipammo();
+        var_1 = level.player getcurrentweaponclipammo();
 
         if ( !var_0 && var_1 == 0 )
         {

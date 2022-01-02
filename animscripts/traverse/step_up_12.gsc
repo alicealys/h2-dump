@@ -1,12 +1,12 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     var_0 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_0._ID65[1] );
-    var_1 = var_0._ID38701 - var_0._ID740[2];
+    self orientmode( "face angle", var_0.angles[1] );
+    var_1 = var_0._ID38701 - var_0.origin[2];
     var_2 = var_1;
     var_3 = 6;
     var_4 = ( 0, 0, var_2 / var_3 );
@@ -14,7 +14,7 @@ _ID616()
 
     for ( var_5 = 0; var_5 < var_3; var_5++ )
     {
-        self teleport( self._ID740 + var_4 );
+        self teleport( self.origin + var_4 );
         wait 0.05;
     }
 

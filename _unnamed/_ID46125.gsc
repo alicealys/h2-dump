@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["thick_black_smoke_L"] = loadfx( "vfx/smoke/smoke_pillar_black_medium_sm" );
     level._ID1426["minigun_burnout"] = loadfx( "fx/smoke/minigun_burnout" );
@@ -104,8 +104,8 @@ _ID616()
     level._ID1426["fluorescent_spotlight"] = loadfx( "fx/misc/fluorescent_spotlight" );
     thread _ID52070();
     thread _ID53720();
-    _ID47138::_ID616();
-    _ID50418::_ID616();
+    _ID47138::main();
+    _ID50418::main();
 }
 
 _ID53720()

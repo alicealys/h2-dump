@@ -14,15 +14,15 @@ _ID12778( var_0 )
     if ( isdefined( self._ID23165 ) && self._ID23165 )
         return;
 
-    if ( isdefined( self._ID322 ) )
-        var_1 = distance( self._ID322._ID740, self._ID740 );
+    if ( isdefined( self.enemy ) )
+        var_1 = distance( self.enemy.origin, self.origin );
 
     if ( var_1 < 512 )
         var_2 = "_stealth_behavior_spotted_short";
     else
         var_2 = "_stealth_behavior_spotted_long";
 
-    self._ID49 = 1;
+    self.allowdeath = 1;
     thread _ID42386::_ID36246( self, "gravity", var_2 );
 
     if ( var_1 < 200 )
@@ -40,15 +40,15 @@ _ID12784( var_0 )
 
 _ID12782( var_0 )
 {
-    self._ID49 = 1;
-    var_1 = level._ID794;
+    self.allowdeath = 1;
+    var_1 = level.player;
 
-    if ( isdefined( self._ID322 ) )
-        var_1 = self._ID322;
-    else if ( isdefined( self._ID377 ) )
-        var_1 = self._ID377;
+    if ( isdefined( self.enemy ) )
+        var_1 = self.enemy;
+    else if ( isdefined( self.favoriteenemy ) )
+        var_1 = self.favoriteenemy;
 
-    var_2 = distance( self._ID740, var_1._ID740 );
+    var_2 = distance( self.origin, var_1.origin );
     var_3 = 4;
     var_4 = 0;
 
@@ -59,7 +59,7 @@ _ID12782( var_0 )
             if ( _func_2a5( var_6 ) || var_6 == self )
                 continue;
 
-            var_7 = distance( var_6._ID740, var_1._ID740 );
+            var_7 = distance( var_6.origin, var_1.origin );
 
             if ( var_7 < var_2 )
                 var_4 += 1;
@@ -86,7 +86,7 @@ _ID12782( var_0 )
 
 _ID11400( var_0 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = undefined;
 
     if ( isdefined( self._ID23438 ) )
@@ -112,7 +112,7 @@ _ID11400( var_0 )
 
 _ID11403( var_0 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = undefined;
 
     if ( _ID42407::_ID13019( "_stealth_behavior_asleep" ) )
@@ -125,7 +125,7 @@ _ID11403( var_0 )
 
 _ID11404( var_0 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = undefined;
 
     if ( _ID42407::_ID13019( "_stealth_behavior_asleep" ) )
@@ -138,21 +138,21 @@ _ID11404( var_0 )
 
 _ID12788( var_0 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = "_stealth_behavior_saw_corpse";
     _ID42386::_ID36246( self, "gravity", var_1 );
 }
 
 _ID11402( var_0 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = "_stealth_dog_saw_corpse";
     _ID42386::_ID36246( self, "gravity", var_1 );
 }
 
 _ID11401( var_0 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = "_stealth_dog_howl";
     _ID42386::_ID36246( self, "gravity", var_1 );
     _ID42386::_ID36246( self, "gravity", var_1 );
@@ -166,10 +166,10 @@ _ID12781( var_0 )
 {
     self endon( "enemy" );
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return;
 
-    self._ID49 = 1;
+    self.allowdeath = 1;
 
     if ( self._ID7._ID24414 == "stop" )
         var_1 = "_stealth_behavior_generic2";
@@ -185,10 +185,10 @@ _ID11399( var_0 )
 {
     self endon( "enemy" );
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return;
 
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 = "_stealth_dog_find";
     _ID42386::_ID36246( self, "gravity", var_1 );
 }

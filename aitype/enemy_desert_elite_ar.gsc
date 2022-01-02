@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "axis";
-    self._ID1244 = "human";
+    self.team = "axis";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 200;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 200;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "glock";
 
@@ -24,44 +24,44 @@ _ID616()
     switch ( _ID42226::_ID15950( 12 ) )
     {
         case 0:
-            self._ID1302 = "masada_digital";
+            self.weapon = "masada_digital";
             break;
         case 1:
-            self._ID1302 = "masada_acog";
+            self.weapon = "masada_acog";
             break;
         case 2:
-            self._ID1302 = "masada_reflex";
+            self.weapon = "masada_reflex";
             break;
         case 3:
-            self._ID1302 = "scar_h";
+            self.weapon = "scar_h";
             break;
         case 4:
-            self._ID1302 = "scar_h_acog";
+            self.weapon = "scar_h_acog";
             break;
         case 5:
-            self._ID1302 = "scar_h_grenadier";
+            self.weapon = "scar_h_grenadier";
             break;
         case 6:
-            self._ID1302 = "scar_h_reflex";
+            self.weapon = "scar_h_reflex";
             break;
         case 7:
-            self._ID1302 = "scar_h_shotgun";
+            self.weapon = "scar_h_shotgun";
             break;
         case 8:
-            self._ID1302 = "scar_h_thermal";
+            self.weapon = "scar_h_thermal";
             break;
         case 9:
-            self._ID1302 = "masada_digital_eotech";
+            self.weapon = "masada_digital_eotech";
             break;
         case 10:
-            self._ID1302 = "masada_digital_acog";
+            self.weapon = "masada_digital_acog";
             break;
         case 11:
-            self._ID1302 = "masada_digital_reflex";
+            self.weapon = "masada_digital_reflex";
             break;
     }
 
-    _ID53126::_ID616();
+    _ID53126::main();
 }
 
 _ID988()

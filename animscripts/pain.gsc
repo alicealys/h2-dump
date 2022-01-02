@@ -115,7 +115,7 @@ _ID19618()
 
 _ID49632()
 {
-    if ( _func_02F( self._ID50700 ) && self._ID50700 )
+    if ( isdefined( self._ID50700 ) && self._ID50700 )
         return 1;
 
     return 0;
@@ -131,12 +131,12 @@ _ID53357()
 
 }
 
-_ID616()
+main()
 {
     if ( !animscripts\utility::_ID49045() )
         self._ID50700 = 1;
 
-    if ( _func_02F( self._ID22609 ) )
+    if ( isdefined( self._ID22609 ) )
     {
         self waittill( "killanimscript" );
         return;
@@ -151,99 +151,99 @@ _ID616()
     self notify( "kill_long_death" );
     self._ID13768 = undefined;
 
-    if ( _func_02F( self._ID7._ID26210 ) )
+    if ( isdefined( self._ID7._ID26210 ) )
         self._ID7._ID21962 = self._ID7._ID26210;
     else
         self._ID7._ID21962 = 0;
 
-    if ( _func_02F( self._ID22746 ) && self._ID22746 && _func_03D() - self._ID7._ID21962 < 1500 )
+    if ( isdefined( self._ID22746 ) && self._ID22746 && gettime() - self._ID7._ID21962 < 1500 )
         return;
 
-    self._ID7._ID26210 = _func_03D();
+    self._ID7._ID26210 = gettime();
 
-    if ( self._ID1012 != "none" )
+    if ( self.stairsstate != "none" )
         self._ID7._ID26205 = 1;
     else
         self._ID7._ID26205 = undefined;
 
     if ( self._ID7._ID24800 )
-        self._ID486 = 1;
+        self.health = 1;
 
     self notify( "anim entered pain" );
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "pain" );
-    self _meth_819A( "gravity" );
+    self animmode( "gravity" );
 
-    if ( !_func_02F( self._ID24842 ) )
+    if ( !isdefined( self._ID24842 ) )
         animscripts\face::_ID30759( "pain" );
 
-    if ( self._ID253 == "helmet" )
+    if ( self.damagelocation == "helmet" )
         animscripts\death::_ID18467();
-    else if ( _unknown_0C5F() && _func_0B7( 2 ) == 0 )
+    else if ( _ID41415() && randomint( 2 ) == 0 )
         animscripts\death::_ID18467();
 
-    if ( _func_02F( self._ID26203 ) )
+    if ( isdefined( self._ID26203 ) )
     {
         self [[ self._ID26203 ]]();
         return;
     }
 
-    if ( _unknown_119D() )
+    if ( _ID9105() )
         return;
 
-    if ( _unknown_1067( self._ID7._ID35357 ) )
+    if ( _ID35382( self._ID7._ID35357 ) )
         return;
 
-    var_0 = _unknown_0D1C();
+    var_0 = _ID16508();
 
-    if ( _func_02F( var_0 ) )
-        self._ID7._ID26196 = _func_067( var_0 );
+    if ( isdefined( var_0 ) )
+        self._ID7._ID26196 = getanimlength( var_0 );
 
-    _unknown_1047( var_0 );
+    _ID28113( var_0 );
 }
 
 _ID19962()
 {
-    level._ID1426["crawling_death_blood_smear"] = _func_155( "vfx/blood/blood_smear_decal" );
+    level._ID1426["crawling_death_blood_smear"] = loadfx( "vfx/blood/blood_smear_decal" );
 }
 
 _ID319()
 {
-    if ( _func_02F( self._ID9651 ) )
+    if ( isdefined( self._ID9651 ) )
     {
         self._ID9650 = undefined;
         self._ID9651 = undefined;
-        self._ID52 = 1;
+        self.allowpain = 1;
 
-        if ( !_func_02F( self._ID28397 ) )
-            self._ID511 = 0;
+        if ( !isdefined( self._ID28397 ) )
+            self.ignoreme = 0;
 
         self._ID28397 = undefined;
     }
 
-    if ( _func_02F( self._ID5303 ) )
+    if ( isdefined( self._ID5303 ) )
     {
         self._ID5303 = undefined;
-        self._ID52 = 1;
+        self.allowpain = 1;
     }
 
-    self _meth_814C( %head, 0.2 );
+    self clearanim( %head, 0.2 );
     self._ID13768 = undefined;
 }
 
 _ID41415()
 {
-    if ( _func_18E( self._ID254 ) )
+    if ( isexplosivedamagemod( self.damagemod ) )
         return 1;
 
-    if ( _func_03D() - anim._ID21894 <= 50 )
+    if ( gettime() - anim._ID21894 <= 50 )
     {
         var_0 = anim._ID21893 * anim._ID21893 * 1.2 * 1.2;
 
-        if ( _func_0F5( self._ID740, anim._ID21891 ) < var_0 )
+        if ( distancesquared( self.origin, anim._ID21891 ) < var_0 )
         {
             var_1 = var_0 * 0.5 * 0.5;
-            self._ID23136 = _func_0F5( self._ID740, anim._ID21892 ) < var_1;
+            self._ID23136 = distancesquared( self.origin, anim._ID21892 ) < var_1;
             return 1;
         }
     }
@@ -253,21 +253,21 @@ _ID41415()
 
 _ID16206()
 {
-    _unknown_0CC7();
+    _ID53357();
 
     if ( self._ID7._ID28253 == "prone" )
         return;
 
-    if ( _func_02F( self._ID7._ID26205 ) && self._ID7._ID26205 )
+    if ( isdefined( self._ID7._ID26205 ) && self._ID7._ID26205 )
         return;
 
-    if ( _func_02F( self._ID583 ) && _func_02F( self._ID583._ID1194 ) && self._ID583._ID1194 == self._ID1194 )
+    if ( isdefined( self.lastattacker ) && isdefined( self.lastattacker.team ) && self.lastattacker.team == self.team )
         return;
 
-    if ( !_func_02F( self._ID9650 ) || _func_03D() - self._ID7._ID21962 > 1500 )
-        self._ID9650 = _func_0B9( 2, 3 );
+    if ( !isdefined( self._ID9650 ) || gettime() - self._ID7._ID21962 > 1500 )
+        self._ID9650 = randomintrange( 2, 3 );
 
-    if ( _func_02F( self._ID583 ) && _func_0F5( self._ID740, self._ID583._ID740 ) < _func_0ED( 512 ) )
+    if ( isdefined( self.lastattacker ) && distancesquared( self.origin, self.lastattacker.origin ) < squared( 512 ) )
         self._ID9650 = 0;
 
     if ( self._ID9650 > 0 )
@@ -275,12 +275,12 @@ _ID16206()
     else
     {
         self._ID9651 = 1;
-        self._ID52 = 0;
+        self.allowpain = 0;
 
-        if ( self._ID511 )
+        if ( self.ignoreme )
             self._ID28397 = 1;
         else
-            self._ID511 = 1;
+            self.ignoreme = 1;
 
         if ( animscripts\utility::_ID39997() )
             animscripts\shared::_ID26732( self._ID834, "right" );
@@ -294,25 +294,25 @@ _ID16206()
 
 _ID46488()
 {
-    _unknown_0D9D();
+    _ID44370();
 
     if ( self._ID7._ID28253 == "stand" )
     {
-        if ( self._ID7._ID24414 == "run" && self _meth_819C() < 60 && self _meth_819C() > -60 )
-            return _unknown_0F26();
+        if ( self._ID7._ID24414 == "run" && self getmotionangle() < 60 && self getmotionangle() > -60 )
+            return _ID49572();
 
         self._ID7._ID24414 = "stop";
-        return _unknown_1002();
+        return _ID48098();
     }
     else if ( self._ID7._ID28253 == "crouch" )
     {
         self._ID7._ID24414 = "stop";
-        return _unknown_116E();
+        return _ID49167();
     }
     else if ( self._ID7._ID28253 == "prone" )
     {
         self._ID7._ID24414 = "stop";
-        return _unknown_11EF();
+        return _ID43807();
     }
     else
     {
@@ -323,20 +323,20 @@ _ID46488()
 
 _ID16508()
 {
-    if ( _unknown_0E1F() )
-        return _unknown_0F02();
+    if ( _ID49632() )
+        return _ID46488();
 
-    _unknown_0E2E();
+    _ID53357();
 
-    if ( self._ID256 && !_func_02F( self._ID11014 ) )
+    if ( self.damageshield && !isdefined( self._ID11014 ) )
     {
-        var_0 = _unknown_0ECF();
+        var_0 = _ID16206();
 
-        if ( _func_02F( var_0 ) )
+        if ( isdefined( var_0 ) )
             return var_0;
     }
 
-    if ( _func_02F( self._ID7._ID25684 ) )
+    if ( isdefined( self._ID7._ID25684 ) )
     {
         if ( self._ID7._ID28253 == "crouch" )
             return animscripts\utility::_ID22630( "pain", "back" );
@@ -346,23 +346,23 @@ _ID16508()
 
     if ( self._ID7._ID28253 == "stand" )
     {
-        var_1 = _func_02F( self._ID700 ) && _func_0F5( self._ID740, self._ID700._ID740 ) < 4096;
+        var_1 = isdefined( self.node ) && distancesquared( self.origin, self.node.origin ) < 4096;
 
-        if ( !var_1 && self._ID7._ID24414 == "run" && _func_0C3( self _meth_819C() ) < 60 )
-            return _unknown_1026();
+        if ( !var_1 && self._ID7._ID24414 == "run" && abs( self getmotionangle() ) < 60 )
+            return _ID16578();
 
         self._ID7._ID24414 = "stop";
-        return _unknown_1187();
+        return _ID16620();
     }
     else if ( self._ID7._ID28253 == "crouch" )
     {
         self._ID7._ID24414 = "stop";
-        return _unknown_128B();
+        return _ID16197();
     }
     else if ( self._ID7._ID28253 == "prone" )
     {
         self._ID7._ID24414 = "stop";
-        return _unknown_12E1();
+        return _ID16544();
     }
 }
 
@@ -372,10 +372,10 @@ _ID52376( var_0 )
 
     for ( var_2 = 0; var_2 < var_0.size; var_2++ )
     {
-        var_3 = _func_094( var_0[var_2], 0, 1 );
-        var_4 = self _meth_81BC( var_3 );
+        var_3 = getangledelta( var_0[var_2], 0, 1 );
+        var_4 = self localtoworldcoords( var_3 );
 
-        if ( self _meth_81CF( var_4 ) )
+        if ( self maymovetopoint( var_4 ) )
             var_1[var_1.size] = var_0[var_2];
     }
 
@@ -384,36 +384,36 @@ _ID52376( var_0 )
 
 _ID49572()
 {
-    _ID16508();
+    _ID44370();
     var_0 = animscripts\utility::_ID3291( %run_pain_fallonknee, %run_pain_fallonknee_02, %run_pain_fallonknee_03, %run_pain_stomach, %run_pain_stumble );
-    var_0 = _unknown_10A3( var_0 );
+    var_0 = _ID52376( var_0 );
 
     if ( !var_0.size )
     {
         self._ID7._ID24414 = "stop";
-        return _unknown_1192();
+        return _ID48098();
     }
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID16578()
 {
-    _unknown_0F73();
+    _ID53357();
     var_0 = [];
     var_1 = 0;
     var_2 = 0;
     var_3 = 0;
 
-    if ( self _meth_81CF( self _meth_81BC( ( 300, 0, 0 ) ) ) )
+    if ( self maymovetopoint( self localtoworldcoords( ( 300, 0, 0 ) ) ) )
     {
         var_2 = 1;
         var_1 = 1;
     }
-    else if ( self _meth_81CF( self _meth_81BC( ( 200, 0, 0 ) ) ) )
+    else if ( self maymovetopoint( self localtoworldcoords( ( 200, 0, 0 ) ) ) )
         var_1 = 1;
 
-    if ( _func_02F( self._ID7._ID11037 ) )
+    if ( isdefined( self._ID7._ID11037 ) )
     {
         var_2 = 0;
         var_1 = 0;
@@ -423,16 +423,16 @@ _ID16578()
         var_0 = animscripts\utility::_ID22630( "pain", "run_long" );
     else if ( var_1 )
         var_0 = animscripts\utility::_ID22630( "pain", "run_medium" );
-    else if ( self _meth_81CF( self _meth_81BC( ( 120, 0, 0 ) ) ) )
+    else if ( self maymovetopoint( self localtoworldcoords( ( 120, 0, 0 ) ) ) )
         var_0 = animscripts\utility::_ID22630( "pain", "run_short" );
 
     if ( !var_0.size )
     {
         self._ID7._ID24414 = "stop";
-        return _unknown_12DA();
+        return _ID16620();
     }
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID16622()
@@ -464,38 +464,39 @@ _ID16622()
     if ( var_0.size < 2 )
         var_0 = _ID42237::_ID3296( var_0, animscripts\utility::_ID22630( "pain", "pistol_default2" ) );
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID43467()
 {
-    var_0 = _func_043( self._ID1302 );
+    var_0 = getweaponmodel( self.weapon );
 
-    if ( _func_02F( self._ID43104 ) && !self._ID43104 || var_0 == "" )
+    if ( isdefined( self._ID43104 ) && !self._ID43104 || var_0 == "" )
         return "none";
 
-    var_1 = _func_1BE( self._ID1302 );
+    var_1 = weaponclass( self.weapon );
 
     switch ( var_1 )
     {
-
+        case "mg":
+        case "smg":
+            return "rifle";
+        case "pistol":
+        case "rocketlauncher":
+        case "spread":
+        case "rifle":
+            return var_1;
+        default:
+            return "rifle";
     }
-
-    case "rifle":
-    case "smg":
-    case "spread":
-    case "rocketlauncher":
-    case "pistol":
-    case "mg":
-    default:
 }
 
 _ID48098()
 {
-    _unknown_1196();
+    _ID44370();
     var_0 = [];
 
-    if ( _unknown_13A8() == "pistol" )
+    if ( _ID43467() == "pistol" )
     {
         if ( animscripts\utility::_ID9641( "torso_upper", "torso_lower", "left_arm_upper", "right_arm_upper", "neck" ) )
             var_0[var_0.size] = %pistol_stand_pain_chest;
@@ -520,7 +521,7 @@ _ID48098()
     }
     else
     {
-        var_1 = self._ID257 / self._ID626;
+        var_1 = self.damagetaken / self.maxhealth;
 
         if ( var_1 > 0.4 && !animscripts\utility::_ID9641( "left_hand", "right_hand", "left_foot", "right_foot", "helmet" ) )
             var_0[var_0.size] = %exposed_pain_2_crouch;
@@ -550,15 +551,15 @@ _ID48098()
             var_0[var_0.size] = %exposed_pain_dropgun;
     }
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID16620()
 {
-    _unknown_136E();
+    _ID53357();
 
     if ( animscripts\utility::_ID39997() )
-        return _unknown_1524();
+        return _ID16622();
 
     var_0 = [];
     var_1 = [];
@@ -618,9 +619,9 @@ _ID16620()
     if ( var_1.size < 2 && !var_2 )
         var_1 = _ID42237::_ID3296( var_1, animscripts\utility::_ID22630( "pain", "default_extended" ) );
 
-    if ( !self._ID256 && !self._ID7._ID11035 && !var_2 )
+    if ( !self.damageshield && !self._ID7._ID11035 && !var_2 )
     {
-        var_4 = _func_0B7( var_0.size + var_1.size );
+        var_4 = randomint( var_0.size + var_1.size );
 
         if ( var_4 < var_0.size )
             return var_0[var_4];
@@ -628,12 +629,12 @@ _ID16620()
             return var_1[var_4 - var_0.size];
     }
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID49167()
 {
-    _unknown_158C();
+    _ID44370();
     var_0 = [];
 
     if ( animscripts\utility::_ID9641( "torso_upper", "torso_lower", "left_arm_upper", "right_arm_upper", "neck" ) )
@@ -654,16 +655,16 @@ _ID49167()
     if ( var_0.size < 2 )
         var_0[var_0.size] = %exposed_crouch_pain_chest;
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID16197()
 {
-    _unknown_162D();
+    _ID53357();
     var_0 = [];
     var_1 = _ID42237::_ID37527( animscripts\utility::should_play_specific_covercrouch_anim(), "cover", "" );
 
-    if ( !self._ID256 && !self._ID7._ID11035 )
+    if ( !self.damageshield && !self._ID7._ID11035 )
         var_0 = animscripts\utility::_ID22630( "pain", var_1 + "crouch_longdeath" );
 
     var_0 = _ID42237::_ID3296( var_0, animscripts\utility::_ID22630( "pain", var_1 + "crouch_default" ) );
@@ -674,14 +675,14 @@ _ID16197()
     if ( animscripts\utility::_ID9641( "right_hand", "right_arm_lower", "right_arm_upper" ) )
         var_0 = _ID42237::_ID3296( var_0, animscripts\utility::_ID22630( "pain", var_1 + "crouch_right_arm" ) );
 
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID43807()
 {
-    _unknown_16C1();
+    _ID44370();
 
-    if ( _func_0B7( 2 ) == 0 )
+    if ( randomint( 2 ) == 0 )
         return %prone_reaction_a;
     else
         return %prone_reaction_b;
@@ -689,28 +690,28 @@ _ID43807()
 
 _ID16544()
 {
-    _unknown_16DE();
+    _ID53357();
     var_0 = animscripts\utility::_ID22630( "pain", "prone" );
-    return var_0[_func_0B7( var_0.size )];
+    return var_0[randomint( var_0.size )];
 }
 
 _ID43591( var_0 )
 {
-    _unknown_16F7();
+    _ID44370();
 
-    if ( _func_02F( self._ID22746 ) )
+    if ( isdefined( self._ID22746 ) )
         var_1 = 1.5;
     else
         var_1 = self._ID3195;
 
-    self _meth_8119( "painanim", var_0, %body, 1, 0.1, var_1 );
+    self setflaggedanimknoballrestart( "painanim", var_0, %body, 1, 0.1, var_1 );
 
     if ( self._ID7._ID28253 == "prone" )
-        self _meth_820B( %prone_legs_up, %prone_legs_down, 1, 0.1, 1 );
+        self updateprone( %prone_legs_up, %prone_legs_down, 1, 0.1, 1 );
 
-    if ( _func_068( var_0, "start_aim" ) )
+    if ( animhasnotetrack( var_0, "start_aim" ) )
     {
-        thread _unknown_1B9C( "painanim" );
+        thread _ID25144( "painanim" );
         self endon( "start_aim" );
     }
 
@@ -719,26 +720,26 @@ _ID43591( var_0 )
 
 _ID28113( var_0 )
 {
-    if ( _unknown_1764() )
+    if ( _ID49632() )
     {
-        _unknown_1B67( var_0 );
+        _ID43591( var_0 );
         return;
     }
 
-    _unknown_1776();
+    _ID53357();
     var_1 = 1;
-    _unknown_22D0( "painanim", var_0, %body, 1, 0.1, var_1 );
+    _ID26192( "painanim", var_0, %body, 1, 0.1, var_1 );
 
     if ( self._ID7._ID28253 == "prone" )
-        self _meth_820B( %prone_legs_up, %prone_legs_down, 1, 0.1, 1 );
+        self updateprone( %prone_legs_up, %prone_legs_down, 1, 0.1, 1 );
 
-    if ( _func_068( var_0, "start_aim" ) )
+    if ( animhasnotetrack( var_0, "start_aim" ) )
     {
-        thread _unknown_1C09( "painanim" );
+        thread _ID25144( "painanim" );
         self endon( "start_aim" );
     }
 
-    if ( _func_068( var_0, "code_move" ) )
+    if ( animhasnotetrack( var_0, "code_move" ) )
         animscripts\shared::_ID11529( "painanim" );
 
     animscripts\shared::_ID11529( "painanim" );
@@ -755,10 +756,10 @@ _ID35383()
 {
     self endon( "killanimscript" );
     self._ID5303 = 1;
-    self._ID52 = 0;
+    self.allowpain = 0;
     wait 0.5;
     self._ID5303 = undefined;
-    self._ID52 = 1;
+    self.allowpain = 1;
 }
 
 _ID35382( var_0 )
@@ -767,32 +768,149 @@ _ID35382( var_0 )
         return 0;
 
     self._ID7._ID35357 = "none";
-    thread _unknown_1C79();
+    thread _ID35383();
 
     switch ( var_0 )
     {
+        case "cover_left":
+            if ( self._ID7._ID28253 == "stand" )
+            {
+                var_1 = animscripts\utility::_ID22630( "pain", "cover_left_stand" );
+                _ID11634( var_1 );
+                var_2 = 1;
+            }
+            else if ( self._ID7._ID28253 == "crouch" )
+            {
+                var_1 = animscripts\utility::_ID22630( "pain", "cover_left_crouch" )[animscripts\corner::_ID50013( self )];
+                _ID11634( var_1 );
+                var_2 = 1;
+            }
+            else
+                var_2 = 0;
 
+            break;
+        case "cover_right":
+            if ( self._ID7._ID28253 == "stand" )
+            {
+                var_1 = animscripts\utility::_ID22630( "pain", "cover_right_stand" );
+                _ID11634( var_1 );
+                var_2 = 1;
+            }
+            else if ( self._ID7._ID28253 == "crouch" )
+            {
+                var_1 = animscripts\utility::_ID22630( "pain", "cover_right_crouch" )[animscripts\corner::_ID50013( self )];
+                _ID11634( var_1 );
+                var_2 = 1;
+            }
+            else
+                var_2 = 0;
+
+            break;
+        case "cover_right_stand_A":
+            if ( self._ID7305 || isdefined( self._ID3152 ) && self._ID3152 == "s1_soldier" )
+                var_2 = 0;
+            else
+            {
+                _ID11633( animscripts\utility::_ID22630( "pain", "cover_right_stand_A" ) );
+                var_2 = 1;
+            }
+
+            break;
+        case "cover_right_stand_B":
+            if ( self._ID7305 )
+                var_2 = 0;
+            else
+            {
+                _ID11633( animscripts\utility::_ID22630( "pain", "cover_right_stand_B" ) );
+                var_2 = 1;
+            }
+
+            break;
+        case "cover_left_stand_A":
+            if ( self._ID7305 )
+                var_2 = 0;
+            else
+            {
+                _ID11633( animscripts\utility::_ID22630( "pain", "cover_left_stand_A" ) );
+                var_2 = 1;
+            }
+
+            break;
+        case "cover_left_stand_B":
+            if ( self._ID7305 )
+                var_2 = 0;
+            else
+            {
+                _ID11633( animscripts\utility::_ID22630( "pain", "cover_left_stand_B" ) );
+                var_2 = 1;
+            }
+
+            break;
+        case "cover_crouch":
+            var_1 = animscripts\utility::_ID22630( "pain", "cover_crouch" );
+            _ID11634( var_1 );
+            var_2 = 1;
+            break;
+        case "cover_stand":
+            var_1 = animscripts\utility::_ID22630( "pain", "cover_stand" );
+            _ID11634( var_1 );
+            var_2 = 1;
+            break;
+        case "cover_stand_aim":
+            var_1 = animscripts\utility::_ID22630( "pain", "cover_stand_aim" );
+            _ID11634( var_1 );
+            var_2 = 1;
+            break;
+        case "smg_cover_stand_aim":
+            var_1 = animscripts\utility::_ID22630( "pain", var_0 );
+            _ID11634( var_1 );
+            var_2 = 1;
+            break;
+        case "cover_crouch_aim":
+            if ( self._ID7._ID28253 != "stand" )
+            {
+                self clearanim( %exposed_aiming, 0 );
+                var_1 = animscripts\utility::_ID22630( "pain", "cover_crouch_aim" );
+            }
+            else
+                var_1 = [ %exposed_pain_back, %exposed_pain_groin, %exposed_pain_left_arm, %exposed_pain_leg, %exposed_pain_right_arm ];
+
+            _ID11634( var_1 );
+            var_2 = 1;
+            break;
+        case "saw":
+            if ( self._ID7._ID28253 == "stand" )
+                var_3 = animscripts\utility::_ID22630( "pain", "saw_stand" );
+            else if ( self._ID7._ID28253 == "crouch" )
+                var_3 = animscripts\utility::_ID22630( "pain", "saw_crouch" );
+            else
+                var_3 = animscripts\utility::_ID22630( "pain", "saw_prone" );
+
+            _ID26191( "painanim", var_3, 1, 0.3, 1 );
+            animscripts\shared::_ID11529( "painanim" );
+            var_2 = 1;
+            break;
+        case "mg42":
+            _ID23506( self._ID7._ID28253 );
+            var_2 = 1;
+            break;
+        case "minigun":
+            var_2 = 0;
+            break;
+        case "corner_right_martyrdom":
+            var_2 = _ID39066();
+            break;
+        case "dying_crawl":
+        case "rambo_left":
+        case "rambo_right":
+        case "rambo":
+            var_2 = 0;
+            break;
+        default:
+            var_2 = 0;
     }
 
-    return var_0;
-    case "rambo":
-    case "rambo_right":
-    case "rambo_left":
-    case "corner_right_martyrdom":
-    case "minigun":
-    case "cover_crouch":
-    case "saw":
-    case "cover_right":
-    case "cover_left":
-    case "dying_crawl":
-    case "cover_crouch_aim":
-    case "smg_cover_stand_aim":
-    case "cover_left_stand_B":
-    case "cover_left_stand_A":
-    case "cover_right_stand_B":
-    case "cover_right_stand_A":
-    case "mg42":
-    default:
+    return var_2;
 }
 
 _ID26202()
@@ -804,20 +922,20 @@ _ID26202()
 
 _ID11634( var_0 )
 {
-    var_1 = var_0[_func_0B7( var_0.size )];
-    _unknown_268D( "painanim", var_1, 1, 0.3, 1 );
+    var_1 = var_0[randomint( var_0.size )];
+    _ID26191( "painanim", var_1, 1, 0.3, 1 );
     animscripts\shared::_ID11529( "painanim" );
 }
 
 _ID11633( var_0 )
 {
-    _unknown_26A8( "painanim", var_0, 1, 0.3, 1 );
+    _ID26191( "painanim", var_0, 1, 0.3, 1 );
     animscripts\shared::_ID11529( "painanim" );
 }
 
 _ID23506( var_0 )
 {
-    _unknown_26CA( "painanim", level._ID23490["pain_" + var_0], 1, 0.1, 1 );
+    _ID26191( "painanim", level._ID23490["pain_" + var_0], 1, 0.1, 1 );
     animscripts\shared::_ID11529( "painanim" );
 }
 
@@ -826,7 +944,7 @@ _ID41052( var_0, var_1 )
     self endon( "killanimscript" );
     self endon( "death" );
 
-    if ( _func_02F( var_1 ) )
+    if ( isdefined( var_1 ) )
         self endon( var_1 );
 
     wait(var_0);
@@ -835,35 +953,35 @@ _ID41052( var_0, var_1 )
 
 _ID9105()
 {
-    if ( self._ID7._ID11035 || self._ID287 || self._ID256 )
+    if ( self._ID7._ID11035 || self.diequietly || self.damageshield )
         return 0;
 
-    if ( self._ID1012 != "none" )
+    if ( self.stairsstate != "none" )
         return 0;
 
-    if ( _func_02F( self._ID7._ID25684 ) )
+    if ( isdefined( self._ID7._ID25684 ) )
         return 0;
 
-    if ( _func_02F( self._ID23165 ) && self._ID23165 )
+    if ( isdefined( self._ID23165 ) && self._ID23165 )
         return 0;
 
     var_0 = animscripts\utility::_ID9641( "left_leg_upper", "left_leg_lower", "right_leg_upper", "right_leg_lower", "left_foot", "right_foot" );
 
-    if ( _func_02F( self._ID14789 ) )
+    if ( isdefined( self._ID14789 ) )
     {
-        _unknown_223F( var_0 );
-        self._ID486 = 10;
-        thread _unknown_227E();
+        _ID32581( var_0 );
+        self.health = 10;
+        thread _ID9108();
         self waittill( "killanimscript" );
         return 1;
     }
 
-    if ( self._ID486 > 100 )
+    if ( self.health > 100 )
         return 0;
 
-    if ( var_0 && self._ID486 < self._ID626 * 0.4 )
+    if ( var_0 && self.health < self.maxhealth * 0.4 )
     {
-        if ( _func_03D() < anim._ID24779 )
+        if ( gettime() < anim._ID24779 )
             return 0;
     }
     else
@@ -871,25 +989,18 @@ _ID9105()
         if ( anim._ID25245 > 0 )
             return 0;
 
-        if ( _func_03D() < anim._ID24778 )
+        if ( gettime() < anim._ID24778 )
             return 0;
     }
 
-    if ( _func_02F( self._ID9827 ) )
+    if ( isdefined( self._ID9827 ) )
         return 0;
 
-    var_1 = level._ID805;
-
-    for ( var_3 = _func_1DA( var_1 ); _func_02F( var_3 ); var_3 = _func_1BF( var_1, var_3 ) )
+    foreach ( var_2 in level._ID805 )
     {
-        var_2 = var_1[var_3];
-
-        if ( _func_0F5( self._ID740, var_2._ID740 ) < 30625 )
+        if ( distancesquared( self.origin, var_2.origin ) < 30625 )
             return 0;
     }
-
-    var_clear_2
-    var_clear_0
 
     if ( animscripts\utility::_ID9641( "head", "helmet", "gun", "right_hand", "left_hand" ) )
         return 0;
@@ -897,17 +1008,17 @@ _ID9105()
     if ( animscripts\utility::_ID39997() )
         return 0;
 
-    if ( self._ID7._ID28253 == "prone" && _unknown_25EE( _func_11F( self._ID65 ) ) )
+    if ( self._ID7._ID28253 == "prone" && _ID12980( anglestoforward( self.angles ) ) )
         return 0;
 
-    _unknown_22F6( var_0 );
+    _ID32581( var_0 );
 
-    if ( !_func_02F( self._ID7._ID36723 ) && !_unknown_2338( self._ID7._ID9107 ) )
+    if ( !isdefined( self._ID7._ID36723 ) && !_ID20719( self._ID7._ID9107 ) )
         return 0;
 
-    anim._ID24778 = _func_03D() + 3000;
-    anim._ID24779 = _func_03D() + 3000;
-    thread _unknown_235A();
+    anim._ID24778 = gettime() + 3000;
+    anim._ID24779 = gettime() + 3000;
+    thread _ID9108();
     self waittill( "killanimscript" );
     return 1;
 }
@@ -919,9 +1030,9 @@ _ID32581( var_0 )
 
     if ( self._ID7._ID28253 == "stand" )
     {
-        var_2 = _unknown_2439( var_0 );
+        var_2 = _ID33927( var_0 );
 
-        if ( _func_02F( var_2 ) )
+        if ( isdefined( var_2 ) )
             var_1 = [ var_2[0] ];
         else
             var_1 = animscripts\utility::_ID22630( "crawl_death", "stand_transition" );
@@ -936,102 +1047,102 @@ _ID32581( var_0 )
     else
         var_1 = animscripts\utility::_ID22630( "crawl_death", "prone_transition" );
 
-    self._ID7._ID9107 = var_1[_func_0B7( var_1.size )];
+    self._ID7._ID9107 = var_1[randomint( var_1.size )];
     self._ID7._ID36723 = var_2;
 }
 
 _ID20719( var_0 )
 {
-    if ( _func_02F( self._ID7._ID14752 ) )
+    if ( isdefined( self._ID7._ID14752 ) )
         return 1;
 
-    var_1 = _func_094( var_0, 0, 1 );
-    var_2 = self _meth_81BC( var_1 );
-    return self _meth_81CF( var_2 );
+    var_1 = getangledelta( var_0, 0, 1 );
+    var_2 = self localtoworldcoords( var_1 );
+    return self maymovetopoint( var_2 );
 }
 
 _ID9108()
 {
     self endon( "kill_long_death" );
     self endon( "death" );
-    thread _unknown_26F9( "crawling" );
+    thread _ID28501( "crawling" );
 
-    if ( _func_02F( self._ID9106 ) )
+    if ( isdefined( self._ID9106 ) )
         [[ self._ID9106 ]]();
 
     self._ID7._ID35357 = "none";
     self._ID35375 = undefined;
-    self _meth_820F();
-    thread _unknown_2367();
+    self setlookatentity();
+    thread _ID26202();
     level notify( "ai_crawling",  self  );
-    thread _unknown_25A7();
-    self _meth_8151( %dying, %body, 1, 0.1, 1 );
+    thread _ID53197();
+    self setanimknoball( %dying, %body, 1, 0.1, 1 );
 
-    if ( _func_02F( self._ID7._ID36723 ) )
+    if ( isdefined( self._ID7._ID36723 ) )
     {
-        _unknown_2587();
+        _ID36722();
         self._ID7._ID36723 = undefined;
         return;
     }
 
-    if ( !_unknown_25F3() )
+    if ( !_ID12246() )
         return;
 
-    self _meth_840D( 1 );
+    self _meth_840d( 1 );
 
-    if ( self._ID7._ID28253 != "prone" || !_unknown_275F( _func_11F( self._ID65 ) ) )
+    if ( self._ID7._ID28253 != "prone" || !_ID12980( anglestoforward( self.angles ) ) )
     {
-        _unknown_298B( "transition", self._ID7._ID9107, 1, 0.5, 1 );
-        animscripts\notetracks::_ID11539( "transition", ::_unknown_274B );
+        _ID26191( "transition", self._ID7._ID9107, 1, 0.5, 1 );
+        animscripts\notetracks::_ID11539( "transition", ::_ID17999 );
         self._ID7._ID35357 = "dying_crawl";
-        thread _unknown_2710();
+        thread _ID12248();
 
-        if ( _func_02F( self._ID322 ) )
+        if ( isdefined( self.enemy ) )
         {
-            if ( !_func_02F( level._ID46138 ) && self._ID322 == level._ID46138 )
-                self _meth_820F( self._ID322 );
+            if ( !( isdefined( level._ID46138 ) && self.enemy == level._ID46138 ) )
+                self setlookatentity( self.enemy );
         }
 
-        _unknown_2811();
+        _ID10051();
 
-        while ( _unknown_2822() && _unknown_27BF( _func_11F( self._ID65 ) ) )
+        while ( _ID33952() && _ID12980( anglestoforward( self.angles ) ) )
         {
             var_0 = animscripts\utility::_ID22630( "crawl_death", "back_crawl" );
 
-            if ( !_unknown_24FF( var_0 ) )
+            if ( !_ID20719( var_0 ) )
                 break;
 
-            _unknown_2A11( "back_crawl", var_0, 1, 0.1, 1.0 );
-            animscripts\notetracks::_ID11539( "back_crawl", ::_unknown_27BF );
+            _ID26193( "back_crawl", var_0, 1, 0.1, 1.0 );
+            animscripts\notetracks::_ID11539( "back_crawl", ::_ID17999 );
         }
 
-        self _meth_840D( 0 );
-        self._ID10426 = _func_03D() + _func_0B9( 4000, 20000 );
+        self _meth_840d( 0 );
+        self._ID10426 = gettime() + randomintrange( 4000, 20000 );
 
-        while ( _unknown_26B7() )
+        while ( _ID33974() )
         {
-            if ( animscripts\utility::_ID6884() && _unknown_27F9() )
+            if ( animscripts\utility::_ID6884() && _ID2426() )
             {
                 var_1 = animscripts\utility::_ID22630( "crawl_death", "back_fire" );
-                _unknown_2A5F( "back_idle_or_fire", var_1, 1, 0.2, 1.0 );
+                _ID26193( "back_idle_or_fire", var_1, 1, 0.2, 1.0 );
                 animscripts\shared::_ID11529( "back_idle_or_fire" );
                 continue;
             }
 
             var_1 = animscripts\utility::_ID22630( "crawl_death", "back_idle" );
 
-            if ( _func_0B8( 1 ) < 0.4 )
+            if ( randomfloat( 1 ) < 0.4 )
             {
                 var_2 = animscripts\utility::_ID22630( "crawl_death", "back_idle_twitch" );
-                var_1 = var_2[_func_0B7( var_2.size )];
+                var_1 = var_2[randomint( var_2.size )];
             }
 
-            _unknown_2AA9( "back_idle_or_fire", var_1, 1, 0.1, 1.0 );
-            var_3 = _func_067( var_1 );
+            _ID26193( "back_idle_or_fire", var_1, 1, 0.1, 1.0 );
+            var_3 = getanimlength( var_1 );
 
-            while ( var_3 > 0 && _unknown_2739() )
+            while ( var_3 > 0 && _ID33974() )
             {
-                if ( animscripts\utility::_ID6884() && _unknown_287C() )
+                if ( animscripts\utility::_ID6884() && _ID2426() )
                     break;
 
                 var_4 = 0.5;
@@ -1050,11 +1161,11 @@ _ID9108()
     }
 
     self notify( "end_dying_crawl_back_aim" );
-    self _meth_814C( %dying_back_aim_4_wrapper, 0.3 );
-    self _meth_814C( %dying_back_aim_6_wrapper, 0.3 );
+    self clearanim( %dying_back_aim_4_wrapper, 0.3 );
+    self clearanim( %dying_back_aim_6_wrapper, 0.3 );
     var_5 = animscripts\utility::_ID22630( "crawl_death", "back_death" );
-    self._ID9813 = var_5[_func_0B7( var_5.size )];
-    _unknown_2A3E();
+    self._ID9813 = var_5[randomint( var_5.size )];
+    _ID21434();
     self._ID7._ID35357 = "none";
     self._ID35375 = undefined;
 }
@@ -1066,7 +1177,7 @@ _ID33927( var_0 )
 
     var_1 = 2;
 
-    if ( _func_0B7( 10 ) > var_1 )
+    if ( randomint( 10 ) > var_1 )
         return;
 
     var_2 = 0;
@@ -1076,72 +1187,85 @@ _ID33927( var_0 )
         var_2 = animscripts\utility::_ID9641( "torso_upper", "torso_lower" );
 
         if ( !var_2 )
-            return;
+        {
+
+        }
     }
-
-    var_3 = 0;
-    var_4 = "leg";
-    var_5 = "b";
-
-    if ( var_0 )
-        var_3 = 200;
     else
     {
-        var_4 = "gut";
-        var_3 = 128;
+        var_3 = 0;
+        var_4 = "leg";
+        var_5 = "b";
 
-        if ( 45 < self._ID259 && self._ID259 < 135 )
-            var_5 = "l";
-        else if ( -135 < self._ID259 && self._ID259 < -45 )
-            var_5 = "r";
-        else if ( -45 < self._ID259 && self._ID259 < 45 )
+        if ( var_0 )
+            var_3 = 200;
+        else
+        {
+            var_4 = "gut";
+            var_3 = 128;
+
+            if ( 45 < self.damageyaw && self.damageyaw < 135 )
+                var_5 = "l";
+            else if ( -135 < self.damageyaw && self.damageyaw < -45 )
+                var_5 = "r";
+            else if ( -45 < self.damageyaw && self.damageyaw < 45 )
+                return;
+        }
+
+        switch ( var_5 )
+        {
+            case "b":
+                var_6 = anglestoforward( self.angles );
+                var_7 = self.origin - var_6 * var_3;
+                break;
+            case "l":
+                var_8 = anglestoright( self.angles );
+                var_7 = self.origin - var_8 * var_3;
+                break;
+            case "r":
+                var_8 = anglestoright( self.angles );
+                var_7 = self.origin + var_8 * var_3;
+                break;
+            default:
+                return;
+        }
+
+        if ( !self maymovetopoint( var_7 ) )
             return;
+
+        var_9 = animscripts\utility::_ID22630( "crawl_death", "longdeath" );
+        var_10 = var_4 + "_" + var_5;
+        var_11 = randomint( var_9[var_10].size );
+        var_12 = var_9[var_10][var_11];
     }
-
-    switch ( var_5 )
-    {
-
-    }
-
-    if ( !self _meth_81CF( var_5 ) )
-        return;
-
-    var_9 = animscripts\utility::_ID22630( "crawl_death", "longdeath" );
-    var_10 = var_3 + "_" + var_4;
-    var_11 = _func_0B7( var_9[var_10].size );
-    var_12 = var_9[var_10][var_11];
-    return var_12;
-    case "b":
-    case "r":
-    default:
 }
 
 _ID36722()
 {
-    _unknown_2C50( "stumblingPainInto", self._ID7._ID36723[0] );
+    _ID26193( "stumblingPainInto", self._ID7._ID36723[0] );
     animscripts\shared::_ID11529( "stumblingPainInto" );
     self._ID7._ID35357 = "stumbling_pain";
-    var_0 = _func_094( self._ID7._ID36723[2] );
-    var_1 = _func_067( self._ID7._ID36723[2] ) * 1000;
+    var_0 = getangledelta( self._ID7._ID36723[2] );
+    var_1 = getanimlength( self._ID7._ID36723[2] ) * 1000;
 
-    for ( var_2 = _func_0B7( 2 ) + 1; var_2 > 0; var_2-- )
+    for ( var_2 = randomint( 2 ) + 1; var_2 > 0; var_2-- )
     {
-        var_3 = _func_11F( self._ID65 );
-        var_4 = self._ID740 + var_3 * var_0;
+        var_3 = anglestoforward( self.angles );
+        var_4 = self.origin + var_3 * var_0;
 
-        if ( !self _meth_81CF( var_4 ) )
+        if ( !self maymovetopoint( var_4 ) )
             break;
 
-        _unknown_2CB0( "stumblingPain", self._ID7._ID36723[1] );
+        _ID26193( "stumblingPain", self._ID7._ID36723[1] );
         animscripts\shared::_ID11529( "stumblingPain" );
     }
 
     self._ID7._ID24881 = 1;
     self._ID7._ID35357 = "none";
-    _unknown_2CE3( "stumblingPainCollapse", self._ID7._ID36723[2], 1, 0.75 );
-    animscripts\notetracks::_ID11539( "stumblingPainCollapse", ::_unknown_294D );
+    _ID26193( "stumblingPainCollapse", self._ID7._ID36723[2], 1, 0.75 );
+    animscripts\notetracks::_ID11539( "stumblingPainCollapse", ::_ID36724 );
     animscripts\shared::_ID11529( "stumblingPainCollapse" );
-    _unknown_2C11();
+    _ID21434();
 }
 
 _ID36724( var_0 )
@@ -1155,13 +1279,13 @@ _ID36724( var_0 )
 
 _ID53197()
 {
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         return;
 
     self endon( "end_dying_crawl_back_aim" );
-    self waittill( "death",  var_1, var_1  );
+    self waittill( "death",  var_0, var_1  );
 
-    if ( !_func_02F( self ) || !_func_02F( var_0 ) || !_func_1B3( var_0 ) )
+    if ( !isdefined( self ) || !isdefined( var_0 ) || !isplayernumber( var_0 ) )
         return;
 
     if ( var_1 == "MOD_MELEE" )
@@ -1170,30 +1294,30 @@ _ID53197()
 
 _ID33974()
 {
-    if ( !_unknown_2B35( _func_11F( self._ID65 ) ) )
+    if ( !_ID12980( anglestoforward( self.angles ) ) )
         return 0;
 
-    return _func_03D() < self._ID10426;
+    return gettime() < self._ID10426;
 }
 
 _ID12246()
 {
-    if ( !_func_02F( self._ID14789 ) )
+    if ( !isdefined( self._ID14789 ) )
     {
         if ( self._ID7._ID28253 == "prone" )
             return 1;
 
         if ( self._ID7._ID24414 == "stop" )
         {
-            if ( _func_0B8( 1 ) < 0.4 )
+            if ( randomfloat( 1 ) < 0.4 )
             {
-                if ( _func_0B8( 1 ) < 0.5 )
+                if ( randomfloat( 1 ) < 0.5 )
                     return 1;
             }
-            else if ( _func_0C3( self._ID259 ) > 90 )
+            else if ( abs( self.damageyaw ) > 90 )
                 return 1;
         }
-        else if ( _func_0C3( self _meth_819C() ) > 90 )
+        else if ( abs( self getmotionangle() ) > 90 )
             return 1;
     }
 
@@ -1205,57 +1329,57 @@ _ID12246()
             var_0 = "covercrouch_2_crawl";
 
         var_1 = animscripts\utility::_ID22630( "crawl_death", var_0 );
-        var_2 = var_1[_func_0B7( var_1.size )];
+        var_2 = var_1[randomint( var_1.size )];
 
-        if ( !_unknown_28FB( var_2 ) )
+        if ( !_ID20719( var_2 ) )
             return 1;
 
-        thread _unknown_2B1F();
-        _unknown_2DFB( "falling", var_2, 1, 0.5, 1 );
+        thread _ID12249();
+        _ID26191( "falling", var_2, 1, 0.5, 1 );
         animscripts\shared::_ID11529( "falling" );
     }
     else
-        thread _unknown_2B40();
+        thread _ID12249();
 
     self._ID7._ID9107 = animscripts\utility::_ID22630( "crawl_death", "default_transition" );
     self._ID7._ID35357 = "dying_crawl";
-    _unknown_2C78();
+    _ID10051();
     var_3 = animscripts\utility::_ID22630( "crawl_death", "crawl" );
 
-    if ( _func_02F( self._ID7._ID3291 ) && _func_02F( self._ID7._ID3291["crawl"] ) )
+    if ( isdefined( self._ID7._ID3291 ) && isdefined( self._ID7._ID3291["crawl"] ) )
         var_3 = self._ID7._ID3291["crawl"];
 
-    while ( _unknown_2CB8() )
+    while ( _ID33952() )
     {
-        if ( !_unknown_297E( var_3 ) )
+        if ( !_ID20719( var_3 ) )
             return 1;
 
-        if ( _func_02F( self._ID9533 ) )
-            self _meth_80A1( self._ID9533 );
+        if ( isdefined( self._ID9533 ) )
+            self playsound( self._ID9533 );
 
-        _unknown_2E9B( "crawling", var_3, 1, 0.1, 1.0 );
+        _ID26193( "crawling", var_3, 1, 0.1, 1.0 );
         animscripts\shared::_ID11529( "crawling" );
     }
 
     self notify( "done_crawling" );
 
-    if ( !_func_02F( self._ID14789 ) && _unknown_2C97( _func_11F( self._ID65 ) * -1 ) )
+    if ( !isdefined( self._ID14789 ) && _ID12980( anglestoforward( self.angles ) * -1 ) )
         return 1;
 
     var_4 = animscripts\utility::_ID22630( "crawl_death", "death" );
 
-    if ( _func_02F( self._ID7._ID3291 ) && _func_02F( self._ID7._ID3291["death"] ) )
+    if ( isdefined( self._ID7._ID3291 ) && isdefined( self._ID7._ID3291["death"] ) )
         var_4 = self._ID7._ID3291["death"];
 
-    var_5 = var_4[_func_0B7( var_4.size )];
+    var_5 = var_4[randomint( var_4.size )];
 
     if ( var_5 != %dying_crawl_death_v2 )
         self._ID7._ID24881 = 1;
 
-    if ( !_func_02F( self._ID48174 ) || !self._ID48174 )
+    if ( !isdefined( self._ID48174 ) || !self._ID48174 )
         animscripts\death::_ID27200( var_5, 0 );
 
-    _unknown_2E39();
+    _ID21434();
     self._ID7._ID35357 = "none";
     self._ID35375 = undefined;
     return 0;
@@ -1271,7 +1395,7 @@ _ID12249()
         {
             self waittill( "falling",  var_0  );
 
-            if ( _func_125( var_0, "bodyfall" ) )
+            if ( issubstr( var_0, "bodyfall" ) )
                 break;
         }
     }
@@ -1281,22 +1405,22 @@ _ID12249()
     var_3 = 0.35;
     var_4 = level._ID1426["crawling_death_blood_smear"];
 
-    if ( _func_02F( self._ID7._ID9101 ) )
+    if ( isdefined( self._ID7._ID9101 ) )
         var_3 = self._ID7._ID9101;
 
-    if ( _func_02F( self._ID7._ID9100 ) )
+    if ( isdefined( self._ID7._ID9100 ) )
         var_4 = level._ID1426[self._ID7._ID9100];
 
-    if ( _func_02F( self._ID7._ID49817 ) )
+    if ( isdefined( self._ID7._ID49817 ) )
         var_1 = self._ID7._ID49817;
 
     while ( var_3 )
     {
-        var_5 = self _meth_818C( var_1 );
-        var_6 = self _meth_818D( var_2 );
-        var_7 = _func_11E( var_6 );
-        var_8 = _func_11F( ( 270, 0, 0 ) );
-        _func_156( var_4, var_5, var_8, var_7 );
+        var_5 = self gettagorigin( var_1 );
+        var_6 = self gettagangles( var_2 );
+        var_7 = anglestoright( var_6 );
+        var_8 = anglestoforward( ( 270, 0, 0 ) );
+        playfx( var_4, var_5, var_8, var_7 );
         wait(var_3);
     }
 }
@@ -1307,23 +1431,23 @@ _ID12248()
     self endon( "death" );
     self endon( "end_dying_crawl_back_aim" );
 
-    if ( _func_02F( self._ID12247 ) )
+    if ( isdefined( self._ID12247 ) )
         return;
 
     self._ID12247 = 1;
-    self _meth_8156( animscripts\utility::_ID22630( "crawl_death", "aim_4" ), 1, 0 );
-    self _meth_8156( animscripts\utility::_ID22630( "crawl_death", "aim_6" ), 1, 0 );
+    self setanimlimited( animscripts\utility::_ID22630( "crawl_death", "aim_4" ), 1, 0 );
+    self setanimlimited( animscripts\utility::_ID22630( "crawl_death", "aim_6" ), 1, 0 );
     var_0 = 0;
 
     for (;;)
     {
         var_1 = animscripts\utility::_ID16760();
-        var_2 = _func_0F0( var_1 - var_0 );
+        var_2 = angleclamp180( var_1 - var_0 );
 
-        if ( _func_0C3( var_2 ) > 3 )
+        if ( abs( var_2 ) > 3 )
             var_2 = _ID42237::_ID34160( var_2 ) * 3;
 
-        var_1 = _func_0F0( var_0 + var_2 );
+        var_1 = angleclamp180( var_0 + var_2 );
 
         if ( var_1 < 0 )
         {
@@ -1331,8 +1455,8 @@ _ID12248()
                 var_1 = -45.0;
 
             var_3 = var_1 / -45.0;
-            self _meth_8155( %dying_back_aim_4_wrapper, var_3, 0.05 );
-            self _meth_8155( %dying_back_aim_6_wrapper, 0, 0.05 );
+            self setanim( %dying_back_aim_4_wrapper, var_3, 0.05 );
+            self setanim( %dying_back_aim_6_wrapper, 0, 0.05 );
         }
         else
         {
@@ -1340,8 +1464,8 @@ _ID12248()
                 var_1 = 45.0;
 
             var_3 = var_1 / 45.0;
-            self _meth_8155( %dying_back_aim_6_wrapper, var_3, 0.05 );
-            self _meth_8155( %dying_back_aim_4_wrapper, 0, 0.05 );
+            self setanim( %dying_back_aim_6_wrapper, var_3, 0.05 );
+            self setanim( %dying_back_aim_4_wrapper, 0, 0.05 );
         }
 
         var_0 = var_1;
@@ -1354,7 +1478,7 @@ _ID36113()
     self endon( "kill_long_death" );
     self endon( "death" );
     wait 0.5;
-    thread _unknown_2E20();
+    thread _ID12248();
 }
 
 _ID17999( var_0 )
@@ -1364,7 +1488,7 @@ _ID17999( var_0 )
         if ( !animscripts\utility::_ID6884() )
             return 1;
 
-        if ( !_unknown_2E96() )
+        if ( !_ID2426() )
             return 1;
 
         animscripts\utility::_ID33781();
@@ -1372,7 +1496,7 @@ _ID17999( var_0 )
     }
     else if ( var_0 == "pistol_pickup" )
     {
-        thread _unknown_2E97();
+        thread _ID36113();
         return 0;
     }
 
@@ -1382,17 +1506,17 @@ _ID17999( var_0 )
 _ID2426()
 {
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
-        var_0 = animscripts\combat_utility::_ID15797( self._ID322 );
+        var_0 = animscripts\combat_utility::_ID15797( self.enemy );
     else
-        var_0 = self._ID322 _meth_809E();
+        var_0 = self.enemy getshootatpos();
 
-    var_1 = self _meth_81C5();
-    var_2 = _func_11A( var_0 - self _meth_81C4() );
+    var_1 = self getmuzzleangle();
+    var_2 = vectortoangles( var_0 - self getmuzzlepos() );
     var_3 = animscripts\utility::_ID1735( var_1[1] - var_2[1] );
 
     if ( var_3 > anim._ID26214 )
     {
-        if ( _func_0F5( self _meth_80AF(), var_0 ) > anim._ID26212 || var_3 > anim._ID26213 )
+        if ( distancesquared( self geteye(), var_0 ) > anim._ID26212 || var_3 > anim._ID26213 )
             return 0;
     }
 
@@ -1401,16 +1525,16 @@ _ID2426()
 
 _ID12980( var_0 )
 {
-    if ( !_func_02F( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
-        var_1 = animscripts\combat_utility::_ID15797( self._ID322 );
+        var_1 = animscripts\combat_utility::_ID15797( self.enemy );
     else
-        var_1 = self._ID322 _meth_809E();
+        var_1 = self.enemy getshootatpos();
 
-    var_2 = _func_119( var_1 - self _meth_80AF() );
-    return _func_0FB( var_2, var_0 ) > 0.5;
+    var_2 = vectornormalize( var_1 - self geteye() );
+    return vectordot( var_2, var_0 ) > 0.5;
 }
 
 _ID28501( var_0 )
@@ -1421,11 +1545,11 @@ _ID28501( var_0 )
     self._ID22609 = 1;
     self._ID7._ID11498 = 1;
     self notify( "long_death" );
-    self._ID486 = 10000;
+    self.health = 10000;
     wait 0.75;
 
-    if ( self._ID486 > 1 )
-        self._ID486 = 1;
+    if ( self.health > 1 )
+        self.health = 1;
 
     wait 0.05;
     self._ID22609 = undefined;
@@ -1435,42 +1559,42 @@ _ID28501( var_0 )
     {
         wait 1.0;
 
-        if ( _func_02F( level._ID794 ) && _func_0F5( self._ID740, level._ID794._ID740 ) < 1048576 )
+        if ( isdefined( level.player ) && distancesquared( self.origin, level.player.origin ) < 1048576 )
         {
-            anim._ID25245 = _func_0B9( 10, 30 );
-            anim._ID24778 = _func_03D() + _func_0B9( 15000, 60000 );
+            anim._ID25245 = randomintrange( 10, 30 );
+            anim._ID24778 = gettime() + randomintrange( 15000, 60000 );
         }
         else
         {
-            anim._ID25245 = _func_0B9( 5, 12 );
-            anim._ID24778 = _func_03D() + _func_0B9( 5000, 25000 );
+            anim._ID25245 = randomintrange( 5, 12 );
+            anim._ID24778 = gettime() + randomintrange( 5000, 25000 );
         }
 
-        anim._ID24779 = _func_03D() + _func_0B9( 7000, 13000 );
+        anim._ID24779 = gettime() + randomintrange( 7000, 13000 );
     }
     else if ( var_0 == "corner_grenade" )
     {
         wait 1.0;
 
-        if ( _func_02F( level._ID794 ) && _func_0F5( self._ID740, level._ID794._ID740 ) < 490000 )
+        if ( isdefined( level.player ) && distancesquared( self.origin, level.player.origin ) < 490000 )
         {
-            anim._ID25244 = _func_0B9( 10, 30 );
-            anim._ID24777 = _func_03D() + _func_0B9( 15000, 60000 );
+            anim._ID25244 = randomintrange( 10, 30 );
+            anim._ID24777 = gettime() + randomintrange( 15000, 60000 );
         }
         else
         {
-            anim._ID25244 = _func_0B9( 5, 12 );
-            anim._ID24777 = _func_03D() + _func_0B9( 5000, 25000 );
+            anim._ID25244 = randomintrange( 5, 12 );
+            anim._ID24777 = gettime() + randomintrange( 5000, 25000 );
         }
     }
 }
 
 _ID10051()
 {
-    if ( _func_02F( self._ID7._ID14752 ) )
+    if ( isdefined( self._ID7._ID14752 ) )
         self._ID7._ID25242 = self._ID7._ID14752;
     else
-        self._ID7._ID25242 = _func_0B9( 1, 5 );
+        self._ID7._ID25242 = randomintrange( 1, 5 );
 }
 
 _ID33952()
@@ -1490,20 +1614,20 @@ _ID39066()
     if ( anim._ID25244 > 0 )
         return 0;
 
-    if ( _func_03D() < anim._ID24777 )
+    if ( gettime() < anim._ID24777 )
         return 0;
 
-    if ( self._ID7._ID11035 || self._ID287 || self._ID256 )
+    if ( self._ID7._ID11035 || self.diequietly || self.damageshield )
         return 0;
 
-    if ( _func_02F( self._ID9827 ) )
+    if ( isdefined( self._ID9827 ) )
         return 0;
 
-    if ( _func_0F3( self._ID740, level._ID794._ID740 ) < 175 )
+    if ( distance( self.origin, level.player.origin ) < 175 )
         return 0;
 
-    anim._ID24777 = _func_03D() + 3000;
-    thread _unknown_3169();
+    anim._ID24777 = gettime() + 3000;
+    thread _ID8748();
     self waittill( "killanimscript" );
     return 1;
 }
@@ -1512,53 +1636,53 @@ _ID8748()
 {
     self endon( "kill_long_death" );
     self endon( "death" );
-    thread _unknown_2D50();
-    thread _unknown_310B( "corner_grenade" );
+    thread _ID26202();
+    thread _ID28501( "corner_grenade" );
     thread _ID42407::_ID32226( 0 );
-    self._ID1204 = -1000;
-    _unknown_335D( "corner_grenade_pain", animscripts\utility::_ID22630( "corner_grenade_death", "pain" ), %body, 1, 0.1 );
+    self.threatbias = -1000;
+    _ID26192( "corner_grenade_pain", animscripts\utility::_ID22630( "corner_grenade_death", "pain" ), %body, 1, 0.1 );
     self waittillmatch( "corner_grenade_pain",  "dropgun"  );
     animscripts\shared::_ID12143();
     self waittillmatch( "corner_grenade_pain",  "anim_pose = \"back\""  );
     animscripts\notetracks::_ID25056();
     self waittillmatch( "corner_grenade_pain",  "grenade_left"  );
-    var_0 = _func_043( "fraggrenade" );
-    self _meth_801D( var_0, "tag_inhand" );
-    self._ID9827 = ::_unknown_32C8;
+    var_0 = getweaponmodel( "fraggrenade" );
+    self attach( var_0, "tag_inhand" );
+    self._ID9827 = ::_ID28430;
     self waittillmatch( "corner_grenade_pain",  "end"  );
-    var_1 = _func_03D() + _func_0B9( 25000, 60000 );
-    _unknown_33D1( "corner_grenade_idle", animscripts\utility::_ID22630( "corner_grenade_death", "pain" ), %body, 1, 0.2 );
-    thread _unknown_332A();
+    var_1 = gettime() + randomintrange( 25000, 60000 );
+    _ID26192( "corner_grenade_idle", animscripts\utility::_ID22630( "corner_grenade_death", "pain" ), %body, 1, 0.2 );
+    thread _ID41496();
 
-    while ( !_unknown_32E6() )
+    while ( !_ID12978() )
     {
-        if ( _func_03D() >= var_1 )
+        if ( gettime() >= var_1 )
             break;
 
         animscripts\notetracks::_ID11534( 0.1, "corner_grenade_idle" );
     }
 
     var_2 = animscripts\utility::_ID22630( "corner_grenade_death", "release" );
-    _unknown_3414( "corner_grenade_release", var_2, %body, 1, 0.2 );
-    var_3 = _func_069( var_2, "grenade_drop" );
-    var_4 = var_3[0] * _func_067( var_2 );
+    _ID26192( "corner_grenade_release", var_2, %body, 1, 0.2 );
+    var_3 = getnotetracktimes( var_2, "grenade_drop" );
+    var_4 = var_3[0] * getanimlength( var_2 );
     wait(var_4 - 1.0);
     animscripts\death::_ID27202();
     wait 0.7;
-    self._ID9827 = ::_unknown_3389;
-    var_5 = ( 0, 0, 30 ) - _func_11E( self._ID65 ) * 70;
-    _unknown_3321( var_5, _func_0BA( 2.0, 3.0 ) );
+    self._ID9827 = ::_ID41183;
+    var_5 = ( 0, 0, 30 ) - anglestoright( self.angles ) * 70;
+    _ID8743( var_5, randomfloatrange( 2.0, 3.0 ) );
     wait 0.05;
-    self _meth_802A( var_0, "tag_inhand" );
-    thread _unknown_3360();
+    self detach( var_0, "tag_inhand" );
+    thread _ID21372();
 }
 
 _ID8743( var_0, var_1 )
 {
-    var_2 = self _meth_818C( "tag_inhand" );
+    var_2 = self gettagorigin( "tag_inhand" );
     var_3 = var_2 + ( 0, 0, 20 );
     var_4 = var_2 - ( 0, 0, 20 );
-    var_5 = _func_06D( var_3, var_4, 0, undefined );
+    var_5 = bullettrace( var_3, var_4, 0, undefined );
 
     if ( var_5["fraction"] < 0.5 )
         var_2 = var_5["position"];
@@ -1568,25 +1692,25 @@ _ID8743( var_0, var_1 )
     if ( var_5["surfacetype"] != "none" )
         var_6 = var_5["surfacetype"];
 
-    thread _unknown_33B7( "grenade_bounce_" + var_6, var_2 );
-    self._ID470 = "fraggrenade";
-    self _meth_803A( var_2, var_0, var_1 );
+    thread _ID28126( "grenade_bounce_" + var_6, var_2 );
+    self.grenadeweapon = "fraggrenade";
+    self magicgrenademanual( var_2, var_0, var_1 );
 }
 
 _ID28126( var_0, var_1 )
 {
-    var_2 = _func_06A( "script_origin", var_1 );
-    var_2 _meth_80A1( var_0, "sounddone" );
+    var_2 = spawn( "script_origin", var_1 );
+    var_2 playsound( var_0, "sounddone" );
     var_2 waittill( "sounddone" );
-    var_2 _meth_80B7();
+    var_2 delete();
 }
 
 _ID21372()
 {
     self._ID7._ID24881 = 1;
-    _unknown_3408();
-    self _meth_814C( %head, 0.2 );
-    self _meth_8023();
+    _ID21434();
+    self clearanim( %head, 0.2 );
+    self startragdoll();
     wait 0.1;
     self notify( "grenade_drop_done" );
 }
@@ -1595,30 +1719,30 @@ _ID21434()
 {
     _ID45456::_ID54623( self );
 
-    if ( _func_02F( self._ID21789 ) )
-        self _meth_8058( self._ID740, self._ID21789 );
+    if ( isdefined( self._ID21789 ) )
+        self kill( self.origin, self._ID21789 );
     else
-        self _meth_8058();
+        self kill();
 }
 
 _ID12978()
 {
-    if ( !_func_02F( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
-    if ( _func_0F5( self._ID740, self._ID322._ID740 ) > 147456 )
+    if ( distancesquared( self.origin, self.enemy.origin ) > 147456 )
         return 0;
 
-    if ( _func_0F5( self._ID740, self._ID322._ID740 ) < 16384 )
+    if ( distancesquared( self.origin, self.enemy.origin ) < 16384 )
         return 1;
 
-    var_0 = self._ID322._ID740 + self._ID13007 * 3.0;
-    var_1 = self._ID322._ID740;
+    var_0 = self.enemy.origin + self._ID13007 * 3.0;
+    var_1 = self.enemy.origin;
 
-    if ( self._ID322._ID740 != var_0 )
-        var_1 = _func_0F2( self._ID322._ID740, var_0, self._ID740 );
+    if ( self.enemy.origin != var_0 )
+        var_1 = pointonsegmentnearesttopoint( self.enemy.origin, var_0, self.origin );
 
-    if ( _func_0F5( self._ID740, var_1 ) < 16384 )
+    if ( distancesquared( self.origin, var_1 ) < 16384 )
         return 1;
 
     return 0;
@@ -1627,16 +1751,16 @@ _ID12978()
 _ID28430()
 {
     var_0 = animscripts\utility::_ID22630( "corner_grenade_death", "premature_death" );
-    var_1 = var_0[_func_0B7( var_0.size )];
+    var_1 = var_0[randomint( var_0.size )];
     animscripts\death::_ID27202();
-    _unknown_35CE( "corner_grenade_die", var_1, %body, 1, 0.2 );
+    _ID26192( "corner_grenade_die", var_1, %body, 1, 0.2 );
     var_2 = animscripts\combat_utility::_ID16304();
-    _unknown_34A3( var_2, 3.0 );
-    var_3 = _func_043( "fraggrenade" );
-    self _meth_802A( var_3, "tag_inhand" );
+    _ID8743( var_2, 3.0 );
+    var_3 = getweaponmodel( "fraggrenade" );
+    self detach( var_3, "tag_inhand" );
     wait 0.05;
-    self _meth_814C( %head, 0.2 );
-    self _meth_8023();
+    self clearanim( %head, 0.2 );
+    self startragdoll();
     self waittillmatch( "corner_grenade_die",  "end"  );
 }
 
@@ -1651,25 +1775,25 @@ _ID41496()
     self endon( "death" );
     self._ID13007 = ( 0, 0, 0 );
     var_0 = undefined;
-    var_1 = self._ID740;
+    var_1 = self.origin;
     var_2 = 0.15;
 
     for (;;)
     {
-        if ( _func_02F( self._ID322 ) && _func_02F( var_0 ) && self._ID322 == var_0 )
+        if ( isdefined( self.enemy ) && isdefined( var_0 ) && self.enemy == var_0 )
         {
-            var_3 = self._ID322._ID740;
-            self._ID13007 = var_3 - var_1 * 1 / var_2;
+            var_3 = self.enemy.origin;
+            self._ID13007 = ( var_3 - var_1 ) * 1 / var_2;
             var_1 = var_3;
         }
         else
         {
-            if ( _func_02F( self._ID322 ) )
-                var_1 = self._ID322._ID740;
+            if ( isdefined( self.enemy ) )
+                var_1 = self.enemy.origin;
             else
-                var_1 = self._ID740;
+                var_1 = self.origin;
 
-            var_0 = self._ID322;
+            var_0 = self.enemy;
             self._ID33786 = ( 0, 0, 0 );
         }
 
@@ -1681,18 +1805,18 @@ _ID2035( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 {
     self endon( "death" );
 
-    if ( !_func_02F( self ) )
+    if ( !isdefined( self ) )
         return;
 
-    if ( _func_02F( self._ID11496 ) )
+    if ( isdefined( self._ID11496 ) )
         return;
 
-    if ( !_func_02F( self._ID23165 ) || _func_02F( self._ID23165 ) && !self._ID23165 )
+    if ( !isdefined( self._ID23165 ) || isdefined( self._ID23165 ) && !self._ID23165 )
     {
-        if ( var_0 < self._ID642 )
+        if ( var_0 < self.minpaindamage )
             return;
     }
-    else if ( var_0 < self._ID642 / 3 )
+    else if ( var_0 < self.minpaindamage / 3 )
         return;
 
     self._ID11496 = 1;
@@ -1710,58 +1834,58 @@ _ID2035( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     else
     {
         var_8 = animscripts\utility::_ID22630( "additive_pain", "default" );
-        var_7 = var_8[_func_0B7( var_8.size )];
+        var_7 = var_8[randomint( var_8.size )];
     }
 
-    self _meth_8156( %add_pain, 1, 0.1, 1 );
-    self _meth_8156( var_7, 1, 0, 1 );
+    self setanimlimited( %add_pain, 1, 0.1, 1 );
+    self setanimlimited( var_7, 1, 0, 1 );
     wait 0.4;
-    self _meth_814C( var_7, 0.2 );
-    self _meth_814C( %add_pain, 0.2 );
+    self clearanim( var_7, 0.2 );
+    self clearanim( %add_pain, 0.2 );
     self._ID11496 = undefined;
 }
 
 _ID26191( var_0, var_1, var_2, var_3, var_4 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         var_3 = 0.2;
 
-    if ( !_func_02F( var_4 ) )
+    if ( !isdefined( var_4 ) )
         var_4 = 1;
 
-    self _meth_815C( var_0, var_1, var_2, var_3, var_4 );
+    self setflaggedanimknob( var_0, var_1, var_2, var_3, var_4 );
     self._ID13768 = animscripts\face::_ID28062( var_1, "pain", self._ID13768 );
 }
 
 _ID26193( var_0, var_1, var_2, var_3, var_4 )
 {
-    if ( !_func_02F( var_2 ) )
+    if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         var_3 = 0.2;
 
-    if ( !_func_02F( var_4 ) )
+    if ( !isdefined( var_4 ) )
         var_4 = 1;
 
-    self _meth_8116( var_0, var_1, var_2, var_3, var_4 );
+    self setflaggedanimknobrestart( var_0, var_1, var_2, var_3, var_4 );
     self._ID13768 = animscripts\face::_ID28062( var_1, "pain", self._ID13768 );
 }
 
 _ID26192( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
-    if ( !_func_02F( var_3 ) )
+    if ( !isdefined( var_3 ) )
         var_3 = 1;
 
-    if ( !_func_02F( var_4 ) )
+    if ( !isdefined( var_4 ) )
         var_4 = 0.2;
 
-    if ( !_func_02F( var_5 ) )
+    if ( !isdefined( var_5 ) )
         var_5 = 1;
 
-    self _meth_8119( var_0, var_1, var_2, var_3, var_4, var_5 );
+    self setflaggedanimknoballrestart( var_0, var_1, var_2, var_3, var_4, var_5 );
     self._ID13768 = animscripts\face::_ID28062( var_1, "pain", self._ID13768 );
 }

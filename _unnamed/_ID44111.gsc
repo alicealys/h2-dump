@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     _ID42475::_ID34575( "snd_register_vehicle", "snowmobile_player", ::_ID52595 );
 }
@@ -274,7 +274,7 @@ snowmobile_player_condition_callback_to_reverse( var_0, var_1 )
 
     if ( var_4 < 25 )
     {
-        if ( var_4 > 0 && var_5._ID1266 > 0 )
+        if ( var_4 > 0 && var_5.veh_brake > 0 )
             var_2 = 1;
     }
 
@@ -329,7 +329,7 @@ snowmobile_player_condition_callback_to_rampdown_from_reverse( var_0, var_1 )
     if ( _ID20551( var_5 ) )
         return var_2;
 
-    if ( var_4 > 0 && var_5._ID1266 <= 0 )
+    if ( var_4 > 0 && var_5.veh_brake <= 0 )
         var_2 = 1;
 
     var_1._ID28490 = var_3;
@@ -367,8 +367,8 @@ _ID52519( var_0, var_1 )
 
     if ( _ID20551( var_5 ) )
     {
-        var_6 = vectornormalize( anglestoup( var_5._ID65 ) ) * -1;
-        var_7 = bullettrace( var_5._ID740, var_5._ID740 + var_6 * 500, 0, self );
+        var_6 = vectornormalize( anglestoup( var_5.angles ) ) * -1;
+        var_7 = bullettrace( var_5.origin, var_5.origin + var_6 * 500, 0, self );
 
         if ( var_7["fraction"] >= 0.04 )
         {

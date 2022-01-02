@@ -4,12 +4,12 @@
 _ID45073()
 {
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "black", 640, 480 );
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 1;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 1;
 }

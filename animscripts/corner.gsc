@@ -6,7 +6,7 @@ _ID8741( var_0, var_1 )
     self endon( "killanimscript" );
     self._ID3155["exposed"]["stand"] = ::_ID32451;
     self._ID3155["exposed"]["crouch"] = ::_ID32253;
-    self._ID8893 = self._ID700;
+    self._ID8893 = self.node;
     self._ID8744 = var_0;
     self._ID7._ID8746 = "unknown";
     self._ID7._ID2428 = undefined;
@@ -19,7 +19,7 @@ _ID8741( var_0, var_1 )
     self._ID18274 = 0;
     var_2 = spawnstruct();
 
-    if ( !self._ID381 )
+    if ( !self.fixednode )
         var_2._ID24470 = animscripts\cover_behavior::_ID24470;
 
     var_2._ID22797 = ::_ID22797;
@@ -28,10 +28,10 @@ _ID8741( var_0, var_1 )
     var_2._ID599 = ::_ID22627;
     var_2._ID13953 = ::_ID13953;
     var_2._ID19302 = ::_ID19302;
-    var_2._ID458 = ::_ID39080;
+    var_2.grenade = ::_ID39080;
     var_2._ID17412 = ::_ID39081;
     var_2._ID5294 = ::_ID5294;
-    animscripts\cover_behavior::_ID616( var_2 );
+    animscripts\cover_behavior::main( var_2 );
 }
 
 _ID12614()
@@ -59,7 +59,7 @@ _ID33931()
     if ( isdefined( self._ID47830 ) && self._ID47830 )
         return 0;
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     if ( !isdefined( self._ID7301 ) )
@@ -90,9 +90,9 @@ _ID22797()
 
         if ( isdefined( self._ID3152 ) && self._ID3152 == "s1_soldier" )
         {
-            if ( self._ID912 == "cover_right" )
+            if ( self.script == "cover_right" )
                 var_1 = "crouch_r";
-            else if ( self._ID912 == "cover_left" )
+            else if ( self.script == "cover_left" )
                 var_1 = "crouch_l";
         }
 
@@ -110,9 +110,9 @@ _ID22797()
 
             if ( isdefined( self._ID3152 ) && self._ID3152 == "s1_soldier" )
             {
-                if ( self._ID912 == "cover_right" )
+                if ( self.script == "cover_right" )
                     var_1 = "crouch_r";
-                else if ( self._ID912 == "cover_left" )
+                else if ( self.script == "cover_left" )
                     var_1 = "crouch_l";
             }
         }
@@ -260,7 +260,7 @@ _ID33811()
     var_0 = self._ID8893 animscripts\utility::_ID16761( self._ID33810 );
 
     if ( self._ID7._ID8746 == "over" )
-        return var_0 < self._ID590 || self._ID894 < var_0;
+        return var_0 < self.leftaimlimit || self.rightaimlimit < var_0;
 
     if ( self._ID8744 == "up" )
         return var_0 < -50 || var_0 > 50;
@@ -291,7 +291,7 @@ _ID16192( var_0, var_1 )
 
     var_4 = [];
 
-    if ( isdefined( var_0 ) && self._ID7._ID28253 == "crouch" && ( var_3 > self._ID590 && self._ID894 > var_3 ) )
+    if ( isdefined( var_0 ) && self._ID7._ID28253 == "crouch" && ( var_3 > self.leftaimlimit && self.rightaimlimit > var_3 ) )
         var_4 = var_0 getvalidcoverpeekouts();
 
     if ( self._ID8744 == "up" )
@@ -302,7 +302,7 @@ _ID16192( var_0, var_1 )
 
             if ( isdefined( var_1 ) )
             {
-                var_6 = anglestoup( self._ID65 );
+                var_6 = anglestoup( self.angles );
                 var_5 = animscripts\combat_utility::_ID16518( var_1, self geteye() + ( var_6[0] * 12, var_6[1] * 12, var_6[2] * 12 ) );
             }
 
@@ -365,7 +365,7 @@ _ID16155()
 
     if ( animscripts\utility::_ID6898() )
         var_0 = self._ID8893 animscripts\utility::_ID16761( animscripts\utility::_ID16257() );
-    else if ( self._ID302 && isdefined( self._ID33810 ) )
+    else if ( self.doingambush && isdefined( self._ID33810 ) )
         var_0 = self._ID8893 animscripts\utility::_ID16761( self._ID33810 );
 
     if ( self._ID7._ID8746 == "lean" )
@@ -423,7 +423,7 @@ _ID7302()
     if ( animscripts\utility::_ID20915() && ( var_1 == "A_to_B" || var_1 == "B_to_A" ) )
         return 0;
 
-    var_3 = !self._ID1063;
+    var_3 = !self.swimmer;
     var_4 = _ID16538();
 
     if ( !self maymovetopoint( var_4, var_3 ) )
@@ -476,7 +476,7 @@ _ID33953()
     if ( !animscripts\utility::_ID49045() && self._ID7._ID28253 != "stand" )
         return 0;
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         return 1;
 
     if ( animscripts\utility::_ID20849() )
@@ -587,8 +587,8 @@ _ID36394()
     if ( isdefined( self._ID48028 ) && self._ID48028 )
         return 0;
 
-    if ( self._ID452 < 64 )
-        self._ID452 = 64;
+    if ( self.goalradius < 64 )
+        self.goalradius = 64;
 
     _ID32587();
 
@@ -636,12 +636,12 @@ _ID36394()
     else
         self._ID7._ID35357 = "none";
 
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_4 = 0;
     self._ID7305 = 1;
     self notify( "done_changing_cover_pos" );
     var_5 = _ID36395();
-    self._ID846 = 0;
+    self.pushable = 0;
     self clearanim( %corner, 0.1 );
     self setflaggedanimknoballrestart( "stepout", var_3, %animscript_root, 1, 0.2, var_5 );
     _ID8740( var_3 );
@@ -650,7 +650,7 @@ _ID36394()
 
     if ( var_4 )
     {
-        self._ID36397 = self._ID65[1] + getmovedelta( var_3, 0, 1 );
+        self._ID36397 = self.angles[1] + getmovedelta( var_3, 0, 1 );
         self waittillmatch( "stepout",  "start_aim"  );
     }
     else
@@ -674,13 +674,13 @@ _ID36394()
     self clearanim( %cover, 0.1 );
     self._ID7305 = 0;
     self._ID8895 = gettime();
-    self._ID846 = 1;
+    self.pushable = 1;
     return 1;
 }
 
 _ID36396()
 {
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
 
     if ( isdefined( self._ID28940 ) && randomfloat( 1 ) < self._ID28940 )
     {
@@ -695,7 +695,7 @@ _ID36396()
 
     if ( isdefined( self._ID33810 ) )
     {
-        var_0 = lengthsquared( self._ID740 - self._ID33810 );
+        var_0 = lengthsquared( self.origin - self._ID33810 );
 
         if ( animscripts\utility::_ID39993() && animscripts\utility::_ID33944( var_0 ) )
         {
@@ -710,7 +710,7 @@ _ID36396()
     }
 
     _ID29924();
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return 1;
 }
 
@@ -752,12 +752,12 @@ _ID28935()
     var_4 = animscripts\utility::_ID3156( var_3 );
     var_5 = _ID16538( 48 );
 
-    if ( !self maymovetopoint( var_5, !self._ID1063 ) )
+    if ( !self maymovetopoint( var_5, !self.swimmer ) )
         return 0;
 
     self._ID8895 = gettime();
     _ID32587();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     self._ID20874 = 1;
     self._ID7._ID28496 = "rambo";
     self._ID7305 = 1;
@@ -767,7 +767,7 @@ _ID28935()
     animscripts\shared::_ID11529( "rambo" );
     self notify( "rambo_aim_end" );
     self._ID7305 = 0;
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     self._ID21972 = gettime();
     self._ID7305 = 0;
     self._ID20874 = undefined;
@@ -881,7 +881,7 @@ _ID2972()
 
 _ID34097()
 {
-    self._ID322 endon( "death" );
+    self.enemy endon( "death" );
     self endon( "enemy" );
     self endon( "stopshowstate" );
 
@@ -891,7 +891,7 @@ _ID34097()
 
 _ID6878( var_0 )
 {
-    var_1 = !self._ID1063;
+    var_1 = !self.swimmer;
 
     if ( var_0 )
     {
@@ -900,10 +900,10 @@ _ID6878( var_0 )
         if ( !self maymovetopoint( var_2, var_1 ) )
             return 0;
 
-        return self maymovefrompointtopoint( var_2, self._ID8893._ID740, var_1 );
+        return self maymovefrompointtopoint( var_2, self._ID8893.origin, var_1 );
     }
     else
-        return self maymovetopoint( self._ID8893._ID740, var_1 );
+        return self maymovetopoint( self._ID8893.origin, var_1 );
 }
 
 _ID29924()
@@ -947,7 +947,7 @@ _ID29924()
     else
         self._ID7._ID35357 = "cover_right";
 
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     self clearanim( var_2, 0.2 );
 }
 
@@ -966,12 +966,12 @@ _ID5294()
     }
 
     _ID32587();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_0 = "blind_fire";
 
-    if ( isdefined( self._ID700._ID53049 ) )
+    if ( isdefined( self.node._ID53049 ) )
     {
-        var_1 = animscripts\utility::_ID50392( self._ID700._ID53049 );
+        var_1 = animscripts\utility::_ID50392( self.node._ID53049 );
 
         if ( isdefined( var_1 ) )
             var_2 = animscripts\utility::_ID44378( var_0, var_1 );
@@ -984,7 +984,7 @@ _ID5294()
     self setflaggedanimknoballrestart( "blindfire", var_2, %body, 1, 0, 1 );
     _ID8740( var_2 );
     animscripts\shared::_ID11529( "blindfire" );
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     self._ID54064 = 0;
     self._ID7._ID21758 = 0;
     animscripts\shared::_ID39728();
@@ -1046,9 +1046,9 @@ _ID39080( var_0, var_1 )
     }
 
     _ID32587();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_3 = animscripts\combat_utility::_ID39072( var_0, var_2 );
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return var_3;
 }
 
@@ -1063,7 +1063,7 @@ _ID22627( var_0 )
         return 0;
 
     _ID32587();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
 
     if ( !_ID26556() )
         return 0;
@@ -1081,13 +1081,13 @@ _ID22627( var_0 )
     _ID8740( var_1 );
     animscripts\shared::_ID11529( "looking_end" );
     _ID32587();
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return 1;
 }
 
 _ID20852()
 {
-    var_0 = self._ID8893._ID65;
+    var_0 = self._ID8893.angles;
 
     if ( animscripts\utility::_ID20915() )
         var_0 = animscripts\utility::_ID16702( self._ID8893 );
@@ -1103,9 +1103,9 @@ _ID20852()
     else
         var_1 += var_3 * 30;
 
-    if ( self._ID1194 == "allies" && level._ID794 _ID42407::_ID20652() )
+    if ( self.team == "allies" && level.player _ID42407::_ID20652() )
     {
-        if ( _ID42407::_ID27540( var_1, 0.95, undefined, level._ID794 ) )
+        if ( _ID42407::_ID27540( var_1, 0.95, undefined, level.player ) )
             return 0;
     }
 
@@ -1136,7 +1136,7 @@ _ID26556()
 
 _ID6897()
 {
-    return self maymovetopoint( self._ID8893._ID740, !self._ID1063 );
+    return self maymovetopoint( self._ID8893.origin, !self.swimmer );
 }
 
 _ID13953()
@@ -1153,12 +1153,12 @@ _ID8747()
     }
 
     var_0 = "reload";
-    var_1 = animscripts\animset::has_special_reload( self._ID1302 );
+    var_1 = animscripts\animset::has_special_reload( self.weapon );
 
     if ( isdefined( var_1 ) )
         var_0 = "reload_" + var_1;
 
-    if ( animscripts\utility::_ID20902( self._ID1302 ) && animscripts\utility::_ID3154( "shotgun_reload" ) )
+    if ( animscripts\utility::_ID20902( self.weapon ) && animscripts\utility::_ID3154( "shotgun_reload" ) )
         var_0 = "shotgun_reload";
 
     var_2 = animscripts\utility::_ID3156( var_0 );
@@ -1175,7 +1175,7 @@ _ID8747()
 
 _ID20850( var_0, var_1 )
 {
-    var_2 = !self._ID1063;
+    var_2 = !self.swimmer;
 
     if ( var_1 )
     {
@@ -1184,14 +1184,14 @@ _ID20850( var_0, var_1 )
         if ( !self maymovetopoint( var_3, var_2 ) )
             return 0;
 
-        if ( self._ID1063 )
+        if ( self.swimmer )
             return 1;
 
         return self maymovefrompointtopoint( var_3, animscripts\utility::_ID16127( var_0 ), var_2 );
     }
     else
     {
-        if ( self._ID1063 )
+        if ( self.swimmer )
             return 1;
 
         return self maymovetopoint( animscripts\utility::_ID16127( var_0 ), var_2 );
@@ -1200,13 +1200,13 @@ _ID20850( var_0, var_1 )
 
 _ID16538( var_0 )
 {
-    var_1 = self._ID8893._ID65;
+    var_1 = self._ID8893.angles;
     var_2 = anglestoright( var_1 );
 
     if ( !isdefined( var_0 ) )
         var_0 = 36;
 
-    var_3 = self._ID912;
+    var_3 = self.script;
 
     if ( var_3 == "cover_multi" )
     {
@@ -1219,7 +1219,7 @@ _ID16538( var_0 )
     if ( var_3 == "cover_swim_up" )
     {
         var_4 = anglestoup( var_1 );
-        return self._ID8893._ID740 + var_4 * var_0;
+        return self._ID8893.origin + var_4 * var_0;
     }
 
     switch ( var_3 )
@@ -1235,7 +1235,7 @@ _ID16538( var_0 )
     }
 
     endswitch( 5 )  case "cover_swim_right" loc_1D38 case "cover_swim_left" loc_1D2C case "cover_right" loc_1D38 case "cover_left" loc_1D2C default loc_1D42
-    return self._ID8893._ID740 + ( var_2[0], var_2[1], 0 );
+    return self._ID8893.origin + ( var_2[0], var_2[1], 0 );
 }
 
 _ID45407()
@@ -1344,7 +1344,7 @@ _ID17028( var_0, var_1, var_2 )
     _ID8740( var_0 );
     animscripts\notetracks::_ID11534( var_2, "coveranim" );
 
-    while ( animscripts\utility::_ID1735( self._ID65[1] - var_5 ) > 1 )
+    while ( animscripts\utility::_ID1735( self.angles[1] - var_5 ) > 1 )
     {
         animscripts\notetracks::_ID11534( 0.1, "coveranim" );
         var_3 = animscripts\utility::_ID16459();
@@ -1371,7 +1371,7 @@ _ID11744()
 
 _ID32451()
 {
-    if ( self._ID1063 && isdefined( self._ID700 ) )
+    if ( self.swimmer && isdefined( self.node ) )
     {
         _ID32463();
         return;
@@ -1434,7 +1434,7 @@ _ID32451()
 
 _ID32253()
 {
-    if ( self._ID1063 && isdefined( self._ID700 ) )
+    if ( self.swimmer && isdefined( self.node ) )
     {
         _ID32463();
         return;
@@ -1557,12 +1557,12 @@ _ID32463()
 _ID30412()
 {
     self notify( "killanimscript" );
-    thread animscripts\combat::_ID616();
+    thread animscripts\combat::main();
 }
 
 _ID32587()
 {
-    if ( self._ID1063 )
+    if ( self.swimmer )
         self animmode( "nogravity" );
     else
         self animmode( "zonly_physics" );

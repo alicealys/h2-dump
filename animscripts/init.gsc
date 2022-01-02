@@ -47,11 +47,11 @@ _ID13282()
 }
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     self._ID7 = spawnstruct();
     self._ID7._ID21758 = 0;
-    self._ID834 = self._ID1302;
+    self._ID834 = self.weapon;
     _ID14369();
 
     if ( !isdefined( self._ID834 ) || self._ID834 == "" )
@@ -75,7 +75,7 @@ _ID616()
     self._ID7._ID41702["right"] = "none";
     self._ID7._ID41702["chest"] = "none";
     self._ID7._ID41702["back"] = "none";
-    self._ID22034 = self._ID1302;
+    self._ID22034 = self.weapon;
     self._ID30178 = %animscript_root;
     thread _ID5023();
     var_0 = animscripts\utility::_ID39993();
@@ -93,7 +93,7 @@ _ID616()
     self._ID7._ID35357 = "none";
     self._ID7._ID17524 = "none";
     self._ID7._ID28534 = -1;
-    self._ID309 = 1;
+    self.dropweapon = 1;
     self._ID23656 = 750;
     animscripts\shared::_ID26732( self._ID834, "right" );
 
@@ -113,7 +113,7 @@ _ID616()
     setdynamicdvar( "ai_reactToBulletChance", 0.8 );
     setdynamicdvar( "ai_reactToBulletCooldown", 5000 );
 
-    if ( self._ID1194 != "allies" )
+    if ( self.team != "allies" )
         self._ID18169 = 1;
 
     self._ID7._ID28304 = undefined;
@@ -146,15 +146,15 @@ _ID616()
     self._ID36839 = 0;
     self._ID36842 = 0;
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         self._ID36847 = 0.5;
     else
         self._ID36847 = 0;
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         thread updateignoreplayersuppression();
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         self._ID28963 = 0;
     else
         self._ID28963 = 256;
@@ -191,18 +191,18 @@ _ID616()
 
     if ( isdefined( level._ID51158 ) )
     {
-        if ( isdefined( level._ID51158[self._ID1194] ) )
-            self._ID24936 = !level._ID51158[self._ID1194];
+        if ( isdefined( level._ID51158[self.team] ) )
+            self._ID24936 = !level._ID51158[self.team];
     }
 
     self._ID54135 = spawnstruct();
-    self._ID54135._ID894 = 45;
-    self._ID54135._ID590 = -45;
-    self._ID54135._ID1252 = 35;
-    self._ID54135._ID307 = -35;
+    self._ID54135.rightaimlimit = 45;
+    self._ID54135.leftaimlimit = -45;
+    self._ID54135.upaimlimit = 35;
+    self._ID54135.downaimlimit = -35;
     self._ID50389 = spawnstruct();
-    self._ID50389._ID894 = 45;
-    self._ID50389._ID590 = -45;
+    self._ID50389.rightaimlimit = 45;
+    self._ID50389.leftaimlimit = -45;
     self._ID47383 = 1;
 
     if ( !isdefined( level._ID11039 ) )
@@ -222,7 +222,7 @@ updateignoreplayersuppression( var_0 )
 
     if ( !isdefined( var_0 ) || var_0 )
     {
-        switch ( level._ID912 )
+        switch ( level.script )
         {
             case "gulag":
             case "oilrig":
@@ -234,7 +234,7 @@ updateignoreplayersuppression( var_0 )
 
     for (;;)
     {
-        self._ID514 = !animscripts\utility::_ID20775( 0 );
+        self.ignoreplayersuppression = !animscripts\utility::_ID20775( 0 );
         waittillframeend;
     }
 }
@@ -286,7 +286,7 @@ _ID50926()
         var_6 *= -1;
         var_10 = var_0;
 
-        if ( length2dsquared( self._ID1283 ) > 0.01 )
+        if ( length2dsquared( self.velocity ) > 0.01 )
             var_10 = -10;
 
         var_11 = 0;
@@ -294,7 +294,7 @@ _ID50926()
 
         if ( var_8[2] < var_1 && var_6[2] < var_1 )
         {
-            var_13 = anglestoforward( self._ID65 );
+            var_13 = anglestoforward( self.angles );
             var_14 = vectordot( var_13, var_8 );
             var_15 = vectordot( var_13, var_6 );
 
@@ -347,7 +347,7 @@ _ID50926()
                 var_25 = var_18[var_23] - ( 0, 0, 30 );
                 var_26 = self aiphysicstrace( var_24, var_25, 1.5, 3, 1, 1, 0, 1, 1, 1 );
                 var_27 = var_24 + 2 * var_26["fraction"] * ( 0, 0, -30 );
-                var_22[var_23] = var_27[2] - self._ID740[2];
+                var_22[var_23] = var_27[2] - self.origin[2];
 
                 if ( var_26["fraction"] == 1 )
                     var_19[var_23] = 0;
@@ -516,10 +516,10 @@ _ID12985()
     {
         self waittill( "enemy" );
 
-        if ( !isalive( self._ID322 ) )
+        if ( !isalive( self.enemy ) )
             continue;
 
-        while ( isplayernumber( self._ID322 ) )
+        while ( isplayernumber( self.enemy ) )
         {
             if ( animscripts\utility::_ID18223() )
                 level._ID21967 = gettime();
@@ -554,7 +554,7 @@ _ID14369()
     animscripts\animset::_ID19577();
     anim._ID39938 = 0;
     _ID42323::_ID19721();
-    level._ID794._ID20394 = 0;
+    level.player._ID20394 = 0;
     level._ID24782 = randomint( 3 );
     level._ID21967 = 100;
     anim._ID10137 = ::_ID312;
@@ -606,7 +606,7 @@ _ID14369()
     anim._ID31869 = animscripts\utility::_ID3291( 1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 5, 5 );
     anim._ID4717 = [];
     anim._ID4714 = 0;
-    anim._ID794 = getentarray( "player", "classname" )[0];
+    anim.player = getentarray( "player", "classname" )[0];
     _ID19855();
     _ID20022();
     animscripts\cqb::_ID33547();
@@ -614,7 +614,7 @@ _ID14369()
     _ID32639();
     anim._ID21894 = -100000;
     _ID33592();
-    level._ID794 thread animscripts\combat_utility::_ID41555();
+    level.player thread animscripts\combat_utility::_ID41555();
     thread _ID2474();
 }
 
@@ -626,9 +626,9 @@ _ID19884()
 _ID19855()
 {
     animscripts\squadmanager::_ID19810();
-    anim._ID794 thread animscripts\squadmanager::_ID2081();
+    anim.player thread animscripts\squadmanager::_ID2081();
     animscripts\battlechatter::_ID19643();
-    anim._ID794 thread animscripts\battlechatter_ai::_ID2131();
+    anim.player thread animscripts\battlechatter_ai::_ID2131();
     anim thread animscripts\battlechatter::_ID4953();
 }
 

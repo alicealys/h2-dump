@@ -73,7 +73,7 @@ _ID19593()
     anim._ID3277["soldier"]["death"] = var_0;
 }
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     self playrumbleonentity();
@@ -97,11 +97,11 @@ _ID616()
     }
 
     animscripts\utility::_ID19930( "death" );
-    _ID29659( self._ID740 );
+    _ID29659( self.origin );
     anim._ID25245--;
     anim._ID25244--;
 
-    if ( isdefined( self._ID28895 ) || self._ID405 )
+    if ( isdefined( self._ID28895 ) || self.forceragdollimmediate )
         _ID11495();
 
     if ( isdefined( self._ID9813 ) )
@@ -119,16 +119,16 @@ _ID616()
 
     var_2 = animscripts\pain::_ID41415();
 
-    if ( self._ID253 == "helmet" || self._ID253 == "head" )
+    if ( self.damagelocation == "helmet" || self.damagelocation == "head" )
         _ID18467();
     else if ( var_2 && randomint( 3 ) == 0 )
         _ID18467();
 
     self clearanim( %animscript_root, 0.3 );
 
-    if ( !animscripts\utility::_ID9641( "head", "helmet" ) || ( self._ID254 == "MOD_MELEE" || self._ID254 == "MOD_MELEE_ALT" ) && isdefined( self._ID85 ) )
+    if ( !animscripts\utility::_ID9641( "head", "helmet" ) || ( self.damagemod == "MOD_MELEE" || self.damagemod == "MOD_MELEE_ALT" ) && isdefined( self._ID85 ) )
     {
-        if ( self._ID287 )
+        if ( self.diequietly )
         {
 
         }
@@ -157,16 +157,16 @@ _ID11495()
     animscripts\shared::_ID12143();
     self._ID34237 = 1;
     var_0 = 10;
-    var_1 = _ID42231::_ID16207( self._ID254 );
+    var_1 = _ID42231::_ID16207( self.damagemod );
 
-    if ( isdefined( self._ID85 ) && self._ID85 == level._ID794 && var_1 == "melee" )
+    if ( isdefined( self._ID85 ) && self._ID85 == level.player && var_1 == "melee" )
         var_0 = 5;
 
-    var_2 = self._ID257;
+    var_2 = self.damagetaken;
 
     if ( var_1 == "bullet" )
     {
-        if ( self._ID254 == "MOD_RIFLE_BULLET" )
+        if ( self.damagemod == "MOD_RIFLE_BULLET" )
             var_2 = clamp( var_2, 300, 350 );
         else
             var_2 = max( var_2, 300 );
@@ -174,27 +174,27 @@ _ID11495()
 
     var_3 = var_0 * var_2;
 
-    if ( level._ID44646 || isdefined( level._ID49294 ) && self._ID258 == level._ID49294 )
+    if ( level._ID44646 || isdefined( level._ID49294 ) && self.damageweapon == level._ID49294 )
         var_3 = clamp( int( var_2 / 100 ) * randomintrange( 2500, 5000 ), 2500, 25000 );
 
-    var_4 = max( 0.3, self._ID252[2] );
-    var_5 = ( self._ID252[0], self._ID252[1], var_4 );
+    var_4 = max( 0.3, self.damagedir[2] );
+    var_5 = ( self.damagedir[0], self.damagedir[1], var_4 );
 
     if ( isdefined( self._ID28892 ) )
         var_5 *= self._ID28892;
     else
         var_5 *= var_3;
 
-    if ( self._ID405 )
-        var_5 += self._ID821 * 20 * 10;
+    if ( self.forceragdollimmediate )
+        var_5 += self.prevanimdelta * 20 * 10;
 
     if ( isdefined( self._ID28896 ) )
         var_5 += self._ID28896 * 10;
 
-    if ( isdefined( level._ID44646 ) && level._ID44646 && self._ID258 == "riotshield" )
+    if ( isdefined( level._ID44646 ) && level._ID44646 && self.damageweapon == "riotshield" )
         self startragdollfromimpact( "torso_upper", var_5 );
     else
-        self startragdollfromimpact( self._ID253, var_5 );
+        self startragdollfromimpact( self.damagelocation, var_5 );
 
     wait 0.05;
 }
@@ -224,7 +224,7 @@ _ID23437( var_0, var_1 )
 
 _ID25996()
 {
-    if ( ( self._ID254 == "MOD_MELEE" || self._ID254 == "MOD_MELEE_ALT" ) && isdefined( self._ID85 ) )
+    if ( ( self.damagemod == "MOD_MELEE" || self.damagemod == "MOD_MELEE_ALT" ) && isdefined( self._ID85 ) )
     {
         if ( isdefined( self._ID2823 ) && isdefined( self._ID2824 ) )
         {
@@ -240,8 +240,8 @@ _ID25996()
 
 _ID16487()
 {
-    var_0 = self._ID740 - self._ID85._ID740;
-    var_1 = anglestoforward( self._ID65 );
+    var_0 = self.origin - self._ID85.origin;
+    var_1 = anglestoforward( self.angles );
     var_2 = vectornormalize( ( var_0[0], var_0[1], 0 ) );
     var_3 = vectornormalize( ( var_1[0], var_1[1], 0 ) );
     var_4 = _ID23437( var_3, var_2 );
@@ -267,7 +267,7 @@ _ID22865( var_0 )
 {
     while ( isdefined( var_0 ) )
     {
-        if ( self istouching( var_0 ) && isdefined( level._ID794._ID22864 ) )
+        if ( self istouching( var_0 ) && isdefined( level.player._ID22864 ) )
         {
             _ID42407::_ID16864( "LEVEL_12A" );
             break;
@@ -279,7 +279,7 @@ _ID22865( var_0 )
 
 _ID27200( var_0, var_1 )
 {
-    if ( self._ID254 == "MOD_MELEE_ALT" && getdvar( "mapname", "undefined" ) == "sanfran_b" )
+    if ( self.damagemod == "MOD_MELEE_ALT" && getdvar( "mapname", "undefined" ) == "sanfran_b" )
         thread _ID22864();
 
     if ( !animhasnotetrack( var_0, "dropgun" ) && !animhasnotetrack( var_0, "fire_spray" ) )
@@ -305,7 +305,7 @@ _ID27200( var_0, var_1 )
     {
         if ( !isdefined( var_1 ) || !var_1 )
         {
-            if ( self._ID254 == "MOD_MELEE" || self._ID254 == "MOD_MELEE_ALT" )
+            if ( self.damagemod == "MOD_MELEE" || self.damagemod == "MOD_MELEE_ALT" )
                 var_2 = 0.7;
             else
                 var_2 = 0.35;
@@ -319,7 +319,7 @@ _ID27200( var_0, var_1 )
 
     self endon( "forcedRagdoll" );
 
-    if ( self._ID254 != "MOD_MELEE" )
+    if ( self.damagemod != "MOD_MELEE" )
     {
         thread _ID39683();
         thread _ID7427();
@@ -382,7 +382,7 @@ _ID27201( var_0 )
 {
     self endon( "killanimscript" );
 
-    if ( self._ID1012 != "none" )
+    if ( self.stairsstate != "none" )
         return;
 
     if ( isdefined( var_0 ) )
@@ -422,7 +422,7 @@ _ID26788( var_0, var_1 )
 
 _ID35374()
 {
-    if ( ( level._ID44646 || isdefined( level._ID49294 ) && self._ID258 == level._ID49294 ) && getdvarint( "ragdoll_enable" ) && !issubstr( self._ID170, "actor_civilian_slum_" ) )
+    if ( ( level._ID44646 || isdefined( level._ID49294 ) && self.damageweapon == level._ID49294 ) && getdvarint( "ragdoll_enable" ) && !issubstr( self.classname, "actor_civilian_slum_" ) )
     {
         _ID11495();
         return 1;
@@ -431,7 +431,7 @@ _ID35374()
     if ( self._ID7._ID35357 == "none" )
         return 0;
 
-    if ( self._ID254 == "MOD_MELEE" || self._ID254 == "MOD_MELEE_ALT" )
+    if ( self.damagemod == "MOD_MELEE" || self.damagemod == "MOD_MELEE_ALT" )
         return 0;
 
     switch ( self._ID7._ID35357 )
@@ -475,10 +475,10 @@ _ID35374()
         case "cover_crouch":
             var_0 = [];
 
-            if ( animscripts\utility::_ID9641( "head", "neck" ) && ( self._ID259 > 135 || self._ID259 <= -45 ) )
+            if ( animscripts\utility::_ID9641( "head", "neck" ) && ( self.damageyaw > 135 || self.damageyaw <= -45 ) )
                 var_0[var_0.size] = animscripts\utility::_ID22630( "death", "cover_crouch_head" );
 
-            if ( self._ID259 > -45 && self._ID259 <= 45 )
+            if ( self.damageyaw > -45 && self.damageyaw <= 45 )
                 var_0[var_0.size] = animscripts\utility::_ID22630( "death", "cover_crouch_back" );
 
             var_0[var_0.size] = animscripts\utility::_ID22630( "death", "cover_crouch_default" );
@@ -510,8 +510,8 @@ _ID35374()
             _ID27200( self._ID7._ID36723[self._ID7._ID36723.size - 1], 0 );
             return 1;
         case "dog_attack":
-            if ( isdefined( self._ID1065 ) )
-                self._ID1065 unlink();
+            if ( isdefined( self.syncedmeleetarget ) )
+                self.syncedmeleetarget unlink();
 
             _ID11304( animscripts\utility::_ID22630( "death", "dog_attack" ) );
             return 1;
@@ -531,7 +531,7 @@ _ID11304( var_0 )
 
 _ID27202()
 {
-    if ( ( self._ID254 == "MOD_MELEE" || self._ID254 == "MOD_MELEE_ALT" ) && isdefined( self._ID85 ) )
+    if ( ( self.damagemod == "MOD_MELEE" || self.damagemod == "MOD_MELEE_ALT" ) && isdefined( self._ID85 ) )
         animscripts\face::_ID30759( "melee_death" );
     else
         animscripts\face::_ID30759( "death" );
@@ -554,12 +554,12 @@ _ID18467( var_0 )
         return;
 
     var_1 = getpartname( self._ID18272, 0 );
-    var_2 = spawn( "script_model", self._ID740 + ( 0, 0, 64 ) );
+    var_2 = spawn( "script_model", self.origin + ( 0, 0, 64 ) );
     var_3 = _ID45057();
     var_2 setmodel( var_3 );
-    var_2._ID740 = self gettagorigin( var_1 );
-    var_2._ID65 = self gettagangles( var_1 );
-    var_2 thread _ID18466( _ID42237::_ID37527( isdefined( var_0 ), var_0, self._ID252 ) );
+    var_2.origin = self gettagorigin( var_1 );
+    var_2.angles = self gettagangles( var_1 );
+    var_2 thread _ID18466( _ID42237::_ID37527( isdefined( var_0 ), var_0, self.damagedir ) );
     var_4 = self._ID18272;
     self._ID18272 = undefined;
     wait 0.05;
@@ -606,7 +606,7 @@ _ID18466( var_0 )
     var_2 = var_1[0];
     var_3 = var_1[1];
     var_4 = randomfloatrange( 1500, 3000 );
-    var_5 = self._ID740 + ( randomfloatrange( -1, 1 ), randomfloatrange( -1, 1 ), randomfloatrange( -1, 1 ) ) * 5;
+    var_5 = self.origin + ( randomfloatrange( -1, 1 ), randomfloatrange( -1, 1 ), randomfloatrange( -1, 1 ) ) * 5;
     self physicslaunchclient( var_5, ( var_2, var_3, var_4 ) );
     wait 60;
 
@@ -615,7 +615,7 @@ _ID18466( var_0 )
         if ( !isdefined( self ) )
             return;
 
-        if ( distancesquared( self._ID740, level._ID794._ID740 ) > 262144 )
+        if ( distancesquared( self.origin, level.player.origin ) > 262144 )
             break;
 
         wait 30;
@@ -650,7 +650,7 @@ _ID33939()
     if ( self getmotionangle() > 60 || self getmotionangle() < -60 )
         return 0;
 
-    if ( self._ID254 == "MOD_MELEE" || self._ID254 == "MOD_MELEE_ALT" )
+    if ( self.damagemod == "MOD_MELEE" || self.damagemod == "MOD_MELEE_ALT" )
         return 0;
 
     return 1;
@@ -719,7 +719,7 @@ _ID33942( var_0, var_1, var_2, var_3 )
             return 0;
     }
 
-    if ( animscripts\utility::_ID20911( var_0 ) && self._ID626 < var_2 )
+    if ( animscripts\utility::_ID20911( var_0 ) && self.maxhealth < var_2 )
         return 1;
 
     if ( animscripts\utility::_ID20902( var_0 ) && _ID20677( var_3, 512 ) )
@@ -744,7 +744,7 @@ _ID20677( var_0, var_1 )
     if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( distance( self._ID740, var_0._ID740 ) > var_1 )
+    if ( distance( self.origin, var_0.origin ) > var_1 )
         return 0;
 
     return 1;
@@ -752,7 +752,7 @@ _ID20677( var_0, var_1 )
 
 _ID16208()
 {
-    if ( _ID33943( self._ID254, self._ID85, self._ID258 ) )
+    if ( _ID33943( self.damagemod, self._ID85, self.damageweapon ) )
     {
         self._ID2823 = 1;
         var_0 = _ID16113();
@@ -761,7 +761,7 @@ _ID16208()
             return var_0;
     }
 
-    if ( _ID33937( self._ID258, self._ID254, self._ID257, self._ID85 ) )
+    if ( _ID33937( self.damageweapon, self.damagemod, self.damagetaken, self._ID85 ) )
     {
         var_0 = _ID16220();
 
@@ -769,7 +769,7 @@ _ID16208()
             return var_0;
     }
 
-    if ( _ID33942( self._ID258, self._ID254, self._ID257, self._ID85 ) )
+    if ( _ID33942( self.damageweapon, self.damagemod, self.damagetaken, self._ID85 ) )
     {
         var_0 = _ID16637();
 
@@ -801,14 +801,14 @@ _ID16208()
 _ID16113()
 {
     self._ID2824 = _ID16487();
-    var_0 = self._ID2824 - self._ID65[1];
-    var_1 = angleclamp180( self._ID259 - var_0 );
+    var_0 = self._ID2824 - self.angles[1];
+    var_1 = angleclamp180( self.damageyaw - var_0 );
     var_2 = self._ID7._ID28253;
 
-    if ( !isdefined( self._ID85 ) || self._ID85 != level._ID794 )
+    if ( !isdefined( self._ID85 ) || self._ID85 != level.player )
         return;
 
-    var_3 = level._ID794 getstance();
+    var_3 = level.player getstance();
     var_4 = [];
 
     if ( var_1 < -135 || var_1 > 135 )
@@ -845,7 +845,7 @@ _ID16113()
 
 _ID16637()
 {
-    var_0 = abs( self._ID259 );
+    var_0 = abs( self.damageyaw );
 
     if ( var_0 < 45 )
         return;
@@ -854,12 +854,12 @@ _ID16637()
     {
         if ( animscripts\utility::_ID9641( "left_leg_upper", "left_leg_lower", "right_leg_upper", "right_leg_lower", "left_foot", "right_foot" ) )
             var_1 = animscripts\utility::_ID22630( "death", "strong_legs" );
-        else if ( self._ID253 == "torso_lower" )
+        else if ( self.damagelocation == "torso_lower" )
             var_1 = animscripts\utility::_ID22630( "death", "strong_torso_lower" );
         else
             var_1 = animscripts\utility::_ID22630( "death", "strong_default" );
     }
-    else if ( self._ID259 < 0 )
+    else if ( self.damageyaw < 0 )
         var_1 = animscripts\utility::_ID22630( "death", "strong_right" );
     else
         var_1 = animscripts\utility::_ID22630( "death", "strong_left" );
@@ -869,7 +869,7 @@ _ID16637()
 
 _ID16220()
 {
-    var_0 = abs( self._ID259 );
+    var_0 = abs( self.damageyaw );
 
     if ( var_0 > 135 )
     {
@@ -877,9 +877,9 @@ _ID16220()
 
         if ( isdefined( self._ID21787 ) )
         {
-            if ( self._ID21787[2] < self._ID740[2] + 20 )
+            if ( self._ID21787[2] < self.origin[2] + 20 )
                 var_1 = "directed_energy_stand_front_legs";
-            else if ( self._ID21787[2] > self._ID740[2] + 40 )
+            else if ( self._ID21787[2] > self.origin[2] + 40 )
                 var_1 = "directed_energy_stand_front_head";
         }
     }
@@ -893,7 +893,7 @@ _ID16220()
 
 _ID16577()
 {
-    if ( abs( self._ID259 ) < 45 )
+    if ( abs( self.damageyaw ) < 45 )
     {
         var_0 = animscripts\utility::_ID22630( "death", "running_forward_f" );
         var_1 = _ID16555( var_0 );
@@ -964,14 +964,14 @@ _ID16621()
 {
     var_0 = [];
 
-    if ( abs( self._ID259 ) < 50 )
+    if ( abs( self.damageyaw ) < 50 )
         var_0 = animscripts\utility::_ID22630( "death", "stand_pistol_forward" );
     else
     {
-        if ( abs( self._ID259 ) < 110 )
+        if ( abs( self.damageyaw ) < 110 )
             var_0 = animscripts\utility::_ID22630( "death", "stand_pistol_front" );
 
-        if ( self._ID253 == "torso_upper" )
+        if ( self.damagelocation == "torso_upper" )
             var_0 = _ID42237::_ID3296( animscripts\utility::_ID22630( "death", "stand_pistol_torso_upper" ), var_0 );
         else if ( animscripts\utility::_ID9641( "torso_lower", "left_leg_upper", "left_leg_lower", "right_leg_upper", "right_leg_lower" ) )
             var_0 = _ID42237::_ID3296( animscripts\utility::_ID22630( "death", "stand_pistol_torso_upper" ), var_0 );
@@ -997,11 +997,11 @@ _ID16619()
         var_0 = animscripts\utility::_ID22630( "death", "emp" );
     else if ( isdefined( self._ID85 ) && self shouldplaymeleedeathanim( self._ID85 ) )
     {
-        if ( self._ID259 <= 120 || self._ID259 > -120 )
+        if ( self.damageyaw <= 120 || self.damageyaw > -120 )
             var_0 = animscripts\utility::_ID22630( "death", "melee_standing_front" );
-        else if ( self._ID259 <= -60 && self._ID259 > 60 )
+        else if ( self.damageyaw <= -60 && self.damageyaw > 60 )
             var_0 = animscripts\utility::_ID22630( "death", "melee_standing_back" );
-        else if ( self._ID259 < 0 )
+        else if ( self.damageyaw < 0 )
             var_0 = animscripts\utility::_ID22630( "death", "melee_standing_left" );
         else
             var_0 = animscripts\utility::_ID22630( "death", "melee_standing_right" );
@@ -1026,7 +1026,7 @@ _ID16619()
             var_1 = _ID42237::_ID3296( var_1, animscripts\utility::_ID22630( "death", "stand_torso_upper_extended" ) );
         }
 
-        if ( self._ID259 > 135 || self._ID259 <= -135 )
+        if ( self.damageyaw > 135 || self.damageyaw <= -135 )
         {
             if ( animscripts\utility::_ID9641( "neck", "head", "helmet" ) )
             {
@@ -1040,7 +1040,7 @@ _ID16619()
                 var_1 = _ID42237::_ID3296( var_1, animscripts\utility::_ID22630( "death", "stand_front_torso_extended" ) );
             }
         }
-        else if ( self._ID259 > -45 && self._ID259 <= 45 )
+        else if ( self.damageyaw > -45 && self.damageyaw <= 45 )
             var_0 = _ID42237::_ID3296( var_0, animscripts\utility::_ID22630( "death", "stand_back" ) );
 
         var_2 = var_0.size > 0;
@@ -1058,7 +1058,7 @@ _ID16619()
     if ( var_0.size == 0 )
         var_0[var_0.size] = animscripts\utility::_ID22630( "death", "stand_backup_default" );
 
-    if ( !self._ID7._ID11035 && self._ID1012 == "none" && !isdefined( self._ID7._ID26205 ) )
+    if ( !self._ID7._ID11035 && self.stairsstate == "none" && !isdefined( self._ID7._ID26205 ) )
     {
         var_3 = randomint( var_0.size + var_1.size );
 
@@ -1077,11 +1077,11 @@ _ID16196()
 
     if ( isdefined( self._ID85 ) && self shouldplaymeleedeathanim( self._ID85 ) )
     {
-        if ( self._ID259 <= 120 || self._ID259 > -120 )
+        if ( self.damageyaw <= 120 || self.damageyaw > -120 )
             var_0 = animscripts\utility::_ID22630( "death", "melee_crouching_front" );
-        else if ( self._ID259 <= -60 && self._ID259 > 60 )
+        else if ( self.damageyaw <= -60 && self.damageyaw > 60 )
             var_0 = animscripts\utility::_ID22630( "death", "melee_crouching_back" );
-        else if ( self._ID259 < 0 )
+        else if ( self.damageyaw < 0 )
             var_0 = animscripts\utility::_ID22630( "death", "melee_crouching_left" );
         else
             var_0 = animscripts\utility::_ID22630( "death", "melee_crouching_right" );
@@ -1119,7 +1119,7 @@ _ID16146()
 
 _ID14342()
 {
-    if ( !isdefined( self._ID1302 ) || !animscripts\utility::_ID39992() || !weaponisauto( self._ID1302 ) || self._ID287 || animscripts\utility::_ID39993() )
+    if ( !isdefined( self.weapon ) || !animscripts\utility::_ID39992() || !weaponisauto( self.weapon ) || self.diequietly || animscripts\utility::_ID39993() )
         return 0;
 
     if ( self._ID7._ID41701["right"] == "none" )
@@ -1143,27 +1143,27 @@ _ID28058()
     if ( isdefined( self._ID21151 ) || isdefined( self._ID23165 ) )
         return 0;
 
-    if ( self._ID253 != "none" )
+    if ( self.damagelocation != "none" )
         return 0;
 
     var_0 = [];
 
     if ( self._ID7._ID24414 != "run" )
     {
-        if ( self._ID259 > 135 || self._ID259 <= -135 )
+        if ( self.damageyaw > 135 || self.damageyaw <= -135 )
         {
             var_0[var_0.size] = _ID39063( %death_explosion_stand_b_v1 );
             var_0[var_0.size] = _ID39063( %death_explosion_stand_b_v2 );
             var_0[var_0.size] = _ID39063( %death_explosion_stand_b_v3 );
             var_0[var_0.size] = _ID39063( %death_explosion_stand_b_v4 );
         }
-        else if ( self._ID259 > 45 && self._ID259 <= 135 )
+        else if ( self.damageyaw > 45 && self.damageyaw <= 135 )
         {
             var_0[var_0.size] = _ID39063( %death_explosion_stand_l_v1 );
             var_0[var_0.size] = _ID39063( %death_explosion_stand_l_v2 );
             var_0[var_0.size] = _ID39063( %death_explosion_stand_l_v3 );
         }
-        else if ( self._ID259 > -45 && self._ID259 <= 45 )
+        else if ( self.damageyaw > -45 && self.damageyaw <= 45 )
         {
             var_0[var_0.size] = _ID39063( %death_explosion_stand_f_v1 );
             var_0[var_0.size] = _ID39063( %death_explosion_stand_f_v2 );
@@ -1176,17 +1176,17 @@ _ID28058()
             var_0[var_0.size] = _ID39063( %death_explosion_stand_r_v2 );
         }
     }
-    else if ( self._ID259 > 135 || self._ID259 <= -135 )
+    else if ( self.damageyaw > 135 || self.damageyaw <= -135 )
     {
         var_0[var_0.size] = _ID39063( %death_explosion_run_b_v1 );
         var_0[var_0.size] = _ID39063( %death_explosion_run_b_v2 );
     }
-    else if ( self._ID259 > 45 && self._ID259 <= 135 )
+    else if ( self.damageyaw > 45 && self.damageyaw <= 135 )
     {
         var_0[var_0.size] = _ID39063( %death_explosion_run_l_v1 );
         var_0[var_0.size] = _ID39063( %death_explosion_run_l_v2 );
     }
-    else if ( self._ID259 > -45 && self._ID259 <= 45 )
+    else if ( self.damageyaw > -45 && self.damageyaw <= 45 )
     {
         var_0[var_0.size] = _ID39063( %death_explosion_run_f_v1 );
         var_0[var_0.size] = _ID39063( %death_explosion_run_f_v2 );

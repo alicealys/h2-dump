@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "common_rambo_anims.csv";
-    self._ID1194 = "axis";
-    self._ID1244 = "human";
+    self.team = "axis";
+    self.type = "human";
     self._ID36736 = "militia";
-    self._ID10 = 0.12;
-    self._ID486 = 150;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.12;
+    self.health = 150;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "glock";
 
@@ -24,47 +24,47 @@ _ID616()
     switch ( _ID42226::_ID15950( 2 ) )
     {
         case 0:
-            self._ID1302 = "uzi";
+            self.weapon = "uzi";
             break;
         case 1:
-            self._ID1302 = "mp5";
+            self.weapon = "mp5";
             break;
     }
 
     switch ( _ID42226::_ID15942( 11 ) )
     {
         case 0:
-            _ID51316::_ID616();
+            _ID51316::main();
             break;
         case 1:
-            _ID45439::_ID616();
+            _ID45439::main();
             break;
         case 2:
-            _ID49730::_ID616();
+            _ID49730::main();
             break;
         case 3:
-            _ID53930::_ID616();
+            _ID53930::main();
             break;
         case 4:
-            _ID44765::_ID616();
+            _ID44765::main();
             break;
         case 5:
-            _ID54019::_ID616();
+            _ID54019::main();
             break;
         case 6:
-            _ID47374::_ID616();
+            _ID47374::main();
             break;
         case 7:
-            _ID45943::_ID616();
+            _ID45943::main();
             break;
         case 8:
-            _ID48226::_ID616();
+            _ID48226::main();
             break;
         case 9:
-            _ID47555::_ID616();
+            _ID47555::main();
             break;
         case 10:
-            _ID43317::_ID616();
+            _ID43317::main();
             break;
     }
 }
@@ -91,5 +91,5 @@ _ID814()
     precacheitem( "mp5" );
     precacheitem( "glock" );
     precacheitem( "fraggrenade" );
-    _ID42359::_ID616();
+    _ID42359::main();
 }

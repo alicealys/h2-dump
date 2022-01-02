@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     thread _ID53720();
     thread _ID45832();
@@ -82,8 +82,8 @@ _ID616()
     level thread _ID52984();
     level thread staged_snowfall();
     _ID42407::_ID1885( "btrattack_impact", 0.2, 0.1, 1000 );
-    _ID48745::_ID616();
-    _ID44055::_ID616();
+    _ID48745::main();
+    _ID44055::main();
 }
 
 staged_snowfall()
@@ -110,7 +110,7 @@ _ID54162()
 
     for (;;)
     {
-        playfx( level._ID1426["snow_light"], var_0._ID740 + ( 0, 0, 300 ), var_0._ID740 + ( 0, 0, 350 ) );
+        playfx( level._ID1426["snow_light"], var_0.origin + ( 0, 0, 300 ), var_0.origin + ( 0, 0, 350 ) );
         wait 0.075;
     }
 }

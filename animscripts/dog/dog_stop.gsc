@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("dog");
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     self clearanim( %root, 0.1 );
@@ -28,7 +28,7 @@ _ID616()
 
         if ( isdefined( self._ID28541 ) )
         {
-            self._ID1230 = self._ID28541;
+            self.turnrate = self._ID28541;
             self._ID28541 = undefined;
         }
     }
@@ -36,13 +36,13 @@ _ID616()
 
 _ID45812( var_0 )
 {
-    var_1 = self._ID322._ID740 - self._ID740;
+    var_1 = self.enemy.origin - self.origin;
     var_2 = length( var_1 );
 
     if ( var_2 < 1 )
         return 1;
 
-    var_3 = anglestoforward( self._ID65 );
+    var_3 = anglestoforward( self.angles );
     return ( var_3[0] * var_1[0] + var_3[1] * var_1[1] ) / var_2 > var_0;
 }
 
@@ -51,19 +51,19 @@ _ID51719()
     self clearanim( %german_shepherd_attackidle_knob, 0.1 );
 
     if ( _ID45812( 0.866 ) )
-        self orientmode( "face angle", self._ID65[1] );
+        self orientmode( "face angle", self.angles[1] );
     else
     {
-        if ( isdefined( self._ID322 ) )
+        if ( isdefined( self.enemy ) )
         {
-            var_0 = vectortoyaw( self._ID322._ID740 - self._ID740 );
-            var_1 = angleclamp180( var_0 - self._ID65[1] );
+            var_0 = vectortoyaw( self.enemy.origin - self.origin );
+            var_1 = angleclamp180( var_0 - self.angles[1] );
 
             if ( abs( var_1 ) > 10 )
             {
                 self orientmode( "face enemy" );
-                self._ID28541 = self._ID1230;
-                self._ID1230 = 0.3;
+                self._ID28541 = self.turnrate;
+                self.turnrate = 0.3;
 
                 if ( var_1 > 0 )
                     var_2 = %german_shepherd_rotate_ccw;
@@ -72,14 +72,14 @@ _ID51719()
 
                 self setflaggedanimrestart( "dog_turn", var_2, 1, 0.2, 1.0 );
                 animscripts\shared::_ID11529( "dog_turn" );
-                self._ID1230 = self._ID28541;
+                self.turnrate = self._ID28541;
                 self._ID28541 = undefined;
                 self clearanim( %german_shepherd_rotate_cw, 0.2 );
                 self clearanim( %german_shepherd_rotate_ccw, 0.2 );
             }
         }
 
-        self orientmode( "face angle", self._ID65[1] );
+        self orientmode( "face angle", self.angles[1] );
     }
 
     if ( _ID33903() )
@@ -122,7 +122,7 @@ _ID51719()
 
 _ID33926()
 {
-    return isdefined( self._ID322 ) && isalive( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) < 1000000;
+    return isdefined( self.enemy ) && isalive( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) < 1000000;
 }
 
 _ID33903()
@@ -130,10 +130,10 @@ _ID33903()
     if ( isdefined( self._ID31246 ) )
         return 1;
 
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         return 1;
 
-    return !self cansee( self._ID322 );
+    return !self cansee( self.enemy );
 }
 
 _ID22623( var_0 )
@@ -145,8 +145,8 @@ _ID22623( var_0 )
     self clearanim( %german_shepherd_look_6, 0 );
     self clearanim( %german_shepherd_look_8, 0 );
     self setdefaultaimlimits();
-    self._ID894 = 90;
-    self._ID590 = -90;
+    self.rightaimlimit = 90;
+    self.leftaimlimit = -90;
     self setanimlimited( anim._ID11477[var_0][2], 1, 0 );
     self setanimlimited( anim._ID11477[var_0][4], 1, 0 );
     self setanimlimited( anim._ID11477[var_0][6], 1, 0 );

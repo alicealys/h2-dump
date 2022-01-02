@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["grenadeexp_snow"] = loadfx( "fx/explosions/grenadeexp_snow" );
     level._ID1426["vfx_screen_google_snowflakes_addon"] = loadfx( "vfx/ui/vfx_screen_google_snowflakes_addon" );
@@ -51,8 +51,8 @@ _ID616()
     _ID45832();
     _ID52070();
     setsaveddvar( "fx_alphathreshold", 10 );
-    _ID49283::_ID616();
-    _ID51888::_ID616();
+    _ID49283::main();
+    _ID51888::main();
     _ID49359::_ID50425();
 }
 
@@ -62,7 +62,7 @@ _ID54162()
 
     for (;;)
     {
-        playfx( level._ID1426["snow_spray_detail_runner400x400"], var_0._ID740 + ( 0, 0, 0 ), var_0._ID740 + ( 0, 100, 100 ) );
+        playfx( level._ID1426["snow_spray_detail_runner400x400"], var_0.origin + ( 0, 0, 0 ), var_0.origin + ( 0, 100, 100 ) );
         wait 0.3;
     }
 }
@@ -486,7 +486,7 @@ _ID54437( var_0, var_1, var_2, var_3, var_4 )
 
             if ( !isdefined( var_3 ) || !isdefined( var_4 ) )
             {
-                var_7 = self._ID65;
+                var_7 = self.angles;
 
                 if ( !isdefined( var_4 ) )
                 {

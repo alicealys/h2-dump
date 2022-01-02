@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["icicle_end_des"] = loadfx( "fx/props/icicle_end_des" );
     level._ID1426["icicle_tall_des"] = loadfx( "fx/props/icicle_tall_des" );
@@ -12,8 +12,8 @@ _ID616()
     _ID42411::_ID6215( "script_vehicle_littlebird_armed", "littlebird", "vehicle_little_bird_armed", "vfx/water/mortarExp_water_runner", undefined, "littlebird_helicopter_crash", undefined, undefined, undefined, -1, undefined, "stop_crash_loop_sound" );
     thread _ID28382();
     thread _ID38735();
-    _ID54180::_ID616();
-    _ID46339::_ID616();
+    _ID54180::main();
+    _ID46339::main();
     _ID45832();
     thread _ID48941();
     thread setlightdefault();
@@ -240,7 +240,7 @@ play_swimming_fx()
 {
     while ( !_ID42237::_ID14385( "player_starting_stealth_kill" ) )
     {
-        var_0 = level._ID794 geteye();
+        var_0 = level.player geteye();
         playfx( _ID42237::_ID16299( "oilrig_player_wave" ), var_0 );
         wait 1;
     }
@@ -468,7 +468,7 @@ _ID49854()
 
     foreach ( var_3 in var_1 )
     {
-        if ( var_3._ID669 == "com_propane_tank02_small" )
+        if ( var_3.model == "com_propane_tank02_small" )
             var_0 = _ID42237::_ID3293( var_0, var_3 );
     }
 
@@ -476,11 +476,11 @@ _ID49854()
 
     foreach ( var_7 in var_5 )
     {
-        var_8 = strtok( var_7._ID922, " " );
+        var_8 = strtok( var_7.script_noteworthy, " " );
 
         foreach ( var_10 in var_0 )
         {
-            if ( ispointinvolume( var_10._ID740, var_7 ) )
+            if ( ispointinvolume( var_10.origin, var_7 ) )
             {
                 var_10 thread _ID51470( var_8 );
                 break;
@@ -509,16 +509,16 @@ _ID50007()
     switch ( self._ID31433 )
     {
         case 0:
-            var_1 = getent( "breach_inside_lightgrid_origin1_left", "targetname" )._ID740;
+            var_1 = getent( "breach_inside_lightgrid_origin1_left", "targetname" ).origin;
             thread breach_light_think();
             break;
         case 1:
-            var_1 = getent( "breach_inside_lightgrid_origin1_right", "targetname" )._ID740;
+            var_1 = getent( "breach_inside_lightgrid_origin1_right", "targetname" ).origin;
             thread breach_light_think();
             break;
         case 2:
         case 3:
-            var_1 = getent( "breach_inside_lightgrid_origin2", "targetname" )._ID740;
+            var_1 = getent( "breach_inside_lightgrid_origin2", "targetname" ).origin;
             break;
         default:
             break;
@@ -527,10 +527,10 @@ _ID50007()
     if ( isdefined( var_1 ) )
         var_0 _meth_848a( var_1 );
 
-    var_2 = spawn( "script_origin", self._ID740 );
-    var_2._ID65 = self._ID65 + ( 0, 90, 0 );
-    var_3 = vectornormalize( anglestoright( var_2._ID65 ) );
-    var_2._ID740 = var_2._ID740 + var_3 * 5.0;
+    var_2 = spawn( "script_origin", self.origin );
+    var_2.angles = self.angles + ( 0, 90, 0 );
+    var_3 = vectornormalize( anglestoright( var_2.angles ) );
+    var_2.origin = var_2.origin + var_3 * 5.0;
     var_2 thread _ID42259::_ID3111( var_0, "breach" );
 }
 

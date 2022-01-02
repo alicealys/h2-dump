@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "mig29_controllable", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -96,9 +96,9 @@ _ID27861( var_0 )
     else
         var_2 = -1;
 
-    var_3 = _ID42237::_ID14540( var_0._ID740 );
-    var_4 = var_3 + anglestoforward( _ID42237::_ID14539( var_0._ID65 ) ) * ( var_2 * 100000 );
-    var_5 = pointonsegmentnearesttopoint( var_3, var_4, level._ID794._ID740 );
+    var_3 = _ID42237::_ID14540( var_0.origin );
+    var_4 = var_3 + anglestoforward( _ID42237::_ID14539( var_0.angles ) ) * ( var_2 * 100000 );
+    var_5 = pointonsegmentnearesttopoint( var_3, var_4, level.player.origin );
     var_6 = distance( var_3, var_5 );
 
     if ( var_6 < 3000 )
@@ -109,8 +109,8 @@ _ID27861( var_0 )
 
 _ID27862( var_0 )
 {
-    var_1 = anglestoforward( _ID42237::_ID14539( var_0._ID65 ) );
-    var_2 = vectornormalize( _ID42237::_ID14540( level._ID794._ID740 ) - var_0._ID740 );
+    var_1 = anglestoforward( _ID42237::_ID14539( var_0.angles ) );
+    var_2 = vectornormalize( _ID42237::_ID14540( level.player.origin ) - var_0.origin );
     var_3 = vectordot( var_1, var_2 );
 
     if ( var_3 > 0 )
@@ -149,7 +149,7 @@ _ID26738()
     var_0 endon( "death" );
     thread _ID26738();
     var_1 = getentarray( self._ID31273, "script_linkname" );
-    var_1 = _ID42237::_ID15566( self._ID740, var_1, undefined, var_1.size );
+    var_1 = _ID42237::_ID15566( self.origin, var_1, undefined, var_1.size );
     var_2 = 0;
     wait(randomfloatrange( 0.3, 0.8 ));
 
@@ -161,7 +161,7 @@ _ID26738()
             var_2 = 1;
 
         var_1[var_3] thread _ID42407::_ID27079( "airstrike_explosion" );
-        playfx( level._ID1426["plane_bomb_explosion" + var_2], var_1[var_3]._ID740 );
+        playfx( level._ID1426["plane_bomb_explosion" + var_2], var_1[var_3].origin );
         wait(randomfloatrange( 0.3, 1.2 ));
     }
 }
@@ -172,11 +172,11 @@ _ID26737()
     var_0 endon( "death" );
     var_1 = var_0;
     var_1 thread _ID26737();
-    var_2 = spawn( "script_model", var_1._ID740 - ( 0, 0, 100 ) );
-    var_2._ID65 = var_1._ID65;
+    var_2 = spawn( "script_model", var_1.origin - ( 0, 0, 100 ) );
+    var_2.angles = var_1.angles;
     var_2 setmodel( "projectile_cbu97_clusterbomb" );
-    var_3 = anglestoforward( var_1._ID65 ) * 2;
-    var_4 = anglestoup( var_1._ID65 ) * -0.2;
+    var_3 = anglestoforward( var_1.angles ) * 2;
+    var_4 = anglestoup( var_1.angles ) * -0.2;
     var_5 = [];
 
     for ( var_6 = 0; var_6 < 3; var_6++ )
@@ -186,15 +186,15 @@ _ID26737()
     var_5 *= 7000;
     var_2 movegravity( var_5, 2.0 );
     wait 1.2;
-    var_7 = spawn( "script_model", var_2._ID740 );
+    var_7 = spawn( "script_model", var_2.origin );
     var_7 setmodel( "tag_origin" );
-    var_7._ID740 = var_2._ID740;
-    var_7._ID65 = var_2._ID65;
+    var_7.origin = var_2.origin;
+    var_7.angles = var_2.angles;
     wait 0.05;
     var_2 delete();
     var_2 = var_7;
-    var_8 = var_2._ID740;
-    var_9 = var_2._ID65;
+    var_8 = var_2.origin;
+    var_9 = var_2.angles;
     playfxontag( level._ID2462, var_2, "tag_origin" );
     wait 1.6;
     var_10 = 12;

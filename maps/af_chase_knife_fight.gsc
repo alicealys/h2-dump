@@ -82,7 +82,7 @@ _ID53376()
     _ID42237::_ID14400( "throw_knife_pulled_out" );
     _ID42237::_ID14400( "throw_knife_gameplay_started" );
     _ID42237::_ID14400( "crawl_gameplay_player_input" );
-    thread _ID51067::_ID616();
+    thread _ID51067::main();
     level._ID51340 = &"AF_CHASE_FAILED_TO_PULL_KNIFE";
     setdynamicdvar( "enable_heartbeat_overlay", 1 );
 }
@@ -95,10 +95,10 @@ _ID45160()
     level._ID50860 = 1200;
     _ID42272::_ID33575( "compass_map_afghan_chase" );
 
-    if ( level._ID912 == "ending" )
-        maps\ending_aud::_ID616();
+    if ( level.script == "ending" )
+        maps\ending_aud::main();
     else
-        maps\af_chase_aud::_ID616();
+        maps\af_chase_aud::main();
 
     waitframe;
 
@@ -116,14 +116,14 @@ _ID53792()
     _ID42407::_ID4917( "axis" );
     _ID42407::_ID4917( "allies" );
     maps\af_chase_knife_fight_code::_ID54597();
-    level._ID794 allowjump( 0 );
+    level.player allowjump( 0 );
     thread maps\af_chase_knife_fight_code::_ID51324();
     thread maps\af_chase_knife_fight_code::_ID46620();
     anim._ID14274["empty_script"] = ::_ID312;
     var_0 = _ID42237::_ID35164();
     level._ID50049 = var_0;
     var_1 = getdvarint( "cg_fov" );
-    var_0._ID740 = ( var_1, 0, 0 );
+    var_0.origin = ( var_1, 0, 0 );
     _ID42407::_ID10226( 0.05, maps\af_chase_knife_fight_code::_ID44688 );
     thread _ID51067::_ID48476();
     maps\af_chase_knife_fight_code::_ID43537();
@@ -143,13 +143,13 @@ _ID53792()
     setsaveddvar( "compass", 1 );
     setsaveddvar( "ui_hideCompassTicker", 1 );
     setsaveddvar( "actionSlotsHide", 1 );
-    level._ID794 _meth_830f( 0 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 disableoffhandweapons();
+    level.player _meth_830f( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player disableoffhandweapons();
     thread _ID52272::_ID48356();
     thread maps\af_chase_knife_fight_code::_ID48797();
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     level._ID43135.greenberet_disabled = 1;
     objective_add( 1, "invisible", &"AF_CHASE_PURSUE" );
     objective_state_nomessage( 1, "done" );
@@ -196,7 +196,7 @@ _ID53570()
 
 _ID52520()
 {
-    var_0 = newclienthudelem( level._ID794 );
+    var_0 = newclienthudelem( level.player );
     var_0._ID48175 = 648;
     var_0._ID43646 = 486;
     var_0._ID49777 = 640;
@@ -206,20 +206,20 @@ _ID52520()
     setsaveddvar( "cg_altDamageFlashColor", ".125 0 0" );
     setsaveddvar( "cg_bloodThickColor", "100 0 0 100" );
     var_1 = "overlay_low_health";
-    var_0._ID1331 = 320;
-    var_0._ID1339 = 240;
+    var_0.x = 320;
+    var_0.y = 240;
     var_0 setshader( var_1, var_0._ID49777, var_0._ID50083 );
     var_0._ID998 = 1;
-    var_0._ID44 = "center";
-    var_0._ID45 = "middle";
-    var_0._ID983 = 1;
-    var_0._ID408 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 0;
+    var_0.alignx = "center";
+    var_0.aligny = "middle";
+    var_0.sort = 1;
+    var_0.foreground = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 0;
     wait 1.4;
     var_0 fadeovertime( 0.5 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     var_2 = 0.1;
     var_3 = 0.5;
     var_4 = 0.1;
@@ -228,7 +228,7 @@ _ID52520()
     var_7 = 0.6;
     var_8 = 0;
     var_9 = 0.1;
-    var_0._ID55 = var_7;
+    var_0.alpha = var_7;
     var_10 = max( var_2, var_5 );
     var_10 += max( var_4, var_9 );
     var_11 = max( var_3, var_6 );
@@ -240,19 +240,19 @@ _ID52520()
     {
         var_0 scaleovertime( var_3, var_0._ID48175, var_0._ID43646 );
         var_0 fadeovertime( var_6 );
-        var_0._ID55 = var_8;
+        var_0.alpha = var_8;
         wait(var_11);
         var_0 scaleovertime( var_2, var_0._ID49777, var_0._ID50083 );
         var_0 fadeovertime( var_5 );
-        var_0._ID55 = var_7;
+        var_0.alpha = var_7;
         wait(var_10);
         var_7 -= 0.1;
         thread _ID48057( 1 - var_13 * 0.1 );
-        level._ID794 playlocalsound( var_12 );
+        level.player playlocalsound( var_12 );
     }
 
     var_0 fadeovertime( 2 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     wait 2;
     var_0 destroy();
 }
@@ -294,7 +294,7 @@ _ID48057( var_0 )
 
 _ID52710()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "stop_drunk_walk" );
     _ID54688();
     _ID50005( 0.6, 0 );
@@ -343,13 +343,13 @@ _ID48459()
     var_2 = _ID42237::_ID16638( "end_scene_org", "targetname" );
     var_3 = _ID42407::_ID35028( "player_rig" );
     var_2 _ID42259::_ID3018( var_3, var_1 );
-    level._ID794 playerlinktodelta( var_3, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level.player playerlinktodelta( var_3, "tag_player", 1, 0, 0, 0, 0, 1 );
 
     if ( getdvarint( "lastMissionPassCheatStatus" ) == 1 )
         _ID42237::_ID14402( "has_cheated" );
 
     savegame( var_1, &"AUTOSAVE_LEVELSTART", "shot", 1 );
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     _ID42407::_ID3344( "crawling_spawner", maps\af_chase_knife_fight_code::_ID47222 );
     _ID42407::_ID3344( "crawling_spawner", maps\af_chase_knife_fight_code::_ID51151 );
     _ID42407::_ID3346( "crawling_spawner" );
@@ -358,8 +358,8 @@ _ID48459()
 
     if ( var_0 )
     {
-        level._ID794 _ID42407::_ID10226( 5, _ID42407::_ID27079, "scn_afchase_wakeup_player" );
-        level._ID794 _ID42407::_ID10226( 12.5, _ID42407::_ID27079, "scn_afchase_wakeup_player_cough" );
+        level.player _ID42407::_ID10226( 5, _ID42407::_ID27079, "scn_afchase_wakeup_player" );
+        level.player _ID42407::_ID10226( 12.5, _ID42407::_ID27079, "scn_afchase_wakeup_player_cough" );
 
         if ( getdvar( "enable_heartbeat_overlay" ) == "1" )
         {
@@ -410,10 +410,10 @@ _ID50651()
     var_0 _ID54167::_ID48800( 0.05 ) _ID54167::_ID43500( 7.0, 0 );
     var_0 _ID54167::_ID48800( 0.0 ) _ID54167::_ID47844( 2 );
     var_0 _ID54167::_ID48800( 16.0 ) _ID54167::_ID47844( 0 );
-    var_0 _ID54167::_ID48800( 6.55 ) _ID54167::_ID47198( 0.14, 1.0, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.8 );
-    var_0 _ID54167::_ID48800( 8.8 ) _ID54167::_ID47198( 0.08, 0.6, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-    var_0 _ID54167::_ID48800( 10.25 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_0 _ID54167::_ID48800( 11.75 ) _ID54167::_ID47198( 0.14, 1.0, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.5 );
+    var_0 _ID54167::_ID48800( 6.55 ) _ID54167::_ID47198( 0.14, 1.0, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.8 );
+    var_0 _ID54167::_ID48800( 8.8 ) _ID54167::_ID47198( 0.08, 0.6, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+    var_0 _ID54167::_ID48800( 10.25 ) _ID54167::_ID47198( 0.06, 0.4, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_0 _ID54167::_ID48800( 11.75 ) _ID54167::_ID47198( 0.14, 1.0, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.5 );
     thread _ID47563();
     var_0 _ID54167::_ID48166();
     setsaveddvar( "ui_consciousnessVignetteDarkness", 1.0 );
@@ -458,16 +458,16 @@ _ID45882()
     var_0 _ID42259::_ID3018( var_1, "turn_buckle" );
     thread _ID49371();
     maps\af_chase_knife_fight_code::_ID54100();
-    var_2 = spawn( "script_model", level._ID794._ID740 + ( 0, 0, 32 ) );
+    var_2 = spawn( "script_model", level.player.origin + ( 0, 0, 32 ) );
     var_2 setmodel( "viewbody_tf141_injured" );
     var_2 hide();
-    var_2 linkto( level._ID794 );
+    var_2 linkto( level.player );
     maps\af_chase_knife_fight_code::_ID50390();
 
     if ( isdefined( level._ID53970 ) )
     {
         level._ID53970 rotateto( ( 0, 0, 0 ), 0.5, 0.25, 0.25 );
-        level._ID794 _meth_85b5( undefined );
+        level.player _meth_85b5( undefined );
         level._ID53970 delete();
     }
 
@@ -500,7 +500,7 @@ _ID45882()
     var_6 = 1.15;
     thread maps\af_chase_knife_fight_code::_ID50981( var_6 );
     _ID42407::_ID10226( 9, _ID42237::_ID14402, "turn_buckle_fadeout" );
-    level._ID794 thread maps\af_chase_knife_fight_code::_ID51826();
+    level.player thread maps\af_chase_knife_fight_code::_ID51826();
     var_7 = "turn_buckle";
     var_8 = "scn_afchase_plr_tbuckle_lyr_front";
     var_9 = "scn_afchase_shepherd_tbuckle";
@@ -514,7 +514,7 @@ _ID45882()
 
     var_0 _ID42259::_ID3016( var_4, var_7 );
     var_0 thread _ID42259::_ID3099( var_4, var_7 );
-    level._ID794 playsound( var_8 );
+    level.player playsound( var_8 );
     level._ID46102 thread _ID42407::_ID27079( var_9 );
     _ID42237::_ID14413( "turn_buckle_fadeout" );
     wait(var_6);
@@ -535,11 +535,11 @@ _ID52865( var_0 )
             var_1 _ID54167::_ID48800( 1.85 ) _ID54167::_ID53207();
             var_2 = getent( "staging_finale_lgt01", "targetname" );
             var_1 _ID54167::_ID48800( 2.35 ) _ID54167::_ID43376( _ID42407::_ID31877, var_2, "staging_on" );
-            var_1 _ID54167::_ID48800( 0.5 ) _ID54167::_ID47198( 0.14, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 1.6 ) _ID54167::_ID47198( 0.2, 0.7, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.2 );
-            var_1 _ID54167::_ID48800( 2.1 ) _ID54167::_ID47198( 0.12, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 2.65 ) _ID54167::_ID47198( 0.38, 1.0, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.8 );
-            var_1 _ID54167::_ID48800( 3.85 ) _ID54167::_ID47198( 0.14, 0.8, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+            var_1 _ID54167::_ID48800( 0.5 ) _ID54167::_ID47198( 0.14, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 1.6 ) _ID54167::_ID47198( 0.2, 0.7, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.2 );
+            var_1 _ID54167::_ID48800( 2.1 ) _ID54167::_ID47198( 0.12, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 2.65 ) _ID54167::_ID47198( 0.38, 1.0, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.8 );
+            var_1 _ID54167::_ID48800( 3.85 ) _ID54167::_ID47198( 0.14, 0.8, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
             var_1 _ID54167::_ID48166();
             _ID42237::_ID14413( "gloat_fade_in" );
             var_1 = _ID54167::_ID43386( "gloat_sequence" );
@@ -550,9 +550,9 @@ _ID52865( var_0 )
             var_1 _ID54167::_ID48800( 16.5 ) _ID54167::_ID50321( 3.1, -1, 4, 4 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44545( 1.0 );
             var_1 _ID54167::_ID48800( 17.7 ) _ID54167::_ID44191( 50, 1.4, 0 ) _ID54167::_ID47844( 2 );
             var_1 _ID54167::_ID48800( 18.5 ) _ID54167::_ID50321( 4.5, -1, 1.0, 1.0 ) _ID54167::_ID52391( level._ID51910, "tag_brass" ) _ID54167::_ID44518( -2 ) _ID54167::_ID44545( 1.0 );
-            var_1 _ID54167::_ID48800( 15.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
-            var_1 _ID54167::_ID48800( 16.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 20.4 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 15.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
+            var_1 _ID54167::_ID48800( 16.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 20.4 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             var_1 _ID54167::_ID48166();
             break;
         case "crawl_gameplay_started":
@@ -571,7 +571,7 @@ _ID52865( var_0 )
                 var_5 = 50 + var_4 * var_3;
                 var_1 = _ID54167::_ID43386( "crawl_new_input" + var_4 );
                 var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID44191( var_5, 1.0, 0 );
-                var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+                var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
                 var_1 _ID54167::_ID48166();
             }
 
@@ -585,9 +585,9 @@ _ID52865( var_0 )
             var_1 _ID54167::_ID48800( 3.3 ) _ID54167::_ID50321( 3.1, -1, 4, 4 ) _ID54167::_ID52391( level._ID46102, "tag_eye" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44944( 1.0 );
             var_6 = getent( "staging_finale_lgt02", "targetname" );
             var_1 _ID54167::_ID48800( 5.0 ) _ID54167::_ID43376( _ID42407::_ID31877, var_6, "staging_on" );
-            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 1.85 ) _ID54167::_ID47198( 0.06, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 2.4 ) _ID54167::_ID47198( 0.1, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+            var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 1.85 ) _ID54167::_ID47198( 0.06, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 2.4 ) _ID54167::_ID47198( 0.1, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
             var_1 _ID54167::_ID48166();
             break;
         case "shepherd_fights_price_sequence_start":
@@ -599,68 +599,68 @@ _ID52865( var_0 )
             var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956() _ID54167::_ID53207();
             var_1 _ID54167::_ID48800( 11.3 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 );
             var_1 _ID54167::_ID48800( 17.8 ) _ID54167::_ID44191( 47, 0.0, 1 );
-            var_1 _ID54167::_ID48800( 17.8 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level._ID794, 15, 0.1 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 17.8 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level.player, 15, 0.1 ) _ID54167::_ID44545( 1.0 );
             var_1 _ID54167::_ID48800( 21.3 ) _ID54167::_ID44191( 40, 0.0, 1 );
-            var_1 _ID54167::_ID48800( 21.3 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level._ID794, 15, 0.1 ) _ID54167::_ID44545( 1.0 );
-            var_1 _ID54167::_ID48800( 1.05 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -1, 5, -2, 6 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 2.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.15, 0.5, 0.5, -8, 12, 1, 3 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 3.7 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 2.3, 0.5, 0.9, -22, 26, 0, 4 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 6.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.0, 0.5, 0.5, -25, 29, -4, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 8.4 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.5, 0.5, 0.9, -15, 19, -9, 13 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 11.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -8, 12, -6, 10 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 12.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 3.5, 1.0, 1.0, -1, 5, -9, 13 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 17.7 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -26, 30, -10, 14 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 19.2 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.85, 0.3, 0.3, -30, 34, -7, 11 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 21.4 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.0, 0.0, 0.0, -38, 42, -8, 12 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 2.4 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 3.7 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 8.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 12.3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 13.8 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 19.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 9.3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 12.7 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 19.75 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 21.3 ) _ID54167::_ID50321( 3.1, -1, 64, 64 ) _ID54167::_ID52391( level._ID46102 ) _ID54167::_ID44518( 0 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level.player, 15, 0.1 ) _ID54167::_ID44545( 1.0 );
+            var_1 _ID54167::_ID48800( 1.05 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.0, 0.0, 0.0, -1, 5, -2, 6 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 2.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 1.15, 0.5, 0.5, -8, 12, 1, 3 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 3.7 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 2.3, 0.5, 0.9, -22, 26, 0, 4 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 6.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 1.0, 0.5, 0.5, -25, 29, -4, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 8.4 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 1.5, 0.5, 0.9, -15, 19, -9, 13 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 11.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.0, 0.0, 0.0, -8, 12, -6, 10 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 12.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 3.5, 1.0, 1.0, -1, 5, -9, 13 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 17.7 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.0, 0.0, 0.0, -26, 30, -10, 14 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 19.2 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.85, 0.3, 0.3, -30, 34, -7, 11 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 21.4 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.0, 0.0, 0.0, -38, 42, -8, 12 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 2.4 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 3.7 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 8.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 12.3 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 13.8 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 19.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 9.3 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 12.7 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 19.75 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             var_1 _ID54167::_ID48166();
             _ID42237::_ID14413( "focused_on_knife" );
             var_1 = _ID54167::_ID43386( "focused_on_knife" );
             var_1 _ID54167::_ID48800( 1.35 ) _ID54167::_ID44191( 58, 13.0, 0 );
             var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
-            var_1 _ID54167::_ID48800( 5.75 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level._ID794, 0, 6.15 );
+            var_1 _ID54167::_ID48800( 5.75 ) _ID54167::_ID43376( ::h2_lerp_camera_roll, level.player, 0, 6.15 );
             var_1 _ID54167::_ID48800( 6.85 ) _ID54167::_ID50321( 4.0, 11.5, 0.55, 0.55 ) _ID54167::_ID44956();
-            var_1 _ID54167::_ID48800( 1.35 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 1.6, 0.8, 0.8, -38, 42, -11, 15 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 4.25 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 7.15, 4.0, 1.0, 7, -1, 4, 2 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-            var_1 _ID54167::_ID48800( 0.25 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 1.25 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 4.1 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 4.9 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 7.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 7.85 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 9.95 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 11.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 1.35 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 1.6, 0.8, 0.8, -38, 42, -11, 15 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 4.25 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 7.15, 4.0, 1.0, 7, -1, 4, 2 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 0.25 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 1.25 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 4.1 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 4.9 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 7.05 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 7.85 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 9.95 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 11.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             var_1 _ID54167::_ID48166();
             break;
         case "player_looks_at_knife":
             var_1 = _ID54167::_ID43386( var_0 );
             var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
             var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.0, 11.5, 2, 2 ) _ID54167::_ID44956();
-            var_1 _ID54167::_ID48800( 5.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 5.6 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+            var_1 _ID54167::_ID48800( 5.15 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 5.6 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
             var_1 _ID54167::_ID48166();
             _ID42237::_ID14413( "throw_knife_pulled_out" );
             var_1 = _ID54167::_ID43386( "throw_knife_pulled_out" );
             var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
             var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID50321( 4.0, -1, 64, 64 ) _ID54167::_ID52391( level._ID27625, "tag_knife_attach2" ) _ID54167::_ID44518( 0 ) _ID54167::_ID44545( 1.0 ) _ID54167::_ID44956();
-            var_1 _ID54167::_ID48800( 0.6 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.5 );
-            var_1 _ID54167::_ID48800( 3.1 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 4.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 5.3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.2 );
-            var_1 _ID54167::_ID48800( 1.7 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_1 _ID54167::_ID48800( 2.35 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
-            var_1 _ID54167::_ID48800( 2.55 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 0.6 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.5 );
+            var_1 _ID54167::_ID48800( 3.1 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 4.15 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 5.3 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.2 );
+            var_1 _ID54167::_ID48800( 1.7 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_1 _ID54167::_ID48800( 2.35 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
+            var_1 _ID54167::_ID48800( 2.55 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             var_1 _ID54167::_ID48166();
             break;
         case "throw_knife_gameplay_started":
@@ -685,18 +685,18 @@ _ID52865( var_0 )
             var_1 _ID54167::_ID48800( 37.0 ) _ID54167::_ID47844( 0 );
             var_1 _ID54167::_ID48800( 85.0 ) _ID54167::_ID47844( 2 );
             var_1 _ID54167::_ID48800( 94.0 ) _ID54167::_ID47844( 0 );
-            var_1 _ID54167::_ID48800( 85.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 8.0, 3.5, 3.5, 0, 0, 0, 0 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+            var_1 _ID54167::_ID48800( 85.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 8.0, 3.5, 3.5, 0, 0, 0, 0 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
             var_6 = getent( "staging_finale_lgt02", "targetname" );
             var_1 _ID54167::_ID48800( 80.0 ) _ID54167::_ID43376( _ID42407::_ID31877, var_6, "staging_off" );
-            var_1 _ID54167::_ID48800( 1.2 ) _ID54167::_ID47198( 0.04, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 1.45 ) _ID54167::_ID47198( 0.04, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 3.5 ) _ID54167::_ID47198( 0.06, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 60.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 61.4 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 65.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 69.75 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_1 _ID54167::_ID48800( 84.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.4 );
-            var_1 _ID54167::_ID48800( 85.85 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_1 _ID54167::_ID48800( 1.2 ) _ID54167::_ID47198( 0.04, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 1.45 ) _ID54167::_ID47198( 0.04, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 3.5 ) _ID54167::_ID47198( 0.06, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 60.5 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 61.4 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 65.05 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 69.75 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_1 _ID54167::_ID48800( 84.05 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.4 );
+            var_1 _ID54167::_ID48800( 85.85 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             var_1 _ID54167::_ID48166();
             break;
     }
@@ -705,7 +705,7 @@ _ID52865( var_0 )
 h2_lerp_camera_roll( var_0, var_1 )
 {
     var_2 = 0.05;
-    var_3 = level._ID794 getplayerangles();
+    var_3 = level.player getplayerangles();
     var_4 = var_0 - var_3[2];
     var_5 = var_1 / var_2;
     var_6 = var_4 / var_5;
@@ -713,7 +713,7 @@ h2_lerp_camera_roll( var_0, var_1 )
 
     while ( var_7 <= var_5 )
     {
-        level._ID794 setplayerangles( ( var_3[0], var_3[1], var_3[2] + var_7 * var_6 ) );
+        level.player setplayerangles( ( var_3[0], var_3[1], var_3[2] + var_7 * var_6 ) );
         var_7 += 1;
         wait(var_2);
     }
@@ -741,7 +741,7 @@ _ID51865()
 {
     level notify( "not_random_blur" );
     thread _ID51067::_ID27474();
-    level._ID794 stopshellshock();
+    level.player stopshellshock();
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
     _ID47670( var_1 );
@@ -749,7 +749,7 @@ _ID51865()
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     maps\af_chase_knife_fight_code::_ID48416();
     var_4 = maps\af_chase_knife_fight_code::_ID47505();
-    var_4._ID740 = level._ID794._ID740;
+    var_4.origin = level.player.origin;
     var_4 maps\af_chase_knife_fight_code::_ID50666( level._ID46102, "tag_eye", 1 );
     maps\af_chase_knife_fight_code::_ID50567();
     var_4 = maps\af_chase_knife_fight_code::_ID47505();
@@ -760,8 +760,8 @@ _ID51865()
     var_5["gun"] = var_2;
     var_5["knife"] = var_3;
     var_0 _ID42259::_ID3016( var_5, "gun_monologue" );
-    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playerlinktodelta( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     setblur( 0, 1.75 );
     var_6 = 6.5;
     var_7 = 4;
@@ -771,7 +771,7 @@ _ID51865()
     maps\af_chase_knife_fight_code::_ID46058( 3.5 );
     var_0 _ID42259::_ID3018( level._ID28543, "gun_drop" );
     level._ID46102 thread _ID42407::_ID27079( "h2_scn_afchase_shepherd_gloat" );
-    level._ID794 _ID42407::_ID10226( 13.45, _ID42298::_ID17386, "right" );
+    level.player _ID42407::_ID10226( 13.45, _ID42298::_ID17386, "right" );
     _ID42407::_ID10226( 14.7, ::_ID52754 );
     var_0 _ID42259::_ID3099( var_5, "gun_monologue" );
 }
@@ -780,7 +780,7 @@ _ID43418()
 {
     level notify( "not_random_blur" );
     thread _ID51067::_ID27474();
-    level._ID794 stopshellshock();
+    level.player stopshellshock();
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
     _ID47670( var_1 );
@@ -788,10 +788,10 @@ _ID43418()
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     var_4 = var_1 _ID42237::_ID35164();
     var_4 linkto( var_1, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_4 );
+    level.player playersetgroundreferenceent( var_4 );
     maps\af_chase_knife_fight_code::_ID48416();
     var_5 = maps\af_chase_knife_fight_code::_ID47505();
-    var_5._ID740 = level._ID794._ID740;
+    var_5.origin = level.player.origin;
     var_5 maps\af_chase_knife_fight_code::_ID50666( level._ID46102, "tag_eye", 1 );
     maps\af_chase_knife_fight_code::_ID50567();
     var_5 = maps\af_chase_knife_fight_code::_ID47505();
@@ -803,8 +803,8 @@ _ID43418()
     var_6["knife"] = var_3;
     var_6["price"] = level._ID28543;
     var_0 _ID42259::_ID3016( var_6, "gun_fight" );
-    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playerlinktodelta( var_1, "tag_player", 1, 5, 5, 5, 5, 1 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     setblur( 0, 1.75 );
     var_7 = 6.5;
     var_8 = 4;
@@ -813,10 +813,10 @@ _ID43418()
     _ID42237::_ID14413( "gloat_fade_in" );
     maps\af_chase_knife_fight_code::_ID46058( 3.5 );
     level._ID46102 thread _ID42407::_ID27079( "h2_scn_afchase_shepherd_gloat" );
-    level._ID794 _ID42407::_ID10226( 13.45, _ID42298::_ID17386, "right" );
+    level.player _ID42407::_ID10226( 13.45, _ID42298::_ID17386, "right" );
     _ID42407::_ID10226( 14.7, ::_ID52754 );
     var_0 _ID42259::_ID3099( var_6, "gun_fight" );
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playersetgroundreferenceent( undefined );
     var_4 delete();
 }
 
@@ -834,8 +834,8 @@ _ID51225()
 _ID48325()
 {
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
-    var_1 = spawn( "script_origin", var_0._ID740 );
-    var_1._ID65 = var_0._ID65;
+    var_1 = spawn( "script_origin", var_0.origin );
+    var_1.angles = var_0.angles;
     var_2 = maps\af_chase_knife_fight_code::_ID50885();
     var_3 = maps\af_chase_knife_fight_code::_ID47027();
     var_4 = [];
@@ -854,7 +854,7 @@ _ID48325()
     var_5 maps\af_chase_knife_fight_code::_ID50666( var_3, "J_Cylinder_Rot", 0.4 );
     var_0 thread _ID42259::_ID3111( var_3, "gun_drop" );
     var_0 thread _ID42259::_ID3111( var_2, "gun_drop_player" );
-    level._ID794 thread _ID42407::_ID27079( "af_chase_scene_gun_drop" );
+    level.player thread _ID42407::_ID27079( "af_chase_scene_gun_drop" );
     wait 0.05;
 
     foreach ( var_14 in var_4 )
@@ -884,7 +884,7 @@ _ID52014()
     thread _ID52865( "crawl_gameplay_started" );
     savegame( "crawl", &"AUTOSAVE_LEVELSTART", "shot", 1 );
     maps\af_chase_knife_fight_code::_ID43648();
-    level._ID50049._ID740 = ( 40, 0, 0 );
+    level._ID50049.origin = ( 40, 0, 0 );
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
     var_2 = maps\af_chase_knife_fight_code::_ID47027();
@@ -892,7 +892,7 @@ _ID52014()
     var_3["player_rig"] = var_1;
     var_4 = var_1 _ID42237::_ID35164();
     var_4 linkto( var_1, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_4 );
+    level.player playersetgroundreferenceent( var_4 );
     var_5 = [];
     var_5[0] = maps\af_chase_knife_fight_code::_ID48590;
     var_5[1] = maps\af_chase_knife_fight_code::_ID49499;
@@ -933,7 +933,7 @@ _ID52014()
 
         var_0 notify( "stop_crawl" );
         var_12 = randomfloatrange( 0.9, 1.1 );
-        earthquake( 0.16, var_12, level._ID794._ID740, 5000 );
+        earthquake( 0.16, var_12, level.player.origin, 5000 );
         var_13 = "gun_crawl_0" + var_9;
         var_14 = var_1 _ID42407::_ID16120( var_13 );
         var_15 = getanimlength( var_14 );
@@ -948,20 +948,20 @@ _ID52014()
         var_0 _ID42259::_ID3099( var_3, var_13 );
     }
 
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playersetgroundreferenceent( undefined );
     var_4 delete();
     _ID42237::_ID14402( "crawl_gameplay_complete" );
 }
 
 _ID46362()
 {
-    earthquake( 0.12, 0.45, level._ID794._ID740, 5000 );
+    earthquake( 0.12, 0.45, level.player.origin, 5000 );
 }
 
 _ID47310()
 {
     _ID42475::_ID34575( "start_gun_kick_checkpoint" );
-    level._ID50049._ID740 = ( 40, 0, 0 );
+    level._ID50049.origin = ( 40, 0, 0 );
     maps\af_chase_knife_fight_code::_ID44443();
 }
 
@@ -972,7 +972,7 @@ _ID44725()
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
     var_2 = maps\af_chase_knife_fight_code::_ID47027();
     var_3 = maps\af_chase_knife_fight_code::_ID50090();
-    var_3._ID740 = var_3._ID740 + ( 44.64, -25.73, 0 );
+    var_3.origin = var_3.origin + ( 44.64, -25.73, 0 );
     var_0 thread _ID42259::_ID3111( var_2, "gun_kick_gun" );
     var_4 = maps\af_chase_knife_fight_code::_ID47505();
     var_4 maps\af_chase_knife_fight_code::_ID50666( level._ID46102, "J_Ankle_RI", 1 );
@@ -1030,7 +1030,7 @@ _ID49842()
     var_9["price"] = level._ID28543;
     var_10 = maps\af_chase_knife_fight_code::_ID47505();
     var_10 linkto( level._ID28543, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 shellshock( "af_chase_ending_no_control_lowkick", 60 );
+    level.player shellshock( "af_chase_ending_no_control_lowkick", 60 );
     var_5 = "fight_B";
     var_11 = level._ID28543 _ID42407::_ID16120( var_5 );
     var_12 = getanimlength( var_11 );
@@ -1110,7 +1110,7 @@ _ID53116()
     var_1 notify( "stop_loop" );
     var_1 thread _ID42259::_ID3040( var_5, "knifepull_grab_idle" );
     wait 0.5;
-    level._ID794 shellshock( "af_chase_ending_pulling_knife_later", 60 );
+    level.player shellshock( "af_chase_ending_pulling_knife_later", 60 );
     level notify( "player_has_min_arc" );
     var_7 = maps\af_chase_knife_fight_code::_ID47505();
     var_7 linkto( level._ID28543, "tag_eye", ( 0, 0, 0 ), ( 0, 0, 0 ) );
@@ -1168,7 +1168,7 @@ _ID53116()
     var_11._ID30348 = "light_3s";
     var_11 maps\af_chase_knife_fight_code::_ID51867( "knifepull_pull_01" );
     level._ID2036 = 1;
-    earthquake( 0.2, 0.3, level._ID794._ID740, 5000 );
+    earthquake( 0.2, 0.3, level.player.origin, 5000 );
     level notify( "second_knife_pull" );
     var_1 _ID42259::_ID3099( var_5, "knifepull_grab_02" );
     var_1 _ID42259::_ID3016( var_5, "knifepull_pull_02" );
@@ -1200,8 +1200,8 @@ _ID50745()
     _ID42475::_ID34575( "start_knife_kill_checkpoint" );
     var_0 = maps\af_chase_knife_fight_code::_ID50885();
     var_1 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
-    level._ID794 playerlinktodelta( var_0, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 shellshock( "af_chase_ending_pulling_knife_later", 60 );
+    level.player playerlinktodelta( var_0, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level.player shellshock( "af_chase_ending_pulling_knife_later", 60 );
     thread maps\af_chase_knife_fight_code::_ID50060( 0.1 );
     var_2 = maps\af_chase_knife_fight_code::_ID49656();
     var_1 thread _ID42259::_ID3018( var_2, "price_wakeup" );
@@ -1230,7 +1230,7 @@ _ID43968()
     var_3 = maps\af_chase_knife_fight_code::_ID53008();
     var_4 = maps\af_chase_knife_fight_code::_ID49656();
     thread maps\af_chase_knife_fight_code::_ID48039( var_2 );
-    level._ID794 disableslowaim();
+    level.player disableslowaim();
     setsaveddvar( "aim_turnrate_yaw", 260 );
     setsaveddvar( "aim_turnrate_pitch", 90 );
     var_5 = [];
@@ -1248,12 +1248,12 @@ _ID43968()
     var_1 thread _ID42259::_ID3040( var_5, "knifepull_pullout_flip_idle" );
     thread maps\af_chase_knife_fight_code::_ID51529();
     var_7 = maps\af_chase_knife_fight_code::_ID46812();
-    var_7._ID55 = 1;
+    var_7.alpha = 1;
     var_7 fadeovertime( 1 );
     maps\af_chase_knife_fight_code::_ID47281( var_7 );
     var_7 destroy();
     musicstop( 4 );
-    level._ID794 thread _ID42407::_ID27079( "mus_af_chase_shepherd_death_stinger" );
+    level.player thread _ID42407::_ID27079( "mus_af_chase_shepherd_death_stinger" );
     maps\af_chase_knife_fight_code::_ID46058( 0.5 );
     level notify( "pull_back_knife_anim_starts" );
     var_8 = 1.2;
@@ -1276,8 +1276,8 @@ _ID53855()
     level._ID27625 = _ID42407::_ID35028( "player_rig" );
     var_1 = level._ID27625;
     var_0 thread _ID42259::_ID3018( var_1, "endgame" );
-    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 10, 15, 5, 10 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playerlinktodelta( var_1, "tag_player", 1, 10, 15, 5, 10 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
 }
 
 _ID12642()
@@ -1285,7 +1285,7 @@ _ID12642()
     maps\af_chase_knife_fight_code::_ID48558();
     level._ID51522 animscripts\shared::_ID12143();
     var_0 = maps\af_chase_knife_fight_code::_ID53008();
-    level._ID794 fadeoutshellshock();
+    level.player fadeoutshellshock();
     var_1 = _ID42411::_ID35195( "ending_rescue_chopper" );
     var_1 setmodel( "vehicle_little_bird_bench_afghan" );
     var_1._ID3189 = "littlebird";
@@ -1301,7 +1301,7 @@ _ID12642()
     var_3 = level._ID27625;
     var_4 = var_3 _ID42237::_ID35164();
     var_4 linkto( var_3, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_4 );
+    level.player playersetgroundreferenceent( var_4 );
     var_5 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     _ID42237::_ID30398( "shep_blood", maps\af_chase_knife_fight_code::_ID51502 );
     var_5 thread _ID42259::_ID3099( var_2, "endgame" );
@@ -1350,8 +1350,8 @@ _ID12642()
     _ID42407::_ID10226( var_22 + 0.25, maps\af_chase_knife_fight_code::_ID46058, 1 );
     level._ID27625 waittillmatch( "single anim",  "ps_scn_afchase_walkoff"  );
     var_23 = 0;
-    level._ID794 playerlinktodelta( var_3, "tag_player", 1, var_23, var_23, var_23, var_23, 1 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playerlinktodelta( var_3, "tag_player", 1, var_23, var_23, var_23, var_23, 1 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     _ID42407::_ID10226( 0.8, maps\af_chase_knife_fight_code::_ID49905 );
     var_15 = "price_wakeup";
     thread maps\af_chase_knife_fight_code::_ID52629();
@@ -1381,13 +1381,13 @@ _ID43392()
     setomnvar( "ui_consciousness_init", 1 );
     setomnvar( "ui_consciousness_play", 10 );
     var_0 = 28.0;
-    var_1 = _ID42313::_ID9125( "black", 0.0, level._ID794 );
+    var_1 = _ID42313::_ID9125( "black", 0.0, level.player );
     var_1 fadeovertime( var_0 );
-    var_1._ID55 = 0.75;
+    var_1.alpha = 0.75;
     wait(var_0 + 0.15);
     var_2 = 0.5;
     var_1 fadeovertime( var_2 );
-    var_1._ID55 = 0.0;
+    var_1.alpha = 0.0;
     wait(var_2 + 0.25);
     var_1 destroy();
     wait(9 - var_2);
@@ -1407,13 +1407,13 @@ _ID49862()
     level._ID27625 = _ID42407::_ID35028( "player_rig" );
     var_1 = level._ID27625;
     var_0 thread _ID42259::_ID3018( var_1, "price_wakeup" );
-    level._ID794 playerlinktodelta( var_1, "tag_player", 1, 10, 15, 5, 10 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playerlinktodelta( var_1, "tag_player", 1, 10, 15, 5, 10 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
 }
 
 _ID48043()
 {
-    level._ID794 shellshock( "af_chase_ending_fakeout", 60 );
+    level.player shellshock( "af_chase_ending_fakeout", 60 );
     var_0 = _ID42237::_ID16638( "end_scene_org_02", "targetname" );
     var_1 = maps\af_chase_knife_fight_code::_ID50885();
     var_2 = maps\af_chase_knife_fight_code::_ID49656();
@@ -1427,7 +1427,7 @@ _ID48043()
 
     if ( level._ID35897 == "price_wakeup" )
     {
-        level._ID794 playerlinktodelta( var_1, "tag_player" );
+        level.player playerlinktodelta( var_1, "tag_player" );
         var_0 thread _ID42259::_ID3018( var_1, "price_wakeup" );
         var_0 thread _ID42259::_ID3111( var_1, "price_wakeup" );
         var_0 _ID42259::_ID3016( var_4, "price_wakeup" );
@@ -1445,7 +1445,7 @@ _ID48043()
     var_7 = level._ID28543 _ID42407::_ID16120( var_6 );
     var_8 = getanimlength( var_7 );
     thread maps\af_chase_knife_fight_code::_ID50195( var_6, var_8 );
-    level._ID794 playerlinktodelta( var_1, "tag_player" );
+    level.player playerlinktodelta( var_1, "tag_player" );
     var_0 thread _ID42259::_ID3111( var_1, var_6 );
     var_7 = level._ID28543 _ID42407::_ID16120( var_6 );
     var_9 = getanimlength( var_7 );
@@ -1474,12 +1474,12 @@ _ID45099()
     var_2 = maps\af_chase_knife_fight_code::_ID50885();
     var_3 = maps\af_chase_knife_fight_code::_ID49656();
     var_4 = 0;
-    level._ID794 playerlinktodelta( var_2, "tag_player", 1, var_4, var_4, var_4, var_4, 1 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playerlinktodelta( var_2, "tag_player", 1, var_4, var_4, var_4, var_4, 1 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     _ID42407::_ID10226( 0.8, maps\af_chase_knife_fight_code::_ID49905 );
     var_5 = _ID42237::_ID35164();
     var_5 linkto( var_2, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_5 );
+    level.player playersetgroundreferenceent( var_5 );
     var_6 = "price_wakeup";
     var_1 thread _ID42259::_ID3018( var_3, var_6 );
     var_1 thread _ID42259::_ID3018( var_2, var_6 );
@@ -1522,12 +1522,12 @@ _ID45099()
 
 _ID54717()
 {
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playersetgroundreferenceent( undefined );
     _ID42475::_ID34575( "aud_stop_mix_walking_to_heli" );
     _ID42475::_ID34575( "aud_start_mix_level_fadeout" );
     var_0 = 0.5;
     var_1 = maps\af_chase_knife_fight_code::_ID15584();
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
     _ID42407::_ID10226( 4, _ID42407::_ID24793 );
     _ID42237::_ID14402( "do_museum_credits" );
     wait 0.1;
@@ -1576,7 +1576,7 @@ _ID52987()
     maps\af_chase_knife_fight_code::_ID48416();
     level._ID51073 = _ID52272::_ID53217;
     _ID42237::_ID14402( "aftermath_dont_do_wakeup" );
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     _ID42237::_ID14402( "stop_aftermath_player" );
     maps\af_chase_knife_fight_code::_ID48836();
     _ID42237::_ID14402( "player_near_shepherd" );
@@ -1615,7 +1615,7 @@ _ID52987()
     if ( var_0 == "kill" )
         return;
 
-    level._ID50049._ID740 = ( 65, 0, 0 );
+    level._ID50049.origin = ( 65, 0, 0 );
 
     if ( var_0 == "endgame" )
         return;
@@ -1635,8 +1635,8 @@ _ID52987()
 
 _ID54688()
 {
-    level._ID794 _meth_85b6( "ending_pain", "veilstrength,veilbackgroundstrength,tonemapwhite,tonemapshoulder,tonemapcrossover,tonemaptoe,tonemapblack,tonemaphdrwhite,tonemaphdrshoulder,tonemaphdrcrossover,tonemaphdrtoe,tonemaphdrblack" );
-    level._ID794 _meth_85b9( "ending_pain" );
+    level.player _meth_85b6( "ending_pain", "veilstrength,veilbackgroundstrength,tonemapwhite,tonemapshoulder,tonemapcrossover,tonemaptoe,tonemapblack,tonemaphdrwhite,tonemaphdrshoulder,tonemaphdrcrossover,tonemaphdrtoe,tonemaphdrblack" );
+    level.player _meth_85b9( "ending_pain" );
     level._ID52109 = 0;
 }
 
@@ -1653,19 +1653,19 @@ _ID50005( var_0, var_1 )
         var_6 = level._ID52109;
         level._ID52109 = level._ID52109 + var_4;
         setsaveddvar( "r_lightSetBlendFrac", level._ID52109 );
-        level._ID794 _meth_85b8( var_6, level._ID52109 );
+        level.player _meth_85b8( var_6, level._ID52109 );
         wait(var_2);
     }
 
     setsaveddvar( "r_lightSetBlendFrac", var_0 );
-    level._ID794 _meth_85b8( level._ID52109, var_0 );
+    level.player _meth_85b8( level._ID52109, var_0 );
     level._ID52109 = var_0;
 }
 
 _ID44555()
 {
-    level._ID794 _meth_85b7();
-    level._ID794 _meth_85ba();
+    level.player _meth_85b7();
+    level.player _meth_85ba();
     level._ID52109 = undefined;
 }
 

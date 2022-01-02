@@ -44,7 +44,7 @@ _ID19908()
 
 _ID11876()
 {
-    if ( level._ID12061[self._ID1194]._ID3291.size >= level._ID23042[self._ID1194] )
+    if ( level._ID12061[self.team]._ID3291.size >= level._ID23042[self.team] )
     {
         self delete();
         return;
@@ -60,7 +60,7 @@ _ID11876()
 
     thread _ID11838();
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
         if ( !isdefined( self._ID31299 ) )
             thread _ID11928();
@@ -76,8 +76,8 @@ _ID11876()
 
 _ID11817( var_0 )
 {
-    _ID42407::_ID36712( level._ID12061[var_0._ID1194], var_0 );
-    var_1 = var_0._ID1194;
+    _ID42407::_ID36712( level._ID12061[var_0.team], var_0 );
+    var_1 = var_0.team;
     var_0 waittill( "death" );
 
     if ( isdefined( var_0 ) && isdefined( var_0._ID36708 ) )
@@ -95,10 +95,10 @@ _ID11838()
 
     var_0 = "stand";
 
-    if ( isdefined( self._ID3203 ) && isdefined( level._ID11813[self._ID1194][self._ID3203] ) && isdefined( level._ID11813[self._ID1194][self._ID3203]["death"] ) )
+    if ( isdefined( self._ID3203 ) && isdefined( level._ID11813[self.team][self._ID3203] ) && isdefined( level._ID11813[self.team][self._ID3203]["death"] ) )
         var_0 = self._ID3203;
 
-    var_1 = level._ID11813[self._ID1194][var_0]["death"];
+    var_1 = level._ID11813[self.team][var_0]["death"];
 
     if ( isdefined( self._ID9813 ) )
         var_1 = self._ID9813;
@@ -137,7 +137,7 @@ _ID11838()
 
     while ( isdefined( self ) )
     {
-        if ( !_ID42237::_ID41802( level._ID794._ID740, level._ID794._ID65, self._ID740, 0.5 ) )
+        if ( !_ID42237::_ID41802( level.player.origin, level.player.angles, self.origin, 0.5 ) )
             self delete();
 
         wait 5;
@@ -150,16 +150,16 @@ _ID11926()
 
     for (;;)
     {
-        while ( !isdefined( self._ID256 ) || !self._ID256 )
+        while ( !isdefined( self.damageshield ) || !self.damageshield )
             wait 0.05;
 
-        var_0 = self._ID486;
-        self._ID486 = 100000;
+        var_0 = self.health;
+        self.health = 100000;
 
-        while ( isdefined( self._ID256 ) && self._ID256 )
+        while ( isdefined( self.damageshield ) && self.damageshield )
             wait 0.05;
 
-        self._ID486 = var_0;
+        self.health = var_0;
         wait 0.05;
     }
 }
@@ -172,13 +172,13 @@ _ID12017()
     {
         self waittill( "damage" );
 
-        if ( isdefined( self._ID256 ) && self._ID256 )
+        if ( isdefined( self.damageshield ) && self.damageshield )
         {
-            self._ID486 = 100000;
+            self.health = 100000;
             continue;
         }
 
-        if ( self._ID486 <= 0 )
+        if ( self.health <= 0 )
             break;
     }
 }
@@ -207,7 +207,7 @@ _ID11938( var_0, var_1 )
 
 _ID11939( var_0, var_1 )
 {
-    if ( self._ID1244 == "human" )
+    if ( self.type == "human" )
         self clearanim( %body, 0.2 );
 
     self stopanimscripted();
@@ -217,7 +217,7 @@ _ID11939( var_0, var_1 )
         var_2 = "deathplant";
 
     var_3 = "drone_anim";
-    self animscripted( var_3, self._ID740, self._ID65, var_0, var_2 );
+    self animscripted( var_3, self.origin, self.angles, var_0, var_2 );
     self waittillmatch( "drone_anim",  "end"  );
 }
 
@@ -231,18 +231,18 @@ _ID11846()
     if ( !isdefined( self ) )
         return;
 
-    var_0 = getweaponmodel( self._ID1302 );
-    var_1 = self._ID1302;
+    var_0 = getweaponmodel( self.weapon );
+    var_1 = self.weapon;
 
     if ( isdefined( var_0 ) )
     {
-        _ID42407::_ID10616( self._ID1302 );
+        _ID42407::_ID10616( self.weapon );
         self detach( var_0, "tag_weapon_right" );
         var_2 = self gettagorigin( "tag_weapon_right" );
         var_3 = self gettagangles( "tag_weapon_right" );
         var_4 = spawn( "weapon_" + var_1, ( 0, 0, 0 ) );
-        var_4._ID65 = var_3;
-        var_4._ID740 = var_2;
+        var_4.angles = var_3;
+        var_4.origin = var_2;
     }
 }
 
@@ -293,7 +293,7 @@ _ID11871( var_0, var_1 )
 {
     if ( isdefined( self._ID11872 ) )
         [[ self._ID11873 ]]();
-    else if ( isdefined( var_0 ) && isdefined( var_0["script_noteworthy"] ) && isdefined( level._ID11813[self._ID1194][var_0["script_noteworthy"]] ) )
+    else if ( isdefined( var_0 ) && isdefined( var_0["script_noteworthy"] ) && isdefined( level._ID11813[self.team][var_0["script_noteworthy"]] ) )
         thread _ID11853( var_0["script_noteworthy"], var_0, var_1 );
     else
     {
@@ -303,7 +303,7 @@ _ID11871( var_0, var_1 )
             return;
         }
 
-        _ID11938( level._ID11813[self._ID1194]["stand"]["idle"], 1 );
+        _ID11938( level._ID11813[self.team]["stand"]["idle"], 1 );
     }
 }
 
@@ -311,10 +311,10 @@ _ID11865( var_0, var_1 )
 {
     var_2 = var_1["script_noteworthy"];
 
-    if ( !isdefined( level._ID11813[self._ID1194][var_2]["arrival"] ) )
+    if ( !isdefined( level._ID11813[self.team][var_2]["arrival"] ) )
         return var_0;
 
-    var_3 = getangledelta( level._ID11813[self._ID1194][var_2]["arrival"], 0, 1 );
+    var_3 = getangledelta( level._ID11813[self.team][var_2]["arrival"], 0, 1 );
     var_3 = length( var_3 );
     var_0 -= var_3;
     return var_0;
@@ -328,7 +328,7 @@ _ID11853( var_0, var_1, var_2 )
     self._ID41709 = undefined;
     var_3 = randomintrange( 1, 4 );
 
-    if ( self._ID1194 == "axis" )
+    if ( self.team == "axis" )
     {
         if ( var_3 == 1 )
             self._ID41709 = "h2_wpn_berretta_m9_npc_close";
@@ -349,20 +349,20 @@ _ID11853( var_0, var_1, var_2 )
             self._ID41709 = "h2_wpn_m4a1_npc_close";
     }
 
-    self._ID65 = ( 0, self._ID65[1], self._ID65[2] );
+    self.angles = ( 0, self.angles[1], self.angles[2] );
 
     if ( var_0 == "coverprone" )
-        self moveto( self._ID740 + ( 0, 0, 8 ), 0.05 );
+        self moveto( self.origin + ( 0, 0, 8 ), 0.05 );
 
     self._ID24924 = 1;
-    var_4 = level._ID11813[self._ID1194][var_0];
+    var_4 = level._ID11813[self.team][var_0];
     self._ID9813 = var_4["death"];
 
     while ( isdefined( self ) )
     {
         _ID11939( var_4["idle"][randomint( var_4["idle"].size )] );
 
-        if ( _ID42237::_ID8201() && !isdefined( self._ID507 ) )
+        if ( _ID42237::_ID8201() && !isdefined( self.ignoreall ) )
         {
             var_5 = 1;
 
@@ -467,7 +467,7 @@ _ID11968()
 {
     var_0 = _ID42237::_ID16299( "pdrone_flash_wv" );
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         var_0 = _ID42237::_ID16299( "pdrone_flash_wv" );
 
     if ( isdefined( self._ID24614 ) )
@@ -517,7 +517,7 @@ _ID15564( var_0 )
 
 _ID11864()
 {
-    var_0 = _ID16511( self._ID1191, self._ID740 );
+    var_0 = _ID16511( self.target, self.origin );
     var_1 = var_0[var_0.size - 2]["target"];
     var_2 = getnode( var_1, "targetname" );
 
@@ -535,8 +535,8 @@ _ID11928()
     self endon( "death" );
     self endon( "drone_stop" );
     wait 0.05;
-    var_0 = _ID16511( self._ID1191, self._ID740 );
-    var_1 = level._ID11813[self._ID1194]["stand"]["run"];
+    var_0 = _ID16511( self.target, self.origin );
+    var_1 = level._ID11813[self.team]["stand"]["run"];
 
     if ( isdefined( self._ID30407 ) )
         var_1 = self._ID30407;
@@ -576,7 +576,7 @@ _ID11928()
             break;
 
         var_9 = var_0[var_6]["vec"];
-        var_10 = self._ID740 - var_0[var_6]["origin"];
+        var_10 = self.origin - var_0[var_6]["origin"];
         var_11 = vectordot( vectornormalize( var_9 ), var_10 );
 
         if ( !isdefined( var_0[var_6]["dist"] ) )
@@ -600,7 +600,7 @@ _ID11928()
                 if ( !isdefined( self._ID4975 ) )
                     self._ID4975 = self._ID12026;
 
-                var_13 = level._ID11813[self._ID1194]["stairs"][var_8];
+                var_13 = level._ID11813[self.team]["stairs"][var_8];
                 _ID11938( var_13, self._ID24424 );
                 var_7 = 1;
             }
@@ -608,7 +608,7 @@ _ID11928()
             if ( !isdefined( var_0[var_6]["dist"] ) )
             {
                 self rotateto( vectortoangles( var_0[var_0.size - 1]["vec"] ), var_5 );
-                var_14 = distance( self._ID740, var_0[var_0.size - 1]["origin"] );
+                var_14 = distance( self.origin, var_0[var_0.size - 1]["origin"] );
                 var_15 = var_14 / var_3 * self._ID24424;
                 var_16 = var_0[var_0.size - 1]["origin"] + ( 0, 0, 100 );
                 var_17 = var_0[var_0.size - 1]["origin"] - ( 0, 0, 100 );
@@ -617,7 +617,7 @@ _ID11928()
                 if ( getdvar( "debug_drones" ) == "1" )
                 {
                     thread _ID42237::_ID11707( var_16, var_17, 1, 1, 1, var_5 );
-                    thread _ID42237::_ID11707( self._ID740, var_18, 0, 0, 1, var_5 );
+                    thread _ID42237::_ID11707( self.origin, var_18, 0, 0, 1, var_5 );
                 }
 
                 self moveto( var_18, var_15 );
@@ -675,15 +675,15 @@ _ID11928()
             thread _ID11716( var_20, 1, 0, 0, 16, var_5 );
         }
 
-        var_21 = vectortoangles( var_20 - self._ID740 );
+        var_21 = vectortoangles( var_20 - self.origin );
         self rotateto( ( 0, var_21[1], 0 ), var_5 );
         var_22 = var_3 * var_5 * self._ID24424;
-        var_23 = vectornormalize( var_20 - self._ID740 );
+        var_23 = vectornormalize( var_20 - self.origin );
         var_19 = var_23 * var_22;
-        var_19 += self._ID740;
+        var_19 += self.origin;
 
         if ( getdvar( "debug_drones" ) == "1" )
-            thread _ID42237::_ID11707( self._ID740, var_19, 0, 0, 1, var_5 );
+            thread _ID42237::_ID11707( self.origin, var_19, 0, 0, 1, var_5 );
 
         self moveto( var_19, var_5 );
         wait(var_5);
@@ -722,8 +722,8 @@ _ID11931( var_0 )
     {
         if ( isdefined( self._ID11915 ) && var_0 > 0 )
         {
-            var_2 = self._ID11915[2] - self._ID740[2];
-            var_3 = distance2d( self._ID11915, self._ID740 );
+            var_2 = self._ID11915[2] - self.origin[2];
+            var_3 = distance2d( self._ID11915, self.origin );
             var_4 = var_3 / var_0;
 
             if ( var_4 > 0 && var_2 != 0 )
@@ -732,9 +732,9 @@ _ID11931( var_0 )
                 var_6 = var_5 * var_1;
 
                 if ( var_2 >= var_5 )
-                    self._ID740 = ( self._ID740[0], self._ID740[1], self._ID740[2] + var_6 );
+                    self.origin = ( self.origin[0], self.origin[1], self.origin[2] + var_6 );
                 else if ( var_2 <= var_5 * -1 )
-                    self._ID740 = ( self._ID740[0], self._ID740[1], self._ID740[2] - var_6 );
+                    self.origin = ( self.origin[0], self.origin[1], self.origin[2] - var_6 );
             }
         }
 
@@ -780,53 +780,53 @@ _ID16511( var_0, var_1 )
             break;
 
         var_11 = var_3.size;
-        var_14 = var_13._ID740;
+        var_14 = var_13.origin;
 
-        if ( isdefined( var_13._ID851 ) )
+        if ( isdefined( var_13.radius ) )
         {
             if ( !isdefined( self._ID12060 ) )
                 self._ID12060 = -1 + randomfloat( 2 );
 
-            if ( !isdefined( var_13._ID65 ) )
-                var_13._ID65 = ( 0, 0, 0 );
+            if ( !isdefined( var_13.angles ) )
+                var_13.angles = ( 0, 0, 0 );
 
-            var_15 = anglestoforward( var_13._ID65 );
-            var_16 = anglestoright( var_13._ID65 );
-            var_17 = anglestoup( var_13._ID65 );
-            var_18 = ( 0, self._ID12060 * var_13._ID851, 0 );
+            var_15 = anglestoforward( var_13.angles );
+            var_16 = anglestoright( var_13.angles );
+            var_17 = anglestoup( var_13.angles );
+            var_18 = ( 0, self._ID12060 * var_13.radius, 0 );
             var_14 += var_15 * var_18[0];
             var_14 += var_16 * var_18[1];
             var_14 += var_17 * var_18[2];
         }
 
         var_3[var_11]["origin"] = var_14;
-        var_3[var_11]["target"] = var_13._ID1191;
+        var_3[var_11]["target"] = var_13.target;
 
-        if ( isdefined( self._ID31388 ) && self._ID31388 == "use_last_node_angles" && isdefined( var_13._ID65 ) )
-            var_3[var_11]["angles"] = var_13._ID65;
+        if ( isdefined( self._ID31388 ) && self._ID31388 == "use_last_node_angles" && isdefined( var_13.angles ) )
+            var_3[var_11]["angles"] = var_13.angles;
 
-        if ( isdefined( var_13._ID922 ) )
-            var_3[var_11]["script_noteworthy"] = var_13._ID922;
+        if ( isdefined( var_13.script_noteworthy ) )
+            var_3[var_11]["script_noteworthy"] = var_13.script_noteworthy;
 
-        if ( isdefined( var_13._ID920 ) )
-            var_3[var_11]["script_linkname"] = var_13._ID920;
+        if ( isdefined( var_13.script_linkname ) )
+            var_3[var_11]["script_linkname"] = var_13.script_linkname;
 
         var_3[var_11 - 1]["dist"] = distance( var_3[var_11]["origin"], var_3[var_11 - 1]["origin"] );
         var_3[var_11 - 1]["vec"] = vectornormalize( var_3[var_11]["origin"] - var_3[var_11 - 1]["origin"] );
 
         if ( !isdefined( var_3[var_11 - 1]["target"] ) )
-            var_3[var_11 - 1]["target"] = var_13._ID1193;
+            var_3[var_11 - 1]["target"] = var_13.targetname;
 
-        if ( !isdefined( var_3[var_11 - 1]["script_noteworthy"] ) && isdefined( var_13._ID922 ) )
-            var_3[var_11 - 1]["script_noteworthy"] = var_13._ID922;
+        if ( !isdefined( var_3[var_11 - 1]["script_noteworthy"] ) && isdefined( var_13.script_noteworthy ) )
+            var_3[var_11 - 1]["script_noteworthy"] = var_13.script_noteworthy;
 
-        if ( !isdefined( var_3[var_11 - 1]["script_linkname"] ) && isdefined( var_13._ID920 ) )
-            var_3[var_11 - 1]["script_linkname"] = var_13._ID920;
+        if ( !isdefined( var_3[var_11 - 1]["script_linkname"] ) && isdefined( var_13.script_linkname ) )
+            var_3[var_11 - 1]["script_linkname"] = var_13.script_linkname;
 
-        if ( !isdefined( var_13._ID1191 ) )
+        if ( !isdefined( var_13.target ) )
             break;
 
-        var_4 = var_13._ID1191;
+        var_4 = var_13.target;
     }
 
     if ( isdefined( self._ID31388 ) && self._ID31388 == "use_last_node_angles" && isdefined( var_3[var_11]["angles"] ) )
@@ -856,10 +856,10 @@ _ID7353()
     if ( !isdefined( self ) )
         return;
 
-    if ( !isdefined( self._ID922 ) )
+    if ( !isdefined( self.script_noteworthy ) )
         return;
 
-    switch ( self._ID922 )
+    switch ( self.script_noteworthy )
     {
         case "delete_on_goal":
             if ( isdefined( self._ID22746 ) )

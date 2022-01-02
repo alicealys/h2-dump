@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     self._ID10423 = "stand";
     animscripts\utility::_ID39672();
@@ -15,7 +15,7 @@ _ID616()
     self._ID26203 = ::_ID37387;
     self._ID9813 = %technical_turret_death;
     thread technical_updatemovingidle();
-    thread animscripts\saw\common::_ID616( var_0 );
+    thread animscripts\saw\common::main( var_0 );
 }
 
 _ID37387()
@@ -27,18 +27,18 @@ _ID37387()
 technical_updatemovingidle()
 {
     self endon( "death" );
-    var_0 = self._ID740;
+    var_0 = self.origin;
     waitframe;
     self setanimknoblimitedrestart( %h2_technical_turret_movement_idle );
 
     for (;;)
     {
-        if ( distancesquared( self._ID740, var_0 ) < 1 )
+        if ( distancesquared( self.origin, var_0 ) < 1 )
             self setanim( %additive_technical_idle, 0, 0.1 );
         else
             self setanim( %additive_technical_idle, 1, 0.1 );
 
-        var_0 = self._ID740;
+        var_0 = self.origin;
         waittillframeend;
     }
 }

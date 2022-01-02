@@ -1,22 +1,22 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    animscripts\init::_ID616();
+    animscripts\init::main();
     _ID7634();
 }
 #using_animtree("generic_human");
 
 _ID7634()
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self._ID10998 = 1;
     self._ID11025 = 1;
     self._ID24727 = 1;
     self._ID2832 = 1;
     self orientmode( "face default" );
-    self._ID199 = "no_cover";
+    self.combatmode = "no_cover";
     self pushplayer( 0 );
     self._ID7._ID29139 = 1;
 
@@ -56,18 +56,18 @@ _ID7634()
     {
         self._ID3189 = self._ID7680;
         _ID3596( self._ID7680 );
-        self._ID38 = "noncombat";
+        self.alertlevel = "noncombat";
         _ID36148();
     }
     else
     {
         self._ID3189 = "default_civilian";
-        self._ID38 = "alert";
+        self.alertlevel = "alert";
         _ID36103( 0 );
     }
 
     thread _ID7419();
-    self._ID309 = 0;
+    self.dropweapon = 0;
     animscripts\shared::_ID12142();
     self._ID30739 = 0;
 }
@@ -95,7 +95,7 @@ _ID10630()
     {
         self detach( self._ID3578, self._ID3579 );
         var_0 = spawn( "script_model", self gettagorigin( self._ID3579 ) );
-        var_0._ID65 = self gettagangles( self._ID3579 );
+        var_0.angles = self gettagangles( self._ID3579 );
         var_0 setmodel( self._ID3578 );
         var_0 physicslaunchclient();
         var_0 thread _ID40988();
@@ -135,7 +135,7 @@ _ID19866()
 
 _ID36148()
 {
-    self._ID1230 = 0.2;
+    self.turnrate = 0.2;
 
     if ( isdefined( self._ID7680 ) )
     {
@@ -177,7 +177,7 @@ _ID36103( var_0 )
     animscripts\move::_ID7915();
     self._ID26359 = undefined;
     _ID42407::_ID12549();
-    self._ID1230 = 0.3;
+    self.turnrate = 0.3;
     self._ID46224 = randomint( 3 ) < 1;
 
     if ( isdefined( self._ID14738 ) )
@@ -198,7 +198,7 @@ _ID36103( var_0 )
         self._ID30385 = level._ID30895["default_civilian"]["run_hunched_weights"];
     }
 
-    if ( level._ID912 != "ending" )
+    if ( level.script != "ending" )
     {
         self._ID24409 = undefined;
         animscripts\move::_ID32598( %h2_civ_crowd_dodge_run_left, %h2_civ_crowd_dodge_run_right );
@@ -209,10 +209,10 @@ _ID36103( var_0 )
     self._ID41227 = self._ID30386;
     self._ID41226 = self._ID30385;
 
-    if ( level._ID912 != "ending" )
+    if ( level.script != "ending" )
         self._ID9575 = animscripts\civilian\civilian_move::_ID48313;
 
-    if ( self._ID675 != "stop" && var_0 )
+    if ( self.movemode != "stop" && var_0 )
         animscripts\move::_ID29843( 0 );
 }
 
@@ -220,11 +220,11 @@ _ID7419()
 {
     self endon( "death" );
     self endon( "disable_combat_state_check" );
-    self._ID50211 = self._ID39 > 1;
+    self._ID50211 = self.alertlevelint > 1;
 
     for (;;)
     {
-        var_0 = self._ID39 > 1;
+        var_0 = self.alertlevelint > 1;
 
         if ( self._ID50211 && !var_0 )
             _ID36148();

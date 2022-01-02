@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     if ( getdvar( "scr_elevator_disabled" ) == "1" )
         return;
@@ -300,7 +300,7 @@ _ID12354( var_0 )
 _ID12349()
 {
     var_0 = _ID15775();
-    var_1 = var_0._ID740;
+    var_1 = var_0.origin;
     var_2 = 1;
 
     foreach ( var_6, var_4 in _ID15888() )
@@ -392,23 +392,23 @@ _ID12358( var_0 )
     self notify( "elevator_moving" );
     self endon( "elevator_moving" );
     var_1 = _ID15775();
-    var_2 = self._ID12279["floor" + var_0 + "_pos"] - var_1._ID740;
+    var_2 = self._ID12279["floor" + var_0 + "_pos"] - var_1.origin;
     var_3 = level._ID12373;
-    var_4 = abs( distance( self._ID12279["floor" + var_0 + "_pos"], var_1._ID740 ) );
+    var_4 = abs( distance( self._ID12279["floor" + var_0 + "_pos"], var_1.origin ) );
     var_5 = var_4 / var_3;
-    var_1 moveto( var_1._ID740 + var_2, var_5, var_5 * level._ID12333, var_5 * level._ID12346 );
+    var_1 moveto( var_1.origin + var_2, var_5, var_5 * level._ID12333, var_5 * level._ID12346 );
 
     foreach ( var_7 in _ID15769() )
     {
-        var_8 = var_7._ID740 + var_2;
+        var_8 = var_7.origin + var_2;
 
-        if ( !issubstr( var_7._ID170, "trigger_" ) )
+        if ( !issubstr( var_7.classname, "trigger_" ) )
         {
             var_7 moveto( var_8, var_5, var_5 * level._ID12333, var_5 * level._ID12346 );
             continue;
         }
 
-        var_7._ID740 = var_8;
+        var_7.origin = var_8;
     }
 
     _ID41107( var_1, self._ID12279["floor" + var_0 + "_pos"] );
@@ -424,9 +424,9 @@ _ID8147()
     var_1 = _ID15779();
     var_2 = _ID15775();
     var_3 = _ID15770();
-    var_4 = ( var_3[0], var_3[1], var_2._ID740[2] );
+    var_4 = ( var_3[0], var_3[1], var_2.origin[2] );
     var_5 = level._ID12353;
-    var_6 = abs( distance( var_0._ID740, var_4 ) );
+    var_6 = abs( distance( var_0.origin, var_4 ) );
     var_7 = var_6 / var_5;
     var_0 moveto( var_4, var_7, var_7 * 0.1, var_7 * 0.25 );
     var_1 moveto( var_4, var_7, var_7 * 0.1, var_7 * 0.25 );
@@ -443,8 +443,8 @@ _ID25878()
     var_2 = _ID15775();
     var_3 = _ID15774();
     var_4 = _ID15780();
-    var_5 = ( var_3[0], var_3[1], var_2._ID740[2] );
-    var_6 = ( var_4[0], var_4[1], var_2._ID740[2] );
+    var_5 = ( var_3[0], var_3[1], var_2.origin[2] );
+    var_6 = ( var_4[0], var_4[1], var_2.origin[2] );
     var_7 = level._ID12353;
     var_8 = abs( distance( var_5, var_6 ) * 0.5 );
     var_9 = var_8 / var_7 * 0.5;
@@ -499,12 +499,12 @@ _ID6221()
 
     foreach ( var_4 in var_0 )
     {
-        var_5 = getent( var_4._ID1191, "targetname" );
+        var_5 = getent( var_4.target, "targetname" );
         var_6 = [];
-        var_6[0] = min( var_4._ID740[0], var_5._ID740[0] );
-        var_6[1] = max( var_4._ID740[0], var_5._ID740[0] );
-        var_6[2] = min( var_4._ID740[1], var_5._ID740[1] );
-        var_6[3] = max( var_4._ID740[1], var_5._ID740[1] );
+        var_6[0] = min( var_4.origin[0], var_5.origin[0] );
+        var_6[1] = max( var_4.origin[0], var_5.origin[0] );
+        var_6[2] = min( var_4.origin[1], var_5.origin[1] );
+        var_6[3] = max( var_4.origin[1], var_5.origin[1] );
         var_7 = spawnstruct();
         var_7._ID12279["id"] = level._ID12382.size;
         var_7._ID12279["housing"] = [];
@@ -516,26 +516,26 @@ _ID6221()
             {
                 var_7._ID12279["housing"]["mainframe"][var_7._ID12279["housing"]["mainframe"].size] = var_9;
 
-                if ( var_9._ID170 == "script_model" )
+                if ( var_9.classname == "script_model" )
                     continue;
 
-                if ( var_9._ID172 == "light" )
+                if ( var_9.code_classname == "light" )
                     continue;
 
-                var_10 = getent( var_9._ID1191, "targetname" );
+                var_10 = getent( var_9.target, "targetname" );
                 var_7._ID12279["housing"]["left_door"] = var_10;
-                var_7._ID12279["housing"]["left_door_opened_pos"] = var_10._ID740;
-                var_11 = getent( var_10._ID1191, "targetname" );
+                var_7._ID12279["housing"]["left_door_opened_pos"] = var_10.origin;
+                var_11 = getent( var_10.target, "targetname" );
                 var_7._ID12279["housing"]["right_door"] = var_11;
-                var_7._ID12279["housing"]["right_door_opened_pos"] = var_11._ID740;
-                var_12 = ( var_10._ID740 - var_11._ID740 ) * ( 0.5, 0.5, 0.5 ) + var_11._ID740;
+                var_7._ID12279["housing"]["right_door_opened_pos"] = var_11.origin;
+                var_12 = ( var_10.origin - var_11.origin ) * ( 0.5, 0.5, 0.5 ) + var_11.origin;
                 var_7._ID12279["housing"]["door_closed_pos"] = var_12;
-                var_13 = getent( var_11._ID1191, "targetname" );
+                var_13 = getent( var_11.target, "targetname" );
                 var_7._ID12279["housing"]["door_trigger"] = var_13;
-                var_14 = getent( var_13._ID1191, "targetname" );
+                var_14 = getent( var_13.target, "targetname" );
                 var_7._ID12279["housing"]["inside_trigger"] = var_14;
                 var_14 _ID22810();
-                var_14._ID24311 = spawn( "trigger_radius", var_9._ID740, 0, 64, 128 );
+                var_14._ID24311 = spawn( "trigger_radius", var_9.origin, 0, 64, 128 );
             }
         }
 
@@ -545,26 +545,26 @@ _ID6221()
         {
             if ( var_17 _ID20772( var_6 ) )
             {
-                var_18 = isdefined( var_17._ID922 ) && var_17._ID922 == "closed_for_lighting";
+                var_18 = isdefined( var_17.script_noteworthy ) && var_17.script_noteworthy == "closed_for_lighting";
                 var_19 = var_7._ID12279["outer_doorset"].size;
                 var_7._ID12279["outer_doorset"][var_19] = [];
-                var_7._ID12279["outer_doorset"][var_19]["door_closed_pos"] = var_17._ID740;
-                var_20 = getent( var_17._ID1191, "targetname" );
+                var_7._ID12279["outer_doorset"][var_19]["door_closed_pos"] = var_17.origin;
+                var_20 = getent( var_17.target, "targetname" );
                 var_7._ID12279["outer_doorset"][var_19]["left_door"] = var_20;
-                var_7._ID12279["outer_doorset"][var_19]["left_door_opened_pos"] = var_20._ID740;
-                var_21 = getent( var_20._ID1191, "targetname" );
+                var_7._ID12279["outer_doorset"][var_19]["left_door_opened_pos"] = var_20.origin;
+                var_21 = getent( var_20.target, "targetname" );
                 var_7._ID12279["outer_doorset"][var_19]["right_door"] = var_21;
-                var_7._ID12279["outer_doorset"][var_19]["right_door_opened_pos"] = var_21._ID740;
+                var_7._ID12279["outer_doorset"][var_19]["right_door_opened_pos"] = var_21.origin;
 
                 if ( var_18 )
                 {
-                    var_22 = var_17._ID740 - var_20._ID740;
-                    var_17._ID740 = var_20._ID740;
-                    var_20._ID740 = var_20._ID740 + var_22;
-                    var_21._ID740 = var_21._ID740 - var_22;
-                    var_7._ID12279["outer_doorset"][var_19]["door_closed_pos"] = var_17._ID740;
-                    var_7._ID12279["outer_doorset"][var_19]["left_door_opened_pos"] = var_20._ID740;
-                    var_7._ID12279["outer_doorset"][var_19]["right_door_opened_pos"] = var_21._ID740;
+                    var_22 = var_17.origin - var_20.origin;
+                    var_17.origin = var_20.origin;
+                    var_20.origin = var_20.origin + var_22;
+                    var_21.origin = var_21.origin - var_22;
+                    var_7._ID12279["outer_doorset"][var_19]["door_closed_pos"] = var_17.origin;
+                    var_7._ID12279["outer_doorset"][var_19]["left_door_opened_pos"] = var_20.origin;
+                    var_7._ID12279["outer_doorset"][var_19]["right_door_opened_pos"] = var_21.origin;
                 }
             }
         }
@@ -599,10 +599,10 @@ _ID6221()
         foreach ( var_24, var_33 in var_7._ID12279["outer_doorset"] )
         {
             var_34 = var_7 _ID15775();
-            var_31 = ( var_34._ID740[0], var_34._ID740[1], var_33["door_closed_pos"][2] );
+            var_31 = ( var_34.origin[0], var_34.origin[1], var_33["door_closed_pos"][2] );
             var_7._ID12279["floor" + var_24 + "_pos"] = var_31;
 
-            if ( var_34._ID740 == var_31 )
+            if ( var_34.origin == var_31 )
             {
                 var_7._ID12279["initial_floor"] = var_24;
                 var_7._ID12279["current_floor"] = var_24;
@@ -641,8 +641,8 @@ _ID6208()
     foreach ( var_1 in level._ID12343 )
     {
         var_1._ID12279 = [];
-        var_2 = ( 0, 0, var_1._ID740[2] );
-        var_3 = ( var_1._ID740[0], var_1._ID740[1], 0 );
+        var_2 = ( 0, 0, var_1.origin[2] );
+        var_3 = ( var_1.origin[0], var_1.origin[1], 0 );
         var_4 = [];
 
         foreach ( var_12, var_6 in level._ID12382 )
@@ -664,7 +664,7 @@ _ID6208()
         }
 
         var_1 _ID22810();
-        var_1._ID24311 = spawn( "trigger_radius", var_1._ID740 + ( 0, 0, -32 ), 0, 32, 64 );
+        var_1._ID24311 = spawn( "trigger_radius", var_1.origin + ( 0, 0, -32 ), 0, 32, 64 );
     }
 }
 
@@ -683,13 +683,13 @@ _ID33091()
             continue;
         }
 
-        var_2 thread _ID42237::_ID44574( level._ID794, &"ELEVATOR_USE_HINT", &"ELEVATOR_USE_HINT_PC", "trigger" );
+        var_2 thread _ID42237::_ID44574( level.player, &"ELEVATOR_USE_HINT", &"ELEVATOR_USE_HINT_PC", "trigger" );
     }
 
     foreach ( var_7 in level._ID12343 )
     {
         var_7 setcursorhint( "HINT_NOICON" );
-        var_7 thread _ID42237::_ID44574( level._ID794, &"ELEVATOR_CALL_HINT", &"ELEVATOR_CALL_HINT_PC", "trigger" );
+        var_7 thread _ID42237::_ID44574( level.player, &"ELEVATOR_CALL_HINT", &"ELEVATOR_CALL_HINT_PC", "trigger" );
     }
 }
 
@@ -717,10 +717,10 @@ _ID12546()
     if ( !self._ID12560 )
     {
         self._ID12560 = 1;
-        self._ID740 = self._ID740 + ( 0, 0, 10000 );
+        self.origin = self.origin + ( 0, 0, 10000 );
 
         if ( isdefined( self._ID24311 ) )
-            self._ID24311._ID740 = self._ID24311._ID740 + ( 0, 0, 10000 );
+            self._ID24311.origin = self._ID24311.origin + ( 0, 0, 10000 );
     }
 }
 
@@ -737,10 +737,10 @@ _ID10984()
     self endon( "disable_trigger" );
     self._ID12560 = 0;
     wait 1.5;
-    self._ID740 = self._ID740 + ( 0, 0, -10000 );
+    self.origin = self.origin + ( 0, 0, -10000 );
 
     if ( isdefined( self._ID24311 ) )
-        self._ID24311._ID740 = self._ID24311._ID740 + ( 0, 0, -10000 );
+        self._ID24311.origin = self._ID24311.origin + ( 0, 0, -10000 );
 }
 
 _ID15887( var_0 )
@@ -814,7 +814,7 @@ _ID15775()
 
     foreach ( var_3 in var_0 )
     {
-        if ( var_3._ID170 != "script_model" && var_3._ID172 != "light" )
+        if ( var_3.classname != "script_model" && var_3.code_classname != "light" )
             var_1 = var_3;
     }
 
@@ -828,7 +828,7 @@ _ID15776()
 
     foreach ( var_3 in var_0 )
     {
-        if ( var_3._ID170 == "script_model" )
+        if ( var_3.classname == "script_model" )
             var_1[var_1.size] = var_3;
     }
 
@@ -842,7 +842,7 @@ _ID15778()
 
     foreach ( var_3 in var_0 )
     {
-        if ( var_3._ID172 == "light" )
+        if ( var_3.code_classname == "light" )
             var_1[var_1.size] = var_3;
     }
 
@@ -856,7 +856,7 @@ _ID15777()
 
     foreach ( var_3 in var_0 )
     {
-        if ( isdefined( var_3._ID922 ) && var_3._ID922 == "play_musak" )
+        if ( isdefined( var_3.script_noteworthy ) && var_3.script_noteworthy == "play_musak" )
             var_1 = var_3;
     }
 
@@ -919,8 +919,8 @@ _ID41107( var_0, var_1, var_2, var_3 )
 
     for (;;)
     {
-        var_4 = var_0._ID740;
-        var_5 = var_2._ID740;
+        var_4 = var_0.origin;
+        var_5 = var_2.origin;
 
         if ( var_4 == var_1 && var_5 == var_3 )
             break;
@@ -931,8 +931,8 @@ _ID41107( var_0, var_1, var_2, var_3 )
 
 _ID20772( var_0 )
 {
-    var_1 = self._ID740[0];
-    var_2 = self._ID740[1];
+    var_1 = self.origin[0];
+    var_2 = self.origin[1];
     var_3 = var_0[0];
     var_4 = var_0[1];
     var_5 = var_0[2];
@@ -942,8 +942,8 @@ _ID20772( var_0 )
 
 _ID20774( var_0 )
 {
-    var_1 = self._ID740[0];
-    var_2 = self._ID740[1];
+    var_1 = self.origin[0];
+    var_2 = self.origin[1];
     var_3 = var_0[0];
     var_4 = var_0[1];
     var_5 = var_0[2];
@@ -1006,7 +1006,7 @@ _ID12345()
                 foreach ( var_15, var_13 in var_5 )
                 {
                     var_11++;
-                    var_14 = var_9._ID740 + ( 0, 0, var_11 * -4 );
+                    var_14 = var_9.origin + ( 0, 0, var_11 * -4 );
                 }
             }
         }

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID46648();
     _ID54708();
@@ -130,33 +130,33 @@ _ID53664( var_0 )
     level._ID52491[var_0]._ID49495 = 1;
     level._ID52491[var_0]._ID44994 = 1.5;
     level._ID52491[var_0]._ID51848 = 1;
-    level._ID52491[var_0]._ID669 = "sentry_grenade_launcher_upgrade";
+    level._ID52491[var_0].model = "sentry_grenade_launcher_upgrade";
     level._ID52491[var_0]._ID48021 = "sentry_grenade_launcher_upgrade_destroyed";
     level._ID52491[var_0]._ID51382 = "sentry_grenade_launcher_upgrade_folded";
     level._ID52491[var_0]._ID53081 = "sentry_grenade_launcher_upgrade_folded_obj";
     level._ID52491[var_0]._ID43219 = "sentry_grenade_launcher_upgrade_obj";
     level._ID52491[var_0]._ID46548 = "sentry_grenade_launcher_upgrade_obj_red";
-    level._ID52491[var_0]._ID486 = 350;
+    level._ID52491[var_0].health = 350;
 
     if ( _ID42237::_ID20913() && !_ID20614() )
     {
         level._ID52491[var_0]._ID53249 = 15;
         level._ID52491[var_0]._ID1312 = "sentry_gun";
-        level._ID52491[var_0]._ID1193 = "sentry_gun";
+        level._ID52491[var_0].targetname = "sentry_gun";
     }
     else if ( _ID20614() )
     {
         level._ID52491[var_0]._ID2929 = 50;
         level._ID52491[var_0]._ID53249 = 8;
         level._ID52491[var_0]._ID1312 = "sentry_gun_so";
-        level._ID52491[var_0]._ID1193 = "sentry_gun_so";
-        level._ID52491[var_0]._ID486 = 1200;
+        level._ID52491[var_0].targetname = "sentry_gun_so";
+        level._ID52491[var_0].health = 1200;
     }
     else
     {
         level._ID52491[var_0]._ID53249 = 5;
         level._ID52491[var_0]._ID1312 = "sentry_gun_mp";
-        level._ID52491[var_0]._ID1193 = "sentry_gun_mp";
+        level._ID52491[var_0].targetname = "sentry_gun_mp";
     }
 }
 
@@ -168,25 +168,25 @@ _ID52439( var_0 )
     level._ID52491[var_0]._ID49495 = 1;
     level._ID52491[var_0]._ID44994 = 1.5;
     level._ID52491[var_0]._ID51848 = 1;
-    level._ID52491[var_0]._ID669 = "sentry_grenade_launcher";
+    level._ID52491[var_0].model = "sentry_grenade_launcher";
     level._ID52491[var_0]._ID48021 = "sentry_grenade_launcher_destroyed";
     level._ID52491[var_0]._ID51382 = "sentry_grenade_launcher_folded";
     level._ID52491[var_0]._ID53081 = "sentry_grenade_launcher_folded_obj";
     level._ID52491[var_0]._ID43219 = "sentry_grenade_launcher_obj";
     level._ID52491[var_0]._ID46548 = "sentry_grenade_launcher_obj_red";
-    level._ID52491[var_0]._ID486 = int( 175.0 );
+    level._ID52491[var_0].health = int( 175.0 );
 
     if ( _ID42237::_ID20913() )
     {
         level._ID52491[var_0]._ID53249 = 15;
         level._ID52491[var_0]._ID1312 = "sentry_gun_weak";
-        level._ID52491[var_0]._ID1193 = "sentry_gun_weak";
+        level._ID52491[var_0].targetname = "sentry_gun_weak";
     }
     else
     {
         level._ID52491[var_0]._ID53249 = 5;
         level._ID52491[var_0]._ID1312 = "sentry_gun_mp";
-        level._ID52491[var_0]._ID1193 = "sentry_gun_mp";
+        level._ID52491[var_0].targetname = "sentry_gun_mp";
     }
 }
 #using_animtree("sentry_gun");
@@ -200,20 +200,20 @@ _ID49661( var_0 )
     level._ID52491[var_0]._ID49495 = 0.5;
     level._ID52491[var_0]._ID44994 = 1.3;
     level._ID52491[var_0]._ID51848 = 0;
-    level._ID52491[var_0]._ID669 = "sentry_minigun";
+    level._ID52491[var_0].model = "sentry_minigun";
     level._ID52491[var_0]._ID48021 = "sentry_minigun_destroyed";
     level._ID52491[var_0]._ID51382 = "sentry_minigun_folded";
     level._ID52491[var_0]._ID53081 = "sentry_minigun_folded_obj";
     level._ID52491[var_0]._ID43219 = "sentry_minigun_obj";
     level._ID52491[var_0]._ID46548 = "sentry_minigun_obj_red";
-    level._ID52491[var_0]._ID486 = 190;
+    level._ID52491[var_0].health = 190;
 
     if ( _ID42237::_ID20913() && !_ID20614() )
     {
         level._ID52491[var_0]._ID53249 = 15;
         level._ID52491[var_0]._ID3040 = %minigun_spin_loop;
         level._ID52491[var_0]._ID1312 = "sentry_minigun";
-        level._ID52491[var_0]._ID1193 = "sentry_minigun";
+        level._ID52491[var_0].targetname = "sentry_minigun";
         level._ID52491[var_0].anim_fire = %h2_invasion_sentry_minigun_fire_loop;
     }
     else if ( _ID20614() )
@@ -222,14 +222,14 @@ _ID49661( var_0 )
         level._ID52491[var_0]._ID53249 = 8;
         level._ID52491[var_0]._ID3040 = %minigun_spin_loop;
         level._ID52491[var_0]._ID1312 = "sentry_minigun_so";
-        level._ID52491[var_0]._ID1193 = "sentry_minigun_so";
-        level._ID52491[var_0]._ID486 = 800;
+        level._ID52491[var_0].targetname = "sentry_minigun_so";
+        level._ID52491[var_0].health = 800;
     }
     else
     {
         level._ID52491[var_0]._ID53249 = 5;
         level._ID52491[var_0]._ID1312 = "sentry_minigun_mp";
-        level._ID52491[var_0]._ID1193 = "sentry_minigun_mp";
+        level._ID52491[var_0].targetname = "sentry_minigun_mp";
     }
 }
 
@@ -242,26 +242,26 @@ _ID54395( var_0 )
     level._ID52491[var_0]._ID49495 = 1.0;
     level._ID52491[var_0]._ID44994 = 2.6;
     level._ID52491[var_0]._ID51848 = 0;
-    level._ID52491[var_0]._ID669 = "sentry_minigun_weak";
+    level._ID52491[var_0].model = "sentry_minigun_weak";
     level._ID52491[var_0]._ID48021 = "sentry_minigun_weak_destroyed";
     level._ID52491[var_0]._ID51382 = "sentry_minigun_weak_folded";
     level._ID52491[var_0]._ID53081 = "sentry_minigun_weak_folded_obj";
     level._ID52491[var_0]._ID43219 = "sentry_minigun_weak_obj";
     level._ID52491[var_0]._ID46548 = "sentry_minigun_weak_obj_red";
-    level._ID52491[var_0]._ID486 = int( 95.0 );
+    level._ID52491[var_0].health = int( 95.0 );
 
     if ( _ID42237::_ID20913() )
     {
         level._ID52491[var_0]._ID53249 = 15;
         level._ID52491[var_0]._ID3040 = %minigun_spin_loop;
         level._ID52491[var_0]._ID1312 = "sentry_minigun_weak";
-        level._ID52491[var_0]._ID1193 = "sentry_minigun_weak";
+        level._ID52491[var_0].targetname = "sentry_minigun_weak";
     }
     else
     {
         level._ID52491[var_0]._ID53249 = 5;
         level._ID52491[var_0]._ID1312 = "sentry_minigun_mp";
-        level._ID52491[var_0]._ID1193 = "sentry_minigun_mp";
+        level._ID52491[var_0].targetname = "sentry_minigun_mp";
     }
 }
 
@@ -274,22 +274,22 @@ _ID46352( var_0 )
     level._ID52491[var_0]._ID49495 = 0.5;
     level._ID52491[var_0]._ID44994 = 1.5;
     level._ID52491[var_0]._ID51848 = 1;
-    level._ID52491[var_0]._ID669 = "weapon_sentry_smg";
+    level._ID52491[var_0].model = "weapon_sentry_smg";
     level._ID52491[var_0]._ID48021 = "weapon_sentry_smg_destroyed";
     level._ID52491[var_0]._ID51382 = "weapon_sentry_smg_animated";
     level._ID52491[var_0]._ID53081 = "weapon_sentry_smg_animated_obj";
     level._ID52491[var_0]._ID43219 = "weapon_sentry_smg_obj";
     level._ID52491[var_0]._ID46548 = "weapon_sentry_smg_obj_red";
-    level._ID52491[var_0]._ID486 = 350;
+    level._ID52491[var_0].health = 350;
     level._ID52491[var_0]._ID47091 = 1;
     level._ID52491[var_0]._ID53249 = 0;
     level._ID52491[var_0]._ID1312 = "sentry_smg";
-    level._ID52491[var_0]._ID1193 = "sentry_smg";
+    level._ID52491[var_0].targetname = "sentry_smg";
 }
 
 _ID46055( var_0 )
 {
-    self setmodel( self._ID669 );
+    self setmodel( self.model );
     self._ID31951 = var_0;
     self setcursorhint( "HINT_NOICON" );
     self sethintstring( &"SENTRY_PICKUP" );
@@ -366,7 +366,7 @@ _ID52392( var_0, var_1, var_2 )
             thread _ID53941();
     }
 
-    self._ID486 = level._ID52491[var_1]._ID486;
+    self.health = level._ID52491[var_1].health;
     _ID51443();
     thread _ID46716();
     thread _ID47142();
@@ -384,7 +384,7 @@ _ID52392( var_0, var_1, var_2 )
     if ( !isdefined( var_2 ) )
     {
         if ( _ID42237::_ID20913() )
-            var_2 = level._ID794;
+            var_2 = level.player;
     }
 
     _ID45633( var_2 );
@@ -431,8 +431,8 @@ _ID48300()
 
     if ( !_ID42237::_ID20913() && isdefined( var_0 ) && isplayernumber( var_0 ) )
     {
-        if ( isdefined( self._ID743 ) )
-            self._ID743 thread [[ level._ID22105 ]]( "destroy_sentry", "sentry_status" );
+        if ( isdefined( self.owner ) )
+            self.owner thread [[ level._ID22105 ]]( "destroy_sentry", "sentry_status" );
 
         var_0 thread [[ level._ID25857 ]]( "kill" );
     }
@@ -443,7 +443,7 @@ _ID48300()
     self setsentrycarrier( undefined );
     self._ID7090 = undefined;
     self setcandamage( 1 );
-    self._ID511 = 1;
+    self.ignoreme = 1;
     self makeunusable();
     self setsentryowner( undefined );
     self setturretminimapvisible( 0 );
@@ -525,7 +525,7 @@ _ID50088()
     level endon( "game_ended" );
     self endon( "death" );
 
-    if ( self._ID486 <= 0 )
+    if ( self.health <= 0 )
         return;
 
     self makeusable();
@@ -563,7 +563,7 @@ _ID50088()
         self setsentrycarrier( var_0 );
 
     self._ID7090 = var_0;
-    self._ID511 = 1;
+    self.ignoreme = 1;
     self setcandamage( 0 );
 
     if ( isdefined( self._ID7090 ) && isplayernumber( self._ID7090 ) )
@@ -588,8 +588,8 @@ h2_sentry_pickup( var_0 )
     var_0 freezecontrols( 1 );
     setsaveddvar( "vehEnablePlayerAttachCollision", 1 );
     var_0 disableweapons( 1, 200, 0.2 );
-    var_0._ID49929 = _ID42407::_ID35028( "carry_sentry_player", var_0._ID740, var_0 getplayerangles() );
-    self.sentry_dummy = _ID42407::_ID35028( "carry_sentry", self._ID740, self._ID65 );
+    var_0._ID49929 = _ID42407::_ID35028( "carry_sentry_player", var_0.origin, var_0 getplayerangles() );
+    self.sentry_dummy = _ID42407::_ID35028( "carry_sentry", self.origin, self.angles );
     var_1 = [ var_0._ID49929, self.sentry_dummy ];
     self.model_list = var_1;
 
@@ -600,8 +600,8 @@ h2_sentry_pickup( var_0 )
     }
 
     var_5 = "carry_sentry_in_" + h2_sentry_carry_get_relative_position( var_0 );
-    var_6 = spawn( "script_origin", self._ID740 );
-    var_6._ID65 = self._ID65;
+    var_6 = spawn( "script_origin", self.origin );
+    var_6.angles = self.angles;
 
     if ( var_0 _meth_85cf() )
     {
@@ -632,14 +632,14 @@ h2_sentry_pickup( var_0 )
         var_0._ID49929 thread _ID42259::_ID3040( var_1, "carry_sentry_idle" );
         var_0 unlink();
 
-        if ( !level._ID794 isonground() )
+        if ( !level.player isonground() )
         {
-            var_11 = level._ID794._ID740 + ( 0, 0, 40 );
-            var_12 = level._ID794._ID740 + ( 0, 0, -100 );
+            var_11 = level.player.origin + ( 0, 0, 40 );
+            var_12 = level.player.origin + ( 0, 0, -100 );
             var_13 = playerphysicstrace( var_11, var_12, self );
 
             if ( var_13 != var_11 )
-                level._ID794 setorigin( var_13 - ( 0, 0, 0.5 ) );
+                level.player setorigin( var_13 - ( 0, 0, 0.5 ) );
         }
     }
     else
@@ -668,9 +668,9 @@ h2_sentry_pickup( var_0 )
 h2_sentry_carry_get_relative_position( var_0 )
 {
     var_1 = undefined;
-    var_2 = vectornormalize( _ID42407::_ID32530( self._ID740 - var_0._ID740, 0 ) );
-    var_3 = anglestoforward( self._ID65 );
-    var_4 = anglestoright( self._ID65 );
+    var_2 = vectornormalize( _ID42407::_ID32530( self.origin - var_0.origin, 0 ) );
+    var_3 = anglestoforward( self.angles );
+    var_4 = anglestoright( self.angles );
     var_5 = vectordot( var_2, var_3 );
     var_6 = vectordot( var_2, var_4 );
 
@@ -819,15 +819,15 @@ h2_sentry_drop( var_0 )
     setsaveddvar( "vehEnablePlayerAttachCollision", 1 );
     var_1 = self.model_list;
     self hide();
-    var_2 = spawn( "script_origin", self._ID740 );
-    var_2._ID65 = self._ID65;
-    var_3 = spawn( "script_origin", self._ID740 );
-    var_3._ID65 = self._ID65;
-    var_4 = level._ID794._ID740;
-    var_5 = getstartorigin( var_2._ID740, var_2._ID65, var_1[0] _ID42407::_ID16120( "carry_sentry_out" ) );
-    var_6 = getstartangles( var_2._ID740, var_2._ID65, var_1[0] _ID42407::_ID16120( "carry_sentry_out" ) );
+    var_2 = spawn( "script_origin", self.origin );
+    var_2.angles = self.angles;
+    var_3 = spawn( "script_origin", self.origin );
+    var_3.angles = self.angles;
+    var_4 = level.player.origin;
+    var_5 = getstartorigin( var_2.origin, var_2.angles, var_1[0] _ID42407::_ID16120( "carry_sentry_out" ) );
+    var_6 = getstartangles( var_2.origin, var_2.angles, var_1[0] _ID42407::_ID16120( "carry_sentry_out" ) );
     var_7 = spawn( "script_origin", var_5 );
-    var_7._ID65 = var_6;
+    var_7.angles = var_6;
 
     if ( var_0 _meth_85cf() )
     {
@@ -859,10 +859,10 @@ h2_sentry_drop( var_0 )
         var_14 = 0.25;
         var_15 = var_1[0] _ID42407::_ID16120( "carry_sentry_out" );
         wait(getanimlength( var_15 ) - var_14);
-        var_16 = spawn( "script_origin", var_3._ID740 + var_4 - var_13 );
-        var_16._ID65 = var_3._ID65;
+        var_16 = spawn( "script_origin", var_3.origin + var_4 - var_13 );
+        var_16.angles = var_3.angles;
         var_1[0] _ID42259::_ID46811( undefined, var_3, var_16, var_14 );
-        level._ID794 setorigin( var_4 - ( 0, 0, 1 ) );
+        level.player setorigin( var_4 - ( 0, 0, 1 ) );
         var_16 delete();
     }
     else
@@ -901,7 +901,7 @@ h2_sentry_monitor_player_damage()
         if ( !isalive( self ) )
             return;
 
-        if ( isdefined( var_1 ) && isdefined( var_1._ID172 ) && var_1._ID172 == "script_vehicle" )
+        if ( isdefined( var_1 ) && isdefined( var_1.code_classname ) && var_1.code_classname == "script_vehicle" )
             self kill( var_2, var_1 );
     }
 }
@@ -912,7 +912,7 @@ _ID51443()
         return;
 
     self._ID47291 = "" + gettime();
-    call [[ level._ID4709 ]]( self._ID47291, 0, self._ID740, 32, 128, self._ID1194, "neutral" );
+    call [[ level._ID4709 ]]( self._ID47291, 0, self.origin, 32, 128, self.team, "neutral" );
 }
 
 _ID45385()
@@ -964,8 +964,8 @@ _ID43430( var_0 )
     var_0 setsentrycarrier( undefined );
     var_1 = var_0._ID7090;
     var_0 setcandamage( 1 );
-    var_0._ID511 = 0;
-    thread _ID42237::_ID27077( "sentry_gun_plant", var_0._ID740 );
+    var_0.ignoreme = 0;
+    thread _ID42237::_ID27077( "sentry_gun_plant", var_0.origin );
 
     if ( var_0._ID31951 == "sentry_minigun" )
         var_0 h2_sentry_drop( var_1 );
@@ -974,8 +974,8 @@ _ID43430( var_0 )
 
     var_0._ID7090 = undefined;
     var_0 _ID54000();
-    var_0 setmodel( level._ID52491[var_0._ID31951]._ID669 );
-    var_0._ID1194 = self._ID1194;
+    var_0 setmodel( level._ID52491[var_0._ID31951].model );
+    var_0.team = self.team;
     var_0 _ID51443();
     var_0 setcontents( var_0._ID8548 );
     var_0 _ID45633( self );
@@ -1393,7 +1393,7 @@ _ID46716()
         wait(randomfloatrange( 3.5, 4.5 ));
 
         if ( self getmode() != "sentry_offline" )
-            thread _ID42237::_ID27077( "sentry_gun_beep", self._ID740 + ( 0, 0, 40 ) );
+            thread _ID42237::_ID27077( "sentry_gun_beep", self.origin + ( 0, 0, 40 ) );
     }
 }
 
@@ -1409,10 +1409,10 @@ _ID45591( var_0, var_1, var_2, var_3 )
     self._ID50877 = undefined;
 
     if ( !isdefined( var_1 ) )
-        var_1 = self._ID740;
+        var_1 = self.origin;
 
     if ( !isdefined( var_2 ) )
-        var_2 = self._ID65;
+        var_2 = self.angles;
 
     if ( !isdefined( var_3 ) )
         var_3 = 0;
@@ -1420,10 +1420,10 @@ _ID45591( var_0, var_1, var_2, var_3 )
     var_4 = spawnturret( "misc_turret", var_1, level._ID52491[var_0]._ID1312 );
     var_4 setmodel( level._ID52491[var_0]._ID43219 );
     var_4._ID1312 = level._ID52491[var_0]._ID1312;
-    var_4._ID1193 = level._ID52491[var_0]._ID1193;
+    var_4.targetname = level._ID52491[var_0].targetname;
     var_4._ID41698 = level._ID52491[var_0]._ID1312;
-    var_4._ID65 = var_2;
-    var_4._ID1194 = self._ID1194;
+    var_4.angles = var_2;
+    var_4.team = self.team;
     var_4._ID85 = self;
     var_4._ID31951 = var_0;
     var_4 maketurretinoperable();
@@ -1436,7 +1436,7 @@ _ID45591( var_0, var_1, var_2, var_3 )
     var_4 setsentrycarrier( self );
     var_4._ID7090 = self;
     var_4 setcandamage( 0 );
-    var_4._ID511 = 1;
+    var_4.ignoreme = 1;
 
     if ( !_ID42237::_ID20913() )
         var_4 _ID2136();
@@ -1465,7 +1465,7 @@ _ID45591( var_0, var_1, var_2, var_3 )
     self setcandamage( 1 );
     var_4 setsentrycarrier( undefined );
     var_4._ID7090 = undefined;
-    var_4._ID511 = 0;
+    var_4.ignoreme = 0;
 
     if ( _ID20618() )
     {
@@ -1571,9 +1571,9 @@ _ID48910( var_0, var_1 )
         _ID49874( var_0 );
     }
 
-    thread _ID42237::_ID27077( "sentry_gun_plant", var_0._ID740 );
-    var_0 setmodel( level._ID52491[var_0._ID31951]._ID669 );
-    var_0 _ID52392( self._ID1194, var_0._ID31951, self );
+    thread _ID42237::_ID27077( "sentry_gun_plant", var_0.origin );
+    var_0 setmodel( level._ID52491[var_0._ID31951].model );
+    var_0 _ID52392( self.team, var_0._ID31951, self );
     self notify( "sentry_placement_finished",  var_0  );
 
     if ( !var_1 )
@@ -1615,8 +1615,8 @@ _ID53436( var_0 )
     else
     {
         var_1 = self canplayerplacesentry();
-        var_0._ID740 = var_1["origin"];
-        var_0._ID65 = var_1["angles"];
+        var_0.origin = var_1["origin"];
+        var_0.angles = var_1["angles"];
         self._ID50960 = self isonground() && var_1["result"] && !var_1["stairs"] && !( isdefined( self.nosentry ) && self.nosentry == 1 );
         _ID49372( self._ID50960 );
 
@@ -1655,8 +1655,8 @@ _ID48171()
 
 _ID44557( var_0 )
 {
-    self._ID50189 = spawn( "script_model", self._ID740 );
-    self._ID50189._ID65 = self._ID65;
+    self._ID50189 = spawn( "script_model", self.origin );
+    self._ID50189.angles = self.angles;
     self._ID50189 setmodel( level._ID52491[var_0]._ID53081 );
 
     for (;;)
@@ -1671,7 +1671,7 @@ _ID44557( var_0 )
 
         if ( !_ID42237::_ID20913() )
         {
-            if ( var_1 != self._ID743 )
+            if ( var_1 != self.owner )
                 continue;
         }
 
@@ -1686,18 +1686,18 @@ _ID44557( var_0 )
 _ID46941()
 {
     self._ID18313 = 20000;
-    self._ID486 = self._ID486 + self._ID18313;
-    self._ID9497 = self._ID486;
+    self.health = self.health + self._ID18313;
+    self._ID9497 = self.health;
     var_0 = undefined;
     var_1 = undefined;
 
-    while ( self._ID486 > 0 )
+    while ( self.health > 0 )
     {
         self waittill( "damage",  var_2, var_0, var_3, var_4, var_1, var_5, var_6  );
 
         if ( !_ID42237::_ID20913() && isdefined( var_0 ) && isplayernumber( var_0 ) && var_0 _ID43679( self ) )
         {
-            self._ID486 = self._ID9497;
+            self.health = self._ID9497;
             return;
         }
 
@@ -1716,13 +1716,13 @@ _ID46941()
 
         if ( _ID43377( var_1, var_0 ) )
         {
-            self._ID486 = self._ID9497;
+            self.health = self._ID9497;
             self._ID6293 = self._ID6293 - var_2;
         }
         else
-            self._ID9497 = self._ID486;
+            self._ID9497 = self.health;
 
-        if ( self._ID486 < self._ID18313 )
+        if ( self.health < self._ID18313 )
             break;
     }
 
@@ -1793,8 +1793,8 @@ _ID49470()
 
 _ID51968()
 {
-    if ( !issentient( self ) && isdefined( self._ID743 ) && isdefined( self._ID743._ID1194 ) )
-        self call [[ level._ID22851 ]]( self._ID743._ID1194 );
+    if ( !issentient( self ) && isdefined( self.owner ) && isdefined( self.owner.team ) )
+        self call [[ level._ID22851 ]]( self.owner.team );
 
     self setmode( "sentry" );
     self._ID51839 = 1;
@@ -1843,16 +1843,16 @@ _ID53161()
     self setsentrycarrier( undefined );
     self._ID7090 = undefined;
     self setcandamage( 1 );
-    self._ID511 = 0;
+    self.ignoreme = 0;
 }
 
 _ID45633( var_0 )
 {
-    if ( isdefined( self._ID743 ) && self._ID743 == var_0 )
+    if ( isdefined( self.owner ) && self.owner == var_0 )
         return;
 
     var_0._ID52354 = self;
-    self._ID743 = var_0;
+    self.owner = var_0;
     self setsentryowner( var_0 );
     self setturretminimapvisible( 1 );
 }
@@ -1917,8 +1917,8 @@ _ID51177()
         var_1 = self._ID53701;
         var_2 = var_1 / var_0;
         var_3 = "Ammo: " + var_1 + "/" + var_0;
-        var_4 = level._ID52491[self._ID31951]._ID486;
-        var_5 = self._ID486 - self._ID18313;
+        var_4 = level._ID52491[self._ID31951].health;
+        var_5 = self.health - self._ID18313;
         var_6 = var_5 / var_4;
         var_7 = "Health: " + var_5 + "/" + var_4;
         wait 0.05;
@@ -1937,15 +1937,15 @@ _ID46823()
 {
     self endon( "death" );
     self endon( "deleted" );
-    self._ID743 _ID42237::_ID41068( "death", "disconnect" );
+    self.owner _ID42237::_ID41068( "death", "disconnect" );
 
-    if ( isdefined( self._ID743._ID26734 ) && self._ID743._ID26734 == self )
+    if ( isdefined( self.owner._ID26734 ) && self.owner._ID26734 == self )
     {
-        self._ID743._ID26734 = undefined;
+        self.owner._ID26734 = undefined;
         self setsentrycarrier( undefined );
         self._ID7090 = undefined;
         self setcandamage( 1 );
-        self._ID511 = 0;
+        self.ignoreme = 0;
         self notify( "death" );
     }
 }
@@ -1964,13 +1964,13 @@ _ID54532( var_0 )
     if ( !isdefined( self._ID778["team"] ) )
         return 0;
 
-    if ( !isdefined( var_0._ID1194 ) )
+    if ( !isdefined( var_0.team ) )
         return 0;
 
-    if ( !level._ID37358 && self == var_0._ID743 )
+    if ( !level._ID37358 && self == var_0.owner )
         return 0;
 
-    if ( level._ID37358 && self._ID778["team"] == var_0._ID1194 )
+    if ( level._ID37358 && self._ID778["team"] == var_0.team )
         return 0;
 
     return 1;
@@ -1987,10 +1987,10 @@ _ID43679( var_0 )
     if ( !level._ID37358 )
         return 0;
 
-    if ( self == var_0._ID743 )
+    if ( self == var_0.owner )
         return 0;
 
-    if ( self._ID1194 != var_0._ID1194 )
+    if ( self.team != var_0.team )
         return 0;
 
     return 1;
@@ -2022,7 +2022,7 @@ _ID46937()
     {
         level waittill( "emp_update" );
 
-        if ( level._ID37361[self._ID1194] )
+        if ( level._ID37361[self.team] )
         {
             thread _ID52693();
             thread _ID46322();

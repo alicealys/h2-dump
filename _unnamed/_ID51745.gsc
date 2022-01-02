@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_work_civ_male_a" );
     self attach( "head_work_civ_welder", "", 1 );

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     level._ID24830 = 1;
 
@@ -65,7 +65,7 @@ _ID521()
     _ID42237::_ID14400( "uav_collecting_stats" );
     _ID42237::_ID14400( "uav_enabled" );
     _ID42237::_ID14402( "uav_enabled" );
-    level._ID794 maps\_portal::portal_group_add_global_notify_wait( "player_is_controlling_UAV", "exiting_uav_control" );
+    level.player maps\_portal::portal_group_add_global_notify_wait( "player_is_controlling_UAV", "exiting_uav_control" );
 
     foreach ( var_1 in level._ID805 )
         var_1 _ID42407::_ID13024( "controlling_UAV" );
@@ -585,7 +585,7 @@ _ID53927()
 _ID46513()
 {
     level._ID49278 = _ID42313::_ID9200( "objective", 1.25 );
-    level._ID49278._ID196 = ( 0.8, 0.8, 0.8 );
+    level._ID49278.color = ( 0.8, 0.8, 0.8 );
     var_0 = -165;
 
     if ( _ID42407::_ID20618() )
@@ -602,8 +602,8 @@ _ID46513()
 _ID47117( var_0 )
 {
     level._ID49278 settext( "" );
-    level._ID49278._ID578 = var_0;
-    level._ID49278._ID408 = 0;
+    level._ID49278.label = var_0;
+    level._ID49278.foreground = 0;
 }
 
 _ID47277( var_0 )
@@ -616,7 +616,7 @@ _ID52336()
     if ( !isdefined( level._ID45535 ) )
         level._ID49278 fadeovertime( 0.25 );
 
-    level._ID49278._ID55 = 0;
+    level._ID49278.alpha = 0;
 }
 
 _ID47058()
@@ -640,10 +640,10 @@ _ID45202( var_0, var_1 )
 {
     level._ID48541 = _ID42313::_ID9200( "objective", 1.0 );
     level._ID48541 _ID42313::_ID32753( "CENTER", undefined, 0, -150 );
-    level._ID48541._ID578 = var_0;
+    level._ID48541.label = var_0;
     level._ID48541 setvalue( var_1 );
-    level._ID48541._ID196 = ( 0.6, 0.6, 0.6 );
-    level._ID48541._ID55 = 0.75;
+    level._ID48541.color = ( 0.6, 0.6, 0.6 );
+    level._ID48541.alpha = 0.75;
 }
 
 _ID53159( var_0 )
@@ -651,9 +651,9 @@ _ID53159( var_0 )
     level._ID48541 = _ID42313::_ID9200( "objective", 1.0 );
     level._ID48541 _ID42313::_ID32753( "CENTER", undefined, 0, -150 );
     level._ID48541 settext( var_0 );
-    level._ID48541._ID196 = ( 0.6, 0.6, 0.6 );
-    level._ID48541._ID55 = 0.75;
-    level._ID48541._ID408 = 0;
+    level._ID48541.color = ( 0.6, 0.6, 0.6 );
+    level._ID48541.alpha = 0.75;
+    level._ID48541.foreground = 0;
 }
 
 _ID46480()
@@ -664,7 +664,7 @@ _ID46480()
     if ( !isdefined( level._ID45535 ) )
         level._ID48541 fadeovertime( 0.25 );
 
-    level._ID48541._ID55 = 0;
+    level._ID48541.alpha = 0;
 }
 
 _ID51361()
@@ -731,8 +731,8 @@ _ID50930( var_0 )
     _ID42463::_ID10405( "abort_UAV_control" );
     var_0 _ID49347::_ID47192( 0.5 );
 
-    if ( isdefined( level._ID794._ID43494 ) )
-        level._ID794 _ID42407::_ID48929( level._ID794._ID43494 );
+    if ( isdefined( level.player._ID43494 ) )
+        level.player _ID42407::_ID48929( level.player._ID43494 );
 
     if ( isdefined( level._ID51882 ) && level._ID51882 )
         var_0 visionsetmissilecamforplayer( level._ID40576, 0.5 );
@@ -785,28 +785,28 @@ _ID47107( var_0 )
     setomnvar( "ui_predatordrone", level._ID49157 );
     _ID42475::_ID34575( "player_predator_use" );
     var_0._ID19183["screen_distort"] = newhudelem();
-    var_0._ID19183["screen_distort"]._ID1331 = 0;
-    var_0._ID19183["screen_distort"]._ID1339 = 0;
-    var_0._ID19183["screen_distort"]._ID44 = "left";
-    var_0._ID19183["screen_distort"]._ID45 = "top";
-    var_0._ID19183["screen_distort"]._ID499 = "fullscreen";
-    var_0._ID19183["screen_distort"]._ID1284 = "fullscreen";
+    var_0._ID19183["screen_distort"].x = 0;
+    var_0._ID19183["screen_distort"].y = 0;
+    var_0._ID19183["screen_distort"].alignx = "left";
+    var_0._ID19183["screen_distort"].aligny = "top";
+    var_0._ID19183["screen_distort"].horzalign = "fullscreen";
+    var_0._ID19183["screen_distort"].vertalign = "fullscreen";
     var_0._ID19183["screen_distort"] setshader( "h1_ac130_distort", 640, 480 );
-    var_0._ID19183["screen_distort"]._ID55 = 1.0;
-    var_0._ID19183["screen_distort"]._ID983 = 5;
+    var_0._ID19183["screen_distort"].alpha = 1.0;
+    var_0._ID19183["screen_distort"].sort = 5;
 
     if ( !isdefined( var_0._ID52526 ) )
     {
         var_0._ID52526 = var_0 _ID42313::_ID9200( "objective", 1 );
-        var_0._ID52526._ID1331 = 31;
-        var_0._ID52526._ID1339 = -15;
-        var_0._ID52526._ID44 = "left";
-        var_0._ID52526._ID45 = "bottom";
-        var_0._ID52526._ID499 = "left_adjustable";
-        var_0._ID52526._ID1284 = "bottom_adjustable";
-        var_0._ID52526._ID196 = ( 0.85, 0.85, 0.85 );
-        var_0._ID52526._ID55 = 0.75;
-        var_0._ID52526._ID493 = 1;
+        var_0._ID52526.x = 31;
+        var_0._ID52526.y = -15;
+        var_0._ID52526.alignx = "left";
+        var_0._ID52526.aligny = "bottom";
+        var_0._ID52526.horzalign = "left_adjustable";
+        var_0._ID52526.vertalign = "bottom_adjustable";
+        var_0._ID52526.color = ( 0.85, 0.85, 0.85 );
+        var_0._ID52526.alpha = 0.75;
+        var_0._ID52526.hidewheninmenu = 1;
     }
 
     var_1 = &"HELLFIRE_CANCEL_PROMPT";
@@ -834,7 +834,7 @@ _ID47107( var_0 )
 _ID52223()
 {
     setblur( 0, 0 );
-    level._ID794 stopshellshock();
+    level.player stopshellshock();
     level notify( "post_effects_disabled" );
 }
 
@@ -845,7 +845,7 @@ _ID46971()
 
     for (;;)
     {
-        level._ID794 shellshock( "remoteMissile", var_0 );
+        level.player shellshock( "remoteMissile", var_0 );
         wait(var_0);
     }
 }
@@ -947,7 +947,7 @@ _ID47183( var_0, var_1 )
         }
         else
         {
-            var_0._ID25524 = var_0._ID740;
+            var_0._ID25524 = var_0.origin;
             var_0._ID25495 = var_0 getplayerangles();
             var_0 playerlinktodelta( _ID48289::_ID43601(), "tag_player", 1.0, level._ID47489._ID45626, level._ID47489._ID45626, level._ID47489._ID45626, level._ID47489._ID45626 );
             var_0 playerlinktodelta( _ID48289::_ID43601(), "tag_player", 1.0, 0, 0, 0, 0 );
@@ -986,8 +986,8 @@ _ID47183( var_0, var_1 )
 
         if ( isdefined( level._ID43461 ) )
         {
-            level._ID794._ID43494 = level._ID794._ID46646;
-            level._ID794 _ID42407::_ID48929( level._ID43461 );
+            level.player._ID43494 = level.player._ID46646;
+            level.player _ID42407::_ID48929( level._ID43461 );
         }
 
         thread _ID50368();
@@ -1003,7 +1003,7 @@ _ID47183( var_0, var_1 )
 
         level._ID51129 = gettime();
         thread _ID49789();
-        level._ID794 thread _ID42237::_ID27000( "predator_drone_missile" );
+        level.player thread _ID42237::_ID27000( "predator_drone_missile" );
         level notify( "player_fired_remote_missile" );
         var_0 notify( "player_fired_remote_missile" );
         _ID42475::_ID34575( "player_predator_end" );
@@ -1085,7 +1085,7 @@ _ID47183( var_0, var_1 )
 
             if ( isdefined( self.remotemissile_lowerbound_limit ) && isdefined( self.remotemissile_upperbound_limit ) )
             {
-                if ( level._ID46167._ID740[0] < self.remotemissile_lowerbound_limit[0] || level._ID46167._ID740[1] < self.remotemissile_lowerbound_limit[1] || level._ID46167._ID740[2] < self.remotemissile_lowerbound_limit[2] || level._ID46167._ID740[0] > self.remotemissile_upperbound_limit[0] || level._ID46167._ID740[1] > self.remotemissile_upperbound_limit[1] || level._ID46167._ID740[2] > self.remotemissile_upperbound_limit[2] )
+                if ( level._ID46167.origin[0] < self.remotemissile_lowerbound_limit[0] || level._ID46167.origin[1] < self.remotemissile_lowerbound_limit[1] || level._ID46167.origin[2] < self.remotemissile_lowerbound_limit[2] || level._ID46167.origin[0] > self.remotemissile_upperbound_limit[0] || level._ID46167.origin[1] > self.remotemissile_upperbound_limit[1] || level._ID46167.origin[2] > self.remotemissile_upperbound_limit[2] )
                 {
                     _ID43635( var_0, 0 );
                     return;
@@ -1306,8 +1306,8 @@ _ID43635( var_0, var_1 )
         wait 0.05;
         var_0 _ID49347::_ID47192( 0.4 );
 
-        if ( isdefined( level._ID794._ID43494 ) )
-            level._ID794 _ID42407::_ID48929( level._ID794._ID43494 );
+        if ( isdefined( level.player._ID43494 ) )
+            level.player _ID42407::_ID48929( level.player._ID43494 );
 
         if ( !( isdefined( level._ID51882 ) && level._ID51882 ) )
         {
@@ -1346,8 +1346,8 @@ _ID43635( var_0, var_1 )
                 var_0 _ID42407::_ID14689( level._ID22719, 1.0 );
         }
 
-        if ( isdefined( level._ID794._ID43494 ) )
-            level._ID794 _ID42407::_ID48929( level._ID794._ID43494 );
+        if ( isdefined( level.player._ID43494 ) )
+            level.player _ID42407::_ID48929( level.player._ID43494 );
 
         if ( !_ID42407::_ID20581( var_0 ) )
             var_0 enableweapons();
@@ -1399,7 +1399,7 @@ _ID45006( var_0, var_1 )
         if ( !isdefined( level._ID45535 ) )
             var_0._ID52526 fadeovertime( 0.35 );
 
-        var_0._ID52526._ID55 = 0;
+        var_0._ID52526.alpha = 0;
     }
 
     wait 0.15;
@@ -1446,8 +1446,8 @@ _ID45006( var_0, var_1 )
             var_2 show();
     }
 
-    if ( isdefined( level._ID794._ID43494 ) )
-        level._ID794 _ID42407::_ID48929( level._ID794._ID43494 );
+    if ( isdefined( level.player._ID43494 ) )
+        level.player _ID42407::_ID48929( level.player._ID43494 );
 
     _ID42237::setshadowmapon();
 
@@ -1611,10 +1611,10 @@ _ID43399( var_0, var_1, var_2 )
     var_5 = var_3 / 2;
     var_6 = var_4 / 2;
     var_7 = newclienthudelem( var_0 );
-    var_7._ID499 = "center";
-    var_7._ID1284 = "middle";
-    var_7._ID1331 = var_7._ID1331 - var_5;
-    var_7._ID1339 = var_7._ID1339 - var_6;
+    var_7.horzalign = "center";
+    var_7.vertalign = "middle";
+    var_7.x = var_7.x - var_5;
+    var_7.y = var_7.y - var_6;
     var_7 setshader( var_1, var_3, var_4 );
 
     if ( isdefined( var_2 ) )
@@ -1627,8 +1627,8 @@ _ID43399( var_0, var_1, var_2 )
 
 _ID46317( var_0 )
 {
-    earthquake( 0.25, 0.5, _ID48289::_ID43601()._ID740, 5000 );
-    var_1 = _ID48289::_ID43601()._ID740;
+    earthquake( 0.25, 0.5, _ID48289::_ID43601().origin, 5000 );
+    var_1 = _ID48289::_ID43601().origin;
     var_2 = var_0 getplayerangles();
     var_3 = anglestoforward( var_2 );
     var_4 = anglestoright( var_2 );
@@ -1668,7 +1668,7 @@ _ID50368()
     var_0 = 4;
     var_1 = 0;
     var_2 = 0.05;
-    level._ID48408[level._ID794._ID39468] = level._ID794;
+    level._ID48408[level.player._ID39468] = level.player;
 
     foreach ( var_4 in level._ID48408 )
     {
@@ -1702,7 +1702,7 @@ _ID50368()
 
 _ID49591()
 {
-    var_0 = level._ID794 getlocalplayerprofiledata( "renderColorBlind" );
+    var_0 = level.player getlocalplayerprofiledata( "renderColorBlind" );
     self._ID49554 = 1;
 
     if ( isdefined( self._ID18452 ) )
@@ -1781,7 +1781,7 @@ _ID43170()
         {
             var_1._ID49554 = undefined;
 
-            if ( var_1 != level._ID794 )
+            if ( var_1 != level.player )
                 target_setscaledrendermode( var_1, 0 );
 
             target_remove( var_1 );
@@ -1832,11 +1832,11 @@ _ID44359( var_0 )
 _ID43559( var_0 )
 {
     var_1 = spawn( "script_origin", ( 0, 0, 1 ) );
-    var_1._ID740 = self._ID740;
+    var_1.origin = self.origin;
     var_1 playsound( "predator_drone_static", "sounddone" );
     var_2 = newclienthudelem( self );
-    var_2._ID499 = "fullscreen";
-    var_2._ID1284 = "fullscreen";
+    var_2.horzalign = "fullscreen";
+    var_2.vertalign = "fullscreen";
     var_2 setshader( "ac130_overlay_grain", 640, 480 );
     wait(var_0);
     var_2 destroy();
@@ -1914,7 +1914,7 @@ _ID44091( var_0 )
 {
     if ( isdefined( level._ID46121 ) && !isdefined( level._ID52651 ) )
     {
-        level._ID52651 = _ID42407::_ID35028( "remote_missile_player_body", var_0._ID740, var_0._ID65 );
+        level._ID52651 = _ID42407::_ID35028( "remote_missile_player_body", var_0.origin, var_0.angles );
         level._ID52651 thermaldrawenable();
 
         if ( isdefined( level._ID49267 ) )
@@ -1959,7 +1959,7 @@ _ID52138()
 _ID36603()
 {
     _ID42237::_ID41069( level, "remote_missile_exit", self, "death" );
-    level._ID794 _ID42237::_ID36516( "predator_drone_missile" );
+    level.player _ID42237::_ID36516( "predator_drone_missile" );
     self _meth_8561( "mstrike_boost_shot" );
     self _meth_8561( "mstrike_boost_boom" );
     self _meth_8561( "mstrike_boost_swoop" );

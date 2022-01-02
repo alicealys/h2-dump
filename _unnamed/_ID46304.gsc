@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_newspaper_stand_blue", "tag_origin", 120 );
     _ID42231::_ID10517( "tag_door", "fx/props/news_stand_paper_spill_shatter", 1 );

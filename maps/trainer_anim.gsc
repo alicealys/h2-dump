@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID3197();
     _ID10742();
@@ -649,8 +649,8 @@ _ID23866()
     foreach ( var_2 in var_0 )
     {
         var_2._ID3184 = spawn( "script_origin", ( 0, 0, 0 ) );
-        var_2._ID3184._ID740 = var_2._ID740;
-        var_2._ID3184._ID65 = var_2._ID65;
+        var_2._ID3184.origin = var_2.origin;
+        var_2._ID3184.angles = var_2.angles;
         var_2._ID3189 = "tarp";
         var_2 _ID42407::_ID3428();
         var_2._ID3184 thread _ID42259::_ID3044( var_2, "training_camo_tarp_wind", undefined, "stop_loop" );

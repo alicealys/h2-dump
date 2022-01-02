@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42237::_ID14400( "stopRainCheck" );
     _ID42237::_ID14400( "rain_mask_on" );
@@ -223,8 +223,8 @@ _ID616()
 
 get_wet_groundtype_override( var_0 )
 {
-    if ( !isendstr( var_0, "_wet" ) && isdefined( self._ID474 ) && isendstr( self._ID474, "_wet" ) && isdefined( anim._ID25932[self._ID474] ) )
-        var_0 = self._ID474;
+    if ( !isendstr( var_0, "_wet" ) && isdefined( self.groundtype ) && isendstr( self.groundtype, "_wet" ) && isdefined( anim._ID25932[self.groundtype] ) )
+        var_0 = self.groundtype;
 
     return var_0;
 }
@@ -602,9 +602,9 @@ naturallight( var_0 )
 lightning_visionset()
 {
     if ( _ID42237::_ID14385( "parking_main" ) )
-        level._ID794 lightset( "dcemp_lightning_outside" );
+        level.player lightset( "dcemp_lightning_outside" );
     else
-        level._ID794 lightset( "dcemp_lightning" );
+        level.player lightset( "dcemp_lightning" );
 
     if ( level._ID22719 == "dcemp_parking" )
     {
@@ -633,11 +633,11 @@ lightning_visionset()
 _ID22335()
 {
     if ( _ID42237::_ID14385( "parking_main" ) )
-        level._ID794 lightset( "dcemp_rain" );
+        level.player lightset( "dcemp_rain" );
     else if ( _ID42237::_ID14385( "office1" ) )
-        level._ID794 lightset( "dcemp_office" );
+        level.player lightset( "dcemp_office" );
     else
-        level._ID794 lightset( "dcemp" );
+        level.player lightset( "dcemp" );
 
     if ( level._ID22719 == "dcemp_parking_lightning" )
     {
@@ -693,15 +693,15 @@ _ID44454()
 {
     level endon( "stop_rain_mask" );
     self endon( "stopRainCheck" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
-        var_0 = level._ID794 getplayerangles()[0];
+        var_0 = level.player getplayerangles()[0];
 
         if ( var_0 < 50 && !isdefined( level._ID47052 ) )
         {
-            level._ID47052 = spawnfx( level._ID1426["screen_heavy_rain_dcemp"], level._ID794._ID740 );
+            level._ID47052 = spawnfx( level._ID1426["screen_heavy_rain_dcemp"], level.player.origin );
             triggerfx( level._ID47052 );
         }
         else if ( isdefined( level._ID47052 ) )
@@ -724,8 +724,8 @@ bg_earth_manager()
     _ID42237::_ID14413( "iss_fx" );
     var_0 = getent( "bg_earth_fx", "targetname" );
     var_1 = _ID42237::_ID35164();
-    var_1._ID740 = var_0._ID740;
-    var_1._ID65 = var_0._ID65 + ( -90, 0, 0 );
+    var_1.origin = var_0.origin;
+    var_1.angles = var_0.angles + ( -90, 0, 0 );
     playfxontag( level._ID1426["bg_iss"], var_1, "tag_origin" );
     playfxontag( level._ID1426["bg_iss_city_lights_idle"], var_1, "tag_origin" );
     _ID42237::_ID14413( "iss_lights_out" );
@@ -751,21 +751,21 @@ flickering_street_lights()
 
     foreach ( var_2 in self._ID47454 )
     {
-        if ( isdefined( var_2._ID922 ) )
+        if ( isdefined( var_2.script_noteworthy ) )
         {
-            if ( var_2._ID922 == "flickering_model_on" )
+            if ( var_2.script_noteworthy == "flickering_model_on" )
             {
                 self._ID43670[self._ID43670.size] = var_2;
                 continue;
             }
 
-            if ( var_2._ID922 == "flickering_model_off" )
+            if ( var_2.script_noteworthy == "flickering_model_off" )
             {
                 self._ID47812[self._ID47812.size] = var_2;
                 continue;
             }
 
-            if ( var_2._ID922 == "flickering_lights" )
+            if ( var_2.script_noteworthy == "flickering_lights" )
                 self._ID52890[self._ID52890.size] = var_2;
         }
     }
@@ -830,7 +830,7 @@ flickering_street_lights()
 handflare_fx()
 {
     var_0 = getent( "street_flare", "targetname" );
-    var_0._ID45977 = getent( var_0._ID1191, "targetname" );
+    var_0._ID45977 = getent( var_0.target, "targetname" );
     var_0._ID45977 linkto( var_0 );
     playfxontag( level._ID1426["groundflare_red_dcemp"], var_0._ID45977, "TAG_ORIGIN" );
 }

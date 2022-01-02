@@ -60,7 +60,7 @@ _ID16576()
 
     var_1 = animscripts\stairs_utility::ismovingonstairs();
 
-    if ( !self._ID373 && !self shouldfacemotion() )
+    if ( !self.facemotion && !self shouldfacemotion() )
     {
         var_2 = abs( self getmotionangle() );
 
@@ -226,7 +226,7 @@ _ID30425( var_0 )
     _ID30390( undefined );
     self._ID7._ID2728 = gettime() + 500;
 
-    if ( var_0 && isplayernumber( self._ID322 ) )
+    if ( var_0 && isplayernumber( self.enemy ) )
         self updateplayersightaccuracy();
 
     return 1;
@@ -343,7 +343,7 @@ _ID30426()
     self setflaggedanimknob( "runanim", var_0, 1, 0.3, 0.8 );
     _ID30390( var_0 );
 
-    if ( isplayernumber( self._ID322 ) )
+    if ( isplayernumber( self.enemy ) )
         self updateplayersightaccuracy();
 
     animscripts\notetracks::_ID11534( 0.2, "runanim" );
@@ -361,7 +361,7 @@ _ID29140()
         if ( !isdefined( self._ID29054 ) )
             break;
 
-        if ( !isdefined( self._ID762 ) || distancesquared( self._ID762, self._ID740 ) < squared( 80 ) )
+        if ( !isdefined( self.pathgoalpos ) || distancesquared( self.pathgoalpos, self.origin ) < squared( 80 ) )
         {
             _ID12740();
             self notify( "interrupt_react_to_bullet" );
@@ -387,7 +387,7 @@ _ID30438()
     self._ID29054 = 1;
     self orientmode( "face motion" );
 
-    if ( self._ID1194 == "allies" && self._ID256 )
+    if ( self.team == "allies" && self.damageshield )
         var_0 = animscripts\utility::_ID22631( "running_react_to_bullets_hero" );
     else
         var_0 = animscripts\utility::_ID22631( "running_react_to_bullets" );
@@ -424,7 +424,7 @@ _ID16614()
 {
     var_0 = undefined;
 
-    if ( isdefined( self._ID458 ) )
+    if ( isdefined( self.grenade ) )
         var_0 = animscripts\utility::_ID16432( "sprint_short" );
 
     if ( !isdefined( var_0 ) )
@@ -438,8 +438,8 @@ _ID33972()
     if ( isdefined( self._ID35499 ) )
         return 1;
 
-    if ( isdefined( self._ID458 ) && isdefined( self._ID322 ) && self._ID426 == 1 )
-        return distancesquared( self._ID740, self._ID322._ID740 ) > 90000;
+    if ( isdefined( self.grenade ) && isdefined( self.enemy ) && self.frontshieldanglecos == 1 )
+        return distancesquared( self.origin, self.enemy.origin ) > 90000;
 
     return 0;
 }
@@ -449,7 +449,7 @@ _ID33973()
     if ( isdefined( self._ID24730 ) )
         return 0;
 
-    if ( !self._ID373 || animscripts\stairs_utility::_ID54360() )
+    if ( !self.facemotion || animscripts\stairs_utility::_ID54360() )
         return 0;
 
     var_0 = gettime();
@@ -463,10 +463,10 @@ _ID33973()
             return 0;
     }
 
-    if ( !isdefined( self._ID322 ) || !issentient( self._ID322 ) )
+    if ( !isdefined( self.enemy ) || !issentient( self.enemy ) )
         return 0;
 
-    if ( randomint( 100 ) < 25 && self lastknowntime( self._ID322 ) + 2000 > var_0 )
+    if ( randomint( 100 ) < 25 && self lastknowntime( self.enemy ) + 2000 > var_0 )
     {
         self._ID9716 = var_0 + 2000 + randomint( 1000 );
         return 1;
@@ -524,11 +524,11 @@ _ID35605()
         _ID32784( 0 );
         var_2 = 1;
     }
-    else if ( isdefined( self._ID322 ) && animscripts\move::_ID23140() )
+    else if ( isdefined( self.enemy ) && animscripts\move::_ID23140() )
     {
         _ID32784( 1 );
 
-        if ( !var_1 && !self._ID373 )
+        if ( !var_1 && !self.facemotion )
             thread _ID13753();
         else if ( self._ID33816 != "none" && !isdefined( self._ID24934 ) )
         {
@@ -631,7 +631,7 @@ _ID16616( var_0, var_1, var_2 )
             break;
     }
 
-    var_4 = isdefined( self._ID322 ) && animscripts\utility::_ID20775() && !isdefined( self._ID24934 ) && _ID6892() && isdefined( self._ID33816 ) && self._ID33816 != "none";
+    var_4 = isdefined( self.enemy ) && animscripts\utility::_ID20775() && !isdefined( self._ID24934 ) && _ID6892() && isdefined( self._ID33816 ) && self._ID33816 != "none";
     var_3 = var_3 + "_" + var_2;
 
     if ( animscripts\utility::_ID33934() )
@@ -738,9 +738,9 @@ _ID30444()
 _ID2426()
 {
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
-        var_0 = animscripts\combat_utility::_ID15797( self._ID322 );
+        var_0 = animscripts\combat_utility::_ID15797( self.enemy );
     else
-        var_0 = self._ID322 getshootatpos();
+        var_0 = self.enemy getshootatpos();
 
     var_1 = self getmuzzleangle();
     var_2 = vectortoangles( var_0 - self getmuzzlepos() );
@@ -774,15 +774,15 @@ _ID6891()
 
 _ID6890()
 {
-    return animscripts\move::_ID23140() && isdefined( self._ID322 ) && ( _ID6892() || _ID6891() );
+    return animscripts\move::_ID23140() && isdefined( self.enemy ) && ( _ID6892() || _ID6891() );
 }
 
 _ID16539( var_0 )
 {
-    var_1 = self._ID740;
-    var_2 = self._ID65[1] + self getmotionangle();
-    var_1 += ( cos( var_2 ), sin( var_2 ), 0 ) * length( self._ID1283 ) * var_0;
-    var_3 = self._ID65[1] - vectortoyaw( self._ID322._ID740 - var_1 );
+    var_1 = self.origin;
+    var_2 = self.angles[1] + self getmotionangle();
+    var_1 += ( cos( var_2 ), sin( var_2 ), 0 ) * length( self.velocity ) * var_0;
+    var_3 = self.angles[1] - vectortoyaw( self.enemy.origin - var_1 );
     var_3 = angleclamp180( var_3 );
     return var_3;
 }
@@ -847,7 +847,7 @@ _ID24329()
         self _meth_85cb( 1 );
 
     var_10 = 0.05 * var_3 / var_5;
-    childthread animscripts\stairs_utility::_ID48001( var_2, self._ID740, self._ID50387, var_4[0], var_9, var_10 );
+    childthread animscripts\stairs_utility::_ID48001( var_2, self.origin, self._ID50387, var_4[0], var_9, var_10 );
     thread animscripts\stairs_utility::_ID51670( var_2, var_4[0] );
     animscripts\shared::_ID11529( "runanim" );
     self._ID19386 = undefined;
@@ -882,9 +882,9 @@ _ID35606()
     _ID51873( var_1, var_2 );
     var_3 = 0;
 
-    if ( self._ID587 > 0 && self._ID587 < 0.998 )
+    if ( self.leanamount > 0 && self.leanamount < 0.998 )
         var_3 = 1;
-    else if ( self._ID587 < 0 && self._ID587 > -0.998 )
+    else if ( self.leanamount < 0 && self.leanamount > -0.998 )
         var_3 = -1;
 
     var_4 = max( 0.2, var_2 );
@@ -954,7 +954,7 @@ _ID9353()
 _ID35604()
 {
     var_0 = isdefined( self._ID7._ID2728 ) && self._ID7._ID2728 > gettime();
-    var_0 = var_0 || isdefined( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) < 65536;
+    var_0 = var_0 || isdefined( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) < 65536;
 
     if ( var_0 )
     {
@@ -964,10 +964,10 @@ _ID35604()
     else if ( !animscripts\combat_utility::_ID24716( 0.5 ) )
         return 0;
 
-    if ( isdefined( self._ID458 ) )
+    if ( isdefined( self.grenade ) )
         return 0;
 
-    if ( !self._ID373 || animscripts\stairs_utility::_ID54360() )
+    if ( !self.facemotion || animscripts\stairs_utility::_ID54360() )
         return 0;
 
     if ( isdefined( self._ID11582 ) || isdefined( self._ID24935 ) )
@@ -976,12 +976,12 @@ _ID35604()
     if ( _ID6890() && !animscripts\combat_utility::_ID24716( 0 ) )
         return 0;
 
-    if ( !isdefined( self._ID762 ) || distancesquared( self._ID740, self._ID762 ) < 65536 )
+    if ( !isdefined( self.pathgoalpos ) || distancesquared( self.origin, self.pathgoalpos ) < 65536 )
         return 0;
 
     var_1 = getdvarfloat( "ai_runReload_minLookahead", 320 );
 
-    if ( var_1 > 0 && self._ID602 < var_1 )
+    if ( var_1 > 0 && self.lookaheaddist < var_1 )
         return 0;
 
     var_2 = angleclamp180( self getmotionangle() );
@@ -1085,7 +1085,7 @@ _ID39742( var_0, var_1, var_2, var_3, var_4 )
 
 _ID39776( var_0, var_1, var_2, var_3 )
 {
-    if ( self._ID373 && !animscripts\utility::_ID33934() && !isdefined( self._ID39629 ) && !( isdefined( self._ID23165 ) && self._ID23165 ) )
+    if ( self.facemotion && !animscripts\utility::_ID33934() && !isdefined( self._ID39629 ) && !( isdefined( self._ID23165 ) && self._ID23165 ) )
     {
         if ( !isdefined( self._ID41419 ) )
         {
@@ -1134,7 +1134,7 @@ _ID39776( var_0, var_1, var_2, var_3 )
 _ID35603()
 {
     var_0 = isdefined( self._ID41303 ) && self._ID41303;
-    var_1 = animscripts\utility::_ID20902( self._ID1302 );
+    var_1 = animscripts\utility::_ID20902( self.weapon );
 
     if ( var_0 == var_1 )
         return 0;
@@ -1142,13 +1142,13 @@ _ID35603()
     if ( animscripts\stairs_utility::_ID54360() )
         return 0;
 
-    if ( !isdefined( self._ID762 ) || distancesquared( self._ID740, self._ID762 ) < 65536 )
+    if ( !isdefined( self.pathgoalpos ) || distancesquared( self.origin, self.pathgoalpos ) < 65536 )
         return 0;
 
     if ( animscripts\utility::_ID39997() )
         return 0;
 
-    if ( self._ID1302 == self._ID834 )
+    if ( self.weapon == self._ID834 )
     {
         if ( !var_0 )
             return 0;
@@ -1210,7 +1210,7 @@ _ID41564( var_0, var_1, var_2, var_3, var_4 )
     self endon( "movemode" );
     self endon( "switchEnded" );
     self waittillmatch( var_0,  var_1  );
-    animscripts\shared::_ID26732( self._ID1302, var_2 );
+    animscripts\shared::_ID26732( self.weapon, var_2 );
     thread _ID33863( var_3 );
     self waittillmatch( var_0,  var_4  );
     self notify( "complete_weapon_switch" );
@@ -1220,9 +1220,9 @@ _ID33863( var_0 )
 {
     self endon( "death" );
     _ID42237::_ID41068( "killanimscript", "movemode", "switchEnded", "complete_weapon_switch" );
-    self._ID22034 = self._ID1302;
+    self._ID22034 = self.weapon;
     animscripts\shared::_ID26732( var_0, "right" );
-    self._ID6323 = weaponclipsize( self._ID1302 );
+    self._ID6323 = weaponclipsize( self.weapon );
 }
 
 _ID30390( var_0 )

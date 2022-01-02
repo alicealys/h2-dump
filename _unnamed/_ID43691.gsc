@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     if ( !isdefined( var_1 ) )
         var_1 = "weapon_c4";
@@ -60,21 +60,21 @@ _ID53929( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
     if ( isdefined( var_0 ) )
         var_16 linkto( self, var_0, var_1, var_2 );
     else if ( isdefined( var_11 ) )
-        var_16._ID65 = var_11;
+        var_16.angles = var_11;
     else
-        var_16._ID65 = self._ID65;
+        var_16.angles = self.angles;
 
     var_16._ID1224 = _ID47248();
 
     if ( isdefined( level._ID48066 ) )
     {
         if ( isdefined( level._ID50999 ) )
-            var_16._ID1224 thread _ID42237::_ID44574( level._ID794, level._ID48066, level._ID50999, "trigger" );
+            var_16._ID1224 thread _ID42237::_ID44574( level.player, level._ID48066, level._ID50999, "trigger" );
         else
             var_16._ID1224 sethintstring( level._ID48066 );
     }
     else
-        var_16._ID1224 thread _ID42237::_ID44574( level._ID794, &"SCRIPT_PLATFORM_HINT_PLANTEXPLOSIVES", &"SCRIPT_PLATFORM_HINTSTR_PLANTEXPLOSIVES_KBM", "trigger" );
+        var_16._ID1224 thread _ID42237::_ID44574( level.player, &"SCRIPT_PLATFORM_HINT_PLANTEXPLOSIVES", &"SCRIPT_PLATFORM_HINTSTR_PLANTEXPLOSIVES_KBM", "trigger" );
 
     if ( isdefined( var_0 ) )
     {
@@ -82,7 +82,7 @@ _ID53929( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
         var_16._ID1224._ID47568 = 1;
     }
     else
-        var_16._ID1224._ID740 = var_16._ID740;
+        var_16._ID1224.origin = var_16.origin;
 
     var_16 thread _ID52248( self, var_4, var_3, var_6, var_7, var_8, var_9, var_10, var_12, var_13, var_14 );
     var_16 thread _ID53589( self, var_4 );
@@ -143,11 +143,11 @@ _ID52248( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
         self._ID1224 waittill( "trigger",  var_11  );
 
         if ( isdefined( var_9 ) )
-            var_3 = level._ID794 [[ var_9 ]]( self, var_8 );
+            var_3 = level.player [[ var_9 ]]( self, var_8 );
 
         level notify( "c4_placement_started" );
-        var_12 = level._ID794._ID11579;
-        level._ID794._ID11579 = 1;
+        var_12 = level.player._ID11579;
+        level.player._ID11579 = 1;
 
         if ( isdefined( var_10 ) )
             var_13 = [[ var_10 ]]( var_8 );
@@ -155,46 +155,46 @@ _ID52248( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
             var_13 = [[ var_4 ]]();
         else
         {
-            var_13 = spawn( "script_origin", self._ID740 );
-            var_13._ID65 = self._ID65;
+            var_13 = spawn( "script_origin", self.origin );
+            var_13.angles = self.angles;
         }
 
         var_14 = 0;
-        var_15 = level._ID794 getstance();
+        var_15 = level.player getstance();
 
         if ( var_15 == "crouch" )
             var_14 = 0.25;
         else if ( var_15 == "prone" )
             var_14 = 0.85;
 
-        level._ID794 allowstand( 1 );
-        level._ID794 allowcrouch( 0 );
-        level._ID794 allowprone( 0 );
+        level.player allowstand( 1 );
+        level.player allowcrouch( 0 );
+        level.player allowprone( 0 );
         wait(var_14);
         var_16 = "worldhands";
 
         if ( isdefined( var_7 ) )
             var_16 = "worldbody";
 
-        level._ID794._ID49929 = _ID42407::_ID35028( var_16, level._ID794._ID740, level._ID794 getplayerangles() );
-        level._ID794._ID49929 hide();
-        level._ID794._ID49929 attach( var_1, "tag_weapon_left", 1 );
-        level._ID794._ID49479 = self;
-        var_13 _ID42259::_ID3018( level._ID794._ID49929, var_3, "tag_origin", var_16 );
+        level.player._ID49929 = _ID42407::_ID35028( var_16, level.player.origin, level.player getplayerangles() );
+        level.player._ID49929 hide();
+        level.player._ID49929 attach( var_1, "tag_weapon_left", 1 );
+        level.player._ID49479 = self;
+        var_13 _ID42259::_ID3018( level.player._ID49929, var_3, "tag_origin", var_16 );
         waittillframeend;
         var_0 notify( "c4_anim_plant" );
         setsaveddvar( "ammoCounterHide", "1" );
         setsaveddvar( "hud_showStance", 0 );
         setsaveddvar( "actionSlotsHide", "1" );
         var_13 _ID42407::_ID49392( var_3, var_8, 0, 0.25, 1, 0 );
-        level._ID794 allowcrouch( 1 );
-        level._ID794 allowprone( 1 );
+        level.player allowcrouch( 1 );
+        level.player allowprone( 1 );
         setsaveddvar( "ammoCounterHide", "0" );
         setsaveddvar( "hud_showStance", 1 );
         setsaveddvar( "actionSlotsHide", "0" );
-        level._ID794 disableweapons();
+        level.player disableweapons();
         level._ID49805 = 1;
-        level._ID794._ID11579 = var_12;
+        level.player._ID11579 = var_12;
     }
     else
         self._ID1224 waittill( "trigger",  var_11  );
@@ -218,7 +218,7 @@ _ID49585( var_0, var_1 )
 {
     while ( !( isdefined( level._ID49805 ) && level._ID49805 ) )
     {
-        if ( _ID52793( level._ID794._ID65[1], var_0, var_1 ) )
+        if ( _ID52793( level.player.angles[1], var_0, var_1 ) )
             self makeusable();
         else
             self makeunusable();
@@ -255,14 +255,14 @@ _ID44229( var_0, var_1 )
 {
     var_0 endon( "clear_c4" );
     var_1 waittill( "detonate" );
-    playfx( level._ID1426["c4_explosion"], self._ID740 );
-    var_2 = spawn( "script_origin", self._ID740 );
+    playfx( level._ID1426["c4_explosion"], self.origin );
+    var_2 = spawn( "script_origin", self.origin );
 
     if ( isdefined( level._ID51256 ) )
         var_2 playsound( "detpack_explo_main", "sound_done" );
 
-    self radiusdamage( self._ID740, 256, 200, 50 );
-    earthquake( 0.4, 1, self._ID740, 1000 );
+    self radiusdamage( self.origin, 256, 200, 50 );
+    earthquake( 0.4, 1, self.origin, 1000 );
 
     if ( isdefined( self ) )
         self delete();
@@ -287,7 +287,7 @@ _ID54117( var_0 )
     if ( isdefined( self ) )
         self delete();
 
-    level._ID794 thread _ID48890();
+    level.player thread _ID48890();
 }
 
 _ID48890()
@@ -377,7 +377,7 @@ _ID47248()
             var_0[var_1] enablelinkto();
 
         var_0[var_1]._ID526 = 1;
-        var_0[var_1]._ID25567 = var_0[var_1]._ID740;
+        var_0[var_1]._ID25567 = var_0[var_1].origin;
         return var_0[var_1];
     }
 }
@@ -388,6 +388,6 @@ _ID53088()
         self unlink();
 
     self._ID47568 = undefined;
-    self._ID740 = self._ID25567;
+    self.origin = self._ID25567;
     self._ID526 = 0;
 }

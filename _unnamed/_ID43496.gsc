@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9259( "snow_light_wind_gust_runner_museum" );
     var_0 _ID42229::_ID32402( ( -15084.6, 24667.4, -16249.9 ), ( 270, 0, -43.0005 ) );

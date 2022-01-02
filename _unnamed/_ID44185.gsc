@@ -20,7 +20,7 @@ do_it_with_style_init()
             if ( var_2 == 3 )
                 continue;
 
-            if ( level._ID794 getlocalplayerprofiledata( "sp_doItWithStyle", var_2 ) == "1" )
+            if ( level.player getlocalplayerprofiledata( "sp_doItWithStyle", var_2 ) == "1" )
             {
                 if ( var_2 == var_0 )
                     var_1 = 1;
@@ -37,15 +37,15 @@ do_it_with_style_init()
 
 the_real_gun_game_init()
 {
-    if ( level._ID912 == "trainer" || level._ID912 == "af_chase" || level._ID912 == "ending" )
+    if ( level.script == "trainer" || level.script == "af_chase" || level.script == "ending" )
         return;
 
     notifyoncommand( "melee_attack", "+melee" );
     notifyoncommand( "melee_attack", "+melee_breath" );
     notifyoncommand( "melee_attack", "+melee_zoom" );
     level endon( "level_skipped" );
-    level._ID794 endon( "melee_attack" );
-    level._ID794 endon( "reload" );
+    level.player endon( "melee_attack" );
+    level.player endon( "reload" );
     self waittill( "achievements_level_complete" );
     _ID42407::_ID16864( "REAL_GUN_GAME" );
 }
@@ -73,7 +73,7 @@ _ID50890()
     level endon( "master_ninja_illegal_kill" );
     self waittill( "death",  var_0, var_1  );
 
-    if ( isdefined( var_0 ) && var_0 == level._ID794 )
+    if ( isdefined( var_0 ) && var_0 == level.player )
     {
         if ( var_1 == "MOD_MELEE" )
             _ID42237::_ID14402( "master_ninja_melee_kill" );
@@ -84,7 +84,7 @@ _ID50890()
 
 _ID46481()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "ac130":
         case "aftermath":
@@ -100,7 +100,7 @@ _ID46481()
 
     for (;;)
     {
-        level._ID794 waittill( "reload" );
+        level.player waittill( "reload" );
         level notify( "retro_shooter_player_reloaded" );
     }
 }
@@ -125,7 +125,7 @@ _ID46292()
 
 _ID54003()
 {
-    if ( level._ID912 == "sniperescape" )
+    if ( level.script == "sniperescape" )
     {
         _ID42237::_ID41068( "weapon_master_barrett_kill", "makarov_killed" );
         _ID44671( "barrett" );
@@ -156,7 +156,7 @@ _ID45438()
 {
     self waittill( "death",  var_0, var_1, var_2  );
 
-    if ( isdefined( var_0 ) && var_0 == level._ID794 && isdefined( var_2 ) && var_1 != "MOD_MELEE" )
+    if ( isdefined( var_0 ) && var_0 == level.player && isdefined( var_2 ) && var_1 != "MOD_MELEE" )
         _ID44671( var_2 );
 }
 
@@ -183,7 +183,7 @@ _ID54495()
                 var_7 = "javelin";
             else if ( var_0 >= 300 )
             {
-                if ( var_1 == level._ID794 )
+                if ( var_1 == level.player )
                     var_7 = "rpg";
             }
         }
@@ -203,7 +203,7 @@ _ID43400()
     thread _ID54495();
     self waittill( "death",  var_1, var_2, var_3  );
 
-    if ( isdefined( var_1 ) && var_1 == level._ID794 && isdefined( var_3 ) && var_2 != "MOD_MELEE" )
+    if ( isdefined( var_1 ) && var_1 == level.player && isdefined( var_3 ) && var_2 != "MOD_MELEE" )
         _ID44671( var_3 );
     else
     {
@@ -228,9 +228,9 @@ _ID44671( var_0 )
     if ( _ID42237::_ID14385( "has_cheated" ) || _ID49347::_ID44352() )
         return;
 
-    if ( level._ID794 getlocalplayerprofiledata( "sp_weaponMaster", var_1 ) != "1" )
+    if ( level.player getlocalplayerprofiledata( "sp_weaponMaster", var_1 ) != "1" )
     {
-        level._ID794 setlocalplayerprofiledata( "sp_weaponMaster", var_1, 1 );
+        level.player setlocalplayerprofiledata( "sp_weaponMaster", var_1, 1 );
         updategamerprofileall();
         _ID51323();
     }
@@ -244,7 +244,7 @@ _ID51323()
 
     for ( var_3 = 0; var_3 < var_0.size; var_3++ )
     {
-        var_4 = level._ID794 getlocalplayerprofiledata( "sp_weaponMaster", var_3 );
+        var_4 = level.player getlocalplayerprofiledata( "sp_weaponMaster", var_3 );
         var_1[var_0[var_3]] = var_4;
 
         if ( var_4 == "1" )
@@ -263,26 +263,26 @@ _ID47161()
 
 _ID51508()
 {
-    if ( !isdefined( self._ID170 ) )
+    if ( !isdefined( self.classname ) )
         return;
 
-    if ( self._ID170 != "actor_enemy_dog" )
+    if ( self.classname != "actor_enemy_dog" )
         return;
 
     self waittill( "death",  var_0, var_1  );
 
-    if ( isdefined( var_0 ) && var_0 == level._ID794 && var_1 == "MOD_MELEE" )
+    if ( isdefined( var_0 ) && var_0 == level.player && var_1 == "MOD_MELEE" )
     {
         if ( _ID42237::_ID14385( "has_cheated" ) || _ID49347::_ID44352() )
             return;
 
-        var_2 = level._ID794 getlocalplayerprofiledata( "sp_iHateDogs" );
+        var_2 = level.player getlocalplayerprofiledata( "sp_iHateDogs" );
         var_3 = 20;
 
         if ( var_2 < var_3 )
         {
             var_2++;
-            level._ID794 setlocalplayerprofiledata( "sp_iHateDogs", var_2 );
+            level.player setlocalplayerprofiledata( "sp_iHateDogs", var_2 );
             updategamerprofileall();
 
             if ( var_2 >= var_3 || _ID48939() )

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["zpu_muzzle"] = loadfx( "fx/muzzleflashes/zpu_flash_gulag" );
     level._ID1426["dynamic_godray"] = loadfx( "fx/misc/dynamic_godray" );
@@ -307,11 +307,11 @@ _ID616()
     level._ID1426["yellow_lensflare_big_floodlight_on"] = loadfx( "vfx/lights/yellow_lensflare_big_floodlight_on" );
     _ID42508::_ID3619();
 
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     if ( !getdvarint( "r_reflectionProbeGenerate" ) )
-        _ID44141::_ID616();
+        _ID44141::main();
 
     thread _ID38735();
     _ID45832();

@@ -1,10 +1,10 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     var_3 = "pavelow";
-    _ID45641::_ID616( var_0, var_3, var_2 );
+    _ID45641::main( var_0, var_3, var_2 );
     _ID42411::_ID6204( ::_ID32550, ::_ID32509 );
     _ID42411::_ID6206( ::_ID32221 );
     _ID42411::_ID6262( ::_ID39488 );
@@ -96,13 +96,13 @@ _ID32221()
     {
         var_0["attach_interior"] = spawnstruct();
         var_0["attach_interior"]._ID1067 = "body_animate_jnt";
-        var_0["attach_interior"]._ID669 = "h2_pavelow_cutscene_interior";
+        var_0["attach_interior"].model = "h2_pavelow_cutscene_interior";
     }
 
     var_1 = getarraykeys( var_0 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
-        precachemodel( var_0[var_1[var_2]]._ID669 );
+        precachemodel( var_0[var_1[var_2]].model );
 
     return var_0;
 }

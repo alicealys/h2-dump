@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["fire_tree"] = loadfx( "fx/fire/fire_tree" );
     level._ID1426["fire_tree_slow"] = loadfx( "fx/fire/fire_tree_slow" );
@@ -155,13 +155,13 @@ _ID616()
     _ID42407::_ID1885( "intro_house_side_explosion", 0.3, 2.5, 4000 );
 
     if ( getdvar( "mapname" ) == "invasion" || getdvar( "mapname" ) == "so_chopper_invasion" )
-        _ID54254::_ID616();
+        _ID54254::main();
 
     if ( !isdefined( level._ID9242 ) )
         level._ID9242 = [];
 
     _ID42407::_ID33441();
-    _ID50868::_ID616();
+    _ID50868::main();
     thread _ID44287();
     thread _ID43416();
     var_0 = getent( "tree_fire_light", "targetname" );
@@ -187,7 +187,7 @@ _ID51924( var_0, var_1, var_2 )
 
 _ID50608()
 {
-    if ( self._ID740[1] > 0 )
+    if ( self.origin[1] > 0 )
         self hide();
 }
 
@@ -266,7 +266,7 @@ _ID43197( var_0 )
         var_1 = self._ID31401;
 
     var_2 = [];
-    var_2 = _ID42237::_ID15566( self._ID740, var_0, undefined, undefined, self._ID851 );
+    var_2 = _ID42237::_ID15566( self.origin, var_0, undefined, undefined, self.radius );
     level waittill( "exploding_" + var_1 );
 
     foreach ( var_4 in var_2 )
@@ -281,7 +281,7 @@ _ID52614( var_0 )
 
 _ID51072()
 {
-    return isdefined( self._ID989 ) && self._ID989 & 1;
+    return isdefined( self.spawnflags ) && self.spawnflags & 1;
 }
 
 _ID49364()
@@ -381,7 +381,7 @@ super_nates_exploder_deletes()
 
 _ID53222()
 {
-    getent( self._ID1191, "targetname" ) delete();
+    getent( self.target, "targetname" ) delete();
     self delete();
 }
 
@@ -392,8 +392,8 @@ _ID45637()
     if ( !isdefined( var_0 ) )
         return;
 
-    var_1 = var_0._ID740;
-    var_2 = var_0._ID65;
+    var_1 = var_0.origin;
+    var_2 = var_0.angles;
     var_3 = 8;
     var_4 = 8;
     var_5 = -50;
@@ -476,7 +476,7 @@ _ID45773()
 
 _ID53784()
 {
-    if ( self._ID740[1] > 0 )
+    if ( self.origin[1] > 0 )
         self show();
 }
 

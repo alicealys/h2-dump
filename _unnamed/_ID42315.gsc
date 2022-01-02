@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     _ID42358::_ID1858( "generic" );
     level._ID30895["generic"]["phone_idle"][0] = %patrol_bored_idle_cellphone;

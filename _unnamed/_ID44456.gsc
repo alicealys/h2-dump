@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "harrier", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -69,8 +69,8 @@ _ID27206()
 
 _ID27862( var_0 )
 {
-    var_1 = anglestoforward( _ID42237::_ID14539( var_0._ID65 ) );
-    var_2 = vectornormalize( _ID42237::_ID14540( level._ID794._ID740 ) - var_0._ID740 );
+    var_1 = anglestoforward( _ID42237::_ID14539( var_0.angles ) );
+    var_2 = vectornormalize( _ID42237::_ID14540( level.player.origin ) - var_0.origin );
     var_3 = vectordot( var_1, var_2 );
 
     if ( var_3 > 0 )

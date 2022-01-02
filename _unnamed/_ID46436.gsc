@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     precacherumble( "stinger_lock_rumble" );
 
@@ -210,7 +210,7 @@ _ID50048()
     var_8 = anglestoforward( var_7 );
     var_9 = anglestoright( var_7 );
     var_10 = anglestoup( var_7 );
-    var_11 = self._ID740 + ( 0, 0, var_0 ) + var_9 * var_1;
+    var_11 = self.origin + ( 0, 0, var_0 ) + var_9 * var_1;
     var_12 = 0;
 
     for ( var_13 = 0; var_13 < var_5.size; var_13++ )
@@ -248,7 +248,7 @@ _ID49517( var_0 )
     if ( !isdefined( var_0 ) )
         return 0;
 
-    var_2 = distance2d( self._ID740, var_0._ID740 );
+    var_2 = distance2d( self.origin, var_0.origin );
 
     if ( var_2 < var_1 )
     {

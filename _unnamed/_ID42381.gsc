@@ -100,7 +100,7 @@ _ID12818()
 
     _ID42386::_ID12904();
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         _ID42407::_ID13025( "_stealth_override_goalpos" );
 
     thread _ID12822();
@@ -127,7 +127,7 @@ _ID12823()
     self._ID10998 = 0;
     self._ID11025 = 0;
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
         _ID42386::_ID36361( "_stealth_combat_jog" );
     else
     {
@@ -136,15 +136,15 @@ _ID12823()
         self._ID31356 = 1;
     }
 
-    self._ID452 = 80;
-    self setgoalpos( self._ID1644._ID22585._ID8751._ID740 );
+    self.goalradius = 80;
+    self setgoalpos( self._ID1644._ID22585._ID8751.origin );
 }
 
 _ID12816()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
         return;
     }
 
@@ -167,7 +167,7 @@ _ID12821()
 _ID27295( var_0 )
 {
     var_1 = _ID42407::_ID15617( var_0 );
-    var_2 = distance( var_1._ID740, var_0 );
+    var_2 = distance( var_1.origin, var_0 );
 
     if ( var_2 < 150 )
         return 1;
@@ -208,13 +208,13 @@ _ID12819()
 
                 if ( !isdefined( level._ID8754 ) )
                 {
-                    if ( !_ID27295( var_2._ID740 ) )
+                    if ( !_ID27295( var_2.origin ) )
                         continue;
                 }
 
-                var_6 = distancesquared( self._ID740, var_2._ID740 );
+                var_6 = distancesquared( self.origin, var_2.origin );
 
-                if ( self._ID1244 != "dog" )
+                if ( self.type != "dog" )
                     var_3 = level._ID1644._ID22585._ID8751._ID14838;
                 else
                     var_3 = level._ID1644._ID22585._ID8751._ID14839;
@@ -230,7 +230,7 @@ _ID12819()
                     if ( self._ID1644._ID22585._ID8751._ID8756 == var_2 )
                         continue;
 
-                    var_7 = distancesquared( self._ID740, self._ID1644._ID22585._ID8751._ID8756._ID740 );
+                    var_7 = distancesquared( self.origin, self._ID1644._ID22585._ID8751._ID8756.origin );
 
                     if ( var_7 <= var_6 )
                         continue;
@@ -251,7 +251,7 @@ _ID12819()
                 var_8 = self gettagangles( "tag_eye" );
                 var_9 = self geteye();
                 var_10 = anglestoforward( var_8 );
-                var_11 = vectornormalize( var_2._ID740 - var_9 );
+                var_11 = vectornormalize( var_2.origin - var_9 );
 
                 if ( vectordot( var_10, var_11 ) > 0.55 )
                 {
@@ -277,7 +277,7 @@ _ID12819()
             else if ( var_1 )
             {
                 self._ID1644._ID22585._ID8751._ID8756 = var_2;
-                self._ID1644._ID22585._ID8751._ID740 = var_2._ID740;
+                self._ID1644._ID22585._ID8751.origin = var_2.origin;
 
                 if ( !_ID42407::_ID13019( "_stealth_saw_corpse" ) )
                     _ID42407::_ID13025( "_stealth_saw_corpse" );
@@ -312,9 +312,9 @@ _ID29501()
             if ( isdefined( var_3._ID14836 ) )
                 continue;
 
-            var_4 = distancesquared( self._ID740, var_3._ID740 );
+            var_4 = distancesquared( self.origin, var_3.origin );
 
-            if ( self._ID1244 != "dog" )
+            if ( self.type != "dog" )
                 var_5 = level._ID1644._ID22585._ID8751._ID14838;
             else
                 var_5 = level._ID1644._ID22585._ID8751._ID14839;
@@ -351,8 +351,8 @@ _ID12813()
 {
     var_0 = undefined;
 
-    if ( isdefined( self._ID322 ) )
-        var_0 = self._ID322;
+    if ( isdefined( self.enemy ) )
+        var_0 = self.enemy;
     else
         var_0 = _ID42237::_ID28945( level._ID805 );
 
@@ -372,11 +372,11 @@ _ID12813()
 _ID12815( var_0 )
 {
     self endon( "death" );
-    level._ID1644._ID22585._ID8751._ID21837 = var_0._ID740;
+    level._ID1644._ID22585._ID8751._ID21837 = var_0.origin;
     var_0 setcorpseremovetimer( level._ID1644._ID22585._ID8751._ID29757 );
     var_0._ID14836 = 1;
 
-    if ( self._ID1244 == "dog" && _ID42407::_ID13023( "_stealth_behavior_reaction_anim_in_progress" ) )
+    if ( self.type == "dog" && _ID42407::_ID13023( "_stealth_behavior_reaction_anim_in_progress" ) )
     {
         wait 0.1;
         _ID42407::_ID13031( "_stealth_behavior_reaction_anim_in_progress" );
@@ -419,7 +419,7 @@ _ID12882()
 
 _ID12831()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
         _ID42386::_ID2261( "animation", "heard_corpse", _ID42375::_ID11400 );
         _ID42386::_ID2261( "animation", "saw_corpse", _ID42375::_ID11402 );

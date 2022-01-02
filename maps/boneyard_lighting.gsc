@@ -1,13 +1,13 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID19720();
     thread _ID32969();
     thread _ID32363();
     thread _ID43873();
-    maps\_thermal_scope_lightset::_ID521( "boneyard_thermal" );
+    maps\_thermal_scope_lightset::init( "boneyard_thermal" );
     level._ID40576 = "boneyard_thermal";
 }
 
@@ -36,7 +36,7 @@ _ID32969()
 _ID32363()
 {
     _ID42407::_ID40561( "boneyard", 0 );
-    level._ID794 _ID42407::_ID48929( "boneyard" );
+    level.player _ID42407::_ID48929( "boneyard" );
     level._ID51424 = "boneyard";
     level._ID49027 = "boneyard";
 }
@@ -44,24 +44,24 @@ _ID32363()
 _ID46792()
 {
     _ID42237::_ID14413( "flyby_c130" );
-    level._ID794 playrumblelooponentity( "c130_flyby" );
+    level.player playrumblelooponentity( "c130_flyby" );
     level thread maps\boneyard_code::_ID54203( 0.2, 5, 1, 4 );
     wait 1.5;
-    level._ID794 thread _ID42407::_ID5278( 0.1, 1.5 );
+    level.player thread _ID42407::_ID5278( 0.1, 1.5 );
     var_0 = int( 15.0 );
     var_1 = -8;
 
     for ( var_2 = 0; var_2 < var_0; var_2++ )
     {
-        var_3 = level._ID794 getplayerangles();
+        var_3 = level.player getplayerangles();
         var_4 = var_3[0];
         var_5 = ( var_1 - var_4 ) / ( var_0 - var_2 );
         var_5 = clamp( var_5, -1.5, 1.5 );
-        level._ID794 setplayerangles( var_3 + ( var_5, 0, 0 ) );
+        level.player setplayerangles( var_3 + ( var_5, 0, 0 ) );
         wait 0.05;
     }
 
-    level._ID794 thread _ID42407::_ID5278( 1, 1 );
+    level.player thread _ID42407::_ID5278( 1, 1 );
 }
 
 _ID44411()
@@ -119,6 +119,6 @@ _ID45406()
 {
     _ID42237::_ID14413( "uaz_park" );
     wait 0.15;
-    earthquake( 0.35, 0.5, level._ID794._ID740, 5000 );
-    level._ID794 playrumblelooponentity( "damage_heavy" );
+    earthquake( 0.35, 0.5, level.player.origin, 5000 );
+    level.player playrumblelooponentity( "damage_heavy" );
 }

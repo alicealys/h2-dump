@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -213,8 +213,8 @@ _ID54362( var_0 )
 _ID43747()
 {
     _ID42465::_ID23797( "fade_in_from_crash_mix" );
-    level._ID794 thread _ID42407::_ID27079( "scn_ending_intro_effect_front" );
-    level._ID794 thread _ID42407::_ID27079( "scn_ending_intro_vo_front" );
+    level.player thread _ID42407::_ID27079( "scn_ending_intro_effect_front" );
+    level.player thread _ID42407::_ID27079( "scn_ending_intro_vo_front" );
     wait 2;
     _ID42465::_ID23801( "fade_in_from_crash_mix" );
 }
@@ -232,13 +232,13 @@ _ID48038()
 _ID49273()
 {
     _ID42465::_ID23797( "mix_plr_curb_stomp" );
-    level._ID794 thread _ID42237::_ID27000( "flashbang_tinnitus_loop", undefined, 0.5, 4.0 );
+    level.player thread _ID42237::_ID27000( "flashbang_tinnitus_loop", undefined, 0.5, 4.0 );
     _ID52498();
 }
 
 _ID49593()
 {
-    level._ID794 _ID42237::_ID36516( "flashbang_tinnitus_loop" );
+    level.player _ID42237::_ID36516( "flashbang_tinnitus_loop" );
     _ID42465::_ID23801( "mix_plr_curb_stomp" );
 }
 
@@ -327,7 +327,7 @@ stop_credits_mix()
 
 _ID43650()
 {
-    level._ID794 playsound( "amb_afchase_heavy_sand_start" );
+    level.player playsound( "amb_afchase_heavy_sand_start" );
     _ID42474::_ID4668( "exterior", "amb_ending_heavy_sandstorm_front", 4.0 );
 }
 
@@ -353,9 +353,9 @@ _ID43803()
 _ID53032()
 {
     wait 0.2;
-    level._ID794 thread _ID42237::_ID27000( "shepherd_shot_tinnitus", undefined, 0, 2.0 );
+    level.player thread _ID42237::_ID27000( "shepherd_shot_tinnitus", undefined, 0, 2.0 );
     wait 3.0;
-    level._ID794 _ID42237::_ID36516( "shepherd_shot_tinnitus" );
+    level.player _ID42237::_ID36516( "shepherd_shot_tinnitus" );
     _ID42465::_ID23801( "mix_plr_knife_stab" );
 }
 
@@ -371,16 +371,16 @@ _ID47479()
 
 _ID52100()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "stop_knifepull_sfx" );
     level._ID43783 = 0;
     level._ID51780 = 0;
-    var_0 = level._ID794 usebuttonpressed();
+    var_0 = level.player usebuttonpressed();
     var_1 = 0;
 
     for (;;)
     {
-        var_2 = level._ID794 usebuttonpressed();
+        var_2 = level.player usebuttonpressed();
         var_3 = 0;
 
         if ( var_2 )
@@ -401,18 +401,18 @@ _ID52100()
 
 _ID45625()
 {
-    level._ID794 _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_flesh" );
-    level._ID794 _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_high" );
-    level._ID794 thread _ID42237::_ID27000( "scn_afchase_plr_knife_pullout_breath_low", undefined, 0.5, 0.5 );
+    level.player _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_flesh" );
+    level.player _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_high" );
+    level.player thread _ID42237::_ID27000( "scn_afchase_plr_knife_pullout_breath_low", undefined, 0.5, 0.5 );
     level._ID43783 = 1;
     level._ID51780 = 0;
 }
 
 _ID43466()
 {
-    level._ID794 _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_low" );
-    level._ID794 thread _ID42237::_ID27000( "scn_afchase_plr_knife_pullout_breath_high", undefined, 0.5, 0.5 );
-    level._ID794 thread _ID42237::_ID27000( "scn_afchase_plr_knife_pullout_flesh", undefined, 0.5, 0.5 );
+    level.player _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_low" );
+    level.player thread _ID42237::_ID27000( "scn_afchase_plr_knife_pullout_breath_high", undefined, 0.5, 0.5 );
+    level.player thread _ID42237::_ID27000( "scn_afchase_plr_knife_pullout_flesh", undefined, 0.5, 0.5 );
     level._ID43783 = 0;
     level._ID51780 = 1;
 }
@@ -420,8 +420,8 @@ _ID43466()
 _ID51899()
 {
     level notify( "stop_knifepull_sfx" );
-    level._ID794 _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_flesh" );
-    level._ID794 _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_low" );
-    level._ID794 _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_high" );
-    level._ID794 _ID42407::_ID27079( "scn_afchase_plr_remove_knife" );
+    level.player _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_flesh" );
+    level.player _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_low" );
+    level.player _ID42237::_ID36516( "scn_afchase_plr_knife_pullout_breath_high" );
+    level.player _ID42407::_ID27079( "scn_afchase_plr_remove_knife" );
 }

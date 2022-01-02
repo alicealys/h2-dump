@@ -10,9 +10,9 @@ _ID2178( var_0, var_1 )
     self traversemode( "nogravity" );
     self traversemode( "noclip" );
     var_2 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_2._ID65[1] );
-    var_2._ID38701 = var_2._ID740[2] + var_2._ID38702;
-    var_3 = var_2._ID38701 - var_2._ID740[2];
+    self orientmode( "face angle", var_2.angles[1] );
+    var_2._ID38701 = var_2.origin[2] + var_2._ID38702;
+    var_3 = var_2._ID38701 - var_2.origin[2];
     thread _ID37473( var_3 - var_1 );
     var_4 = 0.15;
     self clearanim( %body, var_4 );
@@ -50,7 +50,7 @@ _ID37473( var_0 )
 
     for ( var_3 = 0; var_3 < var_1; var_3++ )
     {
-        self forceteleport( self._ID740 + var_2 );
+        self forceteleport( self.origin + var_2 );
         wait 0.05;
     }
 }
@@ -74,7 +74,7 @@ _ID37474( var_0, var_1, var_2, var_3 )
 
     for ( var_5 = 0; var_5 < var_2; var_5++ )
     {
-        self forceteleport( self._ID740 + var_4 );
+        self forceteleport( self.origin + var_4 );
         wait 0.05;
     }
 
@@ -93,24 +93,24 @@ _ID11657( var_0 )
     var_1 = self getnegotiationstartnode();
 
     if ( isdefined( var_1._ID38702 ) )
-        var_1._ID38701 = var_1._ID740[2] + var_1._ID38702;
+        var_1._ID38701 = var_1.origin[2] + var_1._ID38702;
     else
-        var_1._ID38701 = var_1._ID740[2];
+        var_1._ID38701 = var_1.origin[2];
 
     var_2 = self getnegotiationendnode();
-    self orientmode( "face angle", var_1._ID65[1] );
+    self orientmode( "face angle", var_1.angles[1] );
     self._ID38720 = var_0["traverseHeight"];
     self._ID38722 = var_1;
     var_3 = var_0["traverseAnim"];
     var_4 = var_0["traverseToCoverAnim"];
     self traversemode( "nogravity" );
     self traversemode( "noclip" );
-    self._ID38723 = self._ID740[2];
+    self._ID38723 = self.origin[2];
     var_5 = 0;
 
-    if ( isdefined( var_4 ) && isdefined( self._ID700 ) && self._ID700._ID1244 == var_0["coverType"] && distancesquared( self._ID700._ID740, var_2._ID740 ) < 625 )
+    if ( isdefined( var_4 ) && isdefined( self.node ) && self.node.type == var_0["coverType"] && distancesquared( self.node.origin, var_2.origin ) < 625 )
     {
-        if ( animscripts\utility::_ID1735( self._ID700._ID65[1] - var_2._ID65[1] ) > 160 )
+        if ( animscripts\utility::_ID1735( self.node.angles[1] - var_2.angles[1] ) > 160 )
         {
             var_5 = 1;
             var_3 = var_4;
@@ -147,15 +147,15 @@ _ID11657( var_0 )
     animscripts\shared::_ID11529( "traverseAnim", var_6 );
     self traversemode( "gravity" );
 
-    if ( self._ID274 )
+    if ( self.delayeddeath )
         return;
 
     self._ID7._ID24881 = 0;
 
-    if ( var_5 && isdefined( self._ID700 ) && distancesquared( self._ID740, self._ID700._ID740 ) < 256 )
+    if ( var_5 && isdefined( self.node ) && distancesquared( self.origin, self.node.origin ) < 256 )
     {
         self._ID7._ID24414 = "stop";
-        self teleport( self._ID700._ID740 );
+        self teleport( self.node.origin );
     }
     else if ( isdefined( var_0["traverseStopsAtEnd"] ) )
         self._ID7._ID24414 = "stop";
@@ -207,7 +207,7 @@ _ID18054()
 
 _ID18056()
 {
-    var_0 = self._ID740 + ( 0, 0, 32 );
+    var_0 = self.origin + ( 0, 0, 32 );
     var_1 = self getanimtime( self._ID38712 );
     var_2 = getanimlength( self._ID38712 );
     var_3 = var_1 * var_2;
@@ -223,9 +223,9 @@ _ID18056()
         var_10 = _ID16448( var_1, var_9 );
         var_8 = var_10;
         var_11 = getangledelta( self._ID38712, var_1, var_10 );
-        var_12 = ( 0, self._ID65[1], 0 );
+        var_12 = ( 0, self.angles[1], 0 );
         var_11 = rotatevector( var_11, var_12 );
-        var_7 = self._ID740 + var_11;
+        var_7 = self.origin + var_11;
         var_4 = 0 - var_11[2];
         var_11 = ( var_11[0], var_11[1], 0 );
         var_0 += var_11;
@@ -234,10 +234,10 @@ _ID18056()
     else
     {
         var_13 = getangledelta( self._ID38712, var_1, 1.0 );
-        var_12 = ( 0, self._ID65[1], 0 );
+        var_12 = ( 0, self.angles[1], 0 );
         var_13 = rotatevector( var_13, var_12 );
         var_4 = 0 - var_13[2];
-        var_7 = self._ID740 + var_13;
+        var_7 = self.origin + var_13;
         var_14 = var_2 - var_3;
         var_5 = var_14 / 3.0;
     }
@@ -304,7 +304,7 @@ _ID14239( var_0, var_1, var_2, var_3 )
 
         for (;;)
         {
-            if ( self._ID740[2] < var_0 )
+            if ( self.origin[2] < var_0 )
             {
                 self traversemode( "gravity" );
                 break;
@@ -330,21 +330,21 @@ _ID11664( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         var_7 = self._ID24424;
 
     var_8 = self getnegotiationstartnode();
-    var_9 = self._ID740;
+    var_9 = self.origin;
 
     if ( isdefined( var_0 ) )
     {
         var_10 = getangledelta( var_0, 0, 1 );
-        var_9 = _ID38642( var_10, var_8._ID740, var_8._ID65 );
+        var_9 = _ID38642( var_10, var_8.origin, var_8.angles );
     }
 
     var_11 = self getnegotiationendnode();
-    var_12 = var_11._ID740;
+    var_12 = var_11.origin;
 
     if ( isdefined( var_2 ) )
     {
         var_13 = getangledelta( var_2, 0, 1 );
-        var_12 = _ID38642( var_13 * -1, var_11._ID740, var_11._ID65 );
+        var_12 = _ID38642( var_13 * -1, var_11.origin, var_11.angles );
         var_12 += ( 0, 0, 1 );
     }
 
@@ -364,14 +364,14 @@ _ID11664( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     else
         self traversemode( "noclip" );
 
-    self._ID52 = 1;
+    self.allowpain = 1;
 
     if ( isdefined( var_6 ) )
         var_17 = var_6;
     else
         var_17 = %body;
 
-    self orientmode( "face angle", var_8._ID65[1] );
+    self orientmode( "face angle", var_8.angles[1] );
 
     if ( isdefined( var_0 ) )
     {
@@ -452,12 +452,12 @@ _ID11430( var_0 )
         {
             var_7 = getangledelta( self._ID38712, 0, 1 );
             var_15 = var_7[2] - var_9;
-            var_16 = self._ID38718._ID740[2] - self._ID740[2] - var_15;
+            var_16 = self._ID38718.origin[2] - self.origin[2] - var_15;
         }
         else
         {
             var_17 = self._ID38722;
-            var_16 = var_17._ID38702 - ( self._ID740[2] - var_17._ID740[2] );
+            var_16 = var_17._ID38702 - ( self.origin[2] - var_17.origin[2] );
         }
 
         thread _ID37474( var_16 - var_14, 0, var_13 );
@@ -480,11 +480,11 @@ _ID11456( var_0, var_1, var_2 )
     self traversemode( "noclip" );
     thread _ID11452();
     var_3 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_3._ID65[1] );
+    self orientmode( "face angle", var_3.angles[1] );
 
     if ( !isdefined( var_2 ) )
     {
-        var_4 = var_3._ID38701 - var_3._ID740[2];
+        var_4 = var_3._ID38701 - var_3.origin[2];
         thread _ID37473( var_4 - var_1 );
     }
 
@@ -506,7 +506,7 @@ _ID11435( var_0, var_1, var_2, var_3 )
     thread _ID11452();
     var_4 = self getnegotiationstartnode();
     var_5 = self getnegotiationendnode();
-    self orientmode( "face angle", var_4._ID65[1] );
+    self orientmode( "face angle", var_4.angles[1] );
 
     if ( !isdefined( var_2 ) )
         var_2 = "jump_down_40";
@@ -521,7 +521,7 @@ _ID11435( var_0, var_1, var_2, var_3 )
 
     if ( !var_3 )
     {
-        var_6 = var_4._ID740[2] - var_5._ID740[2];
+        var_6 = var_4.origin[2] - var_5.origin[2];
         thread _ID37474( 40.0 - var_6, 0.1, var_0, var_1 );
     }
 
@@ -546,7 +546,7 @@ _ID11436( var_0, var_1, var_2, var_3 )
     self traversemode( "noclip" );
     thread _ID11452();
     var_4 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_4._ID65[1] );
+    self orientmode( "face angle", var_4.angles[1] );
 
     if ( !isdefined( var_2 ) )
         var_2 = "jump_up_40";
@@ -584,12 +584,12 @@ _ID11438( var_0, var_1 )
     self traversemode( "noclip" );
     thread _ID11452();
     var_2 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_2._ID65[1] );
+    self orientmode( "face angle", var_2.angles[1] );
 
     if ( !isdefined( var_2._ID38701 ) )
-        var_2._ID38701 = var_2._ID740[2];
+        var_2._ID38701 = var_2.origin[2];
 
-    var_3 = var_2._ID38701 - var_2._ID740[2];
+    var_3 = var_2._ID38701 - var_2.origin[2];
     thread _ID37473( var_3 - var_1 );
     self._ID24391 = "land";
     self clearanim( %body, 0.2 );

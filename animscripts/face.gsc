@@ -95,7 +95,7 @@ _ID30759( var_0 )
 
 actorisfemale()
 {
-    if ( issubstr( self._ID669, "female" ) )
+    if ( issubstr( self.model, "female" ) )
         return 1;
 
     return 0;
@@ -472,7 +472,7 @@ _ID15721()
     else
         self._ID13747++;
 
-    if ( isdefined( self._ID13747 ) && self._ID13747 > 4 && isdefined( self._ID912 ) && self._ID912 != "scripted" && self._ID912 != "death" && self._ID912 != "civilian_death" )
+    if ( isdefined( self._ID13747 ) && self._ID13747 > 4 && isdefined( self.script ) && self.script != "scripted" && self.script != "death" && self.script != "civilian_death" )
     {
         var_5 = _ID28062( undefined, "idle", undefined );
 

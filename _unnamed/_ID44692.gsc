@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_wall_fan", "tag_swivel", 0, undefined, 32 );
     _ID42231::_ID10493( %wall_fan_rotate, #animtree, "setanimknob", undefined, undefined, "wall_fan_rotate" );

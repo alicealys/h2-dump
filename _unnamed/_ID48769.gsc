@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_complete_sp_usmc_ghillie_price" );
     self attach( "head_usmc_ghillie_price", "", 1 );

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID39397 = 0;
     var_0 = _ID42407::_ID9186( "dcburning_crash" );

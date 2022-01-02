@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_desert_tf141_zodiac" );
     self attach( "head_hero_price_desert", "", 1 );

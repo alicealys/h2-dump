@@ -13,23 +13,23 @@ _ID54598()
 
     foreach ( var_3 in var_0 )
     {
-        if ( !isdefined( var_3._ID172 ) )
+        if ( !isdefined( var_3.code_classname ) )
             continue;
 
-        if ( issubstr( var_3._ID172, "trigger" ) )
+        if ( issubstr( var_3.code_classname, "trigger" ) )
             var_1[var_1.size] = var_3;
     }
 
     foreach ( var_6 in var_1 )
     {
-        if ( !isdefined( var_6._ID1191 ) )
+        if ( !isdefined( var_6.target ) )
             continue;
 
-        var_7 = _ID42237::_ID16640( var_6._ID1191, "targetname" );
+        var_7 = _ID42237::_ID16640( var_6.target, "targetname" );
 
         foreach ( var_9 in var_7 )
         {
-            if ( isdefined( var_9._ID922 ) && var_9._ID922 == "hostile_burst" )
+            if ( isdefined( var_9.script_noteworthy ) && var_9.script_noteworthy == "hostile_burst" )
                 var_6 thread _ID44107( var_9 );
         }
     }
@@ -88,7 +88,7 @@ _ID44107( var_0 )
             level._ID50902 = 0;
     }
 
-    level thread _ID42237::_ID27077( var_1, var_0._ID740 );
+    level thread _ID42237::_ID27077( var_1, var_0.origin );
 }
 
 _ID54569()
@@ -120,7 +120,7 @@ _ID54728()
 _ID49650()
 {
     _ID42407::_ID24584( 3 );
-    level._ID794 _ID42407::_ID27079( "mus_favelaescape_fixedfall", "fixedfall_music_done" );
+    level.player _ID42407::_ID27079( "mus_favelaescape_fixedfall", "fixedfall_music_done" );
 }
 
 _ID52086()
@@ -130,7 +130,7 @@ _ID52086()
     _ID42407::_ID24587( "mus_favelaescape_finalrun" );
     _ID42237::_ID14413( "solorun_player_boarded_chopper" );
     _ID42407::_ID24584( 10 );
-    level._ID794 _ID42407::_ID27079( "mus_favelaescape_ending" );
+    level.player _ID42407::_ID27079( "mus_favelaescape_ending" );
 }
 
 _ID52490()
@@ -165,7 +165,7 @@ _ID49849()
 
 _ID52646()
 {
-    level._ID794 _ID42407::_ID27079( "wlla_favela_escape_running1" );
+    level.player _ID42407::_ID27079( "wlla_favela_escape_running1" );
 }
 
 _ID50290()
@@ -229,29 +229,29 @@ _ID48509()
 {
     var_0 = getent( "radiotower_path_scout", "targetname" );
     var_1 = var_0._ID70;
-    var_2 = getnode( var_0._ID1191, "targetname" );
+    var_2 = getnode( var_0.target, "targetname" );
     var_3 = var_0 _ID42407::_ID35014();
     var_3 thread _ID42407::_ID22746( 1 );
     var_3 _ID19365();
-    var_3._ID511 = 1;
+    var_3.ignoreme = 1;
     var_0 _ID42259::_ID3023( var_3, var_1 );
     _ID42407::_ID38929( "trig_radiotower_brushpath_start" );
     var_3 _ID42407::_ID36519();
     var_3 endon( "death" );
-    var_3._ID49 = 1;
+    var_3.allowdeath = 1;
     var_3 thread _ID42407::_ID27079( "favesc_pe1_heretheycome" );
     var_0 _ID42259::_ID3020( var_3, var_1 );
-    var_3._ID452 = 64;
+    var_3.goalradius = 64;
     var_3 setgoalnode( var_2 );
     var_3 waittill( "goal" );
 
     if ( isdefined( var_3 ) )
     {
         var_3 _ID47487();
-        var_3._ID511 = 0;
-        var_3._ID381 = 0;
-        var_3._ID452 = 1024;
-        var_3._ID199 = "ambush";
+        var_3.ignoreme = 0;
+        var_3.fixednode = 0;
+        var_3.goalradius = 1024;
+        var_3.combatmode = "ambush";
     }
 }
 
@@ -373,11 +373,11 @@ _ID51010()
     foreach ( var_5, var_3 in var_0 )
     {
         var_4 = "vehicle1_badplace_" + var_5;
-        badplace_cylinder( var_4, -1, _ID42407::_ID17434( var_3._ID740 ), var_3._ID851, 128, "axis", "allies" );
+        badplace_cylinder( var_4, -1, _ID42407::_ID17434( var_3.origin ), var_3.radius, 128, "axis", "allies" );
         var_1[var_1.size] = var_4;
     }
 
-    while ( !_ID42237::_ID14385( "radiotower_vehicle1_donut_done" ) && self._ID486 > 0 && self vehicle_getspeed() > 1 )
+    while ( !_ID42237::_ID14385( "radiotower_vehicle1_donut_done" ) && self.health > 0 && self vehicle_getspeed() > 1 )
         wait 0.1;
 
     foreach ( var_7 in var_1 )
@@ -454,9 +454,9 @@ _ID52530( var_0 )
 
     foreach ( var_3 in var_1 )
     {
-        var_3._ID486 = 10000000;
-        var_3._ID1204 = -2500;
-        var_3._ID86 = 0.5;
+        var_3.health = 10000000;
+        var_3.threatbias = -2500;
+        var_3.attackeraccuracy = 0.5;
         var_3 thread _ID46301( self, var_0 );
     }
 
@@ -481,20 +481,20 @@ _ID46301( var_0, var_1 )
     self endon( "death" );
     var_0 endon( "death" );
     var_0 _ID42407::_ID13027( "godoff" );
-    self._ID49 = 1;
+    self.allowdeath = 1;
 
     if ( isdefined( var_1 ) && self == var_1 )
-        self._ID486 = 1;
+        self.health = 1;
     else
-        self._ID486 = 150;
+        self.health = 150;
 
     thread _ID43804();
 }
 
 _ID40247( var_0 )
 {
-    self._ID486 = var_0 + self._ID18313;
-    self._ID9497 = self._ID486;
+    self.health = var_0 + self._ID18313;
+    self._ID9497 = self.health;
 }
 
 _ID48549()
@@ -614,9 +614,9 @@ _ID52816()
 
     foreach ( var_5 in var_1 )
     {
-        if ( var_5._ID740[0] > 3600 )
+        if ( var_5.origin[0] > 3600 )
         {
-            if ( var_5._ID740[2] > 1140 )
+            if ( var_5.origin[2] > 1140 )
             {
                 var_3[var_3.size] = var_5;
                 continue;
@@ -631,7 +631,7 @@ _ID52816()
     level notify( "kill_technical_gunners" );
 
     foreach ( var_5 in var_2 )
-        var_5 setgoalpos( var_5._ID740 );
+        var_5 setgoalpos( var_5.origin );
 
     wait 0.05;
     var_9 = getent( "goalvolume_52", "targetname" );
@@ -708,27 +708,27 @@ _ID46619()
     level endon( "multipath_dialogue_start" );
     _ID42237::_ID14413( "street_advance_1" );
     var_0 = _ID42237::_ID16638( "struct_vista1_wavingguy_animref", "targetname" );
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     var_2 = "favela_run_and_wave";
     var_3 = var_1 _ID42407::_ID35014();
-    var_3._ID511 = 1;
-    var_3._ID507 = 1;
+    var_3.ignoreme = 1;
+    var_3.ignoreall = 1;
     var_3 thread _ID42407::_ID22746();
     var_0 _ID42259::_ID3023( var_3, var_2 );
     var_3 thread _ID44149();
     _ID42407::_ID38929( "trig_vista1_wavingguy" );
     thread _ID44030( "trig_vista1_wavingguy_spawngroup" );
     var_3 _ID42407::_ID36519();
-    var_3._ID49 = 1;
+    var_3.allowdeath = 1;
     var_3 notify( "wavingguy_activated" );
     var_3 thread _ID42407::_ID27079( "favesc_pe1_attack" );
     var_0 _ID42259::_ID3020( var_3, var_2 );
 
     if ( isalive( var_3 ) )
     {
-        var_3._ID511 = 0;
-        var_3._ID507 = 0;
-        var_4 = getnode( var_3._ID1191, "targetname" );
+        var_3.ignoreme = 0;
+        var_3.ignoreall = 0;
+        var_4 = getnode( var_3.target, "targetname" );
         var_3 setgoalnode( var_4 );
     }
 }
@@ -795,8 +795,8 @@ _ID44811()
             }
 
             var_3._ID50357 = gettime();
-            var_3._ID486 = 1;
-            var_3._ID86 = 1;
+            var_3.health = 1;
+            var_3.attackeraccuracy = 1;
         }
     }
 }
@@ -805,7 +805,7 @@ _ID21318()
 {
     self endon( "death" );
 
-    while ( _ID42237::_ID41802( level._ID794._ID740, level._ID794 getplayerangles(), self._ID740, level._ID8760["45"] ) )
+    while ( _ID42237::_ID41802( level.player.origin, level.player getplayerangles(), self.origin, level._ID8760["45"] ) )
         wait(randomfloatrange( 0.5, 2 ));
 
     _ID45456::_ID54623( self );
@@ -864,12 +864,12 @@ _ID50759()
         var_14 = "traverse_window_M_2_dive";
         var_6._ID3189 = "generic";
         var_15 = var_6 _ID42407::_ID16120( var_14 );
-        var_16 = getstartorigin( var_9._ID740, var_9._ID65, var_15 );
-        var_17 = getstartangles( var_9._ID740, var_9._ID65, var_15 );
+        var_16 = getstartorigin( var_9.origin, var_9.angles, var_15 );
+        var_17 = getstartangles( var_9.origin, var_9.angles, var_15 );
         var_6 forceteleport( var_16, var_17 );
         var_11 setentitytarget( var_8 );
         wait 1;
-        var_11 shoot( 1.0, var_8._ID740 );
+        var_11 shoot( 1.0, var_8.origin );
         var_6 _ID42407::_ID10226( 1.5, _ID42407::_ID36519 );
         var_6 _ID42407::_ID10226( 2, _ID42407::_ID32187, 1 );
         var_9 thread _ID42259::_ID3020( var_6, var_14 );
@@ -1004,7 +1004,7 @@ _ID44181( var_0, var_1 )
         var_2 = _ID42411::_ID31551( var_0 );
 
     var_3 = var_2[0];
-    var_3._ID486 = 2000000;
+    var_3.health = 2000000;
     missile_createrepulsorent( var_3, 1150, 850 );
     return var_3;
 }
@@ -1032,30 +1032,30 @@ _ID51583( var_0 )
 {
     thread maps\favela_escape_aud::_ID49609();
     _ID42237::_ID14402( "market_evac_chopper_incoming" );
-    var_1 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
-    var_2 = _ID42237::_ID16638( var_1._ID1191, "targetname" );
-    var_3 = _ID42237::_ID16638( var_2._ID1191, "targetname" );
-    var_4 = _ID42237::_ID16638( var_3._ID1191, "targetname" );
+    var_1 = _ID42237::_ID16638( var_0.target, "targetname" );
+    var_2 = _ID42237::_ID16638( var_1.target, "targetname" );
+    var_3 = _ID42237::_ID16638( var_2.target, "targetname" );
+    var_4 = _ID42237::_ID16638( var_3.target, "targetname" );
     self vehicle_setspeedimmediate( 30 );
     self vehicle_setspeed( 30, 15, 5 );
-    self setvehgoalpos( var_1._ID740, 1 );
+    self setvehgoalpos( var_1.origin, 1 );
     self setmaxpitchroll( 30, 25 );
     self neargoalnotifydist( 256 );
     self waittill( "near_goal" );
-    self setgoalyaw( var_1._ID65[1] );
+    self setgoalyaw( var_1.angles[1] );
     self waittill( "goal" );
     thread _ID42407::_ID27079( "scn_favela_escape_heli_leave" );
     wait 1;
     _ID42237::_ID14402( "market_evac_chopper_bugout" );
-    self setvehgoalpos( var_2._ID740 );
+    self setvehgoalpos( var_2.origin );
     self vehicle_setspeed( 60, 10 );
     self neargoalnotifydist( 600 );
     self waittill( "near_goal" );
-    self setvehgoalpos( var_3._ID740 );
+    self setvehgoalpos( var_3.origin );
     _ID42237::_ID14402( "market_evac_chopper_leaves_scene" );
     _ID42407::_ID10226( 4, ::_ID49849 );
     self waittill( "near_goal" );
-    self setvehgoalpos( var_4._ID740 );
+    self setvehgoalpos( var_4.origin );
     self waittill( "goal" );
     self notify( "death" );
     self delete();
@@ -1092,7 +1092,7 @@ _ID43515()
             if ( _ID42237::_ID14385( var_0 ) )
                 break;
 
-            var_6._ID740 = var_5[var_7]._ID740;
+            var_6.origin = var_5[var_7].origin;
             var_6 playsound( var_9, "sound_done" );
             var_6 waittill( "sound_done" );
 
@@ -1133,7 +1133,7 @@ _ID50456( var_0 )
     var_6 = 0.15;
     var_7 = 0.5;
     var_8 = 1;
-    var_9 = var_1._ID740;
+    var_9 = var_1.origin;
 
     while ( !_ID42237::_ID14385( var_0 ) && isdefined( level._ID7499 ) )
     {
@@ -1145,15 +1145,15 @@ _ID50456( var_0 )
             if ( !isdefined( level._ID7499 ) )
                 break;
 
-            var_13 = level._ID7499._ID740[0] + randomintrange( -256, 256 );
-            var_14 = level._ID7499._ID740[1] + randomintrange( -256, 256 );
-            var_15 = level._ID7499._ID740[2] + randomintrange( -256, 0 );
+            var_13 = level._ID7499.origin[0] + randomintrange( -256, 256 );
+            var_14 = level._ID7499.origin[1] + randomintrange( -256, 256 );
+            var_15 = level._ID7499.origin[2] + randomintrange( -256, 0 );
             var_16 = ( var_13, var_14, var_15 );
             var_17 = vectortoangles( var_16 - var_9 );
             var_18 = anglestoforward( var_17 );
             var_19 = var_18 * 12;
             var_20 = var_9 + var_19;
-            var_21 = bullettrace( var_1._ID740, var_20, 1 );
+            var_21 = bullettrace( var_1.origin, var_20, 1 );
             var_22 = var_21["entity"];
 
             if ( isdefined( var_22 ) )
@@ -1168,7 +1168,7 @@ _ID50456( var_0 )
                     continue;
             }
 
-            magicbullet( var_10, var_1._ID740, var_20 );
+            magicbullet( var_10, var_1.origin, var_20 );
             wait(randomfloatrange( var_5, var_6 ));
         }
 
@@ -1210,8 +1210,8 @@ _ID45996()
 
     foreach ( var_3 in var_1 )
     {
-        var_12 = _ID42237::_ID16638( var_3._ID1191, "targetname" );
-        var_13 = magicbullet( "rpg_straight", var_3._ID740, var_12._ID740 );
+        var_12 = _ID42237::_ID16638( var_3.target, "targetname" );
+        var_13 = magicbullet( "rpg_straight", var_3.origin, var_12.origin );
         var_13 thread _ID42407::_ID27001( "scn_evac_rpg_loop", undefined, 1 );
         wait(randomfloatrange( 0.8, 1.5 ));
     }
@@ -1225,14 +1225,14 @@ _ID45996()
             if ( _ID42237::_ID14385( "market_evac_chopper_leaves_scene" ) || !isdefined( level._ID7499 ) )
                 break;
 
-            if ( _ID27290( var_3._ID740 ) )
+            if ( _ID27290( var_3.origin ) )
             {
                 wait 0.05;
                 continue;
             }
 
             var_12 = level._ID7499;
-            var_13 = magicbullet( "rpg_straight", var_3._ID740, var_12._ID740 );
+            var_13 = magicbullet( "rpg_straight", var_3.origin, var_12.origin );
             var_13 thread _ID42407::_ID27001( "scn_evac_rpg_loop", undefined, 1 );
             wait(randomfloatrange( 0.8, 1.5 ));
         }
@@ -1297,7 +1297,7 @@ _ID49469()
 
     foreach ( var_3 in var_0 )
     {
-        if ( isdefined( var_3._ID922 ) && var_3._ID922 == "ai_market_evac_ambusher" )
+        if ( isdefined( var_3.script_noteworthy ) && var_3.script_noteworthy == "ai_market_evac_ambusher" )
             var_1[var_1.size] = var_3;
     }
 
@@ -1349,7 +1349,7 @@ _ID43896()
 
         foreach ( var_3 in var_1 )
         {
-            while ( distance( level._ID794._ID740, level._ID47826._ID740 ) < 256 )
+            while ( distance( level.player.origin, level._ID47826.origin ) < 256 )
                 wait 1;
 
             if ( !_ID42237::_ID14385( var_0 ) )
@@ -1363,7 +1363,7 @@ _ID43896()
 
 _ID44491( var_0 )
 {
-    while ( level._ID794._ID740[2] < var_0 )
+    while ( level.player.origin[2] < var_0 )
         wait 0.05;
 
     _ID42237::_ID14402( "market_evac_player_mantled" );
@@ -1377,17 +1377,17 @@ _ID54188( var_0 )
 
     for (;;)
     {
-        if ( level._ID794 istouching( var_1 ) && !level._ID794 canmantle() && level._ID794._ID740[2] < var_0 )
+        if ( level.player istouching( var_1 ) && !level.player canmantle() && level.player.origin[2] < var_0 )
         {
             thread _ID46172( var_1 );
 
-            while ( level._ID794 istouching( var_1 ) )
+            while ( level.player istouching( var_1 ) )
             {
-                level._ID794 _ID52323( var_1 );
-                level._ID794 forcemantle();
+                level.player _ID52323( var_1 );
+                level.player forcemantle();
                 setsaveddvar( "hud_forceMantleHint", 0 );
 
-                while ( !level._ID794 isonground() )
+                while ( !level.player isonground() )
                     wait 0.05;
 
                 break;
@@ -1448,7 +1448,7 @@ _ID45861()
         wait 0.1;
         var_4 = 0;
         var_5 = 0;
-        var_6 = level._ID794 getvelocity();
+        var_6 = level.player getvelocity();
         var_7 = distance( ( var_6[0], var_6[1], 0 ), ( 0, 0, 0 ) );
 
         if ( var_7 < 125 )
@@ -1480,12 +1480,12 @@ _ID48487()
 _ID50416()
 {
     level._ID43135.greenberet_disabled = 1;
-    var_0 = level._ID794;
+    var_0 = level.player;
     var_1 = getent( "trig_roofrun_player_bigjump_start", "targetname" );
     var_2 = _ID42237::_ID16638( "struct_player_bigjump_edge_reference", "targetname" );
     var_3 = getnode( "big_jump_node", "targetname" );
     _ID50100( var_3 );
-    var_4 = anglestoforward( var_2._ID65 );
+    var_4 = anglestoforward( var_2.angles );
     thread _ID43630();
     thread _ID47764();
     level endon( "player_fell_normally" );
@@ -1494,7 +1494,7 @@ _ID50416()
     {
         var_5 = 0;
 
-        while ( level._ID794 istouching( var_1 ) )
+        while ( level.player istouching( var_1 ) )
         {
             _ID42237::_ID14413( "player_jumping" );
 
@@ -1525,8 +1525,8 @@ _ID50416()
     setsaveddvar( "compass", 0 );
     setsaveddvar( "hud_showStance", 0 );
     var_8 waittillmatch( "single anim",  "start_soap"  );
-    level._ID794 freezecontrols( 1 );
-    level._ID794 allowcrouch( 1 );
+    level.player freezecontrols( 1 );
+    level.player allowcrouch( 1 );
     level._ID47826 thread _ID43645( 1 );
 
     if ( _ID42237::_ID14385( "roofrun_sarge_bigjumped" ) )
@@ -1558,16 +1558,16 @@ _ID53412( var_0, var_1 )
     _ID42475::_ID34575( "start_player_bigjump" );
     var_4 = _ID42407::_ID35028( var_2 );
     var_5 = var_4 _ID42407::_ID16120( var_3 );
-    var_6 = getstartorigin( var_1._ID740, var_1._ID65, var_5 );
-    var_7 = getstartangles( var_1._ID740, var_1._ID65, var_5 ) - var_0._ID65;
+    var_6 = getstartorigin( var_1.origin, var_1.angles, var_5 );
+    var_7 = getstartangles( var_1.origin, var_1.angles, var_5 ) - var_0.angles;
     var_8 = spawnstruct();
-    var_8._ID65 = var_1._ID65 - var_7;
-    var_9 = var_6 - var_0._ID740;
-    var_10 = var_1._ID740 - var_6;
+    var_8.angles = var_1.angles - var_7;
+    var_9 = var_6 - var_0.origin;
+    var_10 = var_1.origin - var_6;
     var_11 = var_10[0] * cos( var_7[1] ) - var_10[1] * sin( var_7[1] );
     var_12 = var_10[0] * sin( var_7[1] ) + var_10[1] * cos( var_7[1] );
     var_13 = var_10 - ( var_11, var_12, var_10[2] );
-    var_8._ID740 = var_1._ID740 - var_9 + var_13;
+    var_8.origin = var_1.origin - var_9 + var_13;
     var_4 hide();
     var_8 _ID42259::_ID3018( var_4, var_3 );
     var_0 disableweapons( 1, 500 );
@@ -1576,7 +1576,7 @@ _ID53412( var_0, var_1 )
     var_4 thread handle_player_big_jump_notetrack();
     var_0 playerlinktoblend( var_4, "tag_player", 0.5, 0.25, 0.25 );
     var_14 = "single anim";
-    var_4 animscripted( var_14, var_8._ID740, var_8._ID65, var_5 );
+    var_4 animscripted( var_14, var_8.origin, var_8.angles, var_5 );
     var_15 = getnotetracktimes( var_5, "start_roof_collapse" );
     var_16 = getanimlength( var_5 ) * var_15[0];
     var_4 thread _ID42259::_ID46811( undefined, var_8, var_1, var_16 );
@@ -1613,18 +1613,18 @@ handle_player_big_jump_notetrack()
 _ID43146()
 {
     wait 1.25;
-    level._ID794 playrumblelooponentity( "artillery_rumble" );
+    level.player playrumblelooponentity( "artillery_rumble" );
     wait 0.25;
     var_0 = gettime() + _ID47906( 0.4 );
 
     while ( gettime() < var_0 )
     {
-        level._ID794 playrumblelooponentity( "damage_light" );
+        level.player playrumblelooponentity( "damage_light" );
         wait 0.115;
     }
 
     wait 0.1;
-    level._ID794 playrumblelooponentity( "artillery_rumble" );
+    level.player playrumblelooponentity( "artillery_rumble" );
 }
 
 _ID47427()
@@ -1649,9 +1649,9 @@ _ID47764()
     var_0 waittill( "trigger" );
     var_0 delete();
     _ID42237::_ID14402( "player_fell_normally" );
-    var_1 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    var_1 = _ID42313::_ID9125( "black", 0, level.player );
     var_1 fadeovertime( 0.2 );
-    var_1._ID55 = 1.0;
+    var_1.alpha = 1.0;
     _ID42475::_ID34575( "start_player_normal_fall" );
     thread _ID43385();
     var_1 _ID42237::_ID10192( 2.0, ::destroy );
@@ -1672,54 +1672,54 @@ _ID43385( var_0, var_1 )
     _ID42234::_ID13611( "cloud_mountain_vista_02_favela_s" );
     _ID42234::_ID13611( "mist_ocean_vista_02_favela_s" );
     _ID42234::_ID13611( "mist_ocean_vista_favela_s" );
-    level._ID794 disableoffhandweapons();
+    level.player disableoffhandweapons();
 
     if ( isdefined( var_0 ) )
         var_0 waittillmatch( "single anim",  "blackout"  );
     else
     {
-        level._ID794 enableinvulnerability();
+        level.player enableinvulnerability();
 
-        while ( !level._ID794 isonground() )
+        while ( !level.player isonground() )
             wait 0.05;
 
         _ID42407::_ID24584();
-        level._ID794 freezecontrols( 1 );
-        level._ID794 disableinvulnerability();
+        level.player freezecontrols( 1 );
+        level.player disableinvulnerability();
     }
 
-    level._ID794 _meth_80b5( "artillery_rumble" );
-    level._ID794 _ID42237::_ID10192( 1, ::_meth_80b6, "artillery_rumble" );
+    level.player _meth_80b5( "artillery_rumble" );
+    level.player _ID42237::_ID10192( 1, ::_meth_80b6, "artillery_rumble" );
     var_8 = 6.5;
     thread _ID50646( var_8 );
     thread _ID43074( var_8 );
     var_9 = "favela_escape_player_recovery";
-    level._ID794 shellshock( var_9, var_8 + 0.1 );
+    level.player shellshock( var_9, var_8 + 0.1 );
 
     if ( !isdefined( var_1 ) )
         var_1 = getnode( "big_jump_node", "targetname" );
 
     setsaveddvar( "objectiveHide", 1 );
     level thread _ID52086();
-    var_10 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    var_10 = _ID42313::_ID9125( "black", 0, level.player );
     var_10 fadeovertime( 0.1 );
-    var_10._ID55 = 1;
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 setstance( "stand" );
+    var_10.alpha = 1;
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player setstance( "stand" );
     _ID42237::_ID14402( "player_recovery_blackscreen" );
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     var_11 = "player_bigjump";
     var_12 = "recover";
     var_13 = level._ID30895[var_11][var_12];
-    var_14 = getstartorigin( var_1._ID740, var_1._ID65, var_13 );
-    var_15 = getstartangles( var_1._ID740, var_1._ID65, var_13 );
+    var_14 = getstartorigin( var_1.origin, var_1.angles, var_13 );
+    var_15 = getstartangles( var_1.origin, var_1.angles, var_13 );
 
     if ( !isdefined( var_0 ) )
     {
         var_0 = _ID42407::_ID35028( "player_bigjump", var_14 );
-        var_0._ID65 = var_15;
-        level._ID794 playerlinktoblend( var_0, "tag_player", 0.05 );
+        var_0.angles = var_15;
+        level.player playerlinktoblend( var_0, "tag_player", 0.05 );
     }
 
     foreach ( var_17 in level._ID49912 )
@@ -1751,16 +1751,16 @@ _ID43385( var_0, var_1 )
     _ID42407::_ID10226( var_20 - 2, ::_ID46642 );
     wait 0.25;
     var_10 fadeovertime( 0.5 );
-    var_10._ID55 = 0;
+    var_10.alpha = 0;
     var_0 waittillmatch( "single anim",  "end"  );
-    level._ID794 allowcrouch( 1 );
-    level._ID794 allowprone( 1 );
+    level.player allowcrouch( 1 );
+    level.player allowprone( 1 );
     thread maps\favela_escape_lighting::_ID50564( "favela_escape" );
     _ID42237::_ID14402( "player_recovery_done" );
     _ID42475::_ID34575( "start_player_recovery_done" );
     var_10 destroy();
-    level._ID794 unlink();
-    level._ID794 freezecontrols( 0 );
+    level.player unlink();
+    level.player freezecontrols( 0 );
     var_0 delete();
     setsaveddvar( "compass", 1 );
     setsaveddvar( "hud_showStance", 1 );
@@ -1795,9 +1795,9 @@ _ID43934()
     var_0 _ID54167::_ID48800( 2.15 ) _ID54167::_ID50321( 4.0, 16, 6.0, 6.0 );
     var_0 _ID54167::_ID48800( 2.85 ) _ID54167::_ID50321( 3.0, -1, 3.0, 3.0 ) _ID54167::_ID44545( 2.0 ) _ID54167::_ID52391( level._ID47826, "tag_eye" );
     var_0 _ID54167::_ID48800( 6.3 ) _ID54167::_ID48959();
-    var_0 _ID54167::_ID48800( 1.05 ) _ID54167::_ID47198( 0.25, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.4 );
-    var_0 _ID54167::_ID48800( 1.8 ) _ID54167::_ID47198( 0.25, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-    var_0 _ID54167::_ID48800( 4.5 ) _ID54167::_ID47198( 0.08, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
+    var_0 _ID54167::_ID48800( 1.05 ) _ID54167::_ID47198( 0.25, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.4 );
+    var_0 _ID54167::_ID48800( 1.8 ) _ID54167::_ID47198( 0.25, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+    var_0 _ID54167::_ID48800( 4.5 ) _ID54167::_ID47198( 0.08, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
     var_0 _ID54167::_ID48166();
 }
 
@@ -1817,10 +1817,10 @@ _ID48207( var_0 )
     var_1 _ID54167::_ID48800( 11.6 ) _ID54167::_ID48959();
     var_1 _ID54167::_ID48800( 0.0 ) _ID54167::_ID47844( 2 );
     var_1 _ID54167::_ID48800( 11.6 ) _ID54167::_ID47844( 0 );
-    var_1 _ID54167::_ID48800( 2.2 ) _ID54167::_ID47198( 0.06, 0.5, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 2.6 ) _ID54167::_ID47198( 0.08, 0.7, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-    var_1 _ID54167::_ID48800( 8.55 ) _ID54167::_ID47198( 0.06, 0.7, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_1 _ID54167::_ID48800( 11.6 ) _ID54167::_ID47198( 0.08, 0.7, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+    var_1 _ID54167::_ID48800( 2.2 ) _ID54167::_ID47198( 0.06, 0.5, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 2.6 ) _ID54167::_ID47198( 0.08, 0.7, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+    var_1 _ID54167::_ID48800( 8.55 ) _ID54167::_ID47198( 0.06, 0.7, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_1 _ID54167::_ID48800( 11.6 ) _ID54167::_ID47198( 0.08, 0.7, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
     var_1 _ID54167::_ID48166();
 }
 
@@ -1883,9 +1883,9 @@ _ID43697( var_0 )
 
 _ID51883( var_0 )
 {
-    var_1 = level._ID794._ID740;
-    var_2 = var_0._ID740 + anglestoright( var_0._ID65 ) * -5000;
-    var_3 = var_0._ID740 + anglestoright( var_0._ID65 ) * 5000;
+    var_1 = level.player.origin;
+    var_2 = var_0.origin + anglestoright( var_0.angles ) * -5000;
+    var_3 = var_0.origin + anglestoright( var_0.angles ) * 5000;
     var_4 = pointonsegmentnearesttopoint( var_2, var_3, var_1 );
     return distance( var_1, var_4 );
 }
@@ -1943,7 +1943,7 @@ _ID46474( var_0 )
         var_1 _ID42259::_ID3110( self, var_2 );
         _ID52465();
         var_3 = _ID42237::_ID16638( "roofrun_sarge_waitforplayer", "targetname" );
-        self setgoalpos( var_3._ID740 );
+        self setgoalpos( var_3.origin );
         self waittill( "goal" );
     }
     else
@@ -1962,7 +1962,7 @@ _ID46474( var_0 )
     {
         _ID42237::_ID14402( "roofrun_sarge_bigjumped" );
         var_1 _ID42259::_ID3111( self, var_2 );
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
 
         if ( !_ID42237::_ID14385( "bigjump_sargeplayer_interact_start" ) )
         {
@@ -2057,8 +2057,8 @@ _ID43901( var_0 )
 
 _ID49226( var_0, var_1, var_2 )
 {
-    var_3 = _ID42407::_ID35028( "laundry", var_1._ID740 );
-    var_3._ID65 = var_1._ID65;
+    var_3 = _ID42407::_ID35028( "laundry", var_1.origin );
+    var_3.angles = var_1.angles;
     var_1 delete();
     var_0 thread _ID42259::_ID3018( var_3, var_2 );
     self waittillmatch( "single anim",  "start_laundry"  );
@@ -2070,7 +2070,7 @@ _ID45772()
     _ID52465();
     self waittill( "roofrun_reset" );
     _ID47888();
-    self setgoalpos( self._ID740 );
+    self setgoalpos( self.origin );
     _ID49779();
 }
 
@@ -2078,28 +2078,28 @@ _ID52465()
 {
     self pushplayer( 1 );
     _ID42407::_ID10896();
-    self._ID304 = 1;
+    self.dontavoidplayer = 1;
     self._ID10998 = 1;
     self._ID11025 = 1;
-    self._ID1258 = 0;
+    self.usechokepoints = 0;
     _ID19365();
     _ID47402( 32 );
     _ID43941( 1 );
 
     if ( !isdefined( self._ID43795 ) )
-        self._ID50447 = self._ID1299;
+        self._ID50447 = self.walkdistfacingmotion;
 
-    self._ID1299 = 0;
-
-    if ( !isdefined( self._ID43795 ) )
-        self._ID53974 = self._ID628;
-
-    self._ID628 = 0;
+    self.walkdistfacingmotion = 0;
 
     if ( !isdefined( self._ID43795 ) )
-        self._ID52067 = self._ID764;
+        self._ID53974 = self.maxsightdistsqrd;
 
-    self._ID764 = 0;
+    self.maxsightdistsqrd = 0;
+
+    if ( !isdefined( self._ID43795 ) )
+        self._ID52067 = self.pathrandompercent;
+
+    self.pathrandompercent = 0;
 
     if ( !isdefined( self._ID43795 ) )
         self._ID49555 = self._ID3189;
@@ -2115,15 +2115,15 @@ _ID49779()
     self._ID3195 = 1;
     self._ID24474 = 1;
     self pushplayer( 0 );
-    self._ID304 = 0;
+    self.dontavoidplayer = 0;
     self._ID10998 = 0;
     self._ID11025 = 0;
-    self._ID1258 = 1;
-    self._ID1299 = self._ID50447;
+    self.usechokepoints = 1;
+    self.walkdistfacingmotion = self._ID50447;
     _ID47487();
     _ID47888();
-    self._ID628 = self._ID53974;
-    self._ID764 = self._ID52067;
+    self.maxsightdistsqrd = self._ID53974;
+    self.pathrandompercent = self._ID52067;
     self._ID3189 = self._ID49555;
 }
 
@@ -2135,16 +2135,16 @@ _ID49536( var_0, var_1, var_2, var_3 )
     if ( !isdefined( var_3 ) )
         var_3 = 1;
 
-    if ( !level._ID794 istouching( var_0 ) )
+    if ( !level.player istouching( var_0 ) )
         return 0;
 
-    if ( level._ID794 getstance() != "stand" )
+    if ( level.player getstance() != "stand" )
         return 0;
 
-    if ( var_3 && level._ID794 isonground() )
+    if ( var_3 && level.player isonground() )
         return 0;
 
-    var_4 = level._ID794 getplayerangles();
+    var_4 = level.player getplayerangles();
     var_4 = ( 0, var_4[1], 0 );
     var_5 = anglestoforward( var_4 );
     var_6 = vectordot( var_5, var_1 );
@@ -2152,7 +2152,7 @@ _ID49536( var_0, var_1, var_2, var_3 )
     if ( var_6 < var_2 )
         return 0;
 
-    var_7 = level._ID794 getvelocity();
+    var_7 = level.player getvelocity();
     var_8 = distance( ( var_7[0], var_7[1], 0 ), ( 0, 0, 0 ) );
 
     if ( var_8 < 162 )
@@ -2166,7 +2166,7 @@ _ID46333( var_0, var_1 )
     var_2 = "breakaway";
     var_0 waittillmatch( "single anim",  "start_roof_collapse"  );
     level._ID54453._ID43571 hide();
-    level._ID54453._ID700 _ID42259::_ID3111( level._ID54453._ID29975, var_2 );
+    level._ID54453.node _ID42259::_ID3111( level._ID54453._ID29975, var_2 );
 }
 
 _ID50100( var_0 )
@@ -2175,11 +2175,11 @@ _ID50100( var_0 )
     var_2 = _ID42407::_ID35028( "roof_rig" );
     var_3 = "breakaway";
     var_4 = level._ID30895[var_2._ID3189][var_3];
-    var_2._ID740 = getstartorigin( var_0._ID740, var_0._ID65, var_4 );
-    var_2._ID65 = getstartangles( var_0._ID740, var_0._ID65, var_4 );
+    var_2.origin = getstartorigin( var_0.origin, var_0.angles, var_4 );
+    var_2.angles = getstartangles( var_0.origin, var_0.angles, var_4 );
     var_1 linkto( var_2 );
     level._ID54453 = spawnstruct();
-    level._ID54453._ID700 = var_0;
+    level._ID54453.node = var_0;
     level._ID54453._ID29975 = var_2;
     level._ID54453._ID43571 = var_1;
 }
@@ -2191,7 +2191,7 @@ _ID46414()
 
     foreach ( var_3 in var_0 )
     {
-        if ( var_3._ID172 == "script_brushmodel" )
+        if ( var_3.code_classname == "script_brushmodel" )
         {
             var_1 = var_3;
             break;
@@ -2212,14 +2212,14 @@ _ID46414()
 _ID49750( var_0 )
 {
     wait 0.3;
-    level._ID794 playerlinktoblend( var_0, "tag_player", 0.6, 0.2, 0.4 );
+    level.player playerlinktoblend( var_0, "tag_player", 0.6, 0.2, 0.4 );
 }
 
 _ID53615( var_0, var_1 )
 {
     var_2 = var_0 * 0.75;
     var_3 = gettime() + _ID47906( var_2 );
-    level._ID794 shellshock( var_1, var_2 + 1.5 );
+    level.player shellshock( var_1, var_2 + 1.5 );
 }
 
 _ID54323( var_0 )
@@ -2229,14 +2229,14 @@ _ID54323( var_0 )
 
     while ( gettime() < var_2 )
     {
-        _ID42237::_ID27077( "breathing_heartbeat", level._ID794._ID740 );
+        _ID42237::_ID27077( "breathing_heartbeat", level.player.origin );
 
         if ( gettime() < var_2 )
             wait(var_1);
     }
 
     var_1 = 1;
-    _ID42237::_ID27077( "breathing_hurt_start", level._ID794._ID740, 1 );
+    _ID42237::_ID27077( "breathing_hurt_start", level.player.origin, 1 );
     wait(var_1);
     var_3 = 0;
 
@@ -2247,12 +2247,12 @@ _ID54323( var_0 )
         if ( var_3 % 2 != 0 )
             var_4 = "breathing_heartbeat";
 
-        _ID42237::_ID27077( var_4, level._ID794._ID740, 1 );
+        _ID42237::_ID27077( var_4, level.player.origin, 1 );
         var_3++;
         wait(var_1);
     }
 
-    _ID42237::_ID27077( "breathing_better", level._ID794._ID740, 1 );
+    _ID42237::_ID27077( "breathing_better", level.player.origin, 1 );
 }
 
 _ID43074( var_0 )
@@ -2309,8 +2309,8 @@ _ID52879()
 
     foreach ( var_8, var_5 in var_3 )
     {
-        var_5._ID507 = 1;
-        var_5._ID511 = 1;
+        var_5.ignoreall = 1;
+        var_5.ignoreme = 1;
         var_6 = var_2[var_8];
         var_7 = level._ID30895["generic"][var_6];
         var_0 thread _ID42259::_ID3024( var_5, var_6 );
@@ -2335,8 +2335,8 @@ _ID43191()
 
     foreach ( var_8, var_5 in var_3 )
     {
-        var_5._ID507 = 1;
-        var_5._ID511 = 1;
+        var_5.ignoreall = 1;
+        var_5.ignoreme = 1;
         var_6 = var_2[var_8];
         var_7 = level._ID30895["generic"][var_6];
         var_0 thread _ID42259::_ID3024( var_5, var_6 );
@@ -2346,10 +2346,10 @@ _ID43191()
 
 _ID43836()
 {
-    self._ID507 = 1;
-    self._ID511 = 1;
+    self.ignoreall = 1;
+    self.ignoreme = 1;
     self._ID3196 _ID42259::_ID3020( self, self._ID3183 );
-    self setgoalpos( self._ID740 );
+    self setgoalpos( self.origin );
 }
 
 _ID48932( var_0, var_1 )
@@ -2367,15 +2367,15 @@ _ID48932( var_0, var_1 )
         self._ID45793 = 1;
     }
 
-    self._ID452 = 512;
-    self setgoalentity( level._ID794 );
+    self.goalradius = 512;
+    self setgoalentity( level.player );
     _ID42237::_ID14413( "solorun_mob_start_shooting" );
     self notify( "stop_animmode" );
 
     if ( isdefined( self._ID45793 ) )
         _ID42407::_ID7892();
 
-    self._ID507 = 0;
+    self.ignoreall = 0;
 }
 
 _ID43280()
@@ -2402,13 +2402,13 @@ _ID49927()
 _ID51747()
 {
     self endon( "death" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
-        var_0 = level._ID794 getplayerangles();
+        var_0 = level.player getplayerangles();
         var_1 = anglestoforward( var_0 );
-        var_2 = vectornormalize( self._ID740 - level._ID794 geteye() );
+        var_2 = vectornormalize( self.origin - level.player geteye() );
         var_3 = vectortoangles( var_2 );
         var_4 = anglestoforward( var_3 );
         var_5 = vectordot( var_1, var_4 );
@@ -2486,10 +2486,10 @@ _ID43925( var_0, var_1, var_2 )
 _ID45194()
 {
     var_0 = &"FAVELA_ESCAPE_CHOPPER_TIMER_EXPIRED";
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "kill_timer" );
     level notify( "mission failed" );
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     setdvar( "ui_deadquote", var_0 );
     _ID42407::_ID23778();
 }
@@ -2501,7 +2501,7 @@ _ID53296( var_0 )
     var_1 = -6074;
     var_2 = 900;
     var_3 = getent( "trig_solorun_start_playersafezone", "targetname" );
-    var_4 = level._ID794._ID626;
+    var_4 = level.player.maxhealth;
     thread _ID45736( var_0 );
     thread _ID45708( var_3 );
 
@@ -2509,16 +2509,16 @@ _ID53296( var_0 )
     {
         if ( _ID53342( var_1, var_3, "solorun_mob_start_shooting" ) )
         {
-            var_5 = level._ID794._ID740;
+            var_5 = level.player.origin;
             var_6 = getaiarray( "axis" );
 
             if ( var_6.size )
             {
                 var_7 = _ID54703( var_6 );
-                var_5 = var_7._ID740;
+                var_5 = var_7.origin;
             }
 
-            level._ID794 dodamage( var_4 * 0.25, var_5 );
+            level.player dodamage( var_4 * 0.25, var_5 );
 
             if ( !_ID42237::_ID14385( "solorun_mob_start_shooting" ) )
                 _ID42237::_ID14402( "solorun_mob_start_shooting" );
@@ -2530,10 +2530,10 @@ _ID53296( var_0 )
 
 _ID53342( var_0, var_1, var_2 )
 {
-    if ( level._ID794._ID740[0] < var_0 && !level._ID794 istouching( var_1 ) )
+    if ( level.player.origin[0] < var_0 && !level.player istouching( var_1 ) )
         return 1;
 
-    if ( level._ID794 istouching( var_1 ) && _ID42237::_ID14385( var_2 ) )
+    if ( level.player istouching( var_1 ) && _ID42237::_ID14385( var_2 ) )
         return 1;
 
     return 0;
@@ -2560,7 +2560,7 @@ _ID45708( var_0 )
         wait 0.05;
     }
 
-    while ( level._ID794 istouching( var_0 ) )
+    while ( level.player istouching( var_0 ) )
         wait 0.05;
 
     _ID42237::_ID14402( "solorun_mob_start_shooting" );
@@ -2569,12 +2569,12 @@ _ID45708( var_0 )
 _ID43129()
 {
     var_0 = getent( "trig_solorun_civilian_doorshut", "targetname" );
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     var_2 = _ID42237::_ID16638( "struct_solorun_civilian_doorshut_animref", "targetname" );
     var_3 = _ID42407::_ID35028( "civ_door" );
     var_4 = var_1 _ID42407::_ID35014();
     var_4._ID3189 = "default_civilian";
-    var_4._ID511 = 1;
+    var_4.ignoreme = 1;
     var_4 _ID19365();
     var_4 thread _ID42407::_ID22746( 1 );
     var_5[0] = var_3;
@@ -2584,7 +2584,7 @@ _ID43129()
     var_3 notify( "stop_loop" );
     var_4 notify( "stop_loop" );
     var_2 _ID42259::_ID3099( var_5, "run_and_slam" );
-    var_4 setgoalpos( var_4._ID740 );
+    var_4 setgoalpos( var_4.origin );
     var_4 thread _ID42259::_ID3044( var_4, "run_and_slam_endidle", "stop_loop" );
     _ID42237::_ID14413( "solorun_player_at_balcony" );
     var_4 _ID42407::_ID36519();
@@ -2608,9 +2608,9 @@ rooftop_slide_dust_exploder()
 _ID43741()
 {
     _ID42407::_ID38929( "trig_end_glass_break" );
-    level notify( "glass_break",  level._ID794  );
-    level._ID794 playrumblelooponentity( "artillery_rumble" );
-    thread _ID42237::_ID27077( "scn_favela_escape_player_window", level._ID794._ID740 );
+    level notify( "glass_break",  level.player  );
+    level.player playrumblelooponentity( "artillery_rumble" );
+    thread _ID42237::_ID27077( "scn_favela_escape_player_window", level.player.origin );
     _ID42234::_ID13611( "window_glass_interior_favela_s" );
     _ID42474::_ID4669( "interior_stone" );
 }
@@ -2631,20 +2631,20 @@ _ID49658()
 
     for (;;)
     {
-        if ( _ID42237::_ID14385( "solorun_player_outside_first_house" ) && !level._ID794 istouching( var_3 ) && !var_2 )
+        if ( _ID42237::_ID14385( "solorun_player_outside_first_house" ) && !level.player istouching( var_3 ) && !var_2 )
         {
             var_2 = 1;
-            level._ID794._ID24923 = 1;
+            level.player._ID24923 = 1;
             _ID42407::_ID32255( ::_ID50905 );
         }
-        else if ( ( !_ID42237::_ID14385( "solorun_player_outside_first_house" ) || level._ID794 istouching( var_3 ) ) && var_2 )
+        else if ( ( !_ID42237::_ID14385( "solorun_player_outside_first_house" ) || level.player istouching( var_3 ) ) && var_2 )
         {
             var_2 = 0;
-            level._ID794._ID24923 = undefined;
+            level.player._ID24923 = undefined;
             _ID42407::_ID32255( ::_ID51805 );
         }
 
-        var_4 = level._ID794 getvelocity();
+        var_4 = level.player getvelocity();
         var_5 = distance( ( var_4[0], var_4[1], 0 ), ( 0, 0, 0 ) );
 
         if ( var_5 >= var_0 && !var_1 )
@@ -2761,7 +2761,7 @@ _ID49375()
     {
         foreach ( var_4 in var_0 )
         {
-            if ( level._ID794 istouching( var_4 ) )
+            if ( level.player istouching( var_4 ) )
             {
                 if ( var_4._ID31103 > var_1 )
                 {
@@ -2773,7 +2773,7 @@ _ID49375()
                 else if ( var_4._ID31103 < var_1 )
                     level._ID53417--;
 
-                while ( level._ID794 istouching( var_4 ) )
+                while ( level.player istouching( var_4 ) )
                     wait 0.05;
 
                 var_1 = var_4._ID31103;
@@ -2817,7 +2817,7 @@ _ID44763()
     _ID42237::_ID14400( var_0 );
     level thread _ID44824( var_0 );
 
-    while ( level._ID794._ID486 > level._ID794._ID626 * 0.9 && !_ID42237::_ID14385( var_0 ) )
+    while ( level.player.health > level.player.maxhealth * 0.9 && !_ID42237::_ID14385( var_0 ) )
         wait 0.1;
 
     if ( !_ID42237::_ID14385( var_0 ) )
@@ -2843,7 +2843,7 @@ _ID53558( var_0 )
 
     _ID42407::_ID18611( var_1 );
 
-    while ( !_ID42237::_ID14385( var_0 ) && level._ID794._ID486 > 0 )
+    while ( !_ID42237::_ID14385( var_0 ) && level.player.health > 0 )
         wait 0.05;
 
     var_3 = 0.25;
@@ -2854,7 +2854,7 @@ _ID44824( var_0 )
 {
     notifyoncommand( var_0, "+breath_sprint" );
     notifyoncommand( var_0, "+sprint" );
-    level._ID794 waittill( var_0 );
+    level.player waittill( var_0 );
     _ID42237::_ID14402( var_0 );
 }
 
@@ -2886,7 +2886,7 @@ _ID48206()
 
         for ( var_10 = 0; var_10 < var_9; var_10++ )
         {
-            var_11 = level._ID794 geteye();
+            var_11 = level.player geteye();
 
             if ( isdefined( level._ID47533 ) )
             {
@@ -2907,7 +2907,7 @@ _ID48206()
 _ID53519()
 {
     self waittill( "trigger" );
-    radiusdamage( self._ID740, 32, 1000, 1000 );
+    radiusdamage( self.origin, 32, 1000, 1000 );
 }
 
 _ID47945()
@@ -2918,9 +2918,9 @@ _ID47945()
     var_2 = _ID42237::_ID16299( "squib_plaster" );
     var_3 = 0.07;
     var_4 = 0.1;
-    var_5 = _ID42237::_ID16640( self._ID1191, "targetname" );
+    var_5 = _ID42237::_ID16640( self.target, "targetname" );
 
-    if ( isdefined( var_5[0]._ID1191 ) )
+    if ( isdefined( var_5[0].target ) )
         var_5 = _ID52328( var_5[0] );
     else
         var_5 = _ID42237::_ID3320( var_5 );
@@ -2929,13 +2929,13 @@ _ID47945()
 
     foreach ( var_7 in var_5 )
     {
-        var_8 = anglestoforward( var_7._ID65 );
+        var_8 = anglestoforward( var_7.angles );
         var_9 = var_8 * 1024;
-        var_10 = var_7._ID740 + var_9;
-        magicbullet( var_1, var_7._ID740, var_10 );
+        var_10 = var_7.origin + var_9;
+        magicbullet( var_1, var_7.origin, var_10 );
 
         if ( _ID42237::_ID8201() )
-            thread _ID42237::_ID27077( "h2_solorun_whizby_near", level._ID794._ID740 );
+            thread _ID42237::_ID27077( "h2_solorun_whizby_near", level.player.origin );
 
         wait(randomfloatrange( var_3, var_4 ));
     }
@@ -2946,15 +2946,15 @@ _ID52328( var_0 )
     var_1 = [];
     var_1[0] = var_0;
 
-    for ( var_2 = var_0; isdefined( var_2._ID1191 ); var_2 = var_3 )
+    for ( var_2 = var_0; isdefined( var_2.target ); var_2 = var_3 )
     {
-        var_3 = _ID42237::_ID16638( var_2._ID1191, "targetname" );
+        var_3 = _ID42237::_ID16638( var_2.target, "targetname" );
 
         if ( !isdefined( var_3 ) )
-            var_3 = getent( var_2._ID1191, "targetname" );
+            var_3 = getent( var_2.target, "targetname" );
 
         if ( !isdefined( var_3 ) )
-            var_3 = getnode( var_2._ID1191, "targetname" );
+            var_3 = getnode( var_2.target, "targetname" );
 
         if ( isdefined( var_3 ) )
         {
@@ -2970,7 +2970,7 @@ _ID52328( var_0 )
 
 _ID52820()
 {
-    var_0 = _ID42237::_ID16640( self._ID1191, "targetname" );
+    var_0 = _ID42237::_ID16640( self.target, "targetname" );
 
     for (;;)
     {
@@ -2993,7 +2993,7 @@ _ID52820()
 
 _ID46755()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "trig_solorun_player_on_slide" );
     _ID42237::_ID14413( "solorun_player_off_balcony" );
     var_0 = 128;
@@ -3017,9 +3017,9 @@ _ID46755()
 
         foreach ( var_16 in var_13 )
         {
-            if ( var_16 cansee( level._ID794 ) && !_ID42407::_ID27291( var_16 ) )
+            if ( var_16 cansee( level.player ) && !_ID42407::_ID27291( var_16 ) )
             {
-                if ( !isdefined( var_14 ) || distance( var_16._ID740, level._ID794._ID740 ) < distance( var_14._ID740, level._ID794._ID740 ) )
+                if ( !isdefined( var_14 ) || distance( var_16.origin, level.player.origin ) < distance( var_14.origin, level.player.origin ) )
                     var_14 = var_16;
             }
         }
@@ -3039,8 +3039,8 @@ _ID46755()
             }
 
             var_19 = var_14 geteye() + ( 0, 0, 32 );
-            var_20 = level._ID794 geteye();
-            var_21 = level._ID794._ID65;
+            var_20 = level.player geteye();
+            var_21 = level.player.angles;
             var_22 = anglestoforward( var_21 );
             var_23 = var_20 + var_22 * 256;
             var_24 = var_23[2] + 256;
@@ -3097,7 +3097,7 @@ _ID52477()
 
 _ID51810()
 {
-    var_0 = _ID42237::_ID16640( self._ID1191, "targetname" );
+    var_0 = _ID42237::_ID16640( self.target, "targetname" );
     self waittill( "trigger" );
     _ID42237::_ID3350( var_0, ::_ID50456 );
     _ID42237::_ID3350( var_0, ::_ID45568 );
@@ -3108,13 +3108,13 @@ _ID45568()
     if ( !_ID42407::_ID916() )
         wait(randomfloatrange( 0.5, 1.2 ));
 
-    var_0 = _ID42237::_ID16638( self._ID1191, "targetname" );
-    magicbullet( "rpg_straight_short_life", self._ID740, var_0._ID740 );
+    var_0 = _ID42237::_ID16638( self.target, "targetname" );
+    magicbullet( "rpg_straight_short_life", self.origin, var_0.origin );
 }
 
 _ID49331()
 {
-    self._ID486 = 2000000;
+    self.health = 2000000;
     missile_createrepulsorent( self, 1150, 1200 );
     level._ID7499 = self;
 }
@@ -3140,7 +3140,7 @@ _ID51456( var_0 )
 _ID43398( var_0 )
 {
     level endon( var_0 );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     wait 5;
     _ID42407::_ID28864( "favesc_cmt_circlingarea" );
     wait 15;
@@ -3186,10 +3186,10 @@ _ID44500( var_0 )
     var_12 = "chopperjump_jump";
     var_13 = "chopperjump_flyaway";
     var_14 = level._ID30895[var_4][var_12];
-    var_15 = _ID42407::_ID35028( var_4, var_3._ID740 );
+    var_15 = _ID42407::_ID35028( var_4, var_3.origin );
     var_15 hide();
-    var_16 = _ID42407::_ID35028( var_5, var_3._ID740 );
-    var_16._ID65 = var_3._ID65;
+    var_16 = _ID42407::_ID35028( var_5, var_3.origin );
+    var_16.angles = var_3.angles;
     _ID42411::_ID6220( var_16 _ID42407::_ID16120( "rotors" ), undefined, 0 );
     var_16 thread _ID42413::_ID3160();
     var_16 thread maps\favela_escape_aud::_ID50228();
@@ -3217,7 +3217,7 @@ _ID44500( var_0 )
     {
         var_24 = 0;
 
-        while ( level._ID794 istouching( var_21 ) )
+        while ( level.player istouching( var_21 ) )
         {
             _ID42237::_ID14413( "player_jumping" );
 
@@ -3243,33 +3243,33 @@ _ID44500( var_0 )
     var_1 delete();
     var_16 notify( "stop_loop" );
     var_25 = getanimlength( var_15 _ID42407::_ID16120( var_12 ) );
-    level._ID794 allowjump( 0 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
+    level.player allowjump( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
     setsaveddvar( "ui_hidemap", 1 );
     setsaveddvar( "compass", 0 );
     setsaveddvar( "hud_showStance", 0 );
-    level._ID794 disableweapons( 0, 500, 0.5 );
-    var_26 = getstartorigin( var_16._ID740, var_16._ID65, var_14 );
-    var_27 = getstartangles( var_16._ID740, var_16._ID65, var_14 ) - level._ID794._ID65;
+    level.player disableweapons( 0, 500, 0.5 );
+    var_26 = getstartorigin( var_16.origin, var_16.angles, var_14 );
+    var_27 = getstartangles( var_16.origin, var_16.angles, var_14 ) - level.player.angles;
     var_28 = spawnstruct();
-    var_28._ID65 = var_16._ID65 - var_27;
-    var_29 = var_26 - level._ID794._ID740;
-    var_30 = var_16._ID740 - var_26;
+    var_28.angles = var_16.angles - var_27;
+    var_29 = var_26 - level.player.origin;
+    var_30 = var_16.origin - var_26;
     var_31 = var_30[0] * cos( var_27[1] ) - var_30[1] * sin( var_27[1] );
     var_32 = var_30[0] * sin( var_27[1] ) + var_30[1] * cos( var_27[1] );
     var_33 = var_30 - ( var_31, var_32, var_30[2] );
-    var_28._ID740 = var_16._ID740 - var_29 + var_33;
+    var_28.origin = var_16.origin - var_29 + var_33;
     thread blend_player_anim_and_linktodelta( var_15 );
     var_34 = "player_jump";
     var_35 = getnotetracktimes( var_14, "favela_escape_end_grab" );
     var_36 = getanimlength( var_14 ) * var_35[0];
     var_37 = var_16 _ID42259::_ID15565( var_9, var_12 );
     var_38 = _ID42237::_ID35164();
-    var_38._ID740 = var_37["origin"];
-    var_38._ID65 = var_37["angles"];
+    var_38.origin = var_37["origin"];
+    var_38.angles = var_37["angles"];
     var_38 _ID42259::_ID3018( var_15, "chopperjump_jump" );
-    var_15 animscripted( var_34, var_28._ID740, var_28._ID65, var_14 );
+    var_15 animscripted( var_34, var_28.origin, var_28.angles, var_14 );
     var_15 thread _ID42259::_ID46811( undefined, var_28, var_38, var_36 );
     var_15 thread maps\favela_escape_aud::chopperjump_player_foley_sounds();
     var_16 thread _ID42259::_ID3099( var_20, var_12, var_9 );
@@ -3290,22 +3290,22 @@ favela_escape_jump_dof( var_0 )
     var_1 _ID54167::_ID48800( 12.1 ) _ID54167::_ID46727();
     var_1 _ID54167::_ID48800( 1.15 ) _ID54167::_ID47844( 2 );
     var_1 _ID54167::_ID48800( 1.35 ) _ID54167::_ID47844( 0 );
-    var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.35, 0.15, 0.15, 5, 15, 5, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-    var_1 _ID54167::_ID48800( 3.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.65, 0.2, 0.2, 0, 0, 0, 0 );
-    var_1 _ID54167::_ID48800( 4.35 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.5, 0.2, 0.2, 10, 12, 8, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
-    var_1 _ID54167::_ID48800( 7.15 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.35, 0.15, 0.15, 0, 0, 0, 0 );
-    var_1 _ID54167::_ID48800( 8.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level._ID794, 0.5, 0.2, 0.2, 5, 18, 8, 10 ) _ID54167::_ID43376( ::setviewangleresistance, level._ID794, 50, 50, 20, 20 );
+    var_1 _ID54167::_ID48800( 1.5 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.35, 0.15, 0.15, 5, 15, 5, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+    var_1 _ID54167::_ID48800( 3.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.65, 0.2, 0.2, 0, 0, 0, 0 );
+    var_1 _ID54167::_ID48800( 4.35 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.5, 0.2, 0.2, 10, 12, 8, 8 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
+    var_1 _ID54167::_ID48800( 7.15 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.35, 0.15, 0.15, 0, 0, 0, 0 );
+    var_1 _ID54167::_ID48800( 8.0 ) _ID54167::_ID43376( ::lerpviewangleclamp, level.player, 0.5, 0.2, 0.2, 5, 18, 8, 10 ) _ID54167::_ID43376( ::setviewangleresistance, level.player, 50, 50, 20, 20 );
     var_1 _ID54167::_ID48166();
 }
 
 _ID52105()
 {
-    level._ID794 playrumblelooponentity( "artillery_rumble" );
+    level.player playrumblelooponentity( "artillery_rumble" );
     wait 0.5;
 
     while ( !_ID42237::_ID14385( "level_faded_to_black" ) )
     {
-        level._ID794 playrumblelooponentity( "damage_light" );
+        level.player playrumblelooponentity( "damage_light" );
         wait 0.115;
     }
 }
@@ -3315,20 +3315,20 @@ _ID49291( var_0, var_1, var_2, var_3 )
     if ( !isdefined( var_3 ) )
         var_3 = 1;
 
-    if ( !var_0 istouching( level._ID794 ) )
+    if ( !var_0 istouching( level.player ) )
         return 0;
 
-    if ( level._ID794 getstance() != "stand" )
+    if ( level.player getstance() != "stand" )
         return 0;
 
-    if ( var_3 && level._ID794 isonground() )
+    if ( var_3 && level.player isonground() )
         return 0;
 
     var_4 = 1;
-    var_5 = var_1._ID740 + ( 0, 0, -85 );
+    var_5 = var_1.origin + ( 0, 0, -85 );
     var_6 = getdvarint( "cg_fov" );
 
-    if ( !level._ID794 worldpointinreticle_circle( var_5, var_6, 120 ) )
+    if ( !level.player worldpointinreticle_circle( var_5, var_6, 120 ) )
         var_4 = 0;
 
     if ( !var_4 )
@@ -3337,7 +3337,7 @@ _ID49291( var_0, var_1, var_2, var_3 )
 
         foreach ( var_9 in var_2 )
         {
-            if ( level._ID794 worldpointinreticle_circle( var_9._ID740, var_6, 165 ) )
+            if ( level.player worldpointinreticle_circle( var_9.origin, var_6, 165 ) )
             {
                 var_7 = 1;
                 break;
@@ -3351,7 +3351,7 @@ _ID49291( var_0, var_1, var_2, var_3 )
     if ( !var_4 )
         return 0;
 
-    var_11 = level._ID794 getvelocity();
+    var_11 = level.player getvelocity();
     var_12 = distance( ( var_11[0], var_11[1], 0 ), ( 0, 0, 0 ) );
 
     if ( var_12 < 145 )
@@ -3415,16 +3415,16 @@ _ID43630()
 
     for (;;)
     {
-        level._ID794 waittill( "playerjump" );
+        level.player waittill( "playerjump" );
         wait 0.1;
 
-        if ( !level._ID794 _meth_83c0() )
+        if ( !level.player _meth_83c0() )
             continue;
 
-        if ( !level._ID794 isonground() )
+        if ( !level.player isonground() )
             _ID42237::_ID14402( var_0 );
 
-        while ( !level._ID794 isonground() )
+        while ( !level.player isonground() )
             wait 0.05;
 
         _ID42237::_ID14388( var_0 );
@@ -3434,8 +3434,8 @@ _ID43630()
 _ID53040( var_0 )
 {
     wait 0.3;
-    level._ID794 notify( "stop_sliding" );
-    level._ID794 _meth_8572( var_0, "tag_player", 0.5, 0.6, 0.2, 0.4, 40, 40, 60, 20 );
+    level.player notify( "stop_sliding" );
+    level.player _meth_8572( var_0, "tag_player", 0.5, 0.6, 0.2, 0.4, 40, 40, 60, 20 );
 }
 
 _ID49060()
@@ -3473,8 +3473,8 @@ _ID49430()
 
 _ID46968()
 {
-    var_0 = "Enemy cleanup trigger at origin " + self._ID740 + " needs to target a volume.";
-    var_1 = getentarray( self._ID1191, "targetname" );
+    var_0 = "Enemy cleanup trigger at origin " + self.origin + " needs to target a volume.";
+    var_1 = getentarray( self.target, "targetname" );
     self waittill( "trigger" );
     var_2 = getaiarray( "axis" );
 
@@ -3614,9 +3614,9 @@ _ID44259( var_0, var_1, var_2, var_3 )
     var_9 = "door_kick_in";
     var_10 = "kick";
 
-    if ( isdefined( var_2._ID922 ) )
+    if ( isdefined( var_2.script_noteworthy ) )
     {
-        switch ( var_2._ID922 )
+        switch ( var_2.script_noteworthy )
         {
             case "wave":
                 var_9 = "doorburst_wave";
@@ -3635,23 +3635,23 @@ _ID44259( var_0, var_1, var_2, var_3 )
 
     var_2 thread _ID42259::_ID3020( var_8, var_9 );
     var_8 waittillmatch( "single anim",  var_10  );
-    thread _ID42237::_ID27077( "door_wood_double_kick", var_1._ID740 );
+    thread _ID42237::_ID27077( "door_wood_double_kick", var_1.origin );
     var_1 thread _ID46023( 0.25, 1 );
 
     if ( isdefined( var_3 ) )
-        physicsexplosioncylinder( var_3._ID740, var_3._ID851, var_3._ID851 / 2, 1.0 );
+        physicsexplosioncylinder( var_3.origin, var_3.radius, var_3.radius / 2, 1.0 );
 
     var_8 _ID42407::_ID36519();
-    var_8._ID49 = 1;
+    var_8.allowdeath = 1;
     var_8 waittillmatch( "single anim",  "end"  );
 
     if ( isalive( var_8 ) )
     {
         if ( isdefined( var_4._ID31400 ) && var_4._ID31400 > 0 )
             var_8 _ID43767();
-        else if ( isdefined( var_4._ID1191 ) )
+        else if ( isdefined( var_4.target ) )
         {
-            var_11 = getnode( var_4._ID1191, "targetname" );
+            var_11 = getnode( var_4.target, "targetname" );
 
             if ( isdefined( var_11 ) )
             {
@@ -3669,14 +3669,14 @@ _ID44259( var_0, var_1, var_2, var_3 )
 _ID49951()
 {
     self endon( "death" );
-    var_0 = _ID42237::_ID16638( self._ID1191, "targetname" );
+    var_0 = _ID42237::_ID16638( self.target, "targetname" );
     var_1 = "favela_chaotic_above_through";
 
-    if ( isdefined( var_0._ID922 ) )
-        var_1 = var_0._ID922;
+    if ( isdefined( var_0.script_noteworthy ) )
+        var_1 = var_0.script_noteworthy;
 
     var_0 _ID42259::_ID3027( self, var_1 );
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_0 _ID42259::_ID3020( self, var_1 );
 }
 
@@ -3684,7 +3684,7 @@ _ID43131()
 {
     self endon( "death" );
     _ID45027( "window_smash_stop_inside" );
-    var_0 = getnode( self._ID1191, "targetname" );
+    var_0 = getnode( self.target, "targetname" );
 
     if ( isdefined( self._ID31400 ) && self._ID31400 )
         _ID43767();
@@ -3695,8 +3695,8 @@ _ID43131()
 _ID45027( var_0 )
 {
     self endon( "death" );
-    var_1 = "window smash guy at origin " + self._ID740 + " needs to be targeting a script_struct that he can use as his animref.";
-    var_2 = _ID42237::_ID16638( self._ID1191, "targetname" );
+    var_1 = "window smash guy at origin " + self.origin + " needs to be targeting a script_struct that he can use as his animref.";
+    var_2 = _ID42237::_ID16638( self.target, "targetname" );
     var_2 _ID42259::_ID3027( self, var_0 );
     var_2 _ID42259::_ID3020( self, var_0 );
 }
@@ -3716,7 +3716,7 @@ _ID46383( var_0, var_1 )
     var_4 endon( "death" );
     var_4._ID3189 = "curtain_pull";
     var_4 _ID42407::_ID32353( 1 );
-    var_4._ID1258 = 0;
+    var_4.usechokepoints = 0;
     wait 0.05;
     var_5[0] = var_4;
     var_5[1] = var_3;
@@ -3732,13 +3732,13 @@ _ID46383( var_0, var_1 )
             _ID42407::_ID41135( 0.9, undefined, 1, 5.0 );
     }
 
-    var_4._ID49 = 1;
+    var_4.allowdeath = 1;
     var_2 _ID42259::_ID3099( var_5, "pulldown" );
     var_4 endon( "death" );
     var_4 _ID42407::_ID32353( 0 );
-    var_4._ID452 = 1000;
-    var_4 setgoalpos( var_4._ID740 );
-    var_4._ID1258 = 1;
+    var_4.goalradius = 1000;
+    var_4 setgoalpos( var_4.origin );
+    var_4.usechokepoints = 1;
 }
 
 _ID44807( var_0 )
@@ -3754,11 +3754,11 @@ _ID44807( var_0 )
 
 _ID50948()
 {
-    var_0 = getentarray( self._ID1191, "targetname" );
+    var_0 = getentarray( self.target, "targetname" );
 
     foreach ( var_2 in var_0 )
     {
-        if ( var_2._ID170 == "script_origin" )
+        if ( var_2.classname == "script_origin" )
             return var_2;
     }
 }
@@ -3792,17 +3792,17 @@ _ID47316( var_0, var_1 )
 
     level._ID48851 = _ID42313::_ID9220( "default", 1.5 );
     level._ID48851 _ID42313::_ID32753( "BOTTOM", undefined, 0, -40 );
-    level._ID48851._ID196 = ( 1, 1, 1 );
+    level._ID48851.color = ( 1, 1, 1 );
     level._ID48851 settext( var_0 );
-    level._ID48851._ID55 = 0;
+    level._ID48851.alpha = 0;
     level._ID48851 fadeovertime( 0.5 );
-    level._ID48851._ID55 = 1;
-    level._ID48851._ID983 = 1;
+    level._ID48851.alpha = 1;
+    level._ID48851.sort = 1;
     wait 0.5;
     level._ID48851 endon( "death" );
     wait(var_1);
     level._ID48851 fadeovertime( var_2 );
-    level._ID48851._ID55 = 0;
+    level._ID48851.alpha = 0;
     wait(var_2);
     level._ID48851 _ID42313::_ID10476();
 }
@@ -3816,7 +3816,7 @@ _ID43297( var_0, var_1 )
         var_1 = var_2;
     }
 
-    var_3 = spawn( "script_origin", _ID54703( var_1 )._ID740 );
+    var_3 = spawn( "script_origin", _ID54703( var_1 ).origin );
     var_3 playsound( var_0, "sound_done" );
     var_3 waittill( "sound_done" );
     var_3 delete();
@@ -3888,7 +3888,7 @@ _ID49916()
 
 _ID43767()
 {
-    self setgoalentity( level._ID794 );
+    self setgoalentity( level.player );
 }
 
 _ID43645( var_0 )
@@ -3898,7 +3898,7 @@ _ID43645( var_0 )
 
 _ID52666( var_0 )
 {
-    self._ID1258 = var_0;
+    self.usechokepoints = var_0;
 }
 
 _ID47802()
@@ -3928,36 +3928,36 @@ _ID46779()
 
 _ID44231( var_0 )
 {
-    self._ID486 = var_0;
+    self.health = var_0;
 }
 
 _ID45776( var_0 )
 {
-    self._ID507 = var_0;
+    self.ignoreall = var_0;
 }
 
 _ID44526( var_0 )
 {
-    self._ID511 = var_0;
+    self.ignoreme = var_0;
 }
 
 _ID52680( var_0 )
 {
-    self._ID1299 = var_0;
+    self.walkdistfacingmotion = var_0;
 }
 
 _ID47402( var_0 )
 {
     if ( !isdefined( self._ID46327 ) )
-        self._ID46327 = self._ID452;
+        self._ID46327 = self.goalradius;
 
-    self._ID452 = var_0;
+    self.goalradius = var_0;
 }
 
 _ID47888()
 {
     if ( isdefined( self._ID46327 ) )
-        self._ID452 = self._ID46327;
+        self.goalradius = self._ID46327;
 }
 
 _ID50024( var_0 )
@@ -3985,39 +3985,39 @@ _ID43804()
 
 _ID19365()
 {
-    self._ID507 = 1;
-    self._ID465 = 0;
-    self._ID509 = 1;
-    self._ID512 = 1;
-    self._ID513 = 1;
-    self._ID381 = 0;
+    self.ignoreall = 1;
+    self.grenadeawareness = 0;
+    self.ignoreexplosionevents = 1;
+    self.ignorerandombulletdamage = 1;
+    self.ignoresuppression = 1;
+    self.fixednode = 0;
     self._ID11002 = 1;
     _ID42407::_ID10949();
-    self._ID25485 = self._ID686;
-    self._ID686 = 0;
+    self._ID25485 = self.newenemyreactiondistsq;
+    self.newenemyreactiondistsq = 0;
 }
 
 _ID47487()
 {
-    self._ID507 = 0;
-    self._ID465 = 1;
-    self._ID509 = 0;
-    self._ID512 = 0;
-    self._ID513 = 0;
-    self._ID381 = 1;
+    self.ignoreall = 0;
+    self.grenadeawareness = 1;
+    self.ignoreexplosionevents = 0;
+    self.ignorerandombulletdamage = 0;
+    self.ignoresuppression = 0;
+    self.fixednode = 1;
     self._ID11002 = 0;
     _ID42407::_ID12508();
 
     if ( isdefined( self._ID25485 ) )
-        self._ID686 = self._ID25485;
+        self.newenemyreactiondistsq = self._ID25485;
 }
 
 _ID43103()
 {
-    self._ID465 = 0;
-    self._ID509 = 1;
-    self._ID512 = 1;
-    self._ID513 = 1;
+    self.grenadeawareness = 0;
+    self.ignoreexplosionevents = 1;
+    self.ignorerandombulletdamage = 1;
+    self.ignoresuppression = 1;
     self._ID11002 = 1;
     _ID42407::_ID10949();
     self pushplayer( 1 );
@@ -4182,17 +4182,17 @@ _ID44127( var_0 )
 
     foreach ( var_7, var_4 in level._ID49912 )
     {
-        var_5 = var_1[var_7]._ID740;
-        var_6 = var_1[var_7]._ID65;
+        var_5 = var_1[var_7].origin;
+        var_6 = var_1[var_7].angles;
         var_4 thread _ID45573( var_5, var_6 );
     }
 
-    level._ID794 _ID45573( var_2._ID740, var_2._ID65 );
+    level.player _ID45573( var_2.origin, var_2.angles );
 }
 
 _ID45599( var_0 )
 {
-    _ID45573( var_0._ID740, var_0._ID65 );
+    _ID45573( var_0.origin, var_0.angles );
 }
 
 _ID45573( var_0, var_1 )
@@ -4203,16 +4203,16 @@ _ID45573( var_0, var_1 )
     if ( !isplayernumber( self ) )
     {
         self forceteleport( _ID42407::_ID17434( var_0 ), var_1 );
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
     }
     else
     {
-        var_2 = level._ID794 _ID42237::_ID35164();
-        level._ID794 playerlinkto( var_2, "tag_origin", 1 );
+        var_2 = level.player _ID42237::_ID35164();
+        level.player playerlinkto( var_2, "tag_origin", 1 );
         var_2 moveto( var_0, 0.05 );
         var_2 rotateto( var_1, 0.05 );
         wait 0.1;
-        level._ID794 unlink();
+        level.player unlink();
         var_2 delete();
     }
 }
@@ -4271,7 +4271,7 @@ _ID5311( var_0 )
         wait(randomfloat( 0.1 ));
     }
 
-    self dodamage( self._ID486 + 50, self._ID740 );
+    self dodamage( self.health + 50, self.origin );
 }
 
 _ID5313( var_0, var_1 )
@@ -4295,7 +4295,7 @@ _ID52334( var_0, var_1, var_2 )
     {
         var_5 = var_0 + "_" + var_4;
         var_6 = getent( var_5, "targetname" );
-        var_7 = getent( var_6._ID1191, "targetname" );
+        var_7 = getent( var_6.target, "targetname" );
         _ID42237::_ID14413( var_5 );
         var_8 = var_7 _ID42271::_ID44106( var_7._ID31096, var_3 );
         var_9 = var_8["colorCodes"];
@@ -4315,7 +4315,7 @@ _ID52334( var_0, var_1, var_2 )
                 var_16._ID8283[0] = var_17;
                 var_16._ID44413[var_17] = var_10[var_17];
                 var_16._ID54592 = var_7;
-                var_16._ID680 = var_5;
+                var_16.name = var_5;
                 var_16._ID40767 = var_15;
                 var_12[var_12.size] = var_16;
             }
@@ -4427,9 +4427,9 @@ _ID44784()
 
     foreach ( var_8 in var_0 )
     {
-        if ( var_8._ID172 == "script_origin" )
+        if ( var_8.code_classname == "script_origin" )
         {
-            switch ( var_8._ID922 )
+            switch ( var_8.script_noteworthy )
             {
                 case "origin_marker":
                     var_1 = var_8;
@@ -4468,7 +4468,7 @@ _ID44784()
     foreach ( var_8 in var_10 )
         var_8 linkto( var_1 );
 
-    var_1._ID52204 = var_1._ID65;
+    var_1._ID52204 = var_1.angles;
     return var_1;
 }
 
@@ -4520,8 +4520,8 @@ _ID46285()
 
 _ID46786( var_0 )
 {
-    var_1 = _ID42237::_ID16638( self._ID1191, "targetname" );
-    var_2 = _ID42237::_ID16638( var_1._ID1191, "targetname" );
+    var_1 = _ID42237::_ID16638( self.target, "targetname" );
+    var_2 = _ID42237::_ID16638( var_1.target, "targetname" );
     self waittill( "trigger" );
 
     if ( isdefined( self._ID31197 ) )
@@ -4533,26 +4533,26 @@ _ID46786( var_0 )
     level notify( "airliner_flyby" );
     var_3 = 1500;
 
-    if ( isdefined( var_1._ID997 ) )
-        var_3 = var_1._ID997;
+    if ( isdefined( var_1.speed ) )
+        var_3 = var_1.speed;
 
     _ID42237::_ID14426( var_0 );
     _ID42237::_ID14402( var_0 );
-    level._ID48251._ID740 = var_1._ID740;
+    level._ID48251.origin = var_1.origin;
 
-    if ( isdefined( var_1._ID65 ) )
-        level._ID48251._ID65 = var_1._ID65;
+    if ( isdefined( var_1.angles ) )
+        level._ID48251.angles = var_1.angles;
     else
-        level._ID48251._ID65 = level._ID48251._ID52204;
+        level._ID48251.angles = level._ID48251._ID52204;
 
     wait 0.05;
     _ID46285();
     level._ID48251 thread _ID45833( self );
-    var_4 = int( self._ID922 );
+    var_4 = int( self.script_noteworthy );
     level._ID48251 thread _ID50517( var_4 );
-    var_5 = distance( var_1._ID740, var_2._ID740 );
+    var_5 = distance( var_1.origin, var_2.origin );
     var_6 = var_5 / var_3;
-    level._ID48251 moveto( var_2._ID740, var_6 );
+    level._ID48251 moveto( var_2.origin, var_6 );
     level._ID48251 waittill( "movedone" );
     _ID49837();
     _ID42237::_ID14388( var_0 );
@@ -4580,19 +4580,19 @@ _ID46023( var_0, var_1 )
     if ( !isdefined( var_1 ) )
         var_1 = 0;
 
-    var_3 = getent( self._ID1191, "targetname" );
+    var_3 = getent( self.target, "targetname" );
     self linkto( var_3 );
 
-    if ( isdefined( var_3._ID1191 ) )
+    if ( isdefined( var_3.target ) )
     {
-        var_2 = getent( var_3._ID1191, "targetname" );
+        var_2 = getent( var_3.target, "targetname" );
         var_2 linkto( self );
         var_2 connectpaths();
     }
     else
         self connectpaths();
 
-    var_3._ID52204 = var_3._ID65;
+    var_3._ID52204 = var_3.angles;
     var_3 rotateto( var_3._ID31037, var_0 );
     var_3 waittill( "rotatedone" );
 
@@ -4623,7 +4623,7 @@ _ID46023( var_0, var_1 )
 
 _ID44053()
 {
-    while ( level._ID794 istouching( self ) )
+    while ( level.player istouching( self ) )
         wait 0.05;
 
     self solid();
@@ -4631,13 +4631,13 @@ _ID44053()
 
 _ID51495( var_0 )
 {
-    var_1 = getent( self._ID1191, "targetname" );
+    var_1 = getent( self.target, "targetname" );
     var_2 = undefined;
     self linkto( var_1 );
 
-    if ( isdefined( var_1._ID1191 ) )
+    if ( isdefined( var_1.target ) )
     {
-        var_2 = getent( var_1._ID1191, "targetname" );
+        var_2 = getent( var_1.target, "targetname" );
         var_2 linkto( self );
         var_2 connectpaths();
     }
@@ -4663,12 +4663,12 @@ _ID54729( var_0, var_1, var_2 )
 {
     var_3 = self._ID49537;
     var_4 = _ID42237::_ID16638( "hind_fakefire_impactLine_start", "targetname" );
-    var_5 = _ID42237::_ID16638( var_4._ID1191, "targetname" );
+    var_5 = _ID42237::_ID16638( var_4.target, "targetname" );
     var_6 = var_0 / var_1;
-    var_7 = distance2d( var_4._ID740, var_5._ID740 );
+    var_7 = distance2d( var_4.origin, var_5.origin );
     var_8 = var_7 / var_6;
-    var_9 = var_4._ID740;
-    var_10 = vectornormalize( var_5._ID740 - var_4._ID740 );
+    var_9 = var_4.origin;
+    var_10 = vectornormalize( var_5.origin - var_4.origin );
     var_11 = vectortoangles( var_10 );
     var_12 = anglestoforward( var_11 );
     var_13 = -25;
@@ -4690,7 +4690,7 @@ _ID54729( var_0, var_1, var_2 )
             if ( !isalive( var_24 ) )
                 continue;
 
-            if ( distance2d( var_24._ID740, var_19 ) < 64 )
+            if ( distance2d( var_24.origin, var_19 ) < 64 )
                 var_24 kill();
         }
 
@@ -4701,10 +4701,10 @@ _ID54729( var_0, var_1, var_2 )
 
 _ID27290( var_0 )
 {
-    if ( !level._ID794 animscripts\battlechatter::_ID28201( var_0 ) )
+    if ( !level.player animscripts\battlechatter::_ID28201( var_0 ) )
         return 0;
 
-    if ( sighttracepassed( level._ID794 geteye(), var_0, 0, level._ID794 ) )
+    if ( sighttracepassed( level.player geteye(), var_0, 0, level.player ) )
         return 1;
 
     return 0;
@@ -4743,7 +4743,7 @@ _ID47231( var_0, var_1 )
 
     for (;;)
     {
-        objective_current( var_0, var_1._ID740 );
+        objective_current( var_0, var_1.origin );
         wait 0.05;
     }
 }
@@ -4850,12 +4850,12 @@ _ID43796( var_0 )
 
 _ID13805( var_0, var_1 )
 {
-    level._ID5261 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    level._ID5261 = _ID42313::_ID9125( "black", 0, level.player );
     level._ID5261 fadeovertime( var_0 );
-    level._ID5261._ID55 = 1;
+    level._ID5261.alpha = 1;
 
     if ( isdefined( var_1 ) )
-        level._ID5261._ID408 = var_1;
+        level._ID5261.foreground = var_1;
 
     wait(var_0);
 }
@@ -4863,7 +4863,7 @@ _ID13805( var_0, var_1 )
 _ID52029( var_0 )
 {
     level._ID5261 fadeovertime( var_0 );
-    level._ID5261._ID55 = 0;
+    level._ID5261.alpha = 0;
     wait(var_0);
     level._ID5261 destroy();
 }
@@ -4896,26 +4896,26 @@ _ID46271()
     setsaveddvar( "r_spotlightEndRadius", 325 );
     setsaveddvar( "r_spotlightBrightness", 0.9 );
     var_0 = _ID42237::_ID35164();
-    var_0._ID740 = level._ID794 geteye();
-    var_0._ID65 = level._ID794 getplayerangles();
+    var_0.origin = level.player geteye();
+    var_0.angles = level.player getplayerangles();
     var_0 thread _ID53976();
     var_1 = _ID42237::_ID16299( "flashlight" );
     playfxontag( var_1, var_0, "tag_origin" );
-    level._ID794._ID52470 = var_0;
+    level.player._ID52470 = var_0;
 }
 
 _ID53976()
 {
     for (;;)
     {
-        var_0 = level._ID794 getplayerangles();
-        var_1 = level._ID794 geteye();
+        var_0 = level.player getplayerangles();
+        var_1 = level.player geteye();
 
-        if ( self._ID65 != var_0 )
-            self._ID65 = var_0;
+        if ( self.angles != var_0 )
+            self.angles = var_0;
 
-        if ( self._ID740 != var_1 )
-            self._ID740 = var_1;
+        if ( self.origin != var_1 )
+            self.origin = var_1;
 
         wait 0.05;
     }
@@ -4932,15 +4932,15 @@ _ID50517( var_0 )
         wait 0.5;
     }
 
-    level._ID794 _meth_80b5( "airliner_flyby" );
+    level.player _meth_80b5( "airliner_flyby" );
     wait 4;
-    level._ID794 _meth_80b6( "airliner_flyby" );
+    level.player _meth_80b6( "airliner_flyby" );
 }
 
 _ID46974()
 {
-    var_0 = level._ID794._ID740;
-    var_1 = level._ID48251._ID740;
+    var_0 = level.player.origin;
+    var_1 = level._ID48251.origin;
     var_2 = distance( var_0, var_1 );
     return var_2;
 }
@@ -4966,7 +4966,7 @@ _ID48776()
     var_1._ID23512[0] delete();
     var_1 thread maps\favela_escape_aud::_ID53534();
     var_1 waittill( "reached_end_node" );
-    var_1 dodamage( var_1._ID486, var_1._ID740 );
+    var_1 dodamage( var_1.health, var_1.origin );
 }
 
 _ID53437()
@@ -5005,13 +5005,13 @@ _ID43233()
     _ID42407::_ID3428( "chicken_anim" );
     thread _ID42259::_ID3044( self, var_3 );
     var_0 waittill( "damage" );
-    playfx( level._ID1426["chicken_box"], var_0._ID740 );
-    playfx( level._ID1426["chicken_box_impact"], var_0._ID740 );
-    playfx( level._ID1426["chicken_box_burst"], var_0._ID740 );
+    playfx( level._ID1426["chicken_box"], var_0.origin );
+    playfx( level._ID1426["chicken_box_impact"], var_0.origin );
+    playfx( level._ID1426["chicken_box_burst"], var_0.origin );
     var_0 delete();
     self show();
     wait 1.1;
-    var_5 = getent( self._ID1191, "targetname" );
+    var_5 = getent( self.target, "targetname" );
     var_5 setcandamage( 1 );
     var_5 waittill( "damage" );
     var_5 delete();
@@ -5023,20 +5023,20 @@ _ID43233()
 _ID46282( var_0, var_1, var_2 )
 {
     wait(var_0);
-    level._ID794 _meth_80b5( var_1 );
+    level.player _meth_80b5( var_1 );
     wait(var_2);
-    level._ID794 _meth_80b6( var_1 );
+    level.player _meth_80b6( var_1 );
 }
 
 _ID46172( var_0 )
 {
-    level._ID794 endon( "mantle" );
+    level.player endon( "mantle" );
 
     for (;;)
     {
-        var_1 = level._ID794 getstance();
+        var_1 = level.player getstance();
 
-        if ( level._ID794 istouching( var_0 ) && var_1 != "crouch" && var_1 != "prone" )
+        if ( level.player istouching( var_0 ) && var_1 != "crouch" && var_1 != "prone" )
             setsaveddvar( "hud_forceMantleHint", 1 );
         else
             setsaveddvar( "hud_forceMantleHint", 0 );
@@ -5125,9 +5125,9 @@ animated_airconditioners_think()
 
 blend_player_anim_and_linktodelta( var_0 )
 {
-    level._ID794 playerlinktoblend( var_0, "tag_player", 0.5, 0.25, 0.25 );
+    level.player playerlinktoblend( var_0, "tag_player", 0.5, 0.25, 0.25 );
     wait 1.2;
-    level._ID794 playerlinktodelta( var_0, "tag_player", 1, 0, 0, 0, 0 );
+    level.player playerlinktodelta( var_0, "tag_player", 1, 0, 0, 0, 0 );
 }
 
 player_on_slide_magic_bullet()
@@ -5138,7 +5138,7 @@ player_on_slide_magic_bullet()
 
     foreach ( var_3 in var_0 )
     {
-        magicbullet( "ak47", var_1._ID740, var_3._ID740 );
+        magicbullet( "ak47", var_1.origin, var_3.origin );
         wait 0.1;
     }
 }

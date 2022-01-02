@@ -158,14 +158,14 @@ _ID4491( var_0, var_1, var_2, var_3, var_4, var_5 )
     var_4 = _ID42463::_ID3891( var_0, var_4 );
     var_5 = _ID42463::_ID3891( "alias", var_5 );
     var_10 = spawnstruct();
-    var_10._ID680 = var_4;
+    var_10.name = var_4;
     var_10._ID13816 = var_1;
     var_10._ID3426 = var_5;
     var_10._ID3425 = var_6;
     var_10._ID28452 = _ID4552();
     var_10._ID26244 = [];
     var_10 _ID4569( var_2, var_3 );
-    self._ID22637._ID22674[var_10._ID680] = var_10;
+    self._ID22637._ID22674[var_10.name] = var_10;
     self._ID22637._ID22651 = var_10;
 }
 
@@ -320,7 +320,7 @@ _ID4493( var_0, var_1, var_2, var_3, var_4, var_5 )
         var_7 = [ var_4 ];
 
     var_11 = spawnstruct();
-    var_11._ID680 = var_0;
+    var_11.name = var_0;
     var_11._ID3425 = var_7;
     var_11._ID3426 = var_5;
     var_11._ID12215 = var_1;
@@ -329,7 +329,7 @@ _ID4493( var_0, var_1, var_2, var_3, var_4, var_5 )
     var_11._ID26244 = [];
     var_11._ID34524 = [];
     var_11 _ID4569();
-    self._ID25754._ID25765[var_11._ID680] = var_11;
+    self._ID25754._ID25765[var_11.name] = var_11;
     self._ID25754._ID25760 = var_11;
 }
 
@@ -366,12 +366,12 @@ _ID4489( var_0, var_1, var_2, var_3, var_4 )
     var_6._ID22674 = [];
     var_6._ID28452 = _ID4552();
     var_6._ID26244 = [];
-    var_6._ID680 = var_0;
+    var_6.name = var_0;
     var_6._ID8419 = var_1;
     var_3 = _ID42463::_ID3891( self._ID5030._ID10143._ID34452, var_3 );
     var_4 = _ID42463::_ID3891( self._ID5030._ID10143._ID34447, var_4 );
     var_6 _ID4569( var_3, var_4 );
-    self._ID5030._ID5033[var_6._ID680] = var_6;
+    self._ID5030._ID5033[var_6.name] = var_6;
     self._ID5030._ID5032 = var_6;
 
     if ( isarray( var_2 ) )
@@ -461,7 +461,7 @@ _ID4498( var_0, var_1, var_2, var_3, var_4 )
         var_4 *= 1000;
 
     var_5 = spawnstruct();
-    var_5._ID680 = var_0;
+    var_5.name = var_0;
     var_5._ID19926 = [ var_1, var_2 ];
     var_5._ID28609 = _ID42463::_ID3891( self._ID36188._ID10143._ID28609, var_3 );
     var_5._ID23607 = _ID42463::_ID3891( self._ID36188._ID10143._ID23607, var_4 );
@@ -476,9 +476,9 @@ _ID4497( var_0, var_1, var_2 )
         var_1 *= 1000;
 
     var_3 = self._ID36188._ID17466;
-    var_4 = var_3._ID680;
+    var_4 = var_3.name;
     var_5 = spawnstruct();
-    var_5._ID680 = var_0;
+    var_5.name = var_0;
     var_5._ID38684 = [];
     var_5._ID28609 = _ID42463::_ID3891( var_3._ID28609, var_2 );
     var_5._ID23607 = _ID42463::_ID3891( var_3._ID23607, var_1 );
@@ -799,7 +799,7 @@ _ID4527( var_0, var_1, var_2, var_3, var_4 )
         var_9._ID9426 = var_6 _ID4528( var_8 );
         var_9._ID34524 = [];
         var_9._ID40767 = 1.0;
-        var_6._ID22649[var_8._ID680] = var_9;
+        var_6._ID22649[var_8.name] = var_9;
     }
 
     var_6._ID25757 = [];
@@ -810,7 +810,7 @@ _ID4527( var_0, var_1, var_2, var_3, var_4 )
         var_9._ID28749 = var_8;
         var_9._ID9426 = var_6 _ID4528( var_8 );
         var_9._ID34524 = [];
-        var_6._ID25757[var_8._ID680] = var_9;
+        var_6._ID25757[var_8.name] = var_9;
     }
 
     var_6._ID5031 = [];
@@ -820,7 +820,7 @@ _ID4527( var_0, var_1, var_2, var_3, var_4 )
         var_9 = spawnstruct();
         var_9._ID28749 = var_8;
         var_9._ID9426 = var_6 _ID4528( var_8 );
-        var_6._ID5031[var_8._ID680] = var_9;
+        var_6._ID5031[var_8.name] = var_9;
     }
 
     var_6._ID36189 = [];
@@ -977,14 +977,14 @@ _ID4594()
         {
             if ( var_5._ID27010 == 1 )
             {
-                var_6 = var_5._ID28749._ID680;
+                var_6 = var_5._ID28749.name;
                 var_0 _ID4563( var_5, var_3 );
                 var_0 _ID4592( var_5 );
             }
         }
 
         var_3 = gettime();
-        var_8 = distance2d( var_0._ID40059._ID740, level._ID794._ID740 );
+        var_8 = distance2d( var_0._ID40059.origin, level.player.origin );
 
         if ( var_8 < 400 )
             var_9 = 1.0;
@@ -1132,7 +1132,7 @@ _ID4576( var_0, var_1, var_2, var_3 )
 {
     var_4 = self;
     var_5 = var_4 _ID4557();
-    var_6 = var_0._ID28749._ID680;
+    var_6 = var_0._ID28749.name;
     var_4 notify( var_6 );
     var_4 endon( var_6 );
     level endon( "msg_snd_vehicle_stop" );
@@ -1252,7 +1252,7 @@ _ID4584( var_0, var_1, var_2 )
 
         var_12 = 0;
         var_11 = gettime();
-        var_24 = distance2d( var_3._ID40059._ID740, level._ID794._ID740 );
+        var_24 = distance2d( var_3._ID40059.origin, level.player.origin );
 
         if ( var_24 < 400 )
             var_25 = 1.0;
@@ -1477,13 +1477,13 @@ _ID4586( var_0, var_1 )
 _ID20043()
 {
     var_0 = _ID4557();
-    return distance2d( var_0._ID740, level._ID794._ID740 );
+    return distance2d( var_0.origin, level.player.origin );
 }
 
 _ID20042()
 {
     var_0 = _ID4557();
-    return distance( var_0._ID740, level._ID794._ID740 );
+    return distance( var_0.origin, level.player.origin );
 }
 
 _ID20058()
@@ -1509,7 +1509,7 @@ _ID20055()
 {
     var_0 = _ID4557();
     var_1 = var_0 vehicle_getvelocity();
-    var_2 = level._ID794 getvelocity();
+    var_2 = level.player getvelocity();
     var_3 = var_1 - var_2;
     var_4 = length( var_3 ) * 0.0568182;
     return var_4;
@@ -1540,19 +1540,19 @@ _ID20047()
 _ID20044()
 {
     var_0 = _ID4557();
-    return _func_254( var_0._ID740, var_0 vehicle_getvelocity(), level._ID794._ID740, level._ID794 getvelocity() );
+    return _func_254( var_0.origin, var_0 vehicle_getvelocity(), level.player.origin, level.player getvelocity() );
 }
 
 _ID20045()
 {
     var_0 = _ID4557();
-    return _func_254( var_0._ID740, var_0 vehicle_getvelocity(), level._ID794._ID740, level._ID794 getvelocity(), 2, 5 );
+    return _func_254( var_0.origin, var_0 vehicle_getvelocity(), level.player.origin, level.player getvelocity(), 2, 5 );
 }
 
 _ID20046()
 {
     var_0 = _ID4557();
-    return _func_254( var_0._ID740, var_0 vehicle_getvelocity(), level._ID794._ID740, level._ID794 getvelocity(), 1, 0.5 );
+    return _func_254( var_0.origin, var_0 vehicle_getvelocity(), level.player.origin, level.player getvelocity(), 1, 0.5 );
 }
 
 _ID4501( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
@@ -1588,27 +1588,27 @@ _ID4501( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 _ID20052()
 {
     var_0 = _ID4557();
-    var_1 = var_0._ID65[0];
+    var_1 = var_0.angles[0];
     return var_1;
 }
 
 _ID20059()
 {
     var_0 = _ID4557();
-    var_1 = var_0._ID65[1];
+    var_1 = var_0.angles[1];
     return var_1;
 }
 
 _ID20053()
 {
     var_0 = _ID4557();
-    return max( abs( angleclamp180( var_0._ID65[0] ) ), abs( angleclamp180( var_0._ID65[2] ) ) );
+    return max( abs( angleclamp180( var_0.angles[0] ) ), abs( angleclamp180( var_0.angles[2] ) ) );
 }
 
 _ID20041()
 {
     var_0 = _ID4557();
-    return acos( anglestoup( var_0._ID65 )[2] );
+    return acos( anglestoup( var_0.angles )[2] );
 }
 
 _ID20050()
@@ -1651,7 +1651,7 @@ _ID20054()
         if ( var_3 > var_1._ID2964 + var_2 )
         {
             var_1._ID2964 = var_3;
-            var_4 = bullettrace( var_1._ID740, var_1._ID740 - ( 0, 0, 360 ), 0 );
+            var_4 = bullettrace( var_1.origin, var_1.origin - ( 0, 0, 360 ), 0 );
             var_1._ID2965 = var_4["fraction"];
 
             if ( !isdefined( var_1._ID2965 ) )
@@ -1761,7 +1761,7 @@ _ID20090()
     var_1 = abs( var_1 );
     var_1 = clamp( var_1, 0, 90 );
     var_1 = _ID4566( var_1, 0, 90 );
-    var_2 = level._ID794 getnormalizedcameramovement();
+    var_2 = level.player getnormalizedcameramovement();
     var_3 = abs( var_2[0] );
     return 0;
 }
@@ -1776,7 +1776,7 @@ _ID20091()
     var_3 = length2d( ( var_1, var_2, 0 ) );
     var_3 = clamp( var_3, 0, 135 );
     var_4 = _ID4566( var_3, 0, 135 );
-    var_5 = level._ID794 getnormalizedcameramovement();
+    var_5 = level.player getnormalizedcameramovement();
     var_6 = length2d( var_5 );
     return var_4 * var_6;
 }
@@ -1818,7 +1818,7 @@ _ID20072()
 
 _ID20095()
 {
-    var_0 = level._ID794 getnormalizedcameramovement();
+    var_0 = level.player getnormalizedcameramovement();
     var_1 = abs( var_0[0] );
     var_2 = abs( var_0[1] );
 
@@ -1838,7 +1838,7 @@ _ID4582( var_0, var_1 )
     if ( isstring( var_5 ) )
     {
         var_6 = var_2 _ID4557();
-        var_4 = spawn( "script_origin", var_6._ID740 );
+        var_4 = spawn( "script_origin", var_6.origin );
         var_4 linkto( var_6, "tag_origin", var_2._ID34980, ( 0, 0, 0 ) );
         var_4 setvolume( 0 );
         var_4 _ID42494::_ID34605( var_5, "sound_done" );
@@ -1897,9 +1897,9 @@ _ID4558( var_0 )
 {
     var_1 = self;
     var_2 = var_0._ID28749;
-    var_1 _ID4523( var_2._ID680 );
+    var_1 _ID4523( var_2.name );
     var_1 _ID4595( var_0 );
-    var_1 _ID4571( var_2._ID680 );
+    var_1 _ID4571( var_2.name );
 }
 
 _ID4595( var_0 )
@@ -1918,7 +1918,7 @@ _ID4595( var_0 )
         var_6 = 0;
         var_7 = var_5[1];
 
-        for ( var_8 = var_3._ID680; _ID4525( var_0._ID34524 ) && var_6 < var_7; var_6 += 0.1 )
+        for ( var_8 = var_3.name; _ID4525( var_0._ID34524 ) && var_6 < var_7; var_6 += 0.1 )
         {
             var_9 = var_0 _ID4546();
             var_10 = var_2 _ID4562( var_6, var_3._ID12215 );
@@ -2145,7 +2145,7 @@ _ID4581( var_0 )
     for ( var_9 = 0; var_9 < var_5; var_9++ )
     {
         var_10 = var_1 _ID4553( var_4, var_9 );
-        var_11 = spawn( "script_origin", var_3._ID740 );
+        var_11 = spawn( "script_origin", var_3.origin );
         var_11 linkto( var_3, "tag_origin", var_6, ( 0, 0, 0 ) );
         var_11 setvolume( 0 );
         var_11 _ID42494::_ID34625( var_10 );

@@ -35,7 +35,7 @@ _ID33106( var_0 )
     if ( !isdefined( level._ID13631[var_1] ) )
         level._ID13631[var_1] = [];
 
-    var_2 = var_0._ID1193;
+    var_2 = var_0.targetname;
 
     if ( !isdefined( var_2 ) )
         var_2 = "";
@@ -53,7 +53,7 @@ _ID33106( var_0 )
         var_0 hide();
         var_0 notsolid();
 
-        if ( isdefined( var_0._ID989 ) && var_0._ID989 & 1 )
+        if ( isdefined( var_0.spawnflags ) && var_0.spawnflags & 1 )
         {
             if ( isdefined( var_0._ID31139 ) )
                 var_0 connectpaths();
@@ -67,7 +67,7 @@ _ID33106( var_0 )
         var_0 hide();
         var_0 notsolid();
 
-        if ( isdefined( var_0._ID989 ) && var_0._ID989 & 1 )
+        if ( isdefined( var_0.spawnflags ) && var_0.spawnflags & 1 )
             var_0 connectpaths();
 
         return;
@@ -75,14 +75,14 @@ _ID33106( var_0 )
 
     if ( _ID45494( var_0 ) )
     {
-        var_3 = issubstr( var_0._ID1193, "exploderanimhide" ) || issubstr( var_0._ID1193, "exploderanimend" );
+        var_3 = issubstr( var_0.targetname, "exploderanimhide" ) || issubstr( var_0.targetname, "exploderanimend" );
 
         if ( var_3 )
         {
             var_0 hide();
             var_0 notsolid();
 
-            if ( isdefined( var_0._ID989 ) && var_0._ID989 & 1 )
+            if ( isdefined( var_0.spawnflags ) && var_0.spawnflags & 1 )
                 var_0 connectpaths();
         }
 
@@ -179,8 +179,8 @@ _ID33558()
 
         if ( isdefined( var_7[var_2]._ID31170 ) )
         {
-            if ( !isdefined( var_7[var_2]._ID65 ) )
-                var_7[var_2]._ID65 = ( 0, 0, 0 );
+            if ( !isdefined( var_7[var_2].angles ) )
+                var_7[var_2].angles = ( 0, 0, 0 );
 
             var_6[var_6.size] = var_7[var_2];
         }
@@ -200,8 +200,8 @@ _ID33558()
         var_9 = var_6[var_2];
         var_4 = _ID42237::_ID9217( var_9._ID31220 );
         var_4._ID40005 = [];
-        var_4._ID40005["origin"] = var_9._ID740;
-        var_4._ID40005["angles"] = var_9._ID65;
+        var_4._ID40005["origin"] = var_9.origin;
+        var_4._ID40005["angles"] = var_9.angles;
         var_4._ID40005["delay"] = var_9._ID916;
         var_4._ID40005["delay_post"] = var_9._ID31122;
         var_4._ID40005["firefx"] = var_9._ID31182;
@@ -216,7 +216,7 @@ _ID33558()
         var_4._ID40005["repeat"] = var_9._ID31417;
         var_4._ID40005["delay_min"] = var_9._ID31121;
         var_4._ID40005["delay_max"] = var_9._ID31120;
-        var_4._ID40005["target"] = var_9._ID1191;
+        var_4._ID40005["target"] = var_9.target;
         var_4._ID40005["ender"] = var_9._ID31163;
         var_4._ID40005["physics"] = var_9._ID31395;
         var_4._ID40005["type"] = "exploder";
@@ -242,13 +242,13 @@ _ID33558()
         if ( !isdefined( var_4._ID40005["delay"] ) )
             var_4._ID40005["delay"] = 0;
 
-        if ( isdefined( var_9._ID1191 ) )
+        if ( isdefined( var_9.target ) )
         {
             var_11 = getentarray( var_4._ID40005["target"], "targetname" )[0];
 
             if ( isdefined( var_11 ) )
             {
-                var_12 = var_11._ID740;
+                var_12 = var_11.origin;
                 var_4._ID40005["angles"] = vectortoangles( var_12 - var_4._ID40005["origin"] );
             }
             else
@@ -257,36 +257,36 @@ _ID33558()
 
                 if ( isdefined( var_11 ) )
                 {
-                    var_12 = var_11._ID740;
+                    var_12 = var_11.origin;
                     var_4._ID40005["angles"] = vectortoangles( var_12 - var_4._ID40005["origin"] );
                 }
             }
         }
 
-        if ( !isdefined( var_9._ID172 ) )
+        if ( !isdefined( var_9.code_classname ) )
         {
-            var_4._ID669 = var_9;
+            var_4.model = var_9;
 
-            if ( isdefined( var_4._ID669._ID31295 ) )
-                precachemodel( var_4._ID669._ID31295 );
+            if ( isdefined( var_4.model._ID31295 ) )
+                precachemodel( var_4.model._ID31295 );
         }
-        else if ( var_9._ID172 == "script_brushmodel" || isdefined( var_9._ID669 ) )
+        else if ( var_9.code_classname == "script_brushmodel" || isdefined( var_9.model ) )
         {
-            var_4._ID669 = var_9;
-            var_4._ID669._ID11063 = var_9._ID31139;
+            var_4.model = var_9;
+            var_4.model._ID11063 = var_9._ID31139;
         }
 
-        if ( isdefined( var_9._ID1193 ) && isdefined( var_8[var_9._ID1193] ) )
-            var_4._ID40005["exploder_type"] = var_9._ID1193;
-        else if ( isdefined( var_9._ID1193 ) && issubstr( var_9._ID1193, "exploderanim" ) )
+        if ( isdefined( var_9.targetname ) && isdefined( var_8[var_9.targetname] ) )
+            var_4._ID40005["exploder_type"] = var_9.targetname;
+        else if ( isdefined( var_9.targetname ) && issubstr( var_9.targetname, "exploderanim" ) )
             var_4._ID40005["exploder_type"] = "exploderanim";
         else
             var_4._ID40005["exploder_type"] = "normal";
 
         if ( isdefined( var_9._ID23001 ) )
         {
-            var_4._ID40005["masked_exploder"] = var_9._ID669;
-            var_4._ID40005["masked_exploder_spawnflags"] = var_9._ID989;
+            var_4._ID40005["masked_exploder"] = var_9.model;
+            var_4._ID40005["masked_exploder_spawnflags"] = var_9.spawnflags;
             var_4._ID40005["masked_exploder_script_disconnectpaths"] = var_9._ID31139;
             var_9 delete();
         }
@@ -351,22 +351,22 @@ _ID13617( var_0 )
 
 _ID13620( var_0 )
 {
-    return isdefined( var_0._ID1193 ) && var_0._ID1193 == "exploder";
+    return isdefined( var_0.targetname ) && var_0.targetname == "exploder";
 }
 
 _ID13621( var_0 )
 {
-    return var_0._ID669 == "fx" && ( !isdefined( var_0._ID1193 ) || var_0._ID1193 != "exploderchunk" );
+    return var_0.model == "fx" && ( !isdefined( var_0.targetname ) || var_0.targetname != "exploderchunk" );
 }
 
 _ID13619( var_0 )
 {
-    return isdefined( var_0._ID1193 ) && var_0._ID1193 == "exploderchunk";
+    return isdefined( var_0.targetname ) && var_0.targetname == "exploderchunk";
 }
 
 _ID45494( var_0 )
 {
-    return isdefined( var_0._ID1193 ) && issubstr( var_0._ID1193, "exploderanim" );
+    return isdefined( var_0.targetname ) && issubstr( var_0.targetname, "exploderanim" );
 }
 
 _ID34002( var_0 )
@@ -381,11 +381,11 @@ _ID34002( var_0 )
         {
             foreach ( var_3 in var_1 )
             {
-                if ( !_ID13621( var_3._ID669 ) && !_ID13620( var_3._ID669 ) && !_ID13619( var_3._ID669 ) )
-                    var_3._ID669 show();
+                if ( !_ID13621( var_3.model ) && !_ID13620( var_3.model ) && !_ID13619( var_3.model ) )
+                    var_3.model show();
 
                 if ( isdefined( var_3._ID6179 ) )
-                    var_3._ID669 show();
+                    var_3.model show();
             }
 
             return;
@@ -409,13 +409,13 @@ _ID34002( var_0 )
             if ( var_3._ID40005["exploder"] + "" != var_0 )
                 continue;
 
-            if ( isdefined( var_3._ID669 ) )
+            if ( isdefined( var_3.model ) )
             {
-                if ( !_ID13621( var_3._ID669 ) && !_ID13620( var_3._ID669 ) && !_ID13619( var_3._ID669 ) )
-                    var_3._ID669 show();
+                if ( !_ID13621( var_3.model ) && !_ID13620( var_3.model ) && !_ID13619( var_3.model ) )
+                    var_3.model show();
 
                 if ( isdefined( var_3._ID6179 ) )
-                    var_3._ID669 show();
+                    var_3.model show();
             }
         }
     }
@@ -512,8 +512,8 @@ _ID18515( var_0 )
         {
             foreach ( var_3 in var_1 )
             {
-                if ( isdefined( var_3._ID669 ) )
-                    var_3._ID669 hide();
+                if ( isdefined( var_3.model ) )
+                    var_3.model hide();
             }
 
             return;
@@ -537,8 +537,8 @@ _ID18515( var_0 )
             if ( var_3._ID40005["exploder"] + "" != var_0 )
                 continue;
 
-            if ( isdefined( var_3._ID669 ) )
-                var_3._ID669 hide();
+            if ( isdefined( var_3.model ) )
+                var_3.model hide();
         }
     }
 }
@@ -555,8 +555,8 @@ _ID10257( var_0 )
         {
             foreach ( var_3 in var_1 )
             {
-                if ( isdefined( var_3._ID669 ) )
-                    var_3._ID669 delete();
+                if ( isdefined( var_3.model ) )
+                    var_3.model delete();
             }
         }
     }
@@ -578,8 +578,8 @@ _ID10257( var_0 )
             if ( var_3._ID40005["exploder"] + "" != var_0 )
                 continue;
 
-            if ( isdefined( var_3._ID669 ) )
-                var_3._ID669 delete();
+            if ( isdefined( var_3.model ) )
+                var_3.model delete();
         }
     }
 
@@ -675,13 +675,13 @@ _ID6177()
     else
         wait 0.05;
 
-    if ( !isdefined( self._ID669 ) )
+    if ( !isdefined( self.model ) )
         return;
 
-    if ( isdefined( self._ID669._ID170 ) )
+    if ( isdefined( self.model.classname ) )
     {
-        if ( _ID42237::_ID20913() && self._ID669._ID989 & 1 )
-            self._ID669 call [[ level._ID8529 ]]();
+        if ( _ID42237::_ID20913() && self.model.spawnflags & 1 )
+            self.model call [[ level._ID8529 ]]();
     }
 
     if ( level._ID9228 )
@@ -691,20 +691,20 @@ _ID6177()
 
         self._ID13610 = 1;
 
-        if ( isdefined( self._ID669 ) && isdefined( self._ID669._ID170 ) )
+        if ( isdefined( self.model ) && isdefined( self.model.classname ) )
         {
-            self._ID669 hide();
-            self._ID669 notsolid();
+            self.model hide();
+            self.model notsolid();
         }
 
         var_1 = _ID43302();
         wait(var_1);
         self._ID13610 = undefined;
 
-        if ( isdefined( self._ID669 ) && isdefined( self._ID669._ID170 ) )
+        if ( isdefined( self.model ) && isdefined( self.model.classname ) )
         {
-            self._ID669 show();
-            self._ID669 solid();
+            self.model show();
+            self.model solid();
         }
 
         return;
@@ -715,8 +715,8 @@ _ID6177()
 
     waitframe;
 
-    if ( isdefined( self._ID669 ) && isdefined( self._ID669._ID170 ) )
-        self._ID669 delete();
+    if ( isdefined( self.model ) && isdefined( self.model.classname ) )
+        self.model delete();
 }
 
 _ID6180()
@@ -731,20 +731,20 @@ _ID6180()
 
     if ( !isdefined( var_0 ) )
     {
-        if ( isdefined( self._ID669 ) )
-            self._ID669 delete();
+        if ( isdefined( self.model ) )
+            self.model delete();
 
         return;
     }
 
-    self._ID669 show();
+    self.model show();
 
     if ( isdefined( self._ID40005["delay_post"] ) )
         wait(self._ID40005["delay_post"]);
 
     var_1 = self._ID40005["origin"];
     var_2 = self._ID40005["angles"];
-    var_3 = var_0._ID740;
+    var_3 = var_0.origin;
     var_4 = var_3 - self._ID40005["origin"];
     var_5 = var_4[0];
     var_6 = var_4[1];
@@ -755,27 +755,27 @@ _ID6180()
     {
         var_9 = undefined;
 
-        if ( isdefined( var_0._ID1191 ) )
+        if ( isdefined( var_0.target ) )
             var_9 = var_0 _ID42237::_ID16012();
 
         if ( !isdefined( var_9 ) )
         {
             var_10 = var_1;
-            var_11 = var_0._ID740;
+            var_11 = var_0.origin;
         }
         else
         {
-            var_10 = var_0._ID740;
-            var_11 = ( var_9._ID740 - var_0._ID740 ) * self._ID40005["physics"];
+            var_10 = var_0.origin;
+            var_11 = ( var_9.origin - var_0.origin ) * self._ID40005["physics"];
         }
 
-        self._ID669 physicslaunchclient( var_10, var_11 );
+        self.model physicslaunchclient( var_10, var_11 );
         return;
     }
     else
     {
-        self._ID669 rotatevelocity( ( var_5, var_6, var_7 ), 12 );
-        self._ID669 movegravity( ( var_5, var_6, var_7 ), 12 );
+        self.model rotatevelocity( ( var_5, var_6, var_7 ), 12 );
+        self.model movegravity( ( var_5, var_6, var_7 ), 12 );
     }
 
     if ( level._ID9228 )
@@ -789,23 +789,23 @@ _ID6180()
         self._ID13610 = undefined;
         self._ID40005["origin"] = var_1;
         self._ID40005["angles"] = var_2;
-        self._ID669 hide();
+        self.model hide();
         return;
     }
 
     self._ID40005["exploder"] = undefined;
     wait 6;
 
-    if ( isdefined( self._ID669 ) )
-        self._ID669 delete();
+    if ( isdefined( self.model ) )
+        self.model delete();
 }
 
 _ID50984()
 {
     var_0 = _ID42237::_ID35164();
 
-    if ( isdefined( self._ID920 ) )
-        var_0._ID920 = self._ID920;
+    if ( isdefined( self.script_linkname ) )
+        var_0.script_linkname = self.script_linkname;
 
     var_0 setmodel( self._ID31295 );
     var_1 = undefined;
@@ -815,7 +815,7 @@ _ID50984()
         var_2 = _ID42237::_ID16012( self._ID44380 );
 
         if ( isdefined( var_2 ) )
-            var_1 = var_2._ID740;
+            var_1 = var_2.origin;
     }
     else if ( isdefined( self._ID52269 ) )
         var_1 = self._ID52269;
@@ -834,22 +834,22 @@ _ID6178()
 
     var_0 = undefined;
 
-    if ( !isdefined( self._ID669._ID31295 ) )
+    if ( !isdefined( self.model._ID31295 ) )
     {
-        self._ID669 show();
-        self._ID669 solid();
+        self.model show();
+        self.model solid();
     }
     else
-        var_0 = self._ID669 _ID50984();
+        var_0 = self.model _ID50984();
 
     self._ID6179 = 1;
 
-    if ( _ID42237::_ID20913() && !isdefined( self._ID669._ID31295 ) && self._ID669._ID989 & 1 )
+    if ( _ID42237::_ID20913() && !isdefined( self.model._ID31295 ) && self.model.spawnflags & 1 )
     {
-        if ( !isdefined( self._ID669._ID11063 ) )
-            self._ID669 call [[ level._ID8529 ]]();
+        if ( !isdefined( self.model._ID11063 ) )
+            self.model call [[ level._ID8529 ]]();
         else
-            self._ID669 call [[ level._ID11068 ]]();
+            self.model call [[ level._ID11068 ]]();
     }
 
     if ( level._ID9228 )
@@ -864,8 +864,8 @@ _ID6178()
 
         if ( !isdefined( var_0 ) )
         {
-            self._ID669 hide();
-            self._ID669 notsolid();
+            self.model hide();
+            self.model notsolid();
         }
         else
             var_0 delete();
@@ -874,9 +874,9 @@ _ID6178()
 
 _ID52600()
 {
-    var_0 = self._ID669;
-    var_1 = issubstr( var_0._ID1193, "exploderanimhide" );
-    var_2 = issubstr( var_0._ID1193, "exploderanimend" );
+    var_0 = self.model;
+    var_1 = issubstr( var_0.targetname, "exploderanimhide" );
+    var_2 = issubstr( var_0.targetname, "exploderanimend" );
     var_3 = 0.0;
 
     if ( !var_2 && isdefined( self._ID40005["delay"] ) && self._ID40005["delay"] > 0.0 )
@@ -892,7 +892,7 @@ _ID52600()
             var_0 show();
             var_0 solid();
 
-            if ( isdefined( var_0._ID989 ) && var_0._ID989 & 1 )
+            if ( isdefined( var_0.spawnflags ) && var_0.spawnflags & 1 )
                 var_0 connectpaths();
         }
     }
@@ -900,7 +900,7 @@ _ID52600()
     {
         if ( !isdefined( var_0._ID43009 ) )
         {
-            var_4 = self._ID669 _ID50984();
+            var_4 = self.model _ID50984();
             var_0._ID43009 = var_4;
         }
 
@@ -967,7 +967,7 @@ _ID13625()
         return;
 
     _ID13615();
-    level._ID794 playrumblelooponentity( self._ID40005["rumble"] );
+    level.player playrumblelooponentity( self._ID40005["rumble"] );
 }
 
 _ID13615()

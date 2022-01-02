@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -177,9 +177,9 @@ _ID44038()
     level._ID52945 notify( "stop soundscn_dcburning_plr_heli_dying_loop" );
     level._ID52945 _ID42237::_ID36516( "scn_dcburning_plr_heli_missile_hit_01" );
     level._ID52945 _ID42237::_ID36516( "scn_dcburning_plr_heli_damaged_loop" );
-    level._ID794 thread _ID42407::_ID27079( "scn_dcburning_plr_heli_crash" );
+    level.player thread _ID42407::_ID27079( "scn_dcburning_plr_heli_crash" );
     _ID42237::_ID14413( "obj_heli_ride_complete" );
-    level._ID794 thread _ID42407::_ID27079( "scn_heli_intro" );
+    level.player thread _ID42407::_ID27079( "scn_heli_intro" );
     _ID42474::_ID4669( "interior_helicopter" );
     _ID42490::_ID34526( "dcburning_plr_shellshock_filter", 2 );
     _ID42237::_ID14413( "notetrack_player_lowerhands" );
@@ -205,12 +205,12 @@ _ID44652( var_0 )
 
 _ID49127()
 {
-    level._ID794 thread _ID42407::_ID27079( "scn_dcburning_barret_player_grab_in" );
+    level.player thread _ID42407::_ID27079( "scn_dcburning_barret_player_grab_in" );
 }
 
 _ID45959()
 {
-    level._ID794 thread _ID42407::_ID27079( "scn_dcburning_barret_player_grab_out" );
+    level.player thread _ID42407::_ID27079( "scn_dcburning_barret_player_grab_out" );
 }
 
 _ID52163( var_0 )
@@ -283,7 +283,7 @@ _ID53429()
 {
     _ID42465::_ID23801( "player_heli_03a_mix" );
     _ID42465::_ID23797( "heli_1st_missile_hit_mix" );
-    level._ID794 thread _ID42407::_ID27079( "scn_player_heli_hit_vo" );
+    level.player thread _ID42407::_ID27079( "scn_player_heli_hit_vo" );
     thread _ID42407::_ID27079( "scn_dcburning_plr_heli_missile_hit_01" );
     thread _ID42237::_ID27000( "scn_player_heli_first_hit_alarm" );
     _ID42237::_ID27000( "scn_dcburning_plr_heli_damaged_loop", undefined, 2, 0.5 );
@@ -332,7 +332,7 @@ _ID46717( var_0 )
 _ID53638( var_0 )
 {
     wait 0.1;
-    thread _ID42237::_ID27077( "slamraam_fire_npc", self._ID740 + ( 0, 0, 75 ) );
+    thread _ID42237::_ID27077( "slamraam_fire_npc", self.origin + ( 0, 0, 75 ) );
     wait 0.1;
     var_0 thread _ID42407::_ID27079( "slamraam_ignition_npc" );
     var_0 _ID42407::_ID27001( "slamraam_proj_loop_npc", undefined, 1 );
@@ -341,7 +341,7 @@ _ID53638( var_0 )
 _ID48789()
 {
     level waittill( "c4_placement_started" );
-    level._ID794 playsound( "scn_dcburning_plant_c4" );
+    level.player playsound( "scn_dcburning_plant_c4" );
 }
 
 _ID50906()
@@ -349,7 +349,7 @@ _ID50906()
     wait 0.1;
     self vehicle_turnengineoff();
     self._ID31138 = 1;
-    level._ID53882 = spawn( "script_origin", self._ID740 );
+    level._ID53882 = spawn( "script_origin", self.origin );
     level._ID53882 linkto( self );
     level._ID53882 playloopsound( "scn_player_heli_idle" );
     thread _ID53628();
@@ -396,7 +396,7 @@ _ID50701()
 
     for (;;)
     {
-        var_0 = distancesquared( level._ID794._ID740, self._ID740 );
+        var_0 = distancesquared( level.player.origin, self.origin );
 
         if ( var_0 < 2250000 )
         {
@@ -453,7 +453,7 @@ _ID46394()
 
 intro_heli_sequence_snd()
 {
-    level._ID794 thread _ID42407::_ID27079( "scn_heli_intro" );
+    level.player thread _ID42407::_ID27079( "scn_heli_intro" );
     _ID42465::_ID23797( "heli_crash_black_screen_mix" );
     _ID42465::_ID23797( "heli_crash_shellshock_mix" );
     _ID42474::_ID4655( 1 );

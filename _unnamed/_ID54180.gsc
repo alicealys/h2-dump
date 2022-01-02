@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "bird_seagull_flock_large" );
     var_0 _ID42229::_ID32402( ( 1046.55, 3425.77, -742.957 ), ( 356.01, 355.99, 0.279492 ) );

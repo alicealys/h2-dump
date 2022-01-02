@@ -1,9 +1,9 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         _ID34338();
     else
         _ID34339();
@@ -29,7 +29,7 @@ _ID34338()
     self endon( "killanimscript" );
     self traversemode( "noclip" );
     var_0 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_0._ID65[1] );
+    self orientmode( "face angle", var_0.angles[1] );
     self clearanim( %animscript_root, 0.1 );
     self setflaggedanimrestart( "traverse", anim._ID11491["jump_up_40"], 1, 0.1, 1 );
     animscripts\shared::_ID11529( "traverse" );

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     precacheshader( "h1_hud_tutorial_blur" );
     precacheshader( "h1_hud_tutorial_border" );
@@ -32,7 +32,7 @@ _ID521()
     thread _ID51561();
     thread _ID50614();
     thread _ID50663();
-    thread _ID45456::_ID521();
+    thread _ID45456::init();
     add_specialfeatures_function( ::_ID53271 );
 
     if ( !isdefined( level._ID1426 ) )
@@ -49,10 +49,10 @@ _ID521()
     thread _ID45652();
     _ID42237::_ID14400( "disable_slowmo_cheat" );
 
-    if ( level._ID912 == "airport" )
+    if ( level.script == "airport" )
         return;
 
-    level._ID794 thread _ID47585();
+    level.player thread _ID47585();
 }
 
 cheat_init()
@@ -179,7 +179,7 @@ _ID43350( var_0 )
 _ID45358( var_0 )
 {
     if ( var_0 )
-        level._ID794 thread _ID48955();
+        level.player thread _ID48955();
     else
         level notify( "end_cluster_grenades" );
 }
@@ -203,7 +203,7 @@ _ID48955()
 _ID47171( var_0 )
 {
     self endon( "timeout" );
-    var_1 = self._ID740;
+    var_1 = self.origin;
     thread _ID42407::_ID37742( 8 );
     self waittill( "explode",  var_2  );
     var_1 = var_2 + ( 0, 0, 5 );
@@ -213,7 +213,7 @@ _ID47171( var_0 )
     {
         var_5 = _ID53592();
         var_6 = 1.5 + var_4 / 6 + randomfloat( 0.1 );
-        var_7 = magicgrenademanual( var_0, var_1, var_5, var_6, level._ID794 );
+        var_7 = magicgrenademanual( var_0, var_1, var_5, var_6, level.player );
         var_7._ID47092 = 1;
     }
 }
@@ -233,7 +233,7 @@ _ID53592()
 
 _ID54563( var_0 )
 {
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return;
 
     if ( var_0 )
@@ -274,7 +274,7 @@ _ID46112( var_0 )
 
 _ID47192( var_0 )
 {
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return;
 
     if ( isdefined( var_0 ) )
@@ -377,24 +377,24 @@ _ID53000()
     level.cheat_slowmo_hud.myhintbackerbordertop = _ID42313::_ID9251( "h1_hud_tutorial_border", 400, 1 );
     level.cheat_slowmo_hud.myhintbackerborderbottom = _ID42313::_ID9251( "h1_hud_tutorial_border", 400, 1 );
     level.cheat_slowmo_hud.myhintbackerblur _ID42313::_ID32753( "TOP", undefined, 0, var_1 );
-    level.cheat_slowmo_hud.myhintbackerblur._ID983 = 1;
-    level.cheat_slowmo_hud.myhintbackerblur._ID493 = 1;
-    level.cheat_slowmo_hud.myhintbackerblur._ID491 = 1;
-    level.cheat_slowmo_hud.myhintbackerblur._ID55 = 0.9;
+    level.cheat_slowmo_hud.myhintbackerblur.sort = 1;
+    level.cheat_slowmo_hud.myhintbackerblur.hidewheninmenu = 1;
+    level.cheat_slowmo_hud.myhintbackerblur.hidewhendead = 1;
+    level.cheat_slowmo_hud.myhintbackerblur.alpha = 0.9;
     level.cheat_slowmo_hud.myhintbackerbordertop _ID42313::_ID32753( "TOP", undefined, 0, var_1 );
-    level.cheat_slowmo_hud.myhintbackerbordertop._ID983 = 1;
-    level.cheat_slowmo_hud.myhintbackerbordertop._ID493 = 1;
-    level.cheat_slowmo_hud.myhintbackerbordertop._ID491 = 1;
-    level.cheat_slowmo_hud.myhintbackerbordertop._ID55 = 0.05;
+    level.cheat_slowmo_hud.myhintbackerbordertop.sort = 1;
+    level.cheat_slowmo_hud.myhintbackerbordertop.hidewheninmenu = 1;
+    level.cheat_slowmo_hud.myhintbackerbordertop.hidewhendead = 1;
+    level.cheat_slowmo_hud.myhintbackerbordertop.alpha = 0.05;
     level.cheat_slowmo_hud.myhintbackerborderbottom _ID42313::_ID32753( "TOP", undefined, 0, var_1 + 24 );
-    level.cheat_slowmo_hud.myhintbackerborderbottom._ID983 = 1;
-    level.cheat_slowmo_hud.myhintbackerborderbottom._ID493 = 1;
-    level.cheat_slowmo_hud.myhintbackerborderbottom._ID491 = 1;
-    level.cheat_slowmo_hud.myhintbackerborderbottom._ID55 = 0.05;
+    level.cheat_slowmo_hud.myhintbackerborderbottom.sort = 1;
+    level.cheat_slowmo_hud.myhintbackerborderbottom.hidewheninmenu = 1;
+    level.cheat_slowmo_hud.myhintbackerborderbottom.hidewhendead = 1;
+    level.cheat_slowmo_hud.myhintbackerborderbottom.alpha = 0.05;
     level.cheat_slowmo_hud.myhintstring = _ID42313::_ID9220( "timer", 0.5 );
-    level.cheat_slowmo_hud.myhintstring._ID493 = 1;
+    level.cheat_slowmo_hud.myhintstring.hidewheninmenu = 1;
     level.cheat_slowmo_hud.myhintstring _ID42313::_ID32753( "TOP", undefined, 0, var_1 + var_0 );
-    level.cheat_slowmo_hud.myhintstring._ID983 = 0.5;
+    level.cheat_slowmo_hud.myhintstring.sort = 0.5;
     level.cheat_slowmo_hud.myhintstring settext( &"SCRIPT_PLATFORM_CHEAT_USETOSLOWMO" );
 
     for ( var_2 = 0; var_2 < 100; var_2++ )
@@ -407,13 +407,13 @@ _ID53000()
 
     level._ID50405 = 0;
     level.cheat_slowmo_hud.myhintbackerblur fadeovertime( 0.5 );
-    level.cheat_slowmo_hud.myhintbackerblur._ID55 = 0;
+    level.cheat_slowmo_hud.myhintbackerblur.alpha = 0;
     level.cheat_slowmo_hud.myhintbackerbordertop fadeovertime( 0.5 );
-    level.cheat_slowmo_hud.myhintbackerbordertop._ID55 = 0;
+    level.cheat_slowmo_hud.myhintbackerbordertop.alpha = 0;
     level.cheat_slowmo_hud.myhintbackerborderbottom fadeovertime( 0.5 );
-    level.cheat_slowmo_hud.myhintbackerborderbottom._ID55 = 0;
+    level.cheat_slowmo_hud.myhintbackerborderbottom.alpha = 0;
     level.cheat_slowmo_hud.myhintstring fadeovertime( 0.5 );
-    level.cheat_slowmo_hud.myhintstring._ID55 = 0;
+    level.cheat_slowmo_hud.myhintstring.alpha = 0;
     wait 0.5;
     level.cheat_slowmo_hud.myhintbackerblur destroy();
     level.cheat_slowmo_hud.myhintbackerbordertop destroy();
@@ -428,13 +428,13 @@ _ID52950( var_0 )
     if ( level._ID50570 )
     {
         level._ID34362 thread _ID45994();
-        level._ID794 allowmelee( 0 );
+        level.player allowmelee( 0 );
         thread _ID53000();
     }
     else
     {
         level notify( "disable_slowmo" );
-        level._ID794 allowmelee( 1 );
+        level.player allowmelee( 1 );
         level._ID34362 thread _ID49163();
         level._ID50405 = 0;
 
@@ -443,28 +443,28 @@ _ID52950( var_0 )
             if ( isdefined( level.cheat_slowmo_hud.myhintbackerblur ) )
             {
                 level.cheat_slowmo_hud.myhintbackerblur fadeovertime( 0.5 );
-                level.cheat_slowmo_hud.myhintbackerblur._ID55 = 0;
+                level.cheat_slowmo_hud.myhintbackerblur.alpha = 0;
                 level.cheat_slowmo_hud.myhintbackerblur destroy();
             }
 
             if ( isdefined( level.cheat_slowmo_hud.myhintbackerbordertop ) )
             {
                 level.cheat_slowmo_hud.myhintbackerbordertop fadeovertime( 0.5 );
-                level.cheat_slowmo_hud.myhintbackerbordertop._ID55 = 0;
+                level.cheat_slowmo_hud.myhintbackerbordertop.alpha = 0;
                 level.cheat_slowmo_hud.myhintbackerbordertop destroy();
             }
 
             if ( isdefined( level.cheat_slowmo_hud.myhintbackerborderbottom ) )
             {
                 level.cheat_slowmo_hud.myhintbackerborderbottom fadeovertime( 0.5 );
-                level.cheat_slowmo_hud.myhintbackerborderbottom._ID55 = 0;
+                level.cheat_slowmo_hud.myhintbackerborderbottom.alpha = 0;
                 level.cheat_slowmo_hud.myhintbackerborderbottom destroy();
             }
 
             if ( isdefined( level.cheat_slowmo_hud.myhintstring ) )
             {
                 level.cheat_slowmo_hud.myhintstring fadeovertime( 0.5 );
-                level.cheat_slowmo_hud.myhintstring._ID55 = 0;
+                level.cheat_slowmo_hud.myhintstring.alpha = 0;
                 level.cheat_slowmo_hud.myhintstring destroy();
             }
         }
@@ -480,7 +480,7 @@ _ID45994()
 
     for (;;)
     {
-        level._ID794 waittill( "_cheat_player_press_slowmo" );
+        level.player waittill( "_cheat_player_press_slowmo" );
         level._ID50405 = 0;
         _ID34380();
 
@@ -500,7 +500,7 @@ _ID51731()
 {
     level notify( "gamespeed_reset_on_death" );
     level endon( "gamespeed_reset_on_death" );
-    level._ID794 waittill( "death" );
+    level.player waittill( "death" );
     thread _ID49163( 1 );
 }
 
@@ -513,7 +513,7 @@ _ID51191()
 
 _ID49163( var_0 )
 {
-    level._ID794 thread _ID42237::_ID36516( "h1_slowmo_cheat_heartbeat" );
+    level.player thread _ID42237::_ID36516( "h1_slowmo_cheat_heartbeat" );
     _ID42475::_ID34575( "aud_stop_slowmo_cheat" );
 
     if ( !_ID42237::_ID14385( "disable_slowmo_cheat" ) )
@@ -557,7 +557,7 @@ _ID46206()
         {
             level notify( "disable_slowmo" );
             level._ID34362 thread _ID49163();
-            level._ID794 allowmelee( 1 );
+            level.player allowmelee( 1 );
         }
 
         wait 0.05;
@@ -575,7 +575,7 @@ _ID54655()
             level._ID34362 thread _ID51191();
 
         level._ID34362 thread _ID45994();
-        level._ID794 allowmelee( 0 );
+        level.player allowmelee( 0 );
     }
 }
 
@@ -596,7 +596,7 @@ _ID45061( var_0 )
         level notify( "disable_chaplin" );
         level notify( "disable_chaplin_grain" );
         _ID52981();
-        level._ID794 stopshellshock();
+        level.player stopshellshock();
         setomnvar( "ui_ragtimewarefare_overlay", 0 );
         level._ID50460["chaplin"] = 0;
         _ID42407::_ID10226( 0.05, _ID42475::_ID34575, "aud_stop_ragtime_warfare" );
@@ -613,34 +613,34 @@ _ID45061( var_0 )
 _ID53274()
 {
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "black", 640, 480 );
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 1;
-    var_0._ID408 = 1;
-    var_0._ID983 = 0;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 1;
+    var_0.foreground = 1;
+    var_0.sort = 0;
     return var_0;
 }
 
 _ID52906( var_0 )
 {
     var_1 = newhudelem();
-    var_1._ID1331 = 0;
-    var_1._ID1339 = -40;
-    var_1._ID44 = "center";
-    var_1._ID45 = "middle";
-    var_1._ID499 = "center";
-    var_1._ID1284 = "middle";
-    var_1._ID408 = 1;
+    var_1.x = 0;
+    var_1.y = -40;
+    var_1.alignx = "center";
+    var_1.aligny = "middle";
+    var_1.horzalign = "center";
+    var_1.vertalign = "middle";
+    var_1.foreground = 1;
     var_1 settext( var_0 );
-    var_1._ID393 = 3;
-    var_1._ID55 = 1;
-    var_1._ID983 = 1;
-    var_1._ID196 = ( 0.976, 0.796, 0.412 );
+    var_1.fontscale = 3;
+    var_1.alpha = 1;
+    var_1.sort = 1;
+    var_1.color = ( 0.976, 0.796, 0.412 );
     return var_1;
 }
 
@@ -673,7 +673,7 @@ _ID49417()
 
     for (;;)
     {
-        level._ID794 shellshock( "chaplincheat", 60, 1 );
+        level.player shellshock( "chaplincheat", 60, 1 );
         wait 0.5;
 
         if ( !_ID42237::_ID14385( "disable_slowmo_cheat" ) )
@@ -691,7 +691,7 @@ _ID49417()
 
 _ID44810()
 {
-    level._ID45332 = spawn( "script_model", level._ID794 geteye() );
+    level._ID45332 = spawn( "script_model", level.player geteye() );
     level._ID45332 setmodel( "tag_origin" );
     level._ID45332 hide();
     playfxontag( level._ID1426["grain_test"], level._ID45332, "tag_origin" );
@@ -712,7 +712,7 @@ _ID46521()
 
     for (;;)
     {
-        level._ID45332._ID740 = level._ID794 geteye() + 50 * anglestoforward( level._ID794 getplayerangles() );
+        level._ID45332.origin = level.player geteye() + 50 * anglestoforward( level.player getplayerangles() );
         wait 0.01;
     }
 }
@@ -804,7 +804,7 @@ _ID47451( var_0, var_1 )
 
     if ( isdefined( var_0 ) && var_0 )
     {
-        playfx( level._ID44984, self gettagorigin( level._ID47760 ), anglestoforward( self._ID65 ) );
+        playfx( level._ID44984, self gettagorigin( level._ID47760 ), anglestoforward( self.angles ) );
         thread _ID42237::_ID27077( "h1_hit_watermelon", self gettagorigin( level._ID47760 ) );
     }
 
@@ -826,10 +826,10 @@ _ID47767()
     {
         self waittill( "damage",  var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9  );
 
-        if ( !isdefined( self._ID253 ) )
+        if ( !isdefined( self.damagelocation ) )
             continue;
 
-        if ( ( self._ID253 == "head" || self._ID253 == "helmet" ) && var_4 != "MOD_IMPACT" )
+        if ( ( self.damagelocation == "head" || self.damagelocation == "helmet" ) && var_4 != "MOD_IMPACT" )
         {
             _ID47451( 1 );
             break;
@@ -847,7 +847,7 @@ _ID47860()
 
 _ID52472( var_0 )
 {
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return;
 
     level._ID45578 = _ID42237::_ID37527( var_0, 1, 0 );
@@ -866,10 +866,10 @@ _ID48177()
 
     for (;;)
     {
-        if ( level._ID794 issplitscreenplayer() == 1 && level._ID794 getcurrentweapon() == level._ID43831 )
-            level._ID794 _ID42407::_ID27752( 0, "cheat_handgun" );
-        else if ( level._ID794 issplitscreenplayer() == 0 && level._ID794 getcurrentweapon() != level._ID43831 )
-            level._ID794 _ID42407::_ID27752( 1, "cheat_handgun" );
+        if ( level.player issplitscreenplayer() == 1 && level.player getcurrentweapon() == level._ID43831 )
+            level.player _ID42407::_ID27752( 0, "cheat_handgun" );
+        else if ( level.player issplitscreenplayer() == 0 && level.player getcurrentweapon() != level._ID43831 )
+            level.player _ID42407::_ID27752( 1, "cheat_handgun" );
 
         wait 0.05;
     }
@@ -882,10 +882,10 @@ _ID51760()
 
     for (;;)
     {
-        if ( level._ID794 isreloading() )
+        if ( level.player isreloading() )
         {
-            level._ID794 givemaxammo( level._ID43831 );
-            level._ID794 setweaponammoclip( level._ID43831, weaponclipsize( level._ID43831 ) );
+            level.player givemaxammo( level._ID43831 );
+            level.player setweaponammoclip( level._ID43831, weaponclipsize( level._ID43831 ) );
         }
 
         wait 0.05;
@@ -894,41 +894,41 @@ _ID51760()
 
 _ID49235()
 {
-    level._ID47744 = level._ID794 getcurrentweapon();
-    level._ID794 giveweapon( level._ID43831 );
-    level._ID794 givemaxammo( level._ID43831 );
-    level._ID794 switchtoweaponimmediate( level._ID43831 );
+    level._ID47744 = level.player getcurrentweapon();
+    level.player giveweapon( level._ID43831 );
+    level.player givemaxammo( level._ID43831 );
+    level.player switchtoweaponimmediate( level._ID43831 );
     thread _ID48177();
     thread _ID51760();
 }
 
 _ID54153()
 {
-    if ( level._ID794 issplitscreenplayer() == 0 )
-        level._ID794 _ID42407::_ID27752( 1, "cheat_handgun" );
+    if ( level.player issplitscreenplayer() == 0 )
+        level.player _ID42407::_ID27752( 1, "cheat_handgun" );
 
-    var_0 = level._ID794 getcurrentweapon();
+    var_0 = level.player getcurrentweapon();
     var_1 = 0;
 
     if ( var_0 == level._ID43831 && level._ID47744 != "none" )
     {
-        var_2 = level._ID794 getweaponslistall();
+        var_2 = level.player getweaponslistall();
 
         foreach ( var_4 in var_2 )
         {
             if ( var_4 == level._ID47744 )
             {
-                level._ID794 switchtoweaponimmediate( var_4 );
+                level.player switchtoweaponimmediate( var_4 );
                 var_1 = 1;
                 break;
             }
         }
 
         if ( !var_1 && var_2.size > 0 )
-            level._ID794 switchtoweaponimmediate( var_2[0] );
+            level.player switchtoweaponimmediate( var_2[0] );
     }
 
-    level._ID794 takeweapon( level._ID43831 );
+    level.player takeweapon( level._ID43831 );
     self notify( "handgun_removed" );
 }
 
@@ -952,28 +952,28 @@ _ID51199( var_0 )
 
 _ID46793()
 {
-    level._ID53989 = level._ID794 getoffhandprimaryclass();
+    level._ID53989 = level.player getoffhandprimaryclass();
 
     if ( isdefined( level._ID53989 ) && level._ID53989 != "none" )
     {
-        var_0 = level._ID794 getweaponammostock( level._ID53989 );
-        level._ID794 takeweapon( level._ID53989 );
-        level._ID794 setoffhandprimaryclass( level._ID50521 );
-        level._ID794 giveweapon( level._ID50521 );
-        level._ID794 setweaponammostock( level._ID50521, var_0 );
+        var_0 = level.player getweaponammostock( level._ID53989 );
+        level.player takeweapon( level._ID53989 );
+        level.player setoffhandprimaryclass( level._ID50521 );
+        level.player giveweapon( level._ID50521 );
+        level.player setweaponammostock( level._ID50521, var_0 );
     }
 }
 
 _ID44234()
 {
-    var_0 = level._ID794 getweaponammostock( level._ID50521 );
-    level._ID794 takeweapon( level._ID50521 );
+    var_0 = level.player getweaponammostock( level._ID50521 );
+    level.player takeweapon( level._ID50521 );
 
     if ( isdefined( level._ID53989 ) )
     {
-        level._ID794 setoffhandprimaryclass( level._ID53989 );
-        level._ID794 giveweapon( level._ID53989 );
-        level._ID794 setweaponammostock( level._ID53989, var_0 );
+        level.player setoffhandprimaryclass( level._ID53989 );
+        level.player giveweapon( level._ID53989 );
+        level.player setweaponammostock( level._ID53989, var_0 );
     }
 }
 
@@ -981,7 +981,7 @@ _ID43673()
 {
     level._ID45847 = 0;
 
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
     {
         level._ID49264 = "body_zakhaev_viktor_collar_ac130";
         level._ID43961 = "head_zakhaev_viktor_ac130";
@@ -1036,7 +1036,7 @@ _ID49329()
 
     self._ID43252 = 1;
 
-    if ( isdefined( self._ID1302 ) && !isdefined( self._ID54452 ) && self._ID170 != "script_model" )
+    if ( isdefined( self.weapon ) && !isdefined( self._ID54452 ) && self.classname != "script_model" )
     {
         if ( isdefined( self._ID7 ) && isdefined( self._ID7._ID2428 ) )
             animscripts\combat_utility::_ID12641();
@@ -1054,13 +1054,13 @@ _ID49329()
         self._ID7._ID30106 = 1;
         thread animscripts\shared::_ID30318();
         self._ID834 = level._ID44436;
-        self._ID1302 = level._ID44436;
+        self.weapon = level._ID44436;
         self._ID22034 = level._ID44436;
         self._ID54092 = self._ID949;
         self._ID949 = "none";
     }
 
-    if ( self._ID669 == level._ID49264 || self._ID669 == "body_zakhaev_viktor" )
+    if ( self.model == level._ID49264 || self.model == "body_zakhaev_viktor" )
         return;
 
     if ( isdefined( self._ID18272 ) )
@@ -1076,7 +1076,7 @@ _ID49329()
         self detach( self._ID18304 );
     }
 
-    self._ID46489 = self._ID669;
+    self._ID46489 = self.model;
     self setmodel( level._ID49264 );
     self attach( level._ID43961 );
     self._ID18304 = level._ID43961;
@@ -1160,28 +1160,28 @@ _ID50345( var_0 )
 
 _ID48708()
 {
-    level._ID53300 = level._ID794 getoffhandprimaryclass();
+    level._ID53300 = level.player getoffhandprimaryclass();
 
     if ( isdefined( level._ID53300 ) && level._ID53300 != "none" )
     {
-        var_0 = level._ID794 getweaponammostock( level._ID53300 );
-        level._ID794 takeweapon( level._ID53300 );
-        level._ID794 setoffhandprimaryclass( level._ID51383 );
-        level._ID794 giveweapon( level._ID51383 );
-        level._ID794 setweaponammostock( level._ID51383, var_0 );
+        var_0 = level.player getweaponammostock( level._ID53300 );
+        level.player takeweapon( level._ID53300 );
+        level.player setoffhandprimaryclass( level._ID51383 );
+        level.player giveweapon( level._ID51383 );
+        level.player setweaponammostock( level._ID51383, var_0 );
     }
 }
 
 _ID53445()
 {
-    var_0 = level._ID794 getweaponammostock( level._ID51383 );
-    level._ID794 takeweapon( level._ID51383 );
+    var_0 = level.player getweaponammostock( level._ID51383 );
+    level.player takeweapon( level._ID51383 );
 
     if ( isdefined( level._ID53300 ) )
     {
-        level._ID794 setoffhandprimaryclass( level._ID53300 );
-        level._ID794 giveweapon( level._ID53300 );
-        level._ID794 setweaponammostock( level._ID53300, var_0 );
+        level.player setoffhandprimaryclass( level._ID53300 );
+        level.player giveweapon( level._ID53300 );
+        level.player setweaponammostock( level._ID53300, var_0 );
     }
 }
 
@@ -1212,7 +1212,7 @@ _ID51981()
     if ( isdefined( self.cheat._ID43492 ) && self.cheat._ID43492 )
         return;
 
-    if ( isdefined( self._ID172 ) && self._ID172 == "script_vehicle" )
+    if ( isdefined( self.code_classname ) && self.code_classname == "script_vehicle" )
         return;
 
     for (;;)
@@ -1310,7 +1310,7 @@ _ID52060( var_0, var_1 )
 
     if ( isdefined( var_0 ) && var_0 )
     {
-        playfx( level._ID47892, self gettagorigin( level._ID44918 ), anglestoforward( self._ID65 ) );
+        playfx( level._ID47892, self gettagorigin( level._ID44918 ), anglestoforward( self.angles ) );
         thread _ID42237::_ID27077( "h1_hit_waterpineapple", self gettagorigin( level._ID44918 ) );
     }
 
@@ -1335,7 +1335,7 @@ _ID52850()
         if ( isdefined( self.cheat.ignoredamageinpineapplemode ) && self.cheat.ignoredamageinpineapplemode )
             continue;
 
-        if ( !isdefined( self._ID253 ) || var_1._ID170 == "worldspawn" )
+        if ( !isdefined( self.damagelocation ) || var_1.classname == "worldspawn" )
             continue;
 
         if ( animscripts\utility::_ID9641( "head", "helmet" ) && var_4 != "MOD_IMPACT" )
@@ -1353,7 +1353,7 @@ _ID50614()
     level._ID49444 = undefined;
     level.cheat_football_array = [];
     precacheitem( level._ID49294 );
-    level._ID794 thread football_listener();
+    level.player thread football_listener();
 }
 
 _ID52101( var_0 )
@@ -1368,28 +1368,28 @@ _ID52101( var_0 )
 
 _ID46956()
 {
-    level._ID49444 = level._ID794 getoffhandsecondaryclass();
+    level._ID49444 = level.player getoffhandsecondaryclass();
 
     if ( isdefined( level._ID49444 ) && level._ID49444 != "none" )
     {
-        var_0 = level._ID794 getweaponammostock( level._ID49444 );
-        level._ID794 takeweapon( level._ID49444 );
-        level._ID794 setoffhandsecondaryclass( level._ID49294 );
-        level._ID794 giveweapon( level._ID49294 );
-        level._ID794 setweaponammostock( level._ID49294, var_0 );
+        var_0 = level.player getweaponammostock( level._ID49444 );
+        level.player takeweapon( level._ID49444 );
+        level.player setoffhandsecondaryclass( level._ID49294 );
+        level.player giveweapon( level._ID49294 );
+        level.player setweaponammostock( level._ID49294, var_0 );
     }
 }
 
 _ID53747()
 {
-    var_0 = level._ID794 getweaponammostock( level._ID49294 );
-    level._ID794 takeweapon( level._ID49294 );
+    var_0 = level.player getweaponammostock( level._ID49294 );
+    level.player takeweapon( level._ID49294 );
 
     if ( isdefined( level._ID49444 ) )
     {
-        level._ID794 setoffhandsecondaryclass( level._ID49444 );
-        level._ID794 giveweapon( level._ID49444 );
-        level._ID794 setweaponammostock( level._ID49444, var_0 );
+        level.player setoffhandsecondaryclass( level._ID49444 );
+        level.player giveweapon( level._ID49444 );
+        level.player setweaponammostock( level._ID49444, var_0 );
     }
 }
 
@@ -1407,7 +1407,7 @@ football_listener()
 
             while ( level.cheat_football_array.size > 30 )
             {
-                var_2 = _ID42407::_ID15724( level._ID794._ID740, level.cheat_football_array );
+                var_2 = _ID42407::_ID15724( level.player.origin, level.cheat_football_array );
                 level.cheat_football_array = _ID42237::_ID3321( level.cheat_football_array, var_2 );
                 var_2 delete();
             }
@@ -1428,7 +1428,7 @@ _ID54134( var_0 )
 
 _ID53271()
 {
-    if ( !isai( self ) || self._ID170 == "script_model" )
+    if ( !isai( self ) || self.classname == "script_model" )
         return;
 
     self waittill( "death",  var_0, var_1  );
@@ -1447,15 +1447,15 @@ _ID53271()
         if ( level._ID46534 )
         {
             for ( var_2 = 0; var_2 < level._ID49296; var_2++ )
-                thread _ID50653( self._ID740, self geteye() );
+                thread _ID50653( self.origin, self geteye() );
         }
 
         if ( isdefined( level._ID50119 ) && level._ID46496 )
         {
-            var_3 = self._ID740;
-            var_4 = self._ID65;
+            var_3 = self.origin;
+            var_4 = self.angles;
 
-            if ( isdefined( self._ID253 ) )
+            if ( isdefined( self.damagelocation ) )
             {
                 if ( animscripts\utility::_ID9641( "helmet", "head", "neck" ) )
                     var_3 = self gettagorigin( "J_Head" );
@@ -1477,8 +1477,8 @@ _ID53271()
 
         if ( isdefined( self ) && ( level._ID46496 || level._ID46534 ) )
         {
-            if ( isdefined( self._ID170 ) && self._ID170 != "actor_enemy_dog" )
-                animscripts\shared::_ID12142( self._ID1302 );
+            if ( isdefined( self.classname ) && self.classname != "actor_enemy_dog" )
+                animscripts\shared::_ID12142( self.weapon );
 
             wait 0.15;
 
@@ -1519,13 +1519,13 @@ _ID50653( var_0, var_1 )
     }
 
     var_2 = spawn( "script_model", ( 0, 0, 0 ) );
-    var_2._ID65 = ( 0, randomint( 360 ), 0 );
+    var_2.angles = ( 0, randomint( 360 ), 0 );
     var_3 = randomfloat( 1 );
-    var_2._ID740 = var_0 * var_3 + var_1 * ( 1 - var_3 );
+    var_2.origin = var_0 * var_3 + var_1 * ( 1 - var_3 );
     var_2 setmodel( level._ID46891 );
     var_4 = _ID42237::_ID28976( 15000 );
     var_4 = ( var_4[0], var_4[1], abs( var_4[2] ) );
-    var_2 physicslaunchclient( var_2._ID740, var_4 );
+    var_2 physicslaunchclient( var_2.origin, var_4 );
     level._ID46750[level._ID46750.size] = var_2;
     var_2 endon( "death" );
     wait(randomfloatrange( 5.0, 10.0 ));
@@ -1579,7 +1579,7 @@ _ID51741()
     if ( isdefined( self._ID3217 ) && self._ID3217 == "dog.atr" )
         return;
 
-    if ( isdefined( self._ID172 ) && self._ID172 == "script_vehicle" )
+    if ( isdefined( self.code_classname ) && self.code_classname == "script_vehicle" )
         return;
 
     for (;;)
@@ -1598,7 +1598,7 @@ _ID52282()
     if ( _func_2a5( self ) )
         return;
 
-    if ( issubstr( self._ID669, "body_vil_shepherd" ) )
+    if ( issubstr( self.model, "body_vil_shepherd" ) )
         return;
 
     if ( isdefined( self._ID43135.polterghostmode ) && self._ID43135.polterghostmode )
@@ -1625,7 +1625,7 @@ _ID52282()
             self.cheat._ID53636 = self.cheat.pineapple_previoushead;
     }
 
-    self.cheat._ID47612 = self._ID669;
+    self.cheat._ID47612 = self.model;
     self setmodel( level._ID51538 );
 
     if ( !isdefined( self.cheat.pineapple_previoushead ) )
@@ -1634,12 +1634,12 @@ _ID52282()
         self._ID18304 = level._ID53453;
     }
 
-    if ( isdefined( self._ID1302 ) && !isdefined( self.cheat._ID48626 ) && self._ID170 != "script_model" )
+    if ( isdefined( self.weapon ) && !isdefined( self.cheat._ID48626 ) && self.classname != "script_model" )
     {
-        self.cheat._ID44607 = self._ID470;
-        self.cheat._ID48334 = self._ID464;
-        self._ID464 = level._ID45398;
-        self._ID470 = "fraggrenade";
+        self.cheat._ID44607 = self.grenadeweapon;
+        self.cheat._ID48334 = self.grenadeammo;
+        self.grenadeammo = level._ID45398;
+        self.grenadeweapon = "fraggrenade";
         _ID42407::_ID14803( self._ID834, "primary" );
 
         if ( weaponclass( self._ID834 ) != "rocketlauncher" )
@@ -1661,7 +1661,7 @@ _ID52282()
 
     self.cheat._ID50247 = 1;
 
-    if ( isai( self ) && self._ID170 != "script_model" )
+    if ( isai( self ) && self.classname != "script_model" )
         thread _ID51571();
 }
 
@@ -1704,8 +1704,8 @@ _ID44704()
 
     if ( !isdefined( self.cheat._ID48626 ) )
     {
-        self._ID470 = self.cheat._ID44607;
-        self._ID464 = self.cheat._ID48334;
+        self.grenadeweapon = self.cheat._ID44607;
+        self.grenadeammo = self.cheat._ID48334;
         _ID42407::_ID14803( self._ID834, "primary" );
 
         if ( isdefined( self.cheat._ID51703 ) )
@@ -1783,11 +1783,11 @@ _ID51571()
 
 _ID45074()
 {
-    if ( distancesquared( self._ID740, self._ID451 ) < self._ID452 * self._ID452 )
+    if ( distancesquared( self.origin, self.goalpos ) < self.goalradius * self.goalradius )
     {
-        self._ID452 = 90;
-        self setgoalpos( level._ID794._ID740 );
-        self._ID377 = level._ID794;
+        self.goalradius = 90;
+        self setgoalpos( level.player.origin );
+        self.favoriteenemy = level.player;
     }
 }
 
@@ -1798,9 +1798,9 @@ iswolf( var_0 )
 
 _ID44517()
 {
-    if ( isdefined( self._ID470 ) && self._ID470 == "fraggrenade" && isdefined( self._ID7._ID3291 ) )
+    if ( isdefined( self.grenadeweapon ) && self.grenadeweapon == "fraggrenade" && isdefined( self._ID7._ID3291 ) )
     {
-        self._ID464 = level._ID45398;
+        self.grenadeammo = level._ID45398;
         _ID42407::_ID37694();
     }
 }
@@ -1851,7 +1851,7 @@ weapons_specialfeatures( var_0 )
 {
     if ( isdefined( var_0 ) )
     {
-        while ( !isdefined( level._ID794 getcurrentweapon( 1 ) ) || level._ID794 getcurrentweapon( 1 ) == "none" )
+        while ( !isdefined( level.player getcurrentweapon( 1 ) ) || level.player getcurrentweapon( 1 ) == "none" )
             waittillframeend;
     }
 

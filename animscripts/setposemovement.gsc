@@ -542,7 +542,7 @@ _ID27188( var_0 )
 
 _ID5287()
 {
-    if ( !self._ID373 )
+    if ( !self.facemotion )
     {
         self._ID7._ID24414 = "run";
         self._ID7._ID28253 = "stand";
@@ -573,7 +573,7 @@ _ID5287()
 
     var_2 = 0.1;
 
-    if ( self._ID7._ID24414 != "stop" && self._ID1012 == "none" )
+    if ( self._ID7._ID24414 != "stop" && self.stairsstate == "none" )
         var_2 = 0.5;
 
     if ( isdefined( self._ID35499 ) )

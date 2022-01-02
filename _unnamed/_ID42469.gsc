@@ -40,13 +40,13 @@ _ID30448( var_0, var_1 )
         else
             var_2 = var_0._ID13819;
 
-        level._ID794 setreverb( var_0._ID28609, var_0._ID30177, var_0._ID12198, var_0._ID41726, var_2 );
+        level.player setreverb( var_0._ID28609, var_0._ID30177, var_0._ID12198, var_0._ID41726, var_2 );
     }
 }
 
 _ID30454( var_0, var_1 )
 {
-    if ( isdefined( level._ID794._ID13019 ) && isdefined( level._ID794._ID13019["player_has_red_flashing_overlay"] ) && level._ID794 _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
+    if ( isdefined( level.player._ID13019 ) && isdefined( level.player._ID13019["player_has_red_flashing_overlay"] ) && level.player _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
     {
         if ( isdefined( var_0 ) && var_0 != "none" )
         {
@@ -75,7 +75,7 @@ _ID30454( var_0, var_1 )
 
     if ( ( isdefined( var_0 ) && var_0 == "none" || !isdefined( var_0 ) ) && isdefined( level._ID1374._ID9467 ) )
     {
-        level._ID794 deactivatereverb( "snd_enveffectsprio_level", 1 );
+        level.player deactivatereverb( "snd_enveffectsprio_level", 1 );
         level._ID1374._ID9467 = undefined;
         level._ID1374._ID29935._ID9467 = "";
         return;
@@ -126,7 +126,7 @@ _ID30461( var_0, var_1 )
 _ID30449()
 {
     level._ID29941 = "";
-    level._ID794 deactivatereverb( "snd_enveffectsprio_level", 2 );
+    level.player deactivatereverb( "snd_enveffectsprio_level", 2 );
     level._ID1374._ID9467 = undefined;
     level._ID1374._ID29935._ID9467 = "";
 }
@@ -193,7 +193,7 @@ _ID30460( var_0, var_1 )
 
 _ID30456()
 {
-    while ( !isdefined( level._ID794 ) )
+    while ( !isdefined( level.player ) )
         wait 0.5;
 
     _ID30448( level._ID1374._ID29935._ID10124 );
@@ -230,7 +230,7 @@ _ID30459( var_0 )
         level._ID1374._ID29935._ID28450[var_0] = var_2;
     }
 
-    var_1._ID680 = var_0;
+    var_1.name = var_0;
     var_1._ID30177 = var_2["roomtype"];
     var_1._ID12198 = var_2["drylevel"];
     var_1._ID41726 = var_2["wetlevel"];

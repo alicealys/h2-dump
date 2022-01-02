@@ -3,8 +3,8 @@
 
 _ID32787( var_0 )
 {
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     if ( !isdefined( var_0 ) || var_0 == 0 )
     {
@@ -20,7 +20,7 @@ _ID32787( var_0 )
         _ID42407::_ID32246();
 
         if ( getdvar( "arcademode" ) == "1" )
-            thread _ID54127::_ID616();
+            thread _ID54127::main();
 
         foreach ( var_2 in level._ID805 )
         {
@@ -305,12 +305,12 @@ _ID39716()
     foreach ( var_1 in level._ID805 )
         var_1._ID15361 = var_1 _ID42407::_ID15913();
 
-    level._ID15361 = level._ID794._ID15361;
+    level._ID15361 = level.player._ID15361;
 
     if ( _ID42407::_ID20495() && level._ID27742._ID15361 > level._ID15361 )
         level._ID15361 = level._ID27742._ID15361;
 
-    level._ID35403 = level._ID794._ID15361;
+    level._ID35403 = level.player._ID15361;
 
     if ( _ID42407::_ID20495() && level._ID27742._ID15361 < level._ID35403 )
         level._ID35403 = level._ID27742._ID15361;
@@ -363,12 +363,12 @@ _ID3234( var_0, var_1 )
     self._ID17476._ID20398 = [[ var_0 ]]( "invulTime_postShield", var_1 );
     self._ID17476._ID27846 = [[ var_0 ]]( "playerHealth_RegularRegenDelay", var_1 );
     self._ID17476._ID41814 = [[ var_0 ]]( "worthyDamageRatio", var_1 );
-    self._ID1204 = int( [[ var_0 ]]( "threatbias", var_1 ) );
+    self.threatbias = int( [[ var_0 ]]( "threatbias", var_1 ) );
     self._ID17476._ID22610 = [[ var_0 ]]( "longRegenTime", var_1 );
     self._ID17476._ID18320 = [[ var_0 ]]( "healthOverlayCutoff", var_1 );
     self._ID17476._ID29398 = [[ var_0 ]]( "health_regenRate", var_1 );
     self._ID17476._ID27239 = [[ var_0 ]]( "base_enemy_accuracy", var_1 );
-    self._ID86 = self._ID17476._ID27239;
+    self.attackeraccuracy = self._ID17476._ID27239;
     _ID39638();
     self._ID17476._ID27830 = int( [[ var_0 ]]( "playerGrenadeBaseTime", var_1 ) );
     self._ID17476._ID27831 = int( [[ var_0 ]]( "playerGrenadeRangeTime", var_1 ) );
@@ -376,9 +376,9 @@ _ID3234( var_0, var_1 )
     self._ID17476._ID23609 = [[ var_0 ]]( "min_sniper_burst_delay_time", var_1 );
     self._ID17476._ID23066 = [[ var_0 ]]( "max_sniper_burst_delay_time", var_1 );
     self._ID17476._ID11449 = [[ var_0 ]]( "dog_presstime", var_1 );
-    self._ID266 = int( [[ var_0 ]]( "player_deathInvulnerableTime", var_1 ) );
-    self._ID222 = int( [[ var_0 ]]( "player_criticalBulletDamageDist", var_1 ) );
-    self._ID255 = 100 / [[ var_0 ]]( "playerDifficultyHealth", var_1 );
+    self.deathinvulnerabletime = int( [[ var_0 ]]( "player_deathInvulnerableTime", var_1 ) );
+    self.criticalbulletdamagedist = int( [[ var_0 ]]( "player_criticalBulletDamageDist", var_1 ) );
+    self.damagemultiplier = 100 / [[ var_0 ]]( "playerDifficultyHealth", var_1 );
 }
 
 _ID39638()
@@ -386,8 +386,8 @@ _ID39638()
     if ( _ID42407::_ID13019( "player_zero_attacker_accuracy" ) )
         return;
 
-    self._ID512 = self._ID4878;
-    self._ID86 = self._ID17476._ID27239;
+    self.ignorerandombulletdamage = self._ID4878;
+    self.attackeraccuracy = self._ID17476._ID27239;
 }
 
 _ID3235( var_0, var_1 )
@@ -439,19 +439,19 @@ _ID26188()
 
 _ID26189()
 {
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         return 0;
 
-    if ( !isplayernumber( self._ID322 ) )
+    if ( !isplayernumber( self.enemy ) )
         return 0;
 
-    if ( !isalive( level._ID26195 ) || level._ID26195._ID912 != "pain" )
+    if ( !isalive( level._ID26195 ) || level._ID26195.script != "pain" )
         level._ID26195 = self;
 
     if ( self == level._ID26195 )
         return 0;
 
-    if ( self._ID258 != "none" && weaponisboltaction( self._ID258 ) )
+    if ( self.damageweapon != "none" && weaponisboltaction( self.damageweapon ) )
         return 0;
 
     return 1;
@@ -459,34 +459,34 @@ _ID26189()
 
 _ID32178()
 {
-    if ( animscripts\combat_utility::_ID20910() && isalive( self._ID322 ) )
+    if ( animscripts\combat_utility::_ID20910() && isalive( self.enemy ) )
     {
         _ID32788();
         return;
     }
 
-    if ( isplayernumber( self._ID322 ) )
+    if ( isplayernumber( self.enemy ) )
     {
         _ID29778();
 
         if ( self._ID7._ID23782 > gettime() )
         {
-            self._ID10 = 0;
+            self.accuracy = 0;
             return;
         }
     }
 
-    if ( self._ID912 == "move" )
+    if ( self.script == "move" )
     {
         if ( animscripts\utility::_ID20717() )
-            self._ID10 = anim._ID41224 * self._ID4867;
+            self.accuracy = anim._ID41224 * self._ID4867;
         else
-            self._ID10 = anim._ID30375 * self._ID4867;
+            self.accuracy = anim._ID30375 * self._ID4867;
 
         return;
     }
 
-    self._ID10 = self._ID4867;
+    self.accuracy = self._ID4867;
 }
 
 _ID32788()
@@ -500,20 +500,20 @@ _ID32788()
     self._ID34869++;
     var_0 = level._ID15361;
 
-    if ( isplayernumber( self._ID322 ) )
-        var_0 = self._ID322._ID15361;
+    if ( isplayernumber( self.enemy ) )
+        var_0 = self.enemy._ID15361;
 
     if ( _ID33950() )
     {
-        self._ID10 = 0;
+        self.accuracy = 0;
 
         if ( var_0 > 0 || self._ID34869 > 1 )
-            self._ID21954 = self._ID322;
+            self._ID21954 = self.enemy;
 
         return;
     }
 
-    self._ID10 = ( 1 + 1 * self._ID34822 ) * self._ID4867;
+    self.accuracy = ( 1 + 1 * self._ID34822 ) * self._ID4867;
     self._ID34822++;
 
     if ( var_0 < 1 && self._ID34822 == 1 )
@@ -525,13 +525,13 @@ _ID33950()
     if ( isdefined( self._ID24728 ) && self._ID24728 )
         return 0;
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         return 0;
 
-    if ( isdefined( self._ID21954 ) && self._ID322 == self._ID21954 )
+    if ( isdefined( self._ID21954 ) && self.enemy == self._ID21954 )
         return 0;
 
-    if ( distancesquared( self._ID740, self._ID322._ID740 ) > 250000 )
+    if ( distancesquared( self.origin, self.enemy.origin ) > 250000 )
         return 0;
 
     return 1;
@@ -552,7 +552,7 @@ _ID29779()
     if ( !self isbadguy() )
         return;
 
-    if ( self._ID1302 == "none" )
+    if ( self.weapon == "none" )
         return;
 
     if ( !animscripts\weaponlist::_ID39983() && !animscripts\weaponlist::_ID39995() )
@@ -561,17 +561,17 @@ _ID29779()
         return;
     }
 
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         return;
 
-    if ( !isplayernumber( self._ID322 ) )
+    if ( !isplayernumber( self.enemy ) )
     {
-        self._ID10 = self._ID4867;
+        self.accuracy = self._ID4867;
         return;
     }
 
-    var_0 = distance( self._ID322._ID740, self._ID740 );
-    _ID32688( self._ID322._ID17476._ID23783 + var_0 * self._ID322._ID17476._ID23785 );
+    var_0 = distance( self.enemy.origin, self.origin );
+    _ID32688( self.enemy._ID17476._ID23783 + var_0 * self.enemy._ID17476._ID23785 );
 }
 
 _ID29778()
@@ -585,7 +585,7 @@ _ID32688( var_0 )
         return;
 
     if ( var_0 > 0 )
-        self._ID10 = 0;
+        self.accuracy = 0;
 
     var_0 *= 1000;
     self._ID7._ID23782 = gettime() + var_0;
@@ -648,7 +648,7 @@ _ID27847()
                 self thread [[ level._ID21990 ]]();
         }
 
-        if ( self._ID486 == self._ID626 )
+        if ( self.health == self.maxhealth )
         {
             thread _ID42463::_ID29851();
 
@@ -661,12 +661,12 @@ _ID27847()
             continue;
         }
 
-        if ( self._ID486 <= 0 )
+        if ( self.health <= 0 )
             return;
 
         var_8 = 0;
         var_9 = var_2;
-        var_10 = self._ID486 / self._ID626;
+        var_10 = self.health / self.maxhealth;
 
         if ( var_10 <= self._ID17476._ID18320 && self._ID27473 > 1 )
         {
@@ -705,7 +705,7 @@ _ID27847()
             self._ID19214 = 0;
         }
 
-        if ( self._ID486 / self._ID626 >= var_0 )
+        if ( self.health / self.maxhealth >= var_0 )
         {
             if ( isdefined( level._ID43135._ID49595 ) && level._ID43135._ID49595 )
                 continue;
@@ -733,25 +733,25 @@ _ID27847()
                 return;
 
             self setnormalhealth( var_6 );
-            var_0 = self._ID486 / self._ID626;
+            var_0 = self.health / self.maxhealth;
             continue;
         }
 
         var_0 = var_7;
         var_11 = self._ID17476._ID41814;
 
-        if ( self._ID87 == 1 )
+        if ( self.attackercount == 1 )
             var_11 *= 3;
 
         var_12 = var_0 - var_10 >= var_11;
 
-        if ( self._ID486 <= 1 )
+        if ( self.health <= 1 )
         {
-            self setnormalhealth( 2 / self._ID626 );
+            self setnormalhealth( 2 / self.maxhealth );
             var_12 = 1;
         }
 
-        var_0 = self._ID486 / self._ID626;
+        var_0 = self.health / self.maxhealth;
         self notify( "hit_again" );
         var_1 = 0;
         var_5 = gettime();
@@ -790,7 +790,7 @@ _ID27847()
         else
             var_4 = self._ID17476._ID20399;
 
-        var_7 = self._ID486 / self._ID626;
+        var_7 = self.health / self.maxhealth;
         thread _ID27859( var_4 );
     }
 }
@@ -819,8 +819,8 @@ _ID27859( var_0 )
 
     if ( var_0 > 0 )
     {
-        self._ID86 = 0;
-        self._ID512 = 1;
+        self.attackeraccuracy = 0;
+        self.ignorerandombulletdamage = 1;
         wait(var_0);
     }
 
@@ -830,7 +830,7 @@ _ID27859( var_0 )
 
 _ID10109()
 {
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         self._ID11624 = 0.6;
 
     if ( self isbadguy() )
@@ -842,11 +842,11 @@ _ID10109()
     }
 }
 
-_ID465()
+grenadeawareness()
 {
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
     {
-        self._ID465 = 0.9;
+        self.grenadeawareness = 0.9;
         return;
     }
 
@@ -855,14 +855,14 @@ _ID465()
         if ( level._ID15361 >= 2 )
         {
             if ( randomint( 100 ) < 33 )
-                self._ID465 = 0.2;
+                self.grenadeawareness = 0.2;
             else
-                self._ID465 = 0.5;
+                self.grenadeawareness = 0.5;
         }
         else if ( randomint( 100 ) < 33 )
-            self._ID465 = 0;
+            self.grenadeawareness = 0;
         else
-            self._ID465 = 0.2;
+            self.grenadeawareness = 0.2;
     }
 }
 
@@ -887,7 +887,7 @@ _ID48355()
     var_0._ID49777 = 640;
     var_0._ID50083 = 480;
 
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "airplane":
         case "blackout":
@@ -931,25 +931,25 @@ _ID48355()
             break;
     }
 
-    var_0._ID1331 = 320;
-    var_0._ID1339 = 240;
+    var_0.x = 320;
+    var_0.y = 240;
     var_0 setshader( var_1, var_0._ID49777, var_0._ID50083 );
     var_0._ID998 = 1;
-    var_0._ID44 = "center";
-    var_0._ID45 = "middle";
-    var_0._ID983 = 1;
-    var_0._ID408 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 0;
+    var_0.alignx = "center";
+    var_0.aligny = "middle";
+    var_0.sort = 1;
+    var_0.foreground = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 0;
     thread _ID18318( var_0 );
 
     for (;;)
     {
         var_0 fadeovertime( 0.5 );
-        var_0._ID55 = 0;
+        var_0.alpha = 0;
 
-        if ( !isalive( level._ID794 ) )
+        if ( !isalive( level.player ) )
             break;
 
         _ID42407::_ID13027( "player_has_red_flashing_overlay" );
@@ -968,25 +968,25 @@ _ID18316()
 {
     self endon( "noHealthOverlay" );
     var_0 = newclienthudelem( self );
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "overlay_low_health", 640, 480 );
     var_0._ID998 = 1;
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID983 = 1;
-    var_0._ID408 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 0;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.sort = 1;
+    var_0.foreground = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 0;
     thread _ID18318( var_0 );
 
     for (;;)
     {
         var_0 fadeovertime( 0.5 );
-        var_0._ID55 = 0;
+        var_0.alpha = 0;
 
-        if ( !isalive( level._ID794 ) )
+        if ( !isalive( level.player ) )
             break;
 
         _ID42407::_ID13027( "player_has_red_flashing_overlay" );
@@ -1005,19 +1005,19 @@ _ID49987()
 {
     self endon( "noHealthOverlay" );
     var_0 = newclienthudelem( self );
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "h1_fullscreen_lit_bloodsplat_01", 640, 480 );
     var_0._ID998 = 1;
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID983 = 3;
-    var_0._ID408 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID315 = 1;
-    var_0._ID196 = ( 0, 0, 0 );
-    var_0._ID55 = 0;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.sort = 3;
+    var_0.foreground = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.enablehudlighting = 1;
+    var_0.color = ( 0, 0, 0 );
+    var_0.alpha = 0;
     thread _ID18318( var_0 );
     var_1 = 0;
     var_2 = 0.28;
@@ -1028,13 +1028,13 @@ _ID49987()
     {
         if ( isdefined( level._ID50857 ) && level._ID50857 )
         {
-            var_0._ID196 = ( 0, 0, 0 );
-            var_0._ID55 = 0;
+            var_0.color = ( 0, 0, 0 );
+            var_0.alpha = 0;
             wait(var_3);
             continue;
         }
 
-        var_5 = clamp( self._ID486 / self._ID626, 0, 1 );
+        var_5 = clamp( self.health / self.maxhealth, 0, 1 );
         var_6 = 1.0 - var_5;
 
         if ( var_1 > var_6 )
@@ -1043,12 +1043,12 @@ _ID49987()
         if ( var_1 < var_6 )
             var_1 = var_6;
 
-        var_0._ID196 = ( var_1, 0, 0 );
+        var_0.color = ( var_1, 0, 0 );
 
         if ( var_1 == 0 )
-            var_0._ID55 = 0;
+            var_0.alpha = 0;
         else
-            var_0._ID55 = 1;
+            var_0.alpha = 1;
 
         wait(var_3);
     }
@@ -1058,22 +1058,22 @@ _ID50062()
 {
     self endon( "noHealthOverlay" );
     var_0 = newclienthudelem( self );
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "h1_screen_blood", 640, 480 );
     var_0._ID998 = 1;
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID983 = 2;
-    var_0._ID408 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 0;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.sort = 2;
+    var_0.foreground = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 0;
     thread _ID18318( var_0 );
 
     for (;;)
     {
-        level._ID794 _ID41192();
+        level.player _ID41192();
 
         if ( !isalive( self ) )
             break;
@@ -1087,16 +1087,16 @@ _ID50062()
         wait 0.5;
     }
 
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
 }
 
 _ID49645( var_0 )
 {
     self endon( "hit_again" );
-    var_0._ID55 = 1;
+    var_0.alpha = 1;
     wait 0.17;
     var_0 fadeovertime( 0.25 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
 }
 
 _ID51862( var_0 )
@@ -1120,10 +1120,10 @@ _ID51862( var_0 )
         }
 
         var_0 fadeovertime( var_3 );
-        var_0._ID55 = var_5;
+        var_0.alpha = var_5;
         wait(var_3 + var_4);
         var_0 fadeovertime( var_3 );
-        var_0._ID55 = var_5 * 0.8;
+        var_0.alpha = var_5 * 0.8;
         wait(var_3);
 
         if ( var_5 <= 0 )
@@ -1134,33 +1134,33 @@ _ID51862( var_0 )
 _ID1898( var_0 )
 {
     if ( level._ID8534 )
-        self._ID393 = 2;
+        self.fontscale = 2;
     else
-        self._ID393 = 1.6;
+        self.fontscale = 1.6;
 
-    self._ID1331 = 0;
-    self._ID1339 = -36;
-    self._ID44 = "center";
-    self._ID45 = "bottom";
-    self._ID499 = "center";
-    self._ID1284 = "middle";
+    self.x = 0;
+    self.y = -36;
+    self.alignx = "center";
+    self.aligny = "bottom";
+    self.horzalign = "center";
+    self.vertalign = "middle";
 
     if ( !isdefined( self._ID104 ) )
         return;
 
-    self._ID104._ID1331 = 0;
-    self._ID104._ID1339 = -40;
-    self._ID104._ID44 = "center";
-    self._ID104._ID45 = "middle";
-    self._ID104._ID499 = "center";
-    self._ID104._ID1284 = "middle";
+    self._ID104.x = 0;
+    self._ID104.y = -40;
+    self._ID104.alignx = "center";
+    self._ID104.aligny = "middle";
+    self._ID104.horzalign = "center";
+    self._ID104.vertalign = "middle";
 
     if ( level._ID8534 )
         self._ID104 setshader( "popmenu_bg", 650, 52 );
     else
         self._ID104 setshader( "popmenu_bg", 650, 42 );
 
-    self._ID104._ID55 = 0.5;
+    self._ID104.alpha = 0.5;
 }
 
 _ID9188()
@@ -1170,11 +1170,11 @@ _ID9188()
     var_0 thread _ID10455();
     var_0 thread _ID10456();
     var_0 settext( &"GAME_GET_TO_COVER" );
-    var_0._ID393 = 2;
-    var_0._ID55 = 1;
-    var_0._ID196 = ( 1, 0.9, 0.9 );
-    var_0._ID983 = 1;
-    var_0._ID408 = 1;
+    var_0.fontscale = 2;
+    var_0.alpha = 1;
+    var_0.color = ( 1, 0.9, 0.9 );
+    var_0.sort = 1;
+    var_0.foreground = 1;
     return var_0;
 }
 
@@ -1188,8 +1188,8 @@ _ID41192()
 _ID10455()
 {
     self endon( "being_destroyed" );
-    level._ID794 _ID41192();
-    var_0 = !isalive( level._ID794 );
+    level.player _ID41192();
+    var_0 = !isalive( level.player );
     thread _ID10454( var_0 );
 }
 
@@ -1208,7 +1208,7 @@ _ID10454( var_0 )
     if ( var_0 )
     {
         self fadeovertime( 0.5 );
-        self._ID55 = 0;
+        self.alpha = 0;
         wait 0.5;
     }
 
@@ -1231,9 +1231,9 @@ _ID14723( var_0, var_1 )
 {
     self endon( "death" );
     var_0 *= 2;
-    var_2 = var_0 - self._ID393;
+    var_2 = var_0 - self.fontscale;
     self changefontscaleovertime( var_1 );
-    self._ID393 = self._ID393 + var_2;
+    self.fontscale = self.fontscale + var_2;
 }
 
 _ID47652( var_0 )
@@ -1248,23 +1248,23 @@ _ID47652( var_0 )
     var_6 = 1;
     var_7 = 0.7;
     var_8 = 0.1;
-    var_0._ID55 = var_6;
+    var_0.alpha = var_6;
     var_9 = max( var_1, var_4 );
     var_9 += max( var_3, var_8 );
     var_10 = max( var_2, var_5 );
     var_10 += max( var_3, var_8 );
     var_11 = "breathing_heartbeat";
-    level._ID794 playsound( var_11 );
+    level.player playsound( var_11 );
 
     for (;;)
     {
         var_0 scaleovertime( var_2, var_0._ID48175, var_0._ID43646 );
         var_0 fadeovertime( var_5 );
-        var_0._ID55 = var_7;
+        var_0.alpha = var_7;
         wait(var_10);
         var_0 scaleovertime( var_1, var_0._ID49777, var_0._ID50083 );
         var_0 fadeovertime( var_4 );
-        var_0._ID55 = var_6;
+        var_0.alpha = var_6;
         wait(var_9);
         self playlocalsound( var_11 );
     }
@@ -1284,25 +1284,25 @@ softpulseoverlay( var_0 )
     var_8 = 1;
     var_9 = 0.7;
     var_10 = 0.1;
-    var_0._ID55 = var_8;
+    var_0.alpha = var_8;
     var_11 = max( var_1, var_6 );
     var_11 += max( var_3, var_10 );
     var_12 = max( var_2, var_7 );
     var_12 += max( var_3, var_10 );
     var_13 = "breathing_heartbeat";
-    level._ID794 playsound( var_13 );
+    level.player playsound( var_13 );
     var_0 scaleovertime( var_2, var_0._ID48175, var_0._ID43646 );
     var_0 fadeovertime( var_7 );
-    var_0._ID55 = var_9;
+    var_0.alpha = var_9;
     wait(var_12);
     var_0 scaleovertime( var_1, var_0._ID49777, var_0._ID50083 );
     var_0 fadeovertime( var_6 );
-    var_0._ID55 = var_8;
+    var_0.alpha = var_8;
     wait(var_11);
     self playlocalsound( var_13 );
     var_0 scaleovertime( var_4, var_0._ID48175, var_0._ID43646 );
     var_0 fadeovertime( var_5 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     wait(var_12 + var_11);
     self playlocalsound( var_13 );
 }
@@ -1323,14 +1323,14 @@ _ID13809( var_0, var_1, var_2, var_3, var_4 )
     var_12 = 0.5 + var_2 * 0.3;
     var_13 = 1 - ( 1 - var_12 ) / 2;
     var_0 fadeovertime( var_7 );
-    var_0._ID55 = var_3 * 1.0;
+    var_0.alpha = var_3 * 1.0;
 
     if ( _ID23133( var_1 ) )
     {
         if ( !var_4 )
         {
             var_1 fadeovertime( var_7 );
-            var_1._ID55 = var_3 * 1.0;
+            var_1.alpha = var_3 * 1.0;
         }
     }
 
@@ -1339,27 +1339,27 @@ _ID13809( var_0, var_1, var_2, var_3, var_4 )
 
     wait(var_7 + var_8);
     var_0 fadeovertime( var_9 );
-    var_0._ID55 = var_3 * var_13;
+    var_0.alpha = var_3 * var_13;
 
     if ( _ID23133( var_1 ) )
     {
         if ( !var_4 )
         {
             var_1 fadeovertime( var_9 );
-            var_1._ID55 = var_3 * var_13;
+            var_1.alpha = var_3 * var_13;
         }
     }
 
     wait(var_9);
     var_0 fadeovertime( var_10 );
-    var_0._ID55 = var_3 * var_12;
+    var_0.alpha = var_3 * var_12;
 
     if ( _ID23133( var_1 ) )
     {
         if ( !var_4 )
         {
             var_1 fadeovertime( var_10 );
-            var_1._ID55 = var_3 * var_12;
+            var_1.alpha = var_3 * var_12;
         }
     }
 
@@ -1395,7 +1395,7 @@ _ID33914()
     if ( self islinked() )
         return 0;
 
-    if ( self._ID511 )
+    if ( self.ignoreme )
         return 0;
 
     if ( !_ID37139() )
@@ -1423,7 +1423,7 @@ _ID52207( var_0 )
     self endon( "hit_again" );
     self waittill( "kill_pulse" );
     var_0 fadeovertime( 0.5 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
 }
 
 _ID53460( var_0 )
@@ -1448,7 +1448,7 @@ _ID53460( var_0 )
     if ( _ID23133( var_1 ) )
     {
         var_1 fadeovertime( 1.0 );
-        var_1._ID55 = 0;
+        var_1.alpha = 0;
     }
 
     self notify( "kill_pulse" );
@@ -1477,7 +1477,7 @@ _ID53056( var_0 )
 
     var_2 = gettime() + self._ID17476._ID22610;
     _ID13809( var_0, var_1, 0.8, 0.7, 0 );
-    level._ID794 playsound( "breathing_heartbeat" );
+    level.player playsound( "breathing_heartbeat" );
 
     while ( gettime() < var_2 && isalive( self ) && _ID42407::_ID13019( "player_has_red_flashing_overlay" ) )
     {
@@ -1491,12 +1491,12 @@ _ID53056( var_0 )
     if ( _ID23133( var_1 ) )
     {
         var_1 fadeovertime( 1.0 );
-        var_1._ID55 = 0;
+        var_1.alpha = 0;
     }
 
     _ID13809( var_0, var_1, 0, 0.7, 1 );
     var_0 fadeovertime( 0.5 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     _ID42407::_ID13021( "player_has_red_flashing_overlay" );
 
     if ( !isdefined( self._ID10887 ) || !self._ID10887 )
@@ -1525,7 +1525,7 @@ _ID29791()
 
 _ID19816()
 {
-    var_0 = level._ID912 == "roadkill" || level._ID912 == "cliffhanger";
+    var_0 = level.script == "roadkill" || level.script == "cliffhanger";
 
     if ( self getlocalplayerprofiledata( "takeCoverWarnings" ) == -1 || var_0 )
         self setlocalplayerprofiledata( "takeCoverWarnings", 9 );
@@ -1566,8 +1566,8 @@ _ID1709()
     thread _ID1712();
     thread _ID1710();
     _ID42237::_ID14402( "auto_adjust_initialized" );
-    _ID42237::_ID14400( "aa_main_" + level._ID912 );
-    _ID42237::_ID14402( "aa_main_" + level._ID912 );
+    _ID42237::_ID14400( "aa_main_" + level.script );
+    _ID42237::_ID14402( "aa_main_" + level.script );
 }
 
 _ID1716()
@@ -1580,16 +1580,16 @@ _ID1716()
 
 _ID1710()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level._ID27217 = 0;
 
     for (;;)
     {
-        if ( level._ID794 _ID42407::_ID20652() )
+        if ( level.player _ID42407::_ID20652() )
         {
             level._ID27217 = gettime();
 
-            while ( level._ID794 _ID42407::_ID20652() )
+            while ( level.player _ID42407::_ID20652() )
                 wait 0.05;
 
             continue;
@@ -1603,10 +1603,10 @@ _ID1712()
 {
     for (;;)
     {
-        level._ID794 waittill( "damage",  var_0, var_1, var_2, var_3, var_4, var_5, var_6  );
+        level.player waittill( "damage",  var_0, var_1, var_2, var_3, var_4, var_5, var_6  );
         _ID1704( "aa_player_damage_taken", var_0 );
 
-        if ( !isalive( level._ID794 ) )
+        if ( !isalive( level.player ) )
         {
             _ID1704( "aa_deaths", 1 );
             return;
@@ -1712,7 +1712,7 @@ _ID4390( var_0 )
     var_23["gameskill"] = level._ID15361;
     level._ID4389[var_0] = var_23;
     var_24 = "Completed AA sequence: ";
-    var_24 += ( level._ID912 + "/" + var_0 );
+    var_24 += ( level.script + "/" + var_0 );
     var_25 = getarraykeys( var_23 );
 
     for ( var_26 = 0; var_26 < var_25.size; var_26++ )
@@ -1782,13 +1782,13 @@ _ID4386( var_0, var_1, var_2, var_3 )
     if ( !_ID27238( var_1 ) )
         return;
 
-    [[ level._ID16945 ]]( var_2, self._ID253, var_3 );
+    [[ level._ID16945 ]]( var_2, self.damagelocation, var_3 );
     _ID1704( "aa_player_kills", 1 );
 }
 
 _ID4385( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
-    if ( !isalive( self ) || self._ID274 )
+    if ( !isalive( self ) || self.delayeddeath )
     {
         _ID4386( var_0, var_1, var_4, var_3 );
         return;
@@ -1804,19 +1804,19 @@ _ID1711( var_0, var_1, var_2 )
 {
     _ID1704( "aa_player_damage_dealt", var_0 );
 
-    if ( !level._ID794 _ID42407::_ID20652() )
+    if ( !level.player _ID42407::_ID20652() )
     {
-        [[ level._ID16936 ]]( var_1, self._ID253, var_2 );
+        [[ level._ID16936 ]]( var_1, self.damagelocation, var_2 );
         return 0;
     }
 
     if ( !_ID6294( var_1 ) )
     {
-        [[ level._ID16936 ]]( var_1, self._ID253, var_2 );
+        [[ level._ID16936 ]]( var_1, self.damagelocation, var_2 );
         return 0;
     }
 
-    [[ level._ID16937 ]]( var_1, self._ID253, var_2 );
+    [[ level._ID16937 ]]( var_1, self.damagelocation, var_2 );
     _ID1704( "aa_ads_damage_dealt", var_0 );
     return 1;
 }

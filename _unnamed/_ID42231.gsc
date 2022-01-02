@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     level._ID10559 = 50;
     level._ID10558 = [];
@@ -114,10 +114,10 @@ _ID32948( var_0 )
         }
     }
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
         thread _ID10526();
 
-    if ( self._ID172 != "script_vehicle" )
+    if ( self.code_classname != "script_vehicle" )
         self setcandamage( 1 );
 
     if ( _ID42237::_ID20913() )
@@ -125,7 +125,7 @@ _ID32948( var_0 )
 
     thread _ID10549();
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
         thread _ID50142();
 }
 
@@ -140,14 +140,14 @@ _ID10505( var_0, var_1, var_2, var_3, var_4, var_5 )
     level._ID279[var_6]._ID40005["type"] = var_0;
     level._ID279[var_6]._ID26282 = [];
     level._ID279[var_6]._ID26282[0][0] = spawnstruct();
-    level._ID279[var_6]._ID26282[0][0]._ID40005["modelName"] = self._ID669;
+    level._ID279[var_6]._ID26282[0][0]._ID40005["modelName"] = self.model;
     level._ID279[var_6]._ID26282[0][0]._ID40005["tagName"] = var_1;
     level._ID279[var_6]._ID26282[0][0]._ID40005["health"] = var_2;
     level._ID279[var_6]._ID26282[0][0]._ID40005["validAttackers"] = var_3;
     level._ID279[var_6]._ID26282[0][0]._ID40005["validDamageZone"] = var_4;
     level._ID279[var_6]._ID26282[0][0]._ID40005["validDamageCause"] = var_5;
     level._ID279[var_6]._ID26282[0][0]._ID40005["godModeAllowed"] = 1;
-    level._ID279[var_6]._ID26282[0][0]._ID40005["rotateTo"] = self._ID65;
+    level._ID279[var_6]._ID26282[0][0]._ID40005["rotateTo"] = self.angles;
     level._ID279[var_6]._ID26282[0][0]._ID40005["vehicle_exclude_anim"] = 0;
 }
 
@@ -567,9 +567,9 @@ _ID6855( var_0 )
 _ID10549()
 {
     var_0 = 0;
-    var_1 = self._ID669;
+    var_1 = self.model;
     var_2 = undefined;
-    var_3 = self._ID740;
+    var_3 = self.origin;
     var_4 = undefined;
     var_5 = undefined;
     var_6 = undefined;
@@ -592,7 +592,7 @@ _ID10549()
         if ( !isdefined( var_0 ) )
             continue;
 
-        if ( isdefined( var_5 ) && isdefined( var_5._ID1244 ) && var_5._ID1244 == "soft_landing" && !var_5 _ID6855( self ) )
+        if ( isdefined( var_5 ) && isdefined( var_5.type ) && var_5.type == "soft_landing" && !var_5 _ID6855( self ) )
             continue;
 
         if ( _ID42237::_ID20913() )
@@ -617,7 +617,7 @@ _ID10549()
         }
 
         if ( !isdefined( var_1 ) || var_1 == "" )
-            var_1 = self._ID669;
+            var_1 = self.model;
 
         if ( isdefined( var_2 ) && var_2 == "" )
         {
@@ -680,9 +680,9 @@ _ID16510( var_0, var_1 )
     var_3 = -1;
     var_4 = -1;
 
-    if ( tolower( var_0 ) == tolower( self._ID669 ) && !isdefined( var_1 ) )
+    if ( tolower( var_0 ) == tolower( self.model ) && !isdefined( var_1 ) )
     {
-        var_0 = self._ID669;
+        var_0 = self.model;
         var_1 = undefined;
         var_3 = 0;
         var_4 = 0;
@@ -873,7 +873,7 @@ _ID10553( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
             {
                 var_29 = var_27["modelName"];
 
-                if ( isdefined( var_29 ) && var_29 != self._ID669 )
+                if ( isdefined( var_29 ) && var_29 != self.model )
                 {
                     self setmodel( var_29 );
 
@@ -904,7 +904,7 @@ _ID10553( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 
         var_30 = _ID15694();
 
-        if ( isdefined( self._ID13632 ) && ( level._ID912 != "boneyard" || var_30._ID669 != "vehicle_mack_truck_short_green_destroy_animated" ) )
+        if ( isdefined( self._ID13632 ) && ( level.script != "boneyard" || var_30.model != "vehicle_mack_truck_short_green_destroy_animated" ) )
             _ID7836( var_30 );
 
         var_31 = _ID10494( var_26, var_30, var_6, var_10 );
@@ -1021,7 +1021,7 @@ _ID10553( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
             {
                 self._ID85 = var_5;
 
-                if ( self._ID172 == "script_vehicle" )
+                if ( self.code_classname == "script_vehicle" )
                     self._ID9615 = var_6;
             }
 
@@ -1073,7 +1073,7 @@ _ID10553( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 
                     if ( isdefined( var_5 ) )
                     {
-                        var_71 = var_5._ID740;
+                        var_71 = var_5.origin;
                         var_63 = vectornormalize( var_3 - var_71 );
                         var_63 = _ID42407::_ID49965( var_63, 200 );
                     }
@@ -1130,7 +1130,7 @@ _ID10545( var_0 )
     if ( !var_1 )
         return;
 
-    self._ID65 = ( self._ID65[0], var_2[1], self._ID65[2] );
+    self.angles = ( self.angles[0], var_2[1], self.angles[2] );
 }
 
 _ID9611( var_0 )
@@ -1237,7 +1237,7 @@ _ID32597( var_0, var_1 )
     {
         var_3 = 0;
 
-        if ( _ID42407::_ID18252( self._ID669, var_0[var_2]._ID40005["tagName"] ) )
+        if ( _ID42407::_ID18252( self.model, var_0[var_2]._ID40005["tagName"] ) )
         {
             var_3 = distance( var_1, self gettagorigin( var_0[var_2]._ID40005["tagName"] ) );
             jump loc_2BE2
@@ -1429,14 +1429,14 @@ loopfx_ontag_singleshot( var_0, var_1, var_2 )
 {
     var_3 = _ID15694();
 
-    if ( isdefined( var_3 ) && _ID42407::_ID18252( var_3._ID669, var_1 ) )
+    if ( isdefined( var_3 ) && _ID42407::_ID18252( var_3.model, var_1 ) )
     {
         playfxontag( var_0, var_3, var_1 );
         _ID42237::_ID41069( self, "FX_State_Change" + var_2, self, "delete_destructible", level, "putout_fires" );
 
         if ( isdefined( var_3 ) )
         {
-            if ( _ID42407::_ID18252( var_3._ID669, var_1 ) )
+            if ( _ID42407::_ID18252( var_3.model, var_1 ) )
                 stopfxontag( var_0, var_3, var_1 );
             else
             {
@@ -1469,7 +1469,7 @@ _ID22656( var_0, var_1, var_2, var_3 )
     {
         var_4 = _ID15694();
 
-        if ( _ID42407::_ID18252( var_4._ID669, var_1 ) )
+        if ( _ID42407::_ID18252( var_4.model, var_1 ) )
         {
             playfxontag( var_0, var_4, var_1 );
             jump loc_3052
@@ -1508,9 +1508,9 @@ _ID18308( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
                 var_5 = self._ID31413;
 
             if ( var_6 == "both" )
-                call [[ level._ID4709 ]]( var_7, 0, self._ID740, var_5, 128, "allies", "bad_guys" );
+                call [[ level._ID4709 ]]( var_7, 0, self.origin, var_5, 128, "allies", "bad_guys" );
             else
-                call [[ level._ID4709 ]]( var_7, 0, self._ID740, var_5, 128, var_6 );
+                call [[ level._ID4709 ]]( var_7, 0, self.origin, var_5, 128, var_6 );
 
             thread _ID4712( var_7 );
         }
@@ -1541,7 +1541,7 @@ _ID26624( var_0, var_1, var_2, var_3 )
         _ID26627( level._ID10558[0] );
 
     var_6 = spawn( "script_model", self gettagorigin( var_5 ) );
-    var_6._ID65 = self gettagangles( var_5 );
+    var_6.angles = self gettagangles( var_5 );
     var_6 setmodel( var_4 );
     level._ID10558[level._ID10558.size] = var_6;
     var_6 physicslaunchclient( var_2, var_3 );
@@ -1571,7 +1571,7 @@ _ID53052( var_0, var_1, var_2 )
     var_4 = level._ID279[self._ID51676]._ID26282[var_0][var_1]._ID40005["tagName"];
     _ID18543( var_4 );
     var_5 = spawn( "script_model", self gettagorigin( var_4 ) );
-    var_5._ID65 = self gettagangles( var_4 );
+    var_5.angles = self gettagangles( var_4 );
     var_5 setmodel( var_3 );
     var_5 linkto( self );
 
@@ -1601,7 +1601,7 @@ _ID355( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, va
     self notify( "exploded",  var_10  );
     level notify( "destructible_exploded" );
 
-    if ( self._ID172 == "script_vehicle" )
+    if ( self.code_classname == "script_vehicle" )
         self notify( "death",  var_10, self._ID9615  );
 
     if ( _ID42237::_ID20913() )
@@ -1617,7 +1617,7 @@ _ID355( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, va
     if ( isdefined( var_12 ) )
         var_13 = self gettagorigin( var_12 );
     else
-        var_13 = self._ID740;
+        var_13 = self.origin;
 
     self notify( "damage",  var_5, self, ( 0, 0, 0 ), var_13, "MOD_EXPLOSIVE", "", ""  );
     self notify( "stop_car_alarm" );
@@ -1776,7 +1776,7 @@ _ID8531()
         return;
 
     var_0 call [[ level._ID8529 ]]();
-    var_0._ID740 = var_0._ID740 - ( 0, 0, 10000 );
+    var_0.origin = var_0.origin - ( 0, 0, 10000 );
 }
 
 _ID11069()
@@ -1786,17 +1786,17 @@ _ID11069()
     if ( !isdefined( var_0 ) )
         return;
 
-    var_0._ID740 = var_0._ID740 + ( 0, 0, 10000 );
+    var_0.origin = var_0.origin + ( 0, 0, 10000 );
     var_0 call [[ level._ID11068 ]]();
-    var_0._ID740 = var_0._ID740 - ( 0, 0, 10000 );
+    var_0.origin = var_0.origin - ( 0, 0, 10000 );
 }
 
 _ID16036()
 {
-    if ( !isdefined( self._ID1191 ) )
+    if ( !isdefined( self.target ) )
         return undefined;
 
-    var_0 = getentarray( self._ID1191, "targetname" );
+    var_0 = getentarray( self.target, "targetname" );
 
     foreach ( var_2 in var_0 )
     {
@@ -1806,10 +1806,10 @@ _ID16036()
         if ( isdefined( var_2._ID31133 ) )
             continue;
 
-        if ( var_2._ID172 == "light" )
+        if ( var_2.code_classname == "light" )
             continue;
 
-        if ( !var_2._ID989 & 1 )
+        if ( !var_2.spawnflags & 1 )
             continue;
 
         return var_2;
@@ -1840,7 +1840,7 @@ _ID14744()
 {
     self._ID11565 = undefined;
     self._ID14785 = 1;
-    self notify( "damage",  100000000, self, self._ID740, self._ID740, "MOD_EXPLOSIVE", "", ""  );
+    self notify( "damage",  100000000, self, self.origin, self.origin, "MOD_EXPLOSIVE", "", ""  );
 }
 
 _ID15694()
@@ -1862,9 +1862,9 @@ _ID26999( var_0, var_1 )
     var_3 = spawn( "script_origin", ( 0, 0, 0 ) );
 
     if ( isdefined( var_1 ) )
-        var_3._ID740 = var_2 gettagorigin( var_1 );
+        var_3.origin = var_2 gettagorigin( var_1 );
     else
-        var_3._ID740 = var_2._ID740;
+        var_3.origin = var_2.origin;
 
     var_3 playloopsound( var_0 );
     var_2 thread _ID14762( var_0 );
@@ -1919,8 +1919,8 @@ _ID27076( var_0, var_1 )
     {
         var_2 = spawn( "script_origin", ( 0, 0, 0 ) );
         var_2 hide();
-        var_2._ID740 = self._ID740;
-        var_2._ID65 = self._ID65;
+        var_2.origin = self.origin;
+        var_2.angles = self.angles;
         var_2 linkto( self );
     }
 
@@ -1942,7 +1942,7 @@ _ID11194()
 
     var_0 = [ "car_alarm_01", "car_alarm_02", "car_alarm_03", "car_alarm_04" ];
     var_1 = _ID42237::_ID28945( var_0 );
-    self._ID7014 = spawn( "script_model", self._ID740 );
+    self._ID7014 = spawn( "script_model", self.origin );
     self._ID7014 hide();
     self._ID7014 playloopsound( var_1 );
     level._ID9486++;
@@ -2006,14 +2006,14 @@ _ID11217( var_0, var_1, var_2, var_3 )
     else
     {
         var_4[0] = spawn( "script_model", self gettagorigin( var_0 ) );
-        var_4[0]._ID65 = self gettagangles( var_0 );
+        var_4[0].angles = self gettagangles( var_0 );
         var_4[0] setmodel( var_1 );
         var_4[0] linkto( self, var_0 );
 
         if ( isdefined( var_2 ) && var_2 != "" )
         {
             var_4[1] = spawn( "script_model", self gettagorigin( var_0 ) );
-            var_4[1]._ID65 = self gettagangles( var_0 );
+            var_4[1].angles = self gettagangles( var_0 );
             var_4[1] setmodel( var_2 );
             var_4[1] linkto( self, var_0 );
         }
@@ -2058,7 +2058,7 @@ _ID15626( var_0, var_1 )
 
     foreach ( var_6 in var_4 )
     {
-        var_7 = distancesquared( var_0, var_6._ID740 );
+        var_7 = distancesquared( var_0, var_6.origin );
 
         if ( !isdefined( var_2 ) || var_7 < var_2 )
         {
@@ -2074,10 +2074,10 @@ _ID27703()
 {
     var_0 = [];
 
-    if ( !isdefined( self._ID1191 ) )
+    if ( !isdefined( self.target ) )
         return 0;
 
-    var_1 = getentarray( self._ID1191, "targetname" );
+    var_1 = getentarray( self.target, "targetname" );
 
     foreach ( var_3 in var_1 )
     {
@@ -2120,7 +2120,7 @@ _ID20611()
 
 _ID10526()
 {
-    var_0 = getentarray( self._ID1191, "targetname" );
+    var_0 = getentarray( self.target, "targetname" );
     var_1 = [];
     var_1["pre"] = ::_ID8243;
     var_1["post"] = ::_ID8242;
@@ -2194,15 +2194,15 @@ _ID50142()
 
     foreach ( var_2 in var_0 )
     {
-        if ( isdefined( var_2._ID1193 ) && self._ID1191 != var_2._ID1193 )
+        if ( isdefined( var_2.targetname ) && self.target != var_2.targetname )
             var_0 = _ID42237::_ID3321( var_0, var_2 );
     }
 
     foreach ( var_2 in var_0 )
     {
-        if ( isdefined( var_2._ID922 ) )
+        if ( isdefined( var_2.script_noteworthy ) )
         {
-            switch ( var_2._ID922 )
+            switch ( var_2.script_noteworthy )
             {
                 case "pre":
                     thread _ID48351( var_2 );
@@ -2284,7 +2284,7 @@ _ID10523( var_0 )
 
     foreach ( var_6 in var_1 )
     {
-        var_7 = distancesquared( self._ID740, var_6._ID740 );
+        var_7 = distancesquared( self.origin, var_6.origin );
 
         if ( var_7 < var_3 )
         {
@@ -2433,8 +2433,8 @@ _ID10547( var_0, var_1, var_2, var_3 )
     level._ID10546 unlink();
     var_8 = _ID42237::_ID35164();
     var_8 linkto( self, var_0["spotlight_tag"], ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID10546._ID740 = self._ID6111._ID740;
-    level._ID10546._ID65 = self._ID6111._ID65;
+    level._ID10546.origin = self._ID6111.origin;
+    level._ID10546.angles = self._ID6111.angles;
     level._ID10546 thread _ID35466( var_0, var_1, var_2, var_3, var_8 );
     wait 0.05;
 
@@ -2518,7 +2518,7 @@ _ID10522( var_0, var_1, var_2, var_3, var_4 )
             continue;
         }
 
-        var_9 = var_1._ID740;
+        var_9 = var_1.origin;
         var_10 = var_9 + ( 0, 0, 100 ) - var_9;
         playfx( var_7, var_9, var_10 );
     }
@@ -2537,7 +2537,7 @@ _ID10494( var_0, var_1, var_2, var_3 )
     if ( isdefined( var_0["randomly_flip"] ) && !isdefined( self._ID31361 ) )
     {
         if ( _ID42237::_ID8201() )
-            self._ID65 = self._ID65 + ( 0, 180, 0 );
+            self.angles = self.angles + ( 0, 180, 0 );
     }
 
     if ( isdefined( var_0["spotlight_tag"] ) )
@@ -2568,7 +2568,7 @@ _ID10494( var_0, var_1, var_2, var_3 )
 
     var_13 = var_4["vehicle_exclude_anim"];
 
-    if ( self._ID172 == "script_vehicle" && var_13 )
+    if ( self.code_classname == "script_vehicle" && var_13 )
         return undefined;
 
     var_1 _ID42237::_ID31862( "useanimtree", var_6 );

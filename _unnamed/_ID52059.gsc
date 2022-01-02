@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_propane_tank02", "tag_origin", 50, undefined, 32, "no_melee" );
     _ID42231::_ID10544( 5 );

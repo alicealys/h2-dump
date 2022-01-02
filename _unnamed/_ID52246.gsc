@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["large_explosion"] = loadfx( "fx/explosions/large_vehicle_explosion" );
     level._ID1426["wood_burst"] = loadfx( "fx/explosions/wood_explosion_1" );
@@ -57,8 +57,8 @@ _ID616()
     thread _ID54426();
     thread _ID44263();
     thread uaz_ride_end_brake();
-    _ID46885::_ID616();
-    _ID47344::_ID616();
+    _ID46885::main();
+    _ID47344::main();
 }
 
 uaz_ride_end_brake()

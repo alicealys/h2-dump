@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     precachemodel( "com_cellphone_on" );
     precachemodel( "com_metal_briefcase" );
@@ -364,5 +364,5 @@ _ID46961()
 _ID45289( var_0 )
 {
     _ID42407::_ID24584( 1.6 );
-    level._ID794 _ID42407::_ID27079( "mus_favela_ending_stinger_02" );
+    level.player _ID42407::_ID27079( "mus_favela_ending_stinger_02" );
 }

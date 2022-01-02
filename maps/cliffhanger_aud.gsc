@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -347,7 +347,7 @@ _ID44955()
 _ID44859( var_0, var_1 )
 {
     _ID42237::_ID14413( var_0 );
-    level._ID794 playsound( var_1 );
+    level.player playsound( var_1 );
 }
 
 _ID54473( var_0 )

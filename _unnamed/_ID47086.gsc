@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_water_collector", "tag_origin", 220, undefined, 32, "no_melee" );
     _ID42231::_ID10517( "tag_fx", "fx/explosions/water_collector_explosion" );

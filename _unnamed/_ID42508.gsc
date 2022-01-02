@@ -6,7 +6,7 @@ _ID28414()
     precacheitem( "turret_attackheli" );
     precacheitem( "missile_attackheli" );
     _ID3619();
-    thread _ID521();
+    thread init();
 }
 
 _ID3619()
@@ -17,7 +17,7 @@ _ID3619()
         level._ID1426["_attack_heli_spotlight"] = loadfx( "fx/misc/spotlight_large" );
 }
 
-_ID521()
+init()
 {
     if ( isdefined( level._ID3642 ) )
         return;
@@ -86,7 +86,7 @@ _ID4977( var_0, var_1 )
 
     if ( level._ID15361 == 0 || level._ID15361 == 1 )
     {
-        var_2 = spawn( "script_origin", var_0._ID740 + ( 0, 0, -20 ) );
+        var_2 = spawn( "script_origin", var_0.origin + ( 0, 0, -20 ) );
         var_2 linkto( var_0 );
         var_0 thread _ID42237::_ID10280( var_2 );
         var_3 = undefined;
@@ -98,7 +98,7 @@ _ID4977( var_0, var_1 )
 
         if ( !isdefined( var_0._ID24819 ) )
         {
-            var_0._ID3671 = missile_createattractorent( var_2, var_3, 10000, level._ID794 );
+            var_0._ID3671 = missile_createattractorent( var_2, var_3, 10000, level.player );
 
             if ( _ID42407::_ID20495() )
                 var_0._ID3672 = missile_createattractorent( var_2, var_3, 10000, level._ID27742 );
@@ -106,7 +106,7 @@ _ID4977( var_0, var_1 )
     }
 
     var_0 enableaimassist();
-    var_0._ID36137 = spawn( "script_origin", var_0._ID740 );
+    var_0._ID36137 = spawn( "script_origin", var_0.origin );
     var_0 thread _ID42237::_ID10280( var_0._ID36137 );
 
     if ( !isdefined( var_0._ID7544 ) )
@@ -200,9 +200,9 @@ _ID18362()
             break;
     }
 
-    self._ID37319 = spawn( "script_origin", self._ID740 );
-    self._ID37319._ID65 = self._ID65;
-    self._ID37319._ID740 = self._ID740;
+    self._ID37319 = spawn( "script_origin", self.origin );
+    self._ID37319.angles = self.angles;
+    self._ID37319.origin = self.origin;
     var_2 = spawnstruct();
     var_2._ID337 = self._ID37319;
     var_2._ID409 = var_1;
@@ -248,7 +248,7 @@ _ID35681( var_0, var_1 )
         var_0 = "kill_heli";
 
     var_2 = _ID42411::_ID35196( var_0 );
-    var_2._ID36137 = spawn( "script_origin", var_2._ID740 );
+    var_2._ID36137 = spawn( "script_origin", var_2.origin );
     var_2 thread _ID42237::_ID10280( var_2._ID36137 );
     var_2._ID7544 = 1;
     var_2._ID2738 = 1;
@@ -374,17 +374,17 @@ _ID18348( var_0, var_1 )
     {
         var_3 vehicle_setspeed( var_1, var_1 / 4, var_1 / 4 );
         var_3 neargoalnotifydist( 100 );
-        var_4 = _ID42407::_ID15618( var_3._ID740 );
-        var_5 = var_4._ID740;
+        var_4 = _ID42407::_ID15618( var_3.origin );
+        var_5 = var_4.origin;
         var_3 setlookatent( var_4 );
         var_6 = _ID42237::_ID16182( var_5, var_2 );
-        var_7 = getentarray( var_6._ID1191, "targetname" );
+        var_7 = getentarray( var_6.target, "targetname" );
 
         if ( !isdefined( var_7 ) || var_7.size < 1 )
-            var_7 = _ID42237::_ID16640( var_6._ID1191, "targetname" );
+            var_7 = _ID42237::_ID16640( var_6.target, "targetname" );
 
         var_8 = var_7[randomint( var_7.size )];
-        var_3 setvehgoalpos( var_8._ID740, 1 );
+        var_3 setvehgoalpos( var_8.origin, 1 );
         var_3 waittill( "near_goal" );
 
         if ( !isdefined( var_4._ID20494 ) )
@@ -400,7 +400,7 @@ _ID18379( var_0 )
     self endon( "death" );
     var_1 = getentarray( "kill_heli_spot", "targetname" );
     var_2 = self;
-    var_3 = _ID42237::_ID16182( var_2._ID740, var_1 );
+    var_3 = _ID42237::_ID16182( var_2.origin, var_1 );
     var_4 = var_3;
     var_2 endon( "death" );
     var_2 endon( "returning_home" );
@@ -416,8 +416,8 @@ _ID18379( var_0 )
 
         var_2 vehicle_setspeed( var_0, var_0 / 2, var_0 / 10 );
         var_2 neargoalnotifydist( 100 );
-        var_6 = _ID42407::_ID15618( var_2._ID740 );
-        var_7 = var_6._ID740;
+        var_6 = _ID42407::_ID15618( var_2.origin );
+        var_7 = var_6.origin;
 
         if ( var_3 == var_4 && var_2._ID20939 )
         {
@@ -425,11 +425,11 @@ _ID18379( var_0 )
             var_3 = _ID42237::_ID16182( var_7, var_8 );
         }
 
-        var_2 setvehgoalpos( var_3._ID740, 1 );
+        var_2 setvehgoalpos( var_3.origin, 1 );
         var_2._ID24481 = 1;
-        var_6 = _ID42407::_ID15618( var_2._ID740 );
+        var_6 = _ID42407::_ID15618( var_2.origin );
 
-        if ( isdefined( self._ID13197 ) && isdefined( self._ID13197._ID170 ) && self._ID13197._ID170 == "script_origin" )
+        if ( isdefined( self._ID13197 ) && isdefined( self._ID13197.classname ) && self._ID13197.classname == "script_origin" )
             var_5 = var_6;
         else if ( isdefined( self._ID13197 ) )
             var_5 = self._ID13197;
@@ -454,8 +454,8 @@ _ID18379( var_0 )
             }
         }
 
-        var_6 = _ID42407::_ID15618( var_2._ID740 );
-        var_7 = var_6._ID740;
+        var_6 = _ID42407::_ID15618( var_2.origin );
+        var_7 = var_6.origin;
         var_8 = _ID15810( var_2, var_3, var_1, var_6, var_7 );
         var_8[var_8.size] = var_3;
         var_4 = var_3;
@@ -464,7 +464,7 @@ _ID18379( var_0 )
 
         foreach ( var_12 in var_8 )
         {
-            if ( var_6 sightconetrace( var_12._ID740, var_2 ) != 1 )
+            if ( var_6 sightconetrace( var_12.origin, var_2 ) != 1 )
             {
                 var_8 = _ID42237::_ID3321( var_8, var_12 );
                 continue;
@@ -497,15 +497,15 @@ _ID18379( var_0 )
 
 _ID27501( var_0 )
 {
-    if ( !level._ID794 _ID39982() )
+    if ( !level.player _ID39982() )
         return 0;
 
-    if ( !level._ID794 adsbuttonpressed() )
+    if ( !level.player adsbuttonpressed() )
         return 0;
 
-    var_1 = level._ID794 geteye();
+    var_1 = level.player geteye();
 
-    if ( sighttracepassed( var_1, var_0._ID740, 0, level._ID794 ) )
+    if ( sighttracepassed( var_1, var_0.origin, 0, level.player ) )
         return 1;
 
     return 0;
@@ -534,7 +534,7 @@ _ID18403()
 
         if ( _ID18380() && level._ID805.size > 1 )
         {
-            var_2 = _ID42407::_ID15618( self._ID740 );
+            var_2 = _ID42407::_ID15618( self.origin );
 
             if ( self._ID13197 != var_2 )
             {
@@ -568,7 +568,7 @@ _ID18403()
         if ( self._ID13197 _ID20538( self ) )
             continue;
 
-        if ( _ID18381() && distancesquared( self._ID13197._ID740, self._ID740 ) > var_0 )
+        if ( _ID18381() && distancesquared( self._ID13197.origin, self.origin ) > var_0 )
             continue;
 
         if ( self._ID39368 == "default" && _ID18380() )
@@ -611,7 +611,7 @@ _ID18347()
     if ( !isdefined( self._ID13197 ) )
         return 0;
 
-    var_0 = self._ID13197._ID740 + ( 0, 0, 32 );
+    var_0 = self._ID13197.origin + ( 0, 0, 32 );
 
     if ( isplayernumber( self._ID13197 ) )
         var_0 = self._ID13197 geteye();
@@ -770,14 +770,14 @@ _ID27504( var_0 )
 
 _ID23704()
 {
-    if ( distancesquared( self._ID740, level._ID794._ID740 ) > 9000000 )
+    if ( distancesquared( self.origin, level.player.origin ) > 9000000 )
         return;
 
-    var_0 = self._ID740;
+    var_0 = self.origin;
 
     while ( isdefined( self ) )
     {
-        var_0 = self._ID740;
+        var_0 = self.origin;
         wait 0.1;
     }
 
@@ -995,7 +995,7 @@ _ID39284( var_0, var_1 )
 
     if ( !isplayernumber( var_0 ) && isai( var_0 ) && level._ID3646 == 0 )
     {
-        var_2 = spawn( "script_origin", var_0._ID740 + ( 0, 0, 100 ) );
+        var_2 = spawn( "script_origin", var_0.origin + ( 0, 0, 100 ) );
         var_2 linkto( var_0 );
         thread _ID23661( var_2 );
         var_0 = var_2;
@@ -1038,7 +1038,7 @@ _ID23666()
 
 _ID23693( var_0 )
 {
-    var_1 = anglestoforward( level._ID794._ID65 );
+    var_1 = anglestoforward( level.player.angles );
     var_2 = var_1 * 400;
     var_3 = var_2 + _ID42237::_ID28976( 50 );
     var_4 = randomintrange( 10, 20 );
@@ -1066,7 +1066,7 @@ _ID6739( var_0 )
     if ( isplayernumber( var_0 ) )
         var_2 = var_0 geteye();
     else
-        var_2 = var_0._ID740;
+        var_2 = var_0.origin;
 
     if ( sighttracepassed( var_1, var_2, 0, undefined ) )
         return 1;
@@ -1083,14 +1083,14 @@ _ID15810( var_0, var_1, var_2, var_3, var_4 )
     {
         for ( var_8 = 0; var_8 < var_6.size; var_8++ )
         {
-            if ( var_2[var_7]._ID920 == var_6[var_8] )
+            if ( var_2[var_7].script_linkname == var_6[var_8] )
                 var_5[var_5.size] = var_2[var_7];
         }
     }
 
     foreach ( var_10 in var_5 )
     {
-        if ( var_10._ID740[2] < var_4[2] )
+        if ( var_10.origin[2] < var_4[2] )
         {
             var_5 = _ID42237::_ID3321( var_5, var_10 );
             continue;
@@ -1106,7 +1106,7 @@ _ID18356()
     self endon( "heli_players_dead" );
     self endon( "crashing" );
     self endon( "leaving" );
-    self._ID257 = 0;
+    self.damagetaken = 0;
     self._ID31833 = undefined;
 
     for (;;)
@@ -1170,9 +1170,9 @@ _ID39696()
         return;
 
     self._ID19130 setshader( "h2_damage_feedback", 50, 100 );
-    self._ID19130._ID55 = 1;
+    self._ID19130.alpha = 1;
     self._ID19130 fadeovertime( 1 );
-    self._ID19130._ID55 = 0;
+    self._ID19130.alpha = 0;
 }
 
 _ID39697()
@@ -1189,11 +1189,11 @@ _ID9600()
     {
         var_1 = level._ID805[var_0];
         var_1._ID19130 = newclienthudelem( var_1 );
-        var_1._ID19130._ID499 = "center";
-        var_1._ID19130._ID1284 = "middle";
-        var_1._ID19130._ID1331 = -12;
-        var_1._ID19130._ID1339 = -12;
-        var_1._ID19130._ID55 = 0;
+        var_1._ID19130.horzalign = "center";
+        var_1._ID19130.vertalign = "middle";
+        var_1._ID19130.x = -12;
+        var_1._ID19130.y = -12;
+        var_1._ID19130.alpha = 0;
         var_1._ID19130._ID72 = 1;
         var_1._ID19130 setshader( "damage_feedback", 24, 48 );
     }
@@ -1237,8 +1237,8 @@ _ID8382( var_0 )
         wait 1;
 
     level._ID8383 = 1;
-    level._ID794 playsound( var_0, "sounddone" );
-    level._ID794 waittill( "sounddone" );
+    level.player playsound( var_0, "sounddone" );
+    level.player waittill( "sounddone" );
     wait 0.5;
     level._ID8383 = 0;
 }
@@ -1280,15 +1280,15 @@ _ID18409( var_0 )
     if ( isdefined( var_0 ) )
         var_1 = var_0;
 
-    var_1._ID1193 = "original_ent";
-    self._ID22137 = spawn( "script_origin", var_1._ID740 );
-    self._ID22137._ID740 = var_1._ID740;
-    self._ID22137._ID65 = var_1._ID65;
-    self._ID22137._ID1193 = "left_ent";
-    self._ID29985 = spawn( "script_origin", var_1._ID740 );
-    self._ID29985._ID740 = var_1._ID740;
-    self._ID29985._ID65 = var_1._ID65;
-    self._ID29985._ID1193 = "right_ent";
+    var_1.targetname = "original_ent";
+    self._ID22137 = spawn( "script_origin", var_1.origin );
+    self._ID22137.origin = var_1.origin;
+    self._ID22137.angles = var_1.angles;
+    self._ID22137.targetname = "left_ent";
+    self._ID29985 = spawn( "script_origin", var_1.origin );
+    self._ID29985.origin = var_1.origin;
+    self._ID29985.angles = var_1.angles;
+    self._ID29985.targetname = "right_ent";
     var_2 = spawnstruct();
     var_2._ID337 = self._ID22137;
     var_2._ID893 = 250;
@@ -1390,7 +1390,7 @@ _ID41805()
         return 0;
 
     var_0 = self._ID13197;
-    var_1 = _ID42237::_ID41802( var_0 geteye(), var_0 getplayerangles(), self._ID740, level._ID8760["35"] );
+    var_1 = _ID42237::_ID41802( var_0 geteye(), var_0 getplayerangles(), self.origin, level._ID8760["35"] );
     return var_1;
 }
 
@@ -1444,8 +1444,8 @@ _ID18360( var_0 )
         self._ID28408 = undefined;
         var_4 = undefined;
 
-        if ( isdefined( self._ID9504 ) && isdefined( self._ID9504._ID1191 ) )
-            var_4 = _ID42407::_ID16261( self._ID9504._ID1191, "targetname" );
+        if ( isdefined( self._ID9504 ) && isdefined( self._ID9504.target ) )
+            var_4 = _ID42407::_ID16261( self._ID9504.target, "targetname" );
 
         if ( isdefined( var_4 ) && isdefined( var_4._ID31273 ) )
             self._ID28408 = _ID42407::_ID16261( var_4._ID31273, "script_linkname" );
@@ -1486,7 +1486,7 @@ _ID18413( var_0, var_1, var_2 )
     thread _ID18408( var_0 );
 
     if ( var_2 )
-        self setturrettargetent( level._ID794 );
+        self setturrettargetent( level.player );
     else if ( var_1 )
     {
         self endon( "death" );
@@ -1555,15 +1555,15 @@ _ID18368( var_0, var_1, var_2, var_3 )
     if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    if ( !isdefined( var_0._ID170 ) )
+    if ( !isdefined( var_0.classname ) )
     {
         if ( !isdefined( self._ID12232 ) )
         {
-            self._ID12232 = spawn( "script_origin", var_0._ID740 );
+            self._ID12232 = spawn( "script_origin", var_0.origin );
             thread _ID42237::_ID10280( self._ID12232 );
         }
 
-        self._ID12232._ID740 = var_0._ID740;
+        self._ID12232.origin = var_0.origin;
         var_0 = self._ID12232;
     }
 
@@ -1619,7 +1619,7 @@ _ID18368( var_0, var_1, var_2, var_3 )
 _ID5478()
 {
     self waittill( "trigger",  var_0  );
-    var_1 = _ID42237::_ID16640( self._ID1191, "targetname" );
+    var_1 = _ID42237::_ID16640( self.target, "targetname" );
     var_1 = _ID42407::_ID3311( var_1 );
     _ID5477( var_0, var_1 );
 }
@@ -1638,7 +1638,7 @@ _ID5477( var_0, var_1 )
     var_2[0] = "tag_missile_right";
     var_2[1] = "tag_missile_left";
 
-    if ( level._ID912 == "roadkill" )
+    if ( level.script == "roadkill" )
     {
         var_2[0] = "tag_flash_2";
         var_2[1] = "tag_flash_11";
@@ -1654,7 +1654,7 @@ _ID5477( var_0, var_1 )
 
     for ( var_4 = 0; var_4 < var_1.size; var_4++ )
     {
-        var_3[var_4] = spawn( "script_origin", var_1[var_4]._ID740 );
+        var_3[var_4] = spawn( "script_origin", var_1[var_4].origin );
         var_0 setvehweapon( "littlebird_FFAR" );
         var_0 setturrettargetent( var_3[var_4] );
         var_5 = var_0 fireweapon( var_2[var_4 % var_2.size], var_3[var_4], ( 0, 0, 0 ) );

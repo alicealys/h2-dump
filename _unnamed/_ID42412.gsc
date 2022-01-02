@@ -12,7 +12,7 @@ _ID17557( var_0, var_1 )
     if ( var_0 isragdoll() )
         return;
 
-    var_2 = _ID42413::_ID47115( self._ID170 );
+    var_2 = _ID42413::_ID47115( self.classname );
     var_3 = level._ID40069[var_2];
     var_4 = level._ID40069[var_2].size;
     self._ID3575[self._ID3575.size] = var_0;
@@ -44,7 +44,7 @@ _ID17557( var_0, var_1 )
     }
 
     var_0._ID29969 = self;
-    var_0._ID25994 = var_0._ID486;
+    var_0._ID25994 = var_0.health;
     var_0._ID40167 = var_6._ID19302;
     var_0._ID40267 = var_6._ID35592;
 
@@ -66,31 +66,31 @@ _ID17557( var_0, var_1 )
             var_0._ID47712 = 1;
     }
 
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
 
     if ( isdefined( var_0._ID9813 ) && !isdefined( var_0._ID22746 ) && _ID40073() )
     {
         if ( var_0._ID40222 != 0 || _ID40072() )
         {
-            var_0._ID49 = !isdefined( var_0._ID31031 ) || var_0._ID31031;
+            var_0.allowdeath = !isdefined( var_0._ID31031 ) || var_0._ID31031;
 
             if ( isdefined( var_6._ID9801 ) )
                 var_0._ID24924 = var_6._ID9801;
         }
     }
 
-    if ( var_0._ID170 == "script_model" )
+    if ( var_0.classname == "script_model" )
     {
-        if ( isdefined( var_6._ID264 ) && var_0._ID49 && ( !isdefined( var_0._ID31031 ) || var_0._ID31031 ) )
+        if ( isdefined( var_6._ID264 ) && var_0.allowdeath && ( !isdefined( var_0._ID31031 ) || var_0._ID31031 ) )
             thread _ID17546( var_0, var_6 );
     }
 
     if ( !isdefined( var_0._ID40167 ) )
-        var_0._ID49 = 1;
+        var_0.allowdeath = 1;
 
     self._ID29965[self._ID29965.size] = var_0;
 
-    if ( var_0._ID170 != "script_model" && _ID42407::_ID35060( var_0 ) )
+    if ( var_0.classname != "script_model" && _ID42407::_ID35060( var_0 ) )
         return;
 
     var_7 = _ID40077( var_6 );
@@ -114,8 +114,8 @@ _ID17557( var_0, var_1 )
         if ( isdefined( var_6._ID5174 ) && !var_6._ID5174 )
             _ID10621( var_0, "weapon_" );
 
-        var_0._ID740 = var_7;
-        var_0._ID65 = var_8;
+        var_0.origin = var_7;
+        var_0.angles = var_8;
     }
 
     if ( var_5 == 0 && isdefined( var_3[0]._ID264 ) )
@@ -190,7 +190,7 @@ _ID17586( var_0 )
 
 _ID17698()
 {
-    var_0 = self._ID170;
+    var_0 = self.classname;
     self._ID3575 = [];
 
     if ( !( isdefined( level._ID40069 ) && isdefined( level._ID40069[var_0] ) ) )
@@ -198,7 +198,7 @@ _ID17698()
 
     var_1 = level._ID40069[var_0].size;
 
-    if ( isdefined( self._ID922 ) && self._ID922 == "ai_wait_go" )
+    if ( isdefined( self.script_noteworthy ) && self.script_noteworthy == "ai_wait_go" )
         thread _ID2360();
 
     self._ID30439 = [];
@@ -226,11 +226,11 @@ _ID17546( var_0, var_1 )
     waitframe;
     var_0 setcandamage( 1 );
     var_0 endon( "death" );
-    var_0._ID49 = 0;
-    var_0._ID486 = 10150;
+    var_0.allowdeath = 0;
+    var_0.health = 10150;
 
     if ( isdefined( var_0._ID31454 ) )
-        var_0._ID486 = var_0._ID486 + var_0._ID31454;
+        var_0.health = var_0.health + var_0._ID31454;
 
     var_0 endon( "jumping_out" );
 
@@ -240,7 +240,7 @@ _ID17546( var_0, var_1 )
             wait 0.05;
     }
 
-    while ( var_0._ID486 > 10000 )
+    while ( var_0.health > 10000 )
         var_0 waittill( "damage" );
 
     thread _ID17549( var_0, var_1 );
@@ -249,8 +249,8 @@ _ID17546( var_0, var_1 )
 _ID17549( var_0, var_1 )
 {
     var_2 = gettime() + getanimlength( var_1._ID264 ) * 1000;
-    var_3 = var_0._ID65;
-    var_4 = var_0._ID740;
+    var_3 = var_0.angles;
+    var_4 = var_0.origin;
     var_5 = !isai( var_0 );
 
     if ( !var_5 )
@@ -379,7 +379,7 @@ _ID17742()
 
 _ID40162()
 {
-    if ( level._ID40069[self._ID170].size - self._ID30439.size )
+    if ( level._ID40069[self.classname].size - self._ID30439.size )
         return 1;
     else
         return 0;
@@ -437,7 +437,7 @@ _ID17583( var_0, var_1, var_2, var_3, var_4 )
     if ( !isdefined( var_2 ) )
         var_2 = 0;
 
-    var_6 = level._ID40069[var_1._ID170];
+    var_6 = level._ID40069[var_1.classname];
 
     if ( isdefined( var_1._ID30445 ) )
     {
@@ -488,7 +488,7 @@ _ID17583( var_0, var_1, var_2, var_3, var_4 )
         }
     }
     else if ( var_12._ID4471.size )
-        var_8 = _ID42237::_ID16182( var_0._ID740, var_12._ID4471 );
+        var_8 = _ID42237::_ID16182( var_0.origin, var_12._ID4471 );
     else
         var_8 = undefined;
 
@@ -501,13 +501,13 @@ _ID17583( var_0, var_1, var_2, var_3, var_4 )
     else if ( !isdefined( var_8 ) )
         return;
 
-    var_9 = var_8._ID740;
-    var_13 = var_8._ID65;
+    var_9 = var_8.origin;
+    var_13 = var_8.angles;
 
     if ( isdefined( var_4 ) )
     {
-        var_14 = var_8._ID740 - var_1._ID740;
-        var_15 = anglestoright( var_1._ID65 );
+        var_14 = var_8.origin - var_1.origin;
+        var_15 = anglestoright( var_1.angles );
         var_16 = vectordot( var_14, var_15 ) > 0;
         var_17 = _ID42407::_ID49965( var_15, var_4 );
 
@@ -523,7 +523,7 @@ _ID17583( var_0, var_1, var_2, var_3, var_4 )
     var_0 notify( "stop_going_to_node" );
     var_0 _ID42407::_ID32322();
     var_0 _ID42407::_ID10877();
-    var_0._ID452 = 16;
+    var_0.goalradius = 16;
     var_0 setgoalpos( var_9 );
     var_0 waittill( "goal" );
     var_0 _ID42407::_ID12452();
@@ -546,7 +546,7 @@ _ID17583( var_0, var_1, var_2, var_3, var_4 )
     }
 
     var_1 _ID22404( var_0, var_18._ID34225, var_18._ID34226, var_18._ID22432 );
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
     var_18 = var_6[var_8._ID40222];
 
     if ( isdefined( var_8 ) )
@@ -569,7 +569,7 @@ _ID17583( var_0, var_1, var_2, var_3, var_4 )
         if ( isdefined( var_18._ID40150 ) )
             var_9 = var_1 gettagorigin( var_18._ID40150 );
         else
-            var_9 = var_1._ID740;
+            var_9 = var_1.origin;
 
         if ( isdefined( var_18._ID40149 ) )
             thread _ID42237::_ID27077( var_18._ID40149, var_9 );
@@ -626,8 +626,8 @@ _ID11786( var_0 )
 
 _ID8664()
 {
-    var_0 = spawn( "script_model", self._ID740 );
-    var_0 setmodel( self._ID669 );
+    var_0 = spawn( "script_model", self.origin );
+    var_0 setmodel( self.model );
     var_1 = self getattachsize();
 
     for ( var_2 = 0; var_2 < var_1; var_2++ )
@@ -646,7 +646,7 @@ _ID17541( var_0, var_1 )
     else
     {
         var_0 = _ID42407::_ID36874( var_0 );
-        var_2 = self._ID170;
+        var_2 = self.classname;
         var_3 = level._ID40069[var_2].size;
         var_4 = _ID3052( self, var_1 );
         _ID22404( var_0, var_4._ID34225, var_4._ID34226, var_4._ID22432 );
@@ -676,7 +676,7 @@ _ID22404( var_0, var_1, var_2, var_3, var_4, var_5 )
 
 _ID3052( var_0, var_1 )
 {
-    var_2 = _ID42413::_ID47115( var_0._ID170 );
+    var_2 = _ID42413::_ID47115( var_0.classname );
     return level._ID40069[var_2][var_1];
 }
 
@@ -743,7 +743,7 @@ _ID17588( var_0, var_1 )
     {
         var_4 = gettime() + 2000;
 
-        while ( gettime() < var_4 && isdefined( var_0._ID322 ) )
+        while ( gettime() < var_4 && isdefined( var_0.enemy ) )
             _ID3191( var_0, var_2._ID34225, var_0._ID40267, undefined, undefined, "firing" );
 
         var_5 = randomint( 5 ) + 10;
@@ -1045,10 +1045,10 @@ _ID16049()
     if ( isdefined( self._ID39487 ) )
         var_2 = self._ID39487;
 
-    var_1 = level._ID40300[self._ID170][var_2];
+    var_1 = level._ID40300[self.classname][var_2];
 
     if ( !isdefined( var_1 ) )
-        var_1 = level._ID40300[self._ID170]["default"];
+        var_1 = level._ID40300[self.classname]["default"];
 
     if ( isdefined( var_1 ) )
     {
@@ -1064,7 +1064,7 @@ _ID7407( var_0, var_1 )
     if ( !isdefined( var_1 ) )
         var_1 = self._ID39487;
 
-    var_2 = self._ID170;
+    var_2 = self.classname;
 
     if ( !isdefined( level._ID40300[var_2] ) )
         return 1;
@@ -1093,7 +1093,7 @@ _ID16503( var_0, var_1, var_2 )
 
 _ID16502( var_0, var_1, var_2, var_3, var_4 )
 {
-    var_5 = _ID42413::_ID47115( self._ID170 );
+    var_5 = _ID42413::_ID47115( self.classname );
 
     if ( var_4 )
     {
@@ -1220,7 +1220,7 @@ _ID16494( var_0, var_1, var_2 )
     if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    var_3 = _ID42413::_ID47115( self._ID170 );
+    var_3 = _ID42413::_ID47115( self.classname );
     var_4 = _ID3052( self, var_1 );
 
     if ( isdefined( self._ID3563 ) && isdefined( self._ID3563[var_4._ID13955] ) )
@@ -1235,9 +1235,9 @@ _ID16494( var_0, var_1, var_2 )
     var_7 = var_0 gettagangles( level._ID40080[var_3][var_4._ID13955]._ID1067 );
     self._ID13956[var_4._ID13955] = 1;
     var_8 = spawn( "script_model", var_6 );
-    var_8._ID65 = var_7;
-    var_8._ID740 = var_6;
-    var_8 setmodel( level._ID40080[var_3][var_4._ID13955]._ID669 );
+    var_8.angles = var_7;
+    var_8.origin = var_6;
+    var_8 setmodel( level._ID40080[var_3][var_4._ID13955].model );
     self._ID13955[var_4._ID13955] = var_8;
     var_8 useanimtree( #animtree );
     var_8 linkto( var_0, level._ID40080[var_3][var_4._ID13955]._ID1067, ( 0, 0, 0 ), ( 0, 0, 0 ) );
@@ -1382,7 +1382,7 @@ _ID17602( var_0, var_1 )
             var_6 = var_4 gettagorigin( var_2._ID40155 );
         }
         else
-            var_6 = var_4._ID740;
+            var_6 = var_4.origin;
 
         if ( isdefined( var_2._ID40154 ) && !var_5 )
             thread _ID42237::_ID27077( var_2._ID40154, var_6 );
@@ -1438,14 +1438,14 @@ _ID17602( var_0, var_1 )
     }
 
     if ( var_0 _ID33902() )
-        var_0._ID486 = var_0._ID25994;
+        var_0.health = var_0._ID25994;
 
     var_0._ID25994 = undefined;
 
     if ( isai( var_0 ) && isalive( var_0 ) )
         var_0 endon( "death" );
 
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
 
     if ( isdefined( var_2._ID13393 ) )
         var_10 = var_2._ID13393;
@@ -1485,7 +1485,7 @@ _ID17602( var_0, var_1 )
             var_0 thread _ID42407::_ID27001( var_2._ID16498 );
 
         if ( isdefined( var_0._ID27942 ) && isdefined( var_2._ID27437 ) )
-            level._ID794 thread _ID42237::_ID27000( var_2._ID27437 );
+            level.player thread _ID42237::_ID27000( var_2._ID27437 );
 
         var_0 notify( "newanim" );
         var_0 notify( "jumping_out" );
@@ -1569,13 +1569,13 @@ _ID17602( var_0, var_1 )
                 return;
 
             var_15 = spawn( "script_model", self gettagorigin( var_10 ) );
-            var_15._ID65 = ( 0, self._ID65[1] + self._ID2969, 0 );
+            var_15.angles = ( 0, self.angles[1] + self._ID2969, 0 );
             self._ID2969 = self._ID2969 + 5;
             var_15 setmodel( "tag_origin" );
-            var_16 = _ID42407::_ID17434( self._ID740 ) + ( 0, 0, self._ID39485 );
-            var_15._ID740 = var_16 + ( randomintrange( 10, 20 ), randomintrange( 10, 20 ), 0 );
-            var_17 = spawn( "script_model", var_15._ID740 );
-            var_17._ID65 = var_15._ID65;
+            var_16 = _ID42407::_ID17434( self.origin ) + ( 0, 0, self._ID39485 );
+            var_15.origin = var_16 + ( randomintrange( 10, 20 ), randomintrange( 10, 20 ), 0 );
+            var_17 = spawn( "script_model", var_15.origin );
+            var_17.angles = var_15.angles;
             var_17 setmodel( self._ID39491 );
             var_17._ID3189 = "parachute";
             var_17 useanimtree( level._ID30900["parachute"] );
@@ -1620,13 +1620,13 @@ _ID17602( var_0, var_1 )
         }
 
         if ( isdefined( var_0._ID27942 ) && isdefined( var_2._ID27437 ) )
-            level._ID794 thread _ID42237::_ID36516( var_2._ID27437 );
+            level.player thread _ID42237::_ID36516( var_2._ID27437 );
 
         if ( isdefined( var_2._ID16498 ) )
             var_0 thread _ID42237::_ID36516( var_2._ID16498 );
 
         if ( isdefined( var_0._ID27942 ) && isdefined( var_2._ID27436 ) )
-            level._ID794 thread _ID42407::_ID27079( var_2._ID27436 );
+            level.player thread _ID42407::_ID27079( var_2._ID27436 );
     }
     else if ( !isai( var_0 ) )
     {
@@ -1657,7 +1657,7 @@ _ID17602( var_0, var_1 )
         if ( isdefined( var_0._ID24924 ) )
             var_0._ID24924 = undefined;
 
-        var_0._ID49 = 1;
+        var_0.allowdeath = 1;
     }
 
     if ( !isai( var_0 ) && var_0 _ID44363() )
@@ -1700,8 +1700,8 @@ _ID17602( var_0, var_1 )
 
             if ( ( !isdefined( var_0.keepgoalonunload ) || var_0.keepgoalonunload == 0 ) && _ID17582( var_0 ) )
             {
-                var_0._ID452 = 600;
-                var_0 setgoalpos( var_0._ID740 );
+                var_0.goalradius = 600;
+                var_0 setgoalpos( var_0.origin );
             }
         }
     }
@@ -1749,14 +1749,14 @@ _ID26242( var_0, var_1, var_2, var_3, var_4 )
     var_6 = var_1 gettagangles( "tag_driver" );
     var_0 forceteleport( var_5, var_6 );
     var_0 linkto( var_1, "tag_driver" );
-    var_1 animscripted( "parachute_unload", self._ID740, self._ID65, var_2 );
+    var_1 animscripted( "parachute_unload", self.origin, self.angles, var_2 );
 
     if ( isdefined( var_4 ) )
         var_1 thread _ID26241( "parachute_unload", "show_parachute", var_4 );
     else
         var_1 thread _ID26241( "parachute_unload", "show_parachute" );
 
-    var_0 animscripted( "parachute_unload", var_0._ID740, var_0._ID65, var_3 );
+    var_0 animscripted( "parachute_unload", var_0.origin, var_0.angles, var_3 );
     level thread _ID26238( var_0, var_1 );
     var_1 waittillmatch( "parachute_unload",  "end"  );
     var_1 notify( "parachute_landed" );
@@ -1767,9 +1767,9 @@ _ID26242( var_0, var_1, var_2, var_3, var_4 )
 
 _ID26240( var_0 )
 {
-    var_1 = anglestoforward( var_0._ID65 );
+    var_1 = anglestoforward( var_0.angles );
     var_2 = vectornormalize( _ID42237::_ID14539( var_1 ) );
-    var_3 = self._ID740 + var_2 * 10000;
+    var_3 = self.origin + var_2 * 10000;
     thread _ID42407::_ID11708( self, var_3, 1, 0, 0, 10 );
     self moveto( var_3, 1 );
 }
@@ -1837,17 +1837,17 @@ _ID17582( var_0 )
     if ( isdefined( var_0._ID28791 ) )
         return 0;
 
-    if ( !isdefined( var_0._ID1191 ) )
+    if ( !isdefined( var_0.target ) )
         return 1;
 
-    var_1 = getnodearray( var_0._ID1191, "targetname" );
+    var_1 = getnodearray( var_0.target, "targetname" );
 
     if ( var_1.size > 1 )
         return 0;
 
-    var_2 = getent( var_0._ID1191, "targetname" );
+    var_2 = getent( var_0.target, "targetname" );
 
-    if ( isdefined( var_2 ) && var_2._ID170 == "info_volume" )
+    if ( isdefined( var_2 ) && var_2.classname == "info_volume" )
     {
         var_0 setgoalvolumeauto( var_2 );
         return 0;
@@ -1873,8 +1873,8 @@ _ID3191( var_0, var_1, var_2, var_3, var_4, var_5 )
 
     if ( !isdefined( var_1 ) )
     {
-        var_7 = var_0._ID740;
-        var_8 = var_0._ID65;
+        var_7 = var_0.origin;
+        var_8 = var_0.angles;
     }
     else
     {
@@ -1917,7 +1917,7 @@ _ID3191( var_0, var_1, var_2, var_3, var_4, var_5 )
             return;
 
         var_0 stopanimscripted();
-        var_0._ID525 = 0;
+        var_0.interval = 0;
         var_0 thread _ID29331();
     }
     else
@@ -1946,8 +1946,8 @@ _ID29331()
     self endon( "death" );
     wait 2;
 
-    if ( isdefined( self ) && self._ID525 == 0 )
-        self._ID525 = 80;
+    if ( isdefined( self ) && self.interval == 0 )
+        self.interval = 80;
 }
 
 _ID3192( var_0, var_1 )
@@ -1965,11 +1965,11 @@ _ID3192( var_0, var_1 )
 
     var_2 = undefined;
     var_3 = undefined;
-    var_4 = var_1._ID486 <= 0;
+    var_4 = var_1.health <= 0;
 
     for (;;)
     {
-        if ( !var_4 && !( isdefined( var_1 ) && var_1._ID486 > 0 ) )
+        if ( !var_4 && !( isdefined( var_1 ) && var_1.health > 0 ) )
             break;
 
         var_0 waittill( "damage",  var_2, var_3  );
@@ -2008,13 +2008,13 @@ _ID3193( var_0, var_1, var_2 )
     if ( isdefined( var_0._ID28893 ) )
     {
         var_3 = getangledelta( var_0._ID28893, 0, 1 );
-        var_4 = physicstrace( var_0._ID740 + ( 0, 0, 16 ), var_0._ID740 - ( 0, 0, 10000 ) );
-        var_5 = distance( var_0._ID740 + ( 0, 0, 16 ), var_4 );
+        var_4 = physicstrace( var_0.origin + ( 0, 0, 16 ), var_0.origin - ( 0, 0, 10000 ) );
+        var_5 = distance( var_0.origin + ( 0, 0, 16 ), var_4 );
 
         if ( abs( var_3[2] + 16 ) <= abs( var_5 ) )
         {
             var_0 thread _ID42407::_ID27079( "generic_death_falling" );
-            var_0 animscripted( "fastrope_fall", var_0._ID740, var_0._ID65, var_0._ID28893 );
+            var_0 animscripted( "fastrope_fall", var_0.origin, var_0.angles, var_0._ID28893 );
             var_0 waittillmatch( "fastrope_fall",  "start_ragdoll"  );
         }
     }
@@ -2027,13 +2027,13 @@ _ID3193( var_0, var_1, var_2 )
     var_0._ID3004 = 1;
     var_0 notify( "rope_death",  var_2  );
     _ID42372::_ID9791( var_2 );
-    var_0 kill( var_2._ID740, var_2 );
+    var_0 kill( var_2.origin, var_2 );
 
     if ( isdefined( var_0._ID31459 ) || isdefined( var_0._ID11842 ) )
     {
         var_0 notsolid();
-        var_6 = getweaponmodel( var_0._ID1302 );
-        var_7 = var_0._ID1302;
+        var_6 = getweaponmodel( var_0.weapon );
+        var_7 = var_0.weapon;
 
         if ( isdefined( var_6 ) )
         {
@@ -2041,8 +2041,8 @@ _ID3193( var_0, var_1, var_2 )
             var_8 = var_0 gettagorigin( "tag_weapon_right" );
             var_9 = var_0 gettagangles( "tag_weapon_right" );
             level._ID17495 = spawn( "weapon_" + var_7, ( 0, 0, 0 ) );
-            level._ID17495._ID65 = var_9;
-            level._ID17495._ID740 = var_8;
+            level._ID17495.angles = var_9;
+            level._ID17495.origin = var_8;
         }
     }
     else
@@ -2067,7 +2067,7 @@ _ID3193( var_0, var_1, var_2 )
         }
 
         var_12 = length( var_0._ID9797 );
-        var_13 = vectornormalize( var_1 localtoworldcoords( var_0._ID9797 ) - var_0._ID740 ) * var_12;
+        var_13 = vectornormalize( var_1 localtoworldcoords( var_0._ID9797 ) - var_0.origin ) * var_12;
         var_0 startragdollfromimpact( "torso_lower", var_13 );
     }
     else
@@ -2119,7 +2119,7 @@ _ID52424( var_0, var_1 )
 
     if ( gettime() - var_2 < var_5 )
     {
-        var_0 animscripted( "snowmobile_unload_death", var_0._ID740, var_0._ID65, var_0._ID46105 );
+        var_0 animscripted( "snowmobile_unload_death", var_0.origin, var_0.angles, var_0._ID46105 );
         var_0 waittillmatch( "snowmobile_unload_death",  "start_ragdoll"  );
     }
 
@@ -2156,7 +2156,7 @@ _ID3194( var_0, var_1 )
         }
 
         if ( isdefined( var_2 ) )
-            var_0 kill( var_0._ID740, var_2 );
+            var_0 kill( var_0.origin, var_2 );
         else
             var_0 kill();
     }
@@ -2198,9 +2198,9 @@ _ID17607( var_0, var_1, var_2 )
     if ( isdefined( var_3._ID13635 ) )
         return _ID17542( var_0 );
 
-    if ( isdefined( level._ID40231 ) && isdefined( level._ID40231[self._ID170] ) )
+    if ( isdefined( level._ID40231 ) && isdefined( level._ID40231[self.classname] ) )
     {
-        self [[ level._ID40231[self._ID170] ]]();
+        self [[ level._ID40231[self.classname] ]]();
         return;
     }
 
@@ -2227,7 +2227,7 @@ _ID17607( var_0, var_1, var_2 )
             return;
 
         _ID45456::_ID54623( var_0 );
-        [[ level._ID16945 ]]( "MOD_RIFLE_BULLET", "torso_upper", var_0._ID740 );
+        [[ level._ID16945 ]]( "MOD_RIFLE_BULLET", "torso_upper", var_0.origin );
         var_0 delete();
     }
 }
@@ -2272,7 +2272,7 @@ _ID17595( var_0, var_1 )
 
 _ID17593( var_0, var_1 )
 {
-    var_2 = level._ID40069[self._ID170][var_1];
+    var_2 = level._ID40069[self.classname][var_1];
 
     if ( isdefined( var_2._ID19312 ) )
         var_0._ID40168 = var_2._ID19312;
@@ -2280,7 +2280,7 @@ _ID17593( var_0, var_1 )
 
 _ID17592( var_0, var_1 )
 {
-    var_2 = level._ID40069[self._ID170][var_1];
+    var_2 = level._ID40069[self.classname][var_1];
 
     if ( isdefined( var_2._ID19311 ) )
         var_0._ID40168 = var_2._ID19311;
@@ -2347,7 +2347,7 @@ _ID17575( var_0, var_1, var_2 )
         var_0 _ID42407::_ID10949();
 
     if ( isdefined( var_3._ID34227 ) && var_3._ID34227 )
-        var_4 thread _ID42332::_ID616( var_0, var_3 );
+        var_4 thread _ID42332::main( var_0, var_3 );
     else
     {
         var_4 thread _ID44818( var_0, var_5 );
@@ -2389,10 +2389,10 @@ _ID17542( var_0 )
     if ( !isdefined( var_2._ID13635 ) )
         return;
 
-    [[ level._ID16945 ]]( "MOD_RIFLE_BULLET", "torso_upper", var_0._ID740 );
+    [[ level._ID16945 ]]( "MOD_RIFLE_BULLET", "torso_upper", var_0.origin );
     var_0._ID9813 = var_2._ID13635;
-    var_3 = self._ID65;
-    var_4 = var_0._ID740;
+    var_3 = self.angles;
+    var_4 = var_0.origin;
 
     if ( isdefined( var_2._ID13636 ) )
     {
@@ -2404,8 +2404,8 @@ _ID17542( var_0 )
     var_0 = _ID8613( var_0 );
     _ID10621( var_0, "weapon_" );
     var_0 notsolid();
-    var_0._ID740 = var_4;
-    var_0._ID65 = var_3;
+    var_0.origin = var_4;
+    var_0.angles = var_3;
     var_0 animscripted( "deathanim", var_4, var_3, var_2._ID13635 );
     var_5 = 0.3;
 
@@ -2416,7 +2416,7 @@ _ID17542( var_0 )
     var_7 = gettime() + var_6 * 1000;
     wait(var_6 * var_5);
     var_8 = ( 0, 0, 1 );
-    var_9 = var_0._ID740;
+    var_9 = var_0.origin;
 
     if ( getdvar( "ragdoll_enable" ) == "0" )
     {
@@ -2431,9 +2431,9 @@ _ID17542( var_0 )
 
     while ( !var_0 isragdoll() && gettime() < var_7 )
     {
-        var_9 = var_0._ID740;
+        var_9 = var_0.origin;
         wait 0.05;
-        var_8 = var_0._ID740 - var_9;
+        var_8 = var_0.origin - var_9;
         var_0 startragdoll();
     }
 
@@ -2443,7 +2443,7 @@ _ID17542( var_0 )
     for ( var_10 = 0; var_10 < 3; var_10++ )
     {
         if ( isdefined( var_0 ) )
-            var_9 = var_0._ID740;
+            var_9 = var_0.origin;
 
         wait 0.05;
     }
@@ -2460,9 +2460,9 @@ _ID8613( var_0, var_1, var_2 )
     if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    var_3 = spawn( "script_model", var_0._ID740 );
-    var_3._ID65 = var_0._ID65;
-    var_3 setmodel( var_0._ID669 );
+    var_3 = spawn( "script_model", var_0.origin );
+    var_3.angles = var_0.angles;
+    var_3 setmodel( var_0.model );
     var_4 = var_0 getattachsize();
 
     for ( var_5 = 0; var_5 < var_4 && ( var_2 || var_5 < 1 ); var_5++ )
@@ -2475,13 +2475,13 @@ _ID8613( var_0, var_1, var_2 )
 
     var_3 useanimtree( #animtree );
 
-    if ( isdefined( var_0._ID1194 ) )
-        var_3._ID1194 = var_0._ID1194;
+    if ( isdefined( var_0.team ) )
+        var_3.team = var_0.team;
 
     var_3.cheat = var_0.cheat;
     var_3._ID43135 = var_0._ID43135;
 
-    if ( isdefined( var_3._ID1194 ) && var_3._ID1194 != "allies" )
+    if ( isdefined( var_3.team ) && var_3.team != "allies" )
         var_3 thread _ID49347::addspecialmonitors();
 
     if ( !var_1 )
@@ -2512,8 +2512,8 @@ _ID40145( var_0, var_1, var_2 )
     var_7 = self gettagangles( var_1 );
     var_4 = getstartorigin( var_6, var_7, var_0 );
     var_5 = getstartangles( var_6, var_7, var_0 );
-    var_3._ID740 = var_4;
-    var_3._ID65 = var_5;
+    var_3.origin = var_4;
+    var_3.angles = var_5;
     var_3._ID40222 = var_2;
     return var_3;
 }
@@ -2523,7 +2523,7 @@ _ID20593( var_0, var_1, var_2 )
     if ( !isdefined( var_2 ) )
         return 1;
 
-    var_3 = var_0._ID170;
+    var_3 = var_0.classname;
     var_4 = level._ID40300[var_3][var_2];
 
     foreach ( var_6 in var_4 )
@@ -2537,7 +2537,7 @@ _ID20593( var_0, var_1, var_2 )
 
 _ID15570( var_0 )
 {
-    var_1 = level._ID40069[self._ID170];
+    var_1 = level._ID40069[self.classname];
     var_2 = [];
     var_3 = [];
 
@@ -2738,7 +2738,7 @@ _ID10250()
 
     foreach ( var_5 in var_3 )
     {
-        if ( distance( var_5._ID740, var_0 ) < var_2 )
+        if ( distance( var_5.origin, var_0 ) < var_2 )
             var_5 delete();
     }
 }

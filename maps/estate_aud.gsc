@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -226,15 +226,15 @@ _ID46012()
 _ID52058()
 {
     _ID42465::_ID23801( "bouncing_betty_slowmo_mix" );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID42476::_ID34512( "slomo" );
-    level._ID794 _ID42237::_ID36516( "scn_bouncing_betty_sequence_lp" );
-    level._ID794 playsound( "scn_stop_bouncing_betty_slowmo" );
+    level.player _ID42237::_ID36516( "scn_bouncing_betty_sequence_lp" );
+    level.player playsound( "scn_stop_bouncing_betty_slowmo" );
 }
 
 _ID46524()
 {
-    level._ID794 playsound( "scn_start_bouncing_betty_shellshock" );
+    level.player playsound( "scn_start_bouncing_betty_shellshock" );
     _ID42465::_ID23797( "bouncing_betty_shellshock_mix" );
     wait 10;
     _ID42465::_ID23801( "bouncing_betty_shellshock_mix" );
@@ -330,10 +330,10 @@ _ID49997()
 _ID52625( var_0, var_1, var_2, var_3 )
 {
     thread _ID42407::_ID4917( "axis" );
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID42476::_ID34518( "slomo" );
-    level._ID794 playsound( var_1 );
-    level._ID794 thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
+    level.player playsound( var_1 );
+    level.player thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
     _ID42474::_ID4668( "exterior", "ambient_estate_ext_forest", 1.0 );
     _ID42465::_ID23797( var_0 );
     _ID42474::_ID4655( 1 );
@@ -345,10 +345,10 @@ _ID52625( var_0, var_1, var_2, var_3 )
 _ID52851( var_0, var_1, var_2, var_3 )
 {
     _ID42465::_ID23801( var_0 );
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID42476::_ID34512( "slomo" );
-    level._ID794 _ID42237::_ID36516( var_1 );
-    level._ID794 playsound( var_2 );
+    level.player _ID42237::_ID36516( var_1 );
+    level.player playsound( var_2 );
     _ID42490::_ID34527( 1.0 );
     _ID42474::_ID4655( 0 );
     _ID42474::_ID4662( 0 );
@@ -366,17 +366,17 @@ _ID47409()
 _ID47657()
 {
     self endon( "death" );
-    var_0 = getvehiclenode( self._ID1191, "targetname" );
+    var_0 = getvehiclenode( self.target, "targetname" );
 
     if ( isdefined( var_0._ID43356 ) )
         _ID42475::_ID34575( var_0._ID43356 );
 
     while ( isalive( self ) )
     {
-        if ( !isdefined( var_0._ID1191 ) )
+        if ( !isdefined( var_0.target ) )
             return;
 
-        var_1 = getvehiclenode( var_0._ID1191, "targetname" );
+        var_1 = getvehiclenode( var_0.target, "targetname" );
 
         if ( !isdefined( var_1 ) )
             return;

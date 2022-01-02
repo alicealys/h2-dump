@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -264,7 +264,7 @@ _ID44345()
     thread favesc_falling_music_fail();
     _ID42465::_ID23797( "big_jump_mix" );
     wait 0.2;
-    level._ID794 playsound( "scn_player_jump_fail" );
+    level.player playsound( "scn_player_jump_fail" );
 }
 
 _ID45138()
@@ -283,10 +283,10 @@ _ID53862()
 _ID46203( var_0 )
 {
     wait 2.2;
-    level._ID46358 = spawn( "script_origin", var_0._ID740 );
+    level._ID46358 = spawn( "script_origin", var_0.origin );
     var_1 = getent( "market_chopper_distant_destination", "targetname" );
     level._ID46358 thread _ID42237::_ID27000( "emt_fav_escape_heli_dist_circle_loop", undefined, 0.8, 2.0 );
-    level._ID46358 moveto( var_1._ID740, 7.0, 0.05, 0.05 );
+    level._ID46358 moveto( var_1.origin, 7.0, 0.05, 0.05 );
 }
 
 _ID43014()
@@ -294,7 +294,7 @@ _ID43014()
     var_0 = getent( "bird_flyaway_01_start", "targetname" );
     var_1 = getent( "bird_flyaway_01_end", "targetname" );
     var_0 thread _ID42407::_ID27079( "anml_bird_startle_flyaway" );
-    var_0 moveto( var_1._ID740, 3.5, 0.5, 0.05 );
+    var_0 moveto( var_1.origin, 3.5, 0.5, 0.05 );
 }
 
 _ID52752()
@@ -302,7 +302,7 @@ _ID52752()
     var_0 = getent( "bird_flyaway_02_start", "targetname" );
     var_1 = getent( "bird_flyaway_02_end", "targetname" );
     var_0 thread _ID42407::_ID27079( "anml_bird_startle_flyaway" );
-    var_0 moveto( var_1._ID740, 3.0, 0.05, 0.05 );
+    var_0 moveto( var_1.origin, 3.0, 0.05, 0.05 );
 }
 
 _ID51200()
@@ -379,8 +379,8 @@ _ID49609()
 
 _ID43790()
 {
-    level._ID794 playsound( "scn_favela_escape_bigjump_slomo_in" );
-    level._ID794 thread _ID42237::_ID27000( "scn_favela_escape_bigjump_slomo_lp", undefined, 1.0, 1.0 );
+    level.player playsound( "scn_favela_escape_bigjump_slomo_in" );
+    level.player thread _ID42237::_ID27000( "scn_favela_escape_bigjump_slomo_lp", undefined, 1.0, 1.0 );
     _ID42465::_ID23797( "big_jump_slomo_mix" );
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( "big_jump_slomo_filter", 0.5 );
@@ -391,8 +391,8 @@ _ID43790()
 _ID52893()
 {
     _ID42465::_ID23801( "big_jump_slomo_mix" );
-    level._ID794 _ID42237::_ID36516( "scn_favela_escape_bigjump_slomo_lp" );
-    level._ID794 playsound( "scn_favela_escape_bigjump_slomo_out" );
+    level.player _ID42237::_ID36516( "scn_favela_escape_bigjump_slomo_lp" );
+    level.player playsound( "scn_favela_escape_bigjump_slomo_out" );
     _ID42490::_ID34527( 1 );
     _ID42474::_ID4655( 0 );
     _ID42474::_ID4662( 0 );
@@ -437,22 +437,22 @@ crucified_rojas_death()
 
 footstep_player_additional_layer()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
-        level._ID794 waittill( "foley",  var_0, var_1, var_2  );
+        level.player waittill( "foley",  var_0, var_1, var_2  );
 
         switch ( var_0 )
         {
             case "walk":
-                level._ID794 thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_walk" );
+                level.player thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_walk" );
                 continue;
             case "run":
-                level._ID794 thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_run" );
+                level.player thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_run" );
                 continue;
             case "sprint":
-                level._ID794 thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_sprint" );
+                level.player thread _ID42407::_ID27079( "scn_favela_escape_player_fs_layer_sprint" );
                 continue;
         }
     }
@@ -461,7 +461,7 @@ footstep_player_additional_layer()
 soap_hanging_up_phone( var_0 )
 {
     if ( isdefined( var_0.payphone ) )
-        var_0.payphone _ID42237::_ID27077( "scn_favela_escape_soap_intro_phone", var_0.payphone._ID740 + ( 0, 12, 50 ) );
+        var_0.payphone _ID42237::_ID27077( "scn_favela_escape_soap_intro_phone", var_0.payphone.origin + ( 0, 12, 50 ) );
 }
 
 solorun_pavelow_passby()
@@ -497,5 +497,5 @@ chopper_jump_death_scream()
 favesc_falling_music_fail()
 {
     _ID42407::_ID24584( 3 );
-    level._ID794 _ID42407::_ID27079( "mus_favelaescape_fixedfall_fail", "fixedfall_music_done" );
+    level.player _ID42407::_ID27079( "mus_favelaescape_fixedfall_fail", "fixedfall_music_done" );
 }

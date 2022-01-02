@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -124,7 +124,7 @@ _ID52399( var_0 )
 {
     _ID42474::_ID4669( "interior_vehicle_open" );
     _ID42465::_ID23797( "laatpv_ride_intro" );
-    level._ID794 _ID42407::_ID27080( "scn_player_intro_blackscreen", undefined, undefined );
+    level.player _ID42407::_ID27080( "scn_player_intro_blackscreen", undefined, undefined );
 }
 
 _ID51356( var_0 )
@@ -369,7 +369,7 @@ _ID47146( var_0 )
 
 _ID51106()
 {
-    level._ID794 thread _ID42407::_ID27001( "predator_drone_ambient_lp", undefined, 1, 1, 0.5, 0.5 );
+    level.player thread _ID42407::_ID27001( "predator_drone_ambient_lp", undefined, 1, 1, 0.5, 0.5 );
     _ID42465::_ID23797( "predator_missile_mix" );
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( "predator_missile_filter", 0.5 );
@@ -467,7 +467,7 @@ _ID52187()
 
 _ID47993()
 {
-    var_0 = distancesquared( level._ID794._ID740, self._ID740 );
+    var_0 = distancesquared( level.player.origin, self.origin );
 
     if ( var_0 < 900000000 )
         thread _ID42407::_ID27079( "veh_jet_passenger_slow_linear_short" );

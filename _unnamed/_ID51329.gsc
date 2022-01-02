@@ -17,13 +17,13 @@ _ID4952()
 
     foreach ( var_3 in var_0 )
     {
-        if ( isdefined( var_3._ID170 ) && issubstr( var_3._ID170, "trigger_multiple_bcs" ) )
+        if ( isdefined( var_3.classname ) && issubstr( var_3.classname, "trigger_multiple_bcs" ) )
             var_1[var_1.size] = var_3;
     }
 
     foreach ( var_3 in var_1 )
     {
-        var_6 = _ID26267( level._ID4938[var_3._ID170] );
+        var_6 = _ID26267( level._ID4938[var_3.classname] );
 
         if ( var_6.size > 1 )
             var_6 = _ID42237::_ID3320( var_6 );

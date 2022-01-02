@@ -98,10 +98,10 @@ _ID19588()
 _ID8861( var_0 )
 {
     self endon( "killanimscript" );
-    self._ID8893 = self._ID700;
+    self._ID8893 = self.node;
     self._ID8910 = var_0;
 
-    if ( !isdefined( self._ID700._ID39235 ) )
+    if ( !isdefined( self.node._ID39235 ) )
         animscripts\cover_behavior::_ID39234( 0 );
 
     if ( var_0 == "crouch" )
@@ -116,33 +116,33 @@ _ID8861( var_0 )
     }
 
     self._ID7._ID2428 = undefined;
-    self orientmode( "face angle", self._ID8893._ID65[1] );
+    self orientmode( "face angle", self._ID8893.angles[1] );
 
-    if ( isdefined( self._ID1302 ) && animscripts\utility::_ID39985() && isdefined( self._ID700 ) && isdefined( self._ID700._ID39350 ) && canspawnturret() )
+    if ( isdefined( self.weapon ) && animscripts\utility::_ID39985() && isdefined( self.node ) && isdefined( self.node._ID39350 ) && canspawnturret() )
     {
         if ( var_0 == "crouch" )
         {
-            if ( _ID20888( self._ID1302 ) )
+            if ( _ID20888( self.weapon ) )
                 var_1 = "rpd_bipod_crouch";
             else
                 var_1 = "saw_bipod_crouch";
         }
-        else if ( _ID20888( self._ID1302 ) )
+        else if ( _ID20888( self.weapon ) )
             var_1 = "rpd_bipod_stand";
         else
             var_1 = "saw_bipod_stand";
 
-        if ( _ID20888( self._ID1302 ) )
+        if ( _ID20888( self.weapon ) )
             var_2 = "weapon_rpd_MG_Setup";
         else
             var_2 = "weapon_saw_MG_Setup";
 
-        if ( _ID45002( self._ID1302 ) && _ID51972( var_1 ) )
+        if ( _ID45002( self.weapon ) && _ID51972( var_1 ) )
             var_1 += "_muzzle_small";
 
         _ID39957( var_1, var_2, 0 );
     }
-    else if ( isdefined( self._ID700 ) && isdefined( self._ID700._ID39235 ) )
+    else if ( isdefined( self.node ) && isdefined( self.node._ID39235 ) )
         _ID39960();
 
     self animmode( "normal" );
@@ -165,7 +165,7 @@ _ID8861( var_0 )
         var_5 = 0.4;
         var_6 = _ID22663( var_5 );
 
-        if ( distancesquared( self._ID740, self._ID8893._ID740 ) > 1 )
+        if ( distancesquared( self.origin, self._ID8893.origin ) > 1 )
         {
             thread animscripts\shared::_ID24471( self._ID8893, var_6 );
             wait(var_6 / 2);
@@ -198,7 +198,7 @@ _ID8861( var_0 )
 
     var_7 = spawnstruct();
 
-    if ( !self._ID381 )
+    if ( !self.fixednode )
         var_7._ID24470 = animscripts\cover_behavior::_ID24470;
 
     var_7._ID868 = ::_ID8897;
@@ -207,10 +207,10 @@ _ID8861( var_0 )
     var_7._ID13953 = ::_ID13953;
     var_7._ID19302 = ::_ID19302;
     var_7._ID14562 = ::_ID14562;
-    var_7._ID458 = ::_ID39080;
+    var_7.grenade = ::_ID39080;
     var_7._ID17412 = ::_ID39081;
     var_7._ID5294 = ::_ID5294;
-    animscripts\cover_behavior::_ID616( var_7 );
+    animscripts\cover_behavior::main( var_7 );
 }
 
 _ID20888( var_0 )
@@ -234,8 +234,8 @@ _ID19879()
         return;
 
     var_0 = ( 0, 0, 42 );
-    var_1 = anglestoforward( self._ID65 );
-    self._ID9349 = sighttracepassed( self._ID740 + var_0, self._ID740 + var_0 + var_1 * 64, 0, undefined );
+    var_1 = anglestoforward( self.angles );
+    self._ID9349 = sighttracepassed( self.origin + var_0, self.origin + var_0 + var_1 * 64, 0, undefined );
 }
 
 _ID19880()
@@ -244,8 +244,8 @@ _ID19880()
         return;
 
     var_0 = ( 0, 0, 48 );
-    var_1 = anglestoforward( self._ID65 );
-    self._ID22705 = sighttracepassed( self._ID740 + var_0, self._ID740 + var_0 + var_1 * 64, 0, undefined );
+    var_1 = anglestoforward( self.angles );
+    self._ID22705 = sighttracepassed( self.origin + var_0, self.origin + var_0 + var_1 * 64, 0, undefined );
 }
 
 _ID32932( var_0 )
@@ -263,7 +263,7 @@ _ID32935( var_0 )
 _ID8897()
 {
     var_0 = undefined;
-    var_1 = animscripts\animset::has_special_reload( self._ID1302 );
+    var_1 = animscripts\animset::has_special_reload( self.weapon );
 
     if ( isdefined( var_1 ) )
     {
@@ -276,7 +276,7 @@ _ID8897()
     if ( !isdefined( var_0 ) )
         var_0 = animscripts\utility::_ID3153( "reload" );
 
-    if ( animscripts\utility::_ID20902( self._ID1302 ) && isdefined( self._ID7._ID3291["shotgun_reload"] ) )
+    if ( animscripts\utility::_ID20902( self.weapon ) && isdefined( self._ID7._ID3291["shotgun_reload"] ) )
         var_0 = animscripts\utility::_ID3153( "shotgun_reload" );
 
     var_3 = animscripts\combat_utility::_ID868( 2.0, var_0 );
@@ -289,7 +289,7 @@ _ID8897()
 
 _ID28236()
 {
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
 
     if ( isdefined( self._ID28940 ) && randomfloat( 1 ) < self._ID28940 )
     {
@@ -305,7 +305,7 @@ _ID28236()
 
     if ( isdefined( self._ID33810 ) )
     {
-        var_0 = lengthsquared( self._ID740 - self._ID33810 );
+        var_0 = lengthsquared( self.origin - self._ID33810 );
 
         if ( animscripts\utility::_ID39993() && animscripts\utility::_ID33944( var_0 ) )
         {
@@ -318,7 +318,7 @@ _ID28236()
 
     _ID16963();
     self._ID8867 = undefined;
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return 1;
 }
 
@@ -379,28 +379,28 @@ _ID28935()
     if ( self._ID8910 == "crouch" && !self._ID8893._ID9349 )
         return 0;
 
-    var_1 = _ID16588( self._ID8893._ID740 + animscripts\utility::_ID16464( self._ID8893 ) );
+    var_1 = _ID16588( self._ID8893.origin + animscripts\utility::_ID16464( self._ID8893 ) );
 
     if ( var_1 > 15 )
         return 0;
 
-    var_2 = anglestoforward( self._ID65 );
-    var_3 = self._ID740 + var_2 * -16;
+    var_2 = anglestoforward( self.angles );
+    var_3 = self.origin + var_2 * -16;
 
     if ( !self maymovetopoint( var_3 ) )
         return 0;
 
     self._ID8895 = gettime();
     _ID32593();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     self._ID20874 = 1;
     self._ID7._ID28496 = "rambo";
     self._ID7305 = 1;
     thread animscripts\shared::_ID28937( 0 );
 
-    if ( isdefined( self._ID700._ID51507 ) && var_0 == "rambo" )
+    if ( isdefined( self.node._ID51507 ) && var_0 == "rambo" )
     {
-        var_4 = animscripts\utility::_ID44341( self._ID700._ID51507 );
+        var_4 = animscripts\utility::_ID44341( self.node._ID51507 );
 
         if ( isdefined( var_4 ) )
             var_5 = animscripts\utility::_ID44378( var_0, var_4 );
@@ -415,7 +415,7 @@ _ID28935()
     animscripts\shared::_ID11529( "rambo" );
     self notify( "rambo_aim_end" );
     self._ID7305 = 0;
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     self._ID21972 = gettime();
     self._ID7305 = 0;
     self._ID20874 = undefined;
@@ -444,17 +444,17 @@ _ID14562()
     if ( !animscripts\utility::_ID3154( "hide_idle_flinch" ) )
         return 0;
 
-    var_0 = anglestoforward( self._ID65 );
-    var_1 = self._ID740 + var_0 * -16;
+    var_0 = anglestoforward( self.angles );
+    var_1 = self.origin + var_0 * -16;
 
-    if ( !self maymovetopoint( var_1, !self._ID1063 ) )
+    if ( !self maymovetopoint( var_1, !self.swimmer ) )
         return 0;
 
     _ID32593();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_2 = animscripts\utility::_ID3156( "hide_idle_flinch" );
     _ID28079( var_2, 1 );
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return 1;
 }
 
@@ -526,12 +526,12 @@ _ID28230()
     var_0 = _ID16151();
     var_1 = 0.1;
     var_2 = animscripts\utility::_ID3153( "hide_2_" + var_0 );
-    var_3 = !self._ID1063;
+    var_3 = !self.swimmer;
 
     if ( !self maymovetopoint( animscripts\utility::_ID16127( var_2 ), var_3 ) )
         return 0;
 
-    if ( self._ID912 == "cover_crouch" && var_0 == "lean" )
+    if ( self.script == "cover_crouch" && var_0 == "lean" )
         self._ID8867 = 1;
 
     if ( self._ID8910 == "crouch" )
@@ -647,7 +647,7 @@ _ID16963()
     animscripts\combat_utility::_ID12633();
     var_0 = _ID28231();
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         wait(randomfloatrange( 0.0, 1.0 ));
 
     self setflaggedanimknoball( "go_to_hide", animscripts\utility::_ID3153( self._ID7._ID8878 + "_2_hide" ), %body, 1, 0.2, var_0 );
@@ -683,9 +683,9 @@ _ID39080( var_0, var_1 )
         var_2 = animscripts\utility::_ID3156( "grenade_exposed" );
 
     _ID32593();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_3 = animscripts\combat_utility::_ID39072( var_0, var_2 );
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     return var_3;
 }
 
@@ -703,12 +703,12 @@ _ID5294()
     }
 
     _ID32593();
-    self._ID562 = 1;
+    self.keepclaimednodeifvalid = 1;
     var_0 = "blind_fire";
 
-    if ( isdefined( self._ID700._ID53049 ) )
+    if ( isdefined( self.node._ID53049 ) )
     {
-        var_1 = animscripts\utility::_ID50392( self._ID700._ID53049 );
+        var_1 = animscripts\utility::_ID50392( self.node._ID53049 );
 
         if ( isdefined( var_1 ) )
             var_2 = animscripts\utility::_ID44378( var_0, var_1 );
@@ -720,7 +720,7 @@ _ID5294()
 
     self setflaggedanimknoballrestart( "blindfire", var_2, %body, 1, 0.2, 1 );
     animscripts\shared::_ID11529( "blindfire" );
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
     self._ID54064 = 0;
     self._ID7._ID21758 = 0;
     animscripts\shared::_ID39728();
@@ -732,8 +732,8 @@ _ID9292( var_0, var_1, var_2, var_3 )
     if ( !isdefined( var_3 ) )
         var_3 = 1;
 
-    var_4 = spawnturret( "misc_turret", var_0._ID740, var_1 );
-    var_4._ID65 = var_0._ID65;
+    var_4 = spawnturret( "misc_turret", var_0.origin, var_1 );
+    var_4.angles = var_0.angles;
     var_4._ID2446 = self;
     var_4 setmodel( var_2 );
 
@@ -774,7 +774,7 @@ _ID39957( var_0, var_1, var_2 )
     if ( !isdefined( var_2 ) )
         var_2 = 1;
 
-    var_3 = _ID9292( self._ID700._ID39350, var_0, var_1, var_2 );
+    var_3 = _ID9292( self.node._ID39350, var_0, var_1, var_2 );
 
     if ( self useturret( var_3 ) )
     {
@@ -791,7 +791,7 @@ _ID39957( var_0, var_1, var_2 )
 
 _ID39960()
 {
-    var_0 = self._ID700._ID39235;
+    var_0 = self.node._ID39235;
 
     if ( !var_0._ID20897 )
         return;
@@ -946,7 +946,7 @@ _ID16151()
     }
     else
     {
-        var_1 = _ID16588( self._ID8893._ID740 + animscripts\utility::_ID16464( self._ID8893 ) );
+        var_1 = _ID16588( self._ID8893.origin + animscripts\utility::_ID16464( self._ID8893 ) );
 
         if ( var_1 > 30 )
             return "lean";
@@ -983,7 +983,7 @@ _ID16588( var_0 )
 
 _ID32593()
 {
-    if ( self._ID1063 )
+    if ( self.swimmer )
         self animmode( "nogravity" );
     else
         self animmode( "zonly_physics" );

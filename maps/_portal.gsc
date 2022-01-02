@@ -28,7 +28,7 @@ portal_group_add_global_flag_wait( var_0 )
         return;
 
     var_1 = spawnstruct();
-    var_1._ID1244 = 0;
+    var_1.type = 0;
     var_1.msg = var_0;
     level.portals.global_wait[var_0] = var_1;
     level portal_group_add_global_wait( var_1 );
@@ -40,7 +40,7 @@ portal_group_add_global_notify_wait( var_0, var_1 )
         return;
 
     var_2 = spawnstruct();
-    var_2._ID1244 = 1;
+    var_2.type = 1;
     var_2.msg = var_0;
     var_2.callon = self;
     var_2.msgend = var_1;
@@ -69,7 +69,7 @@ portal_group_activation()
     if ( isdefined( self._ID31163 ) )
         level endon( self._ID31163 );
 
-    enablepg( self._ID1193, 0 );
+    enablepg( self.targetname, 0 );
     var_0 = undefined;
     var_1 = undefined;
 
@@ -79,14 +79,14 @@ portal_group_activation()
         var_0 = var_2[0];
         var_1 = var_2[1];
         var_clear_0
-        enablepg( self._ID1193, 1 );
+        enablepg( self.targetname, 1 );
 
         if ( isdefined( level._ID14385[var_0] ) )
             _ID42237::_ID14426( var_0 );
         else
             var_1 waittill( var_0 );
 
-        enablepg( self._ID1193, 0 );
+        enablepg( self.targetname, 0 );
         waittillframeend;
     }
 }
@@ -101,7 +101,7 @@ portal_group_wait()
 
     foreach ( var_1 in level.portals.global_wait )
     {
-        switch ( var_1._ID1244 )
+        switch ( var_1.type )
         {
             case 0:
                 if ( _ID42237::_ID14385( var_1.msg ) )

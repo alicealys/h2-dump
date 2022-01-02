@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "apache", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -49,7 +49,7 @@ _ID19731()
     self._ID31066 = 0;
     _ID42411::_ID40197( "running" );
 
-    if ( issubstr( self._ID170, "_mg" ) )
+    if ( issubstr( self.classname, "_mg" ) )
     {
         self hidepart( "turret_animate_jnt" );
         self hidepart( "tag_turret" );

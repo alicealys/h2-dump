@@ -36,7 +36,7 @@ _ID14504( var_0 )
     animscripts\shared::_ID11529( "flashed_anim" );
 }
 
-_ID616()
+main()
 {
     self endon( "death" );
     self endon( "killanimscript" );
@@ -67,7 +67,7 @@ _ID14505( var_0, var_1 )
         animscripts\utility::_ID13390( 1 );
 
     self._ID7._ID28253 = "stand";
-    self._ID49 = 1;
+    self.allowdeath = 1;
     thread _ID14504( var_0 );
     wait(var_1);
     self notify( "stop_flashbang_effect" );

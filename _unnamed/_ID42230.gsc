@@ -391,7 +391,7 @@ _ID28440( var_0, var_1 )
     }
 
     level._ID9232 = 1;
-    level._ID1400._ID19180[var_1 + 1][0]._ID196 = ( 1, 1, 0 );
+    level._ID1400._ID19180[var_1 + 1][0].color = ( 1, 1, 0 );
 
     if ( isdefined( var_0["input_func"] ) )
         thread [[ var_0["input_func"] ]]( var_1 + 1 );
@@ -527,14 +527,14 @@ _ID20096( var_0 )
         if ( level._ID45459 )
             continue;
 
-        if ( level._ID794 buttonpressed( "escape" ) || level._ID794 buttonpressed( "x" ) )
+        if ( level.player buttonpressed( "escape" ) || level.player buttonpressed( "x" ) )
             break;
 
         var_1 = 0;
 
-        if ( level._ID794 buttonpressed( "-" ) )
+        if ( level.player buttonpressed( "-" ) )
             var_1 = -10;
-        else if ( level._ID794 buttonpressed( "=" ) )
+        else if ( level.player buttonpressed( "=" ) )
             var_1 = 10;
 
         if ( var_1 != 0 )

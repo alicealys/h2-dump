@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" || getdvar( "beautiful_corner_hdr_demo" ) == "1" )
     {
@@ -81,9 +81,9 @@ _ID616()
     precacherumble( "damage_light" );
     precacherumble( "damage_heavy" );
     level._ID53724 = gettime();
-    _ID48548::_ID616();
-    _ID52272::_ID616();
-    _ID54615::_ID616();
+    _ID48548::main();
+    _ID52272::main();
+    _ID54615::main();
     setsaveddvar( "physVeh_limitTopSpeedWithBrakingFactor", 1 );
     _ID42407::_ID1951( "boatdrive_nofail", ::_ID53487, "", ::_ID312 );
     _ID42407::_ID1951( "boatdrive_begin", ::_ID43420, "", ::_ID312 );
@@ -96,12 +96,12 @@ _ID616()
     _ID42407::_ID10126( ::_ID47474 );
     maps\af_chase_knife_fight::_ID53376();
     _ID53732();
-    _ID42323::_ID616();
+    _ID42323::main();
     thread _ID44122();
     maps\af_chase_anim::_ID43266();
     thread maps\af_chase_knife_fight::_ID45160();
     _ID48669::_ID52537( "viewhands_player_tf141" );
-    _ID45655::_ID616();
+    _ID45655::main();
     var_0 = getentarray( "script_vehicle_zodiac_player", "classname" );
     _ID42237::_ID3350( var_0, _ID42407::_ID1947, _ID48669::_ID50469 );
     _ID42237::_ID3350( var_0, _ID42407::_ID1947, maps\af_chase_code::_ID48364 );
@@ -198,7 +198,7 @@ _ID616()
     thread maps\af_chase_code::_ID47094();
 
     if ( _ID42407::_ID20505() || issubstr( level._ID35897, "boat" ) )
-        thread maps\af_chase_waterfall::_ID616();
+        thread maps\af_chase_waterfall::main();
 
     var_37 = getent( "trigger_out_of_caves", "targetname" );
 
@@ -249,8 +249,8 @@ _ID53732()
         _ID42237::_ID14400( "despawn_" + var_1 );
 
     setsaveddvar( "vehNotifyHitEntityWithVehContactEvent", 1 );
-    level._ID794 _ID42407::_ID13024( "disable_shooting" );
-    level._ID794 _ID42407::_ID13024( "zodiac_aim_helicopter" );
+    level.player _ID42407::_ID13024( "disable_shooting" );
+    level.player _ID42407::_ID13024( "zodiac_aim_helicopter" );
 }
 
 _ID312()
@@ -260,7 +260,7 @@ _ID312()
 
 add_target_name()
 {
-    self._ID1193 = "heli_no_turret";
+    self.targetname = "heli_no_turret";
 }
 
 _ID46213()
@@ -281,9 +281,9 @@ _ID45663( var_0 )
 {
     for ( var_1 = 1; var_1 <= level._ID2237.size; var_1++ )
     {
-        if ( isdefined( self._ID988._ID1193 ) && self._ID988._ID1193 == "H2_New_AI_" + var_1 )
+        if ( isdefined( self._ID988.targetname ) && self._ID988.targetname == "H2_New_AI_" + var_1 )
         {
-            self._ID10 = 0;
+            self.accuracy = 0;
             self._ID4867 = 0;
             break;
         }
@@ -303,10 +303,10 @@ _ID53753( var_0 )
     {
         self waittill( "veh_contact",  var_1  );
 
-        if ( !isdefined( level._ID794._ID40065 ) )
+        if ( !isdefined( level.player._ID40065 ) )
             break;
 
-        if ( var_1 == level._ID794 || var_1 == level._ID794._ID40065 )
+        if ( var_1 == level.player || var_1 == level.player._ID40065 )
         {
             if ( !_func_2a5( self ) )
             {
@@ -315,7 +315,7 @@ _ID53753( var_0 )
                 return;
             }
 
-            var_2 = vectornormalize( self._ID740 - var_1._ID740 );
+            var_2 = vectornormalize( self.origin - var_1.origin );
             var_2 *= 8000;
             self startragdollfromimpact( "torso_lower", var_2 );
             break;
@@ -367,9 +367,9 @@ _ID43420()
     var_0 = _ID42411::_ID35195( "players_boat" );
     var_1 = _ID42411::_ID35196( "enemy_chase_boat" );
     waitframe;
-    level._ID794 playerlinktoblend( var_0, "tag_player", 0.2, 0.1, 0.1 );
-    var_0 useby( level._ID794 );
-    level._ID794._ID11803 = var_0;
+    level.player playerlinktoblend( var_0, "tag_player", 0.2, 0.1, 0.1 );
+    var_0 useby( level.player );
+    level.player._ID11803 = var_0;
     thread maps\af_chase_code::_ID53263();
     _ID53223();
 }
@@ -380,9 +380,9 @@ _ID45594()
     _ID42475::_ID34575( "start_debug_boatdrive_checkpoint" );
     maps\af_chase_code::_ID49209();
     var_0 = _ID42411::_ID35195( "players_boat" );
-    level._ID794 playerlinktoblend( var_0, "tag_player", 0.2, 0.1, 0.1 );
-    var_0 useby( level._ID794 );
-    level._ID794._ID11803 = var_0;
+    level.player playerlinktoblend( var_0, "tag_player", 0.2, 0.1, 0.1 );
+    var_0 useby( level.player );
+    level.player._ID11803 = var_0;
     _ID42237::_ID3350( getentarray( "trigger_multiple", "code_classname" ), _ID42237::_ID38863 );
 }
 
@@ -394,15 +394,15 @@ _ID47690()
     _ID42237::_ID14402( "exit_caves" );
     var_0 = getent( "players_boat", "targetname" );
     var_1 = _ID42237::_ID16638( "lake_mid_start_pose", "targetname" );
-    var_0._ID740 = var_1._ID740;
-    var_0._ID65 = var_1._ID65;
+    var_0.origin = var_1.origin;
+    var_0.angles = var_1.angles;
     var_2 = _ID42411::_ID35195( "players_boat" );
     var_3 = _ID42411::_ID35196( "enemy_chase_boat" );
     waitframe;
-    level._ID794 playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
-    var_2 useby( level._ID794 );
-    level._ID794._ID11803 = var_2;
-    level._ID794._ID11803 _meth_85a2( 1 );
+    level.player playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
+    var_2 useby( level.player );
+    level.player._ID11803 = var_2;
+    level.player._ID11803 _meth_85a2( 1 );
     var_2 vehicle_setspeedimmediate( 60, 90, 90 );
     thread maps\af_chase_code::_ID53263();
     thread maps\af_chase_code::_ID52721( "river_current_start_boatdrive_lake" );
@@ -416,15 +416,15 @@ _ID54165()
     maps\af_chase_code::_ID49209();
     var_0 = getent( "players_boat", "targetname" );
     var_1 = _ID42237::_ID16638( "lake_start_pose", "targetname" );
-    var_0._ID740 = var_1._ID740;
-    var_0._ID65 = var_1._ID65;
+    var_0.origin = var_1.origin;
+    var_0.angles = var_1.angles;
     var_2 = _ID42411::_ID35195( "players_boat" );
     var_3 = _ID42411::_ID35196( "enemy_chase_boat" );
     waitframe;
-    level._ID794 playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
-    var_2 useby( level._ID794 );
-    level._ID794._ID11803 = var_2;
-    level._ID794._ID11803 _meth_85a2( 1 );
+    level.player playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
+    var_2 useby( level.player );
+    level.player._ID11803 = var_2;
+    level.player._ID11803 _meth_85a2( 1 );
     var_2 vehicle_setspeedimmediate( 48, 90, 90 );
     thread maps\af_chase_code::_ID53263();
     thread maps\af_chase_code::_ID52721( "river_current_start_boatdrive_lake" );
@@ -440,16 +440,16 @@ _ID51694()
     _ID42237::_ID14402( "exit_caves" );
     var_0 = getent( "players_boat", "targetname" );
     var_1 = _ID42237::_ID16638( "rapids_start_position", "targetname" );
-    var_0._ID740 = var_1._ID740;
-    var_0._ID65 = var_1._ID65;
+    var_0.origin = var_1.origin;
+    var_0.angles = var_1.angles;
     var_2 = _ID42411::_ID35195( "players_boat" );
     var_3 = _ID42411::_ID35196( "enemy_chase_boat" );
     var_4 = _ID42411::_ID35196( "seaknight_fly_over" );
     waitframe;
-    level._ID794 playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
-    var_2 useby( level._ID794 );
-    level._ID794._ID11803 = var_2;
-    level._ID794._ID11803 _meth_85a2( 1 );
+    level.player playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
+    var_2 useby( level.player );
+    level.player._ID11803 = var_2;
+    level.player._ID11803 _meth_85a2( 1 );
     var_2 vehicle_setspeedimmediate( 78, 90, 90 );
     thread maps\af_chase_code::_ID53263();
     thread maps\af_chase_code::_ID52721( "river_current_start_rapids" );
@@ -466,15 +466,15 @@ _ID47253()
     _ID42237::_ID14402( "on_river" );
     var_0 = getent( "players_boat", "targetname" );
     var_1 = _ID42237::_ID16638( "below_rapids_start_position", "targetname" );
-    var_0._ID740 = var_1._ID740;
-    var_0._ID65 = var_1._ID65;
+    var_0.origin = var_1.origin;
+    var_0.angles = var_1.angles;
     var_2 = _ID42411::_ID35195( "players_boat" );
     var_3 = _ID42411::_ID35196( "enemy_chase_boat" );
     waitframe;
-    level._ID794 playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
-    var_2 useby( level._ID794 );
-    level._ID794._ID11803 = var_2;
-    level._ID794._ID11803 _meth_85a2( 1 );
+    level.player playerlinktoblend( var_2, "tag_player", 0.2, 0.1, 0.1 );
+    var_2 useby( level.player );
+    level.player._ID11803 = var_2;
+    level.player._ID11803 _meth_85a2( 1 );
     var_2 vehicle_setspeedimmediate( 78, 90, 90 );
     thread maps\af_chase_code::_ID53263();
     thread maps\af_chase_code::_ID52721( "river_current_start_rapids" );
@@ -492,15 +492,15 @@ _ID49244()
     _ID42237::_ID14402( "enemy_zodiacs_wipe_out" );
     var_1 = getent( "players_boat", "targetname" );
     var_2 = _ID42237::_ID16638( "end_start_position", "targetname" );
-    var_1._ID740 = var_2._ID740;
-    var_1._ID65 = var_2._ID65;
+    var_1.origin = var_2.origin;
+    var_1.angles = var_2.angles;
     var_3 = _ID42411::_ID35195( "players_boat" );
     var_4 = _ID42411::_ID35196( "enemy_chase_boat" );
     var_5 = _ID42411::_ID35195( "enemy_pickup_heli" );
     waitframe;
-    level._ID794 playerlinktoblend( var_3, "tag_player", 0.2, 0.1, 0.1 );
-    var_3 useby( level._ID794 );
-    level._ID794._ID11803 = var_3;
+    level.player playerlinktoblend( var_3, "tag_player", 0.2, 0.1, 0.1 );
+    var_3 useby( level.player );
+    level.player._ID11803 = var_3;
     var_3 vehicle_setspeedimmediate( 57, 90, 90 );
     thread maps\af_chase_code::_ID53263();
     thread maps\af_chase_code::_ID52721( "river_current_start_boatdrive_end" );
@@ -511,7 +511,7 @@ _ID53487()
 {
     _ID42475::_ID34575( "start_boatdrive_nofail_checkpoint" );
     setdvar( "scr_zodiac_test", 1 );
-    level._ID794 enableinvulnerability();
+    level.player enableinvulnerability();
     thread _ID47474();
 }
 
@@ -573,12 +573,12 @@ _ID44726()
     wait 1;
     _ID42237::_ID14413( "player_on_boat" );
     wait 10;
-    level._ID794 _ID42407::_ID28864( "afchase_shp_stillincaves" );
+    level.player _ID42407::_ID28864( "afchase_shp_stillincaves" );
     wait 10;
-    level._ID794 _ID42407::_ID28864( "afchase_shp_observe" );
+    level.player _ID42407::_ID28864( "afchase_shp_observe" );
     _ID42237::_ID14413( "exit_caves" );
     wait 4;
-    level._ID794 _ID42407::_ID28864( "afchase_shp_uavsupport" );
+    level.player _ID42407::_ID28864( "afchase_shp_uavsupport" );
 }
 
 _ID44122()
@@ -638,7 +638,7 @@ _ID46483()
             _ID42237::_ID14413( "test_boat_is_on_spline" );
             level notify( "stop_music" );
             musicstop( 4 );
-            level._ID794 thread _ID42407::_ID27079( "mus_af_chase_waterfall" );
+            level.player thread _ID42407::_ID27079( "mus_af_chase_waterfall" );
         case "wakeup":
         case "wakefast":
         case "turnbuckle":

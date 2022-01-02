@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "character_arab_civilian_lowres_d" );
     self attach( "character_arab_civilian_lowres_d_head", "", 1 );

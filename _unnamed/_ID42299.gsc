@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42300::_ID16944( "ch_streetlight_02_FX_origin", "fx/misc/lighthaze" );
     _ID42300::_ID16944( "me_streetlight_01_FX_origin", "fx/misc/lighthaze_bog_a" );

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3155 = [];
     self._ID3155["hiding"]["stand"] = ::_ID32553;

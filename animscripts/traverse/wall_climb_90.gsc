@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     self._ID38715 = 1;
     _ID2179( %traverse90, 90 );
@@ -16,8 +16,8 @@ _ID2179( var_0, var_1 )
     self traversemode( "nogravity" );
     self traversemode( "noclip" );
     var_2 = self getnegotiationstartnode();
-    self orientmode( "face angle", var_2._ID65[1] );
-    var_3 = var_2._ID38701 - var_2._ID740[2];
+    self orientmode( "face angle", var_2.angles[1] );
+    var_3 = var_2._ID38701 - var_2.origin[2];
     thread animscripts\traverse\shared::_ID37473( var_3 - var_1 );
     self setflaggedanimknoballrestart( "traverse", var_0, %body, 1, 0.15, 1 );
     var_4 = gettime();
@@ -50,7 +50,7 @@ _ID17735( var_0 )
 
     self endon( "killanimscript" );
 
-    if ( self._ID486 == 1 )
+    if ( self.health == 1 )
     {
         self._ID7._ID24881 = 1;
 

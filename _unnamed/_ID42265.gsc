@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["_breach_doorbreach_detpack"] = loadfx( "fx/explosions/exp_pack_doorbreach" );
     level._ID1426["_breach_doorbreach_kick"] = loadfx( "fx/dust/door_kick" );
@@ -34,8 +34,8 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
     self._ID18221 = 1;
     self._ID18225 = 0;
     self._ID19000 = 0;
-    var_6 = getentarray( self._ID1193, "targetname" );
-    var_7 = self._ID1193;
+    var_6 = getentarray( self.targetname, "targetname" );
+    var_7 = self.targetname;
     self._ID30764 = "badplace_" + var_7;
     self._ID4708 = getent( "badplace_" + var_7, "targetname" );
 
@@ -51,7 +51,7 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
 
     if ( isdefined( self._ID6091 ) )
     {
-        switch ( self._ID6091._ID170 )
+        switch ( self._ID6091.classname )
         {
             case "trigger_use":
                 self._ID38933 = var_2;
@@ -86,29 +86,29 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
     {
         var_8 = undefined;
 
-        if ( isdefined( self._ID1191 ) )
-            var_8 = getent( self._ID1191, "targetname" );
+        if ( isdefined( self.target ) )
+            var_8 = getent( self.target, "targetname" );
 
-        if ( isdefined( var_8 ) && isdefined( var_8._ID922 ) && var_8._ID922 == "breach_anim_ent" )
+        if ( isdefined( var_8 ) && isdefined( var_8.script_noteworthy ) && var_8.script_noteworthy == "breach_anim_ent" )
             self._ID3184 = var_8;
 
         self._ID12312 = getent( self._ID31273, "script_linkname" );
 
-        if ( self._ID12312._ID170 == "script_model" )
+        if ( self._ID12312.classname == "script_model" )
         {
-            self._ID52497 = spawn( "script_origin", self._ID12312._ID740 );
-            self._ID52497._ID65 = self._ID12312._ID65;
+            self._ID52497 = spawn( "script_origin", self._ID12312.origin );
+            self._ID52497.angles = self._ID12312.angles;
         }
-        else if ( self._ID12312._ID170 == "script_brushmodel" && !isdefined( self._ID3184 ) )
+        else if ( self._ID12312.classname == "script_brushmodel" && !isdefined( self._ID3184 ) )
         {
-            self._ID52497 = getent( self._ID12312._ID1191, "targetname" );
-            self._ID12312._ID40050 = anglestoforward( self._ID52497._ID65 );
+            self._ID52497 = getent( self._ID12312.target, "targetname" );
+            self._ID12312._ID40050 = anglestoforward( self._ID52497.angles );
         }
 
         if ( !isdefined( self._ID3184 ) )
             self._ID3184 = self._ID52497;
 
-        self._ID3184._ID1244 = "Cover Right";
+        self._ID3184.type = "Cover Right";
         self._ID12314 = getent( self._ID12312._ID31273, "script_linkname" );
         self._ID19357 = self._ID12314._ID31170;
 
@@ -116,7 +116,7 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
         {
             var_9 = getent( self._ID12314._ID31273, "script_linkname" );
 
-            if ( isdefined( var_9 ) && isdefined( var_9._ID922 ) && var_9._ID922 == "breached_door" )
+            if ( isdefined( var_9 ) && isdefined( var_9.script_noteworthy ) && var_9.script_noteworthy == "breached_door" )
                 self._ID45540 = var_9;
         }
     }
@@ -126,7 +126,7 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
     if ( self._ID18225 == 1 )
     {
         self._ID17415 = getent( "flashthrow_" + var_7, "targetname" );
-        self._ID17409 = getent( self._ID17415._ID1191, "targetname" );
+        self._ID17409 = getent( self._ID17415.target, "targetname" );
     }
 
     thread _ID5994( var_0 );
@@ -148,7 +148,7 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
 
     }
     else
-        self._ID8164 = _ID42237::_ID16182( self._ID52497._ID740, var_0 );
+        self._ID8164 = _ID42237::_ID16182( self._ID52497.origin, var_0 );
 
     if ( var_0.size == 1 )
         self._ID34194 = 1;
@@ -182,7 +182,7 @@ _ID6064( var_0, var_1, var_2, var_3, var_4, var_5 )
     }
 
     if ( isdefined( self._ID4708 ) )
-        badplace_cylinder( self._ID30764, -1, self._ID4708._ID740, self._ID4708._ID851, 200, "bad_guys" );
+        badplace_cylinder( self._ID30764, -1, self._ID4708.origin, self._ID4708.radius, 200, "bad_guys" );
 
     var_13 = getaiarray( "bad_guys" );
     var_14 = [];
@@ -297,15 +297,15 @@ _ID6077( var_0, var_1, var_2 )
         var_0._ID3184 _ID42259::_ID3027( self, var_4 );
     else
     {
-        self._ID938 = var_0._ID3184;
+        self.scriptedarrivalent = var_0._ID3184;
         var_0._ID3184 _ID42259::_ID3028( self, var_4 );
     }
 
     var_0._ID3184 _ID42259::_ID3020( self, var_4 );
     var_0._ID3184 thread _ID42259::_ID3025( self, var_5, self._ID12638 );
-    self._ID32641 = self._ID740;
+    self._ID32641 = self.origin;
     var_0._ID6078++;
-    self._ID938 = undefined;
+    self.scriptedarrivalent = undefined;
     var_0 waittill( "execute_the_breach" );
 
     if ( !var_0._ID14538 && isdefined( var_7 ) )
@@ -318,9 +318,9 @@ _ID6077( var_0, var_1, var_2 )
         {
             var_8 = "J_Mid_LE_1";
             self attach( "projectile_m84_flashbang_grenade", var_8 );
-            var_9 = self._ID470;
-            self._ID470 = "flash_grenade";
-            self._ID464++;
+            var_9 = self.grenadeweapon;
+            self.grenadeweapon = "flash_grenade";
+            self.grenadeammo++;
 
             if ( var_3 == "02" )
                 self waittillmatch( "single anim",  "grenade_throw"  );
@@ -328,10 +328,10 @@ _ID6077( var_0, var_1, var_2 )
             if ( var_0._ID34194 == 1 && var_3 == "01" )
                 self waittillmatch( "single anim",  "fire"  );
 
-            self magicgrenade( var_0._ID17415._ID740, var_0._ID17409._ID740, level._ID19360 );
+            self magicgrenade( var_0._ID17415.origin, var_0._ID17409.origin, level._ID19360 );
             self detach( "projectile_m84_flashbang_grenade", var_8 );
-            self._ID470 = var_9;
-            self._ID464 = 0;
+            self.grenadeweapon = var_9;
+            self.grenadeammo = 0;
         }
 
         self waittillmatch( "single anim",  "end"  );
@@ -418,16 +418,16 @@ _ID10633( var_0 )
     self detach( "weapon_detcord", var_1 );
     var_4 = spawn( "script_model", var_2 );
     var_4 setmodel( "weapon_detcord" );
-    var_4._ID65 = var_3;
+    var_4.angles = var_3;
     var_0 waittill( "detpack_detonated" );
-    radiusdamage( var_4._ID740, 64, 50, 25 );
+    radiusdamage( var_4.origin, 64, 50, 25 );
     var_4 delete();
 }
 
 _ID34976( var_0 )
 {
     self waittillmatch( "single anim",  "sound effect"  );
-    thread _ID42237::_ID27077( "detpack_plant_arming", var_0._ID52497._ID740 );
+    thread _ID42237::_ID27077( "detpack_plant_arming", var_0._ID52497.origin );
 }
 
 _ID6009( var_0 )
@@ -436,7 +436,7 @@ _ID6009( var_0 )
     var_0 endon( "breach_aborted" );
     var_0 waittill( "detpack_detonated" );
 
-    if ( distance( self._ID740, var_0._ID52497._ID740 ) <= level._ID10683 )
+    if ( distance( self.origin, var_0._ID52497.origin ) <= level._ID10683 )
     {
         level._ID36728++;
 
@@ -444,7 +444,7 @@ _ID6009( var_0 )
             level._ID36728 = 1;
 
         var_1 = "exposed_flashbang_v" + level._ID36728;
-        self._ID49 = 1;
+        self.allowdeath = 1;
         _ID42259::_ID3021( self, "gravity", var_1 );
         _ID6054();
     }
@@ -510,11 +510,11 @@ _ID6051( var_0, var_1 )
         case "explosive_breach_left":
             self waittill( "play_breach_fx" );
             _ID42234::_ID13611( self._ID19357 );
-            thread _ID42237::_ID27077( level._ID30909["breach_wooden_door"], self._ID12314._ID740 );
-            thread _ID42237::_ID27077( level._ID30909["_breach_doorbreach_detpack"], self._ID12314._ID740 );
+            thread _ID42237::_ID27077( level._ID30909["breach_wooden_door"], self._ID12314.origin );
+            thread _ID42237::_ID27077( level._ID30909["_breach_doorbreach_detpack"], self._ID12314.origin );
 
             if ( var_1 )
-                playfx( level._ID1426["_breach_doorbreach_detpack"], self._ID12314._ID740, anglestoforward( self._ID12314._ID65 ) );
+                playfx( level._ID1426["_breach_doorbreach_detpack"], self._ID12314.origin, anglestoforward( self._ID12314.angles ) );
 
             break;
         case "shotgunhinges_breach_left":
@@ -522,7 +522,7 @@ _ID6051( var_0, var_1 )
             _ID42234::_ID13611( self._ID19357 );
 
             if ( var_1 )
-                playfx( level._ID1426["_breach_doorbreach_kick"], self._ID12314._ID740, anglestoforward( self._ID12314._ID65 ) );
+                playfx( level._ID1426["_breach_doorbreach_kick"], self._ID12314.origin, anglestoforward( self._ID12314.angles ) );
 
             break;
         case "flash_breach_no_door_right":
@@ -557,12 +557,12 @@ _ID16842()
     self endon( "death" );
     self endon( "stop_infinite_ammo" );
 
-    while ( isdefined( self._ID1302 ) )
+    while ( isdefined( self.weapon ) )
     {
-        if ( isdefined( self._ID1302 ) && self._ID1302 == "none" )
+        if ( isdefined( self.weapon ) && self.weapon == "none" )
             break;
 
-        self._ID6323 = weaponclipsize( self._ID1302 );
+        self._ID6323 = weaponclipsize( self.weapon );
         wait 0.5;
     }
 }
@@ -625,8 +625,8 @@ _ID11599( var_0, var_1, var_2 )
 
             _ID11591();
             self playsound( level._ID30909["breach_wooden_door"] );
-            earthquake( 0.4, 1, self._ID740, 1000 );
-            radiusdamage( self._ID740, 56, level._ID23089, level._ID23622 );
+            earthquake( 0.4, 1, self.origin, 1000 );
+            radiusdamage( self.origin, 56, level._ID23089, level._ID23622 );
             break;
         case "shotgun":
             if ( !isdefined( var_1._ID47480 ) || !var_1._ID47480 )
@@ -640,11 +640,11 @@ _ID11599( var_0, var_1, var_2 )
 
 _ID11591()
 {
-    if ( self._ID170 == "script_brushmodel" )
+    if ( self.classname == "script_brushmodel" )
         self connectpaths();
     else
     {
-        var_0 = getent( self._ID1191, "targetname" );
+        var_0 = getent( self.target, "targetname" );
         var_0 hide();
         var_0 notsolid();
         var_0 connectpaths();
@@ -655,9 +655,9 @@ _ID11592( var_0 )
 {
     var_1 = undefined;
 
-    if ( self._ID170 == "script_model" )
-        var_1 = anglestoforward( self._ID65 );
-    else if ( self._ID170 == "script_brushmodel" )
+    if ( self.classname == "script_model" )
+        var_1 = anglestoforward( self.angles );
+    else if ( self.classname == "script_brushmodel" )
         var_1 = self._ID40050;
     else
     {
@@ -665,10 +665,10 @@ _ID11592( var_0 )
     }
 
     var_2 = ( var_1[0] * 20, var_1[1] * 20, var_1[2] * 20 );
-    self moveto( self._ID740 + var_2, 0.5, 0, 0.5 );
+    self moveto( self.origin + var_2, 0.5, 0, 0.5 );
     var_3 = spawn( "script_origin", ( 0, 0, 0 ) );
-    var_3._ID65 = var_0._ID65;
-    var_3._ID740 = ( self._ID740[0], self._ID740[1], var_0._ID740[2] );
+    var_3.angles = var_0.angles;
+    var_3.origin = ( self.origin[0], self.origin[1], var_0.origin[2] );
     self linkto( var_3 );
     var_3 rotatepitch( 90, 0.45, 0.4 );
     wait 0.45;
@@ -683,15 +683,15 @@ _ID11592( var_0 )
 _ID6058( var_0 )
 {
     if ( !isdefined( self._ID25510 ) )
-        self._ID25510 = self._ID452;
+        self._ID25510 = self.goalradius;
 
-    self._ID452 = var_0;
+    self.goalradius = var_0;
 }
 
 _ID6055()
 {
     if ( isdefined( self._ID25510 ) )
-        self._ID452 = self._ID25510;
+        self.goalradius = self._ID25510;
 
     self._ID25510 = undefined;
 }

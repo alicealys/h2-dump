@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "neutral";
-    self._ID1244 = "civilian";
+    self.team = "neutral";
+    self.type = "civilian";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 30;
-    self._ID470 = "";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 30;
+    self.grenadeweapon = "";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "";
 
@@ -21,18 +21,18 @@ _ID616()
         self setengagementmaxdist( 768.0, 1024.0 );
     }
 
-    self._ID1302 = "none";
+    self.weapon = "none";
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
         case 0:
-            _ID42105::_ID616();
+            _ID42105::main();
             break;
         case 1:
-            _ID42106::_ID616();
+            _ID42106::main();
             break;
         case 2:
-            _ID42107::_ID616();
+            _ID42107::main();
             break;
     }
 }

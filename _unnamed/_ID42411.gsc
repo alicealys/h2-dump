@@ -247,7 +247,7 @@ _ID6244( var_0, var_1, var_2, var_3, var_4 )
     var_5 = spawnstruct();
     var_5._ID30768 = var_0;
     var_5._ID310 = var_1;
-    var_5._ID851 = var_2;
+    var_5.radius = var_2;
 
     if ( isdefined( var_3 ) )
         var_5._ID4891 = var_3;
@@ -286,8 +286,8 @@ _ID6224( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, v
 
 _ID6215( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, var_10, var_11, var_12 )
 {
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     level._ID40830 = var_1;
     level._ID40793 = var_2;
@@ -401,7 +401,7 @@ _ID44444( var_0 )
         return;
     }
 
-    self._ID49086 = _ID53204( self._ID170, var_0 );
+    self._ID49086 = _ID53204( self.classname, var_0 );
 }
 
 _ID53204( var_0, var_1 )
@@ -583,7 +583,7 @@ _ID6261( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
     var_11 = spawnstruct();
     var_11._ID19551 = var_0;
     var_11._ID1067 = var_1;
-    var_11._ID669 = var_2;
+    var_11.model = var_2;
     var_11._ID627 = var_3;
     var_11._ID10142 = var_4;
     var_11._ID10318 = var_5;
@@ -645,11 +645,11 @@ _ID24381( var_0, var_1 )
 _ID12230()
 {
     if ( _ID20763() )
-        self._ID23875._ID740 = self gettagorigin( "tag_ground" );
+        self._ID23875.origin = self gettagorigin( "tag_ground" );
     else
     {
-        self._ID23875._ID740 = self._ID740;
-        self._ID23875._ID65 = self._ID65;
+        self._ID23875.origin = self.origin;
+        self._ID23875.angles = self.angles;
     }
 
     self show();
@@ -715,7 +715,7 @@ _ID24358( var_0 )
             continue;
         }
 
-        var_3._ID740 = var_0 gettagorigin( var_4._ID34225 );
+        var_3.origin = var_0 gettagorigin( var_4._ID34225 );
     }
 }
 
@@ -779,10 +779,10 @@ _ID43142( var_0, var_1 )
     if ( !isdefined( var_2 ) )
         return 0;
 
-    if ( !isdefined( var_2._ID1193 ) )
+    if ( !isdefined( var_2.targetname ) )
         return 0;
 
-    if ( var_2._ID1193 != var_1 )
+    if ( var_2.targetname != var_1 )
         return 0;
 
     return 1;
@@ -832,7 +832,7 @@ _ID6234( var_0, var_1, var_2, var_3, var_4, var_5 )
         return;
 
     var_6 = spawnstruct();
-    var_6._ID680 = var_1;
+    var_6.name = var_1;
     var_6._ID1067 = var_2;
     var_6._ID10179 = var_5;
     var_6._ID12315 = loadfx( var_3 );
@@ -845,8 +845,8 @@ _ID6234( var_0, var_1, var_2, var_3, var_4, var_5 )
 
 _ID6235( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     level._ID40791 = var_0;
     _ID6234( var_0, var_1, var_2, var_3, var_4, var_5 );
@@ -923,8 +923,8 @@ _ID6220( var_0, var_1, var_2, var_3 )
 
 _ID6255( var_0, var_1, var_2, var_3 )
 {
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     if ( isdefined( var_2 ) )
         var_0 = var_2;
@@ -970,7 +970,7 @@ _ID6257( var_0, var_1, var_2, var_3, var_4 )
     else
     {
         var_0 = level._ID40791;
-        _ID42400::_ID616( var_0 );
+        _ID42400::main( var_0 );
     }
 }
 
@@ -1282,7 +1282,7 @@ _ID6219( var_0, var_1 )
         return;
 
     var_2 = spawnstruct();
-    var_2._ID669 = var_0;
+    var_2.model = var_0;
     var_2 _ID42407::_ID28349( var_1 );
     level._ID10533[level._ID40793] = var_1;
 }
@@ -1318,7 +1318,7 @@ _ID6210( var_0, var_1, var_2, var_3, var_4, var_5 )
     var_6._ID10179 = var_0;
     var_6._ID310 = var_1;
     var_6._ID488 = var_2;
-    var_6._ID851 = var_3;
+    var_6.radius = var_3;
     var_6._ID37354 = var_4;
     var_6._ID37355 = var_5;
     level._ID40104[level._ID40791] = var_6;
@@ -1346,7 +1346,7 @@ _ID35194()
 _ID40144( var_0 )
 {
     var_1 = [];
-    var_2 = self._ID170;
+    var_2 = self.classname;
 
     if ( !isdefined( level._ID40300[var_2] ) )
         return var_1;
@@ -1433,16 +1433,16 @@ _ID40142()
         var_0 = _ID42237::_ID3293( var_0, var_2 );
         var_2._ID8771 = 1;
 
-        if ( !isdefined( var_2._ID1191 ) )
+        if ( !isdefined( var_2.target ) )
             break;
 
         if ( !_ID20763() )
         {
-            var_2 = getvehiclenode( var_2._ID1191, "targetname" );
+            var_2 = getvehiclenode( var_2.target, "targetname" );
             continue;
         }
 
-        var_2 = _ID42407::_ID16261( var_2._ID1191, "targetname" );
+        var_2 = _ID42407::_ID16261( var_2.target, "targetname" );
     }
 
     return var_0;
@@ -1466,13 +1466,13 @@ _ID40196( var_0, var_1 )
 
 _ID40258( var_0 )
 {
-    if ( !isdefined( self ) || !isdefined( self._ID170 ) || !isdefined( var_0 ) )
+    if ( !isdefined( self ) || !isdefined( self.classname ) || !isdefined( var_0 ) )
         return;
 
-    if ( !isdefined( level._ID40193[self._ID170] ) )
+    if ( !isdefined( level._ID40193[self.classname] ) )
         return;
 
-    var_1 = level._ID40193[self._ID170][var_0];
+    var_1 = level._ID40193[self.classname][var_0];
 
     if ( !isdefined( var_1 ) )
         return;
@@ -1495,7 +1495,7 @@ _ID40257( var_0 )
     if ( !isdefined( self._ID22343[var_0] ) )
         return;
 
-    var_1 = level._ID40193[self._ID170][var_0];
+    var_1 = level._ID40193[self.classname][var_0];
 
     if ( !isdefined( var_1 ) )
         return;
@@ -1568,11 +1568,11 @@ _ID47700( var_0 )
 _ID40247( var_0 )
 {
     if ( isdefined( self._ID18313 ) )
-        self._ID486 = var_0 + self._ID18313;
+        self.health = var_0 + self._ID18313;
     else
-        self._ID486 = var_0;
+        self.health = var_0;
 
-    self._ID9497 = self._ID486;
+    self._ID9497 = self.health;
 }
 
 _ID6246( var_0 )
@@ -1606,18 +1606,18 @@ _ID40283( var_0, var_1 )
 
     if ( !var_1 )
     {
-        self._ID23875 = spawn( "script_model", self._ID740 );
-        self._ID23875 setmodel( self._ID669 );
-        self._ID23875._ID740 = self._ID740;
-        self._ID23875._ID65 = self._ID65;
+        self._ID23875 = spawn( "script_model", self.origin );
+        self._ID23875 setmodel( self.model );
+        self._ID23875.origin = self.origin;
+        self._ID23875.angles = self.angles;
         self._ID23875 useanimtree( #animtree );
     }
     else
     {
         self._ID23875 show();
         self._ID23875 unlink();
-        self._ID23875._ID740 = self._ID740;
-        self._ID23875._ID65 = self._ID65;
+        self._ID23875.origin = self.origin;
+        self._ID23875.angles = self.angles;
     }
 
     self transfermarkstonewscriptmodel( self._ID23875 );
@@ -1669,8 +1669,8 @@ _ID51779( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
     var_12 = getanimlength( var_2 );
     var_13 = var_12 / 3;
     var_14 = var_12 / 3;
-    var_15 = var_0._ID740;
-    var_16 = var_0._ID65;
+    var_15 = var_0.origin;
+    var_16 = var_0.angles;
     var_17 = anglestoforward( var_16 );
     var_18 = anglestoup( var_16 );
     var_19 = anglestoright( var_16 );
@@ -1679,17 +1679,17 @@ _ID51779( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
     var_22 = anglestoforward( var_21 );
     var_23 = anglestoup( var_21 );
     var_24 = anglestoright( var_21 );
-    var_25 = anglestoforward( var_8._ID65 );
-    var_26 = anglestoup( var_8._ID65 );
-    var_27 = anglestoright( var_8._ID65 );
+    var_25 = anglestoforward( var_8.angles );
+    var_26 = anglestoup( var_8.angles );
+    var_27 = anglestoright( var_8.angles );
     var_28 = var_15 - var_20;
     var_29 = vectordot( var_28, var_22 );
     var_30 = vectordot( var_28, var_23 );
     var_31 = vectordot( var_28, var_24 );
-    var_32 = spawn( "script_origin", var_8._ID740 );
-    var_32._ID740 = var_32._ID740 + _ID42407::_ID49965( var_25, var_29 );
-    var_32._ID740 = var_32._ID740 + _ID42407::_ID49965( var_26, var_30 );
-    var_32._ID740 = var_32._ID740 + _ID42407::_ID49965( var_27, var_31 );
+    var_32 = spawn( "script_origin", var_8.origin );
+    var_32.origin = var_32.origin + _ID42407::_ID49965( var_25, var_29 );
+    var_32.origin = var_32.origin + _ID42407::_ID49965( var_26, var_30 );
+    var_32.origin = var_32.origin + _ID42407::_ID49965( var_27, var_31 );
     var_28 = anglestoforward( var_16 );
     var_29 = vectordot( var_28, var_22 );
     var_30 = vectordot( var_28, var_23 );
@@ -1697,7 +1697,7 @@ _ID51779( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
     var_33 = _ID42407::_ID49965( var_25, var_29 );
     var_33 += _ID42407::_ID49965( var_26, var_30 );
     var_33 += _ID42407::_ID49965( var_27, var_31 );
-    var_32._ID65 = vectortoangles( var_33 );
+    var_32.angles = vectortoangles( var_33 );
 
     if ( isdefined( var_5 ) )
         level thread _ID42237::_ID27077( var_5, var_15 );
@@ -1726,7 +1726,7 @@ _ID51779( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
     }
 
     var_0 animscripted( "tank_crush_anim", var_15, var_16, var_3 );
-    var_8 animscripted( "tank_crush_anim", var_32._ID740, var_32._ID65, var_2 );
+    var_8 animscripted( "tank_crush_anim", var_32.origin, var_32.angles, var_2 );
 
     if ( isdefined( var_7 ) )
         thread [[ var_7 ]]( var_0 );
@@ -1740,7 +1740,7 @@ _ID51779( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
     _ID44251( var_0, "postcrushed", 1 );
     wait(var_12);
     var_38 = spawn( "script_model", var_20 );
-    var_38._ID65 = var_21;
+    var_38.angles = var_21;
     var_39 = var_38 localtoworldcoords( getangledelta( var_2, 0, 1 ) );
     var_40 = var_21 + ( 0, getmovedelta( var_2, 0, 1 ), 0 );
     var_38 delete();
@@ -1770,15 +1770,15 @@ _ID51779( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 
     if ( getdvar( "debug_tankcrush" ) == "1" )
     {
-        thread _ID42407::_ID11708( level._ID794, self._ID740, 1, 0, 0, var_12 / 2 );
-        thread _ID42407::_ID11708( level._ID794, var_39, 0, 1, 0, var_12 / 2 );
-        thread _ID42407::_ID11709( level._ID794, var_32, 0, 0, 1, var_12 / 2 );
+        thread _ID42407::_ID11708( level.player, self.origin, 1, 0, 0, var_12 / 2 );
+        thread _ID42407::_ID11708( level.player, var_39, 0, 1, 0, var_12 / 2 );
+        thread _ID42407::_ID11709( level.player, var_32, 0, 0, 1, var_12 / 2 );
     }
 
     if ( isdefined( var_6 ) && var_6 )
     {
         var_45 = 1;
-        var_46 = distance( self._ID740, var_1._ID740 );
+        var_46 = distance( self.origin, var_1.origin );
         var_47 = var_46 / var_14;
         self vehicle_setspeed( var_47, var_47 * 0.05 );
     }
@@ -1807,15 +1807,15 @@ _ID44251( var_0, var_1, var_2 )
 
     var_3 = [];
 
-    if ( isdefined( var_0 ) && isdefined( var_0._ID1193 ) )
-        var_3 = getentarray( var_0._ID1193 + "_" + var_1 + "_clip", "targetname" );
+    if ( isdefined( var_0 ) && isdefined( var_0.targetname ) )
+        var_3 = getentarray( var_0.targetname + "_" + var_1 + "_clip", "targetname" );
     else
     {
         var_4 = getentarray( "script_brushmodel", "classname" );
 
         foreach ( var_6 in var_4 )
         {
-            if ( isdefined( var_6._ID1193 ) && issubstr( var_6._ID1193, var_1 ) )
+            if ( isdefined( var_6.targetname ) && issubstr( var_6.targetname, var_1 ) )
                 var_3 = _ID42237::_ID3293( var_3, var_6 );
         }
     }
@@ -1895,10 +1895,10 @@ _ID54122( var_0 )
 
         if ( isalive( var_1 ) )
         {
-            if ( var_1._ID1194 == "allies" && var_1 != level._ID794 )
+            if ( var_1.team == "allies" && var_1 != level.player )
                 continue;
 
-            var_1 dodamage( var_1._ID486 + 150, ( 0, 0, 0 ) );
+            var_1 dodamage( var_1.health + 150, ( 0, 0, 0 ) );
         }
     }
 }
@@ -2005,9 +2005,9 @@ _ID46080()
 
     foreach ( var_4 in var_0 )
     {
-        if ( var_4._ID922 == self._ID669 )
+        if ( var_4.script_noteworthy == self.model )
         {
-            var_2 = var_4._ID740;
+            var_2 = var_4.origin;
             break;
         }
     }
@@ -2016,10 +2016,10 @@ _ID46080()
 
     foreach ( var_4 in var_0 )
     {
-        if ( var_4._ID922 != self._ID669 )
+        if ( var_4.script_noteworthy != self.model )
             continue;
 
-        if ( var_4._ID740 != var_2 )
+        if ( var_4.origin != var_2 )
             continue;
 
         var_6[var_6.size] = var_4;
@@ -2029,13 +2029,13 @@ _ID46080()
 
     foreach ( var_4 in var_6 )
     {
-        var_4._ID1193 = undefined;
+        var_4.targetname = undefined;
         var_4 thread _ID42413::_ID22902( self, "tag_origin" );
 
-        if ( !isdefined( self._ID52264[var_4._ID172] ) )
-            self._ID52264[var_4._ID172] = [];
+        if ( !isdefined( self._ID52264[var_4.code_classname] ) )
+            self._ID52264[var_4.code_classname] = [];
 
-        self._ID52264[var_4._ID172][self._ID52264[var_4._ID172].size] = var_4;
+        self._ID52264[var_4.code_classname][self._ID52264[var_4.code_classname].size] = var_4;
     }
 }
 
@@ -2107,16 +2107,16 @@ _ID32450( var_0, var_1, var_2 )
         _ID42407::_ID13021( "guy2_in_" + var_2 );
 
     var_3 = _ID15985( var_0, var_2 );
-    var_4 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
+    var_4 = _ID42237::_ID16638( var_0.target, "targetname" );
     var_5 = spawn( "script_model", ( 0, 0, 0 ) );
-    var_5 setmodel( self._ID669 );
+    var_5 setmodel( self.model );
 
     if ( isdefined( self._ID24747 ) )
-        var_5._ID740 = self._ID740;
+        var_5.origin = self.origin;
     else
-        var_5._ID740 = _ID42237::_ID12140( var_4._ID740 ) + ( 0, 0, self._ID26026 );
+        var_5.origin = _ID42237::_ID12140( var_4.origin ) + ( 0, 0, self._ID26026 );
 
-    var_5._ID65 = var_4._ID65;
+    var_5.angles = var_4.angles;
     var_5 hide();
     var_5 setcontents( 0 );
     var_6 = undefined;
@@ -2137,7 +2137,7 @@ _ID32450( var_0, var_1, var_2 )
         }
 
         if ( !isdefined( var_11 ) )
-            var_11 = _ID42237::_ID16182( var_10._ID740, var_1 );
+            var_11 = _ID42237::_ID16182( var_10.origin, var_1 );
 
         var_11._ID31455 = var_10._ID31455;
 
@@ -2163,12 +2163,12 @@ _ID32450( var_0, var_1, var_2 )
 
 _ID15985( var_0, var_1 )
 {
-    var_2 = getnodearray( var_0._ID1191, "targetname" );
+    var_2 = getnodearray( var_0.target, "targetname" );
     var_3 = [];
 
     foreach ( var_5 in var_2 )
     {
-        if ( var_5._ID922 == "stage_" + var_1 )
+        if ( var_5.script_noteworthy == "stage_" + var_1 )
             var_3[var_3.size] = var_5;
     }
 
@@ -2183,8 +2183,8 @@ _ID35564( var_0, var_1, var_2, var_3 )
     var_3 _ID42259::_ID3027( var_5[0], var_4, "tag_detach_" + var_1 );
     var_3 _ID42259::_ID3020( var_5[0], var_4, "tag_detach_" + var_1 );
     _ID42407::_ID13025( "staged_guy_" + var_1 );
-    var_0 setgoalpos( _ID42237::_ID12140( var_0._ID740 ) );
-    var_0._ID452 = 16;
+    var_0 setgoalpos( _ID42237::_ID12140( var_0.origin ) );
+    var_0.goalradius = 16;
     _ID42407::_ID13027( "guy2_in_" + var_1 );
     thread _ID42412::_ID22466( [ var_0 ], undefined, var_1 );
 }

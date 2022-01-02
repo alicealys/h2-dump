@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "seaknight", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -110,11 +110,11 @@ _ID32221()
     {
         var_0["attach_interior"] = spawnstruct();
         var_0["attach_interior"]._ID1067 = "body_animate_jnt";
-        var_0["attach_interior"]._ID669 = "vehicle_ch46e_opened_door_interior_b";
+        var_0["attach_interior"].model = "vehicle_ch46e_opened_door_interior_b";
     }
 
     foreach ( var_2 in var_0 )
-        precachemodel( var_2._ID669 );
+        precachemodel( var_2.model );
 
     return var_0;
 }

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( isdefined( level._ID26672 ) )
         return;
@@ -41,21 +41,21 @@ _ID26674()
 
     if ( isdefined( self._ID31388 ) && self._ID31388 == "use_bullet_hitnormal" )
         self._ID44537 = 1;
-    else if ( isdefined( self._ID1191 ) )
+    else if ( isdefined( self.target ) )
     {
-        var_0 = _ID42237::_ID16638( self._ID1191, "targetname" );
-        self._ID7 = var_0._ID740;
-        var_1 = anglestoforward( var_0._ID65 );
+        var_0 = _ID42237::_ID16638( self.target, "targetname" );
+        self._ID7 = var_0.origin;
+        var_1 = anglestoforward( var_0.angles );
         var_1 *= 128;
         self._ID97 = self._ID7 + var_1;
     }
     else
     {
-        var_1 = anglestoforward( self._ID65 );
+        var_1 = anglestoforward( self.angles );
         var_2 = var_1 * 64;
-        self._ID7 = self._ID740 + var_2;
+        self._ID7 = self.origin + var_2;
         var_2 = var_1 * -64;
-        self._ID97 = self._ID740 + var_2;
+        self._ID97 = self.origin + var_2;
     }
 
     thread _ID26670();
@@ -103,12 +103,12 @@ _ID26669( var_0, var_1, var_2, var_3 )
     if ( !isdefined( var_1 ) )
         return 0;
 
-    if ( isdefined( var_3._ID170 ) && var_3._ID170 == "worldspawn" )
+    if ( isdefined( var_3.classname ) && var_3.classname == "worldspawn" )
         return 0;
 
     foreach ( var_5 in self._ID26668 )
     {
-        if ( distancesquared( var_1, var_5._ID740 ) < 25 )
+        if ( distancesquared( var_1, var_5.origin ) < 25 )
             return 0;
     }
 
@@ -123,7 +123,7 @@ _ID26669( var_0, var_1, var_2, var_3 )
         var_10 = vectorfromlinetopoint( self._ID7, self._ID97, var_1 );
 
     thread _ID26671( var_1, var_10, var_3 );
-    var_11 = _ID45249( level._ID1555._ID15248[self._ID922] );
+    var_11 = _ID45249( level._ID1555._ID15248[self.script_noteworthy] );
 
     if ( var_11 )
         thread _ID49260( var_11, var_1, var_10 );
@@ -135,8 +135,8 @@ _ID45249( var_0 )
 {
     var_1 = 0;
 
-    if ( getomnvar( "ui_gasmask" ) != 0 && ( self._ID922 == "steam" || self._ID922 == "water" ) && isdefined( level._ID1426["screen_heavy_rain_cgoshp"] ) && isdefined( level._ID1555._ID15248[self._ID922] ) )
-        return level._ID1555._ID15248[self._ID922];
+    if ( getomnvar( "ui_gasmask" ) != 0 && ( self.script_noteworthy == "steam" || self.script_noteworthy == "water" ) && isdefined( level._ID1426["screen_heavy_rain_cgoshp"] ) && isdefined( level._ID1555._ID15248[self.script_noteworthy] ) )
+        return level._ID1555._ID15248[self.script_noteworthy];
 
     return var_1;
 }
@@ -162,16 +162,16 @@ _ID49260( var_0, var_1, var_2 )
             return;
         }
 
-        var_6 = distancesquared( var_1, level._ID794 geteye() );
-        var_7 = var_1 - level._ID794._ID740;
-        var_8 = vectordot( var_7, anglestoforward( level._ID794._ID65 ) );
+        var_6 = distancesquared( var_1, level.player geteye() );
+        var_7 = var_1 - level.player.origin;
+        var_8 = vectordot( var_7, anglestoforward( level.player.angles ) );
 
         if ( var_6 < 12000 && var_8 > 0 )
         {
             if ( !level._ID46179 )
             {
                 level._ID46179 = 1;
-                var_4 = spawnfx( level._ID1426["screen_heavy_rain_cgoshp"], level._ID794._ID740 );
+                var_4 = spawnfx( level._ID1426["screen_heavy_rain_cgoshp"], level.player.origin );
                 triggerfx( var_4 );
             }
 
@@ -188,11 +188,11 @@ _ID49260( var_0, var_1, var_2 )
 
 _ID26671( var_0, var_1, var_2 )
 {
-    var_3 = level._ID1555._ID15248[self._ID922];
+    var_3 = level._ID1555._ID15248[self.script_noteworthy];
     var_4 = int( level._ID1553 / var_3 );
-    var_5 = level._ID1555._ID1637[self._ID922 + "_hit"];
-    var_6 = level._ID1555._ID1637[self._ID922 + "_loop"];
-    var_7 = level._ID1555._ID1637[self._ID922 + "_end"];
+    var_5 = level._ID1555._ID1637[self.script_noteworthy + "_hit"];
+    var_6 = level._ID1555._ID1637[self.script_noteworthy + "_loop"];
+    var_7 = level._ID1555._ID1637[self.script_noteworthy + "_end"];
     var_8 = spawn( "script_origin", var_0 );
     var_8 hide();
     var_8 playsound( var_5 );
@@ -200,15 +200,15 @@ _ID26671( var_0, var_1, var_2 )
     self._ID26668[self._ID26668.size] = var_8;
     level._ID1555._ID25228++;
 
-    if ( _ID42237::_ID20913() || self._ID922 != "steam" )
+    if ( _ID42237::_ID20913() || self.script_noteworthy != "steam" )
         thread _ID26667( var_0, var_1, var_2, var_8 );
 
-    playfx( level._ID1555._ID1426[self._ID922], var_0, var_1 );
+    playfx( level._ID1555._ID1426[self.script_noteworthy], var_0, var_1 );
     wait(var_3);
 
     for ( var_4--; level._ID1555._ID25228 <= 8 && var_4 > 0; var_4-- )
     {
-        playfx( level._ID1555._ID1426[self._ID922], var_0, var_1 );
+        playfx( level._ID1555._ID1426[self.script_noteworthy], var_0, var_1 );
         wait(var_3);
     }
 
@@ -226,8 +226,8 @@ _ID26667( var_0, var_1, var_2, var_3 )
         return;
 
     var_3 endon( "death" );
-    var_4 = var_3._ID740 + vectornormalize( var_1 ) * 40;
-    var_5 = level._ID1555._ID1422[self._ID922];
+    var_4 = var_3.origin + vectornormalize( var_1 ) * 40;
+    var_5 = level._ID1555._ID1422[self.script_noteworthy];
 
     for (;;)
     {
@@ -293,17 +293,17 @@ _ID28382()
 
     foreach ( var_3 in self )
     {
-        if ( var_3._ID922 == "water" )
-            var_3._ID922 = "steam";
+        if ( var_3.script_noteworthy == "water" )
+            var_3.script_noteworthy = "steam";
 
-        if ( var_3._ID922 == "steam" )
+        if ( var_3.script_noteworthy == "steam" )
         {
             var_3 willneverchange();
             var_0 = 1;
             continue;
         }
 
-        if ( var_3._ID922 == "fire" )
+        if ( var_3.script_noteworthy == "fire" )
         {
             var_3 willneverchange();
             var_1 = 1;

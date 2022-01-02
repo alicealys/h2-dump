@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "latvee", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -38,7 +38,7 @@ _ID32221()
     {
         var_0["attach_exterior"] = spawnstruct();
         var_0["attach_exterior"]._ID1067 = "body_animate_jnt";
-        var_0["attach_exterior"]._ID669 = "vehicle_laatpv_viewmodel_02";
+        var_0["attach_exterior"].model = "vehicle_laatpv_viewmodel_02";
         var_0["attach_exterior"]._ID47753 = "tag_origin";
     }
 
@@ -56,7 +56,7 @@ _ID19731()
         thread _ID42413::_ID19207( var_0 );
     }
 
-    if ( !issubstr( self._ID669, "opentop" ) && self _meth_844f( "tag_blood" ) != -1 )
+    if ( !issubstr( self.model, "opentop" ) && self _meth_844f( "tag_blood" ) != -1 )
         self hidepart( "tag_blood" );
 }
 

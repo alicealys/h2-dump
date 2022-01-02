@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     level._ID30895["generic"]["shotgunhinges_breach_left_stack_start_01"] = %breach_sh_breacherl1_idle;
     level._ID30895["generic"]["shotgunhinges_breach_left_stack_start_02"] = %breach_sh_stackr1_idle;

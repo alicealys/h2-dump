@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9259( "lights_godray_beam_favela" );
     var_0 _ID42229::_ID32402( ( 68190.7, -10046.7, 49971.1 ), ( 18.3141, 178.189, -20.2042 ) );

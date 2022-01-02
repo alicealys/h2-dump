@@ -54,19 +54,19 @@ _ID50469()
 {
     var_0 = self;
 
-    if ( level._ID912 == "cliffhanger" && level._ID35897 != "snowmobile" && level._ID35897 != "ending" )
+    if ( level.script == "cliffhanger" && level._ID35897 != "snowmobile" && level._ID35897 != "ending" )
     {
         var_1 = var_0 gettagorigin( "tag_driver" ) + ( 0, 0, 30 );
         var_2 = spawn( "script_origin", var_1 );
         var_2 makeusable();
         var_2 setcursorhint( "HINT_ACTIVATE" );
-        var_2 thread _ID42237::_ID44574( level._ID794, &"CLIFFHANGER_BOARD", &"CLIFFHANGER_BOARD_PRESS", "trigger" );
+        var_2 thread _ID42237::_ID44574( level.player, &"CLIFFHANGER_BOARD", &"CLIFFHANGER_BOARD_PRESS", "trigger" );
         var_2 waittill( "trigger" );
         var_2 makeunusable();
         var_2 delete();
-        level._ID794 maps\cliffhanger_code::_ID49754( var_0 );
+        level.player maps\cliffhanger_code::_ID49754( var_0 );
         var_0 makeusable();
-        var_3 = level._ID794;
+        var_3 = level.player;
         var_0 useby( var_3 );
     }
     else
@@ -82,7 +82,7 @@ _ID50469()
     var_4 = "snowmobile_attack_player1";
     var_5 = "snowmobile_drive_player1";
 
-    if ( var_3 != level._ID794 )
+    if ( var_3 != level.player )
     {
         var_4 = "snowmobile_attack_player2";
         var_5 = "snowmobile_drive_player2";
@@ -91,14 +91,14 @@ _ID50469()
     var_3 _ID42407::_ID10226( 20, _ID42407::_ID18684, var_4 );
     var_3 _ID42407::_ID10226( 3, _ID42407::_ID18684, var_5 );
     _ID42407::_ID10226( 3, ::_ID52444 );
-    var_0._ID794 = var_3;
+    var_0.player = var_3;
     var_3._ID40065 = var_0;
     var_0 thread _ID43759( "veh_landed", "damage_heavy", var_3 );
     var_0 thread _ID43759( "veh_jolt", "damage_light", var_3 );
     var_0 thread _ID44815();
     var_0 thread _ID50304();
     var_0 thread _ID53845();
-    var_0._ID51001 = var_0._ID669;
+    var_0._ID51001 = var_0.model;
     var_0._ID49107 = 32;
     var_0._ID3189 = "snowmobile_player";
     var_0 _ID42407::_ID3428();
@@ -163,20 +163,20 @@ _ID45011()
         return;
 
     var_2 = spawn( "script_origin", self._ID40065 gettagorigin( "tag_camera" ) );
-    var_2._ID65 = self _meth_846a();
-    var_3 = _ID42407::_ID35028( "snowmobile_player_detached", var_2._ID740 - ( 0, 0, 60 ), var_2._ID65 );
+    var_2.angles = self _meth_846a();
+    var_3 = _ID42407::_ID35028( "snowmobile_player_detached", var_2.origin - ( 0, 0, 60 ), var_2.angles );
     var_3 linkto( var_2 );
 
     if ( var_3 _ID42407::_ID18203( self._ID51531 + "_detached" ) )
         var_3 thread _ID42259::_ID3111( var_3, self._ID51531 + "_detached" );
 
-    var_4 = anglestoforward( self._ID40065._ID65 );
+    var_4 = anglestoforward( self._ID40065.angles );
     var_5 = var_4 * var_1 * ( 0.75, 0.75, 1 );
     var_6 = self _meth_846b();
     self lerpfov( var_6, 0.01 );
     _ID42407::_ID27348();
     _ID51371( self._ID40065 );
-    self setplayerangles( var_3._ID65 * ( 1, 1, 0 ) );
+    self setplayerangles( var_3.angles * ( 1, 1, 0 ) );
     self playerlinkto( var_3, "tag_player", 1, 0, 0, 0, 0 );
     wait 0.1;
     var_7 = 5;
@@ -190,18 +190,18 @@ _ID45011()
 
         if ( var_9 <= 0.0 )
         {
-            var_2._ID974 = ( 0, 0, 0 );
+            var_2.slidevelocity = ( 0, 0, 0 );
             continue;
         }
 
-        var_10 = getgroundposition( var_2._ID740, var_7 );
+        var_10 = getgroundposition( var_2.origin, var_7 );
 
-        if ( lengthsquared( var_2._ID740 - var_10 ) <= var_7 * var_7 + 1 )
+        if ( lengthsquared( var_2.origin - var_10 ) <= var_7 * var_7 + 1 )
         {
             var_9 -= 0.05;
             var_11 = var_9 / var_8;
             var_11 = sqrt( max( 0.0, var_11 ) );
-            var_2._ID974 = var_2._ID974 * var_11;
+            var_2.slidevelocity = var_2.slidevelocity * var_11;
         }
     }
 }
@@ -363,13 +363,13 @@ _ID46650()
 
     for (;;)
     {
-        if ( level._ID794._ID40065 vehicle_getspeed() < 30 )
+        if ( level.player._ID40065 vehicle_getspeed() < 30 )
         {
-            if ( level._ID794._ID740[1] > 26300 && level._ID794._ID740[1] < 27000 )
+            if ( level.player.origin[1] > 26300 && level.player.origin[1] < 27000 )
             {
-                level._ID794._ID40065 _meth_85a5( 1 );
+                level.player._ID40065 _meth_85a5( 1 );
                 wait 0.3;
-                level._ID794._ID40065 _meth_85a5( 0 );
+                level.player._ID40065 _meth_85a5( 0 );
                 break;
             }
         }
@@ -384,11 +384,11 @@ tweak_suspension_strength_for_jump()
 
     for (;;)
     {
-        if ( level._ID794._ID740[1] > 26500 )
+        if ( level.player.origin[1] > 26500 )
         {
-            level._ID794._ID40065 _meth_85bf( 5000, 10000 );
+            level.player._ID40065 _meth_85bf( 5000, 10000 );
             wait 0.5;
-            level._ID794._ID40065 _meth_85bf( 100, 200 );
+            level.player._ID40065 _meth_85bf( 100, 200 );
             break;
         }
 
@@ -458,7 +458,7 @@ _ID54207( var_0 )
 
     for (;;)
     {
-        if ( abs( var_0._ID1276 ) < 5 )
+        if ( abs( var_0.veh_speed ) < 5 )
         {
             var_0._ID45638++;
 
@@ -466,14 +466,14 @@ _ID54207( var_0 )
             {
                 var_2 = "snowmobile_reverse_player1";
 
-                if ( var_0._ID794 != level._ID794 )
+                if ( var_0.player != level.player )
                     var_2 = "snowmobile_reverse_player2";
 
-                var_0._ID794._ID49400 = 1;
+                var_0.player._ID49400 = 1;
 
                 if ( !var_1 )
                 {
-                    var_0._ID794 _ID42407::_ID18684( var_2 );
+                    var_0.player _ID42407::_ID18684( var_2 );
                     var_1 = 1;
                 }
             }
@@ -490,7 +490,7 @@ _ID54207( var_0 )
 
 _ID52056()
 {
-    return level._ID794 _ID52245();
+    return level.player _ID52245();
 }
 
 _ID52792()
@@ -519,7 +519,7 @@ _ID49316()
 {
     for (;;)
     {
-        if ( self._ID1276 > 10 )
+        if ( self.veh_speed > 10 )
             return;
 
         wait 1;
@@ -530,19 +530,19 @@ _ID44897( var_0 )
 {
     var_1 = level._ID27742;
 
-    if ( self != level._ID794 )
-        var_1 = level._ID794;
+    if ( self != level.player )
+        var_1 = level.player;
 
     self laserforceoff( var_1 );
 }
 
 _ID52829()
 {
-    var_0 = level._ID794._ID40065._ID65;
+    var_0 = level.player._ID40065.angles;
     var_0 = ( 0, var_0[1], 0 );
     var_1 = anglestoforward( var_0 );
-    var_2 = level._ID794._ID43692;
-    var_3 = vectortoangles( var_2._ID24768._ID740 - var_2._ID740 );
+    var_2 = level.player._ID43692;
+    var_3 = vectortoangles( var_2._ID24768.origin - var_2.origin );
     var_3 = ( 0, var_3[1], 0 );
     var_4 = anglestoforward( var_3 );
     var_5 = vectordot( var_1, var_4 );
@@ -551,7 +551,7 @@ _ID52829()
 
 _ID45850()
 {
-    return level._ID794._ID40065 vehicle_getspeed() > 60;
+    return level.player._ID40065 vehicle_getspeed() > 60;
 }
 
 _ID51137( var_0 )
@@ -564,16 +564,16 @@ _ID51137( var_0 )
         var_1 = getaiarray( "bad_guys" );
         var_2 = 0.94;
         var_3 = undefined;
-        var_4 = _ID42407::_ID32530( self._ID740, 0 );
+        var_4 = _ID42407::_ID32530( self.origin, 0 );
 
         foreach ( var_6 in var_1 )
         {
-            var_7 = _ID42407::_ID32530( var_6._ID740, 0 );
+            var_7 = _ID42407::_ID32530( var_6.origin, 0 );
 
             if ( distance( var_7, var_4 ) > 750 )
                 continue;
 
-            var_8 = _ID42407::_ID15689( var_4, self._ID65, var_7 );
+            var_8 = _ID42407::_ID15689( var_4, self.angles, var_7 );
 
             if ( var_8 > var_2 )
             {
@@ -917,7 +917,7 @@ _ID48564( var_0, var_1, var_2, var_3, var_4, var_5 )
 
 _ID20608()
 {
-    if ( !level._ID8534 && !level._ID794 _meth_835b() )
+    if ( !level._ID8534 && !level.player _meth_835b() )
         return self attackbuttonpressed();
 
     return self _meth_8108();
@@ -965,12 +965,12 @@ _ID45584( var_0 )
             var_10 = self._ID48892 geteye();
         else
         {
-            var_12 = anglestoforward( self._ID65 );
+            var_12 = anglestoforward( self.angles );
             var_10 = var_11 + var_12 * 1500;
         }
 
         var_13 = vectortoyaw( var_10 - var_11 );
-        var_14 = angleclamp( self._ID65[1] );
+        var_14 = angleclamp( self.angles[1] );
         var_15 = 20;
         var_16 = angleclamp180( var_13 - var_14 );
         var_7[var_5 % var_6] = var_16;
@@ -1233,10 +1233,10 @@ _ID50993( var_0 )
             var_3 = 0;
         }
 
-        self._ID43979._ID55 = var_2;
+        self._ID43979.alpha = var_2;
 
         foreach ( var_7 in self._ID49208._ID7488 )
-            var_7._ID55 = var_2;
+            var_7.alpha = var_2;
 
         wait 0.05;
     }
@@ -1333,7 +1333,7 @@ _ID53742()
 
 _ID47481()
 {
-    return level._ID794 _ID44503();
+    return level.player _ID44503();
 }
 
 _ID43628()
@@ -1360,7 +1360,7 @@ _ID44503()
 
 _ID45276()
 {
-    return level._ID794 _ID53176();
+    return level.player _ID53176();
 }
 
 _ID45606()
@@ -1373,7 +1373,7 @@ _ID53176()
     if ( !isdefined( self._ID40065 ) )
         return 1;
 
-    return self._ID40065._ID1276 > 10;
+    return self._ID40065.veh_speed > 10;
 }
 
 _ID45731( var_0 )

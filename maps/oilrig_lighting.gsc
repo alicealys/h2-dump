@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID19720();
     thread _ID32969();
@@ -9,7 +9,7 @@ _ID616()
     thread _ID46604();
     level._ID40576 = "oilrig_thermal";
     level.thermal_scope_lightset = "oilrig_thermal";
-    maps\_thermal_scope_lightset::_ID521( "oilrig_thermal" );
+    maps\_thermal_scope_lightset::init( "oilrig_thermal" );
 }
 
 _ID46604()
@@ -41,7 +41,7 @@ _ID32363()
     level._ID51424 = "oilrig";
     level._ID49027 = "oilrig";
     _ID42407::_ID40561( "oilrig", 2 );
-    level._ID794 _ID42407::_ID48929( "oilrig", 2 );
+    level.player _ID42407::_ID48929( "oilrig", 2 );
 }
 
 _ID52242( var_0, var_1, var_2, var_3 )
@@ -50,8 +50,8 @@ _ID52242( var_0, var_1, var_2, var_3 )
     var_4._ID48056 = getent( var_1, "targetname" );
     var_4._ID39483 = spawn( "script_model", ( 0, 0, 0 ) );
     var_4._ID39483 setmodel( var_2 );
-    var_4._ID39483._ID740 = var_4._ID48056._ID740;
-    var_4._ID39483._ID65 = var_4._ID48056._ID65;
+    var_4._ID39483.origin = var_4._ID48056.origin;
+    var_4._ID39483.angles = var_4._ID48056.angles;
     var_4._ID39483 hide();
     var_4._ID22415 = 1;
     var_4._ID22413 = [];
@@ -138,7 +138,7 @@ _ID43211()
 
 _ID45373()
 {
-    level._ID794 setwatersheeting( 1, 1.7 );
+    level.player setwatersheeting( 1, 1.7 );
 }
 
 _ID45767( var_0 )
@@ -146,7 +146,7 @@ _ID45767( var_0 )
     if ( var_0 )
         wait 19;
 
-    level._ID794 thread _ID42237::_ID27077( "splash_player_water_exit" );
+    level.player thread _ID42237::_ID27077( "splash_player_water_exit" );
     thread _ID45373();
     setblur( 3, 0.1 );
     wait 0.25;
@@ -161,28 +161,28 @@ _ID43059()
     thread _ID45767( var_0 );
     _ID42237::_ID14413( "player_breaks_surface" );
     _ID42475::_ID34575( "aud_start_mix_stealth_kill" );
-    level._ID794 thread maps\oilrig_aud::player_moves_on_water_surface();
-    level._ID794 playrumbleonentity();
+    level.player thread maps\oilrig_aud::player_moves_on_water_surface();
+    level.player playrumbleonentity();
     _ID42237::_ID14402( "above_water_visuals" );
-    thread _ID42237::_ID27077( "exit_water_player", level._ID794._ID740 );
+    thread _ID42237::_ID27077( "exit_water_player", level.player.origin );
 }
 
 _ID51847()
 {
     wait 19;
     thread _ID42407::_ID40561( "oilrig", 0.5 );
-    level._ID794 _ID42407::_ID48929( "oilrig", 0.5 );
-    level._ID794 _meth_84b9();
-    level._ID794 _ID42262::_ID54386();
+    level.player _ID42407::_ID48929( "oilrig", 0.5 );
+    level.player _meth_84b9();
+    level.player _ID42262::_ID54386();
 }
 
 _ID54406()
 {
     _ID42237::_ID14413( "above_water_visuals" );
     thread _ID42407::_ID40561( "oilrig", 0.5 );
-    level._ID794 _ID42407::_ID48929( "oilrig", 0.5 );
-    level._ID794 _meth_84b9();
-    level._ID794 _ID42262::_ID54386();
+    level.player _ID42407::_ID48929( "oilrig", 0.5 );
+    level.player _meth_84b9();
+    level.player _ID42262::_ID54386();
 }
 
 _ID50834( var_0 )
@@ -195,31 +195,31 @@ _ID50762( var_0 )
     if ( isdefined( var_0 ) )
     {
         thread _ID42407::_ID40561( "oilrig_underwater_takedown", 0.5 );
-        level._ID794 _ID42407::_ID48929( "oilrig_underwater_rise", 1 );
+        level.player _ID42407::_ID48929( "oilrig_underwater_rise", 1 );
     }
     else
     {
         thread _ID42407::_ID40561( "oilrig_underwater", 1 );
-        level._ID794 _ID42407::_ID48929( "oilrig_underwater", 1 );
+        level.player _ID42407::_ID48929( "oilrig_underwater", 1 );
     }
 
-    level._ID794 _meth_84b8( 1 );
-    level._ID794 _meth_84ba( 5.6, 50, 64, 64 );
-    level._ID794 _ID42262::_ID54386();
+    level.player _meth_84b8( 1 );
+    level.player _meth_84ba( 5.6, 50, 64, 64 );
+    level.player _ID42262::_ID54386();
 }
 
 _ID39450()
 {
     _ID42237::_ID14413( "underwater_sequence_lighting" );
     var_0 = _ID42313::_ID9125( "black", 1 );
-    var_0._ID983 = 1000;
-    var_0._ID408 = 0;
+    var_0.sort = 1000;
+    var_0.foreground = 0;
     thread _ID42402::_ID39444( 1 );
     thread _ID42407::_ID12569( 0 );
     _ID50762();
     _ID42237::_ID14413( "open_dds_door" );
     var_0 fadeovertime( 5 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     _ID42237::_ID14413( "sdv_01_passing" );
     thread _ID50834( 5 );
 }
@@ -229,5 +229,5 @@ _ID49664()
     _ID42237::_ID14413( "barracks_cleared" );
     _ID42237::_ID14413( "player_on_board_littlebird" );
     thread _ID42407::_ID40561( "oilrig", 5 );
-    level._ID794 _ID42407::_ID48929( "oilrig_helicopter", 0.5 );
+    level.player _ID42407::_ID48929( "oilrig_helicopter", 0.5 );
 }

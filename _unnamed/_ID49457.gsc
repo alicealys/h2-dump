@@ -350,7 +350,7 @@ _ID47554()
 
 _ID46148()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "co_hunted":
         case "estate":
@@ -628,7 +628,7 @@ _ID46148()
 
 _ID49197()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "ac130":
             _ID45031( "ac130" );

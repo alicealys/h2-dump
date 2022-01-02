@@ -37,10 +37,10 @@ _ID19930()
     level._ID44079 = [ 0, level._ID53949, level._ID53949 ];
     level._ID43115 = getdvar( "beautiful_corner_hdr_demo_show_indicators", "0" ) == "1";
 
-    if ( !isdefined( level._ID794 ) )
+    if ( !isdefined( level.player ) )
         level waittill( "level.players initialized" );
 
-    level._ID794 allowcrouch( 0 );
+    level.player allowcrouch( 0 );
     _ID47997();
     return 1;
 }
@@ -65,18 +65,18 @@ _ID7778()
 
 _ID44395()
 {
-    level._ID794 takeallweapons();
-    level._ID794 disableoffhandweapons();
+    level.player takeallweapons();
+    level.player disableoffhandweapons();
 
     if ( isdefined( level._ID49437 ) )
     {
-        level._ID794 giveweapon( level._ID49437 );
-        level._ID794 switchtoweapon( level._ID49437 );
+        level.player giveweapon( level._ID49437 );
+        level.player switchtoweapon( level._ID49437 );
     }
 
-    level._ID794 thread _ID52669();
+    level.player thread _ID52669();
     level._ID15018 = 1;
-    level._ID794 enableinvulnerability();
+    level.player enableinvulnerability();
 }
 
 _ID52669()
@@ -118,10 +118,10 @@ _ID53379()
         if ( isdefined( level._ID49437 ) )
             var_3 _ID42407::_ID14803( level._ID49437, "primary" );
 
-        if ( isdefined( var_2._ID922 ) )
+        if ( isdefined( var_2.script_noteworthy ) )
         {
             var_3._ID3189 = "beautiful_guy";
-            var_3 thread _ID42259::_ID3044( var_3, var_2._ID922, "stop_idle" );
+            var_3 thread _ID42259::_ID3044( var_3, var_2.script_noteworthy, "stop_idle" );
         }
     }
 }
@@ -154,10 +154,10 @@ _ID48128( var_0, var_1 )
     if ( !isdefined( var_0 ) )
         return;
 
-    if ( !isdefined( var_0._ID922 ) )
+    if ( !isdefined( var_0.script_noteworthy ) )
         return;
 
-    if ( var_0._ID922 != "view_pos" )
+    if ( var_0.script_noteworthy != "view_pos" )
         return;
 
     var_2 = spawnstruct();
@@ -176,10 +176,10 @@ _ID52048()
     _ID42237::_ID14400( "beautiful_view_transitioning" );
     _ID42237::_ID14388( "beautiful_view_transitioning" );
     level._ID5261 = _ID42313::_ID9125( "black", 1 );
-    level._ID5261._ID983 = 1000;
-    level._ID794 takeweapon( "beretta" );
-    level._ID794 takeweapon( "fraggrenade" );
-    level._ID794 takeweapon( "flash_grenade" );
+    level._ID5261.sort = 1000;
+    level.player takeweapon( "beretta" );
+    level.player takeweapon( "fraggrenade" );
+    level.player takeweapon( "flash_grenade" );
     _ID48728( level._ID43337[level._ID47257] );
     wait 0.05;
     setsaveddvar( "compass", "0" );
@@ -187,8 +187,8 @@ _ID52048()
     setsaveddvar( "hud_showStance", "0" );
     setsaveddvar( "actionSlotsHide", "1" );
     wait 0.5;
-    level._ID794 disableweapons();
-    level._ID794 freezecontrols( 1 );
+    level.player disableweapons();
+    level.player freezecontrols( 1 );
     wait 1.0;
     _ID49545();
     _ID47221();
@@ -219,32 +219,32 @@ _ID47997()
     if ( !level._ID43115 )
         return;
 
-    level._ID44225 = newclienthudelem( level._ID794 );
-    level._ID44225._ID1331 = 0;
-    level._ID44225._ID1339 = 0;
-    level._ID44225._ID983 = 51;
-    level._ID44225._ID44 = "right";
-    level._ID44225._ID45 = "bottom";
-    level._ID44225._ID499 = "right";
-    level._ID44225._ID1284 = "bottom";
-    level._ID44225._ID55 = level._ID53949;
+    level._ID44225 = newclienthudelem( level.player );
+    level._ID44225.x = 0;
+    level._ID44225.y = 0;
+    level._ID44225.sort = 51;
+    level._ID44225.alignx = "right";
+    level._ID44225.aligny = "bottom";
+    level._ID44225.horzalign = "right";
+    level._ID44225.vertalign = "bottom";
+    level._ID44225.alpha = level._ID53949;
     level._ID44225 settext( "HDR" );
-    level._ID44225._ID493 = 1;
-    level._ID44225._ID393 = 2;
-    level._ID44225._ID392 = "default";
-    level._ID43924 = newclienthudelem( level._ID794 );
-    level._ID43924._ID1331 = 0;
-    level._ID43924._ID1339 = 1;
-    level._ID43924._ID983 = 51;
-    level._ID43924._ID44 = "left";
-    level._ID43924._ID45 = "bottom";
-    level._ID43924._ID499 = "left";
-    level._ID43924._ID1284 = "bottom";
-    level._ID43924._ID55 = level._ID53949;
+    level._ID44225.hidewheninmenu = 1;
+    level._ID44225.fontscale = 2;
+    level._ID44225.font = "default";
+    level._ID43924 = newclienthudelem( level.player );
+    level._ID43924.x = 0;
+    level._ID43924.y = 1;
+    level._ID43924.sort = 51;
+    level._ID43924.alignx = "left";
+    level._ID43924.aligny = "bottom";
+    level._ID43924.horzalign = "left";
+    level._ID43924.vertalign = "bottom";
+    level._ID43924.alpha = level._ID53949;
     level._ID43924 settext( "SDR" );
-    level._ID43924._ID493 = 1;
-    level._ID43924._ID393 = 2;
-    level._ID43924._ID392 = "default";
+    level._ID43924.hidewheninmenu = 1;
+    level._ID43924.fontscale = 2;
+    level._ID43924.font = "default";
 }
 
 _ID47221()
@@ -255,16 +255,16 @@ _ID47221()
     level._ID44225 fadeovertime( 0.5 );
 
     if ( level._ID44609 < 0.9 || getdvar( "r_hdrSplitViewSDR" ) != "Split" )
-        level._ID44225._ID55 = level._ID47290[level._ID48353];
+        level._ID44225.alpha = level._ID47290[level._ID48353];
     else
-        level._ID44225._ID55 = 0;
+        level._ID44225.alpha = 0;
 
     level._ID43924 fadeovertime( 0.5 );
 
     if ( level._ID44609 > 0.1 || getdvar( "r_hdrSplitViewSDR" ) != "Split" )
-        level._ID43924._ID55 = level._ID44079[level._ID48353];
+        level._ID43924.alpha = level._ID44079[level._ID48353];
     else
-        level._ID43924._ID55 = 0;
+        level._ID43924.alpha = 0;
 
     level notify( "stop_fade_out_infobox" );
     thread _ID49968();
@@ -275,9 +275,9 @@ _ID49968()
     level endon( "stop_fade_out_infobox" );
     wait 5;
     level._ID44225 fadeovertime( 0.5 );
-    level._ID44225._ID55 = 0;
+    level._ID44225.alpha = 0;
     level._ID43924 fadeovertime( 0.5 );
-    level._ID43924._ID55 = 0;
+    level._ID43924.alpha = 0;
 }
 
 _ID49428()
@@ -328,13 +328,13 @@ _ID52224()
 {
     for (;;)
     {
-        if ( level._ID794 buttonpressed( "BUTTON_RSHLDR" ) || level._ID794 buttonpressed( "PGUP" ) )
+        if ( level.player buttonpressed( "BUTTON_RSHLDR" ) || level.player buttonpressed( "PGUP" ) )
         {
             level._ID44192 = "next";
             level notify( "hdr_position_request" );
             wait 0.1;
         }
-        else if ( level._ID794 buttonpressed( "BUTTON_LSHLDR" ) || level._ID794 buttonpressed( "PGDN" ) )
+        else if ( level.player buttonpressed( "BUTTON_LSHLDR" ) || level.player buttonpressed( "PGDN" ) )
         {
             level._ID44192 = "prev";
             level notify( "hdr_position_request" );
@@ -349,13 +349,13 @@ _ID43993()
 {
     for (;;)
     {
-        if ( level._ID794 buttonpressed( "DPAD_UP" ) || level._ID794 buttonpressed( "UPARROW" ) )
+        if ( level.player buttonpressed( "DPAD_UP" ) || level.player buttonpressed( "UPARROW" ) )
         {
             level._ID49932 = "next";
             level notify( "hdr_change_request" );
             wait 0.5;
         }
-        else if ( level._ID794 buttonpressed( "DPAD_DOWN" ) || level._ID794 buttonpressed( "DOWNARROW" ) )
+        else if ( level.player buttonpressed( "DPAD_DOWN" ) || level.player buttonpressed( "DOWNARROW" ) )
         {
             level._ID49932 = "prev";
             level notify( "hdr_change_request" );
@@ -370,7 +370,7 @@ _ID46578()
 {
     for (;;)
     {
-        if ( level._ID794 buttonpressed( "DPAD_LEFT" ) || level._ID794 buttonpressed( "PGUP" ) )
+        if ( level.player buttonpressed( "DPAD_LEFT" ) || level.player buttonpressed( "PGUP" ) )
         {
             if ( !level._ID44606 )
                 level._ID43787 = !level._ID43787;
@@ -384,12 +384,12 @@ _ID44419()
 {
     for (;;)
     {
-        if ( level._ID794 buttonpressed( "DPAD_RIGHT" ) || level._ID794 buttonpressed( "RIGHTARROW" ) )
+        if ( level.player buttonpressed( "DPAD_RIGHT" ) || level.player buttonpressed( "RIGHTARROW" ) )
         {
             level._ID54141 = "next";
             level notify( "move_view_request" );
         }
-        else if ( level._ID794 buttonpressed( "DPAD_LEFT" ) || level._ID794 buttonpressed( "LEFTARROW" ) )
+        else if ( level.player buttonpressed( "DPAD_LEFT" ) || level.player buttonpressed( "LEFTARROW" ) )
         {
             level._ID54141 = "prev";
             level notify( "move_view_request" );
@@ -427,7 +427,7 @@ _ID50098()
 {
     for (;;)
     {
-        while ( !( level._ID794 buttonpressed( "DPAD_DOWN" ) || level._ID794 buttonpressed( "END" ) ) )
+        while ( !( level.player buttonpressed( "DPAD_DOWN" ) || level.player buttonpressed( "END" ) ) )
             wait 0.05;
 
         if ( !_ID42237::_ID14385( "beautiful_view_transitioning" ) )
@@ -456,28 +456,28 @@ _ID49545()
 {
     wait 0.1;
     level._ID5261 fadeovertime( 0.3 );
-    level._ID5261._ID55 = 0;
+    level._ID5261.alpha = 0;
 
     if ( !level._ID50169 )
-        level._ID794 enableweapons();
+        level.player enableweapons();
 
     wait 0.3;
 
     if ( !level._ID50169 )
-        level._ID794 freezecontrols( 0 );
+        level.player freezecontrols( 0 );
 
-    level._ID794 hidehud();
+    level.player hidehud();
 }
 
 _ID51147()
 {
-    level._ID794 showhud();
-    level._ID794 setstance( "stand" );
+    level.player showhud();
+    level.player setstance( "stand" );
     level._ID5261 fadeovertime( 0.3 );
-    level._ID5261._ID55 = 1;
-    level._ID794 disableweapons();
+    level._ID5261.alpha = 1;
+    level.player disableweapons();
     wait 0.3;
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     wait 0.1;
 }
 
@@ -486,14 +486,14 @@ _ID48728( var_0 )
     if ( level._ID54170[var_0] != "" )
     {
         level _ID42407::_ID40561( level._ID54170[var_0], 0 );
-        level._ID794 _ID42407::_ID40561( level._ID54170[var_0], 0 );
+        level.player _ID42407::_ID40561( level._ID54170[var_0], 0 );
     }
 
     if ( level._ID50047[var_0] != "" )
-        level._ID794 lightset( level._ID50047[var_0] );
+        level.player lightset( level._ID50047[var_0] );
 
     if ( level._ID54462[var_0] != "" )
-        level._ID794 _meth_849f( level._ID54462[var_0], 0 );
+        level.player _meth_849f( level._ID54462[var_0], 0 );
 
     if ( getdvar( "r_hdrDisplaySupportEnabled" ) == "1" )
     {
@@ -508,25 +508,25 @@ _ID48728( var_0 )
     if ( level._ID50169 && isdefined( level._ID46504[var_0] ) )
     {
         var_1 = level._ID46504[var_0];
-        level._ID794 _meth_84b8();
+        level.player _meth_84b8();
         setsaveddvar( "r_dof_physical_bokehEnable", 1 );
-        level._ID794 _meth_84ba( var_1["fstop"], var_1["focus_distance"], var_1["focus_speed"], var_1["aperture_speed"] );
+        level.player _meth_84ba( var_1["fstop"], var_1["focus_distance"], var_1["focus_speed"], var_1["aperture_speed"] );
     }
     else
     {
-        level._ID794 _meth_84b9();
+        level.player _meth_84b9();
         setsaveddvar( "r_dof_physical_bokehEnable", 0 );
     }
 
     if ( level._ID50169 && isdefined( level._ID45957[var_0] ) )
-        level._ID794 lerpfov( level._ID45957[var_0], 0.1 );
+        level.player lerpfov( level._ID45957[var_0], 0.1 );
     else
-        level._ID794 lerpfov( 65, 0.1 );
+        level.player lerpfov( 65, 0.1 );
 
     if ( isdefined( level._ID44344[var_0] ) )
         [[ level._ID44344[var_0] ]]();
 
-    level._ID794 setstance( "stand" );
+    level.player setstance( "stand" );
 
     if ( level._ID50169 )
     {
@@ -539,19 +539,19 @@ _ID48728( var_0 )
 
 _ID44969( var_0 )
 {
-    level._ID794 unlink();
+    level.player unlink();
     var_1 = getent( var_0, "targetname" );
 
     if ( !isdefined( var_1 ) )
         return;
 
-    level._ID794 setorigin( var_1._ID740 );
-    level._ID794 setplayerangles( var_1._ID65 );
+    level.player setorigin( var_1.origin );
+    level.player setplayerangles( var_1.angles );
 }
 
 _ID49473( var_0 )
 {
-    level._ID794 unlink();
+    level.player unlink();
     var_1 = getent( var_0, "targetname" );
 
     if ( !isdefined( var_1 ) )
@@ -560,11 +560,11 @@ _ID49473( var_0 )
     if ( !isdefined( level._ID53741 ) )
         level._ID53741 = _ID42237::_ID35164();
 
-    level._ID53741._ID740 = var_1._ID740;
-    level._ID53741._ID65 = var_1._ID65;
-    level._ID794 setorigin( level._ID53741._ID740 );
-    level._ID794 setplayerangles( level._ID53741._ID65 );
-    level._ID794 playerlinkto( level._ID53741, "tag_origin", 1, 0, 0, 0, 0 );
+    level._ID53741.origin = var_1.origin;
+    level._ID53741.angles = var_1.angles;
+    level.player setorigin( level._ID53741.origin );
+    level.player setplayerangles( level._ID53741.angles );
+    level.player playerlinkto( level._ID53741, "tag_origin", 1, 0, 0, 0, 0 );
 }
 
 _ID48612( var_0 )
@@ -595,8 +595,8 @@ _ID48612( var_0 )
 
         if ( isdefined( var_4 ) && isdefined( var_2 ) )
         {
-            level._ID53741 moveto( var_4._ID740, var_2 );
-            level._ID53741 rotateto( var_4._ID65, var_2 );
+            level._ID53741 moveto( var_4.origin, var_2 );
+            level._ID53741 rotateto( var_4.angles, var_2 );
             wait(var_2 + var_3);
         }
         else

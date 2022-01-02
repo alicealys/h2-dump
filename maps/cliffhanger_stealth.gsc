@@ -68,7 +68,7 @@ _ID46153()
 
     var_0["warning1"] = _ID42388::_ID12775;
 
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "axis":
             _ID42389::_ID36352();
@@ -78,8 +78,8 @@ _ID46153()
             _ID42389::_ID36344();
             _ID42389::_ID36345();
             self._ID4867 = 1;
-            self._ID411 = 0.76;
-            self._ID412 = 0.1;
+            self.fovcosine = 0.76;
+            self.fovcosinebusy = 0.1;
             _ID51427();
             break;
     }
@@ -97,7 +97,7 @@ _ID48480()
         return;
     }
 
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "axis":
             _ID42407::_ID13024( "player_found" );
@@ -127,17 +127,17 @@ _ID48480()
             _ID42389::_ID36344();
             _ID42389::_ID36345();
             _ID42386::_ID2324( ::_ID54193 );
-            self._ID464 = 0;
+            self.grenadeammo = 0;
             self._ID4867 = 1;
-            self._ID411 = 0.5;
-            self._ID412 = 0.1;
+            self.fovcosine = 0.5;
+            self.fovcosinebusy = 0.1;
             thread maps\cliffhanger_code::_ID45142();
             thread maps\cliffhanger_code::_ID43702();
             thread maps\cliffhanger_code::_ID45458();
             _ID51427();
             break;
         case "allies":
-            self._ID465 = 0;
+            self.grenadeawareness = 0;
             thread _ID42389::_ID36351();
             self._ID1644._ID5029._ID24845 = 1;
             self._ID1644._ID5029._ID40930 = 4;
@@ -198,18 +198,18 @@ _ID51851( var_0 )
 _ID43641()
 {
     var_0 = level._ID47341;
-    var_0._ID216 = 1;
+    var_0.count = 1;
     level._ID28543 = var_0 stalingradspawn();
     level._ID28543 thread animscripts\utility::_ID26591();
     level._ID28543 _meth_85c2( 1 );
     _ID42407::_ID35060( level._ID28543 );
-    level._ID28543._ID51578 = spawn( "script_origin", level._ID28543._ID740 );
+    level._ID28543._ID51578 = spawn( "script_origin", level._ID28543.origin );
     level._ID28543._ID3189 = "price";
     level._ID28543 _ID42407::_ID12445();
-    level._ID28543._ID764 = 0;
+    level._ID28543.pathrandompercent = 0;
     level._ID28543 thread _ID42407::_ID22746();
     level._ID28543 _ID42407::_ID22825();
-    level._ID28543._ID49 = 0;
+    level._ID28543.allowdeath = 0;
     level._ID28543 thread maps\cliffhanger_code::_ID53107();
     thread _ID42407::_ID4917( "allies" );
     level._ID28543._ID4867 = 5000000;
@@ -218,9 +218,9 @@ _ID43641()
 _ID53712()
 {
     thread _ID42407::_ID32226( 0 );
-    self._ID464 = 0;
+    self.grenadeammo = 0;
     self._ID14794 = undefined;
-    self._ID511 = 1;
+    self.ignoreme = 1;
 }
 
 _ID54026()
@@ -228,10 +228,10 @@ _ID54026()
     if ( _ID42237::_ID14385( "price_go_to_climb_ridge" ) )
         self._ID11575 = 1;
 
-    self._ID464 = 0;
+    self.grenadeammo = 0;
 
     if ( !_ID42237::_ID14385( "said_lets_split_up" ) )
-        self._ID511 = 0;
+        self.ignoreme = 0;
 
     self pushplayer( 0 );
 }
@@ -241,15 +241,15 @@ _ID46381()
     self endon( "death" );
     self endon( "stop_check_near_enemy" );
     self endon( "restart_attack_behavior" );
-    var_0 = max( self._ID686, squared( self._ID760 ) );
+    var_0 = max( self.newenemyreactiondistsq, squared( self.pathenemyfightdist ) );
     waitframe;
 
     for (;;)
     {
-        if ( !isdefined( self._ID322 ) )
+        if ( !isdefined( self.enemy ) )
             return;
 
-        if ( distancesquared( self._ID740, self._ID322._ID740 ) < var_0 )
+        if ( distancesquared( self.origin, self.enemy.origin ) < var_0 )
             break;
 
         wait 0.1;
@@ -270,7 +270,7 @@ _ID53983()
     self notify( "enemy_runto_and_lookaround" );
     self notify( "restart_attack_behavior" );
     _ID42407::_ID7869();
-    thread _ID46042( self._ID322 );
+    thread _ID46042( self.enemy );
 }
 
 _ID46042( var_0 )
@@ -279,7 +279,7 @@ _ID46042( var_0 )
     _ID47098();
 
     if ( !_ID42407::_ID13019( "not_first_attack" ) )
-        thread _ID42386::_ID12797( self._ID740 );
+        thread _ID42386::_ID12797( self.origin );
 
     self endon( "death" );
     _ID42407::_ID13025( "_stealth_override_goalpos" );
@@ -307,7 +307,7 @@ _ID46042( var_0 )
 
 _ID50652()
 {
-    var_0 = distance( self._ID740, _ID42407::_ID15617( self._ID740 )._ID740 );
+    var_0 = distance( self.origin, _ID42407::_ID15617( self.origin ).origin );
     var_1 = ( var_0 - 200 ) / 1000;
     var_1 = clamp( var_1, 0, 0.5 );
     wait(var_1);
@@ -336,10 +336,10 @@ _ID45180()
     _ID42407::_ID12467();
     self._ID10998 = 0;
     self._ID11025 = 0;
-    self._ID452 = 64;
-    var_0 = _ID42407::_ID15617( self._ID740 );
-    var_1 = var_0._ID740;
-    var_2 = distance( var_1, self._ID740 );
+    self.goalradius = 64;
+    var_0 = _ID42407::_ID15617( self.origin );
+    var_1 = var_0.origin;
+    var_2 = distance( var_1, self.origin );
     _ID42407::_ID13025( "_stealth_override_goalpos" );
 
     if ( self cansee( var_0 ) )
@@ -352,16 +352,16 @@ _ID45180()
         if ( var_4.size )
         {
             var_5 = var_4[randomint( var_4.size )];
-            self setgoalpos( var_5._ID740 );
+            self setgoalpos( var_5.origin );
         }
         else
             self setgoalpos( var_1 );
     }
 
-    self._ID452 = var_2 * 0.5;
+    self.goalradius = var_2 * 0.5;
     self waittill( "goal" );
 
-    if ( !_ID42237::_ID14385( "_stealth_spotted" ) && ( !isdefined( self._ID322 ) || !self cansee( self._ID322 ) ) )
+    if ( !_ID42237::_ID14385( "_stealth_spotted" ) && ( !isdefined( self.enemy ) || !self cansee( self.enemy ) ) )
     {
         _ID51031();
         thread _ID42386::_ID12914( undefined, var_1 );
@@ -388,16 +388,16 @@ _ID52948()
 
     while ( !_ID42237::_ID14385( "script_attack_override" ) )
     {
-        var_1 = _ID42407::_ID15617( self._ID740 );
+        var_1 = _ID42407::_ID15617( self.origin );
 
-        if ( animscripts\utility::_ID20902( self._ID1302 ) )
+        if ( animscripts\utility::_ID20902( self.weapon ) )
             var_2 = 250;
         else
-            var_2 = max( 500, var_1._ID630 );
+            var_2 = max( 500, var_1.maxvisibledist );
 
-        self._ID452 = var_2;
+        self.goalradius = var_2;
         var_3 = self lastknownpos( var_1 );
-        var_4 = var_1._ID740 * 0.25 + var_3 * 0.75;
+        var_4 = var_1.origin * 0.25 + var_3 * 0.75;
 
         if ( _ID46276( var_4, var_0 ) )
             var_0 = var_4;
@@ -416,7 +416,7 @@ _ID46276( var_0, var_1 )
         if ( var_3.size )
         {
             var_4 = var_3[randomint( var_3.size )];
-            self setgoalpos( var_4._ID740 );
+            self setgoalpos( var_4.origin );
         }
         else
             self setgoalpos( var_0 );
@@ -434,7 +434,7 @@ _ID49432( var_0 )
 
     for (;;)
     {
-        var_1 = _ID42407::_ID15617( self._ID740 );
+        var_1 = _ID42407::_ID15617( self.origin );
 
         if ( self cansee( var_1 ) )
         {
@@ -564,15 +564,15 @@ _ID45583( var_0 )
 {
     level._ID28543 _ID42407::_ID10871();
     self._ID11566 = undefined;
-    level._ID28543._ID377 = self;
-    self._ID486 = 1;
+    level._ID28543.favoriteenemy = self;
+    self.health = 1;
     self waittill( "death" );
 
     if ( isalive( var_0 ) )
     {
-        var_0._ID377 = level._ID794;
+        var_0.favoriteenemy = level.player;
         wait 0.2;
-        level._ID28543._ID377 = self;
+        level._ID28543.favoriteenemy = self;
         var_0._ID11566 = undefined;
         var_0 waittill( "death" );
     }
@@ -593,7 +593,7 @@ _ID45007( var_0, var_1 )
     if ( isdefined( var_1 ) )
         level endon( var_1 );
 
-    level._ID794 waittill( "weapon_fired" );
+    level.player waittill( "weapon_fired" );
 }
 
 _ID46731()
@@ -672,7 +672,7 @@ _ID47078()
     for (;;)
     {
         _ID42237::_ID14413( "_stealth_spotted" );
-        level._ID794 _ID42407::_ID41104( self, 800 );
+        level.player _ID42407::_ID41104( self, 800 );
 
         if ( !_ID42237::_ID14385( "_stealth_spotted" ) )
         {
@@ -735,14 +735,14 @@ _ID53246( var_0 )
     thread _ID43422();
     self._ID10998 = 0;
     self._ID11025 = 0;
-    var_1 = distance( var_0._ID740, self._ID740 );
+    var_1 = distance( var_0.origin, self.origin );
     self setgoalnode( var_0 );
-    self._ID452 = var_1 * 0.5;
+    self.goalradius = var_1 * 0.5;
     wait 0.05;
     _ID42407::_ID32328( "_stealth_patrol_cqb" );
     self waittill( "goal" );
 
-    if ( !_ID42237::_ID14385( "_stealth_spotted" ) && ( !isdefined( self._ID322 ) || !self cansee( self._ID322 ) ) )
+    if ( !_ID42237::_ID14385( "_stealth_spotted" ) && ( !isdefined( self.enemy ) || !self cansee( self.enemy ) ) )
     {
         _ID51031();
         _ID42386::_ID12914( var_0 );
@@ -757,8 +757,8 @@ _ID51586()
     for (;;)
     {
         self waittill( "jumpedout" );
-        _ID42386::_ID12918( self._ID740 );
-        self._ID50030 = self._ID740;
+        _ID42386::_ID12918( self.origin );
+        self._ID50030 = self.origin;
         _ID42407::_ID13025( "jumped_out" );
         self waittill( "enteredvehicle" );
         wait 0.15;
@@ -793,8 +793,8 @@ _ID53752( var_0 )
 
     if ( !_ID42237::_ID14385( "_stealth_spotted" ) && !_ID42407::_ID13019( "_stealth_attack" ) )
     {
-        var_1 = _ID42407::_ID15617( self._ID740 );
-        var_2 = _ID42386::_ID12869( var_1._ID740, 1500, 128 );
+        var_1 = _ID42407::_ID15617( self.origin );
+        var_2 = _ID42386::_ID12869( var_1.origin, 1500, 128 );
 
         if ( isdefined( var_2 ) )
             thread _ID53246( var_2 );
@@ -921,16 +921,16 @@ _ID43371()
     self._ID2219 = 1;
     var_0 = 700;
 
-    if ( self._ID1302 == "m1014" )
+    if ( self.weapon == "m1014" )
         var_0 = 250;
 
     for (;;)
     {
-        if ( isdefined( self._ID322 ) )
+        if ( isdefined( self.enemy ) )
         {
-            self._ID452 = var_0;
-            var_1 = _ID42407::_ID15617( self._ID740 );
-            self setgoalpos( var_1._ID740 );
+            self.goalradius = var_0;
+            var_1 = _ID42407::_ID15617( self.origin );
+            self setgoalpos( var_1.origin );
         }
 
         wait 4;
@@ -939,19 +939,19 @@ _ID43371()
 
 _ID48152()
 {
-    var_0 = getaiarray( self._ID1194 );
+    var_0 = getaiarray( self.team );
 
     foreach ( var_2 in var_0 )
     {
         if ( self == var_2 )
             continue;
 
-        if ( var_2._ID38 == "alert" )
+        if ( var_2.alertlevel == "alert" )
             var_3 = 1000000;
         else
             var_3 = 90000;
 
-        if ( distancesquared( self._ID740, var_2._ID740 ) < var_3 )
+        if ( distancesquared( self.origin, var_2.origin ) < var_3 )
             return 0;
     }
 

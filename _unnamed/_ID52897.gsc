@@ -43,7 +43,7 @@ _ID50951( var_0, var_1 )
 
                 foreach ( var_4 in level._ID18457 )
                 {
-                    if ( distancesquared( level._ID794._ID740, var_4._ID740 ) <= 1690000 )
+                    if ( distancesquared( level.player.origin, var_4.origin ) <= 1690000 )
                     {
                         var_2 = 0.5;
                         break;
@@ -65,9 +65,9 @@ _ID46895( var_0, var_1, var_2 )
     {
         self waittill( "trigger" );
 
-        if ( self._ID922 != level._ID48775 )
+        if ( self.script_noteworthy != level._ID48775 )
         {
-            switch ( self._ID922 )
+            switch ( self.script_noteworthy )
             {
                 case "exterior":
                     if ( var_2 )
@@ -86,7 +86,7 @@ _ID46895( var_0, var_1, var_2 )
                     break;
             }
 
-            level._ID48775 = self._ID922;
+            level._ID48775 = self.script_noteworthy;
         }
     }
 }

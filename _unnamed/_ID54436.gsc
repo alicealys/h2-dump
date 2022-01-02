@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "sand_storm_light_outdoor" );
     var_0 _ID42229::_ID32402( ( 4577.99, 15443, -1400.27 ), ( 270, 0.33703, -158.337 ) );

@@ -1,14 +1,14 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID423["min_participation"] = -200;
     level._ID423["max_participation"] = 1000;
     level._ID423["enemy_kill_points"] = 250;
     level._ID423["friend_kill_points"] = -650;
     level._ID423["point_loss_interval"] = 1.25;
-    level._ID794._ID26273 = 0;
+    level.player._ID26273 = 0;
     level._ID15018 = 0;
     level._ID15019 = 0;
     setdynamicdvar( "friendlyfire_dev_disabled", "0" );
@@ -37,8 +37,8 @@ _ID14940( var_0 )
     if ( !isdefined( var_0 ) )
         return;
 
-    if ( !isdefined( var_0._ID1194 ) )
-        var_0._ID1194 = "allies";
+    if ( !isdefined( var_0.team ) )
+        var_0.team = "allies";
 
     if ( isdefined( level._ID24829 ) )
         return;
@@ -53,7 +53,7 @@ _ID14940( var_0 )
         if ( !isdefined( var_0 ) )
             return;
 
-        if ( var_0._ID486 <= 0 )
+        if ( var_0.health <= 0 )
             return;
 
         var_1 = undefined;
@@ -80,7 +80,7 @@ _ID14940( var_0 )
         var_8 = 0;
 
         if ( !isdefined( var_6 ) )
-            var_6 = var_0._ID258;
+            var_6 = var_0.damageweapon;
 
         if ( isdefined( level._ID15008 ) )
         {
@@ -93,7 +93,7 @@ _ID14940( var_0 )
 
         if ( isdefined( level._ID15009 ) )
         {
-            if ( isdefined( var_2 ) && isdefined( var_2._ID743 ) && var_2._ID743 == level._ID794 )
+            if ( isdefined( var_2 ) && isdefined( var_2.owner ) && var_2.owner == level.player )
                 var_8 = 1;
         }
 
@@ -110,7 +110,7 @@ _ID14940( var_0 )
             if ( isdefined( var_7 ) )
                 var_8 = 1;
         }
-        else if ( isdefined( var_2._ID172 ) && var_2._ID172 == "script_vehicle" )
+        else if ( isdefined( var_2.code_classname ) && var_2.code_classname == "script_vehicle" )
         {
             var_9 = var_2 getvehicleowner();
 
@@ -118,22 +118,22 @@ _ID14940( var_0 )
                 var_8 = 1;
         }
 
-        if ( isdefined( level._ID912 ) && level._ID912 == "airport" && isdefined( var_0._ID1193 ) && ( var_0._ID1193 == "upperdeck_canned_deaths_drone" || var_0._ID1193 == "gate_canned_deaths_drone" ) && isdefined( var_2._ID170 ) && var_2._ID170 == "worldspawn" && isdefined( var_0._ID1244 ) && var_0._ID1244 == "civilian" && !isdefined( var_0.timeddeath ) && isdefined( var_0.iskilledbyplayer ) && var_0.iskilledbyplayer )
+        if ( isdefined( level.script ) && level.script == "airport" && isdefined( var_0.targetname ) && ( var_0.targetname == "upperdeck_canned_deaths_drone" || var_0.targetname == "gate_canned_deaths_drone" ) && isdefined( var_2.classname ) && var_2.classname == "worldspawn" && isdefined( var_0.type ) && var_0.type == "civilian" && !isdefined( var_0.timeddeath ) && isdefined( var_0.iskilledbyplayer ) && var_0.iskilledbyplayer )
             var_8 = 1;
 
         if ( !var_8 )
             continue;
 
-        if ( !isdefined( var_0._ID1194 ) )
+        if ( !isdefined( var_0.team ) )
             continue;
 
-        var_10 = var_0._ID1194 == level._ID794._ID1194;
+        var_10 = var_0.team == level.player.team;
         var_11 = undefined;
 
-        if ( isdefined( var_0._ID1244 ) && var_0._ID1244 == "civilian" || isdefined( var_0._ID1193 ) && var_0._ID1193 == "upperdeck_canned_deaths_drone" )
+        if ( isdefined( var_0.type ) && var_0.type == "civilian" || isdefined( var_0.targetname ) && var_0.targetname == "upperdeck_canned_deaths_drone" )
             var_11 = 1;
         else
-            var_11 = issubstr( var_0._ID170, "civilian" );
+            var_11 = issubstr( var_0.classname, "civilian" );
 
         if ( isdefined( level._ID52178 ) && level._ID52178 && var_11 )
         {
@@ -149,7 +149,7 @@ _ID14940( var_0 )
         {
             if ( var_12 )
             {
-                level._ID794._ID26273 = level._ID794._ID26273 + level._ID423["enemy_kill_points"];
+                level.player._ID26273 = level.player._ID26273 + level._ID423["enemy_kill_points"];
                 _ID26274();
                 return;
             }
@@ -176,12 +176,12 @@ _ID14940( var_0 )
         if ( var_12 )
         {
             if ( isdefined( var_0._ID14909 ) )
-                level._ID794._ID26273 = level._ID794._ID26273 + var_0._ID14909;
+                level.player._ID26273 = level.player._ID26273 + var_0._ID14909;
             else
-                level._ID794._ID26273 = level._ID794._ID26273 + level._ID423["friend_kill_points"];
+                level.player._ID26273 = level.player._ID26273 + level._ID423["friend_kill_points"];
         }
         else
-            level._ID794._ID26273 = level._ID794._ID26273 - var_1;
+            level.player._ID26273 = level.player._ID26273 - var_1;
 
         _ID26274();
 
@@ -222,7 +222,7 @@ _ID14938( var_0 )
     if ( level._ID15018 == 1 )
         return;
 
-    if ( level._ID794._ID26273 <= level._ID423["min_participation"] )
+    if ( level.player._ID26273 <= level._ID423["min_participation"] )
         level thread _ID23776( var_0 );
 }
 
@@ -233,7 +233,7 @@ _ID7364( var_0, var_1 )
 
     var_2 = 0;
 
-    if ( isdefined( var_0._ID258 ) && var_0._ID258 == "none" )
+    if ( isdefined( var_0.damageweapon ) && var_0.damageweapon == "none" )
         var_2 = 1;
 
     if ( isdefined( var_1 ) && var_1 == "MOD_GRENADE_SPLASH" )
@@ -256,11 +256,11 @@ _ID30738()
 
 _ID26274()
 {
-    if ( level._ID794._ID26273 > level._ID423["max_participation"] )
-        level._ID794._ID26273 = level._ID423["max_participation"];
+    if ( level.player._ID26273 > level._ID423["max_participation"] )
+        level.player._ID26273 = level._ID423["max_participation"];
 
-    if ( level._ID794._ID26273 < level._ID423["min_participation"] )
-        level._ID794._ID26273 = level._ID423["min_participation"];
+    if ( level.player._ID26273 < level._ID423["min_participation"] )
+        level.player._ID26273 = level._ID423["min_participation"];
 }
 
 _ID26275()
@@ -269,10 +269,10 @@ _ID26275()
 
     for (;;)
     {
-        if ( level._ID794._ID26273 > 0 )
-            level._ID794._ID26273--;
-        else if ( level._ID794._ID26273 < 0 )
-            level._ID794._ID26273++;
+        if ( level.player._ID26273 > 0 )
+            level.player._ID26273--;
+        else if ( level.player._ID26273 < 0 )
+            level.player._ID26273++;
 
         wait(level._ID423["point_loss_interval"]);
     }
@@ -296,9 +296,9 @@ _ID23776( var_0 )
     if ( getdvar( "friendlyfire_dev_disabled" ) == "1" )
         return;
 
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
-    if ( !isalive( level._ID794 ) )
+    if ( !isalive( level.player ) )
         return;
 
     level endon( "mine death" );
@@ -312,7 +312,7 @@ _ID23776( var_0 )
     _ID42313::_ID52053();
     _ID42313::hud_stats_display_kill();
 
-    if ( isdefined( level._ID794._ID13848 ) )
+    if ( isdefined( level.player._ID13848 ) )
         return;
 
     if ( var_0 )
@@ -329,7 +329,7 @@ _ID23776( var_0 )
     if ( isdefined( level._ID9543 ) )
         thread _ID42349::_ID32263( level._ID9543, 64, 64, 0 );
 
-    reconspatialevent( level._ID794._ID740, "script_friendlyfire: civilian %d", var_0 );
+    reconspatialevent( level.player.origin, "script_friendlyfire: civilian %d", var_0 );
     _ID42407::_ID23778();
 }
 

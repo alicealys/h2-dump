@@ -176,7 +176,7 @@ _ID28877( var_0 )
 
     self._ID1567 = 1;
     _ID42407::_ID40847( level._ID21828, 0.5 );
-    level._ID794 _ID42407::_ID27079( level._ID30908[var_0] );
+    level.player _ID42407::_ID27079( level._ID30908[var_0] );
     self._ID1567 = undefined;
     level._ID21828 = gettime();
     self notify( "finished_radio" );
@@ -229,7 +229,7 @@ _ID1487( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
     var_6 = _func_9b();
 
-    if ( level._ID794 _ID42237::_ID20583() )
+    if ( level.player _ID42237::_ID20583() )
     {
         if ( isdefined( level._ID843 ) && level._ID843 || isdefined( level._ID844 ) && level._ID844 )
         {
@@ -335,24 +335,24 @@ _ID18704( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
     level._ID18615 = var_1;
     thread _ID10439( var_16 );
     level endon( "friendlyfire_mission_fail" );
-    var_16._ID196 = ( 1, 1, 1 );
-    var_16._ID55 = 0;
+    var_16.color = ( 1, 1, 1 );
+    var_16.alpha = 0;
     var_16 _ID42313::_ID32753( "TOP", undefined, 0, 127 + var_11 );
-    var_16._ID408 = 0;
-    var_16._ID491 = 1;
-    var_16._ID493 = 1;
+    var_16.foreground = 0;
+    var_16.hidewhendead = 1;
+    var_16.hidewheninmenu = 1;
     var_16 settext( var_0 );
 
     if ( isdefined( level._ID18652 ) && level._ID18652 || isdefined( level._ID34362._ID35417 ) && level._ID34362._ID35417 < 0.1 )
     {
-        var_16._ID55 = var_14;
+        var_16.alpha = var_14;
         _ID18705( 0, level._ID18615 );
     }
     else
     {
-        var_16._ID55 = 0;
+        var_16.alpha = 0;
         var_16 fadeovertime( var_12 );
-        var_16._ID55 = var_14;
+        var_16.alpha = var_14;
         _ID18705( var_12, level._ID18615 );
     }
 
@@ -414,7 +414,7 @@ _ID18704( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
     var_16 notify( "destroying" );
     self._ID9452 = undefined;
     var_16 fadeovertime( var_12 );
-    var_16._ID55 = 0;
+    var_16.alpha = 0;
     var_16 _ID42313::_ID43145( var_12 );
     wait(var_12);
     var_16 _ID42313::_ID49709();
@@ -424,14 +424,14 @@ _ID18704( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
 
 _ID18686( var_0 )
 {
-    level._ID794 notify( "HintDisplayHandlerEnd" );
-    level._ID794 endon( "HintDisplayHandlerEnd" );
-    level._ID794 _ID42407::_ID13031( "global_hint_in_use" );
-    level._ID794 _ID42407::_ID13027( "global_hint_in_use" );
+    level.player notify( "HintDisplayHandlerEnd" );
+    level.player endon( "HintDisplayHandlerEnd" );
+    level.player _ID42407::_ID13031( "global_hint_in_use" );
+    level.player _ID42407::_ID13027( "global_hint_in_use" );
 
-    while ( level._ID794 _ID42407::_ID13019( "global_hint_in_use" ) )
+    while ( level.player _ID42407::_ID13019( "global_hint_in_use" ) )
     {
-        if ( !level._ID794 _ID42237::_ID20583() && isdefined( level._ID18645[var_0]["pc"] ) )
+        if ( !level.player _ID42237::_ID20583() && isdefined( level._ID18645[var_0]["pc"] ) )
             level._ID9455 settext( level._ID18645[var_0]["pc"] );
         else
         {
@@ -449,7 +449,7 @@ _ID18686( var_0 )
 
 _ID18685( var_0 )
 {
-    if ( !level._ID794 _ID42237::_ID20583() && isdefined( level._ID18645[var_0]["pc"] ) )
+    if ( !level.player _ID42237::_ID20583() && isdefined( level._ID18645[var_0]["pc"] ) )
         level._ID38827[var_0] = level._ID18645[var_0]["pc"];
     else
     {
@@ -464,7 +464,7 @@ _ID18685( var_0 )
     if ( ( isdefined( level._ID18645[var_0]["pc"] ) || isdefined( level._ID18645[var_0]["southpaw"] ) ) && ![[ level._ID38826[var_0] ]]() )
         thread _ID18686( var_0 );
     else
-        level._ID794 notify( "HintDisplayHandlerEnd" );
+        level.player notify( "HintDisplayHandlerEnd" );
 }
 
 _ID10439( var_0 )
@@ -501,32 +501,32 @@ _ID34071( var_0 )
         var_0 thread _ID18669( var_0._ID37742 );
 
     var_5 = _ID42313::_ID9200( "objective", 2 );
-    var_5._ID55 = 0.9;
-    var_5._ID1331 = 0;
-    var_5._ID1339 = -38;
-    var_5._ID44 = "center";
-    var_5._ID45 = "middle";
-    var_5._ID499 = "center";
-    var_5._ID1284 = "middle";
-    var_5._ID408 = 0;
-    var_5._ID491 = 1;
+    var_5.alpha = 0.9;
+    var_5.x = 0;
+    var_5.y = -38;
+    var_5.alignx = "center";
+    var_5.aligny = "middle";
+    var_5.horzalign = "center";
+    var_5.vertalign = "middle";
+    var_5.foreground = 0;
+    var_5.hidewhendead = 1;
     var_5 settext( var_0._ID36694 );
-    var_5._ID55 = 0;
+    var_5.alpha = 0;
     var_5 fadeovertime( var_1 );
-    var_5._ID55 = var_3;
+    var_5.alpha = var_3;
     _ID18705( var_1 );
 
     for (;;)
     {
         var_5 fadeovertime( var_2 );
-        var_5._ID55 = var_4;
+        var_5.alpha = var_4;
         _ID18705( var_2 );
 
         if ( var_0._ID37732 )
             break;
 
         var_5 fadeovertime( var_2 );
-        var_5._ID55 = var_3;
+        var_5.alpha = var_3;
         _ID18705( var_2 );
 
         if ( var_0._ID37732 )
@@ -782,7 +782,7 @@ _ID41108( var_0, var_1 )
     self endon( "all_funcs_ended" );
     self endon( "any_funcs_aborted" );
     _ID13295( var_0, var_1 );
-    self._ID216--;
+    self.count--;
     self notify( "func_ended" );
 }
 
@@ -822,20 +822,20 @@ _ID38695( var_0 )
 {
     if ( isdefined( self._ID409 ) )
     {
-        var_1 = anglestoforward( var_0._ID65 );
-        var_0._ID740 = var_0._ID740 + var_1 * self._ID409;
+        var_1 = anglestoforward( var_0.angles );
+        var_0.origin = var_0.origin + var_1 * self._ID409;
     }
 
     if ( isdefined( self._ID893 ) )
     {
-        var_2 = anglestoright( var_0._ID65 );
-        var_0._ID740 = var_0._ID740 + var_2 * self._ID893;
+        var_2 = anglestoright( var_0.angles );
+        var_0.origin = var_0.origin + var_2 * self._ID893;
     }
 
     if ( isdefined( self._ID1251 ) )
     {
-        var_3 = anglestoup( var_0._ID65 );
-        var_0._ID740 = var_0._ID740 + var_3 * self._ID1251;
+        var_3 = anglestoup( var_0.angles );
+        var_0.origin = var_0.origin + var_3 * self._ID1251;
     }
 
     if ( isdefined( self._ID41911 ) )
@@ -885,20 +885,20 @@ _ID12263( var_0, var_1, var_2, var_3, var_4 )
 
         foreach ( var_11 in level._ID805 )
         {
-            if ( distancesquared( var_9._ID740, self._ID740 ) > distancesquared( var_11._ID740, self._ID740 ) )
+            if ( distancesquared( var_9.origin, self.origin ) > distancesquared( var_11.origin, self.origin ) )
                 var_9 = var_11;
         }
 
-        var_13 = anglestoforward( self._ID65 );
-        var_14 = vectornormalize( var_9._ID740 - self._ID740 );
+        var_13 = anglestoforward( self.angles );
+        var_14 = vectornormalize( var_9.origin - self.origin );
         var_15 = vectordot( var_13, var_14 );
-        var_16 = distancesquared( self._ID740, var_9._ID740 );
+        var_16 = distancesquared( self.origin, var_9.origin );
         var_17 = var_16;
 
         if ( isdefined( var_4 ) )
         {
-            var_18 = _ID42237::_ID16182( var_9._ID740, var_4 );
-            var_17 = distancesquared( var_18._ID740, var_9._ID740 );
+            var_18 = _ID42237::_ID16182( var_9.origin, var_4 );
+            var_17 = distancesquared( var_18.origin, var_9.origin );
         }
 
         var_19 = 0;
@@ -980,9 +980,9 @@ _ID36476()
 
 _ID12260( var_0, var_1 )
 {
-    if ( !isdefined( var_0._ID170 ) )
+    if ( !isdefined( var_0.classname ) )
     {
-        if ( !isdefined( var_0._ID1244 ) )
+        if ( !isdefined( var_0.type ) )
             var_2 = _ID42372::_ID16017;
         else
             var_2 = _ID42372::_ID16015;
@@ -1120,12 +1120,12 @@ _ID15305( var_0 )
 
 _ID15300()
 {
-    return level._ID794 getbobrate();
+    return level.player getbobrate();
 }
 
 _ID15301( var_0 )
 {
-    level._ID794 setbobrate( var_0 );
+    level.player setbobrate( var_0 );
 }
 
 _ID24440()
@@ -1219,7 +1219,7 @@ _ID4447()
 
     foreach ( var_2 in var_0 )
     {
-        if ( isdefined( var_2._ID322 ) && isplayernumber( var_2._ID322 ) )
+        if ( isdefined( var_2.enemy ) && isplayernumber( var_2.enemy ) )
             return;
     }
 
@@ -1303,7 +1303,7 @@ _ID21258( var_0, var_1 )
 
     playfxontag( _ID42237::_ID16299( "flesh_hit" ), self, "tag_eye" );
     _ID45456::_ID54623( self );
-    self kill( level._ID794._ID740 );
+    self kill( level.player.origin );
 }
 
 _ID39643( var_0, var_1 )
@@ -1331,9 +1331,9 @@ _ID39643( var_0, var_1 )
         var_3 *= 1000;
 
         if ( isdefined( self._ID30329 ) )
-            self._ID740 = self._ID30329._ID740 + ( 0, 0, var_3 );
+            self.origin = self._ID30329.origin + ( 0, 0, var_3 );
         else
-            self._ID740 = var_0 geteye() + ( 0, 0, var_3 );
+            self.origin = var_0 geteye() + ( 0, 0, var_3 );
 
         wait 0.05;
     }
@@ -1341,9 +1341,9 @@ _ID39643( var_0, var_1 )
 
 _ID35777( var_0 )
 {
-    var_1 = spawn( "script_model", self._ID740 );
+    var_1 = spawn( "script_model", self.origin );
     self._ID16954 = var_1;
-    var_1._ID65 = self._ID65;
+    var_1.angles = self.angles;
     var_1 setmodel( var_0 );
     var_1 endon( "death" );
     self waittill( "death" );
@@ -1440,14 +1440,14 @@ _ID1975( var_0 )
 _ID28775( var_0 )
 {
     var_1 = spawnstruct();
-    precachemodel( var_0._ID669 );
-    var_1._ID38031 = var_0._ID669;
-    var_1._ID740 = var_0._ID740;
-    var_1._ID65 = var_0._ID65;
-    var_1._ID922 = var_0._ID922;
+    precachemodel( var_0.model );
+    var_1._ID38031 = var_0.model;
+    var_1.origin = var_0.origin;
+    var_1.angles = var_0.angles;
+    var_1.script_noteworthy = var_0.script_noteworthy;
     var_1._ID31273 = var_0._ID31273;
-    var_1._ID1193 = var_0._ID1193;
-    var_1._ID1191 = var_0._ID1191;
+    var_1.targetname = var_0.targetname;
+    var_1.target = var_0.target;
     var_1._ID279 = var_0._ID279;
     var_1._ID31361 = var_0._ID31361;
     var_0 _ID42407::_ID28349( var_0._ID279 );
@@ -1768,12 +1768,12 @@ _ID11646( var_0, var_1, var_2, var_3, var_4 )
     for (;;)
     {
         var_14 = var_5 getnormalizedmovement();
-        var_15 = anglestoforward( var_5._ID65 );
-        var_16 = anglestoright( var_5._ID65 );
+        var_15 = anglestoforward( var_5.angles );
+        var_16 = anglestoright( var_5.angles );
 
         if ( var_3 && !var_4 )
         {
-            var_9 = var_0._ID740;
+            var_9 = var_0.origin;
             var_17 = _ID42237::_ID37527( var_14[1] < 0, var_14[1] * -1, 0 );
             var_18 = _ID42237::_ID37527( var_14[1] > 0, var_14[1], 0 );
 
@@ -1786,7 +1786,7 @@ _ID11646( var_0, var_1, var_2, var_3, var_4 )
 
         if ( isdefined( level._ID53009 ) )
         {
-            var_19 = level._ID53009._ID740 - var_5._ID740;
+            var_19 = level._ID53009.origin - var_5.origin;
 
             if ( length2d( var_19 ) < var_12 )
                 var_13 = var_11;
@@ -1794,7 +1794,7 @@ _ID11646( var_0, var_1, var_2, var_3, var_4 )
             if ( var_13 > 0 )
             {
                 var_20 = vectortoangles( var_19 )[1];
-                var_21 = var_20 - var_5._ID65[1];
+                var_21 = var_20 - var_5.angles[1];
                 var_22 = angleclamp180( var_21 );
                 var_14 = _ID42237::_ID37527( var_22 > 0, ( var_14[0], 1, 0 ), ( var_14[0], -1, 0 ) );
                 var_13--;
@@ -1802,9 +1802,9 @@ _ID11646( var_0, var_1, var_2, var_3, var_4 )
         }
 
         var_14 = ( var_14[1] * var_16[0], var_14[1] * var_16[1], 0 );
-        var_0._ID974 = var_0._ID974 + var_14 * var_1;
+        var_0.slidevelocity = var_0.slidevelocity + var_14 * var_1;
         wait 0.05;
-        var_0._ID974 = var_0._ID974 * ( 1 - var_2 );
+        var_0.slidevelocity = var_0.slidevelocity * ( 1 - var_2 );
 
         if ( var_3 )
         {
@@ -1817,9 +1817,9 @@ _ID11646( var_0, var_1, var_2, var_3, var_4 )
             }
             else
             {
-                var_25 = var_0._ID740;
+                var_25 = var_0.origin;
                 var_26 = vectortoangles( var_25 - var_9 );
-                var_27 = angleclamp180( var_26[1] - var_0._ID65[1] );
+                var_27 = angleclamp180( var_26[1] - var_0.angles[1] );
                 var_28 = 15;
                 var_29 = clamp( var_27 / var_28, -1.0, 1.0 );
                 var_23 = var_29 * var_29 * var_7 * _ID42237::_ID34160( var_27 );
@@ -1829,7 +1829,7 @@ _ID11646( var_0, var_1, var_2, var_3, var_4 )
             var_31 = var_23 - var_10;
             var_32 = min( abs( var_31 ), var_30 ) * _ID42237::_ID34160( var_31 );
             var_10 += var_32;
-            var_0._ID65 = var_0._ID65 + ( 0, var_10, 0 );
+            var_0.angles = var_0.angles + ( 0, var_10, 0 );
         }
     }
 }
@@ -1839,7 +1839,7 @@ _ID44272( var_0 )
 {
     self endon( "stop_sliding" );
     self waittill( "death" );
-    var_0._ID974 = ( 0, 0, 0 );
+    var_0.slidevelocity = ( 0, 0, 0 );
     var_0 stopmoveslide();
     var_0 hide();
 

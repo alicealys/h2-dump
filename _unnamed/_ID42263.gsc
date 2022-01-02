@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID21883 = 0;
     level._ID52255 = 0;
@@ -49,7 +49,7 @@ _ID5025()
         return;
 
     _ID42237::_ID14402( "game_saving" );
-    var_0 = "levelshots / autosave / autosave_" + level._ID912 + "start";
+    var_0 = "levelshots / autosave / autosave_" + level.script + "start";
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", var_0, 1 );
     setdvar( "ui_grenade_death", "0" );
     _ID42237::_ID14388( "game_saving" );
@@ -84,7 +84,7 @@ _ID4460( var_0 )
 
     var_0 waittill( "trigger" );
     var_2 = var_0._ID31060;
-    var_3 = "levelshots / autosave / autosave_" + level._ID912 + var_2;
+    var_3 = "levelshots / autosave / autosave_" + level.script + var_2;
     _ID39065( var_2, var_1, var_3 );
 
     if ( isdefined( var_0 ) )
@@ -137,14 +137,14 @@ _ID4450( var_0 )
 
 _ID1376()
 {
-    var_0 = "levelshots / autosave / autosave_" + level._ID912 + "start";
+    var_0 = "levelshots / autosave / autosave_" + level.script + "start";
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", var_0, 1 );
     _ID4438( 0 );
 }
 
 _ID1377()
 {
-    var_0 = "levelshots / autosave / autosave_" + level._ID912 + "start";
+    var_0 = "levelshots / autosave / autosave_" + level.script + "start";
 
     if ( getdvarint( "g_reloading" ) == 0 )
     {
@@ -248,7 +248,7 @@ _ID39065( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         return 0;
 
     level endon( "nextmission" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     if ( _ID42407::_ID20495() )
         level._ID27742 endon( "death" );
@@ -328,7 +328,7 @@ _ID39065( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
                 return 0;
             }
 
-            if ( level._ID912 == "scoutsniper" && isdefined( var_6 ) && var_6 == "cargo2" )
+            if ( level.script == "scoutsniper" && isdefined( var_6 ) && var_6 == "cargo2" )
             {
                 if ( _ID42237::_ID14385( "_stealth_spotted" ) )
                     continue;
@@ -438,7 +438,7 @@ _ID4452( var_0, var_1 )
 
 _ID4458( var_0 )
 {
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return 1;
 
     if ( isdefined( level._ID1747 ) && level._ID1747 == self )
@@ -494,7 +494,7 @@ _ID4451()
     if ( isdefined( level._ID24862 ) && level._ID24862 )
         return 1;
 
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return 1;
 
     if ( isdefined( level._ID1747 ) && level._ID1747 == self )
@@ -516,7 +516,7 @@ _ID4451()
 
 _ID4456()
 {
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return 1;
 
     if ( isdefined( level._ID1747 ) && level._ID1747 == self )
@@ -525,7 +525,7 @@ _ID4456()
     if ( _ID42407::_ID13023( "laststand_downed" ) && _ID42407::_ID13019( "laststand_downed" ) )
         return 0;
 
-    var_0 = self._ID486 / self._ID626;
+    var_0 = self.health / self.maxhealth;
 
     if ( var_0 < 0.5 )
         return 0;
@@ -541,7 +541,7 @@ _ID4456()
 
 _ID4462( var_0 )
 {
-    if ( level._ID912 == "ac130" )
+    if ( level.script == "ac130" )
         return 1;
 
     if ( isdefined( level._ID1747 ) && level._ID1747 == self )
@@ -551,24 +551,24 @@ _ID4462( var_0 )
 
     foreach ( var_3 in var_1 )
     {
-        if ( !isdefined( var_3._ID322 ) )
+        if ( !isdefined( var_3.enemy ) )
             continue;
 
-        if ( !isplayernumber( var_3._ID322 ) )
+        if ( !isplayernumber( var_3.enemy ) )
             continue;
 
-        if ( var_3._ID1244 == "dog" )
+        if ( var_3.type == "dog" )
         {
             foreach ( var_5 in level._ID805 )
             {
-                if ( distance( var_3._ID740, var_5._ID740 ) < 384 )
+                if ( distance( var_3.origin, var_5.origin ) < 384 )
                     return 0;
             }
 
             continue;
         }
 
-        if ( isdefined( var_3._ID23353 ) && isdefined( var_3._ID23353._ID1191 ) && isplayernumber( var_3._ID23353._ID1191 ) )
+        if ( isdefined( var_3._ID23353 ) && isdefined( var_3._ID23353.target ) && isplayernumber( var_3._ID23353.target ) )
             return 0;
 
         var_7 = [[ level._ID4437 ]]( var_3 );
@@ -576,7 +576,7 @@ _ID4462( var_0 )
         if ( var_7 == "return_even_if_low_accuracy" )
             return 0;
 
-        if ( var_3._ID378 < 0.021 && var_3._ID378 > -1 )
+        if ( var_3.finalaccuracy < 0.021 && var_3.finalaccuracy > -1 )
             continue;
 
         if ( var_7 == "return" )
@@ -607,7 +607,7 @@ _ID4462( var_0 )
 
         foreach ( var_5 in level._ID805 )
         {
-            if ( distance( var_11._ID740, var_5._ID740 ) < 400 )
+            if ( distance( var_11.origin, var_5.origin ) < 400 )
                 return 0;
         }
     }
@@ -617,12 +617,12 @@ _ID4462( var_0 )
 
 _ID12884()
 {
-    if ( self._ID378 >= 0.021 )
+    if ( self.finalaccuracy >= 0.021 )
         return 1;
 
     foreach ( var_1 in level._ID805 )
     {
-        if ( distance( self._ID740, var_1._ID740 ) < 500 )
+        if ( distance( self.origin, var_1.origin ) < 500 )
             return 1;
     }
 
@@ -633,7 +633,7 @@ _ID4437( var_0 )
 {
     foreach ( var_2 in level._ID805 )
     {
-        var_3 = distance( var_0._ID740, var_2._ID740 );
+        var_3 = distance( var_0.origin, var_2.origin );
 
         if ( var_3 < 200 )
         {

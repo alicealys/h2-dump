@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     _ID44455();
     _ID47619();
@@ -321,10 +321,10 @@ _ID46664()
     for (;;)
     {
         var_4 = _ID42407::_ID16120( "ending" );
-        var_5 = anglestoright( self._ID65 );
-        var_6 = vectornormalize( level._ID794._ID740 - self._ID740 );
-        var_7 = anglestoforward( self._ID65 );
-        var_5 = anglestoright( self._ID65 );
+        var_5 = anglestoright( self.angles );
+        var_6 = vectornormalize( level.player.origin - self.origin );
+        var_7 = anglestoforward( self.angles );
+        var_5 = anglestoright( self.angles );
         var_8 = vectordot( var_7, var_6 );
         var_9 = vectordot( var_5, var_6 );
         var_10 = acos( var_8 );
@@ -355,7 +355,7 @@ _ID46664()
         if ( isdefined( self._ID50547 ) )
         {
             if ( abs( var_11 ) >= 1 )
-                self setlookatentity( level._ID794 );
+                self setlookatentity( level.player );
             else
                 self setlookatentity();
         }
@@ -429,8 +429,8 @@ h2_intro_clear_cam_movement( var_0 )
 {
     var_1 = var_0 gettagorigin( "tag_player" );
     var_2 = var_0 gettagangles( "tag_player" );
-    level._ID794 _ID42407::_ID22166( var_1, var_2, 0.2, 1, 0, 0, 0, 0, 0 );
-    level._ID794 playerlinktodelta( var_0, "tag_player", 0.2, 1, 0, 0, 0, 0, 1 );
+    level.player _ID42407::_ID22166( var_1, var_2, 0.2, 1, 0, 0, 0, 0, 0 );
+    level.player playerlinktodelta( var_0, "tag_player", 0.2, 1, 0, 0, 0, 0, 1 );
 }
 #using_animtree("vehicles");
 
@@ -480,11 +480,11 @@ _ID44455()
 impact_camera_shake( var_0, var_1 )
 {
     if ( var_1 == 1 )
-        earthquake( 0.5, 1.5, level._ID794._ID740, 10000 );
+        earthquake( 0.5, 1.5, level.player.origin, 10000 );
     else if ( var_1 == 2 )
-        earthquake( 0.4, 1.5, level._ID794._ID740, 10000 );
+        earthquake( 0.4, 1.5, level.player.origin, 10000 );
     else
-        earthquake( 0.3, 1.2, level._ID794._ID740, 10000 );
+        earthquake( 0.3, 1.2, level.player.origin, 10000 );
 }
 
 _ID54329( var_0 )

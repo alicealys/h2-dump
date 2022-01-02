@@ -34,7 +34,7 @@ _ID26732( var_0, var_1, var_2 )
     if ( var_2 && ( var_1 == "left" || var_1 == "right" ) )
     {
         _ID3599( var_0, var_1 );
-        self._ID1302 = var_0;
+        self.weapon = var_0;
     }
     else
         _ID3599( var_0, var_1 );
@@ -161,7 +161,7 @@ _ID6909()
     if ( !self._ID7._ID21758 )
         return 0;
 
-    if ( animscripts\utility::_ID20902( self._ID1302 ) )
+    if ( animscripts\utility::_ID20902( self.weapon ) )
         return 0;
 
     return isalive( self );
@@ -189,7 +189,7 @@ _ID16645( var_0 )
 _ID12142( var_0 )
 {
     if ( !isdefined( var_0 ) )
-        var_0 = self._ID1302;
+        var_0 = self.weapon;
 
     if ( !isdefined( var_0 ) || var_0 == "none" )
         return;
@@ -200,13 +200,13 @@ _ID12142( var_0 )
     _ID10626();
     var_1 = self._ID1312[var_0]._ID811;
 
-    if ( self._ID309 && var_1 != "none" )
+    if ( self.dropweapon && var_1 != "none" )
         thread _ID12190( var_0, var_1 );
 
     _ID10632( var_0 );
 
-    if ( var_0 == self._ID1302 )
-        self._ID1302 = "none";
+    if ( var_0 == self.weapon )
+        self.weapon = "none";
 
     _ID39673();
 }
@@ -233,11 +233,11 @@ _ID12143()
         self._ID1312[var_3]._ID811 = "none";
         self._ID7._ID41701[var_2] = "none";
 
-        if ( self._ID309 )
+        if ( self.dropweapon )
             thread _ID12190( var_3, var_2 );
     }
 
-    self._ID1302 = "none";
+    self.weapon = "none";
     _ID39673();
 }
 
@@ -296,7 +296,7 @@ _ID16537( var_0 )
         return _ID16102( self._ID33810 );
     }
 
-    var_1 = self._ID33785._ID740 + self._ID33786 * var_0;
+    var_1 = self._ID33785.origin + self._ID33786 * var_0;
     return _ID16102( var_1 );
 }
 
@@ -320,7 +320,7 @@ _ID16101()
 {
     var_0 = _ID16519();
 
-    if ( self._ID912 == "cover_crouch" && isdefined( self._ID7._ID8878 ) && self._ID7._ID8878 == "lean" )
+    if ( self.script == "cover_crouch" && isdefined( self._ID7._ID8878 ) && self._ID7._ID8878 == "lean" )
         var_0 -= anim._ID8868;
 
     return var_0;
@@ -361,13 +361,13 @@ _ID16587()
         }
     }
 
-    return ( self._ID740[0], self._ID740[1], self geteye()[2] );
+    return ( self.origin[0], self.origin[1], self geteye()[2] );
 }
 
 _ID16102( var_0 )
 {
     var_1 = animscripts\utility::_ID16762( var_0 );
-    var_2 = distance( self._ID740, var_0 );
+    var_2 = distance( self.origin, var_0 );
 
     if ( var_2 > 3 )
     {
@@ -403,7 +403,7 @@ _ID28938( var_0 )
     {
         if ( isdefined( self._ID33810 ) )
         {
-            var_3 = animscripts\utility::_ID16756( self._ID33810 ) - self._ID8893._ID65[1];
+            var_3 = animscripts\utility::_ID16756( self._ID33810 ) - self._ID8893.angles[1];
             var_3 = angleclamp180( var_3 - var_0 );
 
             if ( abs( var_3 - var_2 ) > 10 )
@@ -445,7 +445,7 @@ _ID28938( var_0 )
 _ID10052()
 {
     var_0 = 0;
-    var_1 = weaponburstcount( self._ID1302 );
+    var_1 = weaponburstcount( self.weapon );
 
     if ( var_1 )
         var_0 = var_1;
@@ -469,7 +469,7 @@ _ID10053()
 {
     var_0 = self._ID6323;
 
-    if ( weaponclass( self._ID1302 ) == "mg" )
+    if ( weaponclass( self.weapon ) == "mg" )
     {
         var_1 = randomfloat( 10 );
 
@@ -490,10 +490,10 @@ _ID18014( var_0 )
     self endon( "abort_reload" );
     var_1 = undefined;
 
-    if ( self._ID1312[self._ID1302]._ID39925 )
-        var_1 = getweaponclipmodel( self._ID1302 );
+    if ( self._ID1312[self.weapon]._ID39925 )
+        var_1 = getweaponclipmodel( self.weapon );
 
-    if ( self._ID1312[self._ID1302]._ID18214 )
+    if ( self._ID1312[self.weapon]._ID18214 )
     {
         if ( animscripts\utility::_ID39997() )
             self playsound( "weap_reload_pistol_clipout_npc" );
@@ -502,10 +502,10 @@ _ID18014( var_0 )
 
         if ( isdefined( var_1 ) )
         {
-            var_2 = getweaponmodel( self._ID1302 );
+            var_2 = getweaponmodel( self.weapon );
             self hidepart( "tag_clip", var_2 );
             thread _ID12145( var_1, "tag_clip" );
-            self._ID1312[self._ID1302]._ID18214 = 0;
+            self._ID1312[self.weapon]._ID18214 = 0;
             thread _ID29771( var_1 );
         }
     }
@@ -523,9 +523,9 @@ _ID18014( var_0 )
                     self attach( var_1, "tag_inhand" );
                     thread _ID29771( var_1, "tag_inhand" );
 
-                    if ( !self._ID1312[self._ID1302]._ID18214 )
+                    if ( !self._ID1312[self.weapon]._ID18214 )
                     {
-                        var_2 = getweaponmodel( self._ID1302 );
+                        var_2 = getweaponmodel( self.weapon );
                         self hidepart( "tag_clip", var_2 );
                     }
                 }
@@ -542,10 +542,10 @@ _ID18014( var_0 )
                 if ( isdefined( var_1 ) )
                 {
                     self detach( var_1, "tag_inhand" );
-                    var_2 = getweaponmodel( self._ID1302 );
+                    var_2 = getweaponmodel( self.weapon );
                     self showpart( "tag_clip", var_2 );
                     self notify( "clip_detached" );
-                    self._ID1312[self._ID1302]._ID18214 = 1;
+                    self._ID1312[self.weapon]._ID18214 = 1;
                 }
 
                 if ( animscripts\utility::_ID39997() )
@@ -573,13 +573,13 @@ _ID29771( var_0, var_1 )
 
     if ( isalive( self ) )
     {
-        if ( self._ID1302 != "none" && self._ID1312[self._ID1302]._ID811 != "none" )
+        if ( self.weapon != "none" && self._ID1312[self.weapon]._ID811 != "none" )
         {
-            var_2 = getweaponmodel( self._ID1302 );
+            var_2 = getweaponmodel( self.weapon );
             self showpart( "tag_clip", var_2 );
         }
 
-        self._ID1312[self._ID1302]._ID18214 = 1;
+        self._ID1312[self.weapon]._ID18214 = 1;
     }
     else if ( isdefined( var_1 ) )
         _ID12145( var_0, var_1 );
@@ -589,8 +589,8 @@ _ID12145( var_0, var_1 )
 {
     var_2 = spawn( "script_model", self gettagorigin( var_1 ) );
     var_2 setmodel( var_0 );
-    var_2._ID65 = self gettagangles( var_1 );
-    var_2 physicslaunchclient( var_2._ID740, ( 0, 0, 0 ) );
+    var_2.angles = self gettagangles( var_1 );
+    var_2 physicslaunchclient( var_2.origin, ( 0, 0, 0 ) );
     var_3 = level.permanentclipflag;
     wait 10;
 
@@ -604,8 +604,8 @@ _ID12145( var_0, var_1 )
 _ID24471( var_0, var_1 )
 {
     self endon( "killanimscript" );
-    var_2 = var_0._ID740;
-    var_3 = distancesquared( self._ID740, var_2 );
+    var_2 = var_0.origin;
+    var_3 = distancesquared( self.origin, var_2 );
 
     if ( var_3 < 1 )
     {
@@ -613,17 +613,17 @@ _ID24471( var_0, var_1 )
         return;
     }
 
-    if ( var_3 > 256 && !self maymovetopoint( var_2, !self._ID1063 ) )
+    if ( var_3 > 256 && !self maymovetopoint( var_2, !self.swimmer ) )
         return;
 
-    self._ID562 = 1;
-    var_4 = distance( self._ID740, var_2 );
+    self.keepclaimednodeifvalid = 1;
+    var_4 = distance( self.origin, var_2 );
     var_5 = int( var_1 * 20 );
 
     for ( var_6 = 0; var_6 < var_5; var_6++ )
     {
-        var_2 = var_0._ID740;
-        var_7 = self._ID740 - var_2;
+        var_2 = var_0.origin;
+        var_7 = self.origin - var_2;
         var_7 = vectornormalize( var_7 );
         var_8 = var_2 + var_7 * var_4;
         var_9 = var_8 + ( var_2 - var_8 ) * ( var_6 + 1 ) / var_5;
@@ -631,7 +631,7 @@ _ID24471( var_0, var_1 )
         wait 0.05;
     }
 
-    self._ID562 = 0;
+    self.keepclaimednodeifvalid = 0;
 }
 
 _ID29925()
@@ -646,7 +646,7 @@ _ID28100( var_0, var_1, var_2 )
 
     for ( var_3 = 0; var_3 < var_1 * 10; var_3++ )
     {
-        if ( isalive( self._ID322 ) )
+        if ( isalive( self.enemy ) )
         {
             if ( animscripts\utility::_ID6884() && [[ var_2 ]]() )
                 return;
@@ -688,10 +688,10 @@ _ID30318()
         if ( var_1 != self )
             continue;
 
-        if ( !isdefined( var_1._ID322 ) )
+        if ( !isdefined( var_1.enemy ) )
             continue;
 
-        if ( var_1._ID322 != level._ID794 )
+        if ( var_1.enemy != level.player )
             continue;
 
         if ( isdefined( level._ID9277 ) && level._ID9277 == 0 )
@@ -727,7 +727,7 @@ _ID30320()
 
 _ID30319()
 {
-    var_0 = missile_createrepulsorent( level._ID794, 5000, 800 );
+    var_0 = missile_createrepulsorent( level.player, 5000, 800 );
     wait 4.0;
     missile_deleteattractor( var_0 );
 }

@@ -13,20 +13,20 @@ _ID36229()
 _ID14912()
 {
     self._ID4867 = self._ID1644._ID5029._ID17018;
-    self._ID10 = self._ID1644._ID5029._ID17018;
+    self.accuracy = self._ID1644._ID5029._ID17018;
 }
 
 _ID14913()
 {
     self._ID4867 = self._ID1644._ID5029._ID25499;
-    self._ID10 = self._ID1644._ID5029._ID25493;
+    self.accuracy = self._ID1644._ID5029._ID25493;
 }
 
 _ID14953()
 {
     self._ID1644._ID5029._ID17018 = 50;
     self._ID1644._ID5029._ID25499 = self._ID4867;
-    self._ID1644._ID5029._ID25493 = self._ID10;
+    self._ID1644._ID5029._ID25493 = self.accuracy;
     _ID14933();
     self._ID1644._ID28153._ID1749 = 1;
 }

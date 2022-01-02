@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID521()
+init()
 {
     level._ID11813["neutral"]["stand"]["idle"] = %casual_stand_idle;
     level._ID11813["neutral"]["stand"]["run"] = %unarmed_scared_run;

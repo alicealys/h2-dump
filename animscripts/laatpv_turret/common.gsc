@@ -10,17 +10,17 @@ _ID19210( var_0, var_1 )
     self._ID7._ID24414 = "stop";
     self._ID7._ID35357 = var_1;
     self._ID7._ID39999 = var_0;
-    self._ID511 = 1;
+    self.ignoreme = 1;
 
     if ( isdefined( self._ID23664 ) )
-        self._ID511 = self._ID23664;
+        self.ignoreme = self._ID23664;
 
     self._ID20721 = 0;
     self setturretanim( self._ID28561 );
     self setanimknobrestart( self._ID28561, 1, 0.2, 1 );
 
-    if ( isdefined( self._ID1302 ) )
-        animscripts\shared::_ID26732( self._ID1302, "none" );
+    if ( isdefined( self.weapon ) )
+        animscripts\shared::_ID26732( self.weapon, "none" );
 
     self._ID16482 = ::_ID39246;
     self notify( "guy_man_turret_stop" );
@@ -46,17 +46,17 @@ _ID19210( var_0, var_1 )
 
 _ID17527()
 {
-    self._ID52 = 0;
+    self.allowpain = 0;
     _ID42407::_ID32628( 1 );
-    self._ID25483 = self._ID486;
-    self._ID486 = 200;
+    self._ID25483 = self.health;
+    self.health = 200;
 }
 
 _ID17528()
 {
-    self._ID52 = 1;
+    self.allowpain = 1;
     _ID42407::_ID32628( 0 );
-    self._ID486 = self._ID25483;
+    self.health = self._ID25483;
 }
 
 _ID17818( var_0, var_1 )
@@ -109,7 +109,7 @@ _ID39246()
     {
         self._ID24817 = undefined;
         self._ID24898 = undefined;
-        self._ID511 = 0;
+        self.ignoreme = 0;
         self._ID7._ID35357 = "none";
         self._ID7._ID39999 = undefined;
         self._ID9813 = undefined;
@@ -120,8 +120,8 @@ _ID39246()
         self._ID16482 = undefined;
         self stopuseturret();
 
-        if ( isdefined( self._ID1302 ) )
-            animscripts\shared::_ID26732( self._ID1302, "right" );
+        if ( isdefined( self.weapon ) )
+            animscripts\shared::_ID26732( self.weapon, "right" );
     }
 
     level thread _ID39245( self, var_0 );
@@ -316,13 +316,13 @@ _ID14295( var_0 )
             wait 0.05;
         }
 
-        if ( var_0 _ID37279( var_1 ) && !self._ID507 )
+        if ( var_0 _ID37279( var_1 ) && !self.ignoreall )
             var_0._ID11393 = 1;
 
-        while ( var_0 _ID37279( var_1 ) && !self._ID507 && !self._ID20721 )
+        while ( var_0 _ID37279( var_1 ) && !self.ignoreall && !self._ID20721 )
             wait 0.05;
 
-        if ( var_0._ID11393 || self._ID507 )
+        if ( var_0._ID11393 || self.ignoreall )
             var_0._ID11393 = 0;
 
         wait 0.05;
@@ -387,10 +387,10 @@ _ID39322( var_0 )
     if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( isdefined( var_0._ID511 ) && var_0._ID511 )
+    if ( isdefined( var_0.ignoreme ) && var_0.ignoreme )
         return 0;
 
-    if ( issubstr( var_0._ID172, "actor" ) && !isalive( var_0 ) )
+    if ( issubstr( var_0.code_classname, "actor" ) && !isalive( var_0 ) )
         return 0;
 
     return 1;
@@ -614,7 +614,7 @@ _ID39238( var_0 )
     var_3 = var_2 * 96;
     var_4 = self gettagorigin( "tag_aim" ) + var_3;
     self._ID37508 = spawn( "script_origin", var_4 );
-    self._ID37508._ID511 = 1;
+    self._ID37508.ignoreme = 1;
     self._ID37508 linkto( self._ID26175 );
     self cleartargetentity();
     self settargetentity( self._ID37508 );
@@ -650,7 +650,7 @@ _ID39239( var_0, var_1 )
 
 _ID39265( var_0 )
 {
-    var_1 = vectortoyaw( var_0._ID740 - self._ID740 );
+    var_1 = vectortoyaw( var_0.origin - self.origin );
     var_2 = self gettagangles( "tag_flash" )[1];
     var_3 = animscripts\utility::_ID1735( var_2 - var_1 );
     return var_3;

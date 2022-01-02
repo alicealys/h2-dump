@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID48818 = 0.65;
     level._ID17617 = [];
@@ -87,23 +87,23 @@ _ID616()
     _ID42407::_ID1951( "trainer", ::_ID52221, "[trainer]", ::_ID51557 );
     _ID42407::_ID1951( "arcadia", ::_ID53003, "[arcadia]", ::_ID49646 );
     animscripts\dog\dog_init::_ID19886();
-    _ID52875::_ID616();
-    _ID45223::_ID616();
+    _ID52875::main();
+    _ID45223::main();
 
     if ( getdvar( "createfx" ) != "on" || level._ID44088 == "free" )
-        _ID51534::_ID616();
+        _ID51534::main();
 
     if ( level._ID44088 != "credits_1" )
     {
-        _ID42323::_ID616();
+        _ID42323::main();
         setsaveddvar( "sv_saveOnStartMap", 0 );
-        var_0 = "levelshots / autosave / autosave_" + level._ID912 + "start";
+        var_0 = "levelshots / autosave / autosave_" + level.script + "start";
         savegame( "levelstart", &"AUTOSAVE_LEVELSTART", var_0, 1 );
         _ID42323::_ID32417( "viewhands_player_us_army" );
     }
 
-    _ID42289::_ID521();
-    _ID42287::_ID521();
+    _ID42289::init();
+    _ID42287::init();
     thread _ID51645();
     level.room1_cleared = 0;
     level.room2_cleared = 0;
@@ -149,20 +149,20 @@ deagle_thread()
     waittillframeend;
     var_0 = self;
 
-    if ( !isdefined( var_0 ) || !isdefined( var_0._ID65 ) )
+    if ( !isdefined( var_0 ) || !isdefined( var_0.angles ) )
         return;
 
-    level._ID794 disableweaponpickup();
-    var_1 = var_0._ID740;
-    var_2 = var_0._ID65;
-    var_3 = spawn( "weapon_deserteagle_gold", var_1, var_0._ID989 );
-    var_3._ID65 = var_2;
+    level.player disableweaponpickup();
+    var_1 = var_0.origin;
+    var_2 = var_0.angles;
+    var_3 = spawn( "weapon_deserteagle_gold", var_1, var_0.spawnflags );
+    var_3.angles = var_2;
     var_0 delete();
     var_3 itemweaponsetammo( 7, 21 );
     var_4 = 1.85;
-    level._ID794 enableweaponpickup();
+    level.player enableweaponpickup();
 
-    while ( level._ID794._ID14516 > gettime() + var_4 * 1000 )
+    while ( level.player._ID14516 > gettime() + var_4 * 1000 )
     {
         if ( !isdefined( var_3 ) )
             break;
@@ -170,17 +170,17 @@ deagle_thread()
         waittillframeend;
     }
 
-    level._ID794 disableweaponpickup();
+    level.player disableweaponpickup();
 
     if ( isdefined( var_3 ) )
     {
-        var_5 = spawn( "weapon_deserteagle", var_1, var_3._ID989 );
-        var_5._ID65 = var_2;
+        var_5 = spawn( "weapon_deserteagle", var_1, var_3.spawnflags );
+        var_5.angles = var_2;
         var_5 itemweaponsetammo( 7, 21 );
         var_3 delete();
     }
 
-    level._ID794 enableweaponpickup();
+    level.player enableweaponpickup();
 }
 
 _ID51645()
@@ -191,14 +191,14 @@ _ID51645()
         thread _ID53693();
     }
 
-    maps\char_museum_anim::_ID616();
+    maps\char_museum_anim::main();
     thread maps\char_museum_code::_ID48755();
     _ID42237::_ID3350( getentarray( "c4barrelPacks", "script_noteworthy" ), maps\char_museum_code::_ID49164 );
     setsaveddvar( "player_sprintUnlimited", "1" );
     setsaveddvar( "ui_hidemap", "1" );
     level._ID15018 = 1;
     thread _ID42407::_ID4917();
-    maps\char_museum_aud::_ID616();
+    maps\char_museum_aud::main();
 }
 
 h2_museum_done_flag_parity( var_0 )
@@ -286,7 +286,7 @@ _ID44317()
 {
     _ID42237::_ID14413( "fade_from_black" );
     var_0 = getvehiclenode( "camara_path_af_caves", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
     level._ID6678 attachpath( var_0 );
     level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
@@ -332,11 +332,11 @@ _ID44917()
     while ( var_4 < 6 )
     {
         wait 0.05;
-        var_5 = level._ID794._ID740;
+        var_5 = level.player.origin;
         var_5 = ( var_5[0], var_5[1], 0 );
-        var_6 = self._ID740;
+        var_6 = self.origin;
         var_6 = ( var_6[0], var_6[1], 0 );
-        var_7 = var_0[var_4]._ID740;
+        var_7 = var_0[var_4].origin;
         var_7 = ( var_7[0], var_7[1], 0 );
         var_8 = vectordot( vectornormalize( var_7 - var_5 ), vectornormalize( var_6 - var_5 ) );
 
@@ -458,12 +458,12 @@ _ID49227()
 _ID51606()
 {
     var_0 = getvehiclenode( "camara_path_dc_burning", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "dc_burning" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -577,10 +577,10 @@ _ID53015( var_0 )
 {
     self._ID51775 = spawn( "script_model", ( 0, 0, 0 ) );
     self._ID51775 setmodel( "viewmodel_desert_eagle" );
-    self._ID51775._ID740 = var_0._ID740;
+    self._ID51775.origin = var_0.origin;
     self._ID51775._ID3189 = "pit_gun";
     self._ID51775 _ID42407::_ID3428();
-    self._ID51775 _ID42259::_ID32454( var_0._ID70 + "_gun", var_0._ID740, var_0._ID65 );
+    self._ID51775 _ID42259::_ID32454( var_0._ID70 + "_gun", var_0.origin, var_0.angles );
     self._ID51775 maps\char_museum_code::_ID44299( self._ID51775 _ID42407::_ID16120( var_0._ID70 + "_gun" ), 1, 0, 0 );
 }
 #using_animtree("script_model");
@@ -637,7 +637,7 @@ _ID48157()
 
     if ( level._ID35897 == "airport" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -735,12 +735,12 @@ _ID47684()
 _ID52854()
 {
     var_0 = getvehiclenode( "camara_path_cliffhanger", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "cliffhanger" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -833,12 +833,12 @@ _ID50461()
 _ID45934()
 {
     var_0 = getvehiclenode( "camara_path_favela", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "favela" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -928,12 +928,12 @@ _ID49161()
 _ID50362()
 {
     var_0 = getvehiclenode( "camara_path_hallway1", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "hallway1" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -959,9 +959,9 @@ _ID52065()
     if ( level._ID35897 == "vehicles" )
     {
         var_0 = getvehiclenode( "camara_path_vehicles", "targetname" );
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 thread _ID42411::_ID40218( var_0 );
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
         level._ID6678 resumespeed( 2 );
@@ -994,9 +994,9 @@ _ID43439()
     if ( level._ID35897 == "hallway2" )
     {
         var_0 = getvehiclenode( "camara_path_hallway2", "targetname" );
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 thread _ID42411::_ID40218( var_0 );
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
         level._ID6678 resumespeed( 5 );
@@ -1035,9 +1035,9 @@ _ID50399()
     if ( level._ID35897 == "oilrig" )
     {
         var_0 = getvehiclenode( "camara_path_oilrig", "targetname" );
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 thread _ID42411::_ID40218( var_0 );
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
         level._ID6678 resumespeed( 0.5 );
@@ -1112,12 +1112,12 @@ _ID51975()
 _ID45695()
 {
     var_0 = getvehiclenode( "camara_path_estate", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "estate" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -1128,7 +1128,7 @@ _ID45695()
 
 _ID47235()
 {
-    if ( isdefined( self._ID1191 ) && self._ID1191 == "bh_ai_node" )
+    if ( isdefined( self.target ) && self.target == "bh_ai_node" )
         _ID45834();
 
     maps\char_museum_code::_ID44880( "estate" );
@@ -1198,42 +1198,42 @@ _ID49222()
 
 _ID44825()
 {
-    var_0 = getent( self._ID1191, "targetname" );
+    var_0 = getent( self.target, "targetname" );
     var_1 = spawnstruct();
 
     if ( level._ID44088 == "free" )
-        var_1._ID740 = var_0 gettagorigin( "TAG_DETACH" ) + ( 0, 0, -10 );
+        var_1.origin = var_0 gettagorigin( "TAG_DETACH" ) + ( 0, 0, -10 );
     else
-        var_1._ID740 = var_0 gettagorigin( "TAG_DETACH" );
+        var_1.origin = var_0 gettagorigin( "TAG_DETACH" );
 
-    var_1._ID65 = var_0 gettagangles( "TAG_DETACH" );
+    var_1.angles = var_0 gettagangles( "TAG_DETACH" );
     var_1._ID70 = "bh_6_drop";
-    var_1._ID1193 = "bh_ai_node";
+    var_1.targetname = "bh_ai_node";
 
-    if ( !isdefined( level._ID36711["targetname"][var_1._ID1193] ) )
-        level._ID36711["targetname"][var_1._ID1193] = [];
+    if ( !isdefined( level._ID36711["targetname"][var_1.targetname] ) )
+        level._ID36711["targetname"][var_1.targetname] = [];
 
-    var_2 = level._ID36711["targetname"][var_1._ID1193].size;
-    level._ID36711["targetname"][var_1._ID1193][var_2] = var_1;
+    var_2 = level._ID36711["targetname"][var_1.targetname].size;
+    level._ID36711["targetname"][var_1.targetname][var_2] = var_1;
     var_1 = spawnstruct();
-    var_1._ID740 = var_0 gettagorigin( "TAG_FASTROPE_LE" ) + ( 0, 0, 0.5 );
-    var_1._ID65 = var_0 gettagangles( "TAG_FASTROPE_LE" );
+    var_1.origin = var_0 gettagorigin( "TAG_FASTROPE_LE" ) + ( 0, 0, 0.5 );
+    var_1.angles = var_0 gettagangles( "TAG_FASTROPE_LE" );
     var_1._ID70 = "bh_rope_drop_le";
-    var_1._ID1193 = "bh_rope_node";
+    var_1.targetname = "bh_rope_node";
 
-    if ( !isdefined( level._ID36711["targetname"][var_1._ID1193] ) )
-        level._ID36711["targetname"][var_1._ID1193] = [];
+    if ( !isdefined( level._ID36711["targetname"][var_1.targetname] ) )
+        level._ID36711["targetname"][var_1.targetname] = [];
 
-    var_2 = level._ID36711["targetname"][var_1._ID1193].size;
-    level._ID36711["targetname"][var_1._ID1193][var_2] = var_1;
-    self._ID1191 = "bh_ai_node";
+    var_2 = level._ID36711["targetname"][var_1.targetname].size;
+    level._ID36711["targetname"][var_1.targetname][var_2] = var_1;
+    self.target = "bh_ai_node";
 }
 
 _ID45834()
 {
-    var_0 = spawn( "script_model", self._ID740 );
+    var_0 = spawn( "script_model", self.origin );
     var_0 setmodel( "rope_test" );
-    var_0._ID1191 = "bh_rope_node";
+    var_0.target = "bh_rope_node";
     var_0 useanimtree( #animtree );
     var_0 _ID42407::_ID13024( "do_anim" );
     level._ID17617[level._ID17617.size] = var_0;
@@ -1277,7 +1277,7 @@ _ID52133()
 
 _ID53145()
 {
-    if ( self._ID170 != "actor_ally_hero_soap_udt" && getdvar( "loc_japanese_sku" ) == "1" )
+    if ( self.classname != "actor_ally_hero_soap_udt" && getdvar( "loc_japanese_sku" ) == "1" )
     {
         _ID42407::_ID22746();
         self setsurfacetype( "default" );
@@ -1407,12 +1407,12 @@ _ID51557()
 _ID49434()
 {
     var_0 = getvehiclenode( "camara_path_trainer", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "trainer" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -1431,17 +1431,17 @@ _ID46659()
         case "training_pushups_guy1":
             self._ID17509 = 1;
             _ID42407::_ID17509();
-            self._ID470 = "fraggrenade";
-            self._ID464 = 0;
+            self.grenadeweapon = "fraggrenade";
+            self.grenadeammo = 0;
             maps\char_museum_code::_ID52822( var_0, 0.93 );
             var_1 = getent( "pushups_guy_light_origin", "targetname" );
-            self _meth_848a( var_1._ID740 );
+            self _meth_848a( var_1.origin );
             break;
         case "parabolic_leaning_guy_idle_training":
-            self._ID470 = "fraggrenade";
-            self._ID464 = 0;
+            self.grenadeweapon = "fraggrenade";
+            self.grenadeammo = 0;
             var_1 = getent( "leaning_guy_light_origin", "targetname" );
-            self _meth_848a( var_1._ID740 );
+            self _meth_848a( var_1.origin );
             break;
         case "h2_museum_training_translator":
             self.cheat.attachheadlast = 1;
@@ -1499,18 +1499,18 @@ _ID49646()
     _ID42237::_ID14413( "arcadia_done" );
     wait 1;
     level._ID52146 fadeovertime( 3 );
-    level._ID52146._ID55 = 1;
+    level._ID52146.alpha = 1;
 }
 
 _ID50980()
 {
     var_0 = getvehiclenode( "camara_path_arcadia", "targetname" );
-    level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+    level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
     level._ID6678 thread _ID42411::_ID40218( var_0 );
 
     if ( level._ID35897 == "arcadia" )
     {
-        level._ID6678 vehicle_teleport( var_0._ID740, var_0._ID65 );
+        level._ID6678 vehicle_teleport( var_0.origin, var_0.angles );
         level._ID6678 attachpath( var_0 );
         level._ID6678 vehicle_setspeedimmediate( 0, 1000, 1000 );
     }
@@ -1704,9 +1704,9 @@ _ID54081()
     setsaveddvar( "g_friendlyNameDist", "0" );
     _ID42237::_ID38863( "free_roam_look_ats", "targetname" );
     var_0 = _ID42313::_ID9126( "credits_side_bar", 0.45, 600, 480 );
-    var_0._ID44 = "left";
-    var_0._ID499 = "left";
-    var_0._ID1331 = -280;
+    var_0.alignx = "left";
+    var_0.horzalign = "left";
+    var_0.x = -280;
     level._ID52146 = _ID42313::_ID9125( "black", 1 );
 
     if ( level._ID44088 != "credits_1" )
@@ -1717,15 +1717,15 @@ _ID54081()
     else
         level._ID5261 _ID42237::_ID10192( 0.5, ::destroy );
 
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 takeallweapons();
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player takeallweapons();
     _ID42407::_ID1892( "axis", maps\char_museum_code::_ID50810 );
     _ID42407::_ID1892( "allies", maps\char_museum_code::_ID50810 );
     _ID42407::_ID1892( "neutral", maps\char_museum_code::_ID50810 );
     level._ID6678 = _ID42411::_ID35196( "credits_camera" );
-    level._ID794 playerlinkto( level._ID6678, undefined, 1, 0, 0, 0, 0, 0 );
-    level._ID794 _ID42237::_ID10192( 0.1, ::freezecontrols, 1 );
+    level.player playerlinkto( level._ID6678, undefined, 1, 0, 0, 0, 0, 0 );
+    level.player _ID42237::_ID10192( 0.1, ::freezecontrols, 1 );
     _ID42237::_ID24938( 1, ::setsaveddvar, "cg_fov", 45 );
     var_1 = getentarray( "spawntrig", "targetname" );
     _ID42237::_ID3350( var_1, maps\char_museum_code::_ID49885 );
@@ -1764,7 +1764,7 @@ _ID48598()
 
 _ID47463()
 {
-    _ID44133::_ID521();
+    _ID44133::init();
     precachestring( &"CHAR_MUSEUM_LINE1" );
     precachestring( &"CHAR_MUSEUM_LINE3" );
     precachestring( &"CHAR_MUSEUM_LINE4" );
@@ -1910,11 +1910,11 @@ _ID46336()
 {
     level._ID52146 = _ID42313::_ID9125( "black", 1 );
     thread _ID42407::_ID24577( "mus_main_menu_ending_credits", 600, 1 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 takeallweapons();
-    level._ID794 disableweapons();
-    level._ID794 freezecontrols( 1 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player takeallweapons();
+    level.player disableweapons();
+    level.player freezecontrols( 1 );
 }
 
 _ID54717()
@@ -1955,13 +1955,13 @@ _ID13789()
     _ID42237::_ID14402( "fade_from_black" );
     wait 1;
     level._ID52146 fadeovertime( 2 );
-    level._ID52146._ID55 = 0;
+    level._ID52146.alpha = 0;
 }
 
 h2_estate_diorama_rope_setup()
 {
     self endon( "death" );
-    var_0 = spawn( "script_model", self._ID740 );
+    var_0 = spawn( "script_model", self.origin );
     var_0 setmodel( "h2_ending_rappel_rope" );
     var_0._ID3189 = "model";
     var_0 _ID42407::_ID3428();

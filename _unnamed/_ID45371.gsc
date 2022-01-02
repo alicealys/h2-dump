@@ -1,13 +1,13 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID39397 = 1;
-    level._ID794 = getentarray( "player", "classname" )[0];
+    level.player = getentarray( "player", "classname" )[0];
 
     if ( _func_242() )
-        _ID51033::_ID616();
+        _ID51033::main();
     else
-        _ID54138::_ID616();
+        _ID54138::main();
 }

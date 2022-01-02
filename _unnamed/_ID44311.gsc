@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["_attack_heli_spotlight_ending"] = loadfx( "fx/misc/hunted_spotlight_model_dim" );
     level._ID43419 = loadfx( "vfx/unique/no_fx" );
@@ -232,8 +232,8 @@ _ID616()
     level._ID1426["heat_light_heaters_dcburning"] = loadfx( "vfx/distortion/heat_light_heaters_dcburning" );
     level._ID1426["flare_light_small_blink_dcburning"] = loadfx( "vfx/lensflare/flare_light_small_blink_dcburning" );
     level._ID1426["block_occ_queries_sprite"] = loadfx( "vfx/unique/block_occ_queries_sprite" );
-    _ID46573::_ID616();
-    _ID47080::_ID616();
+    _ID46573::main();
+    _ID47080::main();
     thread _ID46518();
     level thread _ID38735();
 }
@@ -331,23 +331,23 @@ _ID46706( var_0 )
     }
 
     _ID42407::_ID40118();
-    self setvehgoalpos( var_0._ID740, 0 );
+    self setvehgoalpos( var_0.origin, 0 );
     thread maps\dcburning_aud::_ID43473();
-    earthquake( 0.3, 1.5, level._ID794._ID740, 1600 );
+    earthquake( 0.3, 1.5, level.player.origin, 1600 );
     self vehicle_setspeed( 80 );
     thread _ID54315();
     _ID42237::_ID3350( self._ID29965, ::_ID43167, self );
     playfxontag( _ID42237::_ID16299( "crash_main_01" ), self, "tag_deathfx" );
     playfxontag( _ID42237::_ID16299( "chopper_smoke_trail_loop" ), self, "main_rotor_jnt" );
 
-    while ( distance( self._ID740, var_0._ID740 ) > 100 )
+    while ( distance( self.origin, var_0.origin ) > 100 )
         wait 0.1;
 
     thread _ID42407::_ID27079( "exp_tanker_vehicle" );
     thread maps\dcburning_aud::_ID45750();
     var_6 = spawn( "script_origin", self gettagorigin( "tag_deathfx" ) );
-    playfx( _ID42237::_ID16299( "crash_end_01" ), var_6._ID740 );
-    earthquake( 0.3, 2, level._ID794._ID740, 1600 );
+    playfx( _ID42237::_ID16299( "crash_end_01" ), var_6.origin );
+    earthquake( 0.3, 2, level.player.origin, 1600 );
     self delete();
     var_6 delete();
 }
@@ -396,7 +396,7 @@ _ID43167( var_0 )
     else
     {
         var_6 = spawn( "script_origin", var_4 );
-        var_6._ID65 = var_5;
+        var_6.angles = var_5;
         var_6 thread _ID47386( var_0, var_1 );
         var_6 thread _ID51301( var_0 );
         self unlink();
@@ -428,7 +428,7 @@ _ID47386( var_0, var_1 )
     {
         wait 0.05;
         var_2 = var_0 gettagorigin( var_1 );
-        self._ID740 = var_2;
+        self.origin = var_2;
     }
 }
 
@@ -442,7 +442,7 @@ _ID54315()
 
     while ( isdefined( self ) )
     {
-        var_2 = self._ID65[1] - 300;
+        var_2 = self.angles[1] - 300;
         self setyawspeed( var_0, var_1 );
         self settargetyaw( var_2 );
         wait 0.1;
@@ -454,11 +454,11 @@ _ID49210( var_0 )
     var_1 = getent( "monument_heli_owned_destroyed", "targetname" );
     var_0 delete();
     var_1 show();
-    playfx( _ID42237::_ID16299( "ch46e_explosion" ), var_1._ID740 );
+    playfx( _ID42237::_ID16299( "ch46e_explosion" ), var_1.origin );
     var_1 thread _ID42237::_ID27077( "exp_tanker_vehicle" );
-    var_2 = spawn( "script_origin", var_1._ID740 + ( 0, 0, 0 ) );
-    var_2._ID65 = var_1._ID65;
-    var_3 = spawnfx( _ID42237::_ID16299( "tanker_fire" ), var_2._ID740 );
+    var_2 = spawn( "script_origin", var_1.origin + ( 0, 0, 0 ) );
+    var_2.angles = var_1.angles;
+    var_3 = spawnfx( _ID42237::_ID16299( "tanker_fire" ), var_2.origin );
     triggerfx( var_3 );
     _ID42237::_ID14413( "player_entering_top_elevator_area" );
     var_3 delete();
@@ -480,13 +480,13 @@ _ID46518()
 
 _ID46433()
 {
-    playfx( level._ID1426["lighthaze"], self._ID740 );
+    playfx( level._ID1426["lighthaze"], self.origin );
 }
 
 _ID51439()
 {
-    var_0 = anglestoforward( self._ID65 );
-    playfx( level._ID1426["lensflare_floodlight_on"], self._ID740, var_0 );
+    var_0 = anglestoforward( self.angles );
+    playfx( level._ID1426["lensflare_floodlight_on"], self.origin, var_0 );
 }
 
 _ID53720()

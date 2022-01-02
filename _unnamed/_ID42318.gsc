@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( isdefined( level._ID9296 ) )
         return 0;
@@ -65,7 +65,7 @@ _ID52055()
 
     _ID42237::_ID14402( "introscreen_activate" );
 
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "boneyard":
         case "estate":
@@ -112,8 +112,8 @@ _ID52055()
 
 _ID52790()
 {
-    level._ID794 freezecontrols( 1 );
-    level._ID794 disableoffhandweapons();
+    level.player freezecontrols( 1 );
+    level.player disableoffhandweapons();
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", "whatever", 1 );
     var_0 = 26.5;
     _ID42407::_ID10226( 15.75, ::_ID20371, level._ID46575 );
@@ -127,7 +127,7 @@ _ID52790()
         thread _ID42407::_ID4434();
 
     _ID42237::_ID14402( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
 }
 
 _ID46452()
@@ -137,18 +137,18 @@ _ID46452()
 
 _ID52525()
 {
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", "whatever", 1 );
     thread _ID20372( 5 );
     _ID20371( level._ID46575 );
     wait 5.0;
     _ID42237::_ID14402( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
 }
 
 _ID45123()
 {
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", "whatever", 1 );
     var_0 = 1.35;
     thread _ID20372( var_0 );
@@ -156,18 +156,18 @@ _ID45123()
     _ID20371( level._ID46575, 1 );
     wait(var_0);
     _ID42237::_ID14402( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
 }
 
 _ID47423()
 {
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", "whatever", 1 );
     thread _ID20372( 5.0 );
     _ID20371( level._ID46575, 1 );
     wait 5.0;
     _ID42237::_ID14402( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
 }
 
 _ID43786()
@@ -185,10 +185,10 @@ _ID46932()
         return;
 
     thread _ID43786();
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     _ID42237::_ID14413( "open_dds_door" );
     wait 2;
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
 }
 
 _ID45075()
@@ -206,28 +206,28 @@ _ID50355()
 
 _ID51096()
 {
-    level._ID794 disableweapons();
+    level.player disableweapons();
     thread _ID50355();
     level._ID50380 = 1;
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID408 = 1;
+    var_0.x = 0;
+    var_0.y = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.foreground = 1;
     var_0 setshader( "black", 640, 480 );
     wait 4.25;
     wait 3;
     level notify( "black_fading" );
     level._ID50380 = undefined;
     var_0 fadeovertime( 1.5 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     wait 1.5;
     _ID42237::_ID14402( "introscreen_complete" );
     level notify( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
-    level._ID794 enableweapons();
+    level.player freezecontrols( 0 );
+    level.player enableweapons();
     wait 0.5;
     setsaveddvar( "compass", 1 );
     setsaveddvar( "ammoCounterHide", "0" );
@@ -239,26 +239,26 @@ _ID51096()
 _ID49093()
 {
     thread _ID47625();
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     var_0 = newhudelem();
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID408 = 1;
+    var_0.x = 0;
+    var_0.y = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.foreground = 1;
     var_0 setshader( "black", 640, 480 );
     _ID20371( level._ID46575 );
     wait 10;
     _ID42237::_ID14402( "introscreen_remove_submix" );
     level notify( "black_fading" );
     var_0 fadeovertime( 2 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     _ID42237::_ID14402( "start_anims" );
     wait 2;
     _ID42237::_ID14402( "introscreen_complete" );
     level notify( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
-    level._ID794 disableoffhandweapons();
+    level.player freezecontrols( 0 );
+    level.player disableoffhandweapons();
     wait 0.5;
     setsaveddvar( "compass", 1 );
     setsaveddvar( "ammoCounterHide", "0" );
@@ -290,15 +290,15 @@ h2_roadkill_intro()
 
 _ID48263()
 {
-    level._ID794 disableweapons();
-    level._ID794 freezecontrols( 1 );
+    level.player disableweapons();
+    level.player freezecontrols( 1 );
     savegame( "levelstart", &"AUTOSAVE_LEVELSTART", "whatever", 1 );
     thread _ID20372( 5.0 );
     _ID20371( level._ID46575, 1 );
     wait 5.0;
     _ID42237::_ID14402( "introscreen_complete" );
-    level._ID794 freezecontrols( 0 );
-    level._ID794 enableweapons();
+    level.player freezecontrols( 0 );
+    level.player enableweapons();
 }
 
 _ID51243()
@@ -307,11 +307,11 @@ _ID51243()
     setsaveddvar( "hud_showstance", 0 );
     setsaveddvar( "actionSlotsHide", 1 );
     level._ID48617 = newhudelem();
-    level._ID48617._ID1331 = 0;
-    level._ID48617._ID1339 = 0;
-    level._ID48617._ID499 = "fullscreen";
-    level._ID48617._ID1284 = "fullscreen";
-    level._ID48617._ID408 = 0;
+    level._ID48617.x = 0;
+    level._ID48617.y = 0;
+    level._ID48617.horzalign = "fullscreen";
+    level._ID48617.vertalign = "fullscreen";
+    level._ID48617.foreground = 0;
     level._ID48617 setshader( "black", 640, 480 );
     wait 0.05;
     _ID42237::_ID14402( "intro_dialogue_start" );
@@ -319,7 +319,7 @@ _ID51243()
     _ID42237::_ID14402( "introscreen_remove_submix" );
     var_0 = 3;
     level._ID48617 fadeovertime( var_0 );
-    level._ID48617._ID55 = 0;
+    level._ID48617.alpha = 0;
     wait(var_0);
     level._ID48617 destroy();
     setsaveddvar( "compass", 1 );
@@ -353,7 +353,7 @@ _ID54602()
     var_0 = isdefined( level._ID48294 );
     thread _ID49827();
     thread _ID43661();
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     var_1 = 16000;
     var_2 = 1;
     var_3 = 0;
@@ -363,7 +363,7 @@ _ID54602()
     {
         var_5 = [];
 
-        switch ( level._ID912 )
+        switch ( level.script )
         {
             case "estate":
                 cinematicingamesync( "estate_fade" );
@@ -384,20 +384,20 @@ _ID54602()
         _ID20371( var_5 );
     }
 
-    var_6 = level._ID794._ID740;
-    level._ID794 playersetstreamorigin( var_6 );
-    level._ID794._ID740 = var_6 + ( 0, 0, var_1 );
+    var_6 = level.player.origin;
+    level.player playersetstreamorigin( var_6 );
+    level.player.origin = var_6 + ( 0, 0, var_1 );
     var_7 = spawn( "script_model", ( 69, 69, 69 ) );
-    var_7._ID740 = level._ID794._ID740;
+    var_7.origin = level.player.origin;
     var_7 setmodel( "tag_origin" );
 
     if ( var_0 )
-        var_7._ID65 = ( 0, level._ID48294[1], 0 );
+        var_7.angles = ( 0, level._ID48294[1], 0 );
     else
-        var_7._ID65 = level._ID794._ID65;
+        var_7.angles = level.player.angles;
 
-    level._ID794 playerlinkto( var_7, undefined, 1, 0, 0, 0, 0 );
-    var_7._ID65 = ( var_7._ID65[0] + 89, var_7._ID65[1], 0 );
+    level.player playerlinkto( var_7, undefined, 1, 0, 0, 0, 0 );
+    var_7.angles = ( var_7.angles[0] + 89, var_7.angles[1], 0 );
     wait(var_3);
     var_7 moveto( var_6 + ( 0, 0, 0 ), 2, 0, 2 );
     _ID42237::_ID14402( "introscreen_remove_submix" );
@@ -407,14 +407,14 @@ _ID54602()
     if ( var_0 )
         var_7 rotateto( level._ID48294, 0.5, 0.3, 0.2 );
     else
-        var_7 rotateto( ( var_7._ID65[0] - 89, var_7._ID65[1], 0 ), 0.5, 0.3, 0.2 );
+        var_7 rotateto( ( var_7.angles[0] - 89, var_7.angles[1], 0 ), 0.5, 0.3, 0.2 );
 
     if ( !var_4 )
         savegame( "levelstart", &"AUTOSAVE_LEVELSTART", "whatever", 1 );
 
     wait 0.5;
 
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "estate":
             setomnvar( "ui_chaplinoverlayfadein", 200 );
@@ -426,20 +426,20 @@ _ID54602()
 
     _ID42237::_ID14402( "pullup_weapon" );
     wait 0.2;
-    level._ID794 unlink();
-    level._ID794 freezecontrols( 0 );
+    level.player unlink();
+    level.player freezecontrols( 0 );
 
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "boneyard":
             setsaveddvar( "cg_cinematicFullScreen", "0" );
             break;
     }
 
-    level._ID794 playerclearstreamorigin();
-    thread _ID42237::_ID27077( "ui_screen_trans_in", level._ID794._ID740 );
+    level.player playerclearstreamorigin();
+    thread _ID42237::_ID27077( "ui_screen_trans_in", level.player.origin );
     wait 0.2;
-    thread _ID42237::_ID27077( "ui_screen_trans_out", level._ID794._ID740 );
+    thread _ID42237::_ID27077( "ui_screen_trans_out", level.player.origin );
     wait 0.2;
     _ID42237::_ID14402( "introscreen_complete" );
     wait 2;
@@ -457,7 +457,7 @@ _ID54373( var_0 )
 
     for (;;)
     {
-        level._ID794 playersetstreamorigin( var_0 );
+        level.player playersetstreamorigin( var_0 );
         wait 0.01;
     }
 }
@@ -465,32 +465,32 @@ _ID54373( var_0 )
 _ID50196()
 {
     setsaveddvar( "hud_drawhud", "0" );
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     _ID20372( 5.3, 1 );
     _ID20371( level._ID46575, 1 );
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
     setsaveddvar( "hud_drawhud", "1" );
 }
 
 _ID52593( var_0 )
 {
     var_1 = newhudelem();
-    var_1._ID44 = "center";
-    var_1._ID45 = "middle";
-    var_1._ID499 = "center_adjustable";
-    var_1._ID1284 = "middle";
-    var_1._ID983 = level._ID53347;
-    var_1._ID408 = 1;
+    var_1.alignx = "center";
+    var_1.aligny = "middle";
+    var_1.horzalign = "center_adjustable";
+    var_1.vertalign = "middle";
+    var_1.sort = level._ID53347;
+    var_1.foreground = 1;
     var_1 settext( var_0 );
-    var_1._ID55 = 0;
+    var_1.alpha = 0;
     var_1 fadeovertime( 0.2 );
-    var_1._ID55 = 1;
-    var_1._ID493 = 1;
-    var_1._ID393 = 1.6;
-    var_1._ID196 = ( 0.8, 1, 0.8 );
-    var_1._ID392 = "objective";
-    var_1._ID445 = ( 0.13, 0.33, 0.16 );
-    var_1._ID444 = 0.2;
+    var_1.alpha = 1;
+    var_1.hidewheninmenu = 1;
+    var_1.fontscale = 1.6;
+    var_1.color = ( 0.8, 1, 0.8 );
+    var_1.font = "objective";
+    var_1.glowcolor = ( 0.13, 0.33, 0.16 );
+    var_1.glowalpha = 0.2;
     var_1 setpulsefx( 30, 2500, 700 );
     wait 3;
 }
@@ -541,17 +541,17 @@ _ID20373( var_0, var_1, var_2 )
         var_2 = 1.5;
 
     var_3 = newhudelem();
-    var_3._ID1331 = 0;
-    var_3._ID1339 = 0;
-    var_3._ID499 = "fullscreen";
-    var_3._ID1284 = "fullscreen";
-    var_3._ID408 = 1;
-    var_3._ID983 = level._ID48682;
+    var_3.x = 0;
+    var_3.y = 0;
+    var_3.horzalign = "fullscreen";
+    var_3.vertalign = "fullscreen";
+    var_3.foreground = 1;
+    var_3.sort = level._ID48682;
     var_3 setshader( var_0, 640, 480 );
     wait(var_1);
     _ID42237::_ID14402( "introscreen_remove_submix" );
     var_3 fadeovertime( 1.5 );
-    var_3._ID55 = 0;
+    var_3.alpha = 0;
 }
 
 _ID48237( var_0 )
@@ -563,19 +563,19 @@ _ID48237( var_0 )
         var_2 -= 60;
 
     var_3 = newhudelem();
-    var_3._ID1331 = 0;
-    var_3._ID1339 = var_2;
-    var_3._ID44 = "center";
-    var_3._ID45 = "middle";
-    var_3._ID499 = "center";
-    var_3._ID1284 = "middle";
-    var_3._ID983 = level._ID53347;
-    var_3._ID408 = 1;
-    var_3._ID393 = 1.75;
+    var_3.x = 0;
+    var_3.y = var_2;
+    var_3.alignx = "center";
+    var_3.aligny = "middle";
+    var_3.horzalign = "center";
+    var_3.vertalign = "middle";
+    var_3.sort = level._ID53347;
+    var_3.foreground = 1;
+    var_3.fontscale = 1.75;
     var_3 settext( var_0 );
-    var_3._ID55 = 0;
+    var_3.alpha = 0;
     var_3 fadeovertime( 1.2 );
-    var_3._ID55 = 1;
+    var_3.alpha = 1;
     _ID42237::_ID3312( level._ID48350, var_3, 0 );
 }
 
@@ -584,7 +584,7 @@ _ID50481()
     for ( var_0 = 0; var_0 < level._ID48350.size; var_0++ )
     {
         level._ID48350[var_0] fadeovertime( 1.5 );
-        level._ID48350[var_0]._ID55 = 0;
+        level._ID48350[var_0].alpha = 0;
     }
 
     wait 1.5;
@@ -604,24 +604,24 @@ _ID46728( var_0, var_1, var_2, var_3 )
 
     var_4 = _ID45062();
     var_5 = newhudelem();
-    var_5._ID1331 = 30.7;
-    var_5._ID1339 = var_4 - 8.7;
-    var_5._ID44 = "left";
-    var_5._ID45 = "bottom";
-    var_5._ID499 = "left_adjustable";
-    var_5._ID1284 = "bottom_adjustable";
-    var_5._ID983 = level._ID53347;
-    var_5._ID408 = 1;
+    var_5.x = 30.7;
+    var_5.y = var_4 - 8.7;
+    var_5.alignx = "left";
+    var_5.aligny = "bottom";
+    var_5.horzalign = "left_adjustable";
+    var_5.vertalign = "bottom_adjustable";
+    var_5.sort = level._ID53347;
+    var_5.foreground = 1;
     var_5 settext( var_0 );
-    var_5._ID55 = 0;
+    var_5.alpha = 0;
     var_5 fadeovertime( 0.2 );
-    var_5._ID55 = 1;
-    var_5._ID493 = 1;
-    var_5._ID393 = 1.25;
-    var_5._ID196 = ( 0.8, 1, 0.8 );
-    var_5._ID392 = "objective";
-    var_5._ID445 = ( 0.13, 0.33, 0.16 );
-    var_5._ID444 = 0.2;
+    var_5.alpha = 1;
+    var_5.hidewheninmenu = 1;
+    var_5.fontscale = 1.25;
+    var_5.color = ( 0.8, 1, 0.8 );
+    var_5.font = "objective";
+    var_5.glowcolor = ( 0.13, 0.33, 0.16 );
+    var_5.glowalpha = 0.2;
     var_6 = int( var_1 * var_2 * 1000 + 4000 );
     var_5 setpulsefx( 30, var_6, 700 );
     thread _ID19173( var_5 );
@@ -653,7 +653,7 @@ _ID19173( var_0 )
     level._ID20305 = undefined;
     var_1 = 0.5;
     var_0 fadeovertime( var_1 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     wait(var_1);
     var_0 notify( "destroy" );
     var_0 destroy();
@@ -661,10 +661,10 @@ _ID19173( var_0 )
 
 _ID43661()
 {
-    var_0 = level._ID794 getweaponslistall()[0];
-    level._ID794 disableweapons();
+    var_0 = level.player getweaponslistall()[0];
+    level.player disableweapons();
     _ID42237::_ID14413( "pullup_weapon" );
-    level._ID794 enableweapons();
+    level.player enableweapons();
 }
 
 _ID54449()
@@ -695,7 +695,7 @@ _ID51774( var_0 )
 
 _ID48426()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "favela":
         case "gulag":
@@ -721,7 +721,7 @@ _ID48426()
 
 _ID52123()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "airport":
             _ID51774( &"AIRPORT_LINE1" );

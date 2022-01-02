@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "shockwave_dust_linger" );
     var_0 _ID42229::_ID32402( ( -4123.96, 2729.94, 167 ), ( 270, 1.57205, -31.572 ) );

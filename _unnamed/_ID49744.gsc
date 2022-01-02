@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2, var_3 )
+main( var_0, var_1, var_2, var_3 )
 {
     if ( !isdefined( var_1 ) )
         var_1 = "laatpv_minigun";

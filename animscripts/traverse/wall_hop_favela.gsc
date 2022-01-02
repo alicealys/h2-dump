@@ -1,9 +1,9 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         animscripts\traverse\shared::_ID11456( "wallhop", 40 );
     else
         _ID41291();

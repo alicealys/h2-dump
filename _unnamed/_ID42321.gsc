@@ -50,49 +50,49 @@ _ID31542( var_0, var_1 )
         var_8 = vectornormalize( anglestoforward( var_0._ID10859["curr"] ) );
         var_9 = var_0._ID28250["curr"];
         var_10 = var_0._ID20129["curr"];
-        var_11 = var_0._ID196["curr"];
+        var_11 = var_0.color["curr"];
         var_12 = var_0._ID20033["curr"];
         var_13 = var_0._ID26049["curr"];
-        var_14 = var_0._ID851["curr"];
+        var_14 = var_0.radius["curr"];
         var_15 = var_0._ID22283;
 
         if ( isdefined( var_0._ID3553 ) )
         {
-            var_19 = var_0._ID3571._ID740;
-            var_20 = vectornormalize( anglestoforward( var_0._ID3571._ID65 ) );
-            var_21 = vectornormalize( anglestoup( var_0._ID3571._ID65 ) );
-            var_22 = vectornormalize( anglestoright( var_0._ID3571._ID65 ) );
+            var_19 = var_0._ID3571.origin;
+            var_20 = vectornormalize( anglestoforward( var_0._ID3571.angles ) );
+            var_21 = vectornormalize( anglestoup( var_0._ID3571.angles ) );
+            var_22 = vectornormalize( anglestoright( var_0._ID3571.angles ) );
             var_23 = vectornormalize( var_20 * var_8[0] + var_21 * var_8[2] - var_22 * var_8[1] );
             var_24 = var_20 * var_6[0] + var_21 * var_6[2] - var_22 * var_6[1];
             var_0._ID28547 unlink();
-            var_0._ID28547._ID65 = vectortoangles( var_23 );
-            var_0._ID28547._ID740 = var_19 + var_24;
+            var_0._ID28547.angles = vectortoangles( var_23 );
+            var_0._ID28547.origin = var_19 + var_24;
 
             if ( isdefined( var_0._ID8199 ) )
             {
                 var_25 = var_0._ID8199 gettagorigin( var_0._ID8198 );
-                var_0._ID28547._ID65 = vectortoangles( vectornormalize( var_25 - var_0._ID28547._ID740 ) );
+                var_0._ID28547.angles = vectortoangles( vectornormalize( var_25 - var_0._ID28547.origin ) );
             }
 
             if ( isdefined( var_0._ID8200 ) )
-                var_0._ID28547._ID65 = vectortoangles( vectornormalize( var_0._ID8200 - var_0._ID28547._ID740 ) );
+                var_0._ID28547.angles = vectortoangles( vectornormalize( var_0._ID8200 - var_0._ID28547.origin ) );
 
             var_0._ID28547 linkto( var_0._ID3571 );
         }
         else
         {
-            var_0._ID28547._ID65 = var_7;
+            var_0._ID28547.angles = var_7;
 
             if ( isdefined( var_0._ID8199 ) )
             {
                 var_25 = var_0._ID8199 gettagorigin( var_0._ID8198 );
-                var_0._ID28547._ID65 = vectortoangles( vectornormalize( var_25 - var_0._ID28547._ID740 ) );
+                var_0._ID28547.angles = vectortoangles( vectornormalize( var_25 - var_0._ID28547.origin ) );
             }
 
             if ( isdefined( var_0._ID8200 ) )
-                var_0._ID28547._ID65 = vectortoangles( vectornormalize( var_0._ID8200 - var_0._ID28547._ID740 ) );
+                var_0._ID28547.angles = vectortoangles( vectornormalize( var_0._ID8200 - var_0._ID28547.origin ) );
 
-            var_0._ID28547._ID740 = var_6;
+            var_0._ID28547.origin = var_6;
         }
 
         var_0._ID28547 setlightintensity( var_10 );
@@ -115,20 +115,20 @@ _ID13301( var_0, var_1 )
         var_1._ID28250["curr"] = var_1._ID28250[var_0] * var_5 + var_1._ID28250[var_3] * var_6;
         var_1._ID10859["curr"] = var_1._ID10859[var_0] * var_5 + var_1._ID10859[var_3] * var_6;
         var_1._ID20129["curr"] = var_1._ID20129[var_0] * var_5 + var_1._ID20129[var_3] * var_6;
-        var_1._ID196["curr"] = var_1._ID196[var_0] * var_5 + var_1._ID196[var_3] * var_6;
+        var_1.color["curr"] = var_1.color[var_0] * var_5 + var_1.color[var_3] * var_6;
         var_1._ID20033["curr"] = var_1._ID20033[var_0] * var_5 + var_1._ID20033[var_3] * var_6;
         var_1._ID26049["curr"] = var_1._ID26049[var_0] * var_5 + var_1._ID26049[var_3] * var_6;
-        var_1._ID851["curr"] = var_1._ID851[var_0] * var_5 + var_1._ID851[var_3] * var_6;
+        var_1.radius["curr"] = var_1.radius[var_0] * var_5 + var_1.radius[var_3] * var_6;
         wait 0.05;
     }
 
     var_1._ID28250["curr"] = var_1._ID28250[var_0];
     var_1._ID10859["curr"] = var_1._ID10859[var_0];
     var_1._ID20129["curr"] = var_1._ID20129[var_0];
-    var_1._ID196["curr"] = var_1._ID196[var_0];
+    var_1.color["curr"] = var_1.color[var_0];
     var_1._ID20033["curr"] = var_1._ID20033[var_0];
     var_1._ID26049["curr"] = var_1._ID26049[var_0];
-    var_1._ID851["curr"] = var_1._ID851[var_0];
+    var_1.radius["curr"] = var_1.radius[var_0];
     var_1._ID36185 = var_0;
 }
 
@@ -173,18 +173,18 @@ _ID33423( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
     var_11._ID10859[0] = var_3;
     var_11._ID28250[0] = var_2;
     var_11._ID20 = 1;
-    var_11._ID196[0] = var_5;
+    var_11.color[0] = var_5;
     var_11._ID20033[0] = var_6;
     var_11._ID26049[0] = var_7;
-    var_11._ID851[0] = var_10;
+    var_11.radius[0] = var_10;
     var_11._ID20129[0] = var_4;
     var_11._ID38616[0] = 0;
     var_11._ID10859["curr"] = var_3;
     var_11._ID28250["curr"] = var_2;
-    var_11._ID196["curr"] = var_5;
+    var_11.color["curr"] = var_5;
     var_11._ID20033["curr"] = var_6;
     var_11._ID26049["curr"] = var_7;
-    var_11._ID851["curr"] = var_10;
+    var_11.radius["curr"] = var_10;
     var_11._ID20129["curr"] = 0.1;
     var_11._ID36185 = -1;
     var_11._ID28547 = getent( var_0, "targetname" );
@@ -219,23 +219,23 @@ _ID33423( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
 
         if ( isdefined( var_9 ) )
         {
-            var_11._ID3571._ID740 = var_12 gettagorigin( var_9 );
+            var_11._ID3571.origin = var_12 gettagorigin( var_9 );
             var_11._ID3571 linkto( var_12, var_9, ( 0, 0, 0 ), ( 0, 0, 0 ) );
         }
         else
         {
-            var_11._ID3571._ID740 = var_12._ID740;
+            var_11._ID3571.origin = var_12.origin;
             var_11._ID3571 linkto( var_12 );
         }
 
-        var_13 = var_11._ID3571._ID740;
-        var_14 = vectornormalize( anglestoforward( var_11._ID3571._ID65 ) );
-        var_15 = vectornormalize( anglestoup( var_11._ID3571._ID65 ) );
-        var_16 = vectornormalize( anglestoright( var_11._ID3571._ID65 ) );
+        var_13 = var_11._ID3571.origin;
+        var_14 = vectornormalize( anglestoforward( var_11._ID3571.angles ) );
+        var_15 = vectornormalize( anglestoup( var_11._ID3571.angles ) );
+        var_16 = vectornormalize( anglestoright( var_11._ID3571.angles ) );
         var_17 = vectornormalize( var_14 * var_3[0] + var_15 * var_3[2] - var_16 * var_3[1] );
         var_18 = var_14 * var_2[0] + var_15 * var_2[2] - var_16 * var_2[1];
-        var_11._ID28547._ID65 = vectortoangles( var_17 );
-        var_11._ID28547._ID740 = var_13 + var_18;
+        var_11._ID28547.angles = vectortoangles( var_17 );
+        var_11._ID28547.origin = var_13 + var_18;
 
         if ( !isdefined( var_11._ID28547._ID22421 ) )
         {
@@ -326,7 +326,7 @@ _ID31535( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
         var_4 = var_10._ID20129[var_11 - 1];
 
     if ( !isdefined( var_5 ) )
-        var_5 = var_10._ID196[var_11 - 1];
+        var_5 = var_10.color[var_11 - 1];
 
     if ( !isdefined( var_6 ) )
         var_6 = var_10._ID20033[var_11 - 1];
@@ -335,16 +335,16 @@ _ID31535( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9 )
         var_7 = var_10._ID26049[var_11 - 1];
 
     if ( !isdefined( var_8 ) )
-        var_8 = var_10._ID851[var_11 - 1];
+        var_8 = var_10.radius[var_11 - 1];
 
     var_10._ID1210[var_11] = var_1;
     var_10._ID28250[var_11] = var_2;
     var_10._ID10859[var_11] = var_3;
     var_10._ID20129[var_11] = var_4;
-    var_10._ID196[var_11] = var_5;
+    var_10.color[var_11] = var_5;
     var_10._ID20033[var_11] = var_6;
     var_10._ID26049[var_11] = var_7;
-    var_10._ID851[var_11] = var_8;
+    var_10.radius[var_11] = var_8;
     var_10._ID38616[var_11] = var_9;
 }
 
@@ -383,13 +383,13 @@ _ID49006( var_0 )
 
     foreach ( var_14 in var_12 )
     {
-        if ( !isdefined( var_14._ID1191 ) )
+        if ( !isdefined( var_14.target ) )
             continue;
 
         var_14._ID3189 = var_2;
         var_14 _ID42259::_ID32556();
         var_14 thread _ID42259::_ID3044( var_14, var_3, undefined, var_4 );
-        var_15 = getent( var_14._ID1191, "targetname" );
+        var_15 = getent( var_14.target, "targetname" );
         var_16 = _ID42237::_ID35164();
         var_16 linkto( var_14, var_5, var_6, var_7 );
         var_15 thread _ID42407::_ID22901( var_16 );
@@ -450,27 +450,27 @@ _ID22291()
 
 _ID31004( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 {
-    var_8 = newclienthudelem( level._ID794 );
-    var_8._ID1331 = 0;
-    var_8._ID1339 = 0;
+    var_8 = newclienthudelem( level.player );
+    var_8.x = 0;
+    var_8.y = 0;
     var_8._ID998 = 1;
-    var_8._ID44 = "left";
-    var_8._ID45 = "top";
-    var_8._ID983 = 1;
-    var_8._ID408 = 0;
-    var_8._ID499 = "fullscreen";
-    var_8._ID1284 = "fullscreen";
-    var_8._ID55 = var_4;
+    var_8.alignx = "left";
+    var_8.aligny = "top";
+    var_8.sort = 1;
+    var_8.foreground = 0;
+    var_8.horzalign = "fullscreen";
+    var_8.vertalign = "fullscreen";
+    var_8.alpha = var_4;
     var_8 thread _ID7805();
 
     if ( isdefined( var_5 ) )
-        var_8._ID1331 = var_5;
+        var_8.x = var_5;
 
     if ( isdefined( var_6 ) )
-        var_8._ID1339 = var_6;
+        var_8.y = var_6;
 
     if ( isdefined( var_7 ) )
-        var_8._ID983 = var_7;
+        var_8.sort = var_7;
 
     if ( isarray( var_1 ) )
     {
@@ -482,7 +482,7 @@ _ID31004( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 
     if ( var_0 > 0 )
     {
-        var_8._ID55 = 0;
+        var_8.alpha = 0;
         var_12 = 1;
 
         if ( isdefined( var_2 ) )
@@ -507,13 +507,13 @@ _ID31004( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 
             while ( var_16 < var_14 )
             {
-                var_8._ID55 = var_16;
+                var_8.alpha = var_16;
                 var_16 += var_17;
                 wait(var_15);
             }
         }
 
-        var_8._ID55 = var_14;
+        var_8.alpha = var_14;
         wait(var_0 - var_12 + var_13);
 
         if ( var_13 > 0 )
@@ -523,13 +523,13 @@ _ID31004( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 
             while ( var_16 > 0 )
             {
-                var_8._ID55 = var_16;
+                var_8.alpha = var_16;
                 var_16 -= var_18;
                 wait(var_15);
             }
         }
 
-        var_8._ID55 = 0;
+        var_8.alpha = 0;
         var_8 destroy();
     }
 
@@ -550,46 +550,46 @@ _ID5306()
 
 _ID10866()
 {
-    var_0 = newclienthudelem( level._ID794 );
-    var_0._ID1331 = 0;
-    var_0._ID1339 = 0;
+    var_0 = newclienthudelem( level.player );
+    var_0.x = 0;
+    var_0.y = 0;
     var_0 setshader( "fullscreen_dirt_bottom", 640, 480 );
     var_0 setshader( "fullscreen_dirt_bottom_b", 640, 480 );
     var_0 setshader( "fullscreen_dirt_left", 640, 480 );
     var_0 setshader( "fullscreen_dirt_right", 640, 480 );
     var_0._ID998 = 1;
-    var_0._ID44 = "left";
-    var_0._ID45 = "top";
-    var_0._ID983 = 1;
-    var_0._ID408 = 0;
-    var_0._ID499 = "fullscreen";
-    var_0._ID1284 = "fullscreen";
-    var_0._ID55 = 1;
+    var_0.alignx = "left";
+    var_0.aligny = "top";
+    var_0.sort = 1;
+    var_0.foreground = 0;
+    var_0.horzalign = "fullscreen";
+    var_0.vertalign = "fullscreen";
+    var_0.alpha = 1;
     var_0 fadeovertime( 3 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
 }
 
 _ID5388( var_0 )
 {
     self endon( "stop_mask_bob" );
     var_1 = 0;
-    var_2 = level._ID794 getplayerangles();
+    var_2 = level.player getplayerangles();
     var_3 = 0;
     var_4 = 0;
-    var_5 = var_0._ID1339;
-    var_6 = var_0._ID1331;
+    var_5 = var_0.y;
+    var_6 = var_0.x;
     var_7 = 0.05;
 
     for (;;)
     {
         if ( isdefined( var_0 ) )
         {
-            var_8 = level._ID794 getplayerangles();
-            var_9 = level._ID794 getvelocity();
+            var_8 = level.player getplayerangles();
+            var_9 = level.player getvelocity();
             var_10 = var_9[2];
             var_9 -= var_9 * ( 0, 0, 1 );
             var_11 = length( var_9 );
-            var_12 = level._ID794 getstance();
+            var_12 = level.player getstance();
             var_13 = clamp( var_11, 0, 280 ) / 280;
             var_14 = 0.1 + var_13 * 0.25;
             var_15 = 0.1 + var_13 * 0.25;
@@ -606,7 +606,7 @@ _ID5388( var_0 )
 
             var_17 = 5.0;
             var_18 = 0.9;
-            var_19 = level._ID794 playerads();
+            var_19 = level.player playerads();
             var_20 = var_17 * ( 1.0 - var_19 ) + var_18 * var_19;
             var_20 *= ( 1 + var_13 * 2 );
             var_21 = 5;
@@ -625,8 +625,8 @@ _ID5388( var_0 )
             var_31 = var_30 - var_3;
             var_3 += clamp( var_31, -0.6, 0.6 );
             var_0 moveovertime( 0.05 );
-            var_0._ID1331 = var_6 + clamp( var_25 * var_22 + var_4 - var_21, 0 - 2 * var_21, 0 );
-            var_0._ID1339 = var_5 + clamp( var_26 * var_23 + var_3 - var_21, 0 - 2 * var_21, 0 );
+            var_0.x = var_6 + clamp( var_25 * var_22 + var_4 - var_21, 0 - 2 * var_21, 0 );
+            var_0.y = var_5 + clamp( var_26 * var_23 + var_3 - var_21, 0 - 2 * var_21, 0 );
             var_2 = var_8;
         }
 
@@ -652,24 +652,24 @@ _ID15404( var_0, var_1, var_2, var_3 )
         _ID42313::_ID13798( var_1 );
 
     self._ID15399 = newclienthudelem( self );
-    self._ID15399._ID1331 = 0;
-    self._ID15399._ID1339 = 0;
-    self._ID15399._ID499 = "fullscreen";
-    self._ID15399._ID1284 = "fullscreen";
-    self._ID15399._ID408 = 0;
-    self._ID15399._ID983 = -1;
+    self._ID15399.x = 0;
+    self._ID15399.y = 0;
+    self._ID15399.horzalign = "fullscreen";
+    self._ID15399.vertalign = "fullscreen";
+    self._ID15399.foreground = 0;
+    self._ID15399.sort = -1;
     self._ID15399 setshader( "gasmask_overlay_delta2_top", 650, 138 );
-    self._ID15399._ID55 = 1.0;
+    self._ID15399.alpha = 1.0;
     self._ID15400 = newclienthudelem( self );
-    self._ID15400._ID1331 = 0;
-    self._ID15400._ID1339 = 352;
-    self._ID15400._ID499 = "fullscreen";
-    self._ID15400._ID1284 = "fullscreen";
-    self._ID15400._ID408 = 0;
-    self._ID15400._ID983 = -1;
+    self._ID15400.x = 0;
+    self._ID15400.y = 352;
+    self._ID15400.horzalign = "fullscreen";
+    self._ID15400.vertalign = "fullscreen";
+    self._ID15400.foreground = 0;
+    self._ID15400.sort = -1;
     self._ID15400 setshader( "gasmask_overlay_delta2_bottom", 650, 138 );
-    self._ID15400._ID55 = 1.0;
-    level._ID794 _ID42407::_ID10226( 1.0, ::_ID15398 );
+    self._ID15400.alpha = 1.0;
+    level.player _ID42407::_ID10226( 1.0, ::_ID15398 );
     thread _ID5388( self._ID15399 );
     thread _ID5388( self._ID15400 );
 
@@ -697,7 +697,7 @@ _ID15402()
         self._ID15400 = undefined;
     }
 
-    level._ID794 notify( "stop_breathing" );
+    level.player notify( "stop_breathing" );
     wait 0.25;
     _ID42313::_ID13791( 1.5 );
 }
@@ -747,7 +747,7 @@ _ID9142( var_0, var_1, var_2, var_3, var_4, var_5 )
         level._ID1507._ID14550 = [];
 
     var_6 = spawnstruct();
-    var_6._ID196 = var_1;
+    var_6.color = var_1;
     var_6._ID20129 = var_2;
     var_6._ID23110 = var_3;
     var_6._ID23621 = var_4;
@@ -780,7 +780,7 @@ _ID26957( var_0, var_1 )
         var_5 setlightintensity( var_3._ID20129 );
         var_5._ID20810 = 1;
         var_5._ID20811 = 0;
-        var_5 thread _ID12251( var_3._ID196, var_3._ID20129, var_3._ID23110, var_3._ID23621, var_3._ID23087 );
+        var_5 thread _ID12251( var_3.color, var_3._ID20129, var_3._ID23110, var_3._ID23621, var_3._ID23087 );
     }
 
     return var_2;
@@ -921,7 +921,7 @@ _ID12251( var_0, var_1, var_2, var_3, var_4 )
     self setlightcolor( var_0 );
     self setlightintensity( var_1 );
     thread _ID14262();
-    var_5 = self._ID740;
+    var_5 = self.origin;
     var_6 = var_2;
     var_7 = var_2;
     var_8 = var_2;
@@ -978,10 +978,10 @@ _ID9161( var_0, var_1 )
 
     foreach ( var_5 in var_3 )
     {
-        if ( var_5._ID170 == "script_model" )
+        if ( var_5.classname == "script_model" )
             var_2._ID23877[var_2._ID23877.size] = var_5;
 
-        if ( var_5._ID170 == "light_spot" )
+        if ( var_5.classname == "light_spot" )
             var_2._ID22298[var_2._ID22298.size] = var_5;
     }
 
@@ -1319,10 +1319,10 @@ _ID23869( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
 
     foreach ( var_17 in var_13 )
     {
-        if ( var_17._ID170 == "script_model" )
+        if ( var_17.classname == "script_model" )
             var_15[var_15.size] = var_17;
 
-        if ( var_17._ID170 == "light_spot" || var_17._ID170 == "light_omni" )
+        if ( var_17.classname == "light_spot" || var_17.classname == "light_omni" )
         {
             var_14[var_14.size] = var_17;
             var_18 = var_2;
@@ -1508,8 +1508,8 @@ _ID9135( var_0, var_1, var_2 )
 
     var_3["start"] = var_1;
     var_3["end"] = var_2;
-    level._ID794._ID40477 = var_3["start"];
-    level._ID794._ID40476 = var_3["end"];
+    level.player._ID40477 = var_3["start"];
+    level.player._ID40476 = var_3["end"];
     level._ID1507._ID11388[var_0] = var_3;
 }
 
@@ -1545,8 +1545,8 @@ _ID5283( var_0, var_1, var_2 )
     }
     else
     {
-        level._ID794._ID40477 = var_1["start"];
-        level._ID794._ID40476 = var_1["end"];
+        level.player._ID40477 = var_1["start"];
+        level.player._ID40476 = var_1["end"];
     }
 }
 
@@ -1561,27 +1561,27 @@ _ID22193( var_0, var_1, var_2 )
     {
         if ( !var_3 )
         {
-            level._ID794._ID40477 = level._ID794._ID40477 + var_1;
+            level.player._ID40477 = level.player._ID40477 + var_1;
 
-            if ( var_1 > 0 && level._ID794._ID40477 > var_0["start"] || var_1 < 0 && level._ID794._ID40477 < var_0["start"] )
+            if ( var_1 > 0 && level.player._ID40477 > var_0["start"] || var_1 < 0 && level.player._ID40477 < var_0["start"] )
             {
-                level._ID794._ID40477 = var_0["start"];
+                level.player._ID40477 = var_0["start"];
                 var_3 = 1;
             }
         }
 
         if ( !var_4 )
         {
-            level._ID794._ID40476 = level._ID794._ID40476 + var_2;
+            level.player._ID40476 = level.player._ID40476 + var_2;
 
-            if ( var_2 > 0 && level._ID794._ID40476 > var_0["end"] || var_2 < 0 && level._ID794._ID40476 < var_0["end"] )
+            if ( var_2 > 0 && level.player._ID40476 > var_0["end"] || var_2 < 0 && level.player._ID40476 < var_0["end"] )
             {
-                level._ID794._ID40476 = var_0["end"];
+                level.player._ID40476 = var_0["end"];
                 var_4 = 1;
             }
         }
 
-        level._ID794 setviewmodeldepthoffield( level._ID794._ID40477, level._ID794._ID40476 );
+        level.player setviewmodeldepthoffield( level.player._ID40477, level.player._ID40476 );
         wait 0.05;
     }
 }
@@ -1657,7 +1657,7 @@ _ID49740()
 
     foreach ( var_2 in var_16 )
     {
-        var_18 = float( var_2._ID922 ) * 0.01;
+        var_18 = float( var_2.script_noteworthy ) * 0.01;
         var_2 _meth_83b4( var_18, 0.0 );
     }
 }
@@ -1667,7 +1667,7 @@ _ID46743()
     if ( !level._ID765 )
         return;
 
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "airlift":
         case "armada":

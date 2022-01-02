@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     level._ID30895["generic"]["coffee_idle"][0] = %cargoship_stunned_coffee_react_idle;
     level._ID30895["generic"]["coffee_react"] = %exposed_idle_twitch_v4;

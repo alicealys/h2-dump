@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616( var_0 )
+main( var_0 )
 {
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "saw" );
@@ -33,7 +33,7 @@ _ID616( var_0 )
 
     var_5 = gettime();
     var_6 = "start";
-    animscripts\shared::_ID26732( self._ID1302, "none" );
+    animscripts\shared::_ID26732( self.weapon, "none" );
     var_0 show();
 
     if ( isdefined( var_0._ID2446 ) )
@@ -98,7 +98,7 @@ _ID14292( var_0 )
 
     for (;;)
     {
-        while ( isdefined( self._ID322 ) )
+        while ( isdefined( self.enemy ) )
         {
             if ( var_0._ID11302 )
             {
@@ -106,10 +106,10 @@ _ID14292( var_0 )
                 continue;
             }
 
-            var_2 = self._ID322._ID740;
+            var_2 = self.enemy.origin;
             var_3 = var_0 gettagangles( "tag_aim" );
 
-            if ( _ID42237::_ID41802( var_0._ID740, var_3, var_2, var_1 ) || distancesquared( var_0._ID740, var_2 ) < 40000 )
+            if ( _ID42237::_ID41802( var_0.origin, var_3, var_2, var_1 ) || distancesquared( var_0.origin, var_2 ) < 40000 )
             {
                 if ( !var_0._ID11393 )
                 {
@@ -153,7 +153,7 @@ _ID36620()
 
     for (;;)
     {
-        if ( !isdefined( self._ID700 ) || distancesquared( self._ID740, self._ID700._ID740 ) > 4096 )
+        if ( !isdefined( self.node ) || distancesquared( self.origin, self.node.origin ) > 4096 )
             self stopuseturret();
 
         wait 0.25;
@@ -164,10 +164,10 @@ _ID28304( var_0 )
 {
     if ( var_0 == "pain" )
     {
-        if ( isdefined( self._ID700 ) && distancesquared( self._ID740, self._ID700._ID740 ) < 4096 )
+        if ( isdefined( self.node ) && distancesquared( self.origin, self.node.origin ) < 4096 )
         {
             self._ID7._ID39999 hide();
-            animscripts\shared::_ID26732( self._ID1302, "right" );
+            animscripts\shared::_ID26732( self.weapon, "right" );
             self._ID7._ID28304 = ::_ID28302;
             return;
         }
@@ -183,19 +183,19 @@ _ID28304( var_0 )
 
     self._ID7._ID39999 delete();
     self._ID7._ID39999 = undefined;
-    animscripts\shared::_ID26732( self._ID1302, "right" );
+    animscripts\shared::_ID26732( self.weapon, "right" );
 }
 
 _ID28302( var_0 )
 {
-    if ( !isdefined( self._ID700 ) || distancesquared( self._ID740, self._ID700._ID740 ) > 4096 )
+    if ( !isdefined( self.node ) || distancesquared( self.origin, self.node.origin ) > 4096 )
     {
         self stopuseturret();
         self._ID7._ID39999 delete();
         self._ID7._ID39999 = undefined;
 
-        if ( isdefined( self._ID1302 ) && self._ID1302 != "none" )
-            animscripts\shared::_ID26732( self._ID1302, "right" );
+        if ( isdefined( self.weapon ) && self.weapon != "none" )
+            animscripts\shared::_ID26732( self.weapon, "right" );
     }
     else if ( var_0 != "saw" )
         self._ID7._ID39999 delete();
@@ -203,7 +203,7 @@ _ID28302( var_0 )
 
 _ID28448( var_0 )
 {
-    animscripts\shared::_ID26732( self._ID1302, "right" );
+    animscripts\shared::_ID26732( self.weapon, "right" );
 }
 #using_animtree("generic_human");
 

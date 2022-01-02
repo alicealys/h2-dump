@@ -15,8 +15,8 @@ _ID47484()
 
     foreach ( var_1 in level._ID805 )
     {
-        var_1._ID626 = 100;
-        var_1._ID486 = 100;
+        var_1.maxhealth = 100;
+        var_1.health = 100;
     }
 
     maps\airport_code::_ID44563();
@@ -51,8 +51,8 @@ _ID43237()
 
 _ID53284()
 {
-    if ( self._ID1194 == "axis" )
-        self._ID1194 = "allies";
+    if ( self.team == "axis" )
+        self.team = "allies";
     else
-        self._ID1194 = "axis";
+        self.team = "axis";
 }

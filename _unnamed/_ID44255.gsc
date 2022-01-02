@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_op_airborne_sniper" );
     self attach( "head_op_airborne_sniper", "", 1 );

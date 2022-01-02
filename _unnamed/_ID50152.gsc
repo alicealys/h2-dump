@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_airconditioner", "tag_origin", 0, undefined, 32 );
     _ID42231::_ID10493( %ex_airconditioner_fan, #animtree, "setanimknob", undefined, undefined, "ex_airconditioner_fan" );

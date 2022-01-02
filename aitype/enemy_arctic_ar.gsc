@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "axis";
-    self._ID1244 = "human";
+    self.team = "axis";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 150;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 150;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "usp";
 
@@ -24,44 +24,44 @@ _ID616()
     switch ( _ID42226::_ID15950( 9 ) )
     {
         case 0:
-            self._ID1302 = "ak47_arctic";
+            self.weapon = "ak47_arctic";
             break;
         case 1:
-            self._ID1302 = "ak47_arctic_acog";
+            self.weapon = "ak47_arctic_acog";
             break;
         case 2:
-            self._ID1302 = "ak47_arctic_grenadier";
+            self.weapon = "ak47_arctic_grenadier";
             break;
         case 3:
-            self._ID1302 = "ak47_arctic_reflex";
+            self.weapon = "ak47_arctic_reflex";
             break;
         case 4:
-            self._ID1302 = "famas_arctic";
+            self.weapon = "famas_arctic";
             break;
         case 5:
-            self._ID1302 = "famas_arctic_reflex";
+            self.weapon = "famas_arctic_reflex";
             break;
         case 6:
-            self._ID1302 = "aug_scope_arctic";
+            self.weapon = "aug_scope_arctic";
             break;
         case 7:
-            self._ID1302 = "aug_reflex_arctic";
+            self.weapon = "aug_reflex_arctic";
             break;
         case 8:
-            self._ID1302 = "aug_reflex_arctic";
+            self.weapon = "aug_reflex_arctic";
             break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
         case 0:
-            _ID51743::_ID616();
+            _ID51743::main();
             break;
         case 1:
-            _ID46367::_ID616();
+            _ID46367::main();
             break;
         case 2:
-            _ID53423::_ID616();
+            _ID53423::main();
             break;
     }
 }

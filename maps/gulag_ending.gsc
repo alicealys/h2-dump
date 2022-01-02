@@ -132,8 +132,8 @@ _ID43558()
     var_0[var_0.size] = var_1;
     var_2 = _ID42407::_ID3339( var_0 );
     var_3 = _ID42237::_ID16638( "ending_breach_org", "targetname" );
-    level._ID794 setorigin( var_3._ID740 );
-    level._ID794 setplayerangles( var_3._ID65 );
+    level.player setorigin( var_3.origin );
+    level.player setplayerangles( var_3.angles );
     maps\gulag_ending_code::_ID54691();
     var_3 thread _ID42259::_ID3099( var_2, "price_rescue" );
     wait 0.05;
@@ -147,7 +147,7 @@ _ID43558()
 
 _ID43090()
 {
-    if ( level._ID912 == "endlog" || level._ID35897 == "run" )
+    if ( level.script == "endlog" || level._ID35897 == "run" )
         wait 0.05;
 
     maps\gulag_ending_code::_ID54628();
@@ -184,15 +184,15 @@ _ID43090()
     _ID42407::_ID4422( "run_autosave" );
     wait 1;
     var_13 = getent( "ending_window_littlebird", "script_noteworthy" );
-    var_14 = _ID42237::_ID16638( var_13._ID1191, "targetname" );
-    var_13._ID740 = var_14._ID740;
+    var_14 = _ID42237::_ID16638( var_13.target, "targetname" );
+    var_13.origin = var_14.origin;
     _ID42237::_ID14413( "there_is_chopper" );
     _ID42237::_ID14413( "exit_collapses" );
     _ID42237::_ID24938( 1.5, ::setsaveddvar, "player_sprintSpeedScale", level._ID54582 );
     setsaveddvar( "player_sprintUnlimited", 1 );
     _ID42237::_ID14402( "soap_speed_boost" );
     level._ID54653 = 1;
-    maps\gulag_ending_code::_ID43994( 0.25, 4, level._ID28543._ID740, 5000 );
+    maps\gulag_ending_code::_ID43994( 0.25, 4, level._ID28543.origin, 5000 );
     thread maps\gulag_ending_code::_ID53931();
     wait 0.2;
     wait 1;
@@ -224,13 +224,13 @@ _ID46241()
 
     if ( getdvarint( "altview" ) )
     {
-        level._ID794 setorigin( ( -4594, -765, 180 ) );
-        level._ID794 setplayerangles( ( -21, -88, 0 ) );
+        level.player setorigin( ( -4594, -765, 180 ) );
+        level.player setplayerangles( ( -21, -88, 0 ) );
     }
     else
-        level._ID794 playerlinktoblend( var_6, "tag_player", 0, 0, 0 );
+        level.player playerlinktoblend( var_6, "tag_player", 0, 0, 0 );
 
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     var_8 = getent( "mound_scene_export", "targetname" );
 
     for (;;)
@@ -250,8 +250,8 @@ _ID53666()
         var_4 thread maps\gulag_ending_code::_ID45885();
 
     var_6 = _ID42237::_ID16638( "start_cafe_player", "targetname" );
-    level._ID794 setorigin( var_6._ID740 );
-    level._ID794 setplayerangles( var_6._ID65 );
+    level.player setorigin( var_6.origin );
+    level.player setplayerangles( var_6.angles );
     maps\gulag_ending_code::_ID54691();
     level._ID43155 = getentarray( "cafe_table", "targetname" );
     _ID42237::_ID3350( level._ID43155, maps\gulag_ending_code::_ID52256 );
@@ -277,13 +277,13 @@ _ID47024()
 
     foreach ( var_2 in var_0 )
     {
-        var_2._ID465 = 0;
+        var_2.grenadeawareness = 0;
 
         if ( !isdefined( var_2._ID22746 ) )
             var_2 thread _ID42407::_ID22746();
 
-        var_2._ID512 = 1;
-        var_2._ID86 = 0;
+        var_2.ignorerandombulletdamage = 1;
+        var_2.attackeraccuracy = 0;
     }
 
     var_4 = [];
@@ -308,7 +308,7 @@ _ID47024()
     var_9 = getent( "cafeteria_scriptednode", "targetname" );
     var_9 thread _ID42259::_ID3099( var_0, "cafe_entrance" );
     wait 4.2;
-    maps\gulag_ending_code::_ID43994( 0.25, 4, level._ID794._ID740, 5000 );
+    maps\gulag_ending_code::_ID43994( 0.25, 4, level.player.origin, 5000 );
     wait 0.05;
     wait 2;
     _ID42407::_ID10226( 1, _ID42237::_ID14402, "player_falls_down" );
@@ -346,7 +346,7 @@ _ID47587( var_0, var_1 )
 
 _ID50480( var_0 )
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     _ID42237::_ID14413( "player_uses_rig" );
     var_0["ending_rope1"] waittillmatch( "single anim",  "switch_rope"  );
     var_0["ending_rope1"] hide();
@@ -358,15 +358,15 @@ _ID49550()
     setsaveddvar( "ui_hidemap", 1 );
     var_0 = getent( "cafeteria_stagelight", "targetname" );
     var_0 thread _ID42407::_ID25088( "staging_on", 1 );
-    level._ID794 setmovespeedscale( 1 );
+    level.player setmovespeedscale( 1 );
     var_1 = getaiarray( "allies" );
 
     foreach ( var_3 in var_1 )
         var_3 _ID42407::_ID3136();
 
     _ID42237::_ID14402( "time_to_evac" );
-    level._ID794 setblurforplayer( 0, 1 );
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player setblurforplayer( 0, 1 );
+    level.player playersetgroundreferenceent( undefined );
     level notify( "stop_cavein" );
     setsaveddvar( "g_friendlyNameDist", 0 );
 
@@ -374,20 +374,20 @@ _ID49550()
         wait 0.05;
 
     level._ID48582 = 0.1;
-    var_5 = _ID42313::_ID9125( "black", 0, level._ID794 );
-    var_5._ID55 = 1;
+    var_5 = _ID42313::_ID9125( "black", 0, level.player );
+    var_5.alpha = 1;
     _ID42475::_ID34575( "start_evac_rock_falling_black_screen" );
 
     if ( isdefined( level._ID5261 ) )
-        level._ID5261._ID55 = 0;
+        level._ID5261.alpha = 0;
 
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
     wait 5.2;
     thread maps\gulag_ending_code::_ID43462();
     thread maps\gulag_ending_code::_ID43267();
     var_5 fadeovertime( 0.15 );
-    var_5._ID55 = 0;
+    var_5.alpha = 0;
     _ID42475::_ID34575( "stop_evac_rock_falling_black_screen" );
     setsaveddvar( "compass", "0" );
     setsaveddvar( "ammoCounterHide", 1 );
@@ -417,8 +417,8 @@ _ID49550()
     var_10["ending_rope"] = var_14;
     thread _ID50480( var_10 );
     var_10["ending_rope1"] makeusable();
-    var_13 _meth_848a( level._ID53563._ID740 );
-    var_8 _meth_848a( level._ID53563._ID740 );
+    var_13 _meth_848a( level._ID53563.origin );
+    var_8 _meth_848a( level._ID53563.origin );
     var_15 = getent( "evac_rock", "targetname" );
     var_15 _ID42407::_ID1958();
     var_15 castshadows();
@@ -428,8 +428,8 @@ _ID49550()
     var_18 = 15;
     var_19 = 15;
     thread _ID42263::_ID1376();
-    level._ID794 playerlinktodelta( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 takeallweapons();
+    level.player playerlinktodelta( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level.player takeallweapons();
     _ID42234::_ID13611( "bomb_exploder" );
     _ID42407::_ID10226( 20, _ID42234::_ID13611, "evac_exploder" );
     var_9 _ID42259::_ID3018( var_7, "fly_away" );
@@ -442,9 +442,9 @@ _ID49550()
     level._ID53563 thread _ID51148();
     var_6 waittillmatch( "single anim",  "end"  );
     var_0 notify( "staging_off" );
-    level._ID794 unlink();
-    level._ID794 allowcrouch( 1 );
-    level._ID794 allowprone( 1 );
+    level.player unlink();
+    level.player allowcrouch( 1 );
+    level.player allowprone( 1 );
     setsaveddvar( "ui_hidemap", 0 );
     setsaveddvar( "g_friendlyNameDist", 175 );
     thread maps\gulag_ending_code::_ID45617();
@@ -457,14 +457,14 @@ _ID49550()
     var_22 = _ID42237::_ID35164();
     var_22 linkto( var_7, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_23 = _ID42407::_ID16268( "player_uses_rig" );
-    var_23 thread _ID42237::_ID44574( level._ID794, &"GULAG_SPIE_HINT", &"GULAG_SPIE_HINT_PC", "trigger" );
+    var_23 thread _ID42237::_ID44574( level.player, &"GULAG_SPIE_HINT", &"GULAG_SPIE_HINT_PC", "trigger" );
     setsaveddvar( "hud_drawhud", 1 );
     _ID42237::_ID14413( "player_uses_rig" );
     thread _ID49461();
     var_23 _ID42237::_ID38863();
     _ID42475::_ID34575( "start_evac_player" );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
 
     if ( isdefined( level._ID53563._ID53196 ) )
         return;
@@ -477,25 +477,25 @@ _ID49550()
     {
         var_25 = 1;
         var_26 = 0.5;
-        level._ID794 playerlinktoblend( var_6, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
+        level.player playerlinktoblend( var_6, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
         _ID42407::_ID10226( var_26, ::_ID48339, var_22, var_6 );
         wait(var_26);
-        level._ID794 playerlinktodelta( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
+        level.player playerlinktodelta( var_6, "tag_player", 1, 0, 0, 0, 0, 1 );
         thread _ID54094( var_9, var_21 );
     }
     else
     {
         var_26 = 0.5;
-        level._ID794 playerlinktoblend( var_7, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
-        level._ID794 _ID42237::_ID10192( var_26, ::playersetgroundreferenceent, var_22 );
-        level._ID794 _ID42237::_ID10192( var_26 + 0.05, ::playerlinktodelta, var_6, "tag_player", 1, 35, 10, 55, 15, 1 );
+        level.player playerlinktoblend( var_7, "tag_player", var_26, var_26 * 0.4, var_26 * 0.4 );
+        level.player _ID42237::_ID10192( var_26, ::playersetgroundreferenceent, var_22 );
+        level.player _ID42237::_ID10192( var_26 + 0.05, ::playerlinktodelta, var_6, "tag_player", 1, 35, 10, 55, 15, 1 );
     }
 
     _ID42237::_ID14413( "player_gets_pulled" );
     thread _ID51818();
     setsaveddvar( "g_friendlyNameDist", 0 );
     var_9 notify( "stop_loop" );
-    level._ID794 notify( "stop_opening_fov" );
+    level.player notify( "stop_opening_fov" );
     level._ID28543 _ID42237::_ID10192( 5.05, ::playsound, "gulag_pri_yes" );
     var_9 thread _ID42259::_ID3111( var_6, "fly_away" );
     var_6 thread _ID42407::_ID27079( "scn_gulag_evac_player_leaving" );
@@ -505,8 +505,8 @@ _ID49550()
     var_27 = var_6 _ID42407::_ID16120( "fly_away" );
     _ID42475::_ID34575( "final_explosion_mix" );
     wait 7.85;
-    var_5 = _ID42313::_ID9125( "black", 0, level._ID794 );
-    var_5._ID55 = 1;
+    var_5 = _ID42313::_ID9125( "black", 0, level.player );
+    var_5.alpha = 1;
     _ID42407::_ID24793();
 }
 
@@ -520,8 +520,8 @@ _ID49461()
     var_0 _ID54167::_ID48800( 2.35 ) _ID54167::_ID48959();
     var_0 _ID54167::_ID48800( 2.0 ) _ID54167::_ID54217( 1.0, 0.15, 0.15, 35, 10, 55, 15 ) _ID54167::_ID46222();
     var_0 _ID54167::_ID48800( 3.2 ) _ID54167::_ID54217( 1.6, 0.25, 0.25, 10, 10, 55, 10 ) _ID54167::_ID46222();
-    var_0 _ID54167::_ID48800( 1.05 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_0 _ID54167::_ID48800( 2.0 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+    var_0 _ID54167::_ID48800( 1.05 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_0 _ID54167::_ID48800( 2.0 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
     var_0 _ID54167::_ID48166();
 }
 
@@ -544,9 +544,9 @@ _ID51818()
 _ID45623()
 {
     wait 1;
-    playrumbleonposition( "heavy_3s", level._ID794._ID740 );
-    level._ID794 playrumblelooponentity( "damage_heavy" );
-    level._ID794 _meth_80b5( "light_1s" );
+    playrumbleonposition( "heavy_3s", level.player.origin );
+    level.player playrumblelooponentity( "damage_heavy" );
+    level.player _meth_80b5( "light_1s" );
 }
 
 _ID45864( var_0, var_1 )
@@ -557,22 +557,22 @@ _ID45864( var_0, var_1 )
 
 _ID52351( var_0, var_1 )
 {
-    level._ID794 playerlinktoblend( var_0, "tag_player", var_1, var_1 * 0.4, var_1 * 0.4 );
+    level.player playerlinktoblend( var_0, "tag_player", var_1, var_1 * 0.4, var_1 * 0.4 );
     wait(var_1);
     var_2 = 18;
-    level._ID794 playerlinktodelta( var_0, "tag_player", var_2, var_2, var_2, var_2, 1 );
+    level.player playerlinktodelta( var_0, "tag_player", var_2, var_2, var_2, var_2, 1 );
 }
 
 _ID48339( var_0, var_1 )
 {
-    level._ID794 playersetgroundreferenceent( var_0 );
+    level.player playersetgroundreferenceent( var_0 );
     wait 1;
     _ID42407::_ID25888( 0.5, var_1, "tag_player", 35, 10, 55, 15 );
 }
 
 _ID47741( var_0, var_1 )
 {
-    level._ID794 playersetgroundreferenceent( var_0 );
+    level.player playersetgroundreferenceent( var_0 );
 }
 
 _ID54094( var_0, var_1 )
@@ -613,7 +613,7 @@ _ID45125()
     wait 0.05;
     disableforcedsunshadows();
 
-    if ( level._ID912 != "endlog" )
+    if ( level.script != "endlog" )
     {
         var_1 = getent( "gulag_endlog_destructibles", "script_noteworthy" );
         var_1 _ID42407::_ID1786();
@@ -638,7 +638,7 @@ _ID45125()
         return;
 
     level notify( "stop_minor_earthquakes" );
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     _ID42237::_ID14402( "player_falls_down" );
 
     if ( var_0 == "evac" )

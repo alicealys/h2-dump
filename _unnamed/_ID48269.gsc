@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_tf141_assault_a" );
     self attach( "head_hero_price_arctic", "", 1 );

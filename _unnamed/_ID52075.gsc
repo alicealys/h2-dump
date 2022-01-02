@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "r_reflectionProbeGenerate" ) == "1" )
         return;
@@ -25,13 +25,13 @@ _ID616()
             var_2[var_5] = [];
         }
 
-        if ( issubstr( var_4._ID669._ID1193, "exploderanimend" ) )
+        if ( issubstr( var_4.model.targetname, "exploderanimend" ) )
         {
-            var_2[var_5][var_2[var_5].size] = var_4._ID669;
+            var_2[var_5][var_2[var_5].size] = var_4.model;
             continue;
         }
 
-        var_1[var_5][var_1[var_5].size] = var_4._ID669;
+        var_1[var_5][var_1[var_5].size] = var_4.model;
     }
 
     var_0 = undefined;
@@ -110,7 +110,7 @@ _ID52200( var_0, var_1, var_2 )
         var_7 show();
         var_7 solid();
 
-        if ( isdefined( var_7._ID989 ) && var_7._ID989 & 1 )
+        if ( isdefined( var_7.spawnflags ) && var_7.spawnflags & 1 )
             var_7 connectpaths();
     }
 
@@ -187,14 +187,14 @@ _ID47271( var_0 )
 _ID43320()
 {
     var_0 = undefined;
-    var_1 = strtok( self._ID1193, ":;, " );
+    var_1 = strtok( self.targetname, ":;, " );
 
     if ( var_1.size > 1 && isdefined( var_1[1] ) )
         var_0 = var_1[1];
     else if ( isdefined( self._ID31295 ) )
         var_0 = self._ID31295 + "_anim";
     else
-        var_0 = self._ID669 + "_anim";
+        var_0 = self.model + "_anim";
 
     return var_0;
 }

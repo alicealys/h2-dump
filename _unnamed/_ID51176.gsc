@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["c130_engine_crashing"] = loadfx( "fx/fire/jet_engine_crashing_loop" );
     level._ID1426["c130_engine_explosion"] = loadfx( "vfx/explosion/aerial_explosion_crashing" );
@@ -154,9 +154,9 @@ _ID616()
     _ID53720();
 
     if ( !getdvarint( "r_reflectionProbeGenerate" ) )
-        _ID44495::_ID616();
+        _ID44495::main();
 
-    _ID50682::_ID616();
+    _ID50682::main();
 }
 
 _ID38735()

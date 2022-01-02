@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     animscripts\utility::_ID19930( "reactions" );
@@ -82,7 +82,7 @@ _ID6327()
     self endon( "killanimscript" );
     self._ID21973 = gettime();
     self._ID7._ID24414 = "stop";
-    var_1 = isdefined( self._ID41753 ) && distancesquared( self._ID740, self._ID41753._ID740 ) < 160000;
+    var_1 = isdefined( self._ID41753 ) && distancesquared( self.origin, self._ID41753.origin ) < 160000;
     self animmode( "gravity" );
     self orientmode( "face current" );
 
@@ -117,7 +117,7 @@ _ID6327()
         animscripts\notetracks::_ID11534( var_4, "reactanim" );
         self clearanim( %animscript_root, 0.1 );
 
-        if ( !var_1 && self._ID1012 == "none" && !isdefined( self._ID10902 ) )
+        if ( !var_1 && self.stairsstate == "none" && !isdefined( self._ID10902 ) )
         {
             var_5 = 1 + randomfloat( 0.2 );
             var_6 = animscripts\utility::_ID28961( %exposed_dive_grenade_b, %exposed_dive_grenade_f );
@@ -137,10 +137,10 @@ _ID6327()
             animscripts\shared::_ID11529( "crouch" );
         }
 
-        var_7 = anglestoforward( self._ID65 );
+        var_7 = anglestoforward( self.angles );
 
         if ( isdefined( self._ID41753 ) )
-            var_8 = vectornormalize( self._ID41753._ID740 - self._ID740 );
+            var_8 = vectornormalize( self._ID41753.origin - self.origin );
         else
             var_8 = var_7;
 
@@ -180,7 +180,7 @@ _ID6326()
         if ( isdefined( self._ID11002 ) )
             return;
 
-        if ( !isdefined( var_0._ID1194 ) || self._ID1194 == var_0._ID1194 )
+        if ( !isdefined( var_0.team ) || self.team == var_0.team )
             continue;
 
         if ( isdefined( self._ID8893 ) || isdefined( self._ID2925 ) )
@@ -212,16 +212,16 @@ _ID16444()
     {
         var_1 = animscripts\utility::_ID22631( "cover_reactions" );
 
-        if ( isdefined( var_1[self._ID823] ) )
+        if ( isdefined( var_1[self.prevscript] ) )
         {
-            var_2 = anglestoforward( self._ID700._ID65 );
-            var_3 = vectornormalize( self._ID859 - self._ID740 );
+            var_2 = anglestoforward( self.node.angles );
+            var_3 = vectornormalize( self.reactiontargetpos - self.origin );
 
             if ( vectordot( var_2, var_3 ) < -0.5 )
             {
                 self orientmode( "face current" );
-                var_4 = randomint( var_1[self._ID823].size );
-                var_0 = var_1[self._ID823][var_4];
+                var_4 = randomint( var_1[self.prevscript].size );
+                var_0 = var_1[self.prevscript][var_4];
             }
         }
     }
@@ -241,15 +241,15 @@ _ID16444()
             var_5[1] = %exposed_idle_reactb;
         }
 
-        if ( isdefined( self._ID322 ) && distancesquared( self._ID322._ID740, self._ID859 ) < 65536 )
+        if ( isdefined( self.enemy ) && distancesquared( self.enemy.origin, self.reactiontargetpos ) < 65536 )
             self orientmode( "face enemy" );
         else
-            self orientmode( "face point", self._ID859 );
+            self orientmode( "face point", self.reactiontargetpos );
 
         if ( self._ID7._ID28253 == "crouch" )
         {
-            var_3 = vectornormalize( self._ID859 - self._ID740 );
-            var_6 = anglestoforward( self._ID65 );
+            var_3 = vectornormalize( self.reactiontargetpos - self.origin );
+            var_6 = anglestoforward( self.angles );
 
             if ( vectordot( var_6, var_3 ) < -0.5 )
             {
@@ -312,7 +312,7 @@ _ID24750()
     self._ID7._ID24414 = "stop";
     self._ID28085 = 1;
 
-    if ( isdefined( self._ID1644 ) && self._ID38 != "combat" )
+    if ( isdefined( self._ID1644 ) && self.alertlevel != "combat" )
         _ID36381();
     else
     {
@@ -341,7 +341,7 @@ _ID24751()
 
     self animmode( "gravity" );
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         _ID24750();
 }
 

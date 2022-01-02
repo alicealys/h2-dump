@@ -17,13 +17,13 @@ _ID17529( var_0 )
 
     self._ID21799 = undefined;
     thread _ID29318();
-    var_1 = anglestoforward( var_0._ID65 );
+    var_1 = anglestoforward( var_0.angles );
     var_2 = spawn( "script_origin", ( 0, 0, 0 ) );
     thread _ID37284( var_2 );
-    var_2._ID740 = var_0._ID740 + var_1 * 500;
+    var_2.origin = var_0.origin + var_1 * 500;
 
     if ( isdefined( self._ID21799 ) )
-        var_2._ID740 = self._ID21799;
+        var_2.origin = self._ID21799;
 
     var_0 settargetentity( var_2 );
     var_3 = undefined;
@@ -64,9 +64,9 @@ _ID33759( var_0 )
 
     while ( self cansee( var_1 ) )
     {
-        var_2 = vectortoangles( var_1 geteye() - var_0._ID740 );
+        var_2 = vectortoangles( var_1 geteye() - var_0.origin );
         var_2 = anglestoforward( var_2 );
-        var_0 moveto( var_0._ID740 + var_2 * 12, 0.1 );
+        var_0 moveto( var_0.origin + var_2 * 12, 0.1 );
         wait 0.1;
     }
 
@@ -74,10 +74,10 @@ _ID33759( var_0 )
     {
         self endon( "saw_enemy" );
         var_3 = var_1 geteye();
-        var_2 = vectortoangles( var_3 - var_0._ID740 );
+        var_2 = vectortoangles( var_3 - var_0.origin );
         var_2 = anglestoforward( var_2 );
         var_4 = 150;
-        var_5 = distance( var_0._ID740, self._ID21799 ) / var_4;
+        var_5 = distance( var_0.origin, self._ID21799 ) / var_4;
 
         if ( var_5 > 0 )
         {
@@ -85,13 +85,13 @@ _ID33759( var_0 )
             wait(var_5);
         }
 
-        var_6 = var_0._ID740 + var_2 * 180;
-        var_7 = _ID16003( self geteye(), var_0._ID740, var_6 );
+        var_6 = var_0.origin + var_2 * 180;
+        var_7 = _ID16003( self geteye(), var_0.origin, var_6 );
 
         if ( !isdefined( var_7 ) )
-            var_7 = var_0._ID740;
+            var_7 = var_0.origin;
 
-        var_0 moveto( var_0._ID740 + var_2 * 80 + ( 0, 0, randomfloatrange( 15, 50 ) * -1 ), 3, 1, 1 );
+        var_0 moveto( var_0.origin + var_2 * 80 + ( 0, 0, randomfloatrange( 15, 50 ) * -1 ), 3, 1, 1 );
         wait 3.5;
         var_0 moveto( var_7 + var_2 * -20, 3, 1, 1 );
     }
@@ -166,8 +166,8 @@ _ID23491( var_0 )
 _ID23511( var_0 )
 {
     wait 1;
-    level notify( "new_mg_firing_team" + var_0[0]._ID922 );
-    level endon( "new_mg_firing_team" + var_0[0]._ID922 );
+    level notify( "new_mg_firing_team" + var_0[0].script_noteworthy );
+    level endon( "new_mg_firing_team" + var_0[0].script_noteworthy );
 
     for (;;)
     {
@@ -238,20 +238,20 @@ _ID35476( var_0, var_1 )
 
     while ( self cansee( var_1 ) )
     {
-        var_2 = vectortoangles( var_1 geteye() - var_0._ID740 );
+        var_2 = vectortoangles( var_1 geteye() - var_0.origin );
         var_2 = anglestoforward( var_2 );
-        var_0 moveto( var_0._ID740 + var_2 * 10, 0.2 );
+        var_0 moveto( var_0.origin + var_2 * 10, 0.2 );
         wait 0.2;
     }
 
-    var_2 = vectortoangles( var_1 geteye() - var_0._ID740 );
+    var_2 = vectortoangles( var_1 geteye() - var_0.origin );
     var_2 = anglestoforward( var_2 );
     var_3 = 150;
-    var_4 = distance( var_0._ID740, self._ID21799 ) / var_3;
+    var_4 = distance( var_0.origin, self._ID21799 ) / var_3;
     var_0 moveto( self._ID21799, var_4 );
     wait(var_4);
-    var_5 = var_0._ID740;
-    var_0 moveto( var_0._ID740 + var_2 * 80 + ( 0, 0, -25 ), 3, 1, 1 );
+    var_5 = var_0.origin;
+    var_0 moveto( var_0.origin + var_2 * 80 + ( 0, 0, -25 ), 3, 1, 1 );
     wait 3.5;
     var_0 moveto( var_5 + var_2 * -20, 3, 1, 1 );
     wait 1;
@@ -304,18 +304,18 @@ _ID29318()
 
 _ID29322()
 {
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         return;
 
-    if ( !self cansee( self._ID322 ) )
+    if ( !self cansee( self.enemy ) )
         return;
 
-    self._ID21799 = self._ID322 geteye();
+    self._ID21799 = self.enemy geteye();
     self notify( "saw_enemy" );
 
-    if ( !isalive( self._ID9442 ) || self._ID9442 != self._ID322 )
+    if ( !isalive( self._ID9442 ) || self._ID9442 != self.enemy )
     {
-        self._ID9442 = self._ID322;
+        self._ID9442 = self.enemy;
         self notify( "new_enemy" );
     }
 }

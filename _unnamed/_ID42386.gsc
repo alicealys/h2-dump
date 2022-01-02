@@ -8,7 +8,7 @@ _ID2311( var_0, var_1 )
     self notify( var_1 );
     self endon( var_1 );
 
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "allies":
             for (;;)
@@ -49,7 +49,7 @@ _ID2310( var_0, var_1 )
     self notify( var_1 );
     self endon( var_1 );
 
-    switch ( self._ID1194 )
+    switch ( self.team )
     {
         case "allies":
             for (;;)
@@ -251,7 +251,7 @@ _ID2342()
         _ID42407::_ID13031( "_stealth_enabled" );
         var_0 = self._ID1644._ID5029._ID2281["state"]["spotted"];
 
-        switch ( self._ID1194 )
+        switch ( self.team )
         {
             case "allies":
                 self [[ var_0 ]]();
@@ -280,23 +280,23 @@ _ID12877()
 
     var_0 = self._ID1644._ID5029._ID21856;
 
-    if ( isdefined( var_0 ) && self._ID1244 != "dog" && !isdefined( self._ID9575 ) && !isdefined( self._ID23165 ) )
+    if ( isdefined( var_0 ) && self.type != "dog" && !isdefined( self._ID9575 ) && !isdefined( self._ID23165 ) )
         self._ID9575 = _ID42338::_ID26389;
 
-    if ( isdefined( self._ID9575 ) && isdefined( self._ID762 ) )
+    if ( isdefined( self._ID9575 ) && isdefined( self.pathgoalpos ) )
     {
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
         wait 0.05;
     }
 
     if ( isdefined( self._ID31391 ) )
     {
         if ( isdefined( self._ID21832 ) )
-            self._ID1191 = self._ID21832._ID1193;
+            self.target = self._ID21832.targetname;
 
         if ( isdefined( self._ID36313 ) )
         {
-            self._ID1191 = self._ID36313._ID1193;
+            self.target = self._ID36313.targetname;
             self._ID36313 = undefined;
         }
 
@@ -310,7 +310,7 @@ _ID12877()
     }
     else if ( isdefined( var_0 ) )
     {
-        if ( self._ID1244 != "dog" )
+        if ( self.type != "dog" )
             _ID36361( "_stealth_patrol_walk", 1 );
         else
         {
@@ -321,7 +321,7 @@ _ID12877()
         self._ID10998 = 1;
         self._ID11025 = 1;
         self setgoalpos( var_0 );
-        self._ID452 = 40;
+        self.goalradius = 40;
     }
 
     waitframe;
@@ -344,11 +344,11 @@ _ID12876( var_0, var_1, var_2 )
     if ( !isdefined( var_2 ) )
         var_2 = 0;
 
-    if ( isdefined( level._ID1644._ID24875._ID24893 ) && distancesquared( var_0, level._ID1644._ID24875._ID740 ) < 4096 && var_1 == level._ID1644._ID24875._ID851 && var_2 == level._ID1644._ID24875._ID23605 )
+    if ( isdefined( level._ID1644._ID24875._ID24893 ) && distancesquared( var_0, level._ID1644._ID24875.origin ) < 4096 && var_1 == level._ID1644._ID24875.radius && var_2 == level._ID1644._ID24875._ID23605 )
         return level._ID1644._ID24875._ID24893;
 
-    level._ID1644._ID24875._ID740 = var_0;
-    level._ID1644._ID24875._ID851 = var_1;
+    level._ID1644._ID24875.origin = var_0;
+    level._ID1644._ID24875.radius = var_1;
     level._ID1644._ID24875._ID23605 = var_2;
     level._ID1644._ID24875._ID24893 = getnodesinradius( var_0, var_1, var_2, 512, "Path" );
     return level._ID1644._ID24875._ID24893;
@@ -356,11 +356,11 @@ _ID12876( var_0, var_1, var_2 )
 
 _ID12904()
 {
-    self._ID411 = 0.01;
-    self._ID507 = 0;
-    self._ID287 = 0;
+    self.fovcosine = 0.01;
+    self.ignoreall = 0;
+    self.diequietly = 0;
     _ID42407::_ID7892();
-    self._ID381 = 0;
+    self.fixednode = 0;
 }
 
 _ID12766( var_0, var_1 )
@@ -406,13 +406,13 @@ _ID12870()
         return;
 
     if ( isdefined( self._ID21851 ) )
-        self._ID1644._ID5029._ID21856 = self._ID21851._ID740;
+        self._ID1644._ID5029._ID21856 = self._ID21851.origin;
     else if ( isdefined( self._ID21850 ) )
-        self._ID1644._ID5029._ID21856 = self._ID21850._ID740;
+        self._ID1644._ID5029._ID21856 = self._ID21850.origin;
     else if ( isdefined( self._ID21852 ) )
         self._ID1644._ID5029._ID21856 = self._ID21852;
     else
-        self._ID1644._ID5029._ID21856 = self._ID740;
+        self._ID1644._ID5029._ID21856 = self.origin;
 }
 
 _ID12918( var_0 )
@@ -427,18 +427,18 @@ _ID12903( var_0, var_1 )
     self endon( "death" );
     self endon( "_stealth_enemy_alert_level_change" );
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     if ( isdefined( var_0 ) )
-        var_2 = var_0._ID740;
+        var_2 = var_0.origin;
     else
         var_2 = var_1;
 
-    var_3 = anglestoforward( self._ID65 );
+    var_3 = anglestoforward( self.angles );
     var_4 = vectornormalize( var_3 );
     var_5 = vectortoangles( var_4 );
-    var_6 = vectortoangles( var_2 - self._ID740 );
+    var_6 = vectortoangles( var_2 - self.origin );
     var_7 = var_5[1] - var_6[1];
     var_7 += 360;
     var_7 = int( var_7 ) % 360;
@@ -465,7 +465,7 @@ _ID12914( var_0, var_1 )
     self endon( "death" );
     self endon( "_stealth_enemy_alert_level_change" );
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
         self endon( "_stealth_saw_corpse" );
 
     var_2 = _ID17449( "_stealth_spotted" );
@@ -478,10 +478,10 @@ _ID12914( var_0, var_1 )
     else
         self setgoalpos( var_1 );
 
-    self._ID452 = 64;
+    self.goalradius = 64;
     self waittill( "goal" );
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
         _ID36360( "_stealth_look_around" );
 }
 
@@ -492,15 +492,15 @@ _ID12905( var_0 )
     self endon( "death" );
     self endon( "_stealth_enemy_alert_level_change" );
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
         self endon( "_stealth_saw_corpse" );
 
     var_1 = _ID17449( "_stealth_spotted" );
     level endon( var_1 );
     self notify( "stop_loop" );
-    self orientmode( "face angle", vectortoyaw( var_0 - self._ID740 ) );
+    self orientmode( "face angle", vectortoyaw( var_0 - self.origin ) );
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
         _ID42259::_ID3021( self, "gravity", "_stealth_look_around" );
 }
 
@@ -513,7 +513,7 @@ _ID12869( var_0, var_1, var_2 )
 
     var_4 = var_3[randomint( var_3.size )];
 
-    for ( var_3 = _ID42237::_ID3321( var_3, var_4 ); isdefined( var_4._ID743 ); var_3 = _ID42237::_ID3321( var_3, var_4 ) )
+    for ( var_3 = _ID42237::_ID3321( var_3, var_4 ); isdefined( var_4.owner ); var_3 = _ID42237::_ID3321( var_3, var_4 ) )
     {
         if ( var_3.size == 0 )
             return;
@@ -535,7 +535,7 @@ _ID12868( var_0, var_1, var_2 )
     var_3 = sortbydistance( var_3, var_0 );
     var_4 = var_3[0];
 
-    for ( var_3 = _ID42237::_ID3321( var_3, var_4 ); isdefined( var_4._ID743 ); var_3 = _ID42237::_ID3321( var_3, var_4 ) )
+    for ( var_3 = _ID42237::_ID3321( var_3, var_4 ); isdefined( var_4.owner ); var_3 = _ID42237::_ID3321( var_3, var_4 ) )
     {
         if ( var_3.size == 0 )
             return;
@@ -549,7 +549,7 @@ _ID12868( var_0, var_1, var_2 )
 
 _ID12800()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     if ( !_ID12795( "wtf" ) )
@@ -566,7 +566,7 @@ _ID12800()
 
 _ID12794()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     if ( _ID42237::_ID14385( "_stealth_spotted" ) )
@@ -586,7 +586,7 @@ _ID12794()
 
 _ID12793()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     if ( _ID42237::_ID14385( "_stealth_spotted" ) )
@@ -609,7 +609,7 @@ _ID12791()
     self endon( "death" );
     self endon( "pain_death" );
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     if ( !_ID12795( "spotted" ) )
@@ -630,7 +630,7 @@ _ID12797( var_0 )
     self endon( "pain_death" );
     _ID42389::_ID36332();
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     if ( _ID12795( "spotted" ) )
@@ -642,7 +642,7 @@ _ID12797( var_0 )
     }
 
     if ( _ID12795( "acknowledge" ) )
-        thread _ID12798( self._ID740, _ID15643() );
+        thread _ID12798( self.origin, _ID15643() );
 }
 
 _ID12798( var_0, var_1 )
@@ -667,7 +667,7 @@ _ID12799( var_0 )
         if ( var_3 == self )
             continue;
 
-        if ( isdefined( var_3._ID322 ) || isdefined( var_3._ID377 ) )
+        if ( isdefined( var_3.enemy ) || isdefined( var_3.favoriteenemy ) )
             continue;
 
         var_3 notify( "heard_scream",  var_0  );
@@ -684,7 +684,7 @@ _ID12792()
     if ( !_ID12795( "corpse" ) )
         return;
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
         _ID42407::_ID13031( "_stealth_behavior_reaction_anim_in_progress" );
         self notify( "event_awareness",  "howl"  );
@@ -755,7 +755,7 @@ _ID12780( var_0 )
             _ID12779( var_0 );
             return;
         }
-        else if ( distance( level._ID794._ID740, self._ID740 ) >= 300 )
+        else if ( distance( level.player.origin, self.origin ) >= 300 )
         {
             _ID12779( var_0 );
             return;
@@ -768,12 +768,12 @@ _ID12780( var_0 )
 
 _ID12779( var_0 )
 {
-    var_1 = self._ID1644._ID5029._ID13251._ID9525._ID700;
+    var_1 = self._ID1644._ID5029._ID13251._ID9525.node;
     var_2 = self._ID1644._ID5029._ID13251._ID9525._ID3183;
     var_3 = self._ID1644._ID5029._ID13251._ID9525._ID1067;
     var_4 = self._ID1644._ID5029._ID13251._ID9525._ID12638;
     _ID42407::_ID13025( "_stealth_behavior_reaction_anim" );
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_1 notify( var_4 );
 
     if ( isdefined( self._ID3057 ) )
@@ -857,7 +857,7 @@ _ID12785( var_0 )
 _ID2249()
 {
     self._ID1644._ID5029._ID13251._ID9525 = undefined;
-    self._ID686 = squared( 512 );
+    self.newenemyreactiondistsq = squared( 512 );
 }
 
 _ID2250( var_0 )
@@ -865,7 +865,7 @@ _ID2250( var_0 )
     if ( !isdefined( self._ID1644._ID5029._ID13251._ID9525 ) )
         return;
 
-    self._ID1644._ID5029._ID13251._ID9525._ID700 notify( "stop_loop" );
+    self._ID1644._ID5029._ID13251._ID9525.node notify( "stop_loop" );
 
     if ( !isdefined( var_0 ) || var_0 == 0 )
         self stopanimscripted();
@@ -876,7 +876,7 @@ _ID2250( var_0 )
 _ID2323( var_0, var_1, var_2, var_3 )
 {
     self._ID1644._ID5029._ID13251._ID9525 = spawnstruct();
-    self._ID1644._ID5029._ID13251._ID9525._ID700 = var_0;
+    self._ID1644._ID5029._ID13251._ID9525.node = var_0;
     self._ID1644._ID5029._ID13251._ID9525._ID3183 = var_1;
     self._ID1644._ID5029._ID13251._ID9525._ID1067 = var_2;
     self._ID1644._ID5029._ID13251._ID9525._ID12638 = var_3;
@@ -885,7 +885,7 @@ _ID2323( var_0, var_1, var_2, var_3 )
         self._ID1644._ID5029._ID13251._ID54123 = level._ID43687[var_0._ID31039];
 
     thread _ID2236( var_0, var_1, var_2, var_3 );
-    self._ID686 = 0;
+    self.newenemyreactiondistsq = 0;
 }
 
 _ID2236( var_0, var_1, var_2, var_3 )
@@ -972,9 +972,9 @@ _ID1378()
     if ( _ID42237::_ID14385( "_stealth_player_nade" ) )
         return 0;
 
-    if ( level._ID794 _ID42407::_ID13023( "_radiation_poisoning" ) )
+    if ( level.player _ID42407::_ID13023( "_radiation_poisoning" ) )
     {
-        if ( level._ID794 _ID42407::_ID13019( "_radiation_poisoning" ) )
+        if ( level.player _ID42407::_ID13019( "_radiation_poisoning" ) )
             return 0;
     }
 

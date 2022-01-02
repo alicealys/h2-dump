@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2, var_3, var_4 )
+main( var_0, var_1, var_2, var_3, var_4 )
 {
     _ID42411::_ID6255( "blackhawk_minigun", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -160,12 +160,12 @@ _ID32221()
 {
     var_0 = [];
     var_0["TAG_FastRope_LE"] = spawnstruct();
-    var_0["TAG_FastRope_LE"]._ID669 = "rope_test";
+    var_0["TAG_FastRope_LE"].model = "rope_test";
     var_0["TAG_FastRope_LE"]._ID1067 = "TAG_FastRope_LE";
     var_0["TAG_FastRope_LE"]._ID19324 = %bh_rope_idle_le;
     var_0["TAG_FastRope_LE"]._ID12144 = %bh_rope_drop_le;
     var_0["TAG_FastRope_RI"] = spawnstruct();
-    var_0["TAG_FastRope_RI"]._ID669 = "rope_test_ri";
+    var_0["TAG_FastRope_RI"].model = "rope_test_ri";
     var_0["TAG_FastRope_RI"]._ID1067 = "TAG_FastRope_RI";
     var_0["TAG_FastRope_RI"]._ID19324 = %bh_rope_idle_ri;
     var_0["TAG_FastRope_RI"]._ID12144 = %bh_rope_drop_ri;
@@ -173,7 +173,7 @@ _ID32221()
     if ( level._ID40793 == "h2_vehicle_blackhawk_minigun_hero_exterior" )
     {
         var_0["interior_attach"] = spawnstruct();
-        var_0["interior_attach"]._ID669 = "h2_vehicle_blackhawk_minigun_hero_interior";
+        var_0["interior_attach"].model = "h2_vehicle_blackhawk_minigun_hero_interior";
         var_0["interior_attach"]._ID1067 = "TAG_ORIGIN";
         var_0["interior_attach"].no_link = 1;
     }
@@ -181,7 +181,7 @@ _ID32221()
     var_1 = getarraykeys( var_0 );
 
     for ( var_2 = 0; var_2 < var_1.size; var_2++ )
-        precachemodel( var_0[var_1[var_2]]._ID669 );
+        precachemodel( var_0[var_1[var_2]].model );
 
     return var_0;
 }
@@ -189,7 +189,7 @@ _ID32221()
 _ID49743( var_0, var_1, var_2 )
 {
     if ( !isdefined( var_1 ) )
-        var_1 = level._ID794;
+        var_1 = level.player;
 
     self._ID50372 = var_1;
 
@@ -204,14 +204,14 @@ _ID49743( var_0, var_1, var_2 )
     {
         var_1 disableweapons( 1 );
         var_3 = spawn( "script_origin", self gettagorigin( "tag_barrel" ) );
-        var_3._ID65 = self gettagangles( "tag_barrel" );
+        var_3.angles = self gettagangles( "tag_barrel" );
         var_3 linkto( self );
         self._ID3189 = "minigun";
-        level._ID794._ID49929 = _ID42407::_ID35028( "worldhands" );
-        level._ID794._ID49929 hide();
+        level.player._ID49929 = _ID42407::_ID35028( "worldhands" );
+        level.player._ID49929 hide();
         var_3 _ID42407::_ID49392( "minigun_in_fast", [ self ], undefined, 0.2, 1, undefined, undefined, undefined, undefined, undefined, undefined, 1 );
 
-        if ( self._ID669 == "h2_vehicle_blackhawk_minigun_hero_exterior" )
+        if ( self.model == "h2_vehicle_blackhawk_minigun_hero_exterior" )
         {
             self detach( "h2_vehicle_blackhawk_minigun_hero_interior", "tag_origin" );
             self attach( "h2_vehicle_blackhawk_minigun_hero_interior_low", "tag_origin" );
@@ -219,7 +219,7 @@ _ID49743( var_0, var_1, var_2 )
 
         if ( !isdefined( self._ID23875 ) )
         {
-            self._ID23875 = _ID42407::_ID35028( "minigun_dummy", self._ID740, self._ID65 );
+            self._ID23875 = _ID42407::_ID35028( "minigun_dummy", self.origin, self.angles );
             self._ID23875 setcontents( 0 );
             self._ID23875 hide();
             self._ID23875 linkto( self );

@@ -21,7 +21,7 @@ _ID19581()
     anim._ID3277["soldier"]["combat"] = var_0;
 }
 
-_ID616()
+main()
 {
     if ( isdefined( self._ID24817 ) )
         return;
@@ -40,8 +40,8 @@ _ID616()
     animscripts\utility::_ID19930( "combat" );
     self._ID7._ID3372 = undefined;
 
-    if ( isdefined( self._ID700 ) && self._ID700._ID1244 == "Ambush" && self nearnode( self._ID700 ) )
-        self._ID2925 = self._ID700;
+    if ( isdefined( self.node ) && self.node.type == "Ambush" && self nearnode( self.node ) )
+        self._ID2925 = self.node;
 
     _ID38689();
     _ID11395();
@@ -62,12 +62,12 @@ _ID319()
 
 _ID11395()
 {
-    if ( self._ID1194 != "allies" )
+    if ( self.team != "allies" )
         return;
 
-    if ( self ismovesuppressed() && self._ID823 == "move" && self._ID7._ID28253 == "stand" && !isdefined( self._ID11029 ) )
+    if ( self ismovesuppressed() && self.prevscript == "move" && self._ID7._ID28253 == "stand" && !isdefined( self._ID11029 ) )
     {
-        if ( isdefined( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) < squared( 128 ) )
+        if ( isdefined( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) < squared( 128 ) )
             return;
 
         if ( !isdefined( self._ID7._ID3291 ) )
@@ -75,7 +75,7 @@ _ID11395()
 
         if ( isdefined( self._ID7._ID3291["surprise_stop"] ) )
             var_0 = animscripts\utility::_ID3153( "surprise_stop" );
-        else if ( self._ID1063 )
+        else if ( self.swimmer )
         {
             var_0 = animscripts\swim::_ID16643( "surprise_stop" );
 
@@ -94,7 +94,7 @@ _ID11395()
 
 _ID45333( var_0 )
 {
-    if ( var_0 == "start_aim" && isdefined( self._ID322 ) )
+    if ( var_0 == "start_aim" && isdefined( self.enemy ) )
         return 1;
 }
 
@@ -102,9 +102,9 @@ _ID46024()
 {
     if ( self._ID7._ID28253 == "crouch" )
     {
-        if ( self._ID823 == "cover_right" )
+        if ( self.prevscript == "cover_right" )
             var_0 = animscripts\utility::_ID22630( "combat", "trans_from_crouch_r" );
-        else if ( self._ID823 == "cover_left" )
+        else if ( self.prevscript == "cover_left" )
             var_0 = animscripts\utility::_ID22630( "combat", "trans_from_crouch_l" );
         else
             var_0 = undefined;
@@ -126,12 +126,12 @@ _ID47836()
         var_0 = undefined;
         var_1 = undefined;
 
-        if ( self._ID823 == "cover_right" )
+        if ( self.prevscript == "cover_right" )
         {
             var_0 = [ %corner_standr_alert_idle, %corner_standr_alert_twitch01, %corner_standr_alert_twitch04, %corner_standr_alert_twitch05, %corner_standr_alert_twitch06, %corner_standr_alert_twitch07 ];
             var_1 = "trans_from_corner_standr";
         }
-        else if ( self._ID823 == "cover_left" )
+        else if ( self.prevscript == "cover_left" )
         {
             var_0 = [ %corner_standl_alert_idle, %corner_standl_alert_twitch01, %corner_standl_alert_twitch03, %corner_standl_alert_twitch04, %corner_standl_alert_twitch06, %corner_standl_alert_twitch07 ];
             var_1 = "trans_from_corner_standl";
@@ -169,7 +169,7 @@ _ID49722()
         var_0 = undefined;
         var_1 = undefined;
 
-        if ( self._ID823 == "move" )
+        if ( self.prevscript == "move" )
         {
             self animmode( "angle deltas", 0 );
             self orientmode( "face current" );
@@ -184,7 +184,7 @@ _ID48075()
 {
     if ( isdefined( self._ID49606 ) && self._ID49606 )
     {
-        if ( self._ID7._ID28253 == "crouch" && self._ID823 == "move" )
+        if ( self._ID7._ID28253 == "crouch" && self.prevscript == "move" )
         {
             self animmode( "zonly_physics" );
             self orientmode( "face current" );
@@ -202,12 +202,12 @@ _ID38689()
 
     if ( isdefined( self._ID3152 ) && self._ID3152 == "s1_soldier" )
     {
-        if ( !isdefined( self._ID322 ) )
+        if ( !isdefined( self.enemy ) )
             return;
 
         if ( self._ID7._ID28253 == "crouch" )
         {
-            if ( self._ID823 == "cover_right" )
+            if ( self.prevscript == "cover_right" )
             {
                 _ID29767();
                 self orientmode( "face current" );
@@ -215,7 +215,7 @@ _ID38689()
                 self setflaggedanimknoballrestart( "transition", var_0, %animscript_root, 1, 0.2, 1 );
                 wait(getanimlength( var_0 ));
             }
-            else if ( self._ID823 == "cover_left" )
+            else if ( self.prevscript == "cover_left" )
             {
                 _ID29767();
                 self orientmode( "face current" );
@@ -232,10 +232,10 @@ _ID38689()
     _ID49722();
     _ID48075();
 
-    if ( isdefined( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) < 262144 )
+    if ( isdefined( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) < 262144 )
         return;
 
-    if ( self._ID823 == "stop" && !animscripts\utility::_ID20716() && self._ID7._ID28253 == "stand" && !self _meth_816f() )
+    if ( self.prevscript == "stop" && !animscripts\utility::_ID20716() && self._ID7._ID28253 == "stand" && !self _meth_816f() )
     {
         _ID29767();
         var_0 = undefined;
@@ -298,19 +298,19 @@ _ID36613()
 
 _ID32272()
 {
-    if ( self._ID1063 )
+    if ( self.swimmer )
     {
         if ( animscripts\utility::_ID20915() )
         {
-            self._ID1252 = 90;
-            self._ID307 = -90;
-            self._ID894 = 45;
-            self._ID590 = -45;
+            self.upaimlimit = 90;
+            self.downaimlimit = -90;
+            self.rightaimlimit = 45;
+            self.leftaimlimit = -45;
         }
         else
         {
-            self._ID1252 = 90;
-            self._ID307 = -120;
+            self.upaimlimit = 90;
+            self.downaimlimit = -120;
         }
     }
 }
@@ -329,10 +329,10 @@ _ID32185()
 {
     _ID32267();
 
-    if ( self._ID7._ID28253 == "stand" && !self._ID1063 )
+    if ( self._ID7._ID28253 == "stand" && !self.swimmer )
     {
-        self._ID1252 = 60;
-        self._ID307 = -60;
+        self.upaimlimit = 60;
+        self.downaimlimit = -60;
     }
 
     self._ID39229 = self._ID10147;
@@ -391,9 +391,9 @@ _ID13712( var_0 )
             return 1;
     }
 
-    if ( var_0 > 262144 && self._ID7._ID28253 != "crouch" && self isstanceallowed( "crouch" ) && !self._ID1063 && !animscripts\utility::_ID39997() && !isdefined( self._ID18328 ) && gettime() >= self._ID7._ID11570 && lengthsquared( self._ID33786 ) < 10000 )
+    if ( var_0 > 262144 && self._ID7._ID28253 != "crouch" && self isstanceallowed( "crouch" ) && !self.swimmer && !animscripts\utility::_ID39997() && !isdefined( self._ID18328 ) && gettime() >= self._ID7._ID11570 && lengthsquared( self._ID33786 ) < 10000 )
     {
-        if ( !isdefined( self._ID33810 ) || sighttracepassed( self._ID740 + ( 0, 0, 36 ), self._ID33810, 0, undefined ) )
+        if ( !isdefined( self._ID33810 ) || sighttracepassed( self.origin + ( 0, 0, 36 ), self._ID33810, 0, undefined ) )
         {
             _ID38688( "crouch" );
             return 1;
@@ -445,7 +445,7 @@ _ID13710( var_0 )
 {
     if ( animscripts\utility::_ID39997() && self._ID7._ID28253 == "stand" && !isdefined( self._ID14794 ) )
     {
-        if ( var_0 > 262144 || self._ID199 == "ambush_nodes_only" && ( !isdefined( self._ID322 ) || !self cansee( self._ID322 ) ) )
+        if ( var_0 > 262144 || self.combatmode == "ambush_nodes_only" && ( !isdefined( self.enemy ) || !self cansee( self.enemy ) ) )
             _ID36995( animscripts\utility::_ID22630( "combat", "pistol_to_primary" ) );
     }
 }
@@ -453,7 +453,7 @@ _ID13710( var_0 )
 _ID13715()
 {
     if ( isdefined( self._ID18328 ) && self nearclaimnodeandangle() )
-        self safeteleport( self._ID705, self._ID700._ID65 );
+        self safeteleport( self.nodeoffsetpos, self.node.angles );
 }
 
 _ID13714()
@@ -482,11 +482,11 @@ _ID13713()
 
     if ( animscripts\utility::_ID20915() )
     {
-        var_0 = ( 0, self._ID65[1], 0 );
+        var_0 = ( 0, self.angles[1], 0 );
         self orientmode( "face angle 3d", var_0 );
     }
     else
-        self orientmode( "face angle", self._ID65[1] );
+        self orientmode( "face angle", self.angles[1] );
 
     for (;;)
     {
@@ -508,7 +508,7 @@ _ID13713()
         }
 
         _ID29774();
-        var_1 = lengthsquared( self._ID740 - self._ID33810 );
+        var_1 = lengthsquared( self.origin - self._ID33810 );
 
         if ( _ID13716( var_1 ) )
             continue;
@@ -548,7 +548,7 @@ _ID13713()
 
 _ID13720()
 {
-    if ( !isdefined( self._ID322 ) || !self cansee( self._ID322 ) )
+    if ( !isdefined( self.enemy ) || !self cansee( self.enemy ) )
     {
         self endon( "enemy" );
         self endon( "shoot_behavior_change" );
@@ -561,7 +561,7 @@ _ID13720()
 
 _ID35595()
 {
-    if ( isdefined( self._ID322 ) && ( !self cansee( self._ID322 ) || !self canshootenemy() ) && sighttracepassed( self._ID740 + ( 0, 0, 64 ), self._ID322 getshootatpos(), 0, undefined ) )
+    if ( isdefined( self.enemy ) && ( !self cansee( self.enemy ) || !self canshootenemy() ) && sighttracepassed( self.origin + ( 0, 0, 64 ), self.enemy getshootatpos(), 0, undefined ) )
     {
         self._ID7._ID11570 = gettime() + 3000;
         return _ID38688( "stand" );
@@ -577,8 +577,8 @@ _ID24717()
     if ( !isdefined( var_0 ) )
         return 0;
 
-    var_1 = self._ID65[1] - vectortoyaw( var_0 - self._ID740 );
-    var_2 = distancesquared( self._ID740, var_0 );
+    var_1 = self.angles[1] - vectortoyaw( var_0 - self.origin );
+    var_2 = distancesquared( self.origin, var_0 );
 
     if ( var_2 < 65536 )
     {
@@ -654,39 +654,39 @@ _ID6904()
 
     if ( isdefined( self._ID17437 ) && isdefined( self._ID17437._ID409 ) )
     {
-        var_1 = angleclamp180( self._ID65[1] - vectortoyaw( self._ID17437._ID409 ) );
+        var_1 = angleclamp180( self.angles[1] - vectortoyaw( self._ID17437._ID409 ) );
 
         if ( _ID39232( var_1 ) )
             return 1;
     }
 
-    if ( isdefined( self._ID700 ) && isdefined( anim._ID20711[self._ID700._ID1244] ) )
+    if ( isdefined( self.node ) && isdefined( anim._ID20711[self.node.type] ) )
     {
-        var_1 = angleclamp180( self._ID65[1] - self._ID700._ID65[1] );
+        var_1 = angleclamp180( self.angles[1] - self.node.angles[1] );
 
         if ( _ID39232( var_1 ) )
             return 1;
     }
-    else if ( isdefined( self._ID322 ) && self seerecently( self._ID322, 2 ) || var_0 > self._ID7._ID31561 + 1200 )
+    else if ( isdefined( self.enemy ) && self seerecently( self.enemy, 2 ) || var_0 > self._ID7._ID31561 + 1200 )
     {
         var_1 = undefined;
         var_2 = self getanglestolikelyenemypath();
 
         if ( isdefined( var_2 ) )
-            var_1 = angleclamp180( self._ID65[1] - var_2[1] );
-        else if ( isdefined( self._ID8252 ) && isdefined( self._ID3152 ) && self._ID3152 == "riotshield" && self._ID1194 == "allies" )
+            var_1 = angleclamp180( self.angles[1] - var_2[1] );
+        else if ( isdefined( self._ID8252 ) && isdefined( self._ID3152 ) && self._ID3152 == "riotshield" && self.team == "allies" )
         {
             var_3 = 0;
-            var_3 = _ID42237::_ID37527( self._ID8252._ID1244 == "Cover Left", 68, var_3 );
-            var_3 = _ID42237::_ID37527( self._ID8252._ID1244 == "Cover Right", -68, var_3 );
-            var_1 = angleclamp180( self._ID65[1] - angleclamp( self._ID8252._ID65[1] + var_3 ) );
+            var_3 = _ID42237::_ID37527( self._ID8252.type == "Cover Left", 68, var_3 );
+            var_3 = _ID42237::_ID37527( self._ID8252.type == "Cover Right", -68, var_3 );
+            var_1 = angleclamp180( self.angles[1] - angleclamp( self._ID8252.angles[1] + var_3 ) );
         }
-        else if ( isdefined( self._ID700 ) )
-            var_1 = angleclamp180( self._ID65[1] - self._ID700._ID65[1] );
-        else if ( isdefined( self._ID322 ) )
+        else if ( isdefined( self.node ) )
+            var_1 = angleclamp180( self.angles[1] - self.node.angles[1] );
+        else if ( isdefined( self.enemy ) )
         {
-            var_2 = vectortoangles( self lastknownpos( self._ID322 ) - self._ID740 );
-            var_1 = angleclamp180( self._ID65[1] - var_2[1] );
+            var_2 = vectortoangles( self lastknownpos( self.enemy ) - self.origin );
+            var_1 = angleclamp180( self.angles[1] - var_2[1] );
         }
 
         if ( isdefined( var_1 ) && _ID39232( var_1 ) )
@@ -694,7 +694,7 @@ _ID6904()
     }
     else if ( isdefined( self._ID18328 ) && self nearclaimnode() )
     {
-        var_1 = angleclamp180( self._ID65[1] - self._ID700._ID65[1] );
+        var_1 = angleclamp180( self.angles[1] - self.node.angles[1] );
 
         if ( _ID39232( var_1 ) )
             return 1;
@@ -758,23 +758,23 @@ _ID41563()
     self endon( "killanimscript" );
     self._ID33786 = ( 0, 0, 0 );
     var_0 = undefined;
-    var_1 = self._ID740;
+    var_1 = self.origin;
     var_2 = 0.15;
 
     for (;;)
     {
         if ( isdefined( self._ID33785 ) && isdefined( var_0 ) && self._ID33785 == var_0 )
         {
-            var_3 = self._ID33785._ID740;
+            var_3 = self._ID33785.origin;
             self._ID33786 = ( var_3 - var_1 ) * 1 / var_2;
             var_1 = var_3;
         }
         else
         {
             if ( isdefined( self._ID33785 ) )
-                var_1 = self._ID33785._ID740;
+                var_1 = self._ID33785.origin;
             else
-                var_1 = self._ID740;
+                var_1 = self.origin;
 
             var_0 = self._ID33785;
             self._ID33786 = ( 0, 0, 0 );
@@ -812,7 +812,7 @@ _ID13757()
         if ( abs( var_1 ) > var_0 )
             var_1 = var_0 * _ID42237::_ID34160( var_1 );
 
-        self orientmode( "face angle", self._ID65[1] + var_1 );
+        self orientmode( "face angle", self.angles[1] + var_1 );
         wait 0.05;
     }
 
@@ -839,7 +839,7 @@ _ID11659( var_0, var_1 )
     var_2 = isdefined( self._ID33810 );
     var_3 = 1;
     var_4 = 0.2;
-    var_5 = isdefined( self._ID322 ) && !isdefined( self._ID39233 ) && self seerecently( self._ID322, 2 ) && distancesquared( self._ID322._ID740, self._ID740 ) < 262144;
+    var_5 = isdefined( self.enemy ) && !isdefined( self._ID39233 ) && self seerecently( self.enemy, 2 ) && distancesquared( self.enemy.origin, self.origin ) < 262144;
 
     if ( self._ID7._ID31561 + 500 > gettime() )
     {
@@ -850,7 +850,7 @@ _ID11659( var_0, var_1 )
     }
     else if ( var_5 )
     {
-        var_6 = 1.0 - distance( self._ID322._ID740, self._ID740 ) / 512;
+        var_6 = 1.0 - distance( self.enemy.origin, self.origin ) / 512;
         var_3 = 1 + var_6 * 1;
 
         if ( var_3 > 2 )
@@ -879,9 +879,9 @@ _ID11659( var_0, var_1 )
         var_9 = var_8;
         var_10 = var_4;
 
-        if ( self._ID823 == "cover_crouch" )
+        if ( self.prevscript == "cover_crouch" )
             var_9 = "cover2exposed_" + var_8;
-        else if ( isdefined( self._ID39233 ) && isdefined( self._ID8893 ) && self._ID8893._ID1244 == "Cover Crouch" )
+        else if ( isdefined( self._ID39233 ) && isdefined( self._ID8893 ) && self._ID8893.type == "Cover Crouch" )
         {
             var_9 = "exposed2cover_" + var_8;
             var_10 = 0.1;
@@ -898,7 +898,7 @@ _ID11659( var_0, var_1 )
 
     if ( isdefined( self._ID39233 ) )
         self animmode( "angle deltas", 0 );
-    else if ( isdefined( self._ID700 ) && isdefined( anim._ID20710[self._ID700._ID1244] ) && distancesquared( self._ID740, self._ID700._ID740 ) < 256 )
+    else if ( isdefined( self.node ) && isdefined( anim._ID20710[self.node.type] ) && distancesquared( self.origin, self.node.origin ) < 256 )
         self animmode( "angle deltas", 0 );
     else if ( _ID20667( var_11 ) )
         _ID29767();
@@ -958,10 +958,10 @@ _ID22860()
 {
     self endon( "killanimscript" );
     self endon( "done turning" );
-    var_0 = self._ID65[1];
+    var_0 = self.angles[1];
     wait 0.3;
 
-    if ( self._ID65[1] == var_0 )
+    if ( self.angles[1] == var_0 )
     {
         self notify( "turning_isnt_working" );
         self._ID39220 = 1;
@@ -1028,16 +1028,16 @@ _ID8533()
     if ( !animscripts\combat_utility::_ID24633() )
         return 0;
 
-    if ( self._ID464 <= 0 )
+    if ( self.grenadeammo <= 0 )
         return 0;
 
-    if ( isdefined( anim._ID37694 ) && isalive( level._ID794 ) )
+    if ( isdefined( anim._ID37694 ) && isalive( level.player ) )
     {
-        if ( _ID39070( level._ID794, 200 ) )
+        if ( _ID39070( level.player, 200 ) )
             return 1;
     }
 
-    if ( isdefined( self._ID322 ) && _ID39070( self._ID322, self._ID23656 ) )
+    if ( isdefined( self.enemy ) && _ID39070( self.enemy, self._ID23656 ) )
         return 1;
 
     self._ID7._ID24783 = gettime() + 500;
@@ -1054,18 +1054,18 @@ _ID39070( var_0, var_1 )
     if ( !isdefined( self._ID7._ID3291["exposed_grenade"] ) )
         return 0;
 
-    var_3 = var_0._ID740;
+    var_3 = var_0.origin;
 
     if ( !self cansee( var_0 ) )
     {
-        if ( isdefined( self._ID322 ) && var_0 == self._ID322 && isdefined( self._ID33810 ) )
+        if ( isdefined( self.enemy ) && var_0 == self.enemy && isdefined( self._ID33810 ) )
             var_3 = self._ID33810;
     }
 
     if ( !self cansee( var_0 ) )
         var_1 = 100;
 
-    if ( distancesquared( self._ID740, var_3 ) > var_1 * var_1 && self._ID7._ID28253 == self._ID7._ID17423 )
+    if ( distancesquared( self.origin, var_3 ) > var_1 * var_1 && self._ID7._ID28253 == self._ID7._ID17423 )
     {
         animscripts\combat_utility::_ID32536( var_0 );
 
@@ -1167,14 +1167,14 @@ _ID21222()
     {
         wait(0.2 + randomfloat( 0.3 ));
 
-        if ( isdefined( self._ID322 ) )
+        if ( isdefined( self.enemy ) )
         {
-            if ( isplayernumber( self._ID322 ) )
+            if ( isplayernumber( self.enemy ) )
                 var_0 = 40000;
             else
                 var_0 = 10000;
 
-            if ( distancesquared( self._ID322._ID740, self._ID740 ) < var_0 )
+            if ( distancesquared( self.enemy.origin, self.origin ) < var_0 )
                 _ID39076();
         }
     }
@@ -1190,10 +1190,10 @@ _ID10224()
     if ( isdefined( self._ID24910 ) )
         return;
 
-    if ( isplayernumber( self._ID322 ) )
+    if ( isplayernumber( self.enemy ) )
         return;
 
-    animscripts\melee::_ID23412( self._ID322 );
+    animscripts\melee::_ID23412( self.enemy );
 }
 
 _ID13717( var_0 )
@@ -1207,11 +1207,11 @@ _ID13717( var_0 )
         if ( isdefined( self._ID35384 ) )
         {
             var_1 = self [[ self._ID35384 ]]();
-            self._ID561 = 1;
+            self.keepclaimednode = 1;
         }
         else
         {
-            var_2 = animscripts\animset::has_special_reload( self._ID1302 );
+            var_2 = animscripts\animset::has_special_reload( self.weapon );
 
             if ( isdefined( var_2 ) )
                 var_1 = animscripts\utility::_ID3156( "reload_" + var_2 );
@@ -1230,7 +1230,7 @@ _ID13717( var_0 )
         thread _ID21222();
         self._ID14235 = 0;
 
-        if ( weaponclass( self._ID1302 ) == "pistol" )
+        if ( weaponclass( self.weapon ) == "pistol" )
             self orientmode( "face default" );
 
         if ( isdefined( self._ID18328 ) )
@@ -1244,7 +1244,7 @@ _ID13717( var_0 )
             animscripts\weaponlist::_ID29364();
 
         self clearanim( %reload, 0.2 );
-        self._ID561 = 0;
+        self.keepclaimednode = 0;
         self notify( "stop_trying_to_melee" );
         self._ID7._ID13718 = 0;
         self._ID14235 = undefined;
@@ -1265,7 +1265,7 @@ _ID11642( var_0, var_1 )
 
     var_2 = 1;
 
-    if ( !animscripts\utility::_ID39997() && !animscripts\utility::_ID20902( self._ID1302 ) && isdefined( self._ID322 ) && self cansee( self._ID322 ) && distancesquared( self._ID322._ID740, self._ID740 ) < 1048576 )
+    if ( !animscripts\utility::_ID39997() && !animscripts\utility::_ID20902( self.weapon ) && isdefined( self.enemy ) && self cansee( self.enemy ) && distancesquared( self.enemy.origin, self.origin ) < 1048576 )
         var_2 = 1.2;
 
     var_3 = "reload_" + animscripts\combat_utility::_ID16710();
@@ -1395,7 +1395,7 @@ _ID36995( var_0, var_1 )
 {
     self endon( "killanimscript" );
 
-    if ( level._ID912 != "ending" )
+    if ( level.script != "ending" )
     {
 
     }
@@ -1475,9 +1475,9 @@ _ID29052()
     {
         wait 0.2;
 
-        if ( isdefined( self._ID322 ) && !self seerecently( self._ID322, 2 ) )
+        if ( isdefined( self.enemy ) && !self seerecently( self.enemy, 2 ) )
         {
-            if ( self._ID199 == "ambush" || self._ID199 == "ambush_nodes_only" )
+            if ( self.combatmode == "ambush" || self.combatmode == "ambush_nodes_only" )
                 continue;
         }
 
@@ -1487,31 +1487,31 @@ _ID29052()
 
 _ID39069()
 {
-    if ( self._ID381 )
+    if ( self.fixednode )
         return;
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
     {
         self._ID29050 = 0;
         return;
     }
 
-    if ( gettime() < self._ID1199 )
+    if ( gettime() < self.teammovewaittime )
     {
         self._ID29050 = 0;
         return;
     }
 
-    if ( isdefined( self._ID28497 ) && self._ID28497 != self._ID322 )
+    if ( isdefined( self._ID28497 ) && self._ID28497 != self.enemy )
     {
         self._ID29050 = 0;
         self._ID28497 = undefined;
         return;
     }
 
-    self._ID28497 = self._ID322;
+    self._ID28497 = self.enemy;
 
-    if ( self cansee( self._ID322 ) )
+    if ( self cansee( self.enemy ) )
     {
         if ( self canshootenemy() || isdefined( self._ID36882 ) )
         {
@@ -1528,8 +1528,8 @@ _ID39069()
 
     if ( !isdefined( self._ID29051 ) || !self._ID29051 )
     {
-        var_0 = vectornormalize( self._ID322._ID740 - self._ID740 );
-        var_1 = anglestoforward( self._ID65 );
+        var_0 = vectornormalize( self.enemy.origin - self.origin );
+        var_1 = anglestoforward( self.angles );
 
         if ( vectordot( var_0, var_1 ) < 0.5 )
         {
@@ -1538,7 +1538,7 @@ _ID39069()
         }
     }
 
-    if ( self._ID7._ID13718 && animscripts\combat_utility::_ID24716( 0.25 ) && self._ID322._ID486 > self._ID322._ID626 * 0.5 )
+    if ( self._ID7._ID13718 && animscripts\combat_utility::_ID24716( 0.25 ) && self.enemy.health > self.enemy.maxhealth * 0.5 )
     {
         self._ID29050 = 0;
         return;
@@ -1579,7 +1579,7 @@ _ID39069()
 
             break;
         case 4:
-            if ( !self cansee( self._ID322 ) || !self canshootenemy() )
+            if ( !self cansee( self.enemy ) || !self canshootenemy() )
                 self flagenemyunattackable();
 
             break;
@@ -1603,7 +1603,7 @@ _ID29767( var_0 )
     if ( !isdefined( var_1 ) )
         var_1 = 1;
 
-    if ( self._ID1063 )
+    if ( self.swimmer )
         self animmode( "nogravity", var_1 );
     else
         self animmode( "zonly_physics", var_1 );

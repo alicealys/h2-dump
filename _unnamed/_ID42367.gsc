@@ -347,9 +347,9 @@ _ID7386()
     if ( !isdefined( self._ID70 ) )
         return;
 
-    if ( _ID41760() && self._ID922 == "manhandled" )
+    if ( _ID41760() && self.script_noteworthy == "manhandled" )
     {
-        var_0 = getent( self._ID1191, "targetname" );
+        var_0 = getent( self.target, "targetname" );
         level._ID22888[self._ID13703] = var_0;
     }
 
@@ -619,8 +619,8 @@ _ID6029()
     var_0 = self._ID31220;
     var_1 = self._ID31433;
     var_2 = _ID42237::_ID9217( var_0 );
-    var_2._ID40005["origin"] = self._ID740;
-    var_2._ID40005["angles"] = self._ID65;
+    var_2._ID40005["origin"] = self.origin;
+    var_2._ID40005["angles"] = self.angles;
     var_2._ID40005["fxid"] = var_0;
     var_2._ID40005["delay"] = 0;
     var_2._ID40005["exploder"] = "breach_" + var_1;
@@ -702,8 +702,8 @@ _ID9179()
     {
         var_18 = var_17._ID31433;
         var_0[var_18]._ID29990 = var_17;
-        var_23 = spawn( "script_origin", var_17._ID740 );
-        var_23._ID65 = var_17._ID65;
+        var_23 = spawn( "script_origin", var_17.origin );
+        var_23.angles = var_17.angles;
         var_20 = spawnstruct();
         var_20._ID337 = var_23;
         var_20._ID41911 = -90;
@@ -733,9 +733,9 @@ _ID9179()
     {
         var_18 = var_39._ID31433;
         var_0[var_18]._ID22620[var_0[var_18]._ID22620.size] = var_39;
-        var_40 = getent( var_39._ID1191, "targetname" );
-        var_39._ID6047 = var_40._ID740;
-        var_41 = getent( var_40._ID1191, "targetname" );
+        var_40 = getent( var_39.target, "targetname" );
+        var_39._ID6047 = var_40.origin;
+        var_41 = getent( var_40.target, "targetname" );
         var_41._ID6073 = 0;
         var_0[var_18]._ID30176 = var_41;
         var_40 thread _ID6038( var_39, var_18, var_41 );
@@ -746,7 +746,7 @@ _ID9179()
     foreach ( var_39 in var_14 )
     {
         var_18 = var_39._ID31433;
-        var_45 = var_0[var_18]._ID29990._ID65;
+        var_45 = var_0[var_18]._ID29990.angles;
         var_46 = angleclamp( var_45[1] - 90 );
         var_39 usetriggerrequirelookat( var_46, 50 );
         var_0[var_18]._ID1224 = var_39;
@@ -812,8 +812,8 @@ _ID25325( var_0, var_1, var_2, var_3, var_4 )
         if ( !isdefined( var_9 ) )
             return;
 
-        var_10 = anglestoright( var_9._ID65 );
-        var_11 = var_9._ID740 + var_10 * -22.5 + ( 0, 0, 56 );
+        var_10 = anglestoright( var_9.angles );
+        var_11 = var_9.origin + var_10 * -22.5 + ( 0, 0, 56 );
         objective_additionalposition( var_0, var_6, var_11 );
         var_6++;
     }
@@ -829,7 +829,7 @@ _ID3438( var_0 )
         {
             foreach ( var_7 in var_5._ID22620 )
             {
-                if ( distance( var_2._ID740, var_7._ID6047 ) > 80 )
+                if ( distance( var_2.origin, var_7._ID6047 ) > 80 )
                     continue;
 
                 var_2._ID31433 = var_9;
@@ -866,7 +866,7 @@ _ID34364( var_0 )
             return;
     }
 
-    radiusdamage( self._ID740, self._ID851, 500, 500 );
+    radiusdamage( self.origin, self.radius, 500, 500 );
     self delete();
 }
 
@@ -881,13 +881,13 @@ _ID6038( var_0, var_1, var_2 )
     thread _ID6005( var_2 );
     var_3 = newhudelem();
     var_3 setshader( "breach_icon", 1, 1 );
-    var_3._ID55 = 0;
-    var_3._ID196 = ( 1, 1, 1 );
-    var_3._ID1331 = self._ID740[0];
-    var_3._ID1339 = self._ID740[1];
-    var_3._ID1342 = self._ID740[2];
+    var_3.alpha = 0;
+    var_3.color = ( 1, 1, 1 );
+    var_3.x = self.origin[0];
+    var_3.y = self.origin[1];
+    var_3.z = self.origin[2];
     var_3 setwaypoint( 1, 1 );
-    var_4 = spawn( "script_model", self._ID740 );
+    var_4 = spawn( "script_model", self.origin );
     var_4 setmodel( "mil_frame_charge" );
     var_4 hidepart( "j_frame_charge" );
     wait 0.05;
@@ -1006,7 +1006,7 @@ _ID34368( var_0, var_1 )
     _ID42237::_ID3350( var_11, _ID42407::_ID1947, ::_ID6037 );
     _ID42237::_ID3350( var_12, _ID42407::_ID1947, ::_ID6015 );
     _ID42237::_ID3350( var_13, _ID42407::_ID1947, ::_ID6037 );
-    var_6 thread _ID42237::_ID44574( level._ID794, &"SCRIPT_PLATFORM_BREACH_ACTIVATE", &"SCRIPT_PLATFORM_BREACH_ACTIVATE_KB", "trigger" );
+    var_6 thread _ID42237::_ID44574( level.player, &"SCRIPT_PLATFORM_BREACH_ACTIVATE", &"SCRIPT_PLATFORM_BREACH_ACTIVATE_KB", "trigger" );
 
     if ( !isdefined( level._ID6069 ) )
         level._ID6069 = [];
@@ -1288,7 +1288,7 @@ _ID14924()
     if ( _ID42407::_ID27291( self ) )
         return 0;
 
-    if ( distance( level._ID794._ID740, self._ID740 ) < 96 )
+    if ( distance( level.player.origin, self.origin ) < 96 )
         return 0;
 
     return 1;
@@ -1359,7 +1359,7 @@ _ID6035()
     {
         if ( isdefined( var_1 ) )
         {
-            var_1 thread _ID42237::_ID44574( level._ID794, &"SCRIPT_PLATFORM_BREACH_ACTIVATE", &"SCRIPT_PLATFORM_BREACH_ACTIVATE_KB", "trigger" );
+            var_1 thread _ID42237::_ID44574( level.player, &"SCRIPT_PLATFORM_BREACH_ACTIVATE", &"SCRIPT_PLATFORM_BREACH_ACTIVATE_KB", "trigger" );
             var_1 setcursorhint( "HINT_ACTIVATE" );
         }
     }
@@ -1382,8 +1382,8 @@ _ID6025()
 
     foreach ( var_1 in level._ID6082 )
     {
-        var_1._ID17403 = var_1._ID464;
-        var_1._ID464 = 0;
+        var_1._ID17403 = var_1.grenadeammo;
+        var_1.grenadeammo = 0;
     }
 }
 
@@ -1397,7 +1397,7 @@ _ID6024()
 
     foreach ( var_1 in level._ID6082 )
     {
-        var_1._ID464 = var_1._ID17403;
+        var_1.grenadeammo = var_1._ID17403;
         var_1._ID17403 = undefined;
     }
 
@@ -1531,9 +1531,9 @@ _ID14910( var_0, var_1 )
     }
 
     if ( var_14 )
-        var_18 = _ID42237::_ID16182( var_12._ID740, var_1 );
+        var_18 = _ID42237::_ID16182( var_12.origin, var_1 );
     else
-        var_18 = _ID16022( var_12._ID740, var_3, var_1, var_13 );
+        var_18 = _ID16022( var_12.origin, var_3, var_1, var_13 );
 
     var_1 = _ID42237::_ID3321( var_1, var_18 );
 
@@ -1567,9 +1567,9 @@ _ID14910( var_0, var_1 )
     if ( var_1.size )
     {
         if ( var_14 )
-            var_26 = _ID42237::_ID16182( var_12._ID740, var_1 );
+            var_26 = _ID42237::_ID16182( var_12.origin, var_1 );
         else
-            var_26 = _ID16022( var_12._ID740, var_3, var_1, var_13 );
+            var_26 = _ID16022( var_12.origin, var_3, var_1, var_13 );
 
         if ( isdefined( var_26 ) )
         {
@@ -1592,7 +1592,7 @@ _ID15922( var_0 )
 
     foreach ( var_4 in var_2 )
     {
-        if ( level._ID794 istouching( var_4 ) )
+        if ( level.player istouching( var_4 ) )
         {
             var_1 = var_4;
             break;
@@ -1640,9 +1640,9 @@ _ID16022( var_0, var_1, var_2, var_3 )
 
 _ID16981( var_0 )
 {
-    if ( isdefined( self._ID451 ) )
+    if ( isdefined( self.goalpos ) )
     {
-        if ( _ID26011( self._ID451 + ( 0, 0, 40 ), var_0 ) )
+        if ( _ID26011( self.goalpos + ( 0, 0, 40 ), var_0 ) )
             return 1;
     }
 
@@ -1690,8 +1690,8 @@ _ID15758( var_0 )
 _ID34959( var_0, var_1 )
 {
     var_2 = var_1["active"];
-    var_3 = anglestoright( self._ID65 );
-    var_4 = vectornormalize( var_2._ID740 - var_0._ID1224._ID740 );
+    var_3 = anglestoright( self.angles );
+    var_4 = vectornormalize( var_2.origin - var_0._ID1224.origin );
     var_5 = vectordot( var_3, var_4 );
 
     if ( var_5 < 0 )
@@ -1719,8 +1719,8 @@ _ID27266( var_0, var_1 )
         var_0._ID22142 _ID1937( "h2_active_breacher_rig" );
         var_3 = self._ID30820["h2_active_breacher_rig"];
         self._ID30820["active_breacher_rig"] = undefined;
-        var_8 = getstartorigin( self._ID740, self._ID65, level._ID30895["ally"][level._ID49275[0]] );
-        var_9 = getstartangles( self._ID740, self._ID65, level._ID30895["ally"][level._ID49275[0]] );
+        var_8 = getstartorigin( self.origin, self.angles, level._ID30895["ally"][level._ID49275[0]] );
+        var_9 = getstartangles( self.origin, self.angles, level._ID30895["ally"][level._ID49275[0]] );
         var_10 = getaiarray( "allies" );
         var_11 = getdvar( "force_breach_anim", "" );
         var_12 = _ID42237::_ID37527( var_11 == "", var_0._ID3189, var_11 );
@@ -1735,7 +1735,7 @@ _ID27266( var_0, var_1 )
 
             if ( !isdefined( level._ID50520[var_12] ) )
             {
-                if ( distance2d( var_8, var_14._ID740 ) < 10 && vectordot( anglestoforward( var_9 ), anglestoforward( var_14._ID65 ) ) > 0.95 )
+                if ( distance2d( var_8, var_14.origin ) < 10 && vectordot( anglestoforward( var_9 ), anglestoforward( var_14.angles ) ) > 0.95 )
                 {
                     var_5 = var_14;
                     var_6 = level._ID49275;
@@ -1995,8 +1995,8 @@ _ID27266( var_0, var_1 )
 _ID48136( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
 {
     wait(var_0);
-    level._ID794 lerpviewangleclamp( var_1, var_2, var_3, var_4, var_5, var_6, var_7 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player lerpviewangleclamp( var_1, var_2, var_3, var_4, var_5, var_6, var_7 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     wait(var_1);
 }
 
@@ -2153,15 +2153,15 @@ _ID14918( var_0, var_1, var_2, var_3 )
     }
 
     wait 0.5;
-    self forceteleport( var_1._ID740, var_1._ID65 );
+    self forceteleport( var_1.origin, var_1.angles );
     _ID42407::_ID3136();
     var_1 thread _ID42259::_ID3025( self, var_5, "stop_idle" );
-    self setgoalpos( self._ID740 );
+    self setgoalpos( self.origin );
     wait(3 + var_3);
     thread _ID14911( var_0 );
     var_1 notify( "stop_idle" );
     var_1 _ID42259::_ID3020( self, var_6 );
-    self setgoalpos( self._ID740 );
+    self setgoalpos( self.origin );
     level notify( "friendlies_finished_breach" );
 
     if ( isdefined( self.friendly_breach_finished_flag ) )
@@ -2208,7 +2208,7 @@ _ID14911( var_0 )
 
             if ( self canshoot( var_3, var_5 ) )
             {
-                magicbullet( self._ID1302, self getmuzzlepos(), var_3 );
+                magicbullet( self.weapon, self getmuzzlepos(), var_3 );
                 bullettracer( self getmuzzlepos(), var_3, 1 );
                 wait 0.5;
             }
@@ -2285,7 +2285,7 @@ _ID34363( var_0 )
     if ( isdefined( level._ID34354 ) )
         var_3 = level._ID34354;
 
-    var_4 = level._ID794;
+    var_4 = level.player;
     var_5 = undefined;
 
     if ( _ID42407::_ID20495() )
@@ -2424,14 +2424,14 @@ _ID46237()
     var_0 = 0.1;
     var_1 = 0.25;
     var_2 = _ID42313::_ID9125( "h2_overlays_vignette", 0 );
-    var_2._ID983 = 20;
-    var_2._ID408 = 0;
+    var_2.sort = 20;
+    var_2.foreground = 0;
     var_2 fadeovertime( var_0 );
-    var_2._ID55 = 1;
+    var_2.alpha = 1;
     wait(var_0);
     level waittill( "slowmo_breach_ending" );
     var_2 fadeovertime( var_1 );
-    var_2._ID55 = 0;
+    var_2.alpha = 0;
     wait(var_1);
     var_2 destroy();
 }
@@ -2442,17 +2442,17 @@ _ID43016()
     var_1 = 0.5;
     var_2 = 0.25;
     var_3 = _ID42313::_ID9125( "h2_overlays_breachdust", 0 );
-    var_3._ID983 = 19;
-    var_3._ID408 = 0;
+    var_3.sort = 19;
+    var_3.foreground = 0;
     var_3 fadeovertime( var_0 );
-    var_3._ID55 = 0.9;
+    var_3.alpha = 0.9;
     wait(var_0);
     var_3 fadeovertime( var_1 );
-    var_3._ID55 = 0.8;
+    var_3.alpha = 0.8;
     wait(var_1);
     level waittill( "slowmo_breach_ending" );
     var_3 fadeovertime( var_2 );
-    var_3._ID55 = 0;
+    var_3.alpha = 0;
     wait(var_2);
     var_3 destroy();
 }
@@ -2566,9 +2566,9 @@ _ID6015()
         self thread [[ var_1 ]]();
     }
 
-    self._ID464 = 0;
-    self._ID49 = 1;
-    self._ID486 = 10;
+    self.grenadeammo = 0;
+    self.allowdeath = 1;
+    self.health = 10;
     self._ID4867 = 5000;
     self._ID43135.remove_shields_when_breach_end = 1;
 
@@ -2576,7 +2576,7 @@ _ID6015()
         self.cheat._ID48626 = 1;
 
     if ( isdefined( self._ID31477 ) )
-        self._ID1204 = self._ID31477;
+        self.threatbias = self._ID31477;
 
     if ( isdefined( level._ID6004[self._ID70] ) )
         self._ID34237 = 1;
@@ -2607,12 +2607,12 @@ _ID6013()
     self endon( "death" );
 
     if ( !_ID42237::_ID14385( "no_mercy" ) )
-        self._ID511 = 1;
+        self.ignoreme = 1;
 
     level _ID42237::_ID41098( "slomo_breach_over", "friendlies_finished_breach" );
 
     if ( isdefined( self ) )
-        self._ID511 = 0;
+        self.ignoreme = 0;
 }
 
 _ID6014()
@@ -2635,7 +2635,7 @@ _ID6016( var_0 )
 {
     level._ID6075++;
     var_1 = spawnstruct();
-    var_1._ID322 = var_0;
+    var_1.enemy = var_0;
     var_1 thread _ID6018( var_0 );
     var_1 thread _ID6019( var_0 );
     var_1 thread _ID6012( var_0 );
@@ -2690,9 +2690,9 @@ _ID6037()
     self endon( "cancel_breach_behavior" );
     thread _ID18963();
     _ID42259::_ID3023( self, self._ID70 );
-    self._ID486 = 10;
+    self.health = 10;
     self._ID24829 = 1;
-    self._ID512 = 1;
+    self.ignorerandombulletdamage = 1;
     wait(level._ID34367);
 
     if ( isdefined( level._ID1630[self._ID70] ) )
@@ -2701,7 +2701,7 @@ _ID6037()
         self thread [[ var_1 ]]();
     }
 
-    self._ID49 = 1;
+    self.allowdeath = 1;
     var_0 _ID42259::_ID3020( self, self._ID70 );
     self notify( "finished_breach_start_anim" );
 
@@ -2721,7 +2721,7 @@ _ID6037()
 
 _ID18962()
 {
-    var_0 = self._ID486;
+    var_0 = self.health;
     self endon( "death" );
     self endon( "saved" );
 
@@ -2733,13 +2733,13 @@ _ID18962()
         {
             if ( isplayernumber( var_2 ) )
             {
-                self kill( self._ID740, level._ID794 );
+                self kill( self.origin, level.player );
                 break;
                 continue;
             }
 
-            if ( isdefined( var_2._ID1194 ) && var_2._ID1194 == "allies" )
-                self._ID486 = var_0;
+            if ( isdefined( var_2.team ) && var_2.team == "allies" )
+                self.health = var_0;
         }
     }
 }
@@ -2755,7 +2755,7 @@ _ID18963()
         level endon( "special_op_terminated" );
 
     level endon( "mission failed" );
-    var_0 = self._ID486;
+    var_0 = self.health;
     var_1 = 0;
     thread _ID18962();
     var_2 = _ID15960( self._ID31433 );
@@ -2781,7 +2781,7 @@ _ID18963()
 
                 var_1 = 1;
             }
-            else if ( isdefined( var_3._ID1194 ) && var_3._ID1194 == "allies" && !isplayernumber( var_3 ) )
+            else if ( isdefined( var_3.team ) && var_3.team == "allies" && !isplayernumber( var_3 ) )
             {
                 _ID42349::_ID32262( &"SCRIPT_MISSIONFAIL_HOSTAGEEXECUTED" );
                 var_1 = 1;
@@ -2835,7 +2835,7 @@ _ID31296()
     level._ID30900["breach_door_hinge_metal"] = #animtree;
     level._ID30904["breach_door_hinge_metal"] = "breach_door_metal_right_dst";
 
-    if ( level._ID912 == "oilrig" )
+    if ( level.script == "oilrig" )
     {
         level._ID30895["breach_door_model_oilrig"]["breach"] = %breach_player_door_v2;
         level._ID30900["breach_door_model_oilrig"] = #animtree;
@@ -3050,10 +3050,10 @@ _ID6020( var_0 )
     }
 
     if ( isdefined( var_2 ) )
-        thread _ID42237::_ID27077( var_2, self._ID7314._ID740 );
+        thread _ID42237::_ID27077( var_2, self._ID7314.origin );
 
     _ID42234::_ID13611( "breach_" + self._ID6039 );
-    thread _ID6056( self._ID7314._ID740 );
+    thread _ID6056( self._ID7314.origin );
     level notify( "breach_explosion" );
 
     if ( isdefined( level._ID14918 ) )
@@ -3081,7 +3081,7 @@ _ID6020( var_0 )
 _ID6056( var_0 )
 {
     var_1 = spawn( "script_origin", var_0 );
-    var_1._ID740 = var_0;
+    var_1.origin = var_0;
     var_1 playrumblelooponentity( "grenade_rumble" );
     wait 4;
     var_1 delete();
@@ -3090,14 +3090,14 @@ _ID6056( var_0 )
 _ID1622()
 {
     self endon( "death" );
-    self._ID294 = 1;
+    self.dodamagetoall = 1;
     thread _ID21439();
 }
 
 _ID1623()
 {
     self endon( "death" );
-    self._ID294 = 1;
+    self.dodamagetoall = 1;
     thread _ID1628();
 }
 
@@ -3111,12 +3111,12 @@ _ID1615()
     self endon( "death" );
 
     if ( !_ID42237::_ID14385( "no_mercy" ) )
-        self._ID511 = 1;
+        self.ignoreme = 1;
 
     self._ID14789 = 1;
     _ID42407::_ID41119( "bodyfall large" );
     self waittill( "finished_breach_start_anim" );
-    self dodamage( self._ID486 - 1, self._ID740 );
+    self dodamage( self.health - 1, self.origin );
 }
 
 _ID1620()
@@ -3161,10 +3161,10 @@ _ID1625()
 
 _ID1616()
 {
-    var_0 = spawn( "script_model", self._ID29359._ID740 );
+    var_0 = spawn( "script_model", self._ID29359.origin );
     var_0 setmodel( "com_restaurantchair_2" );
-    var_0._ID65 = self._ID29359._ID65 + ( 0, 90, 0 );
-    var_0._ID740 = self._ID29359._ID740;
+    var_0.angles = self._ID29359.angles + ( 0, 90, 0 );
+    var_0.origin = self._ID29359.origin;
     self._ID3189 = "generic";
 
     switch ( self._ID70 )
@@ -3182,7 +3182,7 @@ _ID1616()
 
 _ID1627()
 {
-    var_0 = _ID42407::_ID15601( self._ID740, "bad_guys" );
+    var_0 = _ID42407::_ID15601( self.origin, "bad_guys" );
     self waittill( "finished_breach_start_anim" );
 
     if ( isdefined( var_0 ) && isalive( var_0 ) )
@@ -3238,8 +3238,8 @@ _ID1626()
 
 _ID21440()
 {
-    var_0 = _ID42407::_ID15617( self._ID740 );
-    var_1 = distance( var_0._ID740, self._ID740 );
+    var_0 = _ID42407::_ID15617( self.origin );
+    var_1 = distance( var_0.origin, self.origin );
 
     if ( var_1 <= 50 )
     {
@@ -3248,7 +3248,7 @@ _ID21440()
         var_0 enablehealthshield( 0 );
         var_0 enabledeathshield( 0 );
         waitframe;
-        var_0 dodamage( var_0._ID486 + 50000, self gettagorigin( "tag_weapon_right" ), self );
+        var_0 dodamage( var_0.health + 50000, self gettagorigin( "tag_weapon_right" ), self );
         var_0._ID6042 = 1;
     }
 }
@@ -3286,12 +3286,12 @@ _ID1617()
 
 _ID7262()
 {
-    var_0 = spawn( "script_model", self._ID29359._ID740 );
+    var_0 = spawn( "script_model", self._ID29359.origin );
     var_0 setmodel( "furniture_chair_metal01" );
     var_0._ID3189 = "chair";
     var_0 _ID42407::_ID3428();
-    var_0._ID29359 = spawn( "script_origin", self._ID29359._ID740 );
-    var_0._ID29359._ID65 = self._ID29359._ID65;
+    var_0._ID29359 = spawn( "script_origin", self._ID29359.origin );
+    var_0._ID29359.angles = self._ID29359.angles;
     self waittill( "starting_breach_reaction" );
     var_0._ID29359 thread _ID42259::_ID3111( var_0, "breach_chair_hide_reaction_v2_chair" );
     self endon( "finished_breach_start_anim" );
@@ -3312,12 +3312,12 @@ _ID1619()
 
 _ID10427()
 {
-    var_0 = spawn( "script_model", self._ID29359._ID740 );
+    var_0 = spawn( "script_model", self._ID29359.origin );
     var_0 setmodel( "furniture_long_desk_animate" );
     var_0._ID3189 = "desk";
     var_0 _ID42407::_ID3428();
-    var_0._ID29359 = spawn( "script_origin", self._ID29359._ID740 );
-    var_0._ID29359._ID65 = self._ID29359._ID65;
+    var_0._ID29359 = spawn( "script_origin", self._ID29359.origin );
+    var_0._ID29359.angles = self._ID29359.angles;
     self waittill( "starting_breach_reaction" );
     var_0._ID29359 thread _ID42259::_ID3111( var_0, "breach_react_desk_v7_desk" );
 }
@@ -3358,7 +3358,7 @@ _ID6005( var_0 )
     if ( !isdefined( self ) )
         return;
 
-    var_1 = self._ID740;
+    var_1 = self.origin;
     wait 0.05;
 
     if ( getdvar( "breach_debug" ) == "0" )
@@ -3400,8 +3400,8 @@ _ID41760()
     if ( isdefined( level._ID18992 ) && level._ID18992 == 0 )
         return 0;
 
-    if ( isdefined( self._ID922 ) )
-        return self._ID922 == "manhandled" || self._ID922 == "manhandled_guarded";
+    if ( isdefined( self.script_noteworthy ) )
+        return self.script_noteworthy == "manhandled" || self.script_noteworthy == "manhandled_guarded";
 
     return 0;
 }
@@ -3425,8 +3425,8 @@ _ID15829()
     self._ID36141 = 0;
     var_0 = undefined;
 
-    if ( self._ID922 == "manhandled" )
-        var_0 = getent( self._ID1191, "targetname" );
+    if ( self.script_noteworthy == "manhandled" )
+        var_0 = getent( self.target, "targetname" );
 
     var_1 = undefined;
     var_2 = undefined;
@@ -3440,7 +3440,7 @@ _ID15829()
     if ( isdefined( self._ID31388 ) )
         var_8 = self._ID31388;
 
-    switch ( self._ID922 )
+    switch ( self.script_noteworthy )
     {
         case "manhandled":
             var_4 = self._ID70 + "_manhandled";
@@ -3459,7 +3459,7 @@ _ID15829()
     _ID3420( var_4 );
     _ID3420( var_7 );
 
-    if ( self._ID922 == "manhandled" )
+    if ( self.script_noteworthy == "manhandled" )
     {
         var_1 = var_0 _ID42407::_ID35014( 1 );
         var_1 hide();
@@ -3472,7 +3472,7 @@ _ID15829()
 
     wait 0.5;
 
-    if ( self._ID922 == "manhandled" )
+    if ( self.script_noteworthy == "manhandled" )
     {
         var_1 show();
         var_9 = level._ID30895["generic"]["friendly_manhandle_h2"];
@@ -3503,7 +3503,7 @@ _ID15829()
     self._ID29359 notify( "stop_idle" );
     self notify( "stop_idle" );
 
-    if ( self._ID922 == "manhandled" )
+    if ( self.script_noteworthy == "manhandled" )
     {
         var_1 notify( "stop_loop" );
         self._ID29359 thread _ID42259::_ID3020( var_1, var_1._ID70 );
@@ -3533,34 +3533,34 @@ _ID15829()
 
 _ID51716( var_0 )
 {
-    var_1 = level._ID794 getplayerangles();
+    var_1 = level.player getplayerangles();
     var_1 = ( 0, var_1[1], 0 );
     var_2 = anglestoforward( var_1 );
     var_3 = anglestoup( var_1 );
     var_4 = 0.1;
     var_5 = _ID42237::_ID35164();
-    var_5._ID740 = level._ID794._ID740;
-    var_5._ID65 = var_1;
-    level._ID794 playerlinktodelta( var_5, "tag_origin", 1, 45, 45, 90, 45, 1 );
-    var_5 moveto( var_5._ID740 + var_3 * var_0, var_4 );
+    var_5.origin = level.player.origin;
+    var_5.angles = var_1;
+    level.player playerlinktodelta( var_5, "tag_origin", 1, 45, 45, 90, 45, 1 );
+    var_5 moveto( var_5.origin + var_3 * var_0, var_4 );
     wait(var_4);
-    level._ID794 unlink();
+    level.player unlink();
 }
 
 _ID35364( var_0 )
 {
-    if ( level._ID912 == "gulag" )
+    if ( level.script == "gulag" )
     {
-        var_1 = var_0._ID65;
+        var_1 = var_0.angles;
         var_2 = ( -4254.38, 1667.38, 133.681 );
         var_3 = _ID42237::_ID35164();
-        var_3._ID740 = level._ID794._ID740;
-        var_3._ID65 = var_1;
-        level._ID794 playerlinktodelta( var_3, "tag_origin", 1, 45, 45, 90, 45, 1 );
+        var_3.origin = level.player.origin;
+        var_3.angles = var_1;
+        level.player playerlinktodelta( var_3, "tag_origin", 1, 45, 45, 90, 45, 1 );
         var_4 = 0.45;
         var_3 moveto( var_2, var_4, var_4 * 0.4, var_4 * 0.4 );
         wait(var_4);
-        level._ID794 setmovespeedscale( 0.5 );
+        level.player setmovespeedscale( 0.5 );
         thread _ID27674();
         level._ID28544 thread _ID28546();
     }
@@ -3580,7 +3580,7 @@ _ID28545()
 
     for (;;)
     {
-        self moveto( level._ID794._ID740, 2, 0, 0 );
+        self moveto( level.player.origin, 2, 0, 0 );
         wait 0.05;
     }
 }
@@ -3592,16 +3592,16 @@ _ID28546()
 
     for (;;)
     {
-        var_1 = level._ID794._ID740;
+        var_1 = level.player.origin;
         var_1 = _ID42407::_ID32530( var_1, 0 );
-        var_2 = self._ID740;
+        var_2 = self.origin;
         var_2 = _ID42407::_ID32530( var_2, 0 );
         var_3 = vectortoangles( var_1 - var_2 );
         var_4 = anglestoforward( var_3 );
-        var_5 = anglestoforward( self._ID65 );
-        var_6 = anglestoright( self._ID65 );
+        var_5 = anglestoforward( self.angles );
+        var_6 = anglestoright( self.angles );
         var_7 = vectordot( var_4, var_6 );
-        var_0._ID65 = self._ID65;
+        var_0.angles = self.angles;
         var_8 = abs( acos( var_7 ) );
         var_9 = 2;
 
@@ -3613,14 +3613,14 @@ _ID28546()
         else
             var_0 addyaw( var_9 * -1 );
 
-        self rotateto( var_0._ID65, 0.15 );
+        self rotateto( var_0.angles, 0.15 );
         wait 0.15;
     }
 }
 
 _ID27545( var_0, var_1, var_2 )
 {
-    level._ID794 setmovespeedscale( var_1 * ( 1 - var_0 ) + var_2 * var_0 );
+    level.player setmovespeedscale( var_1 * ( 1 - var_0 ) + var_2 * var_0 );
 }
 
 _ID22891()
@@ -3634,9 +3634,9 @@ _ID22891()
     _ID42407::_ID32628( 1 );
 
     if ( !_ID42237::_ID14385( "no_mercy" ) )
-        self._ID511 = 1;
+        self.ignoreme = 1;
 
-    self._ID465 = 0;
+    self.grenadeawareness = 0;
     wait 1;
     var_0 = [];
     var_1 = getaispeciesarray( "neutral", "civilian" );
@@ -3648,7 +3648,7 @@ _ID22891()
 
         if ( isdefined( var_3._ID31433 ) && var_3._ID31433 == self._ID31433 )
         {
-            if ( isdefined( var_3._ID922 ) && issubstr( var_3._ID922, "manhandled" ) )
+            if ( isdefined( var_3.script_noteworthy ) && issubstr( var_3.script_noteworthy, "manhandled" ) )
                 var_0 = _ID42237::_ID3293( var_0, var_3 );
         }
     }

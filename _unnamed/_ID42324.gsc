@@ -16,7 +16,7 @@ _ID16845()
         level._ID6720 = "american";
 
     var_0 = _ID42325::_ID15823();
-    level._ID794 _ID42325::_ID32585();
+    level.player _ID42325::_ID32585();
     level._ID18166 = 0;
     _ID42325::_ID26588( "sniperescape", "scoutsniper" );
     _ID42325::_ID26588( "launchfacility_a", "icbm" );

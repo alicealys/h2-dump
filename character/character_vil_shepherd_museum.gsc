@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "h2_body_vil_shepherd_cheat" );
     self attach( "head_vil_shepherd", "", 1 );

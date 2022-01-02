@@ -90,7 +90,7 @@ _ID27642()
 {
     if ( !_func_145() )
         thread _ID27643();
-    else if ( self == level._ID794 )
+    else if ( self == level.player )
         thread _ID27643();
 
     thread _ID27644();
@@ -126,10 +126,10 @@ _ID27644()
     self endon( "death" );
     self endon( "stop_scuba_breathe" );
     waitframe;
-    self._ID27817 = spawn( "script_model", self._ID740 + ( 0, 0, 0 ) );
+    self._ID27817 = spawn( "script_model", self.origin + ( 0, 0, 0 ) );
     self._ID27817 setmodel( "tag_origin" );
-    self._ID27817._ID65 = self._ID65;
-    self._ID27817._ID740 = self geteye() - ( 0, 0, 10 );
+    self._ID27817.angles = self.angles;
+    self._ID27817.origin = self geteye() - ( 0, 0, 10 );
     self._ID27817 linktoplayerview( self, "tag_origin", ( 5, 0, -55 ), ( 0, 0, 0 ), 1 );
     thread _ID31565( self._ID27817 );
 
@@ -172,14 +172,14 @@ _ID27645( var_0, var_1 )
         var_2 = var_1;
 
     self._ID19156 = _ID42313::_ID9125( var_2, 1, self );
-    self._ID19156._ID408 = 0;
-    self._ID19156._ID983 = -99;
-    self._ID31567 = spawn( "script_model", level._ID794._ID740 );
+    self._ID19156.foreground = 0;
+    self._ID19156.sort = -99;
+    self._ID31567 = spawn( "script_model", level.player.origin );
     self._ID31567 setmodel( "tag_origin" );
-    self._ID31567._ID740 = self._ID740;
+    self._ID31567.origin = self.origin;
     self._ID31567 linktoplayerview( self, "tag_origin", ( 10, 0, 0 ), ( 0, 180, 0 ), 1 );
     playfxontag( _ID42237::_ID16299( "scuba_mask_distortion" ), self._ID31567, "tag_origin" );
-    self._ID19157 = spawn( "script_model", level._ID794 geteye() );
+    self._ID19157 = spawn( "script_model", level.player geteye() );
     self._ID19157 setmodel( "shpg_udt_headgear_player_a" );
     self._ID19157 linktoplayerview( self, "tag_origin", ( -0.3, 0, -1.2 ), ( 0, 90, -4 ), 1 );
 
@@ -291,16 +291,16 @@ _ID27273()
 
     if ( !isdefined( level._ID27271 ) )
     {
-        level._ID27271 = level._ID794 _ID42313::_ID9203( level._ID794, 60, "white", "black", 100, 10 );
+        level._ID27271 = level.player _ID42313::_ID9203( level.player, 60, "white", "black", 100, 10 );
         level._ID27271 _ID42313::_ID32753( "RIGHT", undefined, -65, var_1 + 12 );
         level._ID27271 _ID42313::_ID39674( 1 );
-        level._ID27271._ID55 = var_0;
-        level._ID27271._ID4830._ID55 = var_0;
-        level._ID27271._ID4830._ID196 = ( 0, 0, 1 );
-        level._ID27271._ID37557 = level._ID794 _ID42313::_ID9200( "default", 1.2 );
+        level._ID27271.alpha = var_0;
+        level._ID27271._ID4830.alpha = var_0;
+        level._ID27271._ID4830.color = ( 0, 0, 1 );
+        level._ID27271._ID37557 = level.player _ID42313::_ID9200( "default", 1.2 );
         level._ID27271._ID37557 _ID42313::_ID32753( "RIGHT", undefined, -60, var_1 );
         level._ID27271._ID37557 settext( "O2" );
-        level._ID27271._ID37557._ID55 = var_0;
+        level._ID27271._ID37557.alpha = var_0;
     }
 
     wait 0.05;
@@ -313,9 +313,9 @@ _ID27273()
         if ( self._ID27272 >= 1.0 )
             break;
 
-        level._ID27271._ID55 = var_0;
-        level._ID27271._ID4830._ID55 = var_0;
-        level._ID27271._ID37557._ID55 = var_0;
+        level._ID27271.alpha = var_0;
+        level._ID27271._ID4830.alpha = var_0;
+        level._ID27271._ID37557.alpha = var_0;
         wait 0.05;
     }
 
@@ -327,9 +327,9 @@ _ID27273()
         while ( gettime() - var_3 < var_4 && isdefined( level._ID27271 ) )
         {
             var_5 = 1.0 - float( gettime() - var_3 ) / var_4;
-            level._ID27271._ID55 = var_0 * var_5;
-            level._ID27271._ID4830._ID55 = var_0 * var_5;
-            level._ID27271._ID37557._ID55 = var_0 * var_5;
+            level._ID27271.alpha = var_0 * var_5;
+            level._ID27271._ID4830.alpha = var_0 * var_5;
+            level._ID27271._ID37557.alpha = var_0 * var_5;
             wait 0.05;
         }
 
@@ -350,10 +350,10 @@ _ID27369()
 
     self._ID20511 = 1;
     var_0 = _ID42237::_ID35164();
-    var_0 linktoplayerview( level._ID794, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ), 1 );
+    var_0 linktoplayerview( level.player, "tag_origin", ( 0, 0, 0 ), ( 0, 0, 0 ), 1 );
     _ID42475::_ID34575( "player_drowning_start" );
 
-    if ( self == level._ID794 && isdefined( self._ID12193 ) )
+    if ( self == level.player && isdefined( self._ID12193 ) )
     {
         thread _ID42408::_ID18704( self._ID12193, undefined, undefined, undefined, undefined, 20, undefined, undefined );
         self._ID12193 = undefined;
@@ -364,9 +364,9 @@ _ID27369()
     for (;;)
     {
         if ( isdefined( self._ID12191 ) )
-            self dodamage( self._ID12191, self._ID740 );
+            self dodamage( self._ID12191, self.origin );
         else
-            self dodamage( 25, self._ID740 );
+            self dodamage( 25, self.origin );
 
         playfxontag( _ID42237::_ID16299( "water_vm_gasping_breath" ), var_0, "tag_origin" );
         wait 0.5;

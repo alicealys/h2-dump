@@ -253,10 +253,10 @@ _ID9226()
 {
     precacheshader( "black" );
     level._ID1400 = spawnstruct();
-    level._ID1400._ID458 = spawn( "script_origin", ( 0, 0, 0 ) );
-    level._ID1400._ID458._ID15142 = loadfx( "vfx/explosion/frag_grenade_default" );
-    level._ID1400._ID458._ID34972 = "null";
-    level._ID1400._ID458._ID851 = 256;
+    level._ID1400.grenade = spawn( "script_origin", ( 0, 0, 0 ) );
+    level._ID1400.grenade._ID15142 = loadfx( "vfx/explosion/frag_grenade_default" );
+    level._ID1400.grenade._ID34972 = "null";
+    level._ID1400.grenade.radius = 256;
     wait 0.05;
     _ID42237::_ID14400( "createfx_saving" );
     _ID42237::_ID14400( "createfx_started" );
@@ -335,14 +335,14 @@ _ID19662()
 _ID45273()
 {
     var_0 = spawnstruct();
-    var_0._ID393 = 1.2;
+    var_0.fontscale = 1.2;
     var_0._ID43736 = 17;
     var_1 = spawnstruct();
     var_1._ID47490 = -0.1;
     var_1._ID48450 = 0;
     var_1._ID49103 = 0;
     var_1._ID47861 = -0.002;
-    var_1._ID445 = ( 0, 0, 0 );
+    var_1.glowcolor = ( 0, 0, 0 );
     var_1._ID46934 = 0.5;
     var_1._ID51817 = -0.1;
     var_1._ID46218 = 0;
@@ -355,7 +355,7 @@ _ID45273()
 _ID49974( var_0 )
 {
     var_1 = level._ID1400._ID54031._ID45083;
-    var_0 _meth_8355( var_1._ID47490, var_1._ID48450, var_1._ID49103, var_1._ID47861, var_1._ID445, var_1._ID46934, var_1._ID51817, var_1._ID46218, var_1._ID54057, var_1._ID48466 );
+    var_0 _meth_8355( var_1._ID47490, var_1._ID48450, var_1._ID49103, var_1._ID47861, var_1.glowcolor, var_1._ID46934, var_1._ID51817, var_1._ID46218, var_1._ID54057, var_1._ID48466 );
 }
 
 _ID9246()
@@ -396,18 +396,18 @@ _ID9246()
     _ID42237::_ID14402( "createfx_started" );
 
     if ( !level._ID24495 )
-        var_0 = level._ID794._ID740;
+        var_0 = level.player.origin;
 
     var_1 = undefined;
     level._ID15238 = 0;
     _ID42230::_ID32685( "none" );
     level._ID9239 = 0;
     var_2 = newhudelem();
-    var_2._ID1331 = -120;
-    var_2._ID1339 = 200;
-    var_2._ID408 = 0;
+    var_2.x = -120;
+    var_2.y = 200;
+    var_2.foreground = 0;
     var_2 setshader( "black", 250, 160 );
-    var_2._ID55 = 0;
+    var_2.alpha = 0;
     level._ID9232 = 0;
 
     foreach ( var_4 in level._ID9242 )
@@ -424,12 +424,12 @@ _ID9246()
     for (;;)
     {
         var_7 = 0;
-        var_8 = anglestoright( level._ID794 getplayerangles() );
-        var_9 = anglestoforward( level._ID794 getplayerangles() );
-        var_10 = anglestoup( level._ID794 getplayerangles() );
+        var_8 = anglestoright( level.player getplayerangles() );
+        var_9 = anglestoforward( level.player getplayerangles() );
+        var_10 = anglestoup( level.player getplayerangles() );
         var_11 = 0.85;
         var_12 = var_9 * 750;
-        level._ID9241 = bullettrace( level._ID794 geteye(), level._ID794 geteye() + var_12, 0, undefined );
+        level._ID9241 = bullettrace( level.player geteye(), level.player geteye() + var_12, 0, undefined );
         var_13 = undefined;
         level._ID6491 = [];
         level._ID6481 = [];
@@ -523,7 +523,7 @@ _ID9246()
         for ( var_19 = 0; var_19 < level._ID9242.size; var_19++ )
         {
             var_4 = level._ID9242[var_19];
-            var_20 = level._ID794 _meth_8469();
+            var_20 = level.player _meth_8469();
             var_21 = vectornormalize( var_4._ID40005["origin"] - var_20 );
             var_22 = vectordot( var_9, var_21 );
 
@@ -631,13 +631,13 @@ _ID32415()
     if ( !isdefined( level._ID1400._ID27681 ) )
     {
         var_0 = newhudelem();
-        var_0._ID44 = "left";
-        var_0._ID45 = "bottom";
-        var_0._ID408 = 1;
-        var_0._ID393 = level._ID1400._ID54031._ID393;
-        var_0._ID55 = 1.0;
-        var_0._ID1331 = 0;
-        var_0._ID1339 = 450;
+        var_0.alignx = "left";
+        var_0.aligny = "bottom";
+        var_0.foreground = 1;
+        var_0.fontscale = level._ID1400._ID54031.fontscale;
+        var_0.alpha = 1.0;
+        var_0.x = 0;
+        var_0.y = 450;
         _ID49974( var_0 );
         level._ID1400._ID27681 = var_0;
     }
@@ -777,8 +777,8 @@ _ID22896( var_0, var_1, var_2, var_3, var_4 )
 
 _ID44910( var_0, var_1 )
 {
-    var_2 = level._ID794 _meth_8469();
-    var_3 = level._ID794 getplayerangles();
+    var_2 = level.player _meth_8469();
+    var_3 = level.player getplayerangles();
     var_4 = level._ID1400._ID8283[self._ID40005["type"]][var_1];
     var_5 = 0;
     var_6 = 1;
@@ -976,7 +976,7 @@ _ID17932( var_0 )
             {
                 var_9 = level._ID1400._ID31849[var_7];
 
-                if ( isdefined( var_9._ID669 ) )
+                if ( isdefined( var_9.model ) )
                     continue;
 
                 var_9._ID40005["origin"] = var_9._ID40005["origin"] + var_8;
@@ -1258,7 +1258,7 @@ _ID11698()
         for ( var_2 = 0; var_2 < level._ID9242.size; var_2++ )
         {
             var_3 = level._ID9242[var_2];
-            var_3._ID11742 = distancesquared( level._ID794._ID740, var_3._ID40005["origin"] ) <= var_1;
+            var_3._ID11742 = distancesquared( level.player.origin, var_3._ID40005["origin"] ) <= var_1;
             var_0++;
 
             if ( var_0 > 100 )
@@ -1310,11 +1310,11 @@ _ID30197( var_0, var_1 )
         {
             var_5 = level._ID1400._ID31849[var_4];
 
-            if ( isdefined( var_5._ID669 ) )
+            if ( isdefined( var_5.model ) )
                 continue;
 
-            var_5._ID40005["origin"] = var_1[var_4]._ID740;
-            var_5._ID40005["angles"] = var_1[var_4]._ID65;
+            var_5._ID40005["origin"] = var_1[var_4].origin;
+            var_5._ID40005["angles"] = var_1[var_4].angles;
         }
     }
 }
@@ -1406,7 +1406,7 @@ _ID24361()
     {
         var_4 = level._ID1400._ID31849[var_3];
 
-        if ( isdefined( var_4._ID669 ) )
+        if ( isdefined( var_4.model ) )
             continue;
 
         var_4._ID40005["origin"] = var_4._ID40005["origin"] - var_2;
@@ -1689,7 +1689,7 @@ _ID7897()
 _ID29744()
 {
     for ( var_0 = 0; var_0 < level._ID1400._ID19172; var_0++ )
-        level._ID1400._ID19180[var_0][0]._ID196 = ( 1, 1, 1 );
+        level._ID1400._ID19180[var_0][0].color = ( 1, 1, 1 );
 }
 
 _ID37837( var_0, var_1 )
@@ -1811,7 +1811,7 @@ _ID9225( var_0 )
 
 _ID15967()
 {
-    var_0 = level._ID794 getplayerangles()[1];
+    var_0 = level.player getplayerangles()[1];
     var_1 = ( 0, var_0, 0 );
     var_2 = anglestoright( var_1 );
     var_3 = anglestoforward( var_1 );
@@ -2062,7 +2062,7 @@ _ID28655()
         for ( var_3 = 0; var_3 < level._ID1400._ID31849.size; var_3++ )
         {
             var_2[var_3] = spawn( "script_origin", level._ID1400._ID31849[var_3]._ID40005["origin"] );
-            var_2[var_3]._ID65 = level._ID1400._ID31849[var_3]._ID40005["angles"];
+            var_2[var_3].angles = level._ID1400._ID31849[var_3]._ID40005["angles"];
             var_2[var_3] _meth_8453( var_1 );
         }
 
@@ -2077,7 +2077,7 @@ _ID28655()
         foreach ( var_5 in level._ID1400._ID31849 )
         {
             var_2 = spawn( "script_origin", ( 0, 0, 0 ) );
-            var_2._ID65 = var_5._ID40005["angles"];
+            var_2.angles = var_5._ID40005["angles"];
 
             if ( level._ID31855 != 0 )
                 var_2 addpitch( level._ID31855 );
@@ -2086,7 +2086,7 @@ _ID28655()
             else
                 var_2 addroll( level._ID31856 );
 
-            var_5._ID40005["angles"] = var_2._ID65;
+            var_5._ID40005["angles"] = var_2.angles;
             var_2 delete();
         }
 
@@ -2098,10 +2098,10 @@ _ID28655()
 
 _ID35079()
 {
-    playfx( level._ID1400._ID458._ID15142, level._ID9241["position"] );
-    level._ID1400._ID458 playsound( level._ID1400._ID458._ID34972 );
-    radiusdamage( level._ID9241["position"], level._ID1400._ID458._ID851, 50, 5, undefined, "MOD_EXPLOSIVE" );
-    level notify( "code_damageradius",  undefined, level._ID1400._ID458._ID851, level._ID9241["position"]  );
+    playfx( level._ID1400.grenade._ID15142, level._ID9241["position"] );
+    level._ID1400.grenade playsound( level._ID1400.grenade._ID34972 );
+    radiusdamage( level._ID9241["position"], level._ID1400.grenade.radius, 50, 5, undefined, "MOD_EXPLOSIVE" );
+    level notify( "code_damageradius",  undefined, level._ID1400.grenade.radius, level._ID9241["position"]  );
 }
 
 _ID34010()
@@ -2137,10 +2137,10 @@ _ID41825( var_0, var_1 )
 
     if ( getdvarint( "scr_map_exploder_dump" ) )
     {
-        if ( !isdefined( var_0._ID669 ) )
+        if ( !isdefined( var_0.model ) )
             return;
     }
-    else if ( isdefined( var_0._ID669 ) )
+    else if ( isdefined( var_0.model ) )
         return;
 
     if ( var_0._ID40005["type"] == "loopfx" )
@@ -2506,13 +2506,13 @@ _ID1853( var_0 )
 
     if ( !isdefined( level._ID6493[var_0] ) )
     {
-        if ( level._ID794 buttonpressed( var_0 ) )
+        if ( level.player buttonpressed( var_0 ) )
         {
             level._ID6493[var_0] = 1;
             level._ID6491[var_0] = 1;
         }
     }
-    else if ( !level._ID794 buttonpressed( var_0 ) )
+    else if ( !level.player buttonpressed( var_0 ) )
         level._ID6493[var_0] = undefined;
 }
 
@@ -2535,7 +2535,7 @@ _ID6501( var_0 )
     if ( _ID21206( var_0 ) )
         return 0;
 
-    return level._ID794 buttonpressed( var_0 );
+    return level.player buttonpressed( var_0 );
 }
 
 _ID6480( var_0, var_1 )
@@ -2565,20 +2565,20 @@ _ID19713()
     level._ID1400._ID19180 = [];
     level._ID1400._ID19172 = 30;
     level._ID7949 = newhudelem();
-    level._ID7949._ID55 = 0;
+    level._ID7949.alpha = 0;
 
     for ( var_0 = 0; var_0 < level._ID1400._ID19172; var_0++ )
     {
         var_1 = [];
         var_2 = newhudelem();
-        var_2._ID44 = "left";
+        var_2.alignx = "left";
         var_2._ID22519 = 0;
-        var_2._ID408 = 1;
-        var_2._ID393 = level._ID1400._ID54031._ID393;
-        var_2._ID983 = 20;
-        var_2._ID55 = 1;
-        var_2._ID1331 = 0;
-        var_2._ID1339 = 30 + var_0 * level._ID1400._ID54031._ID43736;
+        var_2.foreground = 1;
+        var_2.fontscale = level._ID1400._ID54031.fontscale;
+        var_2.sort = 20;
+        var_2.alpha = 1;
+        var_2.x = 0;
+        var_2.y = 30 + var_0 * level._ID1400._ID54031._ID43736;
         _ID49974( var_2 );
         var_1[var_1.size] = var_2;
         level._ID1400._ID19180[var_0] = var_1;
@@ -2589,14 +2589,14 @@ _ID19713()
     for ( var_0 = 0; var_0 < 5; var_0++ )
     {
         var_2 = newhudelem();
-        var_2._ID44 = "center";
+        var_2.alignx = "center";
         var_2._ID22519 = 0;
-        var_2._ID408 = 1;
-        var_2._ID393 = level._ID1400._ID54031._ID393;
-        var_2._ID983 = 20;
-        var_2._ID55 = 1;
-        var_2._ID1331 = 320;
-        var_2._ID1339 = 280 + var_0 * level._ID1400._ID54031._ID43736;
+        var_2.foreground = 1;
+        var_2.fontscale = level._ID1400._ID54031.fontscale;
+        var_2.sort = 20;
+        var_2.alpha = 1;
+        var_2.x = 320;
+        var_2.y = 280 + var_0 * level._ID1400._ID54031._ID43736;
         _ID49974( var_2 );
         var_1[var_1.size] = var_2;
     }
@@ -2608,14 +2608,14 @@ _ID19665()
 {
     var_0 = newhudelem();
     var_0._ID22519 = 0;
-    var_0._ID44 = "center";
-    var_0._ID45 = "middle";
-    var_0._ID408 = 1;
-    var_0._ID393 = 2;
-    var_0._ID983 = 20;
-    var_0._ID55 = 1;
-    var_0._ID1331 = 320;
-    var_0._ID1339 = 233;
+    var_0.alignx = "center";
+    var_0.aligny = "middle";
+    var_0.foreground = 1;
+    var_0.fontscale = 2;
+    var_0.sort = 20;
+    var_0.alpha = 1;
+    var_0.x = 320;
+    var_0.y = 233;
 }
 
 _ID7868()
@@ -2682,14 +2682,14 @@ _ID7902()
 _ID24749( var_0 )
 {
     var_1 = newhudelem();
-    var_1._ID44 = "left";
-    var_1._ID45 = "bottom";
+    var_1.alignx = "left";
+    var_1.aligny = "bottom";
     var_1._ID22519 = 0;
-    var_1._ID408 = 1;
-    var_1._ID393 = level._ID1400._ID54031._ID393;
-    var_1._ID55 = 1;
-    var_1._ID1331 = 0;
-    var_1._ID1339 = 350 + var_0 * level._ID1400._ID54031._ID43736;
+    var_1.foreground = 1;
+    var_1.fontscale = level._ID1400._ID54031.fontscale;
+    var_1.alpha = 1;
+    var_1.x = 0;
+    var_1.y = 350 + var_0 * level._ID1400._ID54031._ID43736;
     _ID49974( var_1 );
     return var_1;
 }
@@ -2720,8 +2720,8 @@ _ID32478( var_0, var_1, var_2 )
         else
         {
             var_4 = _ID24749( level._ID1400._ID37870.size );
-            var_4._ID1331 = var_4._ID1331 + 130;
-            var_4._ID1339 = var_3._ID1339;
+            var_4.x = var_4.x + 130;
+            var_4.y = var_3.y;
             var_3._ID40023 = var_4;
         }
 
@@ -2733,7 +2733,7 @@ _ID32478( var_0, var_1, var_2 )
         if ( !isdefined( var_2 ) )
             var_2 = ( 1, 1, 1 );
 
-        var_4._ID196 = var_2;
+        var_4.color = var_2;
     }
 }
 
@@ -2829,11 +2829,11 @@ _ID14864()
         var_1 = 200;
     }
 
-    var_2 = anglestoforward( level._ID794 getplayerangles() );
+    var_2 = anglestoforward( level.player getplayerangles() );
     var_3 = var_2 * ( -1 * var_1 );
-    var_4 = level._ID794 geteye();
-    var_5 = var_4 - level._ID794._ID740;
-    level._ID794 setorigin( var_0 + var_3 - var_5 );
+    var_4 = level.player geteye();
+    var_5 = var_4 - level.player.origin;
+    level.player setorigin( var_0 + var_3 - var_5 );
 }
 
 _ID7833()
@@ -2958,7 +2958,7 @@ _ID8669( var_0 )
 
                 var_3._ID40005["kill_on_delete"] = var_0[var_2]._ID40005["kill_on_delete"];
                 var_3._ID40005["ignore_fx_volume_groups"] = var_0[var_2]._ID40005["ignore_fx_volume_groups"];
-                var_3._ID669 = var_0[var_2]._ID669;
+                var_3.model = var_0[var_2].model;
                 var_1[var_2] = var_3;
             }
 
@@ -2976,7 +2976,7 @@ _ID29622( var_0 )
 
     foreach ( var_4, var_3 in level._ID9242 )
     {
-        if ( isdefined( var_3._ID669 ) && var_3._ID669 == var_0 )
+        if ( isdefined( var_3.model ) && var_3.model == var_0 )
             continue;
 
         var_1[var_1.size] = var_3;
@@ -3023,13 +3023,13 @@ _ID54634( var_0, var_1 )
 {
     var_2 = 0;
 
-    switch ( var_1._ID1244 )
+    switch ( var_1.type )
     {
         case "info_volume":
             if ( !isdefined( level._ID44322 ) )
                 level._ID44322 = spawn( "script_origin", ( 0, 0, 0 ) );
 
-            level._ID44322._ID740 = var_0;
+            level._ID44322.origin = var_0;
             var_2 = level._ID44322 istouching( var_1._ID52337 );
             break;
         default:

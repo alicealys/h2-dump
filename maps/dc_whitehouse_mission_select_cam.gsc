@@ -13,12 +13,12 @@ _ID49243()
 {
     var_0 = ( -5846.4, 7955.9, -150.6 );
     var_1 = ( 5.1, 39.5, 0 );
-    level._ID794 setorigin( var_0 );
-    level._ID794 setplayerangles( var_1 );
-    level._ID794 lerpfov( 85, 0.1 );
-    level._ID794._ID511 = 1;
+    level.player setorigin( var_0 );
+    level.player setplayerangles( var_1 );
+    level.player lerpfov( 85, 0.1 );
+    level.player.ignoreme = 1;
     setsaveddvar( "hud_drawhud", 0 );
     level _ID42407::_ID40561( "dc_whitehouse", 0 );
-    level._ID794 _ID42407::_ID40561( "dc_whitehouse", 0 );
-    level._ID794 lightset( "dc_whitehouse" );
+    level.player _ID42407::_ID40561( "dc_whitehouse", 0 );
+    level.player lightset( "dc_whitehouse" );
 }

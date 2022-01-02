@@ -70,9 +70,9 @@ _ID9671( var_0, var_1, var_2 )
 _ID9659( var_0, var_1, var_2, var_3, var_4 )
 {
     var_5 = spawnstruct();
-    var_5._ID680 = var_0;
+    var_5.name = var_0;
     var_5._ID28188 = var_1;
-    var_5._ID578 = var_2;
+    var_5.label = var_2;
     var_5._ID23589 = var_3;
     var_5._ID23039 = var_4;
     return var_5;
@@ -94,7 +94,7 @@ _ID9696( var_0, var_1, var_2, var_3, var_4, var_5 )
 
     for (;;)
     {
-        var_8 = distance( level._ID794._ID740, var_1 );
+        var_8 = distance( level.player.origin, var_1 );
 
         if ( var_8 < var_3 )
         {
@@ -266,7 +266,7 @@ _ID9658( var_0, var_1, var_2, var_3 )
 
         var_5 = level._ID1374._ID9654._ID809[var_4][var_0]["linked_dambs"].size;
         level._ID1374._ID9654._ID809[var_4][var_0]["linked_dambs"][var_5] = spawnstruct();
-        level._ID1374._ID9654._ID809[var_4][var_0]["linked_dambs"][var_5]._ID680 = var_1;
+        level._ID1374._ID9654._ID809[var_4][var_0]["linked_dambs"][var_5].name = var_1;
         level._ID1374._ID9654._ID809[var_4][var_0]["linked_dambs"][var_5]._ID23589 = max( var_2, 0 );
         level._ID1374._ID9654._ID809[var_4][var_0]["linked_dambs"][var_5]._ID23039 = max( var_3, 0 );
     }
@@ -316,16 +316,16 @@ _ID9705( var_0, var_1 )
     {
         foreach ( var_3 in var_1 )
         {
-            _ID9706( "free", var_3._ID680, var_3._ID578, undefined, var_3._ID28188 );
-            _ID9661( var_3._ID578 );
-            _ID9658( var_0, var_3._ID578, var_3._ID23589, var_3._ID23039 );
+            _ID9706( "free", var_3.name, var_3.label, undefined, var_3._ID28188 );
+            _ID9661( var_3.label );
+            _ID9658( var_0, var_3.label, var_3._ID23589, var_3._ID23039 );
         }
     }
     else
     {
-        _ID9706( "free", var_1._ID680, var_1._ID578, undefined, var_1._ID28188 );
-        _ID9661( var_1._ID578 );
-        _ID9658( var_0, var_1._ID578, var_1._ID23589, var_1._ID23039 );
+        _ID9706( "free", var_1.name, var_1.label, undefined, var_1._ID28188 );
+        _ID9661( var_1.label );
+        _ID9658( var_0, var_1.label, var_1._ID23589, var_1._ID23039 );
     }
 }
 
@@ -426,11 +426,11 @@ _ID9704( var_0, var_1, var_2, var_3, var_4 )
             var_7 = undefined;
 
             if ( isdefined( var_4 ) )
-                var_7 = spawn( "script_origin", var_4._ID740 );
+                var_7 = spawn( "script_origin", var_4.origin );
             else if ( isdefined( var_3 ) )
                 var_7 = spawn( "script_origin", var_3 );
             else
-                var_7 = spawn( "script_origin", level._ID794._ID740 );
+                var_7 = spawn( "script_origin", level.player.origin );
 
             level._ID1374._ID9654._ID22640++;
             var_7 playloopsound( var_6 );
@@ -584,7 +584,7 @@ _ID9680( var_0, var_1, var_2, var_3 )
                 {
                     var_9 = randomfloatrange( var_0._ID23591, var_0._ID23041 );
                     var_9 *= 0.5;
-                    var_10 = level._ID794._ID740;
+                    var_10 = level.player.origin;
 
                     if ( isdefined( var_3 ) )
                         var_10 = var_3;
@@ -666,7 +666,7 @@ _ID9709( var_0, var_1, var_2, var_3 )
                 foreach ( var_7 in level._ID1374._ID9654._ID809[var_0][var_1]["linked_dambs"] )
                 {
                     var_8 = randomfloatrange( var_7._ID23589, var_7._ID23039 );
-                    thread _ID9708( var_7._ID680, var_8 );
+                    thread _ID9708( var_7.name, var_8 );
                 }
             }
 
@@ -707,10 +707,10 @@ _ID9700( var_0, var_1, var_2 )
 _ID9699( var_0, var_1, var_2 )
 {
     level endon( var_0 + "_" + var_1 + "_stop" );
-    var_3 = level._ID794._ID740;
+    var_3 = level.player.origin;
 
     if ( isdefined( var_2._ID13016 ) )
-        var_3 = var_2._ID13016._ID740;
+        var_3 = var_2._ID13016.origin;
     else if ( isdefined( var_2._ID28188 ) )
         var_3 = var_2._ID28188;
 
@@ -766,10 +766,10 @@ _ID9698( var_0, var_1, var_2 )
 
     if ( level._ID1374._ID9654._ID13081 < level._ID1374._ID9654._ID23047 )
     {
-        var_3 = level._ID794._ID740;
+        var_3 = level.player.origin;
 
         if ( isdefined( var_2._ID13016 ) )
-            var_3 = var_2._ID13016._ID740;
+            var_3 = var_2._ID13016.origin;
         else if ( isdefined( var_2._ID28188 ) )
             var_3 = var_2._ID28188;
 
@@ -844,7 +844,7 @@ _ID9698( var_0, var_1, var_2 )
                 {
                     if ( isdefined( var_12 ) )
                     {
-                        var_17 = spawn( "script_origin", var_13._ID740 );
+                        var_17 = spawn( "script_origin", var_13.origin );
                         var_17 playsound( var_12, "sounddone" );
                         var_18 = level._ID1374._ID9654._ID25756;
                         level._ID1374._ID9654._ID25756++;

@@ -11,7 +11,7 @@ _ID44743()
 _ID48131()
 {
     self endon( "death" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     self._ID26175._ID3189 = "technical";
     self._ID3189 = "50cal";
 
@@ -31,7 +31,7 @@ _ID48131()
 
 _ID43644()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     self endon( "turretownerchange" );
     var_0 = 0;
     var_1 = 1;
@@ -41,7 +41,7 @@ _ID43644()
         var_0 = 0;
         var_2 = getdvarfloat( "player_MGUseRadius" );
 
-        if ( distancesquared( level._ID794._ID740, self._ID740 ) <= var_2 * var_2 )
+        if ( distancesquared( level.player.origin, self.origin ) <= var_2 * var_2 )
         {
             var_3 = _ID51204();
             var_4 = var_3[0];
@@ -86,66 +86,66 @@ _ID51892( var_0 )
     if ( !isdefined( var_2 ) )
         return;
 
-    level._ID794 freezecontrols( 1 );
-    level._ID794 enabledeathshield( 1 );
+    level.player freezecontrols( 1 );
+    level.player enabledeathshield( 1 );
     var_0 thread turret_monitor_player_death();
-    level._ID794 setstance( "stand", 1 );
+    level.player setstance( "stand", 1 );
     setsaveddvar( "actionSlotsHide", 1 );
     setsaveddvar( "hud_showStance", 0 );
     setsaveddvar( "ammoCounterHide", 1 );
     setsaveddvar( "compass", 0 );
-    level._ID794 disableweapons( 1, 200, 0.1 );
-    level._ID794._ID46714 = getdvarfloat( "cg_fov" );
-    level._ID794 lerpfov( getstarttime(), getanimlength( _ID42407::_ID16120( var_2 ) ) );
+    level.player disableweapons( 1, 200, 0.1 );
+    level.player._ID46714 = getdvarfloat( "cg_fov" );
+    level.player lerpfov( getstarttime(), getanimlength( _ID42407::_ID16120( var_2 ) ) );
     var_4 = [ self ];
 
     if ( var_0 vehicle_getspeed() == 0 )
         var_4[var_4.size] = var_0;
 
-    level._ID794._ID49929 = _ID42407::_ID35028( "worldbody" );
-    level._ID794._ID49929 hide();
-    var_4[var_4.size] = level._ID794._ID49929;
-    level._ID794._ID49929 linkto( var_0 );
-    level._ID794._ID49929.anim_to_play = var_2;
-    var_0 _ID42259::_ID3018( level._ID794._ID49929, var_2 );
+    level.player._ID49929 = _ID42407::_ID35028( "worldbody" );
+    level.player._ID49929 hide();
+    var_4[var_4.size] = level.player._ID49929;
+    level.player._ID49929 linkto( var_0 );
+    level.player._ID49929.anim_to_play = var_2;
+    var_0 _ID42259::_ID3018( level.player._ID49929, var_2 );
     var_0 thread _ID42259::_ID3099( var_4, var_2 );
-    level._ID794 playerlinktoblend( level._ID794._ID49929, "tag_player", var_3 );
+    level.player playerlinktoblend( level.player._ID49929, "tag_player", var_3 );
     wait(var_3);
-    level._ID794._ID49929 show();
-    wait(getanimlength( level._ID794._ID49929 _ID42407::_ID16120( var_2 ) ));
+    level.player._ID49929 show();
+    wait(getanimlength( level.player._ID49929 _ID42407::_ID16120( var_2 ) ));
     self clearanim( _ID42407::_ID16120( var_2 ), 0 );
-    level._ID794 unlink();
-    level._ID794._ID49929 delete();
+    level.player unlink();
+    level.player._ID49929 delete();
     self _meth_8580();
     self dontcastshadows();
     thread _ID53616();
-    level._ID794 enabledeathshield( 0 );
+    level.player enabledeathshield( 0 );
     var_0 notify( "turret_player_use_end" );
 }
 
 _ID49806( var_0 )
 {
     var_1 = self _meth_85b2();
-    level._ID794 enabledeathshield( 1 );
+    level.player enabledeathshield( 1 );
     var_0 thread turret_monitor_player_death();
     self castshadows();
-    level._ID794 lerpfov( level._ID794._ID46714, 0.5 );
-    level._ID794._ID46714 = undefined;
-    level._ID794._ID49929 = _ID42407::_ID35028( "worldbody", level._ID794._ID740, level._ID794 getplayerangles() );
-    level._ID794._ID49929 hide();
-    level._ID794._ID49929 _ID42259::_ID3018( level._ID794._ID49929, "turret_technical_get_out" );
-    level._ID794._ID49929 linkto( self, "tag_player", ( 0, 0, -60 ), ( 0, 0, 0 ) );
-    level._ID794 playerlinktoabsolute( level._ID794._ID49929, "tag_player" );
-    level._ID794._ID49929 show();
+    level.player lerpfov( level.player._ID46714, 0.5 );
+    level.player._ID46714 = undefined;
+    level.player._ID49929 = _ID42407::_ID35028( "worldbody", level.player.origin, level.player getplayerangles() );
+    level.player._ID49929 hide();
+    level.player._ID49929 _ID42259::_ID3018( level.player._ID49929, "turret_technical_get_out" );
+    level.player._ID49929 linkto( self, "tag_player", ( 0, 0, -60 ), ( 0, 0, 0 ) );
+    level.player playerlinktoabsolute( level.player._ID49929, "tag_player" );
+    level.player._ID49929 show();
     self setdefaultdroppitch( 0 );
     self _meth_8581();
     self waittill( "turret_returned_to_default" );
-    level._ID794._ID49929 _ID42259::_ID3111( level._ID794._ID49929, "turret_technical_get_out" );
-    level._ID794 unlink();
-    level._ID794._ID49929 delete();
-    level._ID794 enableweapons();
+    level.player._ID49929 _ID42259::_ID3111( level.player._ID49929, "turret_technical_get_out" );
+    level.player unlink();
+    level.player._ID49929 delete();
+    level.player enableweapons();
     self setdefaultdroppitch( var_1 );
-    level._ID794 enabledeathshield( 0 );
+    level.player enabledeathshield( 0 );
     setsaveddvar( "actionSlotsHide", 0 );
     setsaveddvar( "hud_showStance", 1 );
     setsaveddvar( "ammoCounterHide", 0 );
@@ -162,9 +162,9 @@ _ID51204( var_0 )
     var_1 = undefined;
     var_2 = undefined;
     var_3 = self._ID26175;
-    var_4 = vectornormalize( _ID42407::_ID32530( self._ID740 - level._ID794._ID740, 0 ) );
-    var_5 = anglestoforward( self._ID65 );
-    var_6 = anglestoright( self._ID65 );
+    var_4 = vectornormalize( _ID42407::_ID32530( self.origin - level.player.origin, 0 ) );
+    var_5 = anglestoforward( self.angles );
+    var_6 = anglestoright( self.angles );
     var_7 = vectordot( var_4, var_5 );
     var_8 = vectordot( var_4, var_6 );
     var_9 = 0;
@@ -178,9 +178,9 @@ _ID51204( var_0 )
     else
         var_1 = "right";
 
-    if ( distancesquared( level._ID794._ID740, self._ID740 ) > 7569 )
+    if ( distancesquared( level.player.origin, self.origin ) > 7569 )
         var_2 = "under";
-    else if ( abs( level._ID794._ID740[2] - self._ID740[2] ) < 50 )
+    else if ( abs( level.player.origin[2] - self.origin[2] ) < 50 )
         var_2 = "middle";
     else
         var_2 = "under";
@@ -237,7 +237,7 @@ _ID44842( var_0, var_1 )
         var_2 += "_fast";
 
     if ( isdefined( var_1 ) )
-        var_1._ID65 = _ID42407::_ID32529( var_1._ID65, angleclamp180( var_1._ID65[1] + var_7 ) );
+        var_1.angles = _ID42407::_ID32529( var_1.angles, angleclamp180( var_1.angles[1] + var_7 ) );
 
     return [ var_2, var_3 ];
 }
@@ -292,7 +292,7 @@ _ID48384( var_0 )
 
 _ID49622()
 {
-    return level._ID794 attackbuttonpressed();
+    return level.player attackbuttonpressed();
 }
 
 _ID54251( var_0 )
@@ -369,7 +369,7 @@ turret_monitor_player_death()
 {
     self endon( "turret_player_use_end" );
     self endon( "turret_player_drop_end" );
-    var_0 = level._ID794;
+    var_0 = level.player;
 
     for (;;)
     {

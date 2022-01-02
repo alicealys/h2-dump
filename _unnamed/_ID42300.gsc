@@ -36,12 +36,12 @@ _ID16944( var_0, var_1, var_2, var_3, var_4 )
         if ( !isdefined( level._ID1426[var_3] ) )
             level._ID1426[var_3] = loadfx( var_1 );
 
-        if ( !isdefined( var_8._ID65 ) )
-            var_8._ID65 = ( 0, 0, 0 );
+        if ( !isdefined( var_8.angles ) )
+            var_8.angles = ( 0, 0, 0 );
 
         var_9 = _ID42237::_ID9265( var_3 );
-        var_9._ID40005["origin"] = var_8._ID740;
-        var_9._ID40005["angles"] = var_8._ID65;
+        var_9._ID40005["origin"] = var_8.origin;
+        var_9._ID40005["angles"] = var_8.angles;
         var_9._ID40005["fxid"] = var_3;
         var_9._ID40005["delay"] = var_2;
 
@@ -51,10 +51,10 @@ _ID16944( var_0, var_1, var_2, var_3, var_4 )
             var_9._ID40005["stopable"] = 1;
         }
 
-        if ( !isdefined( var_8._ID922 ) )
+        if ( !isdefined( var_8.script_noteworthy ) )
             continue;
 
-        var_10 = var_8._ID922;
+        var_10 = var_8.script_noteworthy;
 
         if ( !isdefined( level._ID1478[var_10] ) )
             level._ID1478[var_10] = [];
@@ -63,7 +63,7 @@ _ID16944( var_0, var_1, var_2, var_3, var_4 )
     }
 }
 
-_ID521()
+init()
 {
     if ( !isdefined( level._ID16944 ) )
         level._ID16944 = [];

@@ -18,7 +18,7 @@ _ID11621()
         wait 0.2;
     }
 
-    var_1 = var_0._ID1244 == "Door Interior" || self comparenodedirtopathdir( var_0 );
+    var_1 = var_0.type == "Door Interior" || self comparenodedirtopathdir( var_0 );
 
     if ( var_1 )
         _ID11618( var_0 );
@@ -51,7 +51,7 @@ _ID11316( var_0 )
 {
     thread _ID37363();
 
-    if ( self._ID470 == "flash_grenade" )
+    if ( self.grenadeweapon == "flash_grenade" )
         self notify( "flashbang_thrown" );
 
     self orientmode( "face current" );
@@ -64,7 +64,7 @@ _ID11316( var_0 )
     self waittill( "done_grenade_throw" );
     self orientmode( "face default" );
     self._ID23677 = gettime() + 5000;
-    self._ID470 = self._ID25556;
+    self.grenadeweapon = self._ID25556;
     self._ID25556 = undefined;
     animscripts\run::_ID12640();
     thread animscripts\move::_ID26332();
@@ -77,18 +77,18 @@ _ID11620( var_0, var_1, var_2, var_3, var_4 )
     var_6 = 3;
     var_7 = undefined;
     var_7 = %cqb_stand_grenade_throw;
-    var_8 = anglestoforward( var_0._ID65 );
+    var_8 = anglestoforward( var_0.angles );
 
-    if ( var_0._ID1244 == "Door Interior" && !self comparenodedirtopathdir( var_0 ) )
+    if ( var_0.type == "Door Interior" && !self comparenodedirtopathdir( var_0 ) )
         var_8 = -1 * var_8;
 
-    var_9 = ( var_0._ID740[0], var_0._ID740[1], var_0._ID740[2] + 64 );
+    var_9 = ( var_0.origin[0], var_0.origin[1], var_0.origin[2] + 64 );
     var_10 = var_9;
 
     if ( var_2 )
     {
-        var_11 = anglestoright( var_0._ID65 );
-        var_12 = var_0._ID740 - self._ID740;
+        var_11 = anglestoright( var_0.angles );
+        var_12 = var_0.origin - self.origin;
         var_13 = vectordot( var_11, var_12 );
 
         if ( var_13 > 20 )
@@ -101,13 +101,13 @@ _ID11620( var_0, var_1, var_2, var_3, var_4 )
 
     while ( var_6 > 0 )
     {
-        if ( isdefined( self._ID458 ) || !isdefined( self._ID322 ) )
+        if ( isdefined( self.grenade ) || !isdefined( self.enemy ) )
             return;
 
         if ( _ID25832( var_0, var_8 ) )
             return;
 
-        if ( !self seerecently( self._ID322, 0.2 ) && self._ID7._ID28253 == "stand" && _ID11133( self._ID322._ID740 - var_0._ID740, 360000, 16384 ) )
+        if ( !self seerecently( self.enemy, 0.2 ) && self._ID7._ID28253 == "stand" && _ID11133( self.enemy.origin - var_0.origin, 360000, 16384 ) )
         {
             if ( isdefined( var_0._ID24780 ) && var_0._ID24780 > gettime() )
                 return;
@@ -115,7 +115,7 @@ _ID11620( var_0, var_1, var_2, var_3, var_4 )
             if ( self canshootenemy() )
                 return;
 
-            var_12 = var_0._ID740 - self._ID740;
+            var_12 = var_0.origin - self.origin;
 
             if ( lengthsquared( var_12 ) < var_3 )
                 return;
@@ -123,21 +123,21 @@ _ID11620( var_0, var_1, var_2, var_3, var_4 )
             if ( vectordot( var_12, var_8 ) < 0 )
                 return;
 
-            self._ID25556 = self._ID470;
-            self._ID470 = var_1;
-            animscripts\combat_utility::_ID32536( self._ID322 );
+            self._ID25556 = self.grenadeweapon;
+            self.grenadeweapon = var_1;
+            animscripts\combat_utility::_ID32536( self.enemy );
 
             if ( !var_5 )
             {
                 var_14 = var_9 + var_8 * 100;
 
-                if ( !self isgrenadepossafe( self._ID322, var_14, 128 ) )
+                if ( !self isgrenadepossafe( self.enemy, var_14, 128 ) )
                     return;
             }
 
             var_5 = 1;
 
-            if ( animscripts\combat_utility::_ID39074( self._ID322, var_10, var_7, animscripts\combat_utility::_ID16308( var_7 ), 1, 0, 1 ) )
+            if ( animscripts\combat_utility::_ID39074( self.enemy, var_10, var_7, animscripts\combat_utility::_ID16308( var_7 ), 1, 0, 1 ) )
             {
                 _ID11316( var_0 );
                 return;
@@ -164,7 +164,7 @@ _ID19529()
 
     for (;;)
     {
-        if ( self isindoor() && !self._ID302 )
+        if ( self isindoor() && !self.doingambush )
             _ID11619();
         else if ( !isdefined( self._ID23677 ) || self._ID23677 < gettime() )
         {
@@ -178,7 +178,7 @@ _ID19529()
 
 _ID11619()
 {
-    if ( !isdefined( self._ID24727 ) && !self._ID302 )
+    if ( !isdefined( self._ID24727 ) && !self.doingambush )
     {
         self._ID20777 = 1;
 
@@ -205,8 +205,8 @@ _ID11133( var_0, var_1, var_2 )
 
 _ID25832( var_0, var_1 )
 {
-    var_2 = var_0._ID740 - self._ID740;
-    var_3 = var_0._ID740 - self._ID322._ID740;
+    var_2 = var_0.origin - self.origin;
+    var_3 = var_0.origin - self.enemy.origin;
     return vectordot( var_2, var_1 ) * vectordot( var_3, var_1 ) > 0;
 }
 
@@ -217,7 +217,7 @@ _ID11618( var_0 )
         if ( isdefined( self._ID11625 ) && ( self._ID11625 == 0 || self._ID11625 < randomfloat( 1 ) ) )
             break;
 
-        if ( _ID11133( self._ID740 - var_0._ID740, 562500, 25600 ) )
+        if ( _ID11133( self.origin - var_0.origin, 562500, 25600 ) )
         {
             _ID11620( var_0, "fraggrenade", 0, 302500, 0.3 );
             var_0 = self getdoorpathnode();
@@ -233,7 +233,7 @@ _ID11618( var_0 )
 
     for (;;)
     {
-        if ( _ID11133( self._ID740 - var_0._ID740, 36864, 6400 ) )
+        if ( _ID11133( self.origin - var_0.origin, 36864, 6400 ) )
         {
             _ID11619();
             self._ID23677 = gettime() + 6000;
@@ -253,7 +253,7 @@ _ID11622( var_0 )
 {
     for (;;)
     {
-        if ( !self._ID20777 || distancesquared( self._ID740, var_0._ID740 ) < 1024 )
+        if ( !self._ID20777 || distancesquared( self.origin, var_0.origin ) < 1024 )
             return;
 
         wait 0.1;

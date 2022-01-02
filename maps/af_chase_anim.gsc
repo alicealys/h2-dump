@@ -5,7 +5,7 @@ _ID43266()
 {
     _ID49815();
 
-    if ( level._ID912 == "ending" )
+    if ( level.script == "ending" )
     {
         _ID27229();
         chicken_anims();
@@ -25,7 +25,7 @@ _ID46085()
     level._ID30895["player_body"]["price_wakeup"] = %afchase_ending_player_body;
     level._ID30900["worldbody"] = #animtree;
 
-    if ( level._ID912 == "ending" )
+    if ( level.script == "ending" )
         level._ID30904["worldbody"] = "viewbody_tf141_wet";
     else
         level._ID30904["worldbody"] = "viewbody_tf141";
@@ -435,14 +435,14 @@ h2_impaled_aims_at_player()
     var_6 = 58;
     self setanimlimited( var_2, 1, 0, 1 );
     self setanimlimited( var_3, 1, 0, 1 );
-    var_7 = anglestoforward( self._ID65 );
+    var_7 = anglestoforward( self.angles );
     var_7 = vectornormalize( var_7 * ( 1, 1, 0 ) );
-    var_8 = anglestoright( self._ID65 );
+    var_8 = anglestoright( self.angles );
     var_8 = vectornormalize( var_8 * ( 1, 1, 0 ) );
 
     for (;;)
     {
-        var_9 = level._ID794._ID740 - self._ID740;
+        var_9 = level.player.origin - self.origin;
         var_9 = vectornormalize( var_9 * ( 1, 1, 0 ) );
         var_10 = vectordot( var_7, var_9 );
         var_11 = vectordot( var_8, var_9 );
@@ -492,10 +492,10 @@ _ID46638()
 
     for (;;)
     {
-        var_4 = anglestoright( self._ID65 );
-        var_5 = vectornormalize( level._ID794._ID740 - self._ID740 );
-        var_6 = anglestoforward( self._ID65 );
-        var_4 = anglestoright( self._ID65 );
+        var_4 = anglestoright( self.angles );
+        var_5 = vectornormalize( level.player.origin - self.origin );
+        var_6 = anglestoforward( self.angles );
+        var_4 = anglestoright( self.angles );
         var_7 = vectordot( var_6, var_5 );
         var_8 = vectordot( var_4, var_5 );
         var_9 = acos( var_7 );
@@ -539,10 +539,10 @@ _ID50978()
 
     for (;;)
     {
-        var_4 = anglestoright( self._ID65 );
-        var_5 = vectornormalize( level._ID794._ID740 - self._ID740 );
-        var_6 = anglestoforward( self._ID65 );
-        var_4 = anglestoright( self._ID65 );
+        var_4 = anglestoright( self.angles );
+        var_5 = vectornormalize( level.player.origin - self.origin );
+        var_6 = anglestoforward( self.angles );
+        var_4 = anglestoright( self.angles );
         var_7 = vectordot( var_6, var_5 );
         var_8 = vectordot( var_4, var_5 );
         var_9 = acos( var_7 );
@@ -674,37 +674,37 @@ _ID49714( var_0 )
 
 _ID51539( var_0 )
 {
-    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level.player playrumblelooponentity( "damage_heavy" );
     thread maps\ending_aud::_ID51899();
-    level._ID794 shellshock( "af_chase_ending_kill", 60 );
+    level.player shellshock( "af_chase_ending_kill", 60 );
 }
 
 _ID51184( var_0 )
 {
-    level._ID794 playrumblelooponentity( "damage_light" );
+    level.player playrumblelooponentity( "damage_light" );
     var_1 = maps\af_chase_knife_fight_code::_ID16077();
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
     var_1 fadeovertime( 1.0 );
-    var_1._ID55 = 0.0;
-    level._ID794 stopshellshock();
+    var_1.alpha = 0.0;
+    level.player stopshellshock();
     setblur( 0, 2 );
     _ID42407::_ID32515( "ending_fight", 1 );
     _ID42407::_ID14689( "ending_fight", 1 );
-    level._ID794 _ID42407::_ID48929( "ending_fight" );
-    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level.player _ID42407::_ID48929( "ending_fight" );
+    level.player playrumblelooponentity( "damage_heavy" );
     setomnvar( "ui_consciousness_init", 1 );
     setomnvar( "ui_consciousness_play", 2 );
 }
 
 _ID47060( var_0 )
 {
-    level._ID794 playrumblelooponentity( "damage_heavy" );
-    level._ID794 dodamage( 50 / level._ID794._ID255, level._ID794._ID740 );
-    level._ID794 thread _ID42407::_ID27079( "face_stomp" );
+    level.player playrumblelooponentity( "damage_heavy" );
+    level.player dodamage( 50 / level.player.damagemultiplier, level.player.origin );
+    level.player thread _ID42407::_ID27079( "face_stomp" );
     maps\af_chase_knife_fight_code::_ID52796( "af_chase_turn_buckle_slam" );
-    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level.player playrumblelooponentity( "damage_heavy" );
     wait 0.05;
-    level._ID794 setnormalhealth( 1 );
+    level.player setnormalhealth( 1 );
 }
 #using_animtree("script_model");
 
@@ -761,7 +761,7 @@ _ID51346()
 
 _ID49808( var_0 )
 {
-    level._ID794 playrumblelooponentity( "damage_heavy" );
+    level.player playrumblelooponentity( "damage_heavy" );
 }
 
 _ID13798( var_0 )
@@ -866,13 +866,13 @@ _ID45586()
 
 _ID47047( var_0 )
 {
-    if ( isdefined( level._ID794._ID50619 ) )
+    if ( isdefined( level.player._ID50619 ) )
         return;
 
-    level._ID794 takeweapon( "ending_knife" );
-    level._ID794 giveweapon( "ending_knife_bloody" );
-    level._ID794 switchtoweapon( "ending_knife_bloody" );
-    level._ID794._ID50619 = 1;
+    level.player takeweapon( "ending_knife" );
+    level.player giveweapon( "ending_knife_bloody" );
+    level.player switchtoweapon( "ending_knife_bloody" );
+    level.player._ID50619 = 1;
 }
 #using_animtree("animals");
 

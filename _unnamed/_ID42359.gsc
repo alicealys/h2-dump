@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     if ( isdefined( anim._ID28939 ) )
         return;
@@ -39,16 +39,16 @@ _ID32763()
 
 _ID12503()
 {
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
     self._ID24727 = 1;
-    self._ID625 = 256;
+    self.maxfaceenemydist = 256;
 
     if ( animscripts\combat_utility::_ID20813() )
         return;
 
-    if ( animscripts\utility::_ID20902( self._ID1302 ) )
+    if ( animscripts\utility::_ID20902( self.weapon ) )
         return;
 
     self._ID10881 = undefined;
@@ -64,6 +64,6 @@ _ID10942()
     self._ID13977 = undefined;
     self._ID28940 = undefined;
     self._ID24727 = 0;
-    self._ID625 = 512;
+    self.maxfaceenemydist = 512;
     self._ID28936 = undefined;
 }

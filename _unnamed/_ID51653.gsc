@@ -7,7 +7,7 @@ _ID48279()
         return;
 
     self._ID47601 = gettime() + 300;
-    var_0 = spawn( "script_origin", self._ID740 );
+    var_0 = spawn( "script_origin", self.origin );
     var_0 linkto( self );
     var_0 playsound( "snowmobile_npc_jumping" );
     _ID42237::_ID41078( 3.6, "veh_landed", "death" );

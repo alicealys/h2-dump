@@ -61,7 +61,7 @@ _ID12855( var_0 )
 {
     var_1 = self._ID1644._ID22585._ID13251._ID4629[var_0];
 
-    if ( _ID42237::_ID20747() && self._ID912 == "<custom>" )
+    if ( _ID42237::_ID20747() && self.script == "<custom>" )
     {
         wait 0.05;
         self setflashbanged( 1 );
@@ -69,7 +69,7 @@ _ID12855( var_0 )
 
     wait 0.05;
 
-    if ( self._ID912 == "flashed" )
+    if ( self.script == "flashed" )
         self waittill( "stop_flashbang_effect" );
 
     var_2 = _ID42386::_ID12869( var_1, 300, 40 );
@@ -153,7 +153,7 @@ _ID36309( var_0, var_1, var_2, var_3 )
     switch ( var_0 )
     {
         case "explode":
-            self._ID509 = 1;
+            self.ignoreexplosionevents = 1;
             break;
     }
 }
@@ -162,7 +162,7 @@ _ID36305()
 {
     var_0 = [];
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
         var_0["heard_scream"] = ::_ID12862;
         var_0["doFlashBanged"] = ::_ID12862;
@@ -197,7 +197,7 @@ _ID36304()
     var_0 = [];
     var_0["doFlashBanged"] = _ID42375::_ID12784;
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
         var_0["heard_scream"] = _ID42375::_ID11400;
         var_0["explode"] = _ID42375::_ID11403;

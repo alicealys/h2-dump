@@ -60,7 +60,7 @@ _ID46736( var_0 )
 {
     wait 0.1;
     _ID42237::_ID14402( "background_explosion" );
-    level._ID794 thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
+    level.player thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
     thread maps\gulag_aud::_ID44942();
     _ID42234::_ID13611( "background_explosion" );
 }
@@ -68,15 +68,15 @@ _ID46736( var_0 )
 _ID54050( var_0 )
 {
     var_1 = _ID42237::_ID35164();
-    var_1._ID740 = var_0 gettagorigin( "tag_laser" );
-    var_1._ID65 = var_0 gettagangles( "tag_laser" );
-    var_2 = anglestoforward( var_1._ID65 );
+    var_1.origin = var_0 gettagorigin( "tag_laser" );
+    var_1.angles = var_0 gettagangles( "tag_laser" );
+    var_2 = anglestoforward( var_1.angles );
     var_3 = _ID42237::_ID16299( "flare_start_gulag" );
     playfxontag( var_3, var_1, "tag_origin" );
     var_4 = _ID42237::_ID16299( "flare_gulag" );
     playfxontag( var_4, var_1, "tag_origin" );
     var_1 thread _ID42407::_ID27080( "scn_evac_soap_fires_flare", "tag_origin" );
-    var_1 moveto( var_1._ID740 + var_2 * 2000, 3, 0, 0 );
+    var_1 moveto( var_1.origin + var_2 * 2000, 3, 0, 0 );
     wait 4;
     var_1 delete();
 }
@@ -98,7 +98,7 @@ _ID53196( var_0 )
 
     for ( var_4 = 0; var_4 < 25; var_4++ )
     {
-        earthquake( var_2, var_3, level._ID794._ID740, 5000 );
+        earthquake( var_2, var_3, level.player.origin, 5000 );
         wait(var_3);
         var_2 += 0.01;
     }

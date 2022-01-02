@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     level._ID1410["generator_explode"] = %generator_explode;
     level._ID1410["generator_explode_02"] = %generator_explode_02;

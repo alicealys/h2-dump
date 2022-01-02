@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["headshot"] = loadfx( "fx/impacts/flesh_hit_head_fatal_exit_airport" );
     level._ID1426["bodyshot"] = loadfx( "fx/impacts/flesh_hit_airport" );

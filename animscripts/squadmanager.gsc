@@ -20,11 +20,11 @@ _ID9284( var_0, var_1 )
     anim._ID35544[var_0] = spawnstruct();
     var_2 = anim._ID35544[var_0];
     var_2._ID1010 = var_0;
-    var_2._ID1194 = _ID16615( var_1 );
+    var_2.team = _ID16615( var_1 );
     var_2._ID34157 = 0;
-    var_2._ID740 = undefined;
+    var_2.origin = undefined;
     var_2._ID409 = undefined;
-    var_2._ID322 = undefined;
+    var_2.enemy = undefined;
     var_2._ID20775 = 0;
     var_2._ID23459 = 0;
     var_2._ID23465 = [];
@@ -76,7 +76,7 @@ _ID10351( var_0 )
     var_2 notify( "squad_deleting" );
 
     while ( var_2._ID23465.size )
-        var_2._ID23465[0] _ID2130( var_2._ID23465[0]._ID1194 );
+        var_2._ID23465[0] _ID2130( var_2._ID23465[0].team );
 
     anim._ID35537[var_1] = anim._ID35537[anim._ID35537.size - 1];
     anim._ID35537[var_1]._ID35536 = var_1;
@@ -103,7 +103,7 @@ _ID2081( var_0 )
         if ( isdefined( self._ID31450 ) )
             var_0 = self._ID31450;
         else
-            var_0 = self._ID1194;
+            var_0 = self.team;
     }
 
     if ( !isdefined( anim._ID35544[var_0] ) )
@@ -119,7 +119,7 @@ _ID35531()
     wait 10.0;
 
     if ( !isdefined( self._ID31450 ) )
-        var_0 = self._ID1194 + self._ID31200;
+        var_0 = self.team + self._ID31200;
     else
         var_0 = self._ID31450 + self._ID31200;
 
@@ -130,8 +130,8 @@ _ID16615( var_0 )
 {
     var_1 = "allies";
 
-    if ( var_0._ID1194 == "axis" || var_0._ID1194 == "neutral" || var_0._ID1194 == "team3" )
-        var_1 = var_0._ID1194;
+    if ( var_0.team == "axis" || var_0.team == "neutral" || var_0.team == "team3" )
+        var_1 = var_0.team;
 
     return var_1;
 }
@@ -146,7 +146,7 @@ _ID2130( var_0 )
         if ( isdefined( self._ID31450 ) )
             var_0 = self._ID31450;
         else
-            var_0 = self._ID1194;
+            var_0 = self.team;
     }
 
     if ( !isdefined( anim._ID35544[var_0] ) )
@@ -171,7 +171,7 @@ _ID2130( var_0 )
 
     if ( isdefined( level._ID22493 ) )
     {
-        if ( self._ID1194 == "allies" && animscripts\battlechatter::_ID20839() )
+        if ( self.team == "allies" && animscripts\battlechatter::_ID20839() )
             _ID2074();
     }
 
@@ -348,7 +348,7 @@ _ID23458()
     {
         self waittill( "enemy" );
 
-        if ( !isdefined( self._ID322 ) )
+        if ( !isdefined( self.enemy ) )
             self._ID35507 notify( "squadupdate",  "combat"  );
         else
             self._ID35507._ID20775 = 1;
@@ -359,8 +359,8 @@ _ID23458()
 
 _ID39720()
 {
-    if ( isdefined( self._ID322 ) )
-        self._ID409 = vectornormalize( self._ID322._ID740 - self._ID740 );
+    if ( isdefined( self.enemy ) )
+        self._ID409 = vectornormalize( self.enemy.origin - self.origin );
     else
     {
         var_0 = ( 0, 0, 0 );
@@ -371,7 +371,7 @@ _ID39720()
             if ( !isalive( self._ID23465[var_2] ) )
                 continue;
 
-            var_0 += anglestoforward( self._ID23465[var_2]._ID65 );
+            var_0 += anglestoforward( self._ID23465[var_2].angles );
             var_1++;
         }
 
@@ -395,14 +395,14 @@ _ID39751()
         if ( !isalive( self._ID23465[var_2] ) )
             continue;
 
-        var_0 += self._ID23465[var_2]._ID740;
+        var_0 += self._ID23465[var_2].origin;
         var_1++;
     }
 
     if ( var_1 )
-        self._ID740 = ( var_0[0] / var_1, var_0[1] / var_1, var_0[2] / var_1 );
+        self.origin = ( var_0[0] / var_1, var_0[1] / var_1, var_0[2] / var_1 );
     else
-        self._ID740 = var_0;
+        self.origin = var_0;
 }
 
 _ID39685()
@@ -414,8 +414,8 @@ _ID39685()
 
     for ( var_0 = 0; var_0 < self._ID23465.size; var_0++ )
     {
-        if ( isdefined( self._ID23465[var_0]._ID322 ) && isdefined( self._ID23465[var_0]._ID322._ID35507 ) && self._ID23465[var_0]._ID8376 > 0 )
-            self._ID35539[self._ID23465[var_0]._ID322._ID35507._ID1010]._ID20776 = 1;
+        if ( isdefined( self._ID23465[var_0].enemy ) && isdefined( self._ID23465[var_0].enemy._ID35507 ) && self._ID23465[var_0]._ID8376 > 0 )
+            self._ID35539[self._ID23465[var_0].enemy._ID35507._ID1010]._ID20776 = 1;
     }
 }
 
@@ -425,20 +425,20 @@ _ID39704()
 
     for ( var_1 = 0; var_1 < self._ID23465.size; var_1++ )
     {
-        if ( isdefined( self._ID23465[var_1]._ID322 ) && isdefined( self._ID23465[var_1]._ID322._ID35507 ) )
+        if ( isdefined( self._ID23465[var_1].enemy ) && isdefined( self._ID23465[var_1].enemy._ID35507 ) )
         {
             if ( !isdefined( var_0 ) )
             {
-                var_0 = self._ID23465[var_1]._ID322._ID35507;
+                var_0 = self._ID23465[var_1].enemy._ID35507;
                 continue;
             }
 
-            if ( self._ID23465[var_1]._ID322._ID35507._ID23459 > var_0._ID23459 )
-                var_0 = self._ID23465[var_1]._ID322._ID35507;
+            if ( self._ID23465[var_1].enemy._ID35507._ID23459 > var_0._ID23459 )
+                var_0 = self._ID23465[var_1].enemy._ID35507;
         }
     }
 
-    self._ID322 = var_0;
+    self.enemy = var_0;
 }
 
 _ID39668()
@@ -454,29 +454,29 @@ _ID39668()
         if ( !isalive( self._ID23465[var_4] ) )
             continue;
 
-        var_0 += self._ID23465[var_4]._ID740;
+        var_0 += self._ID23465[var_4].origin;
         var_1++;
 
-        if ( isdefined( self._ID23465[var_4]._ID322 ) && isdefined( self._ID23465[var_4]._ID322._ID35507 ) )
+        if ( isdefined( self._ID23465[var_4].enemy ) && isdefined( self._ID23465[var_4].enemy._ID35507 ) )
         {
             if ( !isdefined( var_2 ) )
             {
-                var_2 = self._ID23465[var_4]._ID322._ID35507;
+                var_2 = self._ID23465[var_4].enemy._ID35507;
                 continue;
             }
 
-            if ( self._ID23465[var_4]._ID322._ID35507._ID23459 > var_2._ID23459 )
-                var_2 = self._ID23465[var_4]._ID322._ID35507;
+            if ( self._ID23465[var_4].enemy._ID35507._ID23459 > var_2._ID23459 )
+                var_2 = self._ID23465[var_4].enemy._ID35507;
         }
     }
 
     if ( var_1 )
-        self._ID740 = ( var_0[0] / var_1, var_0[1] / var_1, var_0[2] / var_1 );
+        self.origin = ( var_0[0] / var_1, var_0[1] / var_1, var_0[2] / var_1 );
     else
-        self._ID740 = var_0;
+        self.origin = var_0;
 
     self._ID20775 = var_3;
-    self._ID322 = var_2;
+    self.enemy = var_2;
     _ID39720();
 }
 
@@ -603,7 +603,7 @@ _ID39737()
 
 _ID2477( var_0 )
 {
-    if ( isdefined( self._ID584 ) )
+    if ( isdefined( self.lastenemysightpos ) )
     {
         if ( self._ID8376 < 0 )
             self._ID8376 = var_0;

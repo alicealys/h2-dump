@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_filecabinet", "tag_origin", 120 );
     _ID42231::_ID10517( "tag_drawer_lower", "fx/props/filecabinet_dam", 1 );

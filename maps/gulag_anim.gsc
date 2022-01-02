@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID53093();
     _ID45817();
@@ -159,19 +159,19 @@ _ID53378()
 _ID46882( var_0 )
 {
     var_0._ID54030 = spawn( "script_model", var_0 gettagorigin( "tag_inhand" ) );
-    var_1 = getweaponmodel( var_0._ID470 );
+    var_1 = getweaponmodel( var_0.grenadeweapon );
     var_0._ID54030 setmodel( var_1 );
     var_0._ID54030 linkto( var_0, "tag_inhand", ( 0, 0, 3 ), ( 0, 0, 0 ) );
 }
 
 _ID45739( var_0 )
 {
-    var_1 = var_0._ID54030._ID740;
+    var_1 = var_0._ID54030.origin;
     var_0._ID54030 delete();
     var_0._ID54030 = undefined;
     var_2 = _ID42237::_ID16638( "flash_org", "targetname" );
-    var_3 = _ID42237::_ID16638( var_2._ID1191, "targetname" );
-    var_4 = var_3._ID740;
+    var_3 = _ID42237::_ID16638( var_2.target, "targetname" );
+    var_4 = var_3.origin;
     var_5 = var_0 magicgrenade( var_1, var_4, 0.9 );
     var_0._ID7._ID24783 = gettime() + 5000;
     wait 1.0;
@@ -825,7 +825,7 @@ _ID46385()
 
 _ID43482( var_0 )
 {
-    level._ID794 thread _ID42407::_ID27079( "scn_gulag_intro_player_dismount" );
+    level.player thread _ID42407::_ID27079( "scn_gulag_intro_player_dismount" );
 }
 
 _ID45076( var_0 )

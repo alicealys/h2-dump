@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_hero_ghost_socom" );
     self attach( "head_hero_ghost_soccom", "", 1 );

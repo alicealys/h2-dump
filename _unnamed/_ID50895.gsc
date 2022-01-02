@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = getentarray( "static_destructible", "script_noteworthy" );
     _ID42237::_ID3350( var_0, ::_ID50419 );
@@ -32,7 +32,7 @@ _ID50419()
         if ( isdefined( self._ID46761 ) )
             playfxontag( self._ID46761, var_0, "tag_origin" );
 
-        var_6 = getent( self._ID1191, "targetname" );
+        var_6 = getent( self.target, "targetname" );
 
         if ( isdefined( var_6 ) )
             var_6 delete();

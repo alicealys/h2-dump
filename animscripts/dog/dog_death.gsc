@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("dog");
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
 
@@ -14,8 +14,8 @@ _ID616()
         if ( isdefined( var_0 ) )
         {
             var_1 = _ID42237::_ID35164();
-            var_1._ID740 = self._ID740;
-            var_1._ID65 = self._ID65;
+            var_1.origin = self.origin;
+            var_1.angles = self.angles;
             self linkto( var_1 );
             var_1 moveto( var_0, 0.5 );
             wait 0.5;
@@ -30,8 +30,8 @@ _ID616()
 
     self unlink();
 
-    if ( isdefined( self._ID322 ) && isdefined( self._ID322._ID1065 ) && self._ID322._ID1065 == self )
-        self._ID322._ID1065 = undefined;
+    if ( isdefined( self.enemy ) && isdefined( self.enemy.syncedmeleetarget ) && self.enemy.syncedmeleetarget == self )
+        self.enemy.syncedmeleetarget = undefined;
 
     self clearanim( %root, 0.2 );
     self setflaggedanimrestart( "dog_anim", %german_shepherd_death_front, 1, 0.2, 1 );

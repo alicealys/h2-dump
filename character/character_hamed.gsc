@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_opforce_arab_smg_a_hamed" );
     self attach( "head_trn_hamed", "", 1 );

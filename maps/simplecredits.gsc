@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     thread _ID42277::_ID19881();
     thread _ID42277::_ID27197();
@@ -11,10 +11,10 @@ _ID616()
     setdvar( "credits_active", "1" );
     level._ID9296 = 1;
     _ID42237::_ID14400( "credits_ended" );
-    _ID42323::_ID616();
+    _ID42323::main();
     setsaveddvar( "sv_saveOnStartMap", 0 );
-    level._ID794 freezecontrols( 1 );
-    level._ID794 takeallweapons();
+    level.player freezecontrols( 1 );
+    level.player takeallweapons();
     wait 0.05;
     setsaveddvar( "g_friendlyfiredist", 0 );
     setsaveddvar( "g_friendlynamedist", 0 );
@@ -26,23 +26,23 @@ _ID616()
 
 _ID45777()
 {
-    if ( level._ID794 _meth_835b() )
+    if ( level.player _meth_835b() )
     {
         if ( _func_9a() )
-            return level._ID794 buttonpressed( "BUTTON_B" );
+            return level.player buttonpressed( "BUTTON_B" );
 
-        return level._ID794 buttonpressed( "BUTTON_A" );
+        return level.player buttonpressed( "BUTTON_A" );
     }
     else
-        return level._ID794 buttonpressed( "ENTER" );
+        return level.player buttonpressed( "ENTER" );
 }
 
 _ID54562()
 {
-    if ( level._ID794 _meth_835b() )
-        return level._ID794 buttonpressed( "BUTTON_Y" ) || level._ID794 buttonpressed( "BUTTON_B" ) || level._ID794 buttonpressed( "BUTTON_A" ) || level._ID794 buttonpressed( "BUTTON_X" );
+    if ( level.player _meth_835b() )
+        return level.player buttonpressed( "BUTTON_Y" ) || level.player buttonpressed( "BUTTON_B" ) || level.player buttonpressed( "BUTTON_A" ) || level.player buttonpressed( "BUTTON_X" );
     else
-        return level._ID794 buttonpressed( "SPACE" ) || level._ID794 buttonpressed( "ESCAPE" ) || level._ID794 buttonpressed( "ENTER" ) || level._ID794 buttonpressed( "MOUSE1" );
+        return level.player buttonpressed( "SPACE" ) || level.player buttonpressed( "ESCAPE" ) || level.player buttonpressed( "ENTER" ) || level.player buttonpressed( "MOUSE1" );
 }
 
 _ID53644()
@@ -138,18 +138,18 @@ _ID46866()
     setsaveddvar( "cl_disable_pause", 1 );
     var_0 = 2;
     var_1 = newhudelem();
-    var_1._ID1331 = 0;
-    var_1._ID1339 = 0;
+    var_1.x = 0;
+    var_1.y = 0;
     var_1 setshader( "black", 640, 480 );
-    var_1._ID44 = "left";
-    var_1._ID45 = "top";
-    var_1._ID499 = "fullscreen";
-    var_1._ID1284 = "fullscreen";
-    var_1._ID55 = 0;
-    var_1._ID983 = 6;
-    var_1._ID408 = 1;
+    var_1.alignx = "left";
+    var_1.aligny = "top";
+    var_1.horzalign = "fullscreen";
+    var_1.vertalign = "fullscreen";
+    var_1.alpha = 0;
+    var_1.sort = 6;
+    var_1.foreground = 1;
     var_1 fadeovertime( var_0 );
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
     setomnvar( "ui_setluibriefingmenumode", 0 );
     musicstop( var_0 );
     wait(var_0);

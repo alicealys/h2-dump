@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     level._ID1426["c4_light_blink"] = loadfx( "vfx/lights/light_c4_blink" );
     level._ID1426["claymore_laser"] = loadfx( "vfx/props/claymore_laser" );
@@ -152,7 +152,7 @@ _ID31870( var_0 )
     if ( !isdefined( var_1 ) )
         return;
 
-    if ( var_1._ID172 != "script_vehicle" )
+    if ( var_1.code_classname != "script_vehicle" )
         return;
 
     var_1._ID18176 = 1;
@@ -167,7 +167,7 @@ _ID31870( var_0 )
         return;
     }
 
-    var_1 kill( var_1._ID740, var_0 );
+    var_1 kill( var_1.origin, var_0 );
 }
 
 _ID4990()
@@ -236,7 +236,7 @@ _ID41478()
                 thread _ID41479();
 
             self._ID6512[self._ID6512.size] = var_0;
-            var_0._ID743 = self;
+            var_0.owner = self;
             var_0 thread _ID6513();
             thread _ID6514( var_0 );
             var_0 thread _ID27192();
@@ -261,7 +261,7 @@ _ID41485()
 
         if ( var_1 == "claymore" || var_1 == "claymore_mp" )
         {
-            var_0._ID743 = self;
+            var_0.owner = self;
             var_0 thread _ID6513( 1 );
             var_0 thread _ID7755();
             var_0 thread _ID27193();
@@ -281,9 +281,9 @@ _ID7756( var_0 )
     }
 
     self makeentitysentient( var_0, 1 );
-    self._ID86 = 2;
-    self._ID630 = 750;
-    self._ID1204 = -1000;
+    self.attackeraccuracy = 2;
+    self.maxvisibledist = 750;
+    self.threatbias = -1000;
 }
 
 _ID7755()
@@ -295,7 +295,7 @@ _ID7755()
     if ( isdefined( self._ID10678 ) )
         var_0 = self._ID10678;
 
-    var_1 = spawn( "trigger_radius", self._ID740 + ( 0, 0, 0 - var_0 ), 9, var_0, var_0 * 2 );
+    var_1 = spawn( "trigger_radius", self.origin + ( 0, 0, 0 - var_0 ), 9, var_0, var_0 * 2 );
     thread _ID10333( var_1 );
 
     if ( !isdefined( level._ID7757 ) )
@@ -310,19 +310,19 @@ _ID7755()
     {
         var_1 waittill( "trigger",  var_2  );
 
-        if ( isdefined( self._ID743 ) && var_2 == self._ID743 )
+        if ( isdefined( self.owner ) && var_2 == self.owner )
             continue;
 
         if ( isplayernumber( var_2 ) )
             continue;
 
-        if ( var_2 damageconetrace( self._ID740, self ) > 0 )
+        if ( var_2 damageconetrace( self.origin, self ) > 0 )
         {
             self playsound( "claymore_activated_SP" );
             wait 0.4;
 
-            if ( isdefined( self._ID743 ) )
-                self detonate( self._ID743 );
+            if ( isdefined( self.owner ) )
+                self detonate( self.owner );
             else
                 self detonate( undefined );
 
@@ -400,10 +400,10 @@ _ID40969( var_0 )
 
 _ID6513( var_0 )
 {
-    self._ID486 = 100;
+    self.health = 100;
     self setcandamage( 1 );
-    self._ID626 = 100000;
-    self._ID486 = self._ID626;
+    self.maxhealth = 100000;
+    self.health = self.maxhealth;
     var_1 = undefined;
 
     for (;;)
@@ -483,7 +483,7 @@ _ID16203( var_0, var_1, var_2, var_3 )
         if ( !isalive( level._ID805[var_5] ) || level._ID805[var_5]._ID958 != "playing" )
             continue;
 
-        var_6 = level._ID805[var_5]._ID740 + ( 0, 0, 32 );
+        var_6 = level._ID805[var_5].origin + ( 0, 0, 32 );
         var_7 = distance( var_0, var_6 );
 
         if ( var_7 < var_1 && ( !var_2 || _ID41689( var_0, var_6, var_3, undefined ) ) )
@@ -501,7 +501,7 @@ _ID16203( var_0, var_1, var_2, var_3 )
 
     for ( var_5 = 0; var_5 < var_9.size; var_5++ )
     {
-        var_10 = var_9[var_5]._ID740;
+        var_10 = var_9[var_5].origin;
         var_7 = distance( var_0, var_10 );
 
         if ( var_7 < var_1 && ( !var_2 || _ID41689( var_0, var_10, var_3, var_9[var_5] ) ) )
@@ -519,7 +519,7 @@ _ID16203( var_0, var_1, var_2, var_3 )
 
     for ( var_5 = 0; var_5 < var_11.size; var_5++ )
     {
-        var_10 = var_11[var_5]._ID740;
+        var_10 = var_11[var_5].origin;
         var_7 = distance( var_0, var_10 );
 
         if ( var_7 < var_1 && ( !var_2 || _ID41689( var_0, var_10, var_3, var_11[var_5] ) ) )
@@ -592,7 +592,7 @@ _ID25856( var_0, var_1, var_2, var_3 )
     {
         case "concussion_grenade_mp":
             var_4 = 512;
-            var_5 = 1 - distance( self._ID740, var_0._ID740 ) / var_4;
+            var_5 = 1 - distance( self.origin, var_0.origin ) / var_4;
             var_6 = 1 + 4 * var_5;
             wait 0.05;
             self shellshock( "concussion_grenade_mp", var_6 );

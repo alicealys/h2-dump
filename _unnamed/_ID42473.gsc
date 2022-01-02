@@ -21,30 +21,30 @@ _ID41747( var_0 )
     var_3 = var_1["spread"];
     var_4 = var_1["radius"];
     var_5 = var_1["offset"];
-    level._ID794 setwhizbyprobabilities( var_2[0], var_2[1], var_2[2] );
-    level._ID794 setwhizbyspreads( var_3[0], var_3[1], var_3[2] );
-    level._ID794 setwhizbyradii( var_4[0], var_4[1], var_4[2] );
-    level._ID794 setwhizbyoffset( var_5 );
+    level.player setwhizbyprobabilities( var_2[0], var_2[1], var_2[2] );
+    level.player setwhizbyspreads( var_3[0], var_3[1], var_3[2] );
+    level.player setwhizbyradii( var_4[0], var_4[1], var_4[2] );
+    level.player setwhizbyoffset( var_5 );
 }
 
 _ID41748( var_0, var_1, var_2 )
 {
-    level._ID794 setwhizbyprobabilities( var_0, var_1, var_2 );
+    level.player setwhizbyprobabilities( var_0, var_1, var_2 );
 }
 
 _ID41750( var_0, var_1, var_2 )
 {
-    level._ID794 setwhizbyspreads( var_0, var_1, var_2 );
+    level.player setwhizbyspreads( var_0, var_1, var_2 );
 }
 
 _ID41749( var_0, var_1, var_2 )
 {
-    level._ID794 setwhizbyradii( var_0, var_1, var_2 );
+    level.player setwhizbyradii( var_0, var_1, var_2 );
 }
 
 _ID41746( var_0 )
 {
-    level._ID794 setwhizbyoffset( var_0 );
+    level.player setwhizbyoffset( var_0 );
 }
 
 _ID41755( var_0 )

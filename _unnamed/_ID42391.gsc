@@ -20,7 +20,7 @@ _ID14992()
     {
         _ID42407::_ID13027( "_stealth_enabled" );
         self [[ var_0 ]]();
-        self._ID630 = _ID14927();
+        self.maxvisibledist = _ID14927();
         wait 0.05;
     }
 }
@@ -81,7 +81,7 @@ _ID14941( var_0 )
     if ( isdefined( var_0 ) && var_0 == "back" )
         var_0 = "prone";
 
-    if ( isdefined( self._ID1244 ) && self._ID1244 == "dog" )
+    if ( isdefined( self.type ) && self.type == "dog" )
     {
         if ( isdefined( self._ID35499 ) && self._ID35499 )
             var_0 = "crouch";
@@ -124,7 +124,7 @@ _ID14945()
 
 _ID14942()
 {
-    return self._ID65;
+    return self.angles;
 }
 
 _ID14928()

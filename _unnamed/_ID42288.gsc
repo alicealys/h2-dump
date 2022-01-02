@@ -11,12 +11,12 @@ _ID11867()
     else
         self._ID24424 = 1;
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
     {
         _ID42336::_ID15845();
 
-        if ( isdefined( self._ID680 ) )
-            self setlookattext( self._ID680, &"" );
+        if ( isdefined( self.name ) )
+            self setlookattext( self.name, &"" );
     }
 
     if ( isdefined( level._ID12029 ) )
@@ -42,7 +42,7 @@ _ID37637()
             var_0 = 1;
             break;
         case "axis":
-            var_0 = self._ID1194 == "axis";
+            var_0 = self.team == "axis";
             break;
         default:
             break;
@@ -54,14 +54,14 @@ _ID37637()
 
 _ID11877()
 {
-    if ( !isdefined( self._ID1191 ) )
+    if ( !isdefined( self.target ) )
         return;
 
-    if ( isdefined( level._ID11937[self._ID1191] ) )
+    if ( isdefined( level._ID11937[self.target] ) )
         return;
 
-    level._ID11937[self._ID1191] = 1;
-    var_0 = self._ID1191;
+    level._ID11937[self.target] = 1;
+    var_0 = self.target;
     var_1 = _ID42237::_ID16638( var_0, "targetname" );
 
     if ( !isdefined( var_1 ) )
@@ -78,10 +78,10 @@ _ID11877()
 
         for (;;)
         {
-            if ( !isdefined( var_1._ID1191 ) )
+            if ( !isdefined( var_1.target ) )
                 break;
 
-            var_6 = _ID42237::_ID16640( var_1._ID1191, "targetname" );
+            var_6 = _ID42237::_ID16640( var_1.target, "targetname" );
 
             if ( var_6.size )
                 break;
@@ -90,7 +90,7 @@ _ID11877()
 
             foreach ( var_9 in var_6 )
             {
-                if ( isdefined( var_3[var_9._ID740 + ""] ) )
+                if ( isdefined( var_3[var_9.origin + ""] ) )
                     continue;
 
                 var_7 = var_9;
@@ -100,9 +100,9 @@ _ID11877()
             if ( !isdefined( var_7 ) )
                 break;
 
-            var_3[var_7._ID740 + ""] = 1;
-            var_2[var_1._ID1193] = var_7._ID740 - var_1._ID740;
-            var_1._ID65 = vectortoangles( var_2[var_1._ID1193] );
+            var_3[var_7.origin + ""] = 1;
+            var_2[var_1.targetname] = var_7.origin - var_1.origin;
+            var_1.angles = vectortoangles( var_2[var_1.targetname] );
             var_1 = var_7;
             var_5 = 1;
         }
@@ -111,7 +111,7 @@ _ID11877()
             break;
     }
 
-    var_0 = self._ID1191;
+    var_0 = self.target;
     var_1 = _ID42237::_ID16638( var_0, "targetname" );
     var_11 = var_1;
     var_3 = [];
@@ -123,13 +123,13 @@ _ID11877()
 
         for (;;)
         {
-            if ( !isdefined( var_1._ID1191 ) )
+            if ( !isdefined( var_1.target ) )
                 return;
 
-            if ( !isdefined( var_2[var_1._ID1193] ) )
+            if ( !isdefined( var_2[var_1.targetname] ) )
                 return;
 
-            var_6 = _ID42237::_ID16640( var_1._ID1191, "targetname" );
+            var_6 = _ID42237::_ID16640( var_1.target, "targetname" );
 
             if ( var_6.size )
                 break;
@@ -138,7 +138,7 @@ _ID11877()
 
             foreach ( var_9 in var_6 )
             {
-                if ( isdefined( var_3[var_9._ID740 + ""] ) )
+                if ( isdefined( var_3[var_9.origin + ""] ) )
                     continue;
 
                 var_7 = var_9;
@@ -148,12 +148,12 @@ _ID11877()
             if ( !isdefined( var_7 ) )
                 break;
 
-            if ( isdefined( var_1._ID851 ) )
+            if ( isdefined( var_1.radius ) )
             {
-                var_14 = var_2[var_11._ID1193];
-                var_15 = var_2[var_1._ID1193];
+                var_14 = var_2[var_11.targetname];
+                var_15 = var_2[var_1.targetname];
                 var_16 = ( var_14 + var_15 ) * 0.5;
-                var_1._ID65 = vectortoangles( var_16 );
+                var_1.angles = vectortoangles( var_16 );
             }
 
             var_5 = 1;
@@ -168,9 +168,9 @@ _ID11877()
 
 _ID3430()
 {
-    if ( isdefined( self._ID1244 ) )
+    if ( isdefined( self.type ) )
     {
-        if ( self._ID1244 == "dog" )
+        if ( self.type == "dog" )
             _ID3427();
         else
             _ID3432();

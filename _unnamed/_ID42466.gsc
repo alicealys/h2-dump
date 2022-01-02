@@ -240,7 +240,7 @@ _ID2953()
 
 _ID2954()
 {
-    return level._ID794._ID486;
+    return level.player.health;
 }
 
 _ID2955()

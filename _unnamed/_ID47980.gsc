@@ -3,7 +3,7 @@
 
 _ID45379()
 {
-    if ( level._ID912 == "climb" )
+    if ( level.script == "climb" )
         level._ID43641 = ::_ID312;
 
     var_0 = getent( "player_jumpdown_block", "targetname" );
@@ -161,7 +161,7 @@ _ID52116()
 {
     for (;;)
     {
-        var_0 = level._ID794 getvelocity();
+        var_0 = level.player getvelocity();
         var_1 = distance( ( var_0[0], var_0[1], 0 ), ( 0, 0, 0 ) );
 
         if ( var_1 < 75 )
@@ -181,7 +181,7 @@ _ID48068()
     level endon( "player_slides_down_hill" );
     _ID42237::_ID14388( "fade_to_death" );
     _ID42237::_ID14413( "fade_to_death" );
-    level._ID794 playsound( "cliff_plyr_fall_scream" );
+    level.player playsound( "cliff_plyr_fall_scream" );
     maps\cliffhanger_code::_ID54496( ::_ID44093 );
 }
 
@@ -220,7 +220,7 @@ _ID43665()
 {
     _ID42237::_ID14413( "mig_flies_over" );
     var_0 = _ID42407::_ID16268( "mig_flies_over" );
-    earthquake( 0.5, 3, var_0._ID740, 10000 );
+    earthquake( 0.5, 3, var_0.origin, 10000 );
 }
 
 _ID47603()
@@ -234,8 +234,8 @@ _ID47603()
     {
         if ( _ID42407::_ID27470( level._ID51758 ) )
         {
-            level._ID794 givemaxammo( level._ID51758 );
-            level._ID794 setweaponammoclip( level._ID51758, 90 );
+            level.player givemaxammo( level._ID51758 );
+            level.player setweaponammoclip( level._ID51758, 90 );
         }
 
         wait 1;
@@ -253,13 +253,13 @@ _ID53338()
     {
         _ID42237::_ID14426( "flying_in" );
 
-        if ( level._ID794._ID740[2] < -1000 )
+        if ( level.player.origin[2] < -1000 )
             break;
 
         wait 0.05;
     }
 
-    level._ID794 kill();
+    level.player kill();
 }
 
 _ID46094()
@@ -270,7 +270,7 @@ _ID46094()
 
     for (;;)
     {
-        var_1._ID65 = ( randomintrange( 0, 360 ), randomintrange( 0, 360 ), randomintrange( 0, 360 ) );
+        var_1.angles = ( randomintrange( 0, 360 ), randomintrange( 0, 360 ), randomintrange( 0, 360 ) );
         wait 0.05;
     }
 }
@@ -283,9 +283,9 @@ _ID44094( var_0 )
 
     for (;;)
     {
-        self moveto( var_0._ID740, var_2, 0, 0 );
-        var_3 = vectortoangles( var_1._ID740 - self._ID740 );
-        self._ID65 = var_3;
+        self moveto( var_0.origin, var_2, 0, 0 );
+        var_3 = vectortoangles( var_1.origin - self.origin );
+        self.angles = var_3;
         wait(var_2);
     }
 }
@@ -296,17 +296,17 @@ _ID53966()
     _ID42407::_ID34377( 2 );
     _ID42407::_ID34374( 0.05 );
     _ID42407::_ID34371();
-    level._ID794 setdepthoffield( 0, 0, 15000, 20000, 4, 4 );
+    level.player setdepthoffield( 0, 0, 15000, 20000, 4, 4 );
     thread _ID42318::_ID50101( 1.25, 2 );
     thread _ID49359::_ID52826();
     setexpfog( 2000, 20000, level._ID44355["r"], level._ID44355["g"], level._ID44355["b"], 0.47, 0 );
     _ID49359::_ID46211();
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     _ID42237::_ID14402( "flying_in" );
     var_0 = _ID42411::_ID35196( "fly_in_spawner" );
     level._ID43599 = var_0;
     var_1 = _ID42411::_ID35200( "fly_in_heli" );
-    level._ID794 playerlinktodelta( var_0, "tag_origin", 1, 0, 0, 0, 0 );
+    level.player playerlinktodelta( var_0, "tag_origin", 1, 0, 0, 0, 0 );
     wait 16;
 
     foreach ( var_3 in var_1 )
@@ -319,7 +319,7 @@ _ID53966()
     wait 2.5;
     var_0 delete();
     var_0 = _ID42411::_ID35196( "fly_in_spawner_cliff_repeat" );
-    level._ID794 playerlinktodelta( var_0, "tag_origin", 1, 0, 0, 0, 0 );
+    level.player playerlinktodelta( var_0, "tag_origin", 1, 0, 0, 0, 0 );
     wait 4.5;
     thread _ID42318::_ID50101( 2, 0.5, 1.5 );
     wait 2.0;
@@ -339,7 +339,7 @@ _ID54509( var_0 )
         if ( _ID42237::_ID14385( "nearing_top_of_slam_zoom" ) )
             break;
 
-        var_3 = distance( level._ID794._ID740, var_2._ID740 );
+        var_3 = distance( level.player.origin, var_2.origin );
         var_4 = 1;
         var_5 = max( 100, var_3 - 4000 );
         var_6 = 5;
@@ -361,8 +361,8 @@ _ID44466()
 
     for (;;)
     {
-        if ( self._ID1276 > 50 )
-            playfx( level._ID1426["blizzard_level_1"], self._ID740 );
+        if ( self.veh_speed > 50 )
+            playfx( level._ID1426["blizzard_level_1"], self.origin );
 
         wait 0.1;
     }
@@ -372,7 +372,7 @@ _ID53352()
 {
     var_0 = getent( "faux_player_spawner", "targetname" );
     var_1 = var_0 stalingradspawn();
-    var_1._ID1194 = "allies";
+    var_1.team = "allies";
     var_2 = getent( "faux_player_ent", "targetname" );
     var_1 _ID42407::_ID17509();
     var_2 _ID42259::_ID3023( var_1, "faux_player" );
@@ -398,9 +398,9 @@ _ID49409()
     _ID42262::_ID11342( 1, 1, 4, 10000, 20000, 2, 0 );
     _ID49359::_ID46211();
     var_1 = getent( "player_climb_start", "targetname" );
-    var_1._ID65 = ( 16.5, var_1._ID65[1], 0 );
-    level._ID794 takeallweapons();
-    level._ID794 giveweapon( level._ID51758, 0, 1 );
+    var_1.angles = ( 16.5, var_1.angles[1], 0 );
+    level.player takeallweapons();
+    level.player giveweapon( level._ID51758, 0, 1 );
     var_2 = getvehiclenode( "slam_zoom_path", "targetname" );
     var_3 = _ID42411::_ID35195( "fly_in_spawner" );
     var_4 = _ID42411::_ID35195( "fly_in_fx" );
@@ -408,12 +408,12 @@ _ID49409()
     level._ID43599 = var_3;
     var_3 attachpath( var_2 );
     var_4 attachpath( var_2 );
-    level._ID794 playerlinkto( var_3, "tag_origin", 1, 0, 0, 0, 0, 0 );
+    level.player playerlinkto( var_3, "tag_origin", 1, 0, 0, 0, 0, 0 );
     var_5 = level._ID40239["mig29"];
     level._ID40239["mig29"] = undefined;
     _ID42407::_ID10226( 1.95, _ID42411::_ID35200, "slam_zoom_mig" );
     thread _ID53352();
-    var_6 = distance( level._ID794._ID740, var_1._ID740 );
+    var_6 = distance( level.player.origin, var_1.origin );
     var_7 = 1;
     var_8 = max( 100, var_6 - 4000 );
     var_9 = 5;
@@ -429,7 +429,7 @@ _ID49409()
     var_3 delete();
     var_4 delete();
     wait 0.5;
-    level._ID794 unlink();
+    level.player unlink();
     _ID42237::_ID14402( "can_save" );
     thread _ID42407::_ID4434();
     thread _ID48068();
@@ -446,29 +446,29 @@ _ID47195()
     setsaveddvar( "hud_showStance", 0 );
     thread _ID42318::_ID50101( 1.25, 2 );
     var_0 = getent( "player_climb_start", "targetname" );
-    var_0._ID65 = ( 16.5, var_0._ID65[1], 0 );
-    level._ID794 setorigin( var_0._ID740 + ( 0, 0, -12 ) );
-    level._ID794 setplayerangles( var_0._ID65 );
-    level._ID794 unlink();
+    var_0.angles = ( 16.5, var_0.angles[1], 0 );
+    level.player setorigin( var_0.origin + ( 0, 0, -12 ) );
+    level.player setplayerangles( var_0.angles );
+    level.player unlink();
     _ID42237::_ID14388( "price_begins_climbing" );
     _ID42237::_ID14388( "price_begins_climbing2" );
     _ID42237::_ID14402( "flyin_complete" );
-    level._ID794 allowprone( 0 );
-    level._ID794 _meth_830f( 0 );
+    level.player allowprone( 0 );
+    level.player _meth_830f( 0 );
     wait 0.05;
-    level._ID794 setstance( "crouch" );
-    level._ID794 takeallweapons();
-    level._ID794 giveweapon( level._ID51758, 0, 1 );
+    level.player setstance( "crouch" );
+    level.player takeallweapons();
+    level.player giveweapon( level._ID51758, 0, 1 );
 }
 
 _ID45628()
 {
     for (;;)
     {
-        if ( level._ID794 canmantle() )
+        if ( level.player canmantle() )
         {
-            level._ID794 unlink();
-            level._ID794 forcemantle();
+            level.player unlink();
+            level.player forcemantle();
             thread _ID53240();
             return;
         }
@@ -530,7 +530,7 @@ _ID53355( var_0 )
 
 _ID51825( var_0, var_1 )
 {
-    level._ID794 setmovespeedscale( 0.35 );
+    level.player setmovespeedscale( 0.35 );
     _ID42407::_ID24587( "mus_cliffhanger_climbing_music" );
     _ID42237::_ID14413( "player_gets_on_wall" );
     thread _ID43069( "dof_climb1_movingonledge" );
@@ -542,8 +542,8 @@ _ID51825( var_0, var_1 )
     level._ID54618 = _ID43885();
     level._ID50221 = _ID43684();
     var_4 = spawnstruct();
-    var_4._ID740 = ( 438.645, -29386.9, 192.24 );
-    var_4._ID65 = ( 0, 26.7091, 0 );
+    var_4.origin = ( 438.645, -29386.9, 192.24 );
+    var_4.angles = ( 0, 26.7091, 0 );
 
     for (;;)
     {
@@ -554,16 +554,16 @@ _ID51825( var_0, var_1 )
 
         if ( var_5 == "left" || !_ID42237::_ID14385( "leaving_ledge_for_climb" ) )
         {
-            level._ID794 _ID53144( 0 );
+            level.player _ID53144( 0 );
             level._ID50036 = _ID42407::_ID35028( "worldbody" );
             level._ID50036 _ID42259::_ID3128( "viewmodel_ice_picker", "tag_weapon_right" );
             level._ID50036 _ID42259::_ID3128( "viewmodel_ice_picker_03", "tag_weapon_left" );
             level._ID50036 hide();
             var_4 _ID42259::_ID3018( level._ID50036, var_6[0] );
             var_7 = 0.25;
-            level._ID794 playerlinktoblend( level._ID50036, "tag_player", var_7, var_7 * var_7, var_7 * var_7 );
+            level.player playerlinktoblend( level._ID50036, "tag_player", var_7, var_7 * var_7, var_7 * var_7 );
             wait(var_7);
-            level._ID794 playerlinktodelta( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
+            level.player playerlinktodelta( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
             level._ID50036 show();
         }
 
@@ -580,7 +580,7 @@ _ID51825( var_0, var_1 )
         break;
     }
 
-    level._ID794 setmovespeedscale( 1 );
+    level.player setmovespeedscale( 1 );
     thread _ID49118();
 }
 
@@ -589,14 +589,14 @@ _ID43778()
     _ID42475::_ID34575( "aud_stop_mix_player_climbing" );
     _ID42237::_ID14388( "player_is_climbing" );
     level._ID43077 = 0;
-    level._ID794 enableweapons();
-    level._ID794 giveweapon( level._ID51758, 0, 1 );
-    level._ID794 switchtoweapon( level._ID51758 );
+    level.player enableweapons();
+    level.player giveweapon( level._ID51758, 0, 1 );
+    level.player switchtoweapon( level._ID51758 );
 }
 
 _ID47527( var_0, var_1 )
 {
-    level._ID794 setmovespeedscale( 0.35 );
+    level.player setmovespeedscale( 0.35 );
     _ID42407::_ID24587( "mus_cliffhanger_climbing_music" );
     var_2 = 0;
 
@@ -622,17 +622,17 @@ _ID47527( var_0, var_1 )
         if ( _ID52973( var_0, var_1 ) )
             break;
 
-        level._ID794 giveweapon( level._ID51758, 0, 1 );
-        level._ID794 switchtoweapon( level._ID51758 );
+        level.player giveweapon( level._ID51758, 0, 1 );
+        level.player switchtoweapon( level._ID51758 );
     }
 
-    level._ID794 setmovespeedscale( 1 );
+    level.player setmovespeedscale( 1 );
 }
 
 _ID43397( var_0 )
 {
-    var_1 = getent( var_0._ID1191, "targetname" );
-    var_2 = vectortoangles( var_1._ID740 - var_0._ID740 );
+    var_1 = getent( var_0.target, "targetname" );
+    var_2 = vectortoangles( var_1.origin - var_0.origin );
     var_2 = ( 0, var_2[1], 0 );
     return anglestoforward( var_2 );
 }
@@ -650,24 +650,24 @@ _ID53809()
             _ID42407::_ID18684( "right_icepick" );
 
         if ( !_ID42237::_ID14385( "player_in_position_to_climb" ) )
-            level._ID794 allowfire( 1 );
+            level.player allowfire( 1 );
 
         _ID42237::_ID14413( "player_in_position_to_climb" );
 
-        if ( level._ID794 getstance() != "stand" )
+        if ( level.player getstance() != "stand" )
         {
-            level._ID794 allowfire( 1 );
+            level.player allowfire( 1 );
             wait 0.05;
             continue;
         }
 
         if ( !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
         {
-            var_4 = level._ID794 getplayerangles();
+            var_4 = level.player getplayerangles();
 
             if ( var_4[0] >= 28 )
             {
-                level._ID794 allowfire( 1 );
+                level.player allowfire( 1 );
                 wait 0.05;
                 continue;
             }
@@ -678,21 +678,21 @@ _ID53809()
 
             if ( var_6 < 0.6 )
             {
-                level._ID794 allowfire( 1 );
+                level.player allowfire( 1 );
                 wait 0.05;
                 continue;
             }
         }
 
-        level._ID794 allowfire( 0 );
-        level._ID794 switchtoweapon( level._ID51758 );
+        level.player allowfire( 0 );
+        level.player switchtoweapon( level._ID51758 );
 
         if ( !var_2 )
             thread _ID42407::_ID4434();
 
         var_2 = 1;
 
-        if ( level._ID794 _ID47155() )
+        if ( level.player _ID47155() )
         {
             if ( _ID42237::_ID14385( "player_waiting_in_ledge" ) )
             {
@@ -703,7 +703,7 @@ _ID53809()
             return "right";
         }
 
-        if ( level._ID794 _ID53748() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
+        if ( level.player _ID53748() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
         {
             thread _ID43069( "dof_climb1_initialleftpick" );
             return "left";
@@ -749,12 +749,12 @@ _ID43069( var_0 )
             var_4 _ID54167::_ID48800( 4.85 ) _ID54167::_ID47844( 2 );
             var_4 _ID54167::_ID48800( 5.0 ) _ID54167::_ID44191( 72, 0.85, 0 );
             var_4 _ID54167::_ID48800( 5.15 ) _ID54167::_ID50321( 16.0, 1000, 4, 4 );
-            var_4 _ID54167::_ID48800( 0.3 ) _ID54167::_ID47198( 0.04, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_4 _ID54167::_ID48800( 1.05 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_4 _ID54167::_ID48800( 2.65 ) _ID54167::_ID47198( 0.08, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_4 _ID54167::_ID48800( 4.45 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-            var_4 _ID54167::_ID48800( 5.9 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-            var_4 _ID54167::_ID48800( 6.25 ) _ID54167::_ID47198( 0.06, 0.4, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_4 _ID54167::_ID48800( 0.3 ) _ID54167::_ID47198( 0.04, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_4 _ID54167::_ID48800( 1.05 ) _ID54167::_ID47198( 0.06, 0.4, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_4 _ID54167::_ID48800( 2.65 ) _ID54167::_ID47198( 0.08, 0.4, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_4 _ID54167::_ID48800( 4.45 ) _ID54167::_ID47198( 0.06, 0.4, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+            var_4 _ID54167::_ID48800( 5.9 ) _ID54167::_ID47198( 0.06, 0.4, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+            var_4 _ID54167::_ID48800( 6.25 ) _ID54167::_ID47198( 0.06, 0.4, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             break;
         case "dof_shimmy_falldeath":
             var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
@@ -774,7 +774,7 @@ _ID43069( var_0 )
         case "dof_climb1_readyicepick":
             var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
             var_4 _ID54167::_ID48800( 1.0 ) _ID54167::_ID50321( 40, 13, 1, 1 );
-            var_4 _ID54167::_ID48800( 0.9 ) _ID54167::_ID47198( 0.04, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+            var_4 _ID54167::_ID48800( 0.9 ) _ID54167::_ID47198( 0.04, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
             break;
         case "dof_climb1_initialrightpick":
             var_4 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727();
@@ -833,7 +833,7 @@ _ID43069( var_0 )
             var_4 _ID54167::_ID48800( 8.35 ) _ID54167::_ID43500( 1.15, 0 );
             var_4 _ID54167::_ID48800( 10.3 ) _ID54167::_ID50321( var_1, 30, 4, 4 );
             var_4 _ID54167::_ID48800( 15.6 ) _ID54167::_ID50321( var_1 + 1, var_2, 4, 4 );
-            var_4 _ID54167::_ID48800( 1.5 ) _ID54167::_ID47198( 0.12, 0.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.3 );
+            var_4 _ID54167::_ID48800( 1.5 ) _ID54167::_ID47198( 0.12, 0.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.3 );
             break;
         case "dof_jump_far_side_failed":
             break;
@@ -865,24 +865,24 @@ _ID54052()
         }
 
         if ( !_ID42237::_ID14385( "player_in_position_to_climb" ) )
-            level._ID794 allowfire( 1 );
+            level.player allowfire( 1 );
 
         _ID42237::_ID14413( "player_in_position_to_climb" );
 
-        if ( level._ID794 getstance() != "stand" )
+        if ( level.player getstance() != "stand" )
         {
-            level._ID794 allowfire( 1 );
+            level.player allowfire( 1 );
             wait 0.05;
             continue;
         }
 
         if ( !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
         {
-            var_5 = level._ID794 getplayerangles();
+            var_5 = level.player getplayerangles();
 
             if ( var_5[0] >= 28 )
             {
-                level._ID794 allowfire( 1 );
+                level.player allowfire( 1 );
                 wait 0.05;
                 continue;
             }
@@ -893,27 +893,27 @@ _ID54052()
 
             if ( var_7 < 0.6 )
             {
-                level._ID794 allowfire( 1 );
+                level.player allowfire( 1 );
                 wait 0.05;
                 continue;
             }
         }
 
-        level._ID794 allowfire( 0 );
-        level._ID794 switchtoweapon( level._ID51758 );
+        level.player allowfire( 0 );
+        level.player switchtoweapon( level._ID51758 );
 
         if ( !var_2 )
             thread _ID42407::_ID4434();
 
         var_2 = 1;
 
-        if ( level._ID794 _ID47155() )
+        if ( level.player _ID47155() )
         {
             _ID42237::_ID14402( "leaving_ledge_for_climb" );
             return;
         }
 
-        if ( level._ID794 _ID53748() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
+        if ( level.player _ID53748() && !_ID42237::_ID14385( "player_waiting_in_ledge" ) )
             return;
 
         wait 0.05;
@@ -923,17 +923,17 @@ _ID54052()
 _ID47155()
 {
     if ( _ID42237::_ID20583() )
-        return level._ID794 _meth_8109();
+        return level.player _meth_8109();
     else
-        return level._ID794 adsbuttonpressed( 1 );
+        return level.player adsbuttonpressed( 1 );
 }
 
 _ID53748()
 {
     if ( _ID42237::_ID20583() )
-        return level._ID794 vehicleattackbuttonpressed();
+        return level.player vehicleattackbuttonpressed();
     else
-        return level._ID794 attackbuttonpressed();
+        return level.player attackbuttonpressed();
 }
 
 _ID53216()
@@ -1046,9 +1046,9 @@ _ID43684( var_0 )
 
 _ID45887( var_0, var_1, var_2 )
 {
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 _meth_830f( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player _meth_830f( 0 );
     _ID42237::_ID14402( "player_starts_climbing" );
     var_3 = _ID42237::_ID14385( "leaving_ledge_for_climb" );
     var_4 = spawnstruct();
@@ -1057,7 +1057,7 @@ _ID45887( var_0, var_1, var_2 )
     var_5 setmodel( "tag_origin" );
     var_5 hide();
     var_5 linkto( level._ID50036, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_5 );
+    level.player playersetgroundreferenceent( var_5 );
     var_6 = [];
     var_7 = [];
     var_7[var_7.size] = "left";
@@ -1087,7 +1087,7 @@ _ID45887( var_0, var_1, var_2 )
         var_14._ID45941 = level._ID50036;
         var_14._ID3197 = var_6[var_13];
         var_14._ID3197 = _ID51955::_ID49370( var_14._ID3197, "up", var_13 );
-        var_14._ID794 = self;
+        var_14.player = self;
         var_14._ID51876 = var_8[var_13];
         thread _ID43391( var_14 );
         var_14._ID54537 = var_4;
@@ -1098,10 +1098,10 @@ _ID45887( var_0, var_1, var_2 )
     var_17 = var_9[var_4._ID45132];
     level._ID45147 = var_4;
     var_18 = 0;
-    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
+    level.player lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
     var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
     level._ID50036._ID46602 = "right";
-    level._ID794._ID47069 = var_17;
+    level.player._ID47069 = var_17;
     var_19 = 20;
     var_20 = 10;
 
@@ -1110,13 +1110,13 @@ _ID45887( var_0, var_1, var_2 )
         var_19 = 10;
         var_20 = 20;
         level._ID50036._ID46602 = "left";
-        level._ID794._ID47069 = var_17;
+        level.player._ID47069 = var_17;
     }
 
     level._ID50036 animscripts\shared::_ID11529( "single anim", ::_ID45136 );
     var_18++;
-    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
     var_18++;
     level._ID50036 _ID42407::_ID10226( 0.05, ::_ID44792, level._ID50036._ID46602, level._ID30895["worldbody"][var_2[var_18 - 1]] );
@@ -1127,7 +1127,7 @@ _ID45887( var_0, var_1, var_2 )
         thread _ID47123( var_17 );
 
     level._ID50568 = 0;
-    level._ID794._ID48545 = 0;
+    level.player._ID48545 = 0;
     var_21 = 1;
     _ID42237::_ID14402( "we_care_about_right_icepick" );
     var_22 = gettime() + 8000;
@@ -1166,11 +1166,11 @@ _ID45887( var_0, var_1, var_2 )
                 var_19 = 10;
                 var_20 = 20;
                 level._ID50036._ID46602 = "left";
-                level._ID794._ID47069 = var_17;
+                level.player._ID47069 = var_17;
             }
 
-            level._ID794 playsound( "player_climb_effort" );
-            level._ID794 playrumblelooponentity( "icepick_release" );
+            level.player playsound( "player_climb_effort" );
+            level.player playrumblelooponentity( "icepick_release" );
             var_17._ID45941 notify( "stop_crack" );
 
             if ( var_2[var_18] == "iceaxeclimbing_right_3" )
@@ -1178,10 +1178,10 @@ _ID45887( var_0, var_1, var_2 )
 
             var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
             var_27 = getanimlength( level._ID30895["worldbody"][var_2[var_18]] );
-            level._ID794 lerpviewangleclamp( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, 0, 0, 0, 0 );
+            level.player lerpviewangleclamp( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, 0, 0, 0, 0 );
 
             if ( var_18 == 20 )
-                level._ID794 lerpviewangleclamp( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, -5, 5, 0, 0 );
+                level.player lerpviewangleclamp( var_27 * 0.5, var_27 * 0.25, var_27 * 0.25, -5, 5, 0, 0 );
 
             level._ID50036 animscripts\shared::_ID11529( "single anim", ::_ID45136 );
             var_18++;
@@ -1189,18 +1189,18 @@ _ID45887( var_0, var_1, var_2 )
             if ( var_2[var_18] == "iceaxeclimbing_right_3_idle" )
                 _ID42237::_ID14402( "player_climbed_3_steps" );
 
-            level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
+            level.player lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 20 );
 
             if ( var_18 == 21 )
-                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, -5, 5, 15, 20 );
+                level.player lerpviewangleclamp( 0.5, 0.25, 0.25, -5, 5, 15, 20 );
 
             if ( var_18 == 23 )
-                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, 0, 20, 0 );
+                level.player lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, 0, 20, 0 );
 
             if ( var_18 == 33 )
-                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 0 );
+                level.player lerpviewangleclamp( 0.5, 0.25, 0.25, var_20, var_19, 20, 0 );
 
-            level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+            level.player setviewangleresistance( 50, 50, 20, 20 );
             var_0 thread _ID42259::_ID3111( level._ID50036, var_2[var_18] );
             var_18++;
 
@@ -1209,7 +1209,7 @@ _ID45887( var_0, var_1, var_2 )
                 _ID42237::_ID14402( "force_single_ice_crack" );
                 level._ID50036 thread animscripts\shared::_ID11529( "single anim", ::_ID45136 );
                 level._ID50036 thread _ID42259::_ID46741( "stop_height_lerp", level._ID30895["worldbody"][var_2[var_18 - 1]], 0.1, var_0 );
-                level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
+                level.player lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
                 thread _ID43069( "dof_climb_common_finishclimb" );
 
                 if ( !_ID42237::_ID14385( "player_preps_for_jump" ) )
@@ -1225,9 +1225,9 @@ _ID45887( var_0, var_1, var_2 )
                 level._ID50036 notify( "stop_height_lerp" );
                 level notify( "player_shimmy_stop" );
                 var_17._ID45941 notify( "stop_crack" );
-                level._ID794 playersetgroundreferenceent( undefined );
+                level.player playersetgroundreferenceent( undefined );
                 wait 0.05;
-                level._ID794 unlink();
+                level.player unlink();
                 level._ID50036 delete();
             }
             else
@@ -1243,10 +1243,10 @@ _ID45887( var_0, var_1, var_2 )
 
     if ( var_23 )
     {
-        level._ID794 allowfire( 1 );
-        level._ID794 allowcrouch( 1 );
-        level._ID794 allowprone( 1 );
-        level._ID794 _meth_830f( 1 );
+        level.player allowfire( 1 );
+        level.player allowcrouch( 1 );
+        level.player allowprone( 1 );
+        level.player _meth_830f( 1 );
         var_17._ID45941 notify( "stop_crack" );
         thread _ID53216();
         _ID42237::_ID14388( "climbing_dof" );
@@ -1259,7 +1259,7 @@ _ID45887( var_0, var_1, var_2 )
 _ID44792( var_0, var_1 )
 {
     self notify( "restart_climb_idle" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     self endon( "restart_climb_idle" );
 
     if ( self getanimweight( var_1 ) == 0 )
@@ -1291,10 +1291,10 @@ _ID47673( var_0 )
     wait 0.05;
     var_1 = _ID51668( level._ID50036._ID46602 );
     var_2 = _ID52045( level._ID50036, var_1 );
-    var_3 = anglestoforward( var_2._ID65 );
+    var_3 = anglestoforward( var_2.angles );
     var_4 = level._ID43887;
-    var_5 = var_2._ID740 + var_3 * ( var_4 * -5 );
-    var_6 = var_2._ID740 + var_3 * var_4;
+    var_5 = var_2.origin + var_3 * ( var_4 * -5 );
+    var_6 = var_2.origin + var_3 * var_4;
     var_7 = bullettrace( var_5, var_6, 0, undefined );
     var_2 delete();
     var_9 = var_7["position"];
@@ -1305,14 +1305,14 @@ _ID47673( var_0 )
     if ( _ID42237::_ID15272( var_12 ) )
         playfx( _ID42237::_ID16299( var_12 ), var_9, var_11 );
 
-    level._ID794 playrumblelooponentity( "icepick_climb" );
+    level.player playrumblelooponentity( "icepick_climb" );
     [[ var_0 ]]( var_9, var_11 );
 }
 
 _ID52732( var_0, var_1 )
 {
     thread _ID42237::_ID27077( "icepick_impact_ice", var_0 );
-    level._ID50036 thread _ID48437( level._ID794._ID47069, var_0, var_1 );
+    level._ID50036 thread _ID48437( level.player._ID47069, var_0, var_1 );
 }
 
 _ID50738( var_0, var_1 )
@@ -1354,7 +1354,7 @@ _ID45136( var_0 )
 
         if ( _ID42237::_ID15272( var_10 ) )
         {
-            var_11 = anglestoup( level._ID50036._ID65 ) * -1;
+            var_11 = anglestoup( level._ID50036.angles ) * -1;
             playfx( _ID42237::_ID16299( var_10 ), var_8, var_9, var_11 );
         }
 
@@ -1375,7 +1375,7 @@ _ID45136( var_0 )
 
         if ( _ID42237::_ID15272( var_10 ) )
         {
-            var_11 = anglestoup( level._ID50036._ID65 ) * -1;
+            var_11 = anglestoup( level._ID50036.angles ) * -1;
             playfx( _ID42237::_ID16299( var_10 ), var_8, var_9, var_11 );
         }
 
@@ -1385,12 +1385,12 @@ _ID45136( var_0 )
 
 _ID52973( var_0, var_1, var_2, var_3 )
 {
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 _meth_830f( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player _meth_830f( 0 );
     _ID42237::_ID14402( "player_starts_climbing" );
     var_4 = _ID42407::_ID35028( "player_rig", var_0 );
-    var_4._ID65 = var_1;
+    var_4.angles = var_1;
     var_4 _ID42259::_ID3128( "viewmodel_ice_picker", "tag_weapon_right" );
     var_4 _ID42259::_ID3128( "viewmodel_ice_picker_03", "tag_weapon_left" );
     var_5 = spawn( "script_model", ( 0, 0, 0 ) );
@@ -1409,14 +1409,14 @@ _ID52973( var_0, var_1, var_2, var_3 )
     var_10 = [];
     var_10["left"] = "j";
     var_10["right"] = "k";
-    var_11 = var_4._ID65;
+    var_11 = var_4.angles;
     var_12 = anglestoforward( var_11 );
     var_13 = anglestoup( var_11 );
     var_14 = anglestoright( var_11 );
     var_15 = spawnstruct();
     var_15._ID50881 = 0.01;
     var_15._ID51651 = [];
-    var_15._ID794 = self;
+    var_15.player = self;
     var_15._ID52630 = 0;
     var_15._ID45132 = "left";
     var_15._ID49406 = ( 0, 0, 0 );
@@ -1449,7 +1449,7 @@ _ID52973( var_0, var_1, var_2, var_3 )
         var_20._ID3197 = var_6[var_19];
         var_20._ID3197 = _ID51955::_ID49370( var_20._ID3197, var_16, var_19 );
         var_20._ID44553 = var_16;
-        var_20._ID794 = self;
+        var_20.player = self;
         var_20._ID51876 = var_8[var_19];
         thread _ID43391( var_20 );
         var_20._ID54537 = var_15;
@@ -1471,7 +1471,7 @@ _ID52973( var_0, var_1, var_2, var_3 )
     level._ID50568 = 0;
     var_25 = _ID44276( var_24 );
     var_24._ID45941 setanim( var_25._ID3197["idle"], 1, 0, 1 );
-    var_24._ID794._ID48545 = 0;
+    var_24.player._ID48545 = 0;
 
     if ( !isdefined( var_2 ) )
     {
@@ -1512,22 +1512,22 @@ _ID52973( var_0, var_1, var_2, var_3 )
             {
                 var_32 = 1.5;
                 var_31 = gettime();
-                level._ID5261 = _ID42313::_ID9125( "black", 0, level._ID794 );
+                level._ID5261 = _ID42313::_ID9125( "black", 0, level.player );
                 level._ID5261 fadeovertime( var_32 );
-                level._ID5261._ID55 = 1;
+                level._ID5261.alpha = 1;
                 level._ID52233 = maps\cliffhanger_code::_ID50305( &"CLIFFHANGER_E3_INTEREST_OF_TIME" );
                 level._ID52233 fadeovertime( var_32 );
-                level._ID52233._ID55 = 1;
+                level._ID52233.alpha = 1;
             }
             else if ( var_29 >= 2 && gettime() > var_31 + 2000 )
             {
                 var_5 delete();
-                level._ID794 allowfire( 1 );
-                level._ID794 allowcrouch( 1 );
-                level._ID794 allowprone( 1 );
-                level._ID794 _meth_830f( 1 );
+                level.player allowfire( 1 );
+                level.player allowcrouch( 1 );
+                level.player allowprone( 1 );
+                level.player _meth_830f( 1 );
                 _ID42237::_ID14402( "finished_climbing" );
-                level._ID794 disableweapons();
+                level.player disableweapons();
                 var_24._ID45941 notify( "stop_crack" );
                 _ID42237::_ID14388( "climbing_dof" );
                 return 1;
@@ -1582,10 +1582,10 @@ _ID52973( var_0, var_1, var_2, var_3 )
 
     if ( var_28 )
     {
-        level._ID794 allowfire( 1 );
-        level._ID794 allowcrouch( 1 );
-        level._ID794 allowprone( 1 );
-        level._ID794 _meth_830f( 1 );
+        level.player allowfire( 1 );
+        level.player allowcrouch( 1 );
+        level.player allowprone( 1 );
+        level.player _meth_830f( 1 );
         thread _ID53216();
         _ID42237::_ID14388( "climbing_dof" );
     }
@@ -1596,7 +1596,7 @@ _ID52973( var_0, var_1, var_2, var_3 )
 _ID47170( var_0, var_1, var_2 )
 {
     var_0._ID45941 notify( "stop_crack" );
-    level._ID794 playsound( "scn_cliff_plr_climb_fall_icepick_remove" );
+    level.player playsound( "scn_cliff_plr_climb_fall_icepick_remove" );
 
     if ( _ID42237::_ID14385( "final_climb" ) )
     {
@@ -1618,12 +1618,12 @@ _ID47170( var_0, var_1, var_2 )
     var_4 = var_1 + "_fall";
     var_5 = "fall anim";
     level._ID50036 thread _ID42259::_ID46741( var_5, level._ID30895["worldbody"][var_4], 0.1, var_2 );
-    level._ID50036 animscripted( var_5, var_2._ID740, var_2._ID65, level._ID30895["worldbody"][var_4] );
-    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
+    level._ID50036 animscripted( var_5, var_2.origin, var_2.angles, level._ID30895["worldbody"][var_4] );
+    level.player lerpviewangleclamp( 0.5, 0.25, 0.25, 0, 0, 0, 0 );
     thread _ID43069( "dof_climb1_drop_start" );
     wait 0.5;
-    level._ID794 playsound( "step_land_plr_med_ice" );
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playsound( "step_land_plr_med_ice" );
+    level.player playersetgroundreferenceent( undefined );
     level._ID50036 waittillmatch( var_5,  "end"  );
     wait 0.05;
     _ID54422( var_0 );
@@ -1639,24 +1639,24 @@ _ID47145( var_0 )
         var_1 = 0.5;
         _ID42237::_ID14388( "can_save" );
         var_2 = _ID42237::_ID35164();
-        var_2._ID740 = level._ID794._ID740 + ( 0, 0, 32 );
-        var_2._ID65 = var_0._ID45941 gettagangles( "tag_player" );
-        level._ID794 unlink();
-        var_0._ID794 playersetgroundreferenceent( undefined );
-        level._ID794 setplayerangles( var_2._ID65 );
+        var_2.origin = level.player.origin + ( 0, 0, 32 );
+        var_2.angles = var_0._ID45941 gettagangles( "tag_player" );
+        level.player unlink();
+        var_0.player playersetgroundreferenceent( undefined );
+        level.player setplayerangles( var_2.angles );
         wait 0.1;
         var_3 = var_0._ID3197;
         var_4 = 2;
         var_0._ID45941 setflaggedanimknoballrestart( "anim", var_3["fall"], var_3["root"], 1, 0.35, var_4 );
-        var_0._ID45941 moveto( var_2._ID740, var_1, 0.1, 0 );
-        level._ID794 playerlinktoblend( var_2, "tag_origin", 0.5, 0.1, 0 );
+        var_0._ID45941 moveto( var_2.origin, var_1, 0.1, 0 );
+        level.player playerlinktoblend( var_2, "tag_origin", 0.5, 0.1, 0 );
         wait(var_1);
         var_2 delete();
         _ID46993( var_0 );
         var_5 = ( -15, -100, 0 );
         var_6 = anglestoforward( var_5 );
-        level._ID794 setvelocity( var_6 * 50 );
-        level._ID794 _ID42407::_ID5026();
+        level.player setvelocity( var_6 * 50 );
+        level.player _ID42407::_ID5026();
         wait 1.2;
         _ID42237::_ID14402( "fade_to_death" );
         level waittill( "foreverever" );
@@ -1676,9 +1676,9 @@ _ID47145( var_0 )
     var_0._ID45941 waittillmatch( "anim",  "end"  );
     var_0._ID45941 hide();
     var_7 = getent( "player_recover", "targetname" );
-    var_8 = distance( var_7._ID740, var_0._ID45941._ID740 );
+    var_8 = distance( var_7.origin, var_0._ID45941.origin );
     var_9 = var_8 * 0.0065 + 0.15;
-    var_0._ID45941 moveto( var_7._ID740, var_9, var_9 * 0.6 );
+    var_0._ID45941 moveto( var_7.origin, var_9, var_9 * 0.6 );
     var_0._ID45941 rotateto( ( 70, 165, 0 ), var_9, var_9 );
     wait(var_9);
     wait 0.05;
@@ -1688,14 +1688,14 @@ _ID47145( var_0 )
 
 _ID46993( var_0 )
 {
-    var_0._ID794 playersetgroundreferenceent( undefined );
-    var_0._ID794 unlink();
+    var_0.player playersetgroundreferenceent( undefined );
+    var_0.player unlink();
     var_0._ID45941 delete();
 }
 
 _ID54422( var_0 )
 {
-    var_0._ID794 unlink();
+    var_0.player unlink();
     var_0._ID45941 delete();
 }
 
@@ -1718,7 +1718,7 @@ _ID43815( var_0, var_1 )
     var_0._ID45941 stopanimscripted();
     var_0._ID45941 setflaggedanimknoballrestart( "anim", var_2[var_1], var_2["root"], 1, 0.15 );
     var_3 = getanimlength( var_2[var_1] );
-    level._ID794 lerpviewangleclamp( 0.25, 0.125, 0.125, 0, 0, 0, 0 );
+    level.player lerpviewangleclamp( 0.25, 0.125, 0.125, 0, 0, 0, 0 );
     thread _ID43069( "dof_climb_common_falldeath" );
     wait(var_3 * 0.25);
     _ID42237::_ID14402( "fade_to_death" );
@@ -1748,10 +1748,10 @@ _ID50473( var_0 )
 {
     for (;;)
     {
-        var_0._ID794._ID48545 = 0;
-        var_0._ID794 waittill( "jump" );
-        var_0._ID794._ID48545 = 1;
-        var_0._ID794 waittill( "climbing" );
+        var_0.player._ID48545 = 0;
+        var_0.player waittill( "jump" );
+        var_0.player._ID48545 = 1;
+        var_0.player waittill( "climbing" );
     }
 }
 
@@ -1814,7 +1814,7 @@ _ID43055( var_0 )
     var_1[var_5] setanimtime( var_2[var_5]["stab"], 1 );
     var_1[var_5] _ID54242();
     var_1[var_5] show();
-    var_1[var_5]._ID740 = ( 230, 200, 200 );
+    var_1[var_5].origin = ( 230, 200, 200 );
     var_0 = _ID44276( var_0 );
     var_5 = var_0._ID46602;
     var_2[var_5] = var_0._ID3197;
@@ -1824,7 +1824,7 @@ _ID43055( var_0 )
     var_1[var_5] setanimtime( var_2[var_5]["stab"], 1 );
     var_1[var_5] _ID54242();
     var_1[var_5] show();
-    var_1[var_5]._ID740 = ( 200, 200, 200 );
+    var_1[var_5].origin = ( 200, 200, 200 );
     var_6 = 40;
     var_7 = [];
     var_7["additive_in"] = "additive_out";
@@ -1870,7 +1870,7 @@ _ID47936( var_0 )
     var_2 setanimtime( var_1["stab"], 1 );
     var_2 _ID54242();
     var_2 show();
-    var_2._ID740 = var_2._ID740 + ( 0, 200, 100 );
+    var_2.origin = var_2.origin + ( 0, 200, 100 );
     var_3 = [];
     var_3["wrist_in"] = "wrist_in";
     var_3["wrist_out"] = "wrist_in";
@@ -1887,7 +1887,7 @@ _ID47936( var_0 )
     var_8 = _ID52045( var_2, var_7 );
     var_8 unlink();
     var_8 _ID48945( level._ID43887 );
-    var_9 = anglestoforward( var_8._ID65 );
+    var_9 = anglestoforward( var_8.angles );
     var_10 = _ID52045( var_2, var_7 );
     var_10 unlink();
     var_10 _ID48945( level._ID43887 );
@@ -1928,8 +1928,8 @@ _ID54616( var_0, var_1 )
     for (;;)
     {
         wait 0.05;
-        var_2 = var_1._ID740 - var_0._ID740;
-        self._ID740 = self._ID740 + var_2;
+        var_2 = var_1.origin - var_0.origin;
+        self.origin = self.origin + var_2;
     }
 }
 
@@ -1976,8 +1976,8 @@ _ID45349( var_0, var_1, var_2 )
 
 _ID48945( var_0 )
 {
-    var_1 = anglestoforward( self._ID65 );
-    self._ID740 = self._ID740 + var_1 * var_0;
+    var_1 = anglestoforward( self.angles );
+    self.origin = self.origin + var_1 * var_0;
 }
 
 _ID44714( var_0 )
@@ -2024,7 +2024,7 @@ _ID44991()
     var_1 = 550;
     var_2 = 0.4;
     var_3 = var_0 - var_1;
-    var_4 = level._ID794._ID740[2] - var_1;
+    var_4 = level.player.origin[2] - var_1;
 
     if ( var_4 <= 0 )
         return;
@@ -2057,13 +2057,13 @@ _ID48919( var_0 )
     var_2 = var_1[0];
     var_3 = var_1[1];
 
-    if ( var_0._ID794 buttonpressed( "DPAD_UP" ) )
+    if ( var_0.player buttonpressed( "DPAD_UP" ) )
         var_2 = 1;
 
-    if ( var_0._ID794 buttonpressed( "DPAD_LEFT" ) )
+    if ( var_0.player buttonpressed( "DPAD_LEFT" ) )
         var_3 = -1;
 
-    if ( var_0._ID794 buttonpressed( "DPAD_RIGHT" ) )
+    if ( var_0.player buttonpressed( "DPAD_RIGHT" ) )
         var_3 = 1;
 
     var_1 = ( var_2, var_3, 0 );
@@ -2073,13 +2073,13 @@ _ID48919( var_0 )
 _ID46532( var_0 )
 {
     var_1 = var_0._ID3197;
-    var_0._ID794 endon( "stop_climbing" );
+    var_0.player endon( "stop_climbing" );
 
     if ( !var_0._ID54537._ID53810 )
     {
-        if ( level._ID794 getstance() == "crouch" )
+        if ( level.player getstance() == "crouch" )
         {
-            level._ID794 setstance( "stand" );
+            level.player setstance( "stand" );
             wait 1;
         }
 
@@ -2091,7 +2091,7 @@ _ID46532( var_0 )
         var_3 = var_2 + "_climb_left";
         var_0._ID54537._ID45132 = "right";
 
-        if ( level._ID794 _ID47155() )
+        if ( level.player _ID47155() )
         {
             var_3 = var_2 + "_climb_right";
             var_0._ID54537._ID45132 = "left";
@@ -2103,7 +2103,7 @@ _ID46532( var_0 )
         var_4 = _ID44276( var_0 );
         thread _ID49435( var_4 );
         var_5 = 0.5;
-        var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_player", var_5, var_5 * 0.2, var_5 * 0.2 );
+        var_0.player playerlinktoblend( var_0._ID45941, "tag_player", var_5, var_5 * 0.2, var_5 * 0.2 );
 
         if ( var_3 == var_2 + "_climb_left" )
         {
@@ -2115,12 +2115,12 @@ _ID46532( var_0 )
 
         if ( !var_0._ID54537._ID53810 )
         {
-            var_0._ID794 playersetgroundreferenceent( var_0._ID54537._ID17430 );
+            var_0.player playersetgroundreferenceent( var_0._ID54537._ID17430 );
             var_0._ID54537._ID53810 = 1;
             wait 0.05;
         }
 
-        level._ID794 takeallweapons();
+        level.player takeallweapons();
         var_0._ID45941 setflaggedanim( "start_climb", var_1[var_3], 1, 0, 1 );
         _ID42407::_ID10226( 1.2, _ID42237::_ID14402, "player_begins_to_climb" );
         setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
@@ -2147,7 +2147,7 @@ _ID46532( var_0 )
 
     thread _ID54136( var_0 );
     var_7 = var_0._ID45941 gettagangles( "tag_view" );
-    var_8 = var_0._ID794 getplayerangles();
+    var_8 = var_0.player getplayerangles();
     var_9 = anglestoforward( var_7 );
     var_10 = anglestoforward( var_8 );
     var_11 = vectordot( var_9, var_10 );
@@ -2160,9 +2160,9 @@ _ID46532( var_0 )
 _ID50911( var_0, var_1 )
 {
     if ( var_0._ID46602 == "right" )
-        var_0._ID794 playerlinktodelta( var_0._ID45941, var_1, 1, 22, 60, 40, 40, 1 );
+        var_0.player playerlinktodelta( var_0._ID45941, var_1, 1, 22, 60, 40, 40, 1 );
     else
-        var_0._ID794 playerlinktodelta( var_0._ID45941, var_1, 1, 70, 28, 40, 40, 1 );
+        var_0.player playerlinktodelta( var_0._ID45941, var_1, 1, 70, 28, 40, 40, 1 );
 }
 
 _ID49435( var_0 )
@@ -2177,11 +2177,11 @@ _ID49435( var_0 )
 
 _ID54136( var_0 )
 {
-    var_0._ID794 endon( "stop_climbing" );
+    var_0.player endon( "stop_climbing" );
     var_1 = 0.3;
-    var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_player", var_1, var_1 * 0.2, var_1 * 0.2 );
+    var_0.player playerlinktoblend( var_0._ID45941, "tag_player", var_1, var_1 * 0.2, var_1 * 0.2 );
     wait(var_1);
-    var_0._ID794 playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 1 );
+    var_0.player playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 1 );
     wait 0.5;
     _ID50911( var_0, "tag_player" );
 }
@@ -2202,7 +2202,7 @@ _ID45876( var_0, var_1 )
     var_0._ID54537._ID49137 = undefined;
     thread _ID49966( var_0 );
     var_5 = getanimlength( var_4["stab"] );
-    level._ID794 playsound( "player_climb_effort" );
+    level.player playsound( "player_climb_effort" );
     wait(var_5);
     var_6 = _ID45060( var_0 );
     var_7 = var_0._ID53026;
@@ -2226,10 +2226,10 @@ _ID45876( var_0, var_1 )
 
     if ( var_6 )
     {
-        level._ID794 playrumblelooponentity( "icepick_climb" );
+        level.player playrumblelooponentity( "icepick_climb" );
         var_9 = _ID51180( var_0, "settle", undefined, var_0._ID54537._ID47151 );
         var_9 thread _ID52023( -60 );
-        var_9._ID740 = var_9._ID740 + var_0._ID54537._ID49137;
+        var_9.origin = var_9.origin + var_0._ID54537._ID49137;
         var_0._ID54537._ID47151 = var_9;
         level._ID49685 = var_4["settle"];
         var_9 setflaggedanimknobrestart( "stabbing", var_4["settle"], 1, 0, 1 );
@@ -2243,7 +2243,7 @@ _ID45876( var_0, var_1 )
             _ID42237::_ID14402( "player_climbed_3_steps" );
 
         var_0._ID45941 waittillmatch( "stabbing",  "release"  );
-        level._ID794 playrumblelooponentity( "icepick_release" );
+        level.player playrumblelooponentity( "icepick_release" );
         var_0._ID45941 waittillmatch( "stabbing",  "settle"  );
         thread _ID53986( var_0 );
 
@@ -2274,7 +2274,7 @@ _ID51146( var_0, var_1 )
     var_3 = _ID52045( var_1, var_2 );
     var_3 unlink();
     var_3 _ID48945( level._ID43887 );
-    var_4 = anglestoforward( var_3._ID65 );
+    var_4 = anglestoforward( var_3.angles );
     var_5 = _ID52045( var_1, var_2 );
     var_5 unlink();
     var_5 _ID48945( level._ID43887 );
@@ -2290,9 +2290,9 @@ _ID53926( var_0 )
 {
     var_1 = getent( "climb_get_on", "targetname" );
     var_0._ID54537._ID53647 = 1;
-    var_0._ID794 notify( "climbing" );
+    var_0.player notify( "climbing" );
     _ID46532( var_0 );
-    var_0._ID794 playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 0 );
+    var_0.player playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0, 0 );
     wait 0.05;
     _ID50911( var_0, "tag_player" );
     var_0._ID45941 show();
@@ -2303,7 +2303,7 @@ _ID48455( var_0 )
     if ( _ID42237::_ID14385( "climb_pullup" ) )
         return 1;
 
-    if ( var_0._ID794._ID48545 )
+    if ( var_0.player._ID48545 )
         return 1;
 
     if ( !_ID42237::_ID14385( "climb_drop_down" ) )
@@ -2330,14 +2330,14 @@ _ID51377( var_0 )
     var_2 = var_0 gettagangles( "tag_weapon_right" );
     var_3 = spawn( "script_model", var_1 );
     var_3 setmodel( "viewmodel_ice_picker" );
-    var_3._ID65 = var_2;
-    var_3 physicslaunchclient( var_3._ID740, ( 0, 0, -1 ) );
+    var_3.angles = var_2;
+    var_3 physicslaunchclient( var_3.origin, ( 0, 0, -1 ) );
 }
 
 _ID47643( var_0 )
 {
     wait(var_0);
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playersetgroundreferenceent( undefined );
 }
 
 _ID47617( var_0 )
@@ -2353,34 +2353,34 @@ _ID47617( var_0 )
         var_2 = _ID42237::_ID16638( "player_icepicker_bigjump_end_getup", "targetname" );
         var_3 = 0.5;
         var_4 = var_0._ID45941 _ID42407::_ID16120( "climb_finish" );
-        var_5 = getstartorigin( var_2._ID740, var_2._ID65, var_4 );
-        var_6 = getstartangles( var_2._ID740, var_2._ID65, var_4 );
+        var_5 = getstartorigin( var_2.origin, var_2.angles, var_4 );
+        var_6 = getstartangles( var_2.origin, var_2.angles, var_4 );
         var_0._ID45941 hide();
         var_0._ID45941 _ID42237::_ID10192( 0.1, ::show );
-        var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
+        var_0.player playerlinktoblend( var_0._ID45941, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
         var_2 _ID42259::_ID3111( var_0._ID45941, "climb_finish" );
         var_0._ID45941 hide();
-        var_0._ID794 unlink();
+        var_0.player unlink();
         wait 0.05;
-        var_0._ID794 setmovespeedscale( 1 );
-        var_0._ID794 notify( "stop_climbing" );
+        var_0.player setmovespeedscale( 1 );
+        var_0.player notify( "stop_climbing" );
         return 1;
     }
 
-    var_0._ID794 notify( "stop_climbing" );
+    var_0.player notify( "stop_climbing" );
     var_0._ID54537._ID53647 = 0;
     var_0._ID54537._ID53810 = 0;
 
     if ( _ID42237::_ID14385( "climb_pullup" ) && !_ID42237::_ID14385( "final_climb" ) )
     {
         var_0._ID45941 notify( "stop_crack" );
-        level._ID794 playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0 );
+        level.player playerlinktodelta( var_0._ID45941, "tag_player", 1, 0, 0, 0, 0 );
         var_7 = getent( "climb_jump_org", "targetname" );
         var_4 = var_0._ID45941 _ID42407::_ID16120( "first_pullup_" + var_0._ID54537._ID45132 );
-        var_5 = getstartorigin( var_7._ID740, var_7._ID65, var_4 );
-        var_6 = getstartangles( var_7._ID740, var_7._ID65, var_4 );
-        var_0._ID45941._ID740 = var_5;
-        var_0._ID45941._ID65 = var_6;
+        var_5 = getstartorigin( var_7.origin, var_7.angles, var_4 );
+        var_6 = getstartangles( var_7.origin, var_7.angles, var_4 );
+        var_0._ID45941.origin = var_5;
+        var_0._ID45941.angles = var_6;
         var_1 = var_0._ID3197;
         var_8 = 0;
         var_0._ID45941 clearanim( var_1["root"], var_8 );
@@ -2389,28 +2389,28 @@ _ID47617( var_0 )
         thread _ID42259::_ID35866( var_0._ID45941, "animdone", "climbing" );
         var_0._ID45941 waittillmatch( "animdone",  "end"  );
         _ID42237::_ID14388( "pause_sleeve_flap" );
-        var_0._ID794 unlink();
-        var_0._ID794 setmovespeedscale( 1 );
+        var_0.player unlink();
+        var_0.player setmovespeedscale( 1 );
         var_0._ID45941 hide();
         thread _ID53240();
         return 1;
     }
 
     var_0._ID45941 hide();
-    var_0._ID794 playersetgroundreferenceent( undefined );
-    var_0._ID794 setmovespeedscale( 0.35 );
+    var_0.player playersetgroundreferenceent( undefined );
+    var_0.player setmovespeedscale( 0.35 );
     var_9 = getent( "jump_down_org", "targetname" );
     var_10 = var_9 _ID42237::_ID35164();
-    var_10._ID740 = var_9._ID740 + ( 0, 0, 1 );
+    var_10.origin = var_9.origin + ( 0, 0, 1 );
     var_3 = 0.4;
-    var_0._ID794 playerlinktoblend( var_10, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
+    var_0.player playerlinktoblend( var_10, "tag_origin", var_3, var_3 * 0.2, var_3 * 0.2 );
     wait(var_3);
     wait 0.1;
-    var_0._ID794 unlink();
+    var_0.player unlink();
     var_10 delete();
     var_11 = getent( "climb_get_on", "targetname" );
-    var_0._ID45941._ID740 = var_11._ID740;
-    var_0._ID45941._ID65 = var_11._ID65;
+    var_0._ID45941.origin = var_11.origin;
+    var_0._ID45941.angles = var_11.angles;
     var_0._ID54537._ID45132 = "left";
     _ID53744( var_0, "up" );
     var_1 = var_0._ID3197;
@@ -2426,10 +2426,10 @@ _ID49147( var_0, var_1, var_2, var_3 )
     for (;;)
     {
         wait 0.05;
-        var_4 = var_2._ID740 - var_3._ID740;
-        var_5 = transformmove( var_2._ID740, var_2._ID65, var_3._ID740, var_3._ID65, var_1._ID740, var_1._ID65 );
-        var_1._ID740 = var_1._ID740 + var_4;
-        var_0._ID45941._ID740 = var_0._ID45941._ID740 + var_4;
+        var_4 = var_2.origin - var_3.origin;
+        var_5 = transformmove( var_2.origin, var_2.angles, var_3.origin, var_3.angles, var_1.origin, var_1.angles );
+        var_1.origin = var_1.origin + var_4;
+        var_0._ID45941.origin = var_0._ID45941.origin + var_4;
         var_6 = distance( ( 0, 0, 0 ), var_4 );
         var_6 *= 10;
         var_6 = int( var_6 );
@@ -2439,8 +2439,8 @@ _ID49147( var_0, var_1, var_2, var_3 )
         if ( var_7 > 200 )
             var_7 = 0;
 
-        var_1._ID65 = ( var_7, var_5["angles"][1], 0 );
-        var_0._ID45941._ID65 = ( var_7, var_5["angles"][1], 0 );
+        var_1.angles = ( var_7, var_5["angles"][1], 0 );
+        var_0._ID45941.angles = ( var_7, var_5["angles"][1], 0 );
     }
 }
 
@@ -2463,7 +2463,7 @@ _ID49966( var_0 )
 _ID50080( var_0 )
 {
     var_0._ID45941 dontinterpolate();
-    var_0._ID45941._ID740 = var_0._ID45941._ID740 + var_0._ID54537._ID49137;
+    var_0._ID45941.origin = var_0._ID45941.origin + var_0._ID54537._ID49137;
 }
 
 _ID53986( var_0 )
@@ -2491,7 +2491,7 @@ _ID43776( var_0 )
     var_0._ID45941 setflaggedanimknobrestart( "stabbing", var_1["stab"], 1, var_2, 1 );
     thread _ID52764( var_0 );
     thread _ID51543( var_0 );
-    var_0._ID25524 = var_0._ID45941._ID740;
+    var_0._ID25524 = var_0._ID45941.origin;
 }
 
 _ID52764( var_0 )
@@ -2531,7 +2531,7 @@ _ID48714( var_0 )
 
 _ID51543( var_0 )
 {
-    var_1 = var_0._ID45941._ID740;
+    var_1 = var_0._ID45941.origin;
     var_2 = spawnstruct();
     var_2._ID46165 = [];
     var_2._ID53077 = [];
@@ -2777,8 +2777,8 @@ _ID51180( var_0, var_1, var_2, var_3 )
         var_17 = _ID42407::_ID35028( "player_rig" );
 
     var_17 hide();
-    var_17._ID740 = var_0._ID45941._ID740;
-    var_17._ID65 = var_0._ID45941._ID65;
+    var_17.origin = var_0._ID45941.origin;
+    var_17.angles = var_0._ID45941.angles;
     var_17 clearanim( var_4["root"], 0 );
     var_17 setanimknobrestart( var_4[var_1], 1, 0, 0 );
 
@@ -2806,8 +2806,8 @@ _ID46447()
 {
     for (;;)
     {
-        var_0 = getent( self._ID1191, "targetname" );
-        var_1 = bullettrace( self._ID740, var_0._ID740, 0, undefined );
+        var_0 = getent( self.target, "targetname" );
+        var_1 = bullettrace( self.origin, var_0.origin, 0, undefined );
         wait 0.05;
     }
 }
@@ -2843,10 +2843,10 @@ _ID53366( var_0, var_1, var_2, var_3 )
     var_9 = _ID51668( var_0._ID46602 );
     var_10 = _ID52045( var_8, var_9 );
     wait 0.05;
-    var_11 = anglestoforward( var_10._ID65 );
+    var_11 = anglestoforward( var_10.angles );
     var_12 = level._ID43887;
-    var_13 = var_10._ID740 + var_11 * ( var_12 * -5 );
-    var_14 = var_10._ID740 + var_11 * var_12;
+    var_13 = var_10.origin + var_11 * ( var_12 * -5 );
+    var_14 = var_10.origin + var_11 * var_12;
     var_15 = bullettrace( var_13, var_14, 0, undefined );
     self._ID46165[var_1] = var_15["fraction"];
     self._ID53077[var_1] = var_15["surfacetype"];
@@ -2902,10 +2902,10 @@ _ID52918( var_0, var_1, var_2, var_3, var_4 )
     var_10 = _ID51668( var_0._ID46602 );
     var_11 = _ID52045( var_9, var_10 );
     wait 0.05;
-    var_12 = anglestoforward( var_11._ID65 );
+    var_12 = anglestoforward( var_11.angles );
     var_13 = level._ID43887;
-    var_14 = var_11._ID740 + var_12 * ( var_13 * -5 );
-    var_15 = var_11._ID740 + var_12 * var_13;
+    var_14 = var_11.origin + var_12 * ( var_13 * -5 );
+    var_15 = var_11.origin + var_12 * var_13;
     var_16 = bullettrace( var_14, var_15, 0, undefined );
     self._ID46165[var_1] = var_16["fraction"];
     self._ID53077[var_1] = var_16["surfacetype"];
@@ -2928,7 +2928,7 @@ _ID51977( var_0 )
 
 _ID43063( var_0 )
 {
-    var_1 = var_0._ID794 _ID48919( var_0 );
+    var_1 = var_0.player _ID48919( var_0 );
 
     if ( abs( var_1[0] ) > 0.5 )
         return 1;
@@ -2975,7 +2975,7 @@ _ID52315( var_0 )
     {
         var_1 = var_0._ID48348["left"];
 
-        if ( var_1._ID794 [[ var_1._ID51876 ]]() )
+        if ( var_1.player [[ var_1._ID51876 ]]() )
         {
             var_1._ID50118 = gettime();
 
@@ -2991,7 +2991,7 @@ _ID52315( var_0 )
         {
             var_1 = var_0._ID48348["right"];
 
-            if ( var_1._ID794 [[ var_1._ID51876 ]]() )
+            if ( var_1.player [[ var_1._ID51876 ]]() )
                 var_1._ID50118 = gettime();
         }
 
@@ -3001,7 +3001,7 @@ _ID52315( var_0 )
 
 _ID48003( var_0 )
 {
-    if ( var_0._ID794 buttonpressed( var_0._ID47576 ) )
+    if ( var_0.player buttonpressed( var_0._ID47576 ) )
         return 1;
 
     return var_0._ID50118 + 750 > gettime();
@@ -3009,10 +3009,10 @@ _ID48003( var_0 )
 
 _ID46251( var_0 )
 {
-    if ( var_0._ID794 buttonpressed( var_0._ID47576 ) )
+    if ( var_0.player buttonpressed( var_0._ID47576 ) )
         return 1;
 
-    return var_0._ID794 [[ var_0._ID51876 ]]();
+    return var_0.player [[ var_0._ID51876 ]]();
 }
 
 _ID51510( var_0 )
@@ -3028,8 +3028,8 @@ _ID51510( var_0 )
         var_3 = getdvarint( "b3" );
         var_4 = var_0 gettagangles( "tag_player" );
         var_5 = var_4[1];
-        self._ID65 = ( 0, var_5, 0 );
-        self._ID740 = var_0 gettagorigin( "tag_player" );
+        self.angles = ( 0, var_5, 0 );
+        self.origin = var_0 gettagorigin( "tag_player" );
 
         if ( 1 )
             return;
@@ -3040,14 +3040,14 @@ _ID51510( var_0 )
 
 _ID52922( var_0 )
 {
-    var_1 = var_0._ID740[2] - 1000;
+    var_1 = var_0.origin[2] - 1000;
 
     for (;;)
     {
         var_2 = var_0 gettagorigin( "j_wrist_le" );
         var_3 = var_0 gettagorigin( "j_wrist_ri" );
         var_4 = var_2 * 0.5 + var_3 * 0.5;
-        var_5 = anglestoforward( var_0._ID65 );
+        var_5 = anglestoforward( var_0.angles );
         var_6 = var_5 * -145;
         var_6 = ( var_6[0], var_6[1], 0 );
         var_4 += var_6;
@@ -3057,7 +3057,7 @@ _ID52922( var_0 )
 
         var_1 = var_4[2];
         self moveto( var_4 + ( 0, 0, -60 ), 0.3 );
-        var_7 = vectortoangles( var_0._ID740 - var_4 );
+        var_7 = vectortoangles( var_0.origin - var_4 );
         self rotateto( ( 0, var_7[1], 0 ), 0.3 );
         wait 0.3;
     }
@@ -3067,7 +3067,7 @@ _ID49088( var_0 )
 {
     for (;;)
     {
-        var_1 = var_0._ID794 getplayerangles();
+        var_1 = var_0.player getplayerangles();
         var_2 = self gettagangles( "tag_player" );
         var_3 = anglestoforward( var_1 );
         var_4 = anglestoforward( var_2 );
@@ -3103,8 +3103,8 @@ _ID47996()
 {
     for (;;)
     {
-        var_0 = anglestoforward( self._ID65 );
-        var_1 = bullettrace( self._ID740, self._ID740 + var_0 * 6.25, 0, undefined );
+        var_0 = anglestoforward( self.angles );
+        var_1 = bullettrace( self.origin, self.origin + var_0 * 6.25, 0, undefined );
         wait 0.05;
     }
 }
@@ -3114,12 +3114,12 @@ _ID52045( var_0, var_1, var_2 )
     var_3 = spawn( "script_model", ( 0, 0, 0 ) );
     var_3 setmodel( "tag_origin" );
     var_3 hide();
-    var_3._ID740 = var_0 gettagorigin( var_1 );
+    var_3.origin = var_0 gettagorigin( var_1 );
 
     if ( isdefined( var_2 ) )
-        var_3._ID740 = var_3._ID740 + var_2;
+        var_3.origin = var_3.origin + var_2;
 
-    var_3._ID65 = var_0 gettagangles( var_1 );
+    var_3.angles = var_0 gettagangles( var_1 );
     var_4 = spawnstruct();
     var_4._ID337 = var_3;
     var_4._ID409 = 2;
@@ -3137,8 +3137,8 @@ _ID52662( var_0, var_1 )
     var_2 = spawn( "script_model", ( 25, 25, -25 ) );
     var_2 setmodel( "tag_origin" );
     var_2 hide();
-    var_2._ID740 = var_0 gettagorigin( var_1 );
-    var_2._ID65 = var_0 gettagangles( var_1 );
+    var_2.origin = var_0 gettagorigin( var_1 );
+    var_2.angles = var_0 gettagangles( var_1 );
     var_3 = spawnstruct();
     var_3._ID337 = var_2;
     var_3._ID409 = 2;
@@ -3160,8 +3160,8 @@ _ID46315( var_0, var_1 )
     for (;;)
     {
         wait 0.05;
-        var_4 = anglestoforward( var_0._ID65 );
-        var_5 = bullettrace( var_0._ID740, var_0._ID740 + var_4 * var_3, 0, undefined );
+        var_4 = anglestoforward( var_0.angles );
+        var_5 = bullettrace( var_0.origin, var_0.origin + var_4 * var_3, 0, undefined );
 
         if ( self._ID52433 )
             continue;
@@ -3186,7 +3186,7 @@ _ID46315( var_0, var_1 )
         {
             playfx( _ID42237::_ID16299( var_7 ), var_5["position"], var_5["normal"] );
             var_0 playsound( "icepick_impact_ice" );
-            level._ID794 playrumblelooponentity( "icepick_climb" );
+            level.player playrumblelooponentity( "icepick_climb" );
         }
     }
 }
@@ -3273,7 +3273,7 @@ _ID54380( var_0 )
     var_2 = _ID52045( self, var_1 );
     wait 0.05;
     var_3 = 0;
-    var_4 = spawn( "script_origin", self._ID740 );
+    var_4 = spawn( "script_origin", self.origin );
     var_5 = [];
     var_5[0] = 1;
     var_5[1] = 2;
@@ -3293,10 +3293,10 @@ _ID54380( var_0 )
 
     for ( var_6 = 1; var_6 < var_5.size; var_6++ )
     {
-        var_7 = anglestoforward( var_2._ID65 );
+        var_7 = anglestoforward( var_2.angles );
         var_8 = level._ID43887;
-        var_9 = var_2._ID740 + var_7 * ( var_8 * -2 );
-        var_10 = var_2._ID740 + var_7 * var_8 * 2;
+        var_9 = var_2.origin + var_7 * ( var_8 * -2 );
+        var_10 = var_2.origin + var_7 * var_8 * 2;
         var_11 = bullettrace( var_9, var_10, 0, undefined );
         var_12 = var_11["position"];
         var_13 = var_11["normal"];
@@ -3304,7 +3304,7 @@ _ID54380( var_0 )
 
         if ( !var_3 )
         {
-            var_4._ID740 = var_12;
+            var_4.origin = var_12;
             var_4 thread _ID42407::_ID27079( "icepick_inactive_cracking" );
         }
 
@@ -3399,7 +3399,7 @@ _ID44172()
 {
     _ID45691( level._ID28543 );
     var_0 = level._ID47341;
-    var_0._ID216 = 1;
+    var_0.count = 1;
     var_1 = var_0 stalingradspawn();
     _ID42407::_ID35060( var_1 );
     var_1._ID3189 = "price";
@@ -3410,7 +3410,7 @@ _ID44172()
     var_1 thread _ID42407::_ID22746();
     setsaveddvar( "g_friendlyfiredist", 0 );
     var_1 _ID42407::_ID17509();
-    var_2 = spawn( "script_model", var_1._ID740 );
+    var_2 = spawn( "script_model", var_1.origin );
     var_2 setmodel( level._ID51708 );
     var_2 linkto( var_1, "TAG_WEAPON_CHEST", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_1._ID46475 = var_2;
@@ -3455,9 +3455,9 @@ _ID48158()
     _ID42407::_ID10226( 6, _ID42411::_ID35200, "climb_mig_distant_spawner" );
     level _ID42407::_ID10226( 10, _ID42407::_ID31877, "follow_price_obj" );
     level _ID42407::_ID10226( 10, _ID42407::_ID1601, "g_friendlyNameDist", 0 );
-    level._ID794 thread _ID42237::_ID27000( "gear_jacket_flapping_plr_loop" );
+    level.player thread _ID42237::_ID27000( "gear_jacket_flapping_plr_loop" );
     _ID42407::_ID10226( 0.1, _ID42407::_ID4433 );
-    level._ID794 thread _ID47835();
+    level.player thread _ID47835();
     var_5 _ID42259::_ID3111( var_2, "price_climb_intro" );
     var_5 thread _ID42259::_ID3044( var_2, "price_climb_intro_idle", "stop_idle" );
     _ID42237::_ID14388( "keep_cam_on_price" );
@@ -3465,10 +3465,10 @@ _ID48158()
     _ID42237::_ID14388( "price_climb_continues" );
     var_5 notify( "stop_idle" );
     var_6 = 7.2;
-    level._ID794 _ID42237::_ID10192( var_6, ::setstance, "stand" );
-    level._ID794 _ID42237::_ID10192( var_6, ::allowcrouch, 0 );
-    level._ID794 _ID42237::_ID10192( var_6, ::allowprone, 0 );
-    level._ID794 thread _ID48002();
+    level.player _ID42237::_ID10192( var_6, ::setstance, "stand" );
+    level.player _ID42237::_ID10192( var_6, ::allowcrouch, 0 );
+    level.player _ID42237::_ID10192( var_6, ::allowprone, 0 );
+    level.player thread _ID48002();
     var_2 thread _ID52396();
     level._ID45632 = gettime();
     var_5 thread _ID42259::_ID3111( var_2, "price_climb_start" );
@@ -3535,7 +3535,7 @@ _ID54238( var_0 )
     var_1 = level._ID28543;
     var_1 hidepart( "J_IcePicker" );
     thread _ID47517();
-    var_1._ID304 = 1;
+    var_1.dontavoidplayer = 1;
     var_1 pushplayer( 1 );
     _ID42407::_ID35060( var_1 );
 
@@ -3544,7 +3544,7 @@ _ID54238( var_0 )
         _ID45691( level._ID50450 );
         _func_194( _ID42407::_ID25268( "obj_follow_price" ), level._ID28543 );
         var_1 _ID42407::_ID17509();
-        var_2 = spawn( "script_model", var_1._ID740 );
+        var_2 = spawn( "script_model", var_1.origin );
         var_2 setmodel( level._ID51708 );
         var_2 linkto( var_1, "TAG_WEAPON_CHEST", ( 0, 0, 0 ), ( 0, 0, 0 ) );
         var_1._ID46475 = var_2;
@@ -3569,7 +3569,7 @@ _ID54238( var_0 )
     thread _ID53806();
     _ID42237::_ID14413( "reached_top" );
     wait 8;
-    var_1._ID304 = 0;
+    var_1.dontavoidplayer = 0;
 }
 
 _ID53806()
@@ -3587,14 +3587,14 @@ _ID47965()
         return;
 
     _ID42475::_ID34575( "aud_start_mix_slowmo_jump_event" );
-    level._ID794 playsound( "scn_cliffhanger_bigjump_slowdown" );
+    level.player playsound( "scn_cliffhanger_bigjump_slowdown" );
     _ID42407::_ID34379();
     _ID42407::_ID34377( 0.25 );
     _ID42407::_ID34374( 0.05 );
     _ID42407::_ID34371();
     wait 0.2;
     _ID42407::_ID34375( 0.01 );
-    level._ID794 playsound( "scn_cliffhanger_bigjump_speedup" );
+    level.player playsound( "scn_cliffhanger_bigjump_speedup" );
     _ID42407::_ID34372();
     _ID42407::_ID34369();
     _ID42237::_ID14402( "price_caught_player" );
@@ -3647,20 +3647,20 @@ _ID49536( var_0 )
 {
     if ( _ID42237::_ID14385( "climb_icepick_slide" ) )
     {
-        level._ID794 _ID42407::_ID5026();
+        level.player _ID42407::_ID5026();
         level waittill( "foreverever" );
     }
 
     if ( !_ID42237::_ID14385( "climb_big_jump" ) )
         return 0;
 
-    if ( level._ID794 getstance() != "stand" )
+    if ( level.player getstance() != "stand" )
         return 0;
 
-    if ( level._ID794._ID45045 || !level._ID794 _meth_83c0() )
+    if ( level.player._ID45045 || !level.player _meth_83c0() )
         return 0;
 
-    var_1 = level._ID794 getplayerangles();
+    var_1 = level.player getplayerangles();
     var_1 = ( 0, var_1[1], 0 );
     var_2 = anglestoforward( var_1 );
     var_3 = vectordot( var_2, var_0 );
@@ -3671,7 +3671,7 @@ _ID49536( var_0 )
         return 0;
     }
 
-    var_4 = level._ID794 getvelocity();
+    var_4 = level.player getvelocity();
     var_5 = distance( ( var_4[0], var_4[1], 0 ), ( 0, 0, 0 ) );
 
     if ( var_5 < 180 )
@@ -3687,7 +3687,7 @@ _ID49836()
 {
     level endon( "stop_force_sliding_the_player" );
     _ID42237::_ID14413( "climb_icepick_slide" );
-    level._ID794 _ID42407::_ID5026();
+    level.player _ID42407::_ID5026();
 }
 
 _ID53240()
@@ -3698,12 +3698,12 @@ _ID53240()
     var_0 = getent( "player_jumpdown_block", "targetname" );
     var_0 solid();
     _ID42237::_ID14402( "player_preps_for_jump" );
-    level._ID794 takeallweapons();
-    level._ID794 giveweapon( level._ID51758, 0, 1 );
-    level._ID794 switchtoweapon( level._ID51758 );
-    level._ID794 notify( "stop_climbing" );
-    level._ID794 playersetgroundreferenceent( undefined );
-    level._ID794 setmovespeedscale( 1 );
+    level.player takeallweapons();
+    level.player giveweapon( level._ID51758, 0, 1 );
+    level.player switchtoweapon( level._ID51758 );
+    level.player notify( "stop_climbing" );
+    level.player playersetgroundreferenceent( undefined );
+    level.player setmovespeedscale( 1 );
     var_1 = getent( "climb_jump_org", "targetname" );
     _ID42237::_ID14400( "price_jumped" );
     thread _ID51118( var_1 );
@@ -3716,14 +3716,14 @@ _ID53240()
     if ( level._ID15361 <= 1 )
     {
         var_2 = _ID42407::_ID16268( "climb_big_jump" );
-        var_2._ID740 = var_2._ID740 + ( 0, 0, -40 );
+        var_2.origin = var_2.origin + ( 0, 0, -40 );
     }
 
     _ID42237::_ID14388( "climb_big_jump" );
     _ID42237::_ID14413( "climb_big_jump" );
     var_3 = getent( "big_jump_yaw", "targetname" );
-    var_4 = getent( var_3._ID1191, "targetname" );
-    var_5 = vectortoangles( var_4._ID740 - var_3._ID740 );
+    var_4 = getent( var_3.target, "targetname" );
+    var_5 = vectortoangles( var_4.origin - var_3.origin );
     var_5 = ( 0, var_5[1], 0 );
     var_6 = anglestoforward( var_5 );
     level notify( "stop_force_sliding_the_player" );
@@ -3736,9 +3736,9 @@ _ID53240()
         wait 0.05;
     }
 
-    level._ID794 playsound( "scn_cliffhanger_player_make_bigjump" );
+    level.player playsound( "scn_cliffhanger_player_make_bigjump" );
     setdvar( "hold_on_tight", 1 );
-    var_7 = level._ID794 getvelocity();
+    var_7 = level.player getvelocity();
     var_8 = distance( var_7, ( 0, 0, 0 ) );
     var_9 = 300;
 
@@ -3746,13 +3746,13 @@ _ID53240()
     {
         var_10 = var_9 / var_8;
         var_11 = ( var_7[0] * var_10, var_7[1] * var_10, var_7[2] * var_10 );
-        level._ID794 setvelocity( var_11 );
+        level.player setvelocity( var_11 );
     }
 
-    level._ID794 setstance( "stand" );
-    level._ID794 allowprone( 0 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 _meth_830f( 0 );
+    level.player setstance( "stand" );
+    level.player allowprone( 0 );
+    level.player allowcrouch( 0 );
+    level.player _meth_830f( 0 );
     _ID42237::_ID14402( "player_makes_the_jump" );
     wait 0.4;
     var_12 = _ID42407::_ID35028( "player_rig" );
@@ -3763,10 +3763,10 @@ _ID53240()
     var_14 = var_12 _ID42407::_ID16120( "big_jump_left" );
     var_15 = var_12 _ID42407::_ID16120( "big_jump_right" );
     var_16 = var_12 _ID42407::_ID16120( "big_jump_both_out" );
-    var_17 = getstartorigin( var_1._ID740, var_1._ID65, var_13 );
-    var_18 = getstartangles( var_1._ID740, var_1._ID65, var_13 );
-    var_12._ID740 = var_17;
-    var_12._ID65 = var_18;
+    var_17 = getstartorigin( var_1.origin, var_1.angles, var_13 );
+    var_18 = getstartangles( var_1.origin, var_1.angles, var_13 );
+    var_12.origin = var_17;
+    var_12.angles = var_18;
     var_19 = var_12 _ID42407::_ID16120( "controller_both_in" );
     var_20 = var_12 _ID42407::_ID16120( "controller_both_out" );
     var_21 = var_12 _ID42407::_ID16120( "controller_right" );
@@ -3787,14 +3787,14 @@ _ID53240()
     setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
     var_12 thread _ID53086();
     var_26 = 0.7;
-    level._ID794 playerlinktoblend( var_12, "tag_player", var_26, var_26 * 0.7, 0 );
+    level.player playerlinktoblend( var_12, "tag_player", var_26, var_26 * 0.7, 0 );
     wait(var_26 - 0.05);
     var_12 show();
     thread _ID52993( var_12 );
-    thread _ID42237::_ID27077( "scn_cliffhanger_player_bigjump_bodyfall", level._ID794._ID740 );
-    level._ID794._ID46939 = 1;
+    thread _ID42237::_ID27077( "scn_cliffhanger_player_bigjump_bodyfall", level.player.origin );
+    level.player._ID46939 = 1;
     wait 0.05;
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     thread _ID50159();
     wait 0.05;
 
@@ -3806,7 +3806,7 @@ _ID53240()
         wait 0.05;
     }
 
-    level._ID794 playsound( "scn_cliffhanger_snow_breakaway" );
+    level.player playsound( "scn_cliffhanger_snow_breakaway" );
     setsaveddvar( "compass", 0 );
     _ID42237::_ID14402( "player_hangs_on" );
     _ID42234::_ID13611( 5 );
@@ -3817,7 +3817,7 @@ _ID53240()
     if ( var_12._ID52456 )
         var_12 stopsounds( "scn_cliffhanger_icepick_scrape_right" );
 
-    level._ID794._ID46939 = 0;
+    level.player._ID46939 = 0;
     var_12 notify( "stop_weights" );
     var_12 notify( "stop_fx" );
     var_27 = getent( "h2_bigjump_catch", "targetname" );
@@ -3836,10 +3836,10 @@ _ID53240()
 
         if ( level._ID15361 > 1 )
         {
-            if ( !_ID42237::_ID14385( "player_was_caught" ) && gettime() > level._ID794._ID53783 + 1000 )
+            if ( !_ID42237::_ID14385( "player_was_caught" ) && gettime() > level.player._ID53783 + 1000 )
             {
                 _ID42237::_ID14388( "player_hangs_on" );
-                level._ID794 unlink();
+                level.player unlink();
                 var_12 hide();
                 return;
             }
@@ -3853,8 +3853,8 @@ _ID53240()
 
     var_12 notify( "stop_weights" );
     var_31 = getent( "climb_catch", "targetname" );
-    var_17 = var_31._ID740;
-    var_18 = var_31._ID65;
+    var_17 = var_31.origin;
+    var_18 = var_31.angles;
     var_31 delete();
     _ID42237::_ID14388( "climb_pullup" );
     _ID42237::_ID14388( "finished_climbing" );
@@ -3864,7 +3864,7 @@ _ID53240()
 
     for (;;)
     {
-        if ( level._ID794 _ID52973( var_17, var_18, 1, 1 ) )
+        if ( level.player _ID52973( var_17, var_18, 1, 1 ) )
             break;
 
         if ( _ID42237::_ID14385( "finished_climbing" ) )
@@ -3879,7 +3879,7 @@ _ID53240()
         var_32 = 1.5;
         wait(var_32);
         thread _ID53216();
-        level._ID794 playersetgroundreferenceent( undefined );
+        level.player playersetgroundreferenceent( undefined );
     }
 
     _ID42237::_ID14402( "reached_top" );
@@ -3891,14 +3891,14 @@ _ID53240()
     setsaveddvar( "hud_drawhud", 1 );
     setsaveddvar( "sm_sunsamplesizenear", 0.25 );
     setsaveddvar( "g_friendlyNameDist", 15000 );
-    level._ID794 allowprone( 1 );
-    level._ID794 allowcrouch( 1 );
-    level._ID794 _meth_830f( 1 );
+    level.player allowprone( 1 );
+    level.player allowcrouch( 1 );
+    level.player _meth_830f( 1 );
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4918( "axis" );
-    level._ID794 notify( "stop soundgear_jacket_flapping_plr_loop" );
+    level.player notify( "stop soundgear_jacket_flapping_plr_loop" );
     thread _ID53216();
-    level._ID794 allowfire( 1 );
+    level.player allowfire( 1 );
     var_0 delete();
 }
 
@@ -3930,12 +3930,12 @@ _ID49118()
     var_0 = getent( "player_jumpdown_block", "targetname" );
     var_0 solid();
     _ID42237::_ID14402( "player_preps_for_jump" );
-    level._ID794 takeallweapons();
-    level._ID794 giveweapon( level._ID51758, 0, 1 );
-    level._ID794 switchtoweapon( level._ID51758 );
-    level._ID794 notify( "stop_climbing" );
-    level._ID794 playersetgroundreferenceent( undefined );
-    level._ID794 setmovespeedscale( 1 );
+    level.player takeallweapons();
+    level.player giveweapon( level._ID51758, 0, 1 );
+    level.player switchtoweapon( level._ID51758 );
+    level.player notify( "stop_climbing" );
+    level.player playersetgroundreferenceent( undefined );
+    level.player setmovespeedscale( 1 );
     var_1 = getent( "climb_jump_org", "targetname" );
 
     if ( !isdefined( level._ID50450 ) )
@@ -3951,56 +3951,56 @@ _ID49118()
     if ( level._ID15361 <= 1 )
     {
         var_2 = _ID42407::_ID16268( "climb_big_jump" );
-        var_2._ID740 = var_2._ID740 + ( 0, 0, -40 );
+        var_2.origin = var_2.origin + ( 0, 0, -40 );
     }
 
     _ID42237::_ID14388( "climb_big_jump" );
     _ID42237::_ID14413( "climb_big_jump" );
     var_3 = getent( "big_jump_yaw", "targetname" );
-    var_4 = getent( var_3._ID1191, "targetname" );
-    var_5 = vectortoangles( var_4._ID740 - var_3._ID740 );
+    var_4 = getent( var_3.target, "targetname" );
+    var_5 = vectortoangles( var_4.origin - var_3.origin );
     var_5 = ( 0, var_5[1], 0 );
     var_6 = anglestoforward( var_5 );
     level notify( "stop_force_sliding_the_player" );
-    level._ID794._ID45045 = level._ID794 _meth_83c0();
+    level.player._ID45045 = level.player _meth_83c0();
 
     for (;;)
     {
         if ( _ID49536( var_6 ) )
             break;
 
-        level._ID794._ID45045 = level._ID794 _meth_83c0();
+        level.player._ID45045 = level.player _meth_83c0();
         wait 0.05;
     }
 
     waitframe;
-    level._ID794 playsound( "scn_cliffhanger_player_make_bigjump" );
-    level._ID794 setstance( "stand" );
-    level._ID794 allowprone( 0 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 _meth_830f( 0 );
-    level._ID794 takeallweapons();
+    level.player playsound( "scn_cliffhanger_player_make_bigjump" );
+    level.player setstance( "stand" );
+    level.player allowprone( 0 );
+    level.player allowcrouch( 0 );
+    level.player _meth_830f( 0 );
+    level.player takeallweapons();
     var_7 = _ID42407::_ID35028( "worldbody" );
     var_7 _ID54242();
     var_8 = spawnstruct();
-    var_8._ID740 = ( 495.615, -29011.4, 839.341 );
-    var_8._ID65 = ( 0, 75.41, 0 );
+    var_8.origin = ( 495.615, -29011.4, 839.341 );
+    var_8.angles = ( 0, 75.41, 0 );
     var_9 = var_7 _ID42407::_ID16120( "h2_cliff_jump" );
-    var_10 = getstartorigin( var_8._ID740, var_8._ID65, var_9 );
-    var_11 = getstartangles( var_8._ID740, var_8._ID65, var_9 ) - level._ID794._ID65;
+    var_10 = getstartorigin( var_8.origin, var_8.angles, var_9 );
+    var_11 = getstartangles( var_8.origin, var_8.angles, var_9 ) - level.player.angles;
     var_12 = spawnstruct();
-    var_12._ID65 = var_8._ID65 - var_11;
-    var_13 = var_10 - level._ID794._ID740;
-    var_14 = var_8._ID740 - var_10;
+    var_12.angles = var_8.angles - var_11;
+    var_13 = var_10 - level.player.origin;
+    var_14 = var_8.origin - var_10;
     var_15 = var_14[0] * cos( var_11[1] ) - var_14[1] * sin( var_11[1] );
     var_16 = var_14[0] * sin( var_11[1] ) + var_14[1] * cos( var_11[1] );
     var_17 = var_14 - ( var_15, var_16, var_14[2] );
-    var_12._ID740 = var_8._ID740 - var_13 + var_17 + ( 0, 0, 30 );
+    var_12.origin = var_8.origin - var_13 + var_17 + ( 0, 0, 30 );
     var_7 hide();
     var_12 _ID42259::_ID3018( var_7, "h2_cliff_jump" );
-    level._ID794 playerlinktoblend( var_7, "tag_player", 0.5, 0.25, 0.25 );
+    level.player playerlinktoblend( var_7, "tag_player", 0.5, 0.25, 0.25 );
     var_18 = "player_jump";
-    var_7 animscripted( var_18, var_12._ID740, var_12._ID65, var_9 );
+    var_7 animscripted( var_18, var_12.origin, var_12.angles, var_9 );
     var_19 = getnotetracktimes( var_9, "collide" );
     var_20 = getanimlength( var_9 ) * var_19[0];
     var_7 thread _ID42259::_ID46811( var_18, var_12, var_8, var_20 );
@@ -4010,29 +4010,29 @@ _ID49118()
     wait 0.4;
     setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
     wait 0.1;
-    level._ID794 playerlinktodelta( var_7, "tag_player", 1.0, 0, 0, 0, 0, 1 );
+    level.player playerlinktodelta( var_7, "tag_player", 1.0, 0, 0, 0, 0, 1 );
     var_7 show();
     var_7 waittillmatch( var_18,  "collide"  );
-    thread _ID42237::_ID27077( "scn_cliffhanger_player_bigjump_bodyfall", level._ID794._ID740 );
-    level._ID794._ID46939 = 1;
+    thread _ID42237::_ID27077( "scn_cliffhanger_player_bigjump_bodyfall", level.player.origin );
+    level.player._ID46939 = 1;
     var_7 animscripts\shared::_ID11529( var_18 );
     thread _ID50159();
     var_21 = "jump_slide";
-    var_7 animscripted( var_21, var_8._ID740, var_8._ID65, var_7 _ID42407::_ID16120( "h2_slide_left" ) );
+    var_7 animscripted( var_21, var_8.origin, var_8.angles, var_7 _ID42407::_ID16120( "h2_slide_left" ) );
     var_7 playloopsound( "scn_cliffhanger_icepick_scrape_left" );
-    level._ID794 thread _ID52633();
+    level.player thread _ID52633();
     var_7 thread _ID45643();
     var_7 thread _ID43861();
     var_7 waittill( var_21 );
-    level._ID794 notify( "stop_rumble" );
+    level.player notify( "stop_rumble" );
     var_7 notify( "stop_fx" );
     var_7 notify( "stop_bigjump_slide" );
     var_7 stopsounds( "scn_cliffhanger_icepick_scrape_left" );
-    level._ID794 playsound( "scn_cliffhanger_snow_breakaway" );
+    level.player playsound( "scn_cliffhanger_snow_breakaway" );
     setsaveddvar( "compass", 0 );
     _ID42237::_ID14402( "player_hangs_on" );
     _ID42234::_ID13611( 5 );
-    level._ID794._ID46939 = 0;
+    level.player._ID46939 = 0;
     var_8 thread _ID42259::_ID3111( var_7, "h2_hang" );
     level._ID30333 = _ID42407::_ID15963( "icepick_hang" );
     level._ID30333._ID20129 = 0;
@@ -4052,8 +4052,8 @@ _ID49118()
         level._ID30333 delete();
 
     var_24 = getent( "climb_catch", "targetname" );
-    var_25 = var_24._ID740;
-    var_26 = var_24._ID65;
+    var_25 = var_24.origin;
+    var_26 = var_24.angles;
     var_24 delete();
     _ID42237::_ID14388( "climb_pullup" );
     _ID42237::_ID14388( "finished_climbing" );
@@ -4062,19 +4062,19 @@ _ID49118()
     level._ID50036 = var_7;
     var_28 = gettime() + 12000;
     var_29 = spawnstruct();
-    var_29._ID794 = level._ID794;
+    var_29.player = level.player;
     var_29._ID46602 = "left";
     var_29._ID54537 = spawnstruct();
     var_30 = spawnstruct();
     var_30._ID46602 = "right";
     var_30._ID47576 = "k";
     var_30._ID50118 = gettime() + 2000;
-    var_30._ID794 = level._ID794;
+    var_30.player = level.player;
     var_29._ID54537._ID48348["right"] = var_30;
     var_29._ID45941 = var_7;
     var_29._ID3197 = _ID51955::_ID49370( [], "up", var_29._ID46602 );
 
-    while ( !level._ID794 _ID53748() )
+    while ( !level.player _ID53748() )
     {
         if ( _ID52227( 1, var_28, var_29 ) )
             _ID47170( var_29, var_27[0], var_8 );
@@ -4084,7 +4084,7 @@ _ID49118()
 
     for (;;)
     {
-        if ( level._ID794 _ID45887( var_8, "left", var_27 ) )
+        if ( level.player _ID45887( var_8, "left", var_27 ) )
             break;
 
         if ( _ID42237::_ID14385( "finished_climbing" ) )
@@ -4103,15 +4103,15 @@ _ID49118()
     setsaveddvar( "hud_drawhud", 1 );
     setsaveddvar( "sm_sunsamplesizenear", 0.25 );
     setsaveddvar( "g_friendlyNameDist", 15000 );
-    level._ID794 allowprone( 1 );
-    level._ID794 allowcrouch( 1 );
-    level._ID794 _meth_830f( 1 );
-    level._ID794 enableoffhandweapons();
+    level.player allowprone( 1 );
+    level.player allowcrouch( 1 );
+    level.player _meth_830f( 1 );
+    level.player enableoffhandweapons();
     _ID42407::_ID4917( "allies" );
     _ID42407::_ID4918( "axis" );
-    level._ID794 notify( "stop soundgear_jacket_flapping_plr_loop" );
+    level.player notify( "stop soundgear_jacket_flapping_plr_loop" );
     thread _ID53216();
-    level._ID794 allowfire( 1 );
+    level.player allowfire( 1 );
     var_0 delete();
 }
 
@@ -4123,7 +4123,7 @@ _ID43861()
 
     for (;;)
     {
-        var_2 = level._ID794 _ID47155();
+        var_2 = level.player _ID47155();
 
         if ( var_2 && !var_0 && self getanimweight( var_1 ) == 0 && self getanimtime( _ID42407::_ID16120( "h2_slide_left" ) ) < 0.7 )
             thread _ID45072();
@@ -4147,7 +4147,7 @@ _ID52633()
 
     for (;;)
     {
-        level._ID794 playrumblelooponentity( "icepick_slide" );
+        level.player playrumblelooponentity( "icepick_slide" );
         wait 0.05;
     }
 }
@@ -4158,7 +4158,7 @@ _ID54190()
 
     for (;;)
     {
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
         wait 0.05;
     }
 }
@@ -4172,7 +4172,7 @@ _ID48585()
         if ( _ID42237::_ID14385( "one_c4_planted" ) )
             break;
 
-        if ( level._ID794._ID486 < 50 )
+        if ( level.player.health < 50 )
             break;
 
         wait 0.05;
@@ -4183,15 +4183,15 @@ _ID48585()
     thread _ID51060();
     _ID42237::_ID14402( "tarmac_escape" );
     var_0 = 1.5;
-    level._ID5261 = _ID42313::_ID9125( "black", 0, level._ID794 );
-    level._ID5261._ID55 = 0;
+    level._ID5261 = _ID42313::_ID9125( "black", 0, level.player );
+    level._ID5261.alpha = 0;
     level._ID52233 = maps\cliffhanger_code::_ID50305( &"CLIFFHANGER_E3_NOT_AS_PLANNED" );
-    level._ID52233._ID55 = 0;
+    level._ID52233.alpha = 0;
     level._ID5261 fadeovertime( var_0 );
-    level._ID5261._ID55 = 1;
+    level._ID5261.alpha = 1;
     wait(var_0);
     level._ID52233 fadeovertime( var_0 );
-    level._ID52233._ID55 = 1;
+    level._ID52233.alpha = 1;
     level._ID5261 _ID42237::_ID10192( 0.1, ::destroy );
     level._ID28543 thread _ID54190();
 
@@ -4221,7 +4221,7 @@ _ID51060()
 
     for (;;)
     {
-        level._ID794 setnormalhealth( 100 );
+        level.player setnormalhealth( 100 );
         wait 0.05;
     }
 }
@@ -4230,9 +4230,9 @@ _ID43716( var_0 )
 {
     thread _ID48437( var_0, ( 0, 0, 0 ), ( 1, 0, 0 ) );
     wait 0.1;
-    var_0._ID794 playerlinktoblend( var_0._ID45941, "tag_player", 0.2 );
+    var_0.player playerlinktoblend( var_0._ID45941, "tag_player", 0.2 );
     wait 0.2;
-    var_0._ID794 playersetgroundreferenceent( var_0._ID54537._ID17430 );
+    var_0.player playersetgroundreferenceent( var_0._ID54537._ID17430 );
     setsaveddvar( "sm_sunsamplesizenear", 0.0625 );
     var_0._ID54537._ID53810 = 1;
 }
@@ -4246,21 +4246,21 @@ _ID50159()
 _ID43394()
 {
     level endon( "reached_top" );
-    level._ID794._ID53783 = 0;
+    level.player._ID53783 = 0;
 
     for (;;)
     {
-        var_0 = level._ID794 adsbuttonpressed();
-        var_1 = level._ID794 attackbuttonpressed();
+        var_0 = level.player adsbuttonpressed();
+        var_1 = level.player attackbuttonpressed();
 
         if ( !level._ID8534 )
         {
-            var_0 = level._ID794 _ID53748();
-            var_1 = level._ID794 _ID47155();
+            var_0 = level.player _ID53748();
+            var_1 = level.player _ID47155();
         }
 
         if ( var_0 || var_1 )
-            level._ID794._ID53783 = gettime();
+            level.player._ID53783 = gettime();
 
         wait 0.05;
     }
@@ -4291,7 +4291,7 @@ _ID50869( var_0 )
 _ID53086()
 {
     self endon( "stop_weights" );
-    level._ID794._ID46939 = 0;
+    level.player._ID46939 = 0;
     var_0 = _ID42407::_ID16120( "controller_both_in" );
     var_1 = _ID42407::_ID16120( "controller_left" );
     var_2 = _ID42407::_ID16120( "controller_right" );
@@ -4325,19 +4325,19 @@ _ID53086()
     for (;;)
     {
         var_13 = 0;
-        var_14 = level._ID794 adsbuttonpressed();
-        var_15 = level._ID794 attackbuttonpressed();
+        var_14 = level.player adsbuttonpressed();
+        var_15 = level.player attackbuttonpressed();
 
         if ( !level._ID8534 )
         {
-            var_15 = level._ID794 _ID47155();
-            var_14 = level._ID794 _ID53748();
+            var_15 = level.player _ID47155();
+            var_14 = level.player _ID53748();
         }
 
         var_12._ID54089["left"] = var_14;
         var_12._ID54089["right"] = var_15;
 
-        if ( level._ID794._ID46939 )
+        if ( level.player._ID46939 )
         {
             if ( var_14 )
             {
@@ -4451,10 +4451,10 @@ _ID46069( var_0, var_1, var_2 )
     if ( var_0 == 0 )
         return;
 
-    if ( !level._ID794._ID46939 )
+    if ( !level.player._ID46939 )
         return;
 
-    level._ID794 playrumblelooponentity( "icepick_slide" );
+    level.player playrumblelooponentity( "icepick_slide" );
 }
 
 _ID47123( var_0 )
@@ -4481,10 +4481,10 @@ _ID50487( var_0 )
 {
     var_1 = _ID48513( var_0 );
 
-    if ( !level._ID794 [[ level._ID45147._ID48348[var_1]._ID51876 ]]() )
+    if ( !level.player [[ level._ID45147._ID48348[var_1]._ID51876 ]]() )
         return 1;
 
-    return level._ID794 [[ level._ID45147._ID48348[var_0]._ID51876 ]]();
+    return level.player [[ level._ID45147._ID48348[var_0]._ID51876 ]]();
 }
 
 _ID49007()
@@ -4558,7 +4558,7 @@ _ID50696( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
             var_7 = level._ID50036 _ID42407::_ID16120( var_6 );
             var_9 = level._ID50036 getanimtime( var_7 );
             var_10 = 0.5;
-            level._ID50036 animscripted( "idle", var_5._ID740, var_5._ID65, level._ID50036 _ID42407::_ID16120( var_4 ), "normal", %root, var_10 );
+            level._ID50036 animscripted( "idle", var_5.origin, var_5.angles, level._ID50036 _ID42407::_ID16120( var_4 ), "normal", %root, var_10 );
             wait(var_10);
         }
 
@@ -4571,7 +4571,7 @@ _ID50696( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 _ID51103()
 {
     level endon( "player_shimmy_stop" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
@@ -4583,8 +4583,8 @@ _ID51103()
 _ID47974()
 {
     wait 4;
-    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 65, 30, 30 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 65, 30, 30 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
 }
 
 _ID50255()
@@ -4594,8 +4594,8 @@ _ID50255()
     for (;;)
     {
         level._ID50036 setanim( level._ID50036 _ID42407::_ID16120( "cam_add" ), 1, 0 );
-        level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 65, 30, 37 );
-        level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+        level.player lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 65, 30, 37 );
+        level.player setviewangleresistance( 50, 50, 20, 20 );
         level._ID50036 waittillmatch( "looping anim",  "end"  );
         wait 0.05;
     }
@@ -4604,7 +4604,7 @@ _ID50255()
 _ID47835()
 {
     level endon( "player_shimmy_stop" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     var_0 = [];
     var_0[var_0.size] = "ledgewalking_in_idle";
     var_0[var_0.size] = "ledgewalking_1";
@@ -4654,28 +4654,28 @@ _ID47835()
     var_6 = 5;
     var_7 = 0.05;
     var_8 = spawn( "script_origin", ( 389.489, -29168.6, 185.348 ) );
-    var_8._ID65 = ( 0, 27.797, 0 );
+    var_8.angles = ( 0, 27.797, 0 );
     level._ID50036 = _ID42407::_ID35028( "worldbody" );
     var_9 = "intro";
-    level._ID50036._ID740 = getstartorigin( var_8._ID740, var_8._ID65, level._ID50036 _ID42407::_ID16120( var_9 ) );
-    level._ID50036._ID65 = getstartangles( var_8._ID740, var_8._ID65, level._ID50036 _ID42407::_ID16120( var_9 ) );
+    level._ID50036.origin = getstartorigin( var_8.origin, var_8.angles, level._ID50036 _ID42407::_ID16120( var_9 ) );
+    level._ID50036.angles = getstartangles( var_8.origin, var_8.angles, level._ID50036 _ID42407::_ID16120( var_9 ) );
     var_8 _ID42259::_ID3018( level._ID50036, var_9 );
     level._ID50036 hide();
-    level._ID794 disableweapons();
-    level._ID794 disableoffhandweapons();
-    level._ID794 allowstand( 1 );
-    level._ID794 allowcrouch( 0 );
+    level.player disableweapons();
+    level.player disableoffhandweapons();
+    level.player allowstand( 1 );
+    level.player allowcrouch( 0 );
     var_10 = spawn( "script_origin", ( 0, 0, 0 ) );
     var_10 linkto( level._ID50036, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_10 );
-    level._ID794 playerlinktodelta( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
-    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 5, 30, 25 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player playersetgroundreferenceent( var_10 );
+    level.player playerlinktodelta( level._ID50036, "tag_player", 1, 0, 0, 0, 0, 1 );
+    level.player lerpviewangleclamp( 0.5, 0.25, 0.25, 22, 5, 30, 25 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     level._ID50036 show();
-    level._ID794 thread _ID47974();
+    level.player thread _ID47974();
     var_8 _ID42259::_ID3111( level._ID50036, "intro" );
     var_8 thread _ID42259::_ID3044( level._ID50036, "intro_idle" );
-    var_11 = angleclamp180( level._ID794._ID65[1] );
+    var_11 = angleclamp180( level.player.angles[1] );
 
     if ( var_11 < 5 && var_11 > -23 )
         thread _ID50255();
@@ -4684,21 +4684,21 @@ _ID47835()
     wait 4;
     _ID42475::_ID34575( "aud_stop_mix_mig_passby" );
     var_12 = 150;
-    var_13 = level._ID794 getnormalizedmovement();
+    var_13 = level.player getnormalizedmovement();
 
-    while ( !level._ID794 jumpbuttonpressed() && !level._ID794 _meth_84fa() && abs( var_13[0] ) + abs( var_13[1] ) < 0.2 )
+    while ( !level.player jumpbuttonpressed() && !level.player _meth_84fa() && abs( var_13[0] ) + abs( var_13[1] ) < 0.2 )
     {
         if ( var_12 == 0 )
             _ID42407::_ID18684( "how_to_ledge" );
 
         var_12--;
-        var_13 = level._ID794 getnormalizedmovement();
+        var_13 = level.player getnormalizedmovement();
         waittillframeend;
     }
 
     _ID42237::_ID14402( "ledge_started" );
     thread _ID43069( "dof_intro_getup_to_shimmy" );
-    level._ID794 playsound( "scn_plr_getup_intro" );
+    level.player playsound( "scn_plr_getup_intro" );
     level._ID50036 thread _ID51103();
     var_14 = spawnstruct();
 
@@ -4706,7 +4706,7 @@ _ID47835()
     {
         _ID42237::_ID14388( "leaving_ledge_for_climb" );
         _ID42237::_ID14388( "player_climb_transition" );
-        level._ID794 lerpviewangleclamp( 1, 0.5, 0.5, 0, 0, 0, 0 );
+        level.player lerpviewangleclamp( 1, 0.5, 0.5, 0, 0, 0, 0 );
         var_8 thread _ID42259::_ID3111( level._ID50036, "ledgewalking_in" );
         level._ID50036 setanim( level._ID50036 _ID42407::_ID16120( "cam_add" ), 1, 0 );
         level._ID50036 clearanim( level._ID50036 _ID42407::_ID16120( "cam_add_root" ), 1.0 );
@@ -4714,8 +4714,8 @@ _ID47835()
         level._ID28543 _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
         level._ID50036 waittillmatch( "single anim",  "end"  );
         var_8 thread _ID42259::_ID3111( level._ID50036, "ledgewalking_in_idle" );
-        level._ID794 lerpviewangleclamp( 0.5, 0.5, 0.0, var_3, var_4, var_5, var_6 );
-        level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+        level.player lerpviewangleclamp( 0.5, 0.5, 0.0, var_3, var_4, var_5, var_6 );
+        level.player setviewangleresistance( 50, 50, 20, 20 );
         waittillframeend;
         var_15 = "ledgewalking_in_idle";
         var_16 = "";
@@ -4734,7 +4734,7 @@ _ID47835()
             if ( _ID42237::_ID14385( "leaving_ledge_for_climb" ) )
                 break;
 
-            var_13 = level._ID794 getnormalizedmovement();
+            var_13 = level.player getnormalizedmovement();
             var_13 = ( var_13[0], var_13[1] * -1, 0 );
 
             if ( var_14._ID54093 )
@@ -4802,8 +4802,8 @@ _ID47835()
                     var_14._ID43612 = 0;
                     var_16 = "";
                     var_14._ID53897++;
-                    level._ID794 lerpviewangleclamp( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
-                    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+                    level.player lerpviewangleclamp( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
+                    level.player setviewangleresistance( 50, 50, 20, 20 );
 
                     if ( var_14._ID53897 == var_0.size )
                     {
@@ -4839,8 +4839,8 @@ _ID47835()
                     var_16 = "";
                     var_14._ID53897--;
                     level._ID50036 _meth_83d4( var_21, 0 );
-                    level._ID794 lerpviewangleclamp( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
-                    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+                    level.player lerpviewangleclamp( 1, 0.5, 0.0, var_3, var_4, var_5, var_6 );
+                    level.player setviewangleresistance( 50, 50, 20, 20 );
                     var_8 thread _ID42259::_ID3111( level._ID50036, var_0[var_14._ID53897] );
                     var_15 = var_0[var_14._ID53897];
                 }
@@ -4851,8 +4851,8 @@ _ID47835()
                 var_14._ID53897++;
                 var_16 = var_0[var_14._ID53897];
                 var_21 = level._ID50036 _ID42407::_ID16120( var_16 );
-                level._ID794 lerpviewangleclamp( 1, 0.25, 0.25, 0, 0, 0, 0 );
-                level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+                level.player lerpviewangleclamp( 1, 0.25, 0.25, 0, 0, 0, 0 );
+                level.player setviewangleresistance( 50, 50, 20, 20 );
                 var_8 thread _ID42259::_ID3111( level._ID50036, var_16 );
                 var_14._ID43612 = 1;
                 level._ID50036._ID53580 = 0;
@@ -4876,11 +4876,11 @@ _ID47835()
 
         if ( !var_26 )
         {
-            level._ID794 playersetgroundreferenceent( undefined );
-            level._ID794 unlink();
-            level._ID794 _ID27327();
+            level.player playersetgroundreferenceent( undefined );
+            level.player unlink();
+            level.player _ID27327();
             level._ID50036 delete();
-            level._ID794 enableweapons();
+            level.player enableweapons();
         }
 
         _ID42237::_ID14388( "leaving_ledge_for_climb" );
@@ -4905,10 +4905,10 @@ _ID51560( var_0 )
 
     self endon( "not_end_of_ledge" );
     self stopanimscripted();
-    level._ID794 playsound( "scn_cliff_intro_plr_ready_climb" );
+    level.player playsound( "scn_cliff_intro_plr_ready_climb" );
     thread _ID43069( "dof_climb1_readyicepick" );
     self setflaggedanimknob( "getreadyanim", %h2_cliffhanger_ledgewalking_getready, 1, 0.2, 1 );
-    level._ID794 lerpviewangleclamp( 0.5, 0.25, 0.5, var_1, var_2, var_3, var_4 );
+    level.player lerpviewangleclamp( 0.5, 0.25, 0.5, var_1, var_2, var_3, var_4 );
     self waittillmatch( "getreadyanim",  "end"  );
     self setanimknob( %h2_cliffhanger_ledgewalking_getready_idle );
 }
@@ -4976,7 +4976,7 @@ _ID43877( var_0, var_1, var_2 )
     var_8 = anglestoforward( self gettagangles( var_5 ) ) * var_6;
     var_9 = ( 0, 0, 16 );
     var_10 = ( 0, 0, -4 );
-    var_11 = self._ID65;
+    var_11 = self.angles;
     var_12 = anglestoup( var_11 );
     var_13 = var_8;
     var_14 = "footstep_ice_snow_ledge";

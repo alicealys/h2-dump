@@ -18,7 +18,7 @@ _ID10054( var_0 )
     if ( !isdefined( self._ID7305 ) )
         self._ID7305 = 0;
 
-    var_1 = isdefined( self._ID8893 ) && self._ID8893._ID1244 != "Cover Prone" && self._ID8893._ID1244 != "Conceal Prone";
+    var_1 = isdefined( self._ID8893 ) && self._ID8893.type != "Cover Prone" && self._ID8893.type != "Conceal Prone";
 
     if ( var_1 )
         wait 0.05;
@@ -46,7 +46,7 @@ _ID10054( var_0 )
     {
         if ( isdefined( self._ID33812 ) )
         {
-            if ( !isdefined( self._ID322 ) )
+            if ( !isdefined( self.enemy ) )
             {
                 self._ID33810 = self._ID33812;
                 self._ID33812 = undefined;
@@ -58,7 +58,7 @@ _ID10054( var_0 )
 
         var_5 = undefined;
 
-        if ( self._ID1302 == "none" )
+        if ( self.weapon == "none" )
             _ID24906();
         else if ( animscripts\utility::_ID39993() )
             var_5 = _ID30321();
@@ -119,7 +119,7 @@ _ID24906()
 
 _ID33977()
 {
-    return !animscripts\combat_utility::_ID20910() && !animscripts\utility::_ID20902( self._ID1302 );
+    return !animscripts\combat_utility::_ID20910() && !animscripts\utility::_ID20902( self.weapon );
 }
 
 _ID33964()
@@ -140,19 +140,19 @@ _ID29973()
         if ( animscripts\combat_utility::_ID20910() )
             _ID29792();
 
-        if ( self._ID302 )
+        if ( self.doingambush )
         {
             self._ID33809 = "ambush";
             return "retry";
         }
 
-        if ( !isdefined( self._ID322 ) )
+        if ( !isdefined( self.enemy ) )
             _ID18275();
         else
         {
             _ID22964();
 
-            if ( ( self._ID842 || randomint( 5 ) > 0 ) && _ID33977() )
+            if ( ( self.providecoveringfire || randomint( 5 ) > 0 ) && _ID33977() )
                 self._ID33809 = "suppress";
             else
                 self._ID33809 = "ambush";
@@ -219,7 +219,7 @@ _ID29972( var_0 )
 
 _ID16114()
 {
-    if ( isdefined( self._ID322 ) && self cansee( self._ID322 ) )
+    if ( isdefined( self.enemy ) && self cansee( self.enemy ) )
     {
         _ID32780();
         return;
@@ -230,17 +230,17 @@ _ID16114()
     if ( !isdefined( var_0 ) )
     {
         if ( isdefined( self._ID8893 ) )
-            var_0 = self._ID8893._ID65;
+            var_0 = self._ID8893.angles;
         else if ( isdefined( self._ID2925 ) )
-            var_0 = self._ID2925._ID65;
+            var_0 = self._ID2925.angles;
         else
-            var_0 = self._ID65;
+            var_0 = self.angles;
     }
 
     var_1 = 1024;
 
-    if ( isdefined( self._ID322 ) )
-        var_1 = distance( self._ID740, self._ID322._ID740 );
+    if ( isdefined( self.enemy ) )
+        var_1 = distance( self.origin, self.enemy.origin );
 
     var_2 = self geteye() + anglestoforward( var_0 ) * var_1;
 
@@ -268,7 +268,7 @@ _ID29971()
 
         var_0 = animscripts\utility::_ID6898();
 
-        if ( self._ID33809 == "suppress" || self._ID1194 == "allies" && !isdefined( self._ID322 ) && !var_0 )
+        if ( self._ID33809 == "suppress" || self.team == "allies" && !isdefined( self.enemy ) && !var_0 )
             _ID29974( var_0 );
         else
             _ID29972( var_0 );
@@ -299,7 +299,7 @@ _ID30321()
 
     _ID32780();
     _ID32781( "single", 0 );
-    var_0 = lengthsquared( self._ID740 - self._ID33810 );
+    var_0 = lengthsquared( self.origin - self._ID33810 );
 
     if ( var_0 < squared( 512 ) )
     {
@@ -315,7 +315,7 @@ _ID26675()
     {
         if ( !_ID33964() )
         {
-            if ( !isdefined( self._ID322 ) )
+            if ( !isdefined( self.enemy ) )
             {
                 _ID18275();
                 return;
@@ -361,15 +361,15 @@ _ID26675()
 
 _ID22964()
 {
-    if ( isdefined( self._ID322 ) && !self._ID7305 && self._ID912 != "combat" )
+    if ( isdefined( self.enemy ) && !self._ID7305 && self.script != "combat" )
     {
-        if ( isai( self._ID322 ) && isdefined( self._ID322._ID912 ) && ( self._ID322._ID912 == "cover_stand" || self._ID322._ID912 == "cover_crouch" ) )
+        if ( isai( self.enemy ) && isdefined( self.enemy.script ) && ( self.enemy.script == "cover_stand" || self.enemy.script == "cover_crouch" ) )
         {
-            if ( isdefined( self._ID322._ID7._ID8878 ) && self._ID322._ID7._ID8878 == "hide" )
+            if ( isdefined( self.enemy._ID7._ID8878 ) && self.enemy._ID7._ID8878 == "hide" )
                 return;
         }
 
-        self._ID8766 = self._ID322._ID740;
+        self._ID8766 = self.enemy.origin;
     }
 }
 
@@ -382,7 +382,7 @@ _ID41510()
     {
         self waittill( "suppression" );
 
-        if ( self._ID1057 > self._ID36847 )
+        if ( self.suppressionmeter > self._ID36847 )
         {
             if ( _ID29162() )
             {
@@ -398,13 +398,13 @@ _ID29162()
     if ( self._ID7305 )
         return 0;
 
-    if ( !isdefined( self._ID322 ) || !self cansee( self._ID322 ) )
+    if ( !isdefined( self.enemy ) || !self cansee( self.enemy ) )
         return 1;
 
     if ( gettime() < self._ID8895 + 800 )
         return 0;
 
-    if ( isplayernumber( self._ID322 ) && self._ID322._ID486 < self._ID322._ID626 * 0.5 )
+    if ( isplayernumber( self.enemy ) && self.enemy.health < self.enemy.maxhealth * 0.5 )
     {
         if ( gettime() < self._ID8895 + 3000 )
             return 0;
@@ -438,11 +438,11 @@ _ID7418( var_0, var_1 )
 
 _ID32780()
 {
-    self._ID33785 = self._ID322;
+    self._ID33785 = self.enemy;
 
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
     {
-        if ( isdefined( self._ID12963 ) && self._ID12963 == self._ID322 )
+        if ( isdefined( self._ID12963 ) && self._ID12963 == self.enemy )
             self._ID33810 = self._ID33785 getshootatpos();
         else
             self._ID33810 = animscripts\combat_utility::_ID15797( self._ID33785 );
@@ -457,7 +457,7 @@ _ID18275()
     self._ID33810 = undefined;
     self._ID33816 = "none";
 
-    if ( self._ID302 )
+    if ( self.doingambush )
         self._ID33809 = "ambush";
 
     if ( !self._ID7305 )
@@ -469,18 +469,18 @@ _ID18275()
 
 _ID33929()
 {
-    return level._ID15361 == 3 && isplayernumber( self._ID322 );
+    return level._ID15361 == 3 && isplayernumber( self.enemy );
 }
 
 _ID32783()
 {
-    if ( isdefined( self._ID33785._ID322 ) && isdefined( self._ID33785._ID322._ID1065 ) )
+    if ( isdefined( self._ID33785.enemy ) && isdefined( self._ID33785.enemy.syncedmeleetarget ) )
         return _ID32781( "single", 0 );
 
     if ( animscripts\combat_utility::_ID20910() )
         return _ID32781( "single", 0 );
 
-    if ( animscripts\utility::_ID20902( self._ID1302 ) )
+    if ( animscripts\utility::_ID20902( self.weapon ) )
     {
         if ( animscripts\utility::_ID41682() )
             return _ID32781( "single", 0 );
@@ -488,16 +488,16 @@ _ID32783()
             return _ID32781( "semi", 0 );
     }
 
-    if ( weaponclass( self._ID1302 ) == "grenade" )
+    if ( weaponclass( self.weapon ) == "grenade" )
         return _ID32781( "single", 0 );
 
-    if ( weaponburstcount( self._ID1302 ) > 0 )
+    if ( weaponburstcount( self.weapon ) > 0 )
         return _ID32781( "burst", 0 );
 
     var_0 = distancesquared( self getshootatpos(), self._ID33810 );
-    var_1 = weaponclass( self._ID1302 ) == "mg";
+    var_1 = weaponclass( self.weapon ) == "mg";
 
-    if ( self._ID842 && var_1 )
+    if ( self.providecoveringfire && var_1 )
         return _ID32781( "full", 0 );
 
     if ( var_0 < 62500 )
@@ -509,12 +509,12 @@ _ID32783()
     }
     else if ( var_0 < 810000 || _ID33929() )
     {
-        if ( weaponissemiauto( self._ID1302 ) || _ID33940() )
+        if ( weaponissemiauto( self.weapon ) || _ID33940() )
             return _ID32781( "semi", 1 );
         else
             return _ID32781( "burst", 1 );
     }
-    else if ( self._ID842 || var_1 || var_0 < 2560000 )
+    else if ( self.providecoveringfire || var_1 || var_0 < 2560000 )
     {
         if ( _ID33940() )
             return _ID32781( "semi", 0 );
@@ -529,7 +529,7 @@ _ID32782()
 {
     var_0 = distancesquared( self getshootatpos(), self._ID33810 );
 
-    if ( weaponissemiauto( self._ID1302 ) )
+    if ( weaponissemiauto( self.weapon ) )
     {
         if ( var_0 < 2560000 )
             return _ID32781( "semi", 0 );
@@ -537,10 +537,10 @@ _ID32782()
         return _ID32781( "single", 0 );
     }
 
-    if ( weaponclass( self._ID1302 ) == "mg" )
+    if ( weaponclass( self.weapon ) == "mg" )
         return _ID32781( "full", 0 );
 
-    if ( self._ID842 || var_0 < 2560000 )
+    if ( self.providecoveringfire || var_0 < 2560000 )
     {
         if ( _ID33940() )
             return _ID32781( "semi", 0 );
@@ -559,14 +559,14 @@ _ID32781( var_0, var_1 )
 
 _ID33940()
 {
-    if ( weaponclass( self._ID1302 ) != "rifle" )
+    if ( weaponclass( self.weapon ) != "rifle" )
         return 0;
 
-    if ( self._ID1194 != "allies" )
+    if ( self.team != "allies" )
         return 0;
 
-    var_0 = animscripts\utility::_ID30670( int( self._ID740[1] ), 10000 ) + 2000;
-    var_1 = int( self._ID740[0] ) + gettime();
+    var_0 = animscripts\utility::_ID30670( int( self.origin[1] ), 10000 ) + 2000;
+    var_1 = int( self.origin[0] ) + gettime();
     return var_1 % 2 * var_0 > var_0;
 }
 
@@ -586,7 +586,7 @@ _ID34776()
     self notify( "new_glint_thread" );
     self endon( "new_glint_thread" );
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
         return;
 
     if ( isdefined( self._ID10962 ) && self._ID10962 )
@@ -595,7 +595,7 @@ _ID34776()
     if ( !isdefined( level._ID1426["sniper_glint"] ) )
         return;
 
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         return;
 
     var_0 = _ID42237::_ID16299( "sniper_glint" );
@@ -603,9 +603,9 @@ _ID34776()
 
     for (;;)
     {
-        if ( self._ID1302 == self._ID834 && animscripts\combat_utility::_ID27650() && ( !isdefined( self._ID20766 ) || !self._ID20766 ) )
+        if ( self.weapon == self._ID834 && animscripts\combat_utility::_ID27650() && ( !isdefined( self._ID20766 ) || !self._ID20766 ) )
         {
-            if ( distancesquared( self._ID740, self._ID322._ID740 ) > 65536 )
+            if ( distancesquared( self.origin, self.enemy.origin ) > 65536 )
             {
                 self notify( "abort_glint" );
                 playfxontag( var_0, self, "tag_flash" );

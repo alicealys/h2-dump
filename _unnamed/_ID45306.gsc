@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42237::_ID14400( "player_on_minigun" );
     _ID42237::_ID14400( "player_off_minigun" );
@@ -77,7 +77,7 @@ _ID44188()
     if ( !isdefined( self ) )
         return 0;
 
-    if ( issubstr( self._ID170, "script_vehicle" ) )
+    if ( issubstr( self.classname, "script_vehicle" ) )
     {
         var_0 = self getvehicleowner();
 
@@ -98,7 +98,7 @@ _ID51677()
     var_0 = 0;
     var_1 = 750;
     var_2 = var_1 - var_0;
-    self._ID30333 = spawn( "script_origin", self._ID50372._ID740 );
+    self._ID30333 = spawn( "script_origin", self._ID50372.origin );
     self._ID30333 linkto( self._ID50372 );
 
     while ( _ID42237::_ID14385( "player_on_minigun" ) )
@@ -108,7 +108,7 @@ _ID51677()
         if ( self._ID23903 <= 0 || !_ID42237::_ID14385( "player_on_minigun" ) )
             continue;
 
-        self._ID30333._ID740 = self._ID50372 geteye() + ( 0, 0, var_1 - var_2 * self._ID23903 );
+        self._ID30333.origin = self._ID50372 geteye() + ( 0, 0, var_1 - var_2 * self._ID23903 );
         self._ID30333 playrumblelooponentity( "minigun_rumble" );
     }
 
@@ -119,7 +119,7 @@ _ID46707()
 {
     self endon( "death" );
 
-    if ( !issubstr( self._ID170, "script_vehicle" ) )
+    if ( !issubstr( self.classname, "script_vehicle" ) )
         return;
 
     level endon( "player_off_minigun" );
@@ -165,7 +165,7 @@ _ID23663()
 {
     self endon( "death" );
 
-    if ( !issubstr( self._ID170, "script_vehicle" ) )
+    if ( !issubstr( self.classname, "script_vehicle" ) )
         return;
 
     level endon( "player_off_minigun" );
@@ -185,7 +185,7 @@ _ID23663()
             var_0 = anglestoforward( self gettagangles( "tag_flash" ) );
             var_1 = self gettagorigin( "tag_flash" );
             var_2 = var_1 + var_0 * 10000;
-            magicbullet( level._ID10133, var_1, var_2, level._ID794, 1, 0, 1 );
+            magicbullet( level._ID10133, var_1, var_2, level.player, 1, 0, 1 );
         }
 
         wait 0.01;
@@ -326,7 +326,7 @@ _ID54143()
 {
     self._ID45953 = 0;
 
-    if ( !issubstr( self._ID170, "script_vehicle" ) )
+    if ( !issubstr( self.classname, "script_vehicle" ) )
         self turretfiredisable();
 }
 
@@ -334,7 +334,7 @@ _ID50603()
 {
     self._ID45953 = 1;
 
-    if ( !issubstr( self._ID170, "script_vehicle" ) )
+    if ( !issubstr( self.classname, "script_vehicle" ) )
         self turretfireenable();
 }
 
@@ -436,41 +436,41 @@ _ID50519()
     level._ID50530 = _ID42313::_ID9220( "default", 1.5 );
     level._ID50530 _ID42313::_ID32753( "TOPLEFT", undefined, 0, 50 );
     level._ID50530 settext( &"SCRIPT_PLATFORM_MINIGUN_SPIN_HINT" );
-    level._ID50530._ID983 = 1;
-    level._ID50530._ID55 = 0;
+    level._ID50530.sort = 1;
+    level._ID50530.alpha = 0;
     level._ID51582 = _ID42313::_ID9220( "default", 1.5 );
     level._ID51582 _ID42313::_ID32753( "TOPRIGHT", undefined, 0, 50 );
     level._ID51582 settext( &"SCRIPT_PLATFORM_MINIGUN_FIRE_HINT" );
-    level._ID51582._ID983 = 1;
-    level._ID51582._ID55 = 0;
+    level._ID51582.sort = 1;
+    level._ID51582.alpha = 0;
     level._ID51448 = _ID42313::_ID9251( "popmenu_bg", 200, 23 );
-    level._ID51448._ID493 = 1;
+    level._ID51448.hidewheninmenu = 1;
     level._ID51448 _ID42313::_ID32753( "TOPLEFT", undefined, -80, 47 );
-    level._ID51448._ID55 = 0;
+    level._ID51448.alpha = 0;
     level._ID51088 = _ID42313::_ID9251( "popmenu_bg", 150, 23 );
-    level._ID51088._ID493 = 1;
+    level._ID51088.hidewheninmenu = 1;
     level._ID51088 _ID42313::_ID32753( "TOPRIGHT", undefined, 60, 47 );
-    level._ID51088._ID55 = 0;
+    level._ID51088.alpha = 0;
     level._ID51582 fadeovertime( 0.5 );
-    level._ID51582._ID55 = 0.8;
+    level._ID51582.alpha = 0.8;
     level._ID50530 fadeovertime( 0.5 );
-    level._ID50530._ID55 = 0.8;
+    level._ID50530.alpha = 0.8;
     level._ID51448 fadeovertime( 0.5 );
-    level._ID51448._ID55 = 0.8;
+    level._ID51448.alpha = 0.8;
     level._ID51088 fadeovertime( 0.5 );
-    level._ID51088._ID55 = 0.8;
+    level._ID51088.alpha = 0.8;
 }
 
 _ID50806()
 {
     level._ID51582 fadeovertime( 0.5 );
-    level._ID51582._ID55 = 0;
+    level._ID51582.alpha = 0;
     level._ID50530 fadeovertime( 0.5 );
-    level._ID50530._ID55 = 0;
+    level._ID50530.alpha = 0;
     level._ID51448 fadeovertime( 0.5 );
-    level._ID51448._ID55 = 0;
+    level._ID51448.alpha = 0;
     level._ID51088 fadeovertime( 0.5 );
-    level._ID51088._ID55 = 0;
+    level._ID51088.alpha = 0;
     level._ID51582 _ID42313::_ID10476();
     level._ID50530 _ID42313::_ID10476();
     level._ID51448 _ID42313::_ID10476();

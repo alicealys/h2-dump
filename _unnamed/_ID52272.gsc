@@ -1,10 +1,10 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     _ID42411::_ID6215( "script_vehicle_pavelow", "pavelow", "vehicle_pavelow", "fx/explosions/helicopter_explosion_secondary_small", "tag_engine_left", undefined, undefined, undefined, undefined, 0.0, 1 );
     _ID42411::_ID6215( "script_vehicle_pavelow", "pavelow", "vehicle_pavelow", "fx/explosions/helicopter_explosion_secondary_small", "tag_engine_right", undefined, undefined, undefined, undefined, 1.4, 1 );
@@ -114,7 +114,7 @@ _ID616()
     level._ID1426["light_shaft_ground_dust_large_yel"] = loadfx( "fx/dust/light_shaft_ground_dust_large_yel" );
     level._ID1426["light_shaft_motes_afchase"] = loadfx( "fx/dust/light_shaft_motes_afchase" );
 
-    if ( level._ID912 == "ending" )
+    if ( level.script == "ending" )
         level._ID1426["light_glow_white_bulb"] = loadfx( "fx/dust/light_shaft_motes_afchase" );
     else
         level._ID1426["light_glow_white_bulb"] = loadfx( "fx/misc/light_glow_white_bulb" );
@@ -227,22 +227,22 @@ _ID616()
 
     _ID38735();
 
-    if ( level._ID912 == "af_chase" )
+    if ( level.script == "af_chase" )
     {
         thread _ID49780();
         setsaveddvar( "fx_alphathreshold", 1 );
     }
 
-    if ( level._ID912 == "ending" )
+    if ( level.script == "ending" )
     {
-        _ID43139::_ID616();
+        _ID43139::main();
         setsaveddvar( "fx_marks_nearlimit", 10 );
         setsaveddvar( "fx_alphathreshold", 7 );
     }
     else
-        _ID46469::_ID616();
+        _ID46469::main();
 
-    _ID51969::_ID616();
+    _ID51969::main();
 }
 
 _ID49579()
@@ -308,7 +308,7 @@ _ID43618()
             var_1 = 0.5;
 
         wait(var_1);
-        playfx( level._ID1426["sand_storm_player"], var_0._ID740 + ( 0, 0, 100 ) );
+        playfx( level._ID1426["sand_storm_player"], var_0.origin + ( 0, 0, 100 ) );
     }
 }
 
@@ -325,14 +325,14 @@ _ID49484()
 
     foreach ( var_2 in level._ID9242 )
     {
-        if ( distance( var_2._ID40005["origin"], level._ID28543._ID740 ) < 400 )
+        if ( distance( var_2._ID40005["origin"], level._ID28543.origin ) < 400 )
         {
-            var_2._ID740 = var_2._ID40005["origin"];
+            var_2.origin = var_2._ID40005["origin"];
             var_0[var_0.size] = var_2;
         }
     }
 
-    var_0 = sortbydistance( var_0, level._ID28543._ID740 );
+    var_0 = sortbydistance( var_0, level._ID28543.origin );
 
     for (;;)
     {
@@ -359,10 +359,10 @@ _ID54355()
 {
     level endon( "stop_sandstorm_fog" );
     var_0 = _ID42237::_ID16638( "heli_fog_struct", "targetname" );
-    var_1 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
+    var_1 = _ID42237::_ID16638( var_0.target, "targetname" );
     var_2 = spawn( "script_origin", ( 0, 0, 0 ) );
-    var_2._ID740 = var_1._ID740;
-    var_3 = distance( var_2._ID740, var_0._ID740 );
+    var_2.origin = var_1.origin;
+    var_3 = distance( var_2.origin, var_0.origin );
     var_4 = _ID42407::_ID9145( "afch_fog_dunes_dynamic" );
     var_4._ID36107 = 0;
     var_4._ID17667 = 8340;
@@ -379,7 +379,7 @@ _ID54355()
 
     for (;;)
     {
-        var_9 = distance( level._ID794._ID740, var_2._ID740 );
+        var_9 = distance( level.player.origin, var_2.origin );
         var_9 -= var_3;
         var_9 *= 0.25;
 
@@ -389,8 +389,8 @@ _ID54355()
                 var_8 = 1;
 
             var_10 = 0.8;
-            var_2._ID740 = var_2._ID740 * var_10 + level._ID53442._ID740 * ( 1 - var_10 );
-            var_11 = distance( level._ID794._ID740, var_2._ID740 );
+            var_2.origin = var_2.origin * var_10 + level._ID53442.origin * ( 1 - var_10 );
+            var_11 = distance( level.player.origin, var_2.origin );
             var_11 *= 0.75;
             var_10 = 0.9;
             level._ID47158 = level._ID47158 * var_10 + var_11 * ( 1 - var_10 );
@@ -408,7 +408,7 @@ _ID54355()
         var_4._ID36107 = var_9 * 0.75;
         var_4._ID17667 = var_9;
         wait 0.2;
-        var_12 = vectortoangles( var_0._ID740 - level._ID794._ID740 );
+        var_12 = vectortoangles( var_0.origin - level.player.origin );
         var_13 = anglestoforward( var_12 );
     }
 }

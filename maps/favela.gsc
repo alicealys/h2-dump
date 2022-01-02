@@ -1,11 +1,11 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
-        maps\favela_beautiful_corner::_ID616();
+        maps\favela_beautiful_corner::main();
         return;
     }
 
@@ -34,22 +34,22 @@ _ID616()
     _ID42407::_ID1951( "trailer2", ::_ID48884 );
     _ID42407::_ID1951( "trailer3", ::_ID53227 );
     _ID42407::_ID1951( "end", ::_ID50552 );
-    _ID45443::_ID616();
-    _ID51362::_ID616();
+    _ID45443::main();
+    _ID51362::main();
     _ID42231::_ID48620( "vehicle_coupe_gold", "fx/explosions/small_vehicle_explosion", "fx/explosions/small_vehicle_explosion_favela" );
-    _ID46622::_ID616();
-    _ID51411::_ID616();
-    maps\favela_lighting::_ID616();
-    _ID42287::_ID521();
+    _ID46622::main();
+    _ID51411::main();
+    maps\favela_lighting::main();
+    _ID42287::init();
     animscripts\dog\dog_init::_ID19886();
-    _ID52657::_ID616();
+    _ID52657::main();
     _ID42323::_ID32417( "viewhands_player_tf141_favela" );
-    _ID42323::_ID616();
+    _ID42323::main();
     _ID45285::_ID49852();
-    maps\favela_anim::_ID616();
+    maps\favela_anim::main();
     _ID42272::_ID33575( "compass_map_favela" );
-    maps\favela_aud::_ID616();
-    thread _ID43858::_ID616();
+    maps\favela_aud::main();
+    thread _ID43858::main();
     level._ID46790 = getdvarfloat( "ai_friendlyFireBlockDuration" );
     level._ID2184 = 30000;
     level._ID2183 = 1;
@@ -115,7 +115,7 @@ _ID616()
 
     foreach ( var_6 in var_3 )
     {
-        if ( var_6._ID170 == "actor_enemy_dog" )
+        if ( var_6.classname == "actor_enemy_dog" )
             var_6 _ID42407::_ID1947( maps\favela_code::random_dog_model_swap );
 
         if ( !isdefined( var_6._ID31388 ) )
@@ -222,7 +222,7 @@ _ID616()
     var_9 thread maps\favela_code::sync_left_side_of_bus_spawning();
     maps\favela_code::hide_destructible_vehicles( 1, "hiding_car" );
     var_10 = getent( "fire_hydrant", "script_noteworthy" );
-    var_10 _meth_848a( var_10._ID740 );
+    var_10 _meth_848a( var_10.origin );
 }
 
 _ID51193()
@@ -283,18 +283,18 @@ _ID49823()
     thread _ID42407::_ID4917( "axis" );
     thread _ID47473( 0.2, 1.3, 1.5 );
     level waittill( "black_screen_start" );
-    level._ID794 _meth_830f( 0 );
+    level.player _meth_830f( 0 );
 
     if ( !isdefined( level._ID50958 ) || !level._ID50958 )
     {
-        level._ID794 setoffhandprimaryclass( "fraggrenade" );
-        level._ID794 giveweapon( "fraggrenade" );
+        level.player setoffhandprimaryclass( "fraggrenade" );
+        level.player giveweapon( "fraggrenade" );
     }
 
     if ( !isdefined( level._ID52856 ) || !level._ID52856 )
     {
-        level._ID794 setoffhandsecondaryclass( "flash_grenade" );
-        level._ID794 giveweapon( "flash_grenade" );
+        level.player setoffhandsecondaryclass( "flash_grenade" );
+        level.player giveweapon( "flash_grenade" );
     }
 
     level notify( "stop_monitoring_makarov_damage" );
@@ -309,14 +309,14 @@ _ID49823()
     if ( !getdvarint( "limited_mode" ) )
         level _ID42407::_ID10226( 1.2, ::_ID44187 );
 
-    level._ID794 cancelmantle();
+    level.player cancelmantle();
     maps\favela_code::_ID48221( "playerstart_favela" );
     _ID42407::_ID1801( "favela_vision", "script_noteworthy" );
     thread _ID42407::_ID12548( "favela_cancel_royce_anim" );
     thread _ID42407::_ID12548( "favela_move_friendlies" );
     _ID42237::_ID14402( "civilians_walla" );
     level._ID10901 = undefined;
-    level._ID794 setstance( "stand" );
+    level.player setstance( "stand" );
     setsaveddvar( "player_sprintUnlimited", "0" );
     setsaveddvar( "player_sprintSpeedScale", 1.5 );
     setsaveddvar( "ai_friendlyFireBlockDuration", level._ID46790 );
@@ -333,8 +333,8 @@ _ID49823()
 
     if ( getdvarint( "limited_mode" ) )
     {
-        level._ID794 setorigin( ( -35.1303, -962.725, 640.078 ) );
-        level._ID794 setplayerangles( ( 0.200222, 147.73, 0 ) );
+        level.player setorigin( ( -35.1303, -962.725, 640.078 ) );
+        level.player setplayerangles( ( 0.200222, 147.73, 0 ) );
         _ID42237::_ID14402( "torture_sequence_done" );
         _ID42237::_ID14402( "favela_move_friendlies" );
         _ID42237::_ID14402( "player_near_stairs" );
@@ -342,7 +342,7 @@ _ID49823()
 
     wait 0.05;
     thread maps\favela_code::_ID49786();
-    level._ID794 thread _ID42237::_ID10192( 1, ::freezecontrols, 0 );
+    level.player thread _ID42237::_ID10192( 1, ::freezecontrols, 0 );
     _ID42237::_ID14413( "favela_move_friendlies" );
     _ID42237::_ID14402( "favela_music" );
     setsaveddvar( "compass", 1 );
@@ -385,7 +385,7 @@ _ID49588()
 {
     _ID42475::_ID34575( "start_trailer1_checkpoint" );
     _ID51466( "trailer_talkers_1" );
-    level._ID794 _ID42407::_ID32353( 1 );
+    level.player _ID42407::_ID32353( 1 );
     maps\favela_code::_ID48221( "trailer_talkers_1_player" );
 }
 
@@ -393,7 +393,7 @@ _ID48884()
 {
     _ID42475::_ID34575( "start_trailer2_checkpoint" );
     _ID51466( "trailer_talkers_2" );
-    level._ID794 _ID42407::_ID32353( 1 );
+    level.player _ID42407::_ID32353( 1 );
     maps\favela_code::_ID48221( "trailer_talkers_2_player" );
 }
 
@@ -401,7 +401,7 @@ _ID53227()
 {
     _ID42475::_ID34575( "start_trailer3_checkpoint" );
     _ID51466( "trailer_talkers_3" );
-    level._ID794 _ID42407::_ID32353( 1 );
+    level.player _ID42407::_ID32353( 1 );
     maps\favela_code::_ID48221( "trailer_talkers_3_player" );
 }
 
@@ -413,8 +413,8 @@ _ID51466( var_0 )
     {
         var_4 = var_3 _ID42407::_ID35014( 1 );
         var_4 _ID42407::_ID32352( 1 );
-        var_4._ID452 = 16;
-        var_4 setgoalpos( var_4._ID740 );
+        var_4.goalradius = 16;
+        var_4 setgoalpos( var_4.origin );
 
         if ( !isdefined( var_3._ID70 ) )
             continue;
@@ -488,11 +488,11 @@ _ID44187()
     var_0 _ID42259::_ID3016( var_2, "torture" );
     var_8 = var_0 _ID42259::_ID15565( undefined, "tortureOutro" );
     _ID42259::_ID3017( var_4, "tortureOutro", var_8["origin"], var_8["angles"] );
-    var_9 = var_2[0]._ID740;
+    var_9 = var_2[0].origin;
     thread _ID50778( var_2[3] );
     var_0 thread _ID51661( var_2[2], var_4 );
     var_0 thread _ID42259::_ID3111( level._ID45288, "torture" );
-    var_2[2] _ID45995::_ID48826( "head", level._ID794, 200, 45, 45, 45, 30, 0, 1 );
+    var_2[2] _ID45995::_ID48826( "head", level.player, 200, 45, 45, 45, 30, 0, 1 );
     var_0 thread _ID42259::_ID3099( var_2, "torture" );
     var_10 = getanimlength( level._ID30895["torture_friend2"]["torture"] );
     wait(var_10);
@@ -545,9 +545,9 @@ _ID51661( var_0, var_1 )
 
 _ID46171( var_0 )
 {
-    var_1 = var_0._ID740;
-    var_2 = var_0._ID740 + ( 0, 0, 45 );
-    var_0._ID740 = var_2;
+    var_1 = var_0.origin;
+    var_2 = var_0.origin + ( 0, 0, 45 );
+    var_0.origin = var_2;
     _ID42237::_ID14413( "drop_door" );
     var_0 playsound( "scn_favela_garage_door" );
     var_0 moveto( var_1, 1.3, 0.1, 0.0 );
@@ -559,7 +559,7 @@ _ID48848()
     var_0 = _ID42407::_ID35028( "player_rig" );
     thread maps\favela_code::_ID53087();
     var_1 = _ID42411::_ID35196( "player_vehicle" );
-    var_1 _meth_848a( getent( "van_light_origin", "targetname" )._ID740 );
+    var_1 _meth_848a( getent( "van_light_origin", "targetname" ).origin );
     var_1 hidepart( "TAG_GLASS_FRONT_D" );
     var_2 = var_1._ID43838["vehicle_luxurysedan_2009_viewmodel_interior"];
     var_2 hidepart( "TAG_BROKEN_GLASS" );
@@ -591,8 +591,8 @@ _ID48848()
     var_9 = var_5 _ID42407::_ID35014( 1 );
     var_9._ID3189 = "makarov";
     var_9 thread _ID42407::_ID22746();
-    var_9._ID512 = 1;
-    var_9._ID465 = 0;
+    var_9.ignorerandombulletdamage = 1;
+    var_9.grenadeawareness = 0;
     var_9.cheat._ID54456 = 1;
     var_9 thread maps\favela_code::bullet_holes_hood();
     var_10 = var_6 _ID42407::_ID35014( 1 );
@@ -652,7 +652,7 @@ _ID48848()
     wait 3;
     var_9 _ID42407::_ID3136();
     var_21 = getnode( "runner_first_node", "targetname" );
-    var_9._ID452 = 32;
+    var_9.goalradius = 32;
     var_9 thread maps\favela_code::_ID53331( 1 );
     var_9 _ID42407::_ID32352( 1 );
     var_9 setgoalnode( var_21 );
@@ -674,9 +674,9 @@ _ID48879( var_0 )
     var_8 = -7;
     var_9 = var_1 + var_2;
     var_10 = var_1 - var_9 / 2;
-    level._ID794 lerpviewangleclamp( 0.05, 0, 0, var_2, var_1, var_3, var_4 );
-    level._ID794 _meth_85aa( var_3, 5, var_10, var_9 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player lerpviewangleclamp( 0.05, 0, 0, var_2, var_1, var_3, var_4 );
+    level.player _meth_85aa( var_3, 5, var_10, var_9 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     var_11 = -48;
     var_12 = 9.8;
     var_13 = 12.5;
@@ -697,7 +697,7 @@ _ID48879( var_0 )
     {
         var_22 = var_0 gettagorigin( "tag_passenger" );
         var_22 = anglestoforward( vectornormalize( var_22 ) );
-        var_23 = level._ID794 getplayerangles();
+        var_23 = level.player getplayerangles();
         var_23 = anglestoforward( var_23 );
         var_24 = _func_1fa( var_22[1], var_22[0] ) - _func_1fa( var_23[1], var_23[0] );
         var_24 -= 90;
@@ -758,22 +758,22 @@ _ID48879( var_0 )
             {
                 var_16 = 8.0;
                 var_17 = var_18;
-                level._ID794 lerpviewangleclamp( 0.6, 0.2, 0.4, 10, 10, 5, 5 );
+                level.player lerpviewangleclamp( 0.6, 0.2, 0.4, 10, 10, 5, 5 );
                 wait 0.6;
-                level._ID794 lerpviewangleclamp( 0.1, 0, 0, var_2, var_1, var_3, var_4 );
-                level._ID794 _meth_85aa( var_3, 5, var_10, var_9 );
+                level.player lerpviewangleclamp( 0.1, 0, 0, var_2, var_1, var_3, var_4 );
+                level.player _meth_85aa( var_3, 5, var_10, var_9 );
             }
 
             if ( var_26 == 2 )
             {
                 var_16 = 12.0;
                 var_17 = var_19;
-                level._ID794 lerpviewangleclamp( 0.6, 0.2, 0.4, -28, 28, 13, -13 );
+                level.player lerpviewangleclamp( 0.6, 0.2, 0.4, -28, 28, 13, -13 );
                 wait 0.6;
-                level._ID794 lerpviewangleclamp( 0.1, 0, 0, var_6, var_5, var_7, var_8 );
+                level.player lerpviewangleclamp( 0.1, 0, 0, var_6, var_5, var_7, var_8 );
             }
 
-            level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+            level.player setviewangleresistance( 50, 50, 20, 20 );
         }
 
         if ( _ID42237::_ID14385( "player_starts_exiting_vehicle" ) )
@@ -788,16 +788,16 @@ _ID48879( var_0 )
     _ID42237::_ID14388( "player_starts_exiting_vehicle" );
     _ID42237::_ID14388( "player_is_unducking" );
     _ID42237::_ID14388( "player_dies_in_vehicle" );
-    level._ID794 lerpviewangleclamp( 1.2, 0.5, 0.25, 0, 0, 0, 0 );
-    level._ID794 setviewangleresistance( 50, 50, 20, 20 );
+    level.player lerpviewangleclamp( 1.2, 0.5, 0.25, 0, 0, 0, 0 );
+    level.player setviewangleresistance( 50, 50, 20, 20 );
     var_21 = _ID54167::_ID43386( "favela_exit_car" );
     var_21 _ID54167::_ID48800( 0.0 ) _ID54167::_ID46727() _ID54167::_ID50321( 5.6, 500, 2.0, 2.0 ) _ID54167::_ID47844( 2 ) _ID54167::_ID44956();
     var_21 _ID54167::_ID48800( 0.85 ) _ID54167::_ID50321( 48, 500, 3.0, 3.0 );
     var_21 _ID54167::_ID48800( 2.5 ) _ID54167::_ID47844( 0 ) _ID54167::_ID48959();
-    var_21 _ID54167::_ID48800( 0.2 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.1 );
-    var_21 _ID54167::_ID48800( 0.5 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_21 _ID54167::_ID48800( 1.1 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_21 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
+    var_21 _ID54167::_ID48800( 0.2 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.1 );
+    var_21 _ID54167::_ID48800( 0.5 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_21 _ID54167::_ID48800( 1.1 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_21 _ID54167::_ID48800( 2.15 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
     var_21 _ID54167::_ID48166();
 }
 
@@ -807,12 +807,12 @@ h2_favela_introshakes()
     var_1 = 0.05;
     var_2 = 1.0;
     var_3 = 10000;
-    var_4 = level._ID794;
-    var_0 _ID54167::_ID48800( 10.6 ) _ID54167::_ID47198( 0.11, 1.2, var_4, var_3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_0 _ID54167::_ID48800( 11.4 ) _ID54167::_ID47198( 0.1, 0.8, var_4, var_3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_0 _ID54167::_ID48800( 12.65 ) _ID54167::_ID47198( 0.05, 1.8, var_4, var_3 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_0 _ID54167::_ID48800( 16.1 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.05 );
-    var_0 _ID54167::_ID48800( 23.9 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.15 );
+    var_4 = level.player;
+    var_0 _ID54167::_ID48800( 10.6 ) _ID54167::_ID47198( 0.11, 1.2, var_4, var_3 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_0 _ID54167::_ID48800( 11.4 ) _ID54167::_ID47198( 0.1, 0.8, var_4, var_3 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_0 _ID54167::_ID48800( 12.65 ) _ID54167::_ID47198( 0.05, 1.8, var_4, var_3 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_0 _ID54167::_ID48800( 16.1 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.05 );
+    var_0 _ID54167::_ID48800( 23.9 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.15 );
     var_5 = 12.6;
 
     for ( var_6 = 0.0; var_6 <= var_5; var_6 += 0.25 )
@@ -827,18 +827,18 @@ _ID48497( var_0, var_1 )
     thread maps\favela_code::_ID43730();
     _ID42407::_ID12569( 0 );
     var_2 = 90;
-    var_1._ID740 = var_0 gettagorigin( "tag_passenger" );
-    var_1._ID65 = var_0 gettagangles( "tag_passenger" );
+    var_1.origin = var_0 gettagorigin( "tag_passenger" );
+    var_1.angles = var_0 gettagangles( "tag_passenger" );
     var_1 linkto( var_0, "tag_passenger" );
     var_1 thread maps\favela_code::_ID20307();
     var_1 thread _ID43443( var_0, var_1 );
-    level._ID794 playerlinktodelta( var_1, "tag_player", 1.0, 0, 0, 0, 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowstand( 1 );
+    level.player playerlinktodelta( var_1, "tag_player", 1.0, 0, 0, 0, 0 );
+    level.player allowprone( 0 );
+    level.player allowcrouch( 0 );
+    level.player allowstand( 1 );
     _ID42237::_ID14388( "player_is_ducking" );
-    level._ID794 endon( "death" );
-    level._ID794 setstance( "stand" );
+    level.player endon( "death" );
+    level.player setstance( "stand" );
     notifyoncommand( "go_crouch", "+movedown" );
     notifyoncommand( "go_crouch", "+prone" );
     notifyoncommand( "go_crouch", "+stance" );
@@ -864,31 +864,31 @@ _ID48497( var_0, var_1 )
 
     for (;;)
     {
-        level._ID794 waittill( "go_crouch" );
+        level.player waittill( "go_crouch" );
         var_1 notify( "stop_intro_idle" );
         _ID42237::_ID14402( "player_is_ducking" );
         _ID42237::_ID14388( "player_is_unducking" );
-        level._ID794 enableinvulnerability();
-        level._ID794 thread _ID42407::_ID27079( "scn_favela_player_ducking" );
+        level.player enableinvulnerability();
+        level.player thread _ID42407::_ID27079( "scn_favela_player_ducking" );
         var_1 _ID42259::_ID3111( var_1, "duck_down", "tag_passenger" );
         var_1 thread _ID42259::_ID3044( var_1, "duck_down_idle", "stop_down_idle", "tag_passenger" );
-        level._ID794 waittill( "go_stand" );
+        level.player waittill( "go_stand" );
         _ID42237::_ID14402( "player_is_unducking" );
-        level._ID794 thread _ID42407::_ID27079( "scn_favela_player_unducking" );
+        level.player thread _ID42407::_ID27079( "scn_favela_player_unducking" );
         var_1 notify( "stop_down_idle" );
         var_1 _ID42259::_ID3111( var_1, "duck_up", "tag_passenger" );
         var_1 thread _ID42259::_ID3044( var_1, "idle", "stop_intro_idle", "tag_passenger" );
         _ID42237::_ID14388( "player_is_ducking" );
-        level._ID794 disableinvulnerability();
+        level.player disableinvulnerability();
     }
 }
 
 _ID43443( var_0, var_1 )
 {
     level endon( "exiting_vehicle" );
-    level._ID794 waittill( "shot_next_frame" );
+    level.player waittill( "shot_next_frame" );
     _ID42237::_ID14402( "player_dies_in_vehicle" );
-    level._ID794 playerlinktoblend( var_1, "tag_player", 2, 0.5, 0.5 );
+    level.player playerlinktoblend( var_1, "tag_player", 2, 0.5, 0.5 );
     var_0 thread _ID42259::_ID3111( self, "die", "tag_passenger" );
     wait 1.5;
     level._ID53563 stopanimscripted();
@@ -905,18 +905,18 @@ _ID48683( var_0, var_1 )
     var_0 notify( "door_open" );
     _ID42475::_ID34575( "start_player_exit_vehicle" );
 
-    if ( isalive( level._ID794 ) )
+    if ( isalive( level.player ) )
     {
         _ID42237::_ID14402( "player_starts_exiting_vehicle" );
         var_1 _ID42259::_ID3111( var_1, "getout" );
-        level._ID794 unlink();
+        level.player unlink();
         var_1 hide();
-        level._ID794 disableinvulnerability();
+        level.player disableinvulnerability();
         _ID42407::_ID12569( 1 );
-        level._ID794 allowprone( 1 );
-        level._ID794 allowcrouch( 1 );
-        level._ID794 allowstand( 1 );
-        level._ID794 setstance( "stand" );
+        level.player allowprone( 1 );
+        level.player allowcrouch( 1 );
+        level.player allowstand( 1 );
+        level.player setstance( "stand" );
         setsaveddvar( "player_sprintUnlimited", "1" );
         setsaveddvar( "player_sprintSpeedScale", 1.4 );
         var_1 delete();
@@ -968,14 +968,14 @@ _ID45542( var_0 )
 {
     level._ID53563 = _ID42407::_ID35168( "soap_spawner", 1 );
     level._ID53563 _ID42407::_ID32352( 1 );
-    level._ID53563._ID1258 = 0;
-    level._ID53563._ID381 = 0;
+    level._ID53563.usechokepoints = 0;
+    level._ID53563.fixednode = 0;
     level._ID53563._ID11002 = 1;
     level._ID53563._ID7._ID11043 = 1;
-    level._ID53563._ID628 = 0;
-    level._ID53563._ID513 = 1;
+    level._ID53563.maxsightdistsqrd = 0;
+    level._ID53563.ignoresuppression = 1;
     level._ID53563._ID3189 = "mactavish";
-    level._ID53563._ID764 = 0;
+    level._ID53563.pathrandompercent = 0;
     level._ID53563 thread _ID42407::_ID22746();
     level._ID53563 linkto( var_0, "tag_guy0" );
     var_0 thread _ID42259::_ID3111( level._ID53563, "intro", "tag_guy0" );
@@ -1001,9 +1001,9 @@ _ID45542( var_0 )
     var_1 _ID42407::_ID32353( 1 );
     var_1._ID11002 = 1;
     var_1._ID7._ID11043 = 1;
-    var_1._ID628 = 0;
-    var_1._ID513 = 1;
-    var_1._ID1258 = 0;
+    var_1.maxsightdistsqrd = 0;
+    var_1.ignoresuppression = 1;
+    var_1.usechokepoints = 0;
     var_1._ID34236 = 1;
     var_1.cheat._ID50282 = 1;
     var_1.cheat._ID54456 = 1;
@@ -1040,7 +1040,7 @@ _ID48546()
 
     for (;;)
     {
-        var_4 = distance( level._ID794._ID740, self._ID740 );
+        var_4 = distance( level.player.origin, self.origin );
 
         if ( var_4 > var_1 )
         {
@@ -1109,7 +1109,7 @@ _ID45181()
     }
 
     var_9 = getent( "chase_objective_location", "targetname" );
-    objective_current( 1, var_9._ID740 );
+    objective_current( 1, var_9.origin );
     setsaveddvar( "objectiveFadeTooFar", 0.1 );
 }
 
@@ -1130,20 +1130,20 @@ _ID43869()
     level endon( "runner_shot" );
     wait 0.75;
     thread _ID42407::_ID24584( 0.25 );
-    level._ID794 thread _ID42407::_ID27079( "mus_favela_legshot_pre_stinger" );
+    level.player thread _ID42407::_ID27079( "mus_favela_legshot_pre_stinger" );
 }
 
 _ID52291()
 {
     self endon( "death" );
     var_0 = getent( "teleport_runner_1", "targetname" );
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     var_0 waittill( "trigger" );
 
     if ( !_ID42237::_ID14385( "runner_in_alley" ) )
         return;
 
-    self forceteleport( var_1._ID740, var_1._ID65 );
+    self forceteleport( var_1.origin, var_1.angles );
 }
 
 _ID51948()
@@ -1151,14 +1151,14 @@ _ID51948()
     self endon( "death" );
     _ID42407::_ID14803( "ak47", "primary" );
     var_0 = getent( "teleport_runner_2", "targetname" );
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     var_2 = getnode( "back_alley_shooting_back", "targetname" );
     var_0 waittill( "trigger" );
 
     if ( !_ID42237::_ID14385( "runner_in_alley2" ) )
         return;
 
-    self forceteleport( var_1._ID740, var_1._ID65 );
+    self forceteleport( var_1.origin, var_1.angles );
     var_2 thread _ID42259::_ID3111( self, "rojas_assistant_run_gun_alley" );
 }
 
@@ -1174,7 +1174,7 @@ _ID43990()
         if ( !isdefined( var_1 ) )
             continue;
 
-        if ( var_1 != level._ID794 && var_1 != level._ID53563 )
+        if ( var_1 != level.player && var_1 != level._ID53563 )
             continue;
 
         if ( var_0 <= 1 )
@@ -1204,10 +1204,10 @@ _ID43971()
     if ( isdefined( self._ID48017 ) )
         return 0;
 
-    if ( !isdefined( self._ID253 ) )
+    if ( !isdefined( self.damagelocation ) )
         return 1;
 
-    switch ( self._ID253 )
+    switch ( self.damagelocation )
     {
         case "none":
             if ( _ID42237::_ID14385( "makarov_alley_wounded" ) )
@@ -1252,7 +1252,7 @@ _ID51283()
 
     _ID42407::_ID36519();
     level._ID46628 = self;
-    level._ID46628 thread _ID42237::_ID27077( "scn_favela_death_crawl", level._ID46628._ID740 );
+    level._ID46628 thread _ID42237::_ID27077( "scn_favela_death_crawl", level._ID46628.origin );
     self._ID24898 = 1;
     self._ID45747 = 1;
     self kill();
@@ -1266,7 +1266,7 @@ _ID46340( var_0 )
     {
         _ID42407::_ID7854();
         _ID42407::_ID36519();
-        self kill( var_0, level._ID794 );
+        self kill( var_0, level.player );
     }
 
     setdvar( "ui_deadquote", "@FAVELA_KILLED_RUNNER" );
@@ -1294,25 +1294,25 @@ _ID47473( var_0, var_1, var_2 )
     setomnvar( "ui_expireHUD", 1 );
     setsaveddvar( "compass", 0 );
     thread maps\favela_aud::_ID54580();
-    level._ID794 playlocalsound( "scn_favela_legshot_stinger" );
+    level.player playlocalsound( "scn_favela_legshot_stinger" );
     var_3 = newhudelem();
-    var_3._ID1331 = 0;
-    var_3._ID1339 = 0;
+    var_3.x = 0;
+    var_3.y = 0;
     var_3 setshader( "black", 640, 480 );
-    var_3._ID44 = "left";
-    var_3._ID45 = "top";
-    var_3._ID499 = "fullscreen";
-    var_3._ID1284 = "fullscreen";
-    var_3._ID408 = 1;
-    var_3._ID55 = 0;
+    var_3.alignx = "left";
+    var_3.aligny = "top";
+    var_3.horzalign = "fullscreen";
+    var_3.vertalign = "fullscreen";
+    var_3.foreground = 1;
+    var_3.alpha = 0;
 
     if ( var_0 > 0 )
         var_3 fadeovertime( var_0 );
 
-    var_3._ID55 = 1;
+    var_3.alpha = 1;
     wait(var_0);
     wait 0.05;
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     level notify( "black_screen_start" );
     wait(var_2);
     level notify( "black_screen_finish" );
@@ -1320,7 +1320,7 @@ _ID47473( var_0, var_1, var_2 )
     if ( var_1 > 0 )
         var_3 fadeovertime( var_1 );
 
-    var_3._ID55 = 0;
+    var_3.alpha = 0;
     wait(var_1);
     var_3 destroy();
     thread maps\favela_code::animated_sheet();
@@ -1355,7 +1355,7 @@ _ID52414( var_0 )
     var_0 showpart( "TAG_BROKEN_GLASS" );
     var_0 hidepart( "TAG_GLASS_FRONT" );
     var_0 thread _ID42407::_ID27080( "scn_favela_car_glass_explode", "TAG_GLASS_FRONT_D" );
-    earthquake( 0.7, 0.75, var_0._ID740, 72 );
+    earthquake( 0.7, 0.75, var_0.origin, 72 );
     playfxontag( _ID42237::_ID16299( "car_glass_interior" ), var_0, "TAG_GLASS_FRONT_FX" );
 
     foreach ( var_2 in level._ID45590 )
@@ -1452,7 +1452,7 @@ _ID49408( var_0 )
 
         if ( !_ID42237::_ID14385( "player_is_ducking" ) )
         {
-            if ( isalive( level._ID794 ) && var_17 >= var_2 && var_17 <= var_3 )
+            if ( isalive( level.player ) && var_17 >= var_2 && var_17 <= var_3 )
                 thread _ID43181();
         }
 
@@ -1468,22 +1468,22 @@ _ID49408( var_0 )
 
 _ID43181()
 {
-    level._ID794 notify( "shot_next_frame" );
+    level.player notify( "shot_next_frame" );
     wait 0.05;
-    level._ID794 enabledeathshield( 0 );
-    level._ID794 enablehealthshield( 0 );
-    level._ID794 disableinvulnerability();
-    level._ID794 dodamage( level._ID794._ID486 + 50000, level._ID794 geteye() );
+    level.player enabledeathshield( 0 );
+    level.player enablehealthshield( 0 );
+    level.player disableinvulnerability();
+    level.player dodamage( level.player.health + 50000, level.player geteye() );
     wait 0.05;
 
-    if ( isalive( level._ID794 ) )
-        level._ID794 kill();
+    if ( isalive( level.player ) )
+        level.player kill();
 }
 
 _ID49879()
 {
     level waittill( "end_scene" );
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self._ID7._ID24881 = 1;
     self._ID24924 = 1;
     self setcontents( 0 );
@@ -1495,13 +1495,13 @@ _ID53441()
     var_0 = getent( "mission_objective_location_1", "targetname" );
     objective_add( 2, "invisible", &"FAVELA_OBJ_CAPTURE_ROJAS", ( 0, 0, 0 ) );
     objective_state_nomessage( 2, "active_waypoint" );
-    objective_add( 3, "current", &"FAVELA_OBJ_SEARCH", var_0._ID740 );
+    objective_add( 3, "current", &"FAVELA_OBJ_SEARCH", var_0.origin );
     objective_position( 3, 1 );
     _ID42237::_ID14413( "cleared_favela" );
     wait 7;
     objective_state( 3, "done" );
     var_0 = getent( "mission_objective_location_end", "targetname" );
-    objective_add( 4, "current", &"FAVELA_OBJ_REACH_TOP", var_0._ID740 );
+    objective_add( 4, "current", &"FAVELA_OBJ_REACH_TOP", var_0.origin );
     objective_position( 4, 1 );
 }
 
@@ -1512,10 +1512,10 @@ _ID51519()
     level._ID51460._ID3189 = "meat";
     level._ID51460 maps\favela_code::_ID32651( "head_seal_soccom_c" );
     level._ID51460 setmodel( "body_seal_soccom_assault_d" );
-    level._ID51460._ID513 = 1;
-    level._ID51460._ID37018 = 1000;
-    level._ID45288._ID513 = 1;
-    level._ID45288._ID37018 = 1000;
+    level._ID51460.ignoresuppression = 1;
+    level._ID51460.threatupdateinterval = 1000;
+    level._ID45288.ignoresuppression = 1;
+    level._ID45288.threatupdateinterval = 1000;
 }
 
 _ID48850()
@@ -1548,7 +1548,7 @@ _ID50209()
 
 _ID51317()
 {
-    if ( isdefined( self._ID922 ) )
+    if ( isdefined( self.script_noteworthy ) )
         return;
 
     var_0 = _ID42407::_ID35014( 1 );
@@ -1559,7 +1559,7 @@ _ID51317()
 
     level._ID49668[level._ID49668.size] = var_0;
     wait 0.05;
-    var_0._ID38 = "noncombat";
+    var_0.alertlevel = "noncombat";
 
     if ( !isdefined( self._ID70 ) )
     {
@@ -1567,7 +1567,7 @@ _ID51317()
         var_1 = getnode( "favela_civ_flee_node_opening", "targetname" );
         var_0 thread _ID42407::_ID14701( var_1, 0, maps\favela_code::_ID47339 );
         var_0 thread maps\favela_code::_ID49718();
-        var_0._ID1258 = 0;
+        var_0.usechokepoints = 0;
         return;
     }
 
@@ -1577,8 +1577,8 @@ _ID51317()
         var_2 = _ID42237::_ID15807();
     else
     {
-        var_2 = spawn( "script_origin", self._ID740 );
-        var_2._ID65 = self._ID65;
+        var_2 = spawn( "script_origin", self.origin );
+        var_2.angles = self.angles;
     }
 
     var_3 = self._ID70;
@@ -1589,7 +1589,7 @@ _ID51317()
     var_2 notify( "stop_idle_anim" );
     var_0 notify( "stop_idle_anim" );
     var_0 stopanimscripted();
-    var_0._ID1258 = 1;
+    var_0.usechokepoints = 1;
     var_1 = getnode( "favela_civ_flee_node_opening", "targetname" );
     var_0 thread _ID42407::_ID14701( var_1, 0, maps\favela_code::_ID47339 );
     var_0 thread maps\favela_code::_ID49718();
@@ -1598,10 +1598,10 @@ _ID51317()
 _ID50623()
 {
     var_0 = getent( "favela_civilians_scream_ent", "targetname" );
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     _ID42237::_ID14413( "favela_civilians_fleeing" );
     var_0 playsound( "scn_favela_civ_outofhere_screams" );
-    var_0 moveto( var_1._ID740, 6.0, 4.0, 2.0 );
+    var_0 moveto( var_1.origin, 6.0, 4.0, 2.0 );
 }
 
 _ID53303()
@@ -1675,7 +1675,7 @@ _ID54233()
             if ( _ID42237::_ID14385( "cleared_favela" ) )
                 return;
 
-            var_2._ID216 = 1;
+            var_2.count = 1;
             var_2 thread _ID42407::_ID35014( 1 );
             wait(randomintrange( 4, 8 ));
         }
@@ -1688,7 +1688,7 @@ _ID53247()
     thread _ID42407::_ID4422( "faust_appearance_1" );
     thread _ID45507();
     var_0 = _ID42407::_ID35168( "faust_spawner_1", 1 );
-    var_0._ID680 = "Rojas";
+    var_0.name = "Rojas";
     var_0.cheat._ID54456 = 1;
     var_0 thread maps\favela_code::_ID45795( "faust", "run" );
     var_0 thread _ID49390( 2 );
@@ -1736,7 +1736,7 @@ _ID44687()
     }
 
     var_0 = _ID42407::_ID35168( "faust_spawner_2", 1 );
-    var_0._ID680 = "Rojas";
+    var_0.name = "Rojas";
     var_0.cheat._ID54456 = 1;
     var_0 thread maps\favela_code::_ID45795( "faust", "run" );
     var_0 thread _ID49390( 3 );
@@ -1760,7 +1760,7 @@ _ID54660()
     }
 
     var_0 = _ID42407::_ID35168( "faust_spawner_3", 1 );
-    var_0._ID680 = "Rojas";
+    var_0.name = "Rojas";
     var_0.cheat._ID54456 = 1;
     var_0 thread maps\favela_code::_ID45795( "faust", "run" );
     var_0 thread _ID49390( 4 );
@@ -1788,7 +1788,7 @@ _ID44475()
         wait 0.5;
 
     var_0 = _ID42407::_ID35168( "faust_spawner_4", 1 );
-    var_0._ID680 = "Rojas";
+    var_0.name = "Rojas";
     var_0.cheat._ID54456 = 1;
     var_0 thread maps\favela_code::_ID45795( "faust", "run" );
     var_0 thread _ID49390( "end" );
@@ -1805,16 +1805,16 @@ _ID50628()
 _ID53656()
 {
     var_0 = getent( "civilian_180_runaway", "targetname" );
-    var_1 = spawn( "script_origin", var_0._ID740 );
-    var_1._ID65 = var_0._ID65;
+    var_1 = spawn( "script_origin", var_0.origin );
+    var_1.angles = var_0.angles;
     var_2 = var_0._ID70;
-    var_3 = getnode( var_0._ID1191, "targetname" );
+    var_3 = getnode( var_0.target, "targetname" );
     var_4 = var_0 _ID42407::_ID35014( 1 );
     var_4 endon( "death" );
-    var_4._ID49 = 1;
+    var_4.allowdeath = 1;
     var_4 _ID45995::_ID48826( "upperbody" );
     var_1 _ID42259::_ID3020( var_4, var_2 );
-    var_4._ID452 = 32;
+    var_4.goalradius = 32;
     var_4 thread maps\favela_code::_ID53331();
     var_4 setgoalnode( var_3 );
 }
@@ -1826,7 +1826,7 @@ _ID52527()
     var_2 = var_0._ID70;
     var_3 = var_1._ID70;
     var_4 = var_0 _ID42237::_ID15807();
-    var_5 = getnode( var_1._ID1191, "targetname" );
+    var_5 = getnode( var_1.target, "targetname" );
     var_6 = var_0 _ID42407::_ID35014( 1 );
     var_7 = var_1 _ID42407::_ID35014( 1 );
     var_6._ID7._ID24881 = 1;
@@ -1837,7 +1837,7 @@ _ID52527()
     var_4 thread _ID42259::_ID3020( var_6, var_2 );
     var_4 _ID42259::_ID3020( var_7, var_3 );
     var_4 thread _ID42259::_ID3023( var_6, var_2 );
-    var_7._ID452 = 32;
+    var_7.goalradius = 32;
     var_7 thread maps\favela_code::_ID53331();
     var_7 setgoalnode( var_5 );
 }
@@ -1866,8 +1866,8 @@ _ID53850( var_0 )
 
 _ID44447()
 {
-    level._ID51460._ID452 = 32;
-    level._ID45288._ID452 = 32;
+    level._ID51460.goalradius = 32;
+    level._ID45288.goalradius = 32;
     level._ID51460 _ID42407::_ID32335( "meat_first_node" );
     level._ID45288 _ID42407::_ID32335( "royce_first_node" );
     thread _ID53554();
@@ -1896,7 +1896,7 @@ _ID44447()
 
     _ID42237::_ID14402( "favela_enemies_spawned" );
     thread maps\favela_code::_ID54043();
-    thread _ID42407::_ID1801( "favela_spawn_trigger", "script_noteworthy", level._ID794 );
+    thread _ID42407::_ID1801( "favela_spawn_trigger", "script_noteworthy", level.player );
     thread _ID42407::_ID4918( "allies" );
     thread _ID42407::_ID4918( "axis" );
 }
@@ -1917,7 +1917,7 @@ _ID53554()
 _ID43957()
 {
     level endon( "favela_civilians_alerted" );
-    level._ID794 _ID42237::_ID41068( "grenade_fire", "weapon_fired" );
+    level.player _ID42237::_ID41068( "grenade_fire", "weapon_fired" );
     thread _ID50235();
 }
 
@@ -1936,7 +1936,7 @@ _ID50235()
     foreach ( var_1 in level._ID49668 )
     {
         if ( isdefined( var_1 ) )
-            var_1._ID38 = "alert";
+            var_1.alertlevel = "alert";
     }
 }
 
@@ -1972,7 +1972,7 @@ _ID46919()
     level._ID51460 thread _ID54484();
     level._ID51460 _ID42407::_ID36519();
     wait 0.05;
-    level._ID51460._ID486 = 1;
+    level._ID51460.health = 1;
     level._ID51460 thread _ID50755();
 }
 
@@ -1999,7 +1999,7 @@ _ID46257()
     level._ID45288 thread _ID43095();
     level._ID45288 _ID42407::_ID36519();
     wait 0.05;
-    level._ID45288._ID486 = 1;
+    level._ID45288.health = 1;
     level._ID45288 thread _ID51983();
 }
 
@@ -2017,8 +2017,8 @@ _ID43095()
     self waittill( "death" );
     var_0 = 0;
 
-    if ( isdefined( self ) && isdefined( self._ID740 ) )
-        var_0 = level._ID794 _ID42407::_ID27540( self._ID740, cos( 45 ) );
+    if ( isdefined( self ) && isdefined( self.origin ) )
+        var_0 = level.player _ID42407::_ID27540( self.origin, cos( 45 ) );
 
     if ( !var_0 )
         _ID42407::_ID28864( "favela_ryc_imhit" );
@@ -2115,7 +2115,7 @@ _ID52397()
     var_1 _ID42407::_ID32352( 1 );
     var_1 thread _ID42407::_ID22746();
     var_2 = _ID42407::_ID35168( "ending_faust_spawner", 1 );
-    var_2._ID680 = "Rojas";
+    var_2.name = "Rojas";
     var_2._ID3189 = "faust";
     var_2.cheat._ID54456 = 1;
     var_2 _ID42407::_ID32353( 1 );
@@ -2146,7 +2146,7 @@ _ID52397()
     _ID42237::_ID14388( "faust_music" );
     _ID42237::_ID14388( "favela_music" );
     thread _ID42407::_ID24584( 1.0 );
-    level._ID794 thread _ID42407::_ID27079( "mus_favela_moneyrun_endfall" );
+    level.player thread _ID42407::_ID27079( "mus_favela_moneyrun_endfall" );
     var_0 thread _ID42259::_ID3099( var_4, "ending_takedown" );
     wait 22.5;
     _ID13799();
@@ -2163,18 +2163,18 @@ _ID13799()
     setsaveddvar( "actionSlotsHide", 1 );
     setsaveddvar( "hud_showStance", 0 );
     var_1 = newhudelem();
-    var_1._ID1331 = 0;
-    var_1._ID1339 = 0;
+    var_1.x = 0;
+    var_1.y = 0;
     var_1 setshader( "black", 640, 480 );
-    var_1._ID44 = "left";
-    var_1._ID45 = "top";
-    var_1._ID499 = "fullscreen";
-    var_1._ID1284 = "fullscreen";
-    var_1._ID55 = 0;
+    var_1.alignx = "left";
+    var_1.aligny = "top";
+    var_1.horzalign = "fullscreen";
+    var_1.vertalign = "fullscreen";
+    var_1.alpha = 0;
     var_1 fadeovertime( var_0 );
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
     wait(var_0);
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     _ID42407::_ID12569( 0 );
 }
 
@@ -2193,7 +2193,7 @@ _ID45720()
 {
     wait 0.15;
 
-    if ( !_ID42407::_ID27540( self._ID740, undefined, 1 ) )
+    if ( !_ID42407::_ID27540( self.origin, undefined, 1 ) )
         return;
 
     var_0 = 0.5;
@@ -2203,19 +2203,19 @@ _ID45720()
     var_4 = 2.0;
     _ID42475::_ID34575( "start_ending_slowmo" );
     objective_current( 2, ( 0, 0, 0 ) );
-    level._ID794 thread _ID42407::_ID27079( "slomo_whoosh" );
+    level.player thread _ID42407::_ID27079( "slomo_whoosh" );
     _ID42407::_ID34379();
     _ID42407::_ID34377( var_3 );
     _ID42407::_ID34374( var_0 );
     _ID42407::_ID34371();
-    level._ID794 setmovespeedscale( var_2 );
+    level.player setmovespeedscale( var_2 );
     wait(var_4 * var_3);
     _ID42475::_ID34575( "stop_ending_slowmo" );
-    level._ID794 thread _ID42407::_ID27079( "slomo_whoosh" );
+    level.player thread _ID42407::_ID27079( "slomo_whoosh" );
     _ID42407::_ID34375( var_1 );
     _ID42407::_ID34372();
     _ID42407::_ID34369();
-    level._ID794 setmovespeedscale( 1.0 );
+    level.player setmovespeedscale( 1.0 );
     wait 1;
     objective_state( 2, "done" );
     objective_state_nomessage( 4, "done" );
@@ -2250,7 +2250,7 @@ _ID51409( var_0 )
 {
     wait 3;
     var_0 _ID42407::_ID41119( "pull_start" );
-    level._ID794 _meth_830f( 1 );
+    level.player _meth_830f( 1 );
 }
 
 _ID50778( var_0 )

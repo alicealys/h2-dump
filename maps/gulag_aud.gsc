@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -105,14 +105,14 @@ _ID44772( var_0 )
 {
     _ID42474::_ID4669( "interior_stone" );
     wait 0.1;
-    level._ID794 thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
+    level.player thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
 }
 
 _ID46660( var_0 )
 {
     _ID42474::_ID4669( "interior_stone" );
     wait 0.1;
-    level._ID794 thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
+    level.player thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
 }
 
 _ID46924( var_0 )
@@ -120,7 +120,7 @@ _ID46924( var_0 )
     _ID42474::_ID4669( "interior_stone" );
     _ID42465::_ID23797( "mix_evac_rock_falling" );
     wait 0.1;
-    level._ID794 thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
+    level.player thread _ID42237::_ID27000( "scn_gulag_evac_jet_attack_loop", undefined, 1.0, 1.0 );
 }
 
 _ID54276( var_0 )
@@ -297,7 +297,7 @@ _ID52379()
 _ID52884()
 {
     _ID42465::_ID23797( "mix_evac_rock_falling" );
-    level._ID794 playsound( "scn_gulag_evac_rock_falling_plr" );
+    level.player playsound( "scn_gulag_evac_rock_falling_plr" );
 }
 
 _ID45951()
@@ -307,12 +307,12 @@ _ID45951()
     _ID42490::_ID34526( "evac_rock_falling_filter", 0.5 );
     _ID42474::_ID4662( 1 );
     _ID42469::_ID30454( "slowmo" );
-    level._ID794 playsound( "scn_gulag_price_remove_debris_ant" );
+    level.player playsound( "scn_gulag_price_remove_debris_ant" );
 }
 
 _ID51223()
 {
-    level._ID794 playsound( "scn_gulag_evac_rock_falling_shellshock_out" );
+    level.player playsound( "scn_gulag_evac_rock_falling_shellshock_out" );
     _ID42465::_ID23801( "mix_evac_rock_falling_black_screen" );
     _ID42490::_ID34527( 1 );
     _ID42474::_ID4655( 0 );
@@ -335,7 +335,7 @@ _ID47008()
 _ID50672()
 {
     _ID42465::_ID23797( "mix_evac_player" );
-    level._ID794 playsound( "scn_gulag_evac_player" );
+    level.player playsound( "scn_gulag_evac_player" );
 }
 
 _ID48231()
@@ -350,7 +350,7 @@ _ID48376()
 
 _ID54652( var_0 )
 {
-    level._ID794 _meth_8522();
+    level.player _meth_8522();
     _ID42476::_ID34512( var_0 );
 }
 
@@ -367,10 +367,10 @@ _ID48248( var_0, var_1, var_2, var_3, var_4, var_5 )
 
 _ID43790( var_0, var_1, var_2, var_3 )
 {
-    level._ID794 _meth_8521();
+    level.player _meth_8521();
     _ID42476::_ID34518( "slomo" );
-    level._ID794 playsound( var_1 );
-    level._ID794 thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
+    level.player playsound( var_1 );
+    level.player thread _ID42237::_ID27000( var_2, undefined, 1.0, 1.0 );
     _ID42465::_ID23797( var_0 );
     _ID42474::_ID4655( 1 );
     _ID42490::_ID34526( var_3, 0.5 );
@@ -382,8 +382,8 @@ _ID52893( var_0, var_1, var_2, var_3 )
 {
     _ID54652( "slomo" );
     _ID42465::_ID23801( var_0 );
-    level._ID794 _ID42237::_ID36516( var_1 );
-    level._ID794 playsound( var_2 );
+    level.player _ID42237::_ID36516( var_1 );
+    level.player playsound( var_2 );
     _ID42490::_ID34527( 1 );
     _ID42474::_ID4655( 0 );
     _ID42474::_ID4662( 0 );
@@ -417,7 +417,7 @@ _ID51064()
 _ID51380()
 {
     _ID48909();
-    var_0 = spawn( "script_origin", self._ID740 );
+    var_0 = spawn( "script_origin", self.origin );
     var_0._ID31232 = 1;
     var_0 linkto( self );
     var_0 playsound( "scn_gulag_heli_reinforcement_arrival_01" );
@@ -558,11 +558,11 @@ pipe_room_breach_dialog_flag()
 
 unstable_platform_landing_sfx()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
-        level._ID794 waittill( "foley",  var_0, var_1, var_2  );
+        level.player waittill( "foley",  var_0, var_1, var_2  );
 
         if ( _ID42237::_ID14385( "stairs_unstable_platform" ) )
         {
@@ -571,7 +571,7 @@ unstable_platform_landing_sfx()
                 case "lightland":
                 case "mediumland":
                 case "heavyland":
-                    level._ID794 thread _ID42407::_ID27079( "step_land_gulag_unstable_platform_plr" );
+                    level.player thread _ID42407::_ID27079( "step_land_gulag_unstable_platform_plr" );
                     break;
             }
         }

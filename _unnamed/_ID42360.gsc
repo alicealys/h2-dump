@@ -46,8 +46,8 @@ _ID30014()
     if ( self._ID36736 != "riotshield" )
         return;
 
-    self._ID199 = "cover";
-    self._ID452 = 2048;
+    self.combatmode = "cover";
+    self.goalradius = 2048;
     self._ID51437 = undefined;
     animscripts\riotshield\riotshield::_ID30017();
     var_0 = self findbestcovernode();
@@ -62,7 +62,7 @@ _ID17441( var_0, var_1, var_2 )
 
     foreach ( var_5 in var_0 )
     {
-        if ( var_5._ID199 != "no_cover" )
+        if ( var_5.combatmode != "no_cover" )
             continue;
 
         var_3[var_3.size] = var_5;
@@ -95,11 +95,11 @@ _ID17451( var_0, var_1 )
 
     foreach ( var_3 in self._ID2237 )
     {
-        var_3._ID452 = 25;
+        var_3.goalradius = 25;
         var_3._ID23429 = squared( 160 );
         var_3._ID51437 = 1;
-        var_3._ID760 = 128;
-        var_3._ID761 = 128;
+        var_3.pathenemyfightdist = 128;
+        var_3.pathenemylookahead = 128;
     }
 
     _ID17463();
@@ -145,7 +145,7 @@ _ID17463( var_0 )
     {
         if ( isdefined( self._ID2237[var_6] ) )
         {
-            var_5[var_6] = vectordot( var_4 - self._ID2237[var_6]._ID740, var_2 );
+            var_5[var_6] = vectordot( var_4 - self._ID2237[var_6].origin, var_2 );
             continue;
         }
 
@@ -248,9 +248,9 @@ _ID7366()
 
             if ( isdefined( var_2 ) )
             {
-                var_6 = max( 45, var_2._ID452 );
+                var_6 = max( 45, var_2.goalradius );
 
-                if ( distancesquared( var_2._ID740, var_2._ID451 ) < squared( var_6 ) )
+                if ( distancesquared( var_2.origin, var_2.goalpos ) < squared( var_6 ) )
                     var_4++;
             }
         }
@@ -287,7 +287,7 @@ _ID7367()
 
             if ( isdefined( var_2 ) )
             {
-                if ( abs( var_2._ID65[1] - var_5 ) < 45 )
+                if ( abs( var_2.angles[1] - var_5 ) < 45 )
                     var_4++;
             }
         }
@@ -343,11 +343,11 @@ _ID17454( var_0 )
         if ( !isdefined( var_3 ) )
             continue;
 
-        if ( isdefined( var_3._ID322 ) && distancesquared( var_3._ID740, var_3._ID322._ID740 ) < squared( var_3._ID760 ) )
+        if ( isdefined( var_3.enemy ) && distancesquared( var_3.origin, var_3.enemy.origin ) < squared( var_3.pathenemyfightdist ) )
             continue;
 
         var_3 orientmode( "face angle", var_1 );
-        var_3._ID597 = 1;
+        var_3.lockorientation = 1;
     }
 
     wait 0.1;
@@ -361,7 +361,7 @@ _ID17467()
             continue;
 
         var_1 orientmode( "face default" );
-        var_1._ID597 = 0;
+        var_1.lockorientation = 0;
     }
 }
 
@@ -374,9 +374,9 @@ _ID17447()
         if ( !isdefined( var_1 ) )
             continue;
 
-        var_1._ID452 = 2048;
-        var_1._ID760 = 400;
-        var_1._ID761 = 400;
+        var_1.goalradius = 2048;
+        var_1.pathenemyfightdist = 400;
+        var_1.pathenemylookahead = 400;
     }
 }
 
@@ -389,7 +389,7 @@ _ID17439()
     {
         if ( isdefined( var_3 ) )
         {
-            var_0 += var_3._ID740;
+            var_0 += var_3.origin;
             var_1++;
         }
     }

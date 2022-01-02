@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID32363();
     _ID46054( "gulag_intro_flight" );
@@ -138,8 +138,8 @@ _ID46054( var_0 )
 
     _ID42407::_ID32515( var_3, var_2 );
     _ID42407::_ID14689( var_4, var_2 );
-    level._ID794 _ID42407::_ID48929( var_0 );
-    level._ID794 _meth_849f( "gulag", var_2 );
+    level.player _ID42407::_ID48929( var_0 );
+    level.player _meth_849f( "gulag", var_2 );
     _ID42407::_ID49346( var_1, 1 );
 }
 
@@ -193,10 +193,10 @@ _ID46803()
 {
     var_0 = undefined;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        self._ID49589 = getent( self._ID1191, "targetname" );
-        var_0 = self._ID49589._ID740;
+        self._ID49589 = getent( self.target, "targetname" );
+        var_0 = self._ID49589.origin;
         var_1 = 1;
     }
     else
@@ -210,14 +210,14 @@ _ID46803()
         {
             if ( var_0 != level._ID52349 )
             {
-                level._ID794 _meth_85a6( var_0 );
+                level.player _meth_85a6( var_0 );
                 level._ID52349 = var_0;
             }
 
             continue;
         }
 
-        level._ID794 _meth_85a7();
+        level.player _meth_85a7();
         level._ID52349 = ( 0, 0, 0 );
     }
 }
@@ -230,10 +230,10 @@ shower_scriptables_light_target_override()
 
     foreach ( var_4 in var_2 )
     {
-        if ( !isdefined( self._ID1191 ) )
+        if ( !isdefined( self.target ) )
             continue;
 
-        var_5 = getent( self._ID1191, "targetname" );
-        var_4 _meth_848a( var_5._ID740 );
+        var_5 = getent( self.target, "targetname" );
+        var_4 _meth_848a( var_5.origin );
     }
 }

@@ -19,8 +19,8 @@ _ID33575( var_0, var_1 )
     if ( var_3.size != 2 )
         return;
 
-    var_4 = ( var_3[0]._ID740[0], var_3[0]._ID740[1], 0 );
-    var_5 = ( var_3[1]._ID740[0], var_3[1]._ID740[1], 0 );
+    var_4 = ( var_3[0].origin[0], var_3[0].origin[1], 0 );
+    var_5 = ( var_3[1].origin[0], var_3[1].origin[1], 0 );
     var_6 = var_5 - var_4;
     var_7 = ( cos( getnorthyaw() ), sin( getnorthyaw() ), 0 );
     var_8 = ( 0 - var_7[1], var_7[0], 0 );

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["littlebird_fire_trail"] = loadfx( "fx/fire/fire_smoke_trail_L" );
     level._ID1426["bhd_dirt"] = loadfx( "fx/impacts/bhd_dirt" );
@@ -199,8 +199,8 @@ _ID616()
     _ID42407::_ID1885( "steamroom", 0.25, 2.75, 1024 );
     _ID42407::_ID1885( "controlroom_shake", 0.25, 0.75, 1024 );
     thread _ID45832();
-    _ID54436::_ID616();
-    _ID46637::_ID616();
+    _ID54436::main();
+    _ID46637::main();
 }
 
 _ID38735()
@@ -226,7 +226,7 @@ _ID45832()
 _ID45800()
 {
     var_0 = getentarray( "player", "classname" )[0];
-    playfx( _ID42237::_ID16299( "sand_storm_intro" ), var_0._ID740 );
+    playfx( _ID42237::_ID16299( "sand_storm_intro" ), var_0.origin );
 }
 
 _ID51974( var_0 )

@@ -39,7 +39,7 @@ _ID45926( var_0 )
     var_1._ID48550 = 1;
     var_1._ID25468 = undefined;
     var_1._ID52967 = 0;
-    var_1._ID680 = var_0;
+    var_1.name = var_0;
     var_1._ID49821 = 0;
     var_1._ID23606 = 0;
     var_1._ID23062 = 100000;
@@ -312,7 +312,7 @@ _ID47615( var_0, var_1 )
     if ( isdefined( var_1 ) )
         thread _ID51370( var_1 );
 
-    level._ID794 _meth_84b8();
+    level.player _meth_84b8();
     var_2 = 0;
     var_3 = 0.05;
     var_4 = undefined;
@@ -320,14 +320,14 @@ _ID47615( var_0, var_1 )
 
     while ( level._ID49753._ID20 )
     {
-        var_6 = level._ID794 getplayerangles();
+        var_6 = level.player getplayerangles();
         var_7 = undefined;
         var_8 = undefined;
 
-        if ( level._ID794 islinked() )
-            var_8 = level._ID794 getlinkedparent()._ID65;
-        else if ( isdefined( level._ID794._ID743 ) )
-            var_8 = level._ID794._ID743._ID65;
+        if ( level.player islinked() )
+            var_8 = level.player getlinkedparent().angles;
+        else if ( isdefined( level.player.owner ) )
+            var_8 = level.player.owner.angles;
 
         if ( isdefined( var_8 ) )
         {
@@ -340,7 +340,7 @@ _ID47615( var_0, var_1 )
         var_6 = ( angleclamp180( var_6[0] ), angleclamp180( var_6[1] ), angleclamp180( var_6[2] ) );
         var_7 = ( angleclamp180( var_7[0] ), angleclamp180( var_7[1] ), angleclamp180( var_7[2] ) );
         var_9 = anglestoforward( var_6 );
-        var_10 = level._ID794 geteye();
+        var_10 = level.player geteye();
 
         if ( isdefined( level._ID49753._ID52021 ) )
             var_10 = level._ID49753._ID52021;
@@ -364,7 +364,7 @@ _ID47615( var_0, var_1 )
             {
                 if ( isdefined( var_13._ID37062 ) )
                 {
-                    if ( !_ID42407::_ID18252( var_13._ID44285._ID669, var_13._ID37062 ) )
+                    if ( !_ID42407::_ID18252( var_13._ID44285.model, var_13._ID37062 ) )
                     {
                         if ( !isdefined( var_13._ID44285._ID18304 ) )
                         {
@@ -379,11 +379,11 @@ _ID47615( var_0, var_1 )
                     var_13._ID45044 = var_13._ID44285 gettagorigin( var_13._ID37062 );
                 }
                 else
-                    var_13._ID45044 = var_13._ID44285._ID740;
+                    var_13._ID45044 = var_13._ID44285.origin;
 
                 if ( isdefined( var_13._ID25468 ) )
                 {
-                    var_15 = rotatevector( var_13._ID25468, var_13._ID44285._ID65 );
+                    var_15 = rotatevector( var_13._ID25468, var_13._ID44285.angles );
                     var_13._ID45044 = var_13._ID45044 + var_15;
                 }
 
@@ -508,8 +508,8 @@ _ID47615( var_0, var_1 )
                 var_31 = var_11._ID50910;
 
             var_5 = _ID53844( var_31 * var_11._ID44137, var_3, var_11._ID53942, var_5 );
-            level._ID794 _meth_84ba( var_31, var_30, var_11._ID45134, var_11._ID53942 );
-            level._ID794 _meth_84cb( var_5, var_30 );
+            level.player _meth_84ba( var_31, var_30, var_11._ID45134, var_11._ID53942 );
+            level.player _meth_84cb( var_5, var_30 );
             var_4 = var_11;
         }
 
@@ -522,7 +522,7 @@ _ID47476( var_0, var_1, var_2 )
     var_3 = 1;
     var_4 = var_0;
     var_5 = undefined;
-    var_6 = level._ID794;
+    var_6 = level.player;
 
     for ( var_7 = 0; var_3 && var_7 < 10; var_7++ )
     {
@@ -585,7 +585,7 @@ _ID51370( var_0 )
     {
         if ( _func_2cb( var_0 ) )
             wait(var_0);
-        else if ( isdefined( var_0._ID170 ) )
+        else if ( isdefined( var_0.classname ) )
         {
             while ( isdefined( var_0 ) )
                 waittillframeend;
@@ -599,7 +599,7 @@ _ID51370( var_0 )
     level notify( "stop_dynamic_dof" );
     setsaveddvar( "r_dof_physical_bokehEnable", 0 );
     level._ID49753 = undefined;
-    level._ID794 _meth_84b9();
+    level.player _meth_84b9();
 }
 
 _ID43386( var_0, var_1 )
@@ -749,7 +749,7 @@ _ID47881( var_0 )
 
 _ID51733()
 {
-    level._ID794 screenshakeonentity( self._ID44621, self._ID41914, self._ID54692, self._ID310, self._ID50928, self._ID43396, self._ID851, self._ID47969, self._ID49324, self._ID51650, self._ID13702 );
+    level.player screenshakeonentity( self._ID44621, self._ID41914, self._ID54692, self._ID310, self._ID50928, self._ID43396, self.radius, self._ID47969, self._ID49324, self._ID51650, self._ID13702 );
 }
 
 _ID53255()
@@ -771,9 +771,9 @@ _ID43864()
         self._ID49516._ID53935 = getdvarfloat( "cg_fov" );
 
     if ( self._ID53953 == -1 )
-        level._ID794 lerpfov( self._ID49516._ID53935, self._ID49474, self._ID53678 );
+        level.player lerpfov( self._ID49516._ID53935, self._ID49474, self._ID53678 );
     else
-        level._ID794 lerpfov( self._ID53953, self._ID49474, self._ID53678 );
+        level.player lerpfov( self._ID53953, self._ID49474, self._ID53678 );
 }
 
 _ID50446()
@@ -800,7 +800,7 @@ _ID45097()
 
 _ID51195()
 {
-    earthquake( self._ID52913, self._ID45514, self._ID49111._ID740, self._ID52046 );
+    earthquake( self._ID52913, self._ID45514, self._ID49111.origin, self._ID52046 );
 }
 
 _ID44860()
@@ -810,12 +810,12 @@ _ID44860()
 
 _ID45534()
 {
-    level._ID794 lerpviewangleclamp( self._ID53633, self._ID43989, self._ID48365, self._ID52359, self._ID46861, self._ID49770, self._ID49464 );
+    level.player lerpviewangleclamp( self._ID53633, self._ID43989, self._ID48365, self._ID52359, self._ID46861, self._ID49770, self._ID49464 );
 }
 
 _ID51960()
 {
-    level._ID794 setviewangleresistance( self._ID53677, self._ID45152, self._ID43522, self._ID48507, self._ID54548 );
+    level.player setviewangleresistance( self._ID53677, self._ID45152, self._ID43522, self._ID48507, self._ID54548 );
 }
 
 __cinseq_handle_headtracking_internal()
@@ -932,7 +932,7 @@ _ID48860()
 _ID43639( var_0 )
 {
     var_1 = spawnstruct();
-    var_1._ID680 = var_0;
+    var_1.name = var_0;
     var_1._ID44015 = 0;
     var_1._ID48387 = 0;
     var_1._ID52566 = 0;
@@ -1011,7 +1011,7 @@ _ID44049()
     var_0._ID310 = 0;
     var_0._ID50928 = 0;
     var_0._ID43396 = 0;
-    var_0._ID851 = 0;
+    var_0.radius = 0;
     var_0._ID47969 = 1;
     var_0._ID51650 = 1;
     var_0._ID49324 = 1;
@@ -1098,7 +1098,7 @@ _ID48161( var_0, var_1, var_2 )
         return self;
 
     if ( !isdefined( var_1 ) )
-        var_1 = level._ID794;
+        var_1 = level.player;
 
     self._ID50366 = var_0;
     self._ID30334 = var_1;
@@ -1116,7 +1116,7 @@ _ID47198( var_0, var_1, var_2, var_3 )
 
     self._ID52913 = var_0;
     self._ID45514 = var_1;
-    self._ID49111 = level._ID794;
+    self._ID49111 = level.player;
 
     if ( isdefined( var_2 ) )
         self._ID49111 = var_2;
@@ -1202,7 +1202,7 @@ cinseq_key_start_additive_headtracking( var_0, var_1, var_2, var_3, var_4, var_5
     if ( isdefined( var_1 ) )
         var_12.headtracking_type = var_1;
 
-    var_12.headtracking_target = level._ID794;
+    var_12.headtracking_target = level.player;
 
     if ( isdefined( var_2 ) )
         var_12.headtracking_target = var_2;
@@ -1318,7 +1318,7 @@ _ID47714()
 
 _ID45917( var_0 )
 {
-    var_1 = _ID49798( var_0._ID680 );
+    var_1 = _ID49798( var_0.name );
 
     if ( isdefined( var_1 ) )
     {
@@ -1474,12 +1474,12 @@ _ID49401( var_0 )
         self._ID50241 = [];
 
     if ( !isdefined( var_0 ) )
-        var_0 = self._ID680;
+        var_0 = self.name;
 
     if ( !isdefined( self._ID50241[var_0] ) )
     {
         self._ID50241[var_0] = spawnstruct();
-        self._ID50241[var_0]._ID680 = var_0;
+        self._ID50241[var_0].name = var_0;
     }
 
     return self._ID50241[var_0];

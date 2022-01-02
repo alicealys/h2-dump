@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "h2_body_seal_udt_smg" );
     self attach( "h2_head_seal_udt_b_c", "", 1 );

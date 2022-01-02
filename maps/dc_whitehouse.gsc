@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
@@ -30,7 +30,7 @@ _ID616()
     thread maps\dc_whitehouse_code::h2_wh_static_model_groups();
     level._ID46837 = [];
     level._ID46837["water_waist"] = 1;
-    level._ID794 thread _ID42407::_ID46142();
+    level.player thread _ID42407::_ID46142();
     thread maps\dc_whitehouse_code::delete_weapon_in_volume();
 }
 
@@ -39,8 +39,8 @@ play_rain_in_hole()
     level endon( "player_outside" );
     thread watch_player_exit();
     var_0 = _ID42237::_ID35164();
-    var_0._ID740 = ( -8090, 6280, -80 );
-    var_0._ID65 = ( -90, 0, 0 );
+    var_0.origin = ( -8090, 6280, -80 );
+    var_0.angles = ( -90, 0, 0 );
     _ID42237::_ID14413( "player_weather_enabled" );
 
     while ( _ID42237::_ID14385( "player_weather_enabled" ) )
@@ -67,13 +67,13 @@ watch_player_exit()
 
 _ID49840()
 {
-    _ID50819::_ID616();
-    _ID51366::_ID616();
-    maps\dc_whitehouse_lighting::_ID616();
-    _ID49734::_ID616();
-    _ID54417::_ID616();
-    _ID53829::_ID616();
-    _ID42323::_ID616();
+    _ID50819::main();
+    _ID51366::main();
+    maps\dc_whitehouse_lighting::main();
+    _ID49734::main();
+    _ID54417::main();
+    _ID53829::main();
+    _ID42323::main();
     precacheitem( "flare" );
     precachemodel( "picture_frame_07_animated" );
     precachemodel( "h2_wh_oval_office_secret_door_anim" );
@@ -96,18 +96,18 @@ _ID49840()
     precacheshader( "h1_hud_tutorial_border" );
     _ID42407::_ID1895( "how_to_pop_flare", &"SCRIPT_PLATFORM_HINTSTR_POPFLARE", maps\dc_whitehouse_code::_ID52508, undefined, "medium_background" );
     level._ID10114 = 72;
-    maps\dc_whitehouse_anim::_ID616();
-    _ID42287::_ID521();
+    maps\dc_whitehouse_anim::main();
+    _ID42287::init();
     setsaveddvar( "compassMaxRange", 4500 );
-    maps\dc_whitehouse_aud::_ID616();
-    level._ID794 setempjammed( 1 );
+    maps\dc_whitehouse_aud::main();
+    level.player setempjammed( 1 );
     _ID42272::_ID33575( "compass_map_dcemp_static" );
     _ID42407::_ID1892( "allies", maps\dc_whitehouse_code::_ID46537 );
     _ID42237::_ID3350( getvehiclenodearray( "plane_sound", "script_noteworthy" ), _ID46486::_ID26746 );
     createthreatbiasgroup( "ignore_player" );
     createthreatbiasgroup( "player" );
     setignoremegroup( "player", "ignore_player" );
-    level._ID794 setthreatbiasgroup( "player" );
+    level.player setthreatbiasgroup( "player" );
     _ID42407::_ID10226( 1, _ID42407::_ID14543, "allies" );
     _ID42237::_ID3350( getentarray( "flickerlight1", "script_noteworthy" ), maps\dc_whitehouse_code::_ID48143 );
     level thread _ID24574();
@@ -225,7 +225,7 @@ _ID47665()
     thread wave_guy_deleter( self );
     _ID42226::_ID32651( "head_us_army_a" );
     _ID42407::_ID14803( "m4_grunt", "primary" );
-    var_0 = getent( self._ID1191, "targetname" );
+    var_0 = getent( self.target, "targetname" );
     var_0 thread _ID42259::_ID3025( self, "wave_idle", "stop_loop" );
     _ID42237::_ID14413( "tunnels_wave_guy" );
     var_1 = [];
@@ -286,13 +286,13 @@ _ID54727()
     level thread _ID51985();
     level thread _ID50538();
     level thread _ID53920();
-    _ID42237::_ID3350( level._ID1194, ::_ID48722 );
+    _ID42237::_ID3350( level.team, ::_ID48722 );
     level thread _ID44771();
     level thread _ID44070();
     level thread _ID48046();
-    level._ID794._ID511 = 1;
+    level.player.ignoreme = 1;
     _ID42237::_ID14413( "whitehouse_moveout" );
-    level._ID794._ID511 = 0;
+    level.player.ignoreme = 0;
     thread maps\dc_whitehouse_code::calm_down_courtyard_heroes();
     _ID42407::_ID4422( "moveout" );
     _ID42407::_ID1805( "whitehouse_moveout_color_trigger" );
@@ -314,14 +314,14 @@ _ID51985()
     _ID42237::_ID14413( "whitehouse_entrance_init" );
 
     if ( isdefined( var_0 ) )
-        var_0._ID54115 notify( "damage",  1000, level._ID794  );
+        var_0._ID54115 notify( "damage",  1000, level.player  );
 
     var_1 thread maps\dc_whitehouse_code::_ID47720();
     _ID42237::_ID14413( "whitehouse_radio_start" );
     wait 30;
 
     if ( isdefined( var_1 ) )
-        var_1._ID54115 notify( "damage",  1000, level._ID794  );
+        var_1._ID54115 notify( "damage",  1000, level.player  );
 }
 
 _ID45647()
@@ -358,7 +358,7 @@ _ID25349()
             objective_state( 9, "active" );
             objective_state_nomessage( 9, "done" );
             var_0 = _ID42237::_ID16638( "objective_entrance", "targetname" );
-            objective_add( 10, "current", &"DC_WHITEHOUSE_OBJ_BREACH_WH", var_0._ID740 );
+            objective_add( 10, "current", &"DC_WHITEHOUSE_OBJ_BREACH_WH", var_0.origin );
             objective_position( 10, 1 );
             _ID42237::_ID14413( "oval_office_scene" );
             level thread _ID49935();
@@ -426,7 +426,7 @@ _ID49678()
 {
     _ID42475::_ID34575( "start_oval_office_checkpoint" );
     maps\dc_whitehouse_code::_ID45184();
-    maps\dc_whitehouse_code::_ID51715( level._ID1194, _ID42237::_ID16640( "oval_office_start_points", "targetname" ) );
+    maps\dc_whitehouse_code::_ID51715( level.team, _ID42237::_ID16640( "oval_office_start_points", "targetname" ) );
     maps\dc_whitehouse_code::_ID44431();
     maps\dc_whitehouse_code::_ID47565();
     maps\dc_whitehouse_lighting::_ID53004( "dc_whitehouse_lawn" );
@@ -477,18 +477,18 @@ _ID50334()
     var_0 = getent( "oval_office_window_closed", "targetname" );
     var_1 = getent( "oval_office_window_open", "targetname" );
     var_2 = getent( "oval_office_barrel_blocker", "targetname" );
-    var_3 = getent( var_2._ID1191, "targetname" );
-    var_4 = _ID42237::_ID16638( var_3._ID1191, "targetname" );
+    var_3 = getent( var_2.target, "targetname" );
+    var_4 = _ID42237::_ID16638( var_3.target, "targetname" );
     var_2 linkto( var_3 );
     var_1 hide();
     _ID42237::_ID14413( "oval_office_scene" );
     var_1 show();
-    var_5 = getent( var_0._ID1191, "targetname" );
+    var_5 = getent( var_0.target, "targetname" );
     var_5 connectpaths();
     var_0 delete();
     var_5 delete();
     var_2 connectpaths();
-    var_3._ID740 = var_4._ID740;
+    var_3.origin = var_4.origin;
 }
 
 _ID51691()
@@ -538,14 +538,14 @@ _ID44834( var_0 )
 {
     _ID42237::_ID14426( "broadcast" );
     _ID42237::_ID14402( "broadcast" );
-    var_1 = sortbydistance( level._ID46238, level._ID794._ID740 );
+    var_1 = sortbydistance( level._ID46238, level.player.origin );
     var_2 = 3;
     var_3 = [];
     var_4 = undefined;
 
     for ( var_5 = 0; var_5 < var_1.size; var_5++ )
     {
-        var_6 = abs( level._ID794 geteye()[2] - var_1[var_5]._ID740[2] );
+        var_6 = abs( level.player geteye()[2] - var_1[var_5].origin[2] );
 
         if ( var_6 > 150 )
             continue;
@@ -560,7 +560,7 @@ _ID44834( var_0 )
             break;
     }
 
-    var_8 = sortbydistance( level.ext_door_radio_array, level._ID794._ID740 );
+    var_8 = sortbydistance( level.ext_door_radio_array, level.player.origin );
 
     for ( var_5 = 0; var_5 < 6; var_5++ )
         var_8[var_5] playsound( var_0 + "_int_3d_door_ext" );
@@ -658,13 +658,13 @@ _ID44070()
     _ID42237::_ID14413( "whitehouse_hammerdown_jets_fly" );
     wait 7;
     _ID42237::_ID14402( "player_flare_abort" );
-    level._ID794 thread _ID42407::_ID25088( "drop_flare", 1.0 );
-    level._ID794 thread _ID42407::_ID25088( "flare_lookup", 3.75 );
-    level._ID794 _ID42407::_ID28864( "dcemp_fp1_abortabort" );
-    level._ID794 _ID42407::_ID28864( "dcemp_fp2_abortmission" );
+    level.player thread _ID42407::_ID25088( "drop_flare", 1.0 );
+    level.player thread _ID42407::_ID25088( "flare_lookup", 3.75 );
+    level.player _ID42407::_ID28864( "dcemp_fp1_abortabort" );
+    level.player _ID42407::_ID28864( "dcemp_fp2_abortmission" );
     wait 4;
     _ID42407::_ID10226( 1.5, _ID42237::_ID14402, "whitehouse_wrapup" );
-    level._ID794 _ID42407::_ID28864( "dcemp_fp3_rollingout" );
+    level.player _ID42407::_ID28864( "dcemp_fp3_rollingout" );
 }
 
 _ID49611()
@@ -678,7 +678,7 @@ _ID49611()
 
     var_4 = -100;
 
-    if ( level._ID44224._ID740[2] < var_4 && level._ID388._ID740[2] < var_4 )
+    if ( level._ID44224.origin[2] < var_4 && level._ID388.origin[2] < var_4 )
     {
         level._ID44224 _ID42407::_ID10896();
         level._ID44224._ID24727 = 1;
@@ -702,10 +702,10 @@ whitehouse_kill_when_player_not_looking()
     self endon( "death" );
     var_0 = 65536;
 
-    while ( _ID42407::_ID54053( self._ID740 + ( 0, 0, 48 ), undefined, 1 ) || distancesquared( level._ID794._ID740, self._ID740 ) <= var_0 )
+    while ( _ID42407::_ID54053( self.origin + ( 0, 0, 48 ), undefined, 1 ) || distancesquared( level.player.origin, self.origin ) <= var_0 )
         waittillframeend;
 
-    self._ID287 = 1;
+    self.diequietly = 1;
     self kill();
 }
 
@@ -724,16 +724,16 @@ _ID54343()
     _ID44834( "dcemp_fp1_bombsaway" );
     wait 1;
     _ID42234::_ID13611( "carpetbomb" );
-    earthquake( 0.1, 1, level._ID794._ID740, 512 );
+    earthquake( 0.1, 1, level.player.origin, 512 );
     wait 0.5;
-    earthquake( 0.2, 1, level._ID794._ID740, 512 );
+    earthquake( 0.2, 1, level.player.origin, 512 );
     wait 0.5;
-    earthquake( 0.4, 1, level._ID794._ID740, 512 );
+    earthquake( 0.4, 1, level.player.origin, 512 );
     wait 0.5;
-    earthquake( 0.6, 3, level._ID794._ID740, 512 );
+    earthquake( 0.6, 3, level.player.origin, 512 );
     wait 0.75;
-    playfx( level._ID1426["carpet_bomb_explosion_player"], level._ID794._ID740 );
-    level._ID794 playsound( "explo_metal_rand" );
+    playfx( level._ID1426["carpet_bomb_explosion_player"], level.player.origin );
+    level.player playsound( "explo_metal_rand" );
     wait 0.5;
     level._ID388 _ID42407::_ID36519();
     level._ID388 kill();
@@ -746,10 +746,10 @@ _ID54343()
         level._ID44929 kill();
     }
 
-    var_0 = _ID42237::_ID37527( level._ID794 getstance() == "stand", "h2_wpn_death_stand_explosion", "h2_wpn_death_crouch_explosion" );
-    level._ID794 _meth_85a8( var_0 );
+    var_0 = _ID42237::_ID37527( level.player getstance() == "stand", "h2_wpn_death_stand_explosion", "h2_wpn_death_crouch_explosion" );
+    level.player _meth_85a8( var_0 );
     waitframe;
-    level._ID794 kill();
+    level.player kill();
     waitframe;
     setdvar( "ui_deadquote", &"DC_WHITEHOUSE_FLARE_DEADQUOTE" );
 }
@@ -777,11 +777,11 @@ _ID48722()
         return;
 
     self endon( "death" );
-    self._ID511 = 1;
-    self._ID507 = 1;
+    self.ignoreme = 1;
+    self.ignoreall = 1;
     _ID42237::_ID14413( "whitehouse_moveout" );
-    self._ID511 = 0;
-    self._ID507 = 0;
+    self.ignoreme = 0;
+    self.ignoreall = 0;
 }
 
 _ID43881( var_0 )
@@ -793,7 +793,7 @@ _ID43881( var_0 )
     var_0 notify( "stop_marshall_idle" );
     var_0 _ID42259::_ID3099( var_1, "DCemp_whitehouse_briefing" );
     _ID42237::_ID14402( "whitehouse_briefing_end" );
-    level._ID49566._ID507 = 0;
+    level._ID49566.ignoreall = 0;
     level._ID49566 allowedstances( "crouch", "stand" );
 }
 
@@ -812,11 +812,11 @@ _ID46929()
     self._ID24727 = 1;
     _ID42407::_ID10896();
     _ID42407::_ID10871();
-    self._ID511 = 1;
-    self._ID507 = 1;
+    self.ignoreme = 1;
+    self.ignoreall = 1;
     wait 1;
     var_0 = getnode( "foley_briefing_approach_node", "targetname" );
-    self._ID452 = var_0._ID851;
+    self.goalradius = var_0.radius;
     self setgoalnode( var_0 );
     self waittill( "goal" );
     var_1 = getent( "whitehouse_briefing_ent", "targetname" );
@@ -829,8 +829,8 @@ _ID48561()
     _ID42237::_ID14413( "whitehouse_briefing_end" );
     _ID42407::_ID12445();
     self._ID24727 = undefined;
-    self._ID511 = 0;
-    self._ID507 = 0;
+    self.ignoreme = 0;
+    self.ignoreall = 0;
 }
 
 _ID52150()
@@ -845,10 +845,10 @@ _ID52150()
         var_0 = 1;
     }
 
-    if ( distance( level._ID794._ID740, level._ID388._ID740 ) > 500 )
+    if ( distance( level.player.origin, level._ID388.origin ) > 500 )
     {
         var_1 = _ID42237::_ID16638( "oval_office_foley_teleport", "targetname" );
-        level._ID388 forceteleport( var_1._ID740, var_1._ID65 );
+        level._ID388 forceteleport( var_1.origin, var_1.angles );
     }
 
     self._ID24727 = 1;
@@ -887,7 +887,7 @@ _ID49723()
     _ID42237::_ID14413( "whitehouse_breached" );
     _ID42407::_ID10871();
     var_0 = getent( "whitehouse_kitchen_door", "targetname" );
-    var_0._ID26282 = getentarray( var_0._ID1191, "targetname" );
+    var_0._ID26282 = getentarray( var_0.target, "targetname" );
     _ID42237::_ID3294( var_0._ID26282, ::linkto, var_0 );
     var_1 = getent( "whitehouse_kitchen_kick", "targetname" );
     var_1 _ID42259::_ID3028( level._ID388, "doorburst_wave" );
@@ -902,8 +902,8 @@ _ID49723()
     thread _ID42372::_ID16964( var_2 );
     self._ID24727 = undefined;
     _ID42407::_ID12467();
-    self._ID511 = 0;
-    self._ID507 = 0;
+    self.ignoreme = 0;
+    self.ignoreall = 0;
     _ID42407::_ID32355( 1 );
     _ID42407::_ID32294();
     _ID42237::_ID14413( "whitehouse_path_elevator" );
@@ -922,8 +922,8 @@ _ID52179()
 
 _ID43987()
 {
-    self._ID511 = 1;
-    self._ID507 = 1;
+    self.ignoreme = 1;
+    self.ignoreall = 1;
     wait 0.8;
     thread _ID48908();
     thread _ID43752();
@@ -934,8 +934,8 @@ _ID43987()
 _ID48908()
 {
     _ID42237::_ID14413( "whitehouse_moveout" );
-    self._ID511 = 0;
-    self._ID507 = 0;
+    self.ignoreme = 0;
+    self.ignoreall = 0;
 }
 
 _ID43752()
@@ -947,7 +947,7 @@ _ID43752()
     self._ID24727 = undefined;
     _ID42407::_ID12467();
     var_0 = _ID42237::_ID16638( "oval_office_dune_start", "targetname" );
-    self forceteleport( var_0._ID740, var_0._ID65 );
+    self forceteleport( var_0.origin, var_0.angles );
     var_1 = getent( "oval_office_animent", "targetname" );
     level thread _ID45630( var_1 );
     _ID42407::_ID41232();
@@ -973,16 +973,16 @@ _ID43752()
 
 _ID45630( var_0 )
 {
-    var_1 = sortbydistance( getaiarray( "axis" ), var_0._ID740 );
+    var_1 = sortbydistance( getaiarray( "axis" ), var_0.origin );
 
     for ( var_2 = 0; var_2 < var_1.size && var_2 < 3; var_2++ )
-        var_1[var_2] kill( level._ID44224._ID740 );
+        var_1[var_2] kill( level._ID44224.origin );
 }
 
 _ID53225()
 {
     var_0 = getent( "oval_office_animent", "targetname" );
-    level._ID53860 = _ID42407::_ID35028( "painting", var_0._ID740 );
+    level._ID53860 = _ID42407::_ID35028( "painting", var_0.origin );
     var_0 _ID42259::_ID3018( level._ID53860, "oval_office" );
 }
 
@@ -1010,8 +1010,8 @@ _ID54571()
 {
     self endon( "death" );
     self._ID3189 = "marshall";
-    self._ID511 = 1;
-    self._ID507 = 1;
+    self.ignoreme = 1;
+    self.ignoreall = 1;
     level._ID49566 = self;
     thread _ID42407::_ID22746();
     thread returnguntomarshall();
@@ -1078,8 +1078,8 @@ _ID49171()
 
     _ID42237::_ID14413( "whitehouse_chandelier" );
     var_1 = getent( "chandelier_grenade_source", "targetname" );
-    var_2 = getent( var_1._ID1191, "targetname" );
-    magicgrenade( "fraggrenade", var_1._ID740, var_2._ID740, 1.5 );
+    var_2 = getent( var_1.target, "targetname" );
+    magicgrenade( "fraggrenade", var_1.origin, var_2.origin, 1.5 );
     _ID42237::_ID14413( "whitehouse_path_stairs" );
     _ID42407::_ID4917( "allies" );
 }
@@ -1092,13 +1092,13 @@ _ID44221()
         level._ID49439 = [];
 
     level._ID49439[level._ID49439.size] = self;
-    self._ID486 = 10000;
+    self.health = 10000;
     _ID42237::_ID14413( "whitehouse_silhouette_ready" );
 
     if ( isdefined( self._ID31039 ) )
         self._ID9813 = level._ID43035[self._ID31039];
 
-    self._ID486 = 200;
+    self.health = 200;
 }
 
 _ID50077()
@@ -1113,7 +1113,7 @@ _ID47821()
 {
     _ID42475::_ID34575( "start_flare_checkpoint" );
     maps\dc_whitehouse_code::_ID45184();
-    maps\dc_whitehouse_code::_ID51715( level._ID1194, _ID42237::_ID16640( "flare_start_points", "targetname" ) );
+    maps\dc_whitehouse_code::_ID51715( level.team, _ID42237::_ID16640( "flare_start_points", "targetname" ) );
     maps\dc_whitehouse_code::_ID44431();
     thread _ID42407::_ID32188( "dcemp_dry" );
     maps\dc_whitehouse_code::_ID47565();
@@ -1149,7 +1149,7 @@ _ID46508()
     _ID42407::_ID3343( "blind_enemies", maps\dc_whitehouse_code::_ID47348 );
     _ID42407::_ID3343( "whitehouse_flare_breach_guy", ::_ID52949 );
     thread dunnending();
-    level._ID794 thread _ID49213();
+    level.player thread _ID49213();
     level thread _ID47296();
     _ID42237::_ID14413( "whitehouse_flare_run" );
     _ID42234::_ID13611( "roof_flares" );
@@ -1192,7 +1192,7 @@ _ID46431()
     _ID42237::_ID14413( "whitehouse_flare_breach" );
     _ID42234::_ID13611( "flare_breach" );
     earthquake( 0.3, 1, ( -2011, 8295.5, 199.5 ), 5000 );
-    level._ID794 playrumblelooponentity( "grenade_rumble" );
+    level.player playrumblelooponentity( "grenade_rumble" );
     maps\dc_whitehouse_aud::flare_breach_debris_snd();
 }
 
@@ -1207,7 +1207,7 @@ _ID48280()
     _ID42237::_ID14402( "whitehouse_flare_breach" );
     self notify( "stop_going_to_node" );
     _ID42407::_ID22746();
-    self._ID511 = 1;
+    self.ignoreme = 1;
     self._ID3189 = "flare_guy";
     _ID42407::_ID32430( "whitehouse_ending_runuphill" );
     wait 0.1;
@@ -1215,7 +1215,7 @@ _ID48280()
     var_0 thread _ID42259::_ID3044( self, "dcemp_flare_reshoot_start_idle" );
     _ID42237::_ID14413( "whitehouse_path_office" );
     self._ID7._ID24414 = "run";
-    level._ID794 thread _ID49957();
+    level.player thread _ID49957();
     self._ID24727 = 1;
     _ID42407::_ID10896();
     var_0 notify( "stop_loop" );

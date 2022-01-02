@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "rapids_splash_large" );
     var_0 _ID42229::_ID32402( ( 32930.2, -15818.3, -2302.54 ), ( 270, 359.671, 144.329 ) );

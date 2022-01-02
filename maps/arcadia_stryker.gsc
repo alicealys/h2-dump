@@ -85,7 +85,7 @@ _ID43880()
 
     for (;;)
     {
-        var_1 = anglestoforward( self._ID65 ) * 1000;
+        var_1 = anglestoforward( self.angles ) * 1000;
 
         if ( var_0 == 0 )
         {
@@ -98,9 +98,9 @@ _ID43880()
             var_2 = randomintrange( 200, 1500 );
         }
 
-        var_3 = anglestoright( self._ID65 ) * var_2;
-        var_4 = self._ID740 + var_1 + var_3;
-        var_4 = ( var_4[0], var_4[1], self._ID740[2] );
+        var_3 = anglestoright( self.angles ) * var_2;
+        var_4 = self.origin + var_1 + var_3;
+        var_4 = ( var_4[0], var_4[1], self.origin[2] );
         self setturrettargetvec( var_4 );
         wait(randomfloatrange( 2.0, 5.0 ));
     }
@@ -115,7 +115,7 @@ _ID52962()
 
 _ID51635()
 {
-    var_0 = self._ID740;
+    var_0 = self.origin;
 
     if ( isdefined( self._ID53756 ) )
         var_0 = self._ID53756;
@@ -161,15 +161,15 @@ _ID51635()
 
     foreach ( var_17 in var_8 )
     {
-        if ( isdefined( self._ID1205 ) && issentient( var_17 ) )
+        if ( isdefined( self.threatbiasgroup ) && issentient( var_17 ) )
         {
-            var_18 = getthreatbias( var_17 getthreatbiasgroup(), self._ID1205 );
+            var_18 = getthreatbias( var_17 getthreatbiasgroup(), self.threatbiasgroup );
 
             if ( var_18 <= -1000000 )
                 continue;
         }
 
-        if ( isdefined( var_17._ID511 ) && var_17._ID511 == 1 )
+        if ( isdefined( var_17.ignoreme ) && var_17.ignoreme == 1 )
             continue;
 
         if ( isai( var_17 ) )
@@ -189,7 +189,7 @@ _ID44877( var_0 )
     if ( isai( var_0 ) )
     {
         var_1 = var_0 geteye();
-        var_2 = var_1[2] - var_0._ID740[2];
+        var_2 = var_1[2] - var_0.origin[2];
         return ( 0, 0, var_2 );
     }
 
@@ -333,7 +333,7 @@ achievement_target_confirmed_ai_spawned()
     level._ID51107 endon( "death" );
     self waittill( "death",  var_0, var_1, var_2  );
 
-    if ( isdefined( var_0 ) && var_0._ID170 == "script_vehicle_stryker50cal" )
+    if ( isdefined( var_0 ) && var_0.classname == "script_vehicle_stryker50cal" )
     {
         if ( var_0._ID45980 == "manual" )
             level.achievementstrikerkill++;

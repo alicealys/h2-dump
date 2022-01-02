@@ -1,10 +1,10 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    _ID50909::_ID616();
-    _ID54312::_ID616();
+    _ID50909::main();
+    _ID54312::main();
     precachemodel( "h2_weapon_desert_eagle_silver" );
     precachemodel( "h2_weapon_m4_grenadier" );
     precachemodel( "h2_weapon_colt_anaconda_animated" );
@@ -22,6 +22,6 @@ _ID616()
         precachestring( &"CHAR_MUSEUM_DO_NOT" );
         precachestring( &"CHAR_MUSEUM_DO_NOT_PC" );
         precacheshader( "panic_button" );
-        _ID42542::_ID616( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench" );
+        _ID42542::main( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench" );
     }
 }

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -196,17 +196,17 @@ aud_handle_veh_group( var_0, var_1, var_2 )
 {
     foreach ( var_4 in var_0 )
     {
-        if ( isdefined( var_4._ID922 ) && var_4._ID922 != "h2_intro_heli" )
+        if ( isdefined( var_4.script_noteworthy ) && var_4.script_noteworthy != "h2_intro_heli" )
         {
             var_4 _ID45008();
 
             if ( var_2 )
             {
-                var_4 thread _ID42237::_ID27000( "scn_trainer_" + var_1 + "_" + var_4._ID922 );
+                var_4 thread _ID42237::_ID27000( "scn_trainer_" + var_1 + "_" + var_4.script_noteworthy );
                 continue;
             }
 
-            var_4 thread _ID42407::_ID27079( "scn_trainer_" + var_1 + "_" + var_4._ID922 );
+            var_4 thread _ID42407::_ID27079( "scn_trainer_" + var_1 + "_" + var_4.script_noteworthy );
         }
     }
 }
@@ -215,13 +215,13 @@ aud_handle_ending_latvees( var_0 )
 {
     foreach ( var_2 in var_0 )
     {
-        if ( isdefined( var_2._ID922 ) )
+        if ( isdefined( var_2.script_noteworthy ) )
         {
-            var_3 = spawn( "script_origin", var_2._ID740 );
+            var_3 = spawn( "script_origin", var_2.origin );
             var_3 linkto( var_2 );
             var_3 thread _ID42237::_ID27000( "scn_trainer_latvee_idle" );
             var_3 setvolume( 0, 0 );
-            var_2 _ID42407::_ID27079( "scn_trainer_latvee_" + var_2._ID922 );
+            var_2 _ID42407::_ID27079( "scn_trainer_latvee_" + var_2.script_noteworthy );
             var_3 setvolume( 1, 0.5 );
         }
     }
@@ -277,7 +277,7 @@ scn_trainer_tower_f15_02( var_0 )
 aud_start_scn_trainer_ending_laatpv_01( var_0 )
 {
     var_0 _ID45008();
-    var_1 = spawn( "script_origin", var_0._ID740 );
+    var_1 = spawn( "script_origin", var_0.origin );
     var_1 linkto( var_0 );
     var_1 thread _ID42237::_ID27000( "scn_trainer_latvee_idle" );
     var_1 setvolume( 0, 0 );
@@ -288,7 +288,7 @@ aud_start_scn_trainer_ending_laatpv_01( var_0 )
 aud_start_scn_trainer_ending_laatpv_02( var_0 )
 {
     var_0 _ID45008();
-    var_1 = spawn( "script_origin", var_0._ID740 );
+    var_1 = spawn( "script_origin", var_0.origin );
     var_1 linkto( var_0 );
     var_1 thread _ID42237::_ID27000( "scn_trainer_latvee_idle" );
     var_1 setvolume( 0, 0 );
@@ -304,7 +304,7 @@ aud_start_scn_trainer_ending_bridge( var_0 )
 
 _ID43109( var_0, var_1 )
 {
-    var_2 = level._ID794 geteye();
+    var_2 = level.player geteye();
     var_3 = 4;
     var_4 = 182358016;
     var_5 = sortbydistance( var_1, var_2 );
@@ -312,7 +312,7 @@ _ID43109( var_0, var_1 )
 
     for ( var_6 = 1; var_6 < var_3; var_6++ )
     {
-        var_7 = distancesquared( var_5[var_6]._ID740, var_2 ) / var_4;
+        var_7 = distancesquared( var_5[var_6].origin, var_2 ) / var_4;
 
         if ( var_6 != var_3 - 1 )
         {

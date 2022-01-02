@@ -5,7 +5,7 @@ _ID13250( var_0 )
 {
     var_0 endon( "death" );
 
-    while ( var_0._ID486 > 0 )
+    while ( var_0.health > 0 )
     {
         var_0 waittill( "missile_lock",  var_1  );
         var_2 = _ID13244( var_0, "random" );
@@ -72,7 +72,7 @@ _ID13249( var_0, var_1 )
 
     var_0 neargoalnotifydist( 1500 );
     var_0 vehicle_setspeed( 100, 30, 30 );
-    var_2 = var_0._ID65[1];
+    var_2 = var_0.angles[1];
 
     for ( var_3 = 1; var_3 < var_1.size; var_3++ )
     {
@@ -86,7 +86,7 @@ _ID13249( var_0, var_1 )
         if ( var_1[var_3]["goalYawMethod"] == "average" )
             var_5 = ( var_4[1] + var_2 ) / 2;
         else if ( var_1[var_3]["goalYawMethod"] == "forward" )
-            var_5 = var_0._ID65[1];
+            var_5 = var_0.angles[1];
 
         if ( getdvar( "cobrapilot_debug" ) == "1" )
             thread _ID42407::_ID11714( var_1[var_3]["pos"], var_1[var_3]["pos"] + anglestoforward( ( 0, var_5, 0 ) ) * 250, 1.0, 1.0, 0.2, var_0, "evasive_action_done" );
@@ -115,8 +115,8 @@ _ID13243( var_0, var_1, var_2, var_3 )
     if ( !isdefined( self._ID13248 ) )
     {
         self._ID13248 = [];
-        self._ID13248[0]["pos"] = self._ID740;
-        self._ID13248[0]["ang"] = ( 0, self._ID65[1], 0 );
+        self._ID13248[0]["pos"] = self.origin;
+        self._ID13248[0]["ang"] = ( 0, self.angles[1], 0 );
     }
 
     var_4 = self._ID13248.size;
@@ -166,7 +166,7 @@ _ID41796( var_0 )
     var_11 = gettime();
     var_12 = _ID41795( var_1, var_2, var_3 );
     var_0 vehicle_setspeed( 30, 20, 20 );
-    var_0 settargetyaw( level._ID28028._ID65[1] );
+    var_0 settargetyaw( level._ID28028.angles[1] );
     var_0 setvehgoalpos( var_12, 1 );
 
     for (;;)
@@ -175,9 +175,9 @@ _ID41796( var_0 )
 
         if ( getdvar( "cobrapilot_debug" ) == "1" )
         {
-            thread _ID42237::_ID11707( level._ID28028._ID740, var_12, 0, 1, 0, var_4 );
-            thread _ID42237::_ID11707( level._ID28028._ID740, var_0._ID740, 0, 0, 1, var_4 );
-            thread _ID42237::_ID11707( var_0._ID740, var_12, 1, 1, 0, var_4 );
+            thread _ID42237::_ID11707( level._ID28028.origin, var_12, 0, 1, 0, var_4 );
+            thread _ID42237::_ID11707( level._ID28028.origin, var_0.origin, 0, 0, 1, var_4 );
+            thread _ID42237::_ID11707( var_0.origin, var_12, 1, 1, 0, var_4 );
         }
 
         var_13 = gettime();
@@ -216,7 +216,7 @@ _ID41796( var_0 )
                 var_17 = var_15 / 2;
 
             var_0 vehicle_setspeed( var_15, var_16, var_17 );
-            var_0 settargetyaw( level._ID28028._ID65[1] );
+            var_0 settargetyaw( level._ID28028.angles[1] );
             var_18 = 0;
 
             if ( _ID16528() <= 30 )
@@ -234,9 +234,9 @@ _ID41796( var_0 )
 
 _ID41795( var_0, var_1, var_2 )
 {
-    var_3 = anglestoforward( _ID42237::_ID14539( level._ID28028._ID65 ) );
-    var_4 = anglestoright( _ID42237::_ID14539( level._ID28028._ID65 ) );
-    var_5 = level._ID28028._ID740 + var_3 * var_0 + var_4 * var_1 + ( 0, 0, var_2 );
+    var_3 = anglestoforward( _ID42237::_ID14539( level._ID28028.angles ) );
+    var_4 = anglestoright( _ID42237::_ID14539( level._ID28028.angles ) );
+    var_5 = level._ID28028.origin + var_3 * var_0 + var_4 * var_1 + ( 0, 0, var_2 );
     return var_5;
 }
 

@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "axis";
-    self._ID1244 = "human";
+    self.team = "axis";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 150;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 150;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "usp";
 
@@ -24,38 +24,38 @@ _ID616()
     switch ( _ID42226::_ID15950( 7 ) )
     {
         case 0:
-            self._ID1302 = "kriss";
+            self.weapon = "kriss";
             break;
         case 1:
-            self._ID1302 = "kriss_reflex";
+            self.weapon = "kriss_reflex";
             break;
         case 2:
-            self._ID1302 = "ump45_arctic";
+            self.weapon = "ump45_arctic";
             break;
         case 3:
-            self._ID1302 = "ump45_reflex";
+            self.weapon = "ump45_reflex";
             break;
         case 4:
-            self._ID1302 = "p90";
+            self.weapon = "p90";
             break;
         case 5:
-            self._ID1302 = "kriss_eotech";
+            self.weapon = "kriss_eotech";
             break;
         case 6:
-            self._ID1302 = "p90_arctic";
+            self.weapon = "p90_arctic";
             break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
         case 0:
-            _ID43253::_ID616();
+            _ID43253::main();
             break;
         case 1:
-            _ID46374::_ID616();
+            _ID46374::main();
             break;
         case 2:
-            _ID51957::_ID616();
+            _ID51957::main();
             break;
     }
 }

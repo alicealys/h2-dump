@@ -12,7 +12,7 @@ _ID12947()
     self endon( "death" );
     self endon( "pain_death" );
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         thread _ID12944();
 
     for (;;)
@@ -59,7 +59,7 @@ _ID12944()
     _ID12945();
     wait 0.5;
     _ID42407::_ID10226( 0.6, _ID42407::_ID13021, "_stealth_behavior_asleep" );
-    self._ID507 = 0;
+    self.ignoreall = 0;
 }
 
 _ID12945()
@@ -91,13 +91,13 @@ _ID12946( var_0, var_1 )
     var_0 endon( "_stealth_behavior_asleep" );
     var_2 = var_1 * var_1;
 
-    while ( distancesquared( self._ID740, var_0._ID740 ) > var_2 && _ID42407::_ID13019( "_stealth_enabled" ) )
+    while ( distancesquared( self.origin, var_0.origin ) > var_2 && _ID42407::_ID13019( "_stealth_enabled" ) )
         wait 0.1;
 
-    var_0._ID507 = 0;
-    var_0._ID377 = self;
+    var_0.ignoreall = 0;
+    var_0.favoriteenemy = self;
     wait 0.1;
-    var_0._ID377 = undefined;
+    var_0.favoriteenemy = undefined;
 }
 
 _ID12770()
@@ -139,12 +139,12 @@ _ID12773( var_0 )
 
 _ID12892( var_0 )
 {
-    var_1 = self._ID411;
-    self._ID411 = 0.1;
+    var_1 = self.fovcosine;
+    self.fovcosine = 0.1;
     _ID42386::_ID36360( "_stealth_look_around" );
     wait(var_0);
     _ID42407::_ID7869();
-    self._ID411 = var_1;
+    self.fovcosine = var_1;
 }
 
 _ID12790()
@@ -152,7 +152,7 @@ _ID12790()
     self endon( "death" );
     wait 0.25;
 
-    if ( isdefined( self._ID322 ) && self cansee( self._ID322 ) )
+    if ( isdefined( self.enemy ) && self cansee( self.enemy ) )
     {
         _ID42386::_ID12795( "huh" );
         thread _ID42386::_ID12791();
@@ -172,14 +172,14 @@ _ID50459()
 
 _ID12774()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return;
 
     thread _ID12790();
 
     if ( isdefined( self._ID31391 ) )
     {
-        if ( self._ID1244 != "dog" )
+        if ( self.type != "dog" )
         {
             var_0 = "a";
 
@@ -197,7 +197,7 @@ _ID12774()
         self._ID10998 = 1;
         self._ID11025 = 1;
     }
-    else if ( self._ID1244 == "dog" )
+    else if ( self.type == "dog" )
     {
         _ID42407::_ID32280();
         self._ID31246 = 1;
@@ -205,12 +205,12 @@ _ID12774()
         self._ID11025 = 1;
     }
 
-    var_1 = vectornormalize( self._ID322._ID740 - self._ID740 );
-    var_2 = distance( self._ID322._ID740, self._ID740 );
+    var_1 = vectornormalize( self.enemy.origin - self.origin );
+    var_2 = distance( self.enemy.origin, self.origin );
     var_2 *= 0.25;
     var_2 = clamp( var_2, 64, 128 );
     var_1 *= var_2;
-    var_3 = self._ID740 + var_1 + ( 0, 0, 16 );
+    var_3 = self.origin + var_1 + ( 0, 0, 16 );
     var_4 = var_3 + ( 0, 0, -96 );
     var_3 = physicstrace( var_3, var_4 );
 
@@ -219,10 +219,10 @@ _ID12774()
 
     _ID42407::_ID13025( "_stealth_override_goalpos" );
     self setgoalpos( var_3 );
-    self._ID452 = 64;
+    self.goalradius = 64;
     _ID42237::_ID41123( "goal", 2 );
 
-    if ( !self isingoal( self._ID740 ) )
+    if ( !self isingoal( self.origin ) )
         self._ID33812 = var_3 + ( 0, 0, 64 );
 
     _ID12892( 10 );
@@ -231,12 +231,12 @@ _ID12774()
 
 _ID12775()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return;
 
     thread _ID12790();
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
         _ID42386::_ID36361( "_stealth_patrol_cqb" );
     else
     {
@@ -247,14 +247,14 @@ _ID12775()
 
     self._ID10998 = 0;
     self._ID11025 = 0;
-    var_0 = self._ID322._ID740;
-    var_1 = distance( var_0, self._ID740 );
+    var_0 = self.enemy.origin;
+    var_1 = distance( var_0, self.origin );
     _ID42407::_ID13025( "_stealth_override_goalpos" );
     self setgoalpos( var_0 );
-    self._ID452 = var_1 * 0.5;
+    self.goalradius = var_1 * 0.5;
     self waittill( "goal" );
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
     {
         var_2 = "_stealth_patrol_search_a";
 
@@ -270,13 +270,13 @@ _ID12775()
     }
 
     self setgoalpos( var_0 );
-    self._ID452 = 64;
+    self.goalradius = 64;
     self._ID10998 = 1;
     self._ID11025 = 1;
     self waittill( "goal" );
     _ID12892( 15 );
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
     {
         var_2 = "a";
 
@@ -300,7 +300,7 @@ _ID12762()
 
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
     {
-        var_0 = self._ID740;
+        var_0 = self.origin;
         self setruntopos( var_0 );
     }
     else
@@ -317,7 +317,7 @@ _ID12762()
 
 _ID12761()
 {
-    thread _ID42386::_ID12797( self._ID740 );
+    thread _ID42386::_ID12797( self.origin );
 
     if ( isdefined( self._ID31238 ) )
         thread _ID42372::_ID32338();
@@ -328,7 +328,7 @@ _ID12761()
 _ID12811()
 {
     var_0 = 2048;
-    self._ID452 = var_0;
+    self.goalradius = var_0;
 
     if ( isdefined( self._ID31461 ) && self._ID31461 == 1 )
         return;
@@ -336,10 +336,10 @@ _ID12811()
     self endon( "death" );
     _ID42407::_ID13025( "_stealth_override_goalpos" );
 
-    while ( isdefined( self._ID322 ) && _ID42407::_ID13019( "_stealth_enabled" ) )
+    while ( isdefined( self.enemy ) && _ID42407::_ID13019( "_stealth_enabled" ) )
     {
-        self setgoalpos( self._ID322._ID740 );
-        self._ID452 = var_0;
+        self setgoalpos( self.enemy.origin );
+        self.goalradius = var_0;
 
         if ( var_0 > 600 )
             var_0 *= 0.75;
@@ -383,8 +383,8 @@ _ID12882()
     _ID12834();
     self._ID1644._ID28153._ID37658 = 1;
     self._ID31461 = 1;
-    self._ID38 = "noncombat";
-    self._ID686 = squared( level._ID1644._ID22585._ID30["ai_eventDistFootstepSprint"]["hidden"] );
+    self.alertlevel = "noncombat";
+    self.newenemyreactiondistsq = squared( level._ID1644._ID22585._ID30["ai_eventDistFootstepSprint"]["hidden"] );
 }
 
 _ID12835()
@@ -409,7 +409,7 @@ _ID12835()
 
 _ID12917( var_0 )
 {
-    self._ID38 = level._ID1644._ID22585._ID2504[var_0];
+    self.alertlevel = level._ID1644._ID22585._ID2504[var_0];
 }
 
 _ID12920( var_0 )
@@ -437,7 +437,7 @@ _ID12763( var_0 )
 
     if ( !isdefined( self._ID1644._ID28153._ID37658 ) )
     {
-        self._ID452 = level._ID10115;
+        self.goalradius = level._ID10115;
         return;
     }
 
@@ -454,7 +454,7 @@ _ID12942()
     var_0["reset"] = _ID42375::_ID12784;
     var_0["warning"] = _ID42375::_ID12784;
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         var_0["attack"] = _ID42375::_ID11400;
     else
         var_0["attack"] = _ID42375::_ID12778;

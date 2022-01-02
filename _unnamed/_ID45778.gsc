@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     _ID42358::_ID1942( "generic" );
     level._ID30895["generic"]["sit_load_ak_idle"][0] = %sitting_guard_loadak_idle;

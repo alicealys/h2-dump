@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["ambient_car_white_smk"] = loadfx( "vfx/smoke/ambient_car_white_smk" );
     level._ID1426["exit_tracer_roja_ass"] = loadfx( "vfx/map/favela/exit_tracer_roja_ass" );
@@ -127,15 +127,15 @@ _ID616()
     _ID54426();
     _ID38735();
     thread playdustmotes();
-    _ID48352::_ID616();
-    _ID52157::_ID616();
+    _ID48352::main();
+    _ID52157::main();
 }
 
 playdustmotes()
 {
     for (;;)
     {
-        playfx( level._ID1426["dust_motes_lrg_runner_bolted_favela"], level._ID794._ID740 );
+        playfx( level._ID1426["dust_motes_lrg_runner_bolted_favela"], level.player.origin );
         wait 1.25;
     }
 }

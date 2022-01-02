@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID32363();
     _ID53193( "favela" );
@@ -67,6 +67,6 @@ _ID53193( var_0 )
 
     _ID42407::_ID32515( var_2, var_1 );
     _ID42407::_ID14689( var_3, var_1 );
-    level._ID794 _ID42407::_ID48929( var_0 );
-    level._ID794 _meth_849f( "favela", var_1 );
+    level.player _ID42407::_ID48929( var_0 );
+    level.player _meth_849f( "favela", var_1 );
 }

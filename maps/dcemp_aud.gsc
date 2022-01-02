@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -171,7 +171,7 @@ _ID48883()
 _ID51612()
 {
     _ID42465::_ID23801( "heli_crash_black_screen_mix" );
-    level._ID794 playsound( "scn_heli_intro_plr" );
+    level.player playsound( "scn_heli_intro_plr" );
 }
 
 start_building_shellshock_filter()
@@ -179,7 +179,7 @@ start_building_shellshock_filter()
     thread start_shellshock_filter();
     _ID42465::_ID23801( "emp_sequence_mix" );
     _ID42465::_ID23797( "emp_building_shellshock_mix" );
-    level._ID794 playsound( "scn_dcemp_emp_building_shellshock" );
+    level.player playsound( "scn_dcemp_emp_building_shellshock" );
     wait 2.5;
     _ID42465::_ID23801( "emp_building_shellshock_mix" );
 }
@@ -227,7 +227,7 @@ _ID52479()
     _ID42237::_ID3350( getentarray( "amb_emitters_window", "targetname" ), ::amb_emitters_rain_transition, "amb_emt_windows_rain", "amb_emt_windows" );
     _ID42237::_ID3350( getentarray( "amb_emitters_door", "targetname" ), ::amb_emitters_rain_transition, "amb_emt_doors_rain", "amb_emt_doors" );
     _ID42237::_ID3350( getentarray( "amb_emitters_wall", "targetname" ), ::amb_emitters_rain_transition, "amb_emt_walls_rain", "amb_emt_walls" );
-    level._ID794 thread _ID42237::_ID27000( "ambient_dcemp_heavy_rain", undefined, 10, undefined );
+    level.player thread _ID42237::_ID27000( "ambient_dcemp_heavy_rain", undefined, 10, undefined );
     _ID42465::_ID23801( "emt_rain_mix" );
     _ID42474::_ID4668( "exterior", "none", 10 );
 }
@@ -240,7 +240,7 @@ amb_emitters_rain_transition( var_0, var_1 )
 
 intro_heli_sequence_snd()
 {
-    level._ID794 thread _ID42407::_ID27079( "scn_heli_intro" );
+    level.player thread _ID42407::_ID27079( "scn_heli_intro" );
     _ID42465::_ID23797( "heli_crash_black_screen_mix" );
     _ID42465::_ID23797( "heli_crash_shellshock_mix" );
     _ID42465::_ID23797( "emt_rain_mix" );
@@ -297,8 +297,8 @@ street_crash_heli_building()
 iss_emp_exp_interrupt()
 {
     _ID42465::_ID23797( "iss_emp_vo_interrupt_mix" );
-    level._ID794 playsound( "scn_iss_emp_explosion" );
-    level._ID794 playsound( "scn_dcemp_is_emp_comm_interrupt" );
+    level.player playsound( "scn_iss_emp_explosion" );
+    level.player playsound( "scn_dcemp_is_emp_comm_interrupt" );
     wait 8;
     _ID42465::_ID23801( "iss_emp_vo_interrupt_mix" );
 }

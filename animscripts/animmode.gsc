@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self endon( "death" );
     self endon( "stop_animmode" );
@@ -36,8 +36,8 @@ _ID616()
     else
         var_3 = level._ID30895[self._ID1366][var_1];
 
-    var_4 = getstartorigin( self._ID1651._ID740, self._ID1651._ID65, var_3 );
-    var_5 = getstartangles( self._ID1651._ID740, self._ID1651._ID65, var_3 );
+    var_4 = getstartorigin( self._ID1651.origin, self._ID1651.angles, var_3 );
+    var_5 = getstartangles( self._ID1651.origin, self._ID1651.angles, var_3 );
     var_6 = self getdroptofloorposition( var_4 );
 
     if ( isdefined( var_6 ) )
@@ -49,7 +49,7 @@ _ID616()
     if ( !isdefined( self._ID24952 ) )
         self teleport( var_4, var_5 );
 
-    self._ID846 = 0;
+    self.pushable = 0;
     var_7 = 0.3;
     var_8 = 0.2;
 

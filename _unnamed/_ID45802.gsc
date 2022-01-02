@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     precachemodel( "vehicle_m60a1_bridge" );
     _ID42411::_ID6255( "bridge_layer", var_0, var_1, var_2 );

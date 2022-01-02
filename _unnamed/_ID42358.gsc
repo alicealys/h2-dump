@@ -139,10 +139,10 @@ _ID10617( var_0 )
 
 _ID28730( var_0, var_1 )
 {
-    var_1 notify( "new_prop_rotation" + var_0._ID669 );
-    var_1 endon( "new_prop_rotation" + var_0._ID669 );
+    var_1 notify( "new_prop_rotation" + var_0.model );
+    var_1 endon( "new_prop_rotation" + var_0.model );
     var_0 endon( "death" );
-    var_1 _ID42407::_ID1886( "new_prop_rotation" + var_0._ID669 );
+    var_1 _ID42407::_ID1886( "new_prop_rotation" + var_0.model );
     var_0 _ID42407::_ID1886( "death" );
     _ID42407::_ID1985( _ID42407::_ID41116, "stop_loop" );
     var_1 _ID42407::_ID1985( _ID42407::_ID41116, "death" );
@@ -152,10 +152,10 @@ _ID28730( var_0, var_1 )
 
 _ID28731( var_0, var_1 )
 {
-    var_1 notify( "new_prop_rotation" + var_0._ID669 );
-    var_1 endon( "new_prop_rotation" + var_0._ID669 );
+    var_1 notify( "new_prop_rotation" + var_0.model );
+    var_1 endon( "new_prop_rotation" + var_0.model );
     var_0 endon( "death" );
-    var_1 _ID42407::_ID1886( "new_prop_rotation" + var_0._ID669 );
+    var_1 _ID42407::_ID1886( "new_prop_rotation" + var_0.model );
     var_0 _ID42407::_ID1886( "death" );
     _ID42407::_ID1985( _ID42407::_ID41116, "stop_loop" );
     var_1 _ID42407::_ID1985( _ID42407::_ID41116, "death" );
@@ -176,7 +176,7 @@ _ID28729()
     self._ID7533 = 1;
     stopfxontag( _ID42237::_ID16299( self.prop_name + "_glow" ), self, "tag_cigarglow" );
     var_0 = 3;
-    var_1 = anglestoforward( self._ID65 );
+    var_1 = anglestoforward( self.angles );
     self unlink();
     self movegravity( var_1 * 100, var_0 );
     self rotatevelocity( ( 400, 0, 0 ), var_0, 0, var_0 );
@@ -237,7 +237,7 @@ _ID16782()
 
     for (;;)
     {
-        while ( self._ID675 != "run" )
+        while ( self.movemode != "run" )
         {
             wait 0.2;
             continue;

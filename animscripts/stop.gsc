@@ -31,7 +31,7 @@ _ID19602()
     anim._ID3277["soldier"]["idle_transitions"] = var_0;
 }
 
-_ID616()
+main()
 {
     if ( isdefined( self._ID24817 ) )
         return;
@@ -67,17 +67,17 @@ _ID616()
             var_0 = 1;
     }
 
-    if ( self._ID1063 && !isdefined( self._ID322 ) )
+    if ( self.swimmer && !isdefined( self.enemy ) )
     {
         var_1 = animscripts\exit_node::_ID16270();
 
         if ( isdefined( var_1 ) )
         {
             self setflaggedanimknoballrestart( "idle", self._ID9568["stand"], %body, 1, 0.5, self._ID3195 );
-            _ID39231( var_1._ID65[1] );
+            _ID39231( var_1.angles[1] );
         }
         else
-            self orientmode( "face angle", self._ID65[1] );
+            self orientmode( "face angle", self.angles[1] );
     }
 
     for (;;)
@@ -113,7 +113,7 @@ _ID616()
 
 _ID39231( var_0 )
 {
-    var_1 = self._ID65[1];
+    var_1 = self.angles[1];
     var_2 = angleclamp180( var_0 - var_1 );
 
     if ( -20 < var_2 && var_2 < 20 )
@@ -134,7 +134,7 @@ _ID39231( var_0 )
         var_4 = var_3[6];
 
     var_5 = getanimlength( var_4 );
-    var_6 = abs( var_2 ) / self._ID1230;
+    var_6 = abs( var_2 ) / self.turnrate;
     var_6 /= 1000;
     var_7 = var_5 / var_6;
     self orientmode( "face angle", var_0 );
@@ -147,7 +147,7 @@ _ID30219( var_0, var_1 )
 {
     self orientmode( "face angle", var_0 );
 
-    while ( angleclamp( var_0 - self._ID65[1] ) > var_1 )
+    while ( angleclamp( var_0 - self.angles[1] ) > var_1 )
         wait 0.1;
 }
 
@@ -199,12 +199,12 @@ _ID16217()
 
     if ( isdefined( var_0 ) )
     {
-        var_1 = var_0._ID65[1];
-        var_2 = var_0._ID1244;
+        var_1 = var_0.angles[1];
+        var_2 = var_0.type;
     }
     else
     {
-        var_1 = self._ID278;
+        var_1 = self.desiredangle;
         var_2 = "node was undefined";
     }
 
@@ -225,12 +225,12 @@ _ID38690( var_0, var_1 )
 {
     var_2 = self _meth_816f();
 
-    if ( isdefined( self._ID700 ) )
+    if ( isdefined( self.node ) )
     {
-        if ( self._ID700 _meth_8037() )
+        if ( self.node _meth_8037() )
             var_2 = 1;
 
-        if ( self._ID700 _meth_8578() )
+        if ( self.node _meth_8578() )
             var_2 = 0;
     }
 
@@ -257,12 +257,12 @@ _ID28077( var_0, var_1 )
 {
     var_2 = self _meth_816f();
 
-    if ( isdefined( self._ID700 ) )
+    if ( isdefined( self.node ) )
     {
-        if ( self._ID700 _meth_8037() )
+        if ( self.node _meth_8037() )
             var_2 = 1;
 
-        if ( self._ID700 _meth_8578() )
+        if ( self.node _meth_8578() )
             var_2 = 0;
     }
 
@@ -339,7 +339,7 @@ _ID28715()
     }
     else if ( self._ID7._ID24414 != "stop" )
     {
-        if ( self._ID823 == "move" && isdefined( self._ID46487 ) && isdefined( self._ID45835 ) && self._ID45835 == "prone" )
+        if ( self.prevscript == "move" && isdefined( self._ID46487 ) && isdefined( self._ID45835 ) && self._ID45835 == "prone" )
         {
             var_3 = getanimlength( self._ID46487 ) * ( 1 - self getanimtime( self._ID46487 ) );
 

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID521()
+init()
 {
     level._ID11813["allies"]["stand"]["idle"] = %casual_stand_idle;
     level._ID11813["allies"]["stand"]["run"] = %run_lowready_f_relative;

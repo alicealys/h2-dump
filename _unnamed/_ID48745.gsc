@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "snow_vortex_runner_cheap" );
     var_0 _ID42229::_ID32402( ( -38375.6, -15423.1, 86.8687 ), ( 270, 0, 0 ) );

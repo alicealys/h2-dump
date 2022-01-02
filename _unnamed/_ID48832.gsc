@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_forest_tf141_shotgun" );
     self attach( "head_tf141_forest_b", "", 1 );

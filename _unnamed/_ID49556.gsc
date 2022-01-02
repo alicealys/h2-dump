@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     level._ID1426["dlight_red"] = loadfx( "fx/misc/aircraft_light_cockpit_red" );
     level._ID1426["redlight_fx"] = loadfx( "fx/misc/tower_light_red_steady" );
@@ -78,14 +78,14 @@ _ID616()
     level._ID1426["bumblebee_damage_oil_trainer"] = loadfx( "vfx/map/trainer/bumblebee_damage_oil_trainer" );
     _ID54426();
     _ID38735();
-    _ID45743::_ID616();
-    _ID49075::_ID616();
+    _ID45743::main();
+    _ID49075::main();
 }
 
 _ID46669()
 {
     var_0 = getent( "laatpv_steam", "targetname" );
-    playfx( _ID42237::_ID16299( "latvee_radiator_steam" ), var_0._ID740 );
+    playfx( _ID42237::_ID16299( "latvee_radiator_steam" ), var_0.origin );
     var_0 thread _ID42237::_ID27077( "scn_trainer_radiator_start" );
     wait 2;
     var_0 thread _ID42237::_ID27000( "scn_trainer_radiator_loop" );

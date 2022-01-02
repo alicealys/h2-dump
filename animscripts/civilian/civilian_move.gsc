@@ -1,19 +1,19 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    if ( self._ID39 > 1 )
+    if ( self.alertlevelint > 1 )
         self._ID9575 = ::_ID48313;
 
-    animscripts\move::_ID616();
+    animscripts\move::main();
 }
 #using_animtree("generic_human");
 
 _ID48313()
 {
-    var_0 = anglestoforward( self._ID65 );
-    var_1 = vectordot( self._ID601, var_0 ) >= 0;
+    var_0 = anglestoforward( self.angles );
+    var_1 = vectordot( self.lookaheaddir, var_0 ) >= 0;
 
     if ( !var_1 )
     {

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616( var_0 )
+main( var_0 )
 {
     if ( isdefined( var_0 ) )
     {

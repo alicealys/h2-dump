@@ -56,7 +56,7 @@ _ID23419()
 
 _ID23422()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     if ( isdefined( self._ID11579 ) )
@@ -65,14 +65,14 @@ _ID23422()
     if ( _ID23419() )
         return 0;
 
-    if ( !_ID23355( self._ID322 ) )
+    if ( !_ID23355( self.enemy ) )
         return 0;
 
     _ID23406();
 
     if ( !_ID23373() )
     {
-        _ID23405( self._ID322 );
+        _ID23405( self.enemy );
         return 0;
     }
 
@@ -81,7 +81,7 @@ _ID23422()
 
 _ID23406()
 {
-    self._ID23353._ID1191 = self._ID322;
+    self._ID23353.target = self.enemy;
     self._ID23353._ID19946 = 0;
     self._ID23353._ID20038 = 0;
 }
@@ -111,21 +111,21 @@ _ID23373()
 
     self._ID23353._ID15079 = undefined;
     self._ID24789 = gettime() + 150;
-    self._ID24788 = self._ID23353._ID1191;
+    self._ID24788 = self._ID23353.target;
     return 0;
 }
 
 _ID23425()
 {
     var_0 = 1;
-    var_1 = distance2d( self._ID23353._ID36155, self._ID23353._ID1191._ID740 );
+    var_1 = distance2d( self._ID23353._ID36155, self._ID23353.target.origin );
 
     if ( var_1 < 32 )
     {
-        var_2 = vectornormalize( ( self._ID23353._ID36155[0] - self._ID23353._ID1191._ID740[0], self._ID23353._ID36155[1] - self._ID23353._ID1191._ID740[1], 0 ) );
+        var_2 = vectornormalize( ( self._ID23353._ID36155[0] - self._ID23353.target.origin[0], self._ID23353._ID36155[1] - self._ID23353.target.origin[1], 0 ) );
         self._ID23353._ID36155 = self._ID23353._ID36155 + var_2 * ( 32 - var_1 );
 
-        if ( distance( self._ID23353._ID36155, self._ID23353._ID1191._ID740 ) < 31.9 )
+        if ( distance( self._ID23353._ID36155, self._ID23353.target.origin ) < 31.9 )
             return 0;
 
         var_0 = 0;
@@ -139,7 +139,7 @@ _ID23425()
     if ( abs( self._ID23353._ID36155[2] - var_3[2] ) > 51.2 )
         return 0;
 
-    if ( abs( self._ID740[2] - var_3[2] ) > 51.2 )
+    if ( abs( self.origin[2] - var_3[2] ) > 51.2 )
         return 0;
 
     self._ID23353._ID36155 = var_3;
@@ -149,26 +149,26 @@ _ID23425()
 
     if ( isdefined( self._ID23353._ID36166 ) )
     {
-        var_4 = self._ID23353._ID36155 - self._ID23353._ID1191._ID740;
+        var_4 = self._ID23353._ID36155 - self._ID23353.target.origin;
         var_5 = anglestoforward( self._ID23353._ID36166 );
         var_6 = vectordot( var_5, var_4 );
         var_7 = self._ID23353._ID36155 - var_5 * var_6;
-        var_8 = self._ID23353._ID1191._ID740 - var_7;
-        var_9 = distance2d( self._ID23353._ID1191._ID740, var_7 );
+        var_8 = self._ID23353.target.origin - var_7;
+        var_9 = distance2d( self._ID23353.target.origin, var_7 );
 
         if ( var_9 < 32 )
             var_7 -= var_8 * ( 32 - var_9 ) / 32;
     }
     else
     {
-        var_2 = vectornormalize( ( self._ID23353._ID36155[0] - self._ID23353._ID1191._ID740[0], self._ID23353._ID36155[1] - self._ID23353._ID1191._ID740[1], 0 ) );
-        var_7 = self._ID23353._ID1191._ID740 + var_2 * 32;
+        var_2 = vectornormalize( ( self._ID23353._ID36155[0] - self._ID23353.target.origin[0], self._ID23353._ID36155[1] - self._ID23353.target.origin[1], 0 ) );
+        var_7 = self._ID23353.target.origin + var_2 * 32;
     }
 
     if ( !self maymovefrompointtopoint( self._ID23353._ID36155, var_7, 1, 0 ) )
         return 0;
 
-    if ( !self maymovefrompointtopoint( var_7, self._ID23353._ID1191._ID740, 1, 1 ) )
+    if ( !self maymovefrompointtopoint( var_7, self._ID23353.target.origin, 1, 1 ) )
         return 0;
 
     return 1;
@@ -176,15 +176,15 @@ _ID23425()
 
 _ID23397()
 {
-    if ( !isdefined( self._ID23353._ID1191 ) )
+    if ( !isdefined( self._ID23353.target ) )
         return 0;
 
-    var_0 = self._ID23353._ID1191;
+    var_0 = self._ID23353.target;
 
     if ( isdefined( var_0._ID11579 ) )
         return 0;
 
-    var_1 = distancesquared( self._ID740, var_0._ID740 );
+    var_1 = distancesquared( self.origin, var_0.origin );
 
     if ( isdefined( self._ID23429 ) )
         var_2 = self._ID23429;
@@ -211,13 +211,13 @@ _ID23397()
     if ( animscripts\utility::_ID39997() )
         return 0;
 
-    if ( isdefined( self._ID458 ) && self._ID426 == 1 )
+    if ( isdefined( self.grenade ) && self.frontshieldanglecos == 1 )
         return 0;
 
     if ( !isalive( var_0 ) )
         return 0;
 
-    if ( isdefined( var_0._ID11566 ) || isdefined( var_0._ID511 ) && var_0._ID511 )
+    if ( isdefined( var_0._ID11566 ) || isdefined( var_0.ignoreme ) && var_0.ignoreme )
         return 0;
 
     if ( !isai( var_0 ) && !isplayernumber( var_0 ) )
@@ -228,7 +228,7 @@ _ID23397()
         if ( var_0 isinscriptedstate() )
             return 0;
 
-        if ( var_0 _ID42407::_ID11498() || var_0._ID274 )
+        if ( var_0 _ID42407::_ID11498() || var_0.delayeddeath )
         {
             if ( !isdefined( self._ID36736 ) || self._ID36736 != "riotshield" )
                 return 0;
@@ -249,7 +249,7 @@ _ID23397()
     if ( isdefined( self._ID22746 ) && isdefined( var_0._ID22746 ) )
         return 0;
 
-    if ( isdefined( var_0._ID458 ) )
+    if ( isdefined( var_0.grenade ) )
         return 0;
 
     if ( self._ID23353._ID20038 )
@@ -257,7 +257,7 @@ _ID23397()
     else
         var_4 = 60;
 
-    var_5 = angleclamp180( self._ID65[1] - animscripts\utility::_ID16756( var_0._ID740 ) );
+    var_5 = angleclamp180( self.angles[1] - animscripts\utility::_ID16756( var_0.origin ) );
 
     if ( abs( var_5 ) > var_4 )
         return 0;
@@ -314,9 +314,9 @@ _ID23412( var_0 )
 
 _ID23410()
 {
-    var_0 = distancesquared( self._ID23353._ID1191._ID740, self._ID740 );
+    var_0 = distancesquared( self._ID23353.target.origin, self.origin );
 
-    if ( var_0 > 4096 && isdefined( self._ID24791 ) && isdefined( self._ID24790 ) && gettime() < self._ID24791 && self._ID24790 == self._ID23353._ID1191 )
+    if ( var_0 > 4096 && isdefined( self._ID24791 ) && isdefined( self._ID24790 ) && gettime() < self._ID24791 && self._ID24790 == self._ID23353.target )
         return 0;
 
     return 1;
@@ -324,13 +324,13 @@ _ID23410()
 
 _ID23411()
 {
-    if ( isdefined( self._ID23353._ID1191._ID22746 ) )
+    if ( isdefined( self._ID23353.target._ID22746 ) )
         return 0;
 
     if ( !_ID23410() )
         return 0;
 
-    if ( isdefined( self._ID23353._ID1191._ID35381 ) )
+    if ( isdefined( self._ID23353.target._ID35381 ) )
         return 0;
 
     return _ID23417();
@@ -340,12 +340,12 @@ _ID23416()
 {
     if ( isdefined( self._ID23429 ) )
         var_0 = self._ID23429;
-    else if ( isplayernumber( self._ID23353._ID1191 ) )
+    else if ( isplayernumber( self._ID23353.target ) )
         var_0 = 40000;
     else
         var_0 = 25600;
 
-    if ( distancesquared( self._ID740, self._ID23353._ID1191._ID740 ) > var_0 )
+    if ( distancesquared( self.origin, self._ID23353.target.origin ) > var_0 )
         self._ID23353._ID16914 = gettime() + 3000;
     else
         self._ID23353._ID16914 = gettime() + 1000;
@@ -355,23 +355,23 @@ _ID23414()
 {
     self animmode( "zonly_physics" );
 
-    if ( isdefined( self._ID23353._ID1191 ) )
+    if ( isdefined( self._ID23353.target ) )
         _ID23416();
 
-    while ( isdefined( self._ID23353._ID1191 ) )
+    while ( isdefined( self._ID23353.target ) )
     {
         if ( !_ID23413() )
         {
             self._ID24787 = gettime() + 1500;
-            self._ID24786 = self._ID23353._ID1191;
+            self._ID24786 = self._ID23353.target;
             break;
         }
 
-        if ( !isdefined( self._ID23353._ID1191 ) )
+        if ( !isdefined( self._ID23353.target ) )
             break;
 
         animscripts\battlechatter_ai::_ID13239();
-        self orientmode( "face point", self._ID23353._ID1191._ID740 );
+        self orientmode( "face point", self._ID23353.target.origin );
         var_0 = animscripts\utility::_ID22630( "melee", "standard" );
         self setflaggedanimknoballrestart( "meleeanim", var_0, %body, 1, 0.2, 1 );
         _ID23403( var_0 );
@@ -379,7 +379,7 @@ _ID23414()
 
         if ( !_ID23415() )
         {
-            _ID23412( self._ID23353._ID1191 );
+            _ID23412( self._ID23353.target );
             break;
         }
     }
@@ -407,12 +407,12 @@ _ID23415()
 
         if ( var_0 == "fire" )
         {
-            if ( isdefined( self._ID23353._ID1191 ) )
+            if ( isdefined( self._ID23353.target ) )
             {
-                var_1 = self._ID23353._ID1191._ID486;
+                var_1 = self._ID23353.target.health;
                 self melee();
 
-                if ( isdefined( self._ID23353._ID1191 ) && self._ID23353._ID1191._ID486 < var_1 )
+                if ( isdefined( self._ID23353.target ) && self._ID23353.target.health < var_1 )
                     _ID23416();
             }
 
@@ -423,17 +423,17 @@ _ID23415()
 
 _ID23417()
 {
-    if ( !isdefined( self._ID23353._ID1191 ) )
+    if ( !isdefined( self._ID23353.target ) )
         return 0;
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     if ( !_ID23397() )
         return 0;
 
-    var_0 = vectornormalize( self._ID23353._ID1191._ID740 - self._ID740 );
-    self._ID23353._ID36155 = self._ID23353._ID1191._ID740 - 40.0 * var_0;
+    var_0 = vectornormalize( self._ID23353.target.origin - self.origin );
+    self._ID23353._ID36155 = self._ID23353.target.origin - 40.0 * var_0;
     return _ID23425();
 }
 
@@ -442,7 +442,7 @@ _ID23413()
     if ( !_ID23417() )
         return 0;
 
-    var_0 = _ID42237::_ID11126( self._ID740, self._ID23353._ID1191._ID740 );
+    var_0 = _ID42237::_ID11126( self.origin, self._ID23353.target.origin );
 
     if ( var_0 <= 4096 )
     {
@@ -454,7 +454,7 @@ _ID23413()
     }
 
     _ID23402();
-    var_2 = self._ID23353._ID1191._ID740;
+    var_2 = self._ID23353.target.origin;
     var_3 = 0.1;
     var_4 = animscripts\utility::_ID22630( "melee", "standard_run_to_melee" );
     var_5 = length( getangledelta( var_4, 0, 1 ) );
@@ -470,10 +470,10 @@ _ID23413()
     var_15 = undefined;
     var_16 = animscripts\utility::_ID22630( "run", "straight" );
 
-    if ( isplayernumber( self._ID23353._ID1191 ) && self._ID23353._ID1191 == self._ID322 )
+    if ( isplayernumber( self._ID23353.target ) && self._ID23353.target == self.enemy )
         self orientmode( "face enemy" );
     else
-        self orientmode( "face point", self._ID23353._ID1191._ID740 );
+        self orientmode( "face point", self._ID23353.target.origin );
 
     self setflaggedanimknoball( "chargeanim", var_16, %body, 1, 0.2, 1 );
     _ID23403( var_16 );
@@ -516,13 +516,13 @@ _ID23413()
             return 0;
         }
 
-        var_0 = _ID42237::_ID11126( self._ID740, self._ID23353._ID1191._ID740 );
-        var_21 = ( self._ID23353._ID1191._ID740 - var_2 ) * 1 / ( gettime() - var_18 );
-        var_2 = self._ID23353._ID1191._ID740;
-        var_22 = self._ID23353._ID1191._ID740 + var_21 * var_13;
-        var_15 = _ID42237::_ID11126( self._ID740, var_22 );
+        var_0 = _ID42237::_ID11126( self.origin, self._ID23353.target.origin );
+        var_21 = ( self._ID23353.target.origin - var_2 ) * 1 / ( gettime() - var_18 );
+        var_2 = self._ID23353.target.origin;
+        var_22 = self._ID23353.target.origin + var_21 * var_13;
+        var_15 = _ID42237::_ID11126( self.origin, var_22 );
 
-        if ( var_17 && var_0 <= var_10 && ( gettime() - var_14 >= var_12 || !isplayernumber( self._ID23353._ID1191 ) ) )
+        if ( var_17 && var_0 <= var_10 && ( gettime() - var_14 >= var_12 || !isplayernumber( self._ID23353.target ) ) )
             break;
 
         if ( !var_17 && gettime() >= self._ID23353._ID16914 )
@@ -541,7 +541,7 @@ _ID23402()
     if ( !isdefined( self._ID7._ID24785 ) )
         self._ID7._ID24785 = 0;
 
-    if ( isdefined( self._ID322 ) && isplayernumber( self._ID322 ) || randomint( 3 ) == 0 )
+    if ( isdefined( self.enemy ) && isplayernumber( self.enemy ) || randomint( 3 ) == 0 )
     {
         if ( gettime() > self._ID7._ID24785 )
         {
@@ -559,7 +559,7 @@ melee_playeffortsound()
     if ( !isdefined( self._ID7.nextmeleesound ) )
         self._ID7.nextmeleesound = 0;
 
-    if ( isdefined( self._ID322 ) && isplayernumber( self._ID322 ) || randomint( 3 ) == 0 )
+    if ( isdefined( self.enemy ) && isplayernumber( self.enemy ) || randomint( 3 ) == 0 )
     {
         if ( gettime() > self._ID7.nextmeleesound )
         {
@@ -581,7 +581,7 @@ _ID23362( var_0, var_1 )
     if ( abs( var_0 ) < var_2 )
         return 0;
 
-    var_5 = self._ID23353._ID1191;
+    var_5 = self._ID23353.target;
     _ID23378();
 
     if ( self._ID23353._ID41797 )
@@ -615,7 +615,7 @@ _ID23363( var_0, var_1 )
     if ( abs( var_0 ) < var_2 )
         return 0;
 
-    var_3 = self._ID23353._ID1191;
+    var_3 = self._ID23353.target;
 
     if ( isdefined( var_3._ID22746 ) )
         return 0;
@@ -644,7 +644,7 @@ _ID52288( var_0, var_1 )
     if ( isdefined( self._ID22746 ) )
         return 0;
 
-    var_4 = self._ID23353._ID1191;
+    var_4 = self._ID23353.target;
 
     if ( isdefined( self._ID23426 ) )
         return 0;
@@ -664,7 +664,7 @@ _ID23360( var_0, var_1 )
     if ( -90 > var_0 || var_0 > 0 )
         return 0;
 
-    var_2 = self._ID23353._ID1191;
+    var_2 = self._ID23353.target;
 
     if ( isdefined( var_2._ID22746 ) )
         return 0;
@@ -708,10 +708,10 @@ _ID23359()
     if ( isdefined( self._ID44480 ) && !self._ID44480 )
         return 0;
 
-    var_0 = self._ID23353._ID1191;
-    var_1 = var_0._ID740 - self._ID740;
+    var_0 = self._ID23353.target;
+    var_1 = var_0.origin - self.origin;
     var_2 = vectortoangles( var_1 );
-    var_3 = angleclamp180( var_0._ID65[1] - var_2[1] );
+    var_3 = angleclamp180( var_0.angles[1] - var_2[1] );
     var_4 = _ID23361();
 
     for ( var_5 = 0; var_5 < var_4.size; var_5++ )
@@ -719,7 +719,7 @@ _ID23359()
         if ( [[ var_4[var_5] ]]( var_3, var_1 ) )
         {
             self._ID23353._ID36098 = ( 0, var_2[1], 0 );
-            self._ID23353._ID36155 = getstartorigin( var_0._ID740, var_0._ID65, self._ID23353._ID3189 );
+            self._ID23353._ID36155 = getstartorigin( var_0.origin, var_0.angles, self._ID23353._ID3189 );
 
             if ( _ID23425() )
                 return 1;
@@ -731,7 +731,7 @@ _ID23359()
 
 _ID23378()
 {
-    var_0 = self._ID23353._ID1191;
+    var_0 = self._ID23353.target;
 
     if ( isdefined( self._ID23426 ) )
     {
@@ -748,7 +748,7 @@ _ID23378()
         self._ID23353._ID41797 = 1;
     else if ( isdefined( var_0._ID22746 ) )
         self._ID23353._ID41797 = 0;
-    else if ( var_0 _ID42407::_ID11498() || var_0._ID274 )
+    else if ( var_0 _ID42407::_ID11498() || var_0.delayeddeath )
         self._ID23353._ID41797 = 1;
     else
         self._ID23353._ID41797 = _ID42237::_ID8201();
@@ -756,9 +756,9 @@ _ID23378()
 
 _ID23371()
 {
-    var_0 = self._ID23353._ID1191;
+    var_0 = self._ID23353.target;
     _ID23378();
-    var_1 = var_0._ID8893._ID1244;
+    var_1 = var_0._ID8893.type;
 
     if ( var_1 == "Cover Multi" )
         var_1 = animscripts\utility::_ID16194( var_0._ID8893 );
@@ -789,10 +789,10 @@ _ID23371()
         var_0._ID23353._ID3189 = animscripts\utility::_ID22630( "melee", "aivai_coverright_defenderwins_defend" );
     }
 
-    self._ID23353._ID36155 = getstartorigin( var_0._ID8893._ID740, var_0._ID8893._ID65, self._ID23353._ID3189 );
-    self._ID23353._ID36098 = ( var_0._ID8893._ID65[0], angleclamp180( var_0._ID8893._ID65[1] + 180 ), var_0._ID8893._ID65[2] );
+    self._ID23353._ID36155 = getstartorigin( var_0._ID8893.origin, var_0._ID8893.angles, self._ID23353._ID3189 );
+    self._ID23353._ID36098 = ( var_0._ID8893.angles[0], angleclamp180( var_0._ID8893.angles[1] + 180 ), var_0._ID8893.angles[2] );
     var_0._ID23353._ID13763 = animscripts\utility::_ID16462( var_0._ID8893 );
-    self._ID23353._ID36166 = var_0._ID8893._ID65;
+    self._ID23353._ID36166 = var_0._ID8893.angles;
 
     if ( !_ID23425() )
     {
@@ -808,17 +808,17 @@ _ID23370()
     if ( isdefined( self._ID44480 ) && !self._ID44480 )
         return 0;
 
-    var_0 = self._ID23353._ID1191._ID8893;
+    var_0 = self._ID23353.target._ID8893;
 
     if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( distancesquared( var_0._ID740, self._ID23353._ID1191._ID740 ) > 16 && isdefined( self._ID23353._ID1191._ID7._ID8878 ) && ( self._ID23353._ID1191._ID7._ID8878 != "hide" && self._ID23353._ID1191._ID7._ID8878 != "lean" ) )
+    if ( distancesquared( var_0.origin, self._ID23353.target.origin ) > 16 && isdefined( self._ID23353.target._ID7._ID8878 ) && ( self._ID23353.target._ID7._ID8878 != "hide" && self._ID23353.target._ID7._ID8878 != "lean" ) )
         return 0;
 
-    var_1 = vectortoangles( self._ID740 - var_0._ID740 );
-    var_2 = angleclamp180( var_0._ID65[1] - var_1[1] );
-    var_3 = var_0._ID1244;
+    var_1 = vectortoangles( self.origin - var_0.origin );
+    var_2 = angleclamp180( var_0.angles[1] - var_1[1] );
+    var_3 = var_0.type;
 
     if ( var_3 == "Cover Multi" )
         var_3 = animscripts\utility::_ID16194( var_0 );
@@ -839,12 +839,12 @@ _ID23370()
 
 _ID23357()
 {
-    var_0 = self._ID23353._ID1191;
+    var_0 = self._ID23353.target;
 
-    if ( !isai( var_0 ) || var_0._ID1244 != "human" )
+    if ( !isai( var_0 ) || var_0.type != "human" )
         return 0;
 
-    if ( self._ID1012 != "none" || var_0._ID1012 != "none" )
+    if ( self.stairsstate != "none" || var_0.stairsstate != "none" )
         return 0;
 
     if ( isdefined( self._ID23426 ) && isdefined( var_0._ID23426 ) )
@@ -876,9 +876,9 @@ _ID23357()
     }
 
     if ( !isdefined( var_0._ID23353._ID13763 ) )
-        var_0._ID23353._ID13763 = var_0._ID65[1];
+        var_0._ID23353._ID13763 = var_0.angles[1];
 
-    self._ID23353._ID36156 = self._ID23353._ID36155 - var_0._ID740;
+    self._ID23353._ID36156 = self._ID23353._ID36155 - var_0.origin;
     return 1;
 }
 
@@ -898,8 +898,8 @@ _ID23372( var_0 )
     if ( !isalive( var_0 ) )
         return;
 
-    self._ID1065 = var_0;
-    var_0._ID1065 = self;
+    self.syncedmeleetarget = var_0;
+    var_0.syncedmeleetarget = self;
     self._ID23353._ID22409 = 1;
     var_0._ID23353._ID22409 = 1;
     self linktoblendtotag( var_0, "tag_sync", 1, 1 );
@@ -910,11 +910,11 @@ _ID23368()
     if ( !_ID23364() )
     {
         self._ID24787 = gettime() + 1500;
-        self._ID24786 = self._ID23353._ID1191;
+        self._ID24786 = self._ID23353.target;
         return;
     }
 
-    var_0 = self._ID23353._ID1191;
+    var_0 = self._ID23353.target;
 
     if ( !animhasnotetrack( self._ID23353._ID3189, "sync" ) )
         return;
@@ -947,14 +947,14 @@ _ID23368()
         var_0._ID22034 = var_0._ID834;
     }
 
-    self._ID23353._ID1302 = self._ID1302;
+    self._ID23353.weapon = self.weapon;
     self._ID23353._ID41708 = animscripts\utility::_ID16202();
-    var_0._ID23353._ID1302 = var_0._ID1302;
+    var_0._ID23353.weapon = var_0.weapon;
     var_0._ID23353._ID41708 = var_0 animscripts\utility::_ID16202();
     self._ID23353._ID20038 = 1;
     var_0 animcustom( ::_ID23358, ::_ID23383 );
     var_0 thread _ID23356( self );
-    self._ID23353._ID1191 = undefined;
+    self._ID23353.target = undefined;
     _ID23358();
 }
 
@@ -978,8 +978,8 @@ _ID23367( var_0, var_1 )
     if ( !_ID23397() )
         return 0;
 
-    var_2 = self._ID23353._ID1191;
-    var_3 = distancesquared( var_2._ID740, var_0 );
+    var_2 = self._ID23353.target;
+    var_3 = distancesquared( var_2.origin, var_0 );
 
     if ( self._ID23353._ID28396 )
         var_4 = 256;
@@ -989,7 +989,7 @@ _ID23367( var_0, var_1 )
     if ( var_3 > var_4 )
         return 0;
 
-    self._ID23353._ID36155 = var_2._ID740 + self._ID23353._ID36156;
+    self._ID23353._ID36155 = var_2.origin + self._ID23353._ID36156;
 
     if ( !_ID23425() )
         return 0;
@@ -999,15 +999,15 @@ _ID23367( var_0, var_1 )
 
 _ID23366( var_0 )
 {
-    var_1 = distancesquared( ( self._ID740[0], self._ID740[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
+    var_1 = distancesquared( ( self.origin[0], self.origin[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
 
-    if ( var_1 < 64 && abs( self._ID23353._ID36155[2] - self._ID740[2] ) < 64 )
+    if ( var_1 < 64 && abs( self._ID23353._ID36155[2] - self.origin[2] ) < 64 )
         return 1;
 
     var_2 = distancesquared( ( var_0[0], var_0[1], 0 ), ( self._ID23353._ID36155[0], self._ID23353._ID36155[1], 0 ) );
-    var_3 = distancesquared( ( self._ID740[0], self._ID740[1], 0 ), ( self._ID23353._ID1191._ID740[0], self._ID23353._ID1191._ID740[1], 0 ) );
+    var_3 = distancesquared( ( self.origin[0], self.origin[1], 0 ), ( self._ID23353.target.origin[0], self._ID23353.target.origin[1], 0 ) );
 
-    if ( var_2 > var_3 && abs( self._ID23353._ID1191._ID740[2] - self._ID740[2] ) < 64 )
+    if ( var_2 > var_3 && abs( self._ID23353.target.origin[2] - self.origin[2] ) < 64 )
         return 1;
 
     return 0;
@@ -1040,14 +1040,14 @@ _ID23364()
     self clearanim( %body, 0.2 );
     self setanimknoball( animscripts\run::_ID16576(), %body, 1, 0.2 );
     self animmode( "zonly_physics" );
-    self._ID561 = 1;
+    self.keepclaimednode = 1;
 
     if ( isdefined( self._ID36736 ) && self._ID36736 == "riotshield" )
         var_0 = gettime() + 2500;
     else
         var_0 = gettime() + 1500;
 
-    var_1 = self._ID23353._ID1191._ID740;
+    var_1 = self._ID23353.target.origin;
 
     while ( _ID23367( var_1, var_0 ) )
     {
@@ -1099,12 +1099,12 @@ _ID23358()
     if ( isdefined( self._ID23353 ) && isdefined( self._ID23353._ID264 ) )
         self kill();
 
-    self._ID561 = 0;
+    self.keepclaimednode = 0;
 }
 
 _ID23379()
 {
-    self._ID23353._ID41410 = self._ID52;
+    self._ID23353._ID41410 = self.allowpain;
     self._ID23353._ID41420 = self._ID14507;
     _ID42407::_ID10949();
     _ID42407::_ID32628( 1 );
@@ -1112,18 +1112,18 @@ _ID23379()
 
 _ID23399()
 {
-    return isdefined( self._ID23353._ID1302 ) && self._ID23353._ID1302 != "none" && self._ID1302 != self._ID23353._ID1302;
+    return isdefined( self._ID23353.weapon ) && self._ID23353.weapon != "none" && self.weapon != self._ID23353.weapon;
 }
 
 _ID23382()
 {
-    if ( self._ID1302 != "none" && self._ID22034 != "none" )
+    if ( self.weapon != "none" && self._ID22034 != "none" )
         return;
 
-    if ( !isdefined( self._ID23353._ID1302 ) || self._ID23353._ID1302 == "none" )
+    if ( !isdefined( self._ID23353.weapon ) || self._ID23353.weapon == "none" )
         return;
 
-    _ID42407::_ID14803( self._ID23353._ID1302, self._ID23353._ID41708 );
+    _ID42407::_ID14803( self._ID23353.weapon, self._ID23353._ID41708 );
 
     if ( isdefined( self._ID23353._ID12152 ) )
     {
@@ -1191,8 +1191,8 @@ _ID23423()
     if ( !isdefined( self._ID23353._ID22409 ) )
         return;
 
-    if ( isdefined( self._ID1065 ) )
-        self._ID1065 _ID23424();
+    if ( isdefined( self.syncedmeleetarget ) )
+        self.syncedmeleetarget _ID23424();
 
     _ID23424();
 }
@@ -1200,14 +1200,14 @@ _ID23423()
 _ID23424()
 {
     self unlink();
-    self._ID1065 = undefined;
+    self.syncedmeleetarget = undefined;
 
     if ( !isalive( self ) )
         return;
 
     self._ID23353._ID22409 = undefined;
     self animmode( "zonly_physics" );
-    self orientmode( "face angle", self._ID65[1] );
+    self orientmode( "face angle", self.angles[1] );
 }
 
 _ID23394()
@@ -1293,7 +1293,7 @@ _ID23391( var_0 )
     {
         self playsound( "melee_knife_hit_body" );
 
-        if ( _ID42407::_ID18252( self._ID669, "TAG_KNIFE_FX" ) )
+        if ( _ID42407::_ID18252( self.model, "TAG_KNIFE_FX" ) )
         {
             playfxontag( level._ID1426["melee_knife_ai"], self, "TAG_KNIFE_FX" );
             jump loc_2066
@@ -1377,7 +1377,7 @@ _ID23385()
     var_0 = self getdroptofloorposition();
 
     if ( isdefined( var_0 ) )
-        self forceteleport( var_0, self._ID65 );
+        self forceteleport( var_0, self.angles );
     else
     {
 
@@ -1418,7 +1418,7 @@ _ID23383()
     if ( isdefined( self._ID23353._ID26280 ) )
         self._ID23353._ID26280 notify( "partner_end_melee" );
 
-    _ID23405( self._ID23353._ID1191 );
+    _ID23405( self._ID23353.target );
     _ID23374();
 }
 

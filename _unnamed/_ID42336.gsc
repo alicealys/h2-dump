@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
 
 }
@@ -594,10 +594,10 @@ _ID28970( var_0 )
 
 _ID15845( var_0 )
 {
-    if ( isdefined( self._ID1194 ) && self._ID1194 == "neutral" )
+    if ( isdefined( self.team ) && self.team == "neutral" )
         return;
 
-    if ( !isdefined( var_0 ) && level._ID912 == "credits" )
+    if ( !isdefined( var_0 ) && level.script == "credits" )
     {
         self._ID2453 = "private";
         return;
@@ -608,8 +608,8 @@ _ID15845( var_0 )
         if ( self._ID31217 == "none" )
             return;
 
-        self._ID680 = self._ID31217;
-        _ID16558( self._ID680 );
+        self.name = self._ID31217;
+        _ID16558( self.name );
         self notify( "set name and rank" );
         return;
     }
@@ -715,7 +715,7 @@ _ID15846( var_0 )
     if ( isai( self ) && self isbadguy() )
         self._ID2441 = var_3;
     else
-        self._ID680 = var_3;
+        self.name = var_3;
 }
 
 _ID16558( var_0 )

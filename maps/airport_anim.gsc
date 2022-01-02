@@ -1,11 +1,11 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID15518();
     _ID53822();
-    _ID794();
+    player();
     _ID49919();
     _ID51444();
     _ID47863();
@@ -427,7 +427,7 @@ _ID15518()
 }
 #using_animtree("player");
 
-_ID794()
+player()
 {
     level._ID30895["player_ending"]["end_player_shot"] = %h2_airport_ending_player;
     _ID42259::_ID2063( "player_ending", "start_fbs", "cops_arrive", "end_player_shot" );
@@ -608,8 +608,8 @@ _ID49250( var_0 )
 
     for (;;)
     {
-        var_1 = vectortoangles( level._ID794._ID740 - self._ID740 )[1];
-        var_1 = angleclamp180( self._ID65[1] - var_1 );
+        var_1 = vectortoangles( level.player.origin - self.origin )[1];
+        var_1 = angleclamp180( self.angles[1] - var_1 );
         var_1 = clamp( var_1, -60, 60 );
         var_2 = 0;
         var_3 = 0;
@@ -627,10 +627,10 @@ _ID49250( var_0 )
 
 _ID53084( var_0 )
 {
-    var_0._ID511 = 1;
-    var_0._ID507 = 1;
+    var_0.ignoreme = 1;
+    var_0.ignoreall = 1;
     wait 1;
-    var_0._ID1194 = "axis";
+    var_0.team = "axis";
 }
 
 _ID44021( var_0 )
@@ -657,7 +657,7 @@ _ID51644( var_0 )
 
 _ID47044( var_0 )
 {
-    var_0 setlookatentity( level._ID794 );
+    var_0 setlookatentity( level.player );
 }
 
 _ID48218( var_0 )
@@ -701,19 +701,19 @@ _ID43680( var_0 )
 
 _ID49054( var_0 )
 {
-    var_0._ID511 = 0;
+    var_0.ignoreme = 0;
     var_0 notify( "shoot_me" );
 }
 
 _ID49642( var_0 )
 {
-    var_0._ID464++;
-    var_1 = anglestoforward( var_0._ID65 );
-    var_2 = anglestoright( var_0._ID65 );
+    var_0.grenadeammo++;
+    var_1 = anglestoforward( var_0.angles );
+    var_2 = anglestoright( var_0.angles );
     var_2 *= -0.25;
-    var_3 = var_0._ID740 + var_1 * 50;
+    var_3 = var_0.origin + var_1 * 50;
     var_3 = var_3 + ( 0, 0, 14 ) + var_2;
-    var_1 = vectornormalize( var_3 - var_0._ID740 );
+    var_1 = vectornormalize( var_3 - var_0.origin );
     var_1 *= 800;
     var_4 = 2.5;
     var_0 magicgrenademanual( var_0 gettagorigin( "TAG_INHAND" ), var_1, var_4 );
@@ -724,13 +724,13 @@ _ID49642( var_0 )
 
 _ID47935( var_0 )
 {
-    var_0._ID464++;
-    var_1 = anglestoforward( var_0._ID65 );
-    var_2 = anglestoright( var_0._ID65 );
+    var_0.grenadeammo++;
+    var_1 = anglestoforward( var_0.angles );
+    var_2 = anglestoright( var_0.angles );
     var_2 *= 4;
-    var_3 = var_0._ID740 + var_1 * 50;
+    var_3 = var_0.origin + var_1 * 50;
     var_3 = var_3 + ( 0, 0, 6 ) + var_2;
-    var_1 = vectornormalize( var_3 - var_0._ID740 );
+    var_1 = vectornormalize( var_3 - var_0.origin );
     var_1 *= 1300;
     _ID42237::_ID14402( "massacre_nadethrow" );
     var_0 magicgrenademanual( var_0 gettagorigin( "j_wrist_ri" ), var_1, level._ID51803 );
@@ -738,17 +738,17 @@ _ID47935( var_0 )
 
 _ID45612( var_0 )
 {
-    var_1 = var_0._ID470;
-    var_0._ID470 = "flash_grenade";
-    var_0._ID464++;
-    var_2 = anglestoforward( var_0._ID65 );
-    var_3 = var_0._ID740 + var_2 * 50;
+    var_1 = var_0.grenadeweapon;
+    var_0.grenadeweapon = "flash_grenade";
+    var_0.grenadeammo++;
+    var_2 = anglestoforward( var_0.angles );
+    var_3 = var_0.origin + var_2 * 50;
     var_3 += ( 0, 0, 5 );
     var_4 = var_3 + ( 0, 0, 30 );
-    var_2 = vectornormalize( var_3 - var_0._ID740 );
+    var_2 = vectornormalize( var_3 - var_0.origin );
     var_2 *= 512;
     var_0 magicgrenademanual( var_0 gettagorigin( "TAG_INHAND" ), var_2, 1.5 );
-    var_0._ID470 = var_1;
+    var_0.grenadeweapon = var_1;
     wait 0.1;
     radiusdamage( var_4, 64, 5000, 5000 );
 }
@@ -756,7 +756,7 @@ _ID45612( var_0 )
 _ID43737( var_0 )
 {
     var_0._ID7._ID24881 = 1;
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
     var_0._ID48281 = 1;
 }
 
@@ -764,29 +764,29 @@ _ID44647( var_0 )
 {
     wait 1;
     var_0._ID7._ID24881 = 1;
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0._ID48281 = 1;
 }
 
 _ID48783( var_0 )
 {
     var_0._ID7._ID24881 = 0;
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
 }
 
 _ID44952( var_0 )
 {
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0 kill();
 }
 
 _ID50938( var_0 )
 {
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
     var_0._ID7._ID24881 = 1;
     var_1 = var_0 gettagorigin( "J_SpineUpper" );
-    var_2 = _ID42237::_ID16182( var_0._ID740, level._ID1194 );
-    var_3 = vectornormalize( var_2._ID740 - var_1 );
+    var_2 = _ID42237::_ID16182( var_0.origin, level.team );
+    var_3 = vectornormalize( var_2.origin - var_1 );
     var_4 = var_3 * 10;
 
     if ( getdvarint( "cg_blood" ) == 1 )
@@ -794,19 +794,19 @@ _ID50938( var_0 )
 
     var_0 thread _ID42259::_ID3020( var_0, "slide_across_car_death" );
     wait 1;
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0 kill();
 }
 
 _ID49809( var_0 )
 {
-    var_1 = var_0._ID470;
-    var_0._ID470 = "smoke_grenade_american";
-    var_0._ID464++;
-    var_2 = var_0._ID45402 - var_0._ID740 + ( 0, 0, 500 );
+    var_1 = var_0.grenadeweapon;
+    var_0.grenadeweapon = "smoke_grenade_american";
+    var_0.grenadeammo++;
+    var_2 = var_0._ID45402 - var_0.origin + ( 0, 0, 500 );
     var_3 = 6;
     var_0 magicgrenademanual( var_0 gettagorigin( "TAG_INHAND" ), var_2, var_3 );
-    var_0._ID470 = var_1;
+    var_0.grenadeweapon = var_1;
     wait 0.5;
     var_0 stopanimscripted();
     var_0 notify( "grenade_throw_done" );

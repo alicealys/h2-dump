@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("animated_props");
 
-_ID616()
+main()
 {
     if ( !isdefined( level._ID3055 ) )
         level._ID3055 = [];

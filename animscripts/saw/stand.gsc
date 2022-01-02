@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     self._ID10423 = "stand";
     animscripts\utility::_ID39672();
@@ -12,7 +12,7 @@ _ID616()
     self._ID28561 = %standsawgunner_aim;
     self._ID2040 = %saw_gunner_idle;
     self._ID2039 = %saw_gunner_firing_add;
-    thread animscripts\saw\common::_ID616( var_0 );
+    thread animscripts\saw\common::main( var_0 );
 }
 #using_animtree("mg42");
 

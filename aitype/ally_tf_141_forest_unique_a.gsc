@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "allies";
-    self._ID1244 = "human";
+    self.team = "allies";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 100;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 100;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "beretta";
 
@@ -24,59 +24,59 @@ _ID616()
     switch ( _ID42226::_ID15950( 17 ) )
     {
         case 0:
-            self._ID1302 = "m4_grenadier";
+            self.weapon = "m4_grenadier";
             break;
         case 1:
-            self._ID1302 = "m4_grunt";
+            self.weapon = "m4_grunt";
             break;
         case 2:
-            self._ID1302 = "m4m203_acog";
+            self.weapon = "m4m203_acog";
             break;
         case 3:
-            self._ID1302 = "m4m203_eotech";
+            self.weapon = "m4m203_eotech";
             break;
         case 4:
-            self._ID1302 = "m4m203_reflex";
+            self.weapon = "m4m203_reflex";
             break;
         case 5:
-            self._ID1302 = "tavor_acog";
+            self.weapon = "tavor_acog";
             break;
         case 6:
-            self._ID1302 = "tavor_mars";
+            self.weapon = "tavor_mars";
             break;
         case 7:
-            self._ID1302 = "m16_acog";
+            self.weapon = "m16_acog";
             break;
         case 8:
-            self._ID1302 = "m16_grenadier";
+            self.weapon = "m16_grenadier";
             break;
         case 9:
-            self._ID1302 = "m16_reflex";
+            self.weapon = "m16_reflex";
             break;
         case 10:
-            self._ID1302 = "masada";
+            self.weapon = "masada";
             break;
         case 11:
-            self._ID1302 = "masada_acog";
+            self.weapon = "masada_acog";
             break;
         case 12:
-            self._ID1302 = "masada_reflex";
+            self.weapon = "masada_reflex";
             break;
         case 13:
-            self._ID1302 = "scar_h";
+            self.weapon = "scar_h";
             break;
         case 14:
-            self._ID1302 = "scar_h_acog";
+            self.weapon = "scar_h_acog";
             break;
         case 15:
-            self._ID1302 = "scar_h_reflex";
+            self.weapon = "scar_h_reflex";
             break;
         case 16:
-            self._ID1302 = "scar_h_shotgun";
+            self.weapon = "scar_h_shotgun";
             break;
     }
 
-    _ID48832::_ID616();
+    _ID48832::main();
 }
 
 _ID988()

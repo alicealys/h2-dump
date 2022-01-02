@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "antiair_runner" );
     var_0 _ID42229::_ID32402( ( 2046, -19383, 3044 ), ( 270, 0, 0 ) );

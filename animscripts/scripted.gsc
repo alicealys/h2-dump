@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     self endon( "death" );
     self notify( "killanimscript" );
@@ -26,7 +26,7 @@ _ID616()
     self waittill( "killanimscript" );
 }
 
-_ID521( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
+init( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 {
     self._ID8196["notifyName"] = var_0;
     self._ID8196["origin"] = var_1;

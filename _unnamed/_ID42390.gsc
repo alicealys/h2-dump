@@ -20,12 +20,12 @@ _ID12943()
         if ( !_ID42407::_ID13019( "_stealth_enabled" ) )
             continue;
 
-        if ( !isalive( self._ID322 ) )
+        if ( !isalive( self.enemy ) )
             continue;
 
         if ( !_ID42389::_ID36331() )
         {
-            if ( !_ID12767( self._ID322 ) )
+            if ( !_ID12767( self.enemy ) )
                 continue;
         }
         else
@@ -34,9 +34,9 @@ _ID12943()
         thread _ID12948();
         wait 10;
 
-        while ( isdefined( self._ID322 ) && _ID42407::_ID13019( "_stealth_enabled" ) )
+        while ( isdefined( self.enemy ) && _ID42407::_ID13019( "_stealth_enabled" ) )
         {
-            var_0 = gettime() - self lastknowntime( self._ID322 );
+            var_0 = gettime() - self lastknowntime( self.enemy );
 
             if ( 20000 > var_0 )
             {
@@ -44,7 +44,7 @@ _ID12943()
                 continue;
             }
 
-            if ( distance( self._ID740, self._ID322._ID740 ) > self._ID322._ID630 )
+            if ( distance( self.origin, self.enemy.origin ) > self.enemy.maxvisibledist )
                 break;
 
             wait 0.5;
@@ -55,8 +55,8 @@ _ID12943()
 
         _ID42407::_ID13031( "_stealth_behavior_reaction_anim_in_progress" );
 
-        if ( isdefined( self._ID322 ) )
-            _ID42386::_ID12766( self._ID322, 0 );
+        if ( isdefined( self.enemy ) )
+            _ID42386::_ID12766( self.enemy, 0 );
 
         self clearenemy();
         _ID42388::_ID12763( "reset" );
@@ -98,7 +98,7 @@ _ID12948()
 {
     self endon( "death" );
     self endon( "pain_death" );
-    var_0 = self._ID322;
+    var_0 = self.enemy;
     self._ID11575 = undefined;
     self [[ self._ID1644._ID22585._ID28337 ]]();
 
@@ -118,7 +118,7 @@ _ID12772( var_0 )
     if ( _ID42389::_ID36322() || _ID42407::_ID13019( "_stealth_bad_event_listener" ) )
         return;
 
-    var_1 = distance( self._ID740, var_0._ID740 ) * 0.0005;
+    var_1 = distance( self.origin, var_0.origin ) * 0.0005;
     var_2 = level._ID1644._ID22585._ID23587 + var_1;
     _ID42386::_ID36279( "WARNING time = " + var_2 );
     level endon( _ID42386::_ID17449( "_stealth_spotted" ) );
@@ -190,7 +190,7 @@ _ID12845( var_0 )
                 if ( !isdefined( self._ID1644._ID22585._ID13251._ID4627[var_1] ) )
                     continue;
 
-                if ( var_1 == "bulletwhizby" && ( !isdefined( var_2._ID1194 ) || var_2._ID1194 == self._ID1194 ) )
+                if ( var_1 == "bulletwhizby" && ( !isdefined( var_2.team ) || var_2.team == self.team ) )
                     continue;
             default:
                 _ID42386::_ID17446( "_stealth_event" );
@@ -284,7 +284,7 @@ _ID13259()
 
         foreach ( var_7 in var_2 )
         {
-            if ( distancesquared( self._ID740, var_7._ID740 ) < var_4 )
+            if ( distancesquared( self.origin, var_7.origin ) < var_4 )
                 continue;
 
             var_5 = 1;
@@ -297,7 +297,7 @@ _ID13259()
 _ID12847( var_0, var_1 )
 {
     var_2 = undefined;
-    var_3 = self._ID1194;
+    var_3 = self.team;
 
     for (;;)
     {
@@ -322,7 +322,7 @@ _ID12847( var_0, var_1 )
         if ( !isdefined( var_2 ) )
             continue;
 
-        if ( isplayernumber( var_2 ) || isdefined( var_2._ID1194 ) && var_2._ID1194 != var_3 )
+        if ( isplayernumber( var_2 ) || isdefined( var_2.team ) && var_2.team != var_3 )
             break;
     }
 
@@ -340,7 +340,7 @@ _ID12847( var_0, var_1 )
         if ( !isdefined( var_6[var_8]._ID1644 ) )
             continue;
 
-        if ( distance( var_6[var_8]._ID740, self._ID740 ) > var_7 )
+        if ( distance( var_6[var_8].origin, self.origin ) > var_7 )
             continue;
 
         if ( var_6[var_8] _ID42407::_ID13023( "_stealth_behavior_asleep" ) && var_6[var_8] _ID42407::_ID13019( "_stealth_behavior_asleep" ) )

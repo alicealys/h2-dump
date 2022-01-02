@@ -1,11 +1,11 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" || getdvar( "beautiful_corner_hdr_demo" ) == "1" || getdvar( "beautiful_corner_security_cameras" ) == "1" )
     {
-        maps\gulag_beautiful_corner::_ID616();
+        maps\gulag_beautiful_corner::main();
         return;
     }
 
@@ -20,7 +20,7 @@ _ID616()
     level._ID10114 = 128;
     _ID42237::_ID9137( "f15", 1 );
     setsaveddvar( "g_friendlyNameDist", 0 );
-    _ID48864::_ID616();
+    _ID48864::main();
     precachestring( &"GULAG_SPIE_HINT" );
     precachestring( &"GULAG_SPIE_HINT_PC" );
     precachestring( &"GULAG_RAPPEL_HINT" );
@@ -78,29 +78,29 @@ _ID616()
     level._ID44935 = _ID42260::_ID45726;
     level._ID10930 = 1;
     level._ID9551 = ::_ID50479;
-    _ID42287::_ID521();
-    _ID46856::_ID616();
-    _ID42542::_ID616( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_1" );
-    _ID42542::_ID616( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_2" );
+    _ID42287::init();
+    _ID46856::main();
+    _ID42542::main( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_1" );
+    _ID42542::main( "vehicle_little_bird_bench", undefined, "script_vehicle_littlebird_bench_allylanding_2" );
     var_3 = getentarray( "gulag_destructible_volume", "targetname" );
     _ID42407::_ID22998( var_3 );
     _ID42407::_ID23000( var_3 );
-    _ID50975::_ID616();
-    maps\gulag_lighting::_ID616();
-    _ID49653::_ID616();
-    _ID51081::_ID616();
+    _ID50975::main();
+    maps\gulag_lighting::main();
+    _ID49653::main();
+    _ID51081::main();
     thread maps\gulag_ending::_ID44293();
     thread _ID44384();
-    maps\gulag_anim::_ID616();
-    _ID42323::_ID616();
+    maps\gulag_anim::main();
+    _ID42323::main();
     _ID42272::_ID33575( "compass_map_gulag" );
     thread maps\gulag_code::_ID43205();
     setdvar( "use_improved_breaches", 1 );
     level._ID51829 = "mil_frame_charge";
     _ID42367::_ID34366();
     level._ID1426["breach_door"] = loadfx( "fx/explosions/breach_wall_concrete" );
-    _ID42337::_ID616( level._ID805 );
-    level._ID794 setactionslot( 1, "" );
+    _ID42337::main( level._ID805 );
+    level.player setactionslot( 1, "" );
     _ID42407::_ID1892( "allies", maps\gulag_code::_ID24832 );
     _ID42237::_ID30398( "helper_model", _ID42407::_ID31860 );
     _ID42407::_ID1895( "grenade_launcher", &"SCRIPT_LEARN_GRENADE_LAUNCHER", maps\gulag_code::_ID51178 );
@@ -197,7 +197,7 @@ _ID616()
     level._ID6112["tv_explode"] = loadfx( "fx/explosions/tv_explosion" );
     thread _ID53751();
     thread maps\gulag_code::_ID45749();
-    maps\gulag_aud::_ID616();
+    maps\gulag_aud::main();
     thread maps\gulag_code::_ID50467();
     level thread maps\gulag_code::_ID51497();
     level._ID53749 = [];
@@ -399,8 +399,8 @@ _ID53751()
 
 _ID52174()
 {
-    level._ID794 freezecontrols( 1 );
-    var_0 = _ID42313::_ID9125( "black", 1, level._ID794 );
+    level.player freezecontrols( 1 );
+    var_0 = _ID42313::_ID9125( "black", 1, level.player );
     wait 0.5;
     var_1 = [];
     var_1[var_1.size] = &"GULAG_INTROSCREEN_LINE_4";
@@ -410,9 +410,9 @@ _ID52174()
     level thread _ID42318::_ID20371( var_1 );
     wait 2;
     var_0 fadeovertime( 4 );
-    var_0._ID55 = 0;
+    var_0.alpha = 0;
     wait 1;
-    level._ID794 freezecontrols( 0 );
+    level.player freezecontrols( 0 );
     wait 3;
     var_0 destroy();
 }
@@ -424,8 +424,8 @@ _ID50479()
     level._ID35073["allies"] = [];
     level._ID35073["axis"] = [];
     level._ID35073["neutral"] = [];
-    _ID42337::_ID616( level._ID805 );
-    level._ID794 setactionslot( 1, "nightvision" );
+    _ID42337::main( level._ID805 );
+    level.player setactionslot( 1, "nightvision" );
 }
 
 _ID49377()
@@ -467,7 +467,7 @@ _ID50731()
 
 _ID50340()
 {
-    level._ID794 disableweapons();
+    level.player disableweapons();
     thread maps\gulag_code::_ID51085();
     level._ID38733 = 5000;
     level._ID53837 = 1;
@@ -510,7 +510,7 @@ _ID46981()
 {
     _ID42407::_ID4917( "allies" );
     maps\gulag_code::_ID54691();
-    level._ID794 disableweapons();
+    level.player disableweapons();
     enablepg( "hide_interior_portal_group", 0 );
     level._ID53563 setsurfacetype( "default" );
     _ID42237::_ID14413( "display_introscreen_text" );
@@ -580,7 +580,7 @@ _ID46981()
     _ID42237::_ID3350( var_27, maps\gulag_code::_ID50170 );
     wait 4;
     var_28 = getent( "car_blows_up", "script_noteworthy" );
-    radiusdamage( var_28._ID740, 800, 5000, 5000 );
+    radiusdamage( var_28.origin, 800, 5000, 5000 );
     var_29 = getentarray( "tarp_puller_spawner", "targetname" );
     _ID42237::_ID3350( var_29, _ID42407::_ID35014 );
     level waittill( "tarp_activate" );
@@ -603,12 +603,12 @@ _ID47975()
     thread maps\gulag_code::_ID48680();
     var_0 = getent( "heli_intro_player", "targetname" );
     var_1 = _ID42237::_ID16638( "start_player_perimeter", "script_noteworthy" );
-    var_0._ID740 = var_1._ID740;
-    var_0._ID65 = var_1._ID65;
-    maps\gulag_code::_ID51479( var_0._ID1191, var_1._ID1193 );
-    var_0._ID1191 = var_1._ID1193;
+    var_0.origin = var_1.origin;
+    var_0.angles = var_1.angles;
+    maps\gulag_code::_ID51479( var_0.target, var_1.targetname );
+    var_0.target = var_1.targetname;
     thread maps\gulag_code::_ID45347();
-    level._ID794 setplayerangles( ( 0, -163, 0 ) );
+    level.player setplayerangles( ( 0, -163, 0 ) );
     var_2 = 24;
     level._ID52066 vehicle_setspeedimmediate( var_2, var_2 / 4, var_2 / 4 );
     level._ID49614 = 3;
@@ -623,10 +623,10 @@ _ID49189()
     maps\gulag_lighting::_ID46054( "gulag_flight" );
     var_0 = getent( "heli_intro_player", "targetname" );
     var_1 = _ID42237::_ID16638( "f15_attack_start", "script_noteworthy" );
-    var_0._ID740 = var_1._ID740;
-    var_0._ID65 = var_1._ID65;
-    maps\gulag_code::_ID51479( var_0._ID1191, var_1._ID1193 );
-    var_0._ID1191 = var_1._ID1193;
+    var_0.origin = var_1.origin;
+    var_0.angles = var_1.angles;
+    maps\gulag_code::_ID51479( var_0.target, var_1.targetname );
+    var_0.target = var_1.targetname;
     thread maps\gulag_code::_ID45347();
     var_2 = 40;
     level._ID52066 vehicle_setspeedimmediate( var_2, var_2 / 4, var_2 / 4 );
@@ -652,7 +652,7 @@ _ID43615()
     wait 2;
     thread _ID42407::_ID14403( "last_tower_event", 3 );
     _ID42407::_ID4422( "gulag_perimeter" );
-    level._ID794 giveweapon( "m4m203_reflex_arctic" );
+    level.player giveweapon( "m4m203_reflex_arctic" );
 
     if ( isdefined( level._ID43135.tactical_greenberet ) && level._ID43135.tactical_greenberet == 1 )
     {
@@ -688,7 +688,7 @@ _ID43615()
     level._ID52066 waittill( "nearing_landing" );
     wait 0.3;
     setsaveddvar( "ammoCounterHide", 1 );
-    level._ID794 disableweapons( 0, 500, 0.2 );
+    level.player disableweapons( 0, 500, 0.2 );
     _ID42475::_ID34575( "start_helicopter_landing" );
     thread _ID42407::_ID28864( "gulag_lbp1_touchdown" );
     thread _ID42407::_ID28864( "gulag_lbp1_deployed" );
@@ -698,19 +698,19 @@ _ID43615()
     level._ID53563 stoplookat();
     thread maps\gulag_code::_ID51013();
     level._ID52066 waittill( "stable_for_unlink" );
-    level._ID794 setactionslot( 1, "nightvision" );
-    level._ID794 giveweapon( "claymore" );
-    level._ID794 setactionslot( 4, "weapon", "claymore" );
-    level._ID794 givemaxammo( "claymore" );
+    level.player setactionslot( 1, "nightvision" );
+    level.player giveweapon( "claymore" );
+    level.player setactionslot( 4, "weapon", "claymore" );
+    level.player givemaxammo( "claymore" );
     setsaveddvar( "ammoCounterHide", 0 );
-    level._ID794 thread _ID42407::_ID46142( "disable_exterior_fx" );
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player thread _ID42407::_ID46142( "disable_exterior_fx" );
+    level.player playersetgroundreferenceent( undefined );
     missile_deleteattractor( level._ID27617 );
     var_0 = getaiarray( "allies" );
 
     foreach ( var_2 in var_0 )
     {
-        var_2._ID513 = 1;
+        var_2.ignoresuppression = 1;
         var_2 _ID42407::_ID26354( 200 );
     }
 
@@ -719,19 +719,19 @@ _ID43615()
     var_7 = anglestoforward( var_6 );
     var_7 *= 32;
     var_8 = _ID42237::_ID35164();
-    var_8._ID740 = level._ID52235._ID740;
-    var_8._ID65 = level._ID52235._ID65;
+    var_8.origin = level._ID52235.origin;
+    var_8.angles = level._ID52235.angles;
     level._ID52235 linkto( var_8 );
     var_9 = 0.2;
-    var_8 moveto( var_8._ID740 + var_7 + ( 0, 0, 4 ), var_9, 0.1, 0.1 );
+    var_8 moveto( var_8.origin + var_7 + ( 0, 0, 4 ), var_9, 0.1, 0.1 );
     wait(var_9);
     level._ID52235 delete();
     var_8 delete();
     maps\gulag_code::_ID54035();
-    level._ID794 allowprone( 1 );
-    level._ID794 allowcrouch( 1 );
-    level._ID794 _meth_830f( 1 );
-    level._ID794 allowjump( 1 );
+    level.player allowprone( 1 );
+    level.player allowcrouch( 1 );
+    level.player _meth_830f( 1 );
+    level.player allowjump( 1 );
     _ID42407::_ID4422( "player_lands" );
     level._ID53563 _ID42407::_ID14803( "m4m203_reflex_arctic", "primary" );
     _ID42237::_ID14402( "access_control_room" );
@@ -745,8 +745,8 @@ _ID35701()
     var_0 = _ID42237::_ID16638( "ghost_spawner_struct", "targetname" );
     var_1 = getent( "ghost", "script_noteworthy" );
     var_1._ID31152 = undefined;
-    var_1._ID740 = var_0._ID740;
-    var_1._ID65 = var_0._ID65;
+    var_1.origin = var_0.origin;
+    var_1.angles = var_0.angles;
     var_2 = getentarray( "start_controlroom_spawner", "targetname" );
     var_2 = maps\gulag_code::_ID48805( var_2 );
     var_2[var_2.size] = var_1;
@@ -754,8 +754,8 @@ _ID35701()
     _func_31b( 1 );
     _func_31c( 2 );
     var_3 = getent( "start_controlroom_player", "targetname" );
-    level._ID794 setorigin( var_3._ID740 );
-    level._ID794 setplayerangles( var_3._ID65 );
+    level.player setorigin( var_3.origin );
+    level.player setplayerangles( var_3.angles );
 }
 
 _ID54033()
@@ -805,7 +805,7 @@ _ID46995()
     foreach ( var_2 in var_0 )
     {
         var_2._ID4867 = 1;
-        var_2._ID86 = 1;
+        var_2.attackeraccuracy = 1;
     }
 
     _ID42237::_ID14421( "last_outside_guys", "player_moves_into_gulag" );
@@ -821,7 +821,7 @@ _ID46995()
     var_0 = getaiarray( "allies" );
 
     foreach ( var_2 in var_0 )
-        var_2._ID513 = 1;
+        var_2.ignoresuppression = 1;
 
     var_8 = getent( "friendly_reinforcement_trigger", "targetname" );
     var_8 thread maps\gulag_code::_ID46588();
@@ -886,14 +886,14 @@ _ID46995()
     var_0 = getaiarray( "allies" );
 
     foreach ( var_2 in var_0 )
-        var_2._ID513 = 0;
+        var_2.ignoresuppression = 0;
 
     thread maps\gulag_code::_ID50385();
     var_0 = getaiarray( "allies" );
     var_19 = [];
     var_19[0] = level._ID53563;
     var_19[1] = level._ID47319;
-    var_0 = _ID42237::_ID15566( level._ID794._ID740, var_0, var_19 );
+    var_0 = _ID42237::_ID15566( level.player.origin, var_0, var_19 );
     var_20 = 2;
 
     for ( var_13 = 0; var_13 < var_20; var_13++ )
@@ -966,7 +966,7 @@ _ID46995()
     wait 1;
     level._ID53563 _ID42407::_ID10805( "gulag_cmt_thatsbetter" );
     var_21 = getent( "soap_securitydoor", "targetname" );
-    var_22 = distance( level._ID53563._ID740, var_21._ID740 );
+    var_22 = distance( level._ID53563.origin, var_21.origin );
 
     if ( var_22 < 8 )
         var_21 thread _ID42259::_ID3111( level._ID53563, "securitydoor_soap_enter" );
@@ -1017,8 +1017,8 @@ _ID53042()
     _func_31b( 3 );
     _func_31b( 4 );
     var_1 = getent( "start_armory_player", "targetname" );
-    level._ID794 setorigin( var_1._ID740 );
-    level._ID794 setplayerangles( var_1._ID65 );
+    level.player setorigin( var_1.origin );
+    level.player setplayerangles( var_1.angles );
     _ID42407::_ID50742( "0.5 12 2 2" );
     wait 0.05;
     level._ID53563 _ID42407::_ID32315( "cyan" );
@@ -1077,12 +1077,12 @@ _ID49089()
     maps\gulag_code::_ID52132();
     var_12 = gettime();
     _ID42407::_ID32411( 0 );
-    level._ID794._ID512 = 1;
+    level.player.ignorerandombulletdamage = 1;
     _ID42407::_ID4424( "armory_fight", 10 );
     _ID42407::_ID40847( var_12, 3 );
     wait 0.5;
     _ID42298::_ID39669();
-    level._ID794._ID512 = 0;
+    level.player.ignorerandombulletdamage = 0;
     thread _ID42407::_ID28864( "gulag_gst_gotmoretangos" );
     var_7 = getaiarray( "allies" );
 
@@ -1161,7 +1161,7 @@ _ID49089()
     level.cellblock_spawning_door show();
     level.cellblock_spawning_door solid();
 
-    if ( level._ID794 getcurrentweapon() == "riotshield" )
+    if ( level.player getcurrentweapon() == "riotshield" )
     {
         _ID42237::_ID14388( "friendlies_use_riotshield" );
         level._ID53563 thread _ID42407::_ID10805( "gulag_cmt_usesheild" );
@@ -1217,8 +1217,8 @@ _ID47116()
     _func_31b( 4 );
     _func_31b( 5 );
     var_2 = getent( "start_rappel_player", "targetname" );
-    level._ID794 setorigin( var_2._ID740 );
-    level._ID794 setplayerangles( var_2._ID65 );
+    level.player setorigin( var_2.origin );
+    level.player setplayerangles( var_2.angles );
     _ID42407::_ID50742( "0.5 12 2 2" );
     maps\gulag_code::_ID48873();
 }
@@ -1241,7 +1241,7 @@ _ID53523()
     foreach ( var_2 in var_0 )
     {
         var_2._ID4867 = 1;
-        var_2._ID86 = 1;
+        var_2.attackeraccuracy = 1;
     }
 
     maps\gulag_code::_ID53804();
@@ -1262,7 +1262,7 @@ _ID53523()
     _ID42237::_ID14413( "leaving_cellblock" );
     _ID42407::_ID1805( "friendly_nvg_hallway_trigger" );
     maps\gulag_lighting::_ID45391( "exploding_wall" );
-    level._ID794 _ID42407::_ID10226( 0.8, _ID42407::_ID11085, "nvg", undefined, undefined, undefined, undefined, 15 );
+    level.player _ID42407::_ID10226( 0.8, _ID42407::_ID11085, "nvg", undefined, undefined, undefined, undefined, 15 );
     _ID42237::_ID14413( "nvg_zone" );
     var_6 = getentarray( "hallway_runner_spawner", "script_noteworthy" );
     var_7 = getnodearray( "nvg_ambush_node", "targetname" );
@@ -1270,7 +1270,7 @@ _ID53523()
     _ID42237::_ID3350( var_7, maps\gulag_code::_ID53952 );
 
     foreach ( var_10, var_9 in var_6 )
-        var_9._ID740 = var_7[var_10]._ID740;
+        var_9.origin = var_7[var_10].origin;
 
     _ID42407::_ID1805( "friendly_nvg_cell_hall_postup" );
     thread maps\gulag_code::_ID46777();
@@ -1285,13 +1285,13 @@ _ID53523()
     disableforcedsunshadows();
     _ID42234::_ID13611( "hall_attack_explosion" );
     _ID42475::_ID34575( "start_hallway_attack" );
-    level._ID794 _ID42237::_ID10192( 0.5, ::shellshock, "gulag_attack", 5, 0 );
+    level.player _ID42237::_ID10192( 0.5, ::shellshock, "gulag_attack", 5, 0 );
     setsaveddvar( "compass", 0 );
     setsaveddvar( "actionSlotsHide", 1 );
     setsaveddvar( "hud_showStance", 0 );
     var_12 = getent( "explosion_ref", "targetname" );
-    var_13 = level._ID794 getplayerangles();
-    var_14 = angleclamp180( var_13[1] - var_12._ID65[1] );
+    var_13 = level.player getplayerangles();
+    var_14 = angleclamp180( var_13[1] - var_12.angles[1] );
     var_15 = "front";
 
     if ( var_14 > 45 && var_14 <= 135 )
@@ -1303,23 +1303,23 @@ _ID53523()
 
     var_16 = "explosion_" + var_15;
     var_17 = getent( "explosion_scripted_node", "targetname" );
-    var_18 = var_17._ID740 - level._ID794._ID740;
-    var_18 = ( cos( var_17._ID65[1] ), sin( var_17._ID65[1] ), 0 ) * length2d( var_18 );
-    var_17._ID740 = var_17._ID740 - var_18;
-    level._ID794 enabledeathshield( 1 );
-    level._ID794 disableweapons( 1 );
-    level._ID794 setstance( "stand" );
-    level._ID794 freezecontrols( 1 );
+    var_18 = var_17.origin - level.player.origin;
+    var_18 = ( cos( var_17.angles[1] ), sin( var_17.angles[1] ), 0 ) * length2d( var_18 );
+    var_17.origin = var_17.origin - var_18;
+    level.player enabledeathshield( 1 );
+    level.player disableweapons( 1 );
+    level.player setstance( "stand" );
+    level.player freezecontrols( 1 );
     var_19 = _ID42407::_ID35028( "worldbody" );
-    var_19._ID740 = level._ID794 getorigin();
-    var_19._ID65 = var_13;
+    var_19.origin = level.player getorigin();
+    var_19.angles = var_13;
 
-    if ( level._ID794 _meth_85d1() )
+    if ( level.player _meth_85d1() )
         var_19 hide();
 
-    level._ID794 playerlinktoabsolute( var_19, "tag_player" );
-    var_20 = spawn( "script_model", level._ID794._ID740 );
-    var_20._ID65 = ( 0, var_13[1], var_13[2] );
+    level.player playerlinktoabsolute( var_19, "tag_player" );
+    var_20 = spawn( "script_model", level.player.origin );
+    var_20.angles = ( 0, var_13[1], var_13[2] );
     var_20 setmodel( "tag_origin" );
     var_19 linkto( var_20, "tag_origin" );
     var_21 = _ID42407::_ID35028( "worldbody" );
@@ -1328,14 +1328,14 @@ _ID53523()
     waittillframeend;
     var_22 = var_21 gettagorigin( "tag_player" );
     var_21 delete();
-    earthquake( 0.3, 3, level._ID794._ID740, 5000 );
-    level._ID794 _meth_80b5( "damage_heavy" );
-    level._ID794 _ID42237::_ID10192( 2, ::_meth_80b6, "damage_heavy" );
+    earthquake( 0.3, 3, level.player.origin, 5000 );
+    level.player _meth_80b5( "damage_heavy" );
+    level.player _ID42237::_ID10192( 2, ::_meth_80b6, "damage_heavy" );
     var_23 = getaiarray( "axis" );
 
     foreach ( var_2 in var_23 )
     {
-        if ( distance( level._ID794._ID740, var_2._ID740 ) < 350 )
+        if ( distance( level.player.origin, var_2.origin ) < 350 )
             var_2 _ID42237::_ID10192( 0.5, ::kill );
     }
 
@@ -1356,11 +1356,11 @@ _ID53523()
     var_20 moveto( var_22, 1 );
     wait(var_30);
     level notify( "stop_hallway_attack" );
-    level._ID794 unlink();
-    level._ID794 freezecontrols( 0 );
+    level.player unlink();
+    level.player freezecontrols( 0 );
     var_19 delete();
-    level._ID794 enableweapons();
-    level._ID794 enabledeathshield( 0 );
+    level.player enableweapons();
+    level.player enabledeathshield( 0 );
     setsaveddvar( "compass", 1 );
     setsaveddvar( "actionSlotsHide", 0 );
     setsaveddvar( "hud_showStance", 1 );
@@ -1388,8 +1388,8 @@ _ID36068()
 
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
     var_2 = _ID42237::_ID16638( "start_tunnel_player", "targetname" );
-    level._ID794 setorigin( var_2._ID740 );
-    level._ID794 setplayerangles( var_2._ID65 );
+    level.player setorigin( var_2.origin );
+    level.player setplayerangles( var_2.angles );
 }
 
 _ID54650()
@@ -1433,7 +1433,7 @@ _ID54650()
     var_2 = getaiarray( "allies" );
 
     foreach ( var_4 in var_2 )
-        var_4._ID381 = 1;
+        var_4.fixednode = 1;
 
     thread _ID42407::_ID28864( "gulag_gst_30ftonleft" );
     thread maps\gulag_aud::pipe_room_breach_dialog_flag();
@@ -1458,8 +1458,8 @@ _ID47976()
 
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
     var_2 = getent( "start_bathroom_player", "targetname" );
-    level._ID794 setorigin( var_2._ID740 );
-    level._ID794 setplayerangles( var_2._ID65 );
+    level.player setorigin( var_2.origin );
+    level.player setplayerangles( var_2.angles );
     _ID42407::_ID1805( "breach_bathroom_postup" );
 }
 
@@ -1509,10 +1509,10 @@ _ID50660()
 
     foreach ( var_10 in var_8 )
     {
-        var_10._ID51367 = var_10._ID37018;
-        var_10._ID43561 = var_10._ID219;
-        var_10._ID37018 = 2000;
-        var_10._ID219 = 6000;
+        var_10._ID51367 = var_10.threatupdateinterval;
+        var_10._ID43561 = var_10.coversearchinterval;
+        var_10.threatupdateinterval = 2000;
+        var_10.coversearchinterval = 6000;
     }
 
     thread maps\gulag_aud::_ID52322();
@@ -1527,8 +1527,8 @@ _ID50660()
     var_16 = getent( "gulag_shower_destructibles", "script_noteworthy" );
     var_16 _ID42407::_ID1786();
     var_16 _ID42407::_ID1794();
-    level._ID794._ID86 = 0;
-    level._ID794 _ID42407::_ID10226( 6, _ID42298::_ID39638 );
+    level.player.attackeraccuracy = 0;
+    level.player _ID42407::_ID10226( 6, _ID42298::_ID39638 );
     _ID42237::_ID14388( "gulag_enable_interior_fx_vol" );
     _ID42237::_ID14402( "gulag_enable_shower_fx_vol" );
     _ID42407::_ID10226( 3, maps\gulag_code::_ID51304, "shower_hanging_lamp", "shower_hanging_light", 1 );
@@ -1576,7 +1576,7 @@ _ID50660()
     var_21 = getaiarray( "allies" );
 
     foreach ( var_14 in var_21 )
-        var_14._ID86 = 0;
+        var_14.attackeraccuracy = 0;
 
     thread maps\gulag_code::_ID48606();
     _ID42237::_ID14413( "player_exited_bathroom" );
@@ -1586,14 +1586,14 @@ _ID50660()
     foreach ( var_10 in var_21 )
     {
         if ( isdefined( var_10._ID51367 ) )
-            var_10._ID37018 = var_10._ID51367;
+            var_10.threatupdateinterval = var_10._ID51367;
 
         if ( isdefined( var_10._ID43561 ) )
-            var_10._ID219 = var_10._ID43561;
+            var_10.coversearchinterval = var_10._ID43561;
     }
 
     _ID42237::_ID3350( var_21, _ID42407::_ID41628, "rescue_begins" );
-    level._ID794 thread _ID42407::_ID41628( "rescue_begins" );
+    level.player thread _ID42407::_ID41628( "rescue_begins" );
     _ID42407::_ID29534( "axis", maps\gulag_code::_ID50040 );
     _ID42237::_ID30398( "slide_trigger", maps\gulag_code::_ID46608 );
     var_21 = getaiarray( "bad_guys" );
@@ -1608,7 +1608,7 @@ _ID50660()
 
 _ID49040()
 {
-    physicsexplosionsphere( level._ID794._ID740, 700, 300, 1 );
+    physicsexplosionsphere( level.player.origin, 700, 300, 1 );
 }
 
 _ID46655()
@@ -1642,8 +1642,8 @@ _ID51727()
 
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
     var_2 = getent( "start_rescue_player", "targetname" );
-    level._ID794 setorigin( var_2._ID740 );
-    level._ID794 setplayerangles( var_2._ID65 );
+    level.player setorigin( var_2.origin );
+    level.player setplayerangles( var_2.angles );
     _ID42407::_ID1805( "breach_rescue_trigger" );
     _ID42237::_ID14402( "player_near_tv" );
 }
@@ -1669,7 +1669,7 @@ _ID48388()
     var_0 = getaiarray( "bad_guys" );
     _ID42237::_ID3350( var_0, maps\gulag_code::_ID49760 );
     _ID42237::_ID14402( "rescue_begins" );
-    level._ID794._ID11563 = 1;
+    level.player._ID11563 = 1;
     level._ID14776 = 1;
     _ID42407::_ID4422( "end_breach" );
     thread _ID42407::_ID28864( "gulag_gst_8tangos" );
@@ -1678,18 +1678,18 @@ _ID48388()
     level._ID34228 = [];
     level._ID34228[3] = 1;
     var_3 = _ID42237::_ID35164();
-    var_3._ID740 = level._ID6032[3]._ID22142._ID740;
-    var_3._ID65 = level._ID6032[3]._ID22142._ID65;
+    var_3.origin = level._ID6032[3]._ID22142.origin;
+    var_3.angles = level._ID6032[3]._ID22142.angles;
     var_4 = _ID42237::_ID35164();
-    var_5 = var_1._ID740;
-    var_6 = var_1._ID65;
+    var_5 = var_1.origin;
+    var_6 = var_1.angles;
     var_0 = getaiarray( "allies" );
 
     for (;;)
     {
         var_1 waittill( "trigger" );
 
-        if ( !level._ID794 _ID42367::_ID6021() )
+        if ( !level.player _ID42367::_ID6021() )
             break;
     }
 
@@ -1698,13 +1698,13 @@ _ID48388()
     level._ID11635 = 0;
     var_7 = getentarray( "ending_room_spawner", "targetname" );
     waitframe;
-    level._ID794 dontinterpolate();
-    var_4._ID740 = level._ID794._ID740;
-    var_4._ID65 = level._ID794._ID65;
+    level.player dontinterpolate();
+    var_4.origin = level.player.origin;
+    var_4.angles = level.player.angles;
     var_4 linkto( var_3 );
-    level._ID794 playerlinkto( var_4, "tag_origin", 1, 0, 0, 90, 90, 0 );
-    var_3._ID740 = level._ID6032[4]._ID22142._ID740;
-    var_3._ID65 = level._ID6032[4]._ID22142._ID65;
+    level.player playerlinkto( var_4, "tag_origin", 1, 0, 0, 90, 90, 0 );
+    var_3.origin = level._ID6032[4]._ID22142.origin;
+    var_3.angles = level._ID6032[4]._ID22142.angles;
     thread _ID52182( var_2, var_0 );
 
     if ( level._ID35897 == "ending" )
@@ -1722,33 +1722,33 @@ _ID48388()
     _ID42407::_ID10226( 2.5, maps\gulag_code::_ID51304, "escape_hanging_lamp", "escape_hanging_light", 1 );
     maps\gulag_code::_ID50315( "emergency_rotating light_orange", "emergency_light_gulag" );
     thread maps\gulag_aud::_ID46776();
-    level._ID794 setstance( "stand" );
-    level._ID794 enableinvulnerability();
-    level._ID794 disableweaponswitch();
-    level._ID794 disableoffhandweapons();
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
-    level._ID794 _meth_830f( 0 );
-    level._ID794 allowjump( 0 );
-    level._ID794._ID86 = 0;
-    level._ID794._ID512 = 1;
-    level._ID794 _ID42407::_ID10226( 15, _ID42298::_ID39638 );
+    level.player setstance( "stand" );
+    level.player enableinvulnerability();
+    level.player disableweaponswitch();
+    level.player disableoffhandweapons();
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
+    level.player _meth_830f( 0 );
+    level.player allowjump( 0 );
+    level.player.attackeraccuracy = 0;
+    level.player.ignorerandombulletdamage = 1;
+    level.player _ID42407::_ID10226( 15, _ID42298::_ID39638 );
     var_9 = getent( "price_spawner", "targetname" );
     var_9 _ID42407::_ID35014();
     var_9 = getent( "price_choke_spawner", "targetname" );
     var_10 = var_9 _ID42407::_ID35014();
     var_10._ID3189 = "chokey";
     var_10 _ID42407::_ID17509();
-    var_10._ID486 = 5000;
+    var_10.health = 5000;
     var_10.cheat._ID48626 = 1;
     var_10 _ID42407::_ID1868( maps\gulag_code::_ID46526 );
     var_11 = _ID42237::_ID16638( "ending_breach_org", "targetname" );
     level._ID52027 = var_11;
     var_3 = _ID42237::_ID35164();
-    var_3._ID740 = var_11._ID740;
-    var_3._ID65 = var_11._ID65;
+    var_3.origin = var_11.origin;
+    var_3.angles = var_11.angles;
     var_12 = _ID42237::_ID16638( "anim_node", "targetname" );
-    var_13 = level._ID794._ID28340;
+    var_13 = level.player._ID28340;
     var_14 = spawnstruct();
     var_14._ID337 = var_3;
     var_14._ID409 = -38;
@@ -1778,12 +1778,12 @@ _ID48388()
     thread maps\gulag_code::_ID53463();
     soundtime( "weapons_plr", 0 );
     level._ID28543 thread _ID42407::_ID27079( "scn_gulag_price_rescue_chain" );
-    _ID42407::_ID10226( 3.45, _ID42237::_ID27077, "scn_gulag_price_rescue_punch", level._ID794 geteye() );
-    _ID42407::_ID10226( 4.35, _ID42237::_ID27077, "scn_gulag_price_rescue_bodyfall", level._ID794 geteye() );
+    _ID42407::_ID10226( 3.45, _ID42237::_ID27077, "scn_gulag_price_rescue_punch", level.player geteye() );
+    _ID42407::_ID10226( 4.35, _ID42237::_ID27077, "scn_gulag_price_rescue_bodyfall", level.player geteye() );
     var_25 = getent( "price_chair", "targetname" );
     thread maps\gulag_code::_ID48290( var_25, var_12 );
     var_12 _ID42259::_ID3099( var_17, "price_breach" );
-    level._ID794 setmovespeedscale( 1 );
+    level.player setmovespeedscale( 1 );
     var_26 = getaiarray( "axis" );
 
     foreach ( var_19 in var_26 )
@@ -1793,10 +1793,10 @@ _ID48388()
     }
 
     var_9 = getent( "endlog_soap_spawner", "targetname" );
-    var_9._ID216 = 1;
+    var_9.count = 1;
     var_9 _ID42407::_ID35014();
     var_9 = getentarray( "endlog_redshirt_spawner", "targetname" )[0];
-    var_9._ID216 = 1;
+    var_9.count = 1;
     var_9 _ID42407::_ID35014();
     var_29 = _ID42407::_ID35028( "1911" );
     var_17 = [];
@@ -1843,7 +1843,7 @@ _ID50411( var_0, var_1 )
     var_3 = getanimlength( var_2 );
     wait(var_3);
     var_4 = var_1;
-    var_4._ID740 = var_4._ID740 + ( 40, -45, 0 );
+    var_4.origin = var_4.origin + ( 40, -45, 0 );
     var_0._ID9827 = ::_ID48835;
     var_0._ID46569 = var_4;
     var_0 kill();
@@ -1852,7 +1852,7 @@ _ID50411( var_0, var_1 )
 _ID52182( var_0, var_1 )
 {
     wait 0.1;
-    var_0 notify( "trigger",  level._ID794  );
+    var_0 notify( "trigger",  level.player  );
     wait 2.5;
     level notify( "kill_color_replacements" );
     level waittill( "sp_slowmo_breachanim_done" );
@@ -1884,8 +1884,8 @@ _ID52182( var_0, var_1 )
 _ID45109( var_0, var_1 )
 {
     wait(var_0 + 0.5);
-    level._ID794 enableweapons();
-    var_2 = level._ID794 getweaponslistprimaries();
+    level.player enableweapons();
+    var_2 = level.player getweaponslistprimaries();
 
     foreach ( var_4 in var_2 )
     {
@@ -1894,26 +1894,26 @@ _ID45109( var_0, var_1 )
 
         if ( var_1 == var_4 )
         {
-            level._ID794 switchtoweapon( var_4 );
+            level.player switchtoweapon( var_4 );
             break;
         }
     }
 
-    level._ID794 unlink();
-    level._ID794 disableinvulnerability();
-    level._ID794 enableweaponswitch();
-    level._ID794 enableoffhandweapons();
-    level._ID794 _meth_830f( 1 );
-    level._ID794 allowjump( 1 );
-    level._ID794 allowcrouch( 1 );
-    level._ID794 allowprone( 1 );
+    level.player unlink();
+    level.player disableinvulnerability();
+    level.player enableweaponswitch();
+    level.player enableoffhandweapons();
+    level.player _meth_830f( 1 );
+    level.player allowjump( 1 );
+    level.player allowcrouch( 1 );
+    level.player allowprone( 1 );
     setsaveddvar( "ammoCounterHide", 0 );
     var_6 = 1.7;
     var_7 = var_6 / 20;
 
     for ( var_8 = 0; var_8 <= 1; var_8 += var_7 )
     {
-        level._ID794 setmovespeedscale( var_8 );
+        level.player setmovespeedscale( var_8 );
         wait 0.05;
     }
 }
@@ -1976,7 +1976,7 @@ _ID43460()
         case "bathroom":
             _ID42237::_ID14413( "advance_through_pipearea" );
             var_0 = _ID42237::_ID16638( "hallway_obj_struct", "targetname" );
-            objective_current( 1, var_0._ID740 );
+            objective_current( 1, var_0.origin );
             _ID42237::_ID14413( "nearing_bathroom_breach" );
             setsaveddvar( "compass", "0" );
             _ID42407::_ID4917( "axis" );
@@ -2051,7 +2051,7 @@ _ID46404()
     maps\gulag_code::_ID54691();
     wait 0.05;
     var_1 = getent( "car_blows_up", "script_noteworthy" );
-    radiusdamage( var_1._ID740, 800, 5000, 5000 );
+    radiusdamage( var_1.origin, 800, 5000, 5000 );
     _ID42237::_ID14402( "approach_dialogue" );
     _ID42237::_ID14402( "slamraam_gets_players_attention" );
     _ID42237::_ID14402( "stab2_clear" );

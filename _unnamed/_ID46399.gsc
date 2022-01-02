@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_airport_com_a" );
     self attach( "h2_head_vil_makarov", "", 1 );

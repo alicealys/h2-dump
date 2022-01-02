@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     level._ID43135 = spawnstruct();
     _ID45297();
@@ -61,19 +61,19 @@ _ID45821()
             if ( isdefined( self._ID43135._ID43326 ) && !_ID51134( self, var_4 ) )
                 continue;
 
-            var_10 = distance( var_1._ID740, var_3 );
+            var_10 = distance( var_1.origin, var_3 );
             waitframe;
             _ID42407::_ID36519();
             self._ID43135.ts_forced_hit_marker = 1;
 
             if ( var_4 == "MOD_MELEE" )
-                self dodamage( var_0, var_3, var_1, var_1, var_4, var_9, self._ID253 );
+                self dodamage( var_0, var_3, var_1, var_1, var_4, var_9, self.damagelocation );
             else if ( isdefined( var_9 ) )
-                self dodamage( _ID53794( var_0, var_10 ), var_3, var_1, var_1, var_4, var_9, self._ID253 );
+                self dodamage( _ID53794( var_0, var_10 ), var_3, var_1, var_1, var_4, var_9, self.damagelocation );
             else
-                self dodamage( _ID53794( var_0, var_10 ), var_3, var_1, var_1, var_4, "none", self._ID253 );
+                self dodamage( _ID53794( var_0, var_10 ), var_3, var_1, var_1, var_4, "none", self.damagelocation );
 
-            if ( !isalive( self ) || self._ID274 )
+            if ( !isalive( self ) || self.delayeddeath )
                 break;
 
             _ID42407::_ID22746( 1 );
@@ -107,18 +107,18 @@ _ID45370( var_0 )
 
 _ID50743()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "desperation_ended" );
     self endon( "desperation_ended" );
     thread _ID51338();
     self waittill( "death",  var_0  );
-    level._ID794 _ID52972( 50, var_0 );
+    level.player _ID52972( 50, var_0 );
     self notify( "desperation_ended" );
 }
 
 _ID51338()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     self endon( "death" );
     level endon( "desperation_ended" );
 
@@ -127,7 +127,7 @@ _ID51338()
         self waittill( "damage",  var_0, var_1, var_2, var_3, var_4  );
 
         if ( ( !isdefined( self._ID22746 ) || !self._ID22746 ) && !isdefined( self._ID43135._ID52528 ) && ( !isdefined( self._ID43135._ID43326 ) || _ID51134( self, var_4 ) ) )
-            level._ID794 _ID52972( var_0, var_1 );
+            level.player _ID52972( var_0, var_1 );
     }
 }
 
@@ -135,12 +135,12 @@ _ID52972( var_0, var_1 )
 {
     if ( _ID45441( var_1 ) )
     {
-        var_2 = ( self._ID486 + var_0 / 2 ) / self._ID626;
+        var_2 = ( self.health + var_0 / 2 ) / self.maxhealth;
 
-        if ( var_2 > self._ID626 )
-            var_2 = self._ID626;
+        if ( var_2 > self.maxhealth )
+            var_2 = self.maxhealth;
 
-        if ( self._ID486 > 0 )
+        if ( self.health > 0 )
             self setnormalhealth( var_2 );
     }
 }
@@ -231,25 +231,25 @@ greenberet_mode_update( var_0 )
 greenberet_giveweapon()
 {
     setsaveddvar( "g_using_greenberet_ts", 1 );
-    level._ID43135.previousdontallowcache = level._ID794._ID11546;
-    level._ID794._ID11546 = 1;
+    level._ID43135.previousdontallowcache = level.player._ID11546;
+    level.player._ID11546 = 1;
     level._ID43135.greenberet_previousweapons = [];
-    level._ID43135.greenberet_currentweapon = level._ID794 getcurrentweapon( 1 );
+    level._ID43135.greenberet_currentweapon = level.player getcurrentweapon( 1 );
 
-    foreach ( var_1 in level._ID794 getweaponslistall() )
+    foreach ( var_1 in level.player getweaponslistall() )
     {
         if ( ts_isvalidweapon( var_1 ) )
         {
             level._ID43135.greenberet_previousweapons[var_1] = [];
-            level._ID43135.greenberet_previousweapons[var_1]["ammoClip"] = level._ID794 getweaponammoclip( var_1 );
-            level._ID43135.greenberet_previousweapons[var_1]["ammoStock"] = level._ID794 getweaponammostock( var_1 );
-            level._ID43135.greenberet_previousweapons[var_1]["akimbo"] = level._ID794 _meth_85ce( var_1 );
-            level._ID794 takeweapon( var_1 );
+            level._ID43135.greenberet_previousweapons[var_1]["ammoClip"] = level.player getweaponammoclip( var_1 );
+            level._ID43135.greenberet_previousweapons[var_1]["ammoStock"] = level.player getweaponammostock( var_1 );
+            level._ID43135.greenberet_previousweapons[var_1]["akimbo"] = level.player _meth_85ce( var_1 );
+            level.player takeweapon( var_1 );
         }
     }
 
-    level._ID794 giveweapon( level._ID43135.greenberet_weaponname );
-    level._ID794 switchtoweapon( level._ID43135.greenberet_weaponname );
+    level.player giveweapon( level._ID43135.greenberet_weaponname );
+    level.player switchtoweapon( level._ID43135.greenberet_weaponname );
     thread greenberet_monitor();
 }
 
@@ -272,33 +272,33 @@ ts_isvalidweapon( var_0 )
 greenberet_takeweapon()
 {
     if ( isdefined( level._ID43135.previousdontallowcache ) )
-        level._ID794._ID11546 = level._ID43135.previousdontallowcache;
+        level.player._ID11546 = level._ID43135.previousdontallowcache;
     else
-        level._ID794._ID11546 = undefined;
+        level.player._ID11546 = undefined;
 
     setsaveddvar( "g_using_greenberet_ts", 0 );
 
     if ( !isdefined( level._ID43135.greenberet_previousweapons ) )
         return;
 
-    foreach ( var_1 in level._ID794 getweaponslistall() )
+    foreach ( var_1 in level.player getweaponslistall() )
     {
         if ( ts_isvalidweapon( var_1 ) )
-            level._ID794 takeweapon( var_1 );
+            level.player takeweapon( var_1 );
     }
 
     foreach ( var_5, var_4 in level._ID43135.greenberet_previousweapons )
     {
-        level._ID794 giveweapon( var_5, 0, var_4["akimbo"] );
-        level._ID794 setweaponammoclip( var_5, var_4["ammoClip"] );
-        level._ID794 setweaponammostock( var_5, var_4["ammoStock"] );
+        level.player giveweapon( var_5, 0, var_4["akimbo"] );
+        level.player setweaponammoclip( var_5, var_4["ammoClip"] );
+        level.player setweaponammostock( var_5, var_4["ammoStock"] );
 
         if ( !isdefined( level._ID43135.greenberet_currentweapon ) )
             level._ID43135.greenberet_currentweapon = var_5;
     }
 
     if ( isdefined( level._ID43135.greenberet_currentweapon ) && level._ID43135.greenberet_currentweapon != "none" )
-        level._ID794 switchtoweapon( level._ID43135.greenberet_currentweapon );
+        level.player switchtoweapon( level._ID43135.greenberet_currentweapon );
 
     level._ID43135.greenberet_previousweapons = undefined;
     level._ID43135.greenberet_currentweapon = undefined;
@@ -312,15 +312,15 @@ greenberet_monitor()
 
     for (;;)
     {
-        level._ID794 waittill( "pickup" );
-        level._ID794 waittill( "weapon_change" );
-        var_0 = level._ID794 getcurrentweapon();
+        level.player waittill( "pickup" );
+        level.player waittill( "weapon_change" );
+        var_0 = level.player getcurrentweapon();
 
         if ( var_0 != "claymore" )
-            level._ID794 setweaponammostock( var_0, 0 );
+            level.player setweaponammostock( var_0, 0 );
 
         if ( issubstr( var_0, "at4" ) || issubstr( var_0, "stinger" ) )
-            level._ID794 setweaponammoclip( var_0, 1 );
+            level.player setweaponammoclip( var_0, 1 );
 
         wait 0.05;
     }
@@ -332,11 +332,11 @@ greenberet_flare_monitor()
 
     for (;;)
     {
-        level._ID794 waittill( "weapon_change" );
-        var_0 = level._ID794 getcurrentweapon();
+        level.player waittill( "weapon_change" );
+        var_0 = level.player getcurrentweapon();
 
         if ( issubstr( var_0, "flare" ) )
-            level._ID794 setweaponammoclip( var_0, 1 );
+            level.player setweaponammoclip( var_0, 1 );
 
         wait 0.05;
     }
@@ -344,7 +344,7 @@ greenberet_flare_monitor()
 
 greenberet_choose_weapon()
 {
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "cliffhanger":
             return "h2_cheatpickaxe";
@@ -367,13 +367,13 @@ martyr_mode_dropgrenade( var_0, var_1 )
 {
     if ( isdefined( level._ID43135._ID46552 ) && level._ID43135._ID46552 )
     {
-        if ( isdefined( self._ID31433 ) && ( level._ID912 == "oilrig" || level._ID912 == "af_caves" ) )
+        if ( isdefined( self._ID31433 ) && ( level.script == "oilrig" || level.script == "af_caves" ) )
             return;
 
         if ( isdefined( self._ID43135.martyr_ignore ) && self._ID43135.martyr_ignore )
             return;
 
-        if ( isdefined( self._ID170 ) && self._ID170 == "actor_enemy_dog" && var_1 == "MOD_UNKNOWN" )
+        if ( isdefined( self.classname ) && self.classname == "actor_enemy_dog" && var_1 == "MOD_UNKNOWN" )
             var_2 = 5;
         else
             var_2 = 4;
@@ -418,7 +418,7 @@ _ID50206()
     if ( isdefined( self._ID3217 ) && self._ID3217 == "dog.atr" )
         return;
 
-    if ( isdefined( self._ID172 ) && self._ID172 == "script_vehicle" )
+    if ( isdefined( self.code_classname ) && self.code_classname == "script_vehicle" )
         return;
 
     for (;;)
@@ -453,7 +453,7 @@ makeghost()
         self detach( self._ID18304 );
     }
 
-    self._ID43135.polterghostmode_previousmodel = self._ID669;
+    self._ID43135.polterghostmode_previousmodel = self.model;
     self setmodel( level.invisibleman_body );
     self attach( level.invisibleman_head );
     self._ID18304 = level.invisibleman_head;
@@ -545,11 +545,11 @@ _ID53038()
             self._ID43135.ts_forced_hit_marker = 1;
 
             if ( isdefined( var_9 ) )
-                self dodamage( var_0, var_3, var_1, var_1, var_4, var_9, self._ID253 );
+                self dodamage( var_0, var_3, var_1, var_1, var_4, var_9, self.damagelocation );
             else
-                self dodamage( var_0, var_3, var_1, var_1, var_4, "none", self._ID253 );
+                self dodamage( var_0, var_3, var_1, var_1, var_4, "none", self.damagelocation );
 
-            if ( !isalive( self ) || self._ID274 )
+            if ( !isalive( self ) || self.delayeddeath )
                 break;
 
             _ID42407::_ID22746( 1 );
@@ -568,14 +568,14 @@ _ID53773( var_0 )
 
     if ( level._ID43135._ID53704 )
     {
-        level._ID794 thread _ID42999();
+        level.player thread _ID42999();
         _ID49347::add_specialfeatures_function( ::_ID52696 );
     }
     else
     {
         _ID49347::remove_specialfeatures_function( ::_ID52696 );
         level notify( "starvation_mode_ended" );
-        level._ID794 notify( "starvation_mode_ended" );
+        level.player notify( "starvation_mode_ended" );
     }
 }
 
@@ -599,12 +599,12 @@ _ID42999()
     level._ID43135._ID48526 = 1000;
     level._ID43135._ID43975 = gettime();
 
-    if ( level._ID912 == "oilrig" )
+    if ( level.script == "oilrig" )
     {
         while ( !_ID42237::_ID14385( "obj_stealthkill_complete" ) )
             waittillframeend;
     }
-    else if ( level._ID912 == "favela" )
+    else if ( level.script == "favela" )
     {
         while ( !_ID42237::_ID14385( "torture_sequence_done" ) )
             waittillframeend;
@@ -614,7 +614,7 @@ _ID42999()
     {
         if ( gettime() > level._ID43135._ID48526 + level._ID43135._ID43975 )
         {
-            foreach ( var_1 in level._ID794 getweaponslistall() )
+            foreach ( var_1 in level.player getweaponslistall() )
             {
                 if ( !ts_isvalidweapon( var_1 ) )
                     continue;
@@ -655,7 +655,7 @@ _ID45441( var_0 )
 
 _ID51134( var_0, var_1 )
 {
-    if ( isdefined( var_0._ID253 ) && ( self._ID253 == "head" || self._ID253 == "helmet" ) || var_1 == "MOD_MELEE" )
+    if ( isdefined( var_0.damagelocation ) && ( self.damagelocation == "head" || self.damagelocation == "helmet" ) || var_1 == "MOD_MELEE" )
         return 1;
     else
         return 0;

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = getentarray( "leaking", "targetname" );
 
@@ -15,7 +15,7 @@ _ID616()
 
 _ID46947()
 {
-    switch ( self._ID922 )
+    switch ( self.script_noteworthy )
     {
         case "barrel_oil":
             _ID48232();
@@ -36,8 +36,8 @@ _ID46947()
 
 _ID48232()
 {
-    self._ID7 = self._ID740;
-    self._ID1251 = anglestoup( self._ID65 );
+    self._ID7 = self.origin;
+    self._ID1251 = anglestoup( self.angles );
     var_0 = anglestoup( ( 0, 90, 0 ) );
     self._ID25988 = self._ID7 + self._ID1251 * 22;
     self._ID7 = self._ID7 + self._ID1251 * 1.5;
@@ -58,8 +58,8 @@ _ID48232()
 _ID54313()
 {
     self setcandamage( 1 );
-    self._ID44932 = isdefined( level._ID1426["leak_interactive_pool"] ) && isdefined( level._ID1426["leak_interactive_pool"][self._ID922] );
-    self._ID52115 = isdefined( level._ID1426["leak_interactive_drain"] ) && isdefined( level._ID1426["leak_interactive_drain"][self._ID922] );
+    self._ID44932 = isdefined( level._ID1426["leak_interactive_pool"] ) && isdefined( level._ID1426["leak_interactive_pool"][self.script_noteworthy] );
+    self._ID52115 = isdefined( level._ID1426["leak_interactive_drain"] ) && isdefined( level._ID1426["leak_interactive_drain"][self.script_noteworthy] );
     self endon( "drained" );
 
     for (;;)
@@ -102,17 +102,17 @@ _ID44496( var_0 )
         if ( self._ID44932 )
             thread _ID44850( var_0, var_2 );
 
-        thread _ID42237::_ID27077( level._ID1637["leak_interactive_leak"][self._ID922], var_0 );
+        thread _ID42237::_ID27077( level._ID1637["leak_interactive_leak"][self.script_noteworthy], var_0 );
 
         while ( self._ID47574 > var_4 )
         {
-            playfx( level._ID1426["leak_interactive_leak"][self._ID922], var_0, var_2 );
+            playfx( level._ID1426["leak_interactive_leak"][self.script_noteworthy], var_0, var_2 );
             self._ID47574 = self._ID47574 - 100;
             wait 0.1;
         }
 
         if ( self._ID52115 )
-            playfx( level._ID1426["leak_interactive_drain"][self._ID922], var_0, var_2 );
+            playfx( level._ID1426["leak_interactive_drain"][self.script_noteworthy], var_0, var_2 );
     }
 
     if ( self._ID47574 / self._ID40767 <= 0.05 )
@@ -122,7 +122,7 @@ _ID44496( var_0 )
 _ID44850( var_0, var_1 )
 {
     self._ID44932 = 0;
-    playfx( level._ID1426["leak_interactive_pool"][self._ID922], var_0, var_1 );
+    playfx( level._ID1426["leak_interactive_pool"][self.script_noteworthy], var_0, var_1 );
     wait 0.5;
     self._ID44932 = 1;
 }
@@ -175,47 +175,47 @@ _ID28382()
 {
     for ( var_0 = 0; var_0 < self.size; var_0++ )
     {
-        if ( self[var_0]._ID922 != "barrel_oil" )
+        if ( self[var_0].script_noteworthy != "barrel_oil" )
             continue;
 
-        level._ID1426["leak_interactive_leak"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_leak" );
-        level._ID1426["leak_interactive_pool"][self[var_0]._ID922] = loadfx( "fx/misc/oilsplash_decal_spawner" );
-        level._ID1426["leak_interactive_drain"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_drain" );
-        level._ID1637["leak_interactive_leak"][self[var_0]._ID922] = "h1_oil_spill_start";
+        level._ID1426["leak_interactive_leak"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_leak" );
+        level._ID1426["leak_interactive_pool"][self[var_0].script_noteworthy] = loadfx( "fx/misc/oilsplash_decal_spawner" );
+        level._ID1426["leak_interactive_drain"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_drain" );
+        level._ID1637["leak_interactive_leak"][self[var_0].script_noteworthy] = "h1_oil_spill_start";
         break;
     }
 
     for ( var_0 = 0; var_0 < self.size; var_0++ )
     {
-        if ( self[var_0]._ID922 != "barrel_acid" )
+        if ( self[var_0].script_noteworthy != "barrel_acid" )
             continue;
 
-        level._ID1426["leak_interactive_leak"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_leak" );
-        level._ID1426["leak_interactive_pool"][self[var_0]._ID922] = loadfx( "fx/misc/oilsplash_decal_spawner" );
-        level._ID1426["leak_interactive_drain"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_drain" );
-        level._ID1637["leak_interactive_leak"][self[var_0]._ID922] = "h1_oil_spill_start";
+        level._ID1426["leak_interactive_leak"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_leak" );
+        level._ID1426["leak_interactive_pool"][self[var_0].script_noteworthy] = loadfx( "fx/misc/oilsplash_decal_spawner" );
+        level._ID1426["leak_interactive_drain"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_drain" );
+        level._ID1637["leak_interactive_leak"][self[var_0].script_noteworthy] = "h1_oil_spill_start";
         break;
     }
 
     for ( var_0 = 0; var_0 < self.size; var_0++ )
     {
-        if ( self[var_0]._ID922 != "barrel_water" )
+        if ( self[var_0].script_noteworthy != "barrel_water" )
             continue;
 
-        level._ID1426["leak_interactive_leak"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_leak_water" );
-        level._ID1637["leak_interactive_leak"][self[var_0]._ID922] = "h1_oil_spill_start";
+        level._ID1426["leak_interactive_leak"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_leak_water" );
+        level._ID1637["leak_interactive_leak"][self[var_0].script_noteworthy] = "h1_oil_spill_start";
         break;
     }
 
     for ( var_0 = 0; var_0 < self.size; var_0++ )
     {
-        if ( self[var_0]._ID922 != "barrel_sludge" )
+        if ( self[var_0].script_noteworthy != "barrel_sludge" )
             continue;
 
-        level._ID1426["leak_interactive_leak"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_leak" );
-        level._ID1426["leak_interactive_pool"][self[var_0]._ID922] = loadfx( "fx/misc/oilsplash_decal_spawner" );
-        level._ID1426["leak_interactive_drain"][self[var_0]._ID922] = loadfx( "fx/impacts/barrel_drain" );
-        level._ID1637["leak_interactive_leak"][self[var_0]._ID922] = "h1_oil_spill_start";
+        level._ID1426["leak_interactive_leak"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_leak" );
+        level._ID1426["leak_interactive_pool"][self[var_0].script_noteworthy] = loadfx( "fx/misc/oilsplash_decal_spawner" );
+        level._ID1426["leak_interactive_drain"][self[var_0].script_noteworthy] = loadfx( "fx/impacts/barrel_drain" );
+        level._ID1637["leak_interactive_leak"][self[var_0].script_noteworthy] = "h1_oil_spill_start";
         break;
     }
 }

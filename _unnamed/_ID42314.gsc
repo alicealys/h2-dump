@@ -32,13 +32,13 @@ _ID19302()
 
     var_0 = undefined;
 
-    if ( !isdefined( self._ID1191 ) )
+    if ( !isdefined( self.target ) )
         var_0 = self;
     else
     {
-        var_0 = getnode( self._ID1191, "targetname" );
-        var_1 = getent( self._ID1191, "targetname" );
-        var_2 = _ID42237::_ID16638( self._ID1191, "targetname" );
+        var_0 = getnode( self.target, "targetname" );
+        var_1 = getent( self.target, "targetname" );
+        var_2 = _ID42237::_ID16638( self.target, "targetname" );
         var_3 = undefined;
 
         if ( isdefined( var_0 ) )
@@ -48,7 +48,7 @@ _ID19302()
         else if ( isdefined( var_2 ) )
             var_3 = _ID42237::_ID16638;
 
-        for ( var_0 = [[ var_3 ]]( self._ID1191, "targetname" ); isdefined( var_0._ID1191 ); var_0 = [[ var_3 ]]( var_0._ID1191, "targetname" ) )
+        for ( var_0 = [[ var_3 ]]( self.target, "targetname" ); isdefined( var_0.target ); var_0 = [[ var_3 ]]( var_0.target, "targetname" ) )
         {
 
         }
@@ -115,7 +115,7 @@ _ID11208( var_0 )
         self._ID1364 = var_0;
         self._ID1366 = "generic";
         self._ID1403 = 0;
-        self animcustom( animscripts\animmode::_ID616 );
+        self animcustom( animscripts\animmode::main );
         var_2 = 0.0;
 
         if ( isdefined( self._ID26395 ) && isdefined( level._ID30895["generic"][self._ID26395] ) )
@@ -140,7 +140,7 @@ _ID11208( var_0 )
 
 _ID19320( var_0, var_1, var_2, var_3, var_4 )
 {
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self endon( "death" );
     var_5 = undefined;
     var_6 = undefined;
@@ -230,9 +230,9 @@ _ID19320( var_0, var_1, var_2, var_3, var_4 )
 _ID29062()
 {
     self endon( "death" );
-    self._ID507 = 1;
+    self.ignoreall = 1;
     _ID29063();
-    self._ID507 = 0;
+    self.ignoreall = 0;
 }
 
 _ID29063()
@@ -260,15 +260,15 @@ _ID29064( var_0, var_1 )
 
     for (;;)
     {
-        while ( distancesquared( self._ID740, var_0._ID740 ) > var_2 )
+        while ( distancesquared( self.origin, var_0.origin ) > var_2 )
             wait 0.1;
 
-        var_0._ID507 = 0;
+        var_0.ignoreall = 0;
 
-        while ( distancesquared( self._ID740, var_0._ID740 ) <= var_2 )
+        while ( distancesquared( self.origin, var_0.origin ) <= var_2 )
             wait 0.1;
 
-        var_0._ID507 = 1;
+        var_0.ignoreall = 1;
     }
 }
 

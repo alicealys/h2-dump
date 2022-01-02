@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("dog");
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     self endon( "stop_flashbang_effect" );

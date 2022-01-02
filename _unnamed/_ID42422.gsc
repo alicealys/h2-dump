@@ -125,8 +125,8 @@ _ID28055()
     {
         while ( _ID42237::_ID14385( "player_weather_enabled" ) )
         {
-            var_2 = var_0._ID65;
-            var_1 moveto( var_0._ID740 + ( 0, 0, 650 ), 0.1 );
+            var_2 = var_0.angles;
+            var_1 moveto( var_0.origin + ( 0, 0, 650 ), 0.1 );
             var_1 rotateto( ( -90, var_2[1], 180 ), 0.1 );
             playfxontag( level._ID1426["rain_drops"], var_1, "tag_origin" );
             wait 0.3;
@@ -285,8 +285,8 @@ _ID37702()
         wait 1;
 
     var_0 = spawn( "script_origin", ( 0, 0, 0 ) );
-    var_0._ID740 = level._ID794._ID740 + ( 0, 0, 80 );
-    var_0 linkto( level._ID794 );
+    var_0.origin = level.player.origin + ( 0, 0, 80 );
+    var_0 linkto( level.player );
 
     if ( level._ID28926 <= 8 )
         var_0 playsound( "elm_thunder_distant", "sounddone" );

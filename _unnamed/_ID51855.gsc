@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "dust_wind_fast_light_favela_escape" );
     var_0 _ID42229::_ID32402( ( 5046.93, -142.588, 1047.1 ), ( 270, 0, -38 ) );

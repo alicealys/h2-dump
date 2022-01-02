@@ -15,9 +15,9 @@ _ID43955()
 
 _ID43150()
 {
-    var_0 = self._ID740 - self._ID42997._ID740;
-    var_1 = anglestoright( self._ID65 );
-    var_2 = anglestoforward( self._ID65 );
+    var_0 = self.origin - self.lastpusher.origin;
+    var_1 = anglestoright( self.angles );
+    var_2 = anglestoforward( self.angles );
 
     if ( vectordot( var_0, var_2 ) > 0 )
     {
@@ -50,7 +50,7 @@ _ID50754( var_0 )
     return anim._ID3277[var_1]["pushed"][var_0][anim._ID50137[var_1]];
 }
 
-_ID616()
+main()
 {
     self endon( "death" );
     self endon( "killanimscript" );
@@ -77,7 +77,7 @@ _ID45363( var_0 )
         animscripts\utility::_ID13390( 1 );
 
     self._ID7._ID28253 = "stand";
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self setflaggedanimknoball( "pushed_anim", var_0, %body, 0.2, 1 );
     animscripts\shared::_ID11529( "pushed_anim" );
 }

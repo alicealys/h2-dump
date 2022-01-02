@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42231::_ID10505( "toy_firehydrant", "tag_origin", 250, undefined, 32, "no_melee" );
     _ID42231::_ID10544( 11 );

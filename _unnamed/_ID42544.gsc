@@ -44,10 +44,10 @@ _ID33059()
         self waittill( "trigger",  var_0  );
         var_0 setdeceleration( 6 );
         var_0 setacceleration( 4 );
-        var_0 settargetyaw( self._ID65[1] );
+        var_0 settargetyaw( self.angles[1] );
         var_0 vehicle_setspeed( 20, 7, 7 );
 
-        while ( distance( _ID42237::_ID14540( var_0._ID740 ), _ID42237::_ID14540( self._ID740 ) ) > 256 )
+        while ( distance( _ID42237::_ID14540( var_0.origin ), _ID42237::_ID14540( self.origin ) ) > 256 )
             wait 0.05;
 
         var_0 endon( "death" );
@@ -66,19 +66,19 @@ _ID22453( var_0 )
 {
     var_0 setdeceleration( 6 );
     var_0 setacceleration( 4 );
-    var_0 settargetyaw( self._ID65[1] );
+    var_0 settargetyaw( self.angles[1] );
     var_0 vehicle_setspeed( 20, 7, 7 );
 
-    while ( distance( _ID42237::_ID14540( var_0._ID740 ), _ID42237::_ID14540( self._ID740 ) ) > 512 )
+    while ( distance( _ID42237::_ID14540( var_0.origin ), _ID42237::_ID14540( self.origin ) ) > 512 )
         wait 0.05;
 
     var_0 endon( "death" );
     var_1 = "landing" + randomint( 99999 );
-    badplace_cylinder( var_1, 30, self._ID740, 200, 300, "axis", "allies", "neutral", "team3" );
+    badplace_cylinder( var_1, 30, self.origin, 200, 300, "axis", "allies", "neutral", "team3" );
     var_0 thread _ID40185( 424, self );
     var_0 waittill( "near_goal" );
     badplace_delete( var_1 );
-    badplace_cylinder( var_1, 30, self._ID740, 200, 300, "axis", "allies", "neutral", "team3" );
+    badplace_cylinder( var_1, 30, self.origin, 200, 300, "axis", "allies", "neutral", "team3" );
     var_0 notify( "groupedanimevent",  "pre_unload"  );
     var_0 thread _ID42412::_ID3162( "pre_unload" );
     var_0 vehicle_setspeed( 20, 22, 7 );
@@ -126,7 +126,7 @@ _ID15794()
 
     for (;;)
     {
-        var_1 = _ID42407::_ID16261( var_0._ID1191, "targetname" );
+        var_1 = _ID42407::_ID16261( var_0.target, "targetname" );
 
         if ( isdefined( var_1._ID31497 ) )
             return var_1;
@@ -148,7 +148,7 @@ _ID40185( var_0, var_1, var_2 )
     self neargoalnotifydist( var_0 );
     self sethoverparams( 0, 0, 0 );
     self cleargoalyaw();
-    self settargetyaw( _ID42237::_ID14539( var_1._ID65 )[1] );
-    _ID42413::_ID1609( _ID42407::_ID17434( var_1._ID740 ) + ( 0, 0, var_2 ), 1 );
+    self settargetyaw( _ID42237::_ID14539( var_1.angles )[1] );
+    _ID42413::_ID1609( _ID42407::_ID17434( var_1.origin ) + ( 0, 0, var_2 ), 1 );
     self waittill( "goal" );
 }

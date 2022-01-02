@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
@@ -19,7 +19,7 @@ _ID616()
 
     foreach ( var_2 in var_0 )
     {
-        if ( issubstr( var_2._ID170, "trigger_multiple_bcs" ) )
+        if ( issubstr( var_2.classname, "trigger_multiple_bcs" ) )
             var_2 delete();
     }
 
@@ -33,9 +33,9 @@ _ID616()
     level._ID52290 = 1;
     setsaveddvar( "r_subdomainlimit", 0 );
     setsaveddvar( "vehNotifyHitEntityWithVehContactEvent", 0 );
-    _ID49383::_ID616();
-    maps\cliffhanger_lighting::_ID616();
-    _ID43695::_ID616();
+    _ID49383::main();
+    maps\cliffhanger_lighting::main();
+    _ID43695::main();
     setsaveddvar( "r_useLightGridDefaultFXLightingLookup", "1" );
     setsaveddvar( "r_lightGridDefaultFXLightingLookup", "-1519 -29658 1252" );
     setsaveddvar( "fx_cast_shadow", 0 );
@@ -85,7 +85,7 @@ _ID51630()
     _ID42234::_ID13611( 256 );
 
     foreach ( var_5, var_4 in level._ID805 )
-        var_4 thread _ID47980::_ID51825( var_0[var_5]._ID740, var_0[var_5]._ID65 );
+        var_4 thread _ID47980::_ID51825( var_0[var_5].origin, var_0[var_5].angles );
 
     _ID42237::_ID3350( var_0, _ID42407::_ID31860 );
     _ID47980::_ID48158();
@@ -104,7 +104,7 @@ _ID46164()
     setsaveddvar( "g_friendlyfiredist", 175 );
     var_0 = _ID42237::_ID16638( "price_clifftopstart", "targetname" );
     level._ID28543._ID24424 = 0.6;
-    level._ID28543._ID452 = 16;
+    level._ID28543.goalradius = 16;
     _ID42407::_ID1805( "price_start_clifftop" );
     _ID42407::_ID4422( "clifftop" );
     maps\cliffhanger_code::tarped_mig_monitor();
@@ -160,7 +160,7 @@ _ID46164()
 
 _ID51711()
 {
-    level._ID794 endon( "stealth_takedown_started" );
+    level.player endon( "stealth_takedown_started" );
     level _ID42237::_ID41068( "clifftop_patrol1_dead", "clifftop_patrol_alerted" );
 
     if ( !_ID42237::_ID14385( "mig_landing" ) )
@@ -218,7 +218,7 @@ _ID50647()
     level._ID28543 delete();
     var_0 = getent( "price_hanger_start", "targetname" );
     level._ID47341._ID31460 = undefined;
-    level._ID47341._ID740 = var_0._ID740;
+    level._ID47341.origin = var_0.origin;
     level._ID28543 = maps\cliffhanger_code::_ID45337();
     level._ID28543 _ID42407::_ID10871();
     level._ID28543 _ID42407::_ID14803( "ak47_arctic", "primary" );
@@ -250,13 +250,13 @@ _ID50647()
     var_5 _ID42407::_ID10871();
     var_6 = getnode( "price_behind_barrel", "targetname" );
     var_5 setgoalnode( var_6 );
-    var_5._ID452 = 20;
-    var_5._ID381 = 1;
+    var_5.goalradius = 20;
+    var_5.fixednode = 1;
     var_7 = [];
 
     foreach ( var_9 in var_2 )
     {
-        var_10 = distance( var_9._ID740, level._ID794._ID740 );
+        var_10 = distance( var_9.origin, level.player.origin );
 
         if ( var_10 > 1000 )
         {
@@ -291,9 +291,9 @@ _ID50647()
                     if ( var_9 _ID42407::_ID11498() )
                         continue;
 
-                    var_9._ID452 = 400;
-                    var_9._ID377 = level._ID794;
-                    var_9 setgoalentity( level._ID794 );
+                    var_9.goalradius = 400;
+                    var_9.favoriteenemy = level.player;
+                    var_9 setgoalentity( level.player );
                     var_14 = 0;
                 }
             }
@@ -320,7 +320,7 @@ _ID46185()
         level._ID28543 maps\cliffhanger_code::_ID44374( "cliff_pri_broughtfriends", 0, 1 );
     else
     {
-        level._ID28543 _ID45995::_ID48826( "head", level._ID794, 200, 30, 30, 30, 45, 0, 1 );
+        level._ID28543 _ID45995::_ID48826( "head", level.player, 200, 30, 30, 30, 45, 0, 1 );
         var_0 = getent( "soap_waiting_node", "targetname" );
         var_0 _ID42259::_ID3111( level._ID28543, "hangar_waiting" );
         level._ID28543 _ID45995::_ID45228();
@@ -329,7 +329,7 @@ _ID46185()
 
     for (;;)
     {
-        if ( distance( level._ID794._ID740, level._ID28543._ID740 ) < 350 )
+        if ( distance( level.player.origin, level._ID28543.origin ) < 350 )
             break;
 
         wait 0.25;
@@ -342,11 +342,11 @@ _ID46185()
     maps\cliffhanger_code::_ID52513();
     var_3 = getent( "solar_panel", "targetname" );
     var_3 _meth_848a( ( -8860, -25895, 950 ) );
-    level._ID794 thread maps\cliffhanger_code::_ID50722();
+    level.player thread maps\cliffhanger_code::_ID50722();
     var_4 = getnode( "price_prep_for_locker_brawl_node", "targetname" );
     wait 0.05;
     level._ID28543 setgoalnode( var_4 );
-    level._ID28543._ID452 = 8;
+    level._ID28543.goalradius = 8;
     level._ID28543 _ID42407::_ID10871();
     level._ID28543 _ID42407::_ID14803( "ak47_arctic", "primary" );
     _ID42237::_ID14388( "locker_brawl_breaks_out" );
@@ -365,7 +365,7 @@ _ID46185()
     thread maps\cliffhanger_code::_ID53030();
     var_6 = getent( "dsm", "targetname" );
     var_6 makeusable();
-    var_6 thread _ID42237::_ID44574( level._ID794, &"CLIFFHANGER_USE_SATELITE", &"CLIFFHANGER_USE_SATELITE_PC", "trigger" );
+    var_6 thread _ID42237::_ID44574( level.player, &"CLIFFHANGER_USE_SATELITE", &"CLIFFHANGER_USE_SATELITE_PC", "trigger" );
     _ID42237::_ID14388( "keyboard_used" );
     var_6 waittill( "trigger" );
     var_6 makeunusable();
@@ -376,7 +376,7 @@ _ID46185()
     if ( _ID42263::_ID4452() )
         savegame( "keyboard_used", &"CLIFFHANGER_USE_SATELITE", "keyboard_used", 0 );
 
-    thread _ID42237::_ID27077( "dsm_pickup", var_6._ID740 );
+    thread _ID42237::_ID27077( "dsm_pickup", var_6.origin );
     _ID42237::_ID14402( "keyboard_used" );
     level._ID28543 _ID45995::_ID45228();
     var_5 delete();
@@ -392,9 +392,9 @@ _ID54179()
     _ID45912();
     maps\cliffhanger_stealth::_ID43641();
     var_0 = getent( "start_satellite_player", "targetname" );
-    level._ID794 _ID42407::_ID37404( var_0 );
+    level.player _ID42407::_ID37404( var_0 );
     var_1 = getent( "price_hanger_start", "targetname" );
-    level._ID28543 forceteleport( var_1._ID740, var_1._ID65 );
+    level._ID28543 forceteleport( var_1.origin, var_1.angles );
     level._ID28543 _ID42407::_ID14803( "ak47_arctic", "primary" );
     _ID49359::_ID48104();
     thread maps\cliffhanger_code::_ID43061();
@@ -445,10 +445,10 @@ _ID52831()
         level._ID28543 _ID42389::_ID36248();
 
     _ID42389::_ID10971();
-    level._ID794._ID511 = 1;
+    level.player.ignoreme = 1;
     thread maps\cliffhanger_code::_ID43852();
     maps\cliffhanger_code::_ID50016();
-    level._ID794._ID511 = 0;
+    level.player.ignoreme = 0;
     _ID42237::_ID14413( "player_detonate" );
     var_4 = savegamenocommit( "player_detonate", &"CLIFFHANGER_USE_SATELITE", "player_detonate", 0 );
     thread maps\cliffhanger_code::_ID50888( var_4 );
@@ -456,8 +456,8 @@ _ID52831()
     level._ID52581 = getaiarray( "axis" );
     _ID42237::_ID14402( "start_big_explosion" );
     _ID42407::_ID10226( 1, _ID42237::_ID14402, "hanger_reinforcements" );
-    level._ID794 setmovespeedscale( 0.3 );
-    level._ID794 _ID42237::_ID10192( 1.5, ::freezecontrols, 0 );
+    level.player setmovespeedscale( 0.3 );
+    level.player _ID42237::_ID10192( 1.5, ::freezecontrols, 0 );
     thread maps\cliffhanger_code::_ID48102();
     thread maps\cliffhanger_code::_ID49182();
     thread maps\cliffhanger_code::_ID54154();
@@ -491,10 +491,10 @@ _ID45476( var_0 )
 
     _ID42389::_ID10971();
     var_1 = getent( "price_capture_node", "targetname" );
-    level._ID794 _ID42407::_ID37404( var_1 );
-    level._ID794 playerlinkto( var_1, undefined, 1, 0, 0, 0, 0 );
+    level.player _ID42407::_ID37404( var_1 );
+    level.player playerlinkto( var_1, undefined, 1, 0, 0, 0, 0 );
     var_2 = getnode( "price_tarmac_path", "targetname" );
-    level._ID28543 forceteleport( var_2._ID740, var_2._ID65 );
+    level._ID28543 forceteleport( var_2.origin, var_2.angles );
     level._ID28543 _ID42407::_ID14803( "ak47_arctic", "primary" );
     _ID49359::_ID48104();
     _ID42237::_ID14402( "player_in_hanger" );
@@ -502,21 +502,21 @@ _ID45476( var_0 )
     _ID42237::_ID14402( "hanger_reinforcements" );
     _ID42237::_ID14402( "hanger_slowmo_ends" );
     _ID42237::_ID14402( "start_busted_music" );
-    var_3 = _ID42313::_ID9125( "black", 0, level._ID794 );
-    var_3._ID55 = 1;
+    var_3 = _ID42313::_ID9125( "black", 0, level.player );
+    var_3.alpha = 1;
 
     if ( isdefined( level._ID52233 ) )
-        level._ID52233._ID55 = 1;
+        level._ID52233.alpha = 1;
 
     _ID42407::_ID10226( 1.75, maps\cliffhanger_code::_ID54154 );
     wait 3.75;
     var_3 fadeovertime( 2 );
-    var_3._ID55 = 0;
+    var_3.alpha = 0;
 
     if ( isdefined( level._ID52233 ) )
     {
         level._ID52233 fadeovertime( 2 );
-        level._ID52233._ID55 = 0;
+        level._ID52233.alpha = 0;
     }
 
     var_1 delete();
@@ -544,7 +544,7 @@ _ID53508()
     _ID42407::_ID1890( maps\cliffhanger_code::_ID45814, "destructible_oilrig_2" );
     thread _ID42407::_ID11231();
     thread maps\cliffhanger_snowmobile::_ID53546();
-    level._ID28543._ID625 = 200;
+    level._ID28543.maxfaceenemydist = 200;
     level._ID28543 _ID42407::_ID32315( "g" );
     _ID42234::_ID13611( 54 );
     _ID42234::_ID13611( 56 );
@@ -553,8 +553,8 @@ _ID53508()
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
     thread _ID45182();
     thread maps\cliffhanger_code::_ID51722();
-    level._ID794 _ID42407::_ID13021( "_stealth_enabled" );
-    level._ID794._ID630 = 8000;
+    level.player _ID42407::_ID13021( "_stealth_enabled" );
+    level.player.maxvisibledist = 8000;
     var_1 = getentarray( "blue_house_bottom_door", "targetname" );
     _ID42407::_ID3304( var_1 );
     var_2 = getentarray( "blue_house_top_door", "targetname" );
@@ -567,12 +567,12 @@ _ID53508()
 
     _ID42237::_ID30396( "tarmac_hanger_gate", maps\cliffhanger_code::_ID48543 );
     _ID42237::_ID14413( "hanger_slowmo_ends" );
-    level._ID28543._ID512 = 1;
-    level._ID28543._ID86 = 0;
+    level._ID28543.ignorerandombulletdamage = 1;
+    level._ID28543.attackeraccuracy = 0;
     level._ID28543._ID4867 = 1.8;
-    level._ID28543._ID513 = 1;
-    level._ID28543._ID760 = 350;
-    level._ID28543._ID761 = 350;
+    level._ID28543.ignoresuppression = 1;
+    level._ID28543.pathenemyfightdist = 350;
+    level._ID28543.pathenemylookahead = 350;
     level._ID28543 _ID42407::_ID32226( 0 );
     maps\cliffhanger_code::_ID47580();
     maps\cliffhanger_snowmobile::_ID53114();
@@ -607,7 +607,7 @@ _ID53629()
     _ID42475::_ID34575( "start_cave_checkpoint" );
     _ID45912();
     _ID42475::_ID34575( "aud_start_mix_mig_passby" );
-    level._ID794 _ID42237::_ID10192( 2, ::playsound, "scn_cliffhanger_intro_wind_front" );
+    level.player _ID42237::_ID10192( 2, ::playsound, "scn_cliffhanger_intro_wind_front" );
 }
 
 _ID54246()
@@ -642,7 +642,7 @@ _ID44881()
     maps\cliffhanger_stealth::_ID43641();
     maps\cliffhanger_code::_ID54243( "clifftop" );
     var_0 = _ID42237::_ID16638( "price_clifftopstart", "targetname" );
-    level._ID28543 forceteleport( var_0._ID740, var_0._ID65 );
+    level._ID28543 forceteleport( var_0.origin, var_0.angles );
 }
 
 _ID45895()
@@ -651,8 +651,8 @@ _ID45895()
     _ID45912();
     level notify( "player_shimmy_stop" );
     var_0 = getent( "player_big_jump_start", "targetname" );
-    level._ID794 setorigin( var_0._ID740 );
-    level._ID794 setplayerangles( var_0._ID65 );
+    level.player setorigin( var_0.origin );
+    level.player setplayerangles( var_0.angles );
     thread _ID47980::_ID48068();
     thread _ID47980::_ID49118();
     thread _ID49359::_ID52463();
@@ -676,7 +676,7 @@ _ID47189( var_0 )
     thread maps\cliffhanger_code::_ID49362( 0.05 );
     maps\cliffhanger_stealth::_ID47363();
     _ID49359::_ID48147( 0.1 );
-    _ID49359::_ID47801( level._ID794, 0.05 );
+    _ID49359::_ID47801( level.player, 0.05 );
 }
 
 _ID53372()
@@ -697,7 +697,7 @@ _ID53372()
     thread maps\cliffhanger_code::_ID49362();
     maps\cliffhanger_stealth::_ID47363();
     _ID49359::_ID48147( 0.1 );
-    _ID49359::_ID47801( level._ID794, 0.05 );
+    _ID49359::_ID47801( level.player, 0.05 );
 }
 
 _ID45274()
@@ -723,7 +723,7 @@ _ID45274()
     thread maps\cliffhanger_code::_ID49362();
     maps\cliffhanger_stealth::_ID47363();
     _ID49359::_ID48147( 0.1 );
-    _ID49359::_ID47801( level._ID794, 0.05 );
+    _ID49359::_ID47801( level.player, 0.05 );
 }
 
 _ID54446()
@@ -744,7 +744,7 @@ _ID54446()
     var_0 = getent( "price_hanger_start", "targetname" );
     level._ID28543 _ID42407::_ID37404( var_0 );
     _ID49359::_ID48147( 0.1 );
-    _ID49359::_ID47801( level._ID794, 0.05 );
+    _ID49359::_ID47801( level.player, 0.05 );
 }
 
 _ID53127()
@@ -759,11 +759,11 @@ _ID53127()
     _ID45912();
     maps\cliffhanger_stealth::_ID43641();
     var_0 = getent( "player_hanger_start", "targetname" );
-    level._ID794 _ID42407::_ID37404( var_0 );
+    level.player _ID42407::_ID37404( var_0 );
     var_1 = getent( "price_hanger_start", "targetname" );
-    level._ID28543 forceteleport( var_1._ID740, var_1._ID65 );
+    level._ID28543 forceteleport( var_1.origin, var_1.angles );
     _ID49359::_ID48104();
-    _ID49359::_ID47801( level._ID794, 0.05 );
+    _ID49359::_ID47801( level.player, 0.05 );
 }
 
 _ID45912()
@@ -862,10 +862,10 @@ _ID45185()
     {
         setsaveddvar( "r_useLightGridDefaultModelLightingLookup", "1" );
         setsaveddvar( "r_lightGridDefaultModelLightingLookup", " -58673 -1644 -7589 " );
-        level._ID794 waittill( "player_in_shadow" );
+        level.player waittill( "player_in_shadow" );
         setsaveddvar( "r_useLightGridDefaultModelLightingLookup", "1" );
         setsaveddvar( "r_lightGridDefaultModelLightingLookup", " -25970 -24856 -5137 " );
-        level._ID794 waittill( "player_out_shadow" );
+        level.player waittill( "player_out_shadow" );
         waittillframeend;
     }
 }

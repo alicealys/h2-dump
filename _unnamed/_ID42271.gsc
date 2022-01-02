@@ -134,7 +134,7 @@ _ID19661( var_0 )
     for ( var_3 = 0; var_3 < var_8.size; var_3++ )
     {
         var_9 = var_8[var_3];
-        level._ID43367[var_9._ID170] = var_9;
+        level._ID43367[var_9.classname] = var_9;
     }
 
     if ( getdvar( "shownodecolors" ) == "1" )
@@ -184,7 +184,7 @@ _ID17023()
     {
         var_3 = var_0[var_2];
 
-        if ( isalive( var_3._ID8262 ) && var_3._ID8262 != level._ID794 )
+        if ( isalive( var_3._ID8262 ) && var_3._ID8262 != level.player )
             continue;
 
         thread _ID47029( var_3 );
@@ -417,7 +417,7 @@ _ID28607( var_0, var_1, var_2 )
     for ( var_6 = 0; var_6 < var_3.size; var_6++ )
     {
         var_7 = var_3[var_6];
-        var_4 [[ level._ID8256[var_7._ID1244][var_5][var_0] ]]( var_7, level._ID21901[var_0][var_2] );
+        var_4 [[ level._ID8256[var_7.type][var_5][var_0] ]]( var_7, level._ID21901[var_0][var_2] );
     }
 
     var_4._ID8858 = _ID42237::_ID3320( var_4._ID8858 );
@@ -505,15 +505,15 @@ _ID31873( var_0, var_1 )
     self notify( "stop_color_move" );
     self._ID9487 = var_1;
 
-    if ( isdefined( var_0._ID1191 ) )
+    if ( isdefined( var_0.target ) )
     {
-        var_2 = getnode( var_0._ID1191, "targetname" );
+        var_2 = getnode( var_0.target, "targetname" );
 
         if ( isdefined( var_2 ) )
             self setgoalnode( var_2 );
     }
 
-    self._ID381 = 0;
+    self.fixednode = 0;
     self setgoalvolumeauto( var_0 );
 }
 
@@ -574,13 +574,13 @@ _ID20928( var_0, var_1, var_2, var_3 )
         var_21 = ( 0, 0, 0 );
 
         foreach ( var_16 in var_5 )
-            var_21 += var_16._ID740;
+            var_21 += var_16.origin;
 
         var_21 /= var_5.size;
         var_24 = ( 0, 0, 0 );
 
         foreach ( var_11 in var_3 )
-            var_24 += var_11._ID740;
+            var_24 += var_11.origin;
 
         var_24 /= var_3.size;
         var_3 = sortbydistance( var_3, var_21 );
@@ -603,7 +603,7 @@ _ID20928( var_0, var_1, var_2, var_3 )
             var_29 = var_20 - var_19;
         }
         else
-            var_28 = _ID42237::_ID16182( var_16._ID740, var_3 );
+            var_28 = _ID42237::_ID16182( var_16.origin, var_3 );
 
         var_3 = _ID42237::_ID3321( var_3, var_28 );
         var_28 _ID37135( var_16, var_0, self, var_29 );
@@ -646,10 +646,10 @@ _ID52580()
     if ( !isdefined( level._ID45965 ) )
         return;
 
-    if ( !isdefined( level._ID45965[self._ID1194] ) )
+    if ( !isdefined( level._ID45965[self.team] ) )
         return;
 
-    self._ID31100 = level._ID45965[self._ID1194];
+    self._ID31100 = level._ID45965[self.team];
 }
 
 _ID49826()
@@ -663,22 +663,22 @@ _ID27324()
     {
         var_0 = undefined;
 
-        if ( !isdefined( level._ID794._ID700 ) )
+        if ( !isdefined( level.player.node ) )
         {
             wait 0.05;
             continue;
         }
 
-        var_1 = level._ID794._ID700._ID8262;
-        var_0 = level._ID794._ID700;
-        var_0._ID8262 = level._ID794;
+        var_1 = level.player.node._ID8262;
+        var_0 = level.player.node;
+        var_0._ID8262 = level.player;
 
         for (;;)
         {
-            if ( !isdefined( level._ID794._ID700 ) )
+            if ( !isdefined( level.player.node ) )
                 break;
 
-            if ( level._ID794._ID700 != var_0 )
+            if ( level.player.node != var_0 )
                 break;
 
             wait 0.05;
@@ -785,10 +785,10 @@ _ID51724( var_0 )
 
     if ( _ID49098( var_0 ) )
         thread _ID44486( var_0 );
-    else if ( var_0._ID851 > 0 )
-        self._ID452 = var_0._ID851;
-    else if ( isdefined( self._ID3152 ) && self._ID3152 == "riotshield" && self._ID1194 == "allies" )
-        self._ID452 = 64;
+    else if ( var_0.radius > 0 )
+        self.goalradius = var_0.radius;
+    else if ( isdefined( self._ID3152 ) && self._ID3152 == "riotshield" && self.team == "allies" )
+        self.goalradius = 64;
 
     var_1 = level._ID3364[_ID16018()][self._ID9487];
 
@@ -797,12 +797,12 @@ _ID51724( var_0 )
     else
         self clearfixednodesafevolume();
 
-    if ( isdefined( var_0._ID382 ) )
-        self._ID382 = var_0._ID382;
+    if ( isdefined( var_0.fixednodesaferadius ) )
+        self.fixednodesaferadius = var_0.fixednodesaferadius;
     else if ( isdefined( level._ID14382 ) )
-        self._ID382 = level._ID14382;
+        self.fixednodesaferadius = level._ID14382;
     else
-        self._ID382 = 64;
+        self.fixednodesaferadius = 64;
 }
 
 _ID49098( var_0 )
@@ -813,10 +813,10 @@ _ID49098( var_0 )
     if ( !self._ID31212 )
         return 0;
 
-    if ( !isdefined( var_0._ID382 ) )
+    if ( !isdefined( var_0.fixednodesaferadius ) )
         return 0;
 
-    if ( self._ID381 )
+    if ( self.fixednode )
         return 0;
     else
         return 1;
@@ -826,11 +826,11 @@ _ID44486( var_0 )
 {
     self endon( "death" );
     self endon( "stop_going_to_node" );
-    self._ID452 = var_0._ID382;
+    self.goalradius = var_0.fixednodesaferadius;
     _ID42237::_ID41098( "goal", "damage" );
 
-    if ( var_0._ID851 > 0 )
-        self._ID452 = var_0._ID851;
+    if ( var_0.radius > 0 )
+        self.goalradius = var_0.radius;
 }
 
 _ID7053( var_0, var_1 )
@@ -844,7 +844,7 @@ _ID7053( var_0, var_1 )
     {
         _ID40954( var_0, var_1 );
         _ID39893( var_0, var_1 );
-        self._ID381 = 1;
+        self.fixednode = 1;
         _ID51724( var_0 );
     }
 }
@@ -854,15 +854,15 @@ _ID29330( var_0 )
     self endon( "death" );
     self endon( "stop_going_to_node" );
     self waittill( "stop_being_careful" );
-    self._ID381 = 1;
+    self.fixednode = 1;
     _ID51724( var_0 );
 }
 
 _ID39893( var_0, var_1 )
 {
-    self setgoalpos( self._ID740 );
-    self._ID452 = 1024;
-    self._ID381 = 0;
+    self setgoalpos( self.origin );
+    self.goalradius = 1024;
+    self.fixednode = 0;
 
     if ( isdefined( var_1 ) )
     {
@@ -870,7 +870,7 @@ _ID39893( var_0, var_1 )
         {
             wait 1;
 
-            if ( self isknownenemyinradius( var_0._ID740, self._ID382 ) )
+            if ( self isknownenemyinradius( var_0.origin, self.fixednodesaferadius ) )
                 continue;
 
             if ( self isknownenemyinvolume( var_1 ) )
@@ -883,7 +883,7 @@ _ID39893( var_0, var_1 )
     {
         for (;;)
         {
-            if ( !_ID51095( var_0._ID740, self._ID382 ) )
+            if ( !_ID51095( var_0.origin, self.fixednodesaferadius ) )
                 return;
 
             wait 1;
@@ -897,7 +897,7 @@ _ID51095( var_0, var_1 )
 
     for ( var_3 = 0; var_3 < var_2.size; var_3++ )
     {
-        if ( distance2d( var_2[var_3]._ID740, var_0 ) < var_1 )
+        if ( distance2d( var_2[var_3].origin, var_0 ) < var_1 )
             return 1;
     }
 
@@ -910,7 +910,7 @@ _ID40954( var_0, var_1 )
     {
         for (;;)
         {
-            if ( self isknownenemyinradius( var_0._ID740, self._ID382 ) )
+            if ( self isknownenemyinradius( var_0.origin, self.fixednodesaferadius ) )
                 return;
 
             if ( self isknownenemyinvolume( var_1 ) )
@@ -923,7 +923,7 @@ _ID40954( var_0, var_1 )
     {
         for (;;)
         {
-            if ( _ID51095( var_0._ID740, self._ID382 ) )
+            if ( _ID51095( var_0.origin, self.fixednodesaferadius ) )
                 return;
 
             wait 1;
@@ -933,10 +933,10 @@ _ID40954( var_0, var_1 )
 
 _ID24629()
 {
-    if ( !isdefined( self._ID700 ) )
+    if ( !isdefined( self.node ) )
         return 0;
 
-    return self._ID700 _ID42407::_ID916( self );
+    return self.node _ID42407::_ID916( self );
 }
 
 _ID28648( var_0, var_1, var_2 )
@@ -960,8 +960,8 @@ _ID28648( var_0, var_1, var_2 )
 
     if ( getdvarint( "use_node_script_flag_wait_in_color_system", 0 ) )
     {
-        if ( isdefined( self._ID700 ) && isdefined( self._ID700._ID31197 ) )
-            _ID42237::_ID14413( self._ID700._ID31197 );
+        if ( isdefined( self.node ) && isdefined( self.node._ID31197 ) )
+            _ID42237::_ID14413( self.node._ID31197 );
     }
 
     if ( !_ID24629() )
@@ -977,7 +977,7 @@ _ID28648( var_0, var_1, var_2 )
     {
         self waittill( "node_taken",  var_4  );
 
-        if ( var_4 == level._ID794 )
+        if ( var_4 == level.player )
             wait 0.05;
 
         var_0 = _ID15576();
@@ -1026,10 +1026,10 @@ _ID48583( var_0 )
     self endon( "stopScript" );
     self endon( "death" );
 
-    if ( isdefined( self._ID700 ) )
+    if ( isdefined( self.node ) )
         return;
 
-    if ( distance( var_0._ID740, self._ID740 ) < 32 )
+    if ( distance( var_0.origin, self.origin ) < 32 )
     {
         _ID51188( var_0 );
         return;
@@ -1056,10 +1056,10 @@ _ID51188( var_0 )
 
     for ( var_3 = 0; var_3 < var_1.size; var_3++ )
     {
-        if ( !isdefined( var_1[var_3]._ID700 ) )
+        if ( !isdefined( var_1[var_3].node ) )
             continue;
 
-        if ( var_1[var_3]._ID700 != var_0 )
+        if ( var_1[var_3].node != var_0 )
             continue;
 
         var_1[var_3] notify( "eject_from_my_node" );
@@ -1181,13 +1181,13 @@ _ID49971()
 {
     var_0 = [];
 
-    if ( issubstr( self._ID170, "axis" ) || issubstr( self._ID170, "enemy" ) || issubstr( self._ID170, "team3" ) )
+    if ( issubstr( self.classname, "axis" ) || issubstr( self.classname, "enemy" ) || issubstr( self.classname, "team3" ) )
     {
         var_0["team"] = "axis";
         var_0["colorTeam"] = self._ID31097;
     }
 
-    if ( issubstr( self._ID170, "ally" ) || issubstr( self._ID170, "civilian" ) )
+    if ( issubstr( self.classname, "ally" ) || issubstr( self.classname, "civilian" ) )
     {
         var_0["team"] = "allies";
         var_0["colorTeam"] = self._ID31096;
@@ -1252,7 +1252,7 @@ _ID8275()
         return;
 
     self._ID29701 = 1;
-    var_0 = self._ID170;
+    var_0 = self.classname;
     var_1 = self._ID31209;
     waitframe;
 
@@ -1269,8 +1269,8 @@ _ID8275()
     if ( isdefined( self ) && isdefined( self._ID31209 ) )
         var_1 = self._ID31209;
 
-    if ( isdefined( self ) && isdefined( self._ID740 ) )
-        var_3 = self._ID740;
+    if ( isdefined( self ) && isdefined( self.origin ) )
+        var_3 = self.origin;
 
     for (;;)
     {
@@ -1291,7 +1291,7 @@ _ID8275()
             continue;
         }
 
-        var_5 = _ID42237::_ID16182( level._ID794._ID740, var_4 );
+        var_5 = _ID42237::_ID16182( level.player.origin, var_4 );
         waitframe;
 
         if ( !isalive( var_5 ) )
@@ -1355,7 +1355,7 @@ _ID35277( var_0 )
             continue;
         }
 
-        var_2 = level._ID29816[var_0] - level._ID794._ID740;
+        var_2 = level._ID29816[var_0] - level.player.origin;
 
         if ( length( var_2 ) < 200 )
         {
@@ -1364,16 +1364,16 @@ _ID35277( var_0 )
             continue;
         }
 
-        var_3 = anglestoforward( ( 0, level._ID794 getplayerangles()[1], 0 ) );
+        var_3 = anglestoforward( ( 0, level.player getplayerangles()[1], 0 ) );
         var_4 = vectornormalize( var_2 );
         var_5 = vectordot( var_3, var_4 );
 
         if ( var_5 > 0.2 )
         {
-            var_6 = !sighttracepassed( level._ID794 geteye(), level._ID29816[var_0], 0, level._ID794 );
+            var_6 = !sighttracepassed( level.player geteye(), level._ID29816[var_0], 0, level.player );
 
             if ( var_6 )
-                var_6 = !sighttracepassed( level._ID794 geteye(), level._ID29816[var_0] + ( 0, 0, 96 ), 0, level._ID794 );
+                var_6 = !sighttracepassed( level.player geteye(), level._ID29816[var_0] + ( 0, 0, 96 ), 0, level.player );
 
             if ( !var_6 )
             {
@@ -1402,7 +1402,7 @@ _ID15631( var_0 )
 
             foreach ( var_3 in var_1 )
             {
-                if ( var_3._ID170 != var_0 )
+                if ( var_3.classname != var_0 )
                     continue;
 
                 level._ID43367[var_0] = var_3;
@@ -1496,11 +1496,11 @@ _ID35086( var_0, var_1 )
         }
 
         var_3 = _ID15631( var_0 );
-        var_3._ID216 = 1;
-        var_4 = var_3._ID740;
-        var_3._ID740 = level._ID29816["allies"];
+        var_3.count = 1;
+        var_4 = var_3.origin;
+        var_3.origin = level._ID29816["allies"];
         var_2 = var_3 stalingradspawn();
-        var_3._ID740 = var_4;
+        var_3.origin = var_4;
 
         if ( _ID42407::_ID35060( var_2 ) )
         {
@@ -1591,8 +1591,8 @@ _ID43824( var_0 )
 
 _ID16018( var_0 )
 {
-    if ( isdefined( self._ID1194 ) && !isdefined( var_0 ) )
-        var_0 = self._ID1194;
+    if ( isdefined( self.team ) && !isdefined( var_0 ) )
+        var_0 = self.team;
 
     return level._ID8261[var_0];
 }
@@ -1602,6 +1602,6 @@ clear_color_progress( var_0 )
     if ( !isdefined( var_0._ID9487 ) )
         return;
 
-    level._ID9488[var_0._ID1194][var_0._ID31209] = undefined;
+    level._ID9488[var_0.team][var_0._ID31209] = undefined;
     var_0._ID9487 = undefined;
 }

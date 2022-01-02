@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     anim._ID46067 = [];
     anim._ID46067["left"] = spawnstruct();
@@ -13,8 +13,8 @@ _ID616()
     anim._ID46067["left"]._ID52080._ID7186 = %zodiac_rightside_aim5;
     anim._ID46067["left"]._ID52080._ID893 = %zodiac_rightside_aim6;
     anim._ID46067["left"]._ID868 = animscripts\utility::_ID3291( %zodiac_rightside_reload );
-    anim._ID46067["left"]._ID590 = -35;
-    anim._ID46067["left"]._ID894 = 25;
+    anim._ID46067["left"].leftaimlimit = -35;
+    anim._ID46067["left"].rightaimlimit = 25;
     anim._ID46067["left"]._ID19302 = %zodiac_rightside_idle;
     anim._ID46067["left"]._ID49044 = animscripts\utility::_ID3291( %zodiac_rightside_shift, %zodiac_rightside_react );
     anim._ID46067["right"] = spawnstruct();
@@ -27,8 +27,8 @@ _ID616()
     anim._ID46067["right"]._ID868 = animscripts\utility::_ID3291( %zodiac_leftside_reload, %zodiac_leftside_reloadb );
     anim._ID46067["right"]._ID19302 = %zodiac_leftside_idle;
     anim._ID46067["right"]._ID49044 = animscripts\utility::_ID3291( %zodiac_leftside_duck );
-    anim._ID46067["right"]._ID590 = -15;
-    anim._ID46067["right"]._ID894 = 40;
+    anim._ID46067["right"].leftaimlimit = -15;
+    anim._ID46067["right"].rightaimlimit = 40;
 }
 
 _ID53392()
@@ -40,7 +40,7 @@ _ID53392()
 
         }
 
-        if ( isdefined( self._ID377 ) )
+        if ( isdefined( self.favoriteenemy ) )
         {
 
         }
@@ -218,7 +218,7 @@ _ID54234()
     if ( var_0 < self._ID7._ID50516 + 1500 )
         return 0;
 
-    if ( isdefined( self._ID322 ) && self._ID322 sightconetrace( self geteye() ) )
+    if ( isdefined( self.enemy ) && self.enemy sightconetrace( self geteye() ) )
         return 0;
 
     if ( !isdefined( anim._ID46067[self._ID7._ID52880]._ID49044 ) )
@@ -248,7 +248,7 @@ _ID48214()
 
 _ID46840()
 {
-    if ( !isdefined( self._ID322 ) || !self._ID322 sightconetrace( self geteye() ) )
+    if ( !isdefined( self.enemy ) || !self.enemy sightconetrace( self geteye() ) )
     {
         self._ID33785 = undefined;
         self._ID33810 = undefined;
@@ -256,9 +256,9 @@ _ID46840()
     }
     else
     {
-        self._ID33785 = self._ID322;
-        self._ID33810 = self._ID322 getshootatpos();
-        var_0 = distancesquared( self._ID740, self._ID322._ID740 );
+        self._ID33785 = self.enemy;
+        self._ID33810 = self.enemy getshootatpos();
+        var_0 = distancesquared( self.origin, self.enemy.origin );
 
         if ( var_0 < 16000000 )
         {
@@ -273,14 +273,14 @@ _ID46840()
 _ID53614()
 {
     self endon( "killanimscript" );
-    self._ID44895 = self._ID740;
+    self._ID44895 = self.origin;
     self._ID49276 = ( 0, 0, 0 );
 
     for (;;)
     {
         wait 0.05;
-        self._ID49276 = ( self._ID740 - self._ID44895 ) / 0.05;
-        self._ID44895 = self._ID740;
+        self._ID49276 = ( self.origin - self._ID44895 ) / 0.05;
+        self._ID44895 = self.origin;
     }
 }
 
@@ -322,7 +322,7 @@ _ID50829()
 
     var_0 = _ID51840();
     var_1 = anim._ID46067[self._ID7._ID52880];
-    return var_0 >= var_1._ID590 && var_0 <= var_1._ID894;
+    return var_0 >= var_1.leftaimlimit && var_0 <= var_1.rightaimlimit;
 }
 
 _ID51840()
@@ -367,7 +367,7 @@ _ID48642()
     {
         if ( var_1 < 0 )
         {
-            var_3 = var_1 / var_2._ID590;
+            var_3 = var_1 / var_2.leftaimlimit;
 
             if ( var_3 > 1 )
                 var_3 = 1;
@@ -377,7 +377,7 @@ _ID48642()
         }
         else
         {
-            var_3 = var_1 / var_2._ID894;
+            var_3 = var_1 / var_2.rightaimlimit;
 
             if ( var_3 > 1 )
                 var_3 = 1;

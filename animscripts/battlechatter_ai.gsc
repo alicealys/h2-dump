@@ -21,11 +21,11 @@ _ID2131( var_0 )
     {
         self._ID4912 = 0;
         self._ID14542 = 0;
-        self._ID1244 = "human";
+        self.type = "human";
         return;
     }
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
         self._ID12971 = undefined;
         self._ID4912 = 0;
@@ -33,7 +33,7 @@ _ID2131( var_0 )
         return;
     }
 
-    if ( self._ID1194 == "neutral" )
+    if ( self.team == "neutral" )
     {
         self._ID12971 = undefined;
         self._ID4912 = 0;
@@ -43,7 +43,7 @@ _ID2131( var_0 )
 
     if ( _ID14784() )
     {
-        if ( self._ID1194 == "allies" )
+        if ( self.team == "allies" )
             self._ID31069 = 0;
         else
             self._ID40757 = "american";
@@ -88,7 +88,7 @@ _ID14784()
     if ( !getdvarint( "bcs_forceEnglish", 0 ) )
         return 0;
 
-    switch ( level._ID912 )
+    switch ( level.script )
     {
         case "airlift":
         case "armada":
@@ -122,15 +122,15 @@ _ID2473()
     thread _ID2392();
     thread _ID2391();
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
     {
         wait(var_0);
         thread _ID2386();
     }
-    else if ( ( self._ID1194 == "axis" || self._ID1194 == "team3" ) && !_ID20662( self._ID8774 ) )
+    else if ( ( self.team == "axis" || self.team == "team3" ) && !_ID20662( self._ID8774 ) )
         thread _ID2399();
 
-    if ( self._ID1194 == level._ID794._ID1194 )
+    if ( self.team == level.player.team )
         thread _ID27431();
 
     wait(var_0);
@@ -154,7 +154,7 @@ _ID32708()
 
     for ( var_4 = 0; var_4 <= var_1; var_4++ )
     {
-        if ( var_0[( var_2 + var_4 ) % var_1]._ID216 < var_0[var_3]._ID216 )
+        if ( var_0[( var_2 + var_4 ) % var_1].count < var_0[var_3].count )
             var_3 = ( var_2 + var_4 ) % var_1;
     }
 
@@ -164,13 +164,13 @@ _ID32708()
 
 _ID25174( var_0 )
 {
-    anim._ID39932[self._ID40757][var_0]._ID216++;
+    anim._ID39932[self._ID40757][var_0].count++;
     self waittill( "death" );
 
     if ( !animscripts\battlechatter::_ID4954() )
         return;
 
-    anim._ID39932[self._ID40757][var_0]._ID216--;
+    anim._ID39932[self._ID40757][var_0].count--;
 }
 
 _ID2399()
@@ -180,7 +180,7 @@ _ID2399()
 
     for (;;)
     {
-        if ( distance( self._ID740, level._ID794._ID740 ) < 1024 )
+        if ( distance( self.origin, level.player.origin ) < 1024 )
         {
             if ( isdefined( self._ID35507._ID23459 ) && self._ID35507._ID23459 > 1 )
                 _ID2087( "taunt", "hostileburst" );
@@ -285,7 +285,7 @@ _ID19573()
         animscripts\battlechatter::_ID1995( "ai_cardinal" );
     }
 
-    if ( self._ID1194 == "allies" )
+    if ( self.team == "allies" )
     {
         animscripts\battlechatter::_ID1995( "ai_yourclock" );
         animscripts\battlechatter::_ID1995( "player_yourclock" );
@@ -303,7 +303,7 @@ _ID19573()
     if ( isdefined( self._ID31069 ) && !self._ID31069 )
         self._ID4912 = 0;
     else
-        self._ID4912 = level._ID4912[self._ID1194];
+        self._ID4912 = level._ID4912[self.team];
 
     if ( animscripts\battlechatter::_ID40760() )
         self._ID14542 = 1;
@@ -447,7 +447,7 @@ _ID2078( var_0, var_1, var_2, var_3 )
     if ( !animscripts\battlechatter::_ID6880( "order", var_0, var_3, var_1 ) )
         return;
 
-    if ( isdefined( var_2 ) && var_2._ID1244 == "dog" )
+    if ( isdefined( var_2 ) && var_2.type == "dog" )
         return;
 
     var_4 = animscripts\battlechatter::_ID9197( "order", var_0, var_3 );
@@ -481,7 +481,7 @@ _ID35542()
 
         if ( var_2.size )
         {
-            var_0 = _ID42237::_ID16182( level._ID794._ID740, var_2 );
+            var_0 = _ID42237::_ID16182( level.player.origin, var_2 );
             var_0 _ID2443();
             var_0 waittill( "death" );
         }
@@ -506,7 +506,7 @@ _ID44530( var_0 )
         var_1[var_1.size] = var_0[var_2];
     }
 
-    var_1 = _ID42237::_ID15566( level._ID794._ID740, var_1 );
+    var_1 = _ID42237::_ID15566( level.player.origin, var_1 );
     var_3 = [];
     var_4 = [];
 
@@ -529,12 +529,12 @@ _ID44530( var_0 )
 
 _ID37682( var_0 )
 {
-    if ( !level._ID794 animscripts\battlechatter::_ID13070( var_0 ) )
+    if ( !level.player animscripts\battlechatter::_ID13070( var_0 ) )
         return 0;
 
     var_1 = level._ID47738 * level._ID47738;
 
-    if ( distancesquared( level._ID794._ID740, var_0._ID740 ) > var_1 )
+    if ( distancesquared( level.player.origin, var_0.origin ) > var_1 )
         return 0;
 
     return 1;
@@ -549,14 +549,14 @@ _ID35546()
     {
         wait(randomfloatrange( 0.25, 0.75 ));
 
-        if ( self._ID1194 == "allies" )
+        if ( self.team == "allies" )
             var_0 = _ID44530( getaiarray( "axis", "team3" ) );
-        else if ( self._ID1194 == "team3" )
+        else if ( self.team == "team3" )
             var_0 = _ID44530( getaiarray( "allies", "axis" ) );
         else
         {
             var_0 = getaiarray( "allies", "team3" );
-            var_0[var_0.size] = level._ID794;
+            var_0[var_0.size] = level.player;
         }
 
         if ( !var_0.size )
@@ -601,7 +601,7 @@ _ID35546()
                     if ( isplayernumber( var_5 ) )
                         continue;
 
-                    if ( var_5._ID1194 == level._ID794._ID1194 )
+                    if ( var_5.team == level.player.team )
                         continue;
 
                     if ( !_ID42407::_ID27291( var_5 ) )
@@ -711,10 +711,10 @@ _ID2392()
         if ( getdvar( "bcs_enable", "on" ) == "off" )
             continue;
 
-        if ( !isdefined( var_0 ) || var_0._ID669 != "projectile_m67fraggrenade" )
+        if ( !isdefined( var_0 ) || var_0.model != "projectile_m67fraggrenade" )
             continue;
 
-        if ( distance( var_0._ID740, level._ID794._ID740 ) < 512 )
+        if ( distance( var_0.origin, level.player.origin ) < 512 )
             _ID2026( "incoming", "grenade" );
     }
 }
@@ -734,7 +734,7 @@ _ID2386()
         if ( gettime() < self._ID7._ID26210 + 4000 )
             continue;
 
-        _ID2089( "ack", "yes", level._ID794, 1.0 );
+        _ID2089( "ack", "yes", level.player, 1.0 );
     }
 }
 
@@ -746,10 +746,10 @@ _ID13240( var_0 )
     if ( !animscripts\battlechatter::_ID4954() )
         return;
 
-    if ( !isdefined( self._ID700 ) )
+    if ( !isdefined( self.node ) )
         return;
 
-    var_1 = distance( self._ID740, self._ID700._ID740 );
+    var_1 = distance( self.origin, self.node.origin );
 
     if ( var_1 < 512 )
         return;
@@ -762,12 +762,12 @@ _ID13240( var_0 )
 
     var_2 = animscripts\battlechatter::_ID16571( 24, 1024, "response" );
 
-    if ( self._ID1194 != "axis" && self._ID1194 != "team3" )
+    if ( self.team != "axis" && self.team != "team3" )
     {
         if ( !isdefined( var_2 ) )
-            var_2 = level._ID794;
+            var_2 = level.player;
         else if ( randomint( 100 ) < anim._ID13277["moveEvent"]["ordertoplayer"] )
-            var_2 = level._ID794;
+            var_2 = level.player;
     }
 
     if ( self._ID8376 > 0.0 )
@@ -809,10 +809,10 @@ _ID2391()
         if ( !animscripts\battlechatter::_ID4954() )
             return;
 
-        if ( var_0._ID1194 != self._ID1194 )
+        if ( var_0.team != self.team )
             continue;
 
-        if ( distance( self._ID740, var_0._ID740 ) < 600 )
+        if ( distance( self.origin, var_0.origin ) < 600 )
             _ID2089( "ack", "yes", var_0, 0.9 );
     }
 }
@@ -843,7 +843,7 @@ _ID27431()
 
 _ID27430()
 {
-    _ID2087( "friendlyfire", undefined, level._ID794, 1.0 );
+    _ID2087( "friendlyfire", undefined, level.player, 1.0 );
 }
 
 _ID27432()
@@ -886,7 +886,7 @@ _ID15016( var_0, var_1 )
     var_2 = 65536;
     var_3 = 42;
 
-    if ( distancesquared( var_0._ID740, self._ID740 ) < var_2 )
+    if ( distancesquared( var_0.origin, self.origin ) < var_2 )
         return 0;
 
     if ( var_1 > var_3 )
@@ -914,7 +914,7 @@ _ID13239()
     if ( !animscripts\battlechatter::_ID4954() )
         return 0;
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     return 0;
@@ -928,7 +928,7 @@ _ID13238()
     if ( !animscripts\battlechatter::_ID4954() )
         return;
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return;
 }
 
@@ -1026,7 +1026,7 @@ _ID9529( var_0 )
 
     var_0 = tolower( var_0 );
     var_1 = anim._ID4935 + "custom battlechatter phrase '" + var_0 + "' isn't valid.  look at _utility::custom_battlechatter_init_valid_phrases(), or the util script documentation for custom_battlechatter(), for a list of valid phrases.";
-    var_2 = anim._ID4935 + "AI at origin " + self._ID740 + "wasn't able to play custom battlechatter because his nationality is '" + self._ID8774 + "'.";
+    var_2 = anim._ID4935 + "AI at origin " + self.origin + "wasn't able to play custom battlechatter because his nationality is '" + self._ID8774 + "'.";
 
     if ( !_ID9530( var_0 ) )
         return 0;
@@ -1111,9 +1111,9 @@ _ID12635( var_0, var_1 )
         var_2._ID13599 = gettime() + var_0;
 
     if ( isdefined( var_1 ) )
-        var_2._ID1244 = var_1;
+        var_2.type = var_1;
     else
-        var_2._ID1244 = "custom";
+        var_2.type = "custom";
 
     self._ID7337["custom"] = undefined;
     self._ID7337["custom"] = var_2;

@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("generic_human");
 
-_ID616()
+main()
 {
     var_0 = self getturret();
     self._ID10423 = "stand";
@@ -34,7 +34,7 @@ _ID616()
     var_1["latvee_turret_rechamber"] = %latvee_turret_rechamber;
     self._ID39363 = var_1;
     var_0 _ID33507();
-    thread animscripts\laatpv_turret\minigun_code::_ID616( var_0 );
+    thread animscripts\laatpv_turret\minigun_code::main( var_0 );
 }
 #using_animtree("vehicles");
 

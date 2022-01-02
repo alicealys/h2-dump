@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = getent( "enemy_pickup_heli", "targetname" );
     var_0 _ID42407::_ID1947( ::_ID48004 );
@@ -52,21 +52,21 @@ _ID46918()
 
         if ( _ID42237::_ID8201() )
         {
-            level._ID794 playrumblelooponentity( "damage_heavy" );
+            level.player playrumblelooponentity( "damage_heavy" );
             continue;
         }
 
-        level._ID794 playrumblelooponentity( "damage_light" );
+        level.player playrumblelooponentity( "damage_light" );
     }
 }
 
 _ID44247()
 {
     level notify( "clear_rapids_junk" );
-    level._ID794 _meth_80b6( "damage_heavy" );
-    level._ID794 _meth_80b6( "damage_light" );
-    level._ID794 thread _ID42237::_ID36516( "zodiac_waterfall_idle" );
-    level._ID794 thread _ID42237::_ID36516( "zodiac_waterfall_sustain" );
+    level.player _meth_80b6( "damage_heavy" );
+    level.player _meth_80b6( "damage_light" );
+    level.player thread _ID42237::_ID36516( "zodiac_waterfall_idle" );
+    level.player thread _ID42237::_ID36516( "zodiac_waterfall_sustain" );
     level._ID48793 delete();
 }
 
@@ -75,15 +75,15 @@ _ID50940()
     var_0 = _ID42237::_ID35164();
     level._ID49992 = var_0;
     var_1 = _ID42407::_ID16268( "full_brake_until_waterfall_end" );
-    var_2 = _ID42237::_ID16638( var_1._ID1191, "targetname" );
-    var_3 = _ID42237::_ID16638( var_2._ID1191, "targetname" );
-    var_4 = distance( var_2._ID740, var_3._ID740 );
+    var_2 = _ID42237::_ID16638( var_1.target, "targetname" );
+    var_3 = _ID42237::_ID16638( var_2.target, "targetname" );
+    var_4 = distance( var_2.origin, var_3.origin );
     var_5 = 175;
     var_6 = var_4 / var_5;
-    var_0._ID740 = var_2._ID740;
+    var_0.origin = var_2.origin;
     var_0 thread _ID51260::_ID50246();
     _ID42237::_ID14413( "full_brake_until_waterfall_end" );
-    var_0 moveto( var_3._ID740, var_6, 0, 0 );
+    var_0 moveto( var_3.origin, var_6, 0, 0 );
 }
 
 _ID50528()
@@ -116,7 +116,7 @@ _ID48103()
         return;
     }
 
-    if ( !level._ID794 worldpointinreticle_circle( level._ID48502._ID740, 65, 1000 ) )
+    if ( !level.player worldpointinreticle_circle( level._ID48502.origin, 65, 1000 ) )
     {
         maps\af_chase_code::_ID43792();
         return;
@@ -127,7 +127,7 @@ _ID48103()
     var_2 = getvehiclenode( "players_boat_end_path_test", "targetname" );
     level endon( "clear_rapids_junk" );
     childthread _ID46918();
-    var_3 = level._ID794 _ID42407::_ID15963();
+    var_3 = level.player _ID42407::_ID15963();
     var_3._ID20129 = 0.025;
     level._ID48793 = var_3;
     level._ID46392 endon( "death" );
@@ -150,7 +150,7 @@ _ID48103()
     var_13 = var_9;
     var_14 = 25;
     var_15 = 350;
-    var_16 = level._ID794._ID25468;
+    var_16 = level.player._ID25468;
     var_17 = 0;
     var_18 = 1;
     var_19 = -60;
@@ -172,7 +172,7 @@ _ID48103()
 
     for (;;)
     {
-        var_34 = level._ID794 getnormalizedmovement()[1];
+        var_34 = level.player getnormalizedmovement()[1];
         var_16 += var_34 * var_14;
         var_16 = clamp( var_16, var_15 * -1, var_15 );
         var_35 = _ID51260::_ID53431();
@@ -201,10 +201,10 @@ _ID48103()
             if ( var_25 < 1 )
                 var_25 += 0.01;
 
-            var_40 = vectorlerp( var_40, var_1._ID740, var_25 );
+            var_40 = vectorlerp( var_40, var_1.origin, var_25 );
         }
 
-        var_40 = _ID42407::_ID32530( var_40, var_0._ID740[2] );
+        var_40 = _ID42407::_ID32530( var_40, var_0.origin[2] );
         var_41 = 35;
 
         if ( _ID42237::_ID14385( "test_boat_is_on_spline" ) )
@@ -222,13 +222,13 @@ _ID48103()
             {
                 var_44 = _ID42407::_ID17153( var_43, var_19, var_20, var_21, var_22 );
                 var_44 = clamp( var_44, var_17, var_18 );
-                var_0._ID1266 = var_44;
+                var_0.veh_brake = var_44;
             }
             else if ( _ID42237::_ID14385( "player_brakes_on_waterfall" ) )
             {
                 var_44 = _ID42407::_ID17153( var_43, var_19, var_20, var_21, var_22 );
                 var_44 = clamp( var_44, var_17, var_18 );
-                var_0._ID1266 = var_44;
+                var_0.veh_brake = var_44;
             }
         }
 
@@ -247,7 +247,7 @@ _ID48103()
                 var_31 = _ID53345( var_30 );
             }
 
-            var_0._ID1278 = var_31;
+            var_0.veh_topspeed = var_31;
         }
 
         var_0 vehicledriveto( var_40, var_41 );
@@ -255,7 +255,7 @@ _ID48103()
         if ( !var_24 )
         {
             var_24 = 1;
-            var_0._ID1266 = 0;
+            var_0.veh_brake = 0;
         }
 
         wait 0.05;
@@ -272,7 +272,7 @@ _ID48103()
     var_46 = 0;
     childthread _ID46918();
     _ID42237::_ID14402( "rocky_bumps" );
-    var_3 = level._ID794 _ID42407::_ID15963();
+    var_3 = level.player _ID42407::_ID15963();
     var_3._ID20129 = 0.025;
     level._ID48793 = var_3;
 
@@ -281,8 +281,8 @@ _ID48103()
         if ( maps\af_chase_code::_ID48435() )
         {
             _ID42237::_ID14402( "steady_boat_participating" );
-            level._ID794 thread _ID42237::_ID36516( "zodiac_waterfall_idle" );
-            level._ID794 thread _ID42237::_ID27000( "zodiac_waterfall_sustain" );
+            level.player thread _ID42237::_ID36516( "zodiac_waterfall_idle" );
+            level.player thread _ID42237::_ID27000( "zodiac_waterfall_sustain" );
             level._ID46392._ID45403 = 1;
             _ID42237::_ID14388( "rocky_bumps" );
             var_3._ID20129 = 0.225;
@@ -292,8 +292,8 @@ _ID48103()
 
             var_3._ID20129 = 0.0001;
             _ID42237::_ID14402( "rocky_bumps" );
-            level._ID794 thread _ID42237::_ID36516( "zodiac_waterfall_sustain" );
-            level._ID794 thread _ID42237::_ID27000( "zodiac_waterfall_idle" );
+            level.player thread _ID42237::_ID36516( "zodiac_waterfall_sustain" );
+            level.player thread _ID42237::_ID27000( "zodiac_waterfall_idle" );
             var_46 = 0;
         }
         else
@@ -306,7 +306,7 @@ _ID48103()
         if ( var_46 > var_45 )
         {
             var_46 = 0;
-            level._ID46392 joltbody( level._ID46392._ID740 + ( 0, 0, 64 ) + _ID42237::_ID28976( 32 ), 0.1 );
+            level._ID46392 joltbody( level._ID46392.origin + ( 0, 0, 64 ) + _ID42237::_ID28976( 32 ), 0.1 );
         }
 
         wait 0.05;
@@ -315,17 +315,17 @@ _ID48103()
 
 _ID44343( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
-    var_6 = var_0[1] - level._ID794._ID740[1];
+    var_6 = var_0[1] - level.player.origin[1];
     var_7 = level._ID28543 getanimtime( var_1 ) * var_2;
     var_8 = var_3 - var_7;
     var_9 = var_6 / var_8 / 17.6;
 
-    if ( level._ID794._ID740[1] > var_0[1] )
+    if ( level.player.origin[1] > var_0[1] )
         var_9 = 0;
     else if ( var_8 > 0.4 )
-        self._ID1278 = var_9;
+        self.veh_topspeed = var_9;
     else
-        self._ID1278 = 10;
+        self.veh_topspeed = 10;
 
     var_10 = clamp( var_9, var_4, var_5 );
     return var_10;
@@ -335,7 +335,7 @@ _ID53345( var_0 )
 {
     var_1 = 80;
     var_2 = 200;
-    var_3 = var_0[1] - level._ID794._ID740[1];
+    var_3 = var_0[1] - level.player.origin[1];
     var_3 = clamp( var_3, var_1, var_2 );
     var_4 = ( var_3 - var_1 ) / ( var_2 - var_1 );
     var_5 = 3 + var_4 * 8;
@@ -354,7 +354,7 @@ _ID48516()
     level._ID28543 notify( "waterfall_sequence" );
     level._ID28543._ID54140 = 1;
     level._ID28543 _ID42407::_ID28876();
-    level._ID794 _ID42407::_ID13025( "zodiac_aim_helicopter" );
+    level.player _ID42407::_ID13025( "zodiac_aim_helicopter" );
     level._ID28543 _meth_859d( 0 );
     level._ID46392 childthread _ID46380( level._ID28543 );
     childthread _ID54285();
@@ -369,7 +369,7 @@ _ID48516()
     magicbullet( "m203", var_1, var_2 );
     playfxontag( level._ID1426["fx/muzzleflashes/m203_flshview"], level._ID28543, "tag_flash" );
     wait 0.7;
-    level._ID794 _ID42407::_ID13025( "disable_shooting" );
+    level.player _ID42407::_ID13025( "disable_shooting" );
     level._ID47133 _ID42407::_ID10226( 0.05, ::_ID43513 );
     var_3 = _ID42237::_ID16299( "fx/explosions/large_vehicle_explosion" );
     playfxontag( var_3, var_0, "tag_guy0" );
@@ -387,8 +387,8 @@ _ID45440()
     var_0 _ID54167::_ID48800( 4.28 ) _ID54167::_ID50321( 64, 800, 8, 8 ) _ID54167::_ID44545( 1 );
     var_0 _ID54167::_ID48800( 6.1 ) _ID54167::_ID50321( 4.0, -1, 16, 16 ) _ID54167::_ID44518( 50 ) _ID54167::_ID52391( level._ID28543, "tag_eye" ) _ID54167::_ID44545( 1 );
     var_0 _ID54167::_ID48800( 8.12 ) _ID54167::_ID48959();
-    var_0 _ID54167::_ID48800( 0.7 ) _ID54167::_ID47198( 0.1, 1.3, level._ID794, 10000 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 0.25 );
-    var_0 _ID54167::_ID48800( 8.6 ) _ID54167::_ID48161( "tank_rumble", level._ID794, 1.3 );
+    var_0 _ID54167::_ID48800( 0.7 ) _ID54167::_ID47198( 0.1, 1.3, level.player, 10000 ) _ID54167::_ID48161( "tank_rumble", level.player, 0.25 );
+    var_0 _ID54167::_ID48800( 8.6 ) _ID54167::_ID48161( "tank_rumble", level.player, 1.3 );
     var_0 _ID54167::_ID48166();
 }
 
@@ -429,22 +429,22 @@ _ID45755()
 {
     var_0 = getent( "water_fall_edge_trigger", "targetname" );
     level._ID46392 notify( "stop_targetting" );
-    level._ID794 allowstand( 1 );
-    level._ID794 allowcrouch( 0 );
-    level._ID794 allowprone( 0 );
+    level.player allowstand( 1 );
+    level.player allowcrouch( 0 );
+    level.player allowprone( 0 );
     setsaveddvar( "fx_alphathreshold", 40 );
     playfxontag( _ID42237::_ID16299( "splash_over_waterfall" ), level._ID46392, "tag_guy2" );
     level._ID46392 notify( "kill_treadfx" );
     maps\af_chase_code::_ID52556();
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     var_2 = getent( "on_foot_destination", "targetname" );
-    level._ID794 disableweapons();
+    level.player disableweapons();
     level notify( "player_over_the_waterfall" );
     setsaveddvar( "compass", 0 );
-    var_3 = var_1._ID740[2] - 10;
-    level._ID794 playerlinktoblend( level._ID46392, "tag_player", 0.15, 0.05, 0.05 );
+    var_3 = var_1.origin[2] - 10;
+    level.player playerlinktoblend( level._ID46392, "tag_player", 0.15, 0.05, 0.05 );
 
-    while ( level._ID794._ID740[2] > var_3 )
+    while ( level.player.origin[2] > var_3 )
         wait 0.05;
 
     _ID27345();
@@ -458,20 +458,20 @@ _ID45755()
     }
 
     thread _ID54723();
-    var_4 = _ID42407::_ID32530( level._ID43587._ID740, var_1._ID740[2] - 55 );
+    var_4 = _ID42407::_ID32530( level._ID43587.origin, var_1.origin[2] - 55 );
     level._ID46392 delete();
     var_5 = getentarray( "script_vehicle_zodiac", "classname" );
     var_6 = getentarray( "script_vehicle_zodiac_physics", "classname" );
     _ID42237::_ID3294( var_5, ::delete );
     _ID42237::_ID3294( var_6, ::delete );
-    level._ID43587._ID740 = var_4;
-    level._ID794 unlink();
-    level._ID794 playerlinktodelta( level._ID43587, "tag_player", 1, 0, 0, 0, 0 );
+    level._ID43587.origin = var_4;
+    level.player unlink();
+    level.player playerlinktodelta( level._ID43587, "tag_player", 1, 0, 0, 0, 0 );
     _ID42237::_ID14402( "boat_freeze" );
     ambientstop();
-    level._ID794 playrumblelooponentity( "damage_heavy" );
-    earthquake( 0.3, 3.5, level._ID794._ID740, 1000 );
-    level._ID794 setwatersheeting( 3, 3 );
+    level.player playrumblelooponentity( "damage_heavy" );
+    earthquake( 0.3, 3.5, level.player.origin, 1000 );
+    level.player setwatersheeting( 3, 3 );
 
     if ( isdefined( level._ID28543._ID15093 ) )
         level._ID28543 _ID42407::_ID15095();
@@ -479,7 +479,7 @@ _ID45755()
     level._ID28543 _ID42407::_ID36519();
     level._ID46392 notify( "end_aim" );
     _ID42237::_ID3294( getaiarray(), ::delete );
-    level._ID794 thread _ID42407::_ID41628();
+    level.player thread _ID42407::_ID41628();
     thread _ID52272::_ID47298();
     wait 1;
 
@@ -490,9 +490,9 @@ _ID45755()
         return;
     }
 
-    var_7 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    var_7 = _ID42313::_ID9125( "black", 0, level.player );
     var_7 fadeovertime( 3 );
-    var_7._ID55 = 1;
+    var_7.alpha = 1;
     wait 2;
     setdvar( "ui_char_museum_mode", "credits_1" );
     _ID42407::_ID24793();
@@ -507,8 +507,8 @@ _ID54723()
 {
     var_0 = getent( "zodiac_blend_target", "targetname" );
     level._ID46392 makeusable();
-    level._ID794 playerlinktoblend( var_0, "tag_player", 0.05, 0, 0 );
-    level._ID794 playerlinktoblend( var_0, "tag_player", 0.05, 0, 0 );
+    level.player playerlinktoblend( var_0, "tag_player", 0.05, 0, 0 );
+    level.player playerlinktoblend( var_0, "tag_player", 0.05, 0, 0 );
     level._ID46392 makeunusable();
     level._ID43587 = var_0;
 }
@@ -541,9 +541,9 @@ _ID51101()
 _ID27345()
 {
     level._ID46392 vehicle_turnengineoff();
-    level._ID794 dismountvehicle();
+    level.player dismountvehicle();
     level._ID46392 setmodel( "vehicle_zodiac" );
-    level._ID794._ID11803 = undefined;
+    level.player._ID11803 = undefined;
 }
 
 _ID47180()
@@ -558,13 +558,13 @@ _ID47180()
 _ID51870()
 {
     var_0 = _ID42237::_ID16638( "rapids_anim_scene", "targetname" );
-    var_0._ID65 = ( 0, 0, 0 );
+    var_0.angles = ( 0, 0, 0 );
     var_1 = self;
     level._ID52084 = self;
     var_1._ID3189 = "pavelow";
     var_2 = level._ID46392;
-    var_2 = spawn( "script_model", level._ID46392._ID740 );
-    var_2 setmodel( level._ID46392._ID669 );
+    var_2 = spawn( "script_model", level._ID46392.origin );
+    var_2 setmodel( level._ID46392.model );
     var_2._ID3189 = "zodiac_player";
     var_2 hide();
     var_2 useanimtree( #animtree );
@@ -586,18 +586,18 @@ _ID51870()
     var_4 = level._ID48502 _ID42411::_ID40283();
     level._ID48502 vehicle_setspeedimmediate( 500, 500, 500 );
     level._ID48502 vehicledriveto( ( 25648, 26920, -10168 ), 500 );
-    var_5 = spawn( "script_origin", var_1._ID740 );
+    var_5 = spawn( "script_origin", var_1.origin );
     var_5 linkto( var_1, "tag_body", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     var_4 _ID42237::_ID10192( 0.05, ::linkto, var_5 );
-    level._ID794 thread _ID42407::_ID27079( "afchase_plp_onboard" );
+    level.player thread _ID42407::_ID27079( "afchase_plp_onboard" );
     level._ID28543 notify( "stop_boatrider_targets" );
     level._ID28543 setentitytarget( var_1 );
     var_6 = var_2 _ID42407::_ID16120( "sniper_waterfall" );
-    var_7 = getstartangles( var_0._ID740, var_0._ID65, var_6 );
-    var_8 = getstartorigin( var_0._ID740, var_0._ID65, var_6 );
+    var_7 = getstartangles( var_0.origin, var_0.angles, var_6 );
+    var_8 = getstartorigin( var_0.origin, var_0.angles, var_6 );
     thread _ID46759( var_2 );
     thread _ID48516();
-    level._ID794 _ID42407::_ID10226( 4, _ID42407::_ID27079, "afchase_plp_thelongway" );
+    level.player _ID42407::_ID10226( 4, _ID42407::_ID27079, "afchase_plp_thelongway" );
     _ID42237::_ID14402( "test_boat_is_on_spline" );
     var_0 thread _ID42259::_ID3111( var_1, "sniper_waterfall" );
     var_0 _ID42259::_ID3111( var_2, "sniper_waterfall" );
@@ -648,7 +648,7 @@ _ID48004()
 _ID48962()
 {
     var_0 = level._ID47133;
-    var_1 = spawnturret( "misc_turret", var_0._ID740, "minigun_littlebird_spinnup" );
+    var_1 = spawnturret( "misc_turret", var_0.origin, "minigun_littlebird_spinnup" );
     var_1 setmodel( "vehicle_little_bird_minigun_right" );
     var_1 linkto( var_0, "tag_gunner_right", ( 33, 0, 0 ), ( 60, 76, 0 ) );
     var_1._ID26175 = self;
@@ -664,7 +664,7 @@ _ID48962()
     level thread _ID42331::_ID23499( var_1, _ID42407::_ID16219() );
     var_1 setaispread( 0.4 );
     var_1 setconvergencetime( 1 );
-    var_1._ID10 = 0;
+    var_1.accuracy = 0;
     level._ID54525 = var_1;
     var_1 thread _ID53774();
     var_0 waittill( "death" );
@@ -674,7 +674,7 @@ _ID48962()
 _ID53774()
 {
     var_0 = _ID42237::_ID16638( "minigun_path", "targetname" );
-    var_1 = spawn( "script_origin", var_0._ID740 );
+    var_1 = spawn( "script_origin", var_0.origin );
     var_2 = getent( "minigun_splasher", "targetname" );
     var_2 thread _ID48310();
     self endon( "death" );
@@ -684,23 +684,23 @@ _ID53774()
 
     while ( !_ID42237::_ID14385( "price_fired_all_his_shots_at_heli" ) )
     {
-        if ( !isdefined( var_0._ID1191 ) )
+        if ( !isdefined( var_0.target ) )
             return;
 
-        var_0 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
+        var_0 = _ID42237::_ID16638( var_0.target, "targetname" );
 
         if ( !isdefined( var_0 ) )
             return;
 
-        var_1 moveto( var_0._ID740, 1, 0, 0 );
+        var_1 moveto( var_0.origin, 1, 0, 0 );
         var_1 waittill( "movedone" );
     }
 
-    var_1 moveto( level._ID794._ID740, 2.5, 0, 0 );
-    self settargetentity( level._ID794 );
+    var_1 moveto( level.player.origin, 2.5, 0, 0 );
+    self settargetentity( level.player );
     self setaispread( 0.4 );
     self setconvergencetime( 3 );
-    self._ID10 = 1;
+    self.accuracy = 1;
 }
 
 _ID53465()
@@ -757,8 +757,8 @@ _ID53867()
     var_0 setanimknob( %h2_afchase_waterfall_player_fall, 1.0, 0 );
     var_1 thread _ID42259::_ID3111( var_0, var_2, undefined, undefined, undefined, undefined, 0 );
     var_3 = spawnstruct();
-    var_3._ID65 = ( 19.7217, 70.7454, -1.66272 );
-    var_3._ID740 = ( 25480, 25950, -5507 );
+    var_3.angles = ( 19.7217, 70.7454, -1.66272 );
+    var_3.origin = ( 25480, 25950, -5507 );
     var_0 thread _ID42259::_ID46811( "single anim", var_1, var_3, 0.2 );
 }
 
@@ -815,7 +815,7 @@ _ID48310()
     {
         self waittill( "damage",  var_1, var_2, var_3, var_4, var_5  );
 
-        if ( var_2._ID172 != "misc_turret" )
+        if ( var_2.code_classname != "misc_turret" )
             continue;
 
         var_6 = var_2 gettagangles( "tag_flash" );
@@ -892,9 +892,9 @@ _ID46380( var_0 )
         }
         else
         {
-            var_3 = anglestoforward( var_0._ID65 );
+            var_3 = anglestoforward( var_0.angles );
             var_3 = vectornormalize( ( var_3[0], var_3[1], 0 ) );
-            var_4 = level._ID52084._ID740 - var_0._ID740;
+            var_4 = level._ID52084.origin - var_0.origin;
             var_4 = vectornormalize( ( var_4[0], var_4[1], 0 ) );
             var_5 = _ID54635( var_3, var_4 );
 

@@ -19,7 +19,7 @@ _ID7519()
     self endon( "mg_off" );
     var_0 = cos( 55 );
 
-    while ( self._ID486 > 0 )
+    while ( self.health > 0 )
     {
         var_1 = _ID16258( 16000, var_0, 1, 1 );
 
@@ -60,8 +60,8 @@ _ID18369( var_0 )
         case "apache_zippy":
             var_4 = [ 0.1, 0.2, 0.3 ];
             wait 1;
-            var_1._ID740 = var_1._ID740 + ( 0, 0, -150 );
-            var_1 moveto( var_1._ID740 + ( 0, 0, 150 ), 0.6, 0, 0 );
+            var_1.origin = var_1.origin + ( 0, 0, -150 );
+            var_1 moveto( var_1.origin + ( 0, 0, 150 ), 0.6, 0, 0 );
 
             foreach ( var_6 in var_4 )
             {
@@ -77,7 +77,7 @@ _ID18369( var_0 )
             _ID14269( "hind_rpg", 5, var_1, 0.3 );
             break;
         default:
-            if ( self._ID170 == "script_vehicle_littlebird_armed" || self._ID170 == "script_vehicle_littlebird_md500" )
+            if ( self.classname == "script_vehicle_littlebird_armed" || self.classname == "script_vehicle_littlebird_md500" )
                 _ID42508::_ID18368( var_1, 2, 0.25 );
             else
                 _ID14269( "hind_zippy", 5, var_1, 0.3 );
@@ -132,7 +132,7 @@ _ID14494( var_0 )
     notifyoncommand( "flare_button", "+usereload" );
     notifyoncommand( "flare_button", "+activate" );
 
-    while ( var_0._ID486 > 0 )
+    while ( var_0.health > 0 )
     {
         if ( isdefined( var_0._ID27777 ) )
             var_0._ID26659 waittill( "flare_button" );
@@ -251,9 +251,9 @@ _ID14493( var_0, var_1 )
 
 _ID14491( var_0 )
 {
-    var_1 = var_0._ID740;
+    var_1 = var_0.origin;
     wait 0.05;
-    var_2 = var_0._ID740 - var_1;
+    var_2 = var_0.origin - var_1;
     return var_2 * 20;
 }
 
@@ -318,7 +318,7 @@ _ID16258( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
     if ( var_5 )
         var_10 = _ID42237::_ID3320( var_10 );
 
-    var_13 = anglestoforward( self._ID65 );
+    var_13 = anglestoforward( self.angles );
 
     for ( var_11 = 0; var_11 < var_10.size; var_11++ )
     {
@@ -332,13 +332,13 @@ _ID16258( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 
         if ( isdefined( var_0 ) && var_0 > 0 )
         {
-            if ( distance( self._ID740, var_10[var_11]._ID740 ) > var_0 )
+            if ( distance( self.origin, var_10[var_11].origin ) > var_0 )
                 continue;
         }
 
         if ( isdefined( var_1 ) )
         {
-            var_15 = vectornormalize( var_10[var_11]._ID740 - self._ID740 );
+            var_15 = vectornormalize( var_10[var_11].origin - self.origin );
             var_16 = vectordot( var_13, var_15 );
 
             if ( var_16 <= var_1 )
@@ -354,7 +354,7 @@ _ID16258( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
             else
                 var_18 = 150;
 
-            var_17 = sighttracepassed( self._ID740, var_10[var_11]._ID740 + ( 0, 0, var_18 ), 0, self );
+            var_17 = sighttracepassed( self.origin, var_10[var_11].origin + ( 0, 0, var_18 ), 0, self );
 
             if ( !var_17 )
                 continue;
@@ -375,7 +375,7 @@ _ID16258( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
         return var_7[0];
     }
 
-    var_19 = _ID42237::_ID16182( self._ID740, var_7 );
+    var_19 = _ID42237::_ID16182( self.origin, var_7 );
     self notify( "gunner_new_target",  var_19  );
     return var_19;
 }
@@ -399,7 +399,7 @@ _ID33779( var_0 )
 
     self setturrettargetent( var_0, var_1 );
 
-    while ( self._ID486 > 0 )
+    while ( self.health > 0 )
     {
         var_2 = randomintrange( 1, 25 );
 
@@ -623,17 +623,17 @@ _ID14269( var_0, var_1, var_2, var_3, var_4 )
 
         if ( var_0 == "ffar_mi28_village_assault" )
         {
-            if ( isdefined( var_2 ) && isdefined( var_2._ID740 ) )
+            if ( isdefined( var_2 ) && isdefined( var_2.origin ) )
             {
                 var_11 = self gettagorigin( var_8[var_9] );
-                var_12 = vectornormalize( var_2._ID740 - var_11 );
+                var_12 = vectornormalize( var_2.origin - var_11 );
                 var_12 *= 50;
-                magicbullet( var_5, var_11 + var_12, var_2._ID740 );
+                magicbullet( var_5, var_11 + var_12, var_2.origin );
 
                 if ( isdefined( level._ID1426["ffar_mi28_muzzleflash"] ) )
                     playfxontag( _ID42237::_ID16299( "ffar_mi28_muzzleflash" ), self, var_8[var_9] );
 
-                thread _ID10204( 0.1, 0.5, 0.2, var_2._ID740, 1600 );
+                thread _ID10204( 0.1, 0.5, 0.2, var_2.origin, 1600 );
             }
         }
         else

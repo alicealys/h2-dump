@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "insect_trail_runner_icbm" );
     var_0 _ID42229::_ID32402( ( -4463.94, 5806.1, 648.217 ), ( 270, 0, -40 ) );

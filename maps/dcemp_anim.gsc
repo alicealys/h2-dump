@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     thread setup_exploder_anim();
     script_model_anim();
@@ -449,7 +449,7 @@ _ID46077()
 _ID49307( var_0 )
 {
     var_1 = getent( "lobby_door_right", "targetname" );
-    var_2 = getentarray( var_1._ID1191, "targetname" );
+    var_2 = getentarray( var_1.target, "targetname" );
     var_3 = undefined;
 
     foreach ( var_5 in var_2 )
@@ -470,11 +470,11 @@ _ID49307( var_0 )
 
 _ID54490( var_0 )
 {
-    var_0._ID44680 = var_0._ID470;
-    var_0._ID470 = "flash_grenade";
-    var_0._ID464++;
+    var_0._ID44680 = var_0.grenadeweapon;
+    var_0.grenadeweapon = "flash_grenade";
+    var_0.grenadeammo++;
     var_1 = _ID42237::_ID16638( "office_magic_bullet_target", "targetname" );
-    var_2 = vectornormalize( var_1._ID740 - var_0 gettagorigin( "TAG_INHAND" ) + ( 0, 0, 40 ) );
+    var_2 = vectornormalize( var_1.origin - var_0 gettagorigin( "TAG_INHAND" ) + ( 0, 0, 40 ) );
     var_2 *= 800;
     var_3 = 1;
     var_0 magicgrenademanual( var_0 gettagorigin( "TAG_INHAND" ), var_2, var_3 );
@@ -483,9 +483,9 @@ _ID54490( var_0 )
 _ID51647( var_0 )
 {
     var_1 = getent( "street_flare", "targetname" );
-    var_2 = spawn( "script_model", var_1._ID45977._ID740 );
-    var_2._ID65 = var_1._ID45977._ID65;
-    var_2 setmodel( var_1._ID45977._ID669 );
+    var_2 = spawn( "script_model", var_1._ID45977.origin );
+    var_2.angles = var_1._ID45977.angles;
+    var_2 setmodel( var_1._ID45977.model );
     var_2 linkto( var_1 );
     var_1._ID45977 delete();
     var_1._ID45977 = var_2;
@@ -499,10 +499,10 @@ _ID51647( var_0 )
     }
 
     playfxontag( level._ID1426["handflare_red_dcemp"], var_1._ID45977, "TAG_ORIGIN" );
-    var_1._ID740 = var_0 gettagorigin( "TAG_INHAND" );
+    var_1.origin = var_0 gettagorigin( "TAG_INHAND" );
     var_6 = anglestoup( var_0 gettagangles( "TAG_INHAND" ) );
     var_7 = vectortoangles( var_6 * -1 );
-    var_1._ID65 = var_7;
+    var_1.angles = var_7;
     var_1 linkto( var_0, "TAG_INHAND" );
 }
 
@@ -510,10 +510,10 @@ _ID52074( var_0 )
 {
     var_1 = getent( "street_flare", "targetname" );
     var_1 unlink();
-    var_2 = anglestoforward( var_0._ID65 );
-    var_3 = var_0._ID740 + var_2 * 50;
+    var_2 = anglestoforward( var_0.angles );
+    var_3 = var_0.origin + var_2 * 50;
     var_3 += ( 0, 0, 18 );
-    var_2 = vectornormalize( var_3 - var_0._ID740 );
+    var_2 = vectornormalize( var_3 - var_0.origin );
     var_4 = var_2 * 704;
     var_5 = 0.85;
     var_1 movegravity( var_4, var_5 );
@@ -521,11 +521,11 @@ _ID52074( var_0 )
     wait(var_5);
     _ID42237::_ID14402( "plaza_throw_react" );
     var_6 = var_1;
-    var_1 = spawn( "script_model", var_6._ID740 );
-    var_1._ID65 = var_6._ID65;
-    var_1 setmodel( var_6._ID669 );
+    var_1 = spawn( "script_model", var_6.origin );
+    var_1.angles = var_6.angles;
+    var_1 setmodel( var_6.model );
     var_1._ID45977 = var_6._ID45977;
-    var_1._ID1193 = "street_flare";
+    var_1.targetname = "street_flare";
     var_6._ID45977 linkto( var_1 );
     var_6 delete();
     var_1 thread _ID42407::_ID27079( "scn_dcemp_street_flare_bounce" );
@@ -541,22 +541,22 @@ _ID52074( var_0 )
     thread _ID42407::_ID4918( "axis" );
     wait(var_5);
     var_6 = var_1;
-    var_1 = spawn( "script_model", var_6._ID740 );
-    var_1._ID65 = var_6._ID65;
-    var_1 setmodel( var_6._ID669 );
+    var_1 = spawn( "script_model", var_6.origin );
+    var_1.angles = var_6.angles;
+    var_1 setmodel( var_6.model );
     var_1._ID45977 = var_6._ID45977;
-    var_1._ID1193 = "street_flare";
+    var_1.targetname = "street_flare";
     var_6._ID45977 linkto( var_1 );
     var_6 delete();
     var_5 = 1;
     var_8 = var_2 * 95;
-    var_9 = var_1._ID740 + ( var_8[0], var_8[1], 0 );
+    var_9 = var_1.origin + ( var_8[0], var_8[1], 0 );
     var_1 moveto( var_9, var_5, 0, var_5 );
     var_1 waittill( "movedone" );
     var_1 = getent( "street_flare", "targetname" );
-    var_10 = spawn( "script_model", var_1._ID45977._ID740 );
-    var_10._ID65 = var_1._ID45977._ID65;
-    var_10 setmodel( var_1._ID45977._ID669 );
+    var_10 = spawn( "script_model", var_1._ID45977.origin );
+    var_10.angles = var_1._ID45977.angles;
+    var_10 setmodel( var_1._ID45977.model );
     var_10 linkto( var_1 );
     var_1._ID45977 delete();
     var_1._ID45977 = var_10;

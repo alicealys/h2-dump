@@ -1,10 +1,10 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
-    _ID49575::_ID616();
-    _ID43893::_ID616();
+    _ID49575::main();
+    _ID43893::main();
     level thread _ID38735();
     level._ID1426["bouncing_betty_launch"] = loadfx( "vfx/map/estate/h2_bouncing_betty_launch_dirt_estate" );
     level._ID1426["bouncing_betty_swirl"] = loadfx( "vfx/map/estate/h2_bouncing_betty_swirl_estate" );

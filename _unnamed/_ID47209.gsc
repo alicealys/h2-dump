@@ -1,10 +1,10 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_urban_civ_male_bb_drone" );
-    _ID42226::_ID3584( "alias_civilian_urban_heads_wht_drone", _ID52097::_ID616() );
+    _ID42226::_ID3584( "alias_civilian_urban_heads_wht_drone", _ID52097::main() );
     self._ID40757 = "russian";
     self setclothtype( "vestlight" );
 }
@@ -12,5 +12,5 @@ _ID616()
 _ID814()
 {
     precachemodel( "body_urban_civ_male_bb_drone" );
-    _ID42226::_ID28388( _ID52097::_ID616() );
+    _ID42226::_ID28388( _ID52097::main() );
 }

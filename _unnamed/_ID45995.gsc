@@ -6,16 +6,16 @@ _ID52838()
     self endon( "head_tracking_end" );
     self endon( "death" );
     self._ID52838 = 1;
-    self._ID51764 = self._ID680;
+    self._ID51764 = self.name;
 
     for (;;)
     {
         wait 0.2;
 
-        if ( distance( self._ID740, level._ID794._ID740 ) <= 200 && _ID42407::_ID27540( self._ID740 ) )
+        if ( distance( self.origin, level.player.origin ) <= 200 && _ID42407::_ID27540( self.origin ) )
         {
             self setlookatyawlimits( 60, 60, randomfloatrange( 0.5, 2.0 ) );
-            self setlookatentity( level._ID794, 1, randomint( 5 ) == 0 );
+            self setlookatentity( level.player, 1, randomint( 5 ) == 0 );
             _ID42407::_ID45375( 5, 7 );
             self controlslinkto( 1 );
             _ID42407::_ID45375( 5, 7 );
@@ -40,7 +40,7 @@ _ID48826( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, 
     var_0 = _ID50687( var_0 );
 
     if ( !isdefined( var_1 ) )
-        var_1 = level._ID794;
+        var_1 = level.player;
 
     if ( !isdefined( var_2 ) )
         var_2 = 200;
@@ -105,8 +105,8 @@ _ID44171()
 
 _ID46948( var_0, var_1, var_2, var_3 )
 {
-    var_4 = !isdefined( self._ID49521._ID1244 ) || self._ID49521._ID1244 != var_0;
-    var_5 = !isdefined( self._ID49521._ID1191 ) || self._ID49521._ID1191 != var_1;
+    var_4 = !isdefined( self._ID49521.type ) || self._ID49521.type != var_0;
+    var_5 = !isdefined( self._ID49521.target ) || self._ID49521.target != var_1;
     var_6 = isdefined( self._ID49521._ID48751 ) && self._ID49521._ID48751;
     var_7 = var_6 != var_2;
     var_8 = isdefined( self._ID49521._ID54118 ) && self._ID49521._ID54118;
@@ -114,7 +114,7 @@ _ID46948( var_0, var_1, var_2, var_3 )
 
     if ( var_4 )
     {
-        var_10 = _ID51144( self._ID49521._ID1244 );
+        var_10 = _ID51144( self._ID49521.type );
         var_11 = var_10[0];
         var_12 = var_10[1];
         var_clear_2
@@ -153,8 +153,8 @@ _ID46948( var_0, var_1, var_2, var_3 )
         }
     }
 
-    self._ID49521._ID1244 = var_0;
-    self._ID49521._ID1191 = var_1;
+    self._ID49521.type = var_0;
+    self._ID49521.target = var_1;
     self._ID49521._ID48751 = var_2;
     self._ID49521._ID54118 = var_3;
 }
@@ -212,7 +212,7 @@ _ID50050()
             if ( self._ID49521._ID36185 != ::_ID43742 )
             {
                 if ( self._ID49521._ID54118 )
-                    self setlookatentity( self._ID49521._ID1191, 1, 0, 1 );
+                    self setlookatentity( self._ID49521.target, 1, 0, 1 );
 
                 self._ID49521._ID36185 = ::_ID43742;
                 _ID46396();
@@ -237,7 +237,7 @@ _ID49216()
     if ( !self._ID49521._ID51294 || self._ID49521._ID26401 )
         return 0;
 
-    if ( distancesquared( self._ID740, self._ID49521._ID1191._ID740 ) > self._ID49521._ID53346 )
+    if ( distancesquared( self.origin, self._ID49521.target.origin ) > self._ID49521._ID53346 )
         return 0;
 
     var_0 = _ID53039();
@@ -349,17 +349,17 @@ _ID46122( var_0 )
 
 _ID53039()
 {
-    var_0 = self._ID49521._ID1191._ID740;
-    var_1 = self._ID740;
+    var_0 = self._ID49521.target.origin;
+    var_1 = self.origin;
     var_2 = vectortoyaw( var_0 - var_1 );
-    var_3 = self._ID65[1] + self._ID49521._ID48064;
+    var_3 = self.angles[1] + self._ID49521._ID48064;
     var_4 = angleclamp180( var_2 - var_3 );
     return var_4;
 }
 
 _ID53640()
 {
-    var_0 = self._ID49521._ID1191 geteye();
+    var_0 = self._ID49521.target geteye();
     var_1 = vectortoangles( var_0 - self geteye() );
     var_2 = angleclamp180( var_1[0] + self._ID49521._ID44923 );
     var_3 = self gettagangles( "J_HEAD" );

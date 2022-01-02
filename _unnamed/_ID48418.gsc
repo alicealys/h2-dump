@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_ultra_nationalist_assault_e" );
     self attach( "head_ultra_nationalist_beret", "", 1 );

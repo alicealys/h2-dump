@@ -170,7 +170,7 @@ snd_handle_treads()
     var_0 = [ "TAG_WHEEL_FRONT_LEFT", "TAG_WHEEL_FRONT_RIGHT" ];
     var_1 = spawn( "script_origin", ( 0, 0, 0 ) );
     var_2 = [ "TAG_WHEEL_BACK_LEFT", "TAG_WHEEL_BACK_RIGHT" ];
-    var_3 = spawn( "script_origin", self._ID740 );
+    var_3 = spawn( "script_origin", self.origin );
     link_ent_between_wheels( var_1, var_0 );
     link_ent_between_wheels( var_3, var_2 );
     var_1 playloopsound( "btr80_technical_treads" );

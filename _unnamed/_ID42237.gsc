@@ -960,7 +960,7 @@ _ID38865( var_0, var_1 )
 _ID38866()
 {
     if ( isdefined( self._ID29164 ) )
-        self._ID740 = self._ID29164;
+        self.origin = self._ID29164;
 
     self._ID38863 = undefined;
 }
@@ -979,10 +979,10 @@ _ID38863( var_0, var_1 )
 _ID38864()
 {
     if ( !isdefined( self._ID29164 ) )
-        self._ID29164 = self._ID740;
+        self._ID29164 = self.origin;
 
-    if ( self._ID740 == self._ID29164 )
-        self._ID740 = self._ID740 + ( 0, 0, -10000 );
+    if ( self.origin == self._ID29164 )
+        self.origin = self.origin + ( 0, 0, -10000 );
 
     self._ID38863 = 1;
 }
@@ -1091,40 +1091,40 @@ _ID36710()
 
 _ID1954( var_0 )
 {
-    if ( isdefined( var_0._ID1193 ) )
+    if ( isdefined( var_0.targetname ) )
     {
-        if ( !isdefined( level._ID36711["targetname"][var_0._ID1193] ) )
-            level._ID36711["targetname"][var_0._ID1193] = [];
+        if ( !isdefined( level._ID36711["targetname"][var_0.targetname] ) )
+            level._ID36711["targetname"][var_0.targetname] = [];
 
-        var_1 = level._ID36711["targetname"][var_0._ID1193].size;
-        level._ID36711["targetname"][var_0._ID1193][var_1] = var_0;
+        var_1 = level._ID36711["targetname"][var_0.targetname].size;
+        level._ID36711["targetname"][var_0.targetname][var_1] = var_0;
     }
 
-    if ( isdefined( var_0._ID1191 ) )
+    if ( isdefined( var_0.target ) )
     {
-        if ( !isdefined( level._ID36711["target"][var_0._ID1191] ) )
-            level._ID36711["target"][var_0._ID1191] = [];
+        if ( !isdefined( level._ID36711["target"][var_0.target] ) )
+            level._ID36711["target"][var_0.target] = [];
 
-        var_1 = level._ID36711["target"][var_0._ID1191].size;
-        level._ID36711["target"][var_0._ID1191][var_1] = var_0;
+        var_1 = level._ID36711["target"][var_0.target].size;
+        level._ID36711["target"][var_0.target][var_1] = var_0;
     }
 
-    if ( isdefined( var_0._ID922 ) )
+    if ( isdefined( var_0.script_noteworthy ) )
     {
-        if ( !isdefined( level._ID36711["script_noteworthy"][var_0._ID922] ) )
-            level._ID36711["script_noteworthy"][var_0._ID922] = [];
+        if ( !isdefined( level._ID36711["script_noteworthy"][var_0.script_noteworthy] ) )
+            level._ID36711["script_noteworthy"][var_0.script_noteworthy] = [];
 
-        var_1 = level._ID36711["script_noteworthy"][var_0._ID922].size;
-        level._ID36711["script_noteworthy"][var_0._ID922][var_1] = var_0;
+        var_1 = level._ID36711["script_noteworthy"][var_0.script_noteworthy].size;
+        level._ID36711["script_noteworthy"][var_0.script_noteworthy][var_1] = var_0;
     }
 
-    if ( isdefined( var_0._ID920 ) )
+    if ( isdefined( var_0.script_linkname ) )
     {
-        if ( !isdefined( level._ID36711["script_linkname"][var_0._ID920] ) )
-            level._ID36711["script_linkname"][var_0._ID920] = [];
+        if ( !isdefined( level._ID36711["script_linkname"][var_0.script_linkname] ) )
+            level._ID36711["script_linkname"][var_0.script_linkname] = [];
 
-        var_1 = level._ID36711["script_linkname"][var_0._ID920].size;
-        level._ID36711["script_linkname"][var_0._ID920][0] = var_0;
+        var_1 = level._ID36711["script_linkname"][var_0.script_linkname].size;
+        level._ID36711["script_linkname"][var_0.script_linkname][0] = var_0;
     }
 }
 
@@ -2342,11 +2342,11 @@ _ID35164()
     var_0 setmodel( "tag_origin" );
     var_0 hide();
 
-    if ( isdefined( self._ID740 ) )
-        var_0._ID740 = self._ID740;
+    if ( isdefined( self.origin ) )
+        var_0.origin = self.origin;
 
-    if ( isdefined( self._ID65 ) )
-        var_0._ID65 = self._ID65;
+    if ( isdefined( self.angles ) )
+        var_0.angles = self.angles;
 
     return var_0;
 }
@@ -2472,7 +2472,7 @@ _ID1792()
 _ID16012( var_0 )
 {
     if ( !isdefined( var_0 ) )
-        var_0 = self._ID1191;
+        var_0 = self.target;
 
     var_1 = getent( var_0, "targetname" );
 
@@ -2538,9 +2538,9 @@ _ID27005( var_0, var_1 )
     var_2 = spawn( "script_origin", ( 0, 0, 0 ) );
 
     if ( !isdefined( var_1 ) )
-        var_1 = self._ID740;
+        var_1 = self.origin;
 
-    var_2._ID740 = var_1;
+    var_2.origin = var_1;
     var_2 playloopsound( var_0 );
     return var_2;
 }
@@ -2564,10 +2564,10 @@ _ID27078( var_0, var_1, var_2, var_3 )
     var_4 = spawn( "script_origin", ( 0, 0, 1 ) );
 
     if ( !isdefined( var_1 ) )
-        var_1 = self._ID740;
+        var_1 = self.origin;
 
-    var_4._ID740 = var_1;
-    var_4._ID65 = var_2;
+    var_4.origin = var_1;
+    var_4.angles = var_2;
 
     if ( _ID20913() )
     {
@@ -2611,7 +2611,7 @@ _ID22644( var_0, var_1, var_2, var_3, var_4 )
             self endon( var_3 );
         }
 
-        var_5._ID740 = var_1;
+        var_5.origin = var_1;
         var_5 playloopsound( var_0 );
         var_5 willneverchange();
     }
@@ -2640,8 +2640,8 @@ _ID22647( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
             self endon( var_4 );
         }
 
-        var_7._ID740 = var_1;
-        var_7._ID65 = var_2;
+        var_7.origin = var_1;
+        var_7.angles = var_2;
         var_7 playloopsound( var_0 );
 
         if ( isdefined( level._ID9228 ) && level._ID9228 )
@@ -2760,14 +2760,14 @@ _ID27000( var_0, var_1, var_2, var_3 )
 
     if ( isdefined( var_1 ) )
     {
-        var_4._ID740 = self._ID740 + var_1;
-        var_4._ID65 = self._ID65;
+        var_4.origin = self.origin + var_1;
+        var_4.angles = self.angles;
         var_4 _meth_8453( self );
     }
     else
     {
-        var_4._ID740 = self._ID740;
-        var_4._ID65 = self._ID65;
+        var_4.origin = self.origin;
+        var_4.angles = self.angles;
         var_4 _meth_8453( self );
     }
 
@@ -2847,7 +2847,7 @@ _ID9163( var_0, var_1 )
 
     var_2 = spawnstruct();
     var_2._ID23038 = var_1;
-    var_2._ID216 = 0;
+    var_2.count = 0;
     level._ID22529[var_0] = var_2;
 }
 
@@ -2863,16 +2863,16 @@ _ID22529( var_0 )
 {
     var_1 = level._ID22529[var_0];
 
-    while ( var_1._ID216 >= var_1._ID23038 )
+    while ( var_1.count >= var_1._ID23038 )
         var_1 waittill( "unlocked" );
 
-    var_1._ID216++;
+    var_1.count++;
 }
 
 _ID20560( var_0 )
 {
     var_1 = level._ID22529[var_0];
-    return var_1._ID216 > var_1._ID23038;
+    return var_1.count > var_1._ID23038;
 }
 
 _ID39501( var_0 )
@@ -2890,13 +2890,13 @@ _ID39499( var_0 )
 {
     wait 0.05;
     var_1 = level._ID22529[var_0];
-    var_1._ID216--;
+    var_1.count--;
     var_1 notify( "unlocked" );
 }
 
 _ID16023()
 {
-    var_0 = level._ID912;
+    var_0 = level.script;
 
     if ( isdefined( level._ID37503 ) )
         var_0 = level._ID37503;
@@ -2965,7 +2965,7 @@ _ID15566( var_0, var_1, var_2, var_3, var_4, var_5 )
         if ( var_11 )
             continue;
 
-        var_15 = distancesquared( var_0, var_10._ID740 );
+        var_15 = distancesquared( var_0, var_10.origin );
 
         if ( isdefined( var_6 ) && var_15 > var_6 )
             continue;
@@ -3050,10 +3050,10 @@ _ID13080( var_0 )
 
     for (;;)
     {
-        var_2 = self._ID740;
+        var_2 = self.origin;
         var_3 = _ID41078( var_0, "path_disconnect" );
         var_4 = 0;
-        var_5 = distancesquared( self._ID740, var_2 ) > 0;
+        var_5 = distancesquared( self.origin, var_2 ) > 0;
 
         if ( var_5 )
             var_4 = 1;
@@ -3066,7 +3066,7 @@ _ID13080( var_0 )
 
         foreach ( var_7 in level._ID7313 )
         {
-            if ( isai( var_7 ) && distancesquared( self._ID740, var_7._ID740 ) < 250000 )
+            if ( isai( var_7 ) && distancesquared( self.origin, var_7.origin ) < 250000 )
             {
                 var_4 = 1;
                 self._ID14782 = max( gettime() + 30000, self._ID14782 );
@@ -3129,7 +3129,7 @@ _ID16182( var_0, var_1, var_2 )
         if ( !isdefined( var_5 ) )
             continue;
 
-        var_6 = distance( var_5._ID740, var_0 );
+        var_6 = distance( var_5.origin, var_0 );
 
         if ( var_6 >= var_2 )
             continue;
@@ -3151,7 +3151,7 @@ _ID16276( var_0, var_1, var_2 )
 
     foreach ( var_6 in var_1 )
     {
-        var_7 = distance( var_6._ID740, var_0 );
+        var_7 = distance( var_6.origin, var_0 );
 
         if ( var_7 <= var_3 || var_7 >= var_2 )
             continue;
@@ -3408,7 +3408,7 @@ _ID32677( var_0 )
     {
         foreach ( var_3 in var_1 )
         {
-            if ( isdefined( var_3._ID22321 ) && ( var_3._ID170 == "script_brushmodel" || var_3._ID170 == "script_model" ) )
+            if ( isdefined( var_3._ID22321 ) && ( var_3.classname == "script_brushmodel" || var_3.classname == "script_model" ) )
             {
                 if ( var_3._ID22321 == 0 )
                     continue;
@@ -3462,15 +3462,15 @@ _ID18518( var_0 )
 
 _ID46060( var_0 )
 {
-    if ( !isdefined( self._ID680 ) )
+    if ( !isdefined( self.name ) )
         return;
 
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     self endon( "death" );
-    self._ID25523 = self._ID680;
-    self._ID680 = " ";
+    self._ID25523 = self.name;
+    self.name = " ";
     level waittill( var_0 );
-    self._ID680 = self._ID25523;
+    self.name = self._ID25523;
 }
 
 _ID49667( var_0, var_1, var_2, var_3, var_4 )
@@ -3569,7 +3569,7 @@ _ID44574( var_0, var_1, var_2, var_3, var_4 )
         if ( !isdefined( var_0 ) )
         {
             level waittill( "level.players initialized" );
-            var_0 = level._ID794;
+            var_0 = level.player;
         }
 
         var_6 = !var_0 _ID20583();

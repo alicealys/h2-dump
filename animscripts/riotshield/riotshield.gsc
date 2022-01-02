@@ -143,17 +143,17 @@ _ID19773()
     self._ID3258 = ::_ID30002;
     self._ID13754 = 1;
     self._ID11007 = 1;
-    self._ID764 = 0;
-    self._ID525 = 0;
+    self.pathrandompercent = 0;
+    self.interval = 0;
     self._ID11017 = 1;
     self._ID24844 = 1;
     self._ID11582 = 1;
     self._ID11002 = 1;
     self._ID11029 = 1;
     self._ID24730 = 1;
-    self._ID199 = "no_cover";
-    self._ID381 = 0;
-    self._ID625 = 1500;
+    self.combatmode = "no_cover";
+    self.fixednode = 0;
+    self.maxfaceenemydist = 1500;
     self._ID24910 = 1;
     self._ID23429 = squared( 256 );
     self._ID23440 = 1;
@@ -166,14 +166,14 @@ _ID19773()
 
     self._ID33733 = 0;
     self._ID33735 = 0;
-    self._ID1298 = 500;
-    self._ID1299 = 500;
-    self._ID465 = 1;
-    self._ID426 = 0.5;
-    self._ID709 = 1;
+    self.walkdist = 500;
+    self.walkdistfacingmotion = 500;
+    self.grenadeawareness = 1;
+    self.frontshieldanglecos = 0.5;
+    self.nogrenadereturnthrow = 1;
     self._ID7._ID17423 = "crouch";
     self._ID23656 = 400;
-    self._ID513 = 1;
+    self.ignoresuppression = 1;
     self._ID35380 = ::_ID30021;
     self._ID35381 = ::_ID30020;
     self._ID9557 = ::_ID46272;
@@ -196,7 +196,7 @@ _ID30006()
     if ( !animscripts\melee::_ID23417() )
         return 0;
 
-    if ( isai( self._ID23353._ID1191 ) && ( self._ID23353._ID1191 _ID42407::_ID11498() || self._ID23353._ID1191._ID274 ) )
+    if ( isai( self._ID23353.target ) && ( self._ID23353.target _ID42407::_ID11498() || self._ID23353.target.delayeddeath ) )
     {
         var_0 = getangledelta( %riotshield_basha_attack, 0, 1 );
         var_1 = lengthsquared( var_0 );
@@ -208,7 +208,7 @@ _ID30006()
         var_1 = lengthsquared( var_0 );
     }
 
-    if ( distancesquared( self._ID740, self._ID23353._ID1191._ID740 ) < var_1 )
+    if ( distancesquared( self.origin, self._ID23353.target.origin ) < var_1 )
         return 1;
 
     animscripts\melee::_ID23402();
@@ -227,14 +227,14 @@ _ID30006()
             var_3 = 0;
         }
 
-        self orientmode( "face point", self._ID23353._ID1191._ID740 );
+        self orientmode( "face point", self._ID23353.target.origin );
         animscripts\notetracks::_ID11534( var_2, "chargeanim" );
-        var_4 = distancesquared( self._ID740, self._ID23353._ID1191._ID740 );
+        var_4 = distancesquared( self.origin, self._ID23353.target.origin );
 
         if ( var_4 < var_1 )
             break;
 
-        if ( isai( self._ID23353._ID1191 ) && var_4 < var_1 * 1.5 )
+        if ( isai( self._ID23353.target ) && var_4 < var_1 * 1.5 )
             var_2 = 0.05;
 
         if ( gettime() >= self._ID23353._ID16914 )
@@ -254,14 +254,14 @@ _ID30021()
         if ( !_ID30006() )
         {
             self._ID24787 = gettime() + 1500;
-            self._ID24786 = self._ID23353._ID1191;
+            self._ID24786 = self._ID23353.target;
             break;
         }
 
         animscripts\battlechatter_ai::_ID13239();
-        self orientmode( "face point", self._ID23353._ID1191._ID740 );
+        self orientmode( "face point", self._ID23353.target.origin );
 
-        if ( isai( self._ID23353._ID1191 ) && ( self._ID23353._ID1191 _ID42407::_ID11498() || self._ID23353._ID1191._ID274 ) )
+        if ( isai( self._ID23353.target ) && ( self._ID23353.target _ID42407::_ID11498() || self._ID23353.target.delayeddeath ) )
             self setflaggedanimknoballrestart( "meleeanim", %h2_riotshield_close_melee, %body, 1, 0.2, 1 );
         else
             self setflaggedanimknoballrestart( "meleeanim", %riotshield_bash_vs_player, %body, 1, 0.2, 1 );
@@ -270,7 +270,7 @@ _ID30021()
 
         if ( !animscripts\melee::_ID23415() )
         {
-            animscripts\melee::_ID23412( self._ID23353._ID1191 );
+            animscripts\melee::_ID23412( self._ID23353.target );
             break;
         }
 
@@ -282,14 +282,14 @@ _ID30021()
 
 _ID30020()
 {
-    var_0 = self._ID23353._ID1191;
+    var_0 = self._ID23353.target;
 
     if ( self._ID36736 == "riotshield" && var_0._ID36736 == "riotshield" )
         return 0;
 
     animscripts\melee::_ID23378();
-    var_1 = vectortoangles( var_0._ID740 - self._ID740 );
-    var_2 = angleclamp180( var_0._ID65[1] - var_1[1] );
+    var_1 = vectortoangles( var_0.origin - self.origin );
+    var_2 = angleclamp180( var_0.angles[1] - var_1[1] );
 
     if ( abs( var_2 ) > 100 )
     {
@@ -297,7 +297,7 @@ _ID30020()
         {
             if ( self._ID36736 == "riotshield" )
             {
-                if ( var_0 _ID42407::_ID11498() || var_0._ID274 )
+                if ( var_0 _ID42407::_ID11498() || var_0.delayeddeath )
                     return 0;
                 else
                 {
@@ -326,22 +326,22 @@ _ID30020()
     else
         return 0;
 
-    self._ID23353._ID36155 = getstartorigin( var_0._ID740, var_0._ID65, self._ID23353._ID3189 );
-    self._ID23353._ID36098 = ( var_0._ID65[0], angleclamp180( var_0._ID65[1] + 180 ), var_0._ID65[2] );
-    self._ID597 = 0;
-    var_0._ID597 = 0;
+    self._ID23353._ID36155 = getstartorigin( var_0.origin, var_0.angles, self._ID23353._ID3189 );
+    self._ID23353._ID36098 = ( var_0.angles[0], angleclamp180( var_0.angles[1] + 180 ), var_0.angles[2] );
+    self.lockorientation = 0;
+    var_0.lockorientation = 0;
     return animscripts\melee::_ID23425();
 }
 
 _ID53793( var_0 )
 {
-    for ( var_1 = 0; self._ID597; var_1 += 0.1 )
+    for ( var_1 = 0; self.lockorientation; var_1 += 0.1 )
     {
         wait 0.1;
-        var_2 = self aiphysicstrace( self._ID740, self._ID451, 0, 0, 1, 1 );
+        var_2 = self aiphysicstrace( self.origin, self.goalpos, 0, 0, 1, 1 );
 
         if ( var_2["fraction"] >= 1 || var_1 > var_0 )
-            self._ID597 = 0;
+            self.lockorientation = 0;
     }
 }
 
@@ -363,12 +363,12 @@ _ID52568()
 
 _ID44142()
 {
-    if ( self._ID823 != "init" )
+    if ( self.prevscript != "init" )
     {
-        var_0 = vectortoyaw( self._ID601 );
-        var_1 = angleclamp180( var_0 - self._ID65[1] );
+        var_0 = vectortoyaw( self.lookaheaddir );
+        var_1 = angleclamp180( var_0 - self.angles[1] );
         var_2 = undefined;
-        var_3 = self aiphysicstrace( self._ID740, self._ID451, 10, 72, 1, 1 );
+        var_3 = self aiphysicstrace( self.origin, self.goalpos, 10, 72, 1, 1 );
 
         if ( abs( var_1 ) > 90 && var_3["fraction"] < 1 )
             var_2 = _ID42237::_ID37527( var_1 > 0, %riotshield_crouch_lturn, %riotshield_crouch_rturn );
@@ -394,17 +394,17 @@ _ID52753()
 
     if ( ( isdefined( self._ID35499 ) || isdefined( self._ID13958 ) ) && !_ID48007() )
     {
-        var_2 = self aiphysicstrace( self._ID740, self._ID451, 10, 72, 1, 1 );
+        var_2 = self aiphysicstrace( self.origin, self.goalpos, 10, 72, 1, 1 );
 
         if ( var_2["fraction"] < 1 )
         {
-            var_3 = vectortoyaw( self._ID601 );
-            var_4 = self._ID601;
+            var_3 = vectortoyaw( self.lookaheaddir );
+            var_4 = self.lookaheaddir;
         }
         else
         {
-            var_3 = vectortoyaw( self._ID451 - self._ID740 );
-            var_4 = vectornormalize( self._ID451 - self._ID740 );
+            var_3 = vectortoyaw( self.goalpos - self.origin );
+            var_4 = vectornormalize( self.goalpos - self.origin );
         }
 
         var_5 = _ID51321( var_3, "start_run", "riotshield_crouch" );
@@ -414,8 +414,8 @@ _ID52753()
         var_8 = _ID42237::_ID37527( isdefined( self._ID3263 ), self._ID3263, "riotshield" );
         var_9 = getnotetracktimes( var_1, "code_move" );
         var_10 = var_4 * var_7 * var_9[0];
-        var_11 = self._ID740 + var_10;
-        var_2 = self aiphysicstrace( self._ID740, var_11, 10, 72, 1, 1 );
+        var_11 = self.origin + var_10;
+        var_2 = self aiphysicstrace( self.origin, var_11, 10, 72, 1, 1 );
 
         if ( var_2["fraction"] < 1 )
         {
@@ -466,7 +466,7 @@ _ID30026()
         self._ID7._ID28253 = "stand";
     }
 
-    if ( !self._ID597 )
+    if ( !self.lockorientation )
         thread _ID53793( 1 );
 
     self orientmode( "face default" );
@@ -482,14 +482,14 @@ _ID48007()
 _ID52751()
 {
     if ( !_ID48007() )
-        self._ID597 = 0;
+        self.lockorientation = 0;
 }
 
 _ID30010()
 {
     _ID52751();
 
-    if ( self._ID823 == "move" && self._ID7._ID28253 == "crouch" )
+    if ( self.prevscript == "move" && self._ID7._ID28253 == "crouch" )
     {
         self clearanim( %animscript_root, 0.2 );
         var_0 = randomfloatrange( 0.9, 1.1 );
@@ -515,7 +515,7 @@ _ID51321( var_0, var_1, var_2 )
 
     foreach ( var_10, var_7 in var_5 )
     {
-        var_8 = angleclamp( self._ID65[1] + var_7 );
+        var_8 = angleclamp( self.angles[1] + var_7 );
         var_9 = angleclamp180( var_0 - var_8 );
 
         if ( !isdefined( var_4 ) || !isdefined( var_3 ) )
@@ -542,10 +542,10 @@ _ID47762( var_0, var_1 )
     var_2 = animscripts\utility::_ID22630( "cover_trans_dist", self._ID3263 )[var_0];
     var_3 = 3 * length2dsquared( var_2 ) / 4;
 
-    while ( !isdefined( self._ID451 ) )
+    while ( !isdefined( self.goalpos ) )
         wait 0.05;
 
-    while ( distance2dsquared( self._ID740, self._ID451 ) > var_3 )
+    while ( distance2dsquared( self.origin, self.goalpos ) > var_3 )
         wait 0.05;
 
     _ID43319( var_1 );
@@ -558,12 +558,12 @@ _ID43319( var_0 )
 
     while ( abs( var_0 ) > var_1 )
     {
-        self orientmode( "face angle", self._ID65[1] + var_2 );
+        self orientmode( "face angle", self.angles[1] + var_2 );
         var_0 -= var_2;
         wait 0.05;
     }
 
-    self orientmode( "face angle", self._ID65[1] + var_0 );
+    self orientmode( "face angle", self.angles[1] + var_0 );
 }
 
 _ID46272()
@@ -572,24 +572,24 @@ _ID46272()
     self endon( "abort_approach" );
     _ID52751();
 
-    while ( !isdefined( self._ID451 ) )
+    while ( !isdefined( self.goalpos ) )
         wait 0.05;
 
     var_0 = %riotshield_walk2crouch_8;
-    var_1 = self aiphysicstrace( self._ID740, self._ID451, 10, 72, 1, 1 );
+    var_1 = self aiphysicstrace( self.origin, self.goalpos, 10, 72, 1, 1 );
 
     if ( !_ID48007() )
     {
         if ( var_1["fraction"] < 1 )
             return;
 
-        var_2 = vectortoyaw( self._ID451 - self._ID740 );
+        var_2 = vectortoyaw( self.goalpos - self.origin );
 
-        if ( isdefined( self._ID8252 ) && self._ID451 == self._ID8252._ID740 )
+        if ( isdefined( self._ID8252 ) && self.goalpos == self._ID8252.origin )
         {
-            var_2 = self._ID8252._ID65[1];
+            var_2 = self._ID8252.angles[1];
 
-            switch ( self._ID8252._ID1244 )
+            switch ( self._ID8252.type )
             {
                 case "Cover Left":
                     var_2 += 60;
@@ -623,7 +623,7 @@ _ID46272()
     self clearanim( %animscript_root, 0.2 );
 
     if ( _ID48007() )
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
 
     self._ID21880 = undefined;
 }
@@ -632,7 +632,7 @@ _ID30025()
 {
     _ID52751();
     _ID30010();
-    self._ID846 = 0;
+    self.pushable = 0;
     thread _ID30004();
 }
 
@@ -683,14 +683,14 @@ _ID30016()
         animscripts\shared::_ID11529( "trans" );
     }
 
-    if ( isdefined( self._ID458 ) )
+    if ( isdefined( self.grenade ) )
     {
         var_0 = 1;
-        var_1 = self._ID458._ID740 - self._ID740;
+        var_1 = self.grenade.origin - self.origin;
 
-        if ( isdefined( self._ID322 ) )
+        if ( isdefined( self.enemy ) )
         {
-            var_2 = self._ID322._ID740 - self._ID740;
+            var_2 = self.enemy.origin - self.origin;
 
             if ( vectordot( var_1, var_2 ) < 0 )
                 var_0 = 0;
@@ -698,7 +698,7 @@ _ID30016()
 
         if ( var_0 )
         {
-            var_3 = angleclamp180( self._ID65[1] - vectortoyaw( var_1 ) );
+            var_3 = angleclamp180( self.angles[1] - vectortoyaw( var_1 ) );
 
             if ( !isdefined( self._ID39229 ) )
                 self._ID39229 = 55;
@@ -711,7 +711,7 @@ _ID30016()
                 if ( !animscripts\combat::_ID39232( var_3 ) )
                     break;
 
-                var_3 = angleclamp180( self._ID65[1] - vectortoyaw( var_1 ) );
+                var_3 = angleclamp180( self.angles[1] - vectortoyaw( var_1 ) );
             }
         }
     }
@@ -728,7 +728,7 @@ _ID30013()
     if ( !isdefined( self._ID7._ID25684 ) )
     {
         var_0 = randomfloatrange( 0.9, 1.1 );
-        self._ID426 = 1;
+        self.frontshieldanglecos = 1;
         var_1 = [];
         var_1[0] = %riotshield_crouch_grenade_flash1;
         var_1[1] = %riotshield_crouch_grenade_flash2;
@@ -736,16 +736,16 @@ _ID30013()
         var_1[3] = %riotshield_crouch_grenade_flash4;
         var_2 = var_1[randomint( var_1.size )];
         self setflaggedanimknoballrestart( "flashanim", var_2, %body, 1, 0.1, var_0 );
-        self._ID642 = 1000;
+        self.minpaindamage = 1000;
         animscripts\shared::_ID11529( "flashanim" );
     }
     else
         wait 0.1;
 
-    self._ID642 = 0;
+    self.minpaindamage = 0;
 
     if ( isdefined( self._ID36736 ) && self._ID36736 == "riotshield" )
-        self._ID426 = 0.5;
+        self.frontshieldanglecos = 0.5;
 }
 
 _ID30022()
@@ -758,24 +758,24 @@ _ID30022()
     if ( !isdefined( self._ID7._ID25684 ) )
     {
         var_0 = randomfloatrange( 0.8, 1.15 );
-        self._ID426 = 1;
+        self.frontshieldanglecos = 1;
 
-        if ( isexplosivedamagemod( self._ID254 ) )
+        if ( isexplosivedamagemod( self.damagemod ) )
         {
-            if ( self._ID257 > 65 )
+            if ( self.damagetaken > 65 )
             {
-                if ( abs( self._ID259 ) > 135 )
+                if ( abs( self.damageyaw ) > 135 )
                     var_1 = _ID42237::_ID28945( [ %h2_riotshield_crouch_grenadeblowback_front, %h2_crouchshield_grenade_blowback_f ] );
 
-                if ( self._ID259 < 0 )
+                if ( self.damageyaw < 0 )
                     var_1 = _ID42237::_ID28945( [ %h2_riotshield_crouch_grenadeblowback_right, %h2_crouchshield_grenade_blowback_r ] );
                 else
                     var_1 = _ID42237::_ID28945( [ %h2_riotshield_crouch_grenadeblowback_left, %h2_crouchshield_grenade_blowback_l ] );
 
                 self setflaggedanimknoballrestart( "painanim", var_1, %body, 1, 0.2, var_0 );
 
-                if ( self._ID259 < -120 || self._ID259 > 120 )
-                    self._ID642 = 1000;
+                if ( self.damageyaw < -120 || self.damageyaw > 120 )
+                    self.minpaindamage = 1000;
             }
             else
             {
@@ -801,10 +801,10 @@ _ID30022()
     else
         wait 0.1;
 
-    self._ID642 = 0;
+    self.minpaindamage = 0;
 
     if ( isdefined( self._ID36736 ) && self._ID36736 == "riotshield" )
-        self._ID426 = 0.5;
+        self.frontshieldanglecos = 0.5;
 }
 
 _ID30009()
@@ -820,20 +820,20 @@ _ID30009()
         return 1;
     }
 
-    if ( self._ID823 == "pain" || self._ID823 == "flashed" )
+    if ( self.prevscript == "pain" || self.prevscript == "flashed" )
         var_2 = randomint( 2 ) == 0;
     else
         var_2 = 1;
 
     if ( var_2 )
     {
-        if ( isexplosivedamagemod( self._ID254 ) )
+        if ( isexplosivedamagemod( self.damagemod ) )
         {
-            if ( abs( self._ID259 ) > 135 )
+            if ( abs( self.damageyaw ) > 135 )
                 var_1 = %riotshield_crouch_death_fallback;
-            else if ( abs( self._ID259 ) < 45 )
+            else if ( abs( self.damageyaw ) < 45 )
                 var_1 = _ID42237::_ID28945( [ %h2_riotshield_crouch_grenade_death, %h2_riotshield_crouch_grenade_death_b_v1, %h2_riotshield_crouch_grenade_death_b_v2 ] );
-            else if ( self._ID259 > 0 )
+            else if ( self.damageyaw > 0 )
                 var_1 = %h2_riotshield_crouch_grenade_death_r;
             else
                 var_1 = %h2_riotshield_crouch_grenade_death_l;
@@ -843,7 +843,7 @@ _ID30009()
         else if ( animscripts\utility::_ID9641( "left_arm_upper", "left_arm_lower", "left_hand", "left_leg_upper", "left_leg_lower", "left_foot" ) )
             var_1 = _ID42237::_ID37527( _ID42237::_ID8201(), %h2_riotshield_crouchdeath_right_01, %h2_riotshield_crouchdeath_right_02 );
         else
-            var_1 = _ID42237::_ID37527( abs( self._ID259 ) < 90, %riotshield_crouch_death, %riotshield_crouch_death_fallback );
+            var_1 = _ID42237::_ID37527( abs( self.damageyaw ) < 90, %riotshield_crouch_death, %riotshield_crouch_death_fallback );
 
         animscripts\death::_ID27200( var_1 );
         return 1;
@@ -924,7 +924,7 @@ _ID19775()
 
 _ID30007( var_0 )
 {
-    if ( isdefined( self._ID458 ) )
+    if ( isdefined( self.grenade ) )
         return "stand";
 
     return animscripts\utility::_ID7496( var_0 );
@@ -932,36 +932,36 @@ _ID30007( var_0 )
 
 _ID30024()
 {
-    self._ID625 = 128;
+    self.maxfaceenemydist = 128;
     self._ID35499 = 1;
     self orientmode( "face default" );
-    self._ID597 = 0;
-    self._ID1298 = 32;
-    self._ID1299 = 32;
+    self.lockorientation = 0;
+    self.walkdist = 32;
+    self.walkdistfacingmotion = 32;
 }
 
 _ID30012()
 {
-    self._ID625 = 128;
+    self.maxfaceenemydist = 128;
     self._ID13958 = 1;
-    self._ID1298 = 32;
-    self._ID1299 = 32;
+    self.walkdist = 32;
+    self.walkdistfacingmotion = 32;
 }
 
 _ID30023()
 {
-    self._ID625 = 1500;
-    self._ID1298 = 500;
-    self._ID1299 = 500;
+    self.maxfaceenemydist = 1500;
+    self.walkdist = 500;
+    self.walkdistfacingmotion = 500;
     self._ID35499 = undefined;
     self allowedstances( "crouch" );
 }
 
 _ID30011()
 {
-    self._ID625 = 1500;
-    self._ID1298 = 500;
-    self._ID1299 = 500;
+    self.maxfaceenemydist = 1500;
+    self.walkdist = 500;
+    self.walkdistfacingmotion = 500;
     self._ID13958 = undefined;
     self allowedstances( "crouch" );
 }
@@ -973,7 +973,7 @@ _ID25215()
 
 _ID30017()
 {
-    if ( self._ID912 == "move" )
+    if ( self.script == "move" )
         self animcustom( ::_ID25215 );
 
     self._ID9575 = ::_ID30015;
@@ -986,7 +986,7 @@ _ID30015()
     self animmode( "zonly_physics", 0 );
     self orientmode( "face current" );
 
-    if ( !isdefined( self._ID12180 ) && isdefined( self._ID322 ) && vectordot( self._ID601, anglestoforward( self._ID65 ) ) < 0 )
+    if ( !isdefined( self._ID12180 ) && isdefined( self.enemy ) && vectordot( self.lookaheaddir, anglestoforward( self.angles ) ) < 0 )
         var_0 = %riotshield_crouch2walk_2flee;
     else
         var_0 = %riotshield_crouch2stand_shield_drop;
@@ -995,13 +995,13 @@ _ID30015()
     self setflaggedanimknoball( "fleeanim", var_0, %animscript_root, 1, 0.1, var_1 );
     animscripts\shared::_ID11529( "fleeanim" );
     self.custommovetransitionendscript = undefined;
-    self._ID625 = 32;
-    self._ID597 = 0;
+    self.maxfaceenemydist = 32;
+    self.lockorientation = 0;
     self orientmode( "face default" );
     self animmode( "normal", 0 );
     animscripts\shared::_ID11529( "fleeanim" );
     self clearanim( var_0, 0.2 );
-    self._ID625 = 128;
+    self.maxfaceenemydist = 128;
 }
 
 riotshield_force_drop_shield()
@@ -1012,33 +1012,33 @@ riotshield_force_drop_shield()
 _ID30027()
 {
     self._ID36736 = "regular";
-    self._ID199 = "cover";
+    self.combatmode = "cover";
     self._ID3152 = undefined;
     self._ID3264 = undefined;
     self._ID3258 = undefined;
     self._ID13754 = undefined;
     self._ID11007 = undefined;
-    self._ID764 = 0;
-    self._ID525 = 80;
+    self.pathrandompercent = 0;
+    self.interval = 80;
     self._ID11017 = undefined;
     self._ID24844 = undefined;
     self._ID11582 = undefined;
     self._ID11002 = undefined;
     self._ID11029 = undefined;
     self._ID24730 = undefined;
-    self._ID625 = 128;
+    self.maxfaceenemydist = 128;
     self._ID24910 = undefined;
     self._ID23429 = undefined;
     self._ID23440 = undefined;
     self._ID39947 = undefined;
-    self._ID760 = 128;
-    self._ID761 = 128;
-    self._ID1298 = 256;
-    self._ID1299 = 64;
-    self._ID597 = 0;
-    self._ID426 = 1;
-    self._ID709 = 0;
-    self._ID513 = 0;
+    self.pathenemyfightdist = 128;
+    self.pathenemylookahead = 128;
+    self.walkdist = 256;
+    self.walkdistfacingmotion = 64;
+    self.lockorientation = 0;
+    self.frontshieldanglecos = 1;
+    self.nogrenadereturnthrow = 0;
+    self.ignoresuppression = 0;
     self._ID35499 = undefined;
     self allowedstances( "stand", "crouch", "prone" );
     self._ID35380 = undefined;

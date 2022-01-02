@@ -100,12 +100,12 @@ _ID30725()
 {
     var_0["gunHand"] = self._ID3031;
     var_0["gunInHand"] = self._ID3032;
-    var_0["model"] = self._ID669;
+    var_0["model"] = self.model;
     var_0["hatModel"] = self._ID18272;
 
-    if ( isdefined( self._ID680 ) )
+    if ( isdefined( self.name ) )
     {
-        var_0["name"] = self._ID680;
+        var_0["name"] = self.name;
         jump loc_20F
     }
 
@@ -130,7 +130,7 @@ _ID22464( var_0 )
 
     if ( isdefined( var_0["name"] ) )
     {
-        self._ID680 = var_0["name"];
+        self.name = var_0["name"];
         jump loc_29F
     }
 
@@ -156,8 +156,8 @@ _ID814( var_0 )
 
 _ID15942( var_0 )
 {
-    if ( isdefined( self._ID170 ) )
-        var_1 = strtok( self._ID170, "_" );
+    if ( isdefined( self.classname ) )
+        var_1 = strtok( self.classname, "_" );
     else
         var_1 = [];
 

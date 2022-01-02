@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID42237::_ID14400( "stopRainCheck" );
     _ID42237::_ID14400( "rain_on" );
@@ -167,19 +167,19 @@ _ID46205()
 {
     var_0 = _ID42237::_ID16299( "moon_sprite" );
     var_1 = _ID42237::_ID35164();
-    var_1._ID65 = ( -16, 45, 0 );
-    var_2 = anglestoforward( var_1._ID65 );
+    var_1.angles = ( -16, 45, 0 );
+    var_2 = anglestoforward( var_1.angles );
     playfxontag( var_0, var_1, "tag_origin" );
 
     for (;;)
     {
         var_3 = getdvarfloat( "r_sunInfDist", 50000.0 );
 
-        if ( isdefined( level._ID794 ) )
+        if ( isdefined( level.player ) )
         {
-            var_4 = level._ID794 _meth_8469();
+            var_4 = level.player _meth_8469();
             var_5 = var_4 + var_2 * var_3;
-            var_1._ID740 = var_5;
+            var_1.origin = var_5;
             var_1 dontinterpolate();
         }
 
@@ -279,15 +279,15 @@ _ID44454()
 {
     level endon( "stop_rain" );
     self endon( "stopRainCheck" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
 
     for (;;)
     {
-        var_0 = level._ID794 getplayerangles()[0];
+        var_0 = level.player getplayerangles()[0];
 
         if ( var_0 < 50 && !isdefined( level._ID47052 ) )
         {
-            level._ID47052 = spawnfx( level._ID1426["screen_heavy_rain"], level._ID794._ID740 );
+            level._ID47052 = spawnfx( level._ID1426["screen_heavy_rain"], level.player.origin );
             triggerfx( level._ID47052 );
         }
         else if ( isdefined( level._ID47052 ) )

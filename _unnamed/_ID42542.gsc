@@ -7,7 +7,7 @@ _ID3283( var_0, var_1 )
 }
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     if ( _ID3283( var_0, var_2 ) )
         _ID42508::_ID28414();
@@ -46,12 +46,12 @@ _ID616( var_0, var_1, var_2 )
     _ID42411::_ID6234( var_2, "red_blink2", "TAG_LIGHT_TAIL2", "vfx/lights/aircraft_light_red_blink", "running", var_3 );
     _ID42411::_ID6234( var_2, "headlight_nose", "tag_light_nose", "vfx/lights/headlight_gaz", "headlights", 0.0 );
 
-    if ( level._ID912 == "af_chase" )
+    if ( level.script == "af_chase" )
         _ID42411::_ID6248( "chopper_ride_rumble", 3, 3, 1000, 1, 1 );
 
     var_4 = "littlebird_gunpod";
 
-    if ( level._ID912 == "gulag" )
+    if ( level.script == "gulag" )
         var_4 += "_gulag";
 
     _ID42411::_ID6261( var_4, "TAG_MINIGUN_ATTACH_LEFT", "vehicle_little_bird_minigun_left", undefined, undefined, undefined, -15 );
@@ -71,12 +71,12 @@ _ID19731()
     thread _ID3562();
     thread _ID42411::_ID40197( "running" );
 
-    if ( issubstr( self._ID170, "sentinel" ) )
+    if ( issubstr( self.classname, "sentinel" ) )
         self hidepart( "main_rotor_static_jnt" );
 
     waitframe;
 
-    if ( !_ID3283( self._ID669, self._ID170 ) )
+    if ( !_ID3283( self.model, self.classname ) )
     {
         _ID42411::_ID23509();
 
@@ -91,7 +91,7 @@ _ID19731()
 
 _ID33989()
 {
-    if ( issubstr( self._ID170, "sentinel" ) )
+    if ( issubstr( self.classname, "sentinel" ) )
     {
         self hidepart( "main_rotor_static_jnt" );
         self showpart( "main_rotor_jnt" );
@@ -100,7 +100,7 @@ _ID33989()
 
 _ID34035()
 {
-    if ( issubstr( self._ID170, "sentinel" ) )
+    if ( issubstr( self.classname, "sentinel" ) )
     {
         self showpart( "main_rotor_static_jnt" );
         self hidepart( "main_rotor_jnt" );
@@ -109,7 +109,7 @@ _ID34035()
 
 _ID3562()
 {
-    switch ( self._ID170 )
+    switch ( self.classname )
     {
         case "script_vehicle_littlebird_sentinel_bench":
         case "script_vehicle_littlebird_atlas_bench":
@@ -290,8 +290,8 @@ _ID22449( var_0, var_1 )
         var_4 = [[ level._ID15815 ]]();
     else
     {
-        var_5 = ( self._ID740[0] + var_2[0] * 5, self._ID740[1] + var_2[1] * 5, self._ID740[2] - 2000 );
-        var_4 = bullettrace( self._ID740, var_5, 0, self )["position"];
+        var_5 = ( self.origin[0] + var_2[0] * 5, self.origin[1] + var_2[1] * 5, self.origin[2] - 2000 );
+        var_4 = bullettrace( self.origin, var_5, 0, self )["position"];
     }
 
     self notify( "newpath" );
@@ -312,7 +312,7 @@ _ID22449( var_0, var_1 )
     if ( getdvar( "mapname" ) == "lab" )
         _ID7379();
 
-    self kill( self._ID740, var_0 );
+    self kill( self.origin, var_0 );
 }
 
 _ID7379()
@@ -338,7 +338,7 @@ _ID22446()
             return;
 
         var_0 = randomintrange( 90, 120 );
-        self settargetyaw( self._ID65[1] + var_0 );
+        self settargetyaw( self.angles[1] + var_0 );
         wait 0.5;
     }
 }
@@ -355,7 +355,7 @@ _ID22447( var_0, var_1, var_2 )
 
     for (;;)
     {
-        if ( self._ID740[2] < var_0[2] + var_1 )
+        if ( self.origin[2] < var_0[2] + var_1 )
             self notify( "near_goal" );
 
         wait 0.05;
@@ -374,7 +374,7 @@ _ID18444()
             return;
 
         var_0 = randomintrange( 90, 120 );
-        self settargetyaw( self._ID65[1] + var_0 );
+        self settargetyaw( self.angles[1] + var_0 );
         wait 0.5;
     }
 }

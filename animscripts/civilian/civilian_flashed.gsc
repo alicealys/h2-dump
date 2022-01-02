@@ -6,7 +6,7 @@ _ID15731()
     return anim._ID7698[randomint( anim._ID7698.size )];
 }
 
-_ID616()
+main()
 {
     var_0 = _ID42407::_ID14506();
 

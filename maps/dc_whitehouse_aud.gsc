@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -195,7 +195,7 @@ aud_mission_failed_jet_flyby()
     var_0 = getent( "jet_mission_failed_start", "targetname" );
     var_1 = getent( "jet_mission_failed_stop", "targetname" );
     var_0 thread _ID42407::_ID27079( "scn_dcwhitehouse_failed_flyby" );
-    var_0 moveto( var_1._ID740, 4.0 );
+    var_0 moveto( var_1.origin, 4.0 );
 }
 
 intro_distant_thunder()
@@ -203,7 +203,7 @@ intro_distant_thunder()
     wait 0.1;
     var_0 = getent( "intro_thunder", "targetname" );
     var_0 waittill( "trigger",  var_1  );
-    level._ID794 thread _ID42407::_ID27079( "elm_thunder_distant_intro" );
+    level.player thread _ID42407::_ID27079( "elm_thunder_distant_intro" );
 }
 
 start_speaker_reveal_mix( var_0 )
@@ -225,10 +225,10 @@ play_speaker_vo( var_0 )
 {
     if ( _ID42237::_ID14385( "picture_frame_is_over_pa" ) )
     {
-        if ( isdefined( self._ID922 ) && self._ID922 == "oval_room_speaker" )
+        if ( isdefined( self.script_noteworthy ) && self.script_noteworthy == "oval_room_speaker" )
         {
             if ( !isdefined( level.pa_behind_pictureframe ) )
-                level.pa_behind_pictureframe = spawn( "script_origin", self._ID740 );
+                level.pa_behind_pictureframe = spawn( "script_origin", self.origin );
 
             level.pa_behind_pictureframe playsound( var_0 + "_bf" );
         }

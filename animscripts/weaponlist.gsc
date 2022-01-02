@@ -3,18 +3,18 @@
 
 _ID39983()
 {
-    return weaponisauto( self._ID1302 ) || weaponburstcount( self._ID1302 ) > 0;
+    return weaponisauto( self.weapon ) || weaponburstcount( self.weapon ) > 0;
 }
 
 _ID39995()
 {
-    return weaponissemiauto( self._ID1302 );
+    return weaponissemiauto( self.weapon );
 }
 
 _ID4463()
 {
     if ( _ID39983() )
-        return 0.1 / weaponfiretime( self._ID1302 );
+        return 0.1 / weaponfiretime( self.weapon );
     else
         return 0.5;
 }
@@ -22,7 +22,7 @@ _ID4463()
 _ID6455()
 {
     if ( _ID39983() )
-        return 0.1 / weaponfiretime( self._ID1302 );
+        return 0.1 / weaponfiretime( self.weapon );
     else
         return 0.2;
 }
@@ -37,24 +37,24 @@ _ID33772( var_0 )
     if ( !_ID39983() || isdefined( var_0 ) && var_0 == 1 )
     {
         var_1 = 0.5 + randomfloat( 1 );
-        return weaponfiretime( self._ID1302 ) * var_1;
+        return weaponfiretime( self.weapon ) * var_1;
     }
     else
-        return weaponfiretime( self._ID1302 );
+        return weaponfiretime( self.weapon );
 }
 
 _ID29364()
 {
-    if ( self._ID1302 == "none" )
+    if ( self.weapon == "none" )
     {
         self._ID6323 = 0;
         return 0;
     }
 
     if ( !isdefined( self._ID6323 ) )
-        self._ID6323 = weaponclipsize( self._ID1302 );
+        self._ID6323 = weaponclipsize( self.weapon );
     else
-        self._ID6323 = weaponclipsize( self._ID1302 );
+        self._ID6323 = weaponclipsize( self.weapon );
 
     if ( self._ID6323 <= 0 )
         return 0;

@@ -3,14 +3,14 @@
 
 _ID50320()
 {
-    _ID52779::_ID616();
-    _ID51744::_ID616();
-    _ID43617::_ID616();
-    maps\oilrig_anim::_ID616();
-    _ID42323::_ID616();
+    _ID52779::main();
+    _ID51744::main();
+    _ID43617::main();
+    maps\oilrig_anim::main();
+    _ID42323::main();
     _ID42367::_ID34366();
     _ID42367::_ID1851( maps\oilrig::_ID46835 );
-    maps\oilrig_lighting::_ID616();
+    maps\oilrig_lighting::main();
     var_0 = getentarray( "animated_crane_hook", "targetname" );
 
     foreach ( var_2 in var_0 )
@@ -27,12 +27,12 @@ _ID49243()
 {
     var_0 = ( 723.7, 1188.2, -1413.3 );
     var_1 = ( -2.7, -125.3, 0 );
-    level._ID794 setorigin( var_0 );
-    level._ID794 setplayerangles( var_1 );
-    level._ID794 lerpfov( 80, 0.1 );
-    level._ID794._ID511 = 1;
+    level.player setorigin( var_0 );
+    level.player setplayerangles( var_1 );
+    level.player lerpfov( 80, 0.1 );
+    level.player.ignoreme = 1;
     setsaveddvar( "hud_drawhud", 0 );
     _ID42407::_ID32515( "oilrig", 1 );
     _ID42407::_ID14689( "oilrig", 1 );
-    level._ID794 lightset( "oilrig_interiors" );
+    level.player lightset( "oilrig_interiors" );
 }

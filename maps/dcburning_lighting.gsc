@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID32363();
     _ID51844( "dcburning_bunker" );
@@ -20,7 +20,7 @@ _ID51844( var_0, var_1 )
     if ( !isdefined( var_0 ) )
         return;
 
-    if ( level._ID912 == "dcemp" )
+    if ( level.script == "dcemp" )
         return;
 
     switch ( var_0 )
@@ -114,8 +114,8 @@ _ID51844( var_0, var_1 )
         _ID42407::_ID14689( var_4, var_2 );
 
     if ( isdefined( var_0 ) )
-        level._ID794 _ID42407::_ID48929( var_0 );
+        level.player _ID42407::_ID48929( var_0 );
 
-    if ( level._ID912 == "dc_burning" )
-        level._ID794 _meth_849f( "dcburning", var_2 );
+    if ( level.script == "dc_burning" )
+        level.player _meth_849f( "dcburning", var_2 );
 }

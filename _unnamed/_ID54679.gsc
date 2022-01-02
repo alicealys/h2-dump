@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("vehicles");
 
-_ID616( var_0, var_1, var_2 )
+main( var_0, var_1, var_2 )
 {
     _ID42411::_ID6255( "technical", var_0, var_1, var_2 );
     _ID42411::_ID6236( ::_ID19731 );
@@ -64,7 +64,7 @@ _ID17700()
     {
         if ( !isdefined( self._ID31138 ) || !self._ID31138 )
         {
-            var_3 = distance( self._ID740, level._ID794._ID740 );
+            var_3 = distance( self.origin, level.player.origin );
 
             if ( var_0 && var_3 > var_1 )
             {

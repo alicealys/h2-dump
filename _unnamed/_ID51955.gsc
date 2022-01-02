@@ -91,7 +91,7 @@ _ID50296( var_0 )
     if ( isdefined( level._ID30333 ) )
         level._ID30333 delete();
 
-    level._ID794 playrumblelooponentity( "damage_light" );
+    level.player playrumblelooponentity( "damage_light" );
     _ID42237::_ID14402( "player_was_caught" );
 }
 
@@ -200,7 +200,7 @@ _ID44769( var_0 )
 
 _ID46751( var_0, var_1 )
 {
-    level._ID794 playrumblelooponentity( "icepick_climb" );
+    level.player playrumblelooponentity( "icepick_climb" );
     var_2 = _ID47980::_ID51668( "right" );
     var_3 = _ID47980::_ID52045( var_0, var_2, var_1 );
     var_3 _ID42407::_ID38044( "player_ice_pick", "tag_origin", 10 );
@@ -209,7 +209,7 @@ _ID46751( var_0, var_1 )
 
 _ID45179( var_0, var_1 )
 {
-    level._ID794 playrumblelooponentity( "icepick_climb" );
+    level.player playrumblelooponentity( "icepick_climb" );
     var_2 = _ID47980::_ID51668( var_1 );
     var_3 = _ID47980::_ID52045( var_0, var_2 );
     var_3 _ID42407::_ID38044( "player_ice_pick", "tag_origin", 10 );
@@ -446,15 +446,15 @@ _ID48923()
     var_0["cliff_hero1_pose_jump6"] = %cliff_hero1_pose_jump6;
     self useanimtree( #animtree );
     var_1 = var_0[self._ID70];
-    var_2 = getstartorigin( self._ID740, self._ID65, var_1 );
-    var_3 = getstartangles( self._ID740, self._ID65, var_1 );
+    var_2 = getstartorigin( self.origin, self.angles, var_1 );
+    var_3 = getstartangles( self.origin, self.angles, var_1 );
     thread _ID46904( var_1, var_2, var_3 );
     _ID42259::_ID3128( "weapon_ice_picker", "tag_weapon_left" );
     _ID42259::_ID3128( "weapon_ice_picker", "tag_inhand" );
 
     for (;;)
     {
-        if ( distance( level._ID794._ID740, self._ID740 ) < 150 )
+        if ( distance( level.player.origin, self.origin ) < 150 )
             break;
 
         wait 0.05;
@@ -469,8 +469,8 @@ _ID46904( var_0, var_1, var_2 )
 
     for (;;)
     {
-        self._ID740 = var_1;
-        self._ID65 = var_2;
+        self.origin = var_1;
+        self.angles = var_2;
         self setflaggedanim( "anim", var_0, 1, 0, 1 );
         self waittillmatch( "anim",  "end"  );
     }

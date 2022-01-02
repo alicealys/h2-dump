@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "body_spetsnaz_assault_boris" );
     self attach( "head_spetsnaz_assault_boris", "", 1 );

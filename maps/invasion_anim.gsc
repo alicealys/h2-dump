@@ -7,7 +7,7 @@ _ID43266()
     _ID3197();
     _ID10730();
     _ID31296();
-    _ID794();
+    player();
 }
 #using_animtree("script_model");
 
@@ -98,7 +98,7 @@ _ID40317()
 }
 #using_animtree("player");
 
-_ID794()
+player()
 {
     level._ID30904["viewbody"] = "viewbody_us_army";
     level._ID30900["viewbody"] = #animtree;
@@ -197,7 +197,7 @@ _ID44054( var_0 )
 
 _ID43872()
 {
-    self._ID511 = 1;
+    self.ignoreme = 1;
     thread _ID42407::_ID22746();
     self._ID9813 = %invasion_parachute_ground_detach_death;
     var_0 = getent( "tangled_parachute_guy_node", "targetname" );
@@ -208,7 +208,7 @@ _ID43872()
     while ( !_ID42407::_ID54053( self geteye() ) )
         wait 0.05;
 
-    self._ID49 = 1;
+    self.allowdeath = 1;
     thread _ID42407::_ID36519();
     thread _ID53719( var_0, var_1 );
     self endon( "death" );
@@ -221,7 +221,7 @@ _ID53057( var_0, var_1 )
     self endon( "death" );
     var_0 notify( "stop_tangled_chute_idle" );
     var_0 notify( "stop_tangled_guy_idle" );
-    self._ID511 = 0;
+    self.ignoreme = 0;
     var_0 thread _ID42259::_ID3111( var_1, "reaction" );
     var_0 _ID42259::_ID3020( self, "tangled_guy_trys_to_free_self" );
     var_0 thread _ID42259::_ID3044( var_1, "end_idle" );
@@ -264,7 +264,7 @@ _ID43813( var_0 )
     self unlink();
     var_0 unlink();
     _ID42407::_ID41115( "single anim", "end", 1000 );
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self._ID7._ID24881 = 1;
     self kill();
 }
@@ -280,22 +280,22 @@ _ID53447( var_0 )
     self unlink();
     var_0 unlink();
     _ID42407::_ID41115( "single anim", "end", 1000 );
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self._ID7._ID24881 = 1;
     self kill();
 }
 
 _ID50748( var_0 )
 {
-    self._ID49 = 0;
+    self.allowdeath = 0;
     self._ID24924 = 1;
 
     if ( isdefined( var_0 ) )
         self._ID43028 = 1;
 
-    self._ID486 = 1;
-    var_1 = spawn( "script_origin", self._ID740 );
-    var_1._ID65 = self._ID65;
+    self.health = 1;
+    var_1 = spawn( "script_origin", self.origin );
+    var_1.angles = self.angles;
     var_2 = _ID42407::_ID35028( "roof_landing_parachute" );
     var_1 thread _ID42259::_ID3020( self, "roof_landing_parachute" );
     var_1 _ID42259::_ID3111( var_2, "roof_landing_parachute" );
@@ -311,7 +311,7 @@ _ID51971( var_0 )
     var_0._ID34237 = 1;
     thread _ID42259::_ID3020( var_0, "rolldeath" );
     wait 0.5;
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0 kill();
 }
 
@@ -325,13 +325,13 @@ _ID53191( var_0 )
     var_0._ID34237 = 1;
     var_0 thread _ID42259::_ID3020( var_0, "crawldeath" );
     wait 0.5;
-    var_0._ID49 = 1;
+    var_0.allowdeath = 1;
     var_0 kill();
 }
 
 _ID45605( var_0 )
 {
-    var_0._ID49 = 0;
+    var_0.allowdeath = 0;
     level notify( "crawl_death_finished" );
     level waittill( "roof_landing_anim_finished" );
     var_0 delete();

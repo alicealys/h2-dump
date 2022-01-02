@@ -1,16 +1,16 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self endon( "killanimscript" );
     self._ID24424 = 1;
 
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         _ID8367();
     else
     {
-        if ( isplayernumber( self._ID322 ) )
+        if ( isplayernumber( self.enemy ) )
         {
             _ID23428();
             return;
@@ -83,9 +83,9 @@ _ID11448( var_0 )
     self disableinvulnerability();
 
     if ( isalive( var_0 ) )
-        self kill( self._ID740, var_0 );
+        self kill( self.origin, var_0 );
     else
-        self kill( self._ID740 );
+        self kill( self.origin );
 }
 
 _ID11418( var_0, var_1 )
@@ -96,41 +96,41 @@ _ID11418( var_0, var_1 )
     wait 1.5;
     thread _ID11421( var_0 );
     var_2 = newclienthudelem( var_0 );
-    var_2._ID1331 = 0;
-    var_2._ID1339 = 15;
+    var_2.x = 0;
+    var_2.y = 15;
 
     if ( var_1 )
         var_2 setshader( "hud_hyena_melee", 50, 50 );
     else
         var_2 setshader( "hud_dog_melee", 50, 50 );
 
-    var_2._ID44 = "center";
-    var_2._ID45 = "middle";
-    var_2._ID499 = "center";
-    var_2._ID1284 = "middle";
-    var_2._ID408 = 1;
-    var_2._ID493 = 1;
-    var_2._ID55 = 0;
+    var_2.alignx = "center";
+    var_2.aligny = "middle";
+    var_2.horzalign = "center";
+    var_2.vertalign = "middle";
+    var_2.foreground = 1;
+    var_2.hidewheninmenu = 1;
+    var_2.alpha = 0;
     var_2 fadeovertime( 1 );
-    var_2._ID55 = 1;
+    var_2.alpha = 1;
 }
 
 _ID11421( var_0 )
 {
     var_1 = var_0 _ID42313::_ID9200( "default", 1 );
-    var_1._ID196 = ( 1, 1, 1 );
+    var_1.color = ( 1, 1, 1 );
     var_1 settext( level._ID11419 );
-    var_1._ID1331 = 0;
-    var_1._ID1339 = -30;
-    var_1._ID44 = "center";
-    var_1._ID45 = "middle";
-    var_1._ID499 = "center";
-    var_1._ID1284 = "middle";
-    var_1._ID408 = 1;
-    var_1._ID493 = 1;
-    var_1._ID55 = 0;
+    var_1.x = 0;
+    var_1.y = -30;
+    var_1.alignx = "center";
+    var_1.aligny = "middle";
+    var_1.horzalign = "center";
+    var_1.vertalign = "middle";
+    var_1.foreground = 1;
+    var_1.hidewheninmenu = 1;
+    var_1.alpha = 0;
     var_1 fadeovertime( 1 );
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
 }
 
 _ID3654()
@@ -138,11 +138,11 @@ _ID3654()
     self clearanim( %root, 0.1 );
     var_0 = %german_shepherd_attack_player_miss_b;
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
     {
-        var_1 = anglestoforward( ( 0, self._ID278, 0 ) );
-        var_2 = vectornormalize( self._ID322._ID740 - self._ID740 );
-        var_3 = self._ID322._ID740 - self._ID740 + var_1 * 40;
+        var_1 = anglestoforward( ( 0, self.desiredangle, 0 ) );
+        var_2 = vectornormalize( self.enemy.origin - self.origin );
+        var_3 = self.enemy.origin - self.origin + var_1 * 40;
 
         if ( vectordot( var_2, var_1 ) > 0.707 || vectordot( var_3, var_1 ) > 0 )
             thread animscripts\dog\dog_stop::_ID22623( "normal" );
@@ -195,17 +195,17 @@ _ID11478()
         if ( self._ID23438 ismantling() )
             return undefined;
 
-        if ( self._ID23438._ID586 && self._ID23438._ID511 )
+        if ( self._ID23438.laststand && self._ID23438.ignoreme )
             return undefined;
     }
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
     {
-        if ( distance2d( self._ID740, self._ID322._ID740 ) < 32 )
+        if ( distance2d( self.origin, self.enemy.origin ) < 32 )
             return self melee();
     }
 
-    return self melee( anglestoforward( self._ID65 ) );
+    return self melee( anglestoforward( self.angles ) );
 }
 
 _ID18025( var_0 )
@@ -361,29 +361,29 @@ _ID27794()
 _ID23428()
 {
     thread _ID42407::_ID27079( "anml_dog_attack_jump" );
-    self._ID23438 = self._ID322;
+    self._ID23438 = self.enemy;
 
     if ( !isdefined( self._ID23438._ID11474 ) )
         self._ID23438 _ID27794();
 
     var_0 = 30;
-    var_1 = self._ID633 + var_0;
+    var_1 = self.meleeattackdist + var_0;
 
     for (;;)
     {
-        if ( !isalive( self._ID322 ) )
+        if ( !isalive( self.enemy ) )
             break;
 
-        if ( !isplayernumber( self._ID322 ) )
+        if ( !isplayernumber( self.enemy ) )
             break;
 
-        if ( _ID42407::_ID20581( self._ID322 ) )
+        if ( _ID42407::_ID20581( self.enemy ) )
         {
             _ID8367();
             continue;
         }
 
-        if ( isdefined( self._ID23438._ID1065 ) && self._ID23438._ID1065 != self || isdefined( self._ID23438._ID27731 ) && isdefined( self._ID23438._ID27731._ID20101 ) )
+        if ( isdefined( self._ID23438.syncedmeleetarget ) && self._ID23438.syncedmeleetarget != self || isdefined( self._ID23438._ID27731 ) && isdefined( self._ID23438._ID27731._ID20101 ) )
         {
             if ( _ID7423( var_1 ) )
                 break;
@@ -402,7 +402,7 @@ _ID23428()
 
         self orientmode( "face enemy" );
         self animmode( "zonly_physics" );
-        self._ID906 = 0;
+        self.safetochangescript = 0;
         _ID28444();
         self clearanim( %root, 0.1 );
         self clearpitchorient();
@@ -419,7 +419,7 @@ _ID23428()
         {
             thread _ID11441();
             self._ID23438._ID3627 = 1;
-            self._ID23438._ID586 = 0;
+            self._ID23438.laststand = 0;
             self._ID23438._ID1760 = undefined;
             thread _ID7887();
             self setflaggedanimrestart( "meleeanim", %german_shepherd_attack_player, 1, 0.2, 1 );
@@ -432,14 +432,14 @@ _ID23428()
             self unlink();
         }
 
-        self._ID906 = 1;
+        self.safetochangescript = 1;
         wait 0.05;
 
         if ( _ID7423( var_1 ) )
             break;
     }
 
-    self._ID906 = 1;
+    self.safetochangescript = 1;
     self animmode( "none" );
 }
 
@@ -466,12 +466,12 @@ _ID11413()
     if ( gettime() - self._ID23438._ID21913 > 8000 )
         self._ID23438._ID11480 = 0;
 
-    return self._ID23438._ID11480 < self._ID23438._ID17476._ID11434 && self._ID23438._ID486 > 25;
+    return self._ID23438._ID11480 < self._ID23438._ID17476._ID11434 && self._ID23438.health > 25;
 }
 
 _ID33983()
 {
-    return isdefined( self._ID322._ID11461 ) && gettime() < self._ID322._ID11461;
+    return isdefined( self.enemy._ID11461 ) && gettime() < self.enemy._ID11461;
 }
 
 _ID32704( var_0 )
@@ -481,21 +481,21 @@ _ID32704( var_0 )
 
 _ID23445()
 {
-    if ( !isalive( self._ID322 ) )
+    if ( !isalive( self.enemy ) )
         return;
 
-    self._ID322 notify( "dog_attacks_ai" );
+    self.enemy notify( "dog_attacks_ai" );
 
-    if ( isdefined( self._ID322._ID1065 ) || _ID33983() || !isai( self._ID322 ) || isdefined( self._ID322._ID20957 ) )
+    if ( isdefined( self.enemy.syncedmeleetarget ) || _ID33983() || !isai( self.enemy ) || isdefined( self.enemy._ID20957 ) )
         _ID8367();
     else
     {
-        self._ID322 _ID32704( 500 );
-        self._ID906 = 0;
+        self.enemy _ID32704( 500 );
+        self.safetochangescript = 0;
         self animmode( "zonly_physics" );
-        self._ID846 = 0;
+        self.pushable = 0;
         self clearpitchorient();
-        self._ID23439 = !isdefined( self._ID322._ID22746 ) && ( isdefined( self._ID322._ID7._ID11498 ) || isdefined( self._ID23426 ) || randomint( 100 ) > 50 );
+        self._ID23439 = !isdefined( self.enemy._ID22746 ) && ( isdefined( self.enemy._ID7._ID11498 ) || isdefined( self._ID23426 ) || randomint( 100 ) > 50 );
         var_0 = [];
         var_1[0] = %root;
         var_1[1] = %german_shepherd_attack_ai_01_start_a;
@@ -514,12 +514,12 @@ _ID23445()
             var_2 = 3;
         }
 
-        var_3 = vectortoangles( self._ID740 - self._ID322._ID740 );
+        var_3 = vectortoangles( self.origin - self.enemy.origin );
         var_3 = ( 0, var_3[1], 0 );
-        self._ID26025 = self._ID322;
+        self._ID26025 = self.enemy;
         self setcandamage( 0 );
         self clearanim( var_1[0], 0.1 );
-        self animrelative( "meleeanim", self._ID322._ID740, var_3, var_1[1] );
+        self animrelative( "meleeanim", self.enemy.origin, var_3, var_1[1] );
         animscripts\shared::_ID11529( "meleeanim", ::_ID18051 );
         self setcandamage( 1 );
         self animmode( "zonly_physics" );
@@ -532,7 +532,7 @@ _ID23445()
                 break;
 
             if ( !self._ID23439 && var_4 + 1 == var_2 )
-                self._ID486 = 1;
+                self.health = 1;
 
             self setflaggedanimrestart( "meleeanim", var_1[var_4 + 1], 1, 0, 1 );
             animscripts\shared::_ID11529( "meleeanim" );
@@ -546,8 +546,8 @@ _ID23445()
             return;
         }
 
-        self._ID846 = 1;
-        self._ID906 = 1;
+        self.pushable = 1;
+        self.safetochangescript = 1;
         self._ID14507 = 0;
     }
 }
@@ -582,10 +582,10 @@ _ID8368()
         {
             var_2 = var_0[var_1];
 
-            if ( !isdefined( var_2._ID1065 ) || var_2._ID1065 == self )
+            if ( !isdefined( var_2.syncedmeleetarget ) || var_2.syncedmeleetarget == self )
                 continue;
 
-            var_3 = var_2._ID740 - self._ID740;
+            var_3 = var_2.origin - self.origin;
 
             if ( var_3[2] * var_3[2] > 6400 )
                 continue;
@@ -594,12 +594,12 @@ _ID8368()
             var_4 = length( var_3 );
 
             if ( var_4 < 1 )
-                var_3 = anglestoforward( self._ID65 );
+                var_3 = anglestoforward( self.angles );
 
             if ( var_4 < 30 )
             {
                 var_3 *= 3 / var_4;
-                self safeteleport( self._ID740 - var_3, ( 0, 30, 0 ) );
+                self safeteleport( self.origin - var_3, ( 0, 30, 0 ) );
             }
         }
     }
@@ -607,7 +607,7 @@ _ID8368()
 
 _ID20117()
 {
-    return isdefined( self._ID322 ) && isdefined( self._ID322._ID1065 ) && self._ID322._ID1065 == self;
+    return isdefined( self.enemy ) && isdefined( self.enemy.syncedmeleetarget ) && self.enemy.syncedmeleetarget == self;
 }
 
 _ID18051( var_0 )
@@ -615,26 +615,26 @@ _ID18051( var_0 )
     if ( var_0 != "ai_attack_start" )
         return 0;
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 1;
 
-    if ( self._ID322 != self._ID26025 )
+    if ( self.enemy != self._ID26025 )
         return 1;
 
-    if ( isdefined( self._ID322._ID1065 ) )
+    if ( isdefined( self.enemy.syncedmeleetarget ) )
         return 1;
 
     self._ID14507 = 1;
-    self._ID322._ID1065 = self;
-    self._ID322 animcustom( ::_ID23450 );
+    self.enemy.syncedmeleetarget = self;
+    self.enemy animcustom( ::_ID23450 );
 }
 
 _ID7423( var_0 )
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
-    var_1 = distancesquared( self._ID740, self._ID322._ID740 );
+    var_1 = distancesquared( self.origin, self.enemy.origin );
     return var_1 > var_0 * var_0;
 }
 
@@ -652,12 +652,12 @@ _ID28444()
     }
 
     level._ID11420 = "nothing";
-    var_0 = distance( self._ID740, self._ID322._ID740 );
+    var_0 = distance( self.origin, self.enemy.origin );
 
-    if ( var_0 > self._ID633 )
+    if ( var_0 > self.meleeattackdist )
     {
-        var_1 = self._ID322._ID740 - self._ID740;
-        var_2 = ( var_0 - self._ID633 ) / var_0;
+        var_1 = self.enemy.origin - self.origin;
+        var_2 = ( var_0 - self.meleeattackdist ) / var_0;
         var_1 = ( var_1[0] * var_2, var_1[1] * var_2, var_1[2] * var_2 );
         thread _ID3663( var_1 );
     }
@@ -672,7 +672,7 @@ _ID3663( var_0 )
 
     for ( var_3 = 0; var_3 < var_1; var_3++ )
     {
-        self teleport( self._ID740 + var_2 );
+        self teleport( self.origin + var_2 );
         wait 0.05;
     }
 }
@@ -703,63 +703,63 @@ _ID54519()
     if ( isdefined( self._ID23438._ID11473 ) )
         _ID46403();
 
-    if ( level._ID794 _ID42237::_ID20583() )
+    if ( level.player _ID42237::_ID20583() )
     {
         var_0 = [ "+melee", "+melee_breath", "+melee_zoom" ];
         _ID42407::_ID48474( &"SCRIPT_PLATFORM_DOG_HINT", &"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD", undefined, undefined, var_0 );
         thread _ID42407::_ID46429();
-        self._ID23438._ID11473 = level._ID794._ID45565;
+        self._ID23438._ID11473 = level.player._ID45565;
     }
     else
     {
         self._ID23438._ID11473 = self._ID23438 _ID42313::_ID9200( "timer", 0.5 );
-        self._ID23438._ID11473._ID196 = ( 1, 1, 1 );
+        self._ID23438._ID11473.color = ( 1, 1, 1 );
         self._ID23438._ID11473 settext( &"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD" );
-        self._ID23438._ID11473._ID1331 = 0;
-        self._ID23438._ID11473._ID1339 = 20;
-        self._ID23438._ID11473._ID392 = "timer";
-        self._ID23438._ID11473._ID44 = "center";
-        self._ID23438._ID11473._ID45 = "middle";
-        self._ID23438._ID11473._ID499 = "center";
-        self._ID23438._ID11473._ID1284 = "middle";
-        self._ID23438._ID11473._ID408 = 1;
-        self._ID23438._ID11473._ID493 = 1;
-        self._ID23438._ID11473._ID55 = 0.25;
-        self._ID23438._ID11473._ID983 = -1;
-        self._ID23438._ID11473 thread _ID42237::_ID47857( level._ID794, &"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD", &"SCRIPT_PLATFORM_DOG_HINT", "clearing_dog_hint" );
+        self._ID23438._ID11473.x = 0;
+        self._ID23438._ID11473.y = 20;
+        self._ID23438._ID11473.font = "timer";
+        self._ID23438._ID11473.alignx = "center";
+        self._ID23438._ID11473.aligny = "middle";
+        self._ID23438._ID11473.horzalign = "center";
+        self._ID23438._ID11473.vertalign = "middle";
+        self._ID23438._ID11473.foreground = 1;
+        self._ID23438._ID11473.hidewheninmenu = 1;
+        self._ID23438._ID11473.alpha = 0.25;
+        self._ID23438._ID11473.sort = -1;
+        self._ID23438._ID11473 thread _ID42237::_ID47857( level.player, &"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD", &"SCRIPT_PLATFORM_DOG_HINT", "clearing_dog_hint" );
         self._ID23438._ID50676 = _ID42313::_ID9251( "h1_hud_tutorial_blur", 225, 20 );
         self._ID23438._ID52051 = _ID42313::_ID9251( "h1_hud_tutorial_border", 225, 1 );
         self._ID23438._ID43874 = _ID42313::_ID9251( "h1_hud_tutorial_border", 225, 1 );
-        self._ID23438._ID50676._ID1331 = 0;
-        self._ID23438._ID50676._ID1339 = 20;
-        self._ID23438._ID50676._ID983 = -3;
-        self._ID23438._ID50676._ID44 = "center";
-        self._ID23438._ID50676._ID45 = "middle";
-        self._ID23438._ID50676._ID499 = "center";
-        self._ID23438._ID50676._ID1284 = "middle";
-        self._ID23438._ID50676._ID408 = 1;
-        self._ID23438._ID50676._ID493 = 1;
-        self._ID23438._ID50676._ID55 = 0.225;
-        self._ID23438._ID52051._ID1331 = 0;
-        self._ID23438._ID52051._ID1339 = 10;
-        self._ID23438._ID52051._ID983 = -2;
-        self._ID23438._ID52051._ID44 = "center";
-        self._ID23438._ID52051._ID45 = "middle";
-        self._ID23438._ID52051._ID499 = "center";
-        self._ID23438._ID52051._ID1284 = "middle";
-        self._ID23438._ID52051._ID408 = 1;
-        self._ID23438._ID52051._ID493 = 1;
-        self._ID23438._ID52051._ID55 = 0.0125;
-        self._ID23438._ID43874._ID1331 = 0;
-        self._ID23438._ID43874._ID1339 = 30;
-        self._ID23438._ID43874._ID983 = -2;
-        self._ID23438._ID43874._ID44 = "center";
-        self._ID23438._ID43874._ID45 = "middle";
-        self._ID23438._ID43874._ID499 = "center";
-        self._ID23438._ID43874._ID1284 = "middle";
-        self._ID23438._ID43874._ID408 = 1;
-        self._ID23438._ID43874._ID493 = 1;
-        self._ID23438._ID43874._ID55 = 0.0125;
+        self._ID23438._ID50676.x = 0;
+        self._ID23438._ID50676.y = 20;
+        self._ID23438._ID50676.sort = -3;
+        self._ID23438._ID50676.alignx = "center";
+        self._ID23438._ID50676.aligny = "middle";
+        self._ID23438._ID50676.horzalign = "center";
+        self._ID23438._ID50676.vertalign = "middle";
+        self._ID23438._ID50676.foreground = 1;
+        self._ID23438._ID50676.hidewheninmenu = 1;
+        self._ID23438._ID50676.alpha = 0.225;
+        self._ID23438._ID52051.x = 0;
+        self._ID23438._ID52051.y = 10;
+        self._ID23438._ID52051.sort = -2;
+        self._ID23438._ID52051.alignx = "center";
+        self._ID23438._ID52051.aligny = "middle";
+        self._ID23438._ID52051.horzalign = "center";
+        self._ID23438._ID52051.vertalign = "middle";
+        self._ID23438._ID52051.foreground = 1;
+        self._ID23438._ID52051.hidewheninmenu = 1;
+        self._ID23438._ID52051.alpha = 0.0125;
+        self._ID23438._ID43874.x = 0;
+        self._ID23438._ID43874.y = 30;
+        self._ID23438._ID43874.sort = -2;
+        self._ID23438._ID43874.alignx = "center";
+        self._ID23438._ID43874.aligny = "middle";
+        self._ID23438._ID43874.horzalign = "center";
+        self._ID23438._ID43874.vertalign = "middle";
+        self._ID23438._ID43874.foreground = 1;
+        self._ID23438._ID43874.hidewheninmenu = 1;
+        self._ID23438._ID43874.alpha = 0.0125;
     }
 
     _ID49347::_ID47451( 1, 1 );
@@ -772,14 +772,14 @@ _ID51229()
 
     level endon( "clearing_dog_hint" );
     thread _ID46893();
-    self._ID23438._ID11473._ID55 = 1;
+    self._ID23438._ID11473.alpha = 1;
     var_0 = self._ID46341 / 1000;
 
-    if ( !level._ID794 _ID42237::_ID20583() )
+    if ( !level.player _ID42237::_ID20583() )
     {
-        self._ID23438._ID43874._ID55 = 0.05;
-        self._ID23438._ID52051._ID55 = 0.05;
-        self._ID23438._ID50676._ID55 = 0.9;
+        self._ID23438._ID43874.alpha = 0.05;
+        self._ID23438._ID52051.alpha = 0.05;
+        self._ID23438._ID50676.alpha = 0.9;
     }
 
     wait(var_0);
@@ -793,7 +793,7 @@ _ID46893()
     level endon( "clearing_dog_hint" );
     _ID42407::_ID13027( "neck_snapped" );
 
-    if ( level._ID794 _ID42237::_ID20583() )
+    if ( level.player _ID42237::_ID20583() )
     {
         level thread _ID42407::_ID47734();
         return;
@@ -825,10 +825,10 @@ _ID43108()
         self._ID23438._ID50676 fadeovertime( var_0 );
         self._ID23438._ID52051 fadeovertime( var_0 );
         self._ID23438._ID43874 fadeovertime( var_0 );
-        self._ID23438._ID11473._ID55 = 0;
-        self._ID23438._ID50676._ID55 = 0;
-        self._ID23438._ID52051._ID55 = 0;
-        self._ID23438._ID43874._ID55 = 0;
+        self._ID23438._ID11473.alpha = 0;
+        self._ID23438._ID50676.alpha = 0;
+        self._ID23438._ID52051.alpha = 0;
+        self._ID23438._ID43874.alpha = 0;
         wait(var_0);
         _ID46403();
     }
@@ -894,9 +894,9 @@ _ID11441()
                         self setcandamage( 1 );
                         self._ID7._ID24881 = 1;
                         self._ID11445 = 1;
-                        var_2 = self._ID23438._ID740 - self._ID740;
+                        var_2 = self._ID23438.origin - self.origin;
                         var_2 = ( var_2[0], var_2[1], 0 );
-                        _ID42407::_ID54515( self._ID740, "melee", 50 );
+                        _ID42407::_ID54515( self.origin, "melee", 50 );
                         thread _ID11423();
                         _ID45456::_ID54623( self );
                         self kill( self geteye() - var_2, self._ID23438 );
@@ -985,10 +985,10 @@ _ID23450()
     self endon( "end_melee_struggle" );
     self endon( "end_melee_all" );
 
-    if ( !isdefined( self._ID1065 ) )
+    if ( !isdefined( self.syncedmeleetarget ) )
         return;
 
-    self orientmode( "face point", self._ID1065._ID740, 1 );
+    self orientmode( "face point", self.syncedmeleetarget.origin, 1 );
     self animmode( "gravity" );
     self._ID7._ID28253 = "stand";
     self._ID7._ID35357 = "none";
@@ -1001,7 +1001,7 @@ _ID23450()
     var_0[1] = %ai_attacked_german_shepherd_01_start_a;
     var_0[2] = %ai_attacked_german_shepherd_02_idle_a;
 
-    if ( self._ID1065._ID23439 )
+    if ( self.syncedmeleetarget._ID23439 )
     {
         var_0[3] = %ai_attacked_german_shepherd_03_push_a;
         var_0[4] = %ai_attacked_german_shepherd_04_middle_a;
@@ -1019,7 +1019,7 @@ _ID23450()
     self clearanim( var_0[0], 0.1 );
     self setflaggedanimrestart( "aianim", var_0[1], 1, 0.1, 1 );
     wait 0.15;
-    self._ID1065 linkto( self, "tag_sync", ( 0, 0, 0 ), ( 0, 0, 0 ) );
+    self.syncedmeleetarget linkto( self, "tag_sync", ( 0, 0, 0 ), ( 0, 0, 0 ) );
     _ID42407::_ID10226( getanimlength( var_0[1] ) * 0.5, ::setspecial );
     self waittillmatch( "aianim",  "end"  );
     self._ID23442 = 1;
@@ -1041,7 +1041,7 @@ _ID23450()
         self setflaggedanimrestart( "aianim", var_0[self._ID23442], 1, 0, 1 );
         animscripts\shared::_ID11529( "aianim" );
 
-        if ( !isdefined( self._ID1065 ) || !isalive( self._ID1065 ) )
+        if ( !isdefined( self.syncedmeleetarget ) || !isalive( self.syncedmeleetarget ) )
         {
             if ( self._ID23442 == 3 && var_1 == 5 )
             {
@@ -1078,12 +1078,12 @@ _ID23453()
     var_0[1] = %ai_attacked_german_shepherd_02_getup_a;
     var_0[2] = %ai_attacked_german_shepherd_02_getup_a;
 
-    if ( self._ID1065._ID23439 )
+    if ( self.syncedmeleetarget._ID23439 )
         var_0[4] = %ai_attacked_german_shepherd_04_getup_a;
 
     for (;;)
     {
-        if ( !isdefined( self._ID1065 ) || !isalive( self._ID1065 ) )
+        if ( !isdefined( self.syncedmeleetarget ) || !isalive( self.syncedmeleetarget ) )
             break;
 
         wait 0.1;
@@ -1105,9 +1105,9 @@ _ID23453()
 _ID23452()
 {
     self orientmode( "face default" );
-    self._ID1065 = undefined;
+    self.syncedmeleetarget = undefined;
     self._ID23442 = undefined;
-    self._ID52 = 1;
+    self.allowpain = 1;
     _ID32704( 1000 );
     self notify( "end_melee_all" );
 }
@@ -1115,8 +1115,8 @@ _ID23452()
 
 _ID28037( var_0 )
 {
-    var_1 = spawn( "script_model", var_0._ID23438._ID740 );
-    var_1._ID65 = var_0._ID23438._ID65;
+    var_1 = spawn( "script_model", var_0._ID23438.origin );
+    var_1.angles = var_0._ID23438.angles;
     var_1 setmodel( level._ID27732 );
     var_1 useanimtree( #animtree );
     var_1 hide();
@@ -1201,19 +1201,19 @@ _ID28038( var_0 )
         var_1 hidehud();
 
     var_1 setstance( "stand" );
-    var_1._ID1065 = var_0;
+    var_1.syncedmeleetarget = var_0;
     var_1._ID27731 _ID28036( var_1 );
-    var_2 = var_0._ID740 - var_1._ID740;
-    self._ID65 = vectortoangles( var_2 );
-    self._ID65 = ( 0, self._ID65[1], 0 );
-    self._ID36098 = self._ID65;
-    var_3 = var_1._ID740;
-    var_4 = var_1 getdroptofloorposition( var_1._ID740 );
+    var_2 = var_0.origin - var_1.origin;
+    self.angles = vectortoangles( var_2 );
+    self.angles = ( 0, self.angles[1], 0 );
+    self._ID36098 = self.angles;
+    var_3 = var_1.origin;
+    var_4 = var_1 getdroptofloorposition( var_1.origin );
 
     if ( isdefined( var_4 ) )
-        self._ID740 = var_4;
+        self.origin = var_4;
     else
-        self._ID740 = var_1._ID740;
+        self.origin = var_1.origin;
 
     thread _ID28031( var_0 );
     self dontinterpolate();
@@ -1280,7 +1280,7 @@ _ID28030( var_0 )
     else
         setsaveddvar( "compass", 0 );
 
-    var_0._ID1065 = undefined;
+    var_0.syncedmeleetarget = undefined;
     var_0._ID11424 = undefined;
     _ID29875( var_0 );
 }
@@ -1289,7 +1289,7 @@ _ID28039( var_0 )
 {
     var_0 show();
     var_0 unlink();
-    var_0 setorigin( self._ID740 );
+    var_0 setorigin( self.origin );
     var_0 setplayerangles( self._ID36098 );
     var_0 setcandamage( 1 );
     var_1 = var_0._ID27731;
@@ -1347,7 +1347,7 @@ _ID11454()
 
 _ID20541()
 {
-    if ( issubstr( self._ID170, "hyena" ) )
+    if ( issubstr( self.classname, "hyena" ) )
         return 1;
 
     return 0;
@@ -1355,7 +1355,7 @@ _ID20541()
 
 _ID43186()
 {
-    var_0 = angleclamp180( self._ID23438._ID65[1] - self._ID65[1] );
+    var_0 = angleclamp180( self._ID23438.angles[1] - self.angles[1] );
     var_1 = "back";
 
     if ( var_0 > 45 && var_0 <= 135 )

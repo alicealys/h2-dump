@@ -11,8 +11,8 @@ _ID3988( var_0 )
     if ( !isdefined( level._ID3674 ) )
         level._ID3674 = spawnstruct();
 
-    if ( !isdefined( level._ID912 ) )
-        level._ID912 = tolower( getdvar( "mapname" ) );
+    if ( !isdefined( level.script ) )
+        level.script = tolower( getdvar( "mapname" ) );
 
     if ( !isdefined( level._ID1374 ) )
         level._ID1374 = spawnstruct();
@@ -112,7 +112,7 @@ _ID4087( var_0, var_1, var_2, var_3, var_4, var_5 )
     var_8._ID28197 = var_2;
     var_8._ID28198 = var_3;
     var_8._ID13791 = var_6;
-    var_8._ID578 = var_0;
+    var_8.label = var_0;
     var_8 thread _ID4377();
     level waittill( var_0 + "_line_emitter_stop" );
     var_8 setvolume( 0, var_7 );
@@ -124,7 +124,7 @@ _ID4087( var_0, var_1, var_2, var_3, var_4, var_5 )
 
 _ID4377()
 {
-    level endon( self._ID578 + "_line_emitter_stop" );
+    level endon( self.label + "_line_emitter_stop" );
     var_0 = self._ID28198 - self._ID28197;
     var_1 = vectornormalize( var_0 );
     var_2 = distance( self._ID28197, self._ID28198 );
@@ -132,14 +132,14 @@ _ID4377()
 
     for (;;)
     {
-        var_4 = level._ID794._ID740 - self._ID28197;
+        var_4 = level.player.origin - self._ID28197;
         var_5 = vectordot( var_4, var_1 );
         var_5 = clamp( var_5, 0, var_2 );
         var_6 = self._ID28197 + var_1 * var_5;
 
         if ( !self._ID20591 )
         {
-            self._ID740 = var_6;
+            self.origin = var_6;
             _ID42494::_ID34625( self._ID2521 );
             self setvolume( 0 );
             wait 0.05;
@@ -291,11 +291,11 @@ _ID38848( var_0 )
     var_4 = undefined;
     var_5 = undefined;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
         if ( !isdefined( _ID42237::_ID16012() ) )
         {
-            _ID4142( "Audo Zone Trigger at " + self._ID740 + " has defined a target, " + self._ID1191 + ", but that target doesn't exist." );
+            _ID4142( "Audo Zone Trigger at " + self.origin + " has defined a target, " + self.target + ", but that target doesn't exist." );
             return;
         }
 
@@ -305,7 +305,7 @@ _ID38848( var_0 )
 
             if ( !isdefined( _ID38841() ) )
             {
-                _ID4142( "Audo Zone Trigger at " + self._ID740 + " has defined a target, " + _ID38840() + ", but that target doesn't exist." );
+                _ID4142( "Audo Zone Trigger at " + self.origin + " has defined a target, " + _ID38840() + ", but that target doesn't exist." );
                 return;
             }
 
@@ -314,7 +314,7 @@ _ID38848( var_0 )
         else
         {
             var_6 = _ID42237::_ID16012();
-            var_7 = 2 * ( self._ID740 - var_6._ID740 );
+            var_7 = 2 * ( self.origin - var_6.origin );
             var_8 = vectortoangles( var_7 );
             var_3 = _ID38839();
             var_4 = var_3 + var_7;
@@ -335,7 +335,7 @@ _ID38848( var_0 )
     {
         self waittill( "trigger",  var_2  );
 
-        if ( _ID4013() && var_2 != level._ID794 )
+        if ( _ID4013() && var_2 != level.player )
             continue;
 
         if ( isdefined( var_3 ) && isdefined( var_4 ) )
@@ -350,7 +350,7 @@ _ID38848( var_0 )
                     var_9 = 1;
                 else if ( var_10 != "" )
                 {
-                    var_11 = _ID38845( var_3, var_4, var_5, var_2._ID740 );
+                    var_11 = _ID38845( var_3, var_4, var_5, var_2.origin );
 
                     if ( var_11 < 0.5 )
                     {
@@ -370,7 +370,7 @@ _ID38848( var_0 )
             }
             else
             {
-                var_11 = _ID38845( var_3, var_4, var_5, var_2._ID740 );
+                var_11 = _ID38845( var_3, var_4, var_5, var_2.origin );
 
                 if ( var_11 < 0.5 )
                     var_9 = 0;
@@ -472,7 +472,7 @@ _ID38848( var_0 )
         {
             if ( isdefined( self._ID31053 ) )
             {
-                var_15 = _ID38846( var_3, var_4, var_2._ID740 );
+                var_15 = _ID38846( var_3, var_4, var_2.origin );
 
                 if ( isdefined( level._ID1374._ID38819[self._ID31053] ) )
                     [[ level._ID1374._ID38819[self._ID31053] ]]( var_15 );
@@ -480,7 +480,7 @@ _ID38848( var_0 )
 
             if ( isdefined( var_3 ) && isdefined( var_4 ) )
             {
-                var_11 = _ID38845( var_3, var_4, var_5, var_2._ID740 );
+                var_11 = _ID38845( var_3, var_4, var_5, var_2.origin );
 
                 if ( isdefined( self._ID31055 ) )
                     var_11 = _ID10396( var_11, level._ID1374._ID28678[self._ID31055] );
@@ -612,8 +612,8 @@ _ID51023()
         while ( var_2 istouching( self ) && level._ID49725 == var_0 )
         {
             waittillframeend;
-            var_2._ID740 = var_1._ID740;
-            var_2._ID65 = var_1._ID65;
+            var_2.origin = var_1.origin;
+            var_2.angles = var_1.angles;
         }
 
         var_2 delete();
@@ -703,13 +703,13 @@ _ID38847( var_0 )
 _ID38840()
 {
     var_0 = _ID42237::_ID16012();
-    return var_0._ID1191;
+    return var_0.target;
 }
 
 _ID38839()
 {
     var_0 = _ID42237::_ID16012();
-    return var_0._ID740;
+    return var_0.origin;
 }
 
 _ID38841()
@@ -721,7 +721,7 @@ _ID38841()
 _ID38842()
 {
     var_0 = _ID38841();
-    return var_0._ID740;
+    return var_0.origin;
 }
 
 _ID38843( var_0, var_1 )
@@ -748,11 +748,11 @@ _ID38844( var_0, var_1 )
 
 _ID4083( var_0, var_1, var_2, var_3, var_4, var_5 )
 {
-    var_6 = spawn( "script_origin", level._ID794._ID740 );
+    var_6 = spawn( "script_origin", level.player.origin );
     var_7 = spawn( "script_origin", var_0 );
 
     if ( !isdefined( var_3 ) )
-        var_3 = distance( var_7._ID740, var_6._ID740 );
+        var_3 = distance( var_7.origin, var_6.origin );
 
     if ( !isdefined( var_4 ) )
     {
@@ -760,10 +760,10 @@ _ID4083( var_0, var_1, var_2, var_3, var_4, var_5 )
         var_4 = 36 * var_8;
     }
 
-    var_9 = _ID4372( var_7._ID740, var_6._ID740, var_3, var_4 );
-    var_9[0] = ( var_9[0][0], var_9[0][1], var_6._ID740[2] );
-    var_9[1] = ( var_9[1][0], var_9[1][1], var_6._ID740[2] );
-    var_10 = distance( var_7._ID740, var_9[0] );
+    var_9 = _ID4372( var_7.origin, var_6.origin, var_3, var_4 );
+    var_9[0] = ( var_9[0][0], var_9[0][1], var_6.origin[2] );
+    var_9[1] = ( var_9[1][0], var_9[1][1], var_6.origin[2] );
+    var_10 = distance( var_7.origin, var_9[0] );
 
     if ( !isdefined( var_5 ) )
         var_5 = 1800;
@@ -772,8 +772,8 @@ _ID4083( var_0, var_1, var_2, var_3, var_4, var_5 )
 
     if ( isdefined( var_9 ) && var_9.size == 2 )
     {
-        var_12 = spawn( "script_origin", var_7._ID740 );
-        var_13 = spawn( "script_origin", var_7._ID740 );
+        var_12 = spawn( "script_origin", var_7.origin );
+        var_13 = spawn( "script_origin", var_7.origin );
         var_12 _ID42494::_ID34605( var_1 );
         var_13 _ID42494::_ID34605( var_2 );
         var_12 moveto( var_9[0], var_11, 0, 0 );
@@ -1070,11 +1070,11 @@ _ID4261( var_0, var_1 )
         var_4 thread _ID3964( var_1 );
 
     var_6 = 0;
-    var_7 = level._ID794 getcurrentweapon();
+    var_7 = level.player getcurrentweapon();
 
     for (;;)
     {
-        if ( level._ID794 attackbuttonpressed() )
+        if ( level.player attackbuttonpressed() )
         {
             if ( !var_6 )
             {
@@ -1092,7 +1092,7 @@ _ID4261( var_0, var_1 )
 _ID3964( var_0 )
 {
     level endon( "aud_stop_slow_mo_gunshot" );
-    var_1 = level._ID794 getcurrentweapon();
+    var_1 = level.player getcurrentweapon();
 
     for (;;)
     {
@@ -1237,13 +1237,13 @@ _ID20504()
 
 _ID3827()
 {
-    level._ID794._ID10887 = 0;
+    level.player._ID10887 = 0;
     level._ID1374._ID9836 = 1;
 }
 
 _ID3809()
 {
-    level._ID794._ID10887 = 1;
+    level.player._ID10887 = 1;
     level._ID1374._ID9836 = 0;
 }
 
@@ -1255,7 +1255,7 @@ _ID29851()
         _ID42465::_ID23801( "deaths_door", 2 );
         _ID42476::_ID34512( "deathsdoor" );
         level notify( "kill_deaths_door_audio" );
-        level._ID794 _meth_84a2( 0 );
+        level.player _meth_84a2( 0 );
         _ID42474::_ID4655( 0 );
         thread _ID42469::_ID30454( level._ID1374._ID9835._ID29935 );
         _ID42494::_ID34606( "deaths_door_exit" );
@@ -1287,7 +1287,7 @@ _ID32266()
         _ID42494::_ID34606( "deaths_door_intro" );
         _ID42494::_ID34606( "deaths_door_breaths", "kill_deaths_door_audio", 0, 0.5 );
         _ID42494::_ID34626( "deaths_door_loop", "kill_deaths_door_audio", 0, 0.5 );
-        level._ID794 _meth_84a2( 1 );
+        level.player _meth_84a2( 1 );
     }
 }
 
@@ -1355,7 +1355,7 @@ _ID32261( var_0 )
 _ID15663()
 {
     if ( !isdefined( level._ID1374._ID36700["damb"] ) )
-        return "soundtables/" + level._ID912 + ".csv";
+        return "soundtables/" + level.script + ".csv";
     else
         return "soundtables/" + level._ID1374._ID36700["damb"];
 }
@@ -1368,7 +1368,7 @@ _ID32259( var_0 )
 _ID15661( var_0 )
 {
     if ( !isdefined( level._ID1374._ID36700["damb_comp"] ) )
-        return "soundtables/" + level._ID912 + ".csv";
+        return "soundtables/" + level.script + ".csv";
     else
         return "soundtables/" + level._ID1374._ID36700["damb_comp"];
 }
@@ -1381,7 +1381,7 @@ _ID32260( var_0 )
 _ID15662( var_0 )
 {
     if ( !isdefined( level._ID1374._ID36700["damb_loops"] ) )
-        return "soundtables/" + level._ID912 + ".csv";
+        return "soundtables/" + level.script + ".csv";
     else
         return "soundtables/" + level._ID1374._ID36700["damb_loops"];
 }
@@ -1394,7 +1394,7 @@ _ID32427( var_0 )
 _ID15958()
 {
     if ( !isdefined( level._ID1374._ID36700["reverb"] ) )
-        return "soundtables/" + level._ID912 + ".csv";
+        return "soundtables/" + level.script + ".csv";
     else
         return "soundtables/" + level._ID1374._ID36700["reverb"];
 }
@@ -1407,7 +1407,7 @@ _ID32532( var_0 )
 _ID16090()
 {
     if ( !isdefined( level._ID1374._ID36700["zone"] ) )
-        return "soundtables/" + level._ID912 + ".csv";
+        return "soundtables/" + level.script + ".csv";
     else
         return "soundtables/" + level._ID1374._ID36700["zone"];
 }
@@ -1447,9 +1447,9 @@ _ID3895( var_0, var_1, var_2 )
 
         foreach ( var_14 in var_10 )
         {
-            if ( isdefined( var_14._ID39 ) && var_14._ID39 >= var_5 )
+            if ( isdefined( var_14.alertlevelint ) && var_14.alertlevelint >= var_5 )
             {
-                var_15 = distance( level._ID794._ID740, var_14._ID740 );
+                var_15 = distance( level.player.origin, var_14.origin );
 
                 if ( var_15 < var_8 )
                 {
@@ -1503,7 +1503,7 @@ _ID4062( var_0 )
     {
         if ( isalive( var_5 ) )
         {
-            var_6 = distance( level._ID794._ID740, var_5._ID740 );
+            var_6 = distance( level.player.origin, var_5.origin );
 
             if ( var_6 < var_2 )
                 var_1++;
@@ -1612,14 +1612,14 @@ _ID10413( var_0 )
 _ID10390( var_0, var_1, var_2, var_3 )
 {
     _ID4319( var_1, var_2, var_3 );
-    var_4 = spawn( "script_origin", level._ID794._ID740 );
+    var_4 = spawn( "script_origin", level.player.origin );
     var_4 thread _ID10413( var_0 );
     return var_4;
 }
 
 _ID10399( var_0 )
 {
-    var_1 = spawn( "script_origin", level._ID794._ID740 );
+    var_1 = spawn( "script_origin", level.player.origin );
     var_1 thread _ID10413( var_0 );
     return var_1;
 }
@@ -1706,7 +1706,7 @@ _ID10401( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7 )
     if ( isdefined( var_2 ) )
         var_8 = var_2;
 
-    var_9 = var_1._ID740;
+    var_9 = var_1.origin;
 
     if ( isdefined( var_6 ) )
         var_9 = var_6;
@@ -1782,7 +1782,7 @@ _ID10388( var_0, var_1 )
             _ID42465::_ID23811( "mute_all", var_4 );
             break;
         case "generic_building_bomb_shake":
-            level._ID794 _ID42494::_ID34605( "sewer_bombs" );
+            level.player _ID42494::_ID34605( "sewer_bombs" );
             break;
         case "start_player_slide_trigger":
             break;
@@ -1806,8 +1806,8 @@ _ID10388( var_0, var_1 )
             else
                 var_6 = undefined;
 
-            if ( isdefined( var_1._ID1283 ) )
-                var_7 = var_1._ID1283;
+            if ( isdefined( var_1.velocity ) )
+                var_7 = var_1.velocity;
             else
                 var_7 = undefined;
 
@@ -1839,7 +1839,7 @@ _ID10395( var_0 )
 {
     var_1 = 0;
 
-    switch ( var_0._ID669 )
+    switch ( var_0.model )
     {
         case "furniture_lamp_floor1_off":
         case "com_cafe_light_part1_off":
@@ -1847,7 +1847,7 @@ _ID10395( var_0 )
             var_1 = 1;
 
             if ( soundexists( "paris_lamplight_flicker" ) )
-                thread _ID42237::_ID27077( "paris_lamplight_flicker", var_0._ID740 );
+                thread _ID42237::_ID27077( "paris_lamplight_flicker", var_0.origin );
 
             break;
         default:

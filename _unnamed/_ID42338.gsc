@@ -3,7 +3,7 @@
 
 _ID26367( var_0, var_1, var_2 )
 {
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return;
 
     self endon( "death" );
@@ -15,11 +15,11 @@ _ID26367( var_0, var_1, var_2 )
     thread _ID41083();
     thread _ID41094();
     self endon( "enemy" );
-    self._ID452 = 32;
+    self.goalradius = 32;
     self allowedstances( "stand" );
     self._ID10998 = 1;
     self._ID11025 = 1;
-    self._ID49 = 1;
+    self.allowdeath = 1;
     self._ID31391 = 1;
     _ID22426();
 
@@ -47,9 +47,9 @@ _ID26367( var_0, var_1, var_2 )
     var_7["struct"] = _ID42407::_ID32330;
 
     if ( isdefined( var_0 ) )
-        self._ID1191 = var_0;
+        self.target = var_0;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
         var_8 = 1;
         var_9 = _ID16013();
@@ -115,10 +115,10 @@ _ID26367( var_0, var_1, var_2 )
             self._ID21832 = var_12;
             [[ var_7[var_13] ]]( var_12 );
 
-            if ( isdefined( var_12._ID851 ) && var_12._ID851 > 0 )
-                self._ID452 = var_12._ID851;
+            if ( isdefined( var_12.radius ) && var_12.radius > 0 )
+                self.goalradius = var_12.radius;
             else
-                self._ID452 = 32;
+                self.goalradius = 32;
 
             self waittill( "goal" );
             var_12 notify( "trigger",  self  );
@@ -145,19 +145,19 @@ _ID26367( var_0, var_1, var_2 )
 
             var_16 = _ID42237::_ID28945( var_17 );
 
-            if ( level._ID912 == "trainer" )
+            if ( level.script == "trainer" )
             {
-                while ( distance2dsquared( var_16._ID740, level._ID794._ID740 ) < 1024 )
+                while ( distance2dsquared( var_16.origin, level.player.origin ) < 1024 )
                 {
                     var_17 = var_16 [[ var_6[var_13][var_8] ]]();
                     var_16 = var_17[0];
                 }
             }
 
-            var_18 = distance2dsquared( var_12._ID740, self._ID740 ) < var_3;
+            var_18 = distance2dsquared( var_12.origin, self.origin ) < var_3;
 
             if ( isdefined( var_16 ) )
-                var_19 = distance2dsquared( var_12._ID740, var_16._ID740 ) < var_3;
+                var_19 = distance2dsquared( var_12.origin, var_16.origin ) < var_3;
             else
                 var_19 = 1;
 
@@ -324,14 +324,14 @@ _ID51421()
 
     if ( var_1 && !var_2 && var_0 )
     {
-        self._ID1262 = 1;
-        self._ID763 = 70.0;
-        self._ID629 = 19.0;
-        self._ID960 = 0.94;
+        self.usepathsmoothingvalues = 1;
+        self.pathlookaheaddist = 70.0;
+        self.maxturnspeed = 19.0;
+        self.sharpturn = 0.94;
         return 1;
     }
 
-    self._ID1262 = 0;
+    self.usepathsmoothingvalues = 0;
     return 0;
 }
 
@@ -415,11 +415,11 @@ _ID32407()
 
 _ID39181()
 {
-    if ( !isdefined( self._ID762 ) )
+    if ( !isdefined( self.pathgoalpos ) )
         return;
 
-    var_0 = self._ID762;
-    var_1 = var_0 - self._ID740;
+    var_0 = self.pathgoalpos;
+    var_1 = var_0 - self.origin;
     var_1 = ( var_1[0], var_1[1], 0 );
     var_2 = lengthsquared( var_1 );
 
@@ -427,7 +427,7 @@ _ID39181()
         return;
 
     var_1 /= sqrt( var_2 );
-    var_3 = anglestoforward( self._ID65 );
+    var_3 = anglestoforward( self.angles );
 
     if ( vectordot( var_3, var_1 ) < -0.5 )
     {
@@ -521,7 +521,7 @@ _ID41083()
     self endon( "death" );
     _ID41084();
 
-    if ( isdefined( self._ID1244 ) && self._ID1244 == "dog" )
+    if ( isdefined( self.type ) && self.type == "dog" )
         self._ID24424 = 1;
 
     var_0 = _ID42407::_ID13023( "_stealth_enabled" ) && _ID42407::_ID13019( "_stealth_enabled" );
@@ -536,7 +536,7 @@ _ID41083()
         self notify( "stop_animmode" );
     }
 
-    self._ID49 = 0;
+    self.allowdeath = 0;
 
     if ( !isdefined( self ) )
         return;
@@ -553,8 +553,8 @@ _ID16013()
 {
     var_0 = [];
 
-    if ( isdefined( self._ID1191 ) )
-        var_0 = getentarray( self._ID1191, "targetname" );
+    if ( isdefined( self.target ) )
+        var_0 = getentarray( self.target, "targetname" );
 
     return var_0;
 }
@@ -563,8 +563,8 @@ _ID16015()
 {
     var_0 = [];
 
-    if ( isdefined( self._ID1191 ) )
-        var_0 = getnodearray( self._ID1191, "targetname" );
+    if ( isdefined( self.target ) )
+        var_0 = getnodearray( self.target, "targetname" );
 
     return var_0;
 }
@@ -573,8 +573,8 @@ _ID16017()
 {
     var_0 = [];
 
-    if ( isdefined( self._ID1191 ) )
-        var_0 = _ID42237::_ID16640( self._ID1191, "targetname" );
+    if ( isdefined( self.target ) )
+        var_0 = _ID42237::_ID16640( self.target, "targetname" );
 
     return var_0;
 }
@@ -616,7 +616,7 @@ _ID22426()
         return;
 
     waitframe;
-    var_0 = getaispeciesarray( self._ID1194, "dog" );
+    var_0 = getaispeciesarray( self.team, "dog" );
     var_1 = undefined;
 
     for ( var_2 = 0; var_2 < var_0.size; var_2++ )
@@ -643,7 +643,7 @@ _ID26602()
 {
     _ID42407::_ID35060( self );
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return;
 
     self endon( "enemy" );
@@ -655,11 +655,11 @@ _ID26602()
 
     self._ID26385 endon( "death" );
     thread _ID41083();
-    self._ID452 = 4;
-    self._ID49 = 1;
+    self.goalradius = 4;
+    self.allowdeath = 1;
     var_0 = _ID26603();
-    var_1 = vectornormalize( self._ID740 - self._ID26385._ID740 );
-    var_2 = anglestoright( self._ID26385._ID65 );
+    var_1 = vectornormalize( self.origin - self._ID26385.origin );
+    var_2 = anglestoright( self._ID26385.angles );
     var_3 = "left";
 
     if ( vectordot( var_1, var_2 ) > 0 )
@@ -668,8 +668,8 @@ _ID26602()
     wait 1;
     thread _ID26605();
     thread _ID26606();
-    self._ID25516 = self._ID525;
-    self._ID525 = 70;
+    self._ID25516 = self.interval;
+    self.interval = 70;
 
     for (;;)
     {
@@ -685,15 +685,15 @@ _ID26602()
             if ( var_3 == "null" )
                 var_3 = "back";
 
-            self._ID26383 = var_0[var_3]._ID740;
+            self._ID26383 = var_0[var_3].origin;
         }
         else
-            self._ID26383 = self._ID740;
+            self._ID26383 = self.origin;
 
-        if ( !( self._ID26385._ID675 == "stop" && isdefined( self._ID26385 ) && distance2d( self._ID26385._ID740, self._ID740 ) < 40 ) )
+        if ( !( self._ID26385.movemode == "stop" && isdefined( self._ID26385 ) && distance2d( self._ID26385.origin, self.origin ) < 40 ) )
             var_4 = self._ID26383;
         else
-            var_4 = self._ID740;
+            var_4 = self.origin;
 
         if ( isdefined( self._ID54144 ) )
             var_4 = _ID46078( var_4, self._ID54144 );
@@ -707,16 +707,16 @@ _ID26602()
 _ID46078( var_0, var_1 )
 {
     var_2 = 20;
-    var_3 = distance( var_0, self._ID740 );
-    var_4 = self._ID65[1];
-    var_5 = vectortoyaw( var_0 - self._ID740 );
+    var_3 = distance( var_0, self.origin );
+    var_4 = self.angles[1];
+    var_5 = vectortoyaw( var_0 - self.origin );
     var_6 = angleclamp180( var_4 - var_5 );
     var_7 = abs( var_6 );
 
     if ( var_7 > var_2 )
     {
-        var_8 = var_0 - self._ID740;
-        var_9 = anglestoforward( self._ID65 );
+        var_8 = var_0 - self.origin;
+        var_9 = anglestoforward( self.angles );
 
         if ( var_7 > 45 )
             var_2 = 32;
@@ -726,7 +726,7 @@ _ID46078( var_0, var_1 )
         else
             var_8 = rotatevector( var_9, ( 0, var_2, 0 ) );
 
-        var_10 = vectornormalize( var_8 ) * var_3 + self._ID740;
+        var_10 = vectornormalize( var_8 ) * var_3 + self.origin;
     }
     else
         var_10 = var_0;
@@ -772,20 +772,20 @@ _ID26603()
 
 _ID26607( var_0 )
 {
-    if ( distance2dsquared( self._ID26385._ID740, self._ID26385._ID21832._ID740 ) > 7000 || !isdefined( var_0["null"]._ID740 ) )
+    if ( distance2dsquared( self._ID26385.origin, self._ID26385._ID21832.origin ) > 7000 || !isdefined( var_0["null"].origin ) )
     {
-        var_1 = vectortoangles( self._ID26385._ID21832._ID740 - self._ID26385._ID740 );
+        var_1 = vectortoangles( self._ID26385._ID21832.origin - self._ID26385.origin );
         var_1 = ( 0, var_1[1], 0 );
-        var_2 = self._ID26385._ID740;
+        var_2 = self._ID26385.origin;
         var_3 = anglestoright( var_1 );
         var_4 = anglestoforward( var_1 );
         var_2 += _ID42407::_ID49965( var_4, -40 );
-        var_0["right"]._ID740 = var_2 + _ID42407::_ID49965( var_3, 40 ) + _ID42407::_ID49965( var_4, 30 );
-        var_0["left"]._ID740 = var_2 + _ID42407::_ID49965( var_3, -40 ) + _ID42407::_ID49965( var_4, 30 );
-        var_0["back_right"]._ID740 = var_2 + _ID42407::_ID49965( var_3, 32 ) + _ID42407::_ID49965( var_4, -16 );
-        var_0["back_left"]._ID740 = var_2 + _ID42407::_ID49965( var_3, -32 ) + _ID42407::_ID49965( var_4, -16 );
-        var_0["back"]._ID740 = var_2 + _ID42407::_ID49965( var_4, -48 );
-        var_0["null"]._ID740 = self._ID740;
+        var_0["right"].origin = var_2 + _ID42407::_ID49965( var_3, 40 ) + _ID42407::_ID49965( var_4, 30 );
+        var_0["left"].origin = var_2 + _ID42407::_ID49965( var_3, -40 ) + _ID42407::_ID49965( var_4, 30 );
+        var_0["back_right"].origin = var_2 + _ID42407::_ID49965( var_3, 32 ) + _ID42407::_ID49965( var_4, -16 );
+        var_0["back_left"].origin = var_2 + _ID42407::_ID49965( var_3, -32 ) + _ID42407::_ID49965( var_4, -16 );
+        var_0["back"].origin = var_2 + _ID42407::_ID49965( var_4, -48 );
+        var_0["null"].origin = self.origin;
         var_5 = getarraykeys( var_0 );
 
         for ( var_6 = 0; var_6 < var_5.size; var_6++ )
@@ -823,7 +823,7 @@ _ID26604( var_0, var_1 )
         if ( var_0[var_3]._ID7422 )
             continue;
 
-        if ( self maymovetopoint( var_0[var_3]._ID740 ) )
+        if ( self maymovetopoint( var_0[var_3].origin ) )
             return var_3;
 
         var_0[var_3]._ID7422 = 1;
@@ -845,7 +845,7 @@ _ID26604( var_0, var_1 )
 
 _ID26605( var_0 )
 {
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return;
 
     self endon( "enemy" );
@@ -853,7 +853,7 @@ _ID26605( var_0 )
     self endon( "end_patrol" );
     self._ID26385 endon( "death" );
 
-    if ( isdefined( self._ID26385._ID922 ) && self._ID26385._ID922 == "cqb_patrol" )
+    if ( isdefined( self._ID26385.script_noteworthy ) && self._ID26385.script_noteworthy == "cqb_patrol" )
     {
         _ID42407::_ID32280();
         return;
@@ -868,7 +868,7 @@ _ID26605( var_0 )
     {
         wait 0.1;
         var_1 = self._ID26383;
-        var_2 = distancesquared( self._ID740, self._ID26383 );
+        var_2 = distancesquared( self.origin, self._ID26383 );
 
         if ( var_2 > squared( var_0 ) )
         {
@@ -892,7 +892,7 @@ _ID26605( var_0 )
 
 _ID26606( var_0, var_1 )
 {
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return;
 
     self endon( "enemy" );
@@ -900,13 +900,13 @@ _ID26606( var_0, var_1 )
     self endon( "end_patrol" );
     self._ID26385 endon( "death" );
 
-    if ( isdefined( self._ID26385._ID922 ) && self._ID26385._ID922 == "cqb_patrol" )
+    if ( isdefined( self._ID26385.script_noteworthy ) && self._ID26385.script_noteworthy == "cqb_patrol" )
     {
         for (;;)
         {
             wait 0.05;
             var_2 = self._ID26383;
-            var_3 = distancesquared( self._ID740, self._ID54144 );
+            var_3 = distancesquared( self.origin, self._ID54144 );
 
             if ( var_3 < squared( 16 ) )
             {
@@ -949,7 +949,7 @@ _ID26606( var_0, var_1 )
     {
         wait 0.05;
         var_2 = self._ID26383;
-        var_3 = distancesquared( self._ID740, self._ID54144 );
+        var_3 = distancesquared( self.origin, self._ID54144 );
 
         if ( self._ID7._ID24414 != "walk" )
         {

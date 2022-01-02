@@ -41,7 +41,7 @@ _ID19930( var_0 )
     if ( isdefined( self._ID22609 ) )
     {
         if ( var_0 != "pain" && var_0 != "death" )
-            self kill( self._ID740 );
+            self kill( self.origin );
 
         if ( var_0 != "pain" )
         {
@@ -51,7 +51,7 @@ _ID19930( var_0 )
     }
 
     if ( isdefined( self._ID7._ID23138 ) && var_0 != "death" )
-        self kill( self._ID740 );
+        self kill( self.origin );
 
     if ( isdefined( self._ID7._ID28304 ) )
     {
@@ -83,10 +83,10 @@ _ID19930( var_0 )
     self._ID7._ID3462 = 0;
     self._ID7._ID52500 = 0;
 
-    if ( isdefined( self._ID700 ) && ( self._ID700._ID1244 == "Conceal Prone" || self._ID700._ID1244 == "Conceal Crouch" || self._ID700._ID1244 == "Conceal Stand" ) )
+    if ( isdefined( self.node ) && ( self.node.type == "Conceal Prone" || self.node.type == "Conceal Crouch" || self.node.type == "Conceal Stand" ) )
     {
         self._ID7._ID3462 = 1;
-        self._ID7._ID52500 = level._ID912 == "favela";
+        self._ID7._ID52500 = level.script == "favela";
     }
 
     _ID19852( var_0 );
@@ -136,10 +136,10 @@ isincombatinternal( var_0 )
     if ( !isdefined( var_0 ) )
         var_0 = 1;
 
-    if ( var_0 && self._ID39 > 1 )
+    if ( var_0 && self.alertlevelint > 1 )
         return 1;
 
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         return 1;
 
     return self._ID7._ID8365 > gettime();
@@ -162,18 +162,18 @@ _ID20775( var_0 )
 
 _ID39726()
 {
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
         self._ID7._ID8365 = gettime() + anim._ID8369 + randomint( anim._ID8370 );
 }
 
 _ID16256()
 {
-    if ( isdefined( self._ID322 ) )
+    if ( isdefined( self.enemy ) )
     {
         if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
-            self._ID7._ID21917 = animscripts\combat_utility::_ID15797( self._ID322 );
+            self._ID7._ID21917 = animscripts\combat_utility::_ID15797( self.enemy );
         else
-            self._ID7._ID21917 = self._ID322 getshootatpos();
+            self._ID7._ID21917 = self.enemy getshootatpos();
 
         self._ID7._ID21921 = gettime();
         return self._ID7._ID21917;
@@ -183,7 +183,7 @@ _ID16256()
     else
     {
         var_0 = self getshootatpos();
-        var_0 += ( 196 * self._ID604[0], 196 * self._ID604[1], 196 * self._ID604[2] );
+        var_0 += ( 196 * self.lookforward[0], 196 * self.lookforward[1], 196 * self.lookforward[2] );
         return var_0;
     }
 }
@@ -193,30 +193,30 @@ _ID16462( var_0 )
     if ( !isdefined( self._ID18328 ) )
     {
         if ( _ID20830( var_0 ) )
-            return var_0._ID65[1] + 90;
+            return var_0.angles[1] + 90;
         else if ( _ID20833( var_0 ) )
-            return var_0._ID65[1] - 90;
-        else if ( var_0._ID1244 == "Cover Multi" )
+            return var_0.angles[1] - 90;
+        else if ( var_0.type == "Cover Multi" )
         {
             if ( isdefined( self._ID217 ) && isdefined( self._ID217._ID36185 ) )
             {
                 if ( self._ID217._ID36185 == "right" )
-                    return var_0._ID65[1] - 90;
+                    return var_0.angles[1] - 90;
                 else if ( self._ID217._ID36185 == "left" )
-                    return var_0._ID65[1] + 90;
+                    return var_0.angles[1] + 90;
             }
         }
     }
 
-    return var_0._ID65[1];
+    return var_0.angles[1];
 }
 
 _ID16468( var_0 )
 {
-    if ( isdefined( self._ID700 ) )
-        var_1 = self._ID700._ID65[1] - _ID16756( var_0 );
+    if ( isdefined( self.node ) )
+        var_1 = self.node.angles[1] - _ID16756( var_0 );
     else
-        var_1 = self._ID65[1] - _ID16756( var_0 );
+        var_1 = self.angles[1] - _ID16756( var_0 );
 
     var_1 = angleclamp180( var_1 );
     return var_1;
@@ -226,23 +226,23 @@ _ID16467()
 {
     var_0 = undefined;
 
-    if ( isdefined( self._ID322 ) )
-        var_0 = self._ID322._ID740;
+    if ( isdefined( self.enemy ) )
+        var_0 = self.enemy.origin;
     else
     {
-        if ( isdefined( self._ID700 ) )
-            var_1 = anglestoforward( self._ID700._ID65 );
+        if ( isdefined( self.node ) )
+            var_1 = anglestoforward( self.node.angles );
         else
-            var_1 = anglestoforward( self._ID65 );
+            var_1 = anglestoforward( self.angles );
 
         var_1 *= 150;
-        var_0 = self._ID740 + var_1;
+        var_0 = self.origin + var_1;
     }
 
-    if ( isdefined( self._ID700 ) )
-        var_2 = self._ID700._ID65[1] - _ID16756( var_0 );
+    if ( isdefined( self.node ) )
+        var_2 = self.node.angles[1] - _ID16756( var_0 );
     else
-        var_2 = self._ID65[1] - _ID16756( var_0 );
+        var_2 = self.angles[1] - _ID16756( var_0 );
 
     var_2 = angleclamp180( var_2 );
     return var_2;
@@ -252,12 +252,12 @@ _ID16762( var_0 )
 {
     if ( _ID20915() )
     {
-        var_1 = anglestoforward( self._ID65 );
-        var_2 = rotatepointaroundvector( var_1, var_0 - self._ID740, self._ID65[2] * -1 );
-        var_0 = var_2 + self._ID740;
+        var_1 = anglestoforward( self.angles );
+        var_2 = rotatepointaroundvector( var_1, var_0 - self.origin, self.angles[2] * -1 );
+        var_0 = var_2 + self.origin;
     }
 
-    var_3 = self._ID65[1] - _ID16756( var_0 );
+    var_3 = self.angles[1] - _ID16756( var_0 );
     var_3 = angleclamp180( var_3 );
     return var_3;
 }
@@ -266,34 +266,34 @@ _ID16760()
 {
     var_0 = undefined;
 
-    if ( isdefined( self._ID322 ) )
-        var_0 = self._ID322._ID740;
+    if ( isdefined( self.enemy ) )
+        var_0 = self.enemy.origin;
     else
     {
-        var_1 = anglestoforward( self._ID65 );
+        var_1 = anglestoforward( self.angles );
         var_1 *= 150;
-        var_0 = self._ID740 + var_1;
+        var_0 = self.origin + var_1;
     }
 
-    var_2 = self._ID65[1] - _ID16756( var_0 );
+    var_2 = self.angles[1] - _ID16756( var_0 );
     var_2 = angleclamp180( var_2 );
     return var_2;
 }
 
 _ID16756( var_0 )
 {
-    return vectortoyaw( var_0 - self._ID740 );
+    return vectortoyaw( var_0 - self.origin );
 }
 
 _ID16757( var_0 )
 {
-    var_1 = vectortoangles( ( var_0[0], var_0[1], 0 ) - ( self._ID740[0], self._ID740[1], 0 ) );
+    var_1 = vectortoangles( ( var_0[0], var_0[1], 0 ) - ( self.origin[0], self.origin[1], 0 ) );
     return var_1[1];
 }
 
 _ID1737()
 {
-    var_0 = self._ID65[1] - _ID16756( self._ID322._ID740 );
+    var_0 = self.angles[1] - _ID16756( self.enemy.origin );
     var_0 = angleclamp180( var_0 );
 
     if ( var_0 < 0 )
@@ -304,7 +304,7 @@ _ID1737()
 
 _ID1738()
 {
-    var_0 = self._ID65[1] - _ID16757( self._ID322._ID740 );
+    var_0 = self.angles[1] - _ID16757( self.enemy.origin );
     var_0 = angleclamp180( var_0 );
 
     if ( var_0 < 0 )
@@ -315,7 +315,7 @@ _ID1738()
 
 _ID1739( var_0 )
 {
-    var_1 = self._ID65[1] - _ID16756( var_0 );
+    var_1 = self.angles[1] - _ID16756( var_0 );
     var_1 = angleclamp180( var_1 );
 
     if ( var_1 < 0 )
@@ -326,7 +326,7 @@ _ID1739( var_0 )
 
 _ID1736( var_0 )
 {
-    var_1 = self._ID65[1] - var_0;
+    var_1 = self.angles[1] - var_0;
     var_1 = angleclamp180( var_1 );
 
     if ( var_1 < 0 )
@@ -350,18 +350,18 @@ _ID16763( var_0, var_1 )
 
 _ID16761( var_0 )
 {
-    if ( isdefined( self._ID1244 ) && ( self._ID1244 == "Cover Up 3D" || self._ID1244 == "Cover Left 3D" || self._ID1244 == "Cover Right 3D" || self._ID1244 == "Exposed 3D" ) )
+    if ( isdefined( self.type ) && ( self.type == "Cover Up 3D" || self.type == "Cover Left 3D" || self.type == "Cover Right 3D" || self.type == "Exposed 3D" ) )
     {
         var_1 = _ID16702( self );
         var_2 = anglestoforward( var_1 );
-        var_3 = rotatepointaroundvector( var_2, var_0 - self._ID740, var_1[2] * -1 );
-        var_3 += self._ID740;
+        var_3 = rotatepointaroundvector( var_2, var_0 - self.origin, var_1[2] * -1 );
+        var_3 += self.origin;
         var_4 = var_1[1] - _ID16756( var_3 );
         var_4 = angleclamp180( var_4 );
         return var_4;
     }
 
-    var_4 = self._ID65[1] - _ID16756( var_0 );
+    var_4 = self.angles[1] - _ID16756( var_0 );
     var_4 = angleclamp180( var_4 );
     return var_4;
 }
@@ -431,7 +431,7 @@ _ID7496( var_0 )
 
 _ID16178()
 {
-    var_0 = self._ID700;
+    var_0 = self.node;
 
     if ( isdefined( var_0 ) && ( self nearnode( var_0 ) || isdefined( self._ID8893 ) && var_0 == self._ID8893 ) )
         return var_0;
@@ -444,7 +444,7 @@ _ID16466()
     var_0 = _ID16178();
 
     if ( isdefined( var_0 ) )
-        return var_0._ID1244;
+        return var_0.type;
 
     return "none";
 }
@@ -454,9 +454,9 @@ _ID16459()
     var_0 = _ID16178();
 
     if ( isdefined( var_0 ) )
-        return var_0._ID65[1];
+        return var_0.angles[1];
 
-    return self._ID278;
+    return self.desiredangle;
 }
 
 _ID16460()
@@ -464,9 +464,9 @@ _ID16460()
     var_0 = _ID16178();
 
     if ( isdefined( var_0 ) )
-        return anglestoforward( var_0._ID65 );
+        return anglestoforward( var_0.angles );
 
-    return anglestoforward( self._ID65 );
+    return anglestoforward( self.angles );
 }
 
 _ID16465()
@@ -474,9 +474,9 @@ _ID16465()
     var_0 = _ID16178();
 
     if ( isdefined( var_0 ) )
-        return var_0._ID740;
+        return var_0.origin;
 
-    return self._ID740;
+    return self.origin;
 }
 
 _ID30670( var_0, var_1 )
@@ -601,10 +601,10 @@ _ID34075( var_0 )
     self endon( "got known enemy2" );
     self endon( "death" );
 
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return;
 
-    if ( self._ID322._ID1194 == "allies" )
+    if ( self.enemy.team == "allies" )
         var_1 = ( 0.4, 0.7, 1 );
     else
         var_1 = ( 1, 0.7, 0.4 );
@@ -613,14 +613,14 @@ _ID34075( var_0 )
     {
         wait 0.05;
 
-        if ( !isdefined( self._ID584 ) )
+        if ( !isdefined( self.lastenemysightpos ) )
             continue;
     }
 }
 
 _ID18223()
 {
-    if ( isdefined( self._ID700 ) )
+    if ( isdefined( self.node ) )
         return _ID6885() || _ID6899();
     else
         return _ID6884() || _ID6898();
@@ -637,7 +637,7 @@ _ID40001()
         return;
 
     self._ID19389 = _ID16257();
-    self._ID19385 = self._ID740;
+    self._ID19385 = self.origin;
 }
 
 _ID40000()
@@ -650,7 +650,7 @@ _ID40000()
 
     if ( isdefined( self._ID19389 ) && isdefined( self._ID19385 ) )
     {
-        if ( distance( self._ID740, self._ID19385 ) < 25 )
+        if ( distance( self.origin, self._ID19385 ) < 25 )
             return 0;
     }
 
@@ -681,7 +681,7 @@ _ID10034( var_0, var_1, var_2 )
     var_3 thread _ID10045();
     var_3 endon( "timeout" );
 
-    if ( self._ID322._ID1194 == "allies" )
+    if ( self.enemy.team == "allies" )
         var_4 = ( 0.4, 0.7, 1 );
     else
         var_4 = ( 1, 0.7, 0.4 );
@@ -714,8 +714,8 @@ _ID10016( var_0, var_1 )
     else
         var_3 = "long burst";
 
-    thread _ID10035( self._ID740 + ( 0, 0, 42 ), var_3, 1.5 );
-    thread _ID10033( self._ID740 + ( 0, 0, 60 ), "Suppressing" );
+    thread _ID10035( self.origin + ( 0, 0, 42 ), var_3, 1.5 );
+    thread _ID10033( self.origin + ( 0, 0, 60 ), "Suppressing" );
 }
 
 _ID28604()
@@ -787,23 +787,23 @@ _ID37696()
 {
     var_0 = spawn( "script_model", ( 0, 0, 0 ) );
     var_0 setmodel( "temp" );
-    var_0._ID740 = self gettagorigin( "tag_weapon_right" ) + ( 50, 50, 0 );
-    var_0._ID65 = self gettagangles( "tag_weapon_right" );
-    var_1 = anglestoright( var_0._ID65 );
+    var_0.origin = self gettagorigin( "tag_weapon_right" ) + ( 50, 50, 0 );
+    var_0.angles = self gettagangles( "tag_weapon_right" );
+    var_1 = anglestoright( var_0.angles );
     var_1 *= 15;
-    var_2 = anglestoforward( var_0._ID65 );
+    var_2 = anglestoforward( var_0.angles );
     var_2 *= 15;
     var_0 movegravity( ( 0, 50, 150 ), 100 );
-    var_3 = "weapon_" + self._ID1302;
-    var_4 = spawn( var_3, var_0._ID740 );
-    var_4._ID65 = self gettagangles( "tag_weapon_right" );
+    var_3 = "weapon_" + self.weapon;
+    var_4 = spawn( var_3, var_0.origin );
+    var_4.angles = self gettagangles( "tag_weapon_right" );
     var_4 linkto( var_0 );
-    var_5 = var_0._ID740;
+    var_5 = var_0.origin;
 
-    while ( isdefined( var_4 ) && isdefined( var_4._ID740 ) )
+    while ( isdefined( var_4 ) && isdefined( var_4.origin ) )
     {
         var_6 = var_5;
-        var_7 = var_0._ID740;
+        var_7 = var_0.origin;
         var_8 = vectortoangles( var_7 - var_6 );
         var_2 = anglestoforward( var_8 );
         var_2 *= 4;
@@ -818,11 +818,11 @@ _ID37696()
         if ( var_9["fraction"] < 1.0 )
             break;
 
-        var_5 = var_0._ID740;
+        var_5 = var_0.origin;
         wait 0.05;
     }
 
-    if ( isdefined( var_4 ) && isdefined( var_4._ID740 ) )
+    if ( isdefined( var_4 ) && isdefined( var_4.origin ) )
         var_4 unlink();
 
     var_0 delete();
@@ -883,7 +883,7 @@ _ID20934()
     if ( isdefined( self._ID14800 ) )
         return self._ID14800;
 
-    if ( self._ID1057 <= self._ID36847 )
+    if ( self.suppressionmeter <= self._ID36847 )
         return 0;
 
     return self issuppressed();
@@ -891,7 +891,7 @@ _ID20934()
 
 _ID20915()
 {
-    return isdefined( self._ID1063 ) && self._ID1063 == 1 && ( isdefined( self._ID986 ) && self._ID986 == 1 );
+    return isdefined( self.swimmer ) && self.swimmer == 1 && ( isdefined( self.space ) && self.space == 1 );
 }
 
 _ID16702( var_0 )
@@ -900,9 +900,9 @@ _ID16702( var_0 )
         return ( 0, 0, 0 );
 
     if ( !isdefined( var_0._ID31037 ) )
-        return var_0._ID65;
+        return var_0.angles;
 
-    var_1 = var_0._ID65;
+    var_1 = var_0.angles;
     var_2 = angleclamp180( var_1[0] + var_0._ID31037[0] );
     var_3 = var_1[1];
     var_4 = angleclamp180( var_1[2] + var_0._ID31037[2] );
@@ -911,7 +911,7 @@ _ID16702( var_0 )
 
 _ID20849()
 {
-    if ( self._ID1057 <= self._ID36847 * 0.25 )
+    if ( self.suppressionmeter <= self._ID36847 * 0.25 )
         return 0;
 
     return self issuppressed();
@@ -930,12 +930,12 @@ _ID16464( var_0, var_1 )
     var_7 = ( -3.7, -22, 63 );
     var_8 = 0;
     var_9 = ( 0, 0, 0 );
-    var_10 = anglestoright( var_0._ID65 );
-    var_11 = anglestoforward( var_0._ID65 );
+    var_10 = anglestoright( var_0.angles );
+    var_11 = anglestoforward( var_0.angles );
 
     if ( !isdefined( var_1 ) )
     {
-        var_1 = var_0._ID1244;
+        var_1 = var_0.type;
 
         if ( var_1 == "Cover Multi" )
             var_1 = _ID16194( var_0 );
@@ -982,25 +982,25 @@ _ID6630( var_0, var_1, var_2 )
 
 _ID29285()
 {
-    return isdefined( self._ID322 ) && self seerecently( self._ID322, 5 );
+    return isdefined( self.enemy ) && self seerecently( self.enemy, 5 );
 }
 
 _ID6884( var_0 )
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
     if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
     {
-        if ( isdefined( self._ID12963 ) && self._ID12963 == self._ID322 )
+        if ( isdefined( self._ID12963 ) && self._ID12963 == self.enemy )
             return 1;
         else
-            return self cansee( self._ID322 );
+            return self cansee( self.enemy );
     }
 
-    if ( isdefined( var_0 ) && self cansee( self._ID322, var_0 ) || self cansee( self._ID322 ) )
+    if ( isdefined( var_0 ) && self cansee( self.enemy, var_0 ) || self cansee( self.enemy ) )
     {
-        if ( !_ID7448( self geteye(), self._ID322 getshootatpos() ) )
+        if ( !_ID7448( self geteye(), self.enemy getshootatpos() ) )
             return 0;
 
         self._ID17020 = _ID16256();
@@ -1013,7 +1013,7 @@ _ID6884( var_0 )
 
 _ID6885()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
     {
         self._ID17020 = undefined;
         return 0;
@@ -1021,10 +1021,10 @@ _ID6885()
 
     var_0 = _ID16256();
 
-    if ( !isdefined( self._ID700 ) )
-        var_1 = self cansee( self._ID322 );
+    if ( !isdefined( self.node ) )
+        var_1 = self cansee( self.enemy );
     else
-        var_1 = _ID6888( var_0, self._ID700 );
+        var_1 = _ID6888( var_0, self.node );
 
     if ( var_1 )
     {
@@ -1045,23 +1045,23 @@ _ID6888( var_0, var_1 )
     }
 
     var_2 = _ID16464( var_1 );
-    var_3 = var_1._ID740 + var_2;
+    var_3 = var_1.origin + var_2;
 
     if ( !_ID7448( var_3, var_0, var_1 ) )
         return 0;
 
     if ( !sighttracepassed( var_3, var_0, 0, undefined ) )
     {
-        if ( var_1._ID1244 == "Cover Crouch" || var_1._ID1244 == "Conceal Crouch" )
+        if ( var_1.type == "Cover Crouch" || var_1.type == "Conceal Crouch" )
         {
-            var_3 = ( 0, 0, 64 ) + var_1._ID740;
+            var_3 = ( 0, 0, 64 ) + var_1.origin;
             return sighttracepassed( var_3, var_0, 0, undefined );
         }
 
-        if ( _ID20915() && var_1._ID1244 == "Cover Up 3D" )
+        if ( _ID20915() && var_1.type == "Cover Up 3D" )
         {
-            var_4 = anglestoup( self._ID65 );
-            var_3 = var_1._ID740 + ( var_4[0] * 32, var_4[1] * 32, var_4[2] * 32 );
+            var_4 = anglestoup( self.angles );
+            var_3 = var_1.origin + ( var_4[0] * 32, var_4[1] * 32, var_4[2] * 32 );
             return sighttracepassed( var_3, var_0, 0, undefined );
         }
 
@@ -1073,7 +1073,7 @@ _ID6888( var_0, var_1 )
 
 _ID20831( var_0 )
 {
-    if ( var_0._ID1244 != "Cover Multi" )
+    if ( var_0.type != "Cover Multi" )
         return 0;
 
     if ( !isdefined( self._ID217 ) )
@@ -1110,8 +1110,8 @@ _ID16194( var_0, var_1 )
 
 _ID7448( var_0, var_1, var_2 )
 {
-    var_3 = self._ID307 - anim._ID2430;
-    var_4 = self._ID1252 + anim._ID2430;
+    var_3 = self.downaimlimit - anim._ID2430;
+    var_4 = self.upaimlimit + anim._ID2430;
     var_5 = angleclamp180( vectortoangles( var_1 - var_0 )[0] );
 
     if ( var_5 > var_4 )
@@ -1119,7 +1119,7 @@ _ID7448( var_0, var_1, var_2 )
 
     if ( var_5 < var_3 )
     {
-        if ( isdefined( var_2 ) && var_2._ID1244 != "Cover Crouch" && var_2._ID1244 != "Conceal Crouch" )
+        if ( isdefined( var_2 ) && var_2.type != "Cover Crouch" && var_2.type != "Conceal Crouch" )
             return 0;
 
         if ( var_5 < anim._ID8868 + var_3 )
@@ -1162,20 +1162,20 @@ _ID2472()
 
     var_0 = undefined;
 
-    if ( isdefined( self._ID322._ID700 ) )
+    if ( isdefined( self.enemy.node ) )
     {
-        var_1 = _ID16464( self._ID322._ID700 );
-        var_0 = self._ID322._ID700._ID740 + var_1;
+        var_1 = _ID16464( self.enemy.node );
+        var_0 = self.enemy.node.origin + var_1;
     }
     else if ( _ID42237::_ID14385( "_cloaked_stealth_enabled" ) )
-        var_0 = animscripts\combat_utility::_ID15797( self._ID322 );
+        var_0 = animscripts\combat_utility::_ID15797( self.enemy );
     else
-        var_0 = self._ID322 getshootatpos();
+        var_0 = self.enemy getshootatpos();
 
     if ( !self canshoot( var_0 ) )
         return 0;
 
-    if ( self._ID912 == "combat" )
+    if ( self.script == "combat" )
     {
         if ( !sighttracepassed( self geteye(), self getmuzzlepos(), 0, undefined ) )
             return 0;
@@ -1193,24 +1193,24 @@ _ID6899()
         return 0;
     }
 
-    if ( !isplayernumber( self._ID322 ) )
+    if ( !isplayernumber( self.enemy ) )
         return _ID2472();
 
-    if ( isdefined( self._ID700 ) )
+    if ( isdefined( self.node ) )
     {
-        if ( _ID20830( self._ID700 ) || _ID20833( self._ID700 ) )
+        if ( _ID20830( self.node ) || _ID20833( self.node ) )
         {
-            if ( !animscripts\corner::_ID6887( _ID16256(), self._ID700 ) )
+            if ( !animscripts\corner::_ID6887( _ID16256(), self.node ) )
                 return 0;
         }
 
-        var_0 = _ID16464( self._ID700 );
-        var_1 = self._ID700._ID740 + var_0;
+        var_0 = _ID16464( self.node );
+        var_1 = self.node.origin + var_0;
     }
     else
         var_1 = self getmuzzlepos();
 
-    if ( !_ID7448( var_1, self._ID584 ) )
+    if ( !_ID7448( var_1, self.lastenemysightpos ) )
         return 0;
 
     return _ID14211( var_1 );
@@ -1224,12 +1224,12 @@ _ID6898()
         return 0;
     }
 
-    if ( !isplayernumber( self._ID322 ) )
+    if ( !isplayernumber( self.enemy ) )
         return _ID2472();
 
     var_0 = self getmuzzlepos();
 
-    if ( !_ID7448( var_0, self._ID584 ) )
+    if ( !_ID7448( var_0, self.lastenemysightpos ) )
         return 0;
 
     return _ID14211( var_0 );
@@ -1237,10 +1237,10 @@ _ID6898()
 
 _ID18251()
 {
-    if ( !isdefined( self._ID322 ) )
+    if ( !isdefined( self.enemy ) )
         return 0;
 
-    if ( !isdefined( self._ID584 ) )
+    if ( !isdefined( self.lastenemysightpos ) )
         return 0;
 
     _ID39718();
@@ -1271,7 +1271,7 @@ _ID24705()
     if ( isdefined( self._ID17020 ) && !_ID6883( self._ID17020 ) )
         return 1;
 
-    return !isdefined( self._ID21918 ) || self._ID21918 != self._ID584 || distancesquared( self._ID21919, self._ID740 ) > 1024;
+    return !isdefined( self._ID21918 ) || self._ID21918 != self.lastenemysightpos || distancesquared( self._ID21919, self.origin ) > 1024;
 }
 
 _ID14211( var_0 )
@@ -1279,7 +1279,7 @@ _ID14211( var_0 )
     if ( !_ID24705() )
         return isdefined( self._ID17020 );
 
-    if ( isdefined( self._ID322 ) && distancesquared( self._ID740, self._ID322._ID740 ) > squared( self._ID322._ID630 ) )
+    if ( isdefined( self.enemy ) && distancesquared( self.origin, self.enemy.origin ) > squared( self.enemy.maxvisibledist ) )
     {
         self._ID17020 = undefined;
         return 0;
@@ -1291,13 +1291,13 @@ _ID14211( var_0 )
         return 0;
     }
 
-    self._ID21919 = self._ID740;
-    self._ID21918 = self._ID584;
+    self._ID21919 = self.origin;
+    self._ID21918 = self.lastenemysightpos;
     var_1 = _ID16256();
-    var_2 = bullettrace( self._ID584, var_1, 0, undefined );
+    var_2 = bullettrace( self.lastenemysightpos, var_1, 0, undefined );
     var_3 = var_2["position"];
-    var_4 = self._ID584 - var_3;
-    var_5 = vectornormalize( self._ID584 - var_0 );
+    var_4 = self.lastenemysightpos - var_3;
+    var_5 = vectornormalize( self.lastenemysightpos - var_0 );
     var_4 -= var_5 * vectordot( var_4, var_5 );
     var_6 = 20.0;
     var_7 = int( length( var_4 ) / var_6 + 0.5 );
@@ -1308,7 +1308,7 @@ _ID14211( var_0 )
     if ( var_7 > 20 )
         var_7 = 20;
 
-    var_8 = self._ID584 - var_3;
+    var_8 = self.lastenemysightpos - var_3;
     var_8 = ( var_8[0] / var_7, var_8[1] / var_7, var_8[2] / var_7 );
     var_7++;
     var_9 = var_3;
@@ -1403,7 +1403,7 @@ _ID9342( var_0, var_1 )
 
 _ID16307()
 {
-    return getweaponmodel( self._ID470 );
+    return getweaponmodel( self.grenadeweapon );
 }
 
 _ID30757( var_0 )
@@ -1416,18 +1416,18 @@ _ID30757( var_0 )
 
 _ID6902()
 {
-    if ( !self._ID464 )
+    if ( !self.grenadeammo )
         return 0;
 
     if ( self._ID31213 )
         return 1;
 
-    return isplayernumber( self._ID322 );
+    return isplayernumber( self.enemy );
 }
 
 _ID39984()
 {
-    return weaponisboltaction( self._ID1302 );
+    return weaponisboltaction( self.weapon );
 }
 
 _ID28958( var_0 )
@@ -1603,7 +1603,7 @@ _ID6834()
     if ( !animscripts\weaponlist::_ID39983() )
         return 0;
 
-    if ( weaponclass( self._ID1302 ) == "mg" )
+    if ( weaponclass( self.weapon ) == "mg" )
         return 0;
 
     if ( isdefined( self._ID10881 ) && self._ID10881 == 1 )
@@ -1796,31 +1796,31 @@ _ID16107()
 
 _ID16099()
 {
-    return self._ID1302;
+    return self.weapon;
 }
 
 _ID39990()
 {
-    return self._ID1302 == self._ID834 && self._ID1302 != "none";
+    return self.weapon == self._ID834 && self.weapon != "none";
 }
 
 _ID39994()
 {
-    return self._ID1302 == self._ID949 && self._ID1302 != "none";
+    return self.weapon == self._ID949 && self.weapon != "none";
 }
 
 _ID39997()
 {
-    return self._ID1302 == self._ID34144 && self._ID1302 != "none";
+    return self.weapon == self._ID34144 && self.weapon != "none";
 }
 
 _ID16100()
 {
-    if ( self._ID1302 == self._ID834 )
+    if ( self.weapon == self._ID834 )
         return "primary";
-    else if ( self._ID1302 == self._ID949 )
+    else if ( self.weapon == self._ID949 )
         return "secondary";
-    else if ( self._ID1302 == self._ID34144 )
+    else if ( self.weapon == self._ID34144 )
         return "sidearm";
     else
     {
@@ -1847,67 +1847,67 @@ _ID9641( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, v
     if ( !isdefined( var_0 ) )
         return 0;
 
-    if ( self._ID253 == var_0 )
+    if ( self.damagelocation == var_0 )
         return 1;
 
     if ( !isdefined( var_1 ) )
         return 0;
 
-    if ( self._ID253 == var_1 )
+    if ( self.damagelocation == var_1 )
         return 1;
 
     if ( !isdefined( var_2 ) )
         return 0;
 
-    if ( self._ID253 == var_2 )
+    if ( self.damagelocation == var_2 )
         return 1;
 
     if ( !isdefined( var_3 ) )
         return 0;
 
-    if ( self._ID253 == var_3 )
+    if ( self.damagelocation == var_3 )
         return 1;
 
     if ( !isdefined( var_4 ) )
         return 0;
 
-    if ( self._ID253 == var_4 )
+    if ( self.damagelocation == var_4 )
         return 1;
 
     if ( !isdefined( var_5 ) )
         return 0;
 
-    if ( self._ID253 == var_5 )
+    if ( self.damagelocation == var_5 )
         return 1;
 
     if ( !isdefined( var_6 ) )
         return 0;
 
-    if ( self._ID253 == var_6 )
+    if ( self.damagelocation == var_6 )
         return 1;
 
     if ( !isdefined( var_7 ) )
         return 0;
 
-    if ( self._ID253 == var_7 )
+    if ( self.damagelocation == var_7 )
         return 1;
 
     if ( !isdefined( var_8 ) )
         return 0;
 
-    if ( self._ID253 == var_8 )
+    if ( self.damagelocation == var_8 )
         return 1;
 
     if ( !isdefined( var_9 ) )
         return 0;
 
-    if ( self._ID253 == var_9 )
+    if ( self.damagelocation == var_9 )
         return 1;
 
     if ( !isdefined( var_10 ) )
         return 0;
 
-    if ( self._ID253 == var_10 )
+    if ( self.damagelocation == var_10 )
         return 1;
 
     return 0;
@@ -1915,50 +1915,50 @@ _ID9641( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9, v
 
 _ID39988()
 {
-    if ( !isdefined( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) )
         return 0;
 
-    return weaponclass( self._ID1302 ) == "pistol";
+    return weaponclass( self.weapon ) == "pistol";
 }
 
 _ID39993()
 {
-    if ( !isdefined( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) )
         return 0;
 
-    return weaponclass( self._ID1302 ) == "rocketlauncher";
+    return weaponclass( self.weapon ) == "rocketlauncher";
 }
 
 _ID39985()
 {
-    if ( !isdefined( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) )
         return 0;
 
-    return weaponclass( self._ID1302 ) == "mg";
+    return weaponclass( self.weapon ) == "mg";
 }
 
 _ID39996()
 {
-    if ( !isdefined( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) )
         return 0;
 
-    return weaponclass( self._ID1302 ) == "spread";
+    return weaponclass( self.weapon ) == "spread";
 }
 
 _ID39998()
 {
-    if ( !isdefined( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) )
         return 0;
 
-    return weaponclass( self._ID1302 ) == "smg";
+    return weaponclass( self.weapon ) == "smg";
 }
 
 _ID39992()
 {
-    if ( !isdefined( self._ID1302 ) )
+    if ( !isdefined( self.weapon ) )
         return 0;
 
-    var_0 = weaponclass( self._ID1302 );
+    var_0 = weaponclass( self.weapon );
 
     switch ( var_0 )
     {
@@ -1981,16 +1981,16 @@ _ID33944( var_0 )
 _ID28897( var_0 )
 {
     self endon( "killanimscript" );
-    var_1 = self._ID740;
+    var_1 = self.origin;
     var_2 = ( 0, 0, 0 );
 
     for (;;)
     {
         wait 0.05;
-        var_3 = distance( self._ID740, var_1 );
-        var_1 = self._ID740;
+        var_3 = distance( self.origin, var_1 );
+        var_1 = self.origin;
 
-        if ( self._ID486 == 1 )
+        if ( self.health == 1 )
         {
             self._ID7._ID24881 = 1;
             self startragdoll();
@@ -2010,7 +2010,7 @@ _ID20527()
 
 _ID33934()
 {
-    return isdefined( self._ID8931 ) && !isdefined( self._ID458 );
+    return isdefined( self._ID8931 ) && !isdefined( self.grenade );
 }
 
 _ID20716()
@@ -2081,7 +2081,7 @@ _ID32547( var_0 )
 
 _ID20717()
 {
-    return !self._ID373 || isdefined( self._ID8931 );
+    return !self.facemotion || isdefined( self._ID8931 );
 }
 
 _ID28972()
@@ -2101,7 +2101,7 @@ _ID20911( var_0 )
 
 _ID41682()
 {
-    return self._ID1302 != "none" && weaponisboltaction( self._ID1302 ) && weaponclass( self._ID1302 ) == "spread";
+    return self.weapon != "none" && weaponisboltaction( self.weapon ) && weaponclass( self.weapon ) == "spread";
 }
 
 _ID16553( var_0, var_1 )
@@ -2123,17 +2123,17 @@ _ID16202()
 
 _ID20830( var_0 )
 {
-    return var_0._ID1244 == "Cover Left" || var_0._ID1244 == "Cover Left 3D";
+    return var_0.type == "Cover Left" || var_0.type == "Cover Left 3D";
 }
 
 _ID20833( var_0 )
 {
-    return var_0._ID1244 == "Cover Right" || var_0._ID1244 == "Cover Right 3D";
+    return var_0.type == "Cover Right" || var_0.type == "Cover Right 3D";
 }
 
 _ID20829( var_0 )
 {
-    return var_0._ID1244 == "Cover Left 3D" || var_0._ID1244 == "Cover Right 3D" || var_0._ID1244 == "Cover Up 3D";
+    return var_0.type == "Cover Left 3D" || var_0.type == "Cover Right 3D" || var_0.type == "Cover Up 3D";
 }
 
 _ID22630( var_0, var_1 )
@@ -2290,11 +2290,11 @@ _ID14699( var_0, var_1 )
         if ( !isdefined( var_0 ) || !isalive( var_0 ) )
             break;
 
-        if ( isdefined( var_0._ID322 ) )
+        if ( isdefined( var_0.enemy ) )
         {
-            var_2._ID740 = var_0 gettagorigin( "tag_flash" );
+            var_2.origin = var_0 gettagorigin( "tag_flash" );
             var_5 = var_0 gettagangles( "tag_flash" );
-            var_6 = vectornormalize( var_0._ID322 getshootatpos() - var_2._ID740 );
+            var_6 = vectornormalize( var_0.enemy getshootatpos() - var_2.origin );
             var_7 = anglestoforward( var_5 );
             var_8 = vectornormalize( var_6 );
             var_9 = vectortoangles( var_8 );
@@ -2304,7 +2304,7 @@ _ID14699( var_0, var_1 )
             {
                 var_2 laseron( var_1 );
                 var_11 = vectortoangles( var_6 ) + ( randomfloatrange( -1 * var_4, var_4 ), randomfloatrange( -1 * var_4, var_4 ), randomfloatrange( -1 * var_4, var_4 ) );
-                var_2._ID65 = vectorlerp( var_2._ID65, var_11, 0.15 );
+                var_2.angles = vectorlerp( var_2.angles, var_11, 0.15 );
             }
             else
                 var_2 laseroff();
@@ -2421,7 +2421,7 @@ _ID48937()
 
 should_play_specific_covercrouch_anim()
 {
-    switch ( self._ID823 )
+    switch ( self.prevscript )
     {
         case "cover_crouch":
             foreach ( var_1 in _ID22630( "exposed_turn_crouch", "exposed2cover_turn_all" ) )

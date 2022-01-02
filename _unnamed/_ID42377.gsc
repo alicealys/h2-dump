@@ -31,27 +31,27 @@ _ID12783()
 
 _ID12927()
 {
-    self._ID411 = 0.5;
-    self._ID412 = 0.1;
-    self._ID377 = undefined;
+    self.fovcosine = 0.5;
+    self.fovcosinebusy = 0.1;
+    self.favoriteenemy = undefined;
     self._ID11566 = 1;
     self._ID11575 = 1;
     thread _ID42407::_ID32226( 0 );
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         return;
 
-    self._ID287 = 1;
+    self.diequietly = 1;
     self clearenemy();
 }
 
 _ID12928( var_0 )
 {
-    self._ID411 = 0.01;
+    self.fovcosine = 0.01;
 
     if ( !isdefined( self._ID11411 ) )
     {
-        self._ID507 = 0;
+        self.ignoreall = 0;
         thread _ID42407::_ID32226( 1 );
     }
 
@@ -59,11 +59,11 @@ _ID12928( var_0 )
     self._ID11575 = undefined;
 
     if ( isdefined( self._ID25550 ) )
-        self._ID381 = self._ID25550;
+        self.fixednode = self._ID25550;
 
-    if ( self._ID1244 != "dog" )
+    if ( self.type != "dog" )
     {
-        self._ID287 = 0;
+        self.diequietly = 0;
 
         if ( !isdefined( var_0 ) )
         {
@@ -104,7 +104,7 @@ _ID12882()
     _ID12830();
     self._ID1644._ID5029._ID13251 = spawnstruct();
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
         _ID12838();
 
     self._ID1644._ID28153 = spawnstruct();
@@ -116,7 +116,7 @@ _ID12838()
     if ( threatbiasgroupexists( "dog" ) )
         self setthreatbiasgroup( "dog" );
 
-    if ( isdefined( self._ID322 ) || isdefined( self._ID377 ) )
+    if ( isdefined( self.enemy ) || isdefined( self.favoriteenemy ) )
         return;
 
     _ID42407::_ID13024( "_stealth_behavior_asleep" );
@@ -124,9 +124,9 @@ _ID12838()
     if ( isdefined( self._ID31394 ) || isdefined( self._ID31391 ) )
         return;
 
-    self._ID511 = 1;
-    self._ID507 = 1;
-    self._ID49 = 1;
+    self.ignoreme = 1;
+    self.ignoreall = 1;
+    self.allowdeath = 1;
     thread _ID42259::_ID3022( self, "gravity", "_stealth_dog_sleeping" );
     _ID42407::_ID13025( "_stealth_behavior_asleep" );
 }
@@ -154,7 +154,7 @@ _ID12830()
 {
     _ID42386::_ID2261( "animation", "wrapper", _ID42386::_ID12789 );
 
-    if ( self._ID1244 == "dog" )
+    if ( self.type == "dog" )
     {
         _ID42386::_ID2261( "animation", "grenade danger", _ID42375::_ID11403 );
         _ID42386::_ID2261( "animation", "bulletwhizby", _ID42375::_ID11403 );

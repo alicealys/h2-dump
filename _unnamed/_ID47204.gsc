@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     var_0 = _ID42237::_ID9265( "ground_smoke_1200x1200" );
     var_0 _ID42229::_ID32402( ( 87.8118, 4114.18, -75.875 ), ( 270, 0, 0 ) );

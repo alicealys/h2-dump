@@ -16,7 +16,7 @@ _ID24399()
         self._ID7._ID28253 = "stand";
     }
 
-    self._ID7._ID24414 = self._ID675;
+    self._ID7._ID24414 = self.movemode;
     _ID8930();
     self clearanim( %h1_stairs, 0.1 );
 
@@ -105,7 +105,7 @@ _ID10665()
         }
     }
 
-    if ( self._ID675 == "walk" )
+    if ( self.movemode == "walk" )
         return animscripts\utility::_ID22630( "cqb", "move_f" );
 
     if ( isdefined( self._ID7._ID4958 ) && self._ID7._ID4958 )
@@ -163,7 +163,7 @@ _ID33547()
 
     for ( var_1 = 0; var_1 < var_0.size; var_1++ )
     {
-        level._ID8929[var_1] = var_0[var_1]._ID740;
+        level._ID8929[var_1] = var_0[var_1].origin;
         var_0[var_1] delete();
     }
 }
@@ -188,9 +188,9 @@ _ID14209()
             if ( isalive( var_3 ) && var_3 animscripts\utility::_ID20716() && !isdefined( var_3._ID10894 ) )
             {
                 var_4 = var_3._ID7._ID24414 != "stop";
-                var_5 = ( var_3._ID740[0], var_3._ID740[1], var_3 getshootatpos()[2] );
+                var_5 = ( var_3.origin[0], var_3.origin[1], var_3 getshootatpos()[2] );
                 var_6 = var_5;
-                var_7 = anglestoforward( var_3._ID65 );
+                var_7 = anglestoforward( var_3.angles );
 
                 if ( var_4 )
                 {

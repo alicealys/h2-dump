@@ -4,20 +4,20 @@
 _ID52411( var_0, var_1 )
 {
     var_2 = getent( var_0, "targetname" );
-    var_2._ID486 = var_1;
-    var_3 = _ID42237::_ID16638( var_2._ID1191, "targetname" );
-    var_4 = spawnturret( "misc_turret", var_3._ID740, "heli_spotlight" );
-    var_4._ID65 = var_3._ID65 + ( 0, 0, 180 );
+    var_2.health = var_1;
+    var_3 = _ID42237::_ID16638( var_2.target, "targetname" );
+    var_4 = spawnturret( "misc_turret", var_3.origin, "heli_spotlight" );
+    var_4.angles = var_3.angles + ( 0, 0, 180 );
     var_4 setmodel( "com_blackhawk_spotlight_on_mg_setup_small_off" );
     var_4 setturretteam( "axis" );
     var_4 setmode( "manual" );
     var_4 setconvergencetime( 1, "yaw" );
     var_4 setconvergencetime( 1, "pitch" );
-    var_4._ID1191 = var_3._ID1191;
+    var_4.target = var_3.target;
     var_4._ID54115 = var_2;
     var_4.spotlight_is_dead = 0;
-    var_5 = _ID42237::_ID16638( var_4._ID1191, "targetname" );
-    var_4._ID47896 = spawn( "script_origin", var_5._ID740 );
+    var_5 = _ID42237::_ID16638( var_4.target, "targetname" );
+    var_4._ID47896 = spawn( "script_origin", var_5.origin );
     var_4 settargetentity( var_4._ID47896 );
     return var_4;
 }
@@ -25,8 +25,8 @@ _ID52411( var_0, var_1 )
 _ID47720()
 {
     self endon( "death" );
-    var_0 = _ID42237::_ID16638( self._ID1191, "targetname" );
-    var_0._ID13016 = spawn( "script_origin", var_0._ID740 );
+    var_0 = _ID42237::_ID16638( self.target, "targetname" );
+    var_0._ID13016 = spawn( "script_origin", var_0.origin );
     self settargetentity( var_0._ID13016 );
     self waittill( "turret_on_target" );
     self._ID47896 delete();
@@ -52,7 +52,7 @@ _ID43527( var_0 )
         }
 
         var_1 delete();
-        var_1 = spawn( "script_origin", var_0._ID740 );
+        var_1 = spawn( "script_origin", var_0.origin );
         self settargetentity( var_1 );
         self waittill( "turret_on_target" );
 
@@ -64,10 +64,10 @@ _ID43527( var_0 )
         if ( isdefined( var_0._ID31197 ) )
             _ID42237::_ID14413( var_0._ID31197 );
 
-        if ( !isdefined( var_0._ID1191 ) )
+        if ( !isdefined( var_0.target ) )
             break;
 
-        var_3 = _ID42237::_ID16640( var_0._ID1191, "targetname" );
+        var_3 = _ID42237::_ID16640( var_0.target, "targetname" );
         var_0 = _ID42237::_ID28945( var_3 );
     }
 }
@@ -97,7 +97,7 @@ _ID54581()
 _ID48413()
 {
     self endon( "spotlight_delete" );
-    var_0 = self._ID54115._ID486;
+    var_0 = self._ID54115.health;
     self._ID54115 _ID48052( var_0 );
     thread _ID42407::_ID27079( "scn_dcwhitehouse_spotlight_destroy" );
     self setmodel( "com_blackhawk_spotlight_on_mg_setup_small_off" );
@@ -126,7 +126,7 @@ _ID48299( var_0 )
 
     if ( level._ID50605 > 0 )
     {
-        if ( isdefined( self._ID1191 ) )
+        if ( isdefined( self.target ) )
             thread _ID53336();
     }
 
@@ -144,7 +144,7 @@ _ID50831()
     self endon( "death" );
     var_0 = _ID42237::_ID15807();
     self._ID11805 = var_0 _ID42407::_ID35014( 1 );
-    self._ID11805._ID486 = 250;
+    self._ID11805.health = 250;
     self._ID11805 waittill( "death" );
     level notify( "sandbag_group_" + self._ID31245 );
 }
@@ -178,9 +178,9 @@ _ID53336( var_0, var_1 )
     if ( isdefined( var_0 ) )
         self._ID9472 = var_0;
     else
-        self._ID9472 = _ID42237::_ID16638( self._ID1191, "targetname" );
+        self._ID9472 = _ID42237::_ID16638( self.target, "targetname" );
 
-    var_2 = spawn( "script_origin", self._ID9472._ID740 );
+    var_2 = spawn( "script_origin", self._ID9472.origin );
 
     for (;;)
     {
@@ -192,19 +192,19 @@ _ID53336( var_0, var_1 )
         }
 
         var_2 delete();
-        var_2 = spawn( "script_origin", self._ID9472._ID740 );
+        var_2 = spawn( "script_origin", self._ID9472.origin );
         self settargetentity( var_2 );
         _ID1235( self._ID9472 );
 
-        if ( isdefined( self._ID9472._ID1191 ) )
+        if ( isdefined( self._ID9472.target ) )
         {
-            self._ID9472 = _ID42237::_ID16638( self._ID9472._ID1191, "targetname" );
+            self._ID9472 = _ID42237::_ID16638( self._ID9472.target, "targetname" );
             continue;
         }
 
-        if ( isdefined( self._ID1191 ) )
+        if ( isdefined( self.target ) )
         {
-            self._ID9472 = _ID42237::_ID16638( self._ID1191, "targetname" );
+            self._ID9472 = _ID42237::_ID16638( self.target, "targetname" );
             continue;
         }
 
@@ -250,8 +250,8 @@ _ID50158( var_0 )
     var_0 setconvergencetime( 0.25, "yaw" );
     var_0 setconvergencetime( 0.25, "pitch" );
     _ID42237::_ID14402( "mg_threat" );
-    var_1 = _ID42237::_ID16638( self._ID1191, "targetname" );
-    var_2 = spawn( "script_origin", var_1._ID740 );
+    var_1 = _ID42237::_ID16638( self.target, "targetname" );
+    var_2 = spawn( "script_origin", var_1.origin );
     var_0 settargetentity( var_2 );
     var_0 waittill( "turret_on_target" );
     var_2 delete();
@@ -270,11 +270,11 @@ _ID44314()
 _ID52087()
 {
     self waittill( "trigger" );
-    var_0 = _ID42237::_ID16640( self._ID1191, "targetname" );
+    var_0 = _ID42237::_ID16640( self.target, "targetname" );
 
     foreach ( var_2 in var_0 )
     {
-        var_3 = _ID42237::_ID16640( var_2._ID1191, "targetname" );
+        var_3 = _ID42237::_ID16640( var_2.target, "targetname" );
         _ID42237::_ID3350( var_3, ::_ID51753, var_2 );
     }
 }
@@ -282,7 +282,7 @@ _ID52087()
 _ID51753( var_0 )
 {
     _ID42407::_ID916();
-    var_1 = magicbullet( "rpg_straight", var_0._ID740, self._ID740 );
+    var_1 = magicbullet( "rpg_straight", var_0.origin, self.origin );
 }
 
 _ID51903( var_0 )
@@ -314,13 +314,13 @@ _ID53018( var_0 )
 
     foreach ( var_3 in var_1 )
     {
-        var_4 = spawn( "script_model", var_3._ID740 );
-        var_4._ID65 = var_3._ID65;
+        var_4 = spawn( "script_model", var_3.origin );
+        var_4.angles = var_3.angles;
         var_4 setmodel( var_3._ID31295 );
         var_4._ID31245 = var_3._ID31245;
         var_4._ID31259 = var_3._ID31259;
         var_4._ID31388 = var_3._ID31388;
-        var_4._ID1193 = var_3._ID1193;
+        var_4.targetname = var_3.targetname;
         var_3 = undefined;
     }
 }
@@ -330,7 +330,7 @@ _ID45491( var_0, var_1 )
     var_2 = spawnstruct();
     var_2._ID53439 = 0;
     _ID42237::_ID3350( var_0, ::_ID44045, var_2 );
-    var_3 = anglestoforward( var_1._ID65 );
+    var_3 = anglestoforward( var_1.angles );
     var_4 = var_3 * 3000;
 
     while ( var_0.size )
@@ -361,7 +361,7 @@ _ID45491( var_0, var_1 )
 
             var_8 notify( "thrown" );
             var_0 = _ID42237::_ID3321( var_0, var_8 );
-            var_8 physicslaunchclient( var_8._ID740, var_4 );
+            var_8 physicslaunchclient( var_8.origin, var_4 );
         }
 
         var_2._ID53439 = 0;
@@ -392,7 +392,7 @@ _ID43510( var_0, var_1 )
 _ID44045( var_0 )
 {
     self endon( "thrown" );
-    self._ID486 = 10000;
+    self.health = 10000;
     self setcandamage( 1 );
 
     for (;;)
@@ -491,7 +491,7 @@ _ID48766()
     for ( var_2 = 0; var_1.size; var_2++ )
     {
         var_3 = var_0[var_2 % var_0.size];
-        magicbullet( "rpg_straight", var_3._ID740, _ID42237::_ID28945( var_1 )._ID740 );
+        magicbullet( "rpg_straight", var_3.origin, _ID42237::_ID28945( var_1 ).origin );
         wait(randomfloat( 2 ));
         var_1 = _ID42407::_ID3328( level._ID49439 );
     }
@@ -507,15 +507,15 @@ _ID43750()
 _ID46082( var_0 )
 {
     self endon( "death" );
-    var_1 = getent( self._ID1191, "targetname" );
+    var_1 = getent( self.target, "targetname" );
     _ID42407::_ID12442();
-    var_2 = _ID42407::_ID35028( "rope", var_1._ID740 );
+    var_2 = _ID42407::_ID35028( "rope", var_1.origin );
     var_2 thread _ID46958();
     var_3 = [];
     var_3[0] = self;
     var_3[1] = var_2;
 
-    switch ( self._ID170 )
+    switch ( self.classname )
     {
         case "actor_enemy_airborne_AR":
             var_4 = 1;
@@ -532,18 +532,18 @@ _ID46082( var_0 )
     }
 
     self._ID3189 = "rappel_guy";
-    self._ID49 = 1;
-    self._ID511 = 1;
+    self.allowdeath = 1;
+    self.ignoreme = 1;
     var_1 thread _ID42259::_ID3040( var_3, "rappel_stand_idle_" + var_4, "stop_loop" );
     var_1 _ID42407::_ID916();
     var_1 _ID42407::_ID3136();
     var_1 _ID42259::_ID3099( var_3, "rappel_drop", undefined, 4.3 );
     _ID42407::_ID10869();
     var_5 = getent( "rappel_goal", "targetname" );
-    self setgoalpos( var_5._ID740 );
-    self._ID452 = 1024;
-    self._ID450 = 128;
-    self._ID511 = 0;
+    self setgoalpos( var_5.origin );
+    self.goalradius = 1024;
+    self.goalheight = 128;
+    self.ignoreme = 0;
 }
 
 _ID46958()
@@ -604,16 +604,16 @@ _ID53069( var_0 )
 _ID50784()
 {
     self endon( "remove_flare" );
-    var_0 = level._ID794 getweaponslistprimaries();
+    var_0 = level.player getweaponslistprimaries();
 
     if ( var_0.size > 0 )
     {
         self._ID25540 = var_0[0];
-        var_1 = level._ID794 getcurrentweapon();
+        var_1 = level.player getcurrentweapon();
 
         if ( weaponinventorytype( var_1 ) == "altmode" )
         {
-            var_2 = level._ID794 getweaponslistall();
+            var_2 = level.player getweaponslistall();
 
             if ( var_2.size > 1 && var_2[0] == var_0[0] && var_2[1] == var_1 )
                 self._ID25540 = var_1;
@@ -622,37 +622,37 @@ _ID50784()
     else
         self._ID25540 = self getcurrentprimaryweapon();
 
-    level._ID794 allowfire( 0 );
-    level._ID794 giveweapon( "flare" );
-    level._ID794 switchtoweapon( "flare" );
-    level._ID794 disableweaponswitch();
-    level._ID794 disableoffhandweapons();
-    level._ID794 disableweaponpickup();
+    level.player allowfire( 0 );
+    level.player giveweapon( "flare" );
+    level.player switchtoweapon( "flare" );
+    level.player disableweaponswitch();
+    level.player disableoffhandweapons();
+    level.player disableweaponpickup();
     setsaveddvar( "actionSlotsHide", 1 );
     wait 0.5;
     _ID42407::_ID11085( "how_to_pop_flare" );
-    level._ID794 allowfire( 1 );
+    level.player allowfire( 1 );
     var_3 = _ID42237::_ID41075( "drop_flare", "weapon_fired" );
 
     if ( var_3 == "weapon_fired" )
     {
         _ID42237::_ID14402( "player_flare_popped" );
         level thread _ID42407::_ID24584( 7 );
-        level._ID794 thread _ID42407::_ID27079( "mus_dc_whitehouse_endrun_ending" );
+        level.player thread _ID42407::_ID27079( "mus_dc_whitehouse_endrun_ending" );
         thread _ID47238();
         self waittill( "end_firing" );
     }
 
     self._ID25540 = _ID48713( self._ID25540 );
-    level._ID794 switchtoweapon( self._ID25540 );
+    level.player switchtoweapon( self._ID25540 );
 
     if ( var_3 == "drop_flare" )
         self waittill( "weapon_change" );
 
-    level._ID794 takeweapon( "flare" );
-    level._ID794 enableweaponswitch();
-    level._ID794 enableoffhandweapons();
-    level._ID794 enableweaponpickup();
+    level.player takeweapon( "flare" );
+    level.player enableweaponswitch();
+    level.player enableoffhandweapons();
+    level.player enableweaponpickup();
     setsaveddvar( "cg_gunDownAnimDelayTime", 250 );
     setsaveddvar( "actionSlotsHide", 0 );
 }
@@ -701,11 +701,11 @@ _ID53767()
     foreach ( var_1 in self._ID26282 )
         var_1 connectpaths();
 
-    self rotateto( self._ID65 + ( 0, 90, 0 ), 0.5, 0.1, 0 );
+    self rotateto( self.angles + ( 0, 90, 0 ), 0.5, 0.1, 0 );
     self waittill( "rotatedone" );
-    self rotateto( self._ID65 + ( 0, -10, 0 ), 0.3, 0, 0.3 );
+    self rotateto( self.angles + ( 0, -10, 0 ), 0.3, 0, 0.3 );
     self waittill( "rotatedone" );
-    self rotateto( self._ID65 + ( 0, 5, 0 ), 0.3, 0.15, 0.15 );
+    self rotateto( self.angles + ( 0, 5, 0 ), 0.3, 0.15, 0.15 );
 }
 
 _ID52261( var_0 )
@@ -719,7 +719,7 @@ _ID52261( var_0 )
     {
         self waittill( "damage",  var_3, var_4  );
 
-        if ( var_4 == level._ID794 )
+        if ( var_4 == level.player )
             var_2 += var_3;
     }
 
@@ -737,7 +737,7 @@ _ID48052( var_0 )
     {
         self waittill( "damage",  var_3, var_4  );
 
-        if ( isdefined( var_4._ID1194 ) && var_4._ID1194 == "allies" )
+        if ( isdefined( var_4.team ) && var_4.team == "allies" )
             var_2 += var_3;
     }
 
@@ -751,7 +751,7 @@ _ID1235( var_0 )
     for (;;)
     {
         var_1 = anglestoforward( self gettagangles( "tag_flash" ) );
-        var_2 = vectornormalize( var_0._ID740 - self._ID740 );
+        var_2 = vectornormalize( var_0.origin - self.origin );
         var_3 = vectordot( var_1, var_2 );
 
         if ( var_3 > 0.9999 )
@@ -772,11 +772,11 @@ _ID47087( var_0, var_1, var_2 )
     {
         wait(randomfloatrange( var_0, var_1 ));
 
-        if ( isdefined( var_2 ) && self cansee( level._ID794 ) )
+        if ( isdefined( var_2 ) && self cansee( level.player ) )
             continue;
 
-        var_4 = getaiarray( var_3[self._ID1194] );
-        var_4 = sortbydistance( var_4, self._ID740 );
+        var_4 = getaiarray( var_3[self.team] );
+        var_4 = sortbydistance( var_4, self.origin );
         var_5 = var_4[0];
 
         if ( isdefined( var_5 ) )
@@ -804,9 +804,9 @@ _ID48145()
 {
     self._ID49365 = 0;
 
-    if ( isdefined( self._ID922 ) )
+    if ( isdefined( self.script_noteworthy ) )
     {
-        self._ID22343 = getentarray( "chandelier_light_" + self._ID922, "targetname" );
+        self._ID22343 = getentarray( "chandelier_light_" + self.script_noteworthy, "targetname" );
 
         foreach ( var_1 in self._ID22343 )
             var_1._ID45911 = var_1 getlightintensity();
@@ -911,7 +911,7 @@ chandelier_fall_flicker()
     _ID47268( 0 );
     self setmodel( "h2_light_chandelier_vintage_04" );
     self notify( "chandelier_fall" );
-    playfx( level._ID1426["wire_spark"], self._ID740 );
+    playfx( level._ID1426["wire_spark"], self.origin );
 }
 
 _ID49448()
@@ -920,8 +920,8 @@ _ID49448()
 
     foreach ( var_1 in self._ID22343 )
     {
-        var_1._ID700 = spawn( "script_origin", var_1._ID740 );
-        var_1._ID700 linkto( self, "tag_light" );
+        var_1.node = spawn( "script_origin", var_1.origin );
+        var_1.node linkto( self, "tag_light" );
     }
 
     for (;;)
@@ -931,7 +931,7 @@ _ID49448()
         while ( self._ID49365 )
         {
             foreach ( var_1 in self._ID22343 )
-                var_1 moveto( var_1._ID700._ID740, 0.1 );
+                var_1 moveto( var_1.node.origin, 0.1 );
 
             wait 0.1;
         }
@@ -945,7 +945,7 @@ _ID45116( var_0 )
 
     foreach ( var_2 in var_1 )
     {
-        if ( var_2._ID1193 == "chandelier" )
+        if ( var_2.targetname == "chandelier" )
             break;
     }
 
@@ -962,10 +962,10 @@ _ID49354( var_0, var_1 )
 
 _ID45657( var_0 )
 {
-    var_1 = spawn( "script_origin", level._ID794._ID740 + ( 0, 0, 32 ) );
+    var_1 = spawn( "script_origin", level.player.origin + ( 0, 0, 32 ) );
     var_1 makeusable();
     var_1 sethintstring( var_0 );
-    var_1 linkto( level._ID794 );
+    var_1 linkto( level.player );
     level thread _ID42407::_ID32305( var_1, "remove_use_hint" );
     _ID42237::_ID14413( "remove_use_hint" );
     var_1 delete();
@@ -1024,7 +1024,7 @@ _ID52643()
     self waittill( "trigger" );
     thread _ID42422::_ID22340( _ID53829::_ID22335, _ID53829::_ID22333 );
 
-    if ( isdefined( self._ID922 ) )
+    if ( isdefined( self.script_noteworthy ) )
         _ID42234::_ID13611( "lightning_strike" );
 }
 
@@ -1040,16 +1040,16 @@ _ID48925( var_0 )
 {
     _ID51011( self );
 
-    if ( isdefined( self._ID922 ) )
+    if ( isdefined( self.script_noteworthy ) )
     {
-        if ( self._ID922 == "foley" )
+        if ( self.script_noteworthy == "foley" )
         {
             thread _ID42407::_ID22746();
             _ID42407::_ID22825();
             level._ID388 = self;
         }
 
-        if ( self._ID922 == "dunn" )
+        if ( self.script_noteworthy == "dunn" )
         {
             thread _ID42407::_ID22746();
             _ID42407::_ID22825();
@@ -1062,7 +1062,7 @@ _ID48925( var_0 )
 
     level.intro_guys[level.intro_guys.size] = self;
 
-    if ( level._ID1194.size == var_0 )
+    if ( level.team.size == var_0 )
         _ID42237::_ID14402( "team_initialized" );
 }
 
@@ -1079,14 +1079,14 @@ _ID51011( var_0 )
 
     foreach ( var_3 in var_1 )
     {
-        if ( isdefined( var_3._ID922 ) )
+        if ( isdefined( var_3.script_noteworthy ) )
         {
-            var_3._ID3189 = var_3._ID922;
-            level._ID1194[var_3._ID922] = var_3;
+            var_3._ID3189 = var_3.script_noteworthy;
+            level.team[var_3.script_noteworthy] = var_3;
             continue;
         }
 
-        level._ID1194[level._ID1194.size] = var_3;
+        level.team[level.team.size] = var_3;
     }
 }
 
@@ -1095,7 +1095,7 @@ _ID46343()
     self notify( "remove_team" );
     self endon( "remove_team" );
     self waittill( "death" );
-    level._ID1194 = _ID42407::_ID3329( level._ID1194 );
+    level.team = _ID42407::_ID3329( level.team );
 }
 
 _ID46537()
@@ -1126,7 +1126,7 @@ _ID44431( var_0 )
 
     foreach ( var_4 in var_1 )
     {
-        if ( var_4._ID922 != var_0 )
+        if ( var_4.script_noteworthy != var_0 )
             continue;
 
         var_2[var_2.size] = var_4;
@@ -1148,17 +1148,17 @@ _ID51715( var_0, var_1 )
 
 _ID49717( var_0 )
 {
-    self forceteleport( var_0._ID740, var_0._ID65 );
-    self setgoalpos( self._ID740 );
+    self forceteleport( var_0.origin, var_0.angles );
+    self setgoalpos( self.origin );
 }
 
 _ID47348()
 {
     self endon( "death" );
     self._ID4867 = 0.1;
-    self._ID486 = 200;
+    self.health = 200;
     _ID42237::_ID14413( "whitehouse_path_office" );
-    self kill( level._ID794._ID740 );
+    self kill( level.player.origin );
 }
 
 _ID13799( var_0 )
@@ -1166,18 +1166,18 @@ _ID13799( var_0 )
     setsaveddvar( "compass", 0 );
     setsaveddvar( "hud_showStance", 0 );
     var_1 = newhudelem();
-    var_1._ID1331 = 0;
-    var_1._ID1339 = 0;
+    var_1.x = 0;
+    var_1.y = 0;
     var_1 setshader( "black", 640, 480 );
-    var_1._ID44 = "left";
-    var_1._ID45 = "top";
-    var_1._ID499 = "fullscreen";
-    var_1._ID1284 = "fullscreen";
-    var_1._ID55 = 0;
+    var_1.alignx = "left";
+    var_1.aligny = "top";
+    var_1.horzalign = "fullscreen";
+    var_1.vertalign = "fullscreen";
+    var_1.alpha = 0;
     var_1 fadeovertime( var_0 );
-    var_1._ID55 = 1;
+    var_1.alpha = 1;
     wait(var_0);
-    level._ID794 freezecontrols( 1 );
+    level.player freezecontrols( 1 );
     _ID42407::_ID12569( 0 );
 }
 
@@ -1195,7 +1195,7 @@ _ID48143()
 
 _ID43010()
 {
-    self._ID3189 = self._ID669;
+    self._ID3189 = self.model;
     _ID42407::_ID3428();
     var_0 = randomfloatrange( 0.8, 1.5 );
     var_1 = _ID42407::_ID16120( "idle" )[0];
@@ -1241,7 +1241,7 @@ player_usable_turret_think()
 
         self waittill( "turretownerchange",  var_0  );
 
-        if ( var_0 && isalive( level._ID794 ) )
+        if ( var_0 && isalive( level.player ) )
         {
             player_usable_turret_drop();
             self _meth_841a( 0 );
@@ -1261,13 +1261,13 @@ player_usable_turret_think()
 
 player_usable_turret_use()
 {
-    level._ID794 freezecontrols( 1 );
-    level._ID794 disableweapons( 1 );
-    level._ID794 setstance( "crouch" );
-    level._ID794.pre_turret_fov = getdvarfloat( "cg_fov" );
-    level._ID794 lerpfov( getstarttime(), getanimlength( %h2_dcwhitehouse_turret_m249saw_in ) );
-    var_0 = angleclamp180( self._ID65[1] - level._ID794 getplayerangles()[1] );
-    var_1 = distance2d( self._ID740, level._ID794._ID740 );
+    level.player freezecontrols( 1 );
+    level.player disableweapons( 1 );
+    level.player setstance( "crouch" );
+    level.player.pre_turret_fov = getdvarfloat( "cg_fov" );
+    level.player lerpfov( getstarttime(), getanimlength( %h2_dcwhitehouse_turret_m249saw_in ) );
+    var_0 = angleclamp180( self.angles[1] - level.player getplayerangles()[1] );
+    var_1 = distance2d( self.origin, level.player.origin );
     var_2 = abs( var_0 ) / 120.0;
     var_3 = var_1 / 150.0;
     var_4 = _ID42407::_ID22382( max( var_2, var_3 ), 0.1, 0.5 );
@@ -1277,10 +1277,10 @@ player_usable_turret_use()
     _ID42407::_ID49392( "player_turret_in", undefined, 0, var_4, 0, 0, undefined, undefined, undefined, undefined, undefined, 1, 1 );
     var_5 = self gettagorigin( "tag_player" );
     var_6 = anglestoaxis( self gettagangles( "tag_player" ) );
-    var_7 = self._ID740 - var_5;
-    level._ID794.turret_anim_node_offset = ( vectordot( var_7, var_6["forward"] ), vectordot( var_7, var_6["right"] ), vectordot( var_7, var_6["up"] ) );
-    level._ID794._ID49929 hide();
-    level._ID794 _meth_84da( 0 );
+    var_7 = self.origin - var_5;
+    level.player.turret_anim_node_offset = ( vectordot( var_7, var_6["forward"] ), vectordot( var_7, var_6["right"] ), vectordot( var_7, var_6["up"] ) );
+    level.player._ID49929 hide();
+    level.player _meth_84da( 0 );
     self _meth_8580();
     self clearanim( %h2_dcwhitehouse_turret_m249saw_in, 0.0 );
     thread player_usable_turret_fire();
@@ -1293,7 +1293,7 @@ player_usable_turret_fire()
 
     for (;;)
     {
-        var_1 = level._ID794 attackbuttonpressed();
+        var_1 = level.player attackbuttonpressed();
 
         if ( !isdefined( var_0 ) || var_0 != var_1 )
         {
@@ -1319,10 +1319,10 @@ player_usable_turret_drop()
 {
     self _meth_857d( 75 );
     self _meth_8581();
-    level._ID794 _meth_84db();
-    level._ID794._ID49929 show();
+    level.player _meth_84db();
+    level.player._ID49929 show();
     var_0 = getanimlength( %h2_dcwhitehouse_turret_m249saw_out );
-    level._ID794 lerpfov( level._ID794.pre_turret_fov, var_0 );
+    level.player lerpfov( level.player.pre_turret_fov, var_0 );
     self clearanim( %h2_dcwhitehouse_turret_m249saw_idle, 0.0 );
     self clearanim( %h2_dcwhitehouse_turret_m249saw_fire, 0.0 );
     self setanim( %h2_dcwhitehouse_turret_m249saw_out );
@@ -1330,18 +1330,18 @@ player_usable_turret_drop()
     var_2 = self gettagangles( "tag_player" );
     var_3 = anglestoaxis( var_2 );
     var_4 = var_1;
-    var_4 += level._ID794.turret_anim_node_offset[0] * var_3["forward"];
-    var_4 += level._ID794.turret_anim_node_offset[1] * var_3["right"];
-    var_4 += level._ID794.turret_anim_node_offset[2] * var_3["up"];
+    var_4 += level.player.turret_anim_node_offset[0] * var_3["forward"];
+    var_4 += level.player.turret_anim_node_offset[1] * var_3["right"];
+    var_4 += level.player.turret_anim_node_offset[2] * var_3["up"];
     var_5 = spawn( "script_origin", var_4 );
-    var_5._ID65 = var_2;
+    var_5.angles = var_2;
     var_5 thread _ID42407::_ID49392( "player_turret_out", undefined, 0, 0.0, 1, 0 );
     wait 0.05;
-    var_6 = _func_315( self._ID740, self._ID65, level._ID794._ID49929 _ID42407::_ID16120( "player_turret_out" ) );
+    var_6 = _func_315( self.origin, self.angles, level.player._ID49929 _ID42407::_ID16120( "player_turret_out" ) );
     var_7 = playerphysicstrace( var_6 + ( 0, 0, 40 ), var_6 + ( 0, 0, -40 ) );
-    var_8 = spawn( "script_origin", self._ID740 + var_7 - var_6 );
-    var_8._ID65 = self._ID65;
-    level._ID794._ID49929 thread _ID42259::_ID46811( undefined, var_5, var_8, 0.9 * ( var_0 - 0.05 ) );
+    var_8 = spawn( "script_origin", self.origin + var_7 - var_6 );
+    var_8.angles = self.angles;
+    level.player._ID49929 thread _ID42259::_ID46811( undefined, var_5, var_8, 0.9 * ( var_0 - 0.05 ) );
     wait(var_0 - 0.05);
     self clearanim( %h2_dcwhitehouse_turret_m249saw_out, 0.0 );
     self setanim( %h2_dcwhitehouse_turret_m249saw_wait );
@@ -1358,14 +1358,14 @@ calm_down_courtyard_heroes()
 
     foreach ( var_2 in var_0 )
     {
-        var_2._ID51367 = var_2._ID37018;
-        var_2._ID37018 = 2000;
+        var_2._ID51367 = var_2.threatupdateinterval;
+        var_2.threatupdateinterval = 2000;
     }
 
     _ID42237::_ID14413( "whitehouse_entrance_init" );
 
     foreach ( var_2 in var_0 )
-        var_2._ID37018 = var_2._ID51367;
+        var_2.threatupdateinterval = var_2._ID51367;
 }
 
 intro_scripted_anim( var_0 )
@@ -1387,7 +1387,7 @@ intro_scripted_anim( var_0 )
         var_0 _ID42259::_ID3111( self, "intro_out" );
     }
     else if ( !level.skip_intro_goal )
-        self setgoalpos( self._ID740 );
+        self setgoalpos( self.origin );
 }
 
 metal_pan_scripted_anim( var_0 )
@@ -1399,7 +1399,7 @@ metal_pan_scripted_anim( var_0 )
     self waittill( "damage",  var_2, var_3, var_4  );
     _ID42407::_ID3136();
     waittillframeend;
-    self physicslaunchclient( self._ID740, var_4 * var_2 );
+    self physicslaunchclient( self.origin, var_4 * var_2 );
 }
 
 check_trigger()
@@ -1449,10 +1449,10 @@ whitehouse_fx_volumes()
 h2_marshall_dialogue_foley_ignore_damage()
 {
     _ID42237::_ID14413( "whitehouse_marshall_dialogue" );
-    level._ID388._ID507 = 1;
+    level._ID388.ignoreall = 1;
     _ID42237::_ID14413( "whitehouse_moveout" );
     wait 6;
-    level._ID388._ID507 = 0;
+    level._ID388.ignoreall = 0;
 }
 
 h2_wh_static_model_groups()
@@ -1514,7 +1514,7 @@ h2_wh_animated_lantern()
 h2_wh_flickering_lantern( var_0 )
 {
     h2_wh_animated_lantern();
-    var_1 = _ID42237::_ID16182( self._ID740, var_0, 100 );
+    var_1 = _ID42237::_ID16182( self.origin, var_0, 100 );
     playfxontag( level._ID1426["lamp_ceiling_dust"], self, "tag_light" );
 
     for (;;)

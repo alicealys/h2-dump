@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self setmodel( "Body_US_army_Shotgun" );
     self attach( "h2_head_riot_udt", "", 1 );

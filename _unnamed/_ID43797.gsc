@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID521()
+init()
 {
     _ID42237::_ID14400( "remaster_blockout" );
     _ID42237::_ID14402( "remaster_blockout" );
@@ -34,13 +34,13 @@ _ID48233()
 
     for ( var_1 = 0; var_1 < var_0.size; var_1++ )
     {
-        if ( var_0[var_1]._ID170 == "trigger_multiple_visionset" )
+        if ( var_0[var_1].classname == "trigger_multiple_visionset" )
             continue;
 
-        if ( isdefined( var_0[var_1]._ID1193 ) && var_0[var_1]._ID1193 == "trigger_fog" )
+        if ( isdefined( var_0[var_1].targetname ) && var_0[var_1].targetname == "trigger_fog" )
             continue;
 
-        if ( isdefined( var_0[var_1]._ID922 ) && var_0[var_1]._ID922 == "skip_blockout_delete" )
+        if ( isdefined( var_0[var_1].script_noteworthy ) && var_0[var_1].script_noteworthy == "skip_blockout_delete" )
             continue;
 
         var_0[var_1] delete();

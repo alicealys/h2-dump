@@ -89,7 +89,7 @@ _ID19584()
     anim._ID3277["soldier"]["cover_left_crouch"] = var_0;
 }
 
-_ID616()
+main()
 {
     self._ID3155 = [];
     self._ID3155["hiding"]["stand"] = ::_ID32214;

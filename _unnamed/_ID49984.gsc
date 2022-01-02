@@ -2,7 +2,7 @@
 // Decompiled by https://github.com/xensik/gsc-tool
 #using_animtree("destructibles");
 
-_ID616()
+main()
 {
     level._ID1410["locker_broken_both_doors_1"] = %locker_broken_both_doors_1;
     level._ID1410["locker_broken_both_doors_2"] = %locker_broken_both_doors_2;

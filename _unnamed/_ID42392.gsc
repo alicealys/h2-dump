@@ -62,7 +62,7 @@ _ID37016()
 
             if ( var_2.size > 0 )
             {
-                if ( var_2[0]._ID1194 == "allies" )
+                if ( var_2[0].team == "allies" )
                     continue;
             }
 
@@ -95,7 +95,7 @@ _ID37015( var_0 )
 
     foreach ( var_4, var_3 in var_1 )
     {
-        if ( !isalive( var_3._ID322 ) )
+        if ( !isalive( var_3.enemy ) )
             continue;
 
         return 0;
@@ -195,7 +195,7 @@ _ID37008()
     level _ID42407::_ID1985( _ID42237::_ID14413, var_2 );
     _ID42407::_ID11232();
 
-    if ( self._ID989 & 1 )
+    if ( self.spawnflags & 1 )
         self connectpaths();
 
     self delete();

@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     if ( getdvar( "mission_select_cam" ) == "1" )
     {
@@ -11,7 +11,7 @@ _ID616()
 
     if ( getdvar( "beautiful_corner" ) == "1" || getdvar( "beautiful_corner_demo" ) == "1" )
     {
-        maps\favela_escape_beautiful_corner::_ID616();
+        maps\favela_escape_beautiful_corner::main();
         return;
     }
 
@@ -34,11 +34,11 @@ _ID616()
     level._ID52504 = var_0;
     level._ID46286 = var_1;
     level._ID8760["45"] = cos( 45 );
-    _ID51196::_ID616();
-    _ID53782::_ID616();
-    _ID51855::_ID616();
-    _ID54620::_ID616();
-    _ID51773::_ID616();
+    _ID51196::main();
+    _ID53782::main();
+    _ID51855::main();
+    _ID54620::main();
+    _ID51773::main();
     _ID49233();
     precacherumble( "airliner_flyby" );
     precacherumble( "heli_loop" );
@@ -66,27 +66,27 @@ _ID616()
     }
 
     _ID47668();
-    _ID52657::_ID616();
-    _ID42359::_ID616();
+    _ID52657::main();
+    _ID42359::main();
     level._ID48251 = maps\favela_escape_code::_ID44784();
     level._ID14988 = maps\favela_escape_code::_ID51238;
     maps\favela_escape_code::_ID44223();
-    _ID42287::_ID521();
-    maps\favela_escape_anim::_ID616();
-    _ID42323::_ID616();
+    _ID42287::init();
+    maps\favela_escape_anim::main();
+    _ID42323::main();
     _ID45285::_ID49852();
-    thread _ID43858::_ID616();
+    thread _ID43858::main();
     _ID42237::_ID14402( "respawn_friendlies" );
     thread maps\favela_escape_code::_ID54598();
     thread _ID52140();
     thread _ID49739();
     thread _ID33511();
     thread maps\favela_escape_code::_ID48776();
-    level._ID794 thread _ID45896();
+    level.player thread _ID45896();
     thread maps\favela_escape_code::init_fx_alphathreshold();
     thread maps\favela_escape_code::helicopter_soccerfield_exploder();
     thread maps\favela_escape_code::playerjump_roof_fx();
-    maps\favela_escape_aud::_ID616();
+    maps\favela_escape_aud::main();
     thread _ID46177();
     thread maps\favela_escape_code::_ID54253();
     thread _ID51773::_ID44134();
@@ -102,7 +102,7 @@ _ID616()
     thread hide_objects_in_market( "killfunc_hide_objects_in_market", "marketA", "objects_marketA" );
     thread hide_objects_in_market( "killfunc_hide_objects_in_market", "marketB", "objects_marketB" );
     thread hide_objects_in_market( "killfunc_hide_objects_in_market", "marketC", "objects_marketC" );
-    maps\favela_escape_lighting::_ID616();
+    maps\favela_escape_lighting::main();
     var_2 = getent( "vista_end", "targetname" );
     var_3 = getentarray( "vista_end_water", "targetname" );
     var_3 = _ID42237::_ID3293( var_3, var_2 );
@@ -115,7 +115,7 @@ _ID616()
     var_7 = getentarray( "keep_door", "script_noteworthy" );
 
     foreach ( var_9 in var_7 )
-        var_9 _meth_848a( var_9._ID740 );
+        var_9 _meth_848a( var_9.origin );
 
     level.tanksquishdamageimmunity = "MOD_EXPLOSIVE";
 }
@@ -133,9 +133,9 @@ _ID45896()
 
         for (;;)
         {
-            var_3 = abs( angleclamp180( self._ID65[1] - var_1 ) ) < var_2;
+            var_3 = abs( angleclamp180( self.angles[1] - var_1 ) ) < var_2;
 
-            if ( self istouching( var_0 ) && var_3 && level._ID794 getstance() == "stand" )
+            if ( self istouching( var_0 ) && var_3 && level.player getstance() == "stand" )
             {
                 setsaveddvar( "hud_forceMantleHint", var_3 );
                 self _meth_830f( 0 );
@@ -157,14 +157,14 @@ _ID45896()
         setsaveddvar( "hud_forceMantleHint", 0 );
         self allowjump( 1 );
         self disableweapons( 1 );
-        level._ID794 playsound( "scn_favela_escape_rooftop_mantle_player" );
+        level.player playsound( "scn_favela_escape_rooftop_mantle_player" );
         self setmovespeedscale( 0 );
         self _meth_830f( 0 );
         self allowcrouch( 0 );
         self allowprone( 0 );
         var_4 = 10000;
 
-        while ( length2dsquared( level._ID794 getvelocity() ) > var_4 )
+        while ( length2dsquared( level.player getvelocity() ) > var_4 )
             waittillframeend;
 
         _ID42407::_ID49392( "rooftop_mantle", undefined, 0, 0.5, 1, undefined, undefined, undefined, undefined, undefined, undefined, 1 );
@@ -331,15 +331,15 @@ _ID52140()
 
     foreach ( var_2 in var_0 )
     {
-        if ( isdefined( var_2._ID1193 ) )
+        if ( isdefined( var_2.targetname ) )
         {
-            if ( var_2._ID1193 == "sarge" )
+            if ( var_2.targetname == "sarge" )
             {
                 var_2._ID3189 = "sarge";
                 var_2._ID52287 = 1;
                 level._ID47826 = var_2;
             }
-            else if ( var_2._ID1193 == "hero1" )
+            else if ( var_2.targetname == "hero1" )
             {
                 var_2._ID3189 = "hero1";
                 var_2._ID52287 = 1;
@@ -535,8 +535,8 @@ _ID45900()
     _ID42237::_ID14402( "portalgroup2_farside" );
     _ID42237::_ID14402( "portalgroup3" );
     _ID42237::_ID14402( "portalgroup3_facade" );
-    level._ID794._ID511 = 1;
-    level._ID794 maps\favela_escape_code::_ID45573( ( 4892, 292, 1134 ), ( 0, 180, 0 ) );
+    level.player.ignoreme = 1;
+    level.player maps\favela_escape_code::_ID45573( ( 4892, 292, 1134 ), ( 0, 180, 0 ) );
     thread maps\favela_escape_code::_ID53414();
 }
 
@@ -668,15 +668,15 @@ _ID54047()
     var_0 = maps\favela_escape_code::_ID46434();
     var_1 = var_0[0];
     var_2 = _ID42237::_ID16638( "struct_start_market_evac_escape_player", "targetname" );
-    level._ID794 maps\favela_escape_code::_ID45573( var_2._ID740, var_2._ID65 );
+    level.player maps\favela_escape_code::_ID45573( var_2.origin, var_2.angles );
     var_3 = getnode( "node_sarge_preclimb", "targetname" );
     var_4 = getnode( "node_hero1_preclimb", "targetname" );
     var_5 = getnode( "node_redshirt_preclimb", "targetname" );
     _ID42237::_ID3350( level._ID49912, maps\favela_escape_code::_ID47402, 128 );
     var_1 = maps\favela_escape_code::_ID47511();
-    level._ID47826 forceteleport( var_3._ID740, var_3._ID65 );
-    level._ID51527 forceteleport( var_4._ID740, var_4._ID65 );
-    var_1 forceteleport( var_5._ID740, var_5._ID65 );
+    level._ID47826 forceteleport( var_3.origin, var_3.angles );
+    level._ID51527 forceteleport( var_4.origin, var_4.angles );
+    var_1 forceteleport( var_5.origin, var_5.angles );
     level._ID47826 setgoalnode( var_3 );
     level._ID51527 setgoalnode( var_4 );
     var_1 setgoalnode( var_5 );
@@ -705,10 +705,10 @@ _ID45106()
     var_2 = getnode( "node_roofrun_sarge_waitforplayer", "targetname" );
     var_3 = getnode( "node_roofrun_hero1_waitforplayer", "targetname" );
     var_4 = getnode( "node_roofrun_redshirt_waitforplayer", "targetname" );
-    level._ID47826 thread maps\favela_escape_code::_ID45573( var_2._ID740, var_2._ID65 );
-    level._ID51527 thread maps\favela_escape_code::_ID45573( var_3._ID740, var_3._ID65 );
-    var_1 thread maps\favela_escape_code::_ID45573( var_4._ID740, var_4._ID65 );
-    level._ID794 maps\favela_escape_code::_ID45573( ( -3552, -992, 1194 ), ( 0, 180, 0 ) );
+    level._ID47826 thread maps\favela_escape_code::_ID45573( var_2.origin, var_2.angles );
+    level._ID51527 thread maps\favela_escape_code::_ID45573( var_3.origin, var_3.angles );
+    var_1 thread maps\favela_escape_code::_ID45573( var_4.origin, var_4.angles );
+    level.player maps\favela_escape_code::_ID45573( ( -3552, -992, 1194 ), ( 0, 180, 0 ) );
     _ID42237::_ID3350( level._ID49912, _ID42407::_ID13024, "roofrun_start" );
     _ID42237::_ID3350( level._ID49912, _ID42407::_ID13024, "climbing_ok" );
     waitframe;
@@ -738,9 +738,9 @@ _ID44603()
     level._ID51544 = 0;
     _ID42237::_ID3350( level._ID49912, _ID42407::_ID13024, "roofrun_start" );
     var_2 = _ID42237::_ID16638( "roofrun_sarge_waitforplayer", "targetname" );
-    level._ID47826 maps\favela_escape_code::_ID45573( var_2._ID740, var_2._ID65 );
+    level._ID47826 maps\favela_escape_code::_ID45573( var_2.origin, var_2.angles );
     var_3 = _ID42237::_ID16638( "struct_start_roofrun_player_jump_player", "targetname" );
-    level._ID794 maps\favela_escape_code::_ID45573( var_3._ID740, var_3._ID65 );
+    level.player maps\favela_escape_code::_ID45573( var_3.origin, var_3.angles );
     wait 0.05;
     _ID42237::_ID3350( level._ID49912, _ID42407::_ID13025, "roofrun_start" );
     waitframe;
@@ -766,9 +766,9 @@ _ID49602()
     thread maps\favela_escape_code::early_fall_kill_trig_remove();
     maps\favela_escape_lighting::_ID50564( "favela_escape" );
     maps\favela_escape_code::_ID51958();
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     var_0 = _ID42237::_ID16638( "struct_solorun_beginning_start_player", "targetname" );
-    level._ID794 thread maps\favela_escape_code::_ID45573( var_0._ID740, var_0._ID65 );
+    level.player thread maps\favela_escape_code::_ID45573( var_0.origin, var_0.angles );
     thread maps\favela_escape_code::_ID52086();
     thread _ID49001();
 }
@@ -787,9 +787,9 @@ _ID50179()
     _ID42237::_ID14402( "solorun_start" );
     maps\favela_escape_lighting::_ID50564( "favela_escape_solorun_buildings" );
     maps\favela_escape_code::_ID51958();
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     var_0 = _ID42237::_ID16638( "struct_solorun_rooftops_start_player", "targetname" );
-    level._ID794 maps\favela_escape_code::_ID45573( var_0._ID740, var_0._ID65 );
+    level.player maps\favela_escape_code::_ID45573( var_0.origin, var_0.angles );
     thread _ID49001( "rooftops" );
 }
 
@@ -802,9 +802,9 @@ _ID45904()
     _ID42237::_ID14402( "solorun_player_at_balcony" );
     maps\favela_escape_lighting::_ID50564( "favela_escape_solorun_nearend" );
     maps\favela_escape_code::_ID51958();
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     var_0 = _ID42237::_ID16638( "struct_solorun_chopper_start_player", "targetname" );
-    level._ID794 maps\favela_escape_code::_ID45573( var_0._ID740, var_0._ID65 );
+    level.player maps\favela_escape_code::_ID45573( var_0.origin, var_0.angles );
     thread _ID49001( "chopperjump" );
 }
 
@@ -853,7 +853,7 @@ _ID49102()
     level endon( "radiotower_exit" );
     level endon( "cleaning_up_rojas" );
     var_0 = getent( "intro_anim_node", "targetname" );
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
     var_1._ID31152 = undefined;
     var_2 = var_1 _ID42407::_ID35014( 1 );
     level.rojas = var_2;
@@ -863,17 +863,17 @@ _ID49102()
     var_0 thread _ID42259::_ID3025( var_2, var_4, "stop_idle_rojas" );
     var_0 thread _ID42259::_ID3044( var_3, "idle" );
     level thread _ID50490( var_2, var_0, var_3 );
-    var_2._ID680 = "Rojas";
-    var_2._ID464 = 0;
-    var_2._ID309 = 0;
+    var_2.name = "Rojas";
+    var_2.grenadeammo = 0;
+    var_2.dropweapon = 0;
     var_2 _ID42407::_ID32226( 0 );
     var_2.cheat._ID54456 = 1;
-    var_2._ID49 = 1;
+    var_2.allowdeath = 1;
     var_2._ID9813 = %h2_favela_escape_crucified_death;
     var_2._ID24924 = 1;
     var_2._ID1190 = 1;
     var_2._ID3189 = "generic";
-    var_2._ID486 = 5000;
+    var_2.health = 5000;
     var_2 _ID42407::_ID10949();
     var_2 _ID42407::_ID22746( 1 );
     var_2 _ID42407::_ID2286();
@@ -892,10 +892,10 @@ _ID49102()
 
     var_0 notify( "stop_idle_rojas" );
     thread maps\favela_escape_aud::crucified_rojas_death();
-    level._ID794 thread _ID42279::_ID39696( 0, var_2 );
-    level._ID794 thread _ID42279::_ID39697( var_2 );
-    var_2._ID1194 = "neutral";
-    var_2._ID680 = undefined;
+    level.player thread _ID42279::_ID39696( 0, var_2 );
+    level.player thread _ID42279::_ID39697( var_2 );
+    var_2.team = "neutral";
+    var_2.name = undefined;
     var_2 _ID42407::_ID29503( maps\favela_escape_code::_ID46526 );
     var_0 _ID42259::_ID3111( var_2, var_5 );
     var_0 _ID42259::_ID3038( var_2, var_5 );
@@ -1080,7 +1080,7 @@ _ID43714()
 
 _ID44511( var_0 )
 {
-    if ( distance( self._ID740, level._ID794._ID740 ) < 800 )
+    if ( distance( self.origin, level.player.origin ) < 800 )
         return;
 
     if ( self != level._ID47826 && self != level._ID51527 )
@@ -1218,8 +1218,8 @@ _ID45741( var_0, var_1, var_2, var_3 )
 
     if ( _ID52658() )
     {
-        _ID45995::_ID48826( "upperbody", level._ID794, 2000, 90, 90, 30, 30, 1, 0, 10, -70 );
-        self setgoalpos( self._ID740 );
+        _ID45995::_ID48826( "upperbody", level.player, 2000, 90, 90, 30, 30, 1, 0, 10, -70 );
+        self setgoalpos( self.origin );
         var_0 thread maps\favela_escape_code::soap_random_idle_anims( self, var_2 );
 
         while ( _ID52658() )
@@ -1243,7 +1243,7 @@ _ID52658()
 
     var_0 = getent( "trig_market_evac_mantlehelper", "targetname" );
 
-    if ( level._ID794 istouching( var_0 ) )
+    if ( level.player istouching( var_0 ) )
         return 0;
 
     return 1;
@@ -1321,9 +1321,9 @@ _ID49001( var_0 )
     maps\favela_escape_code::_ID49651( 1.5, 0.1 );
     setsaveddvar( "player_sprintUnlimited", "1" );
     thread maps\favela_escape_code::_ID50162();
-    level._ID794 enableweapons();
-    level._ID794 giveweapon( "freerunner" );
-    level._ID794 switchtoweapon( "freerunner" );
+    level.player enableweapons();
+    level.player giveweapon( "freerunner" );
+    level.player switchtoweapon( "freerunner" );
     thread player_solorun_audio();
 
     if ( var_0 == "chopperjump" )
@@ -1385,9 +1385,9 @@ _ID49001( var_0 )
     var_2 = 4;
     var_3 = 3;
     _ID42475::_ID34575( "start_fade_out_level" );
-    var_4 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    var_4 = _ID42313::_ID9125( "black", 0, level.player );
     var_4 fadeovertime( var_2 );
-    var_4._ID55 = 1;
+    var_4.alpha = 1;
     wait(var_2);
     _ID42237::_ID14402( "level_faded_to_black" );
     wait(var_3);
@@ -1409,16 +1409,16 @@ _ID50986()
 
     foreach ( var_3 in var_1 )
     {
-        if ( !isdefined( var_3._ID322 ) )
+        if ( !isdefined( var_3.enemy ) )
             continue;
 
-        if ( !isplayernumber( var_3._ID322 ) )
+        if ( !isplayernumber( var_3.enemy ) )
             continue;
 
-        if ( isdefined( var_3._ID23353 ) && isdefined( var_3._ID23353._ID1191 ) && isplayernumber( var_3._ID23353._ID1191 ) )
+        if ( isdefined( var_3._ID23353 ) && isdefined( var_3._ID23353.target ) && isplayernumber( var_3._ID23353.target ) )
             return 0;
 
-        if ( var_3._ID378 < 0.021 && var_3._ID378 > -1 )
+        if ( var_3.finalaccuracy < 0.021 && var_3.finalaccuracy > -1 )
             continue;
 
         if ( var_0 istouching( var_3 ) )
@@ -1442,17 +1442,17 @@ _ID50986()
 
 player_solorun_audio()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     level endon( "chopperjump_player_jump" );
-    var_0 = spawn( "script_origin", level._ID794._ID740 );
-    var_0 linkto( level._ID794 );
+    var_0 = spawn( "script_origin", level.player.origin );
+    var_0 linkto( level.player );
     thread delete_player_breath_ent_on_death( var_0 );
     var_1 = 1200;
     var_2 = gettime() + var_1;
 
     for (;;)
     {
-        if ( level._ID794 issprinting() )
+        if ( level.player issprinting() )
         {
             if ( gettime() >= var_2 )
             {
@@ -1461,12 +1461,12 @@ player_solorun_audio()
             }
         }
 
-        if ( level._ID794 _meth_83c0() )
+        if ( level.player _meth_83c0() )
         {
             var_0 playrumbleonentity();
             var_0 playsound( "h2_plr_sprint_jump_vo" );
 
-            while ( level._ID794 _meth_83c0() )
+            while ( level.player _meth_83c0() )
                 wait 0.05;
 
             var_2 = gettime() + var_1;
@@ -1478,7 +1478,7 @@ player_solorun_audio()
 
 delete_player_breath_ent_on_death( var_0 )
 {
-    level._ID794 waittill( "death" );
+    level.player waittill( "death" );
     var_0 playrumbleonentity();
     wait 0.05;
     var_0 delete();

@@ -14,13 +14,13 @@ _ID52277()
     _ID42237::_ID3350( var_0, _ID42407::_ID1947, maps\cliffhanger_snowmobile_code::_ID46572 );
     _ID42237::_ID3350( var_0, _ID42407::_ID35014 );
     var_1 = getent( "price_snowmobile_start", "targetname" );
-    level._ID28543 forceteleport( var_1._ID740, var_1._ID65 );
-    level._ID28543 setgoalpos( var_1._ID740 );
-    level._ID28543._ID507 = 1;
-    level._ID28543._ID512 = 1;
+    level._ID28543 forceteleport( var_1.origin, var_1.angles );
+    level._ID28543 setgoalpos( var_1.origin );
+    level._ID28543.ignoreall = 1;
+    level._ID28543.ignorerandombulletdamage = 1;
     var_1 = getent( "player_snowmobile_start", "targetname" );
-    level._ID794 setorigin( var_1._ID740 );
-    level._ID794 setplayerangles( var_1._ID65 );
+    level.player setorigin( var_1.origin );
+    level.player setplayerangles( var_1.angles );
     _ID42237::_ID14402( "hanger_reinforcements" );
 }
 
@@ -36,7 +36,7 @@ _ID50508()
     level._ID28543 endon( "goal" );
     _ID42237::_ID14413( "player_slides_down_hill" );
 
-    if ( level._ID28543._ID740[1] > var_0._ID740[1] )
+    if ( level._ID28543.origin[1] > var_0.origin[1] )
         level._ID28543 _ID42407::_ID37404( var_0 );
 
     level._ID28543 waittill( "goal" );
@@ -103,7 +103,7 @@ _ID52936()
 _ID50913()
 {
     var_0 = _ID42237::_ID16638( "mig_obj_struct", "targetname" );
-    var_1 = var_0._ID740;
+    var_1 = var_0.origin;
     var_2 = "obj_exfiltrate";
     maps\cliffhanger_code::_ID54163( var_2, var_1 );
     maps\cliffhanger_code::_ID54025( var_2, "" );
@@ -113,7 +113,7 @@ _ID50913()
 _ID48234()
 {
     var_0 = _ID42237::_ID16638( "final_obj_struct", "targetname" );
-    var_1 = var_0._ID740;
+    var_1 = var_0.origin;
     var_2 = "obj_exfiltrate";
     maps\cliffhanger_code::_ID54163( var_2, var_1 );
     maps\cliffhanger_code::_ID54025( var_2, "" );
@@ -130,7 +130,7 @@ _ID51600( var_0 )
     {
         var_2 = undefined;
 
-        switch ( var_0._ID922 )
+        switch ( var_0.script_noteworthy )
         {
             case "central_jeeps":
                 var_2 = "headingforjeeps";
@@ -163,7 +163,7 @@ _ID51600( var_0 )
     self waittill( "goal" );
     var_3 = [];
 
-    switch ( var_0._ID922 )
+    switch ( var_0.script_noteworthy )
     {
         case "cinderblock_wall":
             wait 0.5;
@@ -253,30 +253,30 @@ _ID53546()
 _ID50186()
 {
     self waittill( "trigger" );
-    level._ID28543._ID811 = self._ID922;
+    level._ID28543._ID811 = self.script_noteworthy;
 }
 
 _ID53114()
 {
     level endon( "player_slides_down_hill" );
     var_0 = getent( "tarmac_destination", "targetname" );
-    level._ID794._ID811 = "hanger";
+    level.player._ID811 = "hanger";
     var_1 = getentarray( "player_position_trigger", "targetname" );
     _ID42237::_ID3350( var_1, maps\cliffhanger_snowmobile_code::_ID43916 );
     var_2 = getentarray( "price_progress_trigger", "targetname" );
     _ID42237::_ID3350( var_2, ::_ID50186 );
     var_3 = level._ID28543;
     var_4 = getnode( "price_tarmac_path", "targetname" );
-    var_3._ID811 = var_4._ID922;
+    var_3._ID811 = var_4.script_noteworthy;
     var_3 _ID42407::_ID10871();
     var_3 setgoalnode( var_4 );
-    var_3._ID452 = 64;
-    var_3._ID381 = 1;
-    var_3._ID382 = 0;
+    var_3.goalradius = 64;
+    var_3.fixednode = 1;
+    var_3.fixednodesaferadius = 0;
 
     if ( maps\cliffhanger_code::_ID53109() )
         wait 2;
-    else if ( level._ID794._ID811 == "hanger" )
+    else if ( level.player._ID811 == "hanger" )
         wait 5;
 
     _ID42237::_ID14402( "escape_with_soap" );
@@ -289,16 +289,16 @@ _ID53114()
         var_5 = gettime();
         var_3 _ID46284( var_4 );
 
-        if ( level._ID794._ID811 == "hanger" )
+        if ( level.player._ID811 == "hanger" )
             _ID42407::_ID40847( var_5, 5 );
     }
 
-    var_3._ID465 = 0;
+    var_3.grenadeawareness = 0;
     var_3._ID51893 = 0;
     var_3._ID48881 = 0;
     thread _ID42407::_ID4422( "hugthewall" );
-    level._ID794._ID4878 = 1;
-    level._ID794._ID512 = 1;
+    level.player._ID4878 = 1;
+    level.player.ignorerandombulletdamage = 1;
     var_3 thread maps\cliffhanger_snowmobile_code::_ID43598( "obj_exfiltrate" );
     var_3._ID8274 = ::_ID51600;
     var_3 thread _ID42407::_ID10805( "follow_me" );
@@ -315,7 +315,7 @@ _ID53114()
 
 _ID49816( var_0, var_1 )
 {
-    if ( !isdefined( var_0[level._ID794._ID811] ) )
+    if ( !isdefined( var_0[level.player._ID811] ) )
         return;
 
     self endon( "player_left_bad_positions" );
@@ -336,7 +336,7 @@ _ID43299( var_0, var_1 )
 
     for (;;)
     {
-        if ( level._ID794._ID811 != var_0 )
+        if ( level.player._ID811 != var_0 )
             break;
 
         level waittill( "new_player_position" );
@@ -366,7 +366,7 @@ _ID50805( var_0 )
 
 _ID52241( var_0, var_1 )
 {
-    if ( isdefined( var_0[level._ID794._ID811] ) )
+    if ( isdefined( var_0[level.player._ID811] ) )
         return;
 
     self endon( "player_reached_good_position" );
@@ -393,10 +393,10 @@ _ID46284( var_0 )
 
 _ID53726( var_0 )
 {
-    if ( !isdefined( var_0._ID1191 ) )
+    if ( !isdefined( var_0.target ) )
         return;
 
-    var_1 = getent( var_0._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
 
     if ( !isdefined( var_1 ) )
         return;
@@ -449,14 +449,14 @@ _ID51823( var_0 )
 
 _ID49784( var_0 )
 {
-    if ( !isdefined( var_0[level._ID794._ID811] ) )
+    if ( !isdefined( var_0[level.player._ID811] ) )
         return;
 
     for (;;)
     {
         level waittill( "new_player_position",  var_1  );
 
-        if ( !isdefined( var_0[level._ID794._ID811] ) )
+        if ( !isdefined( var_0[level.player._ID811] ) )
             return;
     }
 }
@@ -468,7 +468,7 @@ _ID54016()
     var_1 = getentarray( "snowmobile_icepick_spawner", "targetname" );
     var_2 = _ID42407::_ID35028( "snowmobile" );
     var_2 hide();
-    var_3 = getstartorigin( var_0._ID740, var_0._ID65, level._ID28543 _ID42407::_ID16120( "icepick_fight" ) );
+    var_3 = getstartorigin( var_0.origin, var_0.angles, level._ID28543 _ID42407::_ID16120( "icepick_fight" ) );
     var_1[0]._ID3189 = "passenger";
     var_1[1] delete();
     var_1[1] = undefined;
@@ -479,8 +479,8 @@ _ID54016()
     var_5 = var_4[0];
     var_5._ID3189 = "passenger";
     var_6 = getent( "player_snowmobile_spawner", "targetname" );
-    var_6._ID740 = var_2._ID740;
-    var_6._ID65 = var_2._ID65;
+    var_6.origin = var_2.origin;
+    var_6.angles = var_2.angles;
     var_2 = var_6 _ID42407::_ID35192();
     var_2._ID3189 = "snowmobile";
     var_7 = [];
@@ -513,15 +513,15 @@ _ID54016()
     var_15 delete();
     waitframe;
     _ID42237::_ID14402( "player_rides_snowmobile" );
-    level._ID794._ID11803 = level._ID48727;
+    level.player._ID11803 = level._ID48727;
 }
 
 _ID44357( var_0, var_1, var_2, var_3, var_4, var_5, var_6 )
 {
-    if ( !isdefined( level._ID794._ID40065 ) )
+    if ( !isdefined( level.player._ID40065 ) )
         return;
 
-    if ( var_1 != level._ID794._ID40065 )
+    if ( var_1 != level.player._ID40065 )
         return;
 
     setdvar( "ui_deadquote", &"CLIFFHANGER_RUN_OVER" );
@@ -543,24 +543,24 @@ _ID45421()
 
 _ID54301()
 {
-    if ( distance( self._ID740, level._ID794._ID740 ) < 512 )
+    if ( distance( self.origin, level.player.origin ) < 512 )
         self kill();
 }
 
 _ID54269()
 {
     self endon( "death" );
-    self._ID49 = 1;
-    self._ID486 = 25;
+    self.allowdeath = 1;
+    self.health = 25;
     self waittillmatch( "single anim",  "end"  );
     _ID42407::_ID7854();
 }
 
 _ID53906()
 {
-    level._ID28543._ID511 = 0;
-    level._ID28543._ID507 = 0;
-    level._ID28543._ID512 = 0;
+    level._ID28543.ignoreme = 0;
+    level._ID28543.ignoreall = 0;
+    level._ID28543.ignorerandombulletdamage = 0;
 
     if ( !level._ID48831.size )
         level waittill( "new_icepick_snowmobile" );
@@ -576,13 +576,13 @@ _ID53906()
         if ( !isalive( var_2 ) )
             continue;
 
-        var_2._ID1204 = 50000;
+        var_2.threatbias = 50000;
     }
 
     _ID51821();
     level._ID40300["script_vehicle_snowmobile_friendly"]["default"] = [];
 
-    while ( level._ID53165._ID1276 > 0 )
+    while ( level._ID53165.veh_speed > 0 )
         wait 0.05;
 
     var_0._ID29965 = [];
@@ -609,11 +609,11 @@ _ID53906()
     var_10 = getvehiclenode( "price_snowmobile_path", "targetname" );
     var_11 = 15625.0;
 
-    while ( !_ID42237::_ID14385( "player_rides_snowmobile" ) && distance2dsquared( level._ID794._ID740, var_0._ID740 ) <= var_11 )
+    while ( !_ID42237::_ID14385( "player_rides_snowmobile" ) && distance2dsquared( level.player.origin, var_0.origin ) <= var_11 )
         waittillframeend;
 
     var_0 startpath( var_10 );
-    var_0._ID1191 = var_10._ID1193;
+    var_0.target = var_10.targetname;
     var_0 thread _ID42413::_ID16485( 1 );
     var_0 vehicle_setspeedimmediate( 15, 5, 5 );
     var_0 thread maps\cliffhanger_snowmobile_code::_ID51832();
@@ -632,9 +632,9 @@ adjust_price_snowmobile_jump()
 {
     for (;;)
     {
-        if ( self._ID740[1] > 26300 )
+        if ( self.origin[1] > 26300 )
         {
-            self._ID1278 = 150;
+            self.veh_topspeed = 150;
             break;
         }
 
@@ -645,25 +645,25 @@ adjust_price_snowmobile_jump()
 resolve_stuck_price_snowmobile()
 {
     var_0 = 0;
-    var_1 = self._ID740;
+    var_1 = self.origin;
 
     for (;;)
     {
-        if ( self._ID740[1] > 26300 )
+        if ( self.origin[1] > 26300 )
             break;
 
-        if ( length2d( var_1 - self._ID740 ) < 1 )
+        if ( length2d( var_1 - self.origin ) < 1 )
             var_0 += 0.05;
         else
             var_0 = 0;
 
         if ( var_0 > 3 )
         {
-            if ( !_ID42407::_ID12324( self._ID740, 0.8, 1 ) )
+            if ( !_ID42407::_ID12324( self.origin, 0.8, 1 ) )
             {
                 if ( isdefined( self._ID43692 ) )
                 {
-                    var_2 = physicstrace( self._ID43692._ID53771._ID23570 + ( 0, 0, self._ID740[2] + 4000 ), self._ID43692._ID53771._ID23570 + ( 0, 0, self._ID740[2] - 1000 ) );
+                    var_2 = physicstrace( self._ID43692._ID53771._ID23570 + ( 0, 0, self.origin[2] + 4000 ), self._ID43692._ID53771._ID23570 + ( 0, 0, self.origin[2] - 1000 ) );
                     var_2 += ( 0, 0, 5 );
 
                     if ( !_ID42407::_ID12324( var_2, 0.8, 1 ) )
@@ -676,16 +676,16 @@ resolve_stuck_price_snowmobile()
                 }
                 else
                 {
-                    var_3 = anglestoforward( self._ID65 );
-                    var_4 = invertangles( self._ID65 );
-                    self vehicle_teleport( self._ID740 - 36 * var_3, var_4 );
+                    var_3 = anglestoforward( self.angles );
+                    var_4 = invertangles( self.angles );
+                    self vehicle_teleport( self.origin - 36 * var_3, var_4 );
                 }
 
                 var_0 = 0;
             }
         }
 
-        var_1 = self._ID740;
+        var_1 = self.origin;
         waittillframeend;
     }
 }
@@ -712,10 +712,10 @@ _ID48022( var_0 )
         return;
 
     var_1 = spawn( "script_origin", var_0 gettagorigin( "tag_driver" ) );
-    var_1._ID65 = var_0 gettagangles( "tag_driver" );
+    var_1.angles = var_0 gettagangles( "tag_driver" );
     var_1 _ID42259::_ID3074( level._ID28543, "run_to_snowmobile" );
     var_1 _ID42259::_ID3111( level._ID28543, "run_to_snowmobile" );
-    level._ID28543 animscripts\shared::_ID26732( level._ID28543._ID1302, "none" );
+    level._ID28543 animscripts\shared::_ID26732( level._ID28543.weapon, "none" );
     level._ID28543 _ID42407::_ID14803( level._ID53839, "primary" );
     var_0 thread _ID42412::_ID17557( level._ID28543 );
     var_1 delete();
@@ -750,7 +750,7 @@ _ID50756()
     level notify( "stop_price_shield" );
     level._ID28543._ID4867 = 1;
     var_0 = getent( "player_snowmobile_spawner", "targetname" );
-    level._ID794 _ID42407::_ID37404( var_0 );
+    level.player _ID42407::_ID37404( var_0 );
     wait 1.5;
     var_1 = getent( "price_icepick_snowmobile_org", "targetname" );
     level._ID28543 _ID42407::_ID14803( "ak47_arctic", "primary" );
@@ -796,7 +796,7 @@ _ID46598( var_0 )
     _ID42237::_ID3350( var_5, _ID42407::_ID1408 );
     var_6 = getent( "god_vehicle_spawner", "script_noteworthy" );
     var_6._ID31516 = undefined;
-    var_6._ID1191 = "price_snowmobile_path";
+    var_6.target = "price_snowmobile_path";
     var_7 = undefined;
     var_8 = var_6 _ID42407::_ID35192();
     var_8._ID47178 = 250;
@@ -811,7 +811,7 @@ _ID46598( var_0 )
     level._ID48727 = var_9 _ID42407::_ID35192();
     level._ID53165 = var_8;
     level._ID48727 thread _ID44905::_ID50469();
-    level._ID794 _ID42407::_ID27557( level._ID48727 );
+    level.player _ID42407::_ID27557( level._ID48727 );
     waitframe;
     _ID42237::_ID14402( "player_rides_snowmobile" );
     _ID42237::_ID14402( "player_slides_down_hill" );
@@ -826,7 +826,7 @@ _ID52489()
 {
     setsaveddvar( "hud_showStance", "0" );
     level._ID49803 = spawn( "script_origin", ( -57787.7, 41002, -24529.4 ) );
-    level._ID49803._ID65 = ( -15, 52.838, 0 );
+    level._ID49803.angles = ( -15, 52.838, 0 );
     _ID42237::_ID14402( "escape_with_soap" );
     level notify( "kill_variable_blizzard" );
     thread maps\cliffhanger_snowmobile_code::_ID46844();
@@ -860,25 +860,25 @@ _ID52489()
     _ID42237::_ID14413( "player_rides_snowmobile" );
     setsaveddvar( "ui_hideMap", "1" );
     setsaveddvar( "fx_marks_lruPriority", 2 );
-    level._ID794 takeallweapons();
+    level.player takeallweapons();
     var_3 = getentarray( "fence_plank", "targetname" );
     _ID42237::_ID3350( var_3, ::_ID44245 );
     level._ID22610 = 2000;
 
-    if ( level._ID794._ID266 > 2000 )
-        level._ID794._ID266 = 2000;
+    if ( level.player.deathinvulnerabletime > 2000 )
+        level.player.deathinvulnerabletime = 2000;
 
     thread _ID53902();
     var_4 = level._ID48727;
-    level._ID794 thread _ID50343::_ID44064( var_4._ID740 );
+    level.player thread _ID50343::_ID44064( var_4.origin );
     _ID42237::_ID14402( "player_gets_on_snowmobile" );
     _ID42407::_ID32255( ::_ID46079 );
     thread _ID49359::_ID52826();
     thread maps\cliffhanger_snowmobile_code::_ID49505();
     _ID42407::_ID29534( "axis", maps\cliffhanger_code::_ID53499 );
     thread maps\cliffhanger_snowmobile_code::_ID48603();
-    level._ID794._ID4878 = 1;
-    level._ID512 = 1;
+    level.player._ID4878 = 1;
+    level.ignorerandombulletdamage = 1;
     level._ID11635 = 0;
     level._ID4449 = 0;
     setsaveddvar( "sm_sunSampleSizeNear", 1 );
@@ -910,9 +910,9 @@ _ID52489()
     {
         _ID42237::_ID14413( "end_begins" );
         wait 2.5;
-        var_5 = _ID42313::_ID9125( "black", 0, level._ID794 );
+        var_5 = _ID42313::_ID9125( "black", 0, level.player );
         var_5 fadeovertime( 1 );
-        var_5._ID55 = 1;
+        var_5.alpha = 1;
         _ID42475::_ID34575( "start_fade_out_level" );
         wait 2;
         _ID42407::_ID24793();
@@ -927,7 +927,7 @@ h2_monitor_airport_video_skip()
     {
         if ( getdvar( "ui_stop_airport_movie" ) == "1" )
         {
-            var_0 = _ID42313::_ID9125( "black", 1, level._ID794 );
+            var_0 = _ID42313::_ID9125( "black", 1, level.player );
             waittillframeend;
             waittillframeend;
             stopcinematicingame();
@@ -943,9 +943,9 @@ h2_monitor_airport_video_skip()
 _ID47267()
 {
     _ID42237::_ID14413( "h2_ending_ends" );
-    var_0 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    var_0 = _ID42313::_ID9125( "black", 0, level.player );
     var_0 fadeovertime( 2.5 );
-    var_0._ID55 = 1;
+    var_0.alpha = 1;
     _ID42475::_ID34575( "start_fade_out_level" );
     wait 2.5;
     _ID42407::_ID24793();
@@ -978,18 +978,18 @@ _ID51220()
     _ID42237::_ID14413( "snowmobile_jump" );
     _ID42475::_ID34575( "aud_stop_mix_snowmobile_descent" );
     _ID42475::_ID34575( "aud_start_mix_snowmobile_jump" );
-    level._ID794 playsound( "scn_cliff_snowmobile_jump" );
+    level.player playsound( "scn_cliff_snowmobile_jump" );
     var_0 = _ID42237::_ID16638( "ending_fuel_explosion", "targetname" );
     wait 0.5;
 
     for (;;)
     {
-        radiusdamage( var_0._ID740, var_0._ID851, 50000, 50000, level._ID28543 );
+        radiusdamage( var_0.origin, var_0.radius, 50000, 50000, level._ID28543 );
 
-        if ( !isdefined( var_0._ID1191 ) )
+        if ( !isdefined( var_0.target ) )
             return;
 
-        var_0 = _ID42237::_ID16638( var_0._ID1191, "targetname" );
+        var_0 = _ID42237::_ID16638( var_0.target, "targetname" );
         wait 0.15;
     }
 }
@@ -1010,13 +1010,13 @@ _ID46150()
     {
         self waittill( "veh_contact",  var_0  );
 
-        if ( !isdefined( level._ID794._ID40065 ) )
+        if ( !isdefined( level.player._ID40065 ) )
             break;
 
-        if ( var_0 == level._ID794 || var_0 == level._ID794._ID40065 )
+        if ( var_0 == level.player || var_0 == level.player._ID40065 )
         {
             self._ID34237 = 1;
-            var_1 = vectornormalize( self._ID740 - var_0._ID740 );
+            var_1 = vectornormalize( self.origin - var_0.origin );
             var_1 += ( 0, 0, 0.5 );
             var_1 *= 4000;
             self startragdollfromimpact( "torso_lower", var_1 );
@@ -1031,21 +1031,21 @@ _ID49336()
     wait 0.4;
     wait 2.6;
 
-    if ( level._ID794._ID40065 vehicle_getspeed() > 50 )
-        level._ID794._ID40065 vehicle_setspeed( 50, 20, 20 );
+    if ( level.player._ID40065 vehicle_getspeed() > 50 )
+        level.player._ID40065 vehicle_setspeed( 50, 20, 20 );
 }
 
 _ID50717()
 {
     _ID42237::_ID14413( "player_falls_to_avalanche_section" );
     var_0 = _ID42407::_ID16268( "player_falls_to_avalanche_section" );
-    var_1 = getent( var_0._ID1191, "targetname" );
-    var_2 = getent( var_1._ID1191, "targetname" );
+    var_1 = getent( var_0.target, "targetname" );
+    var_2 = getent( var_1.target, "targetname" );
     var_1 linkto( var_2 );
-    var_2._ID740 = level._ID794._ID740;
-    var_3 = level._ID794._ID40065._ID65;
+    var_2.origin = level.player.origin;
+    var_3 = level.player._ID40065.angles;
     var_3 = ( 0, var_3[1], 0 );
-    var_2._ID65 = var_3;
+    var_2.angles = var_3;
     _ID42237::_ID14402( "avalanche_begins" );
 }
 
@@ -1068,12 +1068,12 @@ _ID35646()
 _ID53172()
 {
     _ID42237::_ID14402( "reached_top" );
-    level._ID28543._ID507 = 1;
+    level._ID28543.ignoreall = 1;
 
     foreach ( var_1 in level._ID9242 )
         var_1 thread _ID42237::_ID26402();
 
-    level._ID794._ID86 = 0;
+    level.player.attackeraccuracy = 0;
     level._ID50466 = [];
     var_3 = getentarray( "avalanche_chase_vehicle_spawner", "script_noteworthy" );
     _ID42237::_ID3350( var_3, maps\cliffhanger_snowmobile_code::_ID47342 );
@@ -1083,27 +1083,27 @@ _ID53172()
     var_4 = _ID42411::_ID35195( "player_end_ride" );
     level._ID51355 = var_4;
     var_5 = getent( "avalanche_progress_org", "targetname" );
-    var_6 = getent( var_5._ID1191, "targetname" );
-    level._ID794._ID4878 = 1;
-    level._ID512 = 1;
+    var_6 = getent( var_5.target, "targetname" );
+    level.player._ID4878 = 1;
+    level.ignorerandombulletdamage = 1;
     var_4 thread maps\cliffhanger_snowmobile_code::_ID45101();
     thread maps\cliffhanger_snowmobile_code::_ID45715();
-    level._ID794 disableweapons();
+    level.player disableweapons();
 
-    if ( isdefined( level._ID794._ID40065 ) )
+    if ( isdefined( level.player._ID40065 ) )
     {
-        level._ID794._ID40065 useby( level._ID794 );
-        level._ID794._ID11803 = level._ID794._ID40065;
-        level._ID794._ID40065 delete();
-        level._ID794._ID40065 = undefined;
+        level.player._ID40065 useby( level.player );
+        level.player._ID11803 = level.player._ID40065;
+        level.player._ID40065 delete();
+        level.player._ID40065 = undefined;
     }
 
     var_7 = _ID42407::_ID35028( "player_rig" );
     var_7 hide();
     var_8 = _ID42237::_ID35164();
     var_8 linkto( var_7, "tag_player", ( 0, 0, 0 ), ( 0, 0, 0 ) );
-    level._ID794 playersetgroundreferenceent( var_8 );
-    level._ID794 playerlinktodelta( var_7, "tag_player", 1, 0, 0, 0, 0 );
+    level.player playersetgroundreferenceent( var_8 );
+    level.player playerlinktodelta( var_7, "tag_player", 1, 0, 0, 0, 0 );
     _ID42407::_ID10226( 2.5, maps\cliffhanger_code::_ID53243, var_7, "tag_player" );
     var_9 = [];
     var_9[0] = level._ID28543;
@@ -1114,15 +1114,15 @@ _ID53172()
         level._ID28543 _ID42407::_ID36519();
 
     var_10 = getent( "crash_recovery", "targetname" );
-    var_11 = spawn( "script_origin", var_10._ID740 );
-    var_11._ID65 = var_10._ID65;
+    var_11 = spawn( "script_origin", var_10.origin );
+    var_11.angles = var_10.angles;
     level._ID28543 _ID42407::_ID10226( 3.5, _ID42407::_ID10805, "i_drive" );
     _ID42407::_ID10226( 12.5, _ID42407::_ID28871, "avalanche" );
     _ID42407::_ID10226( 16.5, _ID42407::_ID28871, "moretangos" );
     var_11 _ID42259::_ID3099( var_9, "crash_rescue" );
     var_8 = _ID42237::_ID35164();
-    var_8._ID740 = var_4._ID740;
-    var_8._ID65 = var_4._ID65;
+    var_8.origin = var_4.origin;
+    var_8.angles = var_4.angles;
     var_12 = spawnstruct();
     var_12._ID337 = var_8;
     var_12._ID409 = -20;
@@ -1131,13 +1131,13 @@ _ID53172()
     var_12._ID41911 = 180;
     var_12 _ID42407::_ID38694();
     var_8 linkto( var_4 );
-    level._ID794 playersetgroundreferenceent( undefined );
+    level.player playersetgroundreferenceent( undefined );
     var_13 = 0.5;
     var_7 delete();
-    level._ID794 playerlinktoblend( var_8, "tag_origin", var_13, var_13 * 0.2, var_13 * 0.2 );
+    level.player playerlinktoblend( var_8, "tag_origin", var_13, var_13 * 0.2, var_13 * 0.2 );
     _ID42407::_ID10226( var_13 + 0.1, maps\cliffhanger_code::_ID53243, var_8, "tag_origin" );
     level._ID28543 delete();
-    level._ID794 enableweapons();
+    level.player enableweapons();
     thread _ID42411::_ID17021( var_4 );
     var_4 vehphys_disablecrashing();
     wait 0.5;
@@ -1150,9 +1150,9 @@ _ID53172()
     wait 2.5;
     _ID42237::_ID14413( "the_end" );
     wait 6;
-    var_15 = _ID42313::_ID9125( "black", 0, level._ID794 );
+    var_15 = _ID42313::_ID9125( "black", 0, level.player );
     var_15 fadeovertime( 1 );
-    var_15._ID55 = 1;
+    var_15.alpha = 1;
     wait 2;
     _ID42407::_ID24793();
 }
@@ -1180,11 +1180,11 @@ _ID49177()
 {
     _ID42237::_ID14413( "downhill_autosave" );
 
-    if ( level._ID794._ID486 < 75 )
+    if ( level.player.health < 75 )
         return;
 
     var_0 = savegamenocommit( "blah", &"AUTOSAVE_AUTOSAVE" );
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     _ID42237::_ID14413( "downhill_autosave_failsafe" );
 
     if ( !commitwouldbevalid( var_0 ) )
@@ -1222,36 +1222,36 @@ _ID47871()
 {
     level endon( "snowmobile_jump" );
     _ID42237::_ID14413( "player_rides_snowmobile" );
-    level._ID794._ID40065 endon( "veh_collision" );
+    level.player._ID40065 endon( "veh_collision" );
     level endon( "player_crashes" );
     _ID42237::_ID14413( "bad_heli_goes_to_death_position" );
 
     for (;;)
     {
-        if ( !isdefined( level._ID794._ID40065 ) )
+        if ( !isdefined( level.player._ID40065 ) )
             return;
 
-        if ( level._ID794._ID40065._ID1276 >= 120 )
+        if ( level.player._ID40065.veh_speed >= 120 )
             break;
 
         wait 0.05;
     }
 
-    var_0 = level._ID794._ID40065._ID1276;
+    var_0 = level.player._ID40065.veh_speed;
 
     for (;;)
     {
-        if ( !isdefined( level._ID794._ID40065 ) )
+        if ( !isdefined( level.player._ID40065 ) )
             return;
 
-        if ( level._ID794._ID40065._ID1276 < var_0 - 35 )
+        if ( level.player._ID40065.veh_speed < var_0 - 35 )
             break;
 
-        var_0 = level._ID794._ID40065._ID1276;
+        var_0 = level.player._ID40065.veh_speed;
         wait 0.05;
     }
 
-    level._ID794._ID40065 notify( "veh_collision" );
+    level.player._ID40065 notify( "veh_collision" );
 }
 
 _ID44245()
@@ -1259,7 +1259,7 @@ _ID44245()
     for (;;)
     {
         var_0 = _ID46594( level._ID28543._ID40065 );
-        var_1 = _ID46594( level._ID794._ID40065 );
+        var_1 = _ID46594( level.player._ID40065 );
 
         if ( var_0 < 100 )
             break;
@@ -1281,7 +1281,7 @@ _ID46594( var_0 )
     if ( !isdefined( var_0 ) )
         return 500;
 
-    return distance( var_0._ID740, self._ID740 );
+    return distance( var_0.origin, self.origin );
 }
 
 _ID45933()
@@ -1303,16 +1303,16 @@ _ID49433()
     _ID42237::_ID14413( "magic_rocket_flag" );
     var_0 = _ID42237::_ID16638( "magic_rocket_start", "targetname" );
     var_1 = _ID42237::_ID16638( "magic_rocket_end", "targetname" );
-    var_2 = magicbullet( "rpg_straight", var_0._ID740, var_1._ID740 );
+    var_2 = magicbullet( "rpg_straight", var_0.origin, var_1.origin );
     var_2 waittill( "death" );
-    playfx( level._ID1426["large_snow_explode"], var_1._ID740 );
+    playfx( level._ID1426["large_snow_explode"], var_1.origin );
 }
 
 _ID44938()
 {
     for (;;)
     {
-        if ( _ID42237::_ID14385( "fade_to_death" ) || !isalive( level._ID794 ) && _ID42237::_ID14385( "snowmobile_jump" ) && !_ID42237::_ID14385( "made_jump" ) )
+        if ( _ID42237::_ID14385( "fade_to_death" ) || !isalive( level.player ) && _ID42237::_ID14385( "snowmobile_jump" ) && !_ID42237::_ID14385( "made_jump" ) )
             break;
 
         waittillframeend;

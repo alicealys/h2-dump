@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID8467();
     _ID19806();
@@ -97,7 +97,7 @@ _ID53361( var_0 )
     _ID42474::_ID4669( "exterior" );
     _ID42465::_ID23797( "fade_in_level_mix" );
     _ID42465::_ID23797( "intro_inside_vehicle_mix" );
-    level._ID794 thread _ID42407::_ID27080( "scn_roadkill_blackscreen_front", undefined, 1 );
+    level.player thread _ID42407::_ID27080( "scn_roadkill_blackscreen_front", undefined, 1 );
     _ID42237::_ID14413( "introscreen_remove_submix" );
     _ID42465::_ID23801( "fade_in_level_mix" );
 }
@@ -200,7 +200,7 @@ _ID46869( var_0, var_1, var_2 )
     _ID47662( var_0, 0.05 );
 
     if ( isdefined( var_1 ) )
-        level._ID794 thread _ID42407::_ID27079( var_1 );
+        level.player thread _ID42407::_ID27079( var_1 );
 
     if ( isdefined( var_2 ) )
     {
@@ -408,7 +408,7 @@ _ID49995()
 
 plr_oob_gunfire_aud()
 {
-    level._ID794 endon( "death" );
+    level.player endon( "death" );
     var_0 = getent( "oob_gunfire_ent", "targetname" );
 
     for (;;)
@@ -433,7 +433,7 @@ scripted_sfx_intro_ride_explosion()
 {
     self waittill( "death" );
     _ID42465::_ID23797( "intro_inside_vehicle_explosion_mix" );
-    level._ID794 thread _ID42407::_ID27079( "scn_mission_truck_intro_player_impact" );
+    level.player thread _ID42407::_ID27079( "scn_mission_truck_intro_player_impact" );
 }
 
 bridge_layer_impact_snd()
@@ -461,7 +461,7 @@ dismount_rpg_slomo_mix()
 {
     _ID42465::_ID23797( "shellshock_latvee_ambush_02_slomo_mix" );
     _ID42476::_ID34518( "slomo" );
-    level._ID794 _ID42407::_ID27079( "scn_ride_killer_rpg_shoot_slomo_in" );
+    level.player _ID42407::_ID27079( "scn_ride_killer_rpg_shoot_slomo_in" );
 }
 
 traffic_jam_truck_impact_01( var_0 )

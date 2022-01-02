@@ -11,15 +11,15 @@ _ID14980()
 {
     self endon( "death" );
     self endon( "pain_death" );
-    self._ID25506 = self._ID381;
-    self._ID25507 = self._ID382;
+    self._ID25506 = self.fixednode;
+    self._ID25507 = self.fixednodesaferadius;
 
     for (;;)
     {
         _ID42407::_ID13027( "_stealth_stance_handler" );
         _ID42237::_ID14426( "_stealth_spotted" );
-        self._ID381 = 1;
-        self._ID382 = 10;
+        self.fixednode = 1;
+        self.fixednodesaferadius = 10;
 
         while ( _ID42407::_ID13019( "_stealth_stance_handler" ) && !_ID42237::_ID14385( "_stealth_spotted" ) )
         {
@@ -39,8 +39,8 @@ _ID14980()
             wait 0.05;
         }
 
-        self._ID381 = self._ID25506;
-        self._ID382 = self._ID25507;
+        self.fixednode = self._ID25506;
+        self.fixednodesaferadius = self._ID25507;
         self._ID24424 = 1;
         self allowedstances( "stand", "crouch", "prone" );
 
@@ -77,7 +77,7 @@ _ID14983( var_0 )
         var_5 = _ID14985( var_3, self._ID1644._ID5029._ID35581 );
         var_6 = _ID42391::_ID14927() + var_4;
         var_7 = _ID42391::_ID14927( self._ID1644._ID5029._ID35581 ) + var_5;
-        var_8 = distance( var_3._ID740, self._ID740 );
+        var_8 = distance( var_3.origin, self.origin );
 
         if ( var_8 < var_6 )
         {
@@ -94,8 +94,8 @@ _ID14983( var_0 )
 
 _ID14985( var_0, var_1 )
 {
-    var_2 = anglestoforward( var_0._ID65 );
-    var_3 = vectornormalize( self._ID740 - var_0._ID740 );
+    var_2 = anglestoforward( var_0.angles );
+    var_3 = vectornormalize( self.origin - var_0.origin );
     var_4 = vectordot( var_2, var_3 );
 
     if ( var_4 > 0.3 )
@@ -171,8 +171,8 @@ _ID14987()
         return;
 
     _ID42407::_ID13025( "_stealth_stay_still" );
-    badplace_cylinder( "_stealth_" + self._ID39468 + "_prone", 0, self._ID740, 30, 90, "bad_guys" );
-    self._ID382 = 5000;
+    badplace_cylinder( "_stealth_" + self._ID39468 + "_prone", 0, self.origin, 30, 90, "bad_guys" );
+    self.fixednodesaferadius = 5000;
 }
 
 _ID14984( var_0 )
@@ -189,7 +189,7 @@ _ID14984( var_0 )
 
     _ID42407::_ID13021( "_stealth_stay_still" );
     badplace_delete( "_stealth_" + self._ID39468 + "_prone" );
-    self._ID382 = 10;
+    self.fixednodesaferadius = 10;
 }
 
 _ID14953()

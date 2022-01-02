@@ -1,7 +1,7 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     _ID52480();
     _ID42237::_ID14400( "no_ai_tv_damage" );
@@ -249,7 +249,7 @@ _ID46813()
     self setcandamage( 1 );
     var_0 = undefined;
 
-    switch ( self._ID669 )
+    switch ( self.model )
     {
         case "com_security_camera":
             var_0 = "com_security_camera_destroyed";
@@ -270,39 +270,39 @@ _ID39382()
     self._ID9642 = undefined;
     self._ID25467 = undefined;
 
-    if ( issubstr( self._ID669, "1" ) )
+    if ( issubstr( self.model, "1" ) )
     {
         self._ID25467 = "com_tv1";
         self._ID25791 = "com_tv1_testpattern";
         self._ID9642 = "com_tv1_d";
     }
-    else if ( issubstr( self._ID669, "2" ) )
+    else if ( issubstr( self.model, "2" ) )
     {
         self._ID9642 = "com_tv2_d";
         self._ID25467 = "com_tv2";
         self._ID25791 = "com_tv2_testpattern";
     }
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
         if ( isdefined( level._ID10930 ) )
         {
-            var_0 = getent( self._ID1191, "targetname" );
+            var_0 = getent( self.target, "targetname" );
 
             if ( isdefined( var_0 ) )
                 var_0 delete();
         }
         else
         {
-            self._ID39965 = getent( self._ID1191, "targetname" );
+            self._ID39965 = getent( self.target, "targetname" );
             self._ID39965 usetriggerrequirelookat();
             self._ID39965 setcursorhint( "HINT_NOICON" );
         }
     }
 
-    if ( !isdefined( self._ID922 ) || self._ID922 != "nolite" )
+    if ( !isdefined( self.script_noteworthy ) || self.script_noteworthy != "nolite" )
     {
-        var_1 = _ID42237::_ID15566( self._ID740, level._ID39381, undefined, undefined, 64 );
+        var_1 = _ID42237::_ID15566( self.origin, level._ID39381, undefined, undefined, 64 );
 
         if ( var_1.size )
         {
@@ -392,17 +392,17 @@ _ID39378()
 
 _ID53811()
 {
-    return self._ID669 == self._ID25791;
+    return self.model == self._ID25791;
 }
 
 _ID47867()
 {
-    return self._ID669 == self._ID25467;
+    return self.model == self._ID25467;
 }
 
 _ID47219()
 {
-    return self._ID669 == self._ID9642;
+    return self.model == self._ID9642;
 }
 
 _ID52152()
@@ -414,7 +414,7 @@ _ID52316()
 {
     _ID44527( "platestack_shatter", undefined, self._ID31388 );
     self setcandamage( 1 );
-    var_0 = getentarray( self._ID1191, "targetname" );
+    var_0 = getentarray( self.target, "targetname" );
 
     for (;;)
     {
@@ -422,7 +422,7 @@ _ID52316()
 
         if ( var_5 != "MOD_MELEE" && var_5 != "MOD_IMPACT" )
         {
-            playfx( level._ID6112["platestack_shatter"], self._ID740 );
+            playfx( level._ID6112["platestack_shatter"], self.origin );
 
             foreach ( var_7 in var_0 )
                 var_7 delete();
@@ -441,16 +441,16 @@ _ID43719()
     var_1 = undefined;
     var_2 = undefined;
 
-    if ( isdefined( self._ID922 ) && self._ID922 == "destruct" )
+    if ( isdefined( self.script_noteworthy ) && self.script_noteworthy == "destruct" )
     {
         if ( isdefined( self._ID31388 ) )
         {
             var_0 = loadfx( self._ID31388 );
 
-            if ( isdefined( self._ID1191 ) )
+            if ( isdefined( self.target ) )
             {
-                var_1 = getent( self._ID1191, "targetname" );
-                var_2 = anglestoaxis( var_1._ID65 );
+                var_1 = getent( self.target, "targetname" );
+                var_2 = anglestoaxis( var_1.angles );
             }
         }
     }
@@ -464,16 +464,16 @@ _ID43719()
 
         if ( var_7 != "MOD_MELEE" && var_7 != "MOD_IMPACT" )
         {
-            self physicslaunchclient( self._ID740, ( 0, 0, 0 ) );
+            self physicslaunchclient( self.origin, ( 0, 0, 0 ) );
 
-            if ( isdefined( self._ID922 ) && self._ID922 == "destruct" )
+            if ( isdefined( self.script_noteworthy ) && self.script_noteworthy == "destruct" )
             {
                 if ( isdefined( var_0 ) )
                 {
-                    if ( isdefined( self._ID1191 ) )
-                        playfx( var_0, var_1._ID740, var_2["forward"], var_2["up"] );
+                    if ( isdefined( self.target ) )
+                        playfx( var_0, var_1.origin, var_2["forward"], var_2["up"] );
                     else
-                        playfx( var_0, self._ID740 );
+                        playfx( var_0, self.origin );
                 }
 
                 self delete();
@@ -496,8 +496,8 @@ _ID48217()
     var_2 = undefined;
     var_3 = 0;
 
-    if ( isdefined( self._ID1191 ) )
-        var_2 = getent( self._ID1191, "targetname" );
+    if ( isdefined( self.target ) )
+        var_2 = getent( self.target, "targetname" );
 
     if ( isdefined( self._ID31273 ) )
     {
@@ -596,9 +596,9 @@ _ID48397( var_0, var_1, var_2 )
 
 _ID49175()
 {
-    self._ID12575 = _ID42237::_ID16638( self._ID1191, "targetname" );
-    self._ID35619 = _ID42237::_ID16638( self._ID12575._ID1191, "targetname" );
-    self._ID4839 = _ID44399( self._ID35619._ID740, getentarray( "explodable_barrel", "targetname" ) );
+    self._ID12575 = _ID42237::_ID16638( self.target, "targetname" );
+    self._ID35619 = _ID42237::_ID16638( self._ID12575.target, "targetname" );
+    self._ID4839 = _ID44399( self._ID35619.origin, getentarray( "explodable_barrel", "targetname" ) );
 
     if ( isdefined( self._ID4839 ) )
     {
@@ -606,7 +606,7 @@ _ID49175()
         thread _ID51705();
     }
 
-    self._ID44674 = getent( self._ID1191, "targetname" );
+    self._ID44674 = getent( self.target, "targetname" );
     self setcandamage( 1 );
     var_0 = undefined;
 
@@ -624,10 +624,10 @@ _ID49175()
         if ( isdefined( level._ID52161["oilspill"]["spark"] ) )
             var_0 thread _ID42407::_ID27081( level._ID52161["oilspill"]["spark"] );
 
-        var_4 = pointonsegmentnearesttopoint( self._ID35619._ID740, self._ID12575._ID740, var_4 );
+        var_4 = pointonsegmentnearesttopoint( self._ID35619.origin, self._ID12575.origin, var_4 );
         thread _ID45745( var_4 );
-        thread _ID48132( var_4, self._ID35619._ID740 );
-        thread _ID48132( var_4, self._ID12575._ID740 );
+        thread _ID48132( var_4, self._ID35619.origin );
+        thread _ID48132( var_4, self._ID12575.origin );
         break;
     }
 
@@ -657,7 +657,7 @@ _ID51705()
         break;
     }
 
-    self radiusdamage( self._ID35619._ID740, 4, 10, 10, self._ID9644 );
+    self radiusdamage( self._ID35619.origin, 4, 10, 10, self._ID9644 );
 }
 
 _ID48132( var_0, var_1 )
@@ -690,14 +690,14 @@ _ID48132( var_0, var_1 )
             var_11 = 0;
         }
 
-        var_10._ID740 = var_0;
+        var_10.origin = var_0;
         var_12 = [];
         var_8 = _ID42237::_ID3332( var_8 );
 
         for ( var_13 = 0; var_13 < var_8.size; var_13++ )
         {
-            var_14 = anglestoup( var_8[var_13]._ID65 );
-            var_15 = var_8[var_13]._ID740 + _ID42407::_ID49965( var_14, 22 );
+            var_14 = anglestoup( var_8[var_13].angles );
+            var_15 = var_8[var_13].origin + _ID42407::_ID49965( var_14, 22 );
             var_16 = physicstrace( var_15, var_15 + ( 0, 0, -64 ) );
 
             if ( distancesquared( var_0, var_16 ) < var_9 )
@@ -716,7 +716,7 @@ _ID48132( var_0, var_1 )
     if ( !isdefined( self._ID4839 ) )
         return;
 
-    if ( distance( var_0, self._ID35619._ID740 ) < 32 )
+    if ( distance( var_0, self._ID35619.origin ) < 32 )
         self._ID4839 dodamage( 80 + randomfloat( 10 ), var_0 );
 }
 
@@ -732,7 +732,7 @@ _ID45745( var_0 )
 
 _ID51787()
 {
-    if ( self._ID170 != "script_model" )
+    if ( self.classname != "script_model" )
         return;
 
     if ( !isdefined( level._ID45752["com_barrel_benzin"] ) )
@@ -745,7 +745,7 @@ _ID51787()
     self endon( "exploding" );
     _ID45364();
     _ID47039();
-    self._ID257 = 0;
+    self.damagetaken = 0;
     self setcandamage( 1 );
 
     for (;;)
@@ -760,9 +760,9 @@ _ID51787()
         if ( level._ID54511 )
             wait(randomfloat( 1 ));
 
-        self._ID257 = self._ID257 + var_0;
+        self.damagetaken = self.damagetaken + var_0;
 
-        if ( self._ID257 == var_0 )
+        if ( self.damagetaken == var_0 )
             thread _ID48398();
     }
 }
@@ -771,7 +771,7 @@ _ID48398()
 {
     var_0 = 0;
     var_1 = 0;
-    var_2 = anglestoup( self._ID65 );
+    var_2 = anglestoup( self.angles );
     var_3 = anglestoup( ( 0, 90, 0 ) );
     var_4 = vectordot( var_2, var_3 );
     var_5 = ( 0, 0, 0 );
@@ -783,13 +783,13 @@ _ID48398()
         var_6 = _ID42407::_ID49965( var_2, 22 ) + ( 0, 0, 14 );
     }
 
-    var_7 = spawn( "script_origin", self._ID740 + var_6 );
+    var_7 = spawn( "script_origin", self.origin + var_6 );
 
-    while ( self._ID257 < level._ID49721 )
+    while ( self.damagetaken < level._ID49721 )
     {
         if ( !var_1 )
         {
-            playfx( level._ID6112["barrel"]["burn_start"], self._ID740 + var_5 );
+            playfx( level._ID6112["barrel"]["burn_start"], self.origin + var_5 );
 
             if ( isdefined( level._ID52161["barrel"]["burn_start"] ) )
                 thread _ID42407::_ID27081( level._ID52161["barrel"]["burn_start"] );
@@ -800,19 +800,19 @@ _ID48398()
         if ( var_0 > 19 )
             var_0 = 0;
 
-        playfx( level._ID6112["barrel"]["burn"], self._ID740 + var_6 );
+        playfx( level._ID6112["barrel"]["burn"], self.origin + var_6 );
 
         if ( isdefined( level._ID52161["barrel"]["burn"] ) )
             var_7 thread _ID42407::_ID27001( level._ID52161["barrel"]["burn"], undefined, 1, 1 );
 
         if ( var_0 == 0 )
         {
-            self._ID257 = self._ID257 + ( 10 + randomfloat( 10 ) );
-            badplace_cylinder( "", 1, self._ID740, 128, 250 );
-            var_8 = self._ID257 > level._ID49721 - 10 && self._ID257 < level._ID49721;
+            self.damagetaken = self.damagetaken + ( 10 + randomfloat( 10 ) );
+            badplace_cylinder( "", 1, self.origin, 128, 250 );
+            var_8 = self.damagetaken > level._ID49721 - 10 && self.damagetaken < level._ID49721;
 
             if ( var_8 )
-                playfx( level._ID6112["barrel"]["spill"], self._ID740 + var_5 );
+                playfx( level._ID6112["barrel"]["spill"], self.origin + var_5 );
         }
 
         var_0++;
@@ -833,25 +833,25 @@ _ID51798()
 {
     self notify( "exploding" );
     self notify( "death" );
-    var_0 = anglestoup( self._ID65 );
+    var_0 = anglestoup( self.angles );
     var_1 = anglestoup( ( 0, 90, 0 ) );
     var_2 = vectordot( var_0, var_1 );
     var_3 = ( 0, 0, 0 );
 
     if ( var_2 < 0.5 )
     {
-        var_4 = self._ID740 + _ID42407::_ID49965( var_0, 22 );
+        var_4 = self.origin + _ID42407::_ID49965( var_0, 22 );
         var_5 = physicstrace( var_4, var_4 + ( 0, 0, -64 ) );
-        var_3 = var_5 - self._ID740;
+        var_3 = var_5 - self.origin;
     }
 
     var_3 += ( 0, 0, 4 );
-    playfx( level._ID6112["barrel"]["explode"], self._ID740 + var_3 );
+    playfx( level._ID6112["barrel"]["explode"], self.origin + var_3 );
 
     if ( isdefined( level._ID52161["barrel"]["explode"] ) )
         thread _ID42407::_ID27081( level._ID52161["barrel"]["explode"] );
 
-    physicsexplosionsphere( self._ID740 + var_3, 100, 80, 1 );
+    physicsexplosionsphere( self.origin + var_3, 100, 80, 1 );
     level._ID54511 = 1;
 
     if ( isdefined( self._ID52687 ) )
@@ -864,8 +864,8 @@ _ID51798()
     var_7 = 250;
     var_8 = 250;
 
-    if ( isdefined( self._ID851 ) )
-        var_8 = self._ID851;
+    if ( isdefined( self.radius ) )
+        var_8 = self.radius;
 
     var_9 = undefined;
 
@@ -874,13 +874,13 @@ _ID51798()
         var_9 = self._ID9644;
 
         if ( isplayernumber( var_9 ) )
-            _ID42407::_ID54515( self._ID740, "rifle", 150 );
+            _ID42407::_ID54515( self.origin, "rifle", 150 );
     }
 
     level._ID21923["time"] = gettime();
-    level._ID21923["origin"] = self._ID740 + ( 0, 0, 30 );
+    level._ID21923["origin"] = self.origin + ( 0, 0, 30 );
     level._ID21923["radius"] = var_8;
-    self radiusdamage( self._ID740 + ( 0, 0, 30 ), var_8, var_7, var_6, var_9 );
+    self radiusdamage( self.origin + ( 0, 0, 30 ), var_8, var_7, var_6, var_9 );
 
     if ( randomint( 2 ) == 0 )
         self setmodel( "com_barrel_piece" );
@@ -889,10 +889,10 @@ _ID51798()
 
     if ( var_2 < 0.5 )
     {
-        var_4 = self._ID740 + _ID42407::_ID49965( var_0, 22 );
+        var_4 = self.origin + _ID42407::_ID49965( var_0, 22 );
         var_10 = physicstrace( var_4, var_4 + ( 0, 0, -64 ) );
-        self._ID740 = var_10;
-        self._ID65 = self._ID65 + ( 0, 0, 90 );
+        self.origin = var_10;
+        self.angles = self.angles + ( 0, 0, 90 );
     }
 
     wait 0.05;
@@ -903,7 +903,7 @@ _ID49215()
 {
     var_0 = 0;
 
-    if ( self._ID669 == "prop_helmet_german_normandy" )
+    if ( self.model == "prop_helmet_german_normandy" )
         var_0 = 1;
 
     self setcandamage( 1 );
@@ -923,7 +923,7 @@ _ID49215()
 
 _ID47249()
 {
-    if ( self._ID170 != "script_model" )
+    if ( self.classname != "script_model" )
         return;
 
     self setcandamage( 1 );
@@ -932,22 +932,22 @@ _ID47249()
     if ( isai( var_1 ) || isplayernumber( var_1 ) )
         var_2 = var_1 geteye() - ( 0, 0, randomint( 50 ) + 50 );
     else
-        var_2 = var_1._ID740;
+        var_2 = var_1.origin;
 
-    var_3 = vectornormalize( self._ID740 - var_2 );
+    var_3 = vectornormalize( self.origin - var_2 );
     var_3 = _ID42407::_ID49965( var_3, 0.5 + randomfloat( 1 ) );
     self notify( "death" );
-    playfx( level._ID6112["tincan"], self._ID740, var_3 );
+    playfx( level._ID6112["tincan"], self.origin, var_3 );
 
     if ( isdefined( level._ID52161["tincan"] ) )
-        thread _ID42237::_ID27077( level._ID52161["tincan"], self._ID740 );
+        thread _ID42237::_ID27077( level._ID52161["tincan"], self.origin );
 
     self delete();
 }
 
 _ID46567()
 {
-    if ( self._ID170 != "script_model" )
+    if ( self.classname != "script_model" )
         return;
 
     _ID47039();
@@ -962,9 +962,9 @@ _ID44960()
     if ( isai( var_1 ) )
         var_2 = var_1 geteye();
     else
-        var_2 = var_1._ID740;
+        var_2 = var_1.origin;
 
-    var_3 = vectornormalize( self._ID740 - var_2 );
+    var_3 = vectornormalize( self.origin - var_2 );
 
     if ( !isdefined( self._ID49302 ) && isplayernumber( var_1 ) )
     {
@@ -974,9 +974,9 @@ _ID44960()
 
     self notsolid();
     self hide();
-    var_4 = spawn( "script_model", self._ID740 + ( 0, 0, 5 ) );
-    var_4._ID65 = self._ID65;
-    var_4 setmodel( self._ID669 );
+    var_4 = spawn( "script_model", self.origin + ( 0, 0, 5 ) );
+    var_4.angles = self.angles;
+    var_4 setmodel( self.model );
     var_4 thread animscripts\death::_ID18466( var_3 );
     self._ID49302 = 0;
     self notify( "ok_remove" );
@@ -1014,15 +1014,15 @@ _ID43301( var_0 )
 
 _ID43582()
 {
-    if ( self._ID170 != "script_model" )
+    if ( self.classname != "script_model" )
         return;
 
-    if ( !isdefined( self._ID669 ) )
+    if ( !isdefined( self.model ) )
         return;
 
     var_0 = undefined;
 
-    if ( self._ID669 == "egypt_prop_vase1" || self._ID669 == "egypt_prop_vase3" || self._ID669 == "egypt_prop_vase4" )
+    if ( self.model == "egypt_prop_vase1" || self.model == "egypt_prop_vase3" || self.model == "egypt_prop_vase4" )
     {
         if ( !isdefined( level._ID45752["egypt_prop_vase_o"] ) )
         {
@@ -1036,7 +1036,7 @@ _ID43582()
         _ID45364();
         _ID47039();
     }
-    else if ( self._ID669 == "egypt_prop_vase2" || self._ID669 == "egypt_prop_vase5" || self._ID669 == "egypt_prop_vase6" )
+    else if ( self.model == "egypt_prop_vase2" || self.model == "egypt_prop_vase5" || self.model == "egypt_prop_vase6" )
     {
         if ( !isdefined( level._ID45752["egypt_prop_vase_g"] ) )
         {
@@ -1051,7 +1051,7 @@ _ID43582()
         _ID45364();
         _ID47039();
     }
-    else if ( self._ID669 == "prop_crate_dak1" || self._ID669 == "prop_crate_dak2" || self._ID669 == "prop_crate_dak3" || self._ID669 == "prop_crate_dak4" || self._ID669 == "prop_crate_dak5" || self._ID669 == "prop_crate_dak6" || self._ID669 == "prop_crate_dak7" || self._ID669 == "prop_crate_dak8" || self._ID669 == "prop_crate_dak9" )
+    else if ( self.model == "prop_crate_dak1" || self.model == "prop_crate_dak2" || self.model == "prop_crate_dak3" || self.model == "prop_crate_dak4" || self.model == "prop_crate_dak5" || self.model == "prop_crate_dak6" || self.model == "prop_crate_dak7" || self.model == "prop_crate_dak8" || self.model == "prop_crate_dak9" )
     {
         if ( !isdefined( level._ID45752["prop_crate_dak_shard"] ) )
         {
@@ -1063,7 +1063,7 @@ _ID43582()
         _ID45364();
         _ID47039();
     }
-    else if ( self._ID669 == "prop_winebottle_breakable" )
+    else if ( self.model == "prop_winebottle_breakable" )
     {
         if ( !isdefined( level._ID45752["prop_winebottle"] ) )
         {
@@ -1075,7 +1075,7 @@ _ID43582()
         var_0 = "bottle";
         _ID47039();
     }
-    else if ( self._ID669 == "prop_diningplate_roundfloral" )
+    else if ( self.model == "prop_diningplate_roundfloral" )
     {
         if ( !isdefined( level._ID45752["prop_diningplate_brokenfloral"] ) )
         {
@@ -1090,7 +1090,7 @@ _ID43582()
         self._ID54624 = "round_floral";
         _ID47039();
     }
-    else if ( self._ID669 == "prop_diningplate_roundplain" )
+    else if ( self.model == "prop_diningplate_roundplain" )
     {
         if ( !isdefined( level._ID45752["prop_diningplate_brokenplain"] ) )
         {
@@ -1105,7 +1105,7 @@ _ID43582()
         self._ID54624 = "round_plain";
         _ID47039();
     }
-    else if ( self._ID669 == "prop_diningplate_roundstack" )
+    else if ( self.model == "prop_diningplate_roundstack" )
     {
         if ( !isdefined( level._ID45752["prop_diningplate_brokenplain"] ) )
         {
@@ -1129,7 +1129,7 @@ _ID43582()
         self._ID54624 = "round_stack";
         _ID47039();
     }
-    else if ( self._ID669 == "prop_diningplate_ovalfloral" )
+    else if ( self.model == "prop_diningplate_ovalfloral" )
     {
         if ( !isdefined( level._ID45752["prop_diningplate_brokenfloral"] ) )
         {
@@ -1144,7 +1144,7 @@ _ID43582()
         self._ID54624 = "oval_floral";
         _ID47039();
     }
-    else if ( self._ID669 == "prop_diningplate_ovalplain" )
+    else if ( self.model == "prop_diningplate_ovalplain" )
     {
         if ( !isdefined( level._ID45752["prop_diningplate_brokenplain"] ) )
         {
@@ -1159,7 +1159,7 @@ _ID43582()
         self._ID54624 = "oval_plain";
         _ID47039();
     }
-    else if ( self._ID669 == "prop_diningplate_ovalstack" )
+    else if ( self.model == "prop_diningplate_ovalstack" )
     {
         if ( !isdefined( level._ID45752["prop_diningplate_brokenplain"] ) )
         {
@@ -1187,11 +1187,11 @@ _ID43582()
     if ( !isdefined( var_0 ) )
         return;
 
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        var_1 = getent( self._ID1191, "targetname" );
+        var_1 = getent( self.target, "targetname" );
 
-        if ( isdefined( var_1 ) && var_1._ID170 == "trigger_multiple" )
+        if ( isdefined( var_1 ) && var_1.classname == "trigger_multiple" )
             var_1 thread _ID43301( self );
     }
 
@@ -1248,15 +1248,15 @@ _ID47085()
     {
         if ( isdefined( level.breakables_fx_orient ) )
         {
-            var_7 = anglestoaxis( self._ID65 );
-            playfx( var_5, self._ID740, var_7["forward"], var_7["up"] );
+            var_7 = anglestoaxis( self.angles );
+            playfx( var_5, self.origin, var_7["forward"], var_7["up"] );
         }
         else
-            playfx( var_5, self._ID740 );
+            playfx( var_5, self.origin );
     }
 
     if ( isdefined( var_6 ) )
-        thread _ID42237::_ID27077( var_6, self._ID740 );
+        thread _ID42237::_ID27077( var_6, self.origin );
 
     if ( !isdefined( self._ID49302 ) )
         self delete();
@@ -1275,8 +1275,8 @@ _ID47499( var_0 )
     {
         self waittill( "damage",  var_2, var_1  );
 
-        if ( isdefined( var_1 ) && var_1._ID172 == "script_vehicle" )
-            var_1 joltbody( self._ID740 + ( 0, 0, -90 ), 0.2 );
+        if ( isdefined( var_1 ) && var_1.code_classname == "script_vehicle" )
+            var_1 joltbody( self.origin + ( 0, 0, -90 ), 0.2 );
 
         if ( var_0 == "wood box" )
         {
@@ -1339,11 +1339,11 @@ _ID47499( var_0 )
             break;
     }
 
-    thread _ID42237::_ID27077( var_3, self._ID740 );
+    thread _ID42237::_ID27077( var_3, self.origin );
     thread _ID49205( self, var_0 );
 
     if ( isdefined( var_4 ) )
-        playfx( var_4, self._ID740 );
+        playfx( var_4, self.origin );
 
     if ( var_5 )
     {
@@ -1352,12 +1352,12 @@ _ID47499( var_0 )
         for ( var_8 = 0; var_8 < var_7.size; var_8++ )
         {
             var_9 = var_7[var_8];
-            var_10 = abs( self._ID740[0] - var_9._ID740[0] );
-            var_11 = abs( self._ID740[1] - var_9._ID740[1] );
+            var_10 = abs( self.origin[0] - var_9.origin[0] );
+            var_11 = abs( self.origin[1] - var_9.origin[1] );
 
             if ( var_10 <= 20 && var_11 <= 20 )
             {
-                var_12 = self._ID740[2] - var_9._ID740[2];
+                var_12 = self.origin[2] - var_9.origin[2];
 
                 if ( var_12 <= 0 )
                     var_9 notify( "damage",  var_2, var_1  );
@@ -1382,7 +1382,7 @@ _ID47499( var_0 )
 _ID47039()
 {
     if ( isdefined( level._ID47104 ) && level._ID47104.size > 0 )
-        self._ID54227 = _ID43148( self._ID740, level._ID47104 );
+        self._ID54227 = _ID43148( self.origin, level._ID47104 );
 
     if ( isdefined( self._ID54227 ) )
     {
@@ -1425,9 +1425,9 @@ _ID53394( var_0 )
     if ( !isdefined( var_0 ) )
         var_0 = 1;
 
-    if ( isdefined( self._ID922 ) && var_0 )
+    if ( isdefined( self.script_noteworthy ) && var_0 )
     {
-        var_1 = "enable_xenon_autoaim_" + self._ID922;
+        var_1 = "enable_xenon_autoaim_" + self.script_noteworthy;
         level waittill( var_1 );
     }
 
@@ -1441,11 +1441,11 @@ _ID53394( var_0 )
 
 _ID45364()
 {
-    if ( isdefined( self._ID1191 ) )
+    if ( isdefined( self.target ) )
     {
-        var_0 = getent( self._ID1191, "targetname" );
+        var_0 = getent( self.target, "targetname" );
 
-        if ( var_0._ID170 == "script_brushmodel" )
+        if ( var_0.classname == "script_brushmodel" )
         {
             self._ID52687 = var_0;
             return;
@@ -1453,7 +1453,7 @@ _ID45364()
     }
 
     if ( isdefined( level._ID53978 ) && level._ID53978.size > 0 )
-        self._ID52687 = _ID44399( self._ID740, level._ID53978 );
+        self._ID52687 = _ID44399( self.origin, level._ID53978 );
 
     if ( isdefined( self._ID52687 ) )
         level._ID53978 = _ID42237::_ID3321( level._ID53978, self._ID52687 );
@@ -1461,9 +1461,9 @@ _ID45364()
 
 _ID49205( var_0, var_1 )
 {
-    var_2 = anglestoright( var_0._ID65 );
-    var_3 = anglestoforward( var_0._ID65 );
-    var_4 = anglestoup( var_0._ID65 );
+    var_2 = anglestoright( var_0.angles );
+    var_3 = anglestoforward( var_0.angles );
+    var_4 = anglestoup( var_0.angles );
     var_5 = [];
 
     switch ( var_1 )
@@ -1492,104 +1492,104 @@ _ID49205( var_0, var_1 )
             break;
         case "bottle":
             var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 0, 0, 10, var_0, ( 0, 0, 0 ), "prop_winebottle_broken_top" );
-            var_5[var_5.size - 1]._ID1244 = "bottle_top";
+            var_5[var_5.size - 1].type = "bottle_top";
             var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 0, 0, 0, var_0, ( 0, 0, 0 ), "prop_winebottle_broken_bot" );
-            var_5[var_5.size - 1]._ID1244 = "bottle_bot";
+            var_5[var_5.size - 1].type = "bottle_bot";
             break;
         case "plate":
             switch ( var_0._ID54624 )
             {
                 case "round_floral":
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -4, 0.5, var_0, ( 0, 150, 0 ), "prop_diningplate_brokenfloral1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 3, -2, 0.5, var_0, ( 0, 149.8, 0 ), "prop_diningplate_brokenfloral2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 1, 2, 0.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenfloral3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, 2, 0.5, var_0, ( 0, 146.8, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     break;
                 case "round_plain":
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -4, 0.5, var_0, ( 0, 150, 0 ), "prop_diningplate_brokenplain1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 3, -2, 0.5, var_0, ( 0, 149.8, 0 ), "prop_diningplate_brokenplain2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 1, 2, 0.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenplain3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, 2, 0.5, var_0, ( 0, 146.8, 0 ), "prop_diningplate_brokenplain4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     break;
                 case "round_stack":
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -4, 0.5, var_0, ( 0, 150, 0 ), "prop_diningplate_brokenfloral1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 3, -2, 0.5, var_0, ( 0, 149.8, 0 ), "prop_diningplate_brokenfloral2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 1, 2, 0.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenfloral3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, 2, 0.5, var_0, ( 0, 146.8, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, 3, 2.5, var_0, ( 0, 60, 0 ), "prop_diningplate_brokenplain1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -1, -3, 2.5, var_0, ( 0, 59.8, 0 ), "prop_diningplate_brokenplain2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 2, -1, 2.5, var_0, ( 0, 60.2, 0 ), "prop_diningplate_brokenplain3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 2, 4, 2.5, var_0, ( 0, 56.8, 0 ), "prop_diningplate_brokenplain4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -4, 4.5, var_0, ( 0, 150, 0 ), "prop_diningplate_brokenfloral1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 3, -2, 4.5, var_0, ( 0, 149.8, 0 ), "prop_diningplate_brokenfloral2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 1, 2, 4.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenfloral3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, 2, 4.5, var_0, ( 0, 146.8, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     break;
                 case "oval_floral":
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 4, -4, 0.5, var_0, ( 0, 205.9, 0 ), "prop_diningplate_brokenfloral1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -6, 1, 0.5, var_0, ( 0, 352.2, 0 ), "prop_diningplate_brokenfloral2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 4, 2, 0.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenfloral3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -2, 5, 0.5, var_0, ( 0, 102.3, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -3, 0.5, var_0, ( 0, 246.7, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     break;
                 case "oval_plain":
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 4, -4, 0.5, var_0, ( 0, 205.9, 0 ), "prop_diningplate_brokenplain1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -6, 1, 0.5, var_0, ( 0, 352.2, 0 ), "prop_diningplate_brokenplain2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 4, 2, 0.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenplain3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -2, 5, 0.5, var_0, ( 0, 102.3, 0 ), "prop_diningplate_brokenplain4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -3, 0.5, var_0, ( 0, 246.7, 0 ), "prop_diningplate_brokenplain4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     break;
                 case "oval_stack":
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 4, -4, 0.5, var_0, ( 0, 205.9, 0 ), "prop_diningplate_brokenfloral1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -6, 1, 0.5, var_0, ( 0, 352.2, 0 ), "prop_diningplate_brokenfloral2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 4, 2, 0.5, var_0, ( 0, 150.2, 0 ), "prop_diningplate_brokenfloral3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -2, 5, 0.5, var_0, ( 0, 102.3, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -3, -3, 0.5, var_0, ( 0, 246.7, 0 ), "prop_diningplate_brokenfloral4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, 5, 2.5, var_0, ( 0, 25.9, 0 ), "prop_diningplate_brokenplain1" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 6, 0, 2.5, var_0, ( 0, 172.2, 0 ), "prop_diningplate_brokenplain2" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, -4, -1, 2.5, var_0, ( 0, 330.2, 0 ), "prop_diningplate_brokenplain3" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 2, -4, 2.5, var_0, ( 0, 282.3, 0 ), "prop_diningplate_brokenplain4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     var_5[var_5.size] = _ID47664( var_2, var_3, var_4, 3, 4, 2.5, var_0, ( 0, 66.7, 0 ), "prop_diningplate_brokenplain4" );
-                    var_5[var_5.size - 1]._ID1244 = "plate";
+                    var_5[var_5.size - 1].type = "plate";
                     break;
             }
 
@@ -1598,16 +1598,16 @@ _ID49205( var_0, var_1 )
             return;
     }
 
-    _ID42237::_ID3350( var_5, ::_ID52911, var_0._ID740 );
+    _ID42237::_ID3350( var_5, ::_ID52911, var_0.origin );
 
     if ( isdefined( level._ID53277[var_1] ) && level._ID53277[var_1] == 1 )
     {
-        var_6 = var_5[0]._ID740[2];
+        var_6 = var_5[0].origin[2];
 
         for ( var_7 = 0; var_7 < var_5.size; var_7++ )
         {
-            if ( var_6 > var_5[var_7]._ID740[2] )
-                var_6 = var_5[var_7]._ID740[2];
+            if ( var_6 > var_5[var_7].origin[2] )
+                var_6 = var_5[var_7].origin[2];
         }
 
         _ID42237::_ID3350( var_5, ::_ID45229, var_6 );
@@ -1640,15 +1640,15 @@ _ID52911( var_0 )
 {
     self endon( "do not kill" );
 
-    if ( isdefined( self._ID1244 ) && self._ID1244 == "bottle_bot" )
+    if ( isdefined( self.type ) && self.type == "bottle_bot" )
         return;
 
-    var_1 = spawn( "script_origin", self._ID740 );
+    var_1 = spawn( "script_origin", self.origin );
     self linkto( var_1 );
-    var_2 = self._ID740 + ( randomfloat( 10 ) - 5, randomfloat( 10 ) - 5, randomfloat( 10 ) + 5 );
+    var_2 = self.origin + ( randomfloat( 10 ) - 5, randomfloat( 10 ) - 5, randomfloat( 10 ) + 5 );
     var_3 = undefined;
 
-    if ( isdefined( self._ID1244 ) && self._ID1244 == "bottle_top" )
+    if ( isdefined( self.type ) && self.type == "bottle_top" )
     {
         var_3 = ( randomfloat( 40 ) - 20, randomfloat( 40 ) - 20, 70 + randomfloat( 15 ) );
         var_4 = 1;
@@ -1666,7 +1666,7 @@ _ID52911( var_0 )
 
         var_1 rotatevelocity( ( 250 * var_4, 250 * var_5, randomfloat( 100 ) * var_6 ), 2, 0, 0.5 );
     }
-    else if ( isdefined( self._ID1244 ) && self._ID1244 == "plate" )
+    else if ( isdefined( self.type ) && self.type == "plate" )
     {
         var_3 = vectornormalize( var_2 - var_0 );
         var_3 = _ID42407::_ID49965( var_3, 125 + randomfloat( 25 ) );
@@ -1700,14 +1700,14 @@ _ID45229( var_0 )
 {
     self endon( "death" );
     wait 0.1;
-    var_1 = bullettrace( self._ID740, self._ID740 - ( 0, 0, 50000 ), 0, undefined );
+    var_1 = bullettrace( self.origin, self.origin - ( 0, 0, 50000 ), 0, undefined );
     var_2 = var_1["position"];
 
-    while ( self._ID740[2] > var_2[2] )
+    while ( self.origin[2] > var_2[2] )
         wait 0.05;
 
     self unlink();
-    self._ID740 = ( self._ID740[0], self._ID740[1], var_2[2] );
+    self.origin = ( self.origin[0], self.origin[1], var_2[2] );
     self notify( "do not kill" );
     self unlink();
 }
@@ -1721,11 +1721,11 @@ _ID47664( var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8 )
     var_10 = _ID42407::_ID49965( var_10, var_4 * var_9 );
     var_11 = _ID42407::_ID49965( var_11, var_3 * var_9 );
     var_12 = _ID42407::_ID49965( var_12, var_5 * var_9 );
-    var_13 = var_6._ID740 + var_10 + var_11 + var_12;
+    var_13 = var_6.origin + var_10 + var_11 + var_12;
     var_14 = spawn( "script_model", var_13 );
     var_14 setmodel( var_8 );
     var_14._ID23881 = var_9;
-    var_14._ID65 = var_6._ID65 + var_7;
+    var_14.angles = var_6.angles + var_7;
     _ID46400( var_14 );
     return var_14;
 }
@@ -1866,12 +1866,12 @@ _ID13933( var_0 )
     var_2 = 20000;
     var_3 = 1.0;
 
-    if ( isdefined( self._ID997 ) )
-        var_3 = self._ID997;
+    if ( isdefined( self.speed ) )
+        var_3 = self.speed;
 
     if ( var_0 == "slow" )
     {
-        if ( isdefined( self._ID922 ) && self._ID922 == "lockedspeed" )
+        if ( isdefined( self.script_noteworthy ) && self.script_noteworthy == "lockedspeed" )
             var_1 = 180;
         else
             var_1 = randomfloatrange( 100 * var_3, 360 * var_3 );
@@ -1885,14 +1885,14 @@ _ID13933( var_0 )
 
     }
 
-    if ( !isdefined( self._ID922 ) || self._ID922 == "lockedspeed" )
+    if ( !isdefined( self.script_noteworthy ) || self.script_noteworthy == "lockedspeed" )
         wait(randomfloatrange( 0, 1 ));
 
-    var_4 = self._ID65;
-    var_5 = anglestoright( self._ID65 ) * 100;
+    var_4 = self.angles;
+    var_5 = anglestoright( self.angles ) * 100;
     var_5 = vectornormalize( var_5 );
 
-    if ( isdefined( self._ID922 ) && self._ID922 == "reverse" )
+    if ( isdefined( self.script_noteworthy ) && self.script_noteworthy == "reverse" )
         var_1 *= -1;
 
     for (;;)

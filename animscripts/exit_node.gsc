@@ -15,8 +15,8 @@ _ID36145()
     if ( !_ID7462() )
         return;
 
-    var_0 = self._ID740;
-    var_1 = self._ID65[1];
+    var_0 = self.origin;
+    var_1 = self.angles[1];
     var_2 = "exposed";
     var_3 = 0;
     var_4 = _ID16270();
@@ -37,12 +37,12 @@ _ID36145()
 
             if ( !isdefined( anim._ID13719[var_2] ) && var_2 != "stand_unstable" && var_2 != "stand_unstable_run" && var_2 != "stand_saw" && var_2 != "crouch_saw" )
             {
-                var_6 = animscripts\utility::_ID1735( self._ID65[1] - animscripts\utility::_ID16462( var_4 ) );
+                var_6 = animscripts\utility::_ID1735( self.angles[1] - animscripts\utility::_ID16462( var_4 ) );
 
                 if ( var_6 < 5 )
                 {
                     if ( !isdefined( self._ID18328 ) )
-                        var_0 = var_4._ID740;
+                        var_0 = var_4.origin;
 
                     var_1 = animscripts\utility::_ID16462( var_4 );
                 }
@@ -79,7 +79,7 @@ _ID36145()
         }
     }
 
-    var_9 = ( -1 * self._ID601[0], -1 * self._ID601[1], 0 );
+    var_9 = ( -1 * self.lookaheaddir[0], -1 * self.lookaheaddir[1], 0 );
     var_10 = _ID16413( var_4 );
     var_11 = var_10._ID23090;
     var_12 = var_10._ID13291;
@@ -103,9 +103,9 @@ _ID36145()
     if ( var_16 > var_15 )
         return;
 
-    var_17 = distancesquared( self._ID740, self._ID8873 ) * 1.25;
+    var_17 = distancesquared( self.origin, self._ID8873 ) * 1.25;
 
-    if ( distancesquared( self._ID740, self._ID762 ) < var_17 )
+    if ( distancesquared( self.origin, self.pathgoalpos ) < var_17 )
         return;
 
     _ID11527( var_2, var_14 );
@@ -113,24 +113,24 @@ _ID36145()
 
 _ID10669( var_0 )
 {
-    if ( animscripts\utility::_ID20527() && var_0._ID1244 == "Cover Crouch" )
+    if ( animscripts\utility::_ID20527() && var_0.type == "Cover Crouch" )
         return "free_run_out_of_cover_crouch";
 
     if ( animscripts\cover_arrival::_ID6911( var_0 ) )
     {
-        if ( var_0._ID1244 == "Cover Stand" )
+        if ( var_0.type == "Cover Stand" )
             return "stand_saw";
 
-        if ( var_0._ID1244 == "Cover Crouch" )
+        if ( var_0.type == "Cover Crouch" )
             return "crouch_saw";
-        else if ( var_0._ID1244 == "Cover Prone" )
+        else if ( var_0.type == "Cover Prone" )
             return "prone_saw";
     }
 
-    if ( !isdefined( anim._ID3257[var_0._ID1244] ) )
+    if ( !isdefined( anim._ID3257[var_0.type] ) )
         return;
 
-    if ( isdefined( anim._ID29710[var_0._ID1244] ) && anim._ID29710[var_0._ID1244] != self._ID7._ID28253 )
+    if ( isdefined( anim._ID29710[var_0.type] ) && anim._ID29710[var_0.type] != self._ID7._ID28253 )
         return;
 
     var_1 = self._ID7._ID28253;
@@ -138,7 +138,7 @@ _ID10669( var_0 )
     if ( var_1 == "prone" && !isdefined( self._ID46857 ) )
         var_1 = "crouch";
 
-    var_2 = anim._ID3257[var_0._ID1244][var_1];
+    var_2 = anim._ID3257[var_0.type][var_1];
 
     if ( animscripts\cover_arrival::_ID39956() && var_2 == "exposed" )
         var_2 = "exposed_ready";
@@ -149,7 +149,7 @@ _ID10669( var_0 )
         {
             var_2 = "exposed_unstable";
 
-            if ( self._ID675 == "run" )
+            if ( self.movemode == "run" )
                 var_2 += "_run";
 
             return var_2;
@@ -158,7 +158,7 @@ _ID10669( var_0 )
         {
             var_2 = "stand_unstable";
 
-            if ( self._ID675 == "run" )
+            if ( self.movemode == "run" )
                 var_2 += "_run";
 
             return var_2;
@@ -178,7 +178,7 @@ _ID10669( var_0 )
 
 _ID7462()
 {
-    if ( !isdefined( self._ID762 ) )
+    if ( !isdefined( self.pathgoalpos ) )
         return 0;
 
     if ( isdefined( self._ID11025 ) && self._ID11025 )
@@ -193,7 +193,7 @@ _ID7462()
     if ( self._ID7._ID28253 == "prone" && !isdefined( self._ID46857 ) )
         return 0;
 
-    if ( self._ID1012 != "none" )
+    if ( self.stairsstate != "none" )
         return 0;
 
     if ( !self isstanceallowed( "stand" ) && !isdefined( self._ID18328 ) && !isdefined( self._ID46857 ) )
@@ -219,9 +219,9 @@ _ID7461( var_0, var_1 )
             return 0;
     }
 
-    if ( !isdefined( self._ID18328 ) && isdefined( self._ID322 ) && vectordot( self._ID601, self._ID322._ID740 - self._ID740 ) < 0 )
+    if ( !isdefined( self._ID18328 ) && isdefined( self.enemy ) && vectordot( self.lookaheaddir, self.enemy.origin - self.origin ) < 0 )
     {
-        if ( animscripts\utility::_ID6885() && distancesquared( self._ID740, self._ID322._ID740 ) < 90000 )
+        if ( animscripts\utility::_ID6885() && distancesquared( self.origin, self.enemy.origin ) < 90000 )
             return 0;
     }
 
@@ -242,7 +242,7 @@ _ID10670( var_0 )
     {
         var_0 = "exposed_unstable";
 
-        if ( self._ID675 == "run" )
+        if ( self.movemode == "run" )
             var_0 += "_run";
 
         return var_0;
@@ -260,10 +260,10 @@ _ID16413( var_0 )
 {
     var_1 = spawnstruct();
 
-    if ( isdefined( var_0 ) && isdefined( anim._ID23090[var_0._ID1244] ) )
+    if ( isdefined( var_0 ) && isdefined( anim._ID23090[var_0.type] ) )
     {
-        var_1._ID23090 = anim._ID23090[var_0._ID1244];
-        var_1._ID13291 = anim._ID13291[var_0._ID1244];
+        var_1._ID23090 = anim._ID23090[var_0.type];
+        var_1._ID13291 = anim._ID13291[var_0.type];
     }
     else
     {
@@ -346,7 +346,7 @@ _ID7445( var_0, var_1, var_2, var_3, var_4 )
 
     var_12 = isdefined( self.nodeexitignoreactors ) && self.nodeexitignoreactors;
 
-    if ( !self maymovefrompointtopoint( self._ID740, var_11, 1, var_12 ) )
+    if ( !self maymovefrompointtopoint( self.origin, var_11, 1, var_12 ) )
         return 0;
 
     if ( var_4 <= 6 || var_3 )
@@ -385,12 +385,12 @@ _ID51781( var_0 )
     if ( isdefined( self.exitnode_overridetranstime ) )
         var_1 = self.exitnode_overridetranstime;
 
-    if ( self._ID1063 )
+    if ( self.swimmer )
         self animmode( "nogravity", 0 );
     else
         self animmode( "zonly_physics", 0 );
 
-    self orientmode( "face angle", self._ID65[1] );
+    self orientmode( "face angle", self.angles[1] );
     self._ID19386 = 1;
     animscripts\move::_ID51451();
     self setflaggedanimknoballrestart( "coverexit", var_0, %body, 1, var_1, self._ID24474 );
@@ -425,9 +425,9 @@ _ID14231( var_0, var_1 )
 
 _ID10667( var_0, var_1 )
 {
-    if ( var_0._ID1244 == "Cover Right" )
+    if ( var_0.type == "Cover Right" )
         var_1 = "heat_right";
-    else if ( var_0._ID1244 == "Cover Left" )
+    else if ( var_0.type == "Cover Left" )
         var_1 = "heat_left";
 
     return var_1;
@@ -445,12 +445,12 @@ _ID16270()
     if ( animscripts\utility::_ID20915() )
         var_1 = 1024;
 
-    if ( isdefined( self._ID700 ) && distancesquared( self._ID740, self._ID700._ID740 ) < var_1 )
-        var_0 = self._ID700;
-    else if ( isdefined( self._ID822 ) && distancesquared( self._ID740, self._ID822._ID740 ) < var_1 )
-        var_0 = self._ID822;
+    if ( isdefined( self.node ) && distancesquared( self.origin, self.node.origin ) < var_1 )
+        var_0 = self.node;
+    else if ( isdefined( self.prevnode ) && distancesquared( self.origin, self.prevnode.origin ) < var_1 )
+        var_0 = self.prevnode;
 
-    if ( isdefined( var_0 ) && isdefined( self._ID18328 ) && animscripts\utility::_ID1735( self._ID65[1] - var_0._ID65[1] ) > 30 )
+    if ( isdefined( var_0 ) && isdefined( self._ID18328 ) && animscripts\utility::_ID1735( self.angles[1] - var_0.angles[1] ) > 30 )
         return undefined;
 
     return var_0;

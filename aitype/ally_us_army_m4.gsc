@@ -1,17 +1,17 @@
 // H2 PC GSC
 // Decompiled by https://github.com/xensik/gsc-tool
 
-_ID616()
+main()
 {
     self._ID3217 = "";
     self._ID2032 = "";
-    self._ID1194 = "allies";
-    self._ID1244 = "human";
+    self.team = "allies";
+    self.type = "human";
     self._ID36736 = "regular";
-    self._ID10 = 0.2;
-    self._ID486 = 100;
-    self._ID470 = "fraggrenade";
-    self._ID464 = 0;
+    self.accuracy = 0.2;
+    self.health = 100;
+    self.grenadeweapon = "fraggrenade";
+    self.grenadeammo = 0;
     self._ID949 = "";
     self._ID34144 = "beretta";
 
@@ -24,23 +24,23 @@ _ID616()
     switch ( _ID42226::_ID15950( 2 ) )
     {
         case 0:
-            self._ID1302 = "m4_grenadier";
+            self.weapon = "m4_grenadier";
             break;
         case 1:
-            self._ID1302 = "m4_grunt";
+            self.weapon = "m4_grunt";
             break;
     }
 
     switch ( _ID42226::_ID15942( 3 ) )
     {
         case 0:
-            _ID45035::_ID616();
+            _ID45035::main();
             break;
         case 1:
-            _ID45927::_ID616();
+            _ID45927::main();
             break;
         case 2:
-            _ID43332::_ID616();
+            _ID43332::main();
             break;
     }
 }
