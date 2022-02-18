@@ -166,7 +166,7 @@ function advanced_hdr( menu, controller )
 	} )
 	self.id = "advanced_hdr_id"
 	local f8_local1 = LUI.FlowManager.GetMenuScopedDataFromElement( self )
-	local self = LUI.UIImage.new( {
+	local f8_local2 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -179,25 +179,25 @@ function advanced_hdr( menu, controller )
 		color = Colors.black,
 		alpha = 1
 	} )
-	self.id = "advanced_hdr_bg_id"
-	self:addElement( self )
-	local self = LUI.UIBindButton.new()
-	self.id = "advanced_hdr_bind_btn_id"
-	self:registerEventHandler( "button_left", function ( element )
+	f8_local2.id = "advanced_hdr_bg_id"
+	self:addElement( f8_local2 )
+	local f8_local3 = LUI.UIBindButton.new()
+	f8_local3.id = "advanced_hdr_bind_btn_id"
+	f8_local3:registerEventHandler( "button_left", function ( element )
 		ChangeParam( self, -1 )
 	end )
-	self:registerEventHandler( "button_right", function ( element )
+	f8_local3:registerEventHandler( "button_right", function ( element )
 		ChangeParam( self, 1 )
 	end )
-	self:registerEventHandler( "button_up", function ( element )
+	f8_local3:registerEventHandler( "button_up", function ( element )
 		SelectSetting( self, -1 )
 	end )
-	self:registerEventHandler( "button_down", function ( element )
+	f8_local3:registerEventHandler( "button_down", function ( element )
 		SelectSetting( self, 1 )
 	end )
-	self.handlePrimary = true
-	self:addElement( self )
-	local self = LUI.UIText.new( {
+	f8_local3.handlePrimary = true
+	self:addElement( f8_local3 )
+	local f8_local4 = LUI.UIText.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -210,12 +210,12 @@ function advanced_hdr( menu, controller )
 		alignment = LUI.Alignment.Center,
 		color = Colors.primary_text_color
 	} )
-	self.id = "advanced_hdr_instruction_txt1_id"
-	self:setText( Engine.Localize( "@MENU_ADJUST_ADVANCED_HDR" ) )
-	self:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( 410, nil, -410, 0, CoD.AnchorTypes.All ) )
-	self:addElement( self )
-	local f8_local6 = LUI.MenuBuilder.BuildAddChild( self, {
+	f8_local4.id = "advanced_hdr_instruction_txt1_id"
+	f8_local4:setText( Engine.Localize( "@MENU_ADJUST_ADVANCED_HDR" ) )
+	self:addElement( f8_local4 )
+	local f8_local5 = LUI.UIElement.new( CoD.CreateState( 410, nil, -410, 0, CoD.AnchorTypes.All ) )
+	self:addElement( f8_local5 )
+	local f8_local6 = LUI.MenuBuilder.BuildAddChild( f8_local5, {
 		type = "button_helper_text_main"
 	} )
 	f8_local6:processEvent( {
@@ -242,19 +242,19 @@ function advanced_hdr( menu, controller )
 		clickable = true,
 		priority = -1500
 	} )
-	self:registerEventHandler( "button_action", MBh.LeaveMenu() )
-	self:registerEventHandler( "button_secondary", f0_local2 )
-	self:registerEventHandler( "button_alt2", f0_local1 )
+	f8_local3:registerEventHandler( "button_action", MBh.LeaveMenu() )
+	f8_local3:registerEventHandler( "button_secondary", f0_local2 )
+	f8_local3:registerEventHandler( "button_alt2", f0_local1 )
 	if Engine.IsPC() then
 		local f8_local7 = f8_local6:getFirstDescendentById( "button_secondary_id" )
 		f8_local7:registerEventHandler( "leftmouseup", f0_local2 )
 		local f8_local8 = f8_local6:getFirstDescendentById( "button_action_id" )
 		f8_local8:registerEventHandler( "leftmouseup", MBh.LeaveMenu() )
-		local self = f8_local6:getFirstDescendentById( "button_alt2_id" )
-		self:registerEventHandler( "leftmouseup", f0_local1 )
+		local f8_local9 = f8_local6:getFirstDescendentById( "button_alt2_id" )
+		f8_local9:registerEventHandler( "leftmouseup", f0_local1 )
 	end
 	local f8_local7 = 756
-	local self = LUI.UIImage.new( {
+	local f8_local9 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = false,
@@ -265,9 +265,9 @@ function advanced_hdr( menu, controller )
 		alpha = 1,
 		material = RegisterMaterial( "h2_hdr_advanced_reference" )
 	} )
-	self.id = "advanced_hdr_ref_id"
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f8_local9.id = "advanced_hdr_ref_id"
+	self:addElement( f8_local9 )
+	local f8_local10 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -279,8 +279,8 @@ function advanced_hdr( menu, controller )
 		alpha = 1,
 		material = RegisterMaterial( "h2_hdr_advanced_hud_overlay" )
 	} )
-	self.id = "advanced_hdr_hud_ref_id"
-	self:addElement( self )
+	f8_local10.id = "advanced_hdr_hud_ref_id"
+	f8_local9:addElement( f8_local10 )
 	local f8_local11 = -183
 	local f8_local12 = 412
 	local f8_local13 = 602
@@ -334,11 +334,11 @@ function advanced_hdr( menu, controller )
 		f0_local0[f8_local20].barElement = LUI.UIHorizontalScrollbar.new( f8_local14, nil, 3, nil, 1, 1, nil, Colors.h2.yellow, Colors.black, "white", "black", "white", nil, 4, Colors.h2.grey, false )
 		f0_local0[f8_local20].barElement.id = "UIHorizontalScrollbar" .. f0_local0[f8_local20].name
 		self:addElement( f0_local0[f8_local20].barElement )
-		local self = LUI.UIImage.new( f8_local17 )
-		self:setup9SliceImage( 10, 6, 0.05, 0.3 )
-		self:registerAnimationState( "unselected", f8_local17 )
-		self:registerAnimationState( "selected", f8_local18 )
-		f0_local0[f8_local20].borderElement = self
+		local f8_local23 = LUI.UIImage.new( f8_local17 )
+		f8_local23:setup9SliceImage( 10, 6, 0.05, 0.3 )
+		f8_local23:registerAnimationState( "unselected", f8_local17 )
+		f8_local23:registerAnimationState( "selected", f8_local18 )
+		f0_local0[f8_local20].borderElement = f8_local23
 		f0_local0[f8_local20].barElement:addElement( f0_local0[f8_local20].borderElement )
 		f0_local0[f8_local20].textElement = LUI.UIText.new( f8_local19 )
 		f0_local0[f8_local20].textElement:setText( f0_local0[f8_local20].name )
@@ -369,7 +369,7 @@ function advanced_hdr( menu, controller )
 		color = GenericMenuColors.title_divider,
 		alpha = 0.5
 	} ) )
-	local self = LUI.UIElement.new( {
+	local f8_local21 = LUI.UIElement.new( {
 		topAnchor = false,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -379,9 +379,9 @@ function advanced_hdr( menu, controller )
 		left = 262,
 		right = -262
 	} )
-	self.id = "advanced_hdr_instruction_desc_id"
-	self:addElement( self )
-	self:addElement( LUI.MenuBuilder.BuildRegisteredType( "h1_vlist_button_desc_text", {
+	f8_local21.id = "advanced_hdr_instruction_desc_id"
+	self:addElement( f8_local21 )
+	f8_local21:addElement( LUI.MenuBuilder.BuildRegisteredType( "h1_vlist_button_desc_text", {
 		top = 0,
 		left = 0,
 		width = 756,
@@ -401,31 +401,31 @@ function advanced_hdr( menu, controller )
 	return self
 end
 
-function CreatHDRDebugInfo( f9_arg0 )
-	local f9_local0 = Font18
-	local f9_local1 = CoD.CreateState( (1 - SliderBounds.VertMargin.Min) * ScreenResolution[currentScreenResolution].width, (1 - SliderBounds.HorzMargin.Min) * ScreenResolution[currentScreenResolution].height, 500, 500, CoD.AnchorTypes.TopLeft )
-	f9_local1.id = "debugContainer"
-	local self = LUI.UIElement.new( f9_local1 )
-	f9_arg0:addElement( self )
-	f9_local1.left = 0
-	f9_local1.top = Font18.Height
-	f9_local1.bottom = nil
-	f9_local1.height = Font18.Height
-	f9_local1.font = Font18.Font
-	f9_local1.alignment = LUI.Alignment.Left
+function CreatHDRDebugInfo( f13_arg0 )
+	local f13_local0 = Font18
+	local f13_local1 = CoD.CreateState( (1 - SliderBounds.VertMargin.Min) * ScreenResolution[currentScreenResolution].width, (1 - SliderBounds.HorzMargin.Min) * ScreenResolution[currentScreenResolution].height, 500, 500, CoD.AnchorTypes.TopLeft )
+	f13_local1.id = "debugContainer"
+	local self = LUI.UIElement.new( f13_local1 )
+	f13_arg0:addElement( self )
+	f13_local1.left = 0
+	f13_local1.top = Font18.Height
+	f13_local1.bottom = nil
+	f13_local1.height = Font18.Height
+	f13_local1.font = Font18.Font
+	f13_local1.alignment = LUI.Alignment.Left
 	self.text = {}
-	for f9_local3 = 1, 4, 1 do
-		f9_local1.id = "hdrDisplayText" .. f9_local3
-		f9_local1.top = Font18.Height * f9_local3
-		self.text[f9_local3] = LUI.UIText.new( f9_local1 )
-		self:addElement( self.text[f9_local3] )
+	for f13_local3 = 1, 4, 1 do
+		f13_local1.id = "hdrDisplayText" .. f13_local3
+		f13_local1.top = Font18.Height * f13_local3
+		self.text[f13_local3] = LUI.UIText.new( f13_local1 )
+		self:addElement( self.text[f13_local3] )
 	end
 	self.refreshTimer = LUI.UITimer.new( 1000, "refresh_values" )
 	self.refreshTimer.id = "refreshTimer"
 	self:registerEventHandler( "refresh_values", UpdateHdrDebugInfo )
 	self:addElement( self.refreshTimer )
-	local f9_local3 = LUI.FlowManager.GetMenuScopedDataFromElement( f9_arg0 )
-	f9_local3.debugContainer = self
+	local f13_local3 = LUI.FlowManager.GetMenuScopedDataFromElement( f13_arg0 )
+	f13_local3.debugContainer = self
 	UpdateHdrDebugInfo( self )
 end
 

@@ -265,17 +265,11 @@ end
 function EnableComScore()
 	CSData.Enabled = true
 	local f14_local0 = "comscore_delay"
-	local f14_local1 = CSData
-	local f14_local2 = LUI.UITimer.new
-	local f14_local3 = 500
-	local f14_local4 = {
+	CSData.Timer = LUI.UITimer.new( 500, {
 		name = f14_local0
-	}
-	local f14_local5 = nil
-	local f14_local6, f14_local7 = false
-	f14_local1.Timer = f14_local2( f14_local3, f14_local4, f14_local5, f14_local6, f14_local7, false, true )
+	}, nil, false, false, false, true )
 	CSData.Timer.id = "comscore_timer"
-	f14_local1 = Engine.GetLuiRoot()
+	local f14_local1 = Engine.GetLuiRoot()
 	f14_local1:registerEventHandler( f14_local0, OnComscoreTimer )
 	f14_local1:addElement( CSData.Timer )
 end

@@ -91,16 +91,16 @@ function CreateOptions( f12_arg0 )
 			text = "@LUA_MENU_ENABLED",
 			value = true
 		}
-	}, nil, nil, function ( f22_arg0, f22_arg1, f22_arg2 )
-		RefreshMouseCursor( f22_arg2 )
-		if f22_arg2 then
-			LUI.OptionsLayout.BuildMenu( f12_arg0.rightPanel, f22_arg1.controller )
-			RefreshLayoutDisplay( f12_arg0.rightPanel, f22_arg1.controller )
+	}, nil, nil, function ( f13_arg0, f13_arg1, f13_arg2 )
+		RefreshMouseCursor( f13_arg2 )
+		if f13_arg2 then
+			LUI.OptionsLayout.BuildMenu( f12_arg0.rightPanel, f13_arg1.controller )
+			RefreshLayoutDisplay( f12_arg0.rightPanel, f13_arg1.controller )
 		else
 			if f12_arg0.rightPanel.controller ~= nil then
 				f12_arg0.rightPanel:removeElement( f12_arg0.rightPanel.controller )
 			end
-			f22_arg0:dispatchEventToRoot( {
+			f13_arg0:dispatchEventToRoot( {
 				name = "check_switch_to_azerty"
 			} )
 		end
@@ -122,11 +122,11 @@ function CreateOptions( f12_arg0 )
 			text = "MENU_LEGACY_SOUTHPAW",
 			value = "thumbstick_legacysouthpaw"
 		}
-	}, GamepadDisabledFunc, nil, function ( f23_arg0, f23_arg1 )
+	}, GamepadDisabledFunc, nil, function ( f14_arg0, f14_arg1 )
 		f12_arg0.rightPanel:dispatchEventToChildren( {
 			name = "swap_sticks_buttons"
 		} )
-		RefreshLayoutDisplay( f12_arg0.rightPanel, f23_arg1.controller )
+		RefreshLayoutDisplay( f12_arg0.rightPanel, f14_arg1.controller )
 		f12_arg0.rightPanel.controller.sticksOverlay:dispatchEventToChildren( {
 			name = "highlight",
 			dispatchChildren = true
@@ -136,7 +136,7 @@ function CreateOptions( f12_arg0 )
 			dispatchChildren = true
 		} )
 	end )
-	f12_local0.properties.button_over_func = function ( f24_arg0, f24_arg1 )
+	f12_local0.properties.button_over_func = function ( f15_arg0, f15_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.sticksOverlay then
 			f12_arg0.rightPanel.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "highlight",
@@ -149,7 +149,7 @@ function CreateOptions( f12_arg0 )
 		end
 	end
 	
-	f12_local0.properties.button_up_func = function ( f25_arg0, f25_arg1 )
+	f12_local0.properties.button_up_func = function ( f16_arg0, f16_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.sticksOverlay then
 			f12_arg0.rightPanel.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "restore",
@@ -199,19 +199,19 @@ function CreateOptions( f12_arg0 )
 			text = "MENU_STICK_AND_MOVE",
 			value = "buttons_stick_and_move"
 		}
-	}, GamepadDisabledFunc, function ( f26_arg0, f26_arg1 )
-		local f26_local0 = ""
+	}, GamepadDisabledFunc, function ( f17_arg0, f17_arg1 )
+		local f17_local0 = ""
 		if isFlipped() then
-			f26_local0 = "_alt"
+			f17_local0 = "_alt"
 		end
-		Engine.ExecNow( "profile_setButtonsConfig " .. f26_arg1.value .. f26_local0 )
+		Engine.ExecNow( "profile_setButtonsConfig " .. f17_arg1.value .. f17_local0 )
 		if not Engine.IsConsoleGame() then
 			Engine.ExecNow( "profile_menuDvarsFinish" )
 		end
-		LUI.Options.OptionsWindowTriggerRefresh( f26_arg0, f26_arg1 )
-		RefreshLayoutDisplay( f12_arg0.rightPanel, f26_arg1.controller )
+		LUI.Options.OptionsWindowTriggerRefresh( f17_arg0, f17_arg1 )
+		RefreshLayoutDisplay( f12_arg0.rightPanel, f17_arg1.controller )
 	end )
-	f12_local1.properties.button_over_func = function ( f27_arg0, f27_arg1 )
+	f12_local1.properties.button_over_func = function ( f18_arg0, f18_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.buttonsOverlay then
 			f12_arg0.rightPanel.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "highlight",
@@ -224,7 +224,7 @@ function CreateOptions( f12_arg0 )
 		end
 	end
 	
-	f12_local1.properties.button_up_func = function ( f28_arg0, f28_arg1 )
+	f12_local1.properties.button_up_func = function ( f19_arg0, f19_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.buttonsOverlay then
 			f12_arg0.rightPanel.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "restore",
@@ -238,25 +238,25 @@ function CreateOptions( f12_arg0 )
 	end
 	
 	local f12_local2 = nil
-	local f12_local3 = function ( f29_arg0, f29_arg1 )
-		local f29_local0 = string.gsub( Engine.GetProfileData( f0_local2 ), "_alt", "" )
-		local f29_local1 = "_alt"
+	local f12_local3 = function ( f20_arg0, f20_arg1 )
+		local f20_local0 = string.gsub( Engine.GetProfileData( f0_local2 ), "_alt", "" )
+		local f20_local1 = "_alt"
 		if isFlipped() then
-			f29_local1 = ""
+			f20_local1 = ""
 		end
-		Engine.ExecNow( "profile_setButtonsConfig " .. f29_local0 .. f29_local1 )
+		Engine.ExecNow( "profile_setButtonsConfig " .. f20_local0 .. f20_local1 )
 		f12_arg0.list:processEvent( {
 			name = "content_refresh",
 			dispatchChildren = true
 		} )
-		RefreshLayoutDisplay( f12_arg0.rightPanel, f29_arg1.controller )
+		RefreshLayoutDisplay( f12_arg0.rightPanel, f20_arg1.controller )
 	end
 	
 	local f12_local4 = f12_arg0:AddButton( Engine.Localize( "@MENU_BUTTON_LAYOUT_ALT" ), nil, GamepadDisabledFunc, nil, nil, {
 		variant = GenericButtonSettings.Variants.Select,
 		desc_text = Engine.Localize( "@MENU_OPTIONS_BUTTON_LAYOUT_ALT_DESC" ),
 		H1OptionButton = true,
-		button_display_func = function ( f30_arg0, f30_arg1 )
+		button_display_func = function ( f21_arg0, f21_arg1 )
 			if isFlipped() then
 				return Engine.Localize( "@LUA_MENU_ENABLED" )
 			else
@@ -268,7 +268,7 @@ function CreateOptions( f12_arg0 )
 		buttonActionIsRightAction = true,
 		showLockOnDisable = true
 	} )
-	f12_local4.properties.button_over_func = function ( f31_arg0, f31_arg1 )
+	f12_local4.properties.button_over_func = function ( f22_arg0, f22_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.buttonsOverlay then
 			f12_arg0.rightPanel.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "flipped_button_highlight",
@@ -277,7 +277,7 @@ function CreateOptions( f12_arg0 )
 		end
 	end
 	
-	f12_local4.properties.button_up_func = function ( f32_arg0, f32_arg1 )
+	f12_local4.properties.button_up_func = function ( f23_arg0, f23_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.buttonsOverlay then
 			f12_arg0.rightPanel.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "restore",
@@ -295,14 +295,14 @@ function CreateOptions( f12_arg0 )
 			text = "@LUA_MENU_ENABLED",
 			value = true
 		}
-	}, GamepadDisabledFunc, nil, function ( f33_arg0, f33_arg1 )
-		RefreshLayoutDisplay( f12_arg0.rightPanel, f33_arg1.controller )
+	}, GamepadDisabledFunc, nil, function ( f24_arg0, f24_arg1 )
+		RefreshLayoutDisplay( f12_arg0.rightPanel, f24_arg1.controller )
 		f12_arg0.rightPanel.controller.sticksOverlay:dispatchEventToChildren( {
 			name = "look_inversion_highlight",
 			dispatchChildren = true
 		} )
 	end )
-	f12_local5.properties.button_over_func = function ( f34_arg0, f34_arg1 )
+	f12_local5.properties.button_over_func = function ( f25_arg0, f25_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.sticksOverlay then
 			f12_arg0.rightPanel.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "look_inversion_highlight",
@@ -311,7 +311,7 @@ function CreateOptions( f12_arg0 )
 		end
 	end
 	
-	f12_local5.properties.button_up_func = function ( f35_arg0, f35_arg1 )
+	f12_local5.properties.button_up_func = function ( f26_arg0, f26_arg1 )
 		if f12_arg0.rightPanel.controller and f12_arg0.rightPanel.controller.sticksOverlay then
 			f12_arg0.rightPanel.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "restore",
@@ -326,10 +326,10 @@ function CreateOptions( f12_arg0 )
 		desc_text = Engine.Localize( "PLATFORM_OPTIONS_VERTICAL_SENSITIVITY_DESC" ),
 		H1OptionButton = true,
 		button_display_func = GetSensitivityPitchText,
-		button_left_func = function ( f36_arg0, f36_arg1 )
+		button_left_func = function ( f27_arg0, f27_arg1 )
 			return SensitivityChange( f12_arg0.exclusiveController, -1, f0_local0 )
 		end,
-		button_right_func = function ( f37_arg0, f37_arg1 )
+		button_right_func = function ( f28_arg0, f28_arg1 )
 			return SensitivityChange( f12_arg0.exclusiveController, 1, f0_local0 )
 		end,
 		buttonActionIsRightAction = true,
@@ -343,10 +343,10 @@ function CreateOptions( f12_arg0 )
 		desc_text = Engine.Localize( "PLATFORM_OPTIONS_HORIZONTAL_SENSITIVITY_DESC" ),
 		H1OptionButton = true,
 		button_display_func = GetSensitivityYawText,
-		button_left_func = function ( f38_arg0, f38_arg1 )
+		button_left_func = function ( f29_arg0, f29_arg1 )
 			return SensitivityChange( f12_arg0.exclusiveController, -1, f0_local1 )
 		end,
-		button_right_func = function ( f39_arg0, f39_arg1 )
+		button_right_func = function ( f30_arg0, f30_arg1 )
 			return SensitivityChange( f12_arg0.exclusiveController, 1, f0_local1 )
 		end,
 		buttonActionIsRightAction = true,
@@ -374,8 +374,8 @@ function CreateOptions( f12_arg0 )
 				text = "@LUA_MENU_ENABLED",
 				value = true
 			}
-		}, GamepadDisabledFunc, nil, function ( f40_arg0, f40_arg1 )
-			Engine.ToggleAimAssistSlowdown( f40_arg1.controller )
+		}, GamepadDisabledFunc, nil, function ( f31_arg0, f31_arg1 )
+			Engine.ToggleAimAssistSlowdown( f31_arg1.controller )
 		end )
 	end
 	LUI.Options.CreateControlProfileDataButton( f12_arg0, "autoWeaponSwitch", "profile_toggleAutoWeaponSwitch", nil, "LUA_MENU_AUTO_WEAPON_SWITCH", "LUA_MENU_AUTO_WEAPON_SWITCH_DESC", {
@@ -425,78 +425,78 @@ function CreateOptions( f12_arg0 )
 	LUI.Options.InitScrollingList( f12_arg0.list, nil )
 end
 
-function RefreshFunc( f13_arg0 )
-	return function ( f5_arg0, f5_arg1 )
-		f13_arg0.list:processEvent( {
+function RefreshFunc( f32_arg0 )
+	return function ( f33_arg0, f33_arg1 )
+		f32_arg0.list:processEvent( {
 			name = "content_refresh",
 			dispatchChildren = true
 		} )
-		RefreshLayoutDisplay( f13_arg0.rightPanel, f13_arg0.exclusiveController )
+		RefreshLayoutDisplay( f32_arg0.rightPanel, f32_arg0.exclusiveController )
 	end
 	
 end
 
-LUI.GamepadControls.new = function ( f14_arg0, f14_arg1 )
+LUI.GamepadControls.new = function ( f34_arg0, f34_arg1 )
 	Engine.ExecNow( "profile_menuDvarsSetup" )
-	local f14_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
-	local f14_local1 = LUI.MenuTemplate.new( f14_arg0, {
+	local f34_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
+	local f34_local1 = LUI.MenuTemplate.new( f34_arg0, {
 		menu_title = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_CONTROL_OPTIONS" ) ),
-		menu_top_indent = f14_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
+		menu_top_indent = f34_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
 		menu_width = GenericMenuDims.OptionMenuWidth,
 		menu_list_divider_top_offset = -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing),
 		noWrap = true,
 		skipAnim = 0 ~= LUI.PCControlOptions.FindTypeIndex( LUI.PreviousMenuName )
 	} )
-	f14_local1.optionMenuTabElement = f14_local1:addElement( LUI.H1MenuTab.new( {
-		title = function ( f6_arg0 )
-			return LUI.PCControlOptions.Categories[f6_arg0].title
+	f34_local1.optionMenuTabElement = f34_local1:addElement( LUI.H1MenuTab.new( {
+		title = function ( f35_arg0 )
+			return LUI.PCControlOptions.Categories[f35_arg0].title
 		end,
 		tabCount = #LUI.PCControlOptions.Categories,
-		underTabTextFunc = function ( f7_arg0 )
-			return LUI.PCControlOptions.Categories[f7_arg0].title
+		underTabTextFunc = function ( f36_arg0 )
+			return LUI.PCControlOptions.Categories[f36_arg0].title
 		end,
-		top = f14_local0 + LUI.MenuTemplate.ListTop,
+		top = f34_local0 + LUI.MenuTemplate.ListTop,
 		width = GenericMenuDims.OptionMenuWidth,
 		clickTabBtnAction = LUI.PCControlOptions.LoadMenu,
 		activeIndex = LUI.PCControlOptions.FindTypeIndex( "gamepad_controls" ),
 		isTabLockedfunc = LUI.PCControlOptions.IsCategoryDisabled,
 		skipChangeTab = true,
-		exclusiveController = f14_local1.exclusiveController,
+		exclusiveController = f34_local1.exclusiveController,
 		previousDisabledWhenController = true,
 		nextDisabledWhenController = true
 	} ) )
-	f14_local1:registerEventHandler( "options_window_refresh", LUI.Options.OptionsWindowRefresh )
-	f14_local1:registerEventHandler( "menu_close", OptionsMainClose )
-	f14_local1:registerEventHandler( "popup_inactive", RefreshFunc( f14_local1 ) )
-	f14_local1:registerEventHandler( "toggle_enable_gamepad", function ( element, event )
+	f34_local1:registerEventHandler( "options_window_refresh", LUI.Options.OptionsWindowRefresh )
+	f34_local1:registerEventHandler( "menu_close", OptionsMainClose )
+	f34_local1:registerEventHandler( "popup_inactive", RefreshFunc( f34_local1 ) )
+	f34_local1:registerEventHandler( "toggle_enable_gamepad", function ( element, event )
 		LUI.FlowManager.RequestAddMenu( nil, "gamepad_controls", true, event.controller, true, nil, {
 			reload = true
 		} )
 	end )
 	if Engine.IsPC() then
-		f14_local1:registerEventHandler( "popup_inactive", function ( element, event )
+		f34_local1:registerEventHandler( "popup_inactive", function ( element, event )
 			LUI.FlowManager.RequestAddMenu( nil, "gamepad_controls", true, Engine.GetControllerForLocalClient( 0 ), true, nil, {
 				reload = true
 			} )
 		end )
 	end
-	f14_local1.rightPanel = LUI.Options.AddRightPanel( f14_local1 )
+	f34_local1.rightPanel = LUI.Options.AddRightPanel( f34_local1 )
 	if not GamepadDisabledFunc() then
-		LUI.OptionsLayout.BuildMenu( f14_local1.rightPanel, f14_arg1.exclusiveController )
+		LUI.OptionsLayout.BuildMenu( f34_local1.rightPanel, f34_arg1.exclusiveController )
 	end
-	local f14_local2 = function ( f10_arg0, f10_arg1 )
-		f10_arg0.properties.button_over_func = function ( f1_arg0, f1_arg1 )
-			if f10_arg1 then
-				f10_arg1:dispatchEventToChildren( {
+	local f34_local2 = function ( f39_arg0, f39_arg1 )
+		f39_arg0.properties.button_over_func = function ( f40_arg0, f40_arg1 )
+			if f39_arg1 then
+				f39_arg1:dispatchEventToChildren( {
 					name = "highlight",
 					dispatchChildren = true
 				} )
 			end
 		end
 		
-		f10_arg0.properties.button_up_func = function ( f2_arg0, f2_arg1 )
-			if f10_arg1 then
-				f10_arg1:dispatchEventToChildren( {
+		f39_arg0.properties.button_up_func = function ( f41_arg0, f41_arg1 )
+			if f39_arg1 then
+				f39_arg1:dispatchEventToChildren( {
 					name = "restore",
 					dispatchChildren = true
 				} )
@@ -505,12 +505,12 @@ LUI.GamepadControls.new = function ( f14_arg0, f14_arg1 )
 		
 	end
 	
-	RefreshLayoutDisplay( f14_local1.rightPanel, f14_local1.exclusiveController )
-	CreateOptions( f14_local1 )
-	LUI.Options.AddOptionTextInfo( f14_local1 )
-	LUI.PCControlOptions.AddResetToDefaultButton( f14_local1 )
-	f14_local1:AddBackButton()
-	return f14_local1
+	RefreshLayoutDisplay( f34_local1.rightPanel, f34_local1.exclusiveController )
+	CreateOptions( f34_local1 )
+	LUI.Options.AddOptionTextInfo( f34_local1 )
+	LUI.PCControlOptions.AddResetToDefaultButton( f34_local1 )
+	f34_local1:AddBackButton()
+	return f34_local1
 end
 
 LUI.MenuBuilder.registerType( "gamepad_controls", LUI.GamepadControls.new )

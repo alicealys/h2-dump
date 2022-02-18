@@ -171,9 +171,9 @@ function game_manual()
 		right = 0
 	} )
 	self:animateToState( "default" )
-	local self = LUI.UIImage.new()
-	self.id = "centerPage"
-	self:registerAnimationState( "default", {
+	local f3_local2 = LUI.UIImage.new()
+	f3_local2.id = "centerPage"
+	f3_local2:registerAnimationState( "default", {
 		material = RegisterMaterial( f3_local0.manualPages[1] ),
 		topAnchor = true,
 		bottomAnchor = true,
@@ -184,15 +184,15 @@ function game_manual()
 		left = 0,
 		right = 0
 	} )
-	self:animateToState( "default" )
-	self:registerEventHandler( "change_page", function ( element, event )
+	f3_local2:animateToState( "default" )
+	f3_local2:registerEventHandler( "change_page", function ( element, event )
 		local f4_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( element )
 		element:setImage( RegisterMaterial( f4_local0.manualPages[f4_local0.currentPage] ) )
 	end )
-	self:addElement( self )
-	local self = LUI.UIButton.new()
-	self.id = "leftArrow"
-	self:registerAnimationState( "default", {
+	self:addElement( f3_local2 )
+	local f3_local3 = LUI.UIButton.new()
+	f3_local3.id = "leftArrow"
+	f3_local3:registerAnimationState( "default", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -203,10 +203,10 @@ function game_manual()
 		height = 80,
 		alpha = 1
 	} )
-	self:registerAnimationState( "disabled", {
+	f3_local3:registerAnimationState( "disabled", {
 		alpha = 0.5
 	} )
-	self:registerAnimationState( "bump", {
+	f3_local3:registerAnimationState( "bump", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -216,8 +216,8 @@ function game_manual()
 		width = 40,
 		height = 80
 	} )
-	self:registerEventHandler( "next_page", MBh.AnimateToState( "default", 0 ) )
-	self:registerEventHandler( "previous_page", function ( element, event )
+	f3_local3:registerEventHandler( "next_page", MBh.AnimateToState( "default", 0 ) )
+	f3_local3:registerEventHandler( "previous_page", function ( element, event )
 		local f5_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( element )
 		local f5_local1 = {
 			{
@@ -246,10 +246,10 @@ function game_manual()
 		local f5_local2 = MBh.AnimateSequence( f5_local1 )
 		f5_local2( element, event )
 	end )
-	self:registerEventHandler( "button_action", function ( element, event )
+	f3_local3:registerEventHandler( "button_action", function ( element, event )
 		changePage( element, -1 )
 	end )
-	self:registerEventHandler( "button_over", function ( element, event )
+	f3_local3:registerEventHandler( "button_over", function ( element, event )
 		if event.focusType == FocusType.MouseOver then
 			element:processEvent( {
 				name = "arrow_image_over",
@@ -257,7 +257,7 @@ function game_manual()
 			} )
 		end
 	end )
-	self:registerEventHandler( "button_up", function ( element, event )
+	f3_local3:registerEventHandler( "button_up", function ( element, event )
 		local f8_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( element )
 		if f8_local0.currentPage > 1 then
 			element:animateToState( "default" )
@@ -269,11 +269,11 @@ function game_manual()
 			immediate = true
 		} )
 	end )
-	self:animateToState( "default" )
-	self:animateToState( "disabled" )
-	local self = LUI.UIImage.new()
-	self.id = "leftArrowImage"
-	self:registerAnimationState( "default", CoD.ColorizeState( Colors.white, {
+	f3_local3:animateToState( "default" )
+	f3_local3:animateToState( "disabled" )
+	local f3_local4 = LUI.UIImage.new()
+	f3_local4.id = "leftArrowImage"
+	f3_local4:registerAnimationState( "default", CoD.ColorizeState( Colors.white, {
 		material = RegisterMaterial( "widg_margin_arrow_lt" ),
 		topAnchor = true,
 		bottomAnchor = true,
@@ -284,15 +284,15 @@ function game_manual()
 		right = 0,
 		bottom = 0
 	} ) )
-	self:registerAnimationState( "over", CoD.ColorizeState( Colors.frontend_hilite, {} ) )
-	self:animateToState( "default" )
-	self:registerEventHandler( "arrow_image_over", MBh.AnimateToState( "over" ) )
-	self:registerEventHandler( "arrow_image_up", MBh.AnimateToState( "default" ) )
-	self:addElement( self )
-	self:addElement( self )
-	local self = LUI.UIButton.new()
-	self.id = "rightArrow"
-	self:registerAnimationState( "default", {
+	f3_local4:registerAnimationState( "over", CoD.ColorizeState( Colors.frontend_hilite, {} ) )
+	f3_local4:animateToState( "default" )
+	f3_local4:registerEventHandler( "arrow_image_over", MBh.AnimateToState( "over" ) )
+	f3_local4:registerEventHandler( "arrow_image_up", MBh.AnimateToState( "default" ) )
+	f3_local3:addElement( f3_local4 )
+	self:addElement( f3_local3 )
+	local f3_local5 = LUI.UIButton.new()
+	f3_local5.id = "rightArrow"
+	f3_local5:registerAnimationState( "default", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = false,
@@ -303,10 +303,10 @@ function game_manual()
 		height = 80,
 		alpha = 1
 	} )
-	self:registerAnimationState( "disabled", {
+	f3_local5:registerAnimationState( "disabled", {
 		alpha = 0.5
 	} )
-	self:registerAnimationState( "bump", {
+	f3_local5:registerAnimationState( "bump", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = false,
@@ -316,8 +316,8 @@ function game_manual()
 		width = 40,
 		height = 80
 	} )
-	self:registerEventHandler( "previous_page", MBh.AnimateToState( "default", 0 ) )
-	self:registerEventHandler( "next_page", function ( element, event )
+	f3_local5:registerEventHandler( "previous_page", MBh.AnimateToState( "default", 0 ) )
+	f3_local5:registerEventHandler( "next_page", function ( element, event )
 		local f9_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( element )
 		local f9_local1 = {
 			{
@@ -346,11 +346,11 @@ function game_manual()
 		local f9_local2 = MBh.AnimateSequence( f9_local1 )
 		f9_local2( element, event )
 	end )
-	self:animateToState( "default" )
-	self:registerEventHandler( "button_action", function ( element, event )
+	f3_local5:animateToState( "default" )
+	f3_local5:registerEventHandler( "button_action", function ( element, event )
 		changePage( element, 1 )
 	end )
-	self:registerEventHandler( "button_over", function ( element, event )
+	f3_local5:registerEventHandler( "button_over", function ( element, event )
 		if event.focusType == FocusType.MouseOver then
 			element:processEvent( {
 				name = "arrow_image_over",
@@ -358,7 +358,7 @@ function game_manual()
 			} )
 		end
 	end )
-	self:registerEventHandler( "button_up", function ( element, event )
+	f3_local5:registerEventHandler( "button_up", function ( element, event )
 		local f12_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( element )
 		if f12_local0.currentPage < #f12_local0.manualPages then
 			element:animateToState( "default" )
@@ -370,9 +370,9 @@ function game_manual()
 			immediate = true
 		} )
 	end )
-	local self = LUI.UIImage.new()
-	self.id = "leftArrowImage"
-	self:registerAnimationState( "default", CoD.ColorizeState( Colors.white, {
+	local f3_local6 = LUI.UIImage.new()
+	f3_local6.id = "leftArrowImage"
+	f3_local6:registerAnimationState( "default", CoD.ColorizeState( Colors.white, {
 		material = RegisterMaterial( "widg_margin_arrow_rt" ),
 		topAnchor = true,
 		bottomAnchor = true,
@@ -383,12 +383,12 @@ function game_manual()
 		right = 0,
 		bottom = 0
 	} ) )
-	self:registerAnimationState( "over", CoD.ColorizeState( Colors.frontend_hilite, {} ) )
-	self:animateToState( "default" )
-	self:registerEventHandler( "arrow_image_over", MBh.AnimateToState( "over" ) )
-	self:registerEventHandler( "arrow_image_up", MBh.AnimateToState( "default" ) )
-	self:addElement( self )
-	self:addElement( self )
+	f3_local6:registerAnimationState( "over", CoD.ColorizeState( Colors.frontend_hilite, {} ) )
+	f3_local6:animateToState( "default" )
+	f3_local6:registerEventHandler( "arrow_image_over", MBh.AnimateToState( "over" ) )
+	f3_local6:registerEventHandler( "arrow_image_up", MBh.AnimateToState( "default" ) )
+	f3_local5:addElement( f3_local6 )
+	self:addElement( f3_local5 )
 	local f3_local7 = LUI.MenuBuilder.BuildAddChild( self, {
 		type = "button_helper_text_main",
 		properties = {
@@ -396,18 +396,18 @@ function game_manual()
 		}
 	} )
 	f3_local7:processEvent( LUI.ButtonHelperText.CommonEvents.addBackButton )
-	local self = LUI.UIBindButton.new()
-	self.id = "bind"
-	self:registerEventHandler( "button_secondary", function ( element, event )
+	local f3_local8 = LUI.UIBindButton.new()
+	f3_local8.id = "bind"
+	f3_local8:registerEventHandler( "button_secondary", function ( element, event )
 		LUI.FlowManager.RequestLeaveMenu( element )
 	end )
-	self:registerEventHandler( "button_left", function ( element, event )
+	f3_local8:registerEventHandler( "button_left", function ( element, event )
 		changePage( element, -1 )
 	end )
-	self:registerEventHandler( "button_right", function ( element, event )
+	f3_local8:registerEventHandler( "button_right", function ( element, event )
 		changePage( element, 1 )
 	end )
-	self:addElement( self )
+	self:addElement( f3_local8 )
 	self:registerEventHandler( "menu_create", function ( element, event )
 		local f16_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( element )
 		f16_local0.currentPage = 1

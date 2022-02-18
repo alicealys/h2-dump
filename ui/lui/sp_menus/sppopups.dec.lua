@@ -167,11 +167,11 @@ function overwrite_warning_menu( f18_arg0, f18_arg1 )
 		popup_title = Engine.Localize( "@MENU_NEWGAME" ),
 		message_text = Engine.Localize( "@MENU_WARNING_NEWGAME_RESET" ),
 		yes_text = Engine.Localize( "@MENU_YES_CAPS" ),
-		yes_action = function ( f31_arg0, f31_arg1 )
+		yes_action = function ( f19_arg0, f19_arg1 )
 			if f18_local0 then
-				f18_local0( f31_arg0, f31_arg1, ResetAndOpenFirstLevel )
+				f18_local0( f19_arg0, f19_arg1, ResetAndOpenFirstLevel )
 			else
-				ResetAndOpenFirstLevel( f31_arg0, f31_arg1 )
+				ResetAndOpenFirstLevel( f19_arg0, f19_arg1 )
 			end
 		end
 		,
@@ -180,46 +180,46 @@ function overwrite_warning_menu( f18_arg0, f18_arg1 )
 	} )
 end
 
-function request_yesno_popup_generic( f19_arg0, f19_arg1 )
-	local f19_local0 = assert
-	local f19_local1 = f19_arg1
-	local f19_local2 = f19_arg1.popup_title
-	if f19_local2 then
-		f19_local2 = f19_arg1.yes_action
-		if f19_local2 then
-			f19_local2 = f19_local1 and f19_arg1.message_text
+function request_yesno_popup_generic( f20_arg0, f20_arg1 )
+	local f20_local0 = assert
+	local f20_local1 = f20_arg1
+	local f20_local2 = f20_arg1.popup_title
+	if f20_local2 then
+		f20_local2 = f20_arg1.yes_action
+		if f20_local2 then
+			f20_local2 = f20_local1 and f20_arg1.message_text
 		end
 	end
-	f19_local0( f19_local2 )
-	f19_local0 = {
-		popup_title = Engine.Localize( f19_arg1.popup_title ),
-		message_text = Engine.Localize( f19_arg1.message_text ),
-		yes_text = Engine.Localize( f19_arg1.yes_text or "@MENU_YES_CAPS" ),
-		yes_action = f19_arg1.yes_action,
-		no_text = Engine.Localize( f19_arg1.no_text or "@MENU_NO_CAPS" )
+	f20_local0( f20_local2 )
+	f20_local0 = {
+		popup_title = Engine.Localize( f20_arg1.popup_title ),
+		message_text = Engine.Localize( f20_arg1.message_text ),
+		yes_text = Engine.Localize( f20_arg1.yes_text or "@MENU_YES_CAPS" ),
+		yes_action = f20_arg1.yes_action,
+		no_text = Engine.Localize( f20_arg1.no_text or "@MENU_NO_CAPS" )
 	}
-	f19_local2 = f19_arg1.no_action
-	if not f19_local2 then
-		f19_local2 = MBh.LeaveMenu()
+	f20_local2 = f20_arg1.no_action
+	if not f20_local2 then
+		f20_local2 = MBh.LeaveMenu()
 	end
-	f19_local0.no_action = f19_local2
-	f19_local0.default_focus_index = f19_arg1.default_focus_index or 2
-	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", f19_local0 )
+	f20_local0.no_action = f20_local2
+	f20_local0.default_focus_index = f20_arg1.default_focus_index or 2
+	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", f20_local0 )
 end
 
-function no_profile_warning_newgame( f20_arg0, f20_arg1 )
-	local f20_local0 = f20_arg1.done_action
+function no_profile_warning_newgame( f21_arg0, f21_arg1 )
+	local f21_local0 = f21_arg1.done_action
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_WARNING" ),
 		message_text = Engine.Localize( "@MENU_SP_PROFILE_WARNING_SP" ),
 		yes_text = Engine.Localize( "@MENU_YES_CAPS" ),
 		yes_action = NoProfileWarningYesAction,
 		no_text = Engine.Localize( "@MENU_NO_CAPS" ),
-		no_action = function ( f32_arg0, f32_arg1 )
-			if f20_local0 then
-				f20_local0( f32_arg0, f32_arg1, OpenFirstLevel )
+		no_action = function ( f22_arg0, f22_arg1 )
+			if f21_local0 then
+				f21_local0( f22_arg0, f22_arg1, OpenFirstLevel )
 			else
-				OpenFirstLevel( f32_arg0, f32_arg1 )
+				OpenFirstLevel( f22_arg0, f22_arg1 )
 			end
 		end
 		,
@@ -229,24 +229,24 @@ function no_profile_warning_newgame( f20_arg0, f20_arg1 )
 	} )
 end
 
-function popmenu_autosave_warning( f21_arg0, f21_arg1 )
-	local f21_local0 = f21_arg1.done_action
+function popmenu_autosave_warning( f23_arg0, f23_arg1 )
+	local f23_local0 = f23_arg1.done_action
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@PLATFORM_WARNING_AUTOSAVE" ),
 		button_text = Engine.Localize( "@MENU_CONTINUE" ),
-		confirmation_action = function ( f33_arg0, f33_arg1 )
-			if f21_local0 then
-				f21_local0( f33_arg0, f33_arg1, OpenFirstLevel )
+		confirmation_action = function ( f24_arg0, f24_arg1 )
+			if f23_local0 then
+				f23_local0( f24_arg0, f24_arg1, OpenFirstLevel )
 			else
-				OpenFirstLevel( f33_arg0, f33_arg1 )
+				OpenFirstLevel( f24_arg0, f24_arg1 )
 			end
 		end
 		
 	} )
 end
 
-function save_corrupted( f22_arg0, f22_arg1 )
+function save_corrupted( f25_arg0, f25_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_SAVE_CORRUPTED" ),
 		message_text = Engine.Localize( "@MENU_SAVEDATA_CORRUPTED" ),
@@ -256,7 +256,7 @@ function save_corrupted( f22_arg0, f22_arg1 )
 	} )
 end
 
-function not_signed_in_warning( f23_arg0, f23_arg1 )
+function not_signed_in_warning( f26_arg0, f26_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@XBOXLIVE_NOTSIGNEDIN" ),
@@ -265,7 +265,7 @@ function not_signed_in_warning( f23_arg0, f23_arg1 )
 	} )
 end
 
-function speech_reduced( f24_arg0, f24_arg1 )
+function speech_reduced( f27_arg0, f27_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_KINECT_NOTICE" ),
 		message_text = Engine.Localize( "@MENU_KINECT_FEATURE_REDUCED" ),
@@ -274,7 +274,7 @@ function speech_reduced( f24_arg0, f24_arg1 )
 	} )
 end
 
-function campaign_arcade_cheat_unlocked( f25_arg0, f25_arg1 )
+function campaign_arcade_cheat_unlocked( f28_arg0, f28_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_CAMPAIGN_ARCADE_CHEAT_UNLOCKED" ),
 		message_text = Engine.Localize( "@MENU_CAMPAIGN_ARCADE_CHEAT_UNLOCKED_DESC" ),
@@ -283,14 +283,14 @@ function campaign_arcade_cheat_unlocked( f25_arg0, f25_arg1 )
 	} )
 end
 
-function leaderboard_fetching_data( f26_arg0, f26_arg1 )
+function leaderboard_fetching_data( f29_arg0, f29_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_waiting_popup", {
 		popup_title = Engine.Localize( "@LUA_MENU_LEADERBOARD_REFRESH" ),
 		button_text = Engine.Localize( "@MENU_CANCEL" ),
 		cancel_will_close = false,
 		padding_top = 30,
 		popup_list_spacing = 30,
-		confirmation_action = function ( f34_arg0, f34_arg1 )
+		confirmation_action = function ( f30_arg0, f30_arg1 )
 			LUI.FlowManager.RequestLeaveMenuByName( "leaderboard_fetching_data" )
 			LUI.FlowManager.RequestLeaveMenuByName( "sp_leaderboard_data" )
 		end
@@ -298,7 +298,7 @@ function leaderboard_fetching_data( f26_arg0, f26_arg1 )
 	} )
 end
 
-function bnet_error_popup( f27_arg0, f27_arg1 )
+function bnet_error_popup( f31_arg0, f31_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_ERROR" ),
 		message_text = Engine.GetDvarString( "bnet_init_error" ),
@@ -309,8 +309,8 @@ function bnet_error_popup( f27_arg0, f27_arg1 )
 	} )
 end
 
-function display_driver_update( f28_arg0, f28_arg1 )
-	local f28_local0 = f28_arg1.done_action
+function display_driver_update( f32_arg0, f32_arg1 )
+	local f32_local0 = f32_arg1.done_action
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_MINSPEC_GPU_DRIVER_WARN_TITLE" ),
 		message_text = Engine.Localize( "@MENU_MINSPEC_GPU_DRIVER_WARN_BODY" ),
@@ -321,37 +321,37 @@ function display_driver_update( f28_arg0, f28_arg1 )
 	} )
 end
 
-function request_generic_confirmation_popup( f29_arg0, f29_arg1 )
-	local f29_local0 = assert
-	local f29_local1 = f29_arg1
-	local f29_local2 = f29_arg1.popup_title
-	if f29_local2 then
-		f29_local2 = f29_local1 and f29_arg1.message_text
+function request_generic_confirmation_popup( f33_arg0, f33_arg1 )
+	local f33_local0 = assert
+	local f33_local1 = f33_arg1
+	local f33_local2 = f33_arg1.popup_title
+	if f33_local2 then
+		f33_local2 = f33_local1 and f33_arg1.message_text
 	end
-	f29_local0( f29_local2 )
-	f29_local0 = {
-		popup_title = Engine.Localize( f29_arg1.popup_title ),
-		message_text = Engine.Localize( f29_arg1.message_text ),
-		button_text = Engine.Localize( f29_arg1.button_text or "@MENU_OK" )
+	f33_local0( f33_local2 )
+	f33_local0 = {
+		popup_title = Engine.Localize( f33_arg1.popup_title ),
+		message_text = Engine.Localize( f33_arg1.message_text ),
+		button_text = Engine.Localize( f33_arg1.button_text or "@MENU_OK" )
 	}
-	f29_local2 = f29_arg1.confirmation_action
-	if not f29_local2 then
-		f29_local2 = MBh.LeaveMenu()
+	f33_local2 = f33_arg1.confirmation_action
+	if not f33_local2 then
+		f33_local2 = MBh.LeaveMenu()
 	end
-	f29_local0.confirmation_action = f29_local2
-	f29_local0.cancel_will_close = f29_arg1.cancel_will_close
-	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", f29_local0 )
+	f33_local0.confirmation_action = f33_local2
+	f33_local0.cancel_will_close = f33_arg1.cancel_will_close
+	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", f33_local0 )
 end
 
-function public_service_announcement_warning( f30_arg0, f30_arg1 )
-	local f30_local0 = f30_arg1.done_action
+function public_service_announcement_warning( f34_arg0, f34_arg1 )
+	local f34_local0 = f34_arg1.done_action
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@LUA_MENU_PUBLIC_SERVICE_ANNOUNCEMENT_TITLE" ),
 		message_text = Engine.Localize( "@LUA_MENU_PUBLIC_SERVICE_ANNOUNCEMENT" ),
 		button_text = Engine.Localize( "@MENU_CONTINUE" ),
 		confirmation_action = function ( f35_arg0, f35_arg1 )
-			if f30_local0 then
-				f30_local0( f35_arg0, f35_arg1 )
+			if f34_local0 then
+				f34_local0( f35_arg0, f35_arg1 )
 			end
 		end
 		

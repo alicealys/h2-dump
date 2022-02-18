@@ -44,7 +44,7 @@ function CreateOptions( f1_arg0 )
 end
 
 function RefreshFunc( f2_arg0 )
-	return function ( f6_arg0, f6_arg1 )
+	return function ( f3_arg0, f3_arg1 )
 		f2_arg0.list:processEvent( {
 			name = "content_refresh",
 			dispatchChildren = true
@@ -53,40 +53,40 @@ function RefreshFunc( f2_arg0 )
 	
 end
 
-LUI.ActionControls.new = function ( f3_arg0, f3_arg1 )
+LUI.ActionControls.new = function ( f4_arg0, f4_arg1 )
 	Engine.ExecNow( "profile_menuDvarsSetup" )
-	local f3_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
-	local f3_local1 = LUI.MenuTemplate.new( f3_arg0, {
+	local f4_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
+	local f4_local1 = LUI.MenuTemplate.new( f4_arg0, {
 		menu_title = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_CONTROL_OPTIONS" ) ),
-		menu_top_indent = f3_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
+		menu_top_indent = f4_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
 		menu_width = GenericMenuDims.OptionMenuWidth,
 		menu_list_divider_top_offset = -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing),
 		noWrap = true,
 		skipAnim = 0 ~= LUI.PCControlOptions.FindTypeIndex( LUI.PreviousMenuName )
 	} )
-	f3_local1:registerEventHandler( "options_window_refresh", LUI.Options.OptionsWindowRefresh )
-	f3_local1:registerEventHandler( "popup_inactive", RefreshFunc( f3_local1 ) )
-	f3_local1:addElement( LUI.H1MenuTab.new( {
-		title = function ( f7_arg0 )
-			return LUI.PCControlOptions.Categories[f7_arg0].title
+	f4_local1:registerEventHandler( "options_window_refresh", LUI.Options.OptionsWindowRefresh )
+	f4_local1:registerEventHandler( "popup_inactive", RefreshFunc( f4_local1 ) )
+	f4_local1:addElement( LUI.H1MenuTab.new( {
+		title = function ( f5_arg0 )
+			return LUI.PCControlOptions.Categories[f5_arg0].title
 		end,
 		tabCount = #LUI.PCControlOptions.Categories,
-		underTabTextFunc = function ( f8_arg0 )
-			return LUI.PCControlOptions.Categories[f8_arg0].title
+		underTabTextFunc = function ( f6_arg0 )
+			return LUI.PCControlOptions.Categories[f6_arg0].title
 		end,
-		top = f3_local0 + LUI.MenuTemplate.ListTop,
+		top = f4_local0 + LUI.MenuTemplate.ListTop,
 		width = GenericMenuDims.OptionMenuWidth,
 		clickTabBtnAction = LUI.PCControlOptions.LoadMenu,
 		activeIndex = LUI.PCControlOptions.FindTypeIndex( "actions_controls" ),
 		isTabLockedfunc = LUI.PCControlOptions.IsCategoryDisabled,
 		skipChangeTab = true,
-		exclusiveController = f3_local1.exclusiveController
+		exclusiveController = f4_local1.exclusiveController
 	} ) )
-	CreateOptions( f3_local1 )
-	LUI.PCControlOptions.AddResetToDefaultButton( f3_local1 )
-	LUI.Options.AddOptionTextInfo( f3_local1 )
-	f3_local1:AddBackButton()
-	return f3_local1
+	CreateOptions( f4_local1 )
+	LUI.PCControlOptions.AddResetToDefaultButton( f4_local1 )
+	LUI.Options.AddOptionTextInfo( f4_local1 )
+	f4_local1:AddBackButton()
+	return f4_local1
 end
 
 LUI.MenuBuilder.registerType( "actions_controls", LUI.ActionControls.new )

@@ -41,7 +41,7 @@ LUI.MenuBuilder.registerType( "gasmaskHudDef", function ()
 		alpha = 1
 	} )
 	self.id = "gasmaskRootId"
-	local self = LUI.UIImage.new( {
+	local f2_local1 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -52,9 +52,9 @@ LUI.MenuBuilder.registerType( "gasmaskHudDef", function ()
 		bottom = 0,
 		material = RegisterMaterial( "h1_gasmask_overlay" )
 	} )
-	self.id = "gasmaskVisorId"
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f2_local1.id = "gasmaskVisorId"
+	self:addElement( f2_local1 )
+	local f2_local2 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -64,9 +64,9 @@ LUI.MenuBuilder.registerType( "gasmaskHudDef", function ()
 		top = 0,
 		bottom = 0
 	} )
-	self.id = "gasmaskDistortId"
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f2_local2.id = "gasmaskDistortId"
+	self:addElement( f2_local2 )
+	local f2_local3 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -77,8 +77,8 @@ LUI.MenuBuilder.registerType( "gasmaskHudDef", function ()
 		bottom = 0,
 		material = RegisterMaterial( "h1_gasmask_blur" )
 	} )
-	self.id = "gasmaskBlurId"
-	self:addElement( self )
+	f2_local3.id = "gasmaskBlurId"
+	self:addElement( f2_local3 )
 	local f2_local4 = function ( f3_arg0 )
 		f3_arg0:registerAnimationState( "current", {
 			material = RegisterMaterial( CoD.IsUsingAspectRatio( 1.33 ) and "h1_gasmask_distort_4x3" or "h1_gasmask_distort" )
@@ -86,8 +86,8 @@ LUI.MenuBuilder.registerType( "gasmaskHudDef", function ()
 		f3_arg0:animateToState( "current" )
 	end
 	
-	self:registerEventHandler( "toggle_pause_off", f2_local4 )
-	f2_local4( self )
+	f2_local2:registerEventHandler( "toggle_pause_off", f2_local4 )
+	f2_local4( f2_local2 )
 	return self
 end )
 LockTable( _M )

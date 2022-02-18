@@ -1,7 +1,7 @@
 function ModuleInaccessible( f1_arg0 )
 	assert( not _G[f1_arg0] )
 	_G[f1_arg0] = setmetatable( {}, {
-		__index = function ( f3_arg0, f3_arg1 )
+		__index = function ( f2_arg0, f2_arg1 )
 			return function ()
 				assert( false, "Functions from the " .. f1_arg0 .. " module are not allowed to be called from this scope." )
 			end
@@ -143,8 +143,8 @@ if Engine then
 		return true
 	end
 	
-	Engine.ToUpperCase = Engine.ToUpperCase or function ( f35_arg0 )
-		return "UPPER: " .. f35_arg0
+	Engine.ToUpperCase = Engine.ToUpperCase or function ( f37_arg0 )
+		return "UPPER: " .. f37_arg0
 	end
 	
 	Engine.Inventory_GetAllItems = Engine.Inventory_GetAllItems or function ()
@@ -222,8 +222,8 @@ if Engine then
 		return false
 	end
 	
-	Engine.GetLootWeaponBaseName = Engine.GetLootWeaponBaseName or function ( f54_arg0 )
-		return f54_arg0
+	Engine.GetLootWeaponBaseName = Engine.GetLootWeaponBaseName or function ( f56_arg0 )
+		return f56_arg0
 	end
 	
 	Engine.GetOverflowLootGuid = Engine.GetOverflowLootGuid or function ()
@@ -298,11 +298,11 @@ if Engine then
 		return 0
 	end
 	
-	Engine.PlatformXUIDToHexXUID = Engine.PlatformXUIDToHexXUID or function ( f73_arg0 )
-		return f73_arg0
+	Engine.PlatformXUIDToHexXUID = Engine.PlatformXUIDToHexXUID or function ( f75_arg0 )
+		return f75_arg0
 	end
 	
-	Engine.GetIntroMovieViewed = Engine.GetIntroMovieViewed or function ( f74_arg0, f74_arg1 )
+	Engine.GetIntroMovieViewed = Engine.GetIntroMovieViewed or function ( f76_arg0, f76_arg1 )
 		return false
 	end
 	
@@ -410,8 +410,8 @@ end
 if Game then
 	if not Engine.IsConsoleGame() then
 		local f0_local0 = Game.GetNumPlayersOnTeam
-		Game.GetNumPlayersOnTeam = function ( f100_arg0 )
-			return f0_local0( f100_arg0 )
+		Game.GetNumPlayersOnTeam = function ( f102_arg0 )
+			return f0_local0( f102_arg0 )
 		end
 		
 	end
@@ -563,31 +563,31 @@ if Friends then
 		return true
 	end
 	
-	Friends.GetEliteClanFriendMemberStatus = Friends.GetEliteClanFriendMemberStatus or function ( f136_arg0, f136_arg1 )
+	Friends.GetEliteClanFriendMemberStatus = Friends.GetEliteClanFriendMemberStatus or function ( f138_arg0, f138_arg1 )
 		return ""
 	end
 	
-	Friends.IsUserInBlockList = Friends.IsUserInBlockList or function ( f137_arg0 )
+	Friends.IsUserInBlockList = Friends.IsUserInBlockList or function ( f139_arg0 )
 		return false
 	end
 	
-	Friends.GetOnlineFriendXUID = Friends.GetOnlineFriendXUID or function ( f138_arg0, f138_arg1 )
+	Friends.GetOnlineFriendXUID = Friends.GetOnlineFriendXUID or function ( f140_arg0, f140_arg1 )
 		return "0"
 	end
 	
-	Friends.GetRecentPlayerXUID = Friends.GetRecentPlayerXUID or function ( f139_arg0, f139_arg1 )
+	Friends.GetRecentPlayerXUID = Friends.GetRecentPlayerXUID or function ( f141_arg0, f141_arg1 )
 		return "0"
 	end
 	
-	Friends.GetLivePartyFriendXUID = Friends.GetLivePartyFriendXUID or function ( f140_arg0, f140_arg1 )
+	Friends.GetLivePartyFriendXUID = Friends.GetLivePartyFriendXUID or function ( f142_arg0, f142_arg1 )
 		return "0"
 	end
 	
-	Friends.GetEliteClanFriendXUID = Friends.GetEliteClanFriendXUID or function ( f141_arg0, f141_arg1 )
+	Friends.GetEliteClanFriendXUID = Friends.GetEliteClanFriendXUID or function ( f143_arg0, f143_arg1 )
 		return "0"
 	end
 	
-	Friends.GetEliteClanFriendMemberStatus = Friends.GetEliteClanFriendMemberStatus or function ( f142_arg0, f142_arg1 )
+	Friends.GetEliteClanFriendMemberStatus = Friends.GetEliteClanFriendMemberStatus or function ( f144_arg0, f144_arg1 )
 		return ""
 	end
 	
@@ -623,31 +623,31 @@ else
 	ModuleInaccessible( "Squad" )
 end
 if Leaderboards then
-	Leaderboards.GetPlayerValue = Leaderboards.GetPlayerValue or function ( f149_arg0, f149_arg1 )
+	Leaderboards.GetPlayerValue = Leaderboards.GetPlayerValue or function ( f151_arg0, f151_arg1 )
 		return ""
 	end
 	
-	Leaderboards.GetValue = Leaderboards.GetValue or function ( f150_arg0, f150_arg1, f150_arg2 )
+	Leaderboards.GetValue = Leaderboards.GetValue or function ( f152_arg0, f152_arg1, f152_arg2 )
 		return ""
 	end
 	
-	Leaderboards.GetOffset = Leaderboards.GetOffset or function ( f151_arg0 )
+	Leaderboards.GetOffset = Leaderboards.GetOffset or function ( f153_arg0 )
 		return 0
 	end
 	
-	Leaderboards.GetCurrentIndex = Leaderboards.GetCurrentIndex or function ( f152_arg0 )
+	Leaderboards.GetCurrentIndex = Leaderboards.GetCurrentIndex or function ( f154_arg0 )
 		return 0
 	end
 	
-	Leaderboards.UpdateLeaderboard = Leaderboards.UpdateLeaderboard or function ( f153_arg0, f153_arg1 )
+	Leaderboards.UpdateLeaderboard = Leaderboards.UpdateLeaderboard or function ( f155_arg0, f155_arg1 )
 		
 	end
 	
-	Leaderboards.UpdateCurrentIndex = Leaderboards.UpdateCurrentIndex or function ( f154_arg0, f154_arg1 )
+	Leaderboards.UpdateCurrentIndex = Leaderboards.UpdateCurrentIndex or function ( f156_arg0, f156_arg1 )
 		
 	end
 	
-	Leaderboards.OnSelect = Leaderboards.OnSelect or function ( f155_arg0 )
+	Leaderboards.OnSelect = Leaderboards.OnSelect or function ( f157_arg0 )
 		
 	end
 	
@@ -655,7 +655,7 @@ else
 	ModuleInaccessible( "Leaderboards" )
 end
 if Lobby then
-	Lobby.ShowMemberInfo = Lobby.ShowMemberInfo or function ( f156_arg0, f156_arg1, f156_arg2 )
+	Lobby.ShowMemberInfo = Lobby.ShowMemberInfo or function ( f158_arg0, f158_arg1, f158_arg2 )
 		return true
 	end
 	
@@ -683,7 +683,7 @@ if Lobby then
 		return false
 	end
 	
-	Lobby.SetUsingMLGRules = Lobby.SetUsingMLGRules or function ( f163_arg0 )
+	Lobby.SetUsingMLGRules = Lobby.SetUsingMLGRules or function ( f165_arg0 )
 		
 	end
 	

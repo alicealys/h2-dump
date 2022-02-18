@@ -416,19 +416,19 @@ function intel_menu_create( f16_arg0, f16_arg1 )
 	end
 	LUI.IntelMenu.CheckForNew()
 	local f16_local4 = LUI.H1MenuTab.new( {
-		title = function ( f50_arg0 )
-			return f0_local1[f50_arg0].tabDisplayName
+		title = function ( f17_arg0 )
+			return f0_local1[f17_arg0].tabDisplayName
 		end,
 		top = LUI.MenuTemplate.spMenuOffset + LUI.MenuTemplate.ListTop,
 		width = f16_local0,
 		tabCount = 3,
 		clickTabBtnAction = ClickTabBtnAction,
 		activeIndex = LUI.IntelMenu.ActiveTypeIndex,
-		underTabTextFunc = function ( f51_arg0 )
-			return f0_local1[f51_arg0].tabDisplayName
+		underTabTextFunc = function ( f18_arg0 )
+			return f0_local1[f18_arg0].tabDisplayName
 		end,
-		tabHasNewFunc = function ( f52_arg0 )
-			return typeHasAnyNew( f0_local1[f52_arg0] )
+		tabHasNewFunc = function ( f19_arg0 )
+			return typeHasAnyNew( f0_local1[f19_arg0] )
 		end,
 		isTabLockedfunc = false,
 		previousDisabled = false,
@@ -511,11 +511,11 @@ function intel_menu_create( f16_arg0, f16_arg1 )
 		f16_local25.showNew = Engine.GetProfileBitfieldData( "cheatNewStateBit", f16_local25.cheatIndex ) == "1"
 		local f16_local16 = LUI.Options.CreateOptionButton( f16_local2, f16_local25.dvar, f16_local8, f16_local19, f16_local20, nil, function ()
 			if self then
-				local f53_local0 = f16_local25.locked
-				if not f53_local0 then
-					f53_local0 = f16_local25.ragdollLocked
+				local f20_local0 = f16_local25.locked
+				if not f20_local0 then
+					f20_local0 = f16_local25.ragdollLocked
 				end
-				return f53_local0
+				return f20_local0
 			else
 				return true
 			end
@@ -523,8 +523,8 @@ function intel_menu_create( f16_arg0, f16_arg1 )
 			f16_local2.list:processEvent( {
 				name = "content_refresh"
 			} )
-			local f54_local0 = Engine.GetLuiRoot()
-			f54_local0:processEvent( {
+			local f21_local0 = Engine.GetLuiRoot()
+			f21_local0:processEvent( {
 				name = "cheats_changed"
 			} )
 		end, nil, {
@@ -551,8 +551,8 @@ function intel_menu_create( f16_arg0, f16_arg1 )
 	f16_local2.tabsElement = f16_local4
 	f16_local2:addElement( f16_local4 )
 	if Engine.InFrontend() then
-		CoD.InitializeCheat( f16_local2, function ( f55_arg0, f55_arg1 )
-			LUI.FlowManager.RequestAddMenu( nil, "intel_menu_scenario", true, f55_arg1.controller, true, nil, {
+		CoD.InitializeCheat( f16_local2, function ( f22_arg0, f22_arg1 )
+			LUI.FlowManager.RequestAddMenu( nil, "intel_menu_scenario", true, f22_arg1.controller, true, nil, {
 				reload = true
 			} )
 		end )
@@ -560,31 +560,31 @@ function intel_menu_create( f16_arg0, f16_arg1 )
 	return f16_local2
 end
 
-function OnLevelButtonOver( f17_arg0, f17_arg1 )
-	local f17_local0 = LUI.FlowManager.GetTopOpenAndVisibleMenu()
-	if f17_local0 ~= nil then
-		updateInfoBox( f17_local0, f17_arg0.properties.localCheatIndex )
-		Engine.SetProfileBitfieldData( "cheatNewStateBit", f0_local1[LUI.IntelMenu.ActiveTypeIndex].cheats[f17_arg0.properties.localCheatIndex].cheatIndex, "0" )
-		LUI.NewSticker.Update( f17_arg0 )
+function OnLevelButtonOver( f23_arg0, f23_arg1 )
+	local f23_local0 = LUI.FlowManager.GetTopOpenAndVisibleMenu()
+	if f23_local0 ~= nil then
+		updateInfoBox( f23_local0, f23_arg0.properties.localCheatIndex )
+		Engine.SetProfileBitfieldData( "cheatNewStateBit", f0_local1[LUI.IntelMenu.ActiveTypeIndex].cheats[f23_arg0.properties.localCheatIndex].cheatIndex, "0" )
+		LUI.NewSticker.Update( f23_arg0 )
 		if not typeHasAnyNew( f0_local1[LUI.IntelMenu.ActiveTypeIndex] ) then
-			LUI.H1MenuTab.RemoveNewState( f17_local0.tabsElement, LUI.IntelMenu.ActiveTypeIndex )
+			LUI.H1MenuTab.RemoveNewState( f23_local0.tabsElement, LUI.IntelMenu.ActiveTypeIndex )
 		end
 	end
 end
 
-function OnLevelButtonOverLocked( f18_arg0, f18_arg1 )
+function OnLevelButtonOverLocked( f24_arg0, f24_arg1 )
 	hideInfoBox( LUI.FlowManager.GetTopOpenAndVisibleMenu() )
 end
 
-function ResetAllCheatsPopup( f19_arg0, f19_arg1 )
-	LUI.FlowManager.RequestPopupMenu( nil, "reset_all_cheats", true, f19_arg1.controller, false, {
+function ResetAllCheatsPopup( f25_arg0, f25_arg1 )
+	LUI.FlowManager.RequestPopupMenu( nil, "reset_all_cheats", true, f25_arg1.controller, false, {
 		acceptFunc = LUI.IntelMenu.TurnOffAllCheats
 	} )
 end
 
-function DisplayResetPrompt( f20_arg0 )
+function DisplayResetPrompt( f26_arg0 )
 	if not (LUI.IntelMenu.LowestIntelCount > LUI.IntelMenu.CurrentIntelCount or not f0_local3()) or not f0_local2() then
-		f20_arg0:AddHelp( {
+		f26_arg0:AddHelp( {
 			name = "add_button_helper_text",
 			button_ref = "button_alt2",
 			helper_text = Engine.Localize( "@MENU_DISABLE_ALL_CHEATS" ),
@@ -594,185 +594,185 @@ function DisplayResetPrompt( f20_arg0 )
 	end
 end
 
-function buildTopInfoBox( f21_arg0 )
-	local f21_local0 = 60 * CoD.FullHDToHD
-	local f21_local1 = 120 * CoD.FullHDToHD
-	local f21_local2 = 450 * CoD.FullHDToHD
-	local f21_local3 = 5 * CoD.FullHDToHD
-	local f21_local4 = 24 * CoD.FullHDToHD
-	local f21_local5 = 14
-	local f21_local6 = 11
-	local f21_local7 = CoD.TextSettings.BodyFont18.Font
-	local f21_local8 = -f21_local3 + 5
-	local f21_local9 = Engine.GetCurrentLanguage()
-	if f21_local9 == CoD.Language.Russian or f21_local9 == CoD.Language.Russian_partial then
-		f21_local6 = 12
-	elseif f21_local9 == CoD.Language.Arabic or f21_local9 == CoD.Language.Korean or f21_local9 == CoD.Language.Japanese_full or f21_local9 == CoD.Language.Japanese_partial or f21_local9 == CoD.Language.Traditional_chinese or f21_local9 == CoD.Language.Simplified_chinese then
-		f21_local6 = 13
+function buildTopInfoBox( f27_arg0 )
+	local f27_local0 = 60 * CoD.FullHDToHD
+	local f27_local1 = 120 * CoD.FullHDToHD
+	local f27_local2 = 450 * CoD.FullHDToHD
+	local f27_local3 = 5 * CoD.FullHDToHD
+	local f27_local4 = 24 * CoD.FullHDToHD
+	local f27_local5 = 14
+	local f27_local6 = 11
+	local f27_local7 = CoD.TextSettings.BodyFont18.Font
+	local f27_local8 = -f27_local3 + 5
+	local f27_local9 = Engine.GetCurrentLanguage()
+	if f27_local9 == CoD.Language.Russian or f27_local9 == CoD.Language.Russian_partial then
+		f27_local6 = 12
+	elseif f27_local9 == CoD.Language.Arabic or f27_local9 == CoD.Language.Korean or f27_local9 == CoD.Language.Japanese_full or f27_local9 == CoD.Language.Japanese_partial or f27_local9 == CoD.Language.Traditional_chinese or f27_local9 == CoD.Language.Simplified_chinese then
+		f27_local6 = 13
 	end
-	local f21_local10 = f21_local3 + 4
-	local f21_local11 = f21_local3 + f21_local4 + f21_local5
-	local f21_local12 = -(f21_local3 + f21_local6)
-	local self = LUI.UIElement.new( CoD.CreateState( -f21_local2, f21_local0, 0, f21_local0 + f21_local1, CoD.AnchorTypes.TopRight ) )
+	local f27_local10 = f27_local3 + 4
+	local f27_local11 = f27_local3 + f27_local4 + f27_local5
+	local f27_local12 = -(f27_local3 + f27_local6)
+	local self = LUI.UIElement.new( CoD.CreateState( -f27_local2, f27_local0, 0, f27_local0 + f27_local1, CoD.AnchorTypes.TopRight ) )
 	self.id = "mainwindow_id"
-	local f21_local14 = CoD.CreateState( -f21_local2, f21_local10, f21_local8, nil, CoD.AnchorTypes.TopRight )
-	f21_local14.height = f21_local5
-	f21_local14.alignment = LUI.Alignment.Right
-	f21_local14.font = f21_local7
-	f21_local14.color = Colors.h2.yellow
-	local self = LUI.UIText.new( f21_local14 )
-	local f21_local16 = nil
+	local f27_local14 = CoD.CreateState( -f27_local2, f27_local10, f27_local8, nil, CoD.AnchorTypes.TopRight )
+	f27_local14.height = f27_local5
+	f27_local14.alignment = LUI.Alignment.Right
+	f27_local14.font = f27_local7
+	f27_local14.color = Colors.h2.yellow
+	local f27_local15 = LUI.UIText.new( f27_local14 )
+	local f27_local16 = nil
 	if Engine.IsRightToLeftLanguage() then
-		f21_local16 = LUI.IntelMenu.TotalIntelsH2 .. "/" .. LUI.IntelMenu.CurrentIntelCount .. " " .. Engine.Localize( "@LUA_MENU_INTELS_FOUND" )
+		f27_local16 = LUI.IntelMenu.TotalIntelsH2 .. "/" .. LUI.IntelMenu.CurrentIntelCount .. " " .. Engine.Localize( "@LUA_MENU_INTELS_FOUND" )
 	else
-		f21_local16 = Engine.Localize( "@LUA_MENU_INTELS_FOUND" ) .. " " .. LUI.IntelMenu.CurrentIntelCount .. "/" .. LUI.IntelMenu.TotalIntelsH2
+		f27_local16 = Engine.Localize( "@LUA_MENU_INTELS_FOUND" ) .. " " .. LUI.IntelMenu.CurrentIntelCount .. "/" .. LUI.IntelMenu.TotalIntelsH2
 	end
-	self.id = "title_id"
-	self:setTextStyle( CoD.TextStyle.ForceUpperCase )
-	self:setText( f21_local16 )
-	self:addElement( self )
+	f27_local15.id = "title_id"
+	f27_local15:setTextStyle( CoD.TextStyle.ForceUpperCase )
+	f27_local15:setText( f27_local16 )
+	self:addElement( f27_local15 )
 	if isIntelCheatsAllowed() then
-		local f21_local17 = f0_local3()
-		if LUI.IntelMenu.CurrentIntelCount < LUI.IntelMenu.TotalIntelsH2 and f21_local17 then
-			local f21_local18, self = GetTextDimensions( Engine.Localize( "@LUA_MENU_INTELS_COLLECT" ), f21_local7, f21_local6, f21_local2 - f21_local3 )
-			local f21_local20
-			if f21_local6 < self then
-				f21_local20 = -4
-				if not f21_local20 then
+		local f27_local17 = f0_local3()
+		if LUI.IntelMenu.CurrentIntelCount < LUI.IntelMenu.TotalIntelsH2 and f27_local17 then
+			local f27_local18, f27_local19 = GetTextDimensions( Engine.Localize( "@LUA_MENU_INTELS_COLLECT" ), f27_local7, f27_local6, f27_local2 - f27_local3 )
+			local f27_local20
+			if f27_local6 < f27_local19 then
+				f27_local20 = -4
+				if not f27_local20 then
 				
 				else
-					local f21_local21 = CoD.CreateState( -f21_local2, f21_local11 + f21_local20, f21_local8, nil, CoD.AnchorTypes.TopRight )
-					f21_local21.height = f21_local6
-					f21_local21.alignment = LUI.Alignment.Right
-					f21_local21.font = f21_local7
-					f21_local21.alpha = 1
-					f21_local21.color = Colors.h1.light_grey
-					local self = LUI.UIText.new( f21_local21 )
-					self.id = "instructions_id"
-					self:setText( Engine.Localize( "@LUA_MENU_INTELS_COLLECT" ) )
-					self:addElement( self )
+					local f27_local21 = CoD.CreateState( -f27_local2, f27_local11 + f27_local20, f27_local8, nil, CoD.AnchorTypes.TopRight )
+					f27_local21.height = f27_local6
+					f27_local21.alignment = LUI.Alignment.Right
+					f27_local21.font = f27_local7
+					f27_local21.alpha = 1
+					f27_local21.color = Colors.h1.light_grey
+					local f27_local22 = LUI.UIText.new( f27_local21 )
+					f27_local22.id = "instructions_id"
+					f27_local22:setText( Engine.Localize( "@LUA_MENU_INTELS_COLLECT" ) )
+					self:addElement( f27_local22 )
 				end
 			end
-			f21_local20 = 2
+			f27_local20 = 2
 		else
-			f21_local12 = f21_local12 - 10
+			f27_local12 = f27_local12 - 10
 		end
-		local f21_local18 = CoD.CreateState( -f21_local2, nil, f21_local8, f21_local12, CoD.AnchorTypes.BottomRight )
-		f21_local18.height = f21_local6
-		f21_local18.alignment = LUI.Alignment.Right
-		f21_local18.font = f21_local7
-		f21_local18.lineSpacingRatio = 0.2
-		f21_local18.alpha = 1
-		f21_local18.color = Colors.h1.light_grey
-		local self = LUI.UIText.new( f21_local18 )
-		self.id = "enabling_id"
-		if f21_local17 then
+		local f27_local18 = CoD.CreateState( -f27_local2, nil, f27_local8, f27_local12, CoD.AnchorTypes.BottomRight )
+		f27_local18.height = f27_local6
+		f27_local18.alignment = LUI.Alignment.Right
+		f27_local18.font = f27_local7
+		f27_local18.lineSpacingRatio = 0.2
+		f27_local18.alpha = 1
+		f27_local18.color = Colors.h1.light_grey
+		local f27_local19 = LUI.UIText.new( f27_local18 )
+		f27_local19.id = "enabling_id"
+		if f27_local17 then
 			if Engine.IsPS4() then
-				self:setText( Engine.Localize( "@LUA_MENU_INTELS_AVAILABLE_PS4" ) )
+				f27_local19:setText( Engine.Localize( "@LUA_MENU_INTELS_AVAILABLE_PS4" ) )
 			else
-				self:setText( Engine.Localize( "@LUA_MENU_INTELS_AVAILABLE" ) )
+				f27_local19:setText( Engine.Localize( "@LUA_MENU_INTELS_AVAILABLE" ) )
 			end
 		else
-			self:setText( Engine.Localize( "@LUA_MENU_INTELS_CAMPAIGN" ) )
+			f27_local19:setText( Engine.Localize( "@LUA_MENU_INTELS_CAMPAIGN" ) )
 		end
-		self:addElement( self )
+		self:addElement( f27_local19 )
 	else
-		local f21_local18 = CoD.CreateState( -f21_local2, nil, f21_local8, f21_local12 - 10, CoD.AnchorTypes.BottomRight )
-		f21_local18.height = f21_local6
-		f21_local18.alignment = LUI.Alignment.Right
-		f21_local18.font = f21_local7
-		f21_local18.lineSpacingRatio = 0.2
-		f21_local18.alpha = 1
-		f21_local18.color = Colors.h1.light_grey
-		local self = LUI.UIText.new( f21_local18 )
-		self.id = "notAvail_id"
-		self:setText( Engine.Localize( "@LUA_MENU_INTEL_SELECT_MESSAGE_NOTAVAILABLE" ) )
-		self:addElement( self )
+		local f27_local18 = CoD.CreateState( -f27_local2, nil, f27_local8, f27_local12 - 10, CoD.AnchorTypes.BottomRight )
+		f27_local18.height = f27_local6
+		f27_local18.alignment = LUI.Alignment.Right
+		f27_local18.font = f27_local7
+		f27_local18.lineSpacingRatio = 0.2
+		f27_local18.alpha = 1
+		f27_local18.color = Colors.h1.light_grey
+		local f27_local19 = LUI.UIText.new( f27_local18 )
+		f27_local19.id = "notAvail_id"
+		f27_local19:setText( Engine.Localize( "@LUA_MENU_INTEL_SELECT_MESSAGE_NOTAVAILABLE" ) )
+		self:addElement( f27_local19 )
 	end
-	f21_arg0:addElement( self )
+	f27_arg0:addElement( self )
 end
 
-function buildBottomInfoBox( f22_arg0 )
-	local f22_local0 = 900 * CoD.FullHDToHD - 120 - 10 - 30 + -9 - 28
-	local f22_local1 = CoD.TextSettings.Font18
-	local f22_local2 = LUI.MenuBuilder.BuildRegisteredType( "InfoBox", {
+function buildBottomInfoBox( f28_arg0 )
+	local f28_local0 = 900 * CoD.FullHDToHD - 120 - 10 - 30 + -9 - 28
+	local f28_local1 = CoD.TextSettings.Font18
+	local f28_local2 = LUI.MenuBuilder.BuildRegisteredType( "InfoBox", {
 		skipAnim = true,
 		noRightPane = true
 	} )
-	f22_arg0:addElement( f22_local2 )
-	local f22_local3 = CoD.CreateState( nil, nil, 0, 0, CoD.AnchorTypes.BottomRight )
-	f22_local3.font = f22_local1.Font
-	f22_local3.height = f22_local1.Height
-	f22_local3.color = Colors.dark_grey
-	local self = LUI.UIText.new( f22_local3 )
-	f22_local2.bottomRightElements:addElement( self )
-	f22_local2.bottomRightText = self
-	local f22_local5 = CoD.CreateState( 0, nil, nil, 0, CoD.AnchorTypes.BottomLeft )
-	f22_local5.width = f22_local0
-	f22_local5.font = f22_local1.Font
-	f22_local5.height = f22_local1.Height
-	f22_local5.color = Colors.h2.yellow
-	f22_local5.alignment = LUI.Alignment.Left
-	f22_local5.verticalAlignment = LUI.VerticalAlignment.Bottom
-	local self = LUI.UIText.new( f22_local5 )
-	self.setDescription = function ( f21_arg0, f21_arg1 )
-		local f21_local0 = -11
-		local f21_local1 = Engine.GetCurrentLanguage()
-		local f21_local2 = CoD.TextSettings.Font16
-		if f21_local1 == CoD.Language.Russian or f21_local1 == CoD.Language.Arabic or f21_local1 == CoD.Language.Korean or f21_local1 == CoD.Language.Japanese_full or f21_local1 == CoD.Language.Japanese_partial or f21_local1 == CoD.Language.Traditional_chinese or f21_local1 == CoD.Language.Simplified_chinese then
-			f21_local0 = -18
-			f21_local2 = CoD.TextSettings.Font18
+	f28_arg0:addElement( f28_local2 )
+	local f28_local3 = CoD.CreateState( nil, nil, 0, 0, CoD.AnchorTypes.BottomRight )
+	f28_local3.font = f28_local1.Font
+	f28_local3.height = f28_local1.Height
+	f28_local3.color = Colors.dark_grey
+	local self = LUI.UIText.new( f28_local3 )
+	f28_local2.bottomRightElements:addElement( self )
+	f28_local2.bottomRightText = self
+	local f28_local5 = CoD.CreateState( 0, nil, nil, 0, CoD.AnchorTypes.BottomLeft )
+	f28_local5.width = f28_local0
+	f28_local5.font = f28_local1.Font
+	f28_local5.height = f28_local1.Height
+	f28_local5.color = Colors.h2.yellow
+	f28_local5.alignment = LUI.Alignment.Left
+	f28_local5.verticalAlignment = LUI.VerticalAlignment.Bottom
+	local f28_local6 = LUI.UIText.new( f28_local5 )
+	f28_local6.setDescription = function ( f29_arg0, f29_arg1 )
+		local f29_local0 = -11
+		local f29_local1 = Engine.GetCurrentLanguage()
+		local f29_local2 = CoD.TextSettings.Font16
+		if f29_local1 == CoD.Language.Russian or f29_local1 == CoD.Language.Arabic or f29_local1 == CoD.Language.Korean or f29_local1 == CoD.Language.Japanese_full or f29_local1 == CoD.Language.Japanese_partial or f29_local1 == CoD.Language.Traditional_chinese or f29_local1 == CoD.Language.Simplified_chinese then
+			f29_local0 = -18
+			f29_local2 = CoD.TextSettings.Font18
 		end
-		local f21_local3, f21_local4, f21_local5, f21_local6 = GetTextDimensions( f21_arg1, f21_local2.Font, f21_local2.Height )
-		local f21_local7 = f21_local0 * math.floor( (f21_local5 - f21_local3) / f22_local0 )
-		f21_arg0:setText( f21_arg1 )
-		f21_arg0:registerAnimationState( "show", {
+		local f29_local3, f29_local4, f29_local5, f29_local6 = GetTextDimensions( f29_arg1, f29_local2.Font, f29_local2.Height )
+		local f29_local7 = f29_local0 * math.floor( (f29_local5 - f29_local3) / f28_local0 )
+		f29_arg0:setText( f29_arg1 )
+		f29_arg0:registerAnimationState( "show", {
 			alpha = 1,
-			height = f21_local2.Height,
-			top = f21_local7,
+			height = f29_local2.Height,
+			top = f29_local7,
 			topAnchor = true
 		} )
-		f21_arg0:animateToState( "show" )
+		f29_arg0:animateToState( "show" )
 	end
 	
-	f22_local2.bottomLeftElements:addElement( self )
-	f22_local2.descExplanationText = self
-	f22_local2:drawCornerLines()
-	f22_arg0.bottomInfoBox = f22_local2
-	f22_arg0.bottomInfoBox.visible = true
-	updateInfoBox( f22_arg0, 1 )
+	f28_local2.bottomLeftElements:addElement( f28_local6 )
+	f28_local2.descExplanationText = f28_local6
+	f28_local2:drawCornerLines()
+	f28_arg0.bottomInfoBox = f28_local2
+	f28_arg0.bottomInfoBox.visible = true
+	updateInfoBox( f28_arg0, 1 )
 end
 
-function showInfoBox( f23_arg0 )
-	if not f23_arg0.bottomInfoBox.visible then
-		f23_arg0.bottomInfoBox.visible = true
-		f23_arg0.bottomInfoBox:animateToState( "default", 0 )
+function showInfoBox( f30_arg0 )
+	if not f30_arg0.bottomInfoBox.visible then
+		f30_arg0.bottomInfoBox.visible = true
+		f30_arg0.bottomInfoBox:animateToState( "default", 0 )
 	end
 end
 
-function hideInfoBox( f24_arg0 )
-	if f24_arg0.bottomInfoBox.visible then
-		f24_arg0.bottomInfoBox.visible = false
-		f24_arg0.bottomInfoBox:animateToState( "hide", 0 )
+function hideInfoBox( f31_arg0 )
+	if f31_arg0.bottomInfoBox.visible then
+		f31_arg0.bottomInfoBox.visible = false
+		f31_arg0.bottomInfoBox:animateToState( "hide", 0 )
 	end
 end
 
-function updateInfoBox( f25_arg0, f25_arg1 )
-	local f25_local0 = f0_local1[LUI.IntelMenu.ActiveTypeIndex].cheats[f25_arg1]
-	f25_arg0.bottomInfoBox.title:setText( Engine.Localize( f25_local0.name ) )
-	f25_arg0.bottomInfoBox.description:setText( Engine.Localize( f25_local0.desc ) )
-	if f25_local0.descExplanation then
-		f25_arg0.bottomInfoBox.descExplanationText:setDescription( Engine.Localize( f25_local0.descExplanation ) )
+function updateInfoBox( f32_arg0, f32_arg1 )
+	local f32_local0 = f0_local1[LUI.IntelMenu.ActiveTypeIndex].cheats[f32_arg1]
+	f32_arg0.bottomInfoBox.title:setText( Engine.Localize( f32_local0.name ) )
+	f32_arg0.bottomInfoBox.description:setText( Engine.Localize( f32_local0.desc ) )
+	if f32_local0.descExplanation then
+		f32_arg0.bottomInfoBox.descExplanationText:setDescription( Engine.Localize( f32_local0.descExplanation ) )
 	else
-		f25_arg0.bottomInfoBox.descExplanationText:setDescription( "" )
+		f32_arg0.bottomInfoBox.descExplanationText:setDescription( "" )
 	end
-	if f25_local0.locked then
-		hideInfoBox( f25_arg0 )
+	if f32_local0.locked then
+		hideInfoBox( f32_arg0 )
 	else
-		showInfoBox( f25_arg0 )
+		showInfoBox( f32_arg0 )
 	end
-	if Engine.GetProfileBitfieldData( "cheatNewStateBit", f25_local0.cheatIndex ) == "1" then
-		f0_local1[LUI.IntelMenu.ActiveTypeIndex].cheats[f25_arg1].showNew = false
+	if Engine.GetProfileBitfieldData( "cheatNewStateBit", f32_local0.cheatIndex ) == "1" then
+		f0_local1[LUI.IntelMenu.ActiveTypeIndex].cheats[f32_arg1].showNew = false
 	end
 end
 

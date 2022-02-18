@@ -17,7 +17,7 @@ end
 
 local f0_local9 = function ( f2_arg0, f2_arg1 )
 	if f0_local7 == nil then
-		UPVAL0 = Engine.IsDevelopmentBuild()
+		f0_local7 = Engine.IsDevelopmentBuild()
 	end
 	if f2_arg0.stanceImage == nil then
 		f2_arg0.stanceImage = f2_arg0:getChildById( "stanceImage" )

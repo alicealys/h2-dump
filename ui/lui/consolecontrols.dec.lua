@@ -128,7 +128,7 @@ function reset_controls( f22_arg0, f22_arg1 )
 		popup_title = Engine.Localize( "@LUA_MENU_SET_DEFAULT_CONTROLS" ),
 		message_text = Engine.Localize( "@LUA_MENU_RESTORE_EACH_SETTING_CONSOLE" ),
 		yes_action = resetToDefaultAction,
-		no_action = function ( f16_arg0, f16_arg1 )
+		no_action = function ( f23_arg0, f23_arg1 )
 			DebugPrint( "Running generic_confirmation_popup no action" )
 		end
 		,
@@ -137,12 +137,12 @@ function reset_controls( f22_arg0, f22_arg1 )
 	} )
 end
 
-function resetToDefault( f23_arg0, f23_arg1 )
-	LUI.FlowManager.RequestAddMenu( f23_arg0, "reset_controls", false, f23_arg1.controller )
+function resetToDefault( f24_arg0, f24_arg1 )
+	LUI.FlowManager.RequestAddMenu( f24_arg0, "reset_controls", false, f24_arg1.controller )
 end
 
-function addResetToDefaultButton( f24_arg0 )
-	f24_arg0:AddHelp( {
+function addResetToDefaultButton( f25_arg0 )
+	f25_arg0:AddHelp( {
 		name = "add_button_helper_text",
 		button_ref = "button_alt2",
 		helper_text = Engine.Localize( "@LUA_MENU_RESTORE_DEFAULT_CONTROLS" ),
@@ -151,56 +151,56 @@ function addResetToDefaultButton( f24_arg0 )
 	}, resetToDefault )
 end
 
-LUI.ConsoleControls.new = function ( f25_arg0, f25_arg1 )
+LUI.ConsoleControls.new = function ( f26_arg0, f26_arg1 )
 	Engine.ExecNow( "profile_menuDvarsSetup" )
-	local f25_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
-	local f25_local1 = 0 ~= LUI.ConsoleOptions.FindTypeIndex( LUI.PreviousMenuName )
-	local f25_local2 = 0
+	local f26_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
+	local f26_local1 = 0 ~= LUI.ConsoleOptions.FindTypeIndex( LUI.PreviousMenuName )
+	local f26_local2 = 0
 	if not Engine.InFrontend() and Engine.GetSplitScreen() then
-		f25_local2 = -15
+		f26_local2 = -15
 	end
-	local f25_local3 = LUI.MenuTemplate.new( f25_arg0, {
+	local f26_local3 = LUI.MenuTemplate.new( f26_arg0, {
 		menu_title = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_OPTIONS_UPPER_CASE" ) ),
-		menu_top_indent = f25_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing + f25_local2,
+		menu_top_indent = f26_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing + f26_local2,
 		menu_width = GenericMenuDims.OptionMenuWidth,
 		menu_list_divider_top_offset = -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing),
 		noWrap = true,
-		skipAnim = f25_local1
+		skipAnim = f26_local1
 	} )
-	f25_local3:registerEventHandler( "options_window_refresh", LUI.Options.OptionsWindowRefresh )
-	local f25_local4 = LUI.Options.AddRightPanel( f25_local3 )
-	LUI.OptionsLayout.BuildMenu( f25_local4, f25_arg1.exclusiveController )
-	local f25_local5 = function ()
-		if f25_local4.controller and f25_local4.controller.sticksOverlay and f25_local4.controller.buttonsOverlay then
-			f25_local4.controller:dispatchEventToChildren( {
+	f26_local3:registerEventHandler( "options_window_refresh", LUI.Options.OptionsWindowRefresh )
+	local f26_local4 = LUI.Options.AddRightPanel( f26_local3 )
+	LUI.OptionsLayout.BuildMenu( f26_local4, f26_arg1.exclusiveController )
+	local f26_local5 = function ()
+		if f26_local4.controller and f26_local4.controller.sticksOverlay and f26_local4.controller.buttonsOverlay then
+			f26_local4.controller:dispatchEventToChildren( {
 				name = "hide_texts"
 			} )
-			f25_local4.controller:dispatchEventToChildren( {
+			f26_local4.controller:dispatchEventToChildren( {
 				name = "show_" .. Engine.GetProfileData( f0_local0 )
 			} )
-			LUI.OptionsLayout.ResetSticksLayout( f25_local4.controller.sticksOverlay, f25_local3.exclusiveController )
+			LUI.OptionsLayout.ResetSticksLayout( f26_local4.controller.sticksOverlay, f26_local3.exclusiveController )
 		end
 	end
 	
-	f25_local3:registerEventHandler( "refresh_layout_display", f25_local5 )
-	f25_local5()
-	f25_local3:addElement( LUI.H1MenuTab.new( {
-		title = function ( f18_arg0 )
-			return LUI.ConsoleOptions.Categories[f18_arg0].title
+	f26_local3:registerEventHandler( "refresh_layout_display", f26_local5 )
+	f26_local5()
+	f26_local3:addElement( LUI.H1MenuTab.new( {
+		title = function ( f28_arg0 )
+			return LUI.ConsoleOptions.Categories[f28_arg0].title
 		end,
 		tabCount = #LUI.ConsoleOptions.Categories,
-		underTabTextFunc = function ( f19_arg0 )
-			return LUI.ConsoleOptions.Categories[f19_arg0].title
+		underTabTextFunc = function ( f29_arg0 )
+			return LUI.ConsoleOptions.Categories[f29_arg0].title
 		end,
-		top = f25_local0 + LUI.MenuTemplate.ListTop + f25_local2,
+		top = f26_local0 + LUI.MenuTemplate.ListTop + f26_local2,
 		width = GenericMenuDims.OptionMenuWidth,
 		clickTabBtnAction = LUI.ConsoleOptions.LoadMenu,
 		activeIndex = LUI.ConsoleOptions.FindTypeIndex( "console_controls" ),
 		isTabLockedfunc = LUI.ConsoleOptions.IsOptionLocked,
 		skipChangeTab = true,
-		exclusiveController = f25_local3.exclusiveController
+		exclusiveController = f26_local3.exclusiveController
 	} ) )
-	local f25_local6 = LUI.Options.CreateControlProfileDataButton( f25_local3, "gpadSticksConfig", nil, "profile_setSticksConfig", "PLATFORM_UI_THUMBSTICK_LAYOUT", "PLATFORM_OPTIONS_STICK_LAYOUT_DESC", {
+	local f26_local6 = LUI.Options.CreateControlProfileDataButton( f26_local3, "gpadSticksConfig", nil, "profile_setSticksConfig", "PLATFORM_UI_THUMBSTICK_LAYOUT", "PLATFORM_OPTIONS_STICK_LAYOUT_DESC", {
 		{
 			text = "MENU_DEFAULT",
 			value = "thumbstick_default"
@@ -217,43 +217,43 @@ LUI.ConsoleControls.new = function ( f25_arg0, f25_arg1 )
 			text = "MENU_LEGACY_SOUTHPAW",
 			value = "thumbstick_legacysouthpaw"
 		}
-	}, nil, nil, function ( f20_arg0, f20_arg1, f20_arg2 )
-		f25_local4:dispatchEventToChildren( {
+	}, nil, nil, function ( f30_arg0, f30_arg1, f30_arg2 )
+		f26_local4:dispatchEventToChildren( {
 			name = "swap_sticks_buttons"
 		} )
-		f25_local5()
-		f25_local4.controller.sticksOverlay:dispatchEventToChildren( {
+		f26_local5()
+		f26_local4.controller.sticksOverlay:dispatchEventToChildren( {
 			name = "highlight",
 			dispatchChildren = true
 		} )
-		f25_local4.controller.buttonsOverlay:dispatchEventToChildren( {
+		f26_local4.controller.buttonsOverlay:dispatchEventToChildren( {
 			name = "highlight_for_sticks",
 			dispatchChildren = true
 		} )
 	end )
-	f25_local6.properties.button_over_func = function ( f21_arg0, f21_arg1 )
-		if f25_local4.controller and f25_local4.controller.sticksOverlay then
-			f25_local4.controller.sticksOverlay:dispatchEventToChildren( {
+	f26_local6.properties.button_over_func = function ( f31_arg0, f31_arg1 )
+		if f26_local4.controller and f26_local4.controller.sticksOverlay then
+			f26_local4.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "highlight",
 				dispatchChildren = true
 			} )
-			f25_local4.controller.buttonsOverlay:dispatchEventToChildren( {
+			f26_local4.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "highlight_for_sticks",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	f25_local6.properties.button_up_func = function ( f22_arg0, f22_arg1 )
-		if f25_local4.controller and f25_local4.controller.sticksOverlay then
-			f25_local4.controller.sticksOverlay:dispatchEventToChildren( {
+	f26_local6.properties.button_up_func = function ( f32_arg0, f32_arg1 )
+		if f26_local4.controller and f26_local4.controller.sticksOverlay then
+			f26_local4.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "restore",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	local f25_local7 = LUI.Options.CreateGamepadLayoutProfileButton( f25_local3, f0_local0, nil, "profile_setButtonsConfig", "MENU_BUTTON_LAYOUT", "PLATFORM_OPTIONS_BUTTON_LAYOUT_DESC", {
+	local f26_local7 = LUI.Options.CreateGamepadLayoutProfileButton( f26_local3, f0_local0, nil, "profile_setButtonsConfig", "MENU_BUTTON_LAYOUT", "PLATFORM_OPTIONS_BUTTON_LAYOUT_DESC", {
 		{
 			text = "MENU_DEFAULT",
 			value = "buttons_default"
@@ -294,93 +294,93 @@ LUI.ConsoleControls.new = function ( f25_arg0, f25_arg1 )
 			text = "MENU_STICK_AND_MOVE",
 			value = "buttons_stick_and_move"
 		}
-	}, nil, function ( f23_arg0, f23_arg1 )
-		local f23_local0 = ""
-		if isFlipped( f25_local3.exclusiveController ) then
-			f23_local0 = "_alt"
+	}, nil, function ( f33_arg0, f33_arg1 )
+		local f33_local0 = ""
+		if isFlipped( f26_local3.exclusiveController ) then
+			f33_local0 = "_alt"
 		end
-		Engine.ExecNow( "profile_setButtonsConfig " .. f23_arg1.value .. f23_local0 )
+		Engine.ExecNow( "profile_setButtonsConfig " .. f33_arg1.value .. f33_local0 )
 		if not Engine.IsConsoleGame() then
 			Engine.ExecNow( "profile_menuDvarsFinish" )
 		end
-		LUI.Options.OptionsWindowTriggerRefresh( f23_arg0, f23_arg1 )
-		f25_local5()
+		LUI.Options.OptionsWindowTriggerRefresh( f33_arg0, f33_arg1 )
+		f26_local5()
 	end )
-	f25_local7.properties.button_over_func = function ( f24_arg0, f24_arg1 )
-		if f25_local4.controller and f25_local4.controller.buttonsOverlay then
-			f25_local4.controller.buttonsOverlay:dispatchEventToChildren( {
+	f26_local7.properties.button_over_func = function ( f34_arg0, f34_arg1 )
+		if f26_local4.controller and f26_local4.controller.buttonsOverlay then
+			f26_local4.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "highlight",
 				dispatchChildren = true
 			} )
-			f25_local4.controller.unscaledButtonsOverlay:dispatchEventToChildren( {
+			f26_local4.controller.unscaledButtonsOverlay:dispatchEventToChildren( {
 				name = "highlight",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	f25_local7.properties.button_up_func = function ( f25_arg0, f25_arg1 )
-		if f25_local4.controller and f25_local4.controller.buttonsOverlay then
-			f25_local4.controller.buttonsOverlay:dispatchEventToChildren( {
+	f26_local7.properties.button_up_func = function ( f35_arg0, f35_arg1 )
+		if f26_local4.controller and f26_local4.controller.buttonsOverlay then
+			f26_local4.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "restore",
 				dispatchChildren = true
 			} )
-			f25_local4.controller.unscaledButtonsOverlay:dispatchEventToChildren( {
+			f26_local4.controller.unscaledButtonsOverlay:dispatchEventToChildren( {
 				name = "restore",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	local f25_local8 = nil
-	local f25_local9 = function ( f26_arg0, f26_arg1 )
-		local f26_local0 = string.gsub( Engine.GetProfileData( f0_local0 ), "_alt", "" )
-		local f26_local1 = "_alt"
-		if isFlipped( f25_local3.exclusiveController ) then
-			f26_local1 = ""
+	local f26_local8 = nil
+	local f26_local9 = function ( f36_arg0, f36_arg1 )
+		local f36_local0 = string.gsub( Engine.GetProfileData( f0_local0 ), "_alt", "" )
+		local f36_local1 = "_alt"
+		if isFlipped( f26_local3.exclusiveController ) then
+			f36_local1 = ""
 		end
-		Engine.ExecNow( "profile_setButtonsConfig " .. f26_local0 .. f26_local1 )
-		f25_local3.list:processEvent( {
+		Engine.ExecNow( "profile_setButtonsConfig " .. f36_local0 .. f36_local1 )
+		f26_local3.list:processEvent( {
 			name = "content_refresh",
 			dispatchChildren = true
 		} )
-		f25_local5( f25_local3.rightPanel )
+		f26_local5( f26_local3.rightPanel )
 	end
 	
-	local f25_local10 = f25_local3:AddButton( Engine.Localize( "@MENU_BUTTON_LAYOUT_ALT" ), nil, GamepadDisabledFunc, nil, nil, {
+	local f26_local10 = f26_local3:AddButton( Engine.Localize( "@MENU_BUTTON_LAYOUT_ALT" ), nil, GamepadDisabledFunc, nil, nil, {
 		variant = GenericButtonSettings.Variants.Select,
 		desc_text = Engine.Localize( "@MENU_OPTIONS_BUTTON_LAYOUT_ALT_DESC" ),
 		H1OptionButton = true,
-		button_display_func = function ( f27_arg0, f27_arg1 )
-			if isFlipped( f25_local3.exclusiveController ) then
+		button_display_func = function ( f37_arg0, f37_arg1 )
+			if isFlipped( f26_local3.exclusiveController ) then
 				return Engine.Localize( "@LUA_MENU_ENABLED" )
 			else
 				return Engine.Localize( "@LUA_MENU_DISABLED" )
 			end
 		end,
-		button_left_func = f25_local9,
-		button_right_func = f25_local9,
+		button_left_func = f26_local9,
+		button_right_func = f26_local9,
 		buttonActionIsRightAction = true
 	} )
-	f25_local10.properties.button_over_func = function ( f28_arg0, f28_arg1 )
-		if f25_local4.controller and f25_local4.controller.buttonsOverlay then
-			f25_local4.controller.buttonsOverlay:dispatchEventToChildren( {
+	f26_local10.properties.button_over_func = function ( f38_arg0, f38_arg1 )
+		if f26_local4.controller and f26_local4.controller.buttonsOverlay then
+			f26_local4.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "flipped_button_highlight",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	f25_local10.properties.button_up_func = function ( f29_arg0, f29_arg1 )
-		if f25_local4.controller and f25_local4.controller.buttonsOverlay then
-			f25_local4.controller.buttonsOverlay:dispatchEventToChildren( {
+	f26_local10.properties.button_up_func = function ( f39_arg0, f39_arg1 )
+		if f26_local4.controller and f26_local4.controller.buttonsOverlay then
+			f26_local4.controller.buttonsOverlay:dispatchEventToChildren( {
 				name = "restore",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	local f25_local11 = LUI.Options.CreateControlProfileDataButton( f25_local3, "invertedPitch", "profile_toggleInvertedPitch", nil, "MENU_LOOK_INVERSION", "PLATFORM_OPTIONS_LOOK_INVERSION_DESC", {
+	local f26_local11 = LUI.Options.CreateControlProfileDataButton( f26_local3, "invertedPitch", "profile_toggleInvertedPitch", nil, "MENU_LOOK_INVERSION", "PLATFORM_OPTIONS_LOOK_INVERSION_DESC", {
 		{
 			text = "@LUA_MENU_DISABLED",
 			value = false
@@ -389,56 +389,56 @@ LUI.ConsoleControls.new = function ( f25_arg0, f25_arg1 )
 			text = "@LUA_MENU_ENABLED",
 			value = true
 		}
-	}, GamepadDisabledFunc, nil, function ( f30_arg0, f30_arg1 )
-		f25_local5( f25_local3.rightPanel )
-		f25_local4.controller.sticksOverlay:dispatchEventToChildren( {
+	}, GamepadDisabledFunc, nil, function ( f40_arg0, f40_arg1 )
+		f26_local5( f26_local3.rightPanel )
+		f26_local4.controller.sticksOverlay:dispatchEventToChildren( {
 			name = "look_inversion_highlight",
 			dispatchChildren = true
 		} )
 	end )
-	f25_local11.properties.button_over_func = function ( f31_arg0, f31_arg1 )
-		if f25_local4.controller and f25_local4.controller.sticksOverlay then
-			f25_local4.controller.sticksOverlay:dispatchEventToChildren( {
+	f26_local11.properties.button_over_func = function ( f41_arg0, f41_arg1 )
+		if f26_local4.controller and f26_local4.controller.sticksOverlay then
+			f26_local4.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "look_inversion_highlight",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	f25_local11.properties.button_up_func = function ( f32_arg0, f32_arg1 )
-		if f25_local4.controller and f25_local4.controller.sticksOverlay then
-			f25_local4.controller.sticksOverlay:dispatchEventToChildren( {
+	f26_local11.properties.button_up_func = function ( f42_arg0, f42_arg1 )
+		if f26_local4.controller and f26_local4.controller.sticksOverlay then
+			f26_local4.controller.sticksOverlay:dispatchEventToChildren( {
 				name = "restore",
 				dispatchChildren = true
 			} )
 		end
 	end
 	
-	LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@MENU_VERTICAL_LOOK_SENSITIVITY", "@PLATFORM_OPTIONS_VERTICAL_SENSITIVITY_DESC", GetSensitivityPitchText, SensitivityPitchLess, SensitivityPitchMore, nil, nil, nil, nil, true )
-	LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@MENU_HORIZONTAL_LOOK_SENSITIVITY", "@PLATFORM_OPTIONS_HORIZONTAL_SENSITIVITY_DESC", GetSensitivityYawText, SensitivityYawLess, SensitivityYawMore, nil, nil, nil, nil, true )
-	LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@LUA_MENU_AUTO_WEAPON_SWITCH", "@LUA_MENU_AUTO_WEAPON_SWITCH_DESC", GetAutoWeaponSwitchText, AutoWeaponSwitchToggle, AutoWeaponSwitchToggle )
+	LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@MENU_VERTICAL_LOOK_SENSITIVITY", "@PLATFORM_OPTIONS_VERTICAL_SENSITIVITY_DESC", GetSensitivityPitchText, SensitivityPitchLess, SensitivityPitchMore, nil, nil, nil, nil, true )
+	LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@MENU_HORIZONTAL_LOOK_SENSITIVITY", "@PLATFORM_OPTIONS_HORIZONTAL_SENSITIVITY_DESC", GetSensitivityYawText, SensitivityYawLess, SensitivityYawMore, nil, nil, nil, nil, true )
+	LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@LUA_MENU_AUTO_WEAPON_SWITCH", "@LUA_MENU_AUTO_WEAPON_SWITCH_DESC", GetAutoWeaponSwitchText, AutoWeaponSwitchToggle, AutoWeaponSwitchToggle )
 	if Engine.IsMultiplayer() then
-		LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@LUA_MENU_AIM_ASSIST_LOCKON", "@LUA_MENU_AIM_ASSIST_LOCKON_DESC", GetAimAssistLockonText, AimAssistLockonToggle, AimAssistLockonToggle )
-		LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@LUA_MENU_AIM_ASSIST_SLOWDOWN", "@LUA_MENU_AIM_ASSIST_SLOWDOWN_DESC", GetAimAssistSlowdownText, AimAssistSlowdownToggle, AimAssistSlowdownToggle )
+		LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@LUA_MENU_AIM_ASSIST_LOCKON", "@LUA_MENU_AIM_ASSIST_LOCKON_DESC", GetAimAssistLockonText, AimAssistLockonToggle, AimAssistLockonToggle )
+		LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@LUA_MENU_AIM_ASSIST_SLOWDOWN", "@LUA_MENU_AIM_ASSIST_SLOWDOWN_DESC", GetAimAssistSlowdownText, AimAssistSlowdownToggle, AimAssistSlowdownToggle )
 	else
-		LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@MENU_AIM_ASSIST", "@PLATFORM_OPTIONS_AIM_ASSIST_DESC", GetAimAssistText, AimAssistToggle, AimAssistToggle )
+		LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@MENU_AIM_ASSIST", "@PLATFORM_OPTIONS_AIM_ASSIST_DESC", GetAimAssistText, AimAssistToggle, AimAssistToggle )
 	end
-	LUI.Options.AddButtonOptionVariant( f25_local3, GenericButtonSettings.Variants.Select, "@MENU_CONTROLLER_VIBRATION", "@PLATFORM_OPTIONS_VIBRATION_DESC", GetVibrationText, VibrationToggle, VibrationToggle )
-	LUI.Options.InitScrollingList( f25_local3.list, nil )
-	LUI.Options.AddOptionTextInfo( f25_local3 )
-	f25_local3:AddBackButton( function ( f33_arg0, f33_arg1 )
-		LUI.FlowManager.RequestLeaveMenu( f33_arg0 )
+	LUI.Options.AddButtonOptionVariant( f26_local3, GenericButtonSettings.Variants.Select, "@MENU_CONTROLLER_VIBRATION", "@PLATFORM_OPTIONS_VIBRATION_DESC", GetVibrationText, VibrationToggle, VibrationToggle )
+	LUI.Options.InitScrollingList( f26_local3.list, nil )
+	LUI.Options.AddOptionTextInfo( f26_local3 )
+	f26_local3:AddBackButton( function ( f43_arg0, f43_arg1 )
+		LUI.FlowManager.RequestLeaveMenu( f43_arg0 )
 	end )
-	f25_local3.alwaysSendMenuClose = true
-	f25_local3:registerEventHandler( "menu_close", function ( element, event )
-		Engine.ExecNow( "profile_menuDvarsFinish", f25_local3.exclusiveController )
-		Engine.Exec( "updategamerprofile", f25_local3.exclusiveController )
+	f26_local3.alwaysSendMenuClose = true
+	f26_local3:registerEventHandler( "menu_close", function ( element, event )
+		Engine.ExecNow( "profile_menuDvarsFinish", f26_local3.exclusiveController )
+		Engine.Exec( "updategamerprofile", f26_local3.exclusiveController )
 		if GameX.IsSplitscreen() then
 			GameX.SetOptionState( false )
 		end
 	end )
-	addResetToDefaultButton( f25_local3 )
-	return f25_local3
+	addResetToDefaultButton( f26_local3 )
+	return f26_local3
 end
 
 if Engine.InFrontend() and Engine.IsMultiplayer() then

@@ -35,7 +35,7 @@ function OnPopupAction( f2_arg0, f2_arg1 )
 	end
 	DebugPrint( "\nMOTD Popup Action [" .. tostring( f2_arg0.id ) .. "]" )
 	for f2_local5, f2_local6 in pairs( f2_local0 ) do
-		DebugPrint( "	[" .. f2_local5 .. "]: [" .. tostring( f2_local6 ) .. "]" )
+		DebugPrint( "\t[" .. f2_local5 .. "]: [" .. tostring( f2_local6 ) .. "]" )
 	end
 	DebugPrint( "\n" )
 	LeavePopup( f2_arg0, {
@@ -90,11 +90,11 @@ function AddTextBox( f4_arg0, f4_arg1 )
 		f4_local2.font = f4_arg1.font and f4_arg1.font.Font or f0_local8.Font
 		f4_local2.alignment = LUI.AdjustAlignmentForLanguage( f4_arg1.textAlignment )
 		f4_local2.lineSpacingRatio = 0.3
-		local self = LUI.UIText.new( f4_local2 )
-		self:registerAnimationState( "default", f4_local2 )
-		self:setTextStyle( f4_arg1.textStyle )
-		self:setText( f4_arg1.text )
-		self:addElement( self )
+		local f4_local3 = LUI.UIText.new( f4_local2 )
+		f4_local3:registerAnimationState( "default", f4_local2 )
+		f4_local3:setTextStyle( f4_arg1.textStyle )
+		f4_local3:setText( f4_arg1.text )
+		self:addElement( f4_local3 )
 	end
 	return self
 end
@@ -508,18 +508,18 @@ function AddButtonsFooter( f11_arg0, f11_arg1, f11_arg2 )
 		priority = -1000
 	} )
 	if Engine.IsPC() then
-		local self = f11_local1:getFirstDescendentById( "button_secondary_id" )
-		self:registerEventHandler( "leftmouseup", f11_arg1 )
+		local f11_local2 = f11_local1:getFirstDescendentById( "button_secondary_id" )
+		f11_local2:registerEventHandler( "leftmouseup", f11_arg1 )
 		local f11_local3 = f11_local1:getFirstDescendentById( "button_action_id" )
 		f11_local3:registerEventHandler( "leftmouseup", f11_arg2 )
 	end
-	local self = LUI.UIBindButton.new()
-	self.id = "popup_motd_bind_button"
-	self:registerEventHandler( "button_secondary", f11_arg1 )
-	self.handlePrimary = true
-	self:registerEventHandler( "button_action", f11_arg2 )
-	f11_arg0.bind = self
-	f11_arg0:addElement( self )
+	local f11_local2 = LUI.UIBindButton.new()
+	f11_local2.id = "popup_motd_bind_button"
+	f11_local2:registerEventHandler( "button_secondary", f11_arg1 )
+	f11_local2.handlePrimary = true
+	f11_local2:registerEventHandler( "button_action", f11_arg2 )
+	f11_arg0.bind = f11_local2
+	f11_arg0:addElement( f11_local2 )
 end
 
 LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
@@ -541,10 +541,10 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 	end
 	local f12_local5 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.None )
 	f12_local5.width = LUI.EULA.Width
-	local self
+	local f12_local6
 	if f12_arg1.templateNum == 4 or f12_arg1.templateNum == 5 then
-		self = LUI.EULA.Height / 1.9
-		if not self then
+		f12_local6 = LUI.EULA.Height / 1.9
+		if not f12_local6 then
 		
 		else
 			local f12_local7
@@ -553,12 +553,12 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 				if not f12_local7 then
 				
 				else
-					f12_local5.height = self - f12_local7
-					self = LUI.UIElement.new( f12_local5 )
-					self:addElement( self )
-					f12_local7 = function ( f4_arg0, f4_arg1 )
+					f12_local5.height = f12_local6 - f12_local7
+					f12_local6 = LUI.UIElement.new( f12_local5 )
+					self:addElement( f12_local6 )
+					f12_local7 = function ( f13_arg0, f13_arg1 )
 						Engine.PlaySound( CoD.SFX.SelectBack )
-						OnPopupCancel( f4_arg0, f4_arg1, f12_arg2 )
+						OnPopupCancel( f13_arg0, f13_arg1, f12_arg2 )
 					end
 					
 					AddButtonsFooter( self, f12_local7, f12_local7 )
@@ -566,18 +566,18 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 					f12_local8.material = RegisterMaterial( "white" )
 					f12_local8.alpha = 0.9
 					f12_local8.color = Colors.black
-					self:addElement( LUI.UIImage.new( f12_local8 ) )
-					self:addElement( LUI.DecoFrame.new( nil, LUI.DecoFrame.Grey ) )
-					self:addElement( LUI.Divider.new( CoD.CreateState( 0, -8, 0, nil, CoD.AnchorTypes.TopLeftRight ) ) )
-					local self = LUI.UIElement.new( CoD.CreateState( LUI.EULA.BGPaddingLR, LUI.EULA.BGPaddingLR, -LUI.EULA.BGPaddingTop, -f12_local2, CoD.AnchorTypes.All ) )
-					self.width = f12_local5.width - LUI.EULA.BGPaddingLR * 2
-					self.height = f12_local5.height - LUI.EULA.BGPaddingTop + f12_local2
-					f0_local10[f12_arg1.templateNum]( self, f12_arg1 )
-					self:addElement( self )
+					f12_local6:addElement( LUI.UIImage.new( f12_local8 ) )
+					f12_local6:addElement( LUI.DecoFrame.new( nil, LUI.DecoFrame.Grey ) )
+					f12_local6:addElement( LUI.Divider.new( CoD.CreateState( 0, -8, 0, nil, CoD.AnchorTypes.TopLeftRight ) ) )
+					local f12_local9 = LUI.UIElement.new( CoD.CreateState( LUI.EULA.BGPaddingLR, LUI.EULA.BGPaddingLR, -LUI.EULA.BGPaddingTop, -f12_local2, CoD.AnchorTypes.All ) )
+					f12_local9.width = f12_local5.width - LUI.EULA.BGPaddingLR * 2
+					f12_local9.height = f12_local5.height - LUI.EULA.BGPaddingTop + f12_local2
+					f0_local10[f12_arg1.templateNum]( f12_local9, f12_arg1 )
+					f12_local6:addElement( f12_local9 )
 					local f12_local10 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.BottomLeftRight )
 					f12_local10.height = f12_local2 - LUI.EULABase.BGPaddingTop
-					local self = LUI.UIElement.new( f12_local10 )
-					self:addElement( self )
+					local f12_local11 = LUI.UIElement.new( f12_local10 )
+					f12_local6:addElement( f12_local11 )
 					local f12_local12 = CoD.CreateState( nil, -f12_local10.height - 1, nil, nil, CoD.AnchorTypes.Bottom )
 					local f12_local13
 					if f12_local3 then
@@ -586,21 +586,21 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 						
 						else
 							f12_local12.alpha = f12_local13
-							f12_local12.width = self.width
-							self:addElement( LUI.Divider.new( f12_local12, 10, LUI.Divider.Grey ) )
+							f12_local12.width = f12_local9.width
+							f12_local6:addElement( LUI.Divider.new( f12_local12, 10, LUI.Divider.Grey ) )
 							local f12_local14 = -f0_local0.Height / 2 + 1
 							local f12_local15 = 12
 							local f12_local16 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.None )
 							f12_local16.width = 0
 							f12_local16.height = f12_local10.height - 10
-							local self = LUI.UIElement.new( f12_local16 )
-							self:addElement( self )
-							local f12_local18, self = nil
+							local f12_local17 = LUI.UIElement.new( f12_local16 )
+							f12_local11:addElement( f12_local17 )
+							local f12_local18, f12_local19 = nil
 							local f12_local20 = f0_local9[f12_arg1.popupAction]
 							if f12_local20 then
 								local f12_local21 = 20
 								local f12_local22 = Engine.Localize( f12_local20 )
-								local f12_local23, f12_local24, f12_local25, self = GetTextDimensions2( " " .. f12_local22, f0_local0.Font, f0_local0.Height )
+								local f12_local23, f12_local24, f12_local25, f12_local26 = GetTextDimensions2( " " .. f12_local22, f0_local0.Font, f0_local0.Height )
 								local f12_local27 = f12_local21 + f12_local25 - f12_local23
 								local f12_local28 = f12_local27
 								local f12_local29 = f0_local0.Height
@@ -610,9 +610,9 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 								f12_local18 = f12_local30 or CoD.CreateState( -f12_local28 / 2, f12_local14, nil, nil, CoD.AnchorTypes.Left )
 								f12_local18.width = f12_local28
 								f12_local18.height = f12_local29
-								self = LUI.UIElement.new( f12_local18 )
-								self:addElement( self )
-								local f12_local31 = LUI.MenuBuilder.BuildAddChild( self, {
+								f12_local19 = LUI.UIElement.new( f12_local18 )
+								f12_local17:addElement( f12_local19 )
+								local f12_local31 = LUI.MenuBuilder.BuildAddChild( f12_local19, {
 									type = "button_helper_text_main"
 								} )
 								f12_local31:processEvent( {
@@ -643,53 +643,52 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 								f12_local21 = f12_local36 or CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.None )
 								f12_local21.font = f0_local0.Font
 								f12_local21.color = Colors.h1.light_grey
-								local self
+								local f12_local26
 								if f12_local20 then
-									self = f12_local24 - f12_local35 - (f12_arg1.callToActionLengthOffset or 0)
-									if not self then
+									f12_local26 = f12_local24 - f12_local35 - (f12_arg1.callToActionLengthOffset or 0)
+									if not f12_local26 then
 									
 									else
-										f12_local21.width = self
+										f12_local21.width = f12_local26
 										f12_local21.height = f0_local0.Height
-										self
 										if not f12_local20 then
-											self = LUI.Alignment.Center
-											if not self then
+											f12_local26 = LUI.Alignment.Center
+											if not f12_local26 then
 											
 											else
-												f12_local21.alignment = self
-												self = LUI.UIText.new( f12_local21 )
-												self:setTextStyle( f12_arg1.noHtml and CoD.TextStyle.Shadowed or CoD.TextStyle.Html )
-												self:setText( f12_local22 )
-												self:addElement( self )
+												f12_local21.alignment = f12_local26
+												f12_local26 = LUI.UIText.new( f12_local21 )
+												f12_local26:setTextStyle( f12_arg1.noHtml and CoD.TextStyle.Shadowed or CoD.TextStyle.Html )
+												f12_local26:setText( f12_local22 )
+												f12_local17:addElement( f12_local26 )
 											end
 										end
-										self = nil
+										f12_local26 = nil
 									end
 								end
-								self = f12_local5.width
+								f12_local26 = f12_local5.width
 							end
 							if f12_local20 and f12_local4 then
 								f12_local16.width = f12_local21.width + f12_local15 + f12_local18.width
-								self:registerAnimationState( "default", f12_local16 )
-								self:animateToState( "default" )
+								f12_local17:registerAnimationState( "default", f12_local16 )
+								f12_local17:animateToState( "default" )
 								local f12_local22 = 15
-								local f12_local23 = self
-								local f12_local35 = self.registerAnimationState
+								local f12_local23 = f12_local19
+								local f12_local35 = f12_local19.registerAnimationState
 								local f12_local24 = "default"
 								local f12_local25 = {}
-								local self = f12_local16.width - f12_local18.width
+								local f12_local26 = f12_local16.width - f12_local18.width
 								if Engine.IsPC() then
 									local f12_local37 = f12_local22
 								end
-								f12_local25.left = self + (f12_local37 or 0)
+								f12_local25.left = f12_local26 + (f12_local37 or 0)
 								f12_local25.width = f12_local18.width
 								f12_local25.leftAnchor = true
 								f12_local25.topAnchor = false
 								f12_local25.rightAnchor = false
 								f12_local25.bottomAnchor = false
 								f12_local35( f12_local23, f12_local24, f12_local25 )
-								self:animateToState( "default" )
+								f12_local19:animateToState( "default" )
 							end
 							return self
 						end
@@ -700,24 +699,24 @@ LUI.MarketingPopup.Base = function ( f12_arg0, f12_arg1, f12_arg2 )
 			f12_local7 = 0
 		end
 	end
-	self = LUI.EULA.Height
+	f12_local6 = LUI.EULA.Height
 end
 
-LUI.MarketingPopup.new = function ( f13_arg0, f13_arg1 )
-	return LUI.MarketingPopup.Base( f13_arg0, {
-		h1Header = f13_arg1.title,
-		h2Header = f13_arg1.content_short,
-		h3Header = f13_arg1.h3_header,
-		body = f13_arg1.content_long,
-		image = f13_arg1.popup_image or f13_arg1.image,
-		action = f13_arg1.action,
-		popupAction = f13_arg1.popup_action,
-		callToAction = f13_arg1.popup_action_title or f13_arg1.action_title,
-		callToActionLengthOffset = f13_arg1.call_to_action_length_offset or 0,
-		item_name = f13_arg1.item,
-		noHtml = f13_arg1.noHtml,
-		debug_id = f13_arg1.debug_id,
-		templateNum = f13_arg1.template or 1
+LUI.MarketingPopup.new = function ( f14_arg0, f14_arg1 )
+	return LUI.MarketingPopup.Base( f14_arg0, {
+		h1Header = f14_arg1.title,
+		h2Header = f14_arg1.content_short,
+		h3Header = f14_arg1.h3_header,
+		body = f14_arg1.content_long,
+		image = f14_arg1.popup_image or f14_arg1.image,
+		action = f14_arg1.action,
+		popupAction = f14_arg1.popup_action,
+		callToAction = f14_arg1.popup_action_title or f14_arg1.action_title,
+		callToActionLengthOffset = f14_arg1.call_to_action_length_offset or 0,
+		item_name = f14_arg1.item,
+		noHtml = f14_arg1.noHtml,
+		debug_id = f14_arg1.debug_id,
+		templateNum = f14_arg1.template or 1
 	} )
 end
 

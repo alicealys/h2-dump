@@ -83,9 +83,9 @@ function CheckLanguage( f7_arg0 )
 	end
 end
 
-function CheckDCache( f8_arg0 )
+function CheckDCache( f9_arg0 )
 	if DCache.IsStartupDisabled() then
-		LUI.FlowManager.RequestAddMenu( nil, "request_yesno_popup_generic", true, f8_arg0, nil, {
+		LUI.FlowManager.RequestAddMenu( nil, "request_yesno_popup_generic", true, f9_arg0, nil, {
 			popup_title = Engine.Localize( "@MENU_NOTICE" ),
 			yes_action = function ()
 				DCache.ClearDCache( 1 )
@@ -98,120 +98,120 @@ function CheckDCache( f8_arg0 )
 			message_text = Engine.Localize( "@LUA_MENU_DCACHE_CLEAR_REQUEST" )
 		} )
 	else
-		LoginNextStep( f8_arg0 )
+		LoginNextStep( f9_arg0 )
 	end
 end
 
-function CheckEULA( f9_arg0 )
-	if Engine.HasAcceptedEULA( f9_arg0 ) or Engine.GetDvarBool( "limited_mode" ) then
-		LoginNextStep( f9_arg0 )
+function CheckEULA( f12_arg0 )
+	if Engine.HasAcceptedEULA( f12_arg0 ) or Engine.GetDvarBool( "limited_mode" ) then
+		LoginNextStep( f12_arg0 )
 	else
-		LUI.FlowManager.RequestAddMenu( nil, "EULA", true, f9_arg0, false, {
+		LUI.FlowManager.RequestAddMenu( nil, "EULA", true, f12_arg0, false, {
 			callback = function ()
-				LoginNextStep( f9_arg0 )
+				LoginNextStep( f12_arg0 )
 			end
 		} )
 	end
 end
 
 f0_local0 = false
-f0_local1 = function ( f10_arg0 )
-	LUI.FlowManager.RequestAddMenu( nil, "boot_hdr", true, f10_arg0, false, {
+f0_local1 = function ( f14_arg0 )
+	LUI.FlowManager.RequestAddMenu( nil, "boot_hdr", true, f14_arg0, false, {
 		callback = function ()
-			UPVAL0 = true
-			LoginNextStep( f10_arg0 )
+			f0_local0 = true
+			LoginNextStep( f14_arg0 )
 		end
 	} )
 end
 
-function CheckHDR( f11_arg0 )
-	UPVAL0 = false
-	if Engine.IsProfileSignedIn( f11_arg0 ) then
-		local f11_local0 = CoD.CanToggleHDRRuntime()
-		if Engine.GetProfileData( "hasEverPlayed_MainMenu", f11_arg0 ) or Engine.GetDvarBool( "limited_mode" ) or not CoD.IsHDRAvailable() then
-			LoginNextStep( f11_arg0 )
-		elseif f11_local0 then
-			LUI.FlowManager.RequestAddMenu( nil, "request_yesno_popup_generic", true, f11_arg0, nil, {
+function CheckHDR( f16_arg0 )
+	f0_local0 = false
+	if Engine.IsProfileSignedIn( f16_arg0 ) then
+		local f16_local0 = CoD.CanToggleHDRRuntime()
+		if Engine.GetProfileData( "hasEverPlayed_MainMenu", f16_arg0 ) or Engine.GetDvarBool( "limited_mode" ) or not CoD.IsHDRAvailable() then
+			LoginNextStep( f16_arg0 )
+		elseif f16_local0 then
+			LUI.FlowManager.RequestAddMenu( nil, "request_yesno_popup_generic", true, f16_arg0, nil, {
 				popup_title = Engine.Localize( "@MENU_HDR" ),
 				default_focus_index = 1,
 				yes_action = function ()
 					CoD.SetHDREnabled( Engine.GetControllerForLocalClient( 0 ), 1 )
-					f0_local1( f11_arg0 )
+					f0_local1( f16_arg0 )
 				end,
 				no_action = function ()
 					CoD.SetHDREnabled( Engine.GetControllerForLocalClient( 0 ), 0 )
-					LoginNextStep( f11_arg0 )
+					LoginNextStep( f16_arg0 )
 				end,
 				message_text = Engine.Localize( "@MENU_HDR_BOOT_DESC" )
 			} )
 		else
-			f0_local1( f11_arg0 )
+			f0_local1( f16_arg0 )
 		end
 	else
-		LUI.FlowManager.RequestAddMenu( nil, "no_profile_warning_popmenu", false, f11_arg0, false, {
+		LUI.FlowManager.RequestAddMenu( nil, "no_profile_warning_popmenu", false, f16_arg0, false, {
 			next_menu = "boot_hdr"
 		} )
 	end
 end
 
-function CheckBrightness( f12_arg0 )
-	if Engine.IsProfileSignedIn( f12_arg0 ) then
-		if Engine.GetProfileData( "hasEverPlayed_MainMenu", f12_arg0 ) or Engine.GetDvarBool( "limited_mode" ) or f0_local0 then
-			LoginNextStep( f12_arg0 )
+function CheckBrightness( f19_arg0 )
+	if Engine.IsProfileSignedIn( f19_arg0 ) then
+		if Engine.GetProfileData( "hasEverPlayed_MainMenu", f19_arg0 ) or Engine.GetDvarBool( "limited_mode" ) or f0_local0 then
+			LoginNextStep( f19_arg0 )
 		else
-			LUI.FlowManager.RequestAddMenu( nil, "boot_brightness", true, f12_arg0, false, {
+			LUI.FlowManager.RequestAddMenu( nil, "boot_brightness", true, f19_arg0, false, {
 				callback = function ()
-					LoginNextStep( f12_arg0 )
+					LoginNextStep( f19_arg0 )
 				end
 			} )
 		end
 	else
-		LUI.FlowManager.RequestAddMenu( nil, "no_profile_warning_popmenu", false, f12_arg0, false, {
+		LUI.FlowManager.RequestAddMenu( nil, "no_profile_warning_popmenu", false, f19_arg0, false, {
 			next_menu = "boot_brightness"
 		} )
 	end
 end
 
-function CheckMargins( f13_arg0 )
+function CheckMargins( f21_arg0 )
 	if Engine.IsConsoleGame() then
-		if Engine.IsProfileSignedIn( f13_arg0 ) then
-			if Engine.GetProfileData( "hasEverPlayed_MainMenu", f13_arg0 ) or Engine.GetDvarBool( "limited_mode" ) then
-				LoginNextStep( f13_arg0 )
+		if Engine.IsProfileSignedIn( f21_arg0 ) then
+			if Engine.GetProfileData( "hasEverPlayed_MainMenu", f21_arg0 ) or Engine.GetDvarBool( "limited_mode" ) then
+				LoginNextStep( f21_arg0 )
 			else
-				LUI.FlowManager.RequestAddMenu( nil, "boot_screen_margins", true, f13_arg0, false, {
+				LUI.FlowManager.RequestAddMenu( nil, "boot_screen_margins", true, f21_arg0, false, {
 					callback = function ()
-						LoginNextStep( f13_arg0 )
+						LoginNextStep( f21_arg0 )
 					end
 				} )
 			end
 		else
-			LUI.FlowManager.RequestAddMenu( nil, "no_profile_warning_popmenu", false, f13_arg0, false, {
+			LUI.FlowManager.RequestAddMenu( nil, "no_profile_warning_popmenu", false, f21_arg0, false, {
 				next_menu = "boot_screen_margins"
 			} )
 		end
 	else
-		LoginNextStep( f13_arg0 )
+		LoginNextStep( f21_arg0 )
 	end
 end
 
-function ResolveSignIn( f14_arg0 )
-	if Engine.IsProfileSignedIn( f14_arg0 ) == false then
-		LUI.FlowManager.RequestAddMenu( nil, "no_profile_force_popmenu", false, f14_arg0, false, {} )
+function ResolveSignIn( f23_arg0 )
+	if Engine.IsProfileSignedIn( f23_arg0 ) == false then
+		LUI.FlowManager.RequestAddMenu( nil, "no_profile_force_popmenu", false, f23_arg0, false, {} )
 	else
-		LoginNextStep( f14_arg0 )
+		LoginNextStep( f23_arg0 )
 	end
 end
 
-function CheckSignedIn( f15_arg0 )
-	Engine.ExecNow( "forcenosplitscreencontrol main_lockout_START", f15_arg0 )
+function CheckSignedIn( f24_arg0 )
+	Engine.ExecNow( "forcenosplitscreencontrol main_lockout_START", f24_arg0 )
 	Engine.ExecNow( "resetViewport" )
-	if Engine.IsPS4() and Engine.NeedToDeleteSaveData( f15_arg0 ) then
-		LUI.FlowManager.RequestAddMenu( self, "error_corrupt_savedata", false, f15_arg0, true, {} )
+	if Engine.IsPS4() and Engine.NeedToDeleteSaveData( f24_arg0 ) then
+		LUI.FlowManager.RequestAddMenu( self, "error_corrupt_savedata", false, f24_arg0, true, {} )
 		return 
-	elseif (Engine.IsXB3() or Engine.IsPCApp()) and Engine.IsProfileSignedIn( f15_arg0 ) == false then
-		Engine.ExecWithResolve( "xsignin", ResolveSignIn, f15_arg0 )
+	elseif (Engine.IsXB3() or Engine.IsPCApp()) and Engine.IsProfileSignedIn( f24_arg0 ) == false then
+		Engine.ExecWithResolve( "xsignin", ResolveSignIn, f24_arg0 )
 	else
-		LoginNextStep( f15_arg0 )
+		LoginNextStep( f24_arg0 )
 	end
 end
 
@@ -225,19 +225,19 @@ local f0_local3 = {
 	[#f0_local3 + 1] = CheckMargins,
 	[#f0_local3 + 1] = GoToMainMenu
 }
-function LoginNextStep( f16_arg0 )
-	assert( f16_arg0 ~= nil )
+function LoginNextStep( f25_arg0 )
+	assert( f25_arg0 ~= nil )
 	if f0_local2 < #f0_local3 then
-		UPVAL0 = f0_local2 + 1
+		f0_local2 = f0_local2 + 1
 	end
-	local f16_local0 = f0_local3[f0_local2]
-	if f16_local0 ~= nil then
-		f16_local0( f16_arg0 )
+	local f25_local0 = f0_local3[f0_local2]
+	if f25_local0 ~= nil then
+		f25_local0( f25_arg0 )
 	end
 end
 
-function OnLockoutButton( f17_arg0, f17_arg1 )
-	if not f17_arg0.m_inputDisabled then
+function OnLockoutButton( f26_arg0, f26_arg1 )
+	if not f26_arg0.m_inputDisabled then
 		Engine.PlaySound( CoD.SFX.MenuAccept )
 		if Engine.GetDvarBool( "limited_mode_2" ) then
 			Engine.ExecNow( "set beautiful_corner_hdr_demo 1" )
@@ -249,106 +249,106 @@ function OnLockoutButton( f17_arg0, f17_arg1 )
 			Engine.StopMenuVideo()
 			Engine.StreamingInstallMap( "gulag", "devmap gulag" )
 		else
-			UPVAL0 = 0
-			LoginNextStep( f17_arg1.controller )
+			f0_local2 = 0
+			LoginNextStep( f26_arg1.controller )
 		end
 	end
 end
 
-function OnBackOut( f18_arg0, f18_arg1 )
-	if not f18_arg0.m_inputDisabled and not Engine.IsConsoleGame() then
-		LUI.FlowManager.RequestAddMenu( f18_arg0, "quit_popmenu", false, f18_arg1.controller )
+function OnBackOut( f27_arg0, f27_arg1 )
+	if not f27_arg0.m_inputDisabled and not Engine.IsConsoleGame() then
+		LUI.FlowManager.RequestAddMenu( f27_arg0, "quit_popmenu", false, f27_arg1.controller )
 	end
 end
 
-local f0_local4 = function ( f19_arg0, f19_arg1 )
-	local f19_local0 = Engine.IsGamepadEnabled()
-	local f19_local1 = Engine.IsPS4Controller()
-	if f19_local0 ~= f19_arg0.previousIsGamepad or f19_local1 ~= f19_arg0.previousIsPS4Ctrl then
-		f19_arg0.previousIsGamepad = f19_local0
-		f19_arg0.previousIsPS4Ctrl = f19_local1
-		local f19_local2 = f19_arg0
-		local f19_local3 = f19_arg0.setText
-		local f19_local4 = Engine.Localize
-		local f19_local5
-		if f19_local0 then
-			f19_local5 = "@PLATFORM_PRESS_START_BUTTON"
-			if not f19_local5 then
+local f0_local4 = function ( f28_arg0, f28_arg1 )
+	local f28_local0 = Engine.IsGamepadEnabled()
+	local f28_local1 = Engine.IsPS4Controller()
+	if f28_local0 ~= f28_arg0.previousIsGamepad or f28_local1 ~= f28_arg0.previousIsPS4Ctrl then
+		f28_arg0.previousIsGamepad = f28_local0
+		f28_arg0.previousIsPS4Ctrl = f28_local1
+		local f28_local2 = f28_arg0
+		local f28_local3 = f28_arg0.setText
+		local f28_local4 = Engine.Localize
+		local f28_local5
+		if f28_local0 then
+			f28_local5 = "@PLATFORM_PRESS_START_BUTTON"
+			if not f28_local5 then
 			
 			else
-				f19_local3( f19_local2, f19_local4( f19_local5 ) )
+				f28_local3( f28_local2, f28_local4( f28_local5 ) )
 			end
 		end
-		f19_local5 = "@PLATFORM_PRESS_START_PC"
+		f28_local5 = "@PLATFORM_PRESS_START_PC"
 	end
 end
 
 function main_lockout()
-	local f20_local0 = Engine.GetFirstActiveController()
+	local f29_local0 = Engine.GetFirstActiveController()
 	local self = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
 	Engine.SetGameMode( "none" )
 	Engine.SetSplitScreen( false )
 	Engine.PlayMusic( CoD.Music.MainSPMusic, 1, 660 )
 	PersistentBackground.Set( PersistentBackground.Variants.Default )
 	Engine.SetDvarString( "s18", "0" )
-	local f20_local2 = function ()
-		if Engine.GetDvarBool( "ui_skipMainLockout" ) and not SkipToMenu( f20_local0 ) then
-			GoToMainMenu( f20_local0 )
+	local f29_local2 = function ()
+		if Engine.GetDvarBool( "ui_skipMainLockout" ) and not SkipToMenu( f29_local0 ) then
+			GoToMainMenu( f29_local0 )
 		end
 	end
 	
 	if Engine.GetDvarBool( "ui_skipMainLockout" ) then
 		Engine.ExecNow( "forcenosplitscreencontrol main_lockout_START" )
-		Engine.ExecNow( "resetViewport", f20_local0 )
-		self:registerEventHandler( "menu_create", f20_local2 )
+		Engine.ExecNow( "resetViewport", f29_local0 )
+		self:registerEventHandler( "menu_create", f29_local2 )
 	else
 		Engine.ExecNow( "forcesplitscreencontrol main_lockout" )
 		PersistentBackground.ChangeBackground( nil, CoD.Background.SPLockout )
-		local f20_local3 = CoD.CreateState( -290, -132.29, 290, 12.29, CoD.AnchorTypes.None )
-		f20_local3.material = RegisterMaterial( "h1_logo_mw" )
-		local self = LUI.UIImage.new( f20_local3 )
-		self.id = "Logo"
-		self:addElement( self )
-		local f20_local5 = CoD.CreateState( 0, -40, 0, -30, CoD.AnchorTypes.BottomLeftRight )
-		f20_local5.font = CoD.TextSettings.H1TitleFont.Font
-		f20_local5.color = Colors.h1.light_grey
-		f20_local5.alpha = 0.7
-		local self = LUI.UIText.new( f20_local5 )
-		self.id = "LockoutLegal"
-		self:setText( Engine.Localize( "@LUA_MENU_LEGAL_COPYRIGHT_SHORT" ) )
-		self:addElement( self )
-		local f20_local7 = CoD.CreateState( 0, 500, 0, 515, CoD.AnchorTypes.TopLeftRight )
-		f20_local7.font = CoD.TextSettings.H1TitleFont.Font
-		f20_local7.horizontalAlignment = LUI.HorizontalAlignment.Center
-		local self = LUI.UIText.new( f20_local7 )
-		self:setTextStyle( CoD.TextStyle.ShadowedMore )
-		local self = self
-		local f20_local10 = self.setText
-		local self = Engine.Localize
-		local f20_local12
+		local f29_local3 = CoD.CreateState( -290, -132.29, 290, 12.29, CoD.AnchorTypes.None )
+		f29_local3.material = RegisterMaterial( "h1_logo_mw" )
+		local f29_local4 = LUI.UIImage.new( f29_local3 )
+		f29_local4.id = "Logo"
+		self:addElement( f29_local4 )
+		local f29_local5 = CoD.CreateState( 0, -40, 0, -30, CoD.AnchorTypes.BottomLeftRight )
+		f29_local5.font = CoD.TextSettings.H1TitleFont.Font
+		f29_local5.color = Colors.h1.light_grey
+		f29_local5.alpha = 0.7
+		local f29_local6 = LUI.UIText.new( f29_local5 )
+		f29_local6.id = "LockoutLegal"
+		f29_local6:setText( Engine.Localize( "@LUA_MENU_LEGAL_COPYRIGHT_SHORT" ) )
+		self:addElement( f29_local6 )
+		local f29_local7 = CoD.CreateState( 0, 500, 0, 515, CoD.AnchorTypes.TopLeftRight )
+		f29_local7.font = CoD.TextSettings.H1TitleFont.Font
+		f29_local7.horizontalAlignment = LUI.HorizontalAlignment.Center
+		local f29_local8 = LUI.UIText.new( f29_local7 )
+		f29_local8:setTextStyle( CoD.TextStyle.ShadowedMore )
+		local f29_local9 = f29_local8
+		local f29_local10 = f29_local8.setText
+		local f29_local11 = Engine.Localize
+		local f29_local12
 		if Engine.IsConsoleGame() or Engine.IsGamepadEnabled() then
-			f20_local12 = "@PLATFORM_PRESS_START_BUTTON"
-			if not f20_local12 then
+			f29_local12 = "@PLATFORM_PRESS_START_BUTTON"
+			if not f29_local12 then
 			
 			else
-				f20_local10( self, self( f20_local12 ) )
+				f29_local10( f29_local9, f29_local11( f29_local12 ) )
 				if Engine.IsPC() then
-					self.previousIsGamepad = Engine.IsGamepadEnabled()
-					self.previousIsPS4Ctrl = Engine.IsPS4Controller()
-					self:registerEventHandler( "onControllerChange", f0_local4 )
+					f29_local8.previousIsGamepad = Engine.IsGamepadEnabled()
+					f29_local8.previousIsPS4Ctrl = Engine.IsPS4Controller()
+					f29_local8:registerEventHandler( "onControllerChange", f0_local4 )
 				end
-				self:addElement( self )
-				f20_local10 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
-				f20_local10.material = RegisterMaterial( "black" )
-				f20_local10.alpha = 1
-				self = LUI.UIImage.new( f20_local10 )
-				self.id = "LockoutFade"
-				self:registerAnimationState( "default", f20_local10 )
-				self:registerAnimationState( "full", {
+				self:addElement( f29_local8 )
+				f29_local10 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
+				f29_local10.material = RegisterMaterial( "black" )
+				f29_local10.alpha = 1
+				f29_local9 = LUI.UIImage.new( f29_local10 )
+				f29_local9.id = "LockoutFade"
+				f29_local9:registerAnimationState( "default", f29_local10 )
+				f29_local9:registerAnimationState( "full", {
 					alpha = 0
 				} )
-				self:registerEventHandler( "fadeToBlack", MBh.AnimateToState( "default", 750 ) )
-				self:animateInSequence( {
+				f29_local9:registerEventHandler( "fadeToBlack", MBh.AnimateToState( "default", 750 ) )
+				f29_local9:animateInSequence( {
 					{
 						"default",
 						1000
@@ -358,8 +358,8 @@ function main_lockout()
 						1000
 					}
 				} )
-				self:addElement( self )
-				self = LUI.UIBindButton.new( {
+				self:addElement( f29_local9 )
+				f29_local11 = LUI.UIBindButton.new( {
 					leftAnchor = true,
 					rightAnchor = false,
 					topAnchor = true,
@@ -369,27 +369,27 @@ function main_lockout()
 					left = 0,
 					right = 1280
 				} )
-				self.id = "LockoutBindButton"
-				self:registerEventHandler( "button_start", OnLockoutButton )
-				self:registerEventHandler( "button_action", OnLockoutButton )
-				self:registerEventHandler( "button_secondary", OnBackOut )
+				f29_local11.id = "LockoutBindButton"
+				f29_local11:registerEventHandler( "button_start", OnLockoutButton )
+				f29_local11:registerEventHandler( "button_action", OnLockoutButton )
+				f29_local11:registerEventHandler( "button_secondary", OnBackOut )
 				if Engine.IsPC() then
-					self:setHandleMouseButton( true )
-					self:registerEventHandler( "leftmousedown", OnLockoutButton )
-					self:registerEventHandler( "button_shoulderl", OnLockoutButton )
-					self:registerEventHandler( "button_shoulderr", OnLockoutButton )
-					self:registerEventHandler( "popup_active", function ( element, event )
+					f29_local11:setHandleMouseButton( true )
+					f29_local11:registerEventHandler( "leftmousedown", OnLockoutButton )
+					f29_local11:registerEventHandler( "button_shoulderl", OnLockoutButton )
+					f29_local11:registerEventHandler( "button_shoulderr", OnLockoutButton )
+					f29_local11:registerEventHandler( "popup_active", function ( element, event )
 						element.m_inputDisabled = true
 					end )
-					self:registerEventHandler( "popup_inactive", function ( element, event )
+					f29_local11:registerEventHandler( "popup_inactive", function ( element, event )
 						element.m_inputDisabled = false
 					end )
 				end
-				self.handlePrimary = true
-				self:addElement( self )
+				f29_local11.handlePrimary = true
+				self:addElement( f29_local11 )
 			end
 		end
-		f20_local12 = "@PLATFORM_PRESS_START_PC"
+		f29_local12 = "@PLATFORM_PRESS_START_PC"
 	end
 	return self
 end

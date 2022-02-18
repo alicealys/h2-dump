@@ -42,9 +42,9 @@ function MainMenu( menu, controller )
 	LUI.MenuTemplate.SetBreadCrumb( self, "" )
 	local f2_local8 = CoD.CreateState( 0, 0, 270, 135, CoD.AnchorTypes.TopLeft )
 	f2_local8.material = RegisterMaterial( "h1_logo_mw_small" )
-	local self = LUI.UIImage.new( f2_local8 )
-	self.id = "Logo"
-	self:addElement( self )
+	local f2_local9 = LUI.UIImage.new( f2_local8 )
+	f2_local9.id = "Logo"
+	self:addElement( f2_local9 )
 	local f2_local10 = LUI.MenuTemplate.AddButton( self, "@LUA_MENU_CAMPAIGN_CAPS", OnSinglePlayerButtonAction )
 	local f2_local11 = LUI.MenuTemplate.AddButton( self, "@MENU_SPECIAL_OPS", OnSpecOpsButtonAction )
 	local f2_local12 = LUI.MenuTemplate.AddButton( self, "@LUA_MENU_MULTIPLAYER_CAPS", OnMultiPlayerButtonAction )

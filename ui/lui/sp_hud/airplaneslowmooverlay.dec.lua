@@ -5,52 +5,52 @@ CoD.PrintModuleLoad( _NAME )
 f0_local0 = 1000
 f0_local1 = 2000
 f0_local2 = 500
-local f0_local3 = function ( f8_arg0 )
-	if f8_arg0 ~= nil then
-		LUI.UITimer.Stop( f8_arg0 )
-		f8_arg0:close()
+local f0_local3 = function ( f1_arg0 )
+	if f1_arg0 ~= nil then
+		LUI.UITimer.Stop( f1_arg0 )
+		f1_arg0:close()
 	end
 end
 
-local f0_local4 = function ( f9_arg0, f9_arg1 )
-	f9_arg0:animateToState( "on", f0_local1 )
-	f9_arg0.colorMap:animateToState( "on", f0_local1 )
-	f0_local3( f9_arg0.timer )
-	f9_arg0.timer = nil
+local f0_local4 = function ( f2_arg0, f2_arg1 )
+	f2_arg0:animateToState( "on", f0_local1 )
+	f2_arg0.colorMap:animateToState( "on", f0_local1 )
+	f0_local3( f2_arg0.timer )
+	f2_arg0.timer = nil
 end
 
-local f0_local5 = function ( f10_arg0 )
-	if f10_arg0.on then
+local f0_local5 = function ( f3_arg0 )
+	if f3_arg0.on then
 		return 
 	else
-		f10_arg0.on = true
-		f10_arg0.timer = LUI.UITimer.new( f0_local0, "timer_event", "hud", false )
-		f10_arg0:registerEventHandler( "timer_event", f0_local4 )
-		f10_arg0:addElement( f10_arg0.timer )
+		f3_arg0.on = true
+		f3_arg0.timer = LUI.UITimer.new( f0_local0, "timer_event", "hud", false )
+		f3_arg0:registerEventHandler( "timer_event", f0_local4 )
+		f3_arg0:addElement( f3_arg0.timer )
 	end
 end
 
-local f0_local6 = function ( f11_arg0 )
-	if not f11_arg0.on then
+local f0_local6 = function ( f4_arg0 )
+	if not f4_arg0.on then
 		return 
 	else
-		f0_local3( f11_arg0.timer )
-		f11_arg0.timer = nil
-		f11_arg0.on = false
-		f11_arg0:animateToState( "off", f0_local2 )
-		f11_arg0.colorMap:animateToState( "off", f0_local2 )
+		f0_local3( f4_arg0.timer )
+		f4_arg0.timer = nil
+		f4_arg0.on = false
+		f4_arg0:animateToState( "off", f0_local2 )
+		f4_arg0.colorMap:animateToState( "off", f0_local2 )
 	end
 end
 
-local f0_local7 = function ( f12_arg0, f12_arg1 )
-	if f12_arg1.value then
-		f0_local5( f12_arg0 )
+local f0_local7 = function ( f5_arg0, f5_arg1 )
+	if f5_arg1.value then
+		f0_local5( f5_arg0 )
 	else
-		f0_local6( f12_arg0 )
+		f0_local6( f5_arg0 )
 	end
 end
 
-local f0_local8 = function ( f13_arg0 )
+local f0_local8 = function ( f6_arg0 )
 	local self = LUI.UIElement.new( {
 		leftAnchor = true,
 		rightAnchor = true,
@@ -59,7 +59,7 @@ local f0_local8 = function ( f13_arg0 )
 		alpha = 1
 	} )
 	self.id = "overlayRootId"
-	local self = LUI.UIImage.new( {
+	local f6_local1 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -67,9 +67,9 @@ local f0_local8 = function ( f13_arg0 )
 		alpha = 1,
 		material = RegisterMaterial( "h1_airplane_overlay_blur" )
 	} )
-	self.id = "overlay_blurId"
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f6_local1.id = "overlay_blurId"
+	self:addElement( f6_local1 )
+	local f6_local2 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -81,22 +81,22 @@ local f0_local8 = function ( f13_arg0 )
 		material = RegisterMaterial( "h1_airplane_overlay" )
 	} )
 	self.id = "overlay_colormapId"
-	self:addElement( self )
-	f13_arg0:addElement( self )
-	self.colorMap = self
+	self:addElement( f6_local2 )
+	f6_arg0:addElement( self )
+	self.colorMap = f6_local2
 	self:registerAnimationState( "off", {
 		alpha = 0
 	} )
 	self:registerAnimationState( "on", {
 		alpha = 1
 	} )
-	self:registerAnimationState( "off", {
+	f6_local2:registerAnimationState( "off", {
 		alpha = 0,
 		red = 0,
 		blue = 0,
 		green = 0
 	} )
-	self:registerAnimationState( "on", {
+	f6_local2:registerAnimationState( "on", {
 		alpha = 1,
 		red = 1,
 		blue = 1,
@@ -107,12 +107,12 @@ local f0_local8 = function ( f13_arg0 )
 		name = "ui_airplane_slowmo_overlay",
 		value = Game.GetOmnvar( "ui_airplane_slowmo_overlay" )
 	} )
-	return f13_arg0
+	return f6_arg0
 end
 
-local f0_local9 = function ( f14_arg0, f14_arg1 )
-	if f14_arg1.value then
-		f0_local8( f14_arg0 )
+local f0_local9 = function ( f7_arg0, f7_arg1 )
+	if f7_arg1.value then
+		f0_local8( f7_arg0 )
 	end
 end
 

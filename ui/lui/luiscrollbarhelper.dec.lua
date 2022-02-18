@@ -6,10 +6,8 @@ LUI.UIScrollbarHelper.OnMouseMove = function ( f1_arg0, f1_arg1 )
 		local f1_local0 = f1_arg0:getParent()
 		local f1_local1, f1_local2, f1_local3, f1_local4 = f1_local0:getRect()
 		local f1_local5, f1_local6 = f1_arg1.root:pixelsToUnits( f1_arg1.x, f1_arg1.y )
-		local f1_local7, f1_local8 = f1_arg1.root:pixelsToUnits( f1_local1, f1_local2 )
-		f1_local2 = f1_local8
-		f1_local1 = f1_local7
-		f1_local7 = 0
+		f1_local1, f1_local2 = f1_arg1.root:pixelsToUnits( f1_local1, f1_local2 )
+		local f1_local7 = 0
 		if f1_local0.isHorizontal then
 			f1_local7 = (f1_local5 - f1_local1) / f1_local0:getWidth()
 		else

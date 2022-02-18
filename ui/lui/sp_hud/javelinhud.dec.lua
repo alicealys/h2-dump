@@ -228,9 +228,9 @@ local f0_local19 = function ( f8_arg0 )
 		f8_local10 = false
 	end
 	if f8_local7 then
-		UPVAL0 = not f0_local10
+		f0_local10 = not f0_local10
 	else
-		UPVAL0 = f8_arg0.lockStatus
+		f0_local10 = f8_arg0.lockStatus
 	end
 	f0_local14( f8_arg0.lockOn, f8_local0[f8_local1] )
 	f0_local14( f8_arg0.lightClu, f8_local0[f8_local7] )
@@ -255,7 +255,7 @@ local f0_local20 = function ( f9_arg0 )
 	local f9_local0 = Engine.GetAspectRatio()
 	local f9_local1 = f9_local0 / 1.78
 	if f9_local1 ~= f0_local0 then
-		UPVAL0 = f9_local1
+		f0_local0 = f9_local1
 		local f9_local2 = 1.33
 		if f9_local2 <= f9_local0 then
 			Engine.SetDvarFloat( "vehHudTargetScreenEdgeClampBufferLeft", 145 / f9_local0 / f9_local2 )
@@ -322,7 +322,7 @@ local f0_local26 = function ( f15_arg0 )
 		f15_arg0.firstRun = true
 		f0_local14( f15_arg0, "on" )
 		f15_arg0.on = true
-		UPVAL5 = 0
+		f0_local0 = 0
 		f0_local21( f15_arg0 )
 	end
 end
@@ -368,7 +368,7 @@ local f0_local29 = function ( f18_arg0 )
 	} )
 	self.id = "javelinGrainId"
 	f18_arg0:addElement( self )
-	local self = LUI.UIImage.new( {
+	local f18_local2 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -376,9 +376,9 @@ local f0_local29 = function ( f18_arg0 )
 		material = RegisterMaterial( "hud_javelin_bg_fixed" ),
 		alpha = 1
 	} )
-	self.id = "javelinBg2Id"
-	f18_arg0:addElement( self )
-	local self = LUI.UIElement.new( Engine.IsConsoleGame() and {
+	f18_local2.id = "javelinBg2Id"
+	f18_arg0:addElement( f18_local2 )
+	local f18_local3 = LUI.UIElement.new( Engine.IsConsoleGame() and {
 		leftAnchor = false,
 		rightAnchor = false,
 		topAnchor = false,
@@ -397,27 +397,27 @@ local f0_local29 = function ( f18_arg0 )
 		top = 0,
 		bottom = 0
 	} )
-	self.id = "shakeContainerHudId"
-	self:animateToState( "default" )
-	f18_arg0:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local3.id = "shakeContainerHudId"
+	f18_local3:animateToState( "default" )
+	f18_arg0:addElement( f18_local3 )
+	table.insert( f18_arg0.overlayElements, f18_local3 )
+	local f18_local4 = LUI.UIImage.new( {
 		height = 512,
 		material = RegisterMaterial( "h1_javelin_overlay_distort" )
 	} )
-	self.targetWidth = 1024
-	self.id = "javelinDistortId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIElement.new( {} )
-	self.id = "javelinCrosshairsId"
-	self:setupOwnerdraw( CoD.Ownerdraw.CGHudTargetsJavelin )
-	self:registerAnimationState( "default", {
+	f18_local4.targetWidth = 1024
+	f18_local4.id = "javelinDistortId"
+	f18_local3:addElement( f18_local4 )
+	table.insert( f18_arg0.overlayElements, f18_local4 )
+	local f18_local5 = LUI.UIElement.new( {} )
+	f18_local5.id = "javelinCrosshairsId"
+	f18_local5:setupOwnerdraw( CoD.Ownerdraw.CGHudTargetsJavelin )
+	f18_local5:registerAnimationState( "default", {
 		alpha = 0.5
 	} )
-	self:animateToState( "default", 0 )
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f18_local5:animateToState( "default", 0 )
+	f18_local3:addElement( f18_local5 )
+	local f18_local6 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
@@ -425,132 +425,132 @@ local f0_local29 = function ( f18_arg0 )
 		material = RegisterMaterial( "hud_javelin_bg" ),
 		alpha = 1
 	} )
-	self.id = "javelinBgId"
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f18_local6.id = "javelinBgId"
+	f18_local3:addElement( f18_local6 )
+	local f18_local7 = LUI.UIImage.new( {
 		height = 152,
 		material = RegisterMaterial( "h1_hud_javelin_active_area" ),
 		alpha = 0.5
 	} )
-	self.targetWidth = 304
-	self.id = "javelinReticleId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local7.targetWidth = 304
+	f18_local7.id = "javelinReticleId"
+	f18_local3:addElement( f18_local7 )
+	table.insert( f18_arg0.overlayElements, f18_local7 )
+	local f18_local8 = LUI.UIImage.new( {
 		height = 152,
 		material = RegisterMaterial( "hud_javelin_lock_box" ),
 		alpha = 0.25
 	} )
-	self.targetWidth = 304
-	self.id = "javelinLockBoxId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local8.targetWidth = 304
+	f18_local8.id = "javelinLockBoxId"
+	f18_local3:addElement( f18_local8 )
+	table.insert( f18_arg0.overlayElements, f18_local8 )
+	local f18_local9 = LUI.UIImage.new( {
 		height = 128,
 		bottom = -198,
 		material = RegisterMaterial( "hud_javelin_day_on" ),
 		alpha = 1
 	} )
-	self.targetWidth = 128
-	self.targetRight = -268
-	self.id = "javelinLightDayId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local9.targetWidth = 128
+	f18_local9.targetRight = -268
+	f18_local9.id = "javelinLightDayId"
+	f18_local3:addElement( f18_local9 )
+	table.insert( f18_arg0.overlayElements, f18_local9 )
+	local f18_local10 = LUI.UIImage.new( {
 		height = 128,
 		bottom = -200,
 		material = RegisterMaterial( "hud_javelin_lock_on" ),
 		alpha = 1
 	} )
-	self.targetWidth = 128
-	self.targetLeft = 250
-	self.id = "javelinLightLockId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local10.targetWidth = 128
+	f18_local10.targetLeft = 250
+	f18_local10.id = "javelinLightLockId"
+	f18_local3:addElement( f18_local10 )
+	table.insert( f18_arg0.overlayElements, f18_local10 )
+	local f18_local11 = LUI.UIImage.new( {
 		height = 128,
 		bottom = -85,
 		material = RegisterMaterial( "hud_javelin_top_on" ),
 		alpha = f0_local2
 	} )
-	self.targetWidth = 128
-	self.targetLeft = 389
-	self.id = "javelinLightTopId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local11.targetWidth = 128
+	f18_local11.targetLeft = 389
+	f18_local11.id = "javelinLightTopId"
+	f18_local3:addElement( f18_local11 )
+	table.insert( f18_arg0.overlayElements, f18_local11 )
+	local f18_local12 = LUI.UIImage.new( {
 		height = 128,
 		top = -63,
 		material = RegisterMaterial( "hud_javelin_dir_on" ),
 		alpha = f0_local2
 	} )
-	self.targetWidth = 128
-	self.targetLeft = 392
-	self.id = "javelinLightDirId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local12.targetWidth = 128
+	f18_local12.targetLeft = 392
+	f18_local12.id = "javelinLightDirId"
+	f18_local3:addElement( f18_local12 )
+	table.insert( f18_arg0.overlayElements, f18_local12 )
+	local f18_local13 = LUI.UIImage.new( {
 		height = 128,
 		top = 206,
 		material = RegisterMaterial( "hud_javelin_norocket_on" ),
 		alpha = f0_local2
 	} )
-	self.targetWidth = 128
-	self.targetLeft = 251
-	self.id = "javelinLightNoRocketId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local13.targetWidth = 128
+	f18_local13.targetLeft = 251
+	f18_local13.id = "javelinLightNoRocketId"
+	f18_local3:addElement( f18_local13 )
+	table.insert( f18_arg0.overlayElements, f18_local13 )
+	local f18_local14 = LUI.UIImage.new( {
 		height = 128,
 		top = 209,
 		material = RegisterMaterial( "hud_javelin_rocket_on" ),
 		alpha = 1
 	} )
-	self.targetWidth = 128
-	self.targetLeft = 40
-	self.id = "javelinLightRocketId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local14.targetWidth = 128
+	f18_local14.targetLeft = 40
+	f18_local14.id = "javelinLightRocketId"
+	f18_local3:addElement( f18_local14 )
+	table.insert( f18_arg0.overlayElements, f18_local14 )
+	local f18_local15 = LUI.UIImage.new( {
 		height = 128,
 		top = -62,
 		material = RegisterMaterial( "hud_javelin_clu_on" ),
 		alpha = 1
 	} )
-	self.targetWidth = 128
-	self.targetRight = -406
-	self.id = "javelinLightCluId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local15.targetWidth = 128
+	f18_local15.targetRight = -406
+	f18_local15.id = "javelinLightCluId"
+	f18_local3:addElement( f18_local15 )
+	table.insert( f18_arg0.overlayElements, f18_local15 )
+	local f18_local16 = LUI.UIImage.new( {
 		height = 128,
 		bottom = -85,
 		material = RegisterMaterial( "hud_javelin_night_on" ),
 		alpha = f0_local2
 	} )
-	self.targetWidth = 128
-	self.targetRight = -403
-	self.id = "javelinLightNightId"
-	self:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local16.targetWidth = 128
+	f18_local16.targetRight = -403
+	f18_local16.id = "javelinLightNightId"
+	f18_local3:addElement( f18_local16 )
+	table.insert( f18_arg0.overlayElements, f18_local16 )
+	local f18_local17 = LUI.UIImage.new( {
 		width = f0_local11 * f18_local0,
 		height = f0_local11,
 		alpha = 1,
 		material = RegisterMaterial( "h1_hud_javelin_lens_shadow" )
 	} )
-	self.id = "javelinLensShadowId"
-	f18_arg0:addElement( self )
-	local self = LUI.UIImage.new( {
+	f18_local17.id = "javelinLensShadowId"
+	f18_arg0:addElement( f18_local17 )
+	local f18_local18 = LUI.UIImage.new( {
 		height = 1638.4,
 		material = RegisterMaterial( "h1_hud_javelin_eyepiece" ),
 		alpha = 1
 	} )
-	self.targetWidth = 1638.4
-	self.id = "javelinEyepieceId"
-	f18_arg0:addElement( self )
-	table.insert( f18_arg0.overlayElements, self )
-	local self = LUI.UIImage.new( {
+	f18_local18.targetWidth = 1638.4
+	f18_local18.id = "javelinEyepieceId"
+	f18_arg0:addElement( f18_local18 )
+	table.insert( f18_arg0.overlayElements, f18_local18 )
+	local f18_local19 = LUI.UIImage.new( {
 		width = f0_local11,
 		height = f0_local11,
 		red = 0,
@@ -559,22 +559,22 @@ local f0_local29 = function ( f18_arg0 )
 		alpha = 1,
 		material = nil
 	} )
-	self.id = "javelinBlackId"
-	f18_arg0:addElement( self )
+	f18_local19.id = "javelinBlackId"
+	f18_arg0:addElement( f18_local19 )
 	f18_arg0:registerOmnvarHandler( "ui_nightvision", f0_local16 )
 	f18_arg0:registerEventHandler( "nightVisionThermalOverwrite", f0_local16 )
-	f18_arg0.lockOn = f0_local15( self )
-	f18_arg0.attackTop = f0_local15( self )
-	f18_arg0.direct = f0_local15( self )
-	f18_arg0.noRocket = f0_local15( self )
-	f18_arg0.rocketOn = f0_local15( self )
-	f18_arg0.lightClu = f0_local15( self )
-	f18_arg0.dayLight = f0_local15( self )
-	f18_arg0.nightLight = f0_local15( self )
-	f18_arg0.lockBox = f0_local15( self )
-	f18_arg0.reticle = f0_local15( self )
-	f18_arg0.lensShadow = self
-	f18_arg0.black = self
+	f18_arg0.lockOn = f0_local15( f18_local10 )
+	f18_arg0.attackTop = f0_local15( f18_local11 )
+	f18_arg0.direct = f0_local15( f18_local12 )
+	f18_arg0.noRocket = f0_local15( f18_local13 )
+	f18_arg0.rocketOn = f0_local15( f18_local14 )
+	f18_arg0.lightClu = f0_local15( f18_local15 )
+	f18_arg0.dayLight = f0_local15( f18_local9 )
+	f18_arg0.nightLight = f0_local15( f18_local16 )
+	f18_arg0.lockBox = f0_local15( f18_local8 )
+	f18_arg0.reticle = f0_local15( f18_local7 )
+	f18_arg0.lensShadow = f18_local17
+	f18_arg0.black = f18_local19
 	f18_arg0.forward = {
 		acosx = 0,
 		delta = 0,

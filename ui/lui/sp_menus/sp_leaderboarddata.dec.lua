@@ -109,142 +109,142 @@ function SPLeaderboardDataReadDelay( f3_arg0, f3_arg1 )
 	end
 end
 
-function GetRowFromRank( f4_arg0 )
-	return f4_arg0 - f0_local5.startValue + 1
+function GetRowFromRank( f5_arg0 )
+	return f5_arg0 - f0_local5.startValue + 1
 end
 
-function SPLeaderboardDataFillRow( f5_arg0, f5_arg1, f5_arg2, f5_arg3, f5_arg4, f5_arg5, f5_arg6, f5_arg7 )
-	local f5_local0 = f5_arg1:getChildById( "background" )
-	f5_local0:setImage( RegisterMaterial( f5_arg5 ) )
-	local f5_local1
-	if f5_arg7 then
-		f5_local1 = "^3"
-		if not f5_local1 then
+function SPLeaderboardDataFillRow( f6_arg0, f6_arg1, f6_arg2, f6_arg3, f6_arg4, f6_arg5, f6_arg6, f6_arg7 )
+	local f6_local0 = f6_arg1:getChildById( "background" )
+	f6_local0:setImage( RegisterMaterial( f6_arg5 ) )
+	local f6_local1
+	if f6_arg7 then
+		f6_local1 = "^3"
+		if not f6_local1 then
 		
 		else
-			local f5_local2 = f5_local0:getChildById( "rank" )
-			f5_local2:setText( f5_local1 .. f5_arg2 )
-			if f5_arg7 then
-				f5_arg3 = Engine.GetUsernameByController( f5_arg0.properties.exclusiveController )
+			local f6_local2 = f6_local0:getChildById( "rank" )
+			f6_local2:setText( f6_local1 .. f6_arg2 )
+			if f6_arg7 then
+				f6_arg3 = Engine.GetUsernameByController( f6_arg0.properties.exclusiveController )
 			end
-			if f5_arg3 then
-				local f5_local3 = f5_local0:getChildById( "name" )
-				f5_local3:setText( f5_local1 .. f5_arg3 )
+			if f6_arg3 then
+				local f6_local3 = f6_local0:getChildById( "name" )
+				f6_local3:setText( f6_local1 .. f6_arg3 )
 			end
-			local f5_local3 = f5_local0:getChildById( "score" )
-			f5_local3:setText( f5_local1 .. f5_arg4 )
-			if f5_arg6 then
-				f5_arg1.m_focusable = true
+			local f6_local3 = f6_local0:getChildById( "score" )
+			f6_local3:setText( f6_local1 .. f6_arg4 )
+			if f6_arg6 then
+				f6_arg1.m_focusable = true
 			end
-			f5_arg1:setAlpha( 1 )
+			f6_arg1:setAlpha( 1 )
 		end
 	end
-	f5_local1 = ""
+	f6_local1 = ""
 end
 
-function SPLeaderboardDataFillRankRow( f6_arg0, f6_arg1, f6_arg2, f6_arg3, f6_arg4 )
-	local f6_local0 = f6_arg0.list:getChildById( "row" .. f6_arg1 )
-	local f6_local1 = "h1_leaderboard_row01"
-	if f6_arg1 % 2 == 1 then
-		f6_local1 = "h1_leaderboard_row02"
+function SPLeaderboardDataFillRankRow( f7_arg0, f7_arg1, f7_arg2, f7_arg3, f7_arg4 )
+	local f7_local0 = f7_arg0.list:getChildById( "row" .. f7_arg1 )
+	local f7_local1 = "h1_leaderboard_row01"
+	if f7_arg1 % 2 == 1 then
+		f7_local1 = "h1_leaderboard_row02"
 	end
-	local f6_local2
+	local f7_local2
 	if f0_local5.playerRank == nil or f0_local5.playerRank <= 0 then
-		f6_local2 = false
+		f7_local2 = false
 	else
-		f6_local2 = true
+		f7_local2 = true
 	end
-	local f6_local3
-	if f6_arg1 == f0_local5.currentPlayerRow then
-		f6_local3 = f6_local2
+	local f7_local3
+	if f7_arg1 == f0_local5.currentPlayerRow then
+		f7_local3 = f7_local2
 	else
-		f6_local3 = false
+		f7_local3 = false
 	end
-	SPLeaderboardDataFillRow( f6_arg0, f6_local0, f6_arg2, f6_arg3, f6_arg4, f6_local1, true, f6_local3 )
+	SPLeaderboardDataFillRow( f7_arg0, f7_local0, f7_arg2, f7_arg3, f7_arg4, f7_local1, true, f7_local3 )
 end
 
-function SPLeaderboardDataFillPlayerRow( f7_arg0 )
-	local f7_local0 = f7_arg0.list:getChildById( "playerHeader" )
-	local f7_local1 = Leaderboards.GetPlayerValue( f7_arg0.properties.exclusiveController, 0 )
-	if f7_local1 then
-		SPLeaderboardDataFillRow( f7_arg0, f7_local0, f7_local1, playerName, Leaderboards.GetPlayerValue( f7_arg0.properties.exclusiveController, 2 ), "h1_leaderboard_rowplayer", false, false )
+function SPLeaderboardDataFillPlayerRow( f8_arg0 )
+	local f8_local0 = f8_arg0.list:getChildById( "playerHeader" )
+	local f8_local1 = Leaderboards.GetPlayerValue( f8_arg0.properties.exclusiveController, 0 )
+	if f8_local1 then
+		SPLeaderboardDataFillRow( f8_arg0, f8_local0, f8_local1, playerName, Leaderboards.GetPlayerValue( f8_arg0.properties.exclusiveController, 2 ), "h1_leaderboard_rowplayer", false, false )
 	end
-	f7_local0:setAlpha( 1 )
+	f8_local0:setAlpha( 1 )
 end
 
-function disableRow( f8_arg0, f8_arg1 )
-	local f8_local0 = f8_arg0.list:getChildById( "row" .. f8_arg1 )
-	f8_local0.m_focusable = false
-	f8_local0:setAlpha( 0 )
+function disableRow( f9_arg0, f9_arg1 )
+	local f9_local0 = f9_arg0.list:getChildById( "row" .. f9_arg1 )
+	f9_local0.m_focusable = false
+	f9_local0:setAlpha( 0 )
 end
 
-function SPLeaderboardCreateRow( f9_arg0, f9_arg1, f9_arg2, f9_arg3, f9_arg4, f9_arg5, f9_arg6, f9_arg7, f9_arg8 )
+function SPLeaderboardCreateRow( f10_arg0, f10_arg1, f10_arg2, f10_arg3, f10_arg4, f10_arg5, f10_arg6, f10_arg7, f10_arg8 )
 	local self = LUI.UIButton.new( CoD.CreateState( 0, 0, f0_local6, f0_local7, CoD.AnchorTypes.TopLeft ) )
 	if not SPLeaderboardDataCanShowSelectButton() then
 		self.properties = {
 			muteAction = true
 		}
 	end
-	self.id = f9_arg1
+	self.id = f10_arg1
 	self.m_focusable = false
 	self.m_ignoreMouseFocus = false
-	self:setAlpha( f9_arg2 )
-	local self = LUI.UIImage.new( {
+	self:setAlpha( f10_arg2 )
+	local f10_local1 = LUI.UIImage.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		bottomAnchor = true,
 		rightAnchor = true,
 		alpha = 1
 	} )
-	self.id = "background"
-	if f9_arg3 then
-		self:setImage( RegisterMaterial( f9_arg3 ) )
+	f10_local1.id = "background"
+	if f10_arg3 then
+		f10_local1:setImage( RegisterMaterial( f10_arg3 ) )
 	end
-	local self = LUI.UIText.new( {
+	local f10_local2 = LUI.UIText.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		font = CoD.TextSettings.Font14.Font,
-		color = f9_arg7,
+		color = f10_arg7,
 		alignment = LUI.Alignment.Center,
 		width = 142,
 		top = f0_local9,
 		height = f0_local8
 	} )
-	self.id = "rank"
-	if f9_arg4 then
-		self:setText( f9_arg4 )
+	f10_local2.id = "rank"
+	if f10_arg4 then
+		f10_local2:setText( f10_arg4 )
 	end
-	local self = LUI.UIText.new( {
+	local f10_local3 = LUI.UIText.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		font = CoD.TextSettings.Font14.Font,
-		color = f9_arg7,
+		color = f10_arg7,
 		alignment = LUI.Alignment.Center,
 		left = 147,
 		width = 270,
 		top = f0_local9,
 		height = f0_local8
 	} )
-	self.id = "name"
+	f10_local3.id = "name"
 	if Engine.IsPC() then
-		self:setupAutoScaleText()
+		f10_local3:setupAutoScaleText()
 	end
-	if f9_arg5 then
-		self:setText( f9_arg5 )
+	if f10_arg5 then
+		f10_local3:setText( f10_arg5 )
 	end
-	local self = LUI.UIText.new( {
+	local f10_local4 = LUI.UIText.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		font = CoD.TextSettings.Font14.Font,
-		color = f9_arg7,
+		color = f10_arg7,
 		alignment = LUI.Alignment.Center,
 		left = 422,
 		width = 142,
 		top = f0_local9,
 		height = f0_local8
 	} )
-	self.id = "score"
-	local self = LUI.UIImage.new( {
+	f10_local4.id = "score"
+	local f10_local5 = LUI.UIImage.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		bottomAnchor = true,
@@ -252,8 +252,8 @@ function SPLeaderboardCreateRow( f9_arg0, f9_arg1, f9_arg2, f9_arg3, f9_arg4, f9
 		left = 142,
 		width = 1
 	} )
-	self.id = "leftLine"
-	local self = LUI.UIImage.new( {
+	f10_local5.id = "leftLine"
+	local f10_local6 = LUI.UIImage.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		bottomAnchor = true,
@@ -261,55 +261,55 @@ function SPLeaderboardCreateRow( f9_arg0, f9_arg1, f9_arg2, f9_arg3, f9_arg4, f9
 		left = 422,
 		width = 1
 	} )
-	self.id = "rightLine"
-	if f9_arg6 then
-		self:setText( f9_arg6 )
+	f10_local6.id = "rightLine"
+	if f10_arg6 then
+		f10_local4:setText( f10_arg6 )
 	end
-	if f9_arg8 then
-		self:registerAnimationState( "default", {
-			color = f9_arg7
+	if f10_arg8 then
+		f10_local2:registerAnimationState( "default", {
+			color = f10_arg7
 		} )
-		self:registerAnimationState( "focused", {
-			color = f9_arg8
+		f10_local2:registerAnimationState( "focused", {
+			color = f10_arg8
 		} )
-		self:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
-		self:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
-		self:registerAnimationState( "default", {
-			color = f9_arg7
+		f10_local2:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
+		f10_local2:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
+		f10_local3:registerAnimationState( "default", {
+			color = f10_arg7
 		} )
-		self:registerAnimationState( "focused", {
-			color = f9_arg8
+		f10_local3:registerAnimationState( "focused", {
+			color = f10_arg8
 		} )
-		self:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
-		self:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
-		self:registerAnimationState( "default", {
-			color = f9_arg7
+		f10_local3:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
+		f10_local3:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
+		f10_local4:registerAnimationState( "default", {
+			color = f10_arg7
 		} )
-		self:registerAnimationState( "focused", {
-			color = f9_arg8
+		f10_local4:registerAnimationState( "focused", {
+			color = f10_arg8
 		} )
-		self:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
-		self:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
+		f10_local4:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
+		f10_local4:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
 	end
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
-	f9_arg0.list:addElement( self )
+	self:addElement( f10_local1 )
+	f10_local1:addElement( f10_local2 )
+	f10_local1:addElement( f10_local3 )
+	f10_local1:addElement( f10_local4 )
+	f10_local1:addElement( f10_local5 )
+	f10_local1:addElement( f10_local6 )
+	f10_arg0.list:addElement( self )
 	return self
 end
 
-function HandleRowAction( f10_arg0, f10_arg1 )
+function HandleRowAction( f11_arg0, f11_arg1 )
 	if Engine.IsConsoleGame() or Engine.IsPCApp() then
-		Leaderboards.ShowGamercard( f10_arg1.controller, 0 )
+		Leaderboards.ShowGamercard( f11_arg1.controller, 0 )
 	end
 end
 
-function SPLeaderboardDataAddRow( f11_arg0, f11_arg1 )
-	local f11_local0 = SPLeaderboardCreateRow( f11_arg0, "row" .. f11_arg1, 0, nil, nil, nil, nil, Colors.h1.second_medium_grey, Colors.white )
-	local f11_local1 = f11_local0:getChildById( "background" )
+function SPLeaderboardDataAddRow( f12_arg0, f12_arg1 )
+	local f12_local0 = SPLeaderboardCreateRow( f12_arg0, "row" .. f12_arg1, 0, nil, nil, nil, nil, Colors.h1.second_medium_grey, Colors.white )
+	local f12_local1 = f12_local0:getChildById( "background" )
 	local self = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
@@ -329,20 +329,20 @@ function SPLeaderboardDataAddRow( f11_arg0, f11_arg1 )
 	} )
 	self:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
 	self:registerEventHandler( "button_up", MBh.AnimateToState( "default", 133 ) )
-	f11_local1:addElement( self )
-	f11_local1:registerEventHandler( "button_action", HandleRowAction )
-	f11_arg0.list:addElement( f11_local0 )
-	LUI.UIVerticalList.SetNoWrap( f11_arg0.list, true )
-	return f11_local0
+	f12_local1:addElement( self )
+	f12_local1:registerEventHandler( "button_action", HandleRowAction )
+	f12_arg0.list:addElement( f12_local0 )
+	LUI.UIVerticalList.SetNoWrap( f12_arg0.list, true )
+	return f12_local0
 end
 
-function SPLeaderboardDataAddPlayerHeader( f12_arg0, f12_arg1 )
-	local f12_local0 = Engine.GetUsernameByController( f12_arg1 )
-	local f12_local1 = "0"
+function SPLeaderboardDataAddPlayerHeader( f13_arg0, f13_arg1 )
+	local f13_local0 = Engine.GetUsernameByController( f13_arg1 )
+	local f13_local1 = "0"
 	if f0_local5.isTimeTrial then
-		f12_local1 = Engine.Localize( "--:--" )
+		f13_local1 = Engine.Localize( "--:--" )
 	end
-	local f12_local2 = SPLeaderboardCreateRow( f12_arg0, "playerHeader", 0, "h1_leaderboard_rowplayer", Engine.Localize( "@LUA_MENU_LB_UNRANKED" ), f12_local0, f12_local1, Colors.h1.yellow, nil )
+	local f13_local2 = SPLeaderboardCreateRow( f13_arg0, "playerHeader", 0, "h1_leaderboard_rowplayer", Engine.Localize( "@LUA_MENU_LB_UNRANKED" ), f13_local0, f13_local1, Colors.h1.yellow, nil )
 	local self = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
@@ -352,52 +352,52 @@ function SPLeaderboardDataAddPlayerHeader( f12_arg0, f12_arg1 )
 		height = 1
 	} )
 	self.id = "doubleLine"
-	f12_local2:addElement( self )
-	return f12_local2
+	f13_local2:addElement( self )
+	return f13_local2
 end
 
-function SPLeaderboardDataAddHeader( f13_arg0 )
-	local f13_local0 = ""
+function SPLeaderboardDataAddHeader( f14_arg0 )
+	local f14_local0 = ""
 	if f0_local5.isTimeTrial then
-		f13_local0 = Engine.Localize( "@LUA_MENU_LB_TIME_HEADER" )
+		f14_local0 = Engine.Localize( "@LUA_MENU_LB_TIME_HEADER" )
 	else
-		f13_local0 = Engine.Localize( "@LUA_MENU_LB_SCORE_HEADER" )
+		f14_local0 = Engine.Localize( "@LUA_MENU_LB_SCORE_HEADER" )
 	end
-	return SPLeaderboardCreateRow( f13_arg0, "header", 1, "h1_leaderboard_header", Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_LB_RANK_HEADER" ) ), Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_LB_PLAYER_HEADER" ) ), Engine.ToUpperCase( f13_local0 ), Colors.white, nil )
+	return SPLeaderboardCreateRow( f14_arg0, "header", 1, "h1_leaderboard_header", Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_LB_RANK_HEADER" ) ), Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_LB_PLAYER_HEADER" ) ), Engine.ToUpperCase( f14_local0 ), Colors.white, nil )
 end
 
-function SPLeaderboardDataShowFetching( f14_arg0, f14_arg1 )
+function SPLeaderboardDataShowFetching( f15_arg0, f15_arg1 )
 	if not f0_local5.fetchingShown then
-		local f14_local0 = f14_arg0:getChildById( "listCenteredContainer" )
-		if f14_local0 then
-			f14_local0:processEvent( {
+		local f15_local0 = f15_arg0:getChildById( "listCenteredContainer" )
+		if f15_local0 then
+			f15_local0:processEvent( {
 				name = "show_no_result",
 				text = Engine.Localize( "@LUA_MENU_LEADERBOARD_REFRESH" )
 			} )
 			local self = LUI.UITimer.new( 2000, "leaderboardFetchingPopup", nil, false )
-			f14_local0:registerEventHandler( "leaderboardFetchingPopup", function ( element, event )
+			f15_local0:registerEventHandler( "leaderboardFetchingPopup", function ( element, event )
 				event.timer:close()
-				f14_local0.leaderboardFetchingTimer = nil
-				LUI.FlowManager.RequestAddMenu( element, "leaderboard_fetching_data", false, f14_arg1, false )
+				f15_local0.leaderboardFetchingTimer = nil
+				LUI.FlowManager.RequestAddMenu( element, "leaderboard_fetching_data", false, f15_arg1, false )
 			end )
-			f14_local0.leaderboardFetchingTimer = self
-			f14_local0:addElement( self )
+			f15_local0.leaderboardFetchingTimer = self
+			f15_local0:addElement( self )
 		end
 		f0_local5.fetchingShown = true
 	end
 end
 
-function SPLeaderboardDataHideFetching( f15_arg0 )
+function SPLeaderboardDataHideFetching( f17_arg0 )
 	if f0_local5.fetchingShown then
-		local f15_local0 = f15_arg0:getChildById( "listCenteredContainer" )
-		if f15_local0 then
-			f15_local0:processEvent( {
+		local f17_local0 = f17_arg0:getChildById( "listCenteredContainer" )
+		if f17_local0 then
+			f17_local0:processEvent( {
 				name = "hide_no_result"
 			} )
-			if f15_local0.leaderboardFetchingTimer then
-				LUI.UITimer.Stop( f15_local0.leaderboardFetchingTimer )
-				f15_local0.leaderboardFetchingTimer:close()
-				f15_local0.leaderboardFetchingTimer = nil
+			if f17_local0.leaderboardFetchingTimer then
+				LUI.UITimer.Stop( f17_local0.leaderboardFetchingTimer )
+				f17_local0.leaderboardFetchingTimer:close()
+				f17_local0.leaderboardFetchingTimer = nil
 			else
 				LUI.FlowManager.RequestLeaveMenuByName( "leaderboard_fetching_data", nil, false, true )
 			end
@@ -406,152 +406,152 @@ function SPLeaderboardDataHideFetching( f15_arg0 )
 	end
 end
 
-function SPLeaderboardDataRefresh( f16_arg0 )
-	local f16_local0 = f0_local5.isBusy
+function SPLeaderboardDataRefresh( f18_arg0 )
+	local f18_local0 = f0_local5.isBusy
 	f0_local5.currentPlayerCount = Leaderboards.GetPlayerCount()
-	if f16_local0 ~= f0_local5.isBusy then
+	if f18_local0 ~= f0_local5.isBusy then
 		return 
 	elseif f0_local5.currentPlayerCount == 0 then
 		if not Leaderboards.IsUpdating() or not f0_local5.isBusy then
-			SPLeaderboardDataHideFetching( f16_arg0 )
-			SPLeaderboardDataFillPlayerRow( f16_arg0 )
-			ShowNoResultContainer( f16_arg0 )
+			SPLeaderboardDataHideFetching( f18_arg0 )
+			SPLeaderboardDataFillPlayerRow( f18_arg0 )
+			ShowNoResultContainer( f18_arg0 )
 		end
 		return 
 	end
-	SPLeaderboardDataHideFetching( f16_arg0 )
-	HideNoResultContainer( f16_arg0 )
-	f0_local5.playerRank = Leaderboards.GetPlayerValue( f16_arg0.properties.exclusiveController, 0 )
+	SPLeaderboardDataHideFetching( f18_arg0 )
+	HideNoResultContainer( f18_arg0 )
+	f0_local5.playerRank = Leaderboards.GetPlayerValue( f18_arg0.properties.exclusiveController, 0 )
 	f0_local5.playerRank = tonumber( f0_local5.playerRank )
 	if f0_local5.isNewFilter and f0_local5.playerRank ~= nil then
 		f0_local5.startValue = math.min( f0_local5.playerRank - f0_local10 + 1, f0_local5.currentPlayerCount - f0_local0 + 1 )
 		f0_local5.startValue = math.max( f0_local5.startValue, 1 )
-		Leaderboards.UpdateOffset( f16_arg0.properties.exclusiveController, SPLeaderboardDataCalcPaging( f16_arg0.properties.exclusiveController, f0_local5.startValue - 1 ) )
+		Leaderboards.UpdateOffset( f18_arg0.properties.exclusiveController, SPLeaderboardDataCalcPaging( f18_arg0.properties.exclusiveController, f0_local5.startValue - 1 ) )
 		Leaderboards.Refresh()
-		Leaderboards.UpdateLeaderboard( f16_arg0.properties.exclusiveController, f0_local5.startValue )
+		Leaderboards.UpdateLeaderboard( f18_arg0.properties.exclusiveController, f0_local5.startValue )
 		f0_local5.isNewFilter = false
 		return 
 	elseif f0_local5.selectedRow == -1 and f0_local5.playerRank ~= nil then
 		f0_local5.currentPlayerRow = GetRowFromRank( f0_local5.currentPlayerIndex )
 	end
-	SPLeaderboardDataFillPlayerRow( f16_arg0 )
-	local f16_local1 = math.min( f0_local5.startValue + f0_local0 - 1, f0_local5.currentPlayerCount )
+	SPLeaderboardDataFillPlayerRow( f18_arg0 )
+	local f18_local1 = math.min( f0_local5.startValue + f0_local0 - 1, f0_local5.currentPlayerCount )
 	assert( f0_local5.startValue > 0 )
-	for f16_local2 = f0_local5.startValue, f16_local1, 1 do
-		local f16_local5 = Leaderboards.GetValue( f16_arg0.properties.exclusiveController, f16_local2 - 1, 0 )
-		local f16_local6 = Leaderboards.GetValue( f16_arg0.properties.exclusiveController, f16_local2 - 1, 1 )
-		local f16_local7 = Leaderboards.GetValue( f16_arg0.properties.exclusiveController, f16_local2 - 1, 2 )
-		if f16_arg0.properties.leaderBoardData.challenge == "LB_GB_TOTALXP_LT" then
-			f16_local5 = Leaderboards.GetValue( f16_arg0.properties.exclusiveController, f16_local2 - 1, 0 )
-			f16_local6 = Leaderboards.GetValue( f16_arg0.properties.exclusiveController, f16_local2 - 1, 3 )
-			f16_local7 = Leaderboards.GetValue( f16_arg0.properties.exclusiveController, f16_local2 - 1, 4 )
+	for f18_local2 = f0_local5.startValue, f18_local1, 1 do
+		local f18_local5 = Leaderboards.GetValue( f18_arg0.properties.exclusiveController, f18_local2 - 1, 0 )
+		local f18_local6 = Leaderboards.GetValue( f18_arg0.properties.exclusiveController, f18_local2 - 1, 1 )
+		local f18_local7 = Leaderboards.GetValue( f18_arg0.properties.exclusiveController, f18_local2 - 1, 2 )
+		if f18_arg0.properties.leaderBoardData.challenge == "LB_GB_TOTALXP_LT" then
+			f18_local5 = Leaderboards.GetValue( f18_arg0.properties.exclusiveController, f18_local2 - 1, 0 )
+			f18_local6 = Leaderboards.GetValue( f18_arg0.properties.exclusiveController, f18_local2 - 1, 3 )
+			f18_local7 = Leaderboards.GetValue( f18_arg0.properties.exclusiveController, f18_local2 - 1, 4 )
 		end
 		assert( not Leaderboards.IsUpdating() )
-		SPLeaderboardDataFillRankRow( f16_arg0, f16_local2 - f0_local5.startValue - 1, f16_local5, f16_local6, f16_local7 )
+		SPLeaderboardDataFillRankRow( f18_arg0, f18_local2 - f0_local5.startValue - 1, f18_local5, f18_local6, f18_local7 )
 	end
-	local f16_local2 = f0_local0 - f16_local1
-	if f16_local2 > 0 then
-		for f16_local3 = f0_local0 - f16_local2 - 1, f0_local0, 1 do
-			disableRow( f16_arg0, f16_local3, rank, player_name, score_value )
+	local f18_local2 = f0_local0 - f18_local1
+	if f18_local2 > 0 then
+		for f18_local3 = f0_local0 - f18_local2 - 1, f0_local0, 1 do
+			disableRow( f18_arg0, f18_local3, rank, player_name, score_value )
 		end
 	end
-	SPLeaderboardUpdatePlayerCountContainer( f16_arg0 )
+	SPLeaderboardUpdatePlayerCountContainer( f18_arg0 )
 	if f0_local5.selectedRow == -1 then
 		if f0_local5.playerRank ~= nil then
 			if f0_local5.currentPlayerRow < 1 or f0_local0 < f0_local5.currentPlayerRow then
-				highlightRow( f16_arg0, f16_arg0.properties.exclusiveController, 1 )
+				highlightRow( f18_arg0, f18_arg0.properties.exclusiveController, 1 )
 			else
-				highlightRow( f16_arg0, f16_arg0.properties.exclusiveController, f0_local5.currentPlayerRow )
+				highlightRow( f18_arg0, f18_arg0.properties.exclusiveController, f0_local5.currentPlayerRow )
 			end
 		elseif f0_local5.startValue == 1 then
-			highlightRow( f16_arg0, f16_arg0.properties.exclusiveController, 1 )
+			highlightRow( f18_arg0, f18_arg0.properties.exclusiveController, 1 )
 		else
-			highlightRow( f16_arg0, f16_arg0.properties.exclusiveController, f0_local10 )
+			highlightRow( f18_arg0, f18_arg0.properties.exclusiveController, f0_local10 )
 		end
 	end
 end
 
-function SPLeaderboardDataCalcPaging( f17_arg0, f17_arg1 )
-	local f17_local0 = Leaderboards.GetOffset( f17_arg0 )
-	if f17_arg1 < f17_local0 or f17_local0 + f0_local0 * 2 <= f17_arg1 then
-		return math.max( f17_arg1 - f0_local0, 0 )
+function SPLeaderboardDataCalcPaging( f19_arg0, f19_arg1 )
+	local f19_local0 = Leaderboards.GetOffset( f19_arg0 )
+	if f19_arg1 < f19_local0 or f19_local0 + f0_local0 * 2 <= f19_arg1 then
+		return math.max( f19_arg1 - f0_local0, 0 )
 	else
-		return f17_local0
+		return f19_local0
 	end
 end
 
-function backButtonHandler( f18_arg0 )
-	LUI.FlowManager.RequestLeaveMenu( f18_arg0 )
+function backButtonHandler( f20_arg0 )
+	LUI.FlowManager.RequestLeaveMenu( f20_arg0 )
 end
 
-function highlightRow( f19_arg0, f19_arg1, f19_arg2 )
-	if f0_local5.selectedRow == f19_arg2 and (f19_arg2 == 1 or f19_arg2 == f0_local0 or f19_arg2 == f0_local5.currentPlayerCount) then
+function highlightRow( f21_arg0, f21_arg1, f21_arg2 )
+	if f0_local5.selectedRow == f21_arg2 and (f21_arg2 == 1 or f21_arg2 == f0_local0 or f21_arg2 == f0_local5.currentPlayerCount) then
 		return 
 	elseif f0_local5.selectedRow ~= -1 then
-		local f19_local0 = f19_arg0.list:getChildById( "row" .. f0_local5.selectedRow )
-		f19_local0:processEvent( {
+		local f21_local0 = f21_arg0.list:getChildById( "row" .. f0_local5.selectedRow )
+		f21_local0:processEvent( {
 			name = "lose_focus"
 		} )
 	end
-	local f19_local0 = f19_arg0.list:getChildById( "row" .. f19_arg2 )
-	f19_local0:processEvent( {
+	local f21_local0 = f21_arg0.list:getChildById( "row" .. f21_arg2 )
+	f21_local0:processEvent( {
 		name = "gain_focus"
 	} )
-	f0_local5.selectedRow = f19_arg2
-	Leaderboards.UpdateCurrentIndex( f19_arg1, f0_local5.selectedRow - 1 + f0_local5.startValue - 1 )
-	SPLeaderboardUpdatePlayerCountContainer( f19_arg0 )
+	f0_local5.selectedRow = f21_arg2
+	Leaderboards.UpdateCurrentIndex( f21_arg1, f0_local5.selectedRow - 1 + f0_local5.startValue - 1 )
+	SPLeaderboardUpdatePlayerCountContainer( f21_arg0 )
 end
 
-function changeStartValue( f20_arg0, f20_arg1, f20_arg2 )
+function changeStartValue( f22_arg0, f22_arg1, f22_arg2 )
 	if Leaderboards.IsUpdating() or f0_local5.isBusy then
 		return 
 	elseif f0_local5.currentPlayerCount == 0 then
 		return 
 	end
-	local f20_local0 = f0_local10
-	local f20_local1 = f0_local5.startValue + f20_arg1 - f0_local10 - f0_local5.selectedRow
-	local f20_local2 = f0_local5.currentPlayerCount - f0_local0 + 1
-	if f20_local2 < 1 then
-		f20_local1 = 1
-		f20_local0 = LUI.clamp( f0_local5.selectedRow + f20_arg1, 1, f0_local5.currentPlayerCount )
-	elseif f20_local1 < 1 then
-		local f20_local3 = f20_local1 - 1
-		f20_local1 = 1
-		f20_local0 = math.max( f0_local10 + f20_local3, 1 )
-	elseif f20_local2 < f20_local1 then
-		local f20_local3 = f20_local1 - f20_local2
-		f20_local1 = f20_local2
-		f20_local0 = math.min( f0_local10 + f20_local3, f0_local0 )
+	local f22_local0 = f0_local10
+	local f22_local1 = f0_local5.startValue + f22_arg1 - f0_local10 - f0_local5.selectedRow
+	local f22_local2 = f0_local5.currentPlayerCount - f0_local0 + 1
+	if f22_local2 < 1 then
+		f22_local1 = 1
+		f22_local0 = LUI.clamp( f0_local5.selectedRow + f22_arg1, 1, f0_local5.currentPlayerCount )
+	elseif f22_local1 < 1 then
+		local f22_local3 = f22_local1 - 1
+		f22_local1 = 1
+		f22_local0 = math.max( f0_local10 + f22_local3, 1 )
+	elseif f22_local2 < f22_local1 then
+		local f22_local3 = f22_local1 - f22_local2
+		f22_local1 = f22_local2
+		f22_local0 = math.min( f0_local10 + f22_local3, f0_local0 )
 	end
-	f0_local5.currentPlayerRow = f0_local5.currentPlayerRow - f20_local1 - f0_local5.startValue
-	setStartValue( f20_arg0, f20_arg2, f20_local1, f20_local0 )
+	f0_local5.currentPlayerRow = f0_local5.currentPlayerRow - f22_local1 - f0_local5.startValue
+	setStartValue( f22_arg0, f22_arg2, f22_local1, f22_local0 )
 end
 
-function setStartValue( f21_arg0, f21_arg1, f21_arg2, f21_arg3 )
-	local f21_local0 = f21_arg2 ~= f0_local5.startValue
-	f0_local5.startValue = f21_arg2
-	highlightRow( f21_arg0, f21_arg1.controller, f21_arg3 )
-	if f21_local0 then
-		Leaderboards.UpdateOffset( f21_arg1.controller, SPLeaderboardDataCalcPaging( f21_arg1.controller, f21_arg2 - 1 ) )
-		SPLeaderboardDataRefresh( f21_arg0 )
+function setStartValue( f23_arg0, f23_arg1, f23_arg2, f23_arg3 )
+	local f23_local0 = f23_arg2 ~= f0_local5.startValue
+	f0_local5.startValue = f23_arg2
+	highlightRow( f23_arg0, f23_arg1.controller, f23_arg3 )
+	if f23_local0 then
+		Leaderboards.UpdateOffset( f23_arg1.controller, SPLeaderboardDataCalcPaging( f23_arg1.controller, f23_arg2 - 1 ) )
+		SPLeaderboardDataRefresh( f23_arg0 )
 	end
 end
 
-function SendKey( f22_arg0, f22_arg1, f22_arg2 )
-	local f22_local0 = Engine.GetLuiRoot()
-	f22_arg2.controller = f22_arg1.controller
-	f22_arg2.fake = true
-	LUI.UIRoot.ProcessEvent( f22_local0, f22_arg2 )
+function SendKey( f24_arg0, f24_arg1, f24_arg2 )
+	local f24_local0 = Engine.GetLuiRoot()
+	f24_arg2.controller = f24_arg1.controller
+	f24_arg2.fake = true
+	LUI.UIRoot.ProcessEvent( f24_local0, f24_arg2 )
 end
 
-function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
+function SPLeaderboardCreatePlayerCountContainer( f25_arg0 )
 	local self = LUI.UIText.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		width = f0_local6,
 		alpha = 0
 	} )
-	local self = LUI.UIText.new( {
+	local f25_local1 = LUI.UIText.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		rightAnchor = true,
@@ -560,9 +560,9 @@ function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
 		alignment = LUI.Alignment.Center,
 		height = CoD.TextSettings.Font18.Height
 	} )
-	self:setText( "-- / --" )
+	f25_local1:setText( "-- / --" )
 	self.id = "playerCountContainer"
-	local self = LUI.UIImage.new( {
+	local f25_local2 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = Engine.IsPC(),
 		leftAnchor = Engine.IsPC(),
@@ -574,13 +574,13 @@ function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
 		zRot = 90
 	} )
 	if Engine.IsPC() then
-		local self = f23_arg0
-		self:setHandleMouseButton( true )
-		self:setHandleMouseMove( true )
-		self.m_requireFocusType = FocusType.MouseOver
-		self:registerEventHandler( "leftmousedown", function ( element, event )
+		local f25_local3 = f25_arg0
+		f25_local2:setHandleMouseButton( true )
+		f25_local2:setHandleMouseMove( true )
+		f25_local2.m_requireFocusType = FocusType.MouseOver
+		f25_local2:registerEventHandler( "leftmousedown", function ( element, event )
 			if f0_local5.startValue + f0_local5.selectedRow - 1 > 1 then
-				self:animateInSequence( {
+				f25_local2:animateInSequence( {
 					{
 						"hightlight",
 						0
@@ -595,26 +595,26 @@ function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
 					}
 				} )
 				SendKey( element, event, {
-					target = self,
+					target = f25_local3,
 					down = "true",
 					button = "up",
 					name = "gamepad_button"
 				} )
 			end
 		end )
-		self:registerAnimationState( "hightlight", {
+		f25_local2:registerAnimationState( "hightlight", {
 			alpha = 1,
 			scale = 0
 		} )
-		self:registerAnimationState( "pulse", {
+		f25_local2:registerAnimationState( "pulse", {
 			scale = -0.1
 		} )
-		self:registerEventHandler( "mouseenter", function ( element, event )
+		f25_local2:registerEventHandler( "mouseenter", function ( element, event )
 			element:animateToState( "hightlight" )
 		end )
-		self:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
+		f25_local2:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
 	end
-	local self = LUI.UIImage.new( {
+	local f25_local3 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = Engine.IsPC(),
 		leftAnchor = Engine.IsPC(),
@@ -626,13 +626,13 @@ function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
 		zRot = -90
 	} )
 	if Engine.IsPC() then
-		local self = f23_arg0
-		self:setHandleMouseButton( true )
-		self:setHandleMouseMove( true )
-		self.m_requireFocusType = FocusType.MouseOver
-		self:registerEventHandler( "leftmousedown", function ( element, event )
+		local f25_local4 = f25_arg0
+		f25_local3:setHandleMouseButton( true )
+		f25_local3:setHandleMouseMove( true )
+		f25_local3.m_requireFocusType = FocusType.MouseOver
+		f25_local3:registerEventHandler( "leftmousedown", function ( element, event )
 			if f0_local5.startValue + f0_local5.selectedRow - 1 < f0_local5.currentPlayerCount then
-				self:animateInSequence( {
+				f25_local3:animateInSequence( {
 					{
 						"hightlight",
 						0
@@ -647,32 +647,32 @@ function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
 					}
 				} )
 				SendKey( element, event, {
-					target = self,
+					target = f25_local4,
 					down = "true",
 					button = "down",
 					name = "gamepad_button"
 				} )
 			end
 		end )
-		self:registerAnimationState( "hightlight", {
+		f25_local3:registerAnimationState( "hightlight", {
 			alpha = 1,
 			scale = 0
 		} )
-		self:registerAnimationState( "pulse", {
+		f25_local3:registerAnimationState( "pulse", {
 			scale = -0.1
 		} )
-		self:registerEventHandler( "mouseenter", function ( element, event )
+		f25_local3:registerEventHandler( "mouseenter", function ( element, event )
 			element:animateToState( "hightlight" )
 		end )
-		self:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
+		f25_local3:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
 	end
-	local self = LUI.UIImage.new( {
+	local f25_local4 = LUI.UIImage.new( {
 		topAnchor = true,
 		color = Colors.black,
 		alpha = 0.5
 	} )
-	self:addElement( self )
-	self:addElement( self )
+	self:addElement( f25_local4 )
+	self:addElement( f25_local1 )
 	if Engine.IsPC() then
 		self.arrowUp = LUI.UIElement.new( {
 			topAnchor = true
@@ -682,77 +682,77 @@ function SPLeaderboardCreatePlayerCountContainer( f23_arg0 )
 		} )
 		self:addElement( self.arrowUp )
 		self:addElement( self.arrowDown )
-		self.arrowUp:addElement( self )
-		self.arrowDown:addElement( self )
+		self.arrowUp:addElement( f25_local2 )
+		self.arrowDown:addElement( f25_local3 )
 	else
-		self:addElement( self )
-		self:addElement( self )
-		self.arrowUp = self
-		self.arrowDown = self
+		self:addElement( f25_local2 )
+		self:addElement( f25_local3 )
+		self.arrowUp = f25_local2
+		self.arrowDown = f25_local3
 	end
-	self.text = self
-	self.background = self
-	f23_arg0.playerCountContainer = self
+	self.text = f25_local1
+	self.background = f25_local4
+	f25_arg0.playerCountContainer = self
 end
 
-function GetLastVisibleRow( f24_arg0 )
-	local f24_local0 = nil
+function GetLastVisibleRow( f30_arg0 )
+	local f30_local0 = nil
 	if f0_local0 < f0_local5.currentPlayerCount then
-		f24_local0 = f24_arg0:getChildById( "row" .. f0_local0 )
+		f30_local0 = f30_arg0:getChildById( "row" .. f0_local0 )
 	else
-		f24_local0 = f24_arg0:getChildById( "row" .. f0_local5.currentPlayerCount )
+		f30_local0 = f30_arg0:getChildById( "row" .. f0_local5.currentPlayerCount )
 	end
-	return f24_local0
+	return f30_local0
 end
 
-function SPLeaderboardUpdatePlayerCountContainer( f25_arg0 )
-	if f25_arg0.playerCountContainer then
+function SPLeaderboardUpdatePlayerCountContainer( f31_arg0 )
+	if f31_arg0.playerCountContainer then
 		if f0_local5.currentPlayerCount < 1 then
-			f25_arg0.playerCountContainer:setAlpha( 0 )
+			f31_arg0.playerCountContainer:setAlpha( 0 )
 		else
-			f25_arg0.playerCountContainer:setAlpha( 1 )
-			local f25_local0 = f0_local5.startValue + f0_local5.selectedRow - 1 .. " / " .. f0_local5.currentPlayerCount
-			f25_arg0.playerCountContainer.text:setText( f25_local0 )
-			local f25_local1 = 0
+			f31_arg0.playerCountContainer:setAlpha( 1 )
+			local f31_local0 = f0_local5.startValue + f0_local5.selectedRow - 1 .. " / " .. f0_local5.currentPlayerCount
+			f31_arg0.playerCountContainer.text:setText( f31_local0 )
+			local f31_local1 = 0
 			if f0_local5.usePersistentRelativeBottom then
-				f25_local1 = f0_local5.persistentRelativeBottom
+				f31_local1 = f0_local5.persistentRelativeBottom
 			else
-				local f25_local2 = GetLastVisibleRow( f25_arg0.list )
-				local f25_local3, f25_local4, f25_local5, f25_local6 = f25_local2:getRect()
-				local f25_local7 = 1
+				local f31_local2 = GetLastVisibleRow( f31_arg0.list )
+				local f31_local3, f31_local4, f31_local5, f31_local6 = f31_local2:getRect()
+				local f31_local7 = 1
 				if Engine.GetLuiRootScale then
-					f25_local7 = Engine.GetLuiRootScale()
+					f31_local7 = Engine.GetLuiRootScale()
 				end
-				local f25_local8, f25_local9, f25_local10, f25_local11 = f25_arg0:getRect()
-				f25_local1 = (f25_local4 - f25_local9 + f25_local6 - f25_local4) / f25_local7
-				f0_local5.persistentRelativeBottom = f25_local1
+				local f31_local8, f31_local9, f31_local10, f31_local11 = f31_arg0:getRect()
+				f31_local1 = (f31_local4 - f31_local9 + f31_local6 - f31_local4) / f31_local7
+				f0_local5.persistentRelativeBottom = f31_local1
 			end
-			f25_arg0:addElement( f25_arg0.playerCountContainer )
-			f25_arg0.playerCountContainer:setTopBottom( true, false, f25_local1 + 15, f25_local1 + 15 + CoD.TextSettings.Font18.Height )
-			local f25_local2, f25_local3, f25_local4, f25_local5 = GetTextDimensions( f25_local0, CoD.TextSettings.Font18.Font, CoD.TextSettings.Font18.Height )
-			local f25_local6, f25_local7 = GetMaterialDimensions( RegisterMaterial( "h1_deco_option_scrollbar_arrows" ) )
-			f25_local6 = f25_local6 / 2
-			f25_local7 = f25_local7 / 2
-			local f25_local8 = f0_local6 / 2
-			local f25_local10 = (f25_local4 - f25_local2) / 2 + f25_local6 + 15
-			local f25_local11 = -3
-			f25_arg0.playerCountContainer.arrowUp:setLeftRight( true, false, f25_local8 - f25_local10, f25_local8 - f25_local10 + f25_local6 )
-			f25_arg0.playerCountContainer.arrowUp:setTopBottom( true, false, f25_local11, f25_local7 + f25_local11 )
-			f25_arg0.playerCountContainer.arrowDown:setLeftRight( true, false, f25_local8 + f25_local10 - f25_local6, f25_local8 + f25_local10 )
-			f25_arg0.playerCountContainer.arrowDown:setTopBottom( true, false, f25_local11, f25_local7 + f25_local11 )
-			f25_arg0.playerCountContainer.background:setLeftRight( true, false, f25_local8 - f25_local10 - 10, f25_local8 + f25_local10 + 10 )
-			f25_arg0.playerCountContainer.background:setTopBottom( true, false, f25_local11 - 3, f25_local7 + f25_local11 + 3 )
+			f31_arg0:addElement( f31_arg0.playerCountContainer )
+			f31_arg0.playerCountContainer:setTopBottom( true, false, f31_local1 + 15, f31_local1 + 15 + CoD.TextSettings.Font18.Height )
+			local f31_local2, f31_local3, f31_local4, f31_local5 = GetTextDimensions( f31_local0, CoD.TextSettings.Font18.Font, CoD.TextSettings.Font18.Height )
+			local f31_local6, f31_local7 = GetMaterialDimensions( RegisterMaterial( "h1_deco_option_scrollbar_arrows" ) )
+			f31_local6 = f31_local6 / 2
+			f31_local7 = f31_local7 / 2
+			local f31_local8 = f0_local6 / 2
+			local f31_local10 = (f31_local4 - f31_local2) / 2 + f31_local6 + 15
+			local f31_local11 = -3
+			f31_arg0.playerCountContainer.arrowUp:setLeftRight( true, false, f31_local8 - f31_local10, f31_local8 - f31_local10 + f31_local6 )
+			f31_arg0.playerCountContainer.arrowUp:setTopBottom( true, false, f31_local11, f31_local7 + f31_local11 )
+			f31_arg0.playerCountContainer.arrowDown:setLeftRight( true, false, f31_local8 + f31_local10 - f31_local6, f31_local8 + f31_local10 )
+			f31_arg0.playerCountContainer.arrowDown:setTopBottom( true, false, f31_local11, f31_local7 + f31_local11 )
+			f31_arg0.playerCountContainer.background:setLeftRight( true, false, f31_local8 - f31_local10 - 10, f31_local8 + f31_local10 + 10 )
+			f31_arg0.playerCountContainer.background:setTopBottom( true, false, f31_local11 - 3, f31_local7 + f31_local11 + 3 )
 		end
 	end
 end
 
-function SPLeaderboardCreateListCenteredContainer( f26_arg0 )
-	local f26_local0 = 16
+function SPLeaderboardCreateListCenteredContainer( f32_arg0 )
+	local f32_local0 = 16
 	local self = LUI.UIImage.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		top = 327,
-		height = f26_local0 + 18,
+		height = f32_local0 + 18,
 		left = 0,
 		width = 25,
 		material = RegisterMaterial( "h1_leaderboard_header" ),
@@ -760,18 +760,18 @@ function SPLeaderboardCreateListCenteredContainer( f26_arg0 )
 	} )
 	self.id = "listCenteredContainer"
 	self:setup3SliceRatio( 12, 0.02 )
-	local self = LUI.UIText.new( {
+	local f32_local2 = LUI.UIText.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		rightAnchor = true,
 		font = CoD.TextSettings.Font24.Font,
 		color = Colors.white,
 		alignment = LUI.Alignment.Center,
-		height = f26_local0,
+		height = f32_local0,
 		top = 10
 	} )
-	self.textField = self
-	self:addElement( self )
+	self.textField = f32_local2
+	self:addElement( f32_local2 )
 	self:registerAnimationState( "default", {
 		alpha = 0
 	} )
@@ -779,122 +779,122 @@ function SPLeaderboardCreateListCenteredContainer( f26_arg0 )
 		alpha = 1
 	} )
 	self:registerEventHandler( "show_no_result", function ( element, event )
-		local f8_local0, f8_local1, f8_local2, f8_local3 = GetTextDimensions( event.text, CoD.TextSettings.Font24.Font, 16 )
-		local f8_local4 = f8_local2 - f8_local0
-		local f8_local5 = f0_local6 / 2 - (f8_local4 + 25) / 2
-		element:setLeftRight( true, false, f8_local5, f8_local5 + f8_local4 + 25 )
+		local f33_local0, f33_local1, f33_local2, f33_local3 = GetTextDimensions( event.text, CoD.TextSettings.Font24.Font, 16 )
+		local f33_local4 = f33_local2 - f33_local0
+		local f33_local5 = f0_local6 / 2 - (f33_local4 + 25) / 2
+		element:setLeftRight( true, false, f33_local5, f33_local5 + f33_local4 + 25 )
 		element.textField:setText( event.text )
 		element:animateToState( "visible", 133 )
 	end )
 	self:registerEventHandler( "hide_no_result", MBh.AnimateToState( "default", 0 ) )
-	f26_arg0:addElement( self )
+	f32_arg0:addElement( self )
 end
 
-function ShowNoResultContainer( f27_arg0 )
-	for f27_local0 = 1, f0_local0, 1 do
-		local f27_local3 = f27_arg0.list:getChildById( "row" .. f27_local0 )
-		local f27_local4 = "h1_leaderboard_row01"
-		if f27_local0 % 2 == 1 then
-			f27_local4 = "h1_leaderboard_row02"
+function ShowNoResultContainer( f34_arg0 )
+	for f34_local0 = 1, f0_local0, 1 do
+		local f34_local3 = f34_arg0.list:getChildById( "row" .. f34_local0 )
+		local f34_local4 = "h1_leaderboard_row01"
+		if f34_local0 % 2 == 1 then
+			f34_local4 = "h1_leaderboard_row02"
 		end
-		SPLeaderboardDataFillRow( f27_arg0, f27_local3, "", "", "", f27_local4, false, false )
+		SPLeaderboardDataFillRow( f34_arg0, f34_local3, "", "", "", f34_local4, false, false )
 	end
-	f27_arg0:dispatchEventToRoot( LUI.ButtonHelperText.CommonEvents.removeSelectButton )
-	local f27_local0 = f27_arg0:getChildById( "listCenteredContainer" )
-	if f27_local0 then
-		f27_local0:processEvent( {
+	f34_arg0:dispatchEventToRoot( LUI.ButtonHelperText.CommonEvents.removeSelectButton )
+	local f34_local0 = f34_arg0:getChildById( "listCenteredContainer" )
+	if f34_local0 then
+		f34_local0:processEvent( {
 			name = "show_no_result",
 			text = Engine.Localize( "@MENU_SP_LB_EMPTY" )
 		} )
 	end
 end
 
-function HideNoResultContainer( f28_arg0 )
-	for f28_local0 = 1, f0_local0, 1 do
-		disableRow( f28_arg0, f28_local0 )
+function HideNoResultContainer( f35_arg0 )
+	for f35_local0 = 1, f0_local0, 1 do
+		disableRow( f35_arg0, f35_local0 )
 	end
 	if SPLeaderboardDataCanShowSelectButton() then
-		f28_arg0:dispatchEventToRoot( LUI.ButtonHelperText.CommonEvents.addSelectButton )
+		f35_arg0:dispatchEventToRoot( LUI.ButtonHelperText.CommonEvents.addSelectButton )
 	end
-	local f28_local0 = f28_arg0:getChildById( "listCenteredContainer" )
-	if f28_local0 then
-		f28_local0:processEvent( {
+	local f35_local0 = f35_arg0:getChildById( "listCenteredContainer" )
+	if f35_local0 then
+		f35_local0:processEvent( {
 			name = "hide_no_result"
 		} )
 	end
 end
 
-function previousEntryFunc( f29_arg0, f29_arg1 )
-	changeStartValue( f0_local4, -1, f29_arg1 )
+function previousEntryFunc( f36_arg0, f36_arg1 )
+	changeStartValue( f0_local4, -1, f36_arg1 )
 end
 
-function nextEntryFunc( f30_arg0, f30_arg1 )
-	changeStartValue( f0_local4, 1, f30_arg1 )
+function nextEntryFunc( f37_arg0, f37_arg1 )
+	changeStartValue( f0_local4, 1, f37_arg1 )
 end
 
-function previousPageFunc( f31_arg0, f31_arg1 )
-	changeStartValue( f0_local4, -f0_local0, f31_arg1 )
+function previousPageFunc( f38_arg0, f38_arg1 )
+	changeStartValue( f0_local4, -f0_local0, f38_arg1 )
 end
 
-function nextPageFunc( f32_arg0, f32_arg1 )
-	changeStartValue( f0_local4, f0_local0, f32_arg1 )
+function nextPageFunc( f39_arg0, f39_arg1 )
+	changeStartValue( f0_local4, f0_local0, f39_arg1 )
 end
 
-function gotoHandler( f33_arg0, f33_arg1 )
+function gotoHandler( f40_arg0, f40_arg1 )
 	if Leaderboards.IsUpdating() or f0_local5.isBusy then
 		return 
 	elseif f0_local4 then
-		changeStartValue( f0_local4, -f0_local5.startValue - f0_local0, f33_arg1 )
+		changeStartValue( f0_local4, -f0_local5.startValue - f0_local0, f40_arg1 )
 	end
 end
 
-function leaveMenuHandler( f34_arg0, f34_arg1 )
-	SPLeaderboardDataHideFetching( f34_arg0 )
+function leaveMenuHandler( f41_arg0, f41_arg1 )
+	SPLeaderboardDataHideFetching( f41_arg0 )
 	f0_local5.exitedWhileUpdating = Leaderboards.IsUpdating()
-	UPVAL1 = nil
+	f0_local4 = nil
 end
 
-function gamepadButtonHandler( f35_arg0, f35_arg1 )
-	if f35_arg1.down then
-		local f35_local0 = Engine.GetLuiRoot()
-		local f35_local1 = LUI.FlowManager.GetTopMenuInfo( f35_local0.flowManager.menuInfoStack, true )
-		if f35_local1.menu == f35_arg0 then
-			if f35_arg1.button == "up" then
-				previousEntryFunc( f35_arg0, f35_arg1 )
+function gamepadButtonHandler( f42_arg0, f42_arg1 )
+	if f42_arg1.down then
+		local f42_local0 = Engine.GetLuiRoot()
+		local f42_local1 = LUI.FlowManager.GetTopMenuInfo( f42_local0.flowManager.menuInfoStack, true )
+		if f42_local1.menu == f42_arg0 then
+			if f42_arg1.button == "up" then
+				previousEntryFunc( f42_arg0, f42_arg1 )
 				return true
-			elseif f35_arg1.button == "down" then
-				nextEntryFunc( f35_arg0, f35_arg1 )
+			elseif f42_arg1.button == "down" then
+				nextEntryFunc( f42_arg0, f42_arg1 )
 				return true
-			elseif f35_arg1.button == "page_up" then
-				previousPageFunc( f35_arg0, f35_arg1 )
+			elseif f42_arg1.button == "page_up" then
+				previousPageFunc( f42_arg0, f42_arg1 )
 				return true
-			elseif f35_arg1.button == "page_down" then
-				nextPageFunc( f35_arg0, f35_arg1 )
+			elseif f42_arg1.button == "page_down" then
+				nextPageFunc( f42_arg0, f42_arg1 )
 				return true
 			end
 		end
 	end
-	return LUI.UIButton.GamepadButton( f35_arg0, f35_arg1 )
+	return LUI.UIButton.GamepadButton( f42_arg0, f42_arg1 )
 end
 
-function SPLeaderboardDataCreateMenu( f36_arg0, f36_arg1 )
-	local f36_local0 = LUI.MenuTemplate.new( f36_arg0, {
-		menu_title = Engine.ToUpperCase( Engine.Localize( f36_arg1.leaderBoardData.challengeName ) ),
+function SPLeaderboardDataCreateMenu( f43_arg0, f43_arg1 )
+	local f43_local0 = LUI.MenuTemplate.new( f43_arg0, {
+		menu_title = Engine.ToUpperCase( Engine.Localize( f43_arg1.leaderBoardData.challengeName ) ),
 		menu_top_indent = LUI.MenuTemplate.spMenuOffset + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
 		menu_width = GenericMenuDims.OptionMenuWidth,
 		spacing = 0,
 		showSelectButton = false
 	} )
-	f0_local5.isTimeTrial = f36_arg1.isTimeTrial
+	f0_local5.isTimeTrial = f43_arg1.isTimeTrial
 	f0_local5.isBusy = false
 	if f0_local5.isTimeTrial then
-		LUI.MenuTemplate.SetBreadCrumb( f36_local0, Engine.Localize( "@LUA_MENU_TIME_TRIAL_LEADERBOARD" ) )
+		LUI.MenuTemplate.SetBreadCrumb( f43_local0, Engine.Localize( "@LUA_MENU_TIME_TRIAL_LEADERBOARD" ) )
 	else
-		LUI.MenuTemplate.SetBreadCrumb( f36_local0, Engine.Localize( "@LUA_MENU_ARCADE_LEADERBOARD" ) )
+		LUI.MenuTemplate.SetBreadCrumb( f43_local0, Engine.Localize( "@LUA_MENU_ARCADE_LEADERBOARD" ) )
 	end
-	UPVAL1 = f36_local0
-	assert( f36_arg1.startValue )
-	f0_local5.startValue = f36_arg1.startValue
+	f0_local4 = f43_local0
+	assert( f43_arg1.startValue )
+	f0_local5.startValue = f43_arg1.startValue
 	f0_local5.selectedRow = -1
 	if not Leaderboards.IsUpdating() then
 		Leaderboards.Clear()
@@ -904,44 +904,43 @@ function SPLeaderboardDataCreateMenu( f36_arg0, f36_arg1 )
 		f0_local5.durationFilter = 1
 		f0_local5.playerRank = -1
 	end
-	local f36_local1 = f36_arg0.exclusiveController
-	if not f36_local1 then
-		f36_local1 = Engine.GetFirstActiveController()
+	local f43_local1 = f43_arg0.exclusiveController
+	if not f43_local1 then
+		f43_local1 = Engine.GetFirstActiveController()
 	end
-	local f36_local2 = function ( f13_arg0, f13_arg1 )
-		local f13_local0 = assert
-		local f13_local1
+	local f43_local2 = function ( f44_arg0, f44_arg1 )
+		local f44_local0 = assert
+		local f44_local1
 		if f0_local5.durationFilter < 1 or f0_local5.durationFilter > #f0_local1 then
-			f13_local1 = false
+			f44_local1 = false
 		else
-			f13_local1 = true
+			f44_local1 = true
 		end
-		f13_local0( f13_local1 )
-		f13_local0 = assert
-		f13_local1
+		f44_local0( f44_local1 )
+		f44_local0 = assert
 		if f0_local5.socialFilter < 1 or f0_local5.socialFilter > #f0_local2 then
-			f13_local1 = false
+			f44_local1 = false
 		else
-			f13_local1 = true
+			f44_local1 = true
 		end
-		f13_local0( f13_local1 )
+		f44_local0( f44_local1 )
 		Engine.SetDvarString( "lb_filter", f0_local2[f0_local5.socialFilter].value )
 		Engine.SetDvarInt( "lb_maxrows", f0_local0 * 3 )
 		if not f0_local5.isNewFilter then
 			Leaderboards.Clear()
 		end
-		if f36_arg1.newFilter then
+		if f43_arg1.newFilter then
 			f0_local5.isNewFilter = true
 		end
-		Leaderboards.Open( f36_arg1.leaderBoardData.challenge, f0_local1[f0_local5.durationFilter].value )
+		Leaderboards.Open( f43_arg1.leaderBoardData.challenge, f0_local1[f0_local5.durationFilter].value )
 		if Leaderboards.IsUpdating() then
 			DebugPrint( "Leaderboard was already updating!" )
 		else
-			Leaderboards.UpdateLeaderboard( f36_local1, Leaderboards.GetOffset( f36_local1 ) )
+			Leaderboards.UpdateLeaderboard( f43_local1, Leaderboards.GetOffset( f43_local1 ) )
 		end
 		if not (Leaderboards.IsUpdating() or f0_local5.isBusy) or f0_local5.exitedWhileUpdating and not Leaderboards.IsUpdating() then
 			f0_local5.usePersistentRelativeBottom = true
-			SPLeaderboardDataRefresh( f13_arg0 )
+			SPLeaderboardDataRefresh( f44_arg0 )
 			f0_local5.usePersistentRelativeBottom = false
 			if f0_local5.exitedWhileUpdating then
 				f0_local5.isBusy = false
@@ -949,10 +948,10 @@ function SPLeaderboardDataCreateMenu( f36_arg0, f36_arg1 )
 		end
 	end
 	
-	f36_local0:registerEventHandler( "leaderboard_read_delayfail", SPLeaderboardDataReadDelay )
-	f36_local0:registerEventHandler( "leaderboard_update_status", SPLeaderboardDataUpdateStatus )
-	f36_local0:registerEventHandler( "menu_create", f36_local2 )
-	local f36_local3 = function ( f14_arg0, f14_arg1 )
+	f43_local0:registerEventHandler( "leaderboard_read_delayfail", SPLeaderboardDataReadDelay )
+	f43_local0:registerEventHandler( "leaderboard_update_status", SPLeaderboardDataUpdateStatus )
+	f43_local0:registerEventHandler( "menu_create", f43_local2 )
+	local f43_local3 = function ( f45_arg0, f45_arg1 )
 		if Leaderboards.IsUpdating() or f0_local5.isBusy then
 			return 
 		elseif f0_local5.socialFilter == #f0_local2 then
@@ -961,8 +960,8 @@ function SPLeaderboardDataCreateMenu( f36_arg0, f36_arg1 )
 			f0_local5.socialFilter = f0_local5.socialFilter + 1
 		end
 		f0_local5.isNewFilter = true
-		LUI.FlowManager.RequestAddMenu( f36_local0, "sp_leaderboard_data", true, f14_arg1.controller, true, {
-			leaderBoardData = f36_arg1.leaderBoardData,
+		LUI.FlowManager.RequestAddMenu( f43_local0, "sp_leaderboard_data", true, f45_arg1.controller, true, {
+			leaderBoardData = f43_arg1.leaderBoardData,
 			startValue = 1,
 			isTimeTrial = f0_local5.isTimeTrial
 		}, {
@@ -970,23 +969,23 @@ function SPLeaderboardDataCreateMenu( f36_arg0, f36_arg1 )
 		} )
 	end
 	
-	f36_local0:addElement( LUI.H1MenuTab.new( {
-		title = function ( f17_arg0 )
-			return f0_local1[f17_arg0].display
+	f43_local0:addElement( LUI.H1MenuTab.new( {
+		title = function ( f48_arg0 )
+			return f0_local1[f48_arg0].display
 		end,
 		top = LUI.MenuTemplate.spMenuOffset + LUI.MenuTemplate.ListTop,
 		tabCount = #f0_local1,
 		width = f0_local6,
-		clickTabBtnAction = function ( f15_arg0, f15_arg1, f15_arg2 )
-			local f15_local0 = true
-			local f15_local1 = true
+		clickTabBtnAction = function ( f46_arg0, f46_arg1, f46_arg2 )
+			local f46_local0 = true
+			local f46_local1 = true
 			if Leaderboards.IsUpdating() or f0_local5.isBusy then
 				return 
 			else
-				f0_local5.durationFilter = f15_arg2
+				f0_local5.durationFilter = f46_arg2
 				f0_local5.isNewFilter = true
-				LUI.FlowManager.RequestAddMenu( f15_arg0, "sp_leaderboard_data", true, f15_arg1.controller, true, {
-					leaderBoardData = f36_arg1.leaderBoardData,
+				LUI.FlowManager.RequestAddMenu( f46_arg0, "sp_leaderboard_data", true, f46_arg1.controller, true, {
+					leaderBoardData = f43_arg1.leaderBoardData,
 					startValue = 1,
 					isTimeTrial = f0_local5.isTimeTrial
 				}, {
@@ -996,77 +995,77 @@ function SPLeaderboardDataCreateMenu( f36_arg0, f36_arg1 )
 			end
 		end,
 		activeIndex = f0_local5.durationFilter,
-		underTabTextFunc = function ( f18_arg0 )
-			return f0_local1[f18_arg0].display
+		underTabTextFunc = function ( f49_arg0 )
+			return f0_local1[f49_arg0].display
 		end,
 		enableRightLeftNavigation = true,
-		exclusiveController = f36_local0.exclusiveController,
-		tabChangeLockedFunc = function ( f16_arg0 )
-			local f16_local0
+		exclusiveController = f43_local0.exclusiveController,
+		tabChangeLockedFunc = function ( f47_arg0 )
+			local f47_local0
 			if not Leaderboards.IsUpdating() then
-				f16_local0 = not f0_local5.isBusy
+				f47_local0 = not f0_local5.isBusy
 			else
-				f16_local0 = false
+				f47_local0 = false
 			end
-			return f16_local0
+			return f47_local0
 		end
 	} ) )
-	SPLeaderboardDataAddHeader( f36_local0 )
-	SPLeaderboardDataAddPlayerHeader( f36_local0, f36_local1 )
-	for f36_local4 = 1, f0_local0, 1 do
-		SPLeaderboardDataAddRow( f36_local0, f36_local4 )
+	SPLeaderboardDataAddHeader( f43_local0 )
+	SPLeaderboardDataAddPlayerHeader( f43_local0, f43_local1 )
+	for f43_local4 = 1, f0_local0, 1 do
+		SPLeaderboardDataAddRow( f43_local0, f43_local4 )
 	end
-	SPLeaderboardCreatePlayerCountContainer( f36_local0 )
-	SPLeaderboardCreateListCenteredContainer( f36_local0 )
-	local f36_local4 = 0
+	SPLeaderboardCreatePlayerCountContainer( f43_local0 )
+	SPLeaderboardCreateListCenteredContainer( f43_local0 )
+	local f43_local4 = 0
 	if f0_local5.socialFilter == #f0_local2 then
-		f36_local4 = 1
+		f43_local4 = 1
 	else
-		f36_local4 = f0_local5.socialFilter + 1
+		f43_local4 = f0_local5.socialFilter + 1
 	end
-	f36_local0:AddHelp( {
+	f43_local0:AddHelp( {
 		name = "add_button_helper_text",
 		button_ref = "button_alt2",
-		helper_text = f0_local2[f36_local4].display,
+		helper_text = f0_local2[f43_local4].display,
 		side = "right",
 		clickable = true
-	}, f36_local3 )
-	f36_local0:AddHelp( {
+	}, f43_local3 )
+	f43_local0:AddHelp( {
 		name = "add_button_helper_text",
 		button_ref = "button_alt1",
 		helper_text = Engine.Localize( f0_local3[1].display ),
 		side = "right",
 		clickable = true
 	}, gotoHandler )
-	local f36_local5 = CoD.UsingController() and "button_left_trigger" or "button_page_up"
-	local f36_local6 = CoD.UsingController() and "button_right_trigger" or "button_page_down"
-	if Engine.IsVita( f36_local0.exclusiveController ) then
-		f36_local5 = "button_left"
-		f36_local6 = "button_right"
+	local f43_local5 = CoD.UsingController() and "button_left_trigger" or "button_page_up"
+	local f43_local6 = CoD.UsingController() and "button_right_trigger" or "button_page_down"
+	if Engine.IsVita( f43_local0.exclusiveController ) then
+		f43_local5 = "button_left"
+		f43_local6 = "button_right"
 	end
-	f36_local0:AddHelp( {
+	f43_local0:AddHelp( {
 		name = "add_button_helper_text",
-		button_ref = f36_local5,
+		button_ref = f43_local5,
 		helper_text = Engine.Localize( "@LUA_MENU_PREV_PAGE" ),
 		side = "right",
 		clickable = true,
 		imageSize = 24,
 		priority = 10
 	}, previousPageFunc )
-	f36_local0:AddHelp( {
+	f43_local0:AddHelp( {
 		name = "add_button_helper_text",
-		button_ref = f36_local6,
+		button_ref = f43_local6,
 		helper_text = Engine.Localize( "@LUA_MENU_NEXT_PAGE" ),
 		side = "right",
 		clickable = true,
 		imageSize = 24,
 		priority = 5
 	}, nextPageFunc )
-	LUI.MenuTemplate.AddListDivider( f36_local0, -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing) )
-	f36_local0:registerEventHandler( "gamepad_button", gamepadButtonHandler )
-	f36_local0:registerEventHandler( "menu_close", leaveMenuHandler )
-	local f36_local7 = f36_local0:AddBackButton( backButtonHandler )
-	return f36_local0
+	LUI.MenuTemplate.AddListDivider( f43_local0, -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing) )
+	f43_local0:registerEventHandler( "gamepad_button", gamepadButtonHandler )
+	f43_local0:registerEventHandler( "menu_close", leaveMenuHandler )
+	local f43_local7 = f43_local0:AddBackButton( backButtonHandler )
+	return f43_local0
 end
 
 LUI.MenuBuilder.registerType( "sp_leaderboard_data", SPLeaderboardDataCreateMenu )

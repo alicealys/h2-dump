@@ -385,11 +385,7 @@ ListPaging.InitList = function ( f8_arg0, f8_arg1, f8_arg2, f8_arg3, f8_arg4, f8
 			f8_local13:addElement( f8_arg0.pagingMask )
 		else
 			f8_local13 = f8_arg0.pagingMask:getParent()
-			local f8_local14, f8_local15, f8_local16, f8_local17 = f8_arg0.pagingMask:getLocalRect()
-			f8_local4 = f8_local17
-			f8_local3 = f8_local16
-			f8_local2 = f8_local15
-			f8_local1 = f8_local14
+			f8_local1, f8_local2, f8_local3, f8_local4 = f8_arg0.pagingMask:getLocalRect()
 		end
 		f8_local0.left = 0
 		f8_local0.top = 0
@@ -423,10 +419,10 @@ ListPaging.InitVirtualizedList = function ( f9_arg0, f9_arg1, f9_arg2, f9_arg3, 
 			end
 			element.pagingData.TotalItems = #event.ListData
 			element.pagingData.TotalFocusableItems = element.pagingData.TotalItems
-			for f24_local0 = 1, element.pagingData.TotalItems, 1 do
-				event.ListData[f24_local0].pagingItemData = {
-					index = f24_local0,
-					pagerRow = f24_local0,
+			for f10_local0 = 1, element.pagingData.TotalItems, 1 do
+				event.ListData[f10_local0].pagingItemData = {
+					index = f10_local0,
+					pagerRow = f10_local0,
 					pagerCol = 1,
 					vlist = element,
 					listRoot = element
@@ -437,19 +433,19 @@ ListPaging.InitVirtualizedList = function ( f9_arg0, f9_arg1, f9_arg2, f9_arg3, 
 	end )
 end
 
-ListPaging.InitStreaming = function ( f10_arg0, f10_arg1, f10_arg2 )
-	f10_arg0.streamingData = f10_arg1
-	f10_arg0.streamingCount = f10_arg2
+ListPaging.InitStreaming = function ( f11_arg0, f11_arg1, f11_arg2 )
+	f11_arg0.streamingData = f11_arg1
+	f11_arg0.streamingCount = f11_arg2
 end
 
-ListPaging.Reset = function ( f11_arg0 )
-	if f11_arg0.pagingData ~= nil then
-		if f11_arg0.pagingMask ~= nil then
-			f11_arg0:setTopBottom( true, false, f11_arg0.pagingMask.listTop, f11_arg0.pagingMask.listBot )
+ListPaging.Reset = function ( f12_arg0 )
+	if f12_arg0.pagingData ~= nil then
+		if f12_arg0.pagingMask ~= nil then
+			f12_arg0:setTopBottom( true, false, f12_arg0.pagingMask.listTop, f12_arg0.pagingMask.listBot )
 		else
-			f11_arg0:setTopBottom( true, false, f11_arg0.pagingData.OrigListTop, f11_arg0.pagingData.OrigListTop + f11_arg0.listHeight )
+			f12_arg0:setTopBottom( true, false, f12_arg0.pagingData.OrigListTop, f12_arg0.pagingData.OrigListTop + f12_arg0.listHeight )
 		end
-		f11_arg0:animateToState( "default" )
+		f12_arg0:animateToState( "default" )
 	end
 end
 

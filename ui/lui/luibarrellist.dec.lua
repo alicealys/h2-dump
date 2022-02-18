@@ -255,20 +255,12 @@ LUI.UIBarrelList.SetupForAnimation = function ( f14_arg0, f14_arg1, f14_arg2, f1
 	f14_arg0.rightCap = LUI.UIBarrelList.CreateCap( f14_arg1, "barrel_right_cap_id", f14_local2, f14_local4, f14_local6, f14_local13, f14_local13 + f14_local12, f14_local11, f14_local1.m_eventHandlers )
 	LUI.UIElement.addElement( f14_arg0, f14_arg0.leftCap )
 	LUI.UIElement.addElement( f14_arg0, f14_arg0.rightCap )
-	local f14_local14, f14_local15, f14_local16, f14_local17 = f14_arg0:getLocalRect()
-	f14_local6 = f14_local17
-	f14_local5 = f14_local16
-	f14_local4 = f14_local15
-	f14_local3 = f14_local14
-	f14_local14, f14_local15, f14_local16, f14_local17 = f14_arg0:GetAnchorData()
-	f14_local10 = f14_local17
-	f14_local9 = f14_local16
-	f14_local8 = f14_local15
-	f14_local7 = f14_local14
-	f14_local15 = f14_arg0
-	f14_local14 = f14_arg0.registerAnimationState
-	f14_local16 = "shift_right"
-	f14_local17 = {
+	f14_local3, f14_local4, f14_local5, f14_local6 = f14_arg0:getLocalRect()
+	f14_local7, f14_local8, f14_local9, f14_local10 = f14_arg0:GetAnchorData()
+	local f14_local14 = f14_arg0
+	local f14_local15 = f14_arg0.registerAnimationState
+	local f14_local16 = "shift_right"
+	local f14_local17 = {
 		topAnchor = f14_local8,
 		bottomAnchor = f14_local10,
 		leftAnchor = f14_local7
@@ -279,9 +271,9 @@ LUI.UIBarrelList.SetupForAnimation = function ( f14_arg0, f14_arg1, f14_arg2, f1
 	f14_local17.left = f14_local3 + f14_local12 + f14_arg0.properties.spacing
 	f14_local17.right = 0
 	f14_local17[1] = f14_local18
-	f14_local14( f14_local15, f14_local16, f14_local17 )
-	f14_local15 = f14_arg0
-	f14_local14 = f14_arg0.registerAnimationState
+	f14_local15( f14_local14, f14_local16, f14_local17 )
+	f14_local14 = f14_arg0
+	f14_local15 = f14_arg0.registerAnimationState
 	f14_local16 = "shift_left"
 	f14_local17 = {
 		topAnchor = f14_local8,
@@ -294,7 +286,7 @@ LUI.UIBarrelList.SetupForAnimation = function ( f14_arg0, f14_arg1, f14_arg2, f1
 	f14_local17.left = f14_local3 - f14_local12 - f14_arg0.properties.spacing
 	f14_local17.right = 0
 	f14_local17[1] = f14_local18
-	f14_local14( f14_local15, f14_local16, f14_local17 )
+	f14_local15( f14_local14, f14_local16, f14_local17 )
 	f14_arg0:registerEventHandler( "transition_complete_shift_left", LUI.UIBarrelList.ScrollFinished )
 	f14_arg0:registerEventHandler( "transition_complete_shift_right", LUI.UIBarrelList.ScrollFinished )
 	f14_arg0:registerEventHandler( "transition_complete_default", LUI.UIBarrelList.OnDefaultState )

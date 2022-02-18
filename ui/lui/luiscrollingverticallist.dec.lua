@@ -25,16 +25,16 @@ function CreateArrowButton( f2_arg0, f2_arg1, f2_arg2, f2_arg3, f2_arg4, f2_arg5
 		alpha = 0
 	} )
 	self:animateToState( "hidden" )
-	self:addEventHandler( "button_action", function ( f10_arg0, f10_arg1 )
-		f10_arg0:dispatchEventToRoot( {
+	self:addEventHandler( "button_action", function ( f3_arg0, f3_arg1 )
+		f3_arg0:dispatchEventToRoot( {
 			name = f2_arg7,
 			dispatchChildren = true
 		} )
 	end )
 	self:addEventHandler( "list_scroll", f2_arg8 )
-	local self = LUI.UIImage.new()
-	self.id = f2_arg0 .. "_image"
-	self:registerAnimationState( "default", {
+	local f2_local1 = LUI.UIImage.new()
+	f2_local1.id = f2_arg0 .. "_image"
+	f2_local1:registerAnimationState( "default", {
 		material = RegisterMaterial( "widg_lobby_arrow" ),
 		leftAnchor = true,
 		rightAnchor = true,
@@ -46,20 +46,20 @@ function CreateArrowButton( f2_arg0, f2_arg1, f2_arg2, f2_arg3, f2_arg4, f2_arg5
 		bottom = 0,
 		color = Colors.s1.text_unfocused
 	} )
-	self:animateToState( "default" )
-	self:addElement( self )
+	f2_local1:animateToState( "default" )
+	self:addElement( f2_local1 )
 	return self
 end
 
-function CreateListDef( f3_arg0, f3_arg1, f3_arg2, f3_arg3 )
-	f3_arg0.scrollByChildHeight = true
-	f3_arg0.disableOutsideChildren = true
-	f3_arg0.sendScrollEvents = true
+function CreateListDef( f4_arg0, f4_arg1, f4_arg2, f4_arg3 )
+	f4_arg0.scrollByChildHeight = true
+	f4_arg0.disableOutsideChildren = true
+	f4_arg0.sendScrollEvents = true
 	return {
 		type = "UIVerticalList",
 		id = "scroll_list_vlist",
 		focusable = true,
-		properties = f3_arg0,
+		properties = f4_arg0,
 		states = {
 			default = {
 				leftAnchor = true,
@@ -68,107 +68,107 @@ function CreateListDef( f3_arg0, f3_arg1, f3_arg2, f3_arg3 )
 				bottomAnchor = true,
 				left = 0,
 				right = 0,
-				top = f3_arg2,
-				bottom = -f3_arg3
+				top = f4_arg2,
+				bottom = -f4_arg3
 			}
 		},
 		handlers = {
 			refresh_scroll_list = RefreshScrollList,
-			scroll_up = function ( f11_arg0, f11_arg1 )
-				f11_arg0:SetVerticalListScrollUp()
+			scroll_up = function ( f5_arg0, f5_arg1 )
+				f5_arg0:SetVerticalListScrollUp()
 			end
 			,
-			scroll_down = function ( f12_arg0, f12_arg1 )
-				f12_arg0:SetVerticalListScrollDown()
+			scroll_down = function ( f6_arg0, f6_arg1 )
+				f6_arg0:SetVerticalListScrollDown()
 			end
 			
 		},
-		childrenFeeder = f3_arg1
+		childrenFeeder = f4_arg1
 	}
 end
 
-function SetChildrenIgnoreMouse( f4_arg0, f4_arg1 )
-	local f4_local0 = f4_arg0:getNumChildren()
-	local f4_local1 = f4_arg0:getFirstChild()
-	for f4_local2 = 1, f4_local0, 1 do
-		local f4_local5 = f4_local2
-		f4_local1.m_focusLockedByScrolling = f4_arg1.ignore
-		f4_local1 = f4_local1:getNextSibling()
+function SetChildrenIgnoreMouse( f7_arg0, f7_arg1 )
+	local f7_local0 = f7_arg0:getNumChildren()
+	local f7_local1 = f7_arg0:getFirstChild()
+	for f7_local2 = 1, f7_local0, 1 do
+		local f7_local5 = f7_local2
+		f7_local1.m_focusLockedByScrolling = f7_arg1.ignore
+		f7_local1 = f7_local1:getNextSibling()
 	end
 end
 
-LUI.UIScrollingVerticalList.build = function ( f5_arg0, f5_arg1 )
-	return LUI.UIScrollingVerticalList.new( nil, f5_arg0, f5_arg1 )
+LUI.UIScrollingVerticalList.build = function ( f8_arg0, f8_arg1 )
+	return LUI.UIScrollingVerticalList.new( nil, f8_arg0, f8_arg1 )
 end
 
-LUI.UIScrollingVerticalList.new = function ( f6_arg0, f6_arg1, f6_arg2 )
-	local self = LUI.UIElement.new( f6_arg0 )
-	if not f6_arg2 then
-		f6_arg2 = {}
+LUI.UIScrollingVerticalList.new = function ( f9_arg0, f9_arg1, f9_arg2 )
+	local self = LUI.UIElement.new( f9_arg0 )
+	if not f9_arg2 then
+		f9_arg2 = {}
 	end
-	if not f6_arg1 then
-		f6_arg1 = {}
+	if not f9_arg1 then
+		f9_arg1 = {}
 	end
 	self.id = "UIScrollingVList"
-	local f6_local1 = f6_arg1.childrenFeeder
-	if f6_arg1.childrenFeeder then
-		f6_arg1.childrenFeeder = nil
+	local f9_local1 = f9_arg1.childrenFeeder
+	if f9_arg1.childrenFeeder then
+		f9_arg1.childrenFeeder = nil
 	end
-	local f6_local2 = 0
-	if f6_arg2.use_arrows then
-		local f6_local3 = function ( f15_arg0, f15_arg1 )
-			if f15_arg1.show_up_arrow then
-				f15_arg0:animateToState( "default", 0 )
-				f15_arg0:processEvent( {
+	local f9_local2 = 0
+	if f9_arg2.use_arrows then
+		local f9_local3 = function ( f10_arg0, f10_arg1 )
+			if f10_arg1.show_up_arrow then
+				f10_arg0:animateToState( "default", 0 )
+				f10_arg0:processEvent( {
 					name = "enable"
 				} )
 			else
-				f15_arg0:animateToState( "hidden", 0 )
-				f15_arg0:processEvent( {
+				f10_arg0:animateToState( "hidden", 0 )
+				f10_arg0:processEvent( {
 					name = "disable"
 				} )
 			end
 		end
 		
-		f6_local2 = 30
-		self:addElement( CreateArrowButton( "scroll_list_up_arrow", self, 0, true, f6_local2, false, 90, "scroll_up", f6_local3 ) )
-		self:addElement( CreateArrowButton( "scroll_list_down_arrow", self, -f6_local2, false, 0, true, -90, "scroll_down", function ( f16_arg0, f16_arg1 )
-			if f16_arg1.show_down_arrow then
-				f16_arg0:animateToState( "default", 0 )
-				f16_arg0:processEvent( {
+		f9_local2 = 30
+		self:addElement( CreateArrowButton( "scroll_list_up_arrow", self, 0, true, f9_local2, false, 90, "scroll_up", f9_local3 ) )
+		self:addElement( CreateArrowButton( "scroll_list_down_arrow", self, -f9_local2, false, 0, true, -90, "scroll_down", function ( f11_arg0, f11_arg1 )
+			if f11_arg1.show_down_arrow then
+				f11_arg0:animateToState( "default", 0 )
+				f11_arg0:processEvent( {
 					name = "enable"
 				} )
 			else
-				f16_arg0:animateToState( "hidden", 0 )
-				f16_arg0:processEvent( {
+				f11_arg0:animateToState( "hidden", 0 )
+				f11_arg0:processEvent( {
 					name = "disable"
 				} )
 			end
 		end ) )
 	end
-	local f6_local4 = LUI.MenuBuilder.buildItems( CreateListDef( f6_arg2, f6_local1, f6_local2, f6_local2 ), f6_arg2, stencil )
-	f6_local4:setUseStencil( true )
-	self:addElement( f6_local4 )
-	f6_local4:registerEventHandler( "set_children_ignore_mouse", SetChildrenIgnoreMouse )
-	if f6_arg2.use_scrollbar then
-		self:addElement( LUI.UIVerticalScrollbar.new( f6_local4, f6_arg2.bar_width, 1, 1, f6_arg2.scrollbar_move_func, f6_arg2.bar_color, f6_arg2.bar_bg_color, f6_arg2.bar_material, f6_arg2.bar_bg_material ) )
+	local f9_local4 = LUI.MenuBuilder.buildItems( CreateListDef( f9_arg2, f9_local1, f9_local2, f9_local2 ), f9_arg2, stencil )
+	f9_local4:setUseStencil( true )
+	self:addElement( f9_local4 )
+	f9_local4:registerEventHandler( "set_children_ignore_mouse", SetChildrenIgnoreMouse )
+	if f9_arg2.use_scrollbar then
+		self:addElement( LUI.UIVerticalScrollbar.new( f9_local4, f9_arg2.bar_width, 1, 1, f9_arg2.scrollbar_move_func, f9_arg2.bar_color, f9_arg2.bar_bg_color, f9_arg2.bar_material, f9_arg2.bar_bg_material ) )
 	end
-	self.vlist = f6_local4
+	self.vlist = f9_local4
 	self.addElement = LUI.UIScrollingVerticalList.AddElement
 	self.removeElement = LUI.UIScrollingVerticalList.RemoveElement
 	self.closeChildren = LUI.UIScrollingVerticalList.CloseChildren
 	return self
 end
 
-LUI.UIScrollingVerticalList.AddElement = function ( f7_arg0, f7_arg1 )
-	f7_arg0.vlist:addElement( f7_arg1 )
+LUI.UIScrollingVerticalList.AddElement = function ( f12_arg0, f12_arg1 )
+	f12_arg0.vlist:addElement( f12_arg1 )
 end
 
-LUI.UIScrollingVerticalList.RemoveElement = function ( f8_arg0, f8_arg1 )
-	f8_arg0.vlist:removeElement( f8_arg1 )
+LUI.UIScrollingVerticalList.RemoveElement = function ( f13_arg0, f13_arg1 )
+	f13_arg0.vlist:removeElement( f13_arg1 )
 end
 
-LUI.UIScrollingVerticalList.CloseChildren = function ( f9_arg0 )
-	f9_arg0.vlist:closeChildren()
+LUI.UIScrollingVerticalList.CloseChildren = function ( f14_arg0 )
+	f14_arg0.vlist:closeChildren()
 end
 

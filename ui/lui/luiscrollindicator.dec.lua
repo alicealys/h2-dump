@@ -128,14 +128,14 @@ LUI.UIScrollIndicator.new = function ( f6_arg0, f6_arg1 )
 		f6_local5.alpha = 0.8
 		f6_local5.scale = 0
 	end
-	local self = LUI.UIImage.new( f6_local5 )
-	self.id = "UIScrollIndicatorUpArrow"
-	self.listRoot = f6_arg1.listRoot
+	local f6_local6 = LUI.UIImage.new( f6_local5 )
+	f6_local6.id = "UIScrollIndicatorUpArrow"
+	f6_local6.listRoot = f6_arg1.listRoot
 	if Engine.IsPC() then
-		self:setHandleMouseMove( true )
-		self:setHandleMouseButton( true )
-		self.m_requireFocusType = FocusType.MouseOver
-		self:registerEventHandler( "leftmousedown", function ( element, event )
+		f6_local6:setHandleMouseMove( true )
+		f6_local6:setHandleMouseButton( true )
+		f6_local6.m_requireFocusType = FocusType.MouseOver
+		f6_local6:registerEventHandler( "leftmousedown", function ( element, event )
 			if element.listRoot ~= nil then
 				element.listRoot:processEvent( {
 					name = "gain_focus"
@@ -163,20 +163,20 @@ LUI.UIScrollIndicator.new = function ( f6_arg0, f6_arg1 )
 				immediate = true
 			} )
 		end )
-		self:registerAnimationState( "highlight", {
+		f6_local6:registerAnimationState( "highlight", {
 			alpha = 1,
 			scale = 0
 		} )
-		self:registerAnimationState( "pulse", {
+		f6_local6:registerAnimationState( "pulse", {
 			scale = -0.1
 		} )
-		self:registerEventHandler( "mouseenter", function ( element, event )
+		f6_local6:registerEventHandler( "mouseenter", function ( element, event )
 			element:animateToState( "highlight" )
 		end )
-		self:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
+		f6_local6:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
 	end
-	self:addElement( self )
-	local self = LUI.UIText.new( {
+	self:addElement( f6_local6 )
+	local f6_local7 = LUI.UIText.new( {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -191,18 +191,18 @@ LUI.UIScrollIndicator.new = function ( f6_arg0, f6_arg1 )
 		},
 		alpha = 1
 	} )
-	self.id = "UIScrollIndicatorText"
-	self:addElement( self )
+	f6_local7.id = "UIScrollIndicatorText"
+	self:addElement( f6_local7 )
 	f6_local5.material = RegisterMaterial( "s1_icon_down" )
 	f6_local5.top = -22.5
-	local self = LUI.UIImage.new( f6_local5 )
-	self.id = "UIScrollIndicatorDownArrow"
-	self.listRoot = f6_arg1.listRoot
+	local f6_local8 = LUI.UIImage.new( f6_local5 )
+	f6_local8.id = "UIScrollIndicatorDownArrow"
+	f6_local8.listRoot = f6_arg1.listRoot
 	if Engine.IsPC() then
-		self:setHandleMouseMove( true )
-		self:setHandleMouseButton( true )
-		self.m_requireFocusType = FocusType.MouseOver
-		self:registerEventHandler( "leftmousedown", function ( element, event )
+		f6_local8:setHandleMouseMove( true )
+		f6_local8:setHandleMouseButton( true )
+		f6_local8.m_requireFocusType = FocusType.MouseOver
+		f6_local8:registerEventHandler( "leftmousedown", function ( element, event )
 			if element.listRoot ~= nil then
 				element.listRoot:processEvent( {
 					name = "gain_focus"
@@ -230,19 +230,19 @@ LUI.UIScrollIndicator.new = function ( f6_arg0, f6_arg1 )
 				immediate = true
 			} )
 		end )
-		self:registerAnimationState( "highlight", {
+		f6_local8:registerAnimationState( "highlight", {
 			alpha = 1,
 			scale = 0
 		} )
-		self:registerAnimationState( "pulse", {
+		f6_local8:registerAnimationState( "pulse", {
 			scale = -0.1
 		} )
-		self:registerEventHandler( "mouseenter", function ( element, event )
+		f6_local8:registerEventHandler( "mouseenter", function ( element, event )
 			element:animateToState( "highlight" )
 		end )
-		self:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
+		f6_local8:registerEventHandler( "mouseleave", MBh.AnimateToState( "default" ) )
 	end
-	self:addElement( self )
+	self:addElement( f6_local8 )
 	self:registerEventHandler( LUI.UIScrollIndicator.UpdateEvent, f0_local1 )
 	self:registerEventHandler( LUI.UIScrollIndicator.HideEvent, f0_local0 )
 	self:hide()

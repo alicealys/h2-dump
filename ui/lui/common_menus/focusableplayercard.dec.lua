@@ -13,9 +13,9 @@ LUI.FocusablePlayercard.new = function ( f1_arg0, f1_arg1, f1_arg2 )
 	end
 	local f1_local2 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f1_local2.material = RegisterMaterial( "h1_ui_btn_focused_stroke_square" )
-	local self = LUI.UIImage.new( f1_local2 )
-	self:setup9SliceImage()
-	self:addElement( self )
+	local f1_local3 = LUI.UIImage.new( f1_local2 )
+	f1_local3:setup9SliceImage()
+	self:addElement( f1_local3 )
 	return f1_local0
 end
 

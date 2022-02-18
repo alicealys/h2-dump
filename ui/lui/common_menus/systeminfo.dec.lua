@@ -38,13 +38,13 @@ LUI.SystemInfo.UpdateHelperText = function ( f3_arg0 )
 end
 
 LUI.SystemInfo.LeaveMenu = function ()
-	UPVAL0 = nil
-	UPVAL1 = nil
-	UPVAL2 = true
+	f0_local2 = nil
+	f0_local3 = nil
+	f0_local4 = true
 end
 
 LUI.SystemInfo.ToggleHidePrivateInfo = function ( f5_arg0 )
-	UPVAL0 = not f0_local4
+	f0_local4 = not f0_local4
 	if f0_local2 then
 		LUI.SystemInfo.RefreshItem( f0_local2, {} )
 	end
@@ -58,7 +58,7 @@ LUI.SystemInfo.ToggleHidePrivateInfo = function ( f5_arg0 )
 end
 
 LUI.SystemInfo.build = function ( f6_arg0, f6_arg1 )
-	UPVAL0 = true
+	f0_local4 = true
 	local f6_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
 	local f6_local1 = nil
 	if Engine.IsConsoleGame() then
@@ -105,12 +105,12 @@ LUI.SystemInfo.build = function ( f6_arg0, f6_arg1 )
 	end
 	if Engine.IsConsoleGame() then
 		f6_local4:addElement( LUI.H1MenuTab.new( {
-			title = function ( f13_arg0 )
-				return LUI.ConsoleOptions.Categories[f13_arg0].title
+			title = function ( f7_arg0 )
+				return LUI.ConsoleOptions.Categories[f7_arg0].title
 			end,
 			tabCount = #LUI.ConsoleOptions.Categories,
-			underTabTextFunc = function ( f14_arg0 )
-				return LUI.ConsoleOptions.Categories[f14_arg0].title
+			underTabTextFunc = function ( f8_arg0 )
+				return LUI.ConsoleOptions.Categories[f8_arg0].title
 			end,
 			top = f6_local0 + LUI.MenuTemplate.ListTop + f6_local3,
 			width = GenericMenuDims.OptionMenuWidth,
@@ -185,14 +185,14 @@ LUI.SystemInfo.build = function ( f6_arg0, f6_arg1 )
 	end )
 	if Engine.IsMultiplayer() then
 		if Lobby.GetIPAddress() ~= nil then
-			UPVAL3 = f6_local4:AddInfo( Engine.Localize( "MENU_IP_ADDRESS" ), LUI.SystemInfo.GetIPInfo )
+			f0_local3 = f6_local4:AddInfo( Engine.Localize( "MENU_IP_ADDRESS" ), LUI.SystemInfo.GetIPInfo )
 			if not Engine.InFrontend() and Engine.GetSplitScreen() then
 				f6_local4:AddInfo( "", function ()
 					return ""
 				end )
 			end
 		end
-		UPVAL4 = f6_local4:AddInfo( Engine.Localize( "MENU_SYSINFO_REGION" ), LUI.SystemInfo.GetRegionInfo )
+		f0_local2 = f6_local4:AddInfo( Engine.Localize( "MENU_SYSINFO_REGION" ), LUI.SystemInfo.GetRegionInfo )
 		f6_local4:AddInfo( Engine.Localize( "MENU_SYSINFO_BANDWIDTH" ), function ()
 			return Lobby.GetBandwidth()
 		end )
@@ -204,10 +204,10 @@ LUI.SystemInfo.build = function ( f6_arg0, f6_arg1 )
 		return Engine.Localize( "MENU_SYSINFO_CUSTOMER_SUPPORT_URL" )
 	end )
 	if Engine.IsConsoleGame() then
-		f6_local4:AddBackButton( function ( f22_arg0, f22_arg1 )
-			Engine.ExecNow( "profile_menuDvarsFinish", f22_arg1.controller )
+		f6_local4:AddBackButton( function ( f16_arg0, f16_arg1 )
+			Engine.ExecNow( "profile_menuDvarsFinish", f16_arg1.controller )
 			Engine.Exec( "updategamerprofile" )
-			LUI.FlowManager.RequestLeaveMenu( f22_arg0 )
+			LUI.FlowManager.RequestLeaveMenu( f16_arg0 )
 			if GameX.IsSplitscreen() then
 				GameX.SetOptionState( false )
 			end
@@ -242,14 +242,14 @@ LUI.SystemInfo.build = function ( f6_arg0, f6_arg1 )
 		f6_local19.height = 18
 		f6_local19.font = CoD.TextSettings.TitleFontSmall.Font
 		f6_local19.alignment = LUI.AdjustAlignmentForLanguage( LUI.Alignment.Left )
-		local self = LUI.UIText.new( f6_local19 )
-		self:setText( Engine.Localize( "@PLATFORM_OPTIONS_NETWORK_ABOUT_NAT_TITLE" ) )
-		f6_local18:addElement( self )
+		local f6_local20 = LUI.UIText.new( f6_local19 )
+		f6_local20:setText( Engine.Localize( "@PLATFORM_OPTIONS_NETWORK_ABOUT_NAT_TITLE" ) )
+		f6_local18:addElement( f6_local20 )
 		local f6_local21 = CoD.CreateState( 10, 35, -10, nil, CoD.AnchorTypes.TopLeftRight )
 		f6_local21.height = 14
 		f6_local21.font = CoD.TextSettings.TitleFontSmall.Font
 		f6_local21.alignment = LUI.AdjustAlignmentForLanguage( LUI.Alignment.Left )
-		local self = LUI.UIText.new( f6_local21 )
+		local f6_local22 = LUI.UIText.new( f6_local21 )
 		local f6_local23 = Matchmaking.GetNatType()
 		local f6_local24 = nil
 		local f6_local25 = {
@@ -268,45 +268,45 @@ LUI.SystemInfo.build = function ( f6_arg0, f6_arg1 )
 			f6_local18:animateToState( "hidden", 0 )
 		end
 		if f6_local24 then
-			self:setText( Engine.LocalizeLong( f6_local24 ) )
+			f6_local22:setText( Engine.LocalizeLong( f6_local24 ) )
 		end
-		f6_local18:addElement( self )
+		f6_local18:addElement( f6_local22 )
 		f6_local4:addElement( f6_local18 )
 	end
 	return f6_local4
 end
 
-LUI.SystemInfo.PopulateMissingProps = function ( f7_arg0, f7_arg1 )
-	if not f7_arg1 then
-		f7_arg1 = {}
+LUI.SystemInfo.PopulateMissingProps = function ( f17_arg0, f17_arg1 )
+	if not f17_arg1 then
+		f17_arg1 = {}
 	end
-	if not f7_arg0.properties then
-		f7_arg0.properties = f7_arg1
+	if not f17_arg0.properties then
+		f17_arg0.properties = f17_arg1
 	end
-	for f7_local3, f7_local4 in pairs( SystemInfoGlobals.DefaultProperties ) do
-		if f7_arg1[f7_local3] == nil then
-			f7_arg1[f7_local3] = f7_local4
+	for f17_local3, f17_local4 in pairs( SystemInfoGlobals.DefaultProperties ) do
+		if f17_arg1[f17_local3] == nil then
+			f17_arg1[f17_local3] = f17_local4
 		end
 	end
-	if not f7_arg1.exclusiveController then
-		f7_arg1.exclusiveController = Engine.GetFirstActiveController()
+	if not f17_arg1.exclusiveController then
+		f17_arg1.exclusiveController = Engine.GetFirstActiveController()
 	end
 end
 
-LUI.SystemInfo.ValidateProps = function ( f8_arg0, f8_arg1 )
+LUI.SystemInfo.ValidateProps = function ( f18_arg0, f18_arg1 )
 	
 end
 
-LUI.SystemInfo.AddInfo = function ( f9_arg0, f9_arg1, f9_arg2 )
-	local f9_local0 = GenericMenuDims.OptionMenuWidth - 20
-	local f9_local1 = 0
+LUI.SystemInfo.AddInfo = function ( f19_arg0, f19_arg1, f19_arg2 )
+	local f19_local0 = GenericMenuDims.OptionMenuWidth - 20
+	local f19_local1 = 0
 	if not Engine.InFrontend() and Engine.GetSplitScreen() then
-		f9_local1 = -22
-		if f9_arg1 == "" then
-			f9_local1 = f9_local1 - 10
+		f19_local1 = -22
+		if f19_arg1 == "" then
+			f19_local1 = f19_local1 - 10
 		end
 	end
-	local f9_local2 = f9_arg0.vlist
+	local f19_local2 = f19_arg0.vlist
 	local self = LUI.UIHorizontalList.new( {
 		leftAnchor = true,
 		topAnchor = true,
@@ -314,73 +314,73 @@ LUI.SystemInfo.AddInfo = function ( f9_arg0, f9_arg1, f9_arg2 )
 		rightAnchor = false,
 		left = 0,
 		top = 0,
-		width = f9_local0,
-		height = LUI.MenuGenericButtons.ButtonLabelFont.Height * 2 + f9_local1
+		width = f19_local0,
+		height = LUI.MenuGenericButtons.ButtonLabelFont.Height * 2 + f19_local1
 	} )
-	self.labelValue = f9_arg1
-	self.dataFunc = f9_arg2
-	self.id = f9_arg1 .. "_id"
-	local self = LUI.UIText.new()
-	self:registerAnimationState( "default", {
+	self.labelValue = f19_arg1
+	self.dataFunc = f19_arg2
+	self.id = f19_arg1 .. "_id"
+	local f19_local4 = LUI.UIText.new()
+	f19_local4:registerAnimationState( "default", {
 		leftAnchor = true,
 		topAnchor = true,
 		left = f0_local0,
 		top = f0_local0,
-		width = f9_local0 / 2,
+		width = f19_local0 / 2,
 		height = LUI.MenuGenericButtons.ButtonLabelFont.Height * 0.8,
 		font = LUI.MenuGenericButtons.ButtonLabelFont.Font,
 		color = Colors.h1.medium_grey,
 		alignment = LUI.AdjustAlignmentForLanguage( LUI.Alignment.Left )
 	} )
-	self:animateToState( "default" )
-	local self = LUI.UIText.new()
-	self:registerAnimationState( "default", {
+	f19_local4:animateToState( "default" )
+	local f19_local5 = LUI.UIText.new()
+	f19_local5:registerAnimationState( "default", {
 		rightAnchor = true,
 		topAnchor = true,
 		right = -f0_local0,
 		top = f0_local0,
-		width = f9_local0 / 2,
+		width = f19_local0 / 2,
 		height = LUI.MenuGenericButtons.ButtonLabelFont.Height * 0.8,
 		font = LUI.MenuGenericButtons.ButtonLabelFont.Font,
 		color = Colors.h1.light_grey,
 		alignment = Engine.IsRightToLeftLanguage() and LUI.Alignment.None or LUI.Alignment.Right
 	} )
-	self:animateToState( "default" )
-	self.labelText = self
-	self.valueText = self
+	f19_local5:animateToState( "default" )
+	self.labelText = f19_local4
+	self.valueText = f19_local5
 	if Engine.IsRightToLeftLanguage() then
-		self:addElement( self )
-		self:addElement( self )
+		self:addElement( f19_local5 )
+		self:addElement( f19_local4 )
 	else
-		self:addElement( self )
-		self:addElement( self )
+		self:addElement( f19_local4 )
+		self:addElement( f19_local5 )
 	end
 	LUI.SystemInfo.RefreshItem( self, {} )
-	f9_local2:addElement( self )
+	f19_local2:addElement( self )
 	return self
 end
 
-LUI.SystemInfo.RefreshItem = function ( f10_arg0, f10_arg1 )
-	local f10_local0 = f10_arg1.labelValue or f10_arg0.labelValue
-	local f10_local1 = f10_arg1.dataFunc or f10_arg0.dataFunc
-	local f10_local2 = f10_arg0.labelText
-	local f10_local3 = f10_local2
-	f10_local2 = f10_local2.setText
-	local f10_local4
-	if f10_local0 then
-		f10_local4 = Engine.Localize( f10_local0 )
-		if not f10_local4 then
+LUI.SystemInfo.RefreshItem = function ( f20_arg0, f20_arg1 )
+	local f20_local0 = f20_arg1.labelValue or f20_arg0.labelValue
+	local f20_local1 = f20_arg1.dataFunc or f20_arg0.dataFunc
+	local f20_local2 = f20_arg0.labelText
+	local f20_local3 = f20_local2
+	f20_local2 = f20_local2.setText
+	local f20_local4
+	if f20_local0 then
+		f20_local4 = Engine.Localize( f20_local0 )
+		if not f20_local4 then
 		
 		else
-			f10_local2( f10_local3, f10_local4 )
-			if f10_local1 then
-				f10_arg0.valueText:setText( f10_local1() or "" )
+			f20_local2( f20_local3, f20_local4 )
+			if f20_local1 then
+				f20_arg0.valueText:setText( f20_local1() or "" )
 			else
-				f10_arg0.valueText:setText( "" )
+				f20_arg0.valueText:setText( "" )
 			end
 		end
 	end
-	f10_local4 = ""
+	f20_local4 = ""
 end
 
 LUI.MenuBuilder.registerType( "SystemInfo", LUI.SystemInfo.build )

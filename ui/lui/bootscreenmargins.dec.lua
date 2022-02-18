@@ -25,9 +25,9 @@ f0_local1 = function ( f1_arg0, f1_arg1 )
 		f1_arg0:addElement( self )
 		LUI.ButtonHelperText.AddSignInText( self )
 	end
-	local self = LUI.UIElement.new( CoD.CreateState( 410, nil, -410, -65, CoD.AnchorTypes.All ) )
-	f1_arg0:addElement( self )
-	local f1_local3 = LUI.MenuBuilder.BuildAddChild( self, {
+	local f1_local2 = LUI.UIElement.new( CoD.CreateState( 410, nil, -410, -65, CoD.AnchorTypes.All ) )
+	f1_arg0:addElement( f1_local2 )
+	local f1_local3 = LUI.MenuBuilder.BuildAddChild( f1_local2, {
 		type = "button_helper_text_main"
 	} )
 	f1_local0.CancelVisible = f1_arg0.properties.is_in_options_menu

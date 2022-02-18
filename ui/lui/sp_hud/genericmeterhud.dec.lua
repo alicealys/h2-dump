@@ -21,12 +21,7 @@ local f0_local18 = 400
 local f0_local19 = 0
 local f0_local20 = "tag_ui_ammo"
 local f0_local21 = function ()
-	local f1_local0 = Game.GetViewmodelEntNum()
-	local f1_local1 = Game.PlayerCanAttachToViewmodel()
-	if f1_local1 then
-		f1_local1 = Game.EntityHasTag( f1_local0, f0_local20 )
-	end
-	return f1_local1
+	return Game.PlayerCanAttachToViewmodel() and Game.EntityHasTag( f1_local0, f0_local20 )
 end
 
 local f0_local22 = function ( f2_arg0 )

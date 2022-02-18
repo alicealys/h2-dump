@@ -39,7 +39,7 @@ function closePauseMenuInternal( f2_arg0, f2_arg1 )
 	f2_arg0:dispatchEventToRoot( {
 		name = "toggle_pause_off"
 	} )
-	UPVAL0 = false
+	f0_local1 = false
 end
 
 function backAction( f3_arg0, f3_arg1 )
@@ -238,8 +238,8 @@ function sp_pause_menu( f22_arg0, f22_arg1 )
 	if f22_local3 then
 		f22_local0:AddButton( "@MENU_RESUME_CREDITS", closePauseMenu, nil, nil, nil )
 	else
-		local self = f22_local0:AddButton( "@MENU_RESUMEGAME", closePauseMenu, nil, nil, nil )
-		self:setActionSFX( CoD.SFX.PauseMenuResume )
+		local f22_local7 = f22_local0:AddButton( "@MENU_RESUMEGAME", closePauseMenu, nil, nil, nil )
+		f22_local7:setActionSFX( CoD.SFX.PauseMenuResume )
 	end
 	f22_local0:AddOptionsButton( true )
 	if CoD.IsCampaignOnly() and not Engine.GetDvarBool( "limited_mode" ) and not f22_local3 then
@@ -250,31 +250,25 @@ function sp_pause_menu( f22_arg0, f22_arg1 )
 	end
 	if f22_local3 == nil or not f22_local3 then
 		if canChangeDifficulty() then
-			local self = function ( f5_arg0, f5_arg1 )
-				local f5_local0 = LUI.FlowManager.RequestAddMenu
-				local f5_local1 = f5_arg0
-				local f5_local2 = "ChangeDifficultyRestartConfirmPopup"
-				local f5_local3 = true
-				local f5_local4 = f5_arg1.controller
-				local f5_local5, f5_local6 = false
-				f5_local0( f5_local1, f5_local2, f5_local3, f5_local4, f5_local5, f5_local6 )
+			local f22_local7 = function ( f24_arg0, f24_arg1 )
+				LUI.FlowManager.RequestAddMenu( f24_arg0, "ChangeDifficultyRestartConfirmPopup", true, f24_arg1.controller, false, false )
 			end
 			
-			f22_local0:AddButton( (Engine.IsDevelopmentBuild() and "[DEV] " or "") .. Engine.Localize( "@MENU_CHANGE_DIFFICULTY" ), function ( f6_arg0, f6_arg1 )
-				LUI.FlowManager.RequestAddMenu( f6_arg0, "difficulty_selection_menu", true, f6_arg1.controller, false, {
-					acceptFunc = self,
+			f22_local0:AddButton( (Engine.IsDevelopmentBuild() and "[DEV] " or "") .. Engine.Localize( "@MENU_CHANGE_DIFFICULTY" ), function ( f25_arg0, f25_arg1 )
+				LUI.FlowManager.RequestAddMenu( f25_arg0, "difficulty_selection_menu", true, f25_arg1.controller, false, {
+					acceptFunc = f22_local7,
 					specialops = Engine.GetDvarBool( "specialops" ),
 					canBackOut = true
 				} )
 			end, nil, nil, nil )
 		end
 		if f22_local4 > 0 and canLowerDifficulty() then
-			local self = {
+			local f22_local7 = {
 				"LowerDifficultyConfirmPopup10",
 				"LowerDifficultyConfirmPopup21",
 				"LowerDifficultyConfirmPopup32"
 			}
-			f22_local0:AddButton( "@MENU_LOWER_DIFFICULTY", MBh.OpenMenu( self[f22_local4], false, false ), nil, nil, nil )
+			f22_local0:AddButton( "@MENU_LOWER_DIFFICULTY", MBh.OpenMenu( f22_local7[f22_local4], false, false ), nil, nil, nil )
 		end
 		if not isMuseumMission() and not Engine.GetDvarBool( "specialops" ) then
 			f22_local0:AddButton( "@MENU_LAST_CHECKPOINT", MBh.OpenMenu( "LastCheckpointConfirmPopup", false, false ), Engine.GetDvarBool( "arcademode" ), nil, nil, {
@@ -298,10 +292,10 @@ function sp_pause_menu( f22_arg0, f22_arg1 )
 		f22_local0:AddButton( "@PLATFORM_QUIT", MBh.OpenMenu( "quit_confirm_popup", false, false ), nil, nil, nil )
 	end
 	if f0_local0 then
-		local self = CoD.CreateState( -800, 95, 0, nil, CoD.AnchorTypes.TopRight )
-		self.height = 1
-		self.material = RegisterMaterial( "white" )
-		f22_local0.subContainer:addElement( LUI.UIImage.new( self ) )
+		local f22_local7 = CoD.CreateState( -800, 95, 0, nil, CoD.AnchorTypes.TopRight )
+		f22_local7.height = 1
+		f22_local7.material = RegisterMaterial( "white" )
+		f22_local0.subContainer:addElement( LUI.UIImage.new( f22_local7 ) )
 	end
 	LUI.sp_hud.ObjectivesFrame.Show( f22_local0.subContainer, false, false, false )
 	if Friends.HasPartyGameInvite() then
@@ -313,57 +307,57 @@ function sp_pause_menu( f22_arg0, f22_arg1 )
 			clickable = false
 		}, tryFollowInvite )
 	end
-	local self = LUI.UIBindButton.new()
-	self.id = "inGameButtonBinds"
-	self:registerEventHandler( "button_start", backAction )
-	f22_local0:addElement( self )
+	local f22_local7 = LUI.UIBindButton.new()
+	f22_local7.id = "inGameButtonBinds"
+	f22_local7:registerEventHandler( "button_start", backAction )
+	f22_local0:addElement( f22_local7 )
 	local f22_local8 = f22_local0:AddBackButton( backAction )
-	UPVAL0 = true
-	CoD.InitializeCheat( f22_local0, function ( f7_arg0, f7_arg1 )
-		LUI.FlowManager.RequestAddMenu( nil, "sp_pause_menu", true, f7_arg1.controller, true, nil, {
+	f0_local1 = true
+	CoD.InitializeCheat( f22_local0, function ( f26_arg0, f26_arg1 )
+		LUI.FlowManager.RequestAddMenu( nil, "sp_pause_menu", true, f26_arg1.controller, true, nil, {
 			reload = true
 		} )
 	end )
 	return self
 end
 
-function InvertFlightControlsPopup( f23_arg0, f23_arg1 )
-	local f23_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
+function InvertFlightControlsPopup( f27_arg0, f27_arg1 )
+	local f27_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@LUA_SP_COMMON_FLIGHT_CONTROLS" ),
 		message_text = Engine.Localize( "@LUA_SP_COMMON_REVERSE_FLIGHT_CONTROLS" ),
 		cancel_will_close = false,
-		no_action = function ( f12_arg0, f12_arg1 )
-			Engine.ExecNow( "profile_toggleInvertedFlightPitch", f12_arg1.controller )
+		no_action = function ( f28_arg0, f28_arg1 )
+			Engine.ExecNow( "profile_toggleInvertedFlightPitch", f28_arg1.controller )
 			Engine.SetDvarInt( "cl_paused", 0 )
 		end,
-		yes_action = function ( f13_arg0, f13_arg1 )
+		yes_action = function ( f29_arg0, f29_arg1 )
 			Engine.SetDvarInt( "cl_paused", 0 )
 		end,
 		default_focus_index = 1
 	} )
-	f23_local0:registerEventHandler( "menu_create", function ( element, event )
+	f27_local0:registerEventHandler( "menu_create", function ( element, event )
 		Engine.SetDvarInt( "cl_paused", 1 )
 	end )
-	return f23_local0
+	return f27_local0
 end
 
-function flight_controls_setting_popmenu( f24_arg0, f24_arg1 )
-	local f24_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
+function flight_controls_setting_popmenu( f31_arg0, f31_arg1 )
+	local f31_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@LUA_SP_COMMON_FLIGHT_CONTROLS" ),
 		message_text = Engine.Localize( "@LUA_SP_COMMON_FLIGHT_CONTROLS_OPTIONS" ),
 		button_text = Engine.Localize( "@MENU_OK" ),
-		confirmation_action = function ( f15_arg0, f15_arg1 )
+		confirmation_action = function ( f32_arg0, f32_arg1 )
 			Engine.SetDvarInt( "cl_paused", 0 )
 		end,
 		default_focus_index = 1
 	} )
-	f24_local0:registerEventHandler( "menu_create", function ( element, event )
+	f31_local0:registerEventHandler( "menu_create", function ( element, event )
 		Engine.SetDvarInt( "cl_paused", 1 )
 	end )
-	f24_local0:registerEventHandler( "popup_back", function ( element, event )
+	f31_local0:registerEventHandler( "popup_back", function ( element, event )
 		Engine.SetDvarInt( "cl_paused", 0 )
 	end )
-	return f24_local0
+	return f31_local0
 end
 
 LUI.MenuBuilder.registerType( "sp_pause_menu", sp_pause_menu )

@@ -75,7 +75,7 @@ function CreateVideoAdapterInfoElement()
 	local self = LUI.UIElement.new()
 	self.id = "videoAdapterInfoContainer"
 	local f6_local5 = 265 - f6_local1.Height
-	local self = LUI.UIText.new( {
+	local f6_local6 = LUI.UIText.new( {
 		font = f6_local1.Font,
 		alignment = LUI.Alignment.Right,
 		top = f6_local5,
@@ -84,9 +84,9 @@ function CreateVideoAdapterInfoElement()
 		height = f6_local1.Height,
 		alpha = 1
 	} )
-	self.id = "videoAdapterMemory"
+	f6_local6.id = "videoAdapterMemory"
 	local f6_local7 = f6_local5 - f6_local2 - f6_local0.Height
-	local self = LUI.UIText.new( {
+	local f6_local8 = LUI.UIText.new( {
 		font = f6_local0.Font,
 		alignment = LUI.Alignment.Right,
 		top = f6_local7,
@@ -96,10 +96,10 @@ function CreateVideoAdapterInfoElement()
 		color = Colors.s1.text_unfocused,
 		alpha = 1
 	} )
-	self.id = "videoAdapterMemoryTitle"
-	self:setText( Engine.Localize( "@PLATFORM_UI_DEDICATED_VIDEO_MEMORY" ) )
+	f6_local8.id = "videoAdapterMemoryTitle"
+	f6_local8:setText( Engine.Localize( "@PLATFORM_UI_DEDICATED_VIDEO_MEMORY" ) )
 	local f6_local9 = f6_local7 - f6_local3 - f6_local1.Height
-	local self = LUI.UIText.new( {
+	local f6_local10 = LUI.UIText.new( {
 		font = f6_local1.Font,
 		alignment = LUI.Alignment.Right,
 		top = f6_local9,
@@ -109,9 +109,9 @@ function CreateVideoAdapterInfoElement()
 		color = Colors.h1.medium_grey,
 		alpha = 1
 	} )
-	self.id = "videoAdapter"
-	self:setText( LUI.PCOptions.GetDvarValue( "r_adapterName" ) )
-	local self = LUI.UIText.new( {
+	f6_local10.id = "videoAdapter"
+	f6_local10:setText( LUI.PCOptions.GetDvarValue( "r_adapterName" ) )
+	local f6_local11 = LUI.UIText.new( {
 		font = f6_local0.Font,
 		alignment = LUI.Alignment.Right,
 		top = f6_local9 - f6_local2 - f6_local0.Height,
@@ -121,32 +121,32 @@ function CreateVideoAdapterInfoElement()
 		color = Colors.s1.text_unfocused,
 		alpha = 1
 	} )
-	self.id = "videoAdapterTitle"
-	self:setText( Engine.Localize( "@PLATFORM_UI_VIDEO_ADAPTER" ) )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
+	f6_local11.id = "videoAdapterTitle"
+	f6_local11:setText( Engine.Localize( "@PLATFORM_UI_VIDEO_ADAPTER" ) )
+	self:addElement( f6_local11 )
+	self:addElement( f6_local10 )
+	self:addElement( f6_local8 )
+	self:addElement( f6_local6 )
 	local f6_local12 = function ()
-		self:setText( LUI.PCOptions.GetDvarValue( "r_adapterName" ) )
-		local f8_local0 = Engine.GetEstimatedVRAMUsageFromUISettingsMB()
-		local f8_local1 = Engine.GetAvailableTextureMemMB()
-		local f8_local2, f8_local3 = nil
+		f6_local10:setText( LUI.PCOptions.GetDvarValue( "r_adapterName" ) )
+		local f7_local0 = Engine.GetEstimatedVRAMUsageFromUISettingsMB()
+		local f7_local1 = Engine.GetAvailableTextureMemMB()
+		local f7_local2, f7_local3 = nil
 		if Engine.ShouldWarnLowVRAM() then
-			f8_local2 = Colors.red
+			f7_local2 = Colors.red
 		else
-			f8_local2 = Colors.h1.medium_grey
+			f7_local2 = Colors.h1.medium_grey
 		end
 		if Engine.HasNoDedicatedVRAM() then
-			f8_local3 = tostring( f8_local0 ) .. Engine.Localize( "@PLATFORM_UI_MB_USED" )
+			f7_local3 = tostring( f7_local0 ) .. Engine.Localize( "@PLATFORM_UI_MB_USED" )
 		else
-			f8_local3 = tostring( f8_local0 ) .. " / " .. tostring( f8_local1 ) .. " " .. Engine.Localize( "@PLATFORM_UI_MB_USED" )
+			f7_local3 = tostring( f7_local0 ) .. " / " .. tostring( f7_local1 ) .. " " .. Engine.Localize( "@PLATFORM_UI_MB_USED" )
 		end
-		self:registerAnimationState( "color", {
-			color = f8_local2
+		f6_local6:registerAnimationState( "color", {
+			color = f7_local2
 		} )
-		self:animateToState( "color" )
-		self:setText( f8_local3 )
+		f6_local6:animateToState( "color" )
+		f6_local6:setText( f7_local3 )
 	end
 	
 	f6_local12()
@@ -154,7 +154,7 @@ function CreateVideoAdapterInfoElement()
 	return self
 end
 
-function VSyncDisplayFunc( f7_arg0, f7_arg1 )
+function VSyncDisplayFunc( f8_arg0, f8_arg1 )
 	if Engine.GetVSyncControlDisable() then
 		return Engine.Localize( "@MENU_ON" )
 	else
@@ -162,13 +162,13 @@ function VSyncDisplayFunc( f7_arg0, f7_arg1 )
 	end
 end
 
-function CreateDisplayOptions( f8_arg0 )
-	LUI.Options.CreateDVarVideoOptionHelper( f8_arg0, "ui_r_adapter", "@PLATFORM_UI_ADAPTER", function ()
-		local f19_local0 = LUI.Options.StringOptionListFromList( Engine.GetAdapterList() )
-		for f19_local1 = 1, #f19_local0, 1 do
-			f19_local0[f19_local1].text = Engine.MarkLocalized( f19_local0[f19_local1].text )
+function CreateDisplayOptions( f9_arg0 )
+	LUI.Options.CreateDVarVideoOptionHelper( f9_arg0, "ui_r_adapter", "@PLATFORM_UI_ADAPTER", function ()
+		local f10_local0 = LUI.Options.StringOptionListFromList( Engine.GetAdapterList() )
+		for f10_local1 = 1, #f10_local0, 1 do
+			f10_local0[f10_local1].text = Engine.MarkLocalized( f10_local0[f10_local1].text )
 		end
-		return f19_local0
+		return f10_local0
 	end, {
 		button_desc = "@PLATFORM_UI_ADAPTER_DESC",
 		refreshFunc = function ()
@@ -176,7 +176,7 @@ function CreateDisplayOptions( f8_arg0 )
 			Engine.Exec( "vid_restart" )
 		end
 	} )
-	LUI.Options.CreateOptionButton( f8_arg0, "ui_r_vsync", "@MENU_SYNC_EVERY_FRAME", "@PLATFORM_SYNC_EVERY_FRAME_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_vsync", "@MENU_SYNC_EVERY_FRAME", "@PLATFORM_SYNC_EVERY_FRAME_DESCRIPTION", {
 		{
 			text = "@MENU_ON",
 			value = "1"
@@ -188,20 +188,20 @@ function CreateDisplayOptions( f8_arg0 )
 	}, nil, function ()
 		return Engine.GetVSyncControlDisable()
 	end, LUI.Options.RefreshVideoSetting, VSyncDisplayFunc )
-	local f8_local0 = {}
-	for f8_local1 = 30, 250, 5 do
-		f8_local0[#f8_local0 + 1] = {
-			value = f8_local1,
-			text = f8_local1
+	local f9_local0 = {}
+	for f9_local1 = 30, 250, 5 do
+		f9_local0[#f9_local0 + 1] = {
+			value = f9_local1,
+			text = f9_local1
 		}
 	end
-	f8_local0[#f8_local0 + 1] = {
+	f9_local0[#f9_local0 + 1] = {
 		value = 0,
 		text = Engine.Localize( "@PLATFORM_MAX_FPS_UNLIMITED" )
 	}
-	LUI.Options.CreateOptionButton( f8_arg0, "com_maxfps", "@PLATFORM_MAX_FPS", "@PLATFORM_MAX_FPS_DESC", f8_local0 )
+	LUI.Options.CreateOptionButton( f9_arg0, "com_maxfps", "@PLATFORM_MAX_FPS", "@PLATFORM_MAX_FPS_DESC", f9_local0 )
 	if not Engine.IsPCApp() then
-		LUI.Options.CreateDVarVideoOptionHelper( f8_arg0, "ui_r_aspectRatio", "@PLATFORM_MONITOR_ASPECT_RATIO", {
+		LUI.Options.CreateDVarVideoOptionHelper( f9_arg0, "ui_r_aspectRatio", "@PLATFORM_MONITOR_ASPECT_RATIO", {
 			{
 				text = "@MENU_AUTO",
 				value = "auto"
@@ -225,17 +225,17 @@ function CreateDisplayOptions( f8_arg0 )
 		}, {
 			button_desc = "@PLATFORM_ASPECT_RATIO_DESCRIPTION",
 			disabledFunc = function ()
-				local f22_local0
+				local f13_local0
 				if Engine.GetDvarBool( "r_fullscreen" ) ~= false and Engine.GetDvarBool( "r_fullscreenWindow" ) ~= true then
-					f22_local0 = false
+					f13_local0 = false
 				else
-					f22_local0 = true
+					f13_local0 = true
 				end
-				return f22_local0
+				return f13_local0
 			end
 		} )
 	end
-	LUI.Options.CreateOptionButton( f8_arg0, "ui_r_renderResolutionNative", "@PLATFORM_UI_NATIVE_RENDER_RESOLUTION", "@PLATFORM_UI_NATIVE_RENDER_RESOLUTION_DESC", {
+	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_renderResolutionNative", "@PLATFORM_UI_NATIVE_RENDER_RESOLUTION", "@PLATFORM_UI_NATIVE_RENDER_RESOLUTION_DESC", {
 		{
 			text = "@MENU_ON",
 			value = true
@@ -246,9 +246,9 @@ function CreateDisplayOptions( f8_arg0 )
 		}
 	}, nil, nil, function ()
 		LUI.Options.RefreshVideoSetting()
-		f8_arg0:RefreshButtonDisabled()
+		f9_arg0:RefreshButtonDisabled()
 	end )
-	LUI.Options.CreateDVarVideoOptionHelper( f8_arg0, "ui_r_renderResolution", "@PLATFORM_UI_IMAGE_QUALITY", function ()
+	LUI.Options.CreateDVarVideoOptionHelper( f9_arg0, "ui_r_renderResolution", "@PLATFORM_UI_IMAGE_QUALITY", function ()
 		return Engine.GetRenderResolutionOptions()
 	end, {
 		button_desc = "@PLATFORM_IMAGE_QUALITY_DESCRIPTION",
@@ -258,9 +258,9 @@ function CreateDisplayOptions( f8_arg0 )
 	} )
 end
 
-function CreateTextureOptions( f9_arg0 )
-	CreateDivider( f9_arg0, "@PLATFORM_UI_TEXTURE_OPTIONS", 8 )
-	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_picmip", "@MENU_TEXTURE_RESOLUTION", "@PLATFORM_TEXTURE_RESOLUTION_DESCRIPTION", {
+function CreateTextureOptions( f17_arg0 )
+	CreateDivider( f17_arg0, "@PLATFORM_UI_TEXTURE_OPTIONS", 8 )
+	LUI.Options.CreateOptionButton( f17_arg0, "ui_r_picmip", "@MENU_TEXTURE_RESOLUTION", "@PLATFORM_TEXTURE_RESOLUTION_DESCRIPTION", {
 		{
 			text = "@MENU_LOW",
 			value = "3"
@@ -278,7 +278,7 @@ function CreateTextureOptions( f9_arg0 )
 			value = "0"
 		}
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_picmip_bump", "@MENU_NORMAL_MAP_RESOLUTION", "@PLATFORM_NORMAL_MAP_RESOLUTION_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f17_arg0, "ui_r_picmip_bump", "@MENU_NORMAL_MAP_RESOLUTION", "@PLATFORM_NORMAL_MAP_RESOLUTION_DESCRIPTION", {
 		{
 			text = "@MENU_LOW",
 			value = "3"
@@ -296,7 +296,7 @@ function CreateTextureOptions( f9_arg0 )
 			value = "0"
 		}
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_picmip_spec", "@MENU_SPECULAR_MAP_RESOLUTION", "@PLATFORM_SPECULAR_MAP_RESOLUTION_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f17_arg0, "ui_r_picmip_spec", "@MENU_SPECULAR_MAP_RESOLUTION", "@PLATFORM_SPECULAR_MAP_RESOLUTION_DESCRIPTION", {
 		{
 			text = "@MENU_LOW",
 			value = "3"
@@ -314,7 +314,7 @@ function CreateTextureOptions( f9_arg0 )
 			value = "0"
 		}
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_fill_texture_memory", "@MENU_FILL_MEMORY_TEXTURES", "@PLATFORM_FILL_MEMORY_TEXTURES_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f17_arg0, "ui_r_fill_texture_memory", "@MENU_FILL_MEMORY_TEXTURES", "@PLATFORM_FILL_MEMORY_TEXTURES_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "false"
@@ -326,7 +326,7 @@ function CreateTextureOptions( f9_arg0 )
 	}, nil, function ()
 		return Engine.HasNoDedicatedVRAM()
 	end, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f9_arg0, "ui_r_texFilterAnisoMin", "@LUA_MENU_ANISOTROPIC_FILTERING", "@PLATFORM_ANISOTROPIC_FILTERING_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f17_arg0, "ui_r_texFilterAnisoMin", "@LUA_MENU_ANISOTROPIC_FILTERING", "@PLATFORM_ANISOTROPIC_FILTERING_DESCRIPTION", {
 		{
 			text = "@MENU_LOW",
 			value = "1"
@@ -342,9 +342,9 @@ function CreateTextureOptions( f9_arg0 )
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
 end
 
-function CreateShadowOptions( f10_arg0 )
-	CreateDivider( f10_arg0, "@PLATFORM_UI_SHADOW_OPTIONS" )
-	LUI.Options.CreateOptionButton( f10_arg0, "ui_sm_enable", "@MENU_SHADOWS", "@PLATFORM_SHADOWS_DESCRIPTION", {
+function CreateShadowOptions( f19_arg0 )
+	CreateDivider( f19_arg0, "@PLATFORM_UI_SHADOW_OPTIONS" )
+	LUI.Options.CreateOptionButton( f19_arg0, "ui_sm_enable", "@MENU_SHADOWS", "@PLATFORM_SHADOWS_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "false"
@@ -355,9 +355,9 @@ function CreateShadowOptions( f10_arg0 )
 		}
 	}, nil, nil, function ()
 		LUI.Options.RefreshVideoSetting()
-		f10_arg0:RefreshButtonDisabled()
+		f19_arg0:RefreshButtonDisabled()
 	end )
-	LUI.Options.CreateOptionButton( f10_arg0, "ui_sm_tileResolution", "@PLATFORM_UI_SHADOW_MAP_RESOLUTION", "@PLATFORM_SHADOW_MAP_RESOLUTION_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f19_arg0, "ui_sm_tileResolution", "@PLATFORM_UI_SHADOW_MAP_RESOLUTION", "@PLATFORM_SHADOW_MAP_RESOLUTION_DESCRIPTION", {
 		{
 			text = "@MENU_NORMAL",
 			value = "Normal"
@@ -373,7 +373,7 @@ function CreateShadowOptions( f10_arg0 )
 	}, nil, function ()
 		return Engine.GetDvarBool( "sm_enable" ) == false
 	end, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f10_arg0, "ui_sm_cacheSunShadow", "@PLATFORM_UI_CACHED_SUN_SHADOWS", "@PLATFORM_CACHED_SUN_SHADOWS_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f19_arg0, "ui_sm_cacheSunShadow", "@PLATFORM_UI_CACHED_SUN_SHADOWS", "@PLATFORM_CACHED_SUN_SHADOWS_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "Disabled"
@@ -385,7 +385,7 @@ function CreateShadowOptions( f10_arg0 )
 	}, nil, function ()
 		return Engine.GetDvarBool( "sm_enable" ) == false
 	end, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f10_arg0, "ui_sm_cacheSpotShadows", "@PLATFORM_UI_CACHED_SPOT_SHADOWS", "@PLATFORM_CACHED_SPOT_SHADOWS_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f19_arg0, "ui_sm_cacheSpotShadows", "@PLATFORM_UI_CACHED_SPOT_SHADOWS", "@PLATFORM_CACHED_SPOT_SHADOWS_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "Disabled"
@@ -399,10 +399,10 @@ function CreateShadowOptions( f10_arg0 )
 	end, LUI.Options.RefreshVideoSetting )
 end
 
-function CreatePostProcessOptions( f11_arg0 )
-	CreateDivider( f11_arg0, "@PLATFORM_UI_POST_PROCESS_OPTIONS" )
+function CreatePostProcessOptions( f24_arg0 )
+	CreateDivider( f24_arg0, "@PLATFORM_UI_POST_PROCESS_OPTIONS" )
 	if not Engine.IsMultiplayer() then
-		LUI.Options.CreateOptionButton( f11_arg0, "ui_r_dof_limit", "@MENU_DOF", "@PLATFORM_DOF_DESCRIPTION", {
+		LUI.Options.CreateOptionButton( f24_arg0, "ui_r_dof_limit", "@MENU_DOF", "@PLATFORM_DOF_DESCRIPTION", {
 			{
 				text = "@MENU_OFF",
 				value = "0"
@@ -421,7 +421,7 @@ function CreatePostProcessOptions( f11_arg0 )
 			}
 		}, nil, nil, LUI.Options.RefreshVideoSetting )
 	else
-		LUI.Options.CreateOptionButton( f11_arg0, "ui_r_dof_limit", "@MENU_DOF", "@PLATFORM_DOF_DESCRIPTION", {
+		LUI.Options.CreateOptionButton( f24_arg0, "ui_r_dof_limit", "@MENU_DOF", "@PLATFORM_DOF_DESCRIPTION", {
 			{
 				text = "@MENU_OFF",
 				value = "0"
@@ -433,7 +433,7 @@ function CreatePostProcessOptions( f11_arg0 )
 		}, nil, nil, LUI.Options.RefreshVideoSetting )
 	end
 	if not Engine.IsMultiplayer() then
-		LUI.Options.CreateOptionButton( f11_arg0, "ui_r_mbLimit", "@PLATFORM_MOTIONBLUR", "@PLATFORM_MOTIONBLUR_DESCRIPTION", {
+		LUI.Options.CreateOptionButton( f24_arg0, "ui_r_mbLimit", "@PLATFORM_MOTIONBLUR", "@PLATFORM_MOTIONBLUR_DESCRIPTION", {
 			{
 				text = "@MENU_OFF",
 				value = "0"
@@ -452,7 +452,7 @@ function CreatePostProcessOptions( f11_arg0 )
 			}
 		}, nil, nil, LUI.Options.RefreshVideoSetting )
 	end
-	LUI.Options.CreateOptionButton( f11_arg0, "ui_r_ssaoLimit", "@PLATFORM_SSAO", "@PLATFORM_SSAO_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f24_arg0, "ui_r_ssaoLimit", "@PLATFORM_SSAO", "@PLATFORM_SSAO_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "0"
@@ -471,9 +471,9 @@ function CreatePostProcessOptions( f11_arg0 )
 		}
 	}, nil, nil, function ()
 		LUI.Options.RefreshVideoSetting()
-		f11_arg0:RefreshButtonDisabled()
+		f24_arg0:RefreshButtonDisabled()
 	end )
-	LUI.Options.CreateOptionButton( f11_arg0, "ui_r_mdaoLimit", "@PLATFORM_MDAO", "@PLATFORM_MDAO_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f24_arg0, "ui_r_mdaoLimit", "@PLATFORM_MDAO", "@PLATFORM_MDAO_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "0"
@@ -483,15 +483,15 @@ function CreatePostProcessOptions( f11_arg0 )
 			value = "2"
 		}
 	}, nil, function ()
-		local f17_local0
+		local f26_local0
 		if LUI.PCOptions.GetDvarValue( "ui_r_ssaoLimit" ) ~= "0" and LUI.PCOptions.GetDvarValue( "ui_r_depthPrepass" ) ~= "None" then
-			f17_local0 = false
+			f26_local0 = false
 		else
-			f17_local0 = true
+			f26_local0 = true
 		end
-		return f17_local0
+		return f26_local0
 	end, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f11_arg0, "ui_r_sssLimit", "@PLATFORM_UI_SUBSURFACE_SCATTERING", "@PLATFORM_SUBSURFACE_SCATTERING_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f24_arg0, "ui_r_sssLimit", "@PLATFORM_UI_SUBSURFACE_SCATTERING", "@PLATFORM_SUBSURFACE_SCATTERING_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "0"
@@ -503,7 +503,7 @@ function CreatePostProcessOptions( f11_arg0 )
 	}, nil, function ()
 		return LUI.PCOptions.GetDvarValue( "ui_r_depthPrepass" ) == "None"
 	end, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f11_arg0, "ui_r_depthPrepass", "@PLATFORM_UI_DEPTH_PREPASS", "@PLATFORM_DEPTH_PREPASS_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f24_arg0, "ui_r_depthPrepass", "@PLATFORM_UI_DEPTH_PREPASS", "@PLATFORM_DEPTH_PREPASS_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "None"
@@ -514,13 +514,13 @@ function CreatePostProcessOptions( f11_arg0 )
 		}
 	}, nil, nil, function ()
 		LUI.Options.RefreshVideoSetting()
-		f11_arg0:RefreshButtonDisabled()
+		f24_arg0:RefreshButtonDisabled()
 	end )
 end
 
-function CreateAntiAliasingOptions( f12_arg0 )
-	CreateDivider( f12_arg0, "@PLATFORM_UI_ANTI_ALIASING_OPTIONS" )
-	LUI.Options.CreateOptionButton( f12_arg0, "ui_r_postAA", "@PLATFORM_UI_POST_AA", "@PLATFORM_POST_AA_DESCRIPTION", {
+function CreateAntiAliasingOptions( f29_arg0 )
+	CreateDivider( f29_arg0, "@PLATFORM_UI_ANTI_ALIASING_OPTIONS" )
+	LUI.Options.CreateOptionButton( f29_arg0, "ui_r_postAA", "@PLATFORM_UI_POST_AA", "@PLATFORM_POST_AA_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "None"
@@ -546,7 +546,7 @@ function CreateAntiAliasingOptions( f12_arg0 )
 			value = "Filmic SMAA T2x"
 		}
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
-	LUI.Options.CreateOptionButton( f12_arg0, "ui_r_ssaaSamples", "@MENU_SUPERSAMPLING", "@PLATFORM_SUPERSAMPLING_DESCRIPTION", {
+	LUI.Options.CreateOptionButton( f29_arg0, "ui_r_ssaaSamples", "@MENU_SUPERSAMPLING", "@PLATFORM_SUPERSAMPLING_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "1"
@@ -570,10 +570,10 @@ function CreateAntiAliasingOptions( f12_arg0 )
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
 end
 
-function CreateShaderPreloadOptions( f13_arg0 )
+function CreateShaderPreloadOptions( f30_arg0 )
 	if Engine.GetDvarInt( "enable_video_options_preload_shader_controls" ) ~= 0 then
-		CreateDivider( f13_arg0, "@PLATFORM_UI_SHADER_PRELOAD" )
-		LUI.Options.CreateOptionButton( f13_arg0, "ui_r_preloadShaders", "@PLATFORM_UI_SHADER_PRELOAD", "@PLATFORM_SHADER_PRELOAD_DESCRIPTION", {
+		CreateDivider( f30_arg0, "@PLATFORM_UI_SHADER_PRELOAD" )
+		LUI.Options.CreateOptionButton( f30_arg0, "ui_r_preloadShaders", "@PLATFORM_UI_SHADER_PRELOAD", "@PLATFORM_SHADER_PRELOAD_DESCRIPTION", {
 			{
 				text = "@MENU_OFF",
 				value = "false"
@@ -584,7 +584,7 @@ function CreateShaderPreloadOptions( f13_arg0 )
 			}
 		}, nil, nil, LUI.Options.RefreshVideoSetting )
 		if not Engine.IsMultiplayer() then
-			LUI.Options.CreateOptionButton( f13_arg0, "ui_r_preloadShadersAfterCinematic", "@PLATFORM_UI_SHADER_PRELOAD_AFTER_CINEMATIC", "@PLATFORM_SHADER_PRELOAD_AFTER_CINEMATIC_DESCRIPTION", {
+			LUI.Options.CreateOptionButton( f30_arg0, "ui_r_preloadShadersAfterCinematic", "@PLATFORM_UI_SHADER_PRELOAD_AFTER_CINEMATIC", "@PLATFORM_SHADER_PRELOAD_AFTER_CINEMATIC_DESCRIPTION", {
 				{
 					text = "@MENU_OFF",
 					value = "true"
@@ -600,9 +600,9 @@ function CreateShaderPreloadOptions( f13_arg0 )
 	end
 end
 
-function CreateMiscellaneousOption( f14_arg0 )
-	CreateDivider( f14_arg0, "@PLATFORM_UI_MISCELLANEOUS_OPTIONS" )
-	LUI.Options.CreateOptionButton( f14_arg0, "ui_fx_marks", "@MENU_BULLET_IMPACTS", "@PLATFORM_BULLET_IMPACTS_DESCRIPTION", {
+function CreateMiscellaneousOption( f32_arg0 )
+	CreateDivider( f32_arg0, "@PLATFORM_UI_MISCELLANEOUS_OPTIONS" )
+	LUI.Options.CreateOptionButton( f32_arg0, "ui_fx_marks", "@MENU_BULLET_IMPACTS", "@PLATFORM_BULLET_IMPACTS_DESCRIPTION", {
 		{
 			text = "@MENU_OFF",
 			value = "false"
@@ -612,19 +612,19 @@ function CreateMiscellaneousOption( f14_arg0 )
 			value = "true"
 		}
 	}, nil, nil, LUI.Options.RefreshVideoSetting )
-	local f14_local0 = {}
-	local f14_local1 = 8
-	local f14_local2 = 2
-	for f14_local3 = 0, f14_local1 - f14_local2, 1 do
-		local f14_local6 = f14_local2 + f14_local3
-		f14_local0[f14_local3 + 1] = {
-			text = Engine.MarkLocalized( tostring( f14_local6 ) ),
-			value = tostring( f14_local6 )
+	local f32_local0 = {}
+	local f32_local1 = 8
+	local f32_local2 = 2
+	for f32_local3 = 0, f32_local1 - f32_local2, 1 do
+		local f32_local6 = f32_local2 + f32_local3
+		f32_local0[f32_local3 + 1] = {
+			text = Engine.MarkLocalized( tostring( f32_local6 ) ),
+			value = tostring( f32_local6 )
 		}
 	end
-	LUI.Options.CreateOptionButton( f14_arg0, "ui_r_dlightForceLimit", "@PLATFORM_UI_DLIGHT_FORCE_LIMIT", "@PLATFORM_DLIGHT_FORCE_LIMIT_DESCRIPTION", f14_local0, nil, nil, LUI.Options.RefreshVideoSetting )
+	LUI.Options.CreateOptionButton( f32_arg0, "ui_r_dlightForceLimit", "@PLATFORM_UI_DLIGHT_FORCE_LIMIT", "@PLATFORM_DLIGHT_FORCE_LIMIT_DESCRIPTION", f32_local0, nil, nil, LUI.Options.RefreshVideoSetting )
 	if not Engine.IsConsoleGame() then
-		LUI.Options.CreateOptionButton( f14_arg0, "ragdoll_enable", "@MENU_RAGDOLL", "@PLATFORM_RAGDOLL_DESC", {
+		LUI.Options.CreateOptionButton( f32_arg0, "ragdoll_enable", "@MENU_RAGDOLL", "@PLATFORM_RAGDOLL_DESC", {
 			{
 				text = "@MENU_OFF",
 				value = false
@@ -637,23 +637,23 @@ function CreateMiscellaneousOption( f14_arg0 )
 	end
 end
 
-function CreateOptions( f15_arg0 )
-	CreateDisplayOptions( f15_arg0 )
-	CreateTextureOptions( f15_arg0 )
-	CreateShadowOptions( f15_arg0 )
-	CreatePostProcessOptions( f15_arg0 )
-	CreateAntiAliasingOptions( f15_arg0 )
-	CreateShaderPreloadOptions( f15_arg0 )
-	CreateMiscellaneousOption( f15_arg0 )
-	LUI.Options.InitScrollingList( f15_arg0.list, nil )
+function CreateOptions( f33_arg0 )
+	CreateDisplayOptions( f33_arg0 )
+	CreateTextureOptions( f33_arg0 )
+	CreateShadowOptions( f33_arg0 )
+	CreatePostProcessOptions( f33_arg0 )
+	CreateAntiAliasingOptions( f33_arg0 )
+	CreateShaderPreloadOptions( f33_arg0 )
+	CreateMiscellaneousOption( f33_arg0 )
+	LUI.Options.InitScrollingList( f33_arg0.list, nil )
 end
 
-function RefreshFunc( f16_arg0 )
-	return function ( f11_arg0, f11_arg1 )
+function RefreshFunc( f34_arg0 )
+	return function ( f35_arg0, f35_arg1 )
 		LUI.PCOptions.TransferSettingsToUI()
 		Engine.ExecNow( "profile_menuDvarsSetup" )
 		LUI.Options.RefreshVideoSetting()
-		f16_arg0.list:processEvent( {
+		f34_arg0.list:processEvent( {
 			name = "content_refresh",
 			dispatchChildren = true
 		} )
@@ -661,60 +661,60 @@ function RefreshFunc( f16_arg0 )
 	
 end
 
-function DelayedRefreshFunc( f17_arg0 )
-	f17_arg0:registerEventHandler( "video_option_update_delay", RefreshFunc( f17_arg0 ) )
-	return function ( f12_arg0, f12_arg1 )
-		f17_arg0:addElement( LUI.UITimer.new( 200, "video_option_update_delay", nil, true ) )
+function DelayedRefreshFunc( f36_arg0 )
+	f36_arg0:registerEventHandler( "video_option_update_delay", RefreshFunc( f36_arg0 ) )
+	return function ( f37_arg0, f37_arg1 )
+		f36_arg0:addElement( LUI.UITimer.new( 200, "video_option_update_delay", nil, true ) )
 	end
 	
 end
 
-LUI.AdvancedVideo.new = function ( f18_arg0, f18_arg1 )
+LUI.AdvancedVideo.new = function ( f38_arg0, f38_arg1 )
 	LUI.PCOptions.TransferSettingsToUI()
 	Engine.ExecNow( "profile_menuDvarsSetup" )
-	local f18_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
-	local f18_local1 = LUI.MenuTemplate.new( f18_arg0, {
+	local f38_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
+	local f38_local1 = LUI.MenuTemplate.new( f38_arg0, {
 		menu_title = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_GRAPHIC_OPTIONS" ) ),
-		menu_top_indent = f18_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
+		menu_top_indent = f38_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
 		menu_width = GenericMenuDims.OptionMenuWidth,
 		menu_list_divider_top_offset = -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing),
-		genericListAction = function ( f13_arg0, f13_arg1 )
-			LUI.Options.CloseSelectionMenu( f13_arg1.menu )
+		genericListAction = function ( f39_arg0, f39_arg1 )
+			LUI.Options.CloseSelectionMenu( f39_arg1.menu )
 		end,
 		skipAnim = LUI.PCGraphicOptions.FindTypeIndex( LUI.PreviousMenuName ) ~= 0
 	} )
-	f18_local1:registerEventHandler( "onVideoChange", OnVideoChange )
-	f18_local1:registerEventHandler( "menu_create", function ( element, event )
-		local f14_local0 = LUI.FlowManager.GetMenuScopedDataByMenuName( "pc_controls" )
-		f14_local0.selectorValues = nil
-		f14_local0.selectorUpdateValueFunc = nil
-		f14_local0.selectorButtonId = nil
-		f14_local0.selectorDefaultDesc = nil
-		f14_local0.selectorUpdateValueFunc = nil
-		f14_local0.selectorPriorValueIndex = -1
+	f38_local1:registerEventHandler( "onVideoChange", OnVideoChange )
+	f38_local1:registerEventHandler( "menu_create", function ( element, event )
+		local f40_local0 = LUI.FlowManager.GetMenuScopedDataByMenuName( "pc_controls" )
+		f40_local0.selectorValues = nil
+		f40_local0.selectorUpdateValueFunc = nil
+		f40_local0.selectorButtonId = nil
+		f40_local0.selectorDefaultDesc = nil
+		f40_local0.selectorUpdateValueFunc = nil
+		f40_local0.selectorPriorValueIndex = -1
 	end )
-	f18_local1:registerEventHandler( "popup_inactive", RefreshFunc( f18_local1 ) )
-	f18_local1:addElement( LUI.H1MenuTab.new( {
-		title = function ( f15_arg0 )
-			return LUI.PCGraphicOptions.Categories[f15_arg0].title
+	f38_local1:registerEventHandler( "popup_inactive", RefreshFunc( f38_local1 ) )
+	f38_local1:addElement( LUI.H1MenuTab.new( {
+		title = function ( f41_arg0 )
+			return LUI.PCGraphicOptions.Categories[f41_arg0].title
 		end,
 		tabCount = #LUI.PCGraphicOptions.Categories,
-		underTabTextFunc = function ( f16_arg0 )
-			return LUI.PCGraphicOptions.Categories[f16_arg0].title
+		underTabTextFunc = function ( f42_arg0 )
+			return LUI.PCGraphicOptions.Categories[f42_arg0].title
 		end,
-		top = f18_local0 + LUI.MenuTemplate.ListTop,
+		top = f38_local0 + LUI.MenuTemplate.ListTop,
 		width = GenericMenuDims.OptionMenuWidth,
 		clickTabBtnAction = LUI.PCGraphicOptions.LoadMenu,
 		activeIndex = LUI.PCGraphicOptions.FindTypeIndex( "advanced_video" ),
 		skipChangeTab = true,
-		exclusiveController = f18_local1.exclusiveController
+		exclusiveController = f38_local1.exclusiveController
 	} ) )
-	CreateOptions( f18_local1 )
-	LUI.PCControlOptions.AddOptimalVideoButton( f18_local1 )
-	LUI.Options.AddOptionTextInfo( f18_local1 )
-	f18_local1:addElement( CreateVideoAdapterInfoElement() )
-	f18_local1:AddBackButtonWithSelector()
-	return f18_local1
+	CreateOptions( f38_local1 )
+	LUI.PCControlOptions.AddOptimalVideoButton( f38_local1 )
+	LUI.Options.AddOptionTextInfo( f38_local1 )
+	f38_local1:addElement( CreateVideoAdapterInfoElement() )
+	f38_local1:AddBackButtonWithSelector()
+	return f38_local1
 end
 
 LUI.MenuBuilder.registerType( "advanced_video", LUI.AdvancedVideo.new )

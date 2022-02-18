@@ -108,7 +108,7 @@ LUI.MenuBuilder.registerType( "divingGogglesHudDef", function ()
 			self:addElement( carry )
 			self.carry = carry
 			
-			local self = LUI.UIElement.new( {
+			local f7_local1 = LUI.UIElement.new( {
 				leftAnchor = true,
 				rightAnchor = true,
 				topAnchor = true,
@@ -118,15 +118,15 @@ LUI.MenuBuilder.registerType( "divingGogglesHudDef", function ()
 				top = 0,
 				bottom = 0
 			} )
-			self:registerAnimationState( "default", {
+			f7_local1:registerAnimationState( "default", {
 				alpha = 0
 			} )
-			self:registerAnimationState( "visible", {
+			f7_local1:registerAnimationState( "visible", {
 				alpha = 1
 			} )
-			self:setUseGameTime( true )
-			self.carry:addElement( self )
-			self.fader = self
+			f7_local1:setUseGameTime( true )
+			self.carry:addElement( f7_local1 )
+			self.fader = f7_local1
 			local f7_local2 = CoD.CreateState( 0, -239, 0, 85, CoD.AnchorTypes.BottomLeftRight )
 			f7_local2.alpha = 0.2
 			f7_local2.material = RegisterMaterial( "h2_overlays_divinggoggles_details" )
@@ -147,9 +147,9 @@ LUI.MenuBuilder.registerType( "divingGogglesHudDef", function ()
 			else
 				local f7_local3 = CoD.CreateState( -46, -45, 46, 261, CoD.AnchorTypes.All )
 				f7_local3.material = RegisterMaterial( "h2_overlays_divinggoggles_frame" )
-				local self = LUI.UIImage.new( f7_local3 )
-				self:setup8SliceOverlayImage( 0, 0, 0.15, 0.35 )
-				self.fader:addElement( self )
+				local f7_local7 = LUI.UIImage.new( f7_local3 )
+				f7_local7:setup8SliceOverlayImage( 0, 0, 0.15, 0.35 )
+				self.fader:addElement( f7_local7 )
 			end
 			local f7_local3 = CoD.CreateState( 150, -360, 270, -240, CoD.AnchorTypes.BottomLeft )
 			f7_local3.alpha = 0.35
@@ -175,9 +175,9 @@ LUI.MenuBuilder.registerType( "divingGogglesHudDef", function ()
 			else
 				local f7_local5 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 				f7_local5.material = RegisterMaterial( "h2_overlays_divinggoggles_distort" )
-				local self = LUI.UIImage.new( f7_local5 )
-				self:setup8SliceOverlayImage( 0, 0, 0.15, 0.25 )
-				self.fader:addElement( self )
+				local f7_local10 = LUI.UIImage.new( f7_local5 )
+				f7_local10:setup8SliceOverlayImage( 0, 0, 0.15, 0.25 )
+				self.fader:addElement( f7_local10 )
 			end
 		end
 	end

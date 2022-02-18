@@ -69,13 +69,13 @@ function UnusedPointsPopup( f5_arg0, f5_arg1, f5_arg2 )
 		message_text = Engine.Localize( "UPGRADE_UNUSED_POINTS_CONFIRM_TEXT" ),
 		yes_text = Engine.Localize( "LUA_MENU_YES" ),
 		no_text = Engine.Localize( "UPGRADE_GO_TO_UPGRADES" ),
-		yes_action = function ( f7_arg0, f7_arg1 )
-			f7_arg0:dispatchEventToRoot( {
+		yes_action = function ( f6_arg0, f6_arg1 )
+			f6_arg0:dispatchEventToRoot( {
 				name = "continue_with_unused_points"
 			} )
 		end,
-		no_action = function ( f8_arg0, f8_arg1 )
-			f8_arg0:dispatchEventToRoot( {
+		no_action = function ( f7_arg0, f7_arg1 )
+			f7_arg0:dispatchEventToRoot( {
 				name = "enter_upgrades_screen"
 			} )
 		end
@@ -84,33 +84,33 @@ function UnusedPointsPopup( f5_arg0, f5_arg1, f5_arg2 )
 	return LUI.MenuBuilder.buildItems( f5_local0, {} )
 end
 
-function MissionCompleteMenu( f6_arg0, f6_arg1 )
-	local f6_local0 = Engine.GetDvarString( "mapname" )
-	local f6_local1 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f6_local0, LevelInfoTable.Cols.Name )
-	local f6_local2 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f6_local0, LevelInfoTable.Cols.MissionCompleteImage )
-	local f6_local3 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f6_local0, LevelInfoTable.Cols.MisionCompleteDesc )
-	local f6_local4 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f6_local0, LevelInfoTable.Cols.FactionImage )
-	local f6_local5 = 10
-	local f6_local6 = 880
-	local f6_local7 = 520
-	local f6_local8 = 100
-	local f6_local9 = LUI.MenuTemplate.new( f6_arg0, {
+function MissionCompleteMenu( f8_arg0, f8_arg1 )
+	local f8_local0 = Engine.GetDvarString( "mapname" )
+	local f8_local1 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f8_local0, LevelInfoTable.Cols.Name )
+	local f8_local2 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f8_local0, LevelInfoTable.Cols.MissionCompleteImage )
+	local f8_local3 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f8_local0, LevelInfoTable.Cols.MisionCompleteDesc )
+	local f8_local4 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f8_local0, LevelInfoTable.Cols.FactionImage )
+	local f8_local5 = 10
+	local f8_local6 = 880
+	local f8_local7 = 520
+	local f8_local8 = 100
+	local f8_local9 = LUI.MenuTemplate.new( f8_arg0, {
 		menu_title = "LUA_MENU_AAR_CAPS",
 		menu_alpha = 0
 	} )
-	f6_local9.id = "missioncomplete_root_id"
-	f6_local9.levelRef = f6_local0
-	f6_local9:registerAnimationState( "visible", {
+	f8_local9.id = "missioncomplete_root_id"
+	f8_local9.levelRef = f8_local0
+	f8_local9:registerAnimationState( "visible", {
 		alpha = 1
 	} )
-	f6_local9:registerEventHandler( "menu_create", OnCreate )
-	f6_local9:registerEventHandler( "continue_with_unused_points", OnExit )
-	f6_local9:registerEventHandler( "enter_upgrades_screen", OnUpgradePressed )
-	f6_local9:registerEventHandler( "transition_complete_visible", OnFadeInFinished )
-	f6_local9:registerEventHandlerIfFree( "popup_active", function ( f9_arg0, f9_arg1 )
+	f8_local9:registerEventHandler( "menu_create", OnCreate )
+	f8_local9:registerEventHandler( "continue_with_unused_points", OnExit )
+	f8_local9:registerEventHandler( "enter_upgrades_screen", OnUpgradePressed )
+	f8_local9:registerEventHandler( "transition_complete_visible", OnFadeInFinished )
+	f8_local9:registerEventHandlerIfFree( "popup_active", function ( f9_arg0, f9_arg1 )
 		f9_arg0.disabled = true
 	end )
-	f6_local9:registerEventHandlerIfFree( "popup_inactive", function ( f10_arg0, f10_arg1 )
+	f8_local9:registerEventHandlerIfFree( "popup_inactive", function ( f10_arg0, f10_arg1 )
 		f10_arg0.disabled = false
 	end )
 	local self = LUI.UIElement.new( {
@@ -118,73 +118,73 @@ function MissionCompleteMenu( f6_arg0, f6_arg1 )
 	} )
 	self.id = "world_blur_id"
 	self:setupWorldBlur()
-	f6_local9:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( 0, 45, f6_local6, 325, CoD.AnchorTypes.TopLeft ) )
-	self.id = "levelInfoContainer_id"
-	f6_local9:addElement( self )
-	local f6_local12 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
-	f6_local12.borderThickness = 1
-	f6_local12.color = Colors.white
-	f6_local12.depth = CoD.Depths.Default
-	self:addElement( LUI.UIBorder.new( f6_local12 ) )
-	f6_local12 = CoD.CreateState( 1, 1, 1, -1, CoD.AnchorTypes.All )
-	f6_local12.material = RegisterMaterial( "white" )
-	f6_local12.alpha = 0.1
-	local self = LUI.UIImage.new( f6_local12 )
-	self.id = "level_bg_id"
-	self:addElement( self )
-	f6_local12 = CoD.CreateState( f6_local5, 18, f6_local5 + f6_local7, -18, CoD.AnchorTypes.TopBottomLeft )
-	f6_local12.material = RegisterMaterial( f6_local2 )
-	local self = LUI.UIImage.new( f6_local12 )
-	self.id = "level_image_id"
-	self:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( f6_local5 + f6_local7, 0, 0, 0, CoD.AnchorTypes.All ) )
-	self.id = "right_pane_id"
-	self:addElement( self )
-	f6_local12 = CoD.CreateState( 10, 3, f6_local8, 92, CoD.AnchorTypes.TopLeft )
-	f6_local12.material = RegisterMaterial( f6_local4 )
-	local self = LUI.UIImage.new( f6_local12 )
-	self.id = "mission_icon_id"
-	self:addElement( self )
-	f6_local12 = CoD.CreateState( f6_local8, 18, -f6_local5, 18 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopLeftRight )
-	f6_local12.font = CoD.TextSettings.TitleFontSmall.Font
-	f6_local12.alignment = LUI.Alignment.Left
-	local self = LUI.UIText.new( f6_local12 )
-	self.id = "mission_complete_id"
-	self:setText( Engine.Localize( "MENU_SP_MISSION_COMPLETE" ) )
-	self:addElement( self )
-	local f6_local18 = {
+	f8_local9:addElement( self )
+	local f8_local11 = LUI.UIElement.new( CoD.CreateState( 0, 45, f8_local6, 325, CoD.AnchorTypes.TopLeft ) )
+	f8_local11.id = "levelInfoContainer_id"
+	f8_local9:addElement( f8_local11 )
+	local f8_local12 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
+	f8_local12.borderThickness = 1
+	f8_local12.color = Colors.white
+	f8_local12.depth = CoD.Depths.Default
+	f8_local11:addElement( LUI.UIBorder.new( f8_local12 ) )
+	f8_local12 = CoD.CreateState( 1, 1, 1, -1, CoD.AnchorTypes.All )
+	f8_local12.material = RegisterMaterial( "white" )
+	f8_local12.alpha = 0.1
+	local f8_local13 = LUI.UIImage.new( f8_local12 )
+	f8_local13.id = "level_bg_id"
+	f8_local11:addElement( f8_local13 )
+	f8_local12 = CoD.CreateState( f8_local5, 18, f8_local5 + f8_local7, -18, CoD.AnchorTypes.TopBottomLeft )
+	f8_local12.material = RegisterMaterial( f8_local2 )
+	local f8_local14 = LUI.UIImage.new( f8_local12 )
+	f8_local14.id = "level_image_id"
+	f8_local11:addElement( f8_local14 )
+	local f8_local15 = LUI.UIElement.new( CoD.CreateState( f8_local5 + f8_local7, 0, 0, 0, CoD.AnchorTypes.All ) )
+	f8_local15.id = "right_pane_id"
+	f8_local11:addElement( f8_local15 )
+	f8_local12 = CoD.CreateState( 10, 3, f8_local8, 92, CoD.AnchorTypes.TopLeft )
+	f8_local12.material = RegisterMaterial( f8_local4 )
+	local f8_local16 = LUI.UIImage.new( f8_local12 )
+	f8_local16.id = "mission_icon_id"
+	f8_local15:addElement( f8_local16 )
+	f8_local12 = CoD.CreateState( f8_local8, 18, -f8_local5, 18 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopLeftRight )
+	f8_local12.font = CoD.TextSettings.TitleFontSmall.Font
+	f8_local12.alignment = LUI.Alignment.Left
+	local f8_local17 = LUI.UIText.new( f8_local12 )
+	f8_local17.id = "mission_complete_id"
+	f8_local17:setText( Engine.Localize( "MENU_SP_MISSION_COMPLETE" ) )
+	f8_local15:addElement( f8_local17 )
+	local f8_local18 = {
 		CoD.TextSettings.TitleFont,
 		CoD.TextSettings.TitleFontMediumLarge,
 		CoD.TextSettings.TitleFontMedium
 	}
-	local f6_local19 = Engine.Localize( f6_local1 )
-	local f6_local20 = CoD.LargestFontWithoutBreaks( f6_local19, f6_local6 - f6_local5 - f6_local5 + f6_local7 - f6_local8, f6_local18 )
-	f6_local12 = CoD.CreateState( f6_local8, 38, -f6_local5, 38 + f6_local20.Height, CoD.AnchorTypes.TopLeftRight )
-	f6_local12.font = f6_local20.Font
-	f6_local12.alignment = LUI.Alignment.Left
-	local self = LUI.UIText.new( f6_local12 )
-	self.id = "level_name_id"
-	self:setText( f6_local19 )
-	self:addElement( self )
-	f6_local12 = CoD.CreateState( f6_local5, 90, -f6_local5, 90 + CoD.TextSettings.BodyFontSmall.Height, CoD.AnchorTypes.TopLeftRight )
-	f6_local12.font = CoD.TextSettings.BodyFontSmall.Font
-	f6_local12.alignment = LUI.Alignment.Left
-	local self = LUI.UIText.new( f6_local12 )
-	self.id = "level_desc_id"
-	self:setText( Engine.Localize( f6_local3 ) )
-	self:addElement( self )
-	local f6_local23 = LUI.ChallengesWidget.new( nil, {
+	local f8_local19 = Engine.Localize( f8_local1 )
+	local f8_local20 = CoD.LargestFontWithoutBreaks( f8_local19, f8_local6 - f8_local5 - f8_local5 + f8_local7 - f8_local8, f8_local18 )
+	f8_local12 = CoD.CreateState( f8_local8, 38, -f8_local5, 38 + f8_local20.Height, CoD.AnchorTypes.TopLeftRight )
+	f8_local12.font = f8_local20.Font
+	f8_local12.alignment = LUI.Alignment.Left
+	local f8_local21 = LUI.UIText.new( f8_local12 )
+	f8_local21.id = "level_name_id"
+	f8_local21:setText( f8_local19 )
+	f8_local15:addElement( f8_local21 )
+	f8_local12 = CoD.CreateState( f8_local5, 90, -f8_local5, 90 + CoD.TextSettings.BodyFontSmall.Height, CoD.AnchorTypes.TopLeftRight )
+	f8_local12.font = CoD.TextSettings.BodyFontSmall.Font
+	f8_local12.alignment = LUI.Alignment.Left
+	local f8_local22 = LUI.UIText.new( f8_local12 )
+	f8_local22.id = "level_desc_id"
+	f8_local22:setText( Engine.Localize( f8_local3 ) )
+	f8_local15:addElement( f8_local22 )
+	local f8_local23 = LUI.ChallengesWidget.new( nil, {
 		missionComplete = true
 	} )
-	f6_local23.id = "challenge_info_container_id"
-	f6_local9.challengeWidget = f6_local23
-	f6_local9:addElement( f6_local23 )
-	LUI.MenuBuilder.BuildAddChild( f6_local9, {
+	f8_local23.id = "challenge_info_container_id"
+	f8_local9.challengeWidget = f8_local23
+	f8_local9:addElement( f8_local23 )
+	LUI.MenuBuilder.BuildAddChild( f8_local9, {
 		type = "UpgradePointsWidget",
 		id = "upgrade_points_widget"
 	} )
-	f6_local9:registerEventHandler( "gamepad_button", function ( element, event )
+	f8_local9:registerEventHandler( "gamepad_button", function ( element, event )
 		if element:handleGamepadButton( event ) then
 			return true
 		elseif element.m_ownerController ~= nil and element.m_ownerController ~= event.controller then
@@ -207,16 +207,16 @@ function MissionCompleteMenu( f6_arg0, f6_arg1 )
 			end
 		end
 	end )
-	LUI.MenuBuilder.BuildAddChild( f6_local9, {
+	LUI.MenuBuilder.BuildAddChild( f8_local9, {
 		type = "button_helper_text_main",
 		id = "mission_complete_helper_text_id"
 	} )
-	local f6_local24 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f6_local0, LevelInfoTable.Cols.MissionCompleteMusic )
-	if f6_local24 and f6_local24 ~= "" then
-		Engine.PlayMusic( f6_local24 )
+	local f8_local24 = Engine.TableLookup( LevelInfoTable.File, LevelInfoTable.Cols.Ref, f8_local0, LevelInfoTable.Cols.MissionCompleteMusic )
+	if f8_local24 and f8_local24 ~= "" then
+		Engine.PlayMusic( f8_local24 )
 	end
 	Engine.CheckSPEntitlements()
-	return f6_local9
+	return f8_local9
 end
 
 LUI.MenuBuilder.registerType( "victoryscreen", MissionCompleteMenu )

@@ -25,14 +25,14 @@ LUI.MenuBuilder.registerType( "main_attract", function ()
 		alpha = 1
 	} )
 	PersistentBackground.ChangeBackground( nil, CoD.Background.Attract, false )
-	local self = LUI.UIBindButton.new()
-	self.id = "AttractBindButton"
-	self.handlePrimary = true
-	self:registerAnyKeyEventHandler( f0_local0 )
-	self:addElement( self )
-	local self = LUI.UITimer.new( 300, "cinematic_update", nil, false )
-	self.id = "cinematic_update_timer"
-	self:addElement( self )
+	local f3_local1 = LUI.UIBindButton.new()
+	f3_local1.id = "AttractBindButton"
+	f3_local1.handlePrimary = true
+	f3_local1:registerAnyKeyEventHandler( f0_local0 )
+	self:addElement( f3_local1 )
+	local f3_local2 = LUI.UITimer.new( 300, "cinematic_update", nil, false )
+	f3_local2.id = "cinematic_update_timer"
+	self:addElement( f3_local2 )
 	self:registerEventHandler( "cinematic_update", f0_local1 )
 	if Engine.IsPC() then
 		self:setHandleMouseButton( true )

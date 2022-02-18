@@ -34,11 +34,11 @@ function mantleHintDef()
 		alpha = 0
 	} )
 	self:animateToState( "default", 0 )
-	local self = LUI.UIElement.new()
-	self:setupUIIntWatch( "IsShowingSubtitles" )
-	self.id = "subtitleWatchId"
-	self:registerEventHandler( "int_watch_alert", f0_local1 )
-	self:addElement( self )
+	local f2_local1 = LUI.UIElement.new()
+	f2_local1:setupUIIntWatch( "IsShowingSubtitles" )
+	f2_local1.id = "subtitleWatchId"
+	f2_local1:registerEventHandler( "int_watch_alert", f0_local1 )
+	self:addElement( f2_local1 )
 	return self
 end
 
@@ -136,51 +136,51 @@ function invalidCmdHintDef()
 	local f7_local1 = 420
 	local f7_local2 = 570
 	local f7_local3 = 720
-	local self = LUI.UIImage.new( {
+	local f7_local4 = LUI.UIImage.new( {
 		top = -60,
 		width = f7_local3,
 		height = 37.5,
 		material = RegisterMaterial( "h1_hud_tutorial_blur" ),
 		alpha = 0.9
 	} )
-	self.id = "blurId"
-	self:registerAnimationState( "small", {
+	f7_local4.id = "blurId"
+	f7_local4:registerAnimationState( "small", {
 		width = f7_local1
 	} )
-	self:registerAnimationState( "medium", {
+	f7_local4:registerAnimationState( "medium", {
 		width = f7_local2
 	} )
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	self:addElement( f7_local4 )
+	local f7_local5 = LUI.UIImage.new( {
 		top = -60.5,
 		width = f7_local3,
 		height = 1.5,
 		material = RegisterMaterial( "h1_hud_tutorial_border" ),
 		alpha = 0.05
 	} )
-	self.id = "borderTopId"
-	self:registerAnimationState( "small", {
+	f7_local5.id = "borderTopId"
+	f7_local5:registerAnimationState( "small", {
 		width = f7_local1
 	} )
-	self:registerAnimationState( "medium", {
+	f7_local5:registerAnimationState( "medium", {
 		width = f7_local2
 	} )
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	self:addElement( f7_local5 )
+	local f7_local6 = LUI.UIImage.new( {
 		top = -23.5,
 		width = f7_local3,
 		height = 1.5,
 		material = RegisterMaterial( "h1_hud_tutorial_border" ),
 		alpha = 0.05
 	} )
-	self.id = "borderBottomId"
-	self:registerAnimationState( "small", {
+	f7_local6.id = "borderBottomId"
+	f7_local6:registerAnimationState( "small", {
 		width = f7_local1
 	} )
-	self:registerAnimationState( "medium", {
+	f7_local6:registerAnimationState( "medium", {
 		width = f7_local2
 	} )
-	self:addElement( self )
+	self:addElement( f7_local6 )
 	self:registerAnimationState( "default", {
 		topAnchor = true,
 		leftAnchor = false,
@@ -339,17 +339,17 @@ function deadQuoteDef()
 	self:registerEventHandler( "toggle_pause_off", function ( element, event )
 		element:animateToState( "default", 1 )
 	end )
-	self:registerOmnvarHandler( "ui_hidebasedeathquote", function ( f5_arg0, f5_arg1 )
-		if f5_arg1.value then
-			f5_arg0:registerAnimationState( "default", {
+	self:registerOmnvarHandler( "ui_hidebasedeathquote", function ( f17_arg0, f17_arg1 )
+		if f17_arg1.value then
+			f17_arg0:registerAnimationState( "default", {
 				alpha = 0
 			} )
 		else
-			f5_arg0:registerAnimationState( "default", {
+			f17_arg0:registerAnimationState( "default", {
 				alpha = 1
 			} )
 		end
-		f5_arg0:animateToState( "default", 0 )
+		f17_arg0:animateToState( "default", 0 )
 	end )
 	return self
 end

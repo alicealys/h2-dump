@@ -38,17 +38,17 @@ LUI.ChallengesWidget.new = function ( f2_arg0, f2_arg1 )
 	f2_local2.font = f2_local1.Font
 	f2_local2.alignment = LUI.Alignment.Left
 	f2_local2.color = Colors.white
-	local self = LUI.UIText.new( f2_local2 )
-	self.id = "challenges_title_text"
-	self:setText( Engine.Localize( "UPGRADE_EXO_CHALLENGES" ) )
-	self:addElement( self )
+	local f2_local3 = LUI.UIText.new( f2_local2 )
+	f2_local3.id = "challenges_title_text"
+	f2_local3:setText( Engine.Localize( "UPGRADE_EXO_CHALLENGES" ) )
+	self:addElement( f2_local3 )
 	f2_local2 = CoD.CreateState( 0, f2_local1.Height + 16, 0, 0, CoD.AnchorTypes.All )
 	f2_local2.spacing = 8
-	local self = LUI.UIVerticalList.new( f2_local2 )
-	self:addElement( self )
+	local f2_local4 = LUI.UIVerticalList.new( f2_local2 )
+	self:addElement( f2_local4 )
 	local f2_local5 = 0
 	while Engine.TableLookupByRow( ChallengesCSV.File, f2_local5, ChallengesCSV.Cols.Index ) ~= "" do
-		self:addElement( CreateChallengeRow( f2_local5, f2_arg0.right - f2_arg0.left, f2_arg1.missionComplete ) )
+		f2_local4:addElement( CreateChallengeRow( f2_local5, f2_arg0.right - f2_arg0.left, f2_arg1.missionComplete ) )
 		f2_local5 = f2_local5 + 1
 	end
 	return self
@@ -148,23 +148,14 @@ function CreateChallengeRow( f8_arg0, f8_arg1, f8_arg2 )
 	local f8_local11 = 0
 	local f8_local12 = 0
 	if f8_arg0 == 3 then
-		local f8_local13, f8_local14, f8_local15, f8_local16, f8_local17 = ProcessIntelChallengeProgression( f8_arg0, f8_local0 )
-		f8_local9 = f8_local17
-		f8_local8 = f8_local16
-		local f8_local10 = f8_local15
-		f8_local7 = f8_local14
-		f8_local6 = f8_local13
-		f8_local13, f8_local14 = GetGoalValues( f8_arg0, 0 )
-		f8_local12 = f8_local14
-		f8_local11 = f8_local13
+		local f8_local6, f8_local7, f8_local10, f8_local8, f8_local9 = ProcessIntelChallengeProgression( f8_arg0, f8_local0 )
+		f8_local11, f8_local12 = GetGoalValues( f8_arg0, 0 )
 	else
 		local f8_local13 = f8_local6
 		if f8_arg2 then
 			f8_local13 = 0
 		end
-		local f8_local14, f8_local15 = GetGoalValues( f8_arg0, f8_local13 )
-		f8_local12 = f8_local15
-		f8_local11 = f8_local14
+		f8_local11, f8_local12 = GetGoalValues( f8_arg0, f8_local13 )
 	end
 	if f8_local6 > 0 then
 		local f8_local10 = 0
@@ -176,182 +167,182 @@ function CreateChallengeRow( f8_arg0, f8_arg1, f8_arg2 )
 		
 		else
 			local f8_local14 = math.max( 0, f8_local7 / f8_local9 - f8_local13 )
-			local f8_local16 = tonumber( Engine.TableLookupByRow( ChallengesCSV.File, f8_arg0, ChallengesCSV.Cols.GoalsStart + GetMaxStage( f8_arg0 ) ) )
-			local f8_local17
-			if f8_local16 > f8_local9 or f8_local16 > f8_local7 then
-				f8_local17 = false
+			local f8_local15 = tonumber( Engine.TableLookupByRow( ChallengesCSV.File, f8_arg0, ChallengesCSV.Cols.GoalsStart + GetMaxStage( f8_arg0 ) ) )
+			local f8_local16
+			if f8_local15 > f8_local9 or f8_local15 > f8_local7 then
+				f8_local16 = false
 			else
-				f8_local17 = true
+				f8_local16 = true
 			end
-			local f8_local18 = 575
-			local f8_local19 = f8_local18
-			local f8_local20 = f8_local13 * f8_local19
-			local f8_local21 = f8_local14 * f8_local19
+			local f8_local17 = 575
+			local f8_local18 = f8_local17
+			local f8_local19 = f8_local13 * f8_local18
+			local f8_local20 = f8_local14 * f8_local18
 			local self = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 30, CoD.AnchorTypes.TopLeftRight ) )
 			self.id = "challenge_" .. f8_arg0
-			local self = LUI.UIElement.new( CoD.CreateState( 0, 0, f8_local18, 0, CoD.AnchorTypes.TopBottomLeft ) )
-			self.id = "challenge_row_left_pane"
-			self:addElement( self )
-			local f8_local24 = CoD.CreateState( -200, 20, -74, 20 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopLeft )
-			f8_local24.font = CoD.TextSettings.TitleFontSmall.Font
-			f8_local24.alignment = LUI.Alignment.Right
-			local self = LUI.UIText.new( f8_local24 )
-			self.id = "challenge_name_text"
-			self:setText( Engine.Localize( f8_local1 ) )
-			self:addElement( self )
-			if f8_local17 == true then
-				local f8_local26, f8_local27, f8_local28, self = GetTextDimensions( Engine.Localize( "LUA_MENU_COMPLETED_CAPS" ), CoD.TextSettings.TitleFontSmall.Font, CoD.TextSettings.TitleFontSmall.Height )
-				local self = f8_local28 - f8_local26
-				local self = LUI.UIBorder.new( CoD.CreateState( 0, 28, 0, 35, CoD.AnchorTypes.TopLeftRight ) )
-				self.id = "challenge_progress_container"
-				self:addElement( self )
-				local self = f8_local18 / 2 - self / 2 - 27
-				f8_local24 = CoD.CreateState( 0, 0, self, 0, CoD.AnchorTypes.TopBottomLeft )
-				f8_local24.material = RegisterMaterial( "white" )
-				f8_local24.color = Colors.grey_5
-				f8_local24.alpha = 0.5
-				local self = LUI.UIImage.new( f8_local24 )
-				self.id = "bar_left_bg"
-				self:addElement( self )
-				f8_local24 = CoD.CreateState( -self, 0, 0, 0, CoD.AnchorTypes.TopBottomRight )
-				f8_local24.material = RegisterMaterial( "white" )
-				f8_local24.color = Colors.grey_5
-				f8_local24.alpha = 0.5
-				local self = LUI.UIImage.new( f8_local24 )
-				self.id = "bar_right_bg"
-				self:addElement( self )
-				f8_local24 = CoD.CreateState( -self / 2, 21, self / 2, 21 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.Top )
-				f8_local24.font = CoD.TextSettings.TitleFontSmall.Font
-				f8_local24.alignment = LUI.Alignment.Left
-				local self = LUI.UIText.new( f8_local24 )
-				self.id = "challenge_Ccomplete_text_id"
-				self:setText( Engine.Localize( "LUA_MENU_COMPLETED_CAPS" ) )
-				self:addElement( self )
+			local f8_local22 = LUI.UIElement.new( CoD.CreateState( 0, 0, f8_local17, 0, CoD.AnchorTypes.TopBottomLeft ) )
+			f8_local22.id = "challenge_row_left_pane"
+			self:addElement( f8_local22 )
+			local f8_local23 = CoD.CreateState( -200, 20, -74, 20 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopLeft )
+			f8_local23.font = CoD.TextSettings.TitleFontSmall.Font
+			f8_local23.alignment = LUI.Alignment.Right
+			local f8_local24 = LUI.UIText.new( f8_local23 )
+			f8_local24.id = "challenge_name_text"
+			f8_local24:setText( Engine.Localize( f8_local1 ) )
+			f8_local22:addElement( f8_local24 )
+			if f8_local16 == true then
+				local f8_local25, f8_local26, f8_local27, f8_local28 = GetTextDimensions( Engine.Localize( "LUA_MENU_COMPLETED_CAPS" ), CoD.TextSettings.TitleFontSmall.Font, CoD.TextSettings.TitleFontSmall.Height )
+				local f8_local29 = f8_local27 - f8_local25
+				local f8_local30 = LUI.UIBorder.new( CoD.CreateState( 0, 28, 0, 35, CoD.AnchorTypes.TopLeftRight ) )
+				f8_local30.id = "challenge_progress_container"
+				f8_local22:addElement( f8_local30 )
+				local f8_local31 = f8_local17 / 2 - f8_local29 / 2 - 27
+				f8_local23 = CoD.CreateState( 0, 0, f8_local31, 0, CoD.AnchorTypes.TopBottomLeft )
+				f8_local23.material = RegisterMaterial( "white" )
+				f8_local23.color = Colors.grey_5
+				f8_local23.alpha = 0.5
+				local f8_local32 = LUI.UIImage.new( f8_local23 )
+				f8_local32.id = "bar_left_bg"
+				f8_local30:addElement( f8_local32 )
+				f8_local23 = CoD.CreateState( -f8_local31, 0, 0, 0, CoD.AnchorTypes.TopBottomRight )
+				f8_local23.material = RegisterMaterial( "white" )
+				f8_local23.color = Colors.grey_5
+				f8_local23.alpha = 0.5
+				local f8_local33 = LUI.UIImage.new( f8_local23 )
+				f8_local33.id = "bar_right_bg"
+				f8_local30:addElement( f8_local33 )
+				f8_local23 = CoD.CreateState( -f8_local29 / 2, 21, f8_local29 / 2, 21 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.Top )
+				f8_local23.font = CoD.TextSettings.TitleFontSmall.Font
+				f8_local23.alignment = LUI.Alignment.Left
+				local f8_local34 = LUI.UIText.new( f8_local23 )
+				f8_local34.id = "challenge_Ccomplete_text_id"
+				f8_local34:setText( Engine.Localize( "LUA_MENU_COMPLETED_CAPS" ) )
+				f8_local22:addElement( f8_local34 )
 			else
-				local f8_local26 = {
+				local f8_local25 = {
 					color = Colors.white,
 					alpha = 0.85
 				}
-				local f8_local27 = {
+				local f8_local26 = {
 					alpha = 0
 				}
-				local f8_local28 = {
+				local f8_local27 = {
 					alpha = 1
 				}
-				f8_local24 = CoD.CreateState( -200, 20, -35, 20 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopLeft )
-				f8_local24.font = CoD.TextSettings.TitleFontSmall.Font
-				f8_local24.alignment = LUI.Alignment.Right
-				local self = LUI.UIText.new( f8_local24 )
-				self.id = "challenge_previous_goal_text"
-				self:setText( f8_local11 )
-				self:addElement( self )
-				local self = LUI.UIBorder.new( CoD.CreateState( 0, 28, 0, 35, CoD.AnchorTypes.TopLeftRight ) )
-				self.id = "challenge_progress_container"
-				self:addElement( self )
-				f8_local24 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
-				f8_local24.material = RegisterMaterial( "white" )
-				f8_local24.color = Colors.grey_5
-				f8_local24.alpha = 0.1
-				local self = LUI.UIImage.new( f8_local24 )
-				self.id = "challenge_progress_bg"
-				self:addElement( self )
-				f8_local24 = CoD.CreateState( 1, 0, f8_local20, 0, CoD.AnchorTypes.TopBottomLeft )
-				f8_local24.material = RegisterMaterial( "white" )
-				f8_local24.color = Colors.white
-				f8_local24.alpha = 0.85
-				local self = LUI.UIImage.new( f8_local24 )
-				self.id = "challenge_progress_initial"
-				self:addElement( self )
-				local self = LUI.UIImage.new( CoD.CreateState( f8_local20, 0, f8_local20, 0, CoD.AnchorTypes.TopBottomLeft ) )
-				self.id = "challenge_progress_earned"
-				local self = CoD.CreateState( f8_local20, 0, f8_local20 + f8_local21, 0, CoD.AnchorTypes.TopBottomLeft )
-				self.color = {
+				f8_local23 = CoD.CreateState( -200, 20, -35, 20 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopLeft )
+				f8_local23.font = CoD.TextSettings.TitleFontSmall.Font
+				f8_local23.alignment = LUI.Alignment.Right
+				local f8_local28 = LUI.UIText.new( f8_local23 )
+				f8_local28.id = "challenge_previous_goal_text"
+				f8_local28:setText( f8_local11 )
+				f8_local22:addElement( f8_local28 )
+				local f8_local29 = LUI.UIBorder.new( CoD.CreateState( 0, 28, 0, 35, CoD.AnchorTypes.TopLeftRight ) )
+				f8_local29.id = "challenge_progress_container"
+				f8_local22:addElement( f8_local29 )
+				f8_local23 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
+				f8_local23.material = RegisterMaterial( "white" )
+				f8_local23.color = Colors.grey_5
+				f8_local23.alpha = 0.1
+				local f8_local30 = LUI.UIImage.new( f8_local23 )
+				f8_local30.id = "challenge_progress_bg"
+				f8_local29:addElement( f8_local30 )
+				f8_local23 = CoD.CreateState( 1, 0, f8_local19, 0, CoD.AnchorTypes.TopBottomLeft )
+				f8_local23.material = RegisterMaterial( "white" )
+				f8_local23.color = Colors.white
+				f8_local23.alpha = 0.85
+				local f8_local35 = LUI.UIImage.new( f8_local23 )
+				f8_local30.id = "challenge_progress_initial"
+				f8_local29:addElement( f8_local35 )
+				local f8_local31 = LUI.UIImage.new( CoD.CreateState( f8_local19, 0, f8_local19, 0, CoD.AnchorTypes.TopBottomLeft ) )
+				f8_local31.id = "challenge_progress_earned"
+				local f8_local32 = CoD.CreateState( f8_local19, 0, f8_local19 + f8_local20, 0, CoD.AnchorTypes.TopBottomLeft )
+				f8_local32.color = {
 					r = 0.87,
 					g = 0.77,
 					b = 0.4,
 					a = 0.85
 				}
-				self.material = RegisterMaterial( "white" )
-				self:registerAnimationState( "filled", self )
-				self:registerAnimationState( "white", f8_local26 )
-				self:registerEventHandler( "start_bar_fill_anims", function ( element, event )
-					local f31_local0 = {
+				f8_local32.material = RegisterMaterial( "white" )
+				f8_local31:registerAnimationState( "filled", f8_local32 )
+				f8_local31:registerAnimationState( "white", f8_local25 )
+				f8_local31:registerEventHandler( "start_bar_fill_anims", function ( element, event )
+					local f9_local0 = {
 						{
 							"filled",
 							event.anim_length or 0
 						}
 					}
 					if f8_arg2 == true then
-						f31_local0[#f31_local0 + 1] = {
+						f9_local0[#f9_local0 + 1] = {
 							"white",
 							event.anim_length or 0
 						}
 					end
-					element:animateInSequence( f31_local0 )
+					element:animateInSequence( f9_local0 )
 				end )
-				self:addElement( self )
-				f8_local24 = CoD.CreateState( -38, -12.5, 12, 12.5, CoD.AnchorTypes.Right )
-				f8_local24.material = RegisterMaterial( "sp_pause_loading_bar_flare" )
-				self:addElement( LUI.UIImage.new( f8_local24 ) )
-				local self = CoD.TextSettings.TitleFontSmallBold.Height / 2
-				local f8_local37
+				f8_local29:addElement( f8_local31 )
+				f8_local23 = CoD.CreateState( -38, -12.5, 12, 12.5, CoD.AnchorTypes.Right )
+				f8_local23.material = RegisterMaterial( "sp_pause_loading_bar_flare" )
+				f8_local31:addElement( LUI.UIImage.new( f8_local23 ) )
+				local f8_local34 = CoD.TextSettings.TitleFontSmallBold.Height / 2
+				local f8_local36
 				if f8_arg2 then
-					f8_local37 = Engine.Localize( "@MENU_PLUS", f8_local7 - f8_local10 )
-					if not f8_local37 then
+					f8_local36 = Engine.Localize( "@MENU_PLUS", f8_local7 - f8_local10 )
+					if not f8_local36 then
 					
 					else
-						local f8_local38 = 5
-						f8_local24 = CoD.CreateState( f8_local20 + f8_local38, -self - 1, f8_local20, self, CoD.AnchorTypes.Left )
-						f8_local24.font = CoD.TextSettings.TitleFontSmallBold.Font
-						f8_local24.color = {
+						local f8_local37 = 5
+						f8_local23 = CoD.CreateState( f8_local19 + f8_local37, -f8_local34 - 1, f8_local19, f8_local34, CoD.AnchorTypes.Left )
+						f8_local23.font = CoD.TextSettings.TitleFontSmallBold.Font
+						f8_local23.color = {
 							r = 1,
 							g = 0.92,
 							b = 0.44,
 							a = 1
 						}
-						f8_local24.alignment = LUI.Alignment.Left
-						local self = LUI.UIText.new( f8_local24 )
-						self.id = "value_text"
-						self:setText( f8_local37 )
-						self:registerAnimationState( "filled", CoD.CreateState( f8_local20 + f8_local21 + f8_local38, -self - 1, f8_local20 + 200, self, CoD.AnchorTypes.Left ) )
-						self:registerAnimationState( "hide", f8_local27 )
-						self:registerEventHandler( "start_bar_fill_anims", function ( element, event )
-							local f32_local0 = {
+						f8_local23.alignment = LUI.Alignment.Left
+						local f8_local38 = LUI.UIText.new( f8_local23 )
+						f8_local38.id = "value_text"
+						f8_local38:setText( f8_local36 )
+						f8_local38:registerAnimationState( "filled", CoD.CreateState( f8_local19 + f8_local20 + f8_local37, -f8_local34 - 1, f8_local19 + 200, f8_local34, CoD.AnchorTypes.Left ) )
+						f8_local38:registerAnimationState( "hide", f8_local26 )
+						f8_local38:registerEventHandler( "start_bar_fill_anims", function ( element, event )
+							local f10_local0 = {
 								{
 									"filled",
 									event.anim_length or 0
 								}
 							}
 							if f8_arg2 == true then
-								f32_local0[#f32_local0 + 1] = {
+								f10_local0[#f10_local0 + 1] = {
 									"hide",
 									event.anim_length or 0
 								}
 							end
-							element:animateInSequence( f32_local0 )
+							element:animateInSequence( f10_local0 )
 						end )
-						self:addElement( self )
+						f8_local29:addElement( f8_local38 )
 						if f8_arg2 == true then
-							local self, f8_local41, f8_local42, f8_local43 = GetTextDimensions( Engine.Localize( "@MENU_PLUS", "" ), CoD.TextSettings.TitleFontSmallBold.Font, CoD.TextSettings.TitleFontSmallBold.Height )
-							local f8_local44 = f8_local42 - self
-							self = CoD.TextSettings.TitleFontSmallBold.Height / 2
-							f8_local37 = Engine.Localize( f8_local7 )
-							f8_local24 = CoD.CreateState( f8_local20 + f8_local21 + f8_local38 + f8_local44, -self - 1, f8_local20 + 200, self, CoD.AnchorTypes.Left )
-							f8_local24.font = CoD.TextSettings.TitleFontSmallBold.Font
-							f8_local24.color = {
+							local f8_local39, f8_local40, f8_local41, f8_local42 = GetTextDimensions( Engine.Localize( "@MENU_PLUS", "" ), CoD.TextSettings.TitleFontSmallBold.Font, CoD.TextSettings.TitleFontSmallBold.Height )
+							local f8_local43 = f8_local41 - f8_local39
+							f8_local34 = CoD.TextSettings.TitleFontSmallBold.Height / 2
+							f8_local36 = Engine.Localize( f8_local7 )
+							f8_local23 = CoD.CreateState( f8_local19 + f8_local20 + f8_local37 + f8_local43, -f8_local34 - 1, f8_local19 + 200, f8_local34, CoD.AnchorTypes.Left )
+							f8_local23.font = CoD.TextSettings.TitleFontSmallBold.Font
+							f8_local23.color = {
 								r = 1,
 								g = 1,
 								b = 1,
 								a = 1
 							}
-							f8_local24.alpha = 0
-							f8_local24.alignment = LUI.Alignment.Left
-							self = LUI.UIText.new( f8_local24 )
-							self.id = "value_text_total"
-							self:setText( f8_local37 )
-							self:registerAnimationState( "show", f8_local28 )
-							self:registerAnimationState( "hideState", f8_local27 )
-							self:registerEventHandler( "start_bar_fill_anims", function ( element, event )
+							f8_local23.alpha = 0
+							f8_local23.alignment = LUI.Alignment.Left
+							f8_local38 = LUI.UIText.new( f8_local23 )
+							f8_local38.id = "value_text_total"
+							f8_local38:setText( f8_local36 )
+							f8_local38:registerAnimationState( "show", f8_local27 )
+							f8_local38:registerAnimationState( "hideState", f8_local26 )
+							f8_local38:registerEventHandler( "start_bar_fill_anims", function ( element, event )
 								element:animateInSequence( {
 									{
 										"hideState",
@@ -363,18 +354,18 @@ function CreateChallengeRow( f8_arg0, f8_arg1, f8_arg2 )
 									}
 								} )
 							end )
-							self:addElement( self )
+							f8_local29:addElement( f8_local38 )
 						end
-						f8_local24 = CoD.CreateState( 35, 20, 200, 20 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopRight )
-						f8_local24.font = CoD.TextSettings.TitleFontSmall.Font
-						f8_local24.alignment = LUI.Alignment.Left
-						local self = LUI.UIText.new( f8_local24 )
-						self.id = "challenge_next_value_text"
-						self:setText( f8_local12 )
-						self:addElement( self )
+						f8_local23 = CoD.CreateState( 35, 20, 200, 20 + CoD.TextSettings.TitleFontSmall.Height, CoD.AnchorTypes.TopRight )
+						f8_local23.font = CoD.TextSettings.TitleFontSmall.Font
+						f8_local23.alignment = LUI.Alignment.Left
+						local f8_local39 = LUI.UIText.new( f8_local23 )
+						f8_local39.id = "challenge_next_value_text"
+						f8_local39:setText( f8_local12 )
+						f8_local22:addElement( f8_local39 )
 					end
 				end
-				f8_local37 = f8_local7
+				f8_local36 = f8_local7
 			end
 			return self
 		end

@@ -50,16 +50,16 @@ LUI.UIVerticalList.new = function ( f3_arg0, f3_arg1, f3_arg2, f3_arg3, f3_arg4 
 	return self
 end
 
-LUI.UIVerticalList.SetNoWrap = function ( f4_arg0, f4_arg1 )
-	f4_arg0.noWrap = f4_arg1
+LUI.UIVerticalList.SetNoWrap = function ( f5_arg0, f5_arg1 )
+	f5_arg0.noWrap = f5_arg1
 end
 
-LUI.UIVerticalNavigator.build = function ( f5_arg0, f5_arg1 )
+LUI.UIVerticalNavigator.build = function ( f6_arg0, f6_arg1 )
 	return LUI.UIVerticalNavigator.new()
 end
 
-LUI.UIVerticalNavigator.new = function ( f6_arg0 )
-	local self = LUI.UIElement.new( f6_arg0 )
+LUI.UIVerticalNavigator.new = function ( f7_arg0 )
+	local self = LUI.UIElement.new( f7_arg0 )
 	self.id = "LUIVerticalNavigator"
 	self.addSpacer = LUI.UIVerticalList.AddSpacer
 	self.addElement = LUI.UIVerticalList.AddElement
@@ -73,166 +73,162 @@ LUI.UIVerticalNavigator.new = function ( f6_arg0 )
 	return self
 end
 
-LUI.UIVerticalList.AddElement = function ( f7_arg0, f7_arg1 )
-	LUI.UIElement.addElement( f7_arg0, f7_arg1 )
-	f7_arg1:initNavTables()
-	f7_arg0:setLayoutCached( false )
-	f7_arg0:updateNavigation()
-end
-
-LUI.UIVerticalList.InsertElement = function ( f8_arg0, f8_arg1, f8_arg2 )
-	LUI.UIElement.insertElement( f8_arg0, f8_arg1, f8_arg2 )
-	f8_arg1:initNavTables()
-	f8_arg0:setLayoutCached( false )
-	f8_arg0:updateNavigation()
-end
-
-LUI.UIVerticalList.RemoveElement = function ( f9_arg0, f9_arg1 )
-	LUI.UIElement.removeElement( f9_arg0, f9_arg1 )
+LUI.UIVerticalList.AddElement = function ( f9_arg0, f9_arg1 )
+	LUI.UIElement.addElement( f9_arg0, f9_arg1 )
+	f9_arg1:initNavTables()
 	f9_arg0:setLayoutCached( false )
 	f9_arg0:updateNavigation()
 end
 
-LUI.UIVerticalList.UpdateNavigation = function ( f10_arg0 )
-	local f10_local0, f10_local1 = nil
-	local f10_local2 = f10_arg0:getFirstChild()
-	while f10_local2 ~= nil do
-		if f10_local2:canFocus( FocusType.ListSelection ) then
-			if f10_local0 == nil then
-				f10_local0 = f10_local2
+LUI.UIVerticalList.InsertElement = function ( f10_arg0, f10_arg1, f10_arg2 )
+	LUI.UIElement.insertElement( f10_arg0, f10_arg1, f10_arg2 )
+	f10_arg1:initNavTables()
+	f10_arg0:setLayoutCached( false )
+	f10_arg0:updateNavigation()
+end
+
+LUI.UIVerticalList.RemoveElement = function ( f11_arg0, f11_arg1 )
+	LUI.UIElement.removeElement( f11_arg0, f11_arg1 )
+	f11_arg0:setLayoutCached( false )
+	f11_arg0:updateNavigation()
+end
+
+LUI.UIVerticalList.UpdateNavigation = function ( f12_arg0 )
+	local f12_local0, f12_local1 = nil
+	local f12_local2 = f12_arg0:getFirstChild()
+	while f12_local2 ~= nil do
+		if f12_local2:canFocus( FocusType.ListSelection ) then
+			if f12_local0 == nil then
+				f12_local0 = f12_local2
 			end
-			if f10_local1 ~= nil then
-				f10_local1.navigation.down = f10_local2
-				f10_local2.navigation.up = f10_local1
+			if f12_local1 ~= nil then
+				f12_local1.navigation.down = f12_local2
+				f12_local2.navigation.up = f12_local1
 			else
-				f10_local2.navigation.up = nil
+				f12_local2.navigation.up = nil
 			end
-			if f10_local2.navigation ~= nil and f10_arg0.navigation ~= nil then
-				f10_local2.navigation.left = f10_arg0.navigation.left
-				f10_local2.navigation.right = f10_arg0.navigation.right
+			if f12_local2.navigation ~= nil and f12_arg0.navigation ~= nil then
+				f12_local2.navigation.left = f12_arg0.navigation.left
+				f12_local2.navigation.right = f12_arg0.navigation.right
 			end
-			f10_local1 = f10_local2
+			f12_local1 = f12_local2
 		end
-		f10_local2.canRepeatWrapUp = false
-		f10_local2.canRepeatWrapDown = false
-		f10_local2 = f10_local2:getNextSibling()
+		f12_local2.canRepeatWrapUp = false
+		f12_local2.canRepeatWrapDown = false
+		f12_local2 = f12_local2:getNextSibling()
 	end
-	if f10_local1 ~= nil then
-		if f10_arg0.navigation ~= nil and f10_arg0.navigation.down ~= nil and f10_arg0.navigation.down:canFocus( FocusType.ListSelection ) == true then
-			f10_local1.navigation.down = f10_arg0.navigation.down
-			f10_arg0.navigation.down.navigation.up = f10_local1
-		elseif f10_local1 ~= f10_local0 and not f10_arg0.noWrap then
-			f10_local1.navigation.down = f10_local0
-			f10_local1.navigation.wrapTarget = {
-				down = f10_local0
+	if f12_local1 ~= nil then
+		if f12_arg0.navigation ~= nil and f12_arg0.navigation.down ~= nil and f12_arg0.navigation.down:canFocus( FocusType.ListSelection ) == true then
+			f12_local1.navigation.down = f12_arg0.navigation.down
+			f12_arg0.navigation.down.navigation.up = f12_local1
+		elseif f12_local1 ~= f12_local0 and not f12_arg0.noWrap then
+			f12_local1.navigation.down = f12_local0
+			f12_local1.navigation.wrapTarget = {
+				down = f12_local0
 			}
 		else
-			f10_local1.navigation.down = nil
+			f12_local1.navigation.down = nil
 		end
-		if f10_arg0.navigation ~= nil and f10_arg0.navigation.up ~= nil and f10_arg0.navigation.up:canFocus( FocusType.ListSelection ) == true then
-			f10_local0.navigation.up = f10_arg0.navigation.up
-			f10_arg0.navigation.up.navigation.down = f10_local0
-		elseif f10_local1 ~= f10_local0 and not f10_arg0.noWrap then
-			f10_local0.navigation.up = f10_local1
-			f10_local0.navigation.wrapTarget = {
-				up = f10_local1
+		if f12_arg0.navigation ~= nil and f12_arg0.navigation.up ~= nil and f12_arg0.navigation.up:canFocus( FocusType.ListSelection ) == true then
+			f12_local0.navigation.up = f12_arg0.navigation.up
+			f12_arg0.navigation.up.navigation.down = f12_local0
+		elseif f12_local1 ~= f12_local0 and not f12_arg0.noWrap then
+			f12_local0.navigation.up = f12_local1
+			f12_local0.navigation.wrapTarget = {
+				up = f12_local1
 			}
 		else
-			f10_local0.navigation.up = nil
+			f12_local0.navigation.up = nil
 		end
 	end
-	if f10_arg0.blockRepeatWrap then
-		if f10_local0 ~= nil then
-			f10_local0.canRepeatWrapUp = true
+	if f12_arg0.blockRepeatWrap then
+		if f12_local0 ~= nil then
+			f12_local0.canRepeatWrapUp = true
 		end
-		if f10_local1 ~= nil then
-			f10_local1.canRepeatWrapDown = true
+		if f12_local1 ~= nil then
+			f12_local1.canRepeatWrapDown = true
 		end
 	end
 end
 
-LUI.UIVerticalList.gainFocus = function ( f11_arg0, f11_arg1 )
-	local f11_local0, f11_local1 = f11_arg0:restoreState( nil, nil, f11_arg1 )
-	if f11_local1 == 0 then
-		local f11_local2, f11_local3 = nil
-		local f11_local4 = f11_arg0:getFirstChild()
-		while f11_local4 ~= nil do
-			if f11_local4:canFocus( FocusType.ListSelection ) then
-				if f11_local2 == nil then
-					f11_local2 = f11_local4
+LUI.UIVerticalList.gainFocus = function ( f13_arg0, f13_arg1 )
+	local f13_local0, f13_local1 = f13_arg0:restoreState( nil, nil, f13_arg1 )
+	if f13_local1 == 0 then
+		local f13_local2, f13_local3 = nil
+		local f13_local4 = f13_arg0:getFirstChild()
+		while f13_local4 ~= nil do
+			if f13_local4:canFocus( FocusType.ListSelection ) then
+				if f13_local2 == nil then
+					f13_local2 = f13_local4
 				end
-				if f11_local3 == nil and f11_local4.listDefaultFocus then
-					f11_local3 = f11_local4
+				if f13_local3 == nil and f13_local4.listDefaultFocus then
+					f13_local3 = f13_local4
 				end
 			end
 		end
-		if f11_local3 ~= nil then
-			f11_local3:processEvent( f11_arg1 )
-		elseif f11_local2 ~= nil then
-			f11_local2:processEvent( f11_arg1 )
+		if f13_local3 ~= nil then
+			f13_local3:processEvent( f13_arg1 )
+		elseif f13_local2 ~= nil then
+			f13_local2:processEvent( f13_arg1 )
 		else
 			
 		end
-		f11_local4 = f11_local4:getNextSibling()
+		f13_local4 = f13_local4:getNextSibling()
 	end
 end
 
-LUI.UIVerticalList.SetChildFocus = function ( f12_arg0, f12_arg1 )
-	local f12_local0 = 1
-	local f12_local1 = f12_arg0:getFirstChild()
-	while f12_local0 ~= f12_arg1 and f12_local1 ~= nil do
-		f12_local1 = f12_local1:getNextSibling()
-		f12_local0 = f12_local0 + 1
+LUI.UIVerticalList.SetChildFocus = function ( f14_arg0, f14_arg1 )
+	local f14_local0 = 1
+	local f14_local1 = f14_arg0:getFirstChild()
+	while f14_local0 ~= f14_arg1 and f14_local1 ~= nil do
+		f14_local1 = f14_local1:getNextSibling()
+		f14_local0 = f14_local0 + 1
 	end
-	if f12_local1 and f12_local1:canFocus( FocusType.ListSelection ) then
-		f12_local1:processEvent( {
+	if f14_local1 and f14_local1:canFocus( FocusType.ListSelection ) then
+		f14_local1:processEvent( {
 			name = "gain_focus"
 		} )
 	end
-	return f12_local1
+	return f14_local1
 end
 
-LUI.UIVerticalList.getHeightOfChildren = function ( f13_arg0, f13_arg1 )
-	local f13_local0 = f13_arg0:getRect()
-	local f13_local1 = f13_arg1 or 0
-	if f13_local0 then
-		local f13_local2 = f13_arg0:getFirstChild()
-		local f13_local3
-		if f13_local2 then
-			f13_local3 = -f13_local1
-			if not f13_local3 then
-				f13_local3 = 0
-				while f13_local2 do
-					local f13_local4 = nil
-					if f13_local2.getText and f13_local2:getText() then
-						local f13_local5 = nil
-						local f13_local6, f13_local7 = f13_local2:getElementTextDims()
-						f13_local4 = f13_local7
-						f13_local5 = f13_local6
+LUI.UIVerticalList.getHeightOfChildren = function ( f15_arg0, f15_arg1 )
+	local f15_local0 = f15_arg0:getRect()
+	local f15_local1 = f15_arg1 or 0
+	if f15_local0 then
+		local f15_local2 = f15_arg0:getFirstChild()
+		local f15_local3
+		if f15_local2 then
+			f15_local3 = -f15_local1
+			if not f15_local3 then
+				f15_local3 = 0
+				while f15_local2 do
+					local f15_local4 = nil
+					if f15_local2.getText and f15_local2:getText() then
+						local f15_local5 = nil
+						f15_local5, f15_local4 = f15_local2:getElementTextDims()
 					else
-						f13_local4 = f13_local2:getHeight()
+						f15_local4 = f15_local2:getHeight()
 					end
-					f13_local3 = f13_local3 + f13_local1 + f13_local4
-					f13_local2 = f13_local2:getNextSibling()
+					f15_local3 = f15_local3 + f15_local1 + f15_local4
+					f15_local2 = f15_local2:getNextSibling()
 				end
-				return f13_local3
+				return f15_local3
 			end
 		else
-			f13_local3 = 0
-			while f13_local2 do
-				local f13_local4 = nil
-				if f13_local2.getText and f13_local2:getText() then
-					local f13_local5 = nil
-					local f13_local6, f13_local7 = f13_local2:getElementTextDims()
-					f13_local4 = f13_local7
-					f13_local5 = f13_local6
+			f15_local3 = 0
+			while f15_local2 do
+				local f15_local4 = nil
+				if f15_local2.getText and f15_local2:getText() then
+					local f15_local5 = nil
+					f15_local5, f15_local4 = f15_local2:getElementTextDims()
 				else
-					f13_local4 = f13_local2:getHeight()
+					f15_local4 = f15_local2:getHeight()
 				end
-				f13_local3 = f13_local3 + f13_local1 + f13_local4
-				f13_local2 = f13_local2:getNextSibling()
+				f15_local3 = f15_local3 + f15_local1 + f15_local4
+				f15_local2 = f15_local2:getNextSibling()
 			end
-			return f13_local3
+			return f15_local3
 		end
 	else
 		

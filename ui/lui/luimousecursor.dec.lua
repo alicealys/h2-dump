@@ -6,9 +6,7 @@ LUI.UIMouseCursor.MouseMove = function ( f1_arg0, f1_arg1 )
 	f1_arg0.id = "mouse_cursor"
 	local f1_local0, f1_local1 = ProjectRootCoordinate( f1_arg1.rootName, f1_arg1.x, f1_arg1.y )
 	if f1_local0 ~= nil and f1_local1 ~= nil then
-		local f1_local2, f1_local3 = f1_arg1.root:pixelsToUnits( f1_local0, f1_local1 )
-		f1_local1 = f1_local3
-		f1_local0 = f1_local2
+		f1_local0, f1_local1 = f1_arg1.root:pixelsToUnits( f1_local0, f1_local1 )
 		if f1_local0 ~= nil and f1_local1 ~= nil then
 			f1_arg0:registerAnimationState( "default", {
 				left = f1_local0 - 30,
@@ -49,11 +47,11 @@ LUI.UIMouseCursor.new = function ( f4_arg0 )
 	self.hide = LUI.UIMouseCursor.Hide
 	self.show = LUI.UIMouseCursor.Show
 	self:registerEventHandler( "mousemove", LUI.UIMouseCursor.MouseMove )
-	local self = LUI.UITimer.new( 1000, {
+	local f4_local1 = LUI.UITimer.new( 1000, {
 		name = "update_mouse"
 	}, nil, false, element, false )
-	self.id = "mouse_update_timer"
-	self:addElement( self )
+	f4_local1.id = "mouse_update_timer"
+	self:addElement( f4_local1 )
 	self:registerEventHandler( "update_mouse", function ( element, event )
 		if not CoD.UsingController() then
 			return 

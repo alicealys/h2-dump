@@ -56,11 +56,11 @@ function CreateOptions( f5_arg0 )
 	} )
 	if not Engine.IsPCApp() then
 		LUI.Options.CreateDVarVideoOptionHelper( f5_arg0, "ui_r_monitor", "@PLATFORM_UI_MONITOR", function ()
-			local f8_local0 = LUI.Options.StringOptionListFromList( Engine.GetMonitorList() )
-			for f8_local1 = 1, #f8_local0, 1 do
-				f8_local0[f8_local1].text = Engine.MarkLocalized( f8_local0[f8_local1].text )
+			local f6_local0 = LUI.Options.StringOptionListFromList( Engine.GetMonitorList() )
+			for f6_local1 = 1, #f6_local0, 1 do
+				f6_local0[f6_local1].text = Engine.MarkLocalized( f6_local0[f6_local1].text )
 			end
-			return f8_local0
+			return f6_local0
 		end, {
 			button_desc = "@PLATFORM_UI_MONITOR_DESC",
 			disabledFunc = function ()
@@ -68,21 +68,21 @@ function CreateOptions( f5_arg0 )
 			end
 		} )
 		LUI.Options.CreateDVarVideoOptionHelper( f5_arg0, "ui_r_refreshRate", "@MENU_SCREEN_REFRESH_RATE", function ()
-			local f10_local0 = LUI.Options.StringOptionListFromList( Engine.GetRefreshRateList() )
-			for f10_local1 = 1, #f10_local0, 1 do
-				f10_local0[f10_local1].text = Engine.MarkLocalized( f10_local0[f10_local1].text )
+			local f8_local0 = LUI.Options.StringOptionListFromList( Engine.GetRefreshRateList() )
+			for f8_local1 = 1, #f8_local0, 1 do
+				f8_local0[f8_local1].text = Engine.MarkLocalized( f8_local0[f8_local1].text )
 			end
-			return f10_local0
+			return f8_local0
 		end, {
 			button_desc = "@PLATFORM_SCREEN_REFRESH_RATE_DESCRIPTION",
 			disabledFunc = function ()
-				local f11_local0
+				local f9_local0
 				if Engine.GetDvarBool( "r_fullscreen" ) ~= false and Engine.GetDvarBool( "r_fullscreenWindow" ) ~= true then
-					f11_local0 = false
+					f9_local0 = false
 				else
-					f11_local0 = true
+					f9_local0 = true
 				end
-				return f11_local0
+				return f9_local0
 			end
 		} )
 	end
@@ -168,63 +168,63 @@ function CreateOptions( f5_arg0 )
 			aspect = "21:9"
 		}
 	}
-	f5_local3 = function ( f12_arg0, f12_arg1 )
-		local f12_local0 = 1
-		while f5_local2[f12_local0] do
-			if f5_local2[f12_local0].width == f12_arg0 and f5_local2[f12_local0].height == f12_arg1 then
-				return f12_local0
+	f5_local3 = function ( f10_arg0, f10_arg1 )
+		local f10_local0 = 1
+		while f5_local2[f10_local0] do
+			if f5_local2[f10_local0].width == f10_arg0 and f5_local2[f10_local0].height == f10_arg1 then
+				return f10_local0
 			end
-			f12_local0 = f12_local0 + 1
+			f10_local0 = f10_local0 + 1
 		end
 		return 0
 	end
 	
 	f5_local4 = function ()
-		local f13_local0 = nil
-		local f13_local1 = Engine.GetDisplayWidth()
-		local f13_local2 = Engine.GetDisplayHeight()
+		local f11_local0 = nil
+		local f11_local1 = Engine.GetDisplayWidth()
+		local f11_local2 = Engine.GetDisplayHeight()
 		if Engine.GetDvarBool( "r_fullscreen" ) == true and Engine.GetDvarBool( "r_fullscreenWindow" ) == false then
-			f13_local0 = LUI.Options.StringOptionListFromList( Engine.GetModeList() )
+			f11_local0 = LUI.Options.StringOptionListFromList( Engine.GetModeList() )
 		elseif Engine.GetDvarBool( "r_fullscreen" ) == true and Engine.GetDvarBool( "r_fullscreenWindow" ) == true then
-			f13_local0 = {
+			f11_local0 = {
 				{
-					text = f13_local1 .. "x" .. f13_local2,
+					text = f11_local1 .. "x" .. f11_local2,
 					value = ""
 				}
 			}
 		else
-			f13_local0 = {}
-			if f5_local3( f13_local1, f13_local2 ) == 0 then
-				f13_local0[1] = {
-					text = f13_local1 .. "x" .. f13_local2,
-					value = f13_local1 .. " " .. f13_local2
+			f11_local0 = {}
+			if f5_local3( f11_local1, f11_local2 ) == 0 then
+				f11_local0[1] = {
+					text = f11_local1 .. "x" .. f11_local2,
+					value = f11_local1 .. " " .. f11_local2
 				}
 			end
-			for f13_local6, f13_local7 in pairs( f5_local2 ) do
-				f13_local0[#f13_local0 + 1] = {
-					text = f13_local7.width .. "x" .. f13_local7.height .. " (" .. f13_local7.aspect .. ")",
-					value = f13_local7.width .. " " .. f13_local7.height
+			for f11_local6, f11_local7 in pairs( f5_local2 ) do
+				f11_local0[#f11_local0 + 1] = {
+					text = f11_local7.width .. "x" .. f11_local7.height .. " (" .. f11_local7.aspect .. ")",
+					value = f11_local7.width .. " " .. f11_local7.height
 				}
 			end
 		end
-		for f13_local3 = 1, #f13_local0, 1 do
-			f13_local0[f13_local3].text = Engine.MarkLocalized( f13_local0[f13_local3].text )
+		for f11_local3 = 1, #f11_local0, 1 do
+			f11_local0[f11_local3].text = Engine.MarkLocalized( f11_local0[f11_local3].text )
 		end
-		return f13_local0
+		return f11_local0
 	end
 	
 	if not Engine.IsPCApp() then
 		LUI.Options.CreateDVarVideoOptionHelper( f5_arg0, "ui_r_mode", "@LUA_MENU_VIDEO_MODE", f5_local4, {
 			button_desc = "@LUA_MENU_VIDEO_MODE_DESC",
 			disabledFunc = function ()
-				local f14_local0 = Engine.GetDvarBool( "r_fullscreen" )
-				if f14_local0 then
-					f14_local0 = Engine.IsPCApp()
-					if not f14_local0 then
-						f14_local0 = Engine.GetDvarBool( "r_fullscreenWindow" )
+				local f12_local0 = Engine.GetDvarBool( "r_fullscreen" )
+				if f12_local0 then
+					f12_local0 = Engine.IsPCApp()
+					if not f12_local0 then
+						f12_local0 = Engine.GetDvarBool( "r_fullscreenWindow" )
 					end
 				end
-				return f14_local0
+				return f12_local0
 			end
 		} )
 	end
@@ -280,10 +280,10 @@ function CreateOptions( f5_arg0 )
 	LUI.Options.InitScrollingList( f5_arg0.list, nil )
 end
 
-function RefreshFunc( f6_arg0 )
-	return function ( f11_arg0, f11_arg1 )
+function RefreshFunc( f15_arg0 )
+	return function ( f16_arg0, f16_arg1 )
 		LUI.PCOptions.TransferSettingsToUI()
-		f6_arg0.list:processEvent( {
+		f15_arg0.list:processEvent( {
 			name = "content_refresh",
 			dispatchChildren = true
 		} )
@@ -291,44 +291,44 @@ function RefreshFunc( f6_arg0 )
 	
 end
 
-LUI.PCVideo.new = function ( f7_arg0, f7_arg1 )
+LUI.PCVideo.new = function ( f17_arg0, f17_arg1 )
 	LUI.PCOptions.TransferSettingsToUI()
 	Engine.ExecNow( "profile_menuDvarsSetup" )
-	local f7_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
-	local f7_local1 = LUI.MenuTemplate.new( f7_arg0, {
+	local f17_local0 = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
+	local f17_local1 = LUI.MenuTemplate.new( f17_arg0, {
 		menu_title = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_GRAPHIC_OPTIONS" ) ),
-		menu_top_indent = f7_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
+		menu_top_indent = f17_local0 + LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing,
 		menu_list_divider_top_offset = -(LUI.H1MenuTab.tabChangeHoldingElementHeight + H1MenuDims.spacing),
 		menu_width = GenericMenuDims.OptionMenuWidth,
-		genericListAction = function ( f12_arg0, f12_arg1 )
-			LUI.Options.CloseSelectionMenu( f12_arg1.menu )
+		genericListAction = function ( f18_arg0, f18_arg1 )
+			LUI.Options.CloseSelectionMenu( f18_arg1.menu )
 		end,
 		skipAnim = LUI.PCGraphicOptions.FindTypeIndex( LUI.PreviousMenuName ) ~= 0
 	} )
-	f7_local1:addElement( LUI.H1MenuTab.new( {
-		title = function ( f13_arg0 )
-			return LUI.PCGraphicOptions.Categories[f13_arg0].title
+	f17_local1:addElement( LUI.H1MenuTab.new( {
+		title = function ( f19_arg0 )
+			return LUI.PCGraphicOptions.Categories[f19_arg0].title
 		end,
 		tabCount = #LUI.PCGraphicOptions.Categories,
-		underTabTextFunc = function ( f14_arg0 )
-			return LUI.PCGraphicOptions.Categories[f14_arg0].title
+		underTabTextFunc = function ( f20_arg0 )
+			return LUI.PCGraphicOptions.Categories[f20_arg0].title
 		end,
-		top = f7_local0 + LUI.MenuTemplate.ListTop,
+		top = f17_local0 + LUI.MenuTemplate.ListTop,
 		width = GenericMenuDims.OptionMenuWidth,
 		clickTabBtnAction = LUI.PCGraphicOptions.LoadMenu,
 		activeIndex = LUI.PCGraphicOptions.FindTypeIndex( "pc_video" ),
 		skipChangeTab = true,
-		exclusiveController = f7_local1.exclusiveController
+		exclusiveController = f17_local1.exclusiveController
 	} ) )
-	if Engine.GetProfileData( "preferedFov", f7_local1.exclusiveController ) > SliderBounds.FOV.Max then
-		Engine.SetProfileData( "preferedFov", SliderBounds.FOV.Min, f7_local1.exclusiveController )
+	if Engine.GetProfileData( "preferedFov", f17_local1.exclusiveController ) > SliderBounds.FOV.Max then
+		Engine.SetProfileData( "preferedFov", SliderBounds.FOV.Min, f17_local1.exclusiveController )
 	end
-	f7_local1:registerEventHandler( "onVideoChange", RefreshFunc( f7_local1 ) )
-	CreateOptions( f7_local1 )
-	LUI.PCControlOptions.AddOptimalVideoButton( f7_local1 )
-	LUI.Options.AddOptionTextInfo( f7_local1 )
-	f7_local1:AddBackButtonWithSelector()
-	return f7_local1
+	f17_local1:registerEventHandler( "onVideoChange", RefreshFunc( f17_local1 ) )
+	CreateOptions( f17_local1 )
+	LUI.PCControlOptions.AddOptimalVideoButton( f17_local1 )
+	LUI.Options.AddOptionTextInfo( f17_local1 )
+	f17_local1:AddBackButtonWithSelector()
+	return f17_local1
 end
 
 LUI.MenuBuilder.registerType( "pc_video", LUI.PCVideo.new )

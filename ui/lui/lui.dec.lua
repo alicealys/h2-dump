@@ -123,125 +123,125 @@ end
 
 LUI.Accessor = function ( f3_arg0 )
 	local f3_local0 = f3_arg0
-	return function ( f13_arg0, f13_arg1 )
-		return LUI.AccessorInternal( f3_local0[f13_arg1], f13_arg0 )
+	return function ( f4_arg0, f4_arg1 )
+		return LUI.AccessorInternal( f3_local0[f4_arg1], f4_arg0 )
 	end
 	
 end
 
-LUI.Mutator = function ( f4_arg0 )
-	local f4_local0 = f4_arg0
-	return function ( f14_arg0, f14_arg1, f14_arg2 )
-		f4_local0[f14_arg1] = f14_arg2
+LUI.Mutator = function ( f5_arg0 )
+	local f5_local0 = f5_arg0
+	return function ( f6_arg0, f6_arg1, f6_arg2 )
+		f5_local0[f6_arg1] = f6_arg2
 	end
 	
 end
 
-LUI.InheritCopy = function ( f5_arg0, f5_arg1, f5_arg2 )
-	for f5_local3, f5_local4 in pairs( f5_arg1 ) do
-		if f5_arg0[f5_local3] == nil then
-			f5_arg0[f5_local3] = f5_local4
+LUI.InheritCopy = function ( f7_arg0, f7_arg1, f7_arg2 )
+	for f7_local3, f7_local4 in pairs( f7_arg1 ) do
+		if f7_arg0[f7_local3] == nil then
+			f7_arg0[f7_local3] = f7_local4
 		end
-		if f5_arg2 and type( f5_arg0[f5_local3] ) == "table" and type( f5_local4 ) == "table" then
-			LUI.InheritCopy( f5_arg0[f5_local3], f5_local4, f5_arg2 )
+		if f7_arg2 and type( f7_arg0[f7_local3] ) == "table" and type( f7_local4 ) == "table" then
+			LUI.InheritCopy( f7_arg0[f7_local3], f7_local4, f7_arg2 )
 		end
 	end
-	f5_local0 = getmetatable( f5_arg1 )
-	if f5_local0 and f5_local0.debugReference then
-		for f5_local4, f5_local5 in pairs( f5_local0.debugReference ) do
-			if not f5_arg0[f5_local4] then
-				f5_arg0[f5_local4] = f5_local5
+	f7_local0 = getmetatable( f7_arg1 )
+	if f7_local0 and f7_local0.debugReference then
+		for f7_local4, f7_local5 in pairs( f7_local0.debugReference ) do
+			if not f7_arg0[f7_local4] then
+				f7_arg0[f7_local4] = f7_local5
 			end
 		end
 	end
 end
 
-LUI.InheritProxy = function ( f6_arg0 )
-	local f6_local0 = {}
-	setmetatable( f6_local0, {
-		__index = LUI.Accessor( f6_arg0 ),
-		__newindex = LUI.Mutator( f6_arg0 ),
-		debugReference = f6_arg0
+LUI.InheritProxy = function ( f8_arg0 )
+	local f8_local0 = {}
+	setmetatable( f8_local0, {
+		__index = LUI.Accessor( f8_arg0 ),
+		__newindex = LUI.Mutator( f8_arg0 ),
+		debugReference = f8_arg0
 	} )
-	return f6_local0
+	return f8_local0
 end
 
-LUI.ShallowCopy = function ( f7_arg0 )
-	local f7_local0 = {}
-	for f7_local4, f7_local5 in pairs( f7_arg0 ) do
-		f7_local0[f7_local4] = f7_local5
+LUI.ShallowCopy = function ( f9_arg0 )
+	local f9_local0 = {}
+	for f9_local4, f9_local5 in pairs( f9_arg0 ) do
+		f9_local0[f9_local4] = f9_local5
 	end
-	return f7_local0
+	return f9_local0
 end
 
-LUI.DeepCopy = function ( f8_arg0 )
-	if type( f8_arg0 ) == "function" then
-		return f8_arg0
-	elseif type( f8_arg0 ) == "table" then
-		local f8_local0 = {}
-		for f8_local4, f8_local5 in pairs( f8_arg0 ) do
-			f8_local0[f8_local4] = LUI.DeepCopy( f8_local5 )
+LUI.DeepCopy = function ( f10_arg0 )
+	if type( f10_arg0 ) == "function" then
+		return f10_arg0
+	elseif type( f10_arg0 ) == "table" then
+		local f10_local0 = {}
+		for f10_local4, f10_local5 in pairs( f10_arg0 ) do
+			f10_local0[f10_local4] = LUI.DeepCopy( f10_local5 )
 		end
-		return f8_local0
+		return f10_local0
 	end
-	return f8_arg0
+	return f10_arg0
 end
 
-LUI.Append = function ( f9_arg0 )
-	if f9_arg0 then
-		for f9_local6, f9_local7 in ipairs( REG1 ) do
-			for f9_local3, f9_local4 in pairs( f9_local7 ) do
-				f9_arg0[f9_local3] = f9_local4
+LUI.Append = function ( f11_arg0 )
+	if f11_arg0 then
+		for f11_local6, f11_local7 in ipairs( REG1 ) do
+			for f11_local3, f11_local4 in pairs( f11_local7 ) do
+				f11_arg0[f11_local3] = f11_local4
 			end
 		end
 	end
-	return f9_arg0
+	return f11_arg0
 end
 
 LUI.Merge = function ( ... )
 	return LUI.Append( {}, ... )
 end
 
-LUI.ConcatenateToTable = function ( f11_arg0, f11_arg1 )
-	if f11_arg1 == nil then
+LUI.ConcatenateToTable = function ( f13_arg0, f13_arg1 )
+	if f13_arg1 == nil then
 		return 
 	end
-	for f11_local3, f11_local4 in ipairs( f11_arg1 ) do
-		table.insert( f11_arg0, f11_local4 )
+	for f13_local3, f13_local4 in ipairs( f13_arg1 ) do
+		table.insert( f13_arg0, f13_local4 )
 	end
 end
 
-LUI.clamp = function ( f12_arg0, f12_arg1, f12_arg2 )
-	if f12_arg0 < f12_arg1 then
-		return f12_arg1
-	elseif f12_arg2 < f12_arg0 then
-		return f12_arg2
+LUI.clamp = function ( f14_arg0, f14_arg1, f14_arg2 )
+	if f14_arg0 < f14_arg1 then
+		return f14_arg1
+	elseif f14_arg2 < f14_arg0 then
+		return f14_arg2
 	else
-		return f12_arg0
+		return f14_arg0
 	end
 end
 
 LUI.Debug = {}
-LUI.Debug.DimensionsAsString = function ( f13_arg0 )
-	return "(" .. f13_arg0.left .. ", " .. f13_arg0.top .. ", " .. f13_arg0.right .. ", " .. f13_arg0.bottom .. ")"
+LUI.Debug.DimensionsAsString = function ( f15_arg0 )
+	return "(" .. f15_arg0.left .. ", " .. f15_arg0.top .. ", " .. f15_arg0.right .. ", " .. f15_arg0.bottom .. ")"
 end
 
-LUI.FormatAnimStateFinishEvent = function ( f14_arg0 )
-	return "transition_complete_" .. f14_arg0
+LUI.FormatAnimStateFinishEvent = function ( f16_arg0 )
+	return "transition_complete_" .. f16_arg0
 end
 
-LUI.FormatAnimStateFinishStepEvent = function ( f15_arg0 )
-	return "transition_step_complete_" .. f15_arg0
+LUI.FormatAnimStateFinishStepEvent = function ( f17_arg0 )
+	return "transition_step_complete_" .. f17_arg0
 end
 
-function LockTable( f16_arg0 )
-	local f16_local0 = getmetatable( f16_arg0 )
-	if not f16_local0 then
-		f16_local0 = {}
-		setmetatable( f16_arg0, f16_local0 )
+function LockTable( f18_arg0 )
+	local f18_local0 = getmetatable( f18_arg0 )
+	if not f18_local0 then
+		f18_local0 = {}
+		setmetatable( f18_arg0, f18_local0 )
 	end
-	f16_local0.__newindex = function ( f20_arg0, f20_arg1, f20_arg2 )
-		error( "LUI Error: Tried to create module variable " .. f20_arg1, 2 )
+	f18_local0.__newindex = function ( f19_arg0, f19_arg1, f19_arg2 )
+		error( "LUI Error: Tried to create module variable " .. f19_arg1, 2 )
 	end
 	
 end
@@ -286,8 +286,8 @@ require( "LUI.LUIStencilText" )
 require( "LUI.ComScore" )
 if nil ~= debug then
 	debug.postdeploymentfunction = function ()
-		for f17_local3, f17_local4 in pairs( LUI.roots ) do
-			f17_local4.debugReload = true
+		for f20_local3, f20_local4 in pairs( LUI.roots ) do
+			f20_local4.debugReload = true
 		end
 	end
 	
@@ -295,102 +295,102 @@ end
 LargestElements = {}
 LargestElementsSize = {}
 LargestElementsCount = {}
-function CountFieldsHelper( f18_arg0, f18_arg1 )
-	if f18_arg1[f18_arg0] then
+function CountFieldsHelper( f21_arg0, f21_arg1 )
+	if f21_arg1[f21_arg0] then
 		return 
 	end
-	f18_arg1[f18_arg0] = true
-	local f18_local0 = 0
-	for f18_local4, f18_local5 in pairs( f18_arg0 ) do
-		if type( f18_local4 ) == "table" then
-			f18_local0 = f18_local0 + CountFieldsHelper( f18_local4, f18_arg1 )
+	f21_arg1[f21_arg0] = true
+	local f21_local0 = 0
+	for f21_local4, f21_local5 in pairs( f21_arg0 ) do
+		if type( f21_local4 ) == "table" then
+			f21_local0 = f21_local0 + CountFieldsHelper( f21_local4, f21_arg1 )
 		end
-		f18_local0 = f18_local0 + 1
+		f21_local0 = f21_local0 + 1
 	end
-	return f18_local0
+	return f21_local0
 end
 
-function CountFields( f19_arg0 )
-	return CountFieldsHelper( f19_arg0, {} )
+function CountFields( f22_arg0 )
+	return CountFieldsHelper( f22_arg0, {} )
 end
 
-function CountReferencesHelper( f20_arg0, f20_arg1 )
-	if f20_arg1[f20_arg0] then
+function CountReferencesHelper( f23_arg0, f23_arg1 )
+	if f23_arg1[f23_arg0] then
 		return 
 	end
-	f20_arg1[f20_arg0] = true
-	if type( f20_arg0 ) == "userdata" then
-		local f20_local0 = getmetatable( f20_arg0 )
-		if not f20_local0 then
+	f23_arg1[f23_arg0] = true
+	if type( f23_arg0 ) == "userdata" then
+		local f23_local0 = getmetatable( f23_arg0 )
+		if not f23_local0 then
 			return 
 		end
-		f20_arg0 = f20_local0.__index
-		if not f20_arg0 then
+		f23_arg0 = f23_local0.__index
+		if not f23_arg0 then
 			return 
-		elseif type( f20_arg0 ) == "table" and f20_arg0.id then
-			local f20_local1 = CountFields( f20_arg0 )
-			if not LargestElementsSize[f20_arg0.id] or LargestElementsSize[f20_arg0.id] < f20_local1 then
-				LargestElements[f20_arg0.id] = f20_arg0
-				LargestElementsSize[f20_arg0.id] = f20_local1
+		elseif type( f23_arg0 ) == "table" and f23_arg0.id then
+			local f23_local1 = CountFields( f23_arg0 )
+			if not LargestElementsSize[f23_arg0.id] or LargestElementsSize[f23_arg0.id] < f23_local1 then
+				LargestElements[f23_arg0.id] = f23_arg0
+				LargestElementsSize[f23_arg0.id] = f23_local1
 			end
-			if not LargestElementsCount[f20_arg0.id] then
-				LargestElementsCount[f20_arg0.id] = 0
+			if not LargestElementsCount[f23_arg0.id] then
+				LargestElementsCount[f23_arg0.id] = 0
 			end
-			LargestElementsCount[f20_arg0.id] = LargestElementsCount[f20_arg0.id] + 1
+			LargestElementsCount[f23_arg0.id] = LargestElementsCount[f23_arg0.id] + 1
 		end
 	end
-	if type( f20_arg0 ) ~= "table" then
+	if type( f23_arg0 ) ~= "table" then
 		return 
 	end
-	for f20_local3, f20_local4 in pairs( f20_arg0 ) do
-		CountReferencesHelper( f20_local4, f20_arg1 )
+	for f23_local3, f23_local4 in pairs( f23_arg0 ) do
+		CountReferencesHelper( f23_local4, f23_arg1 )
 	end
 end
 
-function CountReferences( f21_arg0 )
-	local f21_local0 = {
-		[f21_arg0] = true
+function CountReferences( f24_arg0 )
+	local f24_local0 = {
+		[f24_arg0] = true
 	}
-	if type( f21_arg0 ) == "userdata" then
-		local f21_local1 = getmetatable( f21_arg0 )
-		if not f21_local1 then
+	if type( f24_arg0 ) == "userdata" then
+		local f24_local1 = getmetatable( f24_arg0 )
+		if not f24_local1 then
 			return 0
 		end
-		f21_arg0 = f21_local1.__index
-		if not f21_arg0 then
+		f24_arg0 = f24_local1.__index
+		if not f24_arg0 then
 			return 0
 		end
 	end
-	if type( f21_arg0 ) ~= "table" then
+	if type( f24_arg0 ) ~= "table" then
 		return 0
 	end
-	for f21_local4, f21_local5 in pairs( f21_arg0 ) do
-		CountReferencesHelper( f21_local5, f21_local0 )
+	for f24_local4, f24_local5 in pairs( f24_arg0 ) do
+		CountReferencesHelper( f24_local5, f24_local0 )
 	end
-	f21_local1 = 0
-	for f21_local5, f21_local6 in pairs( f21_local0 ) do
-		f21_local1 = f21_local1 + 1
+	f24_local1 = 0
+	for f24_local5, f24_local6 in pairs( f24_local0 ) do
+		f24_local1 = f24_local1 + 1
 	end
-	return f21_local1
+	return f24_local1
 end
 
 function EnableGlobals()
-	local f22_local0 = getmetatable( _G )
-	if not f22_local0 then
-		f22_local0 = {}
-		setmetatable( _G, f22_local0 )
+	local f25_local0 = getmetatable( _G )
+	if not f25_local0 then
+		f25_local0 = {}
+		setmetatable( _G, f25_local0 )
 	end
-	f22_local0.__newindex = nil
+	f25_local0.__newindex = nil
 end
 
 function DisableGlobals()
-	local f23_local0 = getmetatable( _G )
-	if not f23_local0 then
-		f23_local0 = {}
-		setmetatable( _G, f23_local0 )
+	local f26_local0 = getmetatable( _G )
+	if not f26_local0 then
+		f26_local0 = {}
+		setmetatable( _G, f26_local0 )
 	end
-	f23_local0.__newindex = function ( f56_arg0, f56_arg1, f56_arg2 )
-		error( "LUI Error: Tried to create global variable " .. f56_arg1, 2 )
+	f26_local0.__newindex = function ( f27_arg0, f27_arg1, f27_arg2 )
+		error( "LUI Error: Tried to create global variable " .. f27_arg1, 2 )
 	end
 	
 end
@@ -409,44 +409,41 @@ if not Engine.IsDevelopmentBuild() then
 	end
 	
 end
-function FormatTimeMinutesSeconds( f27_arg0 )
-	local f27_local0 = math.floor( f27_arg0 / 60 )
-	return string.format( "%02d:%02d", f27_local0, f27_arg0 - f27_local0 * 60 )
+function FormatTimeMinutesSeconds( f31_arg0 )
+	local f31_local0 = math.floor( f31_arg0 / 60 )
+	return string.format( "%02d:%02d", f31_local0, f31_arg0 - f31_local0 * 60 )
 end
 
-LUI.AdjustAlignmentForLanguage = function ( f28_arg0 )
+LUI.AdjustAlignmentForLanguage = function ( f32_arg0 )
 	if Engine.IsRightToLeftLanguage() then
-		if f28_arg0 == LUI.Alignment.Left then
-			f28_arg0 = LUI.Alignment.Right
-		elseif f28_arg0 == LUI.Alignment.Right then
-			f28_arg0 = LUI.Alignment.Left
+		if f32_arg0 == LUI.Alignment.Left then
+			f32_arg0 = LUI.Alignment.Right
+		elseif f32_arg0 == LUI.Alignment.Right then
+			f32_arg0 = LUI.Alignment.Left
 		end
 	end
-	return f28_arg0
+	return f32_arg0
 end
 
-LUI.Round = function ( f29_arg0 )
-	return math.floor( f29_arg0 + 0.5 )
+LUI.Round = function ( f33_arg0 )
+	return math.floor( f33_arg0 + 0.5 )
 end
 
-LUI.StringSplit = function ( f30_arg0, f30_arg1 )
-	local f30_local0 = {}
-	local f30_local1 = "(.-)" .. f30_arg1
-	local f30_local2 = 1
-	local f30_local3, f30_local4, f30_local5 = f30_arg0:find( f30_local1, 1 )
-	while f30_local3 do
-		if f30_local3 ~= 1 or f30_local5 ~= "" then
-			table.insert( f30_local0, f30_local5 )
+LUI.StringSplit = function ( f34_arg0, f34_arg1 )
+	local f34_local0 = {}
+	local f34_local1 = "(.-)" .. f34_arg1
+	local f34_local2 = 1
+	local f34_local3, f34_local4, f34_local5 = f34_arg0:find( f34_local1, 1 )
+	while f34_local3 do
+		if f34_local3 ~= 1 or f34_local5 ~= "" then
+			table.insert( f34_local0, f34_local5 )
 		end
-		f30_local2 = f30_local4 + 1
-		local f30_local6, f30_local7, f30_local8 = f30_arg0:find( f30_local1, f30_local2 )
-		f30_local5 = f30_local8
-		f30_local4 = f30_local7
-		f30_local3 = f30_local6
+		f34_local2 = f34_local4 + 1
+		f34_local3, f34_local4, f34_local5 = f34_arg0:find( f34_local1, f34_local2 )
 	end
-	if f30_local2 <= #f30_arg0 then
-		table.insert( f30_local0, f30_arg0:sub( f30_local2 ) )
+	if f34_local2 <= #f34_arg0 then
+		table.insert( f34_local0, f34_arg0:sub( f34_local2 ) )
 	end
-	return f30_local0
+	return f34_local0
 end
 

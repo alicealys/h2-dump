@@ -2,9 +2,9 @@ LUI.UISequence = InheritFrom( LUI.UIElement )
 LUI.UISequence.new = function ( f1_arg0 )
 	local self = LUI.UIElement.new()
 	self:setClass( LUI.UISequence )
-	local self = LUI.UITimer.new( 100, "sequence_tick" )
-	self.id = "timer"
-	self:addElement( self )
+	local f1_local1 = LUI.UITimer.new( 100, "sequence_tick" )
+	f1_local1.id = "timer"
+	self:addElement( f1_local1 )
 	self:reset()
 	self:registerEventHandler( "sequence_tick", function ( element, event )
 		if element.stopped then
@@ -22,17 +22,17 @@ LUI.UISequence.new = function ( f1_arg0 )
 	return self
 end
 
-LUI.UISequence.reset = function ( f2_arg0 )
-	f2_arg0.nextStep = 1
-	f2_arg0.clock = 0
+LUI.UISequence.reset = function ( f3_arg0 )
+	f3_arg0.nextStep = 1
+	f3_arg0.clock = 0
 end
 
-LUI.UISequence.stop = function ( f3_arg0 )
-	f3_arg0.stopped = true
-	f3_arg0:reset()
+LUI.UISequence.stop = function ( f4_arg0 )
+	f4_arg0.stopped = true
+	f4_arg0:reset()
 end
 
-LUI.UISequence.start = function ( f4_arg0 )
-	f4_arg0.stopped = false
+LUI.UISequence.start = function ( f5_arg0 )
+	f5_arg0.stopped = false
 end
 

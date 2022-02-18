@@ -169,24 +169,24 @@ function boot_brightness( menu, controller )
 		f10_local3 = MBh.LeaveMenu()
 		f10_local4 = f0_local7
 	else
-		f10_local3 = function ( f17_arg0, f17_arg1 )
-			f0_local9( f17_arg0, f17_arg1, controller.callback )
+		f10_local3 = function ( f11_arg0, f11_arg1 )
+			f0_local9( f11_arg0, f11_arg1, controller.callback )
 		end
 		
 	end
 	local f10_local5 = f0_local8
-	local self = LUI.UIBindButton.new()
-	self.id = "boot_brightness_bind_btn_id"
-	self:registerEventHandler( "button_left", f0_local4 )
-	self:registerEventHandler( "button_right", f0_local5 )
-	self:registerEventHandler( "button_action", f10_local3 )
-	self:registerEventHandler( "button_alt2", f10_local5 )
+	local f10_local6 = LUI.UIBindButton.new()
+	f10_local6.id = "boot_brightness_bind_btn_id"
+	f10_local6:registerEventHandler( "button_left", f0_local4 )
+	f10_local6:registerEventHandler( "button_right", f0_local5 )
+	f10_local6:registerEventHandler( "button_action", f10_local3 )
+	f10_local6:registerEventHandler( "button_alt2", f10_local5 )
 	if f10_local4 then
-		self:registerEventHandler( "button_secondary", f10_local4 )
+		f10_local6:registerEventHandler( "button_secondary", f10_local4 )
 	end
-	self.handlePrimary = true
-	self:addElement( self )
-	local self = LUI.UIImage.new( {
+	f10_local6.handlePrimary = true
+	self:addElement( f10_local6 )
+	local f10_local7 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -201,10 +201,10 @@ function boot_brightness( menu, controller )
 		blue = 0,
 		alpha = 1
 	} )
-	self.id = "boot_brightness_bg_id"
-	self:setupFullWindowElement()
-	self:addElement( self )
-	local self = LUI.UIText.new( {
+	f10_local7.id = "boot_brightness_bg_id"
+	f10_local7:setupFullWindowElement()
+	self:addElement( f10_local7 )
+	local f10_local8 = LUI.UIText.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -219,10 +219,10 @@ function boot_brightness( menu, controller )
 		green = Colors.primary_text_color.g,
 		blue = Colors.primary_text_color.b
 	} )
-	self.id = "boot_brightness_instruction_txt1_id"
-	self:setText( Engine.Localize( "@MENU_ADJUST_BRIGHTNESS" ) )
-	self:addElement( self )
-	local self = LUI.UIText.new( {
+	f10_local8.id = "boot_brightness_instruction_txt1_id"
+	f10_local8:setText( Engine.Localize( "@MENU_ADJUST_BRIGHTNESS" ) )
+	self:addElement( f10_local8 )
+	local f10_local9 = LUI.UIText.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -237,12 +237,12 @@ function boot_brightness( menu, controller )
 		green = Colors.primary_text_color.g,
 		blue = Colors.primary_text_color.b
 	} )
-	self.id = "boot_brightness_instruction_txt2_id"
-	self:setText( Engine.Localize( "@MENU_BRIGHTNESS_DESC2" ) )
-	self:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( 410, nil, -410, -65, CoD.AnchorTypes.All ) )
-	self:addElement( self )
-	local f10_local11 = LUI.MenuBuilder.BuildAddChild( self, {
+	f10_local9.id = "boot_brightness_instruction_txt2_id"
+	f10_local9:setText( Engine.Localize( "@MENU_BRIGHTNESS_DESC2" ) )
+	self:addElement( f10_local9 )
+	local f10_local10 = LUI.UIElement.new( CoD.CreateState( 410, nil, -410, -65, CoD.AnchorTypes.All ) )
+	self:addElement( f10_local10 )
+	local f10_local11 = LUI.MenuBuilder.BuildAddChild( f10_local10, {
 		type = "button_helper_text_main"
 	} )
 	if f10_local4 then
@@ -285,55 +285,55 @@ function boot_brightness( menu, controller )
 	return self
 end
 
-function boot_brightness_guide( f11_arg0, f11_arg1 )
-	local f11_local0 = 250 * f11_arg0 + f11_arg1
-	local f11_local1 = 360
-	local f11_local2 = 96 * f11_arg0 + f11_arg1 * 0.5
+function boot_brightness_guide( f12_arg0, f12_arg1 )
+	local f12_local0 = 250 * f12_arg0 + f12_arg1
+	local f12_local1 = 360
+	local f12_local2 = 96 * f12_arg0 + f12_arg1 * 0.5
 	local self = LUI.UIElement.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = false,
 		rightAnchor = false,
-		top = f11_local0,
-		bottom = f11_local0 + f11_local2 * 3,
-		left = -1 * f11_local1 * 0.5,
-		right = f11_local1 * 0.5,
+		top = f12_local0,
+		bottom = f12_local0 + f12_local2 * 3,
+		left = -1 * f12_local1 * 0.5,
+		right = f12_local1 * 0.5,
 		alpha = 0
 	} )
 	self:registerAnimationState( "visible", {
 		alpha = 1
 	} )
 	self.id = "brightness_guide_mini_id"
-	local self = self
-	local self = self.registerEventHandler
-	local self = "brightness_over"
-	local self = MBh.DoMultiple
-	local self = {}
-	local self = MBh.AnimateToState( "visible", 0 )
-	local self = MBh.EmitEvent( {
+	local f12_local4 = self
+	local f12_local5 = self.registerEventHandler
+	local f12_local6 = "brightness_over"
+	local f12_local7 = MBh.DoMultiple
+	local f12_local8 = {}
+	local f12_local9 = MBh.AnimateToState( "visible", 0 )
+	local f12_local10 = MBh.EmitEvent( {
 		name = "brightness_over_children"
 	} )
-	self( self, self, self( self ) )
+	f12_local5( f12_local4, f12_local6, f12_local7( f12_local9 ) )
 	self:registerEventHandler( "brightness_up", MBh.AnimateToState( "default", 0 ) )
-	self = LUI.UIImage.new( {
+	f12_local5 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
 		rightAnchor = false,
 		top = 0,
-		bottom = f11_local2,
+		bottom = f12_local2,
 		left = 0,
-		right = f11_local1,
+		right = f12_local1,
 		material = RegisterMaterial( "white" ),
 		red = BrightnessGuideConstants.not_visible.color_default,
 		green = BrightnessGuideConstants.not_visible.color_default,
 		blue = BrightnessGuideConstants.not_visible.color_default
 	} )
-	self.id = BrightnessGuideConstants.not_visible.item_id
-	self:registerEventHandler( "brightness_over_children", f0_local6 )
-	self:registerEventHandler( "brightness_updated", f0_local6 )
-	self:addElement( self )
-	self = LUI.UIText.new( {
+	f12_local5.id = BrightnessGuideConstants.not_visible.item_id
+	f12_local5:registerEventHandler( "brightness_over_children", f0_local6 )
+	f12_local5:registerEventHandler( "brightness_updated", f0_local6 )
+	self:addElement( f12_local5 )
+	f12_local4 = LUI.UIText.new( {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -341,35 +341,35 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		top = -9,
 		bottom = 9,
 		left = 0,
-		right = f11_local1,
+		right = f12_local1,
 		font = CoD.TextSettings.BodyFont.Font,
 		red = 0,
 		green = 0,
 		blue = 0,
 		alignment = LUI.Alignment.Center
 	} )
-	self.id = "text_not_visible"
-	self:setText( Engine.Localize( "@MENU_BRIGHTNESS_NOT_VISIBLE" ) )
-	self:addElement( self )
-	self = LUI.UIImage.new( {
+	f12_local4.id = "text_not_visible"
+	f12_local4:setText( Engine.Localize( "@MENU_BRIGHTNESS_NOT_VISIBLE" ) )
+	f12_local5:addElement( f12_local4 )
+	f12_local6 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
 		rightAnchor = false,
-		top = f11_local2,
-		bottom = 2 * f11_local2,
+		top = f12_local2,
+		bottom = 2 * f12_local2,
 		left = 0,
-		right = f11_local1,
+		right = f12_local1,
 		material = RegisterMaterial( "white" ),
 		red = BrightnessGuideConstants.barely_visible.color_default,
 		green = BrightnessGuideConstants.barely_visible.color_default,
 		blue = BrightnessGuideConstants.barely_visible.color_default
 	} )
-	self.id = BrightnessGuideConstants.barely_visible.item_id
-	self:registerEventHandler( "brightness_over_children", f0_local6 )
-	self:registerEventHandler( "brightness_updated", f0_local6 )
-	self:addElement( self )
-	self = LUI.UIText.new( {
+	f12_local6.id = BrightnessGuideConstants.barely_visible.item_id
+	f12_local6:registerEventHandler( "brightness_over_children", f0_local6 )
+	f12_local6:registerEventHandler( "brightness_updated", f0_local6 )
+	self:addElement( f12_local6 )
+	f12_local7 = LUI.UIText.new( {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -377,35 +377,35 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		top = -9,
 		bottom = 9,
 		left = 0,
-		right = f11_local1,
+		right = f12_local1,
 		font = CoD.TextSettings.BodyFont.Font,
 		red = 0,
 		green = 0,
 		blue = 0,
 		alignment = LUI.Alignment.Center
 	} )
-	self.id = "text_barely_visible"
-	self:setText( Engine.Localize( "@MENU_BRIGHTNESS_BARELY_VISIBLE" ) )
-	self:addElement( self )
-	self = LUI.UIImage.new( {
+	f12_local7.id = "text_barely_visible"
+	f12_local7:setText( Engine.Localize( "@MENU_BRIGHTNESS_BARELY_VISIBLE" ) )
+	f12_local6:addElement( f12_local7 )
+	f12_local8 = LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
 		rightAnchor = false,
-		top = 2 * f11_local2,
-		bottom = 3 * f11_local2,
+		top = 2 * f12_local2,
+		bottom = 3 * f12_local2,
 		left = 0,
-		right = f11_local1,
+		right = f12_local1,
 		material = RegisterMaterial( "white" ),
 		red = BrightnessGuideConstants.easily_visible.color_default,
 		green = BrightnessGuideConstants.easily_visible.color_default,
 		blue = BrightnessGuideConstants.easily_visible.color_default
 	} )
-	self.id = BrightnessGuideConstants.easily_visible.item_id
-	self:registerEventHandler( "brightness_over_children", f0_local6 )
-	self:registerEventHandler( "brightness_updated", f0_local6 )
-	self:addElement( self )
-	self = LUI.UIText.new( {
+	f12_local8.id = BrightnessGuideConstants.easily_visible.item_id
+	f12_local8:registerEventHandler( "brightness_over_children", f0_local6 )
+	f12_local8:registerEventHandler( "brightness_updated", f0_local6 )
+	self:addElement( f12_local8 )
+	f12_local9 = LUI.UIText.new( {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -413,17 +413,17 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		top = -9,
 		bottom = 9,
 		left = 0,
-		right = f11_local1,
+		right = f12_local1,
 		font = CoD.TextSettings.BodyFont.Font,
 		red = 0,
 		green = 0,
 		blue = 0,
 		alignment = LUI.Alignment.Center
 	} )
-	self.id = "text_easily_visible"
-	self:setText( Engine.Localize( "@MENU_BRIGHTNESS_EASILY_VISIBLE" ) )
-	self:addElement( self )
-	self = LUI.UIButton.new( {
+	f12_local9.id = "text_easily_visible"
+	f12_local9:setText( Engine.Localize( "@MENU_BRIGHTNESS_EASILY_VISIBLE" ) )
+	f12_local8:addElement( f12_local9 )
+	f12_local10 = LUI.UIButton.new( {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -433,7 +433,7 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		left = -52,
 		right = -20
 	} )
-	self:registerAnimationState( "offset", {
+	f12_local10:registerAnimationState( "offset", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -443,12 +443,12 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		left = -55,
 		right = -23
 	} )
-	self.id = "boot_brightness_left_arrow_btn_id"
+	f12_local10.id = "boot_brightness_left_arrow_btn_id"
 	if Engine.IsPC() then
-		self:setHandleMouseButton( true )
-		self:registerEventHandler( "leftmousedown", f0_local4 )
+		f12_local10:setHandleMouseButton( true )
+		f12_local10:registerEventHandler( "leftmousedown", f0_local4 )
 	end
-	self:registerEventHandler( "menu_create", MBh.AnimateLoop( {
+	f12_local10:registerEventHandler( "menu_create", MBh.AnimateLoop( {
 		{
 			"offset",
 			500,
@@ -462,8 +462,8 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 			true
 		}
 	} ) )
-	self:addElement( self )
-	self:addElement( LUI.UIImage.new( {
+	self:addElement( f12_local10 )
+	f12_local10:addElement( LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -474,7 +474,7 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		right = 0,
 		material = RegisterMaterial( "h1_deco_arrows_left" )
 	} ) )
-	local self = LUI.UIButton.new( {
+	local f12_local11 = LUI.UIButton.new( {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = false,
@@ -484,7 +484,7 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		left = 20,
 		right = 52
 	} )
-	self:registerAnimationState( "offset", {
+	f12_local11:registerAnimationState( "offset", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = false,
@@ -494,12 +494,12 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 		left = 23,
 		right = 55
 	} )
-	self.id = "boot_brightness_right_arrow_btn_id"
+	f12_local11.id = "boot_brightness_right_arrow_btn_id"
 	if Engine.IsPC() then
-		self:setHandleMouseButton( true )
-		self:registerEventHandler( "leftmousedown", f0_local5 )
+		f12_local11:setHandleMouseButton( true )
+		f12_local11:registerEventHandler( "leftmousedown", f0_local5 )
 	end
-	self:registerEventHandler( "menu_create", MBh.AnimateLoop( {
+	f12_local11:registerEventHandler( "menu_create", MBh.AnimateLoop( {
 		{
 			"offset",
 			500,
@@ -513,8 +513,8 @@ function boot_brightness_guide( f11_arg0, f11_arg1 )
 			true
 		}
 	} ) )
-	self:addElement( self )
-	self:addElement( LUI.UIImage.new( {
+	self:addElement( f12_local11 )
+	f12_local11:addElement( LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,

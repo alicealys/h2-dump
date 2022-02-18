@@ -24,80 +24,80 @@ f0_local0 = function ( f1_arg0, f1_arg1 )
 	end
 end
 
-f0_local1 = function ( f2_arg0, f2_arg1 )
-	if f2_arg1.value == false then
-		f2_arg0:dispatchEventToChildren( {
-			name = "RecScreenShootingRangeMain_hidden"
-		} )
-	else
-		require( "LUI.sp_menus.RecoveryScreen" )
-		f2_arg0:dispatchEventToRoot( {
-			name = "add_overlay",
-			target = f2_arg0,
-			hudElem = "RecScreenShootingRangeMain",
-			omnvar = f2_arg1.omnvar,
-			value = f2_arg1.value
-		} )
-	end
-end
-
-f0_local2 = function ( f3_arg0, f3_arg1 )
+f0_local1 = function ( f3_arg0, f3_arg1 )
 	if f3_arg1.value == false then
 		f3_arg0:dispatchEventToChildren( {
-			name = "RecScreenGrenadeRangeMain_hidden"
+			name = "RecScreenShootingRangeMain_hidden"
 		} )
 	else
 		require( "LUI.sp_menus.RecoveryScreen" )
 		f3_arg0:dispatchEventToRoot( {
 			name = "add_overlay",
 			target = f3_arg0,
-			hudElem = "RecScreenGrenadeRangeMain",
+			hudElem = "RecScreenShootingRangeMain",
 			omnvar = f3_arg1.omnvar,
 			value = f3_arg1.value
 		} )
 	end
 end
 
-local f0_local3 = function ( f4_arg0, f4_arg1 )
-	require( "LUI.sp_hud.GenericMeterHud" )
-	if f4_arg1.value == true then
+f0_local2 = function ( f4_arg0, f4_arg1 )
+	if f4_arg1.value == false then
+		f4_arg0:dispatchEventToChildren( {
+			name = "RecScreenGrenadeRangeMain_hidden"
+		} )
+	else
+		require( "LUI.sp_menus.RecoveryScreen" )
 		f4_arg0:dispatchEventToRoot( {
 			name = "add_overlay",
 			target = f4_arg0,
-			hudElem = "AR_GenericMeterHudDef",
+			hudElem = "RecScreenGrenadeRangeMain",
 			omnvar = f4_arg1.omnvar,
 			value = f4_arg1.value
 		} )
-	elseif f4_arg1.value == false then
-		f4_arg0:dispatchEventToChildren( {
+	end
+end
+
+local f0_local3 = function ( f5_arg0, f5_arg1 )
+	require( "LUI.sp_hud.GenericMeterHud" )
+	if f5_arg1.value == true then
+		f5_arg0:dispatchEventToRoot( {
+			name = "add_overlay",
+			target = f5_arg0,
+			hudElem = "AR_GenericMeterHudDef",
+			omnvar = f5_arg1.omnvar,
+			value = f5_arg1.value
+		} )
+	elseif f5_arg1.value == false then
+		f5_arg0:dispatchEventToChildren( {
 			name = "AR_GenericMeterHudDef_hidden"
 		} )
 	end
 end
 
-local f0_local4 = function ( f5_arg0, f5_arg1 )
-	local f5_local0 = f5_arg0:getFirstChild()
-	while f5_local0 do
-		f5_local0:processEvent( f5_arg1 )
-		f5_local0 = f5_local0:getNextSibling()
+local f0_local4 = function ( f6_arg0, f6_arg1 )
+	local f6_local0 = f6_arg0:getFirstChild()
+	while f6_local0 do
+		f6_local0:processEvent( f6_arg1 )
+		f6_local0 = f6_local0:getNextSibling()
 	end
 end
 
-local f0_local5 = function ( f6_arg0 )
-	local f6_local0 = Game.GetOmnvar( "ui_recovery_screen_shooting_range" )
-	local f6_local1 = Game.GetOmnvar( "ui_recovery_screen_grenade_range" )
-	local f6_local2 = Game.GetOmnvar( "ui_meterhud_enable" )
-	f0_local1( f6_arg0, {
+local f0_local5 = function ( f7_arg0 )
+	local f7_local0 = Game.GetOmnvar( "ui_recovery_screen_shooting_range" )
+	local f7_local1 = Game.GetOmnvar( "ui_recovery_screen_grenade_range" )
+	local f7_local2 = Game.GetOmnvar( "ui_meterhud_enable" )
+	f0_local1( f7_arg0, {
 		name = "ui_recovery_screen_shooting_range",
-		value = f6_local0
+		value = f7_local0
 	} )
-	f0_local2( f6_arg0, {
+	f0_local2( f7_arg0, {
 		name = "ui_recovery_screen_grenade_range",
-		value = f6_local1
+		value = f7_local1
 	} )
-	f0_local3( f6_arg0, {
+	f0_local3( f7_arg0, {
 		name = "ui_meterhud_enable",
-		value = f6_local2
+		value = f7_local2
 	} )
 end
 

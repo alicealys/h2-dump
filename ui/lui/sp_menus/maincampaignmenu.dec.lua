@@ -88,7 +88,7 @@ local f0_local8 = function ( f6_arg0, f6_arg1, f6_arg2 )
 	if 0 < f0_local6 then
 		f0_local7[f0_local6].finalAction = f6_arg2
 	end
-	UPVAL0 = f0_local6 + 1
+	f0_local6 = f0_local6 + 1
 	while f0_local6 <= #f0_local7 do
 		f6_local0 = true
 		if f0_local7[f0_local6].showWhenCanResume ~= nil and f0_local7[f0_local6].showWhenCanResume ~= Engine.CanResumeGame() then
@@ -106,7 +106,7 @@ local f0_local8 = function ( f6_arg0, f6_arg1, f6_arg2 )
 			} )
 			return 
 		end
-		UPVAL0 = f0_local6 + 1
+		f0_local6 = f0_local6 + 1
 	end
 	f0_local1()
 	for f6_local5, f6_local6 in ipairs( f0_local7 ) do
@@ -119,7 +119,7 @@ end
 
 local f0_local9 = function ( f7_arg0, f7_arg1 )
 	Engine.EnumerateContent( f7_arg1.controller )
-	UPVAL0 = 0
+	f0_local6 = 0
 	f0_local8( f7_arg0, f7_arg1, nil )
 end
 
@@ -228,28 +228,28 @@ function main_campaign( f19_arg0, f19_arg1 )
 		end
 		if not Engine.GetDvarBool( "limited_mode" ) then
 			if not f0_local15() then
-				local f21_local0 = f19_local0:AddButton( "@LUA_MENU_RESUME_GAME", f0_local4, f0_local15, true, false, {
+				local f20_local0 = f19_local0:AddButton( "@LUA_MENU_RESUME_GAME", f0_local4, f0_local15, true, false, {
 					desc_text = Engine.Localize( "@LUA_MENU_RESUME_GAME_DESC" ),
 					disableSound = CoD.SFX.MenuAcceptDisabled
 				} )
-				f21_local0.listDefaultFocus = true
+				f20_local0.listDefaultFocus = true
 			end
-			local f21_local0 = f19_local0:AddButton( "@LUA_MENU_NEW_GAME", f0_local9, nil, true, nil, {
+			local f20_local0 = f19_local0:AddButton( "@LUA_MENU_NEW_GAME", f0_local9, nil, true, nil, {
 				desc_text = Engine.Localize( "@LUA_MENU_NEW_GAME_DESC" )
 			} )
-			f21_local0.listDefaultFocus = f0_local15()
+			f20_local0.listDefaultFocus = f0_local15()
 		end
 		if not f0_local15() or not LUI.LevelSelect.ProgressionEnabled() then
 			f19_local0:AddButton( "@LUA_MENU_MISSION_SELECT", f0_local10, nil, true, nil, {
 				desc_text = Engine.Localize( "@LUA_MENU_MISSION_SELECT_DESC" )
 			} )
 		end
-		local f21_local0 = "@MENU_SP_MUSEUM_LOCKED_DESC"
+		local f20_local0 = "@MENU_SP_MUSEUM_LOCKED_DESC"
 		if LUI.LevelSelect.IsAllLevelCompleted() then
-			f21_local0 = "@MENU_SP_MUSEUM_DESC"
+			f20_local0 = "@MENU_SP_MUSEUM_DESC"
 		end
 		f19_local0:AddButton( "@MENU_SP_MUSEUM", f0_local11, not LUI.LevelSelect.IsAllLevelCompleted(), true, nil, {
-			desc_text = Engine.Localize( f21_local0 )
+			desc_text = Engine.Localize( f20_local0 )
 		} )
 		if CoD.IsCampaignOnly() and not Engine.GetDvarBool( "limited_mode" ) then
 			f19_local0:AddButton( Engine.Localize( "@MENU_INTEL" ), "intel_menu_scenario", nil, nil, nil, {
@@ -289,13 +289,13 @@ function main_campaign( f19_arg0, f19_arg1 )
 	if not Engine.GetDvarBool( "limited_mode" ) then
 		Engine.SetDvarString( "ui_loadMenuName", "main_campaign" )
 	end
-	CoD.InitializeCheat( f19_local0, function ( f22_arg0, f22_arg1 )
-		LUI.FlowManager.RequestAddMenu( nil, "main_campaign", true, f22_arg1.controller, true, nil, {
+	CoD.InitializeCheat( f19_local0, function ( f21_arg0, f21_arg1 )
+		LUI.FlowManager.RequestAddMenu( nil, "main_campaign", true, f21_arg1.controller, true, nil, {
 			reload = true
 		} )
 	end )
 	f19_local0:registerEventHandler( "finishreadingsavedevice", function ( element, event )
-		UPVAL0 = false
+		f0_local0 = false
 		Engine.Exec( "Updatedvarsfromprofile" )
 		Engine.Exec( "profile_difficultyLoad" )
 		Engine.Exec( "loadgame_fetch_mapname" )

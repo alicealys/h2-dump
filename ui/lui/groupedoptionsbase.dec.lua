@@ -132,18 +132,18 @@ LUI.GroupedOptionsBase.InitOptionsMenu = function ( f11_arg0, f11_arg1, f11_arg2
 	end
 	f11_arg0.leaveMenuFunc = f11_arg5
 	f11_arg0.menuButtons = f11_arg1
-	f11_arg0:AddBackButton( function ( f15_arg0, f15_arg1 )
-		f11_arg0:DoBackAction( f15_arg1 )
+	f11_arg0:AddBackButton( function ( f12_arg0, f12_arg1 )
+		f11_arg0:DoBackAction( f12_arg1 )
 	end )
 	for f11_local0 = 1, #f11_arg1, 1 do
 		local f11_local3 = f11_arg1[f11_local0]
 		f11_local3.subOptionsData = f11_arg2[f11_local0]
 		f11_local3.subOptionsData.buttonIdx = f11_local0
-		f11_local3:addEventHandler( "button_over", function ( f16_arg0, f16_arg1 )
-			f11_arg0:OnMainButtonFocus( f16_arg0.subOptionsData, f16_arg1 )
+		f11_local3:addEventHandler( "button_over", function ( f13_arg0, f13_arg1 )
+			f11_arg0:OnMainButtonFocus( f13_arg0.subOptionsData, f13_arg1 )
 		end )
-		f11_local3.properties.button_action_func = function ( f17_arg0, f17_arg1 )
-			f11_arg0:OnMainButtonSelect( f17_arg1, f11_local3 )
+		f11_local3.properties.button_action_func = function ( f14_arg0, f14_arg1 )
+			f11_arg0:OnMainButtonSelect( f14_arg1, f11_local3 )
 		end
 		
 	end
@@ -155,20 +155,20 @@ LUI.GroupedOptionsBase.InitOptionsMenu = function ( f11_arg0, f11_arg1, f11_arg2
 	
 end
 
-LUI.GroupedOptionsBase.new = function ( f12_arg0, f12_arg1 )
-	local f12_local0 = nil
+LUI.GroupedOptionsBase.new = function ( f15_arg0, f15_arg1 )
+	local f15_local0 = nil
 	if not Engine.IsMultiplayer() then
-		f12_local0 = LUI.MenuTemplate.spMenuOffset
+		f15_local0 = LUI.MenuTemplate.spMenuOffset
 	end
-	local f12_local1 = LUI.MenuTemplate.new( f12_arg0, {
-		menu_title = f12_arg1.menu_title,
+	local f15_local1 = LUI.MenuTemplate.new( f15_arg0, {
+		menu_title = f15_arg1.menu_title,
 		menu_width = LUI.GroupedOptionsBase.MenuWidth,
-		menu_top_indent = f12_local0
+		menu_top_indent = f15_local0
 	} )
-	f12_local1:setClass( LUI.GroupedOptionsBase )
-	f12_local1:registerEventHandler( "gain_focus", LUI.GroupedOptionsBase.OnGainFocus )
-	f12_local1:registerEventHandler( "restore_focus", LUI.GroupedOptionsBase.OnRestoreFocus )
-	return f12_local1
+	f15_local1:setClass( LUI.GroupedOptionsBase )
+	f15_local1:registerEventHandler( "gain_focus", LUI.GroupedOptionsBase.OnGainFocus )
+	f15_local1:registerEventHandler( "restore_focus", LUI.GroupedOptionsBase.OnRestoreFocus )
+	return f15_local1
 end
 
 LockTable( _M )

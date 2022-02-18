@@ -48,9 +48,9 @@ function GetDefaultPanelData()
 	LUI.MOTD.SingleTestTemplate = {
 		messageID = "overcharged",
 		image = "h1_motd_featured_temp",
-		h1_header = "<h1><span class="green">DAT DOUBLE XP</span></h1>",
-		h2_header = "<h2><span class="red">GET WIT IT</span></h2>",
-		h3_header = "<h3><span class="yellow">THIS CAN'T BE REAL</span></h3>",
+		h1_header = "<h1><span class=\"green\">DAT DOUBLE XP</span></h1>",
+		h2_header = "<h2><span class=\"red\">GET WIT IT</span></h2>",
+		h3_header = "<h3><span class=\"yellow\">THIS CAN'T BE REAL</span></h3>",
 		call_to_action = "DOUBLE XP WEEKEND!",
 		action = LUI.MOTD.ActionType.POPUP,
 		body = "<body>Get ready for a full weekend of fun times with double XP for Call of Duty: Modern Warfare. With this double XP weekend you'll get double the normal experience for any and all content that gives experience.<br/><br/><i>*The more xp you earn the more progress you make towards prestige</i></body>",
@@ -63,9 +63,9 @@ function GetDefaultPanelData()
 		{
 			messageID = "overcharged",
 			image = "h1_motd_featured_temp",
-			h1_header = "<h1><span class="green">DAT DOUBLE XP</span></h1>",
-			h2_header = "<h2><span class="red">GET WIT IT</span></h2>",
-			h3_header = "<h3><span class="yellow">THIS CAN'T BE REAL</span></h3>",
+			h1_header = "<h1><span class=\"green\">DAT DOUBLE XP</span></h1>",
+			h2_header = "<h2><span class=\"red\">GET WIT IT</span></h2>",
+			h3_header = "<h3><span class=\"yellow\">THIS CAN'T BE REAL</span></h3>",
 			call_to_action = "DOUBLE XP WEEKEND!",
 			action = LUI.MOTD.ActionType.POPUP,
 			body = "<body>Get ready for a full weekend of fun times with double XP for Call of Duty: Modern Warfare. With this double XP weekend you'll get double the normal experience for any and all content that gives experience.<br/><br/><i>*The more xp you earn the more progress you make towards prestige</i></body>",
@@ -77,9 +77,9 @@ function GetDefaultPanelData()
 		{
 			messageID = "overcharged",
 			image = "h1_motd_featured_temp",
-			h1_header = "<h1><span class="green">DAT DOUBLE XP</span></h1>",
-			h2_header = "<h2><span class="grey">GET WIT IT</span></h2>",
-			h3_header = "<h3><span class="white">THIS CAN'T BE REAL</span></h3>",
+			h1_header = "<h1><span class=\"green\">DAT DOUBLE XP</span></h1>",
+			h2_header = "<h2><span class=\"grey\">GET WIT IT</span></h2>",
+			h3_header = "<h3><span class=\"white\">THIS CAN'T BE REAL</span></h3>",
 			call_to_action = "DOUBLE XP WEEKEND!",
 			action = LUI.MOTD.ActionType.POPUP,
 			body = "<body>Get ready for a full weekend of fun times with double XP for Call of Duty: Modern Warfare. With this double XP weekend you'll get double the normal experience for any and all content that gives experience.<br/><br/><i>*The more xp you earn the more progress you make towards prestige</i></body>",
@@ -91,9 +91,9 @@ function GetDefaultPanelData()
 		{
 			messageID = "overcharged",
 			image = "h1_motd_featured_temp",
-			h1_header = "<h1><span class="green">DAT DOUBLE XP</span></h1>",
-			h2_header = "<h2><span class="red">GET WIT IT</span></h2>",
-			h3_header = "<h3><span class="yellow">THIS CAN'T BE REAL</span></h3>",
+			h1_header = "<h1><span class=\"green\">DAT DOUBLE XP</span></h1>",
+			h2_header = "<h2><span class=\"red\">GET WIT IT</span></h2>",
+			h3_header = "<h3><span class=\"yellow\">THIS CAN'T BE REAL</span></h3>",
 			call_to_action = "DOUBLE XP WEEKEND!",
 			action = LUI.MOTD.ActionType.POPUP,
 			body = "<body>Get ready for a full weekend of fun times with double XP for Call of Duty: Modern Warfare. With this double XP weekend you'll get double the normal experience for any and all content that gives experience.<br/><br/><i>*The more xp you earn the more progress you make towards prestige</i></body>",
@@ -105,9 +105,9 @@ function GetDefaultPanelData()
 		{
 			messageID = "overcharged",
 			image = "h1_motd_featured_temp",
-			h1_header = "<h1><span class="green">DAT DOUBLE XP</span></h1>",
-			h2_header = "<h2><span class="red">GET WIT IT</span></h2>",
-			h3_header = "<h3><span class="yellow">THIS CAN'T BE REAL</span></h3>",
+			h1_header = "<h1><span class=\"green\">DAT DOUBLE XP</span></h1>",
+			h2_header = "<h2><span class=\"red\">GET WIT IT</span></h2>",
+			h3_header = "<h3><span class=\"yellow\">THIS CAN'T BE REAL</span></h3>",
 			call_to_action = "DOUBLE XP WEEKEND!",
 			action = LUI.MOTD.ActionType.POPUP,
 			body = "<body>Get ready for a full weekend of fun times with double XP for Call of Duty: Modern Warfare. With this double XP weekend you'll get double the normal experience for any and all content that gives experience.</body>",
@@ -119,9 +119,9 @@ function GetDefaultPanelData()
 		{
 			messageID = "overcharged",
 			image = "h1_motd_featured_temp",
-			h1_header = "<h1><span class="green">DAT DOUBLE XP</span></h1>",
-			h2_header = "<h2><span class="red">GET WIT IT</span></h2>",
-			h3_header = "<h3><span class="yellow">THIS CAN'T BE REAL</span></h3>",
+			h1_header = "<h1><span class=\"green\">DAT DOUBLE XP</span></h1>",
+			h2_header = "<h2><span class=\"red\">GET WIT IT</span></h2>",
+			h3_header = "<h3><span class=\"yellow\">THIS CAN'T BE REAL</span></h3>",
 			call_to_action = "DOUBLE XP WEEKEND!",
 			action = LUI.MOTD.ActionType.POPUP,
 			body = "<body>Get ready for a full weekend of fun times with double XP for Call of Duty: Modern Warfare. With this double XP weekend you'll get double the normal experience for any and all content that gives experience.<br/><br/><i>*The more xp you earn the more progress you make towards prestige</i></body>",
@@ -306,7 +306,7 @@ LUI.MOTD.new = function ( f12_arg0, f12_arg1 )
 	}
 	DebugPrint( "\nOpening MOTD popup:" )
 	for f12_local6, f12_local7 in pairs( f12_local2 ) do
-		DebugPrint( "	[" .. f12_local6 .. "] = [" .. tostring( f12_local7 ) .. "]" )
+		DebugPrint( "\t[" .. f12_local6 .. "] = [" .. tostring( f12_local7 ) .. "]" )
 	end
 	DebugPrint( "\n" )
 	return LUI.MarketingPopup.Base( f12_arg0, f12_local2, f12_local1 )

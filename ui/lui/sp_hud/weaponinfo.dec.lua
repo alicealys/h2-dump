@@ -1344,7 +1344,7 @@ local f0_local60 = function ( f56_arg0 )
 	} )
 	f56_arg0:registerEventHandler( "nightVisionThermalOverwrite", f0_local57 )
 	f56_arg0:registerOmnvarHandler( "ui_expireHUD", f0_local51 )
-	UPVAL3 = Engine.IsDevelopmentBuild()
+	f0_local8 = Engine.IsDevelopmentBuild()
 	if f0_local8 and Engine.GetDvarBool( "cg_debugHUDVisibility" ) then
 		Engine.SetDvarFloat( "hud_fade_compass", 0 )
 	end

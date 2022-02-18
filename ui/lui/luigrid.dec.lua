@@ -63,8 +63,8 @@ LUI.UIGrid.new = function ( menu, controller )
 		self:registerEventHandler( "list_scroll", function ( element, event )
 			if not event.repeatCatch then
 				event.repeatCatch = true
-				local f16_local0 = element:getParent()
-				f16_local0:processEvent( event )
+				local f3_local0 = element:getParent()
+				f3_local0:processEvent( event )
 			end
 		end )
 	end
@@ -82,51 +82,51 @@ LUI.UIGrid.new = function ( menu, controller )
 	return self
 end
 
-LUI.UIGrid.GetAllFocusedChildren = function ( f3_arg0 )
-	local f3_local0 = {}
-	local f3_local1 = f3_arg0.vlist:getFirstChild()
-	while f3_local1 do
-		for f3_local5, f3_local6 in ipairs( f3_local1:getAllFocusedChildren() ) do
-			table.insert( f3_local0, f3_local6 )
+LUI.UIGrid.GetAllFocusedChildren = function ( f4_arg0 )
+	local f4_local0 = {}
+	local f4_local1 = f4_arg0.vlist:getFirstChild()
+	while f4_local1 do
+		for f4_local5, f4_local6 in ipairs( f4_local1:getAllFocusedChildren() ) do
+			table.insert( f4_local0, f4_local6 )
 		end
-		f3_local1 = f3_local1:getNextSibling()
+		f4_local1 = f4_local1:getNextSibling()
 	end
-	return f3_local0
+	return f4_local0
 end
 
-LUI.UIGrid.ClearSavedState = function ( f4_arg0 )
-	LUI.UIElement.clearSavedState( f4_arg0 )
-	local f4_local0 = f4_arg0.vlist:getFirstChild()
-	while f4_local0 do
-		f4_local0.listDefaultFocus = nil
-		local f4_local1 = f4_local0:getFirstChild()
-		while f4_local1 do
-			f4_local1.listDefaultFocus = nil
-			f4_local1 = f4_local1:getNextSibling()
-		end
-		f4_local0 = f4_local0:getNextSibling()
-	end
-end
-
-LUI.UIGrid.GetChildById = function ( f5_arg0, f5_arg1 )
+LUI.UIGrid.ClearSavedState = function ( f5_arg0 )
+	LUI.UIElement.clearSavedState( f5_arg0 )
 	local f5_local0 = f5_arg0.vlist:getFirstChild()
 	while f5_local0 do
-		local f5_local1 = f5_local0:getChildById( f5_arg1 )
-		if f5_local1 then
-			return f5_local1
+		f5_local0.listDefaultFocus = nil
+		local f5_local1 = f5_local0:getFirstChild()
+		while f5_local1 do
+			f5_local1.listDefaultFocus = nil
+			f5_local1 = f5_local1:getNextSibling()
 		end
 		f5_local0 = f5_local0:getNextSibling()
 	end
 end
 
-LUI.UIGrid.AddRow = function ( f6_arg0 )
-	local f6_local0 = f6_arg0.vlist:getLastChild()
-	local f6_local1 = f6_arg0
+LUI.UIGrid.GetChildById = function ( f6_arg0, f6_arg1 )
+	local f6_local0 = f6_arg0.vlist:getFirstChild()
+	while f6_local0 do
+		local f6_local1 = f6_local0:getChildById( f6_arg1 )
+		if f6_local1 then
+			return f6_local1
+		end
+		f6_local0 = f6_local0:getNextSibling()
+	end
+end
+
+LUI.UIGrid.AddRow = function ( f7_arg0 )
+	local f7_local0 = f7_arg0.vlist:getLastChild()
+	local f7_local1 = f7_arg0
 	local self = LUI.UIHorizontalList.new()
-	LUI.UIHorizontalList.SetNoWrap( self, f6_local1.disableHWrap )
-	self.id = f6_arg0.id .. "_row_" .. f6_arg0.vlist:getNumChildren()
-	self.removeElement = function ( f35_arg0, f35_arg1 )
-		f6_local1:removeElement( f35_arg1 )
+	LUI.UIHorizontalList.SetNoWrap( self, f7_local1.disableHWrap )
+	self.id = f7_arg0.id .. "_row_" .. f7_arg0.vlist:getNumChildren()
+	self.removeElement = function ( f8_arg0, f8_arg1 )
+		f7_local1:removeElement( f8_arg1 )
 	end
 	
 	self:makeNotFocusable()
@@ -136,204 +136,204 @@ LUI.UIGrid.AddRow = function ( f6_arg0 )
 		leftAnchor = true,
 		rightAnchor = true,
 		top = 0,
-		bottom = f6_arg0.rowHeight,
+		bottom = f7_arg0.rowHeight,
 		left = 0,
 		right = 0,
-		spacing = f6_arg0.hSpacing,
-		alignment = f6_arg0.hAlign
+		spacing = f7_arg0.hSpacing,
+		alignment = f7_arg0.hAlign
 	} )
 	self:registerEventHandler( "menu_refresh", function ( element, event )
-		f6_local1:processEvent( event )
+		f7_local1:processEvent( event )
 	end )
 	self:animateToState( "default" )
-	f6_arg0.vlist:addElement( self )
-	if f6_local0 then
-		LUI.UIHorizontalList.UpdateNavigation( f6_local0 )
+	f7_arg0.vlist:addElement( self )
+	if f7_local0 then
+		LUI.UIHorizontalList.UpdateNavigation( f7_local0 )
 	end
-	local f6_local3 = f6_arg0.vlist:getFirstChild()
-	if f6_local3 then
-		LUI.UIHorizontalList.UpdateNavigation( f6_local3 )
+	local f7_local3 = f7_arg0.vlist:getFirstChild()
+	if f7_local3 then
+		LUI.UIHorizontalList.UpdateNavigation( f7_local3 )
 	end
 end
 
-LUI.UIGrid.AddElement = function ( f7_arg0, f7_arg1 )
-	local f7_local0 = f7_arg0
-	local f7_local1 = f7_local0.vlist:getLastChild()
-	local f7_local2
-	if f7_local1 ~= nil and f7_arg0.width > f7_local1:getNumChildren() then
-		f7_local2 = false
+LUI.UIGrid.AddElement = function ( f10_arg0, f10_arg1 )
+	local f10_local0 = f10_arg0
+	local f10_local1 = f10_local0.vlist:getLastChild()
+	local f10_local2
+	if f10_local1 ~= nil and f10_arg0.width > f10_local1:getNumChildren() then
+		f10_local2 = false
 	else
-		f7_local2 = true
+		f10_local2 = true
 	end
-	if f7_local2 then
-		f7_arg0:addRow()
+	if f10_local2 then
+		f10_arg0:addRow()
 	end
-	f7_local1 = f7_local0.vlist:getLastChild()
-	f7_local1:addElement( f7_arg1 )
-	if f7_arg1.listDefaultFocus then
-		f7_local1.listDefaultFocus = true
+	f10_local1 = f10_local0.vlist:getLastChild()
+	f10_local1:addElement( f10_arg1 )
+	if f10_arg1.listDefaultFocus then
+		f10_local1.listDefaultFocus = true
 	end
-	f7_arg0:updateNavigation()
-	local f7_local3 = function ( f41_arg0, f41_arg1 )
-		local f41_local0 = 1
-		local f41_local1 = f41_arg0:getParent()
-		f41_local1 = f41_local1:getFirstChild()
-		while f41_local1 do
-			if f41_local1 == f41_arg0 then
+	f10_arg0:updateNavigation()
+	local f10_local3 = function ( f11_arg0, f11_arg1 )
+		local f11_local0 = 1
+		local f11_local1 = f11_arg0:getParent()
+		f11_local1 = f11_local1:getFirstChild()
+		while f11_local1 do
+			if f11_local1 == f11_arg0 then
 				break
 			end
-			f41_local0 = f41_local0 + 1
-			f41_local1 = f41_local1:getNextSibling()
+			f11_local0 = f11_local0 + 1
+			f11_local1 = f11_local1:getNextSibling()
 		end
-		f7_local0:processEvent( {
+		f10_local0:processEvent( {
 			name = "grid_navigation_update",
 			dispatchChildren = true,
-			column = f41_local0,
+			column = f11_local0,
 			immediate = true
 		} )
-		local f41_local2 = f41_arg0:getParent()
-		f41_local2:setFocus( true )
-		f41_local2 = f41_arg0:getParent()
-		f41_local2:saveState()
+		local f11_local2 = f11_arg0:getParent()
+		f11_local2:setFocus( true )
+		f11_local2 = f11_arg0:getParent()
+		f11_local2:saveState()
 	end
 	
-	if not f7_arg1.hasGridHandlers then
-		f7_arg1.hasGridHandlers = true
-		f7_arg1:addEventHandler( "element_refresh", function ( f42_arg0, f42_arg1 )
-			if f42_arg0:isInFocus() then
-				f7_local3( f42_arg0, f42_arg1 )
+	if not f10_arg1.hasGridHandlers then
+		f10_arg1.hasGridHandlers = true
+		f10_arg1:addEventHandler( "element_refresh", function ( f12_arg0, f12_arg1 )
+			if f12_arg0:isInFocus() then
+				f10_local3( f12_arg0, f12_arg1 )
 			end
 		end )
-		f7_arg1:addEventHandler( "button_over", f7_local3 )
-		f7_arg1:addEventHandler( "button_over_disable", f7_local3 )
-		f7_arg1:addEventHandler( "visual_focused", f7_local3 )
+		f10_arg1:addEventHandler( "button_over", f10_local3 )
+		f10_arg1:addEventHandler( "button_over_disable", f10_local3 )
+		f10_arg1:addEventHandler( "visual_focused", f10_local3 )
 	end
-	f7_arg1:registerEventHandler( "grid_navigation_update", function ( element, event )
-		local f43_local0 = 1
-		local f43_local1 = element:getParent()
-		local f43_local2 = f43_local1:getFirstChild()
-		while f43_local2 do
-			if f43_local2 == element then
+	f10_arg1:registerEventHandler( "grid_navigation_update", function ( element, event )
+		local f13_local0 = 1
+		local f13_local1 = element:getParent()
+		local f13_local2 = f13_local1:getFirstChild()
+		while f13_local2 do
+			if f13_local2 == element then
 				break
 			end
-			f43_local0 = f43_local0 + 1
-			f43_local2 = f43_local2:getNextSibling()
+			f13_local0 = f13_local0 + 1
+			f13_local2 = f13_local2:getNextSibling()
 		end
-		f43_local1:clearSavedState()
-		f43_local1:setFocus( false )
-		local f43_local3 = event.column == f43_local0
-		local f43_local4 = false
-		local f43_local5 = true
-		local f43_local6 = 0
-		local f43_local7 = f43_local1:getFirstChild()
-		while f43_local7 do
-			if f43_local7.m_focusable then
-				f43_local6 = f43_local6 + 1
-				f43_local5 = f43_local7 == element
-				f43_local4 = f43_local6 < event.column
+		f13_local1:clearSavedState()
+		f13_local1:setFocus( false )
+		local f13_local3 = event.column == f13_local0
+		local f13_local4 = false
+		local f13_local5 = true
+		local f13_local6 = 0
+		local f13_local7 = f13_local1:getFirstChild()
+		while f13_local7 do
+			if f13_local7.m_focusable then
+				f13_local6 = f13_local6 + 1
+				f13_local5 = f13_local7 == element
+				f13_local4 = f13_local6 < event.column
 			end
-			f43_local7 = f43_local7:getNextSibling()
+			f13_local7 = f13_local7:getNextSibling()
 		end
-		element.listDefaultFocus = f43_local4 and (f43_local3 or f43_local5)
+		element.listDefaultFocus = f13_local4 and (f13_local3 or f13_local5)
 	end )
 end
 
-LUI.UIGrid.RemoveElement = function ( f8_arg0, f8_arg1 )
-	local f8_local0 = nil
-	local f8_local1 = f8_arg0.vlist:getFirstChild()
-	while f8_local1 do
-		if f8_arg1:getParent() == f8_local1 then
-			LUI.UIHorizontalList.RemoveElement( f8_local1, f8_arg1 )
-			f8_arg0:shiftFirstElementFromNextRow( f8_local1 )
-			f8_arg0:rowEmptinessCheck( f8_local1, f8_local0 )
+LUI.UIGrid.RemoveElement = function ( f14_arg0, f14_arg1 )
+	local f14_local0 = nil
+	local f14_local1 = f14_arg0.vlist:getFirstChild()
+	while f14_local1 do
+		if f14_arg1:getParent() == f14_local1 then
+			LUI.UIHorizontalList.RemoveElement( f14_local1, f14_arg1 )
+			f14_arg0:shiftFirstElementFromNextRow( f14_local1 )
+			f14_arg0:rowEmptinessCheck( f14_local1, f14_local0 )
 			break
 		end
-		f8_local0 = f8_local1
-		f8_local1 = f8_local1:getNextSibling()
+		f14_local0 = f14_local1
+		f14_local1 = f14_local1:getNextSibling()
 	end
-	f8_arg0:updateNavigation()
+	f14_arg0:updateNavigation()
 end
 
-LUI.UIGrid.UpdateNavigation = function ( f9_arg0, f9_arg1 )
-	local f9_local0 = f9_arg0.vlist:getFirstChild()
-	local f9_local1, f9_local2 = nil
-	while f9_local0 do
-		if f9_local1 == nil then
-			f9_local1 = f9_local0
+LUI.UIGrid.UpdateNavigation = function ( f15_arg0, f15_arg1 )
+	local f15_local0 = f15_arg0.vlist:getFirstChild()
+	local f15_local1, f15_local2 = nil
+	while f15_local0 do
+		if f15_local1 == nil then
+			f15_local1 = f15_local0
 		end
-		f9_arg0:updateRowFocusability( f9_local0 )
-		f9_local2 = f9_local0
-		f9_local0 = f9_local0:getNextSibling()
+		f15_arg0:updateRowFocusability( f15_local0 )
+		f15_local2 = f15_local0
+		f15_local0 = f15_local0:getNextSibling()
 	end
-	LUI.UIVerticalList.UpdateNavigation( f9_arg0.vlist )
-	f9_local0 = f9_arg0.vlist:getFirstChild()
-	while f9_local0 do
-		LUI.UIHorizontalList.UpdateNavigation( f9_local0 )
-		local f9_local3 = f9_local0:getFirstChild()
-		while f9_local3 do
-			if f9_local3:canFocus() then
-				f9_local3.canRepeatWrapUp = false
-				f9_local3.canRepeatWrapDown = false
+	LUI.UIVerticalList.UpdateNavigation( f15_arg0.vlist )
+	f15_local0 = f15_arg0.vlist:getFirstChild()
+	while f15_local0 do
+		LUI.UIHorizontalList.UpdateNavigation( f15_local0 )
+		local f15_local3 = f15_local0:getFirstChild()
+		while f15_local3 do
+			if f15_local3:canFocus() then
+				f15_local3.canRepeatWrapUp = false
+				f15_local3.canRepeatWrapDown = false
 			end
-			f9_local3 = f9_local3:getNextSibling()
+			f15_local3 = f15_local3:getNextSibling()
 		end
-		f9_local0 = f9_local0:getNextSibling()
+		f15_local0 = f15_local0:getNextSibling()
 	end
-	if f9_local1 then
-		local f9_local3 = f9_local1:getFirstChild()
-		while f9_local3 do
-			if f9_local3:canFocus() then
-				f9_local3.canRepeatWrapUp = true
+	if f15_local1 then
+		local f15_local3 = f15_local1:getFirstChild()
+		while f15_local3 do
+			if f15_local3:canFocus() then
+				f15_local3.canRepeatWrapUp = true
 			end
-			f9_local3 = f9_local3:getNextSibling()
+			f15_local3 = f15_local3:getNextSibling()
 		end
 	end
-	if f9_local2 then
-		local f9_local3 = f9_local2:getFirstChild()
-		while f9_local3 do
-			if f9_local3:canFocus() then
-				f9_local3.canRepeatWrapDown = true
+	if f15_local2 then
+		local f15_local3 = f15_local2:getFirstChild()
+		while f15_local3 do
+			if f15_local3:canFocus() then
+				f15_local3.canRepeatWrapDown = true
 			end
-			f9_local3 = f9_local3:getNextSibling()
+			f15_local3 = f15_local3:getNextSibling()
 		end
 	end
 end
 
-LUI.UIGrid.UpdateRowFocusability = function ( f10_arg0, f10_arg1 )
-	local f10_local0 = f10_arg1:canFocus()
-	local f10_local1 = false
-	local f10_local2 = f10_arg1:getFirstChild()
-	while f10_local2 do
-		if f10_local2:canFocus() then
-			f10_local1 = true
+LUI.UIGrid.UpdateRowFocusability = function ( f16_arg0, f16_arg1 )
+	local f16_local0 = f16_arg1:canFocus()
+	local f16_local1 = false
+	local f16_local2 = f16_arg1:getFirstChild()
+	while f16_local2 do
+		if f16_local2:canFocus() then
+			f16_local1 = true
 			break
 		end
-		f10_local2 = f10_local2:getNextSibling()
+		f16_local2 = f16_local2:getNextSibling()
 	end
-	if f10_local1 ~= f10_local0 then
-		if f10_local1 then
-			f10_arg1:makeFocusable()
+	if f16_local1 ~= f16_local0 then
+		if f16_local1 then
+			f16_arg1:makeFocusable()
 		else
-			f10_arg1:makeNotFocusable()
+			f16_arg1:makeNotFocusable()
 		end
 	end
 end
 
-LUI.UIGrid.RowEmptinessCheck = function ( f11_arg0, f11_arg1, f11_arg2 )
-	if f11_arg1:getNumChildren() == 0 then
-		f11_arg0.vlist:removeElement( f11_arg1 )
+LUI.UIGrid.RowEmptinessCheck = function ( f17_arg0, f17_arg1, f17_arg2 )
+	if f17_arg1:getNumChildren() == 0 then
+		f17_arg0.vlist:removeElement( f17_arg1 )
 	end
 end
 
-LUI.UIGrid.ShiftFirstElementFromNextRow = function ( f12_arg0, f12_arg1 )
-	local f12_local0 = f12_arg1:getNextSibling()
-	if f12_local0 then
-		local f12_local1 = f12_local0:getFirstChild()
-		if f12_local1 then
-			LUI.UIHorizontalList.RemoveElement( f12_local0, f12_local1 )
-			f12_arg0:rowEmptinessCheck( f12_local0, f12_arg1 )
-			f12_arg1:addElement( f12_local1 )
-			f12_arg0:shiftFirstElementFromNextRow( f12_local0 )
+LUI.UIGrid.ShiftFirstElementFromNextRow = function ( f18_arg0, f18_arg1 )
+	local f18_local0 = f18_arg1:getNextSibling()
+	if f18_local0 then
+		local f18_local1 = f18_local0:getFirstChild()
+		if f18_local1 then
+			LUI.UIHorizontalList.RemoveElement( f18_local0, f18_local1 )
+			f18_arg0:rowEmptinessCheck( f18_local0, f18_arg1 )
+			f18_arg1:addElement( f18_local1 )
+			f18_arg0:shiftFirstElementFromNextRow( f18_local0 )
 		end
 	end
 end

@@ -260,9 +260,9 @@ function TransferSettingsToGame()
 		if not Engine.IsPCApp() and f14_local2 ~= Engine.GetDvarString( "r_letterboxAspectRatio" ) and f14_local2 ~= "auto" then
 			local f14_local3 = {
 				standard = 1.33,
-				wide 16:10 = 1.6,
-				wide 16:9 = 1.78,
-				wide 21:9 = 2.37
+				["wide 16:10"] = 1.6,
+				["wide 16:9"] = 1.78,
+				["wide 21:9"] = 2.37
 			}
 			local f14_local4 = f14_local3[f14_local2]
 			local f14_local5 = LUI.StringSplit( f14_local1, " " )
@@ -306,12 +306,12 @@ function optimal_notice( f15_arg0, f15_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_RESET_SYSTEM_DEFAULTS" ),
 		message_text = Engine.Localize( "@MENU_RESTORE_DEFAULTS" ),
-		yes_action = function ( f25_arg0, f25_arg1 )
+		yes_action = function ( f16_arg0, f16_arg1 )
 			Engine.SetRecommended()
 			Engine.Exec( "wait; wait; r_applyPicmip;" )
 		end
 		,
-		no_action = function ( f26_arg0, f26_arg1 )
+		no_action = function ( f17_arg0, f17_arg1 )
 			DebugPrint( "Running generic_onfirmation_popup no action" )
 		end
 		,
@@ -320,67 +320,67 @@ function optimal_notice( f15_arg0, f15_arg1 )
 	} )
 end
 
-function PCOptionsMainClose( f16_arg0, f16_arg1 )
+function PCOptionsMainClose( f18_arg0, f18_arg1 )
 	Engine.ExecNow( "profile_menuDvarsFinish" )
 	Engine.Exec( "updategamerprofile" )
 end
 
-function InGameDisabledFunc( f17_arg0, f17_arg1 )
-	local f17_local0
+function InGameDisabledFunc( f19_arg0, f19_arg1 )
+	local f19_local0
 	if Engine.CanVidRestart() then
-		f17_local0 = Engine.IsMultiplayer()
-		if f17_local0 then
-			f17_local0 = not Engine.InFrontend()
+		f19_local0 = Engine.IsMultiplayer()
+		if f19_local0 then
+			f19_local0 = not Engine.InFrontend()
 		end
 	else
-		f17_local0 = true
+		f19_local0 = true
 	end
-	return f17_local0
+	return f19_local0
 end
 
-function SinglePlayerDisabled( f18_arg0, f18_arg1 )
+function SinglePlayerDisabled( f20_arg0, f20_arg1 )
 	return not Engine.IsMultiplayer()
 end
 
-function SinglePlayerVoiceDisable( f19_arg0, f19_arg1 )
-	if SinglePlayerDisabled( f19_arg0, f19_arg1 ) then
-		f19_arg0:processEvent( {
+function SinglePlayerVoiceDisable( f21_arg0, f21_arg1 )
+	if SinglePlayerDisabled( f21_arg0, f21_arg1 ) then
+		f21_arg0:processEvent( {
 			name = "disable"
 		} )
 	end
 end
 
-function ResetControlsYesAction( f20_arg0, f20_arg1 )
+function ResetControlsYesAction( f22_arg0, f22_arg1 )
 	if Engine.IsGamepadEnabled() then
-		local f20_local0 = f20_arg1.controller
-		Engine.ExecNow( "profile_setSticksConfig thumbstick_default", f20_local0 )
-		Engine.ExecNow( "profile_setButtonsConfig buttons_default", f20_local0 )
-		Engine.ExecNow( "profile_toggleInvertedPitch 0", f20_local0 )
-		Engine.ExecNow( "profile_toggleInvertedFlightPitch 0", f20_local0 )
-		Engine.ExecNow( "profile_toggleRumble 1", f20_local0 )
-		Engine.ExecNow( "profile_toggleLean 1", f20_local0 )
-		Engine.ExecNow( "profile_toggleAutoAim 1", f20_local0 )
-		Engine.ExecNow( "profile_toggleAutoWeaponSwitch 1", f20_local0 )
-		Engine.MenuDvarsFinish( f20_local0 )
-		Engine.SetProfileData( "viewSensitivityPitch", 3, f20_local0 )
-		Engine.SetProfileData( "viewSensitivityYaw", 3, f20_local0 )
+		local f22_local0 = f22_arg1.controller
+		Engine.ExecNow( "profile_setSticksConfig thumbstick_default", f22_local0 )
+		Engine.ExecNow( "profile_setButtonsConfig buttons_default", f22_local0 )
+		Engine.ExecNow( "profile_toggleInvertedPitch 0", f22_local0 )
+		Engine.ExecNow( "profile_toggleInvertedFlightPitch 0", f22_local0 )
+		Engine.ExecNow( "profile_toggleRumble 1", f22_local0 )
+		Engine.ExecNow( "profile_toggleLean 1", f22_local0 )
+		Engine.ExecNow( "profile_toggleAutoAim 1", f22_local0 )
+		Engine.ExecNow( "profile_toggleAutoWeaponSwitch 1", f22_local0 )
+		Engine.MenuDvarsFinish( f22_local0 )
+		Engine.SetProfileData( "viewSensitivityPitch", 3, f22_local0 )
+		Engine.SetProfileData( "viewSensitivityYaw", 3, f22_local0 )
 		Engine.Exec( "updategamerprofile" )
 	elseif Engine.GetCurrentLanguage() ~= CoD.Language.French then
 		Engine.Exec( "exec default_smp_controls.cfg" )
 	else
-		f20_arg0:dispatchEventToRoot( {
+		f22_arg0:dispatchEventToRoot( {
 			name = "check_switch_to_azerty",
 			resetControl = true
 		} )
 	end
 end
 
-function reset_controls( f21_arg0, f21_arg1 )
+function reset_controls( f23_arg0, f23_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@LUA_MENU_SET_DEFAULT_CONTROLS" ),
 		message_text = Engine.Localize( "@LUA_MENU_RESTORE_EACH_SETTING_CONSOLE" ),
 		yes_action = ResetControlsYesAction,
-		no_action = function ( f27_arg0, f27_arg1 )
+		no_action = function ( f24_arg0, f24_arg1 )
 			DebugPrint( "Running generic_confirmation_popup no action" )
 		end
 		,
@@ -389,60 +389,60 @@ function reset_controls( f21_arg0, f21_arg1 )
 	} )
 end
 
-function openSystemInfo( f22_arg0, f22_arg1 )
-	local f22_local0 = 360
+function openSystemInfo( f25_arg0, f25_arg1 )
+	local f25_local0 = 360
 	if Engine.IsMultiplayer() then
-		f22_local0 = 150
+		f25_local0 = 150
 	end
-	LUI.FlowManager.RequestAddMenu( f22_arg0, "SystemInfo", true, f22_arg1.controller, false, {
-		menu_height = f22_local0
+	LUI.FlowManager.RequestAddMenu( f25_arg0, "SystemInfo", true, f25_arg1.controller, false, {
+		menu_height = f25_local0
 	} )
 end
 
-LUI.PCOptionsMenu.new = function ( f23_arg0, f23_arg1 )
-	local f23_local0 = LUI.MenuTemplate.new( f23_arg0, {
+LUI.PCOptionsMenu.new = function ( f26_arg0, f26_arg1 )
+	local f26_local0 = LUI.MenuTemplate.new( f26_arg0, {
 		menu_title = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_OPTIONS_UPPER_CASE" ) ),
 		menu_top_indent = Engine.IsMultiplayer() and 0 or LUI.MenuTemplate.spMenuOffset
 	} )
-	f23_local0:AddButton( "@LUA_MENU_GRAPHIC_OPTIONS", "pc_display", nil, nil, nil, {
+	f26_local0:AddButton( "@LUA_MENU_GRAPHIC_OPTIONS", "pc_display", nil, nil, nil, {
 		desc_text = Engine.Localize( "@LUA_MENU_GRAPHIC_OPTIONS_DESC" )
 	} )
-	f23_local0:AddButton( "@LUA_MENU_AUDIO_OPTIONS", "pc_audio", nil, nil, nil, {
+	f26_local0:AddButton( "@LUA_MENU_AUDIO_OPTIONS", "pc_audio", nil, nil, nil, {
 		desc_text = Engine.Localize( "@LUA_MENU_AUDIO_OPTIONS_DESC" )
 	} )
 	if Engine.IsGamepadEnabled() then
-		f23_local0:AddButton( "@LUA_MENU_CONTROL_OPTIONS", "gamepad_controls", nil, nil, nil, {
+		f26_local0:AddButton( "@LUA_MENU_CONTROL_OPTIONS", "gamepad_controls", nil, nil, nil, {
 			desc_text = Engine.Localize( "@LUA_MENU_CONTROL_OPTIONS_DESC" )
 		} )
 	else
-		f23_local0:AddButton( "@LUA_MENU_CONTROL_OPTIONS", "movement_controls", nil, nil, nil, {
+		f26_local0:AddButton( "@LUA_MENU_CONTROL_OPTIONS", "movement_controls", nil, nil, nil, {
 			desc_text = Engine.Localize( "@LUA_MENU_CONTROL_OPTIONS_DESC" )
 		} )
 	end
-	f23_local0:AddButton( "@LUA_MENU_SYSTEM_INFO", openSystemInfo, nil, nil, nil, {
+	f26_local0:AddButton( "@LUA_MENU_SYSTEM_INFO", openSystemInfo, nil, nil, nil, {
 		desc_text = Engine.Localize( "@LUA_MENU_SYSTEM_INFO_DESC" )
 	} )
 	if Engine.InFrontend() and Engine.IsMultiplayer() and CoD.IsCoDAccountRegistrationAvailableInMyRegion() then
-		local f23_local1 = Engine.Localize( "@LUA_MENU_CODA_SET_UP_ACCOUNT" )
-		local f23_local2 = false
+		local f26_local1 = Engine.Localize( "@LUA_MENU_CODA_SET_UP_ACCOUNT" )
+		local f26_local2 = false
 		if not Engine.GetOnlineGame() then
-			f23_local1 = Engine.Localize( "@LUA_MENU_CODA_ONLINE_REQUIRED" )
-			f23_local2 = true
-		elseif not Engine.IsCODAccountEnabled( f23_arg1.exclusiveController ) then
-			f23_local1 = Engine.Localize( "@LUA_MENU_COD_ANYWHERE_UNAVAILABLE" )
-			f23_local2 = true
+			f26_local1 = Engine.Localize( "@LUA_MENU_CODA_ONLINE_REQUIRED" )
+			f26_local2 = true
+		elseif not Engine.IsCODAccountEnabled( f26_arg1.exclusiveController ) then
+			f26_local1 = Engine.Localize( "@LUA_MENU_COD_ANYWHERE_UNAVAILABLE" )
+			f26_local2 = true
 		end
-		f23_local0:AddButton( "@LUA_MENU_COD_ANYWHERE_CAPS", OpenCoDAnywhere, f23_local2, nil, nil, {
-			desc_text = f23_local1
+		f26_local0:AddButton( "@LUA_MENU_COD_ANYWHERE_CAPS", OpenCoDAnywhere, f26_local2, nil, nil, {
+			desc_text = f26_local1
 		} )
 	end
-	LUI.Options.InitScrollingList( f23_local0.list, nil )
-	LUI.Options.AddOptionTextInfo( f23_local0 )
-	f23_local0:AddBackButton( function ( f28_arg0, f28_arg1 )
-		PCOptionsMainClose( f28_arg0, f28_arg1 )
-		LUI.FlowManager.RequestLeaveMenu( f28_arg0 )
+	LUI.Options.InitScrollingList( f26_local0.list, nil )
+	LUI.Options.AddOptionTextInfo( f26_local0 )
+	f26_local0:AddBackButton( function ( f27_arg0, f27_arg1 )
+		PCOptionsMainClose( f27_arg0, f27_arg1 )
+		LUI.FlowManager.RequestLeaveMenu( f27_arg0 )
 	end )
-	return f23_local0
+	return f26_local0
 end
 
 LUI.MenuBuilder.registerPopupType( "optimal_notice", optimal_notice )

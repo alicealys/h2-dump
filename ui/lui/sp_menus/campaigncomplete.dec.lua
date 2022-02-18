@@ -66,12 +66,12 @@ function CampaignCompleteMenu( f1_arg0, f1_arg1 )
 		end
 	end
 	
-	local self = LUI.UIBindButton.new()
-	self:registerEventHandler( "button_start", f1_local3 )
-	self:registerEventHandler( "button_action", f1_local3 )
-	self:registerEventHandler( "button_secondary", f1_local3 )
-	self.handlePrimary = true
-	self:addElement( self )
+	local f1_local4 = LUI.UIBindButton.new()
+	f1_local4:registerEventHandler( "button_start", f1_local3 )
+	f1_local4:registerEventHandler( "button_action", f1_local3 )
+	f1_local4:registerEventHandler( "button_secondary", f1_local3 )
+	f1_local4.handlePrimary = true
+	self:addElement( f1_local4 )
 	return self
 end
 

@@ -294,18 +294,18 @@ LUI.MenuBuilder.registerType( "snowGogglesHudDef", function ()
 			
 			local f9_local2 = CoD.CreateState( -180, 320, 180, 320, CoD.AnchorTypes.All )
 			f9_local2.material = RegisterMaterial( "h2_overlays_snowgoggles_put" )
-			local self = LUI.UIImage.new( f9_local2 )
-			self.id = "gogglesFrameId"
-			self:setUseGameTime( true )
-			self:registerAnimationState( "frameUpLarge", f9_local2 )
-			self:registerAnimationState( "frameUpTight", CoD.CreateState( 0, 320, 0, 320, CoD.AnchorTypes.All ) )
+			local f9_local3 = LUI.UIImage.new( f9_local2 )
+			f9_local3.id = "gogglesFrameId"
+			f9_local3:setUseGameTime( true )
+			f9_local3:registerAnimationState( "frameUpLarge", f9_local2 )
+			f9_local3:registerAnimationState( "frameUpTight", CoD.CreateState( 0, 320, 0, 320, CoD.AnchorTypes.All ) )
 			local f9_local4 = 200
 			if Engine.IsPC() then
 				f9_local4 = Engine.GetAspectRatio() * f9_local4 / 1.78
 			end
-			self:registerAnimationState( "frameDown", CoD.CreateState( -f9_local4, 750, f9_local4, 750, CoD.AnchorTypes.All ) )
-			self.frame = self
-			carry:addElement( self )
+			f9_local3:registerAnimationState( "frameDown", CoD.CreateState( -f9_local4, 750, f9_local4, 750, CoD.AnchorTypes.All ) )
+			self.frame = f9_local3
+			carry:addElement( f9_local3 )
 			local f9_local5 = {
 				leftAnchor = true,
 				rightAnchor = false,
@@ -317,24 +317,24 @@ LUI.MenuBuilder.registerType( "snowGogglesHudDef", function ()
 				bottom = 0,
 				material = RegisterMaterial( "h2_overlay_frozen_l" )
 			}
-			local self = LUI.UIImage.new( f9_local5 )
-			self.id = "frostLId"
-			carry:addElement( self )
+			local f9_local6 = LUI.UIImage.new( f9_local5 )
+			f9_local6.id = "frostLId"
+			carry:addElement( f9_local6 )
 			f9_local5.right = ScreenResolution.HD.width / 8
 			f9_local5.material = RegisterMaterial( "h2_overlays_snowgoggles_distortion_l" )
-			local self = LUI.UIImage.new( f9_local5 )
-			self.id = "distortionLId"
-			carry:addElement( self )
+			local f9_local7 = LUI.UIImage.new( f9_local5 )
+			f9_local7.id = "distortionLId"
+			carry:addElement( f9_local7 )
 			f9_local5.material = RegisterMaterial( "h2_overlays_snowgoggles_corner_blur_l" )
-			local self = LUI.UIImage.new( f9_local5 )
-			self.id = "cornerLId"
-			carry:addElement( self )
+			local f9_local8 = LUI.UIImage.new( f9_local5 )
+			f9_local8.id = "cornerLId"
+			carry:addElement( f9_local8 )
 			f9_local5.right = ScreenResolution.HD.width / 4
 			f9_local5.material = RegisterMaterial( "h2_overlays_snowgoggles_shadow_l" )
 			f9_local5.bottom = 28
-			local self = LUI.UIImage.new( f9_local5 )
-			self.id = "shadowLId"
-			carry:addElement( self )
+			local f9_local9 = LUI.UIImage.new( f9_local5 )
+			f9_local9.id = "shadowLId"
+			carry:addElement( f9_local9 )
 			local f9_local10 = {
 				leftAnchor = false,
 				rightAnchor = true,
@@ -346,25 +346,25 @@ LUI.MenuBuilder.registerType( "snowGogglesHudDef", function ()
 				bottom = 0,
 				material = RegisterMaterial( "h2_overlay_frozen_r" )
 			}
-			local self = LUI.UIImage.new( f9_local10 )
-			self.id = "frostRId"
-			carry:addElement( self )
+			local f9_local11 = LUI.UIImage.new( f9_local10 )
+			f9_local11.id = "frostRId"
+			carry:addElement( f9_local11 )
 			f9_local10.left = ScreenResolution.HD.width / -8
 			f9_local10.material = RegisterMaterial( "h2_overlays_snowgoggles_distortion_r" )
-			local self = LUI.UIImage.new( f9_local10 )
-			self.id = "distortionRId"
-			carry:addElement( self )
+			local f9_local12 = LUI.UIImage.new( f9_local10 )
+			f9_local12.id = "distortionRId"
+			carry:addElement( f9_local12 )
 			f9_local10.material = RegisterMaterial( "h2_overlays_snowgoggles_corner_blur_r" )
-			local self = LUI.UIImage.new( f9_local10 )
-			self.id = "cornerRId"
-			carry:addElement( self )
+			local f9_local13 = LUI.UIImage.new( f9_local10 )
+			f9_local13.id = "cornerRId"
+			carry:addElement( f9_local13 )
 			f9_local10.left = ScreenResolution.HD.width / -4
 			f9_local10.material = RegisterMaterial( "h2_overlays_snowgoggles_shadow_r" )
 			f9_local10.bottom = 28
-			local self = LUI.UIImage.new( f9_local10 )
-			self.id = "shadowRId"
-			carry:addElement( self )
-			local self = LUI.UIImage.new( {
+			local f9_local14 = LUI.UIImage.new( f9_local10 )
+			f9_local14.id = "shadowRId"
+			carry:addElement( f9_local14 )
+			local f9_local15 = LUI.UIImage.new( {
 				leftAnchor = true,
 				rightAnchor = true,
 				topAnchor = true,
@@ -376,17 +376,17 @@ LUI.MenuBuilder.registerType( "snowGogglesHudDef", function ()
 				color = Colors.black,
 				alpha = 0
 			} )
-			self.id = "fullscreenBlackTransition"
-			self:registerAnimationState( "default", {
+			f9_local15.id = "fullscreenBlackTransition"
+			f9_local15:registerAnimationState( "default", {
 				alpha = 0
 			} )
-			self:registerAnimationState( "transition", {
+			f9_local15:registerAnimationState( "transition", {
 				alpha = 0.75
 			} )
-			self:setUseGameTime( true )
-			self.blackTransition = self
-			self:addElement( self )
-			local self = LUI.UIImage.new( {
+			f9_local15:setUseGameTime( true )
+			self.blackTransition = f9_local15
+			self:addElement( f9_local15 )
+			local f9_local16 = LUI.UIImage.new( {
 				leftAnchor = true,
 				rightAnchor = true,
 				topAnchor = true,
@@ -398,16 +398,16 @@ LUI.MenuBuilder.registerType( "snowGogglesHudDef", function ()
 				material = RegisterMaterial( "h1_hud_overlay_eyelids_vignette_blur" ),
 				alpha = 0
 			} )
-			self.id = "fullscreenBlurTransition"
-			self:registerAnimationState( "default", {
+			f9_local16.id = "fullscreenBlurTransition"
+			f9_local16:registerAnimationState( "default", {
 				alpha = 0
 			} )
-			self:registerAnimationState( "transition", {
+			f9_local16:registerAnimationState( "transition", {
 				alpha = 0.75
 			} )
-			self:setUseGameTime( true )
-			self.blurTransition = self
-			self:addElement( self )
+			f9_local16:setUseGameTime( true )
+			self.blurTransition = f9_local16
+			self:addElement( f9_local16 )
 		end
 	end
 	

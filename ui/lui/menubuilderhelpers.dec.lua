@@ -7,621 +7,623 @@ function Property( f1_arg0, f1_arg1 )
 	f1_local0.propName = f1_arg0
 	f1_local0.propAlias = f1_arg1
 	f1_local0.isProperty = true
-	f1_local0.func = function ( f41_arg0 )
-		local f41_local0 = assert
-		local f41_local1
-		if f41_arg0[f1_local0.propName] == nil and (f1_local0.propAlias == nil or f41_arg0[f1_local0.propAlias] == nil) then
-			f41_local1 = false
+	f1_local0.func = function ( f2_arg0 )
+		local f2_local0 = assert
+		local f2_local1
+		if f2_arg0[f1_local0.propName] == nil and (f1_local0.propAlias == nil or f2_arg0[f1_local0.propAlias] == nil) then
+			f2_local1 = false
 		else
-			f41_local1 = true
+			f2_local1 = true
 		end
-		f41_local0( f41_local1, "Could not find property named " .. f1_local0.propName )
-		if f41_arg0[f1_local0.propName] ~= nil then
-			return f41_arg0[f1_local0.propName]
+		f2_local0( f2_local1, "Could not find property named " .. f1_local0.propName )
+		if f2_arg0[f1_local0.propName] ~= nil then
+			return f2_arg0[f1_local0.propName]
 		else
-			return f41_arg0[f1_local0.propAlias]
+			return f2_arg0[f1_local0.propAlias]
 		end
 	end
 	
 	return f1_local0
 end
 
-function PropertyOrDefault( f2_arg0, f2_arg1 )
-	local f2_local0 = {}
-	assert( f2_arg0, "No property name given" )
-	f2_local0.propName = f2_arg0
-	f2_local0.propAlias = propAlias
-	f2_local0.isProperty = true
-	f2_local0.func = function ( f13_arg0 )
-		local f13_local0 = assert
-		local f13_local1
-		if f13_arg0[f2_local0.propName] == nil and f2_arg1 == nil then
-			f13_local1 = false
-		else
-			f13_local1 = true
-		end
-		f13_local0( f13_local1, "Could not find property named " .. f2_local0.propName .. " and no default value is given." )
-		if f13_arg0[f2_local0.propName] ~= nil then
-			return f13_arg0[f2_local0.propName]
-		else
-			return f2_arg1
-		end
-	end
-	
-	return f2_local0
-end
-
-function OppositeProperty( f3_arg0 )
+function PropertyOrDefault( f3_arg0, f3_arg1 )
 	local f3_local0 = {}
 	assert( f3_arg0, "No property name given" )
 	f3_local0.propName = f3_arg0
+	f3_local0.propAlias = propAlias
 	f3_local0.isProperty = true
-	f3_local0.func = function ( f15_arg0 )
-		assert( f15_arg0[f3_local0.propName] ~= nil, "Could not find property named " .. f3_local0.propName )
-		if type( f15_arg0[f3_local0.propName] ) == "number" then
-			return -f15_arg0[f3_local0.propName]
-		elseif type( f15_arg0[f3_local0.propName] ) == "boolean" then
-			return not f15_arg0[f3_local0.propName]
+	f3_local0.func = function ( f4_arg0 )
+		local f4_local0 = assert
+		local f4_local1
+		if f4_arg0[f3_local0.propName] == nil and f3_arg1 == nil then
+			f4_local1 = false
 		else
-			assert( false, "Property " .. f3_local0.propName .. " should be a number or a boolean for use with the OppositeProperty helper" )
+			f4_local1 = true
+		end
+		f4_local0( f4_local1, "Could not find property named " .. f3_local0.propName .. " and no default value is given." )
+		if f4_arg0[f3_local0.propName] ~= nil then
+			return f4_arg0[f3_local0.propName]
+		else
+			return f3_arg1
 		end
 	end
 	
 	return f3_local0
 end
 
-function HalfProperty( f4_arg0 )
-	local f4_local0 = {}
-	assert( f4_arg0, "No property name given" )
-	f4_local0.propName = f4_arg0
-	f4_local0.isProperty = true
-	f4_local0.func = function ( f17_arg0 )
-		assert( f17_arg0[f4_local0.propName] ~= nil, "Could not find property named " .. f4_local0.propName )
-		if type( f17_arg0[f4_local0.propName] ) == "number" then
-			return 0.5 * f17_arg0[f4_local0.propName]
-		else
-			assert( false, "Property " .. f4_local0.propName .. " should be a number for use with the HalfProperty helper" )
-		end
-	end
-	
-	return f4_local0
-end
-
-function HalfOppositeProperty( f5_arg0 )
+function OppositeProperty( f5_arg0 )
 	local f5_local0 = {}
 	assert( f5_arg0, "No property name given" )
 	f5_local0.propName = f5_arg0
 	f5_local0.isProperty = true
-	f5_local0.func = function ( f21_arg0 )
-		assert( f21_arg0[f5_local0.propName] ~= nil, "Could not find property named " .. f5_local0.propName )
-		if type( f21_arg0[f5_local0.propName] ) == "number" then
-			return -0.5 * f21_arg0[f5_local0.propName]
+	f5_local0.func = function ( f6_arg0 )
+		assert( f6_arg0[f5_local0.propName] ~= nil, "Could not find property named " .. f5_local0.propName )
+		if type( f6_arg0[f5_local0.propName] ) == "number" then
+			return -f6_arg0[f5_local0.propName]
+		elseif type( f6_arg0[f5_local0.propName] ) == "boolean" then
+			return not f6_arg0[f5_local0.propName]
 		else
-			assert( false, "Property " .. f5_local0.propName .. " should be a number for use with the HalfOppositeProperty helper" )
+			assert( false, "Property " .. f5_local0.propName .. " should be a number or a boolean for use with the OppositeProperty helper" )
 		end
 	end
 	
 	return f5_local0
 end
 
-function RunPropertyFunc( f6_arg0 )
-	return function ( f22_arg0, f22_arg1 )
-		if f22_arg0.properties[f6_arg0] and type( f22_arg0.properties[f6_arg0] ) == "function" then
-			f22_arg0.properties[f6_arg0]( f22_arg0, f22_arg1 )
+function HalfProperty( f7_arg0 )
+	local f7_local0 = {}
+	assert( f7_arg0, "No property name given" )
+	f7_local0.propName = f7_arg0
+	f7_local0.isProperty = true
+	f7_local0.func = function ( f8_arg0 )
+		assert( f8_arg0[f7_local0.propName] ~= nil, "Could not find property named " .. f7_local0.propName )
+		if type( f8_arg0[f7_local0.propName] ) == "number" then
+			return 0.5 * f8_arg0[f7_local0.propName]
+		else
+			assert( false, "Property " .. f7_local0.propName .. " should be a number for use with the HalfProperty helper" )
 		end
 	end
 	
+	return f7_local0
 end
 
-function ParentProperty( f7_arg0 )
-	local f7_local0 = f7_arg0
-	return function ( f23_arg0, f23_arg1 )
-		assert( f23_arg1, "ParentProperty can only be included inside the property section" )
-		return f23_arg1[f7_local0]
-	end
-	
-end
-
-function TryProperty( f8_arg0 )
-	local f8_local0 = f8_arg0
-	return function ( f24_arg0 )
-		return f24_arg0[f8_local0]
-	end
-	
-end
-
-function NegateProperty( f9_arg0 )
+function HalfOppositeProperty( f9_arg0 )
 	local f9_local0 = {}
-	assert( f9_arg0, "No input given" )
+	assert( f9_arg0, "No property name given" )
+	f9_local0.propName = f9_arg0
 	f9_local0.isProperty = true
-	f9_local0.func = function ( f25_arg0 )
-		return -f9_arg0.func( f25_arg0 )
+	f9_local0.func = function ( f10_arg0 )
+		assert( f10_arg0[f9_local0.propName] ~= nil, "Could not find property named " .. f9_local0.propName )
+		if type( f10_arg0[f9_local0.propName] ) == "number" then
+			return -0.5 * f10_arg0[f9_local0.propName]
+		else
+			assert( false, "Property " .. f9_local0.propName .. " should be a number for use with the HalfOppositeProperty helper" )
+		end
 	end
 	
 	return f9_local0
 end
 
-function IndexProperty( f10_arg0, f10_arg1 )
-	local f10_local0 = {}
-	assert( f10_arg0, "No input given" )
-	assert( f10_arg1, "No index given" )
-	f10_local0.index = f10_arg1
-	f10_local0.isProperty = true
-	f10_local0.func = function ( f26_arg0 )
-		local f26_local0 = f10_arg0.func( f26_arg0 )
-		return f26_local0[f10_local0.index]
-	end
-	
-	return f10_local0
-end
-
-function SumProperties( f11_arg0, f11_arg1 )
-	local f11_local0 = {}
-	assert( f11_arg0, "No input given" )
-	assert( f11_arg1, "No input given" )
-	f11_local0.isProperty = true
-	f11_local0.func = function ( f27_arg0 )
-		return f11_arg0.func( f27_arg0 ) + f11_arg1.func( f27_arg0 )
-	end
-	
-	return f11_local0
-end
-
-function Function( f12_arg0 )
-	local f12_local0 = f12_arg0
-	return function ( f28_arg0 )
-		return f12_local0( f28_arg0 )
+function RunPropertyFunc( f11_arg0 )
+	return function ( f12_arg0, f12_arg1 )
+		if f12_arg0.properties[f11_arg0] and type( f12_arg0.properties[f11_arg0] ) == "function" then
+			f12_arg0.properties[f11_arg0]( f12_arg0, f12_arg1 )
+		end
 	end
 	
 end
 
-function BaseState( f13_arg0, f13_arg1 )
+function ParentProperty( f13_arg0 )
 	local f13_local0 = f13_arg0
-	local f13_local1 = f13_arg1
-	if not f13_local1 then
-		f13_local1 = {}
-	end
-	return function ( f29_arg0 )
-		assert( f29_arg0 )
-		assert( f29_arg0.states )
-		assert( f29_arg0.states[f13_local0], "Could not find base state " .. f13_local0 )
-		assert( type( f29_arg0.states[f13_local0] ) == "table", "Must only use BaseState on non-derived states! state = " .. f13_local0 )
-		local f29_local0 = {}
-		for f29_local4, f29_local5 in pairs( f29_arg0.states[f13_local0] ) do
-			f29_local0[f29_local4] = f29_local5
-		end
-		for f29_local4, f29_local5 in pairs( f13_local1 ) do
-			f29_local0[f29_local4] = f29_local5
-		end
-		return f29_local0
+	return function ( f14_arg0, f14_arg1 )
+		assert( f14_arg1, "ParentProperty can only be included inside the property section" )
+		return f14_arg1[f13_local0]
 	end
 	
 end
 
-function OpenMenu( f14_arg0, f14_arg1, f14_arg2, f14_arg3 )
-	local f14_local0 = f14_arg0
-	local f14_local1 = f14_arg1
-	local f14_local2 = f14_arg2
-	local f14_local3 = f14_arg3
-	return function ( f30_arg0, f30_arg1 )
-		LUI.FlowManager.RequestAddMenu( f30_arg0, f14_local0, f14_local1, f30_arg1.controller, f14_local2, f14_local3 )
-	end
-	
-end
-
-function PopupMenu( f15_arg0, f15_arg1, f15_arg2, f15_arg3 )
+function TryProperty( f15_arg0 )
 	local f15_local0 = f15_arg0
-	local f15_local1 = f15_arg1
-	local f15_local2 = f15_arg2
-	local f15_local3 = f15_arg3
-	return function ( f31_arg0, f31_arg1 )
-		LUI.FlowManager.RequestPopupMenu( f31_arg0, f15_local0, f15_local1, f31_arg1.controller, f15_local2, f15_local3 )
+	return function ( f16_arg0 )
+		return f16_arg0[f15_local0]
+	end
+	
+end
+
+function NegateProperty( f17_arg0 )
+	local f17_local0 = {}
+	assert( f17_arg0, "No input given" )
+	f17_local0.isProperty = true
+	f17_local0.func = function ( f18_arg0 )
+		return -f17_arg0.func( f18_arg0 )
+	end
+	
+	return f17_local0
+end
+
+function IndexProperty( f19_arg0, f19_arg1 )
+	local f19_local0 = {}
+	assert( f19_arg0, "No input given" )
+	assert( f19_arg1, "No index given" )
+	f19_local0.index = f19_arg1
+	f19_local0.isProperty = true
+	f19_local0.func = function ( f20_arg0 )
+		local f20_local0 = f19_arg0.func( f20_arg0 )
+		return f20_local0[f19_local0.index]
+	end
+	
+	return f19_local0
+end
+
+function SumProperties( f21_arg0, f21_arg1 )
+	local f21_local0 = {}
+	assert( f21_arg0, "No input given" )
+	assert( f21_arg1, "No input given" )
+	f21_local0.isProperty = true
+	f21_local0.func = function ( f22_arg0 )
+		return f21_arg0.func( f22_arg0 ) + f21_arg1.func( f22_arg0 )
+	end
+	
+	return f21_local0
+end
+
+function Function( f23_arg0 )
+	local f23_local0 = f23_arg0
+	return function ( f24_arg0 )
+		return f23_local0( f24_arg0 )
+	end
+	
+end
+
+function BaseState( f25_arg0, f25_arg1 )
+	local f25_local0 = f25_arg0
+	local f25_local1 = f25_arg1
+	if not f25_local1 then
+		f25_local1 = {}
+	end
+	return function ( f26_arg0 )
+		assert( f26_arg0 )
+		assert( f26_arg0.states )
+		assert( f26_arg0.states[f25_local0], "Could not find base state " .. f25_local0 )
+		assert( type( f26_arg0.states[f25_local0] ) == "table", "Must only use BaseState on non-derived states! state = " .. f25_local0 )
+		local f26_local0 = {}
+		for f26_local4, f26_local5 in pairs( f26_arg0.states[f25_local0] ) do
+			f26_local0[f26_local4] = f26_local5
+		end
+		for f26_local4, f26_local5 in pairs( f25_local1 ) do
+			f26_local0[f26_local4] = f26_local5
+		end
+		return f26_local0
+	end
+	
+end
+
+function OpenMenu( f27_arg0, f27_arg1, f27_arg2, f27_arg3 )
+	local f27_local0 = f27_arg0
+	local f27_local1 = f27_arg1
+	local f27_local2 = f27_arg2
+	local f27_local3 = f27_arg3
+	return function ( f28_arg0, f28_arg1 )
+		LUI.FlowManager.RequestAddMenu( f28_arg0, f27_local0, f27_local1, f28_arg1.controller, f27_local2, f27_local3 )
+	end
+	
+end
+
+function PopupMenu( f29_arg0, f29_arg1, f29_arg2, f29_arg3 )
+	local f29_local0 = f29_arg0
+	local f29_local1 = f29_arg1
+	local f29_local2 = f29_arg2
+	local f29_local3 = f29_arg3
+	return function ( f30_arg0, f30_arg1 )
+		LUI.FlowManager.RequestPopupMenu( f30_arg0, f29_local0, f29_local1, f30_arg1.controller, f29_local2, f29_local3 )
 	end
 	
 end
 
 function LeaveMenu()
-	return function ( f33_arg0, f33_arg1 )
-		LUI.FlowManager.RequestLeaveMenu( f33_arg0 )
+	return function ( f32_arg0, f32_arg1 )
+		LUI.FlowManager.RequestLeaveMenu( f32_arg0 )
 	end
 	
 end
 
-function RestoreMenu( f17_arg0, f17_arg1, f17_arg2 )
+function RestoreMenu( f33_arg0, f33_arg1, f33_arg2 )
 	return function ( f34_arg0, f34_arg1 )
-		LUI.FlowManager.RequestRestoreMenu( f34_arg0, f17_arg0, f17_arg1, f34_arg1.controller, f17_arg2 )
+		LUI.FlowManager.RequestRestoreMenu( f34_arg0, f33_arg0, f33_arg1, f34_arg1.controller, f33_arg2 )
 	end
 	
 end
 
 function CloseAllMenus()
-	return function ( f37_arg0, f37_arg1 )
-		LUI.FlowManager.RequestCloseAllMenus( f37_arg0, nil )
+	return function ( f36_arg0, f36_arg1 )
+		LUI.FlowManager.RequestCloseAllMenus( f36_arg0, nil )
 	end
 	
 end
 
-function OpenOldMenu( f19_arg0 )
-	local f19_local0 = f19_arg0
+function OpenOldMenu( f37_arg0 )
+	local f37_local0 = f37_arg0
 	return function ( f38_arg0, f38_arg1 )
-		LUI.FlowManager.RequestOldMenu( f38_arg0, f19_local0 )
+		LUI.FlowManager.RequestOldMenu( f38_arg0, f37_local0 )
 	end
 	
 end
 
-function EmitEvent( f20_arg0 )
-	local f20_local0 = f20_arg0
-	if type( f20_local0 ) == "string" then
-		f20_local0 = {
-			name = f20_local0
+function EmitEvent( f39_arg0 )
+	local f39_local0 = f39_arg0
+	if type( f39_local0 ) == "string" then
+		f39_local0 = {
+			name = f39_local0
 		}
 	end
-	return function ( f39_arg0, f39_arg1 )
-		f39_arg0:processEvent( f20_local0 )
+	return function ( f40_arg0, f40_arg1 )
+		f40_arg0:processEvent( f39_local0 )
 	end
 	
 end
 
-function EmitEventToParent( f21_arg0, f21_arg1 )
-	local f21_local0
-	if f21_arg1 then
-		f21_local0 = f21_arg1.saveOriginal
-		if not f21_local0 then
+function EmitEventToParent( f41_arg0, f41_arg1 )
+	local f41_local0
+	if f41_arg1 then
+		f41_local0 = f41_arg1.saveOriginal
+		if not f41_local0 then
 		
 		else
-			local f21_local1 = f21_arg0
-			if not f21_local0 and type( f21_local1 ) == "string" then
-				f21_local1 = {
-					name = f21_local1
+			local f41_local1 = f41_arg0
+			if not f41_local0 and type( f41_local1 ) == "string" then
+				f41_local1 = {
+					name = f41_local1
 				}
 			end
-			return function ( f40_arg0, f40_arg1 )
-				if f21_local0 then
-					local f40_local0 = {}
-					if type( f21_local1 ) == "string" then
-						f40_local0.name = f21_local1
+			return function ( f42_arg0, f42_arg1 )
+				if f41_local0 then
+					local f42_local0 = {}
+					if type( f41_local1 ) == "string" then
+						f42_local0.name = f41_local1
 					else
-						for f40_local4, f40_local5 in pairs( f21_local1 ) do
-							f40_local0[f40_local4] = f40_local5
+						for f42_local4, f42_local5 in pairs( f41_local1 ) do
+							f42_local0[f42_local4] = f42_local5
 						end
 					end
-					f40_local0.original = f40_arg1
-					return f40_arg0:dispatchEventToParent( f40_local0 )
+					f42_local0.original = f42_arg1
+					return f42_arg0:dispatchEventToParent( f42_local0 )
 				else
-					return f40_arg0:dispatchEventToParent( f21_local1 )
+					return f42_arg0:dispatchEventToParent( f41_local1 )
 				end
 			end
 			
 		end
 	end
-	f21_local0 = false
+	f41_local0 = false
 end
 
-function EmitEventToRoot( f22_arg0 )
-	local f22_local0 = f22_arg0
-	if type( f22_local0 ) == "string" then
-		f22_local0 = {
-			name = f22_local0
+function EmitEventToRoot( f43_arg0 )
+	local f43_local0 = f43_arg0
+	if type( f43_local0 ) == "string" then
+		f43_local0 = {
+			name = f43_local0
 		}
 	end
 	return function ( f44_arg0, f44_arg1 )
-		f44_arg0:dispatchEventToRoot( f22_local0 )
+		f44_arg0:dispatchEventToRoot( f43_local0 )
 	end
 	
 end
 
-function EmitOmnvarUpdateEventToRoot( f23_arg0 )
+function EmitOmnvarUpdateEventToRoot( f45_arg0 )
 	return function ( f46_arg0 )
 		f46_arg0:dispatchEventToRoot( {
 			name = "omnvar_update",
-			omnvar = f23_arg0,
-			value = Game.GetOmnvar( f23_arg0 )
+			omnvar = f45_arg0,
+			value = Game.GetOmnvar( f45_arg0 )
 		} )
 	end
 	
 end
 
-f0_local0 = function ( f24_arg0, f24_arg1 )
-	local f24_local0 = type( f24_arg0 )
-	if f24_local0 == "function" then
-		assert( f24_arg1.properties, "Item built that didn't get it's properties set!" )
-		DebugPrint( "defaultDuration is " .. f24_arg0( f24_arg1.properties ) )
-		return f24_arg0( f24_arg1.properties )
-	elseif f24_local0 == "table" and f24_arg0.isProperty then
-		assert( f24_arg1.properties, "Item built that didn't get it's properties set!" )
-		DebugPrint( "defaultDuration is " .. f24_arg0.func( f24_arg1.properties ) )
-		return f24_arg0.func( f24_arg1.properties )
+f0_local0 = function ( f47_arg0, f47_arg1 )
+	local f47_local0 = type( f47_arg0 )
+	if f47_local0 == "function" then
+		assert( f47_arg1.properties, "Item built that didn't get it's properties set!" )
+		DebugPrint( "defaultDuration is " .. f47_arg0( f47_arg1.properties ) )
+		return f47_arg0( f47_arg1.properties )
+	elseif f47_local0 == "table" and f47_arg0.isProperty then
+		assert( f47_arg1.properties, "Item built that didn't get it's properties set!" )
+		DebugPrint( "defaultDuration is " .. f47_arg0.func( f47_arg1.properties ) )
+		return f47_arg0.func( f47_arg1.properties )
 	else
-		return f24_arg0
+		return f47_arg0
 	end
 end
 
-function AnimateToStateWithEvent( f25_arg0, f25_arg1, f25_arg2, f25_arg3 )
-	local f25_local0 = f25_arg0
-	local f25_local1 = f25_arg1
-	local f25_local2 = f25_arg2
-	local f25_local3 = f25_arg3
-	return function ( f47_arg0, f47_arg1 )
-		local f47_local0
-		if f47_arg1 then
-			f47_local0 = f47_arg1.duration
-			if not f47_local0 then
+function AnimateToStateWithEvent( f48_arg0, f48_arg1, f48_arg2, f48_arg3 )
+	local f48_local0 = f48_arg0
+	local f48_local1 = f48_arg1
+	local f48_local2 = f48_arg2
+	local f48_local3 = f48_arg3
+	return function ( f49_arg0, f49_arg1 )
+		local f49_local0
+		if f49_arg1 then
+			f49_local0 = f49_arg1.duration
+			if not f49_local0 then
 			
 			else
-				local f47_local1 = f0_local0( f25_local2, f47_arg0 )
-				local f47_local2 = f0_local0( f25_local3, f47_arg0 )
-				if f47_arg0:hasAnimationState( f25_local0 ) then
+				local f49_local1 = f0_local0( f48_local2, f49_arg0 )
+				local f49_local2 = f0_local0( f48_local3, f49_arg0 )
+				if f49_arg0:hasAnimationState( f48_local0 ) then
 					if Engine.GetDvarBool( "lui_print_anim_states" ) then
-						local f47_local3 = "None"
-						if f47_arg0.id ~= nil then
-							f47_local3 = f47_arg0.id
+						local f49_local3 = "None"
+						if f49_arg0.id ~= nil then
+							f49_local3 = f49_arg0.id
 						end
-						DebugPrint( "LUI: AnimateToStateWithEvent: id: " .. f47_local3 .. " state: " .. f25_local0 )
+						DebugPrint( "LUI: AnimateToStateWithEvent: id: " .. f49_local3 .. " state: " .. f48_local0 )
 					end
-					f47_arg0:animateToState( f25_local0, f47_local0, f47_local1, f47_local2 )
+					f49_arg0:animateToState( f48_local0, f49_local0, f49_local1, f49_local2 )
 				end
 			end
 		end
-		f47_local0 = f0_local0( f25_local1, f47_arg0 )
+		f49_local0 = f0_local0( f48_local1, f49_arg0 )
 	end
 	
 end
 
-function AnimateToState( f26_arg0, f26_arg1, f26_arg2, f26_arg3 )
-	local f26_local0 = f26_arg0
-	local f26_local1 = f26_arg1
-	local f26_local2 = f26_arg2
-	local f26_local3 = f26_arg3
-	return function ( f48_arg0, f48_arg1 )
-		local f48_local0 = LUI.FormatAnimStateFinishEvent( f26_local0 )
-		if f48_arg0.m_eventHandlers[f48_local0] then
-			DebugPrint( "LUI Warning: AnimateLoop is overwriting an event handler " .. f26_local0 )
+function AnimateToState( f50_arg0, f50_arg1, f50_arg2, f50_arg3 )
+	local f50_local0 = f50_arg0
+	local f50_local1 = f50_arg1
+	local f50_local2 = f50_arg2
+	local f50_local3 = f50_arg3
+	return function ( f51_arg0, f51_arg1 )
+		local f51_local0 = LUI.FormatAnimStateFinishEvent( f50_local0 )
+		if f51_arg0.m_eventHandlers[f51_local0] then
+			DebugPrint( "LUI Warning: AnimateLoop is overwriting an event handler " .. f50_local0 )
 		end
-		f48_arg0:registerEventHandler( f48_local0, nil )
-		local f48_local1
-		if f48_arg1 then
-			f48_local1 = f48_arg1.duration
-			if not f48_local1 then
+		f51_arg0:registerEventHandler( f51_local0, nil )
+		local f51_local1
+		if f51_arg1 then
+			f51_local1 = f51_arg1.duration
+			if not f51_local1 then
 			
 			else
-				local f48_local2 = f0_local0( f26_local2, f48_arg0 )
-				local f48_local3 = f0_local0( f26_local3, f48_arg0 )
-				if f48_arg0:hasAnimationState( f26_local0 ) then
+				local f51_local2 = f0_local0( f50_local2, f51_arg0 )
+				local f51_local3 = f0_local0( f50_local3, f51_arg0 )
+				if f51_arg0:hasAnimationState( f50_local0 ) then
 					if Engine.GetDvarBool( "lui_print_anim_states" ) then
-						local f48_local4 = "None"
-						if f48_arg0.id ~= nil then
-							f48_local4 = f48_arg0.id
+						local f51_local4 = "None"
+						if f51_arg0.id ~= nil then
+							f51_local4 = f51_arg0.id
 						end
-						DebugPrint( "LUI: AnimateToState: id: " .. f48_local4 .. " state: " .. f26_local0 )
+						DebugPrint( "LUI: AnimateToState: id: " .. f51_local4 .. " state: " .. f50_local0 )
 					end
-					f48_arg0:animateToState( f26_local0, f48_local1, f48_local2, f48_local3 )
+					f51_arg0:animateToState( f50_local0, f51_local1, f51_local2, f51_local3 )
 				end
 			end
 		end
-		f48_local1 = f0_local0( f26_local1, f48_arg0 )
+		f51_local1 = f0_local0( f50_local1, f51_arg0 )
 	end
 	
 end
 
-function ChooseAnimateToState( f27_arg0, f27_arg1, f27_arg2 )
-	local f27_local0 = f27_arg0
-	local f27_local1 = f27_arg1
-	local f27_local2 = f27_arg2
-	return function ( f18_arg0, f18_arg1 )
-		local f18_local0 = f27_local2[1]
-		if not f18_arg1 or not f18_arg1.duration then
-			local f18_local1 = f0_local0( f27_local2[2], f18_arg0 )
+function ChooseAnimateToState( f52_arg0, f52_arg1, f52_arg2 )
+	local f52_local0 = f52_arg0
+	local f52_local1 = f52_arg1
+	local f52_local2 = f52_arg2
+	return function ( f53_arg0, f53_arg1 )
+		local f53_local0 = f52_local2[1]
+		if not f53_arg1 or not f53_arg1.duration then
+			local f53_local1 = f0_local0( f52_local2[2], f53_arg0 )
 		end
-		local f18_local2 = f0_local0( f27_local2[3], f18_arg0 )
-		local f18_local3 = f0_local0( f27_local2[4], f18_arg0 )
-		if f27_local0( f18_arg0, f18_arg1 ) then
-			f18_local0 = f27_local1[1]
-			if f18_arg1 then
-				local f18_local4 = f18_arg1.duration
+		local f53_local2 = f0_local0( f52_local2[3], f53_arg0 )
+		local f53_local3 = f0_local0( f52_local2[4], f53_arg0 )
+		if f52_local0( f53_arg0, f53_arg1 ) then
+			f53_local0 = f52_local1[1]
+			if f53_arg1 then
+				local f53_local4 = f53_arg1.duration
 			end
-			local f18_local1 = f18_local4 or f0_local0( f27_local1[2], f18_arg0 )
-			f18_local2 = f0_local0( f27_local1[3], f18_arg0 )
-			f18_local3 = f0_local0( f27_local1[4], f18_arg0 )
+			local f53_local1 = f53_local4 or f0_local0( f52_local1[2], f53_arg0 )
+			f53_local2 = f0_local0( f52_local1[3], f53_arg0 )
+			f53_local3 = f0_local0( f52_local1[4], f53_arg0 )
 		end
-		if f18_arg0:hasAnimationState( f18_local0 ) then
+		if f53_arg0:hasAnimationState( f53_local0 ) then
 			if Engine.GetDvarBool( "lui_print_anim_states" ) then
-				local f18_local5 = "None"
-				if f18_arg0.id ~= nil then
-					f18_local5 = f18_arg0.id
+				local f53_local5 = "None"
+				if f53_arg0.id ~= nil then
+					f53_local5 = f53_arg0.id
 				end
-				DebugPrint( "LUI: ChooseAnimateToState: id: " .. f18_local5 .. " state: " .. f18_local0 )
+				DebugPrint( "LUI: ChooseAnimateToState: id: " .. f53_local5 .. " state: " .. f53_local0 )
 			end
-			f18_arg0:animateToState( f18_local0, f18_local1, f18_local2, f18_local3 )
+			f53_arg0:animateToState( f53_local0, f53_local1, f53_local2, f53_local3 )
 		end
 	end
 	
 end
 
-function AnimateLoop( f28_arg0, f28_arg1, f28_arg2 )
-	local f28_local0 = f28_arg0
-	local f28_local1 = f28_arg1
-	local f28_local2 = f28_arg2
-	return function ( f19_arg0, f19_arg1 )
-		f19_arg0:animateInLoop( f28_local0, f28_local1, f28_local2 )
+function AnimateLoop( f54_arg0, f54_arg1, f54_arg2 )
+	local f54_local0 = f54_arg0
+	local f54_local1 = f54_arg1
+	local f54_local2 = f54_arg2
+	return function ( f55_arg0, f55_arg1 )
+		f55_arg0:animateInLoop( f54_local0, f54_local1, f54_local2 )
 	end
 	
 end
 
-function AnimateSequence( f29_arg0 )
-	local f29_local0 = f29_arg0
-	local f29_local1 = requireFocus
-	return function ( f20_arg0, f20_arg1 )
-		f20_arg0:animateInSequence( f29_local0, f29_local1 )
+function AnimateSequence( f56_arg0 )
+	local f56_local0 = f56_arg0
+	local f56_local1 = requireFocus
+	return function ( f57_arg0, f57_arg1 )
+		f57_arg0:animateInSequence( f56_local0, f56_local1 )
 	end
 	
 end
 
-function AnimateSequenceAndClose( f30_arg0 )
-	local f30_local0 = f30_arg0
-	local f30_local1 = requireFocus
-	return function ( f21_arg0, f21_arg1 )
+function AnimateSequenceAndClose( f58_arg0 )
+	local f58_local0 = f58_arg0
+	local f58_local1 = requireFocus
+	return function ( f59_arg0, f59_arg1 )
 		if Engine.GetDvarBool( "lui_print_anim_states" ) then
-			local f21_local0 = "None"
-			if f21_arg0.id ~= nil then
-				f21_local0 = f21_arg0.id
+			local f59_local0 = "None"
+			if f59_arg0.id ~= nil then
+				f59_local0 = f59_arg0.id
 			end
-			DebugPrint( "LUI: AnimateSequence: id: " .. f21_local0 )
+			DebugPrint( "LUI: AnimateSequence: id: " .. f59_local0 )
 		end
-		for f21_local3, f21_local4 in ipairs( f30_local0 ) do
-			local f21_local5 = LUI.FormatAnimStateFinishEvent( f21_local4[1] )
-			if f21_arg0.m_eventHandlers[f21_local5] then
-				DebugPrint( "LUI Warning: AnimateSequence is overwriting an event handler " .. f21_local4[1] )
+		for f59_local3, f59_local4 in ipairs( f58_local0 ) do
+			local f59_local5 = LUI.FormatAnimStateFinishEvent( f59_local4[1] )
+			if f59_arg0.m_eventHandlers[f59_local5] then
+				DebugPrint( "LUI Warning: AnimateSequence is overwriting an event handler " .. f59_local4[1] )
 			end
 			if Engine.GetDvarBool( "lui_print_anim_states" ) then
-				DebugPrint( "	->" .. f21_local4[1] )
+				DebugPrint( "\t->" .. f59_local4[1] )
 			end
-			f21_arg0:registerEventHandler( f21_local5, nil )
+			f59_arg0:registerEventHandler( f59_local5, nil )
 		end
-		f21_local0 = assert
-		f21_local1 = f30_local0
-		if f21_local1 then
-			f21_local1 = #f30_local0
+		f59_local0 = assert
+		f59_local1 = f58_local0
+		if f59_local1 then
+			f59_local1 = #f58_local0
 		end
-		f21_local0( f21_local1, "AnimateSequence does not have animation states!" )
-		f21_local0 = f30_local0[1]
-		f21_local1 = f30_local0[#f30_local0]
-		f21_local2 = LUI.FormatAnimStateFinishEvent( f21_local0[1] )
-		if #f30_local0 == 1 then
-			DebugPrint( "LUI Warning: AnimateSequence only has one animation state! " .. f30_local0[1][1] )
+		f59_local0( f59_local1, "AnimateSequence does not have animation states!" )
+		f59_local0 = f58_local0[1]
+		f59_local1 = f58_local0[#f58_local0]
+		f59_local2 = LUI.FormatAnimStateFinishEvent( f59_local0[1] )
+		if #f58_local0 == 1 then
+			DebugPrint( "LUI Warning: AnimateSequence only has one animation state! " .. f58_local0[1][1] )
 		else
-			f21_arg0:registerEventHandler( f21_local2, LUI.UIElement.intAnimate( f30_local0, f30_local1, 0, true ) )
+			f59_arg0:registerEventHandler( f59_local2, LUI.UIElement.intAnimate( f58_local0, f58_local1, 0, true ) )
 		end
-		f21_arg0:animateToState( f21_local0[1], f21_local0[2], f21_local0[3], f21_local0[4] )
+		f59_arg0:animateToState( f59_local0[1], f59_local0[2], f59_local0[3], f59_local0[4] )
 	end
 	
 end
 
-function BuildSpriteAnim( f31_arg0, f31_arg1, f31_arg2, f31_arg3, f31_arg4, f31_arg5, f31_arg6 )
-	if f31_arg0.states == nil then
-		f31_arg0.states = {}
+function BuildSpriteAnim( f60_arg0, f60_arg1, f60_arg2, f60_arg3, f60_arg4, f60_arg5, f60_arg6 )
+	if f60_arg0.states == nil then
+		f60_arg0.states = {}
 	end
-	for f31_local3, f31_local4 in ipairs( f31_arg2 ) do
-		f31_arg0.states["animstate_" .. f31_arg1 .. "_" .. f31_local3] = {
-			material = RegisterMaterial( f31_local4 )
+	for f60_local3, f60_local4 in ipairs( f60_arg2 ) do
+		f60_arg0.states["animstate_" .. f60_arg1 .. "_" .. f60_local3] = {
+			material = RegisterMaterial( f60_local4 )
 		}
 	end
-	if f31_arg4 then
-		f31_arg0.states.endstate = f31_arg4
+	if f60_arg4 then
+		f60_arg0.states.endstate = f60_arg4
 	end
-	f31_local0 = {}
-	for f31_local1 = 1, #f31_arg2, 1 do
-		f31_local0[f31_local1] = {
-			"animstate_" .. f31_arg1 .. "_" .. f31_local1,
-			1000 / f31_arg3
+	f60_local0 = {}
+	for f60_local1 = 1, #f60_arg2, 1 do
+		f60_local0[f60_local1] = {
+			"animstate_" .. f60_arg1 .. "_" .. f60_local1,
+			1000 / f60_arg3
 		}
 	end
-	if f31_arg4 then
-		f31_local0[#f31_arg2 + 1] = {
+	if f60_arg4 then
+		f60_local0[#f60_arg2 + 1] = {
 			"endstate",
 			0
 		}
 	end
-	if f31_arg0.properties == nil then
-		f31_arg0.properties = {}
+	if f60_arg0.properties == nil then
+		f60_arg0.properties = {}
 	end
-	f31_local1 = f31_arg6
-	f31_arg0.properties["spriteanime_" .. f31_arg1] = f31_local0
-	if f31_arg5 then
-		return function ( f15_arg0, f15_arg1 )
-			f15_arg0:animateInLoop( f15_arg0.properties["spriteanime_" .. f15_arg1], nil, nil, true, f31_local1 )
+	f60_local1 = f60_arg6
+	f60_arg0.properties["spriteanime_" .. f60_arg1] = f60_local0
+	if f60_arg5 then
+		return function ( f61_arg0, f61_arg1 )
+			f61_arg0:animateInLoop( f61_arg0.properties["spriteanime_" .. f61_arg1], nil, nil, true, f60_local1 )
 		end
 		
 	else
-		return function ( f16_arg0, f16_arg1 )
-			f16_arg0:animateInSequence( f16_arg0.properties["spriteanime_" .. f16_arg1], nil, true, f31_local1 )
+		return function ( f62_arg0, f62_arg1 )
+			f62_arg0:animateInSequence( f62_arg0.properties["spriteanime_" .. f62_arg1], nil, true, f60_local1 )
 		end
 		
 	end
 end
 
-function DoMultiple( f32_arg0 )
-	local f32_local0 = f32_arg0
-	return function ( f17_arg0, f17_arg1 )
-		for f17_local3, f17_local4 in ipairs( f32_local0 ) do
-			assert( type( f17_local4 ) == "function" )
-			f17_local4( f17_arg0, f17_arg1 )
+function DoMultiple( f63_arg0 )
+	local f63_local0 = f63_arg0
+	return function ( f64_arg0, f64_arg1 )
+		for f64_local3, f64_local4 in ipairs( f63_local0 ) do
+			assert( type( f64_local4 ) == "function" )
+			f64_local4( f64_arg0, f64_arg1 )
 		end
 	end
 	
 end
 
-function HandleSilently( f33_arg0 )
-	return function ( f18_arg0, f18_arg1 )
-		if not f18_arg1.dispatchChildren then
-			f18_arg0:dispatchEventToChildren( f18_arg1 )
+function HandleSilently( f65_arg0 )
+	return function ( f66_arg0, f66_arg1 )
+		if not f66_arg1.dispatchChildren then
+			f66_arg0:dispatchEventToChildren( f66_arg1 )
 		end
-		return f33_arg0( f18_arg0, f18_arg1 )
+		return f65_arg0( f66_arg0, f66_arg1 )
 	end
 	
 end
 
-function DvarUpdateFilter( f34_arg0, f34_arg1 )
-	local f34_local0 = f34_arg0
-	return function ( f19_arg0, f19_arg1 )
-		if f19_arg1.dvar ~= f34_local0 then
-			return f19_arg0:dispatchEventToChildren( f19_arg1 )
+function DvarUpdateFilter( f67_arg0, f67_arg1 )
+	local f67_local0 = f67_arg0
+	return function ( f68_arg0, f68_arg1 )
+		if f68_arg1.dvar ~= f67_local0 then
+			return f68_arg0:dispatchEventToChildren( f68_arg1 )
 		else
-			return f34_arg1( f19_arg0, f19_arg1 )
+			return f67_arg1( f68_arg0, f68_arg1 )
 		end
 	end
 	
 end
 
 function SplitDvarUpdateEvent( ... )
-	local f35_local0 = {}
-	table.insert( f35_local0, ... )
-	local f35_local1 = {}
-	for f35_local2 = 1, #f35_local0, 1 do
-		f35_local1[f35_local0[f35_local2]] = true
+	local f69_local0 = {
+		...
+	}
+	local f69_local1 = {}
+	for f69_local2 = 1, #f69_local0, 1 do
+		f69_local1[f69_local0[f69_local2]] = true
 	end
-	return function ( f20_arg0, f20_arg1 )
-		if f35_local1[f20_arg1.dvar] then
-			f20_arg0:processEvent( {
-				name = f20_arg1.dvar,
-				dvar = f20_arg1.dvar,
-				value = f20_arg1.value
+	return function ( f70_arg0, f70_arg1 )
+		if f69_local1[f70_arg1.dvar] then
+			f70_arg0:processEvent( {
+				name = f70_arg1.dvar,
+				dvar = f70_arg1.dvar,
+				value = f70_arg1.value
 			} )
 		else
-			f20_arg0:dispatchEventToChildren( f20_arg1 )
+			f70_arg0:dispatchEventToChildren( f70_arg1 )
 		end
 	end
 	
 end
 
-function OmnvarUpdateFilter( f36_arg0, f36_arg1 )
+function OmnvarUpdateFilter( f71_arg0, f71_arg1 )
 	return {
-		[f36_arg0] = f36_arg1
+		[f71_arg0] = f71_arg1
 	}
 end
 
-function HandlePrint( f37_arg0 )
-	local f37_local0 = f37_arg0
-	return function ( f21_arg0, f21_arg1 )
-		DebugPrint( f37_local0 )
+function HandlePrint( f72_arg0 )
+	local f72_local0 = f72_arg0
+	return function ( f73_arg0, f73_arg1 )
+		DebugPrint( f72_local0 )
 	end
 	
 end
 
-function UpdateTextWithCall( f38_arg0, ... )
-	local f38_local0 = {}
-	table.insert( f38_local0, ... )
-	return function ( f22_arg0, f22_arg1 )
-		if f38_arg0 ~= nil then
-			local f22_local0 = f38_arg0( unpack( f38_local0 ) )
-			if f22_local0 ~= nil then
-				f22_arg0:setText( f22_local0 )
+function UpdateTextWithCall( f74_arg0, ... )
+	local f74_local0 = {
+		...
+	}
+	return function ( f75_arg0, f75_arg1 )
+		if f74_arg0 ~= nil then
+			local f75_local0 = f74_arg0( unpack( f74_local0 ) )
+			if f75_local0 ~= nil then
+				f75_arg0:setText( f75_local0 )
 			end
 		end
 	end
 	
 end
 
-function NewButtonPrompt( f39_arg0, f39_arg1, f39_arg2, f39_arg3, f39_arg4, f39_arg5, f39_arg6 )
+function NewButtonPrompt( f76_arg0, f76_arg1, f76_arg2, f76_arg3, f76_arg4, f76_arg5, f76_arg6 )
 	local self = LUI.UIText.new( {
 		topAnchor = true,
 		leftAnchor = true,
@@ -633,28 +635,28 @@ function NewButtonPrompt( f39_arg0, f39_arg1, f39_arg2, f39_arg3, f39_arg4, f39_
 		right = 200,
 		alpha = 1
 	} )
-	if f39_arg1 ~= nil and f39_arg1 ~= "" then
-		self:setText( f39_arg1 )
+	if f76_arg1 ~= nil and f76_arg1 ~= "" then
+		self:setText( f76_arg1 )
 	end
-	if f39_arg4 then
-		f39_arg2.qualifier = f39_arg4
+	if f76_arg4 then
+		f76_arg2.qualifier = f76_arg4
 	end
-	if f39_arg2 ~= nil and f39_arg3 ~= nil then
+	if f76_arg2 ~= nil and f76_arg3 ~= nil then
 		self:registerEventHandler( "gamepad_button", function ( element, event )
 			if not element.disabled and event.down == true then
-				if event.button == f39_arg0 and (f39_arg4 == nil or event.qualifier == f39_arg4) then
-					f39_arg2:processEvent( {
-						name = f39_arg3,
+				if event.button == f76_arg0 and (f76_arg4 == nil or event.qualifier == f76_arg4) then
+					f76_arg2:processEvent( {
+						name = f76_arg3,
 						controller = event.controller
 					} )
-					if f39_arg6 and LUI.FlowManager.IsTopMenuModal() then
+					if f76_arg6 and LUI.FlowManager.IsTopMenuModal() then
 						return 
 					else
 						return true
 					end
-				elseif CoD.isPC and event.button == "key_shortcut" and (event.key == f39_arg5 or event.bind1 == bindPlayer) then
-					f39_arg2:processEvent( {
-						name = f39_arg3,
+				elseif CoD.isPC and event.button == "key_shortcut" and (event.key == f76_arg5 or event.bind1 == bindPlayer) then
+					f76_arg2:processEvent( {
+						name = f76_arg3,
 						controller = event.controller
 					} )
 					return true
@@ -665,19 +667,19 @@ function NewButtonPrompt( f39_arg0, f39_arg1, f39_arg2, f39_arg3, f39_arg4, f39_
 	return self
 end
 
-function CreateArrowButtonFactory( f40_arg0, f40_arg1, f40_arg2, f40_arg3, f40_arg4 )
-	local f40_local0 = 12
-	if f40_arg1 then
-		f40_local0 = -f40_local0 or f40_local0
+function CreateArrowButtonFactory( f78_arg0, f78_arg1, f78_arg2, f78_arg3, f78_arg4 )
+	local f78_local0 = 12
+	if f78_arg1 then
+		f78_local0 = -f78_local0 or f78_local0
 	end
-	local f40_local1 = 12
-	local f40_local2 = 0.9
+	local f78_local1 = 12
+	local f78_local2 = 0.9
 	local self = LUI.UIImage.new()
 	self.id = "arrow_gfx"
-	local self = self
-	local f40_local5 = self.registerAnimationState
-	local f40_local6 = "default"
-	local f40_local7 = {
+	local f78_local4 = self
+	local f78_local5 = self.registerAnimationState
+	local f78_local6 = "default"
+	local f78_local7 = {
 		material = RegisterMaterial( "h1_deco_option_scrollbar_arrows" ),
 		topAnchor = true,
 		bottomAnchor = false,
@@ -685,64 +687,64 @@ function CreateArrowButtonFactory( f40_arg0, f40_arg1, f40_arg2, f40_arg3, f40_a
 		rightAnchor = false,
 		top = 10
 	}
-	local f40_local8
-	if f40_arg1 then
-		f40_local8 = 25
-		if not f40_local8 then
+	local f78_local8
+	if f78_arg1 then
+		f78_local8 = 25
+		if not f78_local8 then
 		
 		else
-			f40_local7.left = f40_local8
-			f40_local7.width = f40_local0
-			f40_local7.height = f40_local1
-			f40_local7.red = 1
-			f40_local7.green = 1
-			f40_local7.blue = 1
-			f40_local7.alpha = 0
-			f40_local5( self, f40_local6, f40_local7 )
+			f78_local7.left = f78_local8
+			f78_local7.width = f78_local0
+			f78_local7.height = f78_local1
+			f78_local7.red = 1
+			f78_local7.green = 1
+			f78_local7.blue = 1
+			f78_local7.alpha = 0
+			f78_local5( f78_local4, f78_local6, f78_local7 )
 			self:animateToState( "default" )
 			self:registerAnimationState( "disabled", {
 				red = 1,
 				green = 1,
 				blue = 1,
 				alpha = 0.3,
-				width = f40_local0,
-				height = f40_local1
+				width = f78_local0,
+				height = f78_local1
 			} )
 			self:registerAnimationState( "unselected", {
 				red = 1,
 				green = 1,
 				blue = 1,
 				alpha = 0.5,
-				width = f40_local0,
-				height = f40_local1
+				width = f78_local0,
+				height = f78_local1
 			} )
 			self:registerAnimationState( "hover", {
 				red = 1,
 				green = 1,
 				blue = 1,
 				alpha = 1,
-				width = f40_local0,
-				height = f40_local1
+				width = f78_local0,
+				height = f78_local1
 			} )
 			self:registerAnimationState( "pulse", {
 				red = 0.86,
 				green = 0.81,
 				blue = 0.33,
 				alpha = 1,
-				width = f40_local0 * f40_local2,
-				height = f40_local1 * f40_local2
+				width = f78_local0 * f78_local2,
+				height = f78_local1 * f78_local2
 			} )
-			self = self
-			f40_local5 = self.registerEventHandler
-			f40_local6 = "content_arrow_"
-			if f40_arg1 then
-				f40_local7 = "left"
-				if not f40_local7 then
+			f78_local4 = self
+			f78_local5 = self.registerEventHandler
+			f78_local6 = "content_arrow_"
+			if f78_arg1 then
+				f78_local7 = "left"
+				if not f78_local7 then
 				
 				else
-					f40_local5( self, f40_local6 .. f40_local7, function ( f24_arg0, f24_arg1 )
+					f78_local5( f78_local4, f78_local6 .. f78_local7, function ( f79_arg0, f79_arg1 )
 						if self.hasFocus then
-							local f24_local0 = MBh.AnimateSequence( {
+							local f79_local0 = MBh.AnimateSequence( {
 								{
 									"pulse",
 									100
@@ -752,9 +754,9 @@ function CreateArrowButtonFactory( f40_arg0, f40_arg1, f40_arg2, f40_arg3, f40_a
 									200
 								}
 							} )
-							f24_local0( f24_arg0, f24_arg1 )
+							f79_local0( f79_arg0, f79_arg1 )
 						else
-							local f24_local0 = MBh.AnimateSequence( {
+							local f79_local0 = MBh.AnimateSequence( {
 								{
 									"pulse",
 									100
@@ -764,178 +766,176 @@ function CreateArrowButtonFactory( f40_arg0, f40_arg1, f40_arg2, f40_arg3, f40_a
 									200
 								}
 							} )
-							f24_local0( f24_arg0, f24_arg1 )
+							f79_local0( f79_arg0, f79_arg1 )
 						end
 					end )
-					f40_local5 = yOffset
-					self = LUI.UIButton.new()
-					self.id = "arrow_" .. f40_arg0
-					self.m_requireFocusType = FocusType.MouseOver
-					f40_local7 = self
-					f40_local6 = self.registerAnimationState
-					f40_local8 = "default"
-					local self = {
+					f78_local5 = yOffset
+					f78_local4 = LUI.UIButton.new()
+					f78_local4.id = "arrow_" .. f78_arg0
+					f78_local4.m_requireFocusType = FocusType.MouseOver
+					f78_local7 = f78_local4
+					f78_local6 = f78_local4.registerAnimationState
+					f78_local8 = "default"
+					local f78_local9 = {
 						topAnchor = true,
 						bottomAnchor = true,
-						leftAnchor = f40_arg1,
-						rightAnchor = not f40_arg1,
+						leftAnchor = f78_arg1,
+						rightAnchor = not f78_arg1,
 						top = 0,
 						bottom = 0
 					}
-					local f40_local10
-					if f40_arg1 then
-						f40_local10 = 1
-						if not f40_local10 then
+					local f78_local10
+					if f78_arg1 then
+						f78_local10 = 1
+						if not f78_local10 then
 						
 						else
-							f40_local10 = f40_arg3 * f40_local10
-							local f40_local11
-							if f40_arg1 then
-								f40_local11 = 0
-								if not f40_local11 then
+							f78_local10 = f78_arg3 * f78_local10
+							local f78_local11
+							if f78_arg1 then
+								f78_local11 = 0
+								if not f78_local11 then
 								
 								else
-									self.left = f40_local10 + 10 * f40_local11 - 11
-									if f40_arg1 then
-										f40_local10 = 1
-										if not f40_local10 then
+									f78_local9.left = f78_local10 + 10 * f78_local11 - 11
+									if f78_arg1 then
+										f78_local10 = 1
+										if not f78_local10 then
 										
 										else
-											f40_local10 = f40_arg3 * f40_local10
-											f40_local11
-											if f40_arg1 then
-												f40_local11 = 1
-												if not f40_local11 then
+											f78_local10 = f78_arg3 * f78_local10
+											if f78_arg1 then
+												f78_local11 = 1
+												if not f78_local11 then
 												
 												else
-													self.right = f40_local10 + 10 * f40_local11 + 11
-													f40_local6( f40_local7, f40_local8, self )
-													self.properties = self.properties or {}
-													self.properties.muteAction = true
-													self:animateToState( "default" )
-													f40_local6 = function ( f25_arg0, f25_arg1 )
+													f78_local9.right = f78_local10 + 10 * f78_local11 + 11
+													f78_local6( f78_local7, f78_local8, f78_local9 )
+													f78_local4.properties = f78_local4.properties or {}
+													f78_local4.properties.muteAction = true
+													f78_local4:animateToState( "default" )
+													f78_local6 = function ( f80_arg0, f80_arg1 )
 														if self.visible then
 															self:animateToState( "default" )
 															self.visible = nil
-															f25_arg0.gainFocusSFX = nil
+															f80_arg0.gainFocusSFX = nil
 														end
 													end
 													
-													self:registerEventHandler( "hide_arrows", f40_local6 )
-													f40_local8 = self
-													f40_local7 = self.registerEventHandler
-													self = "hide_arrow_"
-													if f40_arg1 then
-														f40_local10 = "left"
-														if not f40_local10 then
+													f78_local4:registerEventHandler( "hide_arrows", f78_local6 )
+													f78_local8 = f78_local4
+													f78_local7 = f78_local4.registerEventHandler
+													f78_local9 = "hide_arrow_"
+													if f78_arg1 then
+														f78_local10 = "left"
+														if not f78_local10 then
 														
 														else
-															f40_local7( f40_local8, self .. f40_local10, f40_local6 )
-															f40_local7 = function ( f26_arg0, f26_arg1 )
+															f78_local7( f78_local8, f78_local9 .. f78_local10, f78_local6 )
+															f78_local7 = function ( f81_arg0, f81_arg1 )
 																if not self.visible then
 																	self.hasFocus = false
 																	self:animateToState( "unselected" )
 																	self.visible = true
-																	f26_arg0.gainFocusSFX = CoD.SFX.MouseOver
+																	f81_arg0.gainFocusSFX = CoD.SFX.MouseOver
 																end
 															end
 															
-															self:registerEventHandler( "show_arrows", f40_local7 )
-															self = self
-															f40_local8 = self.registerEventHandler
-															f40_local10 = "show_arrow_"
-															f40_local11
-															if f40_arg1 then
-																f40_local11 = "left"
-																if not f40_local11 then
+															f78_local4:registerEventHandler( "show_arrows", f78_local7 )
+															f78_local9 = f78_local4
+															f78_local8 = f78_local4.registerEventHandler
+															f78_local10 = "show_arrow_"
+															if f78_arg1 then
+																f78_local11 = "left"
+																if not f78_local11 then
 																
 																else
-																	f40_local8( self, f40_local10 .. f40_local11, f40_local7 )
-																	f40_local8 = function ( f27_arg0, f27_arg1 )
+																	f78_local8( f78_local9, f78_local10 .. f78_local11, f78_local7 )
+																	f78_local8 = function ( f82_arg0, f82_arg1 )
 																		if self.visible then
 																			self:animateToState( "disabled" )
 																		end
 																	end
 																	
-																	self:registerEventHandler( "disable_arrows", f40_local7 )
-																	f40_local10 = self
-																	self = self.registerEventHandler
-																	f40_local11 = "disable_arrow_"
-																	local f40_local12
-																	if f40_arg1 then
-																		f40_local12 = "left"
-																		if not f40_local12 then
+																	f78_local4:registerEventHandler( "disable_arrows", f78_local7 )
+																	f78_local10 = f78_local4
+																	f78_local9 = f78_local4.registerEventHandler
+																	f78_local11 = "disable_arrow_"
+																	local f78_local12
+																	if f78_arg1 then
+																		f78_local12 = "left"
+																		if not f78_local12 then
 																		
 																		else
-																			self( f40_local10, f40_local11 .. f40_local12, f40_local7 )
-																			self:registerEventHandler( "button_over", function ( element, event )
+																			f78_local9( f78_local10, f78_local11 .. f78_local12, f78_local7 )
+																			f78_local4:registerEventHandler( "button_over", function ( element, event )
 																				self.hasFocus = true
 																				self:animateToState( "hover" )
 																			end )
-																			self:registerEventHandler( "button_up", function ( element, event )
+																			f78_local4:registerEventHandler( "button_up", function ( element, event )
 																				self.hasFocus = false
 																				if self:getAnimationStateName() == "hover" then
 																					self:animateToState( "unselected" )
 																				end
 																			end )
-																			self:processEvent( {
+																			f78_local4:processEvent( {
 																				name = "hide_arrows"
 																			} )
-																			self:addElement( self )
-																			if f40_arg4 ~= nil then
-																				if f40_arg1 then
-																					self = "left"
-																					if not self then
+																			f78_local4:addElement( self )
+																			if f78_arg4 ~= nil then
+																				if f78_arg1 then
+																					f78_local9 = "left"
+																					if not f78_local9 then
 																					
 																					else
-																						f40_arg2:registerEventHandler( "button_" .. self, f40_arg4 )
+																						f78_arg2:registerEventHandler( "button_" .. f78_local9, f78_arg4 )
 																					end
 																				end
-																				self = "right"
+																				f78_local9 = "right"
 																			end
 																			if not Engine.IsConsoleGame() then
-																				if f40_arg4 ~= nil then
-																					self:registerEventHandler( "button_action", f40_arg4 )
+																				if f78_arg4 ~= nil then
+																					f78_local4:registerEventHandler( "button_action", f78_arg4 )
 																				end
-																				self = LUI.UIButtonRepeater.new( "leftmouse", "button_action", self )
-																				self:disable()
-																				self:registerEventHandler( "button_up", self.disable )
-																				self:registerEventHandler( "button_over", self.enable )
-																				self:registerEventHandler( "button_over_disable", self.disable )
-																				self:addElement( self )
-																				self.shareFocus = true
+																				f78_local9 = LUI.UIButtonRepeater.new( "leftmouse", "button_action", f78_local4 )
+																				f78_local9:disable()
+																				f78_local9:registerEventHandler( "button_up", f78_local9.disable )
+																				f78_local9:registerEventHandler( "button_over", f78_local9.enable )
+																				f78_local9:registerEventHandler( "button_over_disable", f78_local9.disable )
+																				f78_local4:addElement( f78_local9 )
+																				f78_local4.shareFocus = true
 																				if useText then
-																					self:setMinDelay( 240 )
+																					f78_local9:setMinDelay( 240 )
 																				end
 																			end
-																			return self
+																			return f78_local4
 																		end
 																	end
-																	f40_local12 = "right"
+																	f78_local12 = "right"
 																end
 															end
-															f40_local11 = "right"
+															f78_local11 = "right"
 														end
 													end
-													f40_local10 = "right"
+													f78_local10 = "right"
 												end
 											end
-											f40_local11 = 0
+											f78_local11 = 0
 										end
 									end
-									f40_local10 = -1
+									f78_local10 = -1
 								end
 							end
-							f40_local11 = -1
+							f78_local11 = -1
 						end
 					end
-					f40_local10 = -1
+					f78_local10 = -1
 				end
 			end
-			f40_local7 = "right"
+			f78_local7 = "right"
 		end
 	end
-	f40_local8 = 10
+	f78_local8 = 10
 end
 
 helpers = {

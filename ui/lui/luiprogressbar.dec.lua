@@ -47,40 +47,40 @@ LUI.UIProgressBar.new = function ( menu, controller )
 	f2_local2.material = f2_local1.background_material
 	f2_local2.color = f2_local1.background_color
 	f2_local2.alpha = f2_local1.background_alpha
-	local self = LUI.UIImage.new( f2_local2 )
+	local f2_local3 = LUI.UIImage.new( f2_local2 )
 	local f2_local4 = f2_local1.border_padding
-	local self = LUI.UIElement.new( CoD.CreateState( f2_local4, f2_local4, -f2_local4, -f2_local4, CoD.AnchorTypes.All ) )
+	local f2_local5 = LUI.UIElement.new( CoD.CreateState( f2_local4, f2_local4, -f2_local4, -f2_local4, CoD.AnchorTypes.All ) )
 	local f2_local6 = {}
 	for f2_local7 = 1, f2_local1.progress_segments, 1 do
 		local f2_local10 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.None )
 		f2_local10.material = f2_local1.segment_material
 		f2_local10.color = f2_local1.segment_colors[f2_local7]
 		f2_local10.alpha = f2_local1.segment_alphas[f2_local7]
-		local self = LUI.UIImage.new( f2_local10 )
-		self:registerEventHandler( "transition_complete_progress", MBh.EmitEventToRoot( {
+		local f2_local11 = LUI.UIImage.new( f2_local10 )
+		f2_local11:registerEventHandler( "transition_complete_progress", MBh.EmitEventToRoot( {
 			name = "progress_complete_" .. f2_local7,
 			target = self
 		} ) )
-		self:registerEventHandler( "transition_complete_initialize", MBh.EmitEventToRoot( {
+		f2_local11:registerEventHandler( "transition_complete_initialize", MBh.EmitEventToRoot( {
 			name = "initialize_complete_" .. f2_local7,
 			target = self
 		} ) )
-		f2_local6[#f2_local6 + 1] = self
+		f2_local6[#f2_local6 + 1] = f2_local11
 	end
 	local f2_local7 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f2_local7.borderThickness = f2_local1.border_thickness
 	f2_local7.color = f2_local1.border_color
 	f2_local7.depth = f2_local1.depth
 	f2_local7.alpha = f2_local1.border_alpha
-	local self = LUI.UIBorder.new( f2_local7 )
-	self.background = self
-	self.segmentContainer = self
+	local f2_local8 = LUI.UIBorder.new( f2_local7 )
+	self.background = f2_local3
+	self.segmentContainer = f2_local5
 	self.segmentElements = f2_local6
-	self.border = self
+	self.border = f2_local8
 	self:addElement( self.background )
 	self:addElement( self.segmentContainer )
 	for f2_local9 = 1, #self.segmentElements, 1 do
-		self:addElement( self.segmentElements[f2_local9] )
+		f2_local5:addElement( self.segmentElements[f2_local9] )
 	end
 	self:addElement( self.border )
 	if f2_local1.refresh_interval then

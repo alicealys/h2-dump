@@ -91,22 +91,22 @@ LUI.MapBlipPulse.addPulse = function ( f3_arg0, f3_arg1 )
 		f3_arg1.posX = 0
 		f3_arg1.posY = 0
 	end
-	local self = LUI.UITimer.new( f3_arg1.delay + f3_arg1.pulseDuration, {
+	local f3_local1 = LUI.UITimer.new( f3_arg1.delay + f3_arg1.pulseDuration, {
 		name = "blip_timer",
 		tag = 1,
 		props = f3_arg1
 	} )
-	self.name = f3_arg1.name .. f0_local0 .. "timer"
-	self.id = nil
-	self:addElement( self )
-	local self = LUI.UITimer.new( 200, {
+	f3_local1.name = f3_arg1.name .. f0_local0 .. "timer"
+	f3_local1.id = nil
+	self:addElement( f3_local1 )
+	local f3_local2 = LUI.UITimer.new( 200, {
 		name = "blip_timer",
 		tag = 1,
 		props = f3_arg1
 	}, nil, true )
-	self.name = f3_arg1.name .. f0_local0 .. "timer_initial"
-	self.id = nil
-	self:addElement( self )
+	f3_local2.name = f3_arg1.name .. f0_local0 .. "timer_initial"
+	f3_local2.id = nil
+	self:addElement( f3_local2 )
 end
 
 LUI.MapBlipPulse.delete = function ( f4_arg0, f4_arg1 )

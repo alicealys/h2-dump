@@ -122,8 +122,8 @@ local f0_local3 = function ( f1_arg0, f1_arg1 )
 		end
 	end
 	if not f1_arg0.is_paused and (f0_local0 ~= Engine.GetDvarFloat( "safeArea_adjusted_horizontal" ) or f0_local1 ~= Engine.GetDvarFloat( "safeArea_adjusted_vertical" )) then
-		UPVAL1 = Engine.GetDvarFloat( "safeArea_adjusted_horizontal" )
-		UPVAL2 = Engine.GetDvarFloat( "safeArea_adjusted_vertical" )
+		f0_local0 = Engine.GetDvarFloat( "safeArea_adjusted_horizontal" )
+		f0_local1 = Engine.GetDvarFloat( "safeArea_adjusted_vertical" )
 		f1_arg0:registerAnimationState( "new_margins", {
 			topAnchor = true,
 			leftAnchor = true,
@@ -183,8 +183,8 @@ end
 
 local f0_local7 = function ( f5_arg0, f5_arg1 )
 	f5_arg0.doRandomShake = true
-	UPVAL0 = Engine.GetDvarFloat( "safeArea_adjusted_horizontal" )
-	UPVAL1 = Engine.GetDvarFloat( "safeArea_adjusted_vertical" )
+	f0_local0 = Engine.GetDvarFloat( "safeArea_adjusted_horizontal" )
+	f0_local1 = Engine.GetDvarFloat( "safeArea_adjusted_vertical" )
 	local f5_local0 = f5_arg0:getChildById( "shakeContainerHudId" )
 	for f5_local1 = 1, 4, 1 do
 		f5_local0:registerAnimationState( "shake" .. f5_local1, {
@@ -478,7 +478,7 @@ local f0_local25 = function ( f19_arg0, f19_arg1 )
 	if Game.GetOmnvar( "ui_ragtimewarefare_overlay" ) then
 		if f19_arg1.value > 0 then
 			if not f0_local2 then
-				UPVAL0 = true
+				f0_local2 = true
 				f19_local0:animateInSequence( {
 					{
 						"hide",
@@ -495,10 +495,10 @@ local f0_local25 = function ( f19_arg0, f19_arg1 )
 				} )
 			end
 		else
-			UPVAL0 = false
+			f0_local2 = false
 		end
 	else
-		UPVAL0 = false
+		f0_local2 = false
 		f19_local0:animateToState( "hide", 1000 )
 	end
 	f0_local3( f19_arg0, f19_arg1 )
@@ -534,12 +534,7 @@ local f0_local28 = function ( f22_arg0, f22_arg1 )
 			f22_arg0.nightVisionUpdater:close()
 			f22_arg0.nightVisionUpdater = nil
 		end
-		local f22_local0 = LUI.UITimer.new
-		local f22_local1 = 10
-		local f22_local2 = "nightVisionAndThermalCheck"
-		local f22_local3 = nil
-		local f22_local4, f22_local5 = false
-		f22_arg0.nightVisionUpdater = f22_local0( f22_local1, f22_local2, f22_local3, f22_local4, f22_local5, false, false, true )
+		f22_arg0.nightVisionUpdater = LUI.UITimer.new( 10, "nightVisionAndThermalCheck", nil, false, false, false, false, true )
 		f22_arg0:addElement( f22_arg0.nightVisionUpdater )
 	else
 		if f22_arg0.nightVisionUpdater then
@@ -552,7 +547,7 @@ end
 local f0_local29 = function ()
 	local self = LUI.UIElement.new()
 	self.id = "hud_id"
-	UPVAL0 = false
+	f0_local2 = false
 	f0_local12( self )
 	self:registerEventHandler( "hud_shake", f0_local7 )
 	self:registerEventHandler( "toggle_pause", f0_local6 )
@@ -577,18 +572,18 @@ local f0_local29 = function ()
 	self:registerOmnvarHandler( "ui_chaplinoverlayfadein", f0_local25 )
 	self:registerOmnvarHandler( "ui_refreshcheathud", f0_local16 )
 	self:registerOmnvarHandler( "ui_openluibriefingmenu", f0_local26 )
-	local self = LUI.UIElement.new()
-	self:setupUIIntWatch( "IsVideoPlaying" )
-	self:registerEventHandler( "int_watch_alert", function ( element, event )
+	local f23_local1 = LUI.UIElement.new()
+	f23_local1:setupUIIntWatch( "IsVideoPlaying" )
+	f23_local1:registerEventHandler( "int_watch_alert", function ( element, event )
 		f0_local3( element:getParent(), event )
 	end )
-	self:addElement( self )
-	local self = LUI.UIElement.new()
-	self:setupUIIntWatch( "IsReticleZoom" )
-	self:registerEventHandler( "int_watch_alert", function ( element, event )
+	self:addElement( f23_local1 )
+	local f23_local2 = LUI.UIElement.new()
+	f23_local2:setupUIIntWatch( "IsReticleZoom" )
+	f23_local2:registerEventHandler( "int_watch_alert", function ( element, event )
 		f0_local3( element:getParent(), event )
 	end )
-	self:addElement( self )
+	self:addElement( f23_local2 )
 	f0_local13( self, f0_local14( "snowGogglesHudId", "snowGogglesHudDef" ) )
 	f0_local13( self, f0_local14( "divingGogglesHudId", "divingGogglesHudDef" ) )
 	f0_local13( self, f0_local14( "astronautHelmetHudDef", "astronautHelmetHudDef" ) )
@@ -623,24 +618,24 @@ local f0_local29 = function ()
 		name = "ui_astronauthelmet",
 		value = Game.GetOmnvar( "ui_astronauthelmet" )
 	} )
-	local self = LUI.UIElement.new()
-	self.id = "shakeContainerHudId"
-	self:registerAnimationState( "default", f0_local10 )
-	self:registerAnimationState( "hud_on", f0_local8 )
-	self:registerAnimationState( "hud_off", f0_local9 )
-	self:animateToState( "default" )
-	self.properties = {
+	local f23_local3 = LUI.UIElement.new()
+	f23_local3.id = "shakeContainerHudId"
+	f23_local3:registerAnimationState( "default", f0_local10 )
+	f23_local3:registerAnimationState( "hud_on", f0_local8 )
+	f23_local3:registerAnimationState( "hud_off", f0_local9 )
+	f23_local3:animateToState( "default" )
+	f23_local3.properties = {
 		shakeLooping = 0,
 		shakeVersion = 0
 	}
-	self:addElement( self )
+	self:addElement( f23_local3 )
 	self:registerEventHandler( "cheats_changed", f0_local16 )
-	f0_local13( self, f0_local15( "weaponInfoHud", "WeaponInfoHudDef" ) )
-	local self = LUI.UIElement.new()
-	if self.setFlashFade then
-		self:setFlashFade()
+	f0_local13( f23_local3, f0_local15( "weaponInfoHud", "WeaponInfoHudDef" ) )
+	local f23_local4 = LUI.UIElement.new()
+	if f23_local4.setFlashFade then
+		f23_local4:setFlashFade()
 	end
-	self:registerAnimationState( "default", {
+	f23_local4:registerAnimationState( "default", {
 		left = 0,
 		right = 0,
 		top = 0,
@@ -650,14 +645,14 @@ local f0_local29 = function ()
 		topAnchor = true,
 		bottomAnchor = true
 	} )
-	self:animateToState( "default" )
-	self:addElement( self )
+	f23_local4:animateToState( "default" )
+	self:addElement( f23_local4 )
 	local f23_local5 = self:getChildById( "shakeContainerHudId" )
 	f23_local5 = f23_local5:getChildById( "weaponInfoHud" )
 	f23_local5:processEvent( {
 		name = "init"
 	} )
-	local self = LUI.UIImage.new( Engine.IsConsoleGame() and {
+	local f23_local6 = LUI.UIImage.new( Engine.IsConsoleGame() and {
 		leftAnchor = false,
 		rightAnchor = false,
 		topAnchor = false,
@@ -680,21 +675,21 @@ local f0_local29 = function ()
 		bottom = 0,
 		material = RegisterMaterial( "black" )
 	} )
-	self:registerAnimationState( "on", {
+	f23_local6:registerAnimationState( "on", {
 		alpha = 1
 	} )
-	self:registerOmnvarHandler( "ui_go_black", function ( f76_arg0, f76_arg1 )
-		if f76_arg1.value then
-			f76_arg0:animateToState( "on", f76_arg1.value * 1000 )
+	f23_local6:registerOmnvarHandler( "ui_go_black", function ( f26_arg0, f26_arg1 )
+		if f26_arg1.value then
+			f26_arg0:animateToState( "on", f26_arg1.value * 1000 )
 		end
 	end )
-	self:addElement( self )
+	self:addElement( f23_local6 )
 	f0_local16( self )
 	f0_local3( self, {} )
-	CoD.HideHints = function ( f77_arg0 )
-		local f77_local0 = self:getChildById( "hintsHudId" )
-		if f77_local0 then
-			f77_local0:animateToState( "hud_off", f77_arg0 )
+	CoD.HideHints = function ( f27_arg0 )
+		local f27_local0 = self:getChildById( "hintsHudId" )
+		if f27_local0 then
+			f27_local0:animateToState( "hud_off", f27_arg0 )
 		end
 	end
 	
@@ -713,24 +708,24 @@ local f0_local30 = function ()
 		rightAnchor = true
 	} )
 	self:animateToState( "default", 0 )
-	local f24_local1 = LUI.sp_hud.gameInfo.mantleHintDef()
-	local f24_local2 = LUI.sp_hud.gameInfo.cursorHintDef()
-	local f24_local3 = LUI.sp_hud.gameInfo.cursorHintAttachmentDef()
-	local f24_local4 = LUI.sp_hud.gameInfo.dropWeaponHintDef()
-	local f24_local5 = LUI.sp_hud.gameInfo.invalidCmdHintDef()
-	local f24_local6 = LUI.sp_hud.gameInfo.breathHintDef()
-	local f24_local7 = LUI.sp_hud.gameInfo.zoomHintDef()
-	local f24_local8 = LUI.sp_hud.gameInfo.toggleHybridHintDef()
-	local f24_local9 = LUI.sp_hud.gameInfo.toggleThermalHintDef()
-	self:addElement( f24_local1 )
-	self:addElement( f24_local2 )
-	self:addElement( f24_local3 )
-	self:addElement( f24_local4 )
-	self:addElement( f24_local5 )
-	self:addElement( f24_local6 )
-	self:addElement( f24_local7 )
-	self:addElement( f24_local8 )
-	self:addElement( f24_local9 )
+	local f28_local1 = LUI.sp_hud.gameInfo.mantleHintDef()
+	local f28_local2 = LUI.sp_hud.gameInfo.cursorHintDef()
+	local f28_local3 = LUI.sp_hud.gameInfo.cursorHintAttachmentDef()
+	local f28_local4 = LUI.sp_hud.gameInfo.dropWeaponHintDef()
+	local f28_local5 = LUI.sp_hud.gameInfo.invalidCmdHintDef()
+	local f28_local6 = LUI.sp_hud.gameInfo.breathHintDef()
+	local f28_local7 = LUI.sp_hud.gameInfo.zoomHintDef()
+	local f28_local8 = LUI.sp_hud.gameInfo.toggleHybridHintDef()
+	local f28_local9 = LUI.sp_hud.gameInfo.toggleThermalHintDef()
+	self:addElement( f28_local1 )
+	self:addElement( f28_local2 )
+	self:addElement( f28_local3 )
+	self:addElement( f28_local4 )
+	self:addElement( f28_local5 )
+	self:addElement( f28_local6 )
+	self:addElement( f28_local7 )
+	self:addElement( f28_local8 )
+	self:addElement( f28_local9 )
 	return self
 end
 

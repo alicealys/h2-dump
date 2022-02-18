@@ -42,9 +42,9 @@ LUI.ButtonDescText.new = function ( f1_arg0, f1_arg1 )
 		bottom = f1_arg1.font.Height
 	} )
 	self:animateToState( "default" )
-	local self = LUI.UIText.new()
-	self.id = "desc_text"
-	self:registerAnimationState( "default", {
+	local f1_local1 = LUI.UIText.new()
+	f1_local1.id = "desc_text"
+	f1_local1:registerAnimationState( "default", {
 		alignment = LUI.AdjustAlignmentForLanguage( LUI.Alignment.Left ),
 		font = f1_arg1.font.Font,
 		topAnchor = true,
@@ -60,18 +60,18 @@ LUI.ButtonDescText.new = function ( f1_arg0, f1_arg1 )
 		blue = f1_arg1.blue,
 		alpha = 1
 	} )
-	self:animateToState( "default" )
-	self:registerEventHandler( "set_button_info_text", function ( element, event )
+	f1_local1:animateToState( "default" )
+	f1_local1:registerEventHandler( "set_button_info_text", function ( element, event )
 		if event.text then
 			element:setText( event.text )
 		end
 	end )
-	self:addElement( self )
+	self:addElement( f1_local1 )
 	return self
 end
 
-LUI.ButtonDescText.build = function ( f2_arg0, f2_arg1, f2_arg2 )
-	return LUI.ButtonDescText.new( f2_arg0, f2_arg1 )
+LUI.ButtonDescText.build = function ( f3_arg0, f3_arg1, f3_arg2 )
+	return LUI.ButtonDescText.new( f3_arg0, f3_arg1 )
 end
 
 LUI.MenuBuilder.registerType( "button_desc_text", LUI.ButtonDescText.build )

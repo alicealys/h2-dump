@@ -138,52 +138,52 @@ LUI.EULABase.new = function ( f10_arg0, f10_arg1 )
 	local f10_local1 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.None )
 	f10_local1.width = LUI.EULABase.Width
 	f10_local1.height = LUI.EULABase.Height
-	local self = LUI.UIElement.new( f10_local1 )
-	self:addElement( self )
+	local f10_local2 = LUI.UIElement.new( f10_local1 )
+	self:addElement( f10_local2 )
 	local f10_local3 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f10_local3.material = RegisterMaterial( "white" )
 	f10_local3.color = Colors.h1.dark_grey
-	self:addElement( LUI.UIImage.new( f10_local3 ) )
+	f10_local2:addElement( LUI.UIImage.new( f10_local3 ) )
 	local f10_local4 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f10_local4.borderThickness = 2
 	f10_local4.color = Colors.grey_5
-	self:addElement( LUI.UIBorder.new( f10_local4 ) )
+	f10_local2:addElement( LUI.UIBorder.new( f10_local4 ) )
 	local f10_local5 = CoD.CreateState( LUI.EULABase.BGPaddingLR, LUI.EULABase.BGPaddingLR, -LUI.EULABase.BGPaddingTop, -LUI.EULABase.BGPaddingBottom, CoD.AnchorTypes.All )
 	f10_local5.material = RegisterMaterial( "white" )
 	f10_local5.color = Colors.grey_125
-	local self = LUI.UIImage.new( f10_local5 )
-	self:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( 0, LUI.EULABase.TextPadding, -LUI.EULABase.TopBuffer, -LUI.EULABase.TextPadding, CoD.AnchorTypes.All ) )
-	self:setUseStencil( true )
-	self:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( LUI.EULABase.TextPadding, LUI.EULABase.TopBuffer, -LUI.EULABase.TextPadding, 0, CoD.AnchorTypes.All ) )
-	self.targetY = LUI.EULABase.TopBuffer
-	self.minY = LUI.EULABase.TextHeight
-	self:addElement( self )
-	f0_local2( self, f10_arg1.textStrings )
+	local f10_local6 = LUI.UIImage.new( f10_local5 )
+	f10_local2:addElement( f10_local6 )
+	local f10_local7 = LUI.UIElement.new( CoD.CreateState( 0, LUI.EULABase.TextPadding, -LUI.EULABase.TopBuffer, -LUI.EULABase.TextPadding, CoD.AnchorTypes.All ) )
+	f10_local7:setUseStencil( true )
+	f10_local6:addElement( f10_local7 )
+	local f10_local8 = LUI.UIElement.new( CoD.CreateState( LUI.EULABase.TextPadding, LUI.EULABase.TopBuffer, -LUI.EULABase.TextPadding, 0, CoD.AnchorTypes.All ) )
+	f10_local8.targetY = LUI.EULABase.TopBuffer
+	f10_local8.minY = LUI.EULABase.TextHeight
+	f10_local7:addElement( f10_local8 )
+	f0_local2( f10_local8, f10_arg1.textStrings )
 	local f10_local9 = CoD.CreateState( nil, nil, nil, -9, CoD.AnchorTypes.Bottom )
 	if CoD.Language.German == Engine.GetCurrentLanguage() then
 		f10_local9.left = -120
 	end
 	f10_local9.width = 200
 	f10_local9.height = 32
-	local self = LUI.UIElement.new( f10_local9 )
-	self:addElement( self )
-	local f10_local11 = function ( f10_arg0, f10_arg1 )
+	local f10_local10 = LUI.UIElement.new( f10_local9 )
+	f10_local2:addElement( f10_local10 )
+	local f10_local11 = function ( f11_arg0, f11_arg1 )
 		if f10_arg1.acceptCallback then
-			f10_arg1.acceptCallback( f10_arg1.controller )
+			f10_arg1.acceptCallback( f11_arg1.controller )
 		end
 		Engine.PlaySound( CoD.SFX.MouseClick )
-		LUI.FlowManager.RequestLeaveMenu( f10_arg0 )
+		LUI.FlowManager.RequestLeaveMenu( f11_arg0 )
 		if f10_arg1.callback then
-			f10_arg1.callback( f10_arg1.controller )
+			f10_arg1.callback( f11_arg1.controller )
 		end
 	end
 	
-	local f10_local12 = function ( f11_arg0, f11_arg1 )
-		LUI.FlowManager.RequestLeaveMenu( f11_arg0 )
+	local f10_local12 = function ( f12_arg0, f12_arg1 )
+		LUI.FlowManager.RequestLeaveMenu( f12_arg0 )
 		if f10_arg1.declineCallback then
-			f10_arg1.declineCallback( f11_arg1.controller )
+			f10_arg1.declineCallback( f12_arg1.controller )
 		end
 	end
 	
@@ -197,11 +197,11 @@ LUI.EULABase.new = function ( f10_arg0, f10_arg1 )
 	end
 	f10_local13.button_text = f10_local14( f10_local15 )
 	f10_local13.text_align_without_content = LUI.Alignment.Center
-	f10_local13.button_action_func = function ( f12_arg0, f12_arg1 )
-		f10_local11( f12_arg0, f12_arg1 )
+	f10_local13.button_action_func = function ( f13_arg0, f13_arg1 )
+		f10_local11( f13_arg0, f13_arg1 )
 	end
 	
-	f10_local14 = LUI.MenuBuilder.BuildAddChild( self, {
+	f10_local14 = LUI.MenuBuilder.BuildAddChild( f10_local10, {
 		type = "UIGenericButton",
 		id = "accept_button",
 		properties = f10_local13
@@ -211,21 +211,21 @@ LUI.EULABase.new = function ( f10_arg0, f10_arg1 )
 	if CoD.Language.Polish == Engine.GetCurrentLanguage() or CoD.Language.German == Engine.GetCurrentLanguage() then
 		f10_local16 = 55
 	end
-	local self = LUI.UIElement.new( CoD.CreateState( f10_local15, 0, f10_local16, 22, CoD.AnchorTypes.All ) )
-	self:addElement( self )
-	local f10_local18 = LUI.MenuBuilder.BuildAddChild( self, {
+	local f10_local17 = LUI.UIElement.new( CoD.CreateState( f10_local15, 0, f10_local16, 22, CoD.AnchorTypes.All ) )
+	f10_local2:addElement( f10_local17 )
+	local f10_local18 = LUI.MenuBuilder.BuildAddChild( f10_local17, {
 		type = "button_helper_text_main"
 	} )
 	local f10_local19 = {
 		name = "add_button_helper_text",
 		button_ref = "button_secondary"
 	}
-	local self = Engine.Localize
+	local f10_local20 = Engine.Localize
 	local f10_local21 = f10_arg1.declineString
 	if not f10_local21 then
 		f10_local21 = "@LUA_MENU_DECLINE"
 	end
-	f10_local19.helper_text = self( f10_local21 )
+	f10_local19.helper_text = f10_local20( f10_local21 )
 	f10_local19.side = "left"
 	f10_local19.clickable = true
 	f10_local19.priority = -2000
@@ -254,8 +254,8 @@ LUI.EULABase.new = function ( f10_arg0, f10_arg1 )
 			side = "right",
 			clickable = true,
 			muteAction = true,
-			func = function ( f13_arg0, f13_arg1 )
-				f0_local5( self, f13_arg1 )
+			func = function ( f14_arg0, f14_arg1 )
+				f0_local5( f10_local8, f14_arg1 )
 				return true
 			end
 		} )
@@ -266,33 +266,33 @@ LUI.EULABase.new = function ( f10_arg0, f10_arg1 )
 			side = "right",
 			clickable = true,
 			muteAction = true,
-			func = function ( f14_arg0, f14_arg1 )
-				f0_local6( self, f14_arg1 )
+			func = function ( f15_arg0, f15_arg1 )
+				f0_local6( f10_local8, f15_arg1 )
 				return true
 			end
 		} )
 	end
-	self = LUI.UIBindButton.new()
-	self:registerEventHandler( "button_up", function ( element, event )
-		f0_local5( self, event )
+	f10_local20 = LUI.UIBindButton.new()
+	f10_local20:registerEventHandler( "button_up", function ( element, event )
+		f0_local5( f10_local8, event )
 		return true
 	end )
-	self:registerEventHandler( "button_down", function ( element, event )
-		f0_local6( self, event )
+	f10_local20:registerEventHandler( "button_down", function ( element, event )
+		f0_local6( f10_local8, event )
 		return true
 	end )
-	self:registerEventHandler( "button_secondary", function ( element, event )
+	f10_local20:registerEventHandler( "button_secondary", function ( element, event )
 		f10_local12( element, event )
 	end )
-	self:registerEventHandler( "button_action", function ( element, event )
+	f10_local20:registerEventHandler( "button_action", function ( element, event )
 		f10_local11( element, event )
 	end )
-	self.handlePrimary = true
-	self:addElement( self )
+	f10_local20.handlePrimary = true
+	self:addElement( f10_local20 )
 	if Engine.IsXB3() or Engine.IsPCApp() then
-		local self = LUI.UIElement.new( CoD.CreateState( 0, GenericFooterDims.TopMargin_WithBackground, 400, 0, CoD.AnchorTypes.BottomLeft ) )
-		self:addElement( self )
-		LUI.ButtonHelperText.AddSignInText( self )
+		local f10_local22 = LUI.UIElement.new( CoD.CreateState( 0, GenericFooterDims.TopMargin_WithBackground, 400, 0, CoD.AnchorTypes.BottomLeft ) )
+		self:addElement( f10_local22 )
+		LUI.ButtonHelperText.AddSignInText( f10_local22 )
 	end
 	local scrollBar = LUI.UIVerticalScrollbar.new( {
 		topAnchor = true,
@@ -301,16 +301,16 @@ LUI.EULABase.new = function ( f10_arg0, f10_arg1 )
 		rightAnchor = true,
 		width = 7.5,
 		top = 0.5
-	}, nil, nil, nil, nil, nil, function ( f19_arg0, f19_arg1, f19_arg2, f19_arg3 )
-		f0_local7( self, f19_arg2 )
+	}, nil, nil, nil, nil, nil, function ( f20_arg0, f20_arg1, f20_arg2, f20_arg3 )
+		f0_local7( f10_local8, f20_arg2 )
 	end, Colors.white, Colors.h1.dark_grey, "h1_scrollbar_fill_normal", "h1_scrollbar_bg", "h2_scrollbar_fill_selected" )
-	self:addElement( scrollBar )
-	self.scrollBar = scrollBar
+	f10_local7:addElement( scrollBar )
+	f10_local8.scrollBar = scrollBar
 	
-	f0_local4( self )
-	f0_local0( self )
-	function RefreshFunc( f20_arg0, f20_arg1 )
-		f0_local1( self, f10_arg1.textStrings )
+	f0_local4( f10_local8 )
+	f0_local0( f10_local8 )
+	function RefreshFunc( f21_arg0, f21_arg1 )
+		f0_local1( f10_local8, f10_arg1.textStrings )
 	end
 	
 	self:registerEventHandler( "onVideoChange", RefreshFunc )

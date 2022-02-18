@@ -584,7 +584,7 @@ function ChangeJamState( f6_arg0, f6_arg1 )
 end
 
 function AddMiniMap( menu, controller )
-	UPVAL0 = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
+	f0_local5 = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
 	f0_local5:registerAnimationState( "default", {
 		alpha = 1
 	} )
@@ -598,39 +598,39 @@ function AddMiniMap( menu, controller )
 	f7_local0.height = f0_local7.Styles.Minimap.BackgroundHeight
 	f7_local0.alpha = 1
 	f7_local0.material = RegisterMaterial( "h2_bg_map" )
-	local self = LUI.UIImage.new( f7_local0 )
-	self.id = "map_mini_bg"
+	local f7_local1 = LUI.UIImage.new( f7_local0 )
+	f7_local1.id = "map_mini_bg"
 	f7_local0.material = nil
 	f7_local0.right = f0_local7.Styles.Minimap.Right - f0_local7.Styles.Minimap.BackgroundWidth
 	f7_local0.width = 0
 	f7_local0.height = 0
 	f7_local0.alpha = 1
-	self:registerAnimationState( "hidden", f7_local0 )
+	f7_local1:registerAnimationState( "hidden", f7_local0 )
 	f7_local0.right = f0_local7.Styles.Minimap.Right - f0_local7.Styles.Minimap.BackgroundWidth * 0.75
 	f7_local0.width = f0_local7.Styles.Minimap.BackgroundWidth * 0.25
 	f7_local0.height = f0_local7.Styles.Minimap.BackgroundHeight * 0.7
 	f7_local0.alpha = 1
-	self:registerAnimationState( "animation_state_1", f7_local0 )
+	f7_local1:registerAnimationState( "animation_state_1", f7_local0 )
 	f7_local0.right = f0_local7.Styles.Minimap.Right - f0_local7.Styles.Minimap.BackgroundWidth * 0.3
 	f7_local0.width = f0_local7.Styles.Minimap.BackgroundWidth * 0.7
 	f7_local0.height = f0_local7.Styles.Minimap.BackgroundHeight * 0.9
 	f7_local0.alpha = 1
-	self:registerAnimationState( "animation_state_2", f7_local0 )
+	f7_local1:registerAnimationState( "animation_state_2", f7_local0 )
 	f7_local0.right = f0_local7.Styles.Minimap.Right + f0_local7.Styles.Minimap.BackgroundWidth * 0.02
 	f7_local0.width = f0_local7.Styles.Minimap.BackgroundWidth * 1.02
 	f7_local0.height = f0_local7.Styles.Minimap.BackgroundHeight * 1.02
 	f7_local0.alpha = 1
-	self:registerAnimationState( "animation_state_3", f7_local0 )
+	f7_local1:registerAnimationState( "animation_state_3", f7_local0 )
 	f7_local0.top = f0_local7.Styles.Minimap.Top + f0_local7.Styles.Minimap.BackgroundHeight / 2
 	f7_local0.right = f0_local7.Styles.Minimap.Right
 	f7_local0.width = f0_local7.Styles.Minimap.BackgroundWidth
 	f7_local0.height = 0
 	f7_local0.alpha = 1
-	self:registerAnimationState( "hidden_anim_stretching", f7_local0 )
-	self:registerAnimationState( "inactive", {
+	f7_local1:registerAnimationState( "hidden_anim_stretching", f7_local0 )
+	f7_local1:registerAnimationState( "inactive", {
 		alpha = 0
 	} )
-	f0_local5:addElement( self )
+	f0_local5:addElement( f7_local1 )
 	
 	local miniMap = LUI.MenuBuilder.BuildRegisteredType( "UIMinimap", {
 		compassType = CoD.CompassType.Partial,
@@ -648,7 +648,7 @@ function AddMiniMap( menu, controller )
 		alpha = 0
 	} )
 	miniMap:registerEventHandler( "menu_create", OnMiniMapCreate )
-	self:addElement( miniMap )
+	f7_local1:addElement( miniMap )
 	f0_local5.miniMap = miniMap
 	
 	local f7_local3 = {
@@ -657,14 +657,14 @@ function AddMiniMap( menu, controller )
 		height = f0_local7.Styles.Minimap.Height,
 		alpha = 0
 	}
-	local self = LUI.UIImage.new( f7_local3 )
-	self.id = "map_overlay_id_1"
-	self:registerAnimationState( "default", f7_local3 )
-	self.animationsAreInit = false
-	self:registerEventHandler( "emp_jam", ChangeJamState )
-	miniMap:addElement( self )
+	local f7_local4 = LUI.UIImage.new( f7_local3 )
+	f7_local4.id = "map_overlay_id_1"
+	f7_local4:registerAnimationState( "default", f7_local3 )
+	f7_local4.animationsAreInit = false
+	f7_local4:registerEventHandler( "emp_jam", ChangeJamState )
+	miniMap:addElement( f7_local4 )
 	if Game.IsEmpJammed() then
-		self:processEvent( {
+		f7_local4:processEvent( {
 			name = "emp_jam",
 			active = true
 		} )
@@ -706,16 +706,16 @@ function AddMiniMap( menu, controller )
 		alpha = 0.1,
 		zRot = 0
 	}
-	local self = LUI.UIImage.new( f7_local6 )
-	self.id = "map_overlay_id"
+	local f7_local7 = LUI.UIImage.new( f7_local6 )
+	f7_local7.id = "map_overlay_id"
 	f7_local6.zRot = -90
-	self:registerAnimationState( "rot_90", f7_local6 )
+	f7_local7:registerAnimationState( "rot_90", f7_local6 )
 	f7_local6.zRot = -180
-	self:registerAnimationState( "rot_180", f7_local6 )
+	f7_local7:registerAnimationState( "rot_180", f7_local6 )
 	f7_local6.zRot = -270
-	self:registerAnimationState( "rot_270", f7_local6 )
-	self:registerEventHandler( "menu_create", OnMiniMapOverlayCreate )
-	miniMap:addElement( self )
+	f7_local7:registerAnimationState( "rot_270", f7_local6 )
+	f7_local7:registerEventHandler( "menu_create", OnMiniMapOverlayCreate )
+	miniMap:addElement( f7_local7 )
 end
 
 function canShowMinimap()
@@ -843,12 +843,7 @@ function AddIntelAndDifficulty( f14_arg0, f14_arg1 )
 	} )
 	if f14_arg1 then
 		OnIntelTextCreate( self )
-		local f14_local4 = LUI.UITimer.new
-		local f14_local5 = 500
-		local f14_local6 = "updateIntelCount"
-		local f14_local7 = nil
-		local f14_local8, f14_local9 = false
-		self:addElement( f14_local4( f14_local5, f14_local6, f14_local7, f14_local8, f14_local9, false, false, true ) )
+		self:addElement( LUI.UITimer.new( 500, "updateIntelCount", nil, false, false, false, false, true ) )
 		self:registerEventHandler( "updateIntelCount", UpdateIntelText )
 	else
 		self:registerEventHandler( "menu_create", OnIntelTextCreate )
@@ -950,9 +945,9 @@ function AddObjectives( f18_arg0, f18_arg1 )
 	self:addElement( objectiveHeader )
 	local f18_local6 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f18_local6.alpha = 1
-	local self = LUI.UIElement.new( f18_local6 )
-	self.id = "objectivesContainer"
-	self:addElement( self )
+	local f18_local7 = LUI.UIElement.new( f18_local6 )
+	f18_local7.id = "objectivesContainer"
+	self:addElement( f18_local7 )
 	f18_arg0:addElement( self )
 	RefreshObjectives( f18_arg0 )
 	if f18_arg1 then
@@ -963,7 +958,7 @@ function AddObjectives( f18_arg0, f18_arg1 )
 end
 
 function Show( f19_arg0, f19_arg1, f19_arg2, f19_arg3 )
-	local self = f19_arg0
+	local f19_local0 = f19_arg0
 	if f19_arg2 then
 		local f19_local1 = CoD.CreateState( 67.33, 0, 307.33, 0, CoD.AnchorTypes.All )
 		f19_local1.color = Colors.h1.black
@@ -977,8 +972,8 @@ function Show( f19_arg0, f19_arg1, f19_arg2, f19_arg3 )
 	if f19_arg3 then
 		local f19_local1 = CoD.CreateState( DesignGridDims.horz_gutter, DesignGridDims.vert_gutter, -DesignGridDims.horz_gutter, -DesignGridDims.vert_gutter, CoD.AnchorTypes.All )
 		f19_local1.alpha = 1
-		self = LUI.UIElement.new( f19_local1 )
-		f19_arg0:addElement( self )
+		f19_local0 = LUI.UIElement.new( f19_local1 )
+		f19_arg0:addElement( f19_local0 )
 	end
 	local f19_local1 = Engine.GetDvarString( "mapname" )
 	local self = CoD.CreateState( -500, 40, 0, nil, CoD.AnchorTypes.TopRight )
@@ -986,26 +981,26 @@ function Show( f19_arg0, f19_arg1, f19_arg2, f19_arg3 )
 	self.font = CoD.TextSettings.TitleFont22.Font
 	self.height = CoD.TextSettings.TitleFont22.Height
 	self.color = GenericMenuColors.text_highlight
-	local self = LUI.UIText.new( self )
+	local f19_local3 = LUI.UIText.new( self )
 	if Engine.GetDvarBool( "specialops" ) then
-		self:setText( Engine.ToUpperCase( Engine.Localize( "@SPECIAL_OPS_" .. Engine.ToUpperCase( f19_local1 ) ) ) )
+		f19_local3:setText( Engine.ToUpperCase( Engine.Localize( "@SPECIAL_OPS_" .. Engine.ToUpperCase( f19_local1 ) ) ) )
 	elseif isMuseumMission() then
-		self:setText( Engine.ToUpperCase( Engine.Localize( Engine.ToUpperCase( "@MENU_SP_MUSEUM" ) ) ) )
+		f19_local3:setText( Engine.ToUpperCase( Engine.Localize( Engine.ToUpperCase( "@MENU_SP_MUSEUM" ) ) ) )
 	elseif isCreditsPlaying() then
-		self:setText( Engine.ToUpperCase( Engine.Localize( Engine.ToUpperCase( "@MENU_SP_H1_SIMPLECREDITS" ) ) ) )
+		f19_local3:setText( Engine.ToUpperCase( Engine.Localize( Engine.ToUpperCase( "@MENU_SP_H1_SIMPLECREDITS" ) ) ) )
 	elseif isEndgameFinale() then
-		self:setText( Engine.ToUpperCase( Engine.Localize( Engine.ToUpperCase( "@MENU_SP_AF_CHASE" ) ) ) )
+		f19_local3:setText( Engine.ToUpperCase( Engine.Localize( Engine.ToUpperCase( "@MENU_SP_AF_CHASE" ) ) ) )
 	else
-		self:setText( Engine.ToUpperCase( Engine.Localize( "@MENU_SP_" .. Engine.ToUpperCase( f19_local1 ) ) ) )
+		f19_local3:setText( Engine.ToUpperCase( Engine.Localize( "@MENU_SP_" .. Engine.ToUpperCase( f19_local1 ) ) ) )
 	end
-	self:addElement( self )
+	f19_local0:addElement( f19_local3 )
 	if Engine.GetDvarBool( "hud_drawHud" ) then
-		AddObjectives( self, f19_arg1 )
+		AddObjectives( f19_local0, f19_arg1 )
 	end
-	AddMiniMap( self, f19_arg1 )
+	AddMiniMap( f19_local0, f19_arg1 )
 	updateMinimapVisibility()
 	if not isCreditsPlaying() and not isMuseumMission() then
-		AddIntelAndDifficulty( self, f19_arg1 )
+		AddIntelAndDifficulty( f19_local0, f19_arg1 )
 	end
 end
 
@@ -1070,22 +1065,22 @@ function RefreshObjectives( f21_arg0, f21_arg1 )
 			if f21_local15[f21_local16] ~= nil then
 				f21_local11.color = f21_local6[f21_local15[f21_local16].state]
 				f21_local11.left = f21_local15[f21_local16].indentLevel * f21_local5
-				local self = LUI.UIText.new( f21_local11 )
-				self.id = "objective" .. f21_local16
-				self.properties = {
+				local f21_local19 = LUI.UIText.new( f21_local11 )
+				f21_local19.id = "objective" .. f21_local16
+				f21_local19.properties = {
 					text = "",
 					textStyle = CoD.TextStyle.Shadowed
 				}
-				self:setText( Engine.Localize( f21_local15[f21_local16].name ) )
+				f21_local19:setText( Engine.Localize( f21_local15[f21_local16].name ) )
 				if f21_local15[f21_local16].iconMaterial ~= nil then
 					f21_local14.width = f21_local14.height * Engine.GetMaterialAspectRatio( f21_local15[f21_local16].iconMaterial )
 					f21_local14.material = f21_local15[f21_local16].iconMaterial
 					f21_local14.color = f21_local6[f21_local15[f21_local16].state]
-					local self = LUI.UIImage.new( f21_local14 )
-					self.id = "objectiveIcon" .. f21_local16
-					self:addElement( self )
+					local f21_local20 = LUI.UIImage.new( f21_local14 )
+					f21_local20.id = "objectiveIcon" .. f21_local16
+					f21_local19:addElement( f21_local20 )
 				end
-				self:addElement( self )
+				self:addElement( f21_local19 )
 			end
 		end
 	end

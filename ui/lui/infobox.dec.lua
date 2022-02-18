@@ -86,12 +86,12 @@ LUI.InfoBox.enableRightPanel = function ( f6_arg0 )
 	f6_arg0:addElement( self )
 	local f6_local1 = CoD.CreateState( -f0_local10 + f0_local11 - 60, f0_local12 - 2, f0_local11 - 16, f0_local10 + f0_local12 + 39.5, CoD.AnchorTypes.TopRight )
 	f6_local1.material = RegisterMaterial( "h2_popup_info_box_mission_select" )
-	local self = LUI.UIImage.new( f6_local1 )
-	self.id = "window_right_panel_overlay_id"
-	self:registerAnimationState( "show", {
+	local f6_local2 = LUI.UIImage.new( f6_local1 )
+	f6_local2.id = "window_right_panel_overlay_id"
+	f6_local2:registerAnimationState( "show", {
 		alpha = 1
 	} )
-	f6_arg0:addElement( self )
+	f6_arg0:addElement( f6_local2 )
 end
 
 LUI.InfoBox.new = function ( f7_arg0, f7_arg1 )
@@ -143,23 +143,23 @@ LUI.InfoBox.new = function ( f7_arg0, f7_arg1 )
 	end
 	local f7_local4 = CoD.CreateState( f0_local8, f0_local9, f0_local6, f0_local7 + f0_local9, CoD.AnchorTypes.TopLeft )
 	f7_local4.material = RegisterMaterial( "h2_popup_info_mission_select" )
-	local self = LUI.UIImage.new( f7_local4 )
-	self.id = "infobox_background_id"
-	self:addElement( self )
+	local f7_local5 = LUI.UIImage.new( f7_local4 )
+	f7_local5.id = "infobox_background_id"
+	self:addElement( f7_local5 )
 	f0_local13.width = f0_local3
 	f0_local13.left = -15
-	local self = LUI.UIImage.new( f0_local13 )
-	self.id = "infobox_title_background_id"
-	self.titleBackground = self
-	self:addElement( self )
+	local f7_local6 = LUI.UIImage.new( f0_local13 )
+	f7_local6.id = "infobox_title_background_id"
+	self.titleBackground = f7_local6
+	self:addElement( f7_local6 )
 	local f7_local7 = 5
 	local f7_local8 = -5
 	if f7_arg1.noRightPane then
 		f7_local7 = 10
 		f7_local8 = 5
 	end
-	local self = LUI.UIElement.new( CoD.CreateState( f7_local7, 8, f0_local6 - f0_local10 - f0_local11 + f0_local8 + f7_local8, 34, CoD.AnchorTypes.TopLeft ) )
-	self:addElement( self )
+	local f7_local9 = LUI.UIElement.new( CoD.CreateState( f7_local7, 8, f0_local6 - f0_local10 - f0_local11 + f0_local8 + f7_local8, 34, CoD.AnchorTypes.TopLeft ) )
+	f7_local6:addElement( f7_local9 )
 	local f7_local10 = -6
 	if f7_local0 == CoD.Language.Arabic or f7_local0 == CoD.Language.Korean or f7_local0 == CoD.Language.Japanese_full or f7_local0 == CoD.Language.Japanese_partial or f7_local0 == CoD.Language.Traditional_chinese or f7_local0 == CoD.Language.Simplified_chinese then
 		f7_local10 = nil
@@ -173,17 +173,17 @@ LUI.InfoBox.new = function ( f7_arg0, f7_arg1 )
 	f7_local11.horizontalAlignment = LUI.HorizontalAlignment.Left
 	f7_local11.verticalAlignment = LUI.VerticalAlignment.Middle
 	f7_local11.width = f0_local6 - f0_local10 - f0_local11 + f0_local8
-	local self = LUI.UIText.new( f7_local11 )
-	self.id = "infobox_title_text"
-	self:registerAnimationState( "show", {
+	local f7_local12 = LUI.UIText.new( f7_local11 )
+	f7_local12.id = "infobox_title_text"
+	f7_local12:registerAnimationState( "show", {
 		alpha = 1
 	} )
-	self:registerAnimationState( "hide", {
+	f7_local12:registerAnimationState( "hide", {
 		alpha = 0
 	} )
-	self:setTextStyle( CoD.TextStyle.ForceUpperCase )
-	self.title = self
-	self:addElement( self )
+	f7_local12:setTextStyle( CoD.TextStyle.ForceUpperCase )
+	self.title = f7_local12
+	f7_local9:addElement( f7_local12 )
 	local f7_local13 = CoD.CreateState( 3, 40, nil, nil, CoD.AnchorTypes.TopLeft )
 	if f7_local0 == CoD.Language.Arabic then
 		f7_local13.left = -7
@@ -194,65 +194,65 @@ LUI.InfoBox.new = function ( f7_arg0, f7_arg1 )
 	f7_local13.alignment = LUI.Alignment.Left
 	f7_local13.color = Colors.white
 	f7_local13.lineSpacingRatio = 0.2
-	local self = LUI.UIText.new( f7_local13 )
-	self.id = "infobox_description_text"
-	self:registerAnimationState( "show", {
+	local f7_local14 = LUI.UIText.new( f7_local13 )
+	f7_local14.id = "infobox_description_text"
+	f7_local14:registerAnimationState( "show", {
 		alpha = 1
 	} )
-	self:registerAnimationState( "hide", {
+	f7_local14:registerAnimationState( "hide", {
 		alpha = 0
 	} )
-	self.description = self
-	self:addElement( self )
-	self.setDescription = function ( f15_arg0, f15_arg1 )
-		local f15_local0, f15_local1, f15_local2 = GetTextDimensions( f15_arg1, CoD.TextSettings.BodyFont18.Font, f0_local5 )
-		local f15_local3 = f7_local13.width * 3
-		local f15_local4 = 1
-		local f15_local5 = 0.2
-		if f15_local3 < f15_local2 then
-			f15_local4 = f15_local3 / f15_local2
-			f15_local5 = 0.1
+	self.description = f7_local14
+	self:addElement( f7_local14 )
+	f7_local14.setDescription = function ( f9_arg0, f9_arg1 )
+		local f9_local0, f9_local1, f9_local2 = GetTextDimensions( f9_arg1, CoD.TextSettings.BodyFont18.Font, f0_local5 )
+		local f9_local3 = f7_local13.width * 3
+		local f9_local4 = 1
+		local f9_local5 = 0.2
+		if f9_local3 < f9_local2 then
+			f9_local4 = f9_local3 / f9_local2
+			f9_local5 = 0.1
 		end
-		f15_arg0:setText( f15_arg1 )
-		f15_arg0:registerAnimationState( "show", {
+		f9_arg0:setText( f9_arg1 )
+		f9_arg0:registerAnimationState( "show", {
 			alpha = 1,
-			height = f0_local5 * f15_local4,
+			height = f0_local5 * f9_local4,
 			top = 40,
 			topAnchor = true,
-			lineSpacingRatio = f15_local5
+			lineSpacingRatio = f9_local5
 		} )
-		f15_arg0:animateToState( "show" )
+		f9_arg0:animateToState( "show" )
 	end
 	
 	local f7_local15 = CoD.CreateState( 3, nil, -f0_local3 / 2, -30, CoD.AnchorTypes.BottomLeftRight )
 	f7_local15.height = f0_local5
-	local self = LUI.UIElement.new( f7_local15 )
-	self.id = "bottom_left_elements"
-	self:registerAnimationState( "show", {
+	local f7_local16 = LUI.UIElement.new( f7_local15 )
+	f7_local16.id = "bottom_left_elements"
+	f7_local16:registerAnimationState( "show", {
 		alpha = 0.5
 	} )
-	self:registerAnimationState( "hide", {
+	f7_local16:registerAnimationState( "hide", {
 		alpha = 0
 	} )
-	self.bottomLeftElements = self
-	self:addElement( self )
+	self.bottomLeftElements = f7_local16
+	self:addElement( f7_local16 )
 	local f7_local17 = CoD.CreateState( (f0_local3 - f0_local10) / 2, nil, -f0_local10 - 38, -30, CoD.AnchorTypes.BottomLeftRight )
 	f7_local17.height = f0_local5
-	local self = LUI.UIElement.new( f7_local17 )
-	self.id = "bottom_right_elements"
-	self:registerAnimationState( "show", {
+	local f7_local18 = LUI.UIElement.new( f7_local17 )
+	f7_local18.id = "bottom_right_elements"
+	f7_local18:registerAnimationState( "show", {
 		alpha = 0.5
 	} )
-	self:registerAnimationState( "hide", {
+	f7_local18:registerAnimationState( "hide", {
 		alpha = 0
 	} )
-	self.bottomRightElements = self
-	self:addElement( self )
+	self.bottomRightElements = f7_local18
+	self:addElement( f7_local18 )
 	return self
 end
 
-LUI.InfoBox.build = function ( f8_arg0, f8_arg1, f8_arg2 )
-	return LUI.InfoBox.new( f8_arg0, f8_arg1 )
+LUI.InfoBox.build = function ( f10_arg0, f10_arg1, f10_arg2 )
+	return LUI.InfoBox.new( f10_arg0, f10_arg1 )
 end
 
 LUI.MenuBuilder.registerType( "InfoBox", LUI.InfoBox.build )

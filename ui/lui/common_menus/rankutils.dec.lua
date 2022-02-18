@@ -33,7 +33,7 @@ RankIconTable = {
 local f0_local0 = 0
 Rank.GetMaxPrestigeLevel = function ()
 	if f0_local0 == 0 then
-		UPVAL0 = tonumber( Engine.TableLookup( RankIconTable.File, 0, "maxPrestige", 1 ) )
+		f0_local0 = tonumber( Engine.TableLookup( RankIconTable.File, 0, "maxPrestige", 1 ) )
 	end
 	return f0_local0
 end

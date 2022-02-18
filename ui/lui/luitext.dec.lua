@@ -110,14 +110,14 @@ LUI.UIText.setTextLocalize = function ( f8_arg0, f8_arg1, f8_arg2 )
 	end
 end
 
-LUI.UIText.setForceLineBreaks = function ( f9_arg0, f9_arg1 )
-	f9_arg0.m_forceLineBreaks = f9_arg1
+LUI.UIText.setForceLineBreaks = function ( f10_arg0, f10_arg1 )
+	f10_arg0.m_forceLineBreaks = f10_arg1
 end
 
-LUI.UIText.setGlow = function ( f10_arg0, f10_arg1, f10_arg2, f10_arg3, f10_arg4 )
-	local self = f10_arg0:getChildById( "text_glow" )
-	local f10_local1 = {
-		color = f10_arg1,
+LUI.UIText.setGlow = function ( f11_arg0, f11_arg1, f11_arg2, f11_arg3, f11_arg4 )
+	local self = f11_arg0:getChildById( "text_glow" )
+	local f11_local1 = {
+		color = f11_arg1,
 		leftAnchor = true,
 		rightAnchor = false,
 		bottomAnchor = false,
@@ -127,40 +127,40 @@ LUI.UIText.setGlow = function ( f10_arg0, f10_arg1, f10_arg2, f10_arg3, f10_arg4
 		bottom = 0,
 		right = 0,
 		material = RegisterMaterial( "s1_9slice_glow" ),
-		alpha = f10_arg2
+		alpha = f11_arg2
 	}
 	if self ~= nil then
-		if f10_arg1 == nil then
-			f10_arg0:removeElement( self )
+		if f11_arg1 == nil then
+			f11_arg0:removeElement( self )
 		else
-			self:registerAnimationState( "default", f10_local1 )
+			self:registerAnimationState( "default", f11_local1 )
 			self:animateToState( "default", 0 )
 		end
-	elseif f10_arg1 ~= nil then
-		self = LUI.UIImage.new( f10_local1 )
+	elseif f11_arg1 ~= nil then
+		self = LUI.UIImage.new( f11_local1 )
 		self.id = "text_glow"
 		self:setup9SliceImage()
 		self:registerAnimationState( "visible", {
-			alpha = f10_arg3
+			alpha = f11_arg3
 		} )
 		self:animateToState( "default", 0 )
-		local f10_local2 = GenericButtonSettings.Common.visual_focus_animation_duration or 0
+		local f11_local2 = GenericButtonSettings.Common.visual_focus_animation_duration or 0
 		self:registerEventHandler( "button_over", function ( element, event )
 			element:animateToState( "visible" )
 		end )
 		self:registerEventHandler( "button_up", function ( element, event )
-			element:animateToState( "default", f10_local2, true )
+			element:animateToState( "default", f11_local2, true )
 		end )
 		self:registerEventHandler( "button_over_disable", function ( element, event )
 			element:animateToState( "visible" )
 		end )
 		self:registerEventHandler( "button_disable", function ( element, event )
-			element:animateToState( "default", f10_local2, true )
+			element:animateToState( "default", f11_local2, true )
 		end )
-		self.m_defaultAlpha = f10_arg2
-		f10_arg0:addElement( self )
+		self.m_defaultAlpha = f11_arg2
+		f11_arg0:addElement( self )
 	end
-	f10_arg0:resizeGlow( f10_arg0:getText() )
+	f11_arg0:resizeGlow( f11_arg0:getText() )
 	return self
 end
 

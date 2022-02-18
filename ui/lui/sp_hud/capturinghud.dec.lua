@@ -21,9 +21,9 @@ local f0_local9 = function ( f1_arg0, f1_arg1 )
 	local f1_local6 = f1_local5:getFirstDescendentById( "start_cap" )
 	local f1_local7 = f1_local5:getFirstDescendentById( "middle" )
 	local f1_local8 = f1_local5:getFirstDescendentById( "end_cap" )
-	UPVAL0 = false
+	f0_local8 = false
 	if Engine.GetDvarFloat( "ui_securing_progress" ) == 1 and not f0_local8 then
-		UPVAL0 = true
+		f0_local8 = true
 		f1_local3:setText( Engine.Localize( "@SCRIPT_INTELLIGENCE_UPLOADED" ) )
 	end
 	if f1_local4.current_state ~= "default" then
@@ -257,26 +257,21 @@ local f0_local13 = function ( f5_arg0 )
 		alpha = 0
 	} )
 	self:registerEventHandler( "capture_refresh", f5_arg0 )
-	local f5_local3 = LUI.UITimer.new
-	local self = 50
-	local self = "capture_refresh"
-	local self = nil
-	local self, self = false
-	f5_local3 = f5_local3( self, self, self, self, self, false, true )
+	local f5_local3 = LUI.UITimer.new( 50, "capture_refresh", nil, false, false, false, true )
 	f5_local3.id = "capturing_refresh_timer"
 	f5_local3.value = ""
-	self = LUI.UIElement.new()
-	self.id = "capturing_bar_bg"
-	self:registerAnimationState( "default", {
+	local f5_local4 = LUI.UIElement.new()
+	f5_local4.id = "capturing_bar_bg"
+	f5_local4:registerAnimationState( "default", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = true,
 		rightAnchor = true
 	} )
-	self:animateToState( "default", 0 )
-	self = LUI.UIHorizontalList.new()
-	self.id = "capturing_bar_hl"
-	self:registerAnimationState( "default", {
+	f5_local4:animateToState( "default", 0 )
+	local f5_local5 = LUI.UIHorizontalList.new()
+	f5_local5.id = "capturing_bar_hl"
+	f5_local5:registerAnimationState( "default", {
 		topAnchor = false,
 		leftAnchor = true,
 		bottomAnchor = true,
@@ -289,13 +284,13 @@ local f0_local13 = function ( f5_arg0 )
 		spacing = 0,
 		alpha = 0
 	} )
-	self:animateToState( "default", 0 )
-	self:registerAnimationState( "active", {
+	f5_local5:animateToState( "default", 0 )
+	f5_local5:registerAnimationState( "active", {
 		alpha = 1
 	} )
-	self = LUI.UIImage.new()
-	self.id = "start_cap"
-	self:registerAnimationState( "default", {
+	local f5_local6 = LUI.UIImage.new()
+	f5_local6.id = "start_cap"
+	f5_local6:registerAnimationState( "default", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = false,
@@ -310,16 +305,16 @@ local f0_local13 = function ( f5_arg0 )
 		material = f5_local1,
 		zRot = 180
 	} )
-	self:animateToState( "default", 0 )
-	self:registerAnimationState( "secured", {
+	f5_local6:animateToState( "default", 0 )
+	f5_local6:registerAnimationState( "secured", {
 		red = Colors.cyan.r,
 		green = Colors.cyan.g,
 		blue = Colors.cyan.b
 	} )
-	self = LUI.UIImage.new()
-	self.id = "middle"
-	self.m_maxWidth = f0_local4 - f0_local7 - f0_local7
-	self:registerAnimationState( "default", {
+	local f5_local7 = LUI.UIImage.new()
+	f5_local7.id = "middle"
+	f5_local7.m_maxWidth = f0_local4 - f0_local7 - f0_local7
+	f5_local7:registerAnimationState( "default", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = false,
@@ -333,15 +328,15 @@ local f0_local13 = function ( f5_arg0 )
 		blue = Colors.white.b,
 		material = f5_local0
 	} )
-	self:animateToState( "default", 0 )
-	self:registerAnimationState( "secured", {
+	f5_local7:animateToState( "default", 0 )
+	f5_local7:registerAnimationState( "secured", {
 		red = Colors.cyan.r,
 		green = Colors.cyan.g,
 		blue = Colors.cyan.b
 	} )
-	self = LUI.UIImage.new()
-	self.id = "end_cap"
-	self:registerAnimationState( "default", {
+	local f5_local8 = LUI.UIImage.new()
+	f5_local8.id = "end_cap"
+	f5_local8:registerAnimationState( "default", {
 		topAnchor = true,
 		rightAnchor = true,
 		top = 0,
@@ -353,20 +348,20 @@ local f0_local13 = function ( f5_arg0 )
 		blue = Colors.white.b,
 		material = f5_local1
 	} )
-	self:animateToState( "default", 0 )
-	self:registerAnimationState( "secured", {
+	f5_local8:animateToState( "default", 0 )
+	f5_local8:registerAnimationState( "secured", {
 		red = Colors.cyan.r,
 		green = Colors.cyan.g,
 		blue = Colors.cyan.b
 	} )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( self )
-	local self = LUI.UIText.new()
-	self.id = "capturing_text"
-	self:setText( "" )
-	self:setTextStyle( CoD.TextStyle.Shadowed )
-	self:registerAnimationState( "default", {
+	f5_local5:addElement( f5_local6 )
+	f5_local5:addElement( f5_local7 )
+	f5_local5:addElement( f5_local8 )
+	local f5_local9 = LUI.UIText.new()
+	f5_local9.id = "capturing_text"
+	f5_local9:setText( "" )
+	f5_local9:setTextStyle( CoD.TextStyle.Shadowed )
+	f5_local9:registerAnimationState( "default", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = false,
@@ -382,9 +377,9 @@ local f0_local13 = function ( f5_arg0 )
 		blue = Colors.white.b,
 		alpha = 0
 	} )
-	self:animateToState( "default", 0 )
+	f5_local9:animateToState( "default", 0 )
 	local f5_local10 = -30
-	self:registerAnimationState( "opening", {
+	f5_local9:registerAnimationState( "opening", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = false,
@@ -398,7 +393,7 @@ local f0_local13 = function ( f5_arg0 )
 		blue = Colors.white.b,
 		alpha = 1
 	} )
-	self:registerAnimationState( "active", {
+	f5_local9:registerAnimationState( "active", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = false,
@@ -412,7 +407,7 @@ local f0_local13 = function ( f5_arg0 )
 		blue = Colors.white.b,
 		alpha = 1
 	} )
-	self:registerAnimationState( "secured", {
+	f5_local9:registerAnimationState( "secured", {
 		topAnchor = true,
 		leftAnchor = true,
 		bottomAnchor = false,
@@ -426,10 +421,10 @@ local f0_local13 = function ( f5_arg0 )
 		blue = Colors.cyan.b,
 		alpha = 1
 	} )
-	self:addElement( self )
-	self:addElement( self )
+	f5_local4:addElement( f5_local5 )
+	f5_local4:addElement( f5_local9 )
 	self:addElement( f5_local3 )
-	self:addElement( self )
+	self:addElement( f5_local4 )
 	return self
 end
 

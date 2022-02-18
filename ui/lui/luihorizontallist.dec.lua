@@ -45,8 +45,8 @@ LUI.UIHorizontalNavigator.build = function ( menu, controller )
 	return self
 end
 
-LUI.UIHorizontalNavigator.new = function ( f5_arg0 )
-	local self = LUI.UIElement.new( f5_arg0 )
+LUI.UIHorizontalNavigator.new = function ( f6_arg0 )
+	local self = LUI.UIElement.new( f6_arg0 )
 	self.id = "LUIHorizontalList"
 	self.addSpacer = f0_local0
 	self.addElement = LUI.UIHorizontalList.AddElement
@@ -59,16 +59,16 @@ LUI.UIHorizontalNavigator.new = function ( f5_arg0 )
 	return self
 end
 
-LUI.UIHorizontalList.SetNoWrap = function ( f6_arg0, f6_arg1 )
-	f6_arg0.noWrap = f6_arg1
+LUI.UIHorizontalList.SetNoWrap = function ( f8_arg0, f8_arg1 )
+	f8_arg0.noWrap = f8_arg1
 end
 
-LUI.UIHorizontalAlignGroup.build = function ( f7_arg0, f7_arg1 )
+LUI.UIHorizontalAlignGroup.build = function ( f9_arg0, f9_arg1 )
 	return LUI.UIHorizontalAlignGroup.new( nil )
 end
 
-LUI.UIHorizontalAlignGroup.new = function ( f8_arg0 )
-	local self = LUI.UIElement.new( f8_arg0 )
+LUI.UIHorizontalAlignGroup.new = function ( f10_arg0 )
+	local self = LUI.UIElement.new( f10_arg0 )
 	self.id = "LUIHorizontalAlignGroup"
 	self.focusable = true
 	self:setupUIHorizontalList()
@@ -76,106 +76,106 @@ LUI.UIHorizontalAlignGroup.new = function ( f8_arg0 )
 	return self
 end
 
-LUI.UIHorizontalList.AddElement = function ( f9_arg0, f9_arg1 )
-	LUI.UIElement.addElement( f9_arg0, f9_arg1 )
-	f9_arg1:initNavTables()
-	f9_arg0:setLayoutCached( false )
-	f9_arg0:updateNavigation()
+LUI.UIHorizontalList.AddElement = function ( f11_arg0, f11_arg1 )
+	LUI.UIElement.addElement( f11_arg0, f11_arg1 )
+	f11_arg1:initNavTables()
+	f11_arg0:setLayoutCached( false )
+	f11_arg0:updateNavigation()
 end
 
-LUI.UIHorizontalList.RemoveElement = function ( f10_arg0, f10_arg1 )
-	LUI.UIElement.removeElement( f10_arg0, f10_arg1 )
-	f10_arg0:setLayoutCached( false )
-	f10_arg0:updateNavigation()
+LUI.UIHorizontalList.RemoveElement = function ( f12_arg0, f12_arg1 )
+	LUI.UIElement.removeElement( f12_arg0, f12_arg1 )
+	f12_arg0:setLayoutCached( false )
+	f12_arg0:updateNavigation()
 end
 
-LUI.UIHorizontalList.UpdateNavigation = function ( f11_arg0 )
-	local f11_local0, f11_local1 = nil
-	local f11_local2
-	if Engine.IsConsoleGame() or f11_arg0.properties == nil or f11_arg0.properties.useMouseWheel ~= true then
-		f11_local2 = false
+LUI.UIHorizontalList.UpdateNavigation = function ( f13_arg0 )
+	local f13_local0, f13_local1 = nil
+	local f13_local2
+	if Engine.IsConsoleGame() or f13_arg0.properties == nil or f13_arg0.properties.useMouseWheel ~= true then
+		f13_local2 = false
 	else
-		f11_local2 = true
+		f13_local2 = true
 	end
-	local f11_local3 = f11_arg0:getFirstChild()
-	while f11_local3 ~= nil do
-		if f11_local3:canFocus( FocusType.ListSelection ) then
-			if f11_local0 == nil then
-				f11_local0 = f11_local3
+	local f13_local3 = f13_arg0:getFirstChild()
+	while f13_local3 ~= nil do
+		if f13_local3:canFocus( FocusType.ListSelection ) then
+			if f13_local0 == nil then
+				f13_local0 = f13_local3
 			end
-			if f11_local1 ~= nil then
-				f11_local1.navigation.right = f11_local3
-				f11_local3.navigation.left = f11_local1
+			if f13_local1 ~= nil then
+				f13_local1.navigation.right = f13_local3
+				f13_local3.navigation.left = f13_local1
 			else
-				f11_local3.navigation.left = nil
+				f13_local3.navigation.left = nil
 			end
-			if f11_local3.navigation ~= nil and f11_arg0.navigation ~= nil and not f11_local2 then
-				f11_local3.navigation.down = f11_arg0.navigation.down
-				f11_local3.navigation.up = f11_arg0.navigation.up
+			if f13_local3.navigation ~= nil and f13_arg0.navigation ~= nil and not f13_local2 then
+				f13_local3.navigation.down = f13_arg0.navigation.down
+				f13_local3.navigation.up = f13_arg0.navigation.up
 			end
-			f11_local3.canRepeatWrapLeft = false
-			f11_local3.canRepeatWrapRight = false
-			f11_local1 = f11_local3
+			f13_local3.canRepeatWrapLeft = false
+			f13_local3.canRepeatWrapRight = false
+			f13_local1 = f13_local3
 		end
-		f11_local3 = f11_local3:getNextSibling()
+		f13_local3 = f13_local3:getNextSibling()
 	end
-	if f11_local1 ~= nil then
-		if f11_arg0.navigation ~= nil and f11_arg0.navigation.right ~= nil and f11_arg0.navigation.right:canFocus( FocusType.ListSelection ) == true then
-			f11_local1.navigation.right = f11_arg0.navigation.right
-			f11_arg0.navigation.right.navigation.left = f11_local1
-		elseif f11_local1 ~= f11_local0 and not f11_arg0.noWrap then
-			f11_local1.navigation.right = f11_local0
+	if f13_local1 ~= nil then
+		if f13_arg0.navigation ~= nil and f13_arg0.navigation.right ~= nil and f13_arg0.navigation.right:canFocus( FocusType.ListSelection ) == true then
+			f13_local1.navigation.right = f13_arg0.navigation.right
+			f13_arg0.navigation.right.navigation.left = f13_local1
+		elseif f13_local1 ~= f13_local0 and not f13_arg0.noWrap then
+			f13_local1.navigation.right = f13_local0
 		else
-			f11_local1.navigation.right = nil
+			f13_local1.navigation.right = nil
 		end
-		if f11_arg0.navigation ~= nil and f11_arg0.navigation.left ~= nil and f11_arg0.navigation.left:canFocus( FocusType.ListSelection ) == true then
-			f11_local0.navigation.left = f11_arg0.navigation.left
-			f11_arg0.navigation.left.navigation.right = f11_local0
-		elseif f11_local1 ~= f11_local0 and not f11_arg0.noWrap then
-			f11_local0.navigation.left = f11_local1
+		if f13_arg0.navigation ~= nil and f13_arg0.navigation.left ~= nil and f13_arg0.navigation.left:canFocus( FocusType.ListSelection ) == true then
+			f13_local0.navigation.left = f13_arg0.navigation.left
+			f13_arg0.navigation.left.navigation.right = f13_local0
+		elseif f13_local1 ~= f13_local0 and not f13_arg0.noWrap then
+			f13_local0.navigation.left = f13_local1
 		else
-			f11_local0.navigation.left = nil
+			f13_local0.navigation.left = nil
 		end
 	end
-	if f11_local0 ~= nil then
-		f11_local0.canRepeatWrapLeft = true
+	if f13_local0 ~= nil then
+		f13_local0.canRepeatWrapLeft = true
 	end
-	if f11_local1 ~= nil then
-		f11_local1.canRepeatWrapRight = true
+	if f13_local1 ~= nil then
+		f13_local1.canRepeatWrapRight = true
 	end
-	if f11_local2 then
-		local f11_local4 = f11_arg0:getFirstChild()
-		while f11_local4 ~= nil do
-			f11_local4.navigation.up = f11_local4.navigation.left
-			f11_local4.navigation.down = f11_local4.navigation.right
-			f11_local4 = f11_local4:getNextSibling()
+	if f13_local2 then
+		local f13_local4 = f13_arg0:getFirstChild()
+		while f13_local4 ~= nil do
+			f13_local4.navigation.up = f13_local4.navigation.left
+			f13_local4.navigation.down = f13_local4.navigation.right
+			f13_local4 = f13_local4:getNextSibling()
 		end
 	end
 end
 
-LUI.UIHorizontalList.gainFocus = function ( f12_arg0, f12_arg1 )
-	local f12_local0, f12_local1 = f12_arg0:restoreState( nil, nil, f12_arg1 )
-	if f12_local1 == 0 then
-		local f12_local2, f12_local3 = nil
-		local f12_local4 = f12_arg0:getFirstChild()
-		while f12_local4 ~= nil do
-			if f12_local4:canFocus( FocusType.ListSelection ) then
-				if f12_local2 == nil then
-					f12_local2 = f12_local4
+LUI.UIHorizontalList.gainFocus = function ( f14_arg0, f14_arg1 )
+	local f14_local0, f14_local1 = f14_arg0:restoreState( nil, nil, f14_arg1 )
+	if f14_local1 == 0 then
+		local f14_local2, f14_local3 = nil
+		local f14_local4 = f14_arg0:getFirstChild()
+		while f14_local4 ~= nil do
+			if f14_local4:canFocus( FocusType.ListSelection ) then
+				if f14_local2 == nil then
+					f14_local2 = f14_local4
 				end
-				if f12_local3 == nil and f12_local4.listDefaultFocus then
-					f12_local3 = f12_local4
+				if f14_local3 == nil and f14_local4.listDefaultFocus then
+					f14_local3 = f14_local4
 				end
 			end
 		end
-		if f12_local3 ~= nil then
-			f12_local3:processEvent( f12_arg1 )
-		elseif f12_local2 ~= nil then
-			f12_local2:processEvent( f12_arg1 )
+		if f14_local3 ~= nil then
+			f14_local3:processEvent( f14_arg1 )
+		elseif f14_local2 ~= nil then
+			f14_local2:processEvent( f14_arg1 )
 		else
 			
 		end
-		f12_local4 = f12_local4:getNextSibling()
+		f14_local4 = f14_local4:getNextSibling()
 	end
 end
 

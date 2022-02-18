@@ -58,11 +58,7 @@ GameX.IsHardcoreMode = function ()
 end
 
 GameX.IsRankedMatch = function ()
-	local f7_local0 = Engine.GetOnlineGame()
-	if f7_local0 then
-		f7_local0 = not Engine.GetDvarBool( "xblive_privatematch" )
-	end
-	return f7_local0
+	return Engine.GetOnlineGame() and not Engine.GetDvarBool( "xblive_privatematch" )
 end
 
 GameX.GetGameMode = function ()

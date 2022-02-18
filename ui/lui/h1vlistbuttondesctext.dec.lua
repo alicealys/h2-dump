@@ -102,9 +102,9 @@ LUI.H1VlistButtonDescText.new = function ( f1_arg0, f1_arg1 )
 	self:animateToState( "default" )
 	self:registerEventHandler( "set_button_info_text", function ( element, event )
 		if event.text then
-			local f3_local0, f3_local1 = GetTextDimensions( event.text, LUI.H1VlistButtonDescText.Font.Font, LUI.H1VlistButtonDescText.FontHeight, f1_local0 - 20 )
-			local f3_local2 = 9
-			f1_local4.top = f3_local2 + (f1_local2 - f3_local2 - f3_local1) / 2
+			local f2_local0, f2_local1 = GetTextDimensions( event.text, LUI.H1VlistButtonDescText.Font.Font, LUI.H1VlistButtonDescText.FontHeight, f1_local0 - 20 )
+			local f2_local2 = 9
+			f1_local4.top = f2_local2 + (f1_local2 - f2_local2 - f2_local1) / 2
 			self:registerAnimationState( "default", f1_local4 )
 			self:animateToState( "default" )
 			element:setText( event.text )
@@ -116,8 +116,8 @@ LUI.H1VlistButtonDescText.new = function ( f1_arg0, f1_arg1 )
 	return f1_local3
 end
 
-LUI.H1VlistButtonDescText.build = function ( f2_arg0, f2_arg1, f2_arg2 )
-	return LUI.H1VlistButtonDescText.new( f2_arg0, f2_arg1 )
+LUI.H1VlistButtonDescText.build = function ( f3_arg0, f3_arg1, f3_arg2 )
+	return LUI.H1VlistButtonDescText.new( f3_arg0, f3_arg1 )
 end
 
 LUI.MenuBuilder.registerType( "h1_vlist_button_desc_text", LUI.H1VlistButtonDescText.build )

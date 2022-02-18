@@ -244,14 +244,14 @@ local f0_local12 = function ( f15_arg0 )
 	self:setPriority( LUI.UIRoot.childPriorities.debugInfo )
 	self:registerEventHandler( LUI.UIRoot.debugConst.updateEvent, f0_local11 )
 	f15_arg0:addElement( self )
-	local self = LUI.UIElement.new( {
+	local f15_local5 = LUI.UIElement.new( {
 		leftAnchor = true,
 		topAnchor = true,
 		top = 0,
 		left = 0
 	} )
-	self.id = LUI.UIRoot.debugConst.subTreeRootId
-	self:addElement( self )
+	f15_local5.id = LUI.UIRoot.debugConst.subTreeRootId
+	self:addElement( f15_local5 )
 	self.subTreeLines = {}
 	if Engine.InFrontend() then
 		self.traversalRootName = "mp_main_menu"
@@ -260,9 +260,9 @@ local f0_local12 = function ( f15_arg0 )
 	end
 	self.traversalDepth = 1
 	for f15_local6 = 0, 35, 1 do
-		local self = LUI.UIText.new()
-		self.id = "subTreeLine" .. f15_local6
-		self:registerAnimationState( "default", {
+		local f15_local9 = LUI.UIText.new()
+		f15_local9.id = "subTreeLine" .. f15_local6
+		f15_local9:registerAnimationState( "default", {
 			leftAnchor = true,
 			topAnchor = true,
 			top = (f15_local1 - 1) * f15_local6,
@@ -274,10 +274,10 @@ local f0_local12 = function ( f15_arg0 )
 			green = 1,
 			blue = 0
 		} )
-		self:animateToState( "default", 0 )
-		self:setPriority( LUI.UIRoot.childPriorities.debugInfo )
-		self:addElement( self )
-		self.subTreeLines[#self.subTreeLines + 1] = self
+		f15_local9:animateToState( "default", 0 )
+		f15_local9:setPriority( LUI.UIRoot.childPriorities.debugInfo )
+		f15_local5:addElement( f15_local9 )
+		self.subTreeLines[#self.subTreeLines + 1] = f15_local9
 	end
 	self:addElement( LUI.UITimer.new( 100, LUI.UIRoot.debugConst.updateEvent ) )
 	self:animateToState( "active", 0 )
@@ -347,7 +347,7 @@ local f0_local15 = function ( f18_arg0, f18_arg1 )
 			self:setupLetterboxElement()
 		end
 		f18_arg0:addElement( self )
-		local self, f18_local3, f18_local4, self = nil
+		local f18_local2, f18_local3, f18_local4, f18_local5 = nil
 		local f18_local6 = CoD.TextSettings.BodyFontSmall
 		local f18_local7 = CoD.CreateState( 0, -f18_local6.Height, 0, 0, CoD.AnchorTypes.TopLeftRight )
 		f18_local7.font = f18_local6.Font
@@ -365,14 +365,14 @@ local f0_local15 = function ( f18_arg0, f18_arg1 )
 			f18_local3.green = 0
 			f18_local3.blue = 0
 			f18_local3.alpha = 0.2
-			self = LUI.UIImage.new( f18_local3 )
-			self:addElement( self )
-			self = LUI.UIText.new( f18_local7 )
-			self:setText( f18_local9 )
-			self:addElement( self )
-			self = LUI.UIText.new( f18_local8 )
-			self:setText( f18_local9 )
-			self:addElement( self )
+			f18_local2 = LUI.UIImage.new( f18_local3 )
+			self:addElement( f18_local2 )
+			f18_local5 = LUI.UIText.new( f18_local7 )
+			f18_local5:setText( f18_local9 )
+			f18_local2:addElement( f18_local5 )
+			f18_local5 = LUI.UIText.new( f18_local8 )
+			f18_local5:setText( f18_local9 )
+			f18_local2:addElement( f18_local5 )
 		end
 		f18_arg0.designGrid = self
 	elseif not f18_local0 and f18_arg0.designGrid ~= nil then
@@ -451,9 +451,9 @@ local f0_local19 = function ( f23_arg0 )
 	self:setPriority( LUI.UIRoot.childPriorities.debugInfo )
 	self:registerEventHandler( LUI.UIRoot.liveDebugConst.updateEvent, f0_local18 )
 	f23_arg0:addElement( self )
-	local self = LUI.UITimer.new( 100, LUI.UIRoot.liveDebugConst.updateEvent )
-	self.id = "LUITimer"
-	self:addElement( self )
+	local f23_local5 = LUI.UITimer.new( 100, LUI.UIRoot.liveDebugConst.updateEvent )
+	f23_local5.id = "LUITimer"
+	self:addElement( f23_local5 )
 	self:animateToState( "active", 0 )
 	return self
 end
@@ -491,51 +491,51 @@ local f0_local21 = function ( f25_arg0, f25_arg1 )
 	} )
 end
 
-local f0_local22 = function ( f26_arg0, f26_arg1 )
+local f0_local22 = function ( f27_arg0, f27_arg1 )
 	if Engine.IsConsoleGame() then
 		return 
 	elseif Engine.GetCurrentLanguage() ~= CoD.Language.French then
 		return 
-	elseif not f26_arg1.resetControl and Engine.GetDvarBool( "cg_IsWarnedAZERTY" ) then
+	elseif not f27_arg1.resetControl and Engine.GetDvarBool( "cg_IsWarnedAZERTY" ) then
 		return 
 	elseif Engine.IsGamepadEnabled() then
 		return 
-	elseif f26_arg1.resetControl then
-		LUI.FlowManager.RequestAddMenu( f26_arg0, "switch_to_azerty_reset_popup", f26_arg1.exclusiveController, f26_arg1.controller )
+	elseif f27_arg1.resetControl then
+		LUI.FlowManager.RequestAddMenu( f27_arg0, "switch_to_azerty_reset_popup", f27_arg1.exclusiveController, f27_arg1.controller )
 	else
-		LUI.FlowManager.RequestAddMenu( f26_arg0, "switch_to_azerty_popup", f26_arg1.exclusiveController, f26_arg1.controller )
+		LUI.FlowManager.RequestAddMenu( f27_arg0, "switch_to_azerty_popup", f27_arg1.exclusiveController, f27_arg1.controller )
 	end
 end
 
-local f0_local23 = function ( f27_arg0, f27_arg1 )
-	local f27_local0 = Engine.GetDvarBool( "lui_drawfontsizetest" )
-	if f27_local0 and f27_arg0.fontsizetest == nil then
-		local f27_local1 = f27_arg0
-		local f27_local2 = Engine.GetLuiRoot()
-		if f27_local2 then
-			local f27_local3 = LUI.FlowManager.GetTopMenuInfo( f27_local2.flowManager.menuInfoStack, true )
-			if f27_local3 and f27_local3.menu then
-				f27_local1 = f27_local3.menu
+local f0_local23 = function ( f28_arg0, f28_arg1 )
+	local f28_local0 = Engine.GetDvarBool( "lui_drawfontsizetest" )
+	if f28_local0 and f28_arg0.fontsizetest == nil then
+		local f28_local1 = f28_arg0
+		local f28_local2 = Engine.GetLuiRoot()
+		if f28_local2 then
+			local f28_local3 = LUI.FlowManager.GetTopMenuInfo( f28_local2.flowManager.menuInfoStack, true )
+			if f28_local3 and f28_local3.menu then
+				f28_local1 = f28_local3.menu
 			end
 		end
-		local f27_local3 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
-		f27_local3.alpha = 1
-		f27_local3.scale = 0
+		local f28_local3 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
+		f28_local3.alpha = 1
+		f28_local3.scale = 0
 		
-		local fontsizetest = LUI.UIElement.new( f27_local3 )
+		local fontsizetest = LUI.UIElement.new( f28_local3 )
 		fontsizetest:setPriority( debugInfo )
-		f27_local1:addElement( fontsizetest )
-		f27_arg0.fontsizetest = fontsizetest
+		f28_local1:addElement( fontsizetest )
+		f28_arg0.fontsizetest = fontsizetest
 		
 		LUI_UIRoot_InitFontTestElements( Engine.GetDvarInt( "lui_fontsizeteststyle" ), fontsizetest )
-	elseif not f27_local0 and f27_arg0.fontsizetest ~= nil then
-		f27_arg0.fontsizetest:close()
-		f27_arg0.fontsizetest = nil
+	elseif not f28_local0 and f28_arg0.fontsizetest ~= nil then
+		f28_arg0.fontsizetest:close()
+		f28_arg0.fontsizetest = nil
 	end
 end
 
-function LUI_UIRoot_InitFontTestElements( f28_arg0, f28_arg1 )
-	local f28_local0 = {
+function LUI_UIRoot_InitFontTestElements( f29_arg0, f29_arg1 )
+	local f29_local0 = {
 		{
 			title = "WWWs",
 			text = "WWWWWWWWWWWWWW",
@@ -581,105 +581,105 @@ function LUI_UIRoot_InitFontTestElements( f28_arg0, f28_arg1 )
 			autoscale = true
 		}
 	}
-	f28_arg0 = f28_arg0 + 1
-	if #f28_local0 < f28_arg0 then
-		f28_arg0 = 1
+	f29_arg0 = f29_arg0 + 1
+	if #f29_local0 < f29_arg0 then
+		f29_arg0 = 1
 	end
-	local f28_local1 = f28_local0[f28_arg0].scale
-	local f28_local2 = f28_local0[f28_arg0].text
-	local f28_local3 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
-	f28_local3.alpha = 1
-	f28_local3.scale = f28_local1
-	f28_local3.color = Colors.black
-	local self = LUI.UIImage.new( f28_local3 )
-	f28_arg1:addElement( self )
-	local f28_local5 = CoD.CreateState( 0, 0, 0, 20, CoD.AnchorTypes.TopLeftRight )
-	f28_local5.font = Font27.Font
-	f28_local5.alpha = 1
-	f28_local5.color = Colors.white
-	local self = LUI.UIText.new( f28_local5 )
-	self:setText( f28_local0[f28_arg0].title )
-	f28_arg1:addElement( self )
-	local f28_local7 = CoD.CreateState( 10, 0, 0, nil, CoD.AnchorTypes.TopLeft )
-	f28_local7.alpha = 1
-	f28_local7.color = Colors.grey_2
-	local f28_local8 = CoD.CreateState( 10, 0, 0, nil, CoD.AnchorTypes.TopLeft )
-	f28_local8.alpha = 1
-	f28_local8.font = Font27.Font
-	local f28_local9 = 30
-	local f28_local10 = function ( f3_arg0, f3_arg1, f3_arg2 )
-		f28_local8.top = f28_local9
-		f28_local7.top = f28_local9
-		UPVAL1 = f28_local9 + f3_arg0 + 5
-		f28_local8.height = f3_arg0
-		f28_local7.height = f3_arg0
-		f28_local8.color = Colors.white
-		f28_local8.horizontalAlignment = LUI.HorizontalAlignment.Left
-		local self = LUI.UIText.new( f28_local8 )
-		self:setText( f3_arg0 )
+	local f29_local1 = f29_local0[f29_arg0].scale
+	local f29_local2 = f29_local0[f29_arg0].text
+	local f29_local3 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
+	f29_local3.alpha = 1
+	f29_local3.scale = f29_local1
+	f29_local3.color = Colors.black
+	local self = LUI.UIImage.new( f29_local3 )
+	f29_arg1:addElement( self )
+	local f29_local5 = CoD.CreateState( 0, 0, 0, 20, CoD.AnchorTypes.TopLeftRight )
+	f29_local5.font = Font27.Font
+	f29_local5.alpha = 1
+	f29_local5.color = Colors.white
+	local f29_local6 = LUI.UIText.new( f29_local5 )
+	f29_local6:setText( f29_local0[f29_arg0].title )
+	f29_arg1:addElement( f29_local6 )
+	local f29_local7 = CoD.CreateState( 10, 0, 0, nil, CoD.AnchorTypes.TopLeft )
+	f29_local7.alpha = 1
+	f29_local7.color = Colors.grey_2
+	local f29_local8 = CoD.CreateState( 10, 0, 0, nil, CoD.AnchorTypes.TopLeft )
+	f29_local8.alpha = 1
+	f29_local8.font = Font27.Font
+	local f29_local9 = 30
+	local f29_local10 = function ( f30_arg0, f30_arg1, f30_arg2 )
+		f29_local8.top = f29_local9
+		f29_local7.top = f29_local9
+		f29_local9 = f29_local9 + f30_arg0 + 5
+		f29_local8.height = f30_arg0
+		f29_local7.height = f30_arg0
+		f29_local8.color = Colors.white
+		f29_local8.horizontalAlignment = LUI.HorizontalAlignment.Left
+		local self = LUI.UIText.new( f29_local8 )
+		self:setText( f30_arg0 )
 		self:addElement( self )
-		local self = LUI.UIImage.new( f28_local7 )
-		self:setLeftRight( true, false, 50, 50 + f3_arg1 )
-		self:addElement( self )
-		f28_local8.color = Colors.red
-		local self = LUI.UIText.new( f28_local8 )
-		self:setText( f28_local2 )
-		self:setLeftRight( true, false, 50, 50 + f3_arg1 )
-		self:addElement( self )
-		local self = LUI.UIImage.new( f28_local7 )
-		self:setLeftRight( true, false, 600 - f3_arg1 / 2, 600 + f3_arg1 / 2 )
-		self:addElement( self )
-		f28_local8.color = Colors.cyan
-		f28_local8.horizontalAlignment = LUI.HorizontalAlignment.Center
-		local self = LUI.UIText.new( f28_local8 )
-		self:setText( f28_local2 )
-		self:setLeftRight( true, false, 600 - f3_arg1 / 2, 600 + f3_arg1 / 2 )
-		self:addElement( self )
-		local self = LUI.UIImage.new( f28_local7 )
-		self:setLeftRight( true, false, 1175 - f3_arg1, 1175 )
-		self:addElement( self )
-		f28_local8.color = Colors.orange
-		f28_local8.horizontalAlignment = LUI.HorizontalAlignment.Right
-		local self = LUI.UIText.new( f28_local8 )
-		self:setText( f28_local2 )
-		self:setLeftRight( true, false, 1175 - f3_arg1, 1175 )
-		self:addElement( self )
-		f28_local8.horizontalAlignment = LUI.HorizontalAlignment.Left
-		f28_local8.color = Colors.grey_2
-		local self = LUI.UIText.new( f28_local8 )
-		self:setText( f3_arg1 )
-		self:setLeftRight( false, true, -100, 0 )
-		self:addElement( self )
-		if f3_arg2 then
-			self:setupAutoScaleText()
-			self:setupAutoScaleText()
-			self:setupAutoScaleText()
+		local f30_local1 = LUI.UIImage.new( f29_local7 )
+		f30_local1:setLeftRight( true, false, 50, 50 + f30_arg1 )
+		self:addElement( f30_local1 )
+		f29_local8.color = Colors.red
+		local f30_local2 = LUI.UIText.new( f29_local8 )
+		f30_local2:setText( f29_local2 )
+		f30_local2:setLeftRight( true, false, 50, 50 + f30_arg1 )
+		self:addElement( f30_local2 )
+		local f30_local3 = LUI.UIImage.new( f29_local7 )
+		f30_local3:setLeftRight( true, false, 600 - f30_arg1 / 2, 600 + f30_arg1 / 2 )
+		self:addElement( f30_local3 )
+		f29_local8.color = Colors.cyan
+		f29_local8.horizontalAlignment = LUI.HorizontalAlignment.Center
+		local f30_local4 = LUI.UIText.new( f29_local8 )
+		f30_local4:setText( f29_local2 )
+		f30_local4:setLeftRight( true, false, 600 - f30_arg1 / 2, 600 + f30_arg1 / 2 )
+		self:addElement( f30_local4 )
+		local f30_local5 = LUI.UIImage.new( f29_local7 )
+		f30_local5:setLeftRight( true, false, 1175 - f30_arg1, 1175 )
+		self:addElement( f30_local5 )
+		f29_local8.color = Colors.orange
+		f29_local8.horizontalAlignment = LUI.HorizontalAlignment.Right
+		local f30_local6 = LUI.UIText.new( f29_local8 )
+		f30_local6:setText( f29_local2 )
+		f30_local6:setLeftRight( true, false, 1175 - f30_arg1, 1175 )
+		self:addElement( f30_local6 )
+		f29_local8.horizontalAlignment = LUI.HorizontalAlignment.Left
+		f29_local8.color = Colors.grey_2
+		local f30_local7 = LUI.UIText.new( f29_local8 )
+		f30_local7:setText( f30_arg1 )
+		f30_local7:setLeftRight( false, true, -100, 0 )
+		self:addElement( f30_local7 )
+		if f30_arg2 then
+			f30_local2:setupAutoScaleText()
+			f30_local4:setupAutoScaleText()
+			f30_local6:setupAutoScaleText()
 		end
 	end
 	
-	for f28_local11 = 10, 30, 1 do
-		local f28_local14, f28_local15, f28_local16, f28_local17 = GetTextDimensions( f28_local2, f28_local8.font, f28_local11 )
-		local f28_local18 = 0
-		if f28_local14 ~= nil and f28_local16 ~= nil then
-			f28_local18 = f28_local16 - f28_local14
+	for f29_local11 = 10, 30, 1 do
+		local f29_local14, f29_local15, f29_local16, f29_local17 = GetTextDimensions( f29_local2, f29_local8.font, f29_local11 )
+		local f29_local18 = 0
+		if f29_local14 ~= nil and f29_local16 ~= nil then
+			f29_local18 = f29_local16 - f29_local14
 		end
-		if f28_local0[f28_arg0].autoScaleMaxWidth ~= nil then
-			f28_local18 = f28_local0[f28_arg0].autoScaleMaxWidth
+		if f29_local0[f29_arg0].autoScaleMaxWidth ~= nil then
+			f29_local18 = f29_local0[f29_arg0].autoScaleMaxWidth
 		end
-		f28_local10( f28_local11, f28_local18, f28_local0[f28_arg0].autoscale )
+		f29_local10( f29_local11, f29_local18, f29_local0[f29_arg0].autoscale )
 	end
 end
 
-local f0_local24 = function ( f29_arg0 )
-	local f29_local0 = #MockupsList
-	if f29_arg0.mockup and f29_local0 > 0 then
-		f29_arg0.mockupIndex = (f29_arg0.mockupIndex - 1) % f29_local0 + 1
-		CoD.SetMaterial( f29_arg0.mockup, RegisterMaterial( MockupsList[f29_arg0.mockupIndex] ) )
+local f0_local24 = function ( f31_arg0 )
+	local f31_local0 = #MockupsList
+	if f31_arg0.mockup and f31_local0 > 0 then
+		f31_arg0.mockupIndex = (f31_arg0.mockupIndex - 1) % f31_local0 + 1
+		CoD.SetMaterial( f31_arg0.mockup, RegisterMaterial( MockupsList[f31_arg0.mockupIndex] ) )
 	end
 end
 
-local f0_local25 = function ( f30_arg0, f30_arg1 )
-	if f30_arg0.mockup == nil then
+local f0_local25 = function ( f32_arg0, f32_arg1 )
+	if f32_arg0.mockup == nil then
 		local mockup = LUI.UIImage.new( {
 			topAnchor = true,
 			bottomAnchor = true,
@@ -688,46 +688,46 @@ local f0_local25 = function ( f30_arg0, f30_arg1 )
 			width = GameX.GetScreenWidth() * 1.78 / Engine.GetAspectRatio(),
 			alpha = 1
 		} )
-		f30_arg0:addElement( mockup )
-		f30_arg0.mockup = mockup
+		f32_arg0:addElement( mockup )
+		f32_arg0.mockup = mockup
 		
-		f30_arg0.mockupIndex = f30_arg0.mockupIndex or 1
-		f0_local24( f30_arg0 )
+		f32_arg0.mockupIndex = f32_arg0.mockupIndex or 1
+		f0_local24( f32_arg0 )
 		Engine.ExecNow( "hidehud" )
 	else
-		f30_arg0.mockup:close()
-		f30_arg0.mockup = nil
+		f32_arg0.mockup:close()
+		f32_arg0.mockup = nil
 		Engine.ExecNow( "showhud" )
 	end
 end
 
-local f0_local26 = function ( f31_arg0, f31_arg1 )
-	if f31_arg0.mockup then
-		f31_arg0.mockupIndex = f31_arg0.mockupIndex - 1
-		f0_local24( f31_arg0 )
+local f0_local26 = function ( f33_arg0, f33_arg1 )
+	if f33_arg0.mockup then
+		f33_arg0.mockupIndex = f33_arg0.mockupIndex - 1
+		f0_local24( f33_arg0 )
 	end
 end
 
-local f0_local27 = function ( f32_arg0, f32_arg1 )
-	if f32_arg0.mockup then
-		f32_arg0.mockupIndex = f32_arg0.mockupIndex + 1
-		f0_local24( f32_arg0 )
+local f0_local27 = function ( f34_arg0, f34_arg1 )
+	if f34_arg0.mockup then
+		f34_arg0.mockupIndex = f34_arg0.mockupIndex + 1
+		f0_local24( f34_arg0 )
 	end
 end
 
-local f0_local28 = function ( f33_arg0, f33_arg1 )
-	local f33_local0 = f33_arg0:getFirstDescendentById( "briefingMenuId" )
-	if f33_local0 == nil and f33_arg1.value ~= 0 then
-		f33_local0 = LUI.MenuBuilder.BuildRegisteredType( "LuiBriefingMenu", nil )
-		f33_local0.id = "briefingMenuId"
-		f33_arg0:addElement( f33_local0 )
+local f0_local28 = function ( f35_arg0, f35_arg1 )
+	local f35_local0 = f35_arg0:getFirstDescendentById( "briefingMenuId" )
+	if f35_local0 == nil and f35_arg1.value ~= 0 then
+		f35_local0 = LUI.MenuBuilder.BuildRegisteredType( "LuiBriefingMenu", nil )
+		f35_local0.id = "briefingMenuId"
+		f35_arg0:addElement( f35_local0 )
 	end
-	if f33_local0 ~= nil then
-		f33_local0:setType( f33_arg1.value )
+	if f35_local0 ~= nil then
+		f35_local0:setType( f35_arg1.value )
 	end
 end
 
-LUI.UIRoot.new = function ( f34_arg0 )
+LUI.UIRoot.new = function ( f36_arg0 )
 	local self = LUI.UIElement.new( {
 		left = 0,
 		top = 0,
@@ -761,7 +761,7 @@ LUI.UIRoot.new = function ( f34_arg0 )
 		self:registerEventHandler( "reset_empty_loadouts", f0_local8 )
 	end
 	self:registerEventHandler( "open_motd", LUI_UIRoot_TryOpenMOTD )
-	LUI.roots[f34_arg0] = self
+	LUI.roots[f36_arg0] = self
 	if LUI.primaryRoot == nil then
 		LUI.primaryRoot = self
 	end
@@ -777,7 +777,7 @@ LUI.UIRoot.new = function ( f34_arg0 )
 		self.hudManager:setupRoot( self )
 	end
 	self.timerGroupQueues = {}
-	self.name = f34_arg0
+	self.name = f36_arg0
 	self.eventQueue = {}
 	self.debugEvents = true
 	LUI.UIRoot.DebugPrint_IgnoreEventsSetup( self )
@@ -809,139 +809,139 @@ LUI.UIRoot.new = function ( f34_arg0 )
 	return self
 end
 
-LUI.UIRoot.GetFirstButtonActionInFocus = function ( f35_arg0 )
-	if f35_arg0:isInFocus() and f35_arg0.m_eventHandlers.button_action then
-		return f35_arg0
+LUI.UIRoot.GetFirstButtonActionInFocus = function ( f38_arg0 )
+	if f38_arg0:isInFocus() and f38_arg0.m_eventHandlers.button_action then
+		return f38_arg0
 	end
-	local f35_local0 = f35_arg0:getFirstChild()
-	while f35_local0 do
-		local f35_local1 = LUI.UIRoot.GetFirstButtonActionInFocus( f35_local0 )
-		if f35_local1 then
-			return f35_local1
+	local f38_local0 = f38_arg0:getFirstChild()
+	while f38_local0 do
+		local f38_local1 = LUI.UIRoot.GetFirstButtonActionInFocus( f38_local0 )
+		if f38_local1 then
+			return f38_local1
 		end
-		f35_local0 = f35_local0:getNextSibling()
+		f38_local0 = f38_local0:getNextSibling()
 	end
 end
 
-LUI.UIRoot.GetFirstButtonActionInFocusId = function ( f36_arg0 )
-	local f36_local0 = LUI.UIRoot.GetFirstButtonActionInFocus( f36_arg0 )
-	return f36_local0.id
+LUI.UIRoot.GetFirstButtonActionInFocusId = function ( f39_arg0 )
+	local f39_local0 = LUI.UIRoot.GetFirstButtonActionInFocus( f39_arg0 )
+	return f39_local0.id
 end
 
-LUI.UIRoot.IsScoreboardOpen = function ( f37_arg0 )
-	if f37_arg0.hudManager then
-		local f37_local0 = f37_arg0.hudManager:getHud()
-		if f37_local0 then
-			return f37_local0:isScoreboardOpen()
+LUI.UIRoot.IsScoreboardOpen = function ( f40_arg0 )
+	if f40_arg0.hudManager then
+		local f40_local0 = f40_arg0.hudManager:getHud()
+		if f40_local0 then
+			return f40_local0:isScoreboardOpen()
 		end
 	end
 	return false
 end
 
-LUI.UIRoot.WantsInputDuringGameplay = function ( f38_arg0 )
-	assert( f38_arg0.inputHungryElements )
-	return #f38_arg0.inputHungryElements > 0
+LUI.UIRoot.WantsInputDuringGameplay = function ( f41_arg0 )
+	assert( f41_arg0.inputHungryElements )
+	return #f41_arg0.inputHungryElements > 0
 end
 
-LUI.UIRoot.BlockButtonInput = function ( f39_arg0, f39_arg1, f39_arg2 )
-	if f39_arg1 then
-		f39_arg0.m_blockButtonInput = true
+LUI.UIRoot.BlockButtonInput = function ( f42_arg0, f42_arg1, f42_arg2 )
+	if f42_arg1 then
+		f42_arg0.m_blockButtonInput = true
 	else
-		f39_arg0.m_blockButtonInput = false
+		f42_arg0.m_blockButtonInput = false
 	end
 end
 
-LUI.UIRoot.BlockMouseMove = function ( f40_arg0, f40_arg1, f40_arg2 )
-	if f40_arg1 then
-		f40_arg0.m_blockMouseMove = true
+LUI.UIRoot.BlockMouseMove = function ( f43_arg0, f43_arg1, f43_arg2 )
+	if f43_arg1 then
+		f43_arg0.m_blockMouseMove = true
 	else
-		f40_arg0.m_blockMouseMove = false
+		f43_arg0.m_blockMouseMove = false
 	end
 end
 
-LUI.UIRoot.ProcessEvent = function ( f41_arg0, f41_arg1 )
-	if f41_arg1.immediate == true then
-		local f41_local0 = profile.beginuserevent( "IE_" .. f41_arg1.name )
-		LUI.UIRoot.ProcessEventNow( f41_arg0, f41_arg1 )
-		profile.enduserevent( f41_local0 )
+LUI.UIRoot.ProcessEvent = function ( f44_arg0, f44_arg1 )
+	if f44_arg1.immediate == true then
+		local f44_local0 = profile.beginuserevent( "IE_" .. f44_arg1.name )
+		LUI.UIRoot.ProcessEventNow( f44_arg0, f44_arg1 )
+		profile.enduserevent( f44_local0 )
 	else
-		local f41_local0 = f41_arg0.eventQueue
-		if f41_arg1.noDuplicates then
-			for f41_local4, f41_local5 in pairs( f41_local0 ) do
-				if f41_local5.name == f41_arg1.name and f41_local5.target == f41_arg1.target then
+		local f44_local0 = f44_arg0.eventQueue
+		if f44_arg1.noDuplicates then
+			for f44_local4, f44_local5 in pairs( f44_local0 ) do
+				if f44_local5.name == f44_arg1.name and f44_local5.target == f44_arg1.target then
 					return 
 				end
 			end
 		end
-		table.insert( f41_local0, f41_arg1 )
-		if #f41_local0 > 20 then
-			DebugPrint( "LUI WARNING: Event queue exceeded 20 events! " .. f41_arg1.name )
-			if f41_arg1.name == "omnvar_update" then
-				DebugPrint( "LUI WARNING: omnvar = " .. f41_arg1.omnvar )
+		table.insert( f44_local0, f44_arg1 )
+		if #f44_local0 > 20 then
+			DebugPrint( "LUI WARNING: Event queue exceeded 20 events! " .. f44_arg1.name )
+			if f44_arg1.name == "omnvar_update" then
+				DebugPrint( "LUI WARNING: omnvar = " .. f44_arg1.omnvar )
 			end
 		end
 	end
 end
 
-LUI.UIRoot.ProcessEvents = function ( f42_arg0, f42_arg1 )
-	LUI.UITimer.DispatchEventsFromQueue( f42_arg0 )
-	local f42_local0 = f42_arg0.eventQueue
-	local f42_local1 = f42_local0[1]
-	if f42_local1 ~= nil then
-		table.remove( f42_local0, 1 )
-		local f42_local2 = profile.beginuserevent( "RE_" .. f42_local1.name )
-		LUI.UIRoot.ProcessEventNow( f42_arg0, f42_local1 )
-		profile.enduserevent( f42_local2 )
+LUI.UIRoot.ProcessEvents = function ( f45_arg0, f45_arg1 )
+	LUI.UITimer.DispatchEventsFromQueue( f45_arg0 )
+	local f45_local0 = f45_arg0.eventQueue
+	local f45_local1 = f45_local0[1]
+	if f45_local1 ~= nil then
+		table.remove( f45_local0, 1 )
+		local f45_local2 = profile.beginuserevent( "RE_" .. f45_local1.name )
+		LUI.UIRoot.ProcessEventNow( f45_arg0, f45_local1 )
+		profile.enduserevent( f45_local2 )
 	end
 end
 
-LUI.UIRoot.IsNavigationEvent = function ( f43_arg0 )
-	if not handled and f43_arg0.name == "gamepad_button" and f43_arg0.down and (f43_arg0.button == "up" or f43_arg0.button == "down" or f43_arg0.button == "left" or f43_arg0.button == "right") then
+LUI.UIRoot.IsNavigationEvent = function ( f46_arg0 )
+	if not handled and f46_arg0.name == "gamepad_button" and f46_arg0.down and (f46_arg0.button == "up" or f46_arg0.button == "down" or f46_arg0.button == "left" or f46_arg0.button == "right") then
 		return true
 	else
 		return false
 	end
 end
 
-LUI.UIRoot.IsUserInputEvent = function ( f44_arg0 )
-	if f44_arg0.name == "gamepad_button" or f44_arg0.name == "mousedown" or f44_arg0.name == "mouseup" then
+LUI.UIRoot.IsUserInputEvent = function ( f47_arg0 )
+	if f47_arg0.name == "gamepad_button" or f47_arg0.name == "mousedown" or f47_arg0.name == "mouseup" then
 		return true
 	else
 		return false
 	end
 end
 
-LUI.UIRoot.ProcessEventNow = function ( f45_arg0, f45_arg1 )
-	if Engine.GetDvarBool( "lui_print_events" ) and f45_arg1.name ~= "process_events" and f45_arg1.name ~= "mousemove" then
-		DebugPrint( "Processed Event '" .. f45_arg1.name .. "'" )
-		if f45_arg1.name == "gamepad_button" then
-			if f45_arg1.down then
-				DebugPrint( "button " .. f45_arg1.button .. " is down" )
+LUI.UIRoot.ProcessEventNow = function ( f48_arg0, f48_arg1 )
+	if Engine.GetDvarBool( "lui_print_events" ) and f48_arg1.name ~= "process_events" and f48_arg1.name ~= "mousemove" then
+		DebugPrint( "Processed Event '" .. f48_arg1.name .. "'" )
+		if f48_arg1.name == "gamepad_button" then
+			if f48_arg1.down then
+				DebugPrint( "button " .. f48_arg1.button .. " is down" )
 			else
-				DebugPrint( "button " .. f45_arg1.button .. " is up" )
+				DebugPrint( "button " .. f48_arg1.button .. " is up" )
 			end
 		end
 	end
-	if f45_arg0.m_blockButtonInput and (f45_arg1.name == "gamepad_button" or f45_arg1.name == "mouseup") then
-		DebugPrint( "Blocking Button input for " .. f45_arg1.button .. "  because m_blockButtonInput is true" )
+	if f48_arg0.m_blockButtonInput and (f48_arg1.name == "gamepad_button" or f48_arg1.name == "mouseup") then
+		DebugPrint( "Blocking Button input for " .. f48_arg1.button .. "  because m_blockButtonInput is true" )
 		return false
 	end
-	local f45_local0 = f45_arg0
-	if f45_arg1.target then
-		f45_local0 = f45_arg1.target
+	local f48_local0 = f48_arg0
+	if f48_arg1.target then
+		f48_local0 = f48_arg1.target
 	end
-	if LUI.UIRoot.IsUserInputEvent( f45_arg1 ) then
+	if LUI.UIRoot.IsUserInputEvent( f48_arg1 ) then
 		CoD.StartEventSound()
 	end
-	if LUI.UIElement.processEvent( f45_local0, f45_arg1 ) then
-		if LUI.UIRoot.IsUserInputEvent( f45_arg1 ) then
+	if LUI.UIElement.processEvent( f48_local0, f48_arg1 ) then
+		if LUI.UIRoot.IsUserInputEvent( f48_arg1 ) then
 			CoD.EndEventSound()
 		end
 		return true
-	elseif LUI.UIRoot.IsNavigationEvent( f45_arg1 ) then
-		f45_arg0.flowManager:CheckRestoreFocus()
+	elseif LUI.UIRoot.IsNavigationEvent( f48_arg1 ) then
+		f48_arg0.flowManager:CheckRestoreFocus()
 	end
-	if LUI.UIRoot.IsUserInputEvent( f45_arg1 ) then
+	if LUI.UIRoot.IsUserInputEvent( f48_arg1 ) then
 		CoD.EndEventSound()
 	end
 	return false

@@ -48,12 +48,9 @@ LUI.UIButtonText.new = function ( f2_arg0, f2_arg1, f2_arg2, f2_arg3, f2_arg4, f
 						
 					end
 					f2_local2, f2_local3, f2_local4 = nil
-					local f2_local5, f2_local6, self = GetTextDimensions2( f2_arg1, f2_arg0.font, f2_arg0.height - 2 * LUI.UIButtonText.verticalSpacing )
-					f2_local4 = self
-					f2_local3 = f2_local6
-					f2_local2 = f2_local5
+					f2_local2, f2_local3, f2_local4 = GetTextDimensions2( f2_arg1, f2_arg0.font, f2_arg0.height - 2 * LUI.UIButtonText.verticalSpacing )
 					f2_arg0.width = f2_local4 + 2 * LUI.UIButtonText.horizontalSpacing
-					f2_local5 = 6
+					local f2_local5 = 6
 					if f2_arg0.height - f2_arg0.width > 0 then
 						f2_arg0.width = f2_arg0.height
 						f2_local5 = (f2_arg0.width - f2_local4) / 2
@@ -61,7 +58,7 @@ LUI.UIButtonText.new = function ( f2_arg0, f2_arg1, f2_arg2, f2_arg3, f2_arg4, f
 					if f2_arg2 then
 						f2_arg0.width = -f2_arg0.width
 					end
-					self = LUI.UIImage.new( f2_arg0, f2_arg1 )
+					local self = LUI.UIImage.new( f2_arg0, f2_arg1 )
 					self:setup9SliceImage()
 					if not f2_arg4 then
 						self:registerAnimationState( "buttonOver", {
@@ -74,7 +71,7 @@ LUI.UIButtonText.new = function ( f2_arg0, f2_arg1, f2_arg2, f2_arg3, f2_arg4, f
 						self:registerEventHandler( "button_over", MBh.AnimateToState( "buttonOver" ) )
 						self:registerEventHandler( "button_up", MBh.AnimateToState( "default" ) )
 						self:registerEventHandler( "pulse", function ( element, event )
-							local f27_local0 = event.mouse and "buttonOver" or "default"
+							local f4_local0 = event.mouse and "buttonOver" or "default"
 							element:animateInSequence( {
 								{
 									"buttonOver",
@@ -171,12 +168,12 @@ LUI.UIButtonText.new = function ( f2_arg0, f2_arg1, f2_arg2, f2_arg3, f2_arg4, f
 						f2_local0.left = f2_local0.left + f2_arg0.width
 						f2_local0.right = f2_local0.right + f2_arg0.width
 					end
-					local self = LUI.UIText.new( f2_local0 )
-					self:addElement( self )
-					self:setText( f2_arg1 )
-					self.buttonText = self
-					self.setText = function ( f32_arg0, f32_arg1 )
-						f32_arg0.buttonText:setText( f32_arg1 )
+					local f2_local7 = LUI.UIText.new( f2_local0 )
+					self:addElement( f2_local7 )
+					f2_local7:setText( f2_arg1 )
+					self.buttonText = f2_local7
+					self.setText = function ( f9_arg0, f9_arg1 )
+						f9_arg0.buttonText:setText( f9_arg1 )
 					end
 					
 					return self
@@ -200,78 +197,78 @@ f0_local0 = nil
 f0_local0 = CoD.TextSettings.BodyFontTiny
 f0_local1 = false
 f0_local2 = 0
-function OnHelp( f4_arg0, f4_arg1 )
+function OnHelp( f11_arg0, f11_arg1 )
 	Engine.Help()
 end
 
-function UpdateSignInText( f5_arg0 )
-	local f5_local0 = nil
-	local f5_local1 = Engine.GetSignedInAsController()
-	if f5_local1 >= 0 then
-		f5_local0 = Engine.Localize( "@XBOXLIVE_SIGNEDINAS", Engine.MarkLocalized( Engine.GetUsernameByController( f5_local1 ) ) )
+function UpdateSignInText( f12_arg0 )
+	local f12_local0 = nil
+	local f12_local1 = Engine.GetSignedInAsController()
+	if f12_local1 >= 0 then
+		f12_local0 = Engine.Localize( "@XBOXLIVE_SIGNEDINAS", Engine.MarkLocalized( Engine.GetUsernameByController( f12_local1 ) ) )
 	else
-		f5_local0 = Engine.Localize( "@XBOXLIVE_NOTSIGNEDIN" )
+		f12_local0 = Engine.Localize( "@XBOXLIVE_NOTSIGNEDIN" )
 	end
-	f5_arg0:setText( f5_local0 )
+	f12_arg0:setText( f12_local0 )
 end
 
-function AddSignInText( f6_arg0 )
-	if f6_arg0.signInText == nil then
-		local f6_local0 = f0_local0
-		local f6_local1 = 265
-		local f6_local2 = 20
-		local f6_local3 = CoD.CreateState( f6_local1, f6_local2, f6_local1 + 425, f6_local2 + f6_local0.Height, CoD.AnchorTypes.TopLeft )
-		f6_local3.font = f6_local0.Font
-		f6_local3.alignment = LUI.Alignment.Left
-		f6_local3.red = Colors.s1.text_unfocused.r
-		f6_local3.green = Colors.s1.text_unfocused.g
-		f6_local3.blue = Colors.s1.text_unfocused.b
-		local self = LUI.UIText.new( f6_local3 )
+function AddSignInText( f13_arg0 )
+	if f13_arg0.signInText == nil then
+		local f13_local0 = f0_local0
+		local f13_local1 = 265
+		local f13_local2 = 20
+		local f13_local3 = CoD.CreateState( f13_local1, f13_local2, f13_local1 + 425, f13_local2 + f13_local0.Height, CoD.AnchorTypes.TopLeft )
+		f13_local3.font = f13_local0.Font
+		f13_local3.alignment = LUI.Alignment.Left
+		f13_local3.red = Colors.s1.text_unfocused.r
+		f13_local3.green = Colors.s1.text_unfocused.g
+		f13_local3.blue = Colors.s1.text_unfocused.b
+		local self = LUI.UIText.new( f13_local3 )
 		if f0_local1 then
 			self:setTextStyle( CoD.TextStyle.ForceUpperCase )
 		end
 		self:registerEventHandler( "live_connection", UpdateSignInText )
-		f6_arg0:addElement( self )
-		f6_arg0.signInText = self
+		f13_arg0:addElement( self )
+		f13_arg0.signInText = self
 	end
-	UpdateSignInText( f6_arg0.signInText )
+	UpdateSignInText( f13_arg0.signInText )
 end
 
-local f0_local3 = function ( f7_arg0, f7_arg1 )
+local f0_local3 = function ( f14_arg0, f14_arg1 )
 	if Engine.IsMultiplayer() then
 		SetWaitingForNetworkType( WaitingForNetworkType.None )
 	end
-	Engine.Exec( "xswitchuser", f7_arg1.controller )
+	Engine.Exec( "xswitchuser", f14_arg1.controller )
 end
 
-local f0_local4 = function ( f8_arg0, f8_arg1 )
-	LUI.FlowManager:RequestAddMenu( "difficulty_selection_menu", true, f8_arg1.controller, false )
+local f0_local4 = function ( f15_arg0, f15_arg1 )
+	LUI.FlowManager:RequestAddMenu( "difficulty_selection_menu", true, f15_arg1.controller, false )
 end
 
-function AddSignInAndSwitchUserHelp( f9_arg0 )
-	f9_arg0:processEvent( LUI.ButtonHelperText.CommonEvents.addSwitchUserButton )
-	f9_arg0:processEvent( {
+function AddSignInAndSwitchUserHelp( f16_arg0 )
+	f16_arg0:processEvent( LUI.ButtonHelperText.CommonEvents.addSwitchUserButton )
+	f16_arg0:processEvent( {
 		name = "add_sign_in_text"
 	} )
 end
 
 function FindDifficultyText()
-	local f10_local0 = Engine.GetDvarInt( "g_gameskill" ) + 1
-	local f10_local1 = {
+	local f17_local0 = Engine.GetDvarInt( "g_gameskill" ) + 1
+	local f17_local1 = {
 		"MENU_DIFFICULTY_BUTTON_RECRUIT",
 		"MENU_DIFFICULTY_BUTTON_REGULAR",
 		"MENU_DIFFICULTY_BUTTON_HARDENED",
 		"MENU_DIFFICULTY_BUTTON_VETERAN"
 	}
-	local f10_local2 = assert
-	local f10_local3
-	if f10_local0 < 1 or f10_local0 > #f10_local1 then
-		f10_local3 = false
+	local f17_local2 = assert
+	local f17_local3
+	if f17_local0 < 1 or f17_local0 > #f17_local1 then
+		f17_local3 = false
 	else
-		f10_local3 = true
+		f17_local3 = true
 	end
-	f10_local2( f10_local3, "Missing difficulty string" )
-	return Engine.Localize( f10_local1[f10_local0] )
+	f17_local2( f17_local3, "Missing difficulty string" )
+	return Engine.Localize( f17_local1[f17_local0] )
 end
 
 CommonEvents = {
@@ -411,269 +408,269 @@ CommonEvents = {
 		priority = 1000
 	}
 }
-local f0_local5 = function ( f11_arg0, f11_arg1 )
-	if Engine.IsGamepadEnabled() ~= f11_arg0.previousIsGamepad or Engine.IsPS4Controller() ~= f11_arg0.previousIsPS4Ctrl then
-		f11_arg0.forceDestroy = true
-		AddHelperTextObject( f11_arg0.oldParent, f11_arg0.oldEvent, f11_arg0.oldInfunc, f11_arg0.oldHideEventName, f11_arg0.oldInfunc2 )
+local f0_local5 = function ( f18_arg0, f18_arg1 )
+	if Engine.IsGamepadEnabled() ~= f18_arg0.previousIsGamepad or Engine.IsPS4Controller() ~= f18_arg0.previousIsPS4Ctrl then
+		f18_arg0.forceDestroy = true
+		AddHelperTextObject( f18_arg0.oldParent, f18_arg0.oldEvent, f18_arg0.oldInfunc, f18_arg0.oldHideEventName, f18_arg0.oldInfunc2 )
 	end
 end
 
-function AddHelperTextObject( f12_arg0, f12_arg1, f12_arg2, f12_arg3, f12_arg4, f12_arg5 )
-	if f12_arg1.button_ref_func then
-		f12_arg1.button_ref = f12_arg1.button_ref_func()
+function AddHelperTextObject( f19_arg0, f19_arg1, f19_arg2, f19_arg3, f19_arg4, f19_arg5 )
+	if f19_arg1.button_ref_func then
+		f19_arg1.button_ref = f19_arg1.button_ref_func()
 	end
-	local f12_local0 = assert
-	local f12_local1 = f12_arg1.button_ref
-	if not f12_local1 then
-		f12_local1 = f12_arg1.image_name and f12_arg1.id
+	local f19_local0 = assert
+	local f19_local1 = f19_arg1.button_ref
+	if not f19_local1 then
+		f19_local1 = f19_arg1.image_name and f19_arg1.id
 	end
-	f12_local0( f12_local1 )
-	assert( f12_arg1.helper_text or f12_arg1.helper_text_func, "Need helper text or helper_text_func that return text." )
-	f12_local0 = assert
-	if f12_arg1.helper_text then
-		f12_local1 = not f12_arg1.helper_text_func
+	f19_local0( f19_local1 )
+	assert( f19_arg1.helper_text or f19_arg1.helper_text_func, "Need helper text or helper_text_func that return text." )
+	f19_local0 = assert
+	if f19_arg1.helper_text then
+		f19_local1 = not f19_arg1.helper_text_func
 	else
-		f12_local1 = true
+		f19_local1 = true
 	end
-	f12_local0( f12_local1, "Should not have both helper_text and helper_text_func." )
-	f12_local0 = nil
-	f12_local1 = f12_arg1.func or f12_arg2
-	local f12_local2 = f12_arg1.func2 or f12_arg4
-	if f12_arg1.side and f12_arg1.side == "left" then
-		f12_local0 = f12_arg0:getChildById( "left_button_helper_list_id" )
-	elseif f12_arg1.side and f12_arg1.side == "top_right" then
-		local f12_local3 = f12_arg0:getParent()
-		local f12_local4 = f12_local3:getParent()
-		local f12_local5 = f12_local4:getChildById( "top_button_helper_text_main_id" )
-		local f12_local6 = f12_local5:getChildById( "top_container" )
-		f12_local0 = f12_local6:getChildById( "top_right_button_helper_list_id" )
-	elseif f12_arg1.side and f12_arg1.side == "center" then
-		f12_local0 = f12_arg0:getChildById( "center_button_helper_list_id" )
+	f19_local0( f19_local1, "Should not have both helper_text and helper_text_func." )
+	f19_local0 = nil
+	f19_local1 = f19_arg1.func or f19_arg2
+	local f19_local2 = f19_arg1.func2 or f19_arg4
+	if f19_arg1.side and f19_arg1.side == "left" then
+		f19_local0 = f19_arg0:getChildById( "left_button_helper_list_id" )
+	elseif f19_arg1.side and f19_arg1.side == "top_right" then
+		local f19_local3 = f19_arg0:getParent()
+		local f19_local4 = f19_local3:getParent()
+		local f19_local5 = f19_local4:getChildById( "top_button_helper_text_main_id" )
+		local f19_local6 = f19_local5:getChildById( "top_container" )
+		f19_local0 = f19_local6:getChildById( "top_right_button_helper_list_id" )
+	elseif f19_arg1.side and f19_arg1.side == "center" then
+		f19_local0 = f19_arg0:getChildById( "center_button_helper_list_id" )
 	else
-		f12_local0 = f12_arg0:getChildById( "right_button_helper_list_id" )
+		f19_local0 = f19_arg0:getChildById( "right_button_helper_list_id" )
 	end
-	if f12_local0 == nil then
+	if f19_local0 == nil then
 		return 
 	end
-	local f12_local3 = (f12_arg1.button_ref or f12_arg1.id) .. "_id"
-	local f12_local4 = f12_local0:getChildById( f12_local3 )
-	if f12_local4 and (f12_arg1.helper_text ~= f12_local4.currentText or f12_local4.forceDestroy) then
-		if f12_arg1.button_ref == "partyStatus" then
-			f12_local4:processEvent( {
+	local f19_local3 = (f19_arg1.button_ref or f19_arg1.id) .. "_id"
+	local f19_local4 = f19_local0:getChildById( f19_local3 )
+	if f19_local4 and (f19_arg1.helper_text ~= f19_local4.currentText or f19_local4.forceDestroy) then
+		if f19_arg1.button_ref == "partyStatus" then
+			f19_local4:processEvent( {
 				name = "update_message",
 				dispatchChildren = true,
-				message = f12_arg1.helper_text
+				message = f19_arg1.helper_text
 			} )
 			return 
 		end
-		f12_local4:close()
-		f12_local4 = nil
+		f19_local4:close()
+		f19_local4 = nil
 	end
-	if not f12_local4 and f12_arg1.helper_text ~= "" then
-		local f12_local5 = f12_arg1.ignorePopups or false
-		local f12_local6 = f12_arg1.button_ref and ButtonMap[f12_arg1.button_ref] or nil
-		local f12_local7 = f12_arg1.button_ref2 and ButtonMap[f12_arg1.button_ref2] or nil
-		if (f12_arg1.button_ref_vita or f12_arg1.button_ref_vita_2) and Engine.IsVita( f12_arg1.controller and f12_arg1.controller or Engine.GetFirstActiveController() ) then
-			if f12_arg1.button_ref_vita then
-				f12_local6 = ButtonMap[f12_arg1.button_ref_vita]
+	if not f19_local4 and f19_arg1.helper_text ~= "" then
+		local f19_local5 = f19_arg1.ignorePopups or false
+		local f19_local6 = f19_arg1.button_ref and ButtonMap[f19_arg1.button_ref] or nil
+		local f19_local7 = f19_arg1.button_ref2 and ButtonMap[f19_arg1.button_ref2] or nil
+		if (f19_arg1.button_ref_vita or f19_arg1.button_ref_vita_2) and Engine.IsVita( f19_arg1.controller and f19_arg1.controller or Engine.GetFirstActiveController() ) then
+			if f19_arg1.button_ref_vita then
+				f19_local6 = ButtonMap[f19_arg1.button_ref_vita]
 			end
-			if f12_arg1.button_ref_vita_2 then
-				f12_local7 = ButtonMap[f12_arg1.button_ref_vita_2]
+			if f19_arg1.button_ref_vita_2 then
+				f19_local7 = ButtonMap[f19_arg1.button_ref_vita_2]
 			end
 		end
-		f12_local4 = helper_text_item( f12_local6, f12_arg1.helper_text, f12_local7, f12_arg1.width, f12_arg1.priority, f12_local5, f12_arg1.image_name, f12_arg1.glow, f12_arg3, f12_arg1.clickable, false, f12_arg1.showMouseHelp, f12_arg1.helper_text_func, f12_arg1.color, f12_arg1.groupLRButtons, f12_arg1.bindTextID, f12_arg1.muteAction, f12_arg1.leftIconClickFunc, f12_arg1.rightIconClickFunc )
-		f12_local4.id = f12_local3
-		if f12_arg1.clickable == true and ButtonMap[f12_arg1.button_ref] then
-			f12_local4.triggers_event = f12_arg1.button_ref
+		f19_local4 = helper_text_item( f19_local6, f19_arg1.helper_text, f19_local7, f19_arg1.width, f19_arg1.priority, f19_local5, f19_arg1.image_name, f19_arg1.glow, f19_arg3, f19_arg1.clickable, false, f19_arg1.showMouseHelp, f19_arg1.helper_text_func, f19_arg1.color, f19_arg1.groupLRButtons, f19_arg1.bindTextID, f19_arg1.muteAction, f19_arg1.leftIconClickFunc, f19_arg1.rightIconClickFunc )
+		f19_local4.id = f19_local3
+		if f19_arg1.clickable == true and ButtonMap[f19_arg1.button_ref] then
+			f19_local4.triggers_event = f19_arg1.button_ref
 		end
 		if Engine.IsConsoleGame() then
-			f12_local4:makeNotFocusable()
+			f19_local4:makeNotFocusable()
 		end
-		f12_local0:addElement( f12_local4 )
+		f19_local0:addElement( f19_local4 )
 	end
-	if f12_local4 then
-		if f12_local4.bindButton and f12_local1 ~= f12_local4.bindButton.func then
-			f12_local4.bindButton:close()
-			f12_local4.bindButton = nil
+	if f19_local4 then
+		if f19_local4.bindButton and f19_local1 ~= f19_local4.bindButton.func then
+			f19_local4.bindButton:close()
+			f19_local4.bindButton = nil
 		end
-		if f12_local4.bindButton2 and f12_local2 ~= f12_local4.bindButton2.func then
-			f12_local4.bindButton2:close()
-			f12_local4.bindButton2 = nil
+		if f19_local4.bindButton2 and f19_local2 ~= f19_local4.bindButton2.func then
+			f19_local4.bindButton2:close()
+			f19_local4.bindButton2 = nil
 		end
-		if not f12_local4.bindButton and f12_local1 then
-			f12_local4.bindButton = LUI.UIBindButton.new()
-			f12_local4.bindButton.id = "BindButton1"
-			f12_local4.bindButton:registerEventHandler( f12_arg1.button_ref, f12_local1 )
-			f12_local4.bindButton.func = f12_local1
-			f12_local4:addElement( f12_local4.bindButton )
+		if not f19_local4.bindButton and f19_local1 then
+			f19_local4.bindButton = LUI.UIBindButton.new()
+			f19_local4.bindButton.id = "BindButton1"
+			f19_local4.bindButton:registerEventHandler( f19_arg1.button_ref, f19_local1 )
+			f19_local4.bindButton.func = f19_local1
+			f19_local4:addElement( f19_local4.bindButton )
 		end
-		if not f12_local4.bindButton2 and f12_arg1.button_ref2 and f12_local2 then
-			f12_local4.bindButton2 = LUI.UIBindButton.new()
-			f12_local4.bindButton2.id = "BindButton2"
-			f12_local4.bindButton2:registerEventHandler( f12_arg1.button_ref2, f12_local2 )
-			f12_local4.bindButton2.func = f12_local2
-			f12_local4:addElement( f12_local4.bindButton2 )
+		if not f19_local4.bindButton2 and f19_arg1.button_ref2 and f19_local2 then
+			f19_local4.bindButton2 = LUI.UIBindButton.new()
+			f19_local4.bindButton2.id = "BindButton2"
+			f19_local4.bindButton2:registerEventHandler( f19_arg1.button_ref2, f19_local2 )
+			f19_local4.bindButton2.func = f19_local2
+			f19_local4:addElement( f19_local4.bindButton2 )
 		end
-		if f12_arg1.actionSFX and f12_local4.bindButton then
-			f12_local4.bindButton:setActionSFX( f12_arg1.actionSFX )
+		if f19_arg1.actionSFX and f19_local4.bindButton then
+			f19_local4.bindButton:setActionSFX( f19_arg1.actionSFX )
 		end
 	end
-	if Engine.IsPC() and f12_local4 then
-		f12_local4:registerEventHandler( "onControllerChange", f0_local5 )
-		f12_local4.previousIsGamepad = Engine.IsGamepadEnabled()
-		f12_local4.previousIsPS4Ctrl = Engine.IsPS4Controller()
-		f12_local4.oldEvent = f12_arg1
-		f12_local4.oldInfunc = f12_arg2
-		f12_local4.oldHideEventName = f12_arg3
-		f12_local4.oldInfunc2 = f12_arg4
-		f12_local4.oldParent = f12_arg0
+	if Engine.IsPC() and f19_local4 then
+		f19_local4:registerEventHandler( "onControllerChange", f0_local5 )
+		f19_local4.previousIsGamepad = Engine.IsGamepadEnabled()
+		f19_local4.previousIsPS4Ctrl = Engine.IsPS4Controller()
+		f19_local4.oldEvent = f19_arg1
+		f19_local4.oldInfunc = f19_arg2
+		f19_local4.oldHideEventName = f19_arg3
+		f19_local4.oldInfunc2 = f19_arg4
+		f19_local4.oldParent = f19_arg0
 	end
-	return f12_local4
+	return f19_local4
 end
 
-function ClearHelperTextObjects( f13_arg0, f13_arg1 )
-	local f13_local0 = f13_arg1.side == "all"
-	if f13_arg1.side == "left" or f13_local0 then
-		local f13_local1 = f13_arg0:getChildById( "left_button_helper_list_id" )
-		f13_local1:closeChildren()
+function ClearHelperTextObjects( f20_arg0, f20_arg1 )
+	local f20_local0 = f20_arg1.side == "all"
+	if f20_arg1.side == "left" or f20_local0 then
+		local f20_local1 = f20_arg0:getChildById( "left_button_helper_list_id" )
+		f20_local1:closeChildren()
 	end
-	if f13_arg1.side == "top_right" or f13_local0 then
-		local f13_local1 = f13_arg0:getParent()
-		local f13_local2 = f13_local1:getParent()
-		local f13_local3 = f13_local2:getChildById( "top_button_helper_text_main_id" )
-		local f13_local4 = f13_local3:getChildById( "top_container" )
-		local f13_local5 = f13_local4:getChildById( "top_right_button_helper_list_id" )
-		f13_local5:closeChildren()
+	if f20_arg1.side == "top_right" or f20_local0 then
+		local f20_local1 = f20_arg0:getParent()
+		local f20_local2 = f20_local1:getParent()
+		local f20_local3 = f20_local2:getChildById( "top_button_helper_text_main_id" )
+		local f20_local4 = f20_local3:getChildById( "top_container" )
+		local f20_local5 = f20_local4:getChildById( "top_right_button_helper_list_id" )
+		f20_local5:closeChildren()
 	end
-	if f13_arg1.side == "center" or f13_local0 then
-		local f13_local1 = f13_arg0:getChildById( "center_button_helper_list_id" )
-		f13_local1:closeChildren()
+	if f20_arg1.side == "center" or f20_local0 then
+		local f20_local1 = f20_arg0:getChildById( "center_button_helper_list_id" )
+		f20_local1:closeChildren()
 	end
-	if f13_arg1.side == "right" or f13_local0 then
-		local f13_local1 = f13_arg0:getChildById( "right_button_helper_list_id" )
-		f13_local1:closeChildren()
+	if f20_arg1.side == "right" or f20_local0 then
+		local f20_local1 = f20_arg0:getChildById( "right_button_helper_list_id" )
+		f20_local1:closeChildren()
 	end
 	return true
 end
 
-function ClearHelperTextObject( f14_arg0, f14_arg1 )
-	local f14_local0 = f14_arg0:getFirstDescendentById( (f14_arg1.button_ref or f14_arg1.id) .. "_id" )
-	if f14_local0 ~= nil then
-		f14_local0:close()
+function ClearHelperTextObject( f21_arg0, f21_arg1 )
+	local f21_local0 = f21_arg0:getFirstDescendentById( (f21_arg1.button_ref or f21_arg1.id) .. "_id" )
+	if f21_local0 ~= nil then
+		f21_local0:close()
 	end
 end
 
-function sendButtonEvent( f15_arg0, f15_arg1 )
-	if f15_arg0.triggers_event and f15_arg1.mouse == true then
-		local f15_local0 = {
+function sendButtonEvent( f22_arg0, f22_arg1 )
+	if f22_arg0.triggers_event and f22_arg1.mouse == true then
+		local f22_local0 = {
 			name = "gamepad_button",
 			immediate = true,
 			down = true
 		}
-		assert( ButtonMap[f15_arg0.triggers_event].raw_button )
-		f15_local0.button = ButtonMap[f15_arg0.triggers_event].raw_button
-		f15_local0.controller = f15_arg1.controller
-		f15_arg0:dispatchEventToRoot( f15_local0 )
+		assert( ButtonMap[f22_arg0.triggers_event].raw_button )
+		f22_local0.button = ButtonMap[f22_arg0.triggers_event].raw_button
+		f22_local0.controller = f22_arg1.controller
+		f22_arg0:dispatchEventToRoot( f22_local0 )
 	end
 end
 
-function helper_text_item( f16_arg0, f16_arg1, f16_arg2, f16_arg3, f16_arg4, f16_arg5, f16_arg6, f16_arg7, f16_arg8, f16_arg9, f16_arg10, f16_arg11, f16_arg12, f16_arg13, f16_arg14, f16_arg15, f16_arg16, f16_arg17, f16_arg18 )
-	local f16_local0 = Engine.IsConsoleGame()
-	if not f16_local0 then
-		f16_local0 = Engine.IsGamepadEnabled()
+function helper_text_item( f23_arg0, f23_arg1, f23_arg2, f23_arg3, f23_arg4, f23_arg5, f23_arg6, f23_arg7, f23_arg8, f23_arg9, f23_arg10, f23_arg11, f23_arg12, f23_arg13, f23_arg14, f23_arg15, f23_arg16, f23_arg17, f23_arg18 )
+	local f23_local0 = Engine.IsConsoleGame()
+	if not f23_local0 then
+		f23_local0 = Engine.IsGamepadEnabled()
 	end
-	local f16_local1 = f0_local0
-	local f16_local2 = f16_local1.Height
-	local f16_local3
-	if f16_local0 then
-		f16_local3 = 24
-		if not f16_local3 then
+	local f23_local1 = f0_local0
+	local f23_local2 = f23_local1.Height
+	local f23_local3
+	if f23_local0 then
+		f23_local3 = 24
+		if not f23_local3 then
 		
 		else
-			local f16_local4, f16_local5 = nil
-			local f16_local6 = 14
-			local f16_local7 = 20
-			local f16_local8 = f16_local7
-			local f16_local9 = f16_local7
-			local f16_local10 = false
-			local f16_local11 = false
-			local f16_local12 = f16_local3
-			local f16_local13 = f16_local3
-			local f16_local14 = 10
-			if f16_arg12 then
-				f16_arg1 = f16_arg12()
-				assert( f16_arg1, "helper_text_func should return a string." )
+			local f23_local4, f23_local5 = nil
+			local f23_local6 = 14
+			local f23_local7 = 20
+			local f23_local8 = f23_local7
+			local f23_local9 = f23_local7
+			local f23_local10 = false
+			local f23_local11 = false
+			local f23_local12 = f23_local3
+			local f23_local13 = f23_local3
+			local f23_local14 = 10
+			if f23_arg12 then
+				f23_arg1 = f23_arg12()
+				assert( f23_arg1, "helper_text_func should return a string." )
 			end
 			if f0_local1 then
-				f16_arg1 = Engine.ToUpperCase( f16_arg1 )
+				f23_arg1 = Engine.ToUpperCase( f23_arg1 )
 			end
-			local f16_local15 = 0
-			if f16_arg0 then
-				if f16_local0 and f16_arg0.string then
-					f16_local4 = Engine.Localize( f16_arg0.string )
-					f16_local8 = f16_local6
-				elseif f16_arg11 and f16_arg0.keyboard_mouse_string then
-					f16_local4 = Engine.Localize( f16_arg0.keyboard_mouse_string )
-				elseif f16_arg0.keyboard_string then
-					f16_local4 = Engine.Localize( f16_arg0.keyboard_string )
-					f16_local10 = true
+			local f23_local15 = 0
+			if f23_arg0 then
+				if f23_local0 and f23_arg0.string then
+					f23_local4 = Engine.Localize( f23_arg0.string )
+					f23_local8 = f23_local6
+				elseif f23_arg11 and f23_arg0.keyboard_mouse_string then
+					f23_local4 = Engine.Localize( f23_arg0.keyboard_mouse_string )
+				elseif f23_arg0.keyboard_string then
+					f23_local4 = Engine.Localize( f23_arg0.keyboard_string )
+					f23_local10 = true
 				end
-				if not f16_local0 then
-					local f16_local16, f16_local17, f16_local18, f16_local19 = GetTextDimensions2( f16_local4, f16_local1.Font, f16_local1.Height )
-					f16_local15 = f16_local18 - f16_local16
-					if f16_local10 then
-						f16_local15 = f16_local15 + 2 * LUI.UIButtonText.horizontalSpacing
-						f16_local8 = f16_local8 - 2 * LUI.UIButtonText.verticalSpacing
-						f16_local12 = f16_local12 + 2 * LUI.UIButtonText.verticalSpacing
+				if not f23_local0 then
+					local f23_local16, f23_local17, f23_local18, f23_local19 = GetTextDimensions2( f23_local4, f23_local1.Font, f23_local1.Height )
+					f23_local15 = f23_local18 - f23_local16
+					if f23_local10 then
+						f23_local15 = f23_local15 + 2 * LUI.UIButtonText.horizontalSpacing
+						f23_local8 = f23_local8 - 2 * LUI.UIButtonText.verticalSpacing
+						f23_local12 = f23_local12 + 2 * LUI.UIButtonText.verticalSpacing
 					end
 				end
 			end
-			local f16_local16 = 0
-			if f16_arg2 then
-				if f16_local0 and f16_arg2.string then
-					f16_local5 = Engine.Localize( f16_arg2.string )
-					f16_local9 = f16_local6
-				elseif f16_arg11 and f16_arg2.keyboard_mouse_string then
-					f16_local5 = Engine.Localize( f16_arg2.keyboard_mouse_string )
-				elseif f16_arg2.keyboard_string then
-					f16_local5 = Engine.Localize( f16_arg2.keyboard_string )
-					f16_local11 = true
+			local f23_local16 = 0
+			if f23_arg2 then
+				if f23_local0 and f23_arg2.string then
+					f23_local5 = Engine.Localize( f23_arg2.string )
+					f23_local9 = f23_local6
+				elseif f23_arg11 and f23_arg2.keyboard_mouse_string then
+					f23_local5 = Engine.Localize( f23_arg2.keyboard_mouse_string )
+				elseif f23_arg2.keyboard_string then
+					f23_local5 = Engine.Localize( f23_arg2.keyboard_string )
+					f23_local11 = true
 				end
-				if not f16_local0 then
-					local f16_local17, f16_local18, f16_local19, f16_local20 = GetTextDimensions2( f16_local5, f16_local1.Font, f16_local1.Height )
-					f16_local16 = f16_local19 - f16_local17
-					if f16_local11 then
-						f16_local16 = f16_local16 + 2 * LUI.UIButtonText.horizontalSpacing
-						f16_local9 = f16_local9 - 2 * LUI.UIButtonText.verticalSpacing
-						f16_local13 = f16_local13 + 2 * LUI.UIButtonText.verticalSpacing
+				if not f23_local0 then
+					local f23_local17, f23_local18, f23_local19, f23_local20 = GetTextDimensions2( f23_local5, f23_local1.Font, f23_local1.Height )
+					f23_local16 = f23_local19 - f23_local17
+					if f23_local11 then
+						f23_local16 = f23_local16 + 2 * LUI.UIButtonText.horizontalSpacing
+						f23_local9 = f23_local9 - 2 * LUI.UIButtonText.verticalSpacing
+						f23_local13 = f23_local13 + 2 * LUI.UIButtonText.verticalSpacing
 					end
 				end
 			end
-			if f16_local0 then
-				local f16_local17 = ""
-				if f16_local4 then
-					f16_local17 = f16_local4
+			if f23_local0 then
+				local f23_local17 = ""
+				if f23_local4 then
+					f23_local17 = f23_local4
 				end
-				if f16_local5 and f16_arg14 then
-					f16_local17 = f16_local17 .. f16_local5
+				if f23_local5 and f23_arg14 then
+					f23_local17 = f23_local17 .. f23_local5
 				end
-				if f16_local17 ~= "" then
-					f16_local17 = f16_local17 .. " " .. f16_arg1
+				if f23_local17 ~= "" then
+					f23_local17 = f23_local17 .. " " .. f23_arg1
 				else
-					f16_local17 = f16_arg1
+					f23_local17 = f23_arg1
 				end
-				if f16_local5 and not f16_arg14 then
-					f16_local17 = f16_local17 .. " " .. f16_local5
+				if f23_local5 and not f23_arg14 then
+					f23_local17 = f23_local17 .. " " .. f23_local5
 				end
-				f16_arg1 = f16_local17
+				f23_arg1 = f23_local17
 			end
-			local f16_local17 = f16_arg3
-			local f16_local18, f16_local19, f16_local20, f16_local21 = GetTextDimensions2( f16_arg1, f16_local1.Font, f16_local1.Height )
-			local f16_local22 = f16_local20 - f16_local18
-			if not f16_arg3 then
-				f16_local17 = math.ceil( f16_local15 + f16_local22 + f16_local16 ) + 25
+			local f23_local17 = f23_arg3
+			local f23_local18, f23_local19, f23_local20, f23_local21 = GetTextDimensions2( f23_arg1, f23_local1.Font, f23_local1.Height )
+			local f23_local22 = f23_local20 - f23_local18
+			if not f23_arg3 then
+				f23_local17 = math.ceil( f23_local15 + f23_local22 + f23_local16 ) + 25
 			end
-			UPVAL2 = f0_local2 + f16_local17
+			f0_local2 = f0_local2 + f23_local17
 			local self = LUI.UIButton.new()
 			self.id = "helper_text_item"
 			self:registerAnimationState( "default", {
@@ -682,28 +679,28 @@ function helper_text_item( f16_arg0, f16_arg1, f16_arg2, f16_arg3, f16_arg4, f16
 				topAnchor = true,
 				bottomAnchor = true,
 				left = 0,
-				right = f16_local17,
+				right = f23_local17,
 				top = 0,
 				bottom = 0,
 				alpha = 1
 			} )
-			self.helpButtonWidth = f16_local17
-			self.messageFunc = f16_arg12
+			self.helpButtonWidth = f23_local17
+			self.messageFunc = f23_arg12
 			self:registerAnimationState( "hide", {
 				alpha = 0
 			} )
 			self:animateToState( "default" )
 			self.m_disableNavigation = true
 			self.m_requireFocusType = FocusType.MouseOver
-			self.m_focusable = f16_arg9
+			self.m_focusable = f23_arg9
 			self:registerEventHandler( "button_action", sendButtonEvent )
 			self:registerEventHandler( "rebind", function ( element, event )
-				if event.buttonLeft and event.buttonLeft == f16_arg0 then
+				if event.buttonLeft and event.buttonLeft == f23_arg0 then
 					element.m_ignoreMouseFocus = nil
 				end
 			end )
-			if f16_arg8 then
-				self:registerEventHandler( f16_arg8, function ( element, event )
+			if f23_arg8 then
+				self:registerEventHandler( f23_arg8, function ( element, event )
 					if event.hide then
 						element:animateToState( "hide" )
 					else
@@ -711,175 +708,174 @@ function helper_text_item( f16_arg0, f16_arg1, f16_arg2, f16_arg3, f16_arg4, f16
 					end
 				end )
 			end
-			if f16_arg5 then
+			if f23_arg5 then
 				self:registerEventHandler( "popup_active", nil )
 				self:registerEventHandler( "popup_inactive", nil )
 			end
-			local f16_local24 = 0
+			local f23_local24 = 0
 			if Engine.IsRightToLeftLanguage() then
-				f16_local24 = -f16_local22
+				f23_local24 = -f23_local22
 			end
-			local self = nil
-			if f16_local4 and not f16_local0 then
-				local self = nil
-				self = {
-					font = f16_local1.Font,
+			local f23_local25 = nil
+			if f23_local4 and not f23_local0 then
+				local f23_local26 = nil
+				f23_local26 = {
+					font = f23_local1.Font,
 					alignment = LUI.Alignment.Left,
 					topAnchor = true,
 					bottomAnchor = false,
 					leftAnchor = true,
 					rightAnchor = true,
 					left = 0,
-					right = f16_local24,
-					top = f16_local8,
-					height = f16_local12
+					right = f23_local24,
+					top = f23_local8,
+					height = f23_local12
 				}
-				if f16_local10 then
-					self = LUI.UIButtonText.new( self, f16_local4, nil, nil, not f16_arg9, false, f16_arg17 )
+				if f23_local10 then
+					f23_local25 = LUI.UIButtonText.new( f23_local26, f23_local4, nil, nil, not f23_arg9, false, f23_arg17 )
 				else
-					self = LUI.UIText.new()
-					self.id = "left"
-					self:setText( f16_local4 )
-					self:registerAnimationState( "default", CoD.ColorizeState( Colors.frontend_hilite, self ) )
-					self:animateToState( "default" )
+					f23_local25 = LUI.UIText.new()
+					f23_local25.id = "left"
+					f23_local25:setText( f23_local4 )
+					f23_local25:registerAnimationState( "default", CoD.ColorizeState( Colors.frontend_hilite, f23_local26 ) )
+					f23_local25:animateToState( "default" )
 				end
-				self:addElement( self )
+				self:addElement( f23_local25 )
 			end
-			local self = LUI.UIText.new()
-			self.id = "helper_text_text"
-			self:setText( f16_arg1 )
-			self:registerEventHandler( "update_message", function ( element, event )
+			local f23_local26 = LUI.UIText.new()
+			f23_local26.id = "helper_text_text"
+			f23_local26:setText( f23_arg1 )
+			f23_local26:registerEventHandler( "update_message", function ( element, event )
 				element:setText( event.message )
 				self.currentText = event.message
 			end )
-			local f16_local27 = f16_arg13 or Colors.h1.second_medium_grey
-			if f16_arg15 ~= nil and f16_arg15 ~= "" then
-				self:setupUIBindText( f16_arg15 )
+			local f23_local27 = f23_arg13 or Colors.h1.second_medium_grey
+			if f23_arg15 ~= nil and f23_arg15 ~= "" then
+				f23_local26:setupUIBindText( f23_arg15 )
 			end
-			local f16_local28
-			if f16_local0 then
-				f16_local28 = 0
-				if not f16_local28 then
+			local f23_local28
+			if f23_local0 then
+				f23_local28 = 0
+				if not f23_local28 then
 				
 				else
-					f16_local28
-					if f16_local10 then
-						f16_local28 = f16_local28 + f16_local14
+					if f23_local10 then
+						f23_local28 = f23_local28 + f23_local14
 					end
-					if f16_arg14 and f16_local11 then
-						f16_local28 = f16_local28 + f16_local14
+					if f23_arg14 and f23_local11 then
+						f23_local28 = f23_local28 + f23_local14
 					end
-					local f16_local29 = {
+					local f23_local29 = {
 						topAnchor = true,
 						bottomAnchor = false,
 						leftAnchor = true,
 						rightAnchor = true,
-						left = f16_local28,
+						left = f23_local28,
 						right = 0,
-						top = f16_local7,
-						height = f16_local2,
-						font = f16_local1.Font,
+						top = f23_local7,
+						height = f23_local2,
+						font = f23_local1.Font,
 						alignment = LUI.Alignment.Left,
-						glow = f16_arg7
+						glow = f23_arg7
 					}
-					if f16_arg14 and not f16_local0 then
-						f16_local29.left = f16_local29.left + f16_local16
+					if f23_arg14 and not f23_local0 then
+						f23_local29.left = f23_local29.left + f23_local16
 					end
-					self:registerAnimationState( "default", CoD.ColorizeState( f16_local27, f16_local29 ) )
-					self:animateToState( "default" )
-					local self = self.properties
-					if not self then
-						self = {}
+					f23_local26:registerAnimationState( "default", CoD.ColorizeState( f23_local27, f23_local29 ) )
+					f23_local26:animateToState( "default" )
+					local f23_local30 = self.properties
+					if not f23_local30 then
+						f23_local30 = {}
 					end
-					self.properties = self
-					if f16_arg9 then
-						self = GenericMenuColors.text_highlight
-						if f16_local10 or f16_local11 then
-							self = Colors.white
+					self.properties = f23_local30
+					if f23_arg9 then
+						f23_local30 = GenericMenuColors.text_highlight
+						if f23_local10 or f23_local11 then
+							f23_local30 = Colors.white
 						end
 						self.listenMouseEnterLeave = true
-						self:registerAnimationState( "over", CoD.ColorizeState( self ) )
-						self:registerEventHandler( "lose_focus", MBh.AnimateToState( "default" ) )
-						self:registerEventHandler( "gain_focus", MBh.AnimateToState( "over" ) )
+						f23_local26:registerAnimationState( "over", CoD.ColorizeState( f23_local30 ) )
+						f23_local26:registerEventHandler( "lose_focus", MBh.AnimateToState( "default" ) )
+						f23_local26:registerEventHandler( "gain_focus", MBh.AnimateToState( "over" ) )
 					else
 						self.properties.muteAction = true
 					end
-					self = self.properties
-					local self
-					if f16_arg16 == nil then
-						self = self.properties.muteAction
-						if not self then
+					f23_local30 = self.properties
+					local f23_local31
+					if f23_arg16 == nil then
+						f23_local31 = self.properties.muteAction
+						if not f23_local31 then
 						
 						else
-							self.muteAction = self
-							self.currentText = f16_arg1
-							self:addElement( self )
-							self = nil
-							if f16_local5 and not f16_local0 then
-								self = f16_local15
-								if f16_local10 and not f16_arg14 then
-									self = self + f16_local14
+							f23_local30.muteAction = f23_local31
+							self.currentText = f23_arg1
+							self:addElement( f23_local26 )
+							f23_local30 = nil
+							if f23_local5 and not f23_local0 then
+								f23_local31 = f23_local15
+								if f23_local10 and not f23_arg14 then
+									f23_local31 = f23_local31 + f23_local14
 								end
-								local f16_local32 = {
-									font = f16_local1.Font,
+								local f23_local32 = {
+									font = f23_local1.Font,
 									alignment = LUI.Alignment.Left,
 									topAnchor = true,
 									bottomAnchor = false,
 									leftAnchor = true,
 									rightAnchor = true,
-									left = self,
+									left = f23_local31,
 									right = 0,
-									top = f16_local9,
-									height = f16_local13
+									top = f23_local9,
+									height = f23_local13
 								}
-								if not f16_arg14 and not f16_local0 then
-									f16_local32.left = f16_local32.left + f16_local22
+								if not f23_arg14 and not f23_local0 then
+									f23_local32.left = f23_local32.left + f23_local22
 								end
-								if f16_local11 then
-									f16_local32.left = f16_local32.left + f16_local14
-									self = LUI.UIButtonText.new( f16_local32, f16_local5, nil, nil, not f16_arg9, false, f16_arg18 )
+								if f23_local11 then
+									f23_local32.left = f23_local32.left + f23_local14
+									f23_local30 = LUI.UIButtonText.new( f23_local32, f23_local5, nil, nil, not f23_arg9, false, f23_arg18 )
 								else
-									self = LUI.UIText.new()
-									self.id = "right"
-									self:setText( f16_local5 )
-									self:registerAnimationState( "default", CoD.ColorizeState( Colors.frontend_hilite, f16_local32 ) )
-									self:animateToState( "default" )
+									f23_local30 = LUI.UIText.new()
+									f23_local30.id = "right"
+									f23_local30:setText( f23_local5 )
+									f23_local30:registerAnimationState( "default", CoD.ColorizeState( Colors.frontend_hilite, f23_local32 ) )
+									f23_local30:animateToState( "default" )
 								end
-								self:addElement( self )
+								self:addElement( f23_local30 )
 							end
-							if f16_arg6 then
-								self = LUI.UIImage.new()
-								self:registerAnimationState( "default", {
+							if f23_arg6 then
+								f23_local31 = LUI.UIImage.new()
+								f23_local31:registerAnimationState( "default", {
 									topAnchor = true,
 									bottomAnchor = false,
 									leftAnchor = true,
 									rightAnchor = false,
-									left = f16_local22,
-									width = f16_local3,
-									top = f16_local8 - f16_local1.Height / 2,
-									height = f16_local3,
-									material = RegisterMaterial( f16_arg6 )
+									left = f23_local22,
+									width = f23_local3,
+									top = f23_local8 - f23_local1.Height / 2,
+									height = f23_local3,
+									material = RegisterMaterial( f23_arg6 )
 								} )
-								self:animateToState( "default" )
-								self:addElement( self )
+								f23_local31:animateToState( "default" )
+								self:addElement( f23_local31 )
 							end
-							if f16_arg4 then
-								self:setPriority( f16_arg4 )
+							if f23_arg4 then
+								self:setPriority( f23_arg4 )
 							end
 							return self
 						end
 					end
-					self = f16_arg16
+					f23_local31 = f23_arg16
 				end
 			end
-			f16_local28 = f16_local15
+			f23_local28 = f23_local15
 		end
 	end
-	f16_local3 = f16_local2
+	f23_local3 = f23_local2
 end
 
 function button_helper_text_main()
-	UPVAL0 = 0
+	f0_local2 = 0
 	return {
 		type = "UIElement",
 		id = "button_helper_text_main_root_id",
@@ -941,12 +937,12 @@ function button_helper_text_main()
 				handlers = {
 					show_button_helper_text = MBh.AnimateToState( "default" ),
 					hide_button_helper_text = MBh.AnimateToState( "hidden" ),
-					menu_create = function ( f16_arg0, f16_arg1 )
-						local f16_local0 = f16_arg0:getParent()
-						if f16_local0.skipAnim then
-							f16_arg0:animateToState( "default" )
+					menu_create = function ( f28_arg0, f28_arg1 )
+						local f28_local0 = f28_arg0:getParent()
+						if f28_local0.skipAnim then
+							f28_arg0:animateToState( "default" )
 						else
-							f16_local0 = MBh.AnimateSequence( {
+							f28_local0 = MBh.AnimateSequence( {
 								{
 									"hidden",
 									0
@@ -962,7 +958,7 @@ function button_helper_text_main()
 									true
 								}
 							} )
-							f16_local0( f16_arg0 )
+							f28_local0( f28_arg0 )
 						end
 					end
 					
@@ -995,12 +991,12 @@ function button_helper_text_main()
 						},
 						handlers = {
 							menu_create = MBh.EmitEvent( "update_ds_text" ),
-							update_ds_text = function ( f17_arg0, f17_arg1 )
+							update_ds_text = function ( f29_arg0, f29_arg1 )
 								if Engine.GetDvarBool( "ds_info_enable" ) then
-									f17_arg0:animateToState( "visible" )
-									f17_arg0:setText( Engine.GetDvarString( "ds_info" ) or "" )
+									f29_arg0:animateToState( "visible" )
+									f29_arg0:setText( Engine.GetDvarString( "ds_info" ) or "" )
 								else
-									f17_arg0:animateToState( "default" )
+									f29_arg0:animateToState( "default" )
 								end
 							end
 							
@@ -1194,8 +1190,8 @@ function button_helper_text_main()
 	}
 end
 
-LUI.UIButtonText.AddButtonHelperBackground = function ( f18_arg0 )
-	LUI.MenuBuilder.BuildAddChild( f18_arg0:getFirstDescendentById( "bg_container" ), {
+LUI.UIButtonText.AddButtonHelperBackground = function ( f30_arg0 )
+	LUI.MenuBuilder.BuildAddChild( f30_arg0:getFirstDescendentById( "bg_container" ), {
 		type = "UIElement",
 		id = "button_helper_bg_root_id",
 		states = {

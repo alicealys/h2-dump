@@ -68,49 +68,49 @@ LUI.H2ButtonBackground.CreateFocusedElements = function ( f3_arg0 )
 	f3_local0:addElement( self )
 	local f3_local5 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f3_local5.alpha = 0
-	local self = LUI.UIElement.new( f3_local5 )
-	self.id = "focusedContainer"
-	self:registerAnimationState( "default", f3_local5 )
-	self:registerAnimationState( "focused", {
+	local f3_local6 = LUI.UIElement.new( f3_local5 )
+	f3_local6.id = "focusedContainer"
+	f3_local6:registerAnimationState( "default", f3_local5 )
+	f3_local6:registerAnimationState( "focused", {
 		alpha = 1
 	} )
-	self:registerEventHandler( "button_over", MBh.AnimateToState( "focused", LUI.H2ButtonBackground.AnimOverTimeContent ) )
-	self:registerEventHandler( "button_up", MBh.AnimateToState( "default", LUI.H2ButtonBackground.AnimUpTime ) )
-	f3_local0:addElement( self )
-	local self = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
-	self:setUseStencil( true )
-	self:addElement( self )
+	f3_local6:registerEventHandler( "button_over", MBh.AnimateToState( "focused", LUI.H2ButtonBackground.AnimOverTimeContent ) )
+	f3_local6:registerEventHandler( "button_up", MBh.AnimateToState( "default", LUI.H2ButtonBackground.AnimUpTime ) )
+	f3_local0:addElement( f3_local6 )
+	local f3_local7 = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
+	f3_local7:setUseStencil( true )
+	f3_local6:addElement( f3_local7 )
 	local f3_local8 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f3_local8.material = RegisterMaterial( "h2_btn_focused_stroke" )
-	local self = LUI.UIImage.new( f3_local8 )
-	self.id = "stroke"
-	self:setup9SliceImage( LUI.H2ButtonBackground.EdgeW, LUI.H2ButtonBackground.EdgeH, LUI.H2ButtonBackground.EdgeU, LUI.H2ButtonBackground.EdgeV )
-	self:registerAnimationState( "default", f3_local8 )
-	self:addElement( self )
+	local f3_local9 = LUI.UIImage.new( f3_local8 )
+	f3_local9.id = "stroke"
+	f3_local9:setup9SliceImage( LUI.H2ButtonBackground.EdgeW, LUI.H2ButtonBackground.EdgeH, LUI.H2ButtonBackground.EdgeU, LUI.H2ButtonBackground.EdgeV )
+	f3_local9:registerAnimationState( "default", f3_local8 )
+	f3_local6:addElement( f3_local9 )
 	local f3_local10 = 10
 	local f3_local11 = CoD.CreateState( -1 * f3_local10, -1 * f3_local10, f3_local10, f3_local10, CoD.AnchorTypes.All )
 	f3_local11.material = RegisterMaterial( "h2_btn_focused_outerglow" )
-	local self = LUI.UIImage.new( f3_local11 )
-	self.id = "backglow"
-	self:setup9SliceImage( LUI.H2ButtonBackground.EdgeW + 8, LUI.H2ButtonBackground.EdgeH + 10, LUI.H2ButtonBackground.EdgeU, LUI.H2ButtonBackground.EdgeV )
-	self:registerAnimationState( "default", f3_local11 )
-	self:addElement( self )
+	local f3_local12 = LUI.UIImage.new( f3_local11 )
+	f3_local12.id = "backglow"
+	f3_local12:setup9SliceImage( LUI.H2ButtonBackground.EdgeW + 8, LUI.H2ButtonBackground.EdgeH + 10, LUI.H2ButtonBackground.EdgeU, LUI.H2ButtonBackground.EdgeV )
+	f3_local12:registerAnimationState( "default", f3_local11 )
+	f3_local6:addElement( f3_local12 )
 	local f3_local13 = CoD.CreateState( 0, 0, nil, nil, CoD.AnchorTypes.TopLeft )
 	f3_local13.material = RegisterMaterial( "h2_btn_dot_pattern" )
 	f3_local13.alpha = 0
 	f3_local13.width = 666.6
 	f3_local13.height = 37.33
-	local self = LUI.UIImage.new( f3_local13 )
-	self.id = "dotPattern"
-	self:registerAnimationState( "default", f3_local13 )
-	self:registerAnimationState( "focused", {
+	local f3_local14 = LUI.UIImage.new( f3_local13 )
+	f3_local14.id = "dotPattern"
+	f3_local14:registerAnimationState( "default", f3_local13 )
+	f3_local14:registerAnimationState( "focused", {
 		alpha = 0.2
 	} )
-	self:registerEventHandler( "button_up", MBh.AnimateToState( "default", 0 ) )
-	self:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
-	self:addElement( self )
+	f3_local14:registerEventHandler( "button_up", MBh.AnimateToState( "default", 0 ) )
+	f3_local14:registerEventHandler( "button_over", MBh.AnimateToState( "focused", 133 ) )
+	f3_local7:addElement( f3_local14 )
 	f3_local0.hasFocusedElements = true
-	return self, self
+	return f3_local6, f3_local7
 end
 
 LUI.H2ButtonBackground.ReceivedFocus = function ( f4_arg0 )
@@ -282,32 +282,32 @@ LUI.H2ButtonBackground.new = function ( f13_arg0 )
 	self:setClass( LUI.H2ButtonBackground )
 	local f13_local1 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f13_local1.material = RegisterMaterial( "h2_btn_unfocused" )
-	local self = LUI.UIImage.new( f13_local1 )
-	self.id = "fill"
-	self.UITimer = nil
-	self.hasFocus = false
-	self.everHadFocus = false
-	self:setup9SliceImage( LUI.H2ButtonBackground.EdgeW, LUI.H2ButtonBackground.EdgeH, LUI.H2ButtonBackground.EdgeU, LUI.H2ButtonBackground.EdgeV )
-	self:registerAnimationState( "default", f13_local1 )
-	self:registerAnimationState( "focused", {
+	local f13_local2 = LUI.UIImage.new( f13_local1 )
+	f13_local2.id = "fill"
+	f13_local2.UITimer = nil
+	f13_local2.hasFocus = false
+	f13_local2.everHadFocus = false
+	f13_local2:setup9SliceImage( LUI.H2ButtonBackground.EdgeW, LUI.H2ButtonBackground.EdgeH, LUI.H2ButtonBackground.EdgeU, LUI.H2ButtonBackground.EdgeV )
+	f13_local2:registerAnimationState( "default", f13_local1 )
+	f13_local2:registerAnimationState( "focused", {
 		material = RegisterMaterial( "h2_btn_focused_fill" )
 	} )
-	self:registerAnimationState( "default_disabled", {
+	f13_local2:registerAnimationState( "default_disabled", {
 		material = RegisterMaterial( "h2_btn_unfocused_locked" )
 	} )
 	local f13_local3 = CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All )
 	f13_local3.material = RegisterMaterial( "h2_btn_focused_locked" )
-	self:registerAnimationState( "focused_disabled", f13_local3 )
-	self:registerAnimationState( "action_extended", CoD.CreateState( -LUI.H2ButtonBackground.DisabledActionExtention, -LUI.H2ButtonBackground.DisabledActionExtention, LUI.H2ButtonBackground.DisabledActionExtention, LUI.H2ButtonBackground.DisabledActionExtention, CoD.AnchorTypes.All ) )
-	self:registerEventHandler( "button_up", LUI.H2ButtonBackground.LostFocus )
-	self:registerEventHandler( "button_over", LUI.H2ButtonBackground.ReceivedFocus )
-	self:registerEventHandler( "button_disable", LUI.H2ButtonBackground.LostFocusLocked )
-	self:registerEventHandler( "button_over_disable", LUI.H2ButtonBackground.ReceivedFocusLocked )
-	self:registerEventHandler( "button_action_disable", LUI.H2ButtonBackground.DisabledActionAnimation )
-	self:registerEventHandler( "lost_focus_done", LUI.H2ButtonBackground.LostFocusDone )
-	self:registerEventHandler( "enable", LUI.H2ButtonBackground.AnimateToEnable )
-	self:registerEventHandler( "disable", LUI.H2ButtonBackground.AnimateToDisable )
-	self:addElement( self )
+	f13_local2:registerAnimationState( "focused_disabled", f13_local3 )
+	f13_local2:registerAnimationState( "action_extended", CoD.CreateState( -LUI.H2ButtonBackground.DisabledActionExtention, -LUI.H2ButtonBackground.DisabledActionExtention, LUI.H2ButtonBackground.DisabledActionExtention, LUI.H2ButtonBackground.DisabledActionExtention, CoD.AnchorTypes.All ) )
+	f13_local2:registerEventHandler( "button_up", LUI.H2ButtonBackground.LostFocus )
+	f13_local2:registerEventHandler( "button_over", LUI.H2ButtonBackground.ReceivedFocus )
+	f13_local2:registerEventHandler( "button_disable", LUI.H2ButtonBackground.LostFocusLocked )
+	f13_local2:registerEventHandler( "button_over_disable", LUI.H2ButtonBackground.ReceivedFocusLocked )
+	f13_local2:registerEventHandler( "button_action_disable", LUI.H2ButtonBackground.DisabledActionAnimation )
+	f13_local2:registerEventHandler( "lost_focus_done", LUI.H2ButtonBackground.LostFocusDone )
+	f13_local2:registerEventHandler( "enable", LUI.H2ButtonBackground.AnimateToEnable )
+	f13_local2:registerEventHandler( "disable", LUI.H2ButtonBackground.AnimateToDisable )
+	self:addElement( f13_local2 )
 	if f13_arg0 ~= nil and f13_arg0.strip ~= nil and f13_arg0.glow ~= nil and f13_arg0.corner ~= nil and f13_arg0.rarity > 0 then
 		local f13_local4 = CoD.CreateState( 0, 0, nil, 0, CoD.AnchorTypes.TopBottomLeft )
 		f13_local4.width = 8
@@ -329,16 +329,16 @@ LUI.H2ButtonBackground.new = function ( f13_arg0 )
 		f13_local8.height = 16
 		f13_local8.material = f13_arg0.corner
 		f13_local8.alpha = 0
-		local self = LUI.UIImage.new( f13_local8 )
-		self:registerAnimationState( "focused", {
+		local f13_local9 = LUI.UIImage.new( f13_local8 )
+		f13_local9:registerAnimationState( "focused", {
 			alpha = 1
 		} )
-		self:registerEventHandler( "button_up", MBh.AnimateToState( "default" ) )
-		self:registerEventHandler( "button_over", MBh.AnimateToState( "focused" ) )
-		self:registerEventHandler( "button_disable", MBh.AnimateToState( "default" ) )
-		self:registerEventHandler( "button_over_disable", MBh.AnimateToState( "focused" ) )
-		self:addElement( self )
-		self.topRightCorner = self
+		f13_local9:registerEventHandler( "button_up", MBh.AnimateToState( "default" ) )
+		f13_local9:registerEventHandler( "button_over", MBh.AnimateToState( "focused" ) )
+		f13_local9:registerEventHandler( "button_disable", MBh.AnimateToState( "default" ) )
+		f13_local9:registerEventHandler( "button_over_disable", MBh.AnimateToState( "focused" ) )
+		self:addElement( f13_local9 )
+		self.topRightCorner = f13_local9
 	end
 	return self
 end

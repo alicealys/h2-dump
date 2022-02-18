@@ -161,19 +161,19 @@ local f0_local10 = function ( f11_arg0, f11_arg1 )
 	f0_local6( f11_arg0 )
 end
 
-local f0_local11 = function ( f12_arg0, f12_arg1 )
-	if f12_arg1.value and f12_arg1.value ~= 0 then
-		f0_local10( f12_arg0, f12_arg1.value )
+local f0_local11 = function ( f13_arg0, f13_arg1 )
+	if f13_arg1.value and f13_arg1.value ~= 0 then
+		f0_local10( f13_arg0, f13_arg1.value )
 	else
-		f0_local5( f12_arg0 )
+		f0_local5( f13_arg0 )
 	end
 end
 
-local f0_local12 = function ( f13_arg0 )
-	if f13_arg0.isInit then
+local f0_local12 = function ( f14_arg0 )
+	if f14_arg0.isInit then
 		return 
 	else
-		f13_arg0.isInit = true
+		f14_arg0.isInit = true
 		local self = LUI.UIElement.new( {
 			leftAnchor = true,
 			rightAnchor = true,
@@ -182,7 +182,7 @@ local f0_local12 = function ( f13_arg0 )
 			alpha = 1
 		} )
 		self.id = "recoverId"
-		local f13_local1 = {
+		local f14_local1 = {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -190,20 +190,20 @@ local f0_local12 = function ( f13_arg0 )
 			height = 720,
 			material = RegisterMaterial( "overlay_hunted_black" )
 		}
-		local self = LUI.UIImage.new( f13_local1 )
-		self:registerAnimationState( "default", f13_local1 )
-		self.id = "blackScreenId"
-		local f13_local3 = {
+		local f14_local2 = LUI.UIImage.new( f14_local1 )
+		f14_local2:registerAnimationState( "default", f14_local1 )
+		f14_local2.id = "blackScreenId"
+		local f14_local3 = {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
 			alpha = 0,
 			height = 720
 		}
-		local self = LUI.UIElement.new( f13_local3 )
-		self:registerAnimationState( "default", f13_local3 )
-		self.id = "vignetteId"
-		local self = LUI.UIImage.new( {
+		local f14_local4 = LUI.UIElement.new( f14_local3 )
+		f14_local4:registerAnimationState( "default", f14_local3 )
+		f14_local4.id = "vignetteId"
+		local f14_local5 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -211,10 +211,10 @@ local f0_local12 = function ( f13_arg0 )
 			alpha = 0.2,
 			material = RegisterMaterial( "h1_hud_overlay_eyelids_vignette" )
 		} )
-		self:setupConsciousnessVignette()
-		self.id = "vignetteDarkId"
-		self:addElement( self )
-		local self = LUI.UIImage.new( {
+		f14_local5:setupConsciousnessVignette()
+		f14_local5.id = "vignetteDarkId"
+		f14_local4:addElement( f14_local5 )
+		local f14_local6 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -222,20 +222,20 @@ local f0_local12 = function ( f13_arg0 )
 			alpha = 1,
 			material = RegisterMaterial( "h1_hud_overlay_eyelids_vignette_blur" )
 		} )
-		self.id = "vignetteBlurId"
-		self:setup8SliceOverlayImage( 0, 0, 0.3, 0.3 )
-		self:addElement( self )
-		local f13_local7 = {
+		f14_local6.id = "vignetteBlurId"
+		f14_local6:setup8SliceOverlayImage( 0, 0, 0.3, 0.3 )
+		f14_local4:addElement( f14_local6 )
+		local f14_local7 = {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
 			alpha = 0,
 			height = 720
 		}
-		local self = LUI.UIElement.new( f13_local7 )
-		self:registerAnimationState( "default", f13_local7 )
-		self.id = "eyelidUpperId"
-		local self = LUI.UIImage.new( {
+		local f14_local8 = LUI.UIElement.new( f14_local7 )
+		f14_local8:registerAnimationState( "default", f14_local7 )
+		f14_local8.id = "eyelidUpperId"
+		local f14_local9 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -245,9 +245,9 @@ local f0_local12 = function ( f13_arg0 )
 			bottom = 360,
 			material = RegisterMaterial( "h1_hud_overlay_eyelids_blur" )
 		} )
-		self.id = "eyelids_blur_topId"
-		self:addElement( self )
-		local self = LUI.UIImage.new( {
+		f14_local9.id = "eyelids_blur_topId"
+		f14_local8:addElement( f14_local9 )
+		local f14_local10 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -257,10 +257,10 @@ local f0_local12 = function ( f13_arg0 )
 			bottom = 360,
 			material = RegisterMaterial( "h1_hud_overlay_eyelids" )
 		} )
-		self:setupConsciousnessVignette()
-		self.id = "eyelids_topId"
-		self:addElement( self )
-		local f13_local11 = {
+		f14_local10:setupConsciousnessVignette()
+		f14_local10.id = "eyelids_topId"
+		f14_local8:addElement( f14_local10 )
+		local f14_local11 = {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -268,10 +268,10 @@ local f0_local12 = function ( f13_arg0 )
 			zRot = 180,
 			height = 720
 		}
-		local self = LUI.UIElement.new( f13_local11 )
-		self:registerAnimationState( "default", f13_local11 )
-		self.id = "eyelidLowerId"
-		local self = LUI.UIImage.new( {
+		local f14_local12 = LUI.UIElement.new( f14_local11 )
+		f14_local12:registerAnimationState( "default", f14_local11 )
+		f14_local12.id = "eyelidLowerId"
+		local f14_local13 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -281,9 +281,9 @@ local f0_local12 = function ( f13_arg0 )
 			bottom = 360,
 			material = RegisterMaterial( "h1_hud_overlay_eyelids_blur" )
 		} )
-		self.id = "eyelids_blur_bottomId"
-		self:addElement( self )
-		local self = LUI.UIImage.new( {
+		f14_local13.id = "eyelids_blur_bottomId"
+		f14_local12:addElement( f14_local13 )
+		local f14_local14 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
@@ -293,28 +293,28 @@ local f0_local12 = function ( f13_arg0 )
 			bottom = 360,
 			material = RegisterMaterial( "h1_hud_overlay_eyelids" )
 		} )
-		self:setupConsciousnessVignette()
-		self.id = "eyelids_bottomId"
-		self:addElement( self )
+		f14_local14:setupConsciousnessVignette()
+		f14_local14.id = "eyelids_bottomId"
+		f14_local12:addElement( f14_local14 )
 		self.partsInfo = {
 			upperEyelid = {
-				uiElem = self
+				uiElem = f14_local8
 			},
 			lowerEyelid = {
-				uiElem = self
+				uiElem = f14_local12
 			},
 			vignette = {
-				uiElem = self
+				uiElem = f14_local4
 			},
 			blackScreen = {
-				uiElem = self
+				uiElem = f14_local2
 			}
 		}
-		self:addElement( self )
-		self:addElement( self )
-		self:addElement( self )
-		self:addElement( self )
-		f13_arg0:addElement( self )
+		self:addElement( f14_local8 )
+		self:addElement( f14_local12 )
+		self:addElement( f14_local4 )
+		self:addElement( f14_local2 )
+		f14_arg0:addElement( self )
 		self:registerAnimationState( "on", {
 			alpha = 1
 		} )
@@ -326,9 +326,9 @@ local f0_local12 = function ( f13_arg0 )
 	end
 end
 
-local f0_local13 = function ( f14_arg0, f14_arg1 )
-	if f14_arg1.value then
-		f0_local12( f14_arg0 )
+local f0_local13 = function ( f15_arg0, f15_arg1 )
+	if f15_arg1.value then
+		f0_local12( f15_arg0 )
 	end
 end
 

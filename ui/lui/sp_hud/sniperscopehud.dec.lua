@@ -255,7 +255,7 @@ local f0_local39 = function ( f13_arg0 )
 	self.id = "scopeBlurId"
 	f13_arg0:addElement( self )
 	if Engine.IsPC() then
-		local self = LUI.UIImage.new( {
+		local f13_local1 = LUI.UIImage.new( {
 			left = 0,
 			width = -f0_local23,
 			leftAnchor = true,
@@ -265,9 +265,9 @@ local f0_local39 = function ( f13_arg0 )
 			material = RegisterMaterial( "h1_sniperescape_blur_sides" ),
 			alpha = 1
 		} )
-		self.id = "leftScopeBlurId"
-		self:addElement( self )
-		local self = LUI.UIImage.new( {
+		f13_local1.id = "leftScopeBlurId"
+		self:addElement( f13_local1 )
+		local f13_local2 = LUI.UIImage.new( {
 			left = 0,
 			width = f0_local23,
 			leftAnchor = false,
@@ -277,33 +277,33 @@ local f0_local39 = function ( f13_arg0 )
 			material = RegisterMaterial( "h1_sniperescape_blur_sides" ),
 			alpha = 1
 		} )
-		self.id = "rightScopeBlurId"
-		self:addElement( self )
+		f13_local2.id = "rightScopeBlurId"
+		self:addElement( f13_local2 )
 	end
-	local self = LUI.UIImage.new( {
+	local f13_local1 = LUI.UIImage.new( {
 		width = 800,
 		height = 800,
 		material = RegisterMaterial( "h1_hud_overlay_sniperescape_flash" ),
 		alpha = 0
 	} )
-	self.id = "scopeFlashId"
-	f13_arg0:addElement( self )
-	local self = LUI.UIImage.new( {
+	f13_local1.id = "scopeFlashId"
+	f13_arg0:addElement( f13_local1 )
+	local f13_local2 = LUI.UIImage.new( {
 		width = f0_local26,
 		height = f0_local26,
 		material = RegisterMaterial( "h1_hud_overlay_sniperescape_lensshadow" ),
 		alpha = 0.85
 	} )
-	self.id = "scopeLensShadowId"
-	f13_arg0:addElement( self )
-	local self = LUI.UIImage.new( {
+	f13_local2.id = "scopeLensShadowId"
+	f13_arg0:addElement( f13_local2 )
+	local f13_local3 = LUI.UIImage.new( {
 		width = f0_local25,
 		height = f0_local25,
 		material = RegisterMaterial( "h2_hud_overlay_sniper_thermal_reticle" ),
 		alpha = 1
 	} )
-	self.id = "scopeReticleId"
-	f13_arg0:addElement( self )
+	f13_local3.id = "scopeReticleId"
+	f13_arg0:addElement( f13_local3 )
 	
 	local scope = LUI.UIImage.new( {
 		width = f0_local23,
@@ -315,9 +315,9 @@ local f0_local39 = function ( f13_arg0 )
 	f13_arg0:addElement( scope )
 	f13_arg0.scope = scope
 	
-	f13_arg0.reticle = self
-	f13_arg0.lensShadow = self
-	f13_arg0.flash = f0_local29( self )
+	f13_arg0.reticle = f13_local3
+	f13_arg0.lensShadow = f13_local2
+	f13_arg0.flash = f0_local29( f13_local1 )
 	f13_arg0.reticle:registerAnimationState( "fade_out", {
 		left = -f0_local25 / 2 * f0_local22,
 		top = -f0_local25 / 2 * f0_local22,

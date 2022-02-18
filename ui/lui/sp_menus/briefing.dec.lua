@@ -28,7 +28,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 	} )
 	self.id = "briefingMenuId"
 	local f1_local2 = 250
-	local self = LUI.UIText.new( {
+	local f1_local3 = LUI.UIText.new( {
 		leftAnchor = false,
 		rightAnchor = true,
 		topAnchor = false,
@@ -54,34 +54,29 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			end
 			Engine.SetDvarFloat( "r_progressIconRatio", f2_local0 )
 		end )
-		local f1_local4 = LUI.UITimer.new
-		local f1_local5 = 50
-		local f1_local6 = "updateProgress"
-		local f1_local7 = nil
-		local f1_local8, f1_local9 = false
-		self.timer = f1_local4( f1_local5, f1_local6, f1_local7, f1_local8, f1_local9, false, false, true )
+		self.timer = LUI.UITimer.new( 50, "updateProgress", nil, false, false, false, false, true )
 		self.timer.id = "barTimer"
 		self:addElement( self.timer )
-		self:setupProgressIcon()
-		self:registerAnimationState( "show", {
+		f1_local3:setupProgressIcon()
+		f1_local3:registerAnimationState( "show", {
 			alpha = 1
 		} )
-		self:registerAnimationState( "hide", {
+		f1_local3:registerAnimationState( "hide", {
 			alpha = 0
 		} )
 		if CoD.UsingController() then
-			self:setText( Engine.Localize( "@PLATFORM_HOLD_TO_SKIP" ) )
+			f1_local3:setText( Engine.Localize( "@PLATFORM_HOLD_TO_SKIP" ) )
 		else
-			f1_local4 = Engine.Localize( "@PLATFORM_HOLD_TO_SKIP_KEYBOARD" )
-			self:setText( f1_local4 )
-			f1_local5, f1_local6, f1_local7, f1_local8 = GetTextDimensions2( f1_local4, CoD.TextSettings.BodyFont18.Font, CoD.TextSettings.BodyFont18.Height )
-			f1_local9 = f1_local7 - f1_local5
+			local f1_local4 = Engine.Localize( "@PLATFORM_HOLD_TO_SKIP_KEYBOARD" )
+			f1_local3:setText( f1_local4 )
+			local f1_local5, f1_local6, f1_local7, f1_local8 = GetTextDimensions2( f1_local4, CoD.TextSettings.BodyFont18.Font, CoD.TextSettings.BodyFont18.Height )
+			local f1_local9 = f1_local7 - f1_local5
 			local f1_local10 = 0
 			if f1_local2 < f1_local9 then
 				f1_local10 = math.floor( f1_local9 / f1_local2 ) * CoD.TextSettings.BodyFont18.Height
 				f1_local9 = f1_local2
 			end
-			self:addElement( LUI.UIImage.new( {
+			f1_local3:addElement( LUI.UIImage.new( {
 				leftAnchor = false,
 				rightAnchor = true,
 				topAnchor = false,
@@ -94,7 +89,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 				material = RegisterMaterial( "h2_skip_progress_bar" )
 			} ) )
 		end
-		f1_local4 = function ( f3_arg0 )
+		local f1_local4 = function ( f3_arg0 )
 			if f3_arg0.activeCount <= 0 and f3_arg0.showCount <= 0 then
 				if f3_arg0.disableTimer == nil then
 					f3_arg0.disableTimer = LUI.UITimer.new( f0_local1, "disable_skip", nil, false )
@@ -106,7 +101,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			end
 		end
 		
-		f1_local5 = function ( f4_arg0, f4_arg1 )
+		local f1_local5 = function ( f4_arg0, f4_arg1 )
 			if f4_arg0.activeCount <= 0 then
 				if f4_arg0.showCount <= 0 then
 					local f4_local0 = f4_arg0:getParent()
@@ -125,7 +120,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			self.skipStartTime = Engine.GetTimeMsecs()
 		end
 		
-		f1_local6 = function ( f5_arg0, f5_arg1 )
+		local f1_local6 = function ( f5_arg0, f5_arg1 )
 			if f5_arg0.activeCount <= 0 then
 				return 
 			end
@@ -137,7 +132,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			self.skipStartTime = 0
 		end
 		
-		f1_local7 = function ( f6_arg0, f6_arg1 )
+		local f1_local7 = function ( f6_arg0, f6_arg1 )
 			if f6_arg0.showCount <= 0 then
 				local f6_local0 = f6_arg0:getParent()
 				f6_local0:animateToState( "show", 300 )
@@ -147,7 +142,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			f6_arg0.showCount = f6_arg0.showCount + 1
 		end
 		
-		f1_local8 = function ( f7_arg0, f7_arg1 )
+		local f1_local8 = function ( f7_arg0, f7_arg1 )
 			if f7_arg0.showCount <= 0 then
 				return 
 			else
@@ -156,7 +151,7 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			end
 		end
 		
-		f1_local9 = function ( f8_arg0, f8_arg1 )
+		local f1_local9 = function ( f8_arg0, f8_arg1 )
 			if self.currentType == 1 then
 				Engine.SetDvarBool( "ui_stop_airport_movie", true )
 			else
@@ -195,25 +190,25 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 			f1_local8( f13_arg0.text.bindButton, f13_arg1 )
 		end
 		
-		local self = LUI.UIBindButton.new()
-		self:registerEventHandler( "do_skip", f1_local9 )
-		self:registerEventHandler( "button_action", f1_local5 )
-		self:registerEventHandler( "button_action_released", f1_local6 )
-		self:registerEventHandler( "button_secondary", f1_local7 )
-		self:registerEventHandler( "button_secondary_released", f1_local8 )
+		local f1_local15 = LUI.UIBindButton.new()
+		f1_local15:registerEventHandler( "do_skip", f1_local9 )
+		f1_local15:registerEventHandler( "button_action", f1_local5 )
+		f1_local15:registerEventHandler( "button_action_released", f1_local6 )
+		f1_local15:registerEventHandler( "button_secondary", f1_local7 )
+		f1_local15:registerEventHandler( "button_secondary_released", f1_local8 )
 		if CoD.UsingController() then
-			self:registerEventHandler( "button_alt1", f1_local7 )
-			self:registerEventHandler( "button_alt1_released", f1_local8 )
-			self:registerEventHandler( "button_alt2", f1_local7 )
-			self:registerEventHandler( "button_alt2_released", f1_local8 )
+			f1_local15:registerEventHandler( "button_alt1", f1_local7 )
+			f1_local15:registerEventHandler( "button_alt1_released", f1_local8 )
+			f1_local15:registerEventHandler( "button_alt2", f1_local7 )
+			f1_local15:registerEventHandler( "button_alt2_released", f1_local8 )
 			if Engine.IsDevelopmentBuild() then
 				self:setHandleMouseButton( true )
 				self:registerEventHandler( "leftmousedown", f1_local11 )
 				self:registerEventHandler( "leftmouseup", f1_local12 )
 			end
 		else
-			self:registerEventHandler( "button_start", f1_local7 )
-			self:registerEventHandler( "button_start_released", f1_local8 )
+			f1_local15:registerEventHandler( "button_start", f1_local7 )
+			f1_local15:registerEventHandler( "button_start_released", f1_local8 )
 			if Engine.IsDevelopmentBuild() then
 				self:setHandleMouseButton( true )
 				self:registerEventHandler( "leftmousedown", f1_local11 )
@@ -224,48 +219,48 @@ function BriefingMenu( f1_arg0, f1_arg1 )
 				self:registerEventHandler( "leftmouseup", f1_local14 )
 			end
 		end
-		self:registerEventHandler( "disable_skip", f1_local10 )
-		self.handlePrimary = true
-		self.handleRelease = true
-		self.activeCount = 0
-		self.showCount = 0
-		self.bindButton = self
-		self:addElement( self )
+		f1_local15:registerEventHandler( "disable_skip", f1_local10 )
+		f1_local15.handlePrimary = true
+		f1_local15.handleRelease = true
+		f1_local15.activeCount = 0
+		f1_local15.showCount = 0
+		f1_local3.bindButton = f1_local15
+		f1_local3:addElement( f1_local15 )
 		self.setType = function ( f14_arg0, f14_arg1 )
 			if self.currentType == f14_arg1 then
 				return 
 			end
 			self.currentType = f14_arg1
 			if f14_arg1 == 2 then
-				self:registerEventHandler( "button_action", nil )
-				self:registerEventHandler( "button_action_released", nil )
-				self:registerEventHandler( "button_secondary", nil )
-				self:registerEventHandler( "button_secondary_released", nil )
-				self:registerEventHandler( "button_alt1", nil )
-				self:registerEventHandler( "button_alt1_released", nil )
-				self:registerEventHandler( "button_alt2", nil )
-				self:registerEventHandler( "button_alt2_released", nil )
-				self:registerEventHandler( "button_start", nil )
-				self:registerEventHandler( "button_start_released", nil )
+				f1_local15:registerEventHandler( "button_action", nil )
+				f1_local15:registerEventHandler( "button_action_released", nil )
+				f1_local15:registerEventHandler( "button_secondary", nil )
+				f1_local15:registerEventHandler( "button_secondary_released", nil )
+				f1_local15:registerEventHandler( "button_alt1", nil )
+				f1_local15:registerEventHandler( "button_alt1_released", nil )
+				f1_local15:registerEventHandler( "button_alt2", nil )
+				f1_local15:registerEventHandler( "button_alt2_released", nil )
+				f1_local15:registerEventHandler( "button_start", nil )
+				f1_local15:registerEventHandler( "button_start_released", nil )
 				self:registerEventHandler( "leftmousedown", nil )
 				self:registerEventHandler( "leftmouseup", nil )
-				f1_local7( self )
+				f1_local7( f1_local15 )
 			elseif f14_arg1 == 1 then
 				Engine.SetLuiInUse( true )
 				Engine.SetDvarBool( "ui_stop_airport_movie", false )
 			elseif f14_arg1 == 0 then
-				if self.showCount > 0 then
-					self.showCount = self.showCount - 1
+				if f1_local15.showCount > 0 then
+					f1_local15.showCount = f1_local15.showCount - 1
 				end
-				if self.showCount == 0 then
-					f1_local10( self )
+				if f1_local15.showCount == 0 then
+					f1_local10( f1_local15 )
 				end
 			end
 		end
 		
 	end
-	self.text = self
-	self:addElement( self )
+	self.text = f1_local3
+	self:addElement( f1_local3 )
 	return self
 end
 

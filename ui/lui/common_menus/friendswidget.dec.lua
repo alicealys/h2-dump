@@ -72,35 +72,35 @@ function RepeatSystemUpdate( f5_arg0 )
 	
 end
 
-function OnSystemsUpdate( f6_arg0, f6_arg1 )
-	if f6_arg0.systemUpdateTimer ~= nil then
-		local f6_local0 = Engine.IsMultiplayer()
-		if f6_local0 then
-			f6_local0 = LUI.FriendsWidget.CanSomeoneAccessFriendslist()
+function OnSystemsUpdate( f7_arg0, f7_arg1 )
+	if f7_arg0.systemUpdateTimer ~= nil then
+		local f7_local0 = Engine.IsMultiplayer()
+		if f7_local0 then
+			f7_local0 = LUI.FriendsWidget.CanSomeoneAccessFriendslist()
 		end
-		if f6_local0 then
-			f6_arg0.systemUpdateTimer:close()
-			f6_arg0.systemUpdateTimer = nil
+		if f7_local0 then
+			f7_arg0.systemUpdateTimer:close()
+			f7_arg0.systemUpdateTimer = nil
 		end
 	elseif LUI.FlowManager.IsMenuOpenAndVisible( Engine.GetLuiRoot(), "mp_main_menu" ) then
-		RepeatSystemUpdate( f6_arg0 )
+		RepeatSystemUpdate( f7_arg0 )
 	end
 	if Engine.IsMultiplayer() then
 		if LUI.FriendsWidget.CanSomeoneAccessFriendslist() then
-			f6_arg0:processEvent( {
+			f7_arg0:processEvent( {
 				name = "show_widget"
 			} )
 		else
-			f6_arg0:processEvent( {
+			f7_arg0:processEvent( {
 				name = "hide_widget"
 			} )
 		end
 	elseif LUI.FriendsWidget.CanSPUserAccessFriendsList() then
-		f6_arg0:processEvent( {
+		f7_arg0:processEvent( {
 			name = "show_widget"
 		} )
 	else
-		f6_arg0:processEvent( {
+		f7_arg0:processEvent( {
 			name = "hide_widget"
 		} )
 	end
@@ -126,26 +126,26 @@ function online_friends_widget()
 			} )
 		},
 		handlers = {
-			show_widget = function ( f13_arg0, f13_arg1 )
-				local f13_local0 = f13_arg0:getParent()
-				if f13_local0 then
-					local f13_local1 = LUI.ButtonHelperText.CommonEvents.addFriendsButton
-					f13_local1.dispatchChildren = true
-					f13_local0:processEvent( f13_local1 )
-					f13_arg0:animateToState( "default", 100 )
+			show_widget = function ( f9_arg0, f9_arg1 )
+				local f9_local0 = f9_arg0:getParent()
+				if f9_local0 then
+					local f9_local1 = LUI.ButtonHelperText.CommonEvents.addFriendsButton
+					f9_local1.dispatchChildren = true
+					f9_local0:processEvent( f9_local1 )
+					f9_arg0:animateToState( "default", 100 )
 					if Engine.IsXB3() or not Engine.IsConsoleGame() then
 						Engine.ExecNow( "friends_widget_refresh" )
 					end
-					local f13_local2 = Engine.GetLuiRoot()
-					if f13_local2 then
-						local f13_local3 = LUI.FlowManager.GetTopMenuInfo( f13_local2.flowManager.menuInfoStack, true )
-						if f13_local3.isPopup then
-							local f13_local4 = f13_local0:getFirstDescendentById( (f13_local1.button_ref or f13_local1.id) .. "_id" )
-							if f13_local4 then
-								f13_local4:processEvent( {
+					local f9_local2 = Engine.GetLuiRoot()
+					if f9_local2 then
+						local f9_local3 = LUI.FlowManager.GetTopMenuInfo( f9_local2.flowManager.menuInfoStack, true )
+						if f9_local3.isPopup then
+							local f9_local4 = f9_local0:getFirstDescendentById( (f9_local1.button_ref or f9_local1.id) .. "_id" )
+							if f9_local4 then
+								f9_local4:processEvent( {
 									name = "popup_active",
 									dispatchChildren = true,
-									popup_name = f13_local3.name
+									popup_name = f9_local3.name
 								} )
 							end
 						end
@@ -153,13 +153,13 @@ function online_friends_widget()
 				end
 			end
 			,
-			hide_widget = function ( f14_arg0, f14_arg1 )
-				local f14_local0 = f14_arg0:getParent()
-				if f14_local0 then
-					local f14_local1 = LUI.ButtonHelperText.CommonEvents.removeFriendsButton
-					f14_local1.dispatchChildren = true
-					f14_local0:processEvent( f14_local1 )
-					f14_arg0:animateToState( "disabled", 0 )
+			hide_widget = function ( f10_arg0, f10_arg1 )
+				local f10_local0 = f10_arg0:getParent()
+				if f10_local0 then
+					local f10_local1 = LUI.ButtonHelperText.CommonEvents.removeFriendsButton
+					f10_local1.dispatchChildren = true
+					f10_local0:processEvent( f10_local1 )
+					f10_arg0:animateToState( "disabled", 0 )
 				end
 			end
 			,

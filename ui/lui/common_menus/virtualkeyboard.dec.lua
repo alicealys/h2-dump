@@ -60,15 +60,15 @@ function input_popup( f2_arg0, f2_arg1 )
 								password_field = f2_local3,
 								max_length = f2_local0.maxLength,
 								help_value = f2_local0.input,
-								field_edited_func = function ( f7_arg0, f7_arg1 )
-									local f7_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f7_arg0 )
-									f7_local0.input = f7_arg1.text or ""
-									if f7_local0.exiting then
+								field_edited_func = function ( f4_arg0, f4_arg1 )
+									local f4_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f4_arg0 )
+									f4_local0.input = f4_arg1.text or ""
+									if f4_local0.exiting then
 										return 
 									else
-										f7_arg1.controller = f7_local0.exclusiveController
-										ExitVirtualKeyboard( f7_arg0, f7_arg1, f7_arg1.cancelled )
-										LUI.FlowManager.RequestLeaveMenu( f7_arg0 )
+										f4_arg1.controller = f4_local0.exclusiveController
+										ExitVirtualKeyboard( f4_arg0, f4_arg1, f4_arg1.cancelled )
+										LUI.FlowManager.RequestLeaveMenu( f4_arg0 )
 									end
 								end
 								,
@@ -77,8 +77,8 @@ function input_popup( f2_arg0, f2_arg1 )
 										name = "button_action",
 										mouse = true
 									} ),
-									exit_virtual_keyboard = function ( f8_arg0, f8_arg1 )
-										f8_arg0:processEvent( {
+									exit_virtual_keyboard = function ( f5_arg0, f5_arg1 )
+										f5_arg0:processEvent( {
 											name = "finish_editing"
 										} )
 									end
@@ -112,9 +112,9 @@ function input_popup( f2_arg0, f2_arg1 )
 								style = GenericButtonSettings.Styles.GlassButton,
 								substyle = GenericButtonSettings.Styles.GlassButton.SubStyles.Popup,
 								button_text = Engine.Localize( "MENU_OK" ),
-								button_action_func = function ( f9_arg0, f9_arg1 )
-									ExitVirtualKeyboard( f9_arg0, f9_arg1, false )
-									LUI.FlowManager.RequestLeaveMenu( f9_arg0 )
+								button_action_func = function ( f6_arg0, f6_arg1 )
+									ExitVirtualKeyboard( f6_arg0, f6_arg1, false )
+									LUI.FlowManager.RequestLeaveMenu( f6_arg0 )
 								end
 								
 							}
@@ -135,12 +135,12 @@ function input_popup( f2_arg0, f2_arg1 )
 	f2_local2 = nil
 end
 
-function virtual_keyboard( f3_arg0, f3_arg1 )
-	local f3_local0 = LUI.FlowManager.GetMenuScopedDataByMenuName( "virtual_keyboard" )
-	f3_local0.input = f3_arg1.defaultText or ""
-	f3_local0.maxLength = f3_arg1.maxLength or 12
-	f3_local0.verifyString = f3_arg1.verifyString or false
-	return input_popup( f3_arg0, f3_arg1 )
+function virtual_keyboard( f8_arg0, f8_arg1 )
+	local f8_local0 = LUI.FlowManager.GetMenuScopedDataByMenuName( "virtual_keyboard" )
+	f8_local0.input = f8_arg1.defaultText or ""
+	f8_local0.maxLength = f8_arg1.maxLength or 12
+	f8_local0.verifyString = f8_arg1.verifyString or false
+	return input_popup( f8_arg0, f8_arg1 )
 end
 
 LUI.MenuBuilder.registerType( "virtual_keyboard", virtual_keyboard )

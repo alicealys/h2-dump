@@ -3151,8 +3151,8 @@ CoD.LargestFontWithoutBreaks = function ( f52_arg0, f52_arg1, f52_arg2 )
 	assert( f52_arg2 and type( f52_arg2 ) == "table" )
 	assert( #f52_arg2 > 0 )
 	local f52_local0 = f52_arg2
-	table.sort( f52_local0, function ( f69_arg0, f69_arg1 )
-		return f69_arg1.Height < f69_arg0.Height
+	table.sort( f52_local0, function ( f53_arg0, f53_arg1 )
+		return f53_arg1.Height < f53_arg0.Height
 	end )
 	for f52_local4, f52_local5 in ipairs( f52_local0 ) do
 		local f52_local6, f52_local7, f52_local8, f52_local9 = GetTextDimensions( f52_arg0, f52_local5.Font, f52_local5.Height )
@@ -3163,8 +3163,8 @@ CoD.LargestFontWithoutBreaks = function ( f52_arg0, f52_arg1, f52_arg2 )
 	return f52_local0[1], false
 end
 
-CoD.GetPlacementStringForNum = function ( f53_arg0 )
-	local f53_local0 = {
+CoD.GetPlacementStringForNum = function ( f54_arg0 )
+	local f54_local0 = {
 		"LUA_MENU_1ST",
 		"LUA_MENU_2ND",
 		"LUA_MENU_3RD",
@@ -3184,10 +3184,10 @@ CoD.GetPlacementStringForNum = function ( f53_arg0 )
 		"LUA_MENU_17TH",
 		"LUA_MENU_18TH"
 	}
-	if f53_arg0 and f53_arg0 > 0 and f53_arg0 < #f53_local0 then
-		return Engine.Localize( f53_local0[f53_arg0] )
+	if f54_arg0 and f54_arg0 > 0 and f54_arg0 < #f54_local0 then
+		return Engine.Localize( f54_local0[f54_arg0] )
 	else
-		return f53_arg0
+		return f54_arg0
 	end
 end
 
@@ -3208,21 +3208,21 @@ CoD.GameDVRDisable = function ()
 	CoD.GameDVREnableCount = CoD.GameDVREnableCount + 1
 end
 
-CoD.ChangeDifficulty = function ( f56_arg0 )
-	DebugPrint( "setting player 1 & 2 difficulty to " .. f56_arg0 )
-	Engine.SetDvarInt( "g_gameskill_player_1", f56_arg0 )
-	Engine.SetDvarInt( "g_gameskill_player_2", f56_arg0 )
-	Engine.SetDvarInt( "g_gameskill", f56_arg0 )
-	Engine.Exec( "profile_difficultySave " .. f56_arg0 )
+CoD.ChangeDifficulty = function ( f57_arg0 )
+	DebugPrint( "setting player 1 & 2 difficulty to " .. f57_arg0 )
+	Engine.SetDvarInt( "g_gameskill_player_1", f57_arg0 )
+	Engine.SetDvarInt( "g_gameskill_player_2", f57_arg0 )
+	Engine.SetDvarInt( "g_gameskill", f57_arg0 )
+	Engine.Exec( "profile_difficultySave " .. f57_arg0 )
 	Engine.Exec( "updategamerprofile" )
 end
 
-CoD.FormatClanAndGamerTags = function ( f57_arg0, f57_arg1 )
-	local f57_local0 = ""
-	if f57_arg0 and f57_arg0 ~= "" then
-		f57_local0 = f57_local0 .. "[" .. f57_arg0 .. "]"
+CoD.FormatClanAndGamerTags = function ( f58_arg0, f58_arg1 )
+	local f58_local0 = ""
+	if f58_arg0 and f58_arg0 ~= "" then
+		f58_local0 = f58_local0 .. "[" .. f58_arg0 .. "]"
 	end
-	return f57_local0 .. f57_arg1
+	return f58_local0 .. f58_arg1
 end
 
 CoD.IsCoDAccountRegistrationAvailableInMyRegion = function ()
@@ -3241,9 +3241,9 @@ CoD.IsCampaignOnly = function ()
 	return true
 end
 
-CoD.SetHDREnabled = function ( f61_arg0, f61_arg1 )
-	Engine.SetProfileData( "hdrEnabled", f61_arg1, f61_arg0 )
-	Engine.ApplyHDRProfileValues( f61_arg0 )
+CoD.SetHDREnabled = function ( f62_arg0, f62_arg1 )
+	Engine.SetProfileData( "hdrEnabled", f62_arg1, f62_arg0 )
+	Engine.ApplyHDRProfileValues( f62_arg0 )
 end
 
 f0_local6 = CoD
@@ -3254,27 +3254,27 @@ if not f0_local8 then
 end
 f0_local6[f0_local7] = f0_local8
 CoD.AllowUnlockAllInShip = false
-CoD.IsCampaignCompleted = function ( f62_arg0, f62_arg1 )
-	local f62_local0 = false
+CoD.IsCampaignCompleted = function ( f63_arg0, f63_arg1 )
+	local f63_local0 = false
 	if CoD.AllowCheat then
-		f62_local0 = Engine.GetDvarBool( "ui_cheat_unlock_all_mission" )
+		f63_local0 = Engine.GetDvarBool( "ui_cheat_unlock_all_mission" )
 	end
-	local f62_local1 = function ()
-		local f70_local0
+	local f63_local1 = function ()
+		local f64_local0
 		if CoD.AllowCheat or Engine.GetDvarBool( "mis_cheat" ) then
-			f70_local0 = not f62_local0
+			f64_local0 = not f63_local0
 		else
-			f70_local0 = true
+			f64_local0 = true
 		end
-		return f70_local0
+		return f64_local0
 	end
 	
-	local f62_local2 = function ( f71_arg0, f71_arg1 )
-		if not (not f71_arg1 or not Engine.GetDvarBool( "profileMenuOption_hasUnlockedAll_SP" )) or not f62_local1() then
+	local f63_local2 = function ( f65_arg0, f65_arg1 )
+		if not (not f65_arg1 or not Engine.GetDvarBool( "profileMenuOption_hasUnlockedAll_SP" )) or not f63_local1() then
 			return true
 		else
-			local f71_local0 = Engine.GetHighestDifficultyForLevel( f71_arg0 - 1, Engine.GetControllerForLocalClient( 0 ) )
-			if f71_local0 == nil or f71_local0 == "" then
+			local f65_local0 = Engine.GetHighestDifficultyForLevel( f65_arg0 - 1, Engine.GetControllerForLocalClient( 0 ) )
+			if f65_local0 == nil or f65_local0 == "" then
 				return false
 			else
 				return true
@@ -3282,32 +3282,32 @@ CoD.IsCampaignCompleted = function ( f62_arg0, f62_arg1 )
 		end
 	end
 	
-	for f62_local3 = 1, CoD.LastLevelIndex, 1 do
-		if f62_local3 ~= 4 and not f62_local2( f62_local3, CoD.AllowUnlockAllInShip ) then
+	for f63_local3 = 1, CoD.LastLevelIndex, 1 do
+		if f63_local3 ~= 4 and not f63_local2( f63_local3, CoD.AllowUnlockAllInShip ) then
 			return false
 		end
 	end
 	return true
 end
 
-CoD.InitializeCheat = function ( f63_arg0, f63_arg1 )
+CoD.InitializeCheat = function ( f66_arg0, f66_arg1 )
 	if not CoD.AllowCheat or Engine.GetDvarBool( "limited_mode" ) then
 		return 
 	elseif Engine.GetDvarBool( "ui_cheat_unlock_all_mission" ) == nil then
 		Engine.SetDvarBool( "ui_cheat_unlock_all_mission", CoD.AllowCheat, true )
 	end
-	local f63_local0 = function ( f72_arg0, f72_arg1 )
+	local f66_local0 = function ( f67_arg0, f67_arg1 )
 		Engine.SetDvarBool( "ui_cheat_unlock_all_mission", not Engine.GetDvarBool( "ui_cheat_unlock_all_mission" ), true )
-		if f63_arg1 then
-			f63_arg1( f72_arg0, f72_arg1 )
+		if f66_arg1 then
+			f66_arg1( f67_arg0, f67_arg1 )
 		end
 	end
 	
 	local self = LUI.UIBindButton.new()
 	self.id = "level_select_cheat_button"
-	self:registerEventHandler( "button_l3", f63_local0 )
-	self:registerEventHandler( "key_insert", f63_local0 )
-	f63_arg0:addElement( self )
+	self:registerEventHandler( "button_l3", f66_local0 )
+	self:registerEventHandler( "key_insert", f66_local0 )
+	f66_arg0:addElement( self )
 end
 
 CoD.CanToggleHDRRuntime = function ()
@@ -3323,15 +3323,15 @@ CoD.IsHDRUnavailable = function ()
 end
 
 CoD.IsHDREnabled = function ()
-	local f67_local0 = CoD.IsHDRAvailable()
-	if f67_local0 then
+	local f71_local0 = CoD.IsHDRAvailable()
+	if f71_local0 then
 		if CoD.CanToggleHDRRuntime() then
-			f67_local0 = Engine.GetProfileData( "hdrEnabled", Engine.GetControllerForLocalClient( 0 ) )
+			f71_local0 = Engine.GetProfileData( "hdrEnabled", Engine.GetControllerForLocalClient( 0 ) )
 		else
-			f67_local0 = true
+			f71_local0 = true
 		end
 	end
-	return f67_local0
+	return f71_local0
 end
 
 CoD.IsHDRDisabled = function ()

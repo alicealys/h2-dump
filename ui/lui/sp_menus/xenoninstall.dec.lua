@@ -32,12 +32,7 @@ end
 
 function RefreshProgressText( f6_arg0, f6_arg1 )
 	local f6_local0, f6_local1, f6_local2, f6_local3, f6_local4 = nil
-	local f6_local5, f6_local6, f6_local7, f6_local8, f6_local9 = Engine.InstallXenonDiscContentStatus()
-	f6_local4 = f6_local9
-	f6_local3 = f6_local8
-	f6_local2 = f6_local7
-	f6_local1 = f6_local6
-	f6_local0 = f6_local5
+	f6_local0, f6_local1, f6_local2, f6_local3, f6_local4 = Engine.InstallXenonDiscContentStatus()
 	if f6_local4 == true then
 		if f6_local0 == 0 then
 			LUI.FlowManager.RequestAddMenu( f6_arg0, "menu_xenon_install_error_popup", false, 0, false )
@@ -54,13 +49,13 @@ function RefreshProgressText( f6_arg0, f6_arg1 )
 			LUI.FlowManager.RequestAddMenu( f6_arg0, "menu_xenon_install_error_popup", false, 0, false )
 		end
 	else
-		f6_local5, f6_local6 = nil
+		local f6_local5, f6_local6 = nil
 		if f6_local0 == 0 then
 			return 
 		end
 		f6_local5 = f6_local3 * 100
 		f6_arg0:setText( string.format( "%d", f6_local5 ) .. "%" )
-		f6_local7 = ""
+		local f6_local7 = ""
 		if f6_local5 < 10 then
 			f6_local7 = "background_start"
 		elseif f6_local5 < 20 then
@@ -331,9 +326,9 @@ function installMenuCheckState( f14_arg0, f14_arg1 )
 		return 
 	elseif Engine.IsProfileSignedIn( f14_arg1.controller ) then
 		if not f14_local0 then
-			UPVAL0 = 0
+			f0_local0 = 0
 		else
-			UPVAL0 = 1
+			f0_local0 = 1
 		end
 		if Engine.InstallXenonDiscContent( f14_arg1.controller, f0_local0 ) then
 			LUI.FlowManager.RequestAddMenu( f14_arg0, "menu_xenon_install", false, f14_arg1.controller, true )
@@ -684,24 +679,24 @@ function menu_xenon_install_main()
 									}
 								},
 								handlers = {
-									menu_create = function ( f4_arg0, f4_arg1 )
-										local f4_local0 = f0_local1()
-										local f4_local1 = IsFirstPackageInstalled()
-										local f4_local2 = IsSecondPackageInstalled()
-										if f4_local1 and f4_local2 then
-											LUI.FlowManager.RequestAddMenu( f4_arg0, "menu_xenon_install_complete", false, f4_arg1.controller, true, {
+									menu_create = function ( f18_arg0, f18_arg1 )
+										local f18_local0 = f0_local1()
+										local f18_local1 = IsFirstPackageInstalled()
+										local f18_local2 = IsSecondPackageInstalled()
+										if f18_local1 and f18_local2 then
+											LUI.FlowManager.RequestAddMenu( f18_arg0, "menu_xenon_install_complete", false, f18_arg1.controller, true, {
 												message = Engine.Localize( "@LUA_MENU_DISC_CONTENT_ALREADY_INSTALLED" )
 											} )
 											return 
-										elseif not f4_local0 then
-											f4_arg0:setText( Engine.Localize( "@LUA_MENU_DISC_CONTENT_MESSAGE" ) )
-										elseif not f4_local1 then
-											f4_arg0:setText( Engine.Localize( "@LUA_MENU_DISC_CONTENT_MESSAGE_1" ) )
-										elseif not f4_local2 then
-											f4_arg0:setText( Engine.Localize( "@LUA_MENU_DISC_CONTENT_MESSAGE_2" ) )
+										elseif not f18_local0 then
+											f18_arg0:setText( Engine.Localize( "@LUA_MENU_DISC_CONTENT_MESSAGE" ) )
+										elseif not f18_local1 then
+											f18_arg0:setText( Engine.Localize( "@LUA_MENU_DISC_CONTENT_MESSAGE_1" ) )
+										elseif not f18_local2 then
+											f18_arg0:setText( Engine.Localize( "@LUA_MENU_DISC_CONTENT_MESSAGE_2" ) )
 										end
-										f4_arg0:addElement( LUI.UITimer.new( 200, "menu_text_tick" ) )
-										f4_arg0:registerEventHandler( "menu_text_tick", f0_local2 )
+										f18_arg0:addElement( LUI.UITimer.new( 200, "menu_text_tick" ) )
+										f18_arg0:registerEventHandler( "menu_text_tick", f0_local2 )
 									end
 									
 								}
@@ -724,11 +719,11 @@ function menu_xenon_install_main()
 	}
 end
 
-function deviceMenuSignin_YesAction( f18_arg0, f18_arg1 )
-	installMenuCheckState( f18_arg0, f18_arg1 )
+function deviceMenuSignin_YesAction( f19_arg0, f19_arg1 )
+	installMenuCheckState( f19_arg0, f19_arg1 )
 end
 
-function menu_xenon_install_device_popup( f19_arg0, f19_arg1 )
+function menu_xenon_install_device_popup( f20_arg0, f20_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_WARNING" ),
 		message_text = Engine.Localize( "@LUA_MENU_DISC_CONTENT_DEVICE" ),
@@ -738,13 +733,13 @@ function menu_xenon_install_device_popup( f19_arg0, f19_arg1 )
 	} )
 end
 
-function installMenuSignin_YesAction( f20_arg0, f20_arg1 )
-	Engine.ExecNow( "forcenosplitscreencontrol main_lockout_signin_START", f20_arg1.controller )
-	Engine.Exec( "xsignin", f20_arg1.controller )
+function installMenuSignin_YesAction( f21_arg0, f21_arg1 )
+	Engine.ExecNow( "forcenosplitscreencontrol main_lockout_signin_START", f21_arg1.controller )
+	Engine.Exec( "xsignin", f21_arg1.controller )
 	Engine.Exec( "forcesplitscreencontrol main_lockout_signin_START" )
 end
 
-function menu_xenon_install_signin_popup( f21_arg0, f21_arg1 )
+function menu_xenon_install_signin_popup( f22_arg0, f22_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_WARNING" ),
 		message_text = Engine.Localize( "@LUA_MENU_DISC_CONTENT_SIGNIN" ),
@@ -754,16 +749,16 @@ function menu_xenon_install_signin_popup( f21_arg0, f21_arg1 )
 	} )
 end
 
-function OnXenonInstallCompleteReposition( f22_arg0, f22_arg1 )
-	local f22_local0 = 40
-	local f22_local1 = f22_arg0:getParent()
-	local f22_local2, f22_local3, f22_local4, f22_local5 = GetTextDimensions( f22_local1.properties.message, CoD.TextSettings.BodyFont.Font, CoD.TextSettings.BodyFont.Height )
-	local f22_local6 = f22_local0 + f22_local4 - f22_local2
-	f22_arg0:registerAnimationState( "updated", {
-		left = -f22_local6 / 2,
-		right = f22_local6 / 2
+function OnXenonInstallCompleteReposition( f23_arg0, f23_arg1 )
+	local f23_local0 = 40
+	local f23_local1 = f23_arg0:getParent()
+	local f23_local2, f23_local3, f23_local4, f23_local5 = GetTextDimensions( f23_local1.properties.message, CoD.TextSettings.BodyFont.Font, CoD.TextSettings.BodyFont.Height )
+	local f23_local6 = f23_local0 + f23_local4 - f23_local2
+	f23_arg0:registerAnimationState( "updated", {
+		left = -f23_local6 / 2,
+		right = f23_local6 / 2
 	} )
-	f22_arg0:animateToState( "updated", 0 )
+	f23_arg0:animateToState( "updated", 0 )
 end
 
 function menu_xenon_install_complete()
@@ -772,30 +767,30 @@ function menu_xenon_install_complete()
 	self.properties = {
 		message = ""
 	}
-	local f23_local1 = CoD.CreateState( 0, 50, 512, 178, CoD.AnchorTypes.TopLeft )
-	f23_local1.material = RegisterMaterial( "img_install_cod_logo" )
-	local self = LUI.UIImage.new( f23_local1 )
-	self.id = "logo_img_id"
-	self:addElement( self )
-	local f23_local3 = CoD.CreateState( 0, CoD.TextSettings.BodyFont.Height * -2, 0, CoD.TextSettings.BodyFont.Height * 2, CoD.AnchorTypes.None )
-	f23_local3.alignment = LUI.Alignment.Center
-	f23_local3.alpha = 1
-	local self = LUI.UIElement.new( f23_local3 )
-	self:registerEventHandler( "menu_create", MBh.EmitEvent( "reposition_elements" ) )
-	self:registerEventHandler( "reposition_elements", OnXenonInstallCompleteReposition )
-	self:addElement( LUI.MenuBuilder.BuildRegisteredType( "live_dialog_popup_background" ) )
-	local f23_local5 = CoD.CreateState( 0, -CoD.TextSettings.BodyFont.Height / 2 - CoD.TextSettings.BodyFont.Height, 0, CoD.TextSettings.BodyFont.Height / 2 - CoD.TextSettings.BodyFont.Height, CoD.AnchorTypes.LeftRight )
-	f23_local5.font = CoD.TextSettings.BodyFont.Font
-	f23_local5.alignment = LUI.Alignment.Center
-	f23_local5.red = Colors.secondary_text_color.r
-	f23_local5.green = Colors.secondary_text_color.g
-	f23_local5.blue = Colors.secondary_text_color.b
-	f23_local5.alpha = 1
-	local self = LUI.UIText.new( f23_local5 )
-	self.id = "menu_xenon_install_complete_text_elem"
-	self:setText( self.properties.message )
-	self:addElement( self )
-	self:addElement( self )
+	local f24_local1 = CoD.CreateState( 0, 50, 512, 178, CoD.AnchorTypes.TopLeft )
+	f24_local1.material = RegisterMaterial( "img_install_cod_logo" )
+	local f24_local2 = LUI.UIImage.new( f24_local1 )
+	f24_local2.id = "logo_img_id"
+	self:addElement( f24_local2 )
+	local f24_local3 = CoD.CreateState( 0, CoD.TextSettings.BodyFont.Height * -2, 0, CoD.TextSettings.BodyFont.Height * 2, CoD.AnchorTypes.None )
+	f24_local3.alignment = LUI.Alignment.Center
+	f24_local3.alpha = 1
+	local f24_local4 = LUI.UIElement.new( f24_local3 )
+	f24_local4:registerEventHandler( "menu_create", MBh.EmitEvent( "reposition_elements" ) )
+	f24_local4:registerEventHandler( "reposition_elements", OnXenonInstallCompleteReposition )
+	f24_local4:addElement( LUI.MenuBuilder.BuildRegisteredType( "live_dialog_popup_background" ) )
+	local f24_local5 = CoD.CreateState( 0, -CoD.TextSettings.BodyFont.Height / 2 - CoD.TextSettings.BodyFont.Height, 0, CoD.TextSettings.BodyFont.Height / 2 - CoD.TextSettings.BodyFont.Height, CoD.AnchorTypes.LeftRight )
+	f24_local5.font = CoD.TextSettings.BodyFont.Font
+	f24_local5.alignment = LUI.Alignment.Center
+	f24_local5.red = Colors.secondary_text_color.r
+	f24_local5.green = Colors.secondary_text_color.g
+	f24_local5.blue = Colors.secondary_text_color.b
+	f24_local5.alpha = 1
+	local f24_local6 = LUI.UIText.new( f24_local5 )
+	f24_local6.id = "menu_xenon_install_complete_text_elem"
+	f24_local6:setText( self.properties.message )
+	f24_local4:addElement( f24_local6 )
+	self:addElement( f24_local4 )
 	return self
 end
 

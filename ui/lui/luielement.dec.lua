@@ -26,7 +26,7 @@ LUI.UIElement.addChildRecord = function ( f1_arg0, f1_arg1 )
 			f1_arg0.childRecord = {}
 		end
 		if f1_arg0.childRecord[f1_local0] ~= nil then
-			error( "LUI Error: Element has duplicate id "" .. f1_local0 .. """ )
+			error( "LUI Error: Element has duplicate id \"" .. f1_local0 .. "\"" )
 		end
 		f1_arg0.childRecord[f1_local0] = f1_arg1
 	end
@@ -40,7 +40,7 @@ LUI.UIElement.removeChildRecord = function ( f2_arg0, f2_arg1 )
 		if f2_arg0.childRecord and f2_arg0.childRecord[f2_local0] then
 			f2_arg0.childRecord[f2_local0] = nil
 		else
-			DebugPrint( "LUI Warning: Removing element from an element which does not contain it: "" .. f2_local0 .. """ )
+			DebugPrint( "LUI Warning: Removing element from an element which does not contain it: \"" .. f2_local0 .. "\"" )
 		end
 	end
 end
@@ -206,11 +206,7 @@ LUI.UIElement.getFullID = function ( f19_arg0 )
 end
 
 LUI.UIElement.getChildById = function ( f20_arg0, f20_arg1 )
-	local f20_local0 = f20_arg0.childRecord
-	if f20_local0 then
-		f20_local0 = f20_arg0.childRecord[f20_arg1]
-	end
-	return f20_local0
+	return f20_arg0.childRecord and f20_arg0.childRecord[f20_arg1]
 end
 
 LUI.UIElement.getFirstDescendentById = function ( f21_arg0, f21_arg1 )
@@ -808,109 +804,87 @@ end
 local f0_local0 = function ( f49_arg0, f49_arg1 )
 	local f49_local0 = f49_arg0
 	local f49_local1 = f49_arg1
-	return function ( f132_arg0, f132_arg1 )
-		local f132_local0, f132_local1 = nil
-		return f49_local0( f132_arg0, f132_arg1 ) or f49_local1( f132_arg0, f132_arg1 )
+	return function ( f50_arg0, f50_arg1 )
+		local f50_local0, f50_local1 = nil
+		return f49_local0( f50_arg0, f50_arg1 ) or f49_local1( f50_arg0, f50_arg1 )
 	end
 	
 end
 
-LUI.UIElement.addEventHandler = function ( f50_arg0, f50_arg1, f50_arg2 )
-	if f50_arg0.m_eventHandlers[f50_arg1] then
-		f50_arg0:registerEventHandler( f50_arg1, f0_local0( f50_arg2, f50_arg0.m_eventHandlers[f50_arg1] ) )
+LUI.UIElement.addEventHandler = function ( f51_arg0, f51_arg1, f51_arg2 )
+	if f51_arg0.m_eventHandlers[f51_arg1] then
+		f51_arg0:registerEventHandler( f51_arg1, f0_local0( f51_arg2, f51_arg0.m_eventHandlers[f51_arg1] ) )
 	else
-		f50_arg0:registerEventHandler( f50_arg1, f50_arg2 )
+		f51_arg0:registerEventHandler( f51_arg1, f51_arg2 )
 	end
 end
 
-LUI.UIElement.makeFocusable = function ( f51_arg0 )
-	f51_arg0.m_focusable = true
-	if f51_arg0.navigation == nil then
-		f51_arg0:initNavTables()
+LUI.UIElement.makeFocusable = function ( f52_arg0 )
+	f52_arg0.m_focusable = true
+	if f52_arg0.navigation == nil then
+		f52_arg0:initNavTables()
 	end
 end
 
-LUI.UIElement.initNavTables = function ( f52_arg0 )
-	f52_arg0.navigation = {}
-	f52_arg0.navigationByParent = {}
-	f52_arg0.navigationPostParent = {}
+LUI.UIElement.initNavTables = function ( f53_arg0 )
+	f53_arg0.navigation = {}
+	f53_arg0.navigationByParent = {}
+	f53_arg0.navigationPostParent = {}
 end
 
-LUI.UIElement.makeNotFocusable = function ( f53_arg0 )
-	f53_arg0.m_focusable = false
+LUI.UIElement.makeNotFocusable = function ( f54_arg0 )
+	f54_arg0.m_focusable = false
 end
 
-LUI.UIElement.isIDNamed = function ( f54_arg0 )
-	if string.find( f54_arg0.id, "." ) then
+LUI.UIElement.isIDNamed = function ( f55_arg0 )
+	if string.find( f55_arg0.id, "." ) then
 		return true
 	else
 		return false
 	end
 end
 
-LUI.UIElement.getFirstInFocus = function ( f55_arg0 )
-	if f55_arg0:isInFocus() then
-		return f55_arg0
-	end
-	local f55_local0 = f55_arg0:getFirstChild()
-	while f55_local0 do
-		local f55_local1 = f55_local0:getFirstInFocus()
-		if f55_local1 then
-			return f55_local1
-		end
-		f55_local0 = f55_local0:getNextSibling()
-	end
-end
-
-LUI.UIElement.getAllFocusedChildren = function ( f56_arg0, f56_arg1 )
-	if not f56_arg1 then
-		f56_arg1 = {}
+LUI.UIElement.getFirstInFocus = function ( f56_arg0 )
+	if f56_arg0:isInFocus() then
+		return f56_arg0
 	end
 	local f56_local0 = f56_arg0:getFirstChild()
 	while f56_local0 do
-		local f56_local1 = f56_local0:getNextSibling()
-		if f56_local0:isInFocus() then
-			f56_arg1[#f56_arg1 + 1] = f56_local0
-		else
-			f56_arg1 = f56_local0:getAllFocusedChildren( f56_arg1 )
+		local f56_local1 = f56_local0:getFirstInFocus()
+		if f56_local1 then
+			return f56_local1
 		end
-		f56_local0 = f56_local1
+		f56_local0 = f56_local0:getNextSibling()
 	end
-	return f56_arg1
 end
 
-LUI.UIElement.isParentInFocus = function ( f57_arg0 )
-	local f57_local0 = f57_arg0:getParent()
-	if f57_local0 and f57_local0:isInFocus() then
+LUI.UIElement.getAllFocusedChildren = function ( f57_arg0, f57_arg1 )
+	if not f57_arg1 then
+		f57_arg1 = {}
+	end
+	local f57_local0 = f57_arg0:getFirstChild()
+	while f57_local0 do
+		local f57_local1 = f57_local0:getNextSibling()
+		if f57_local0:isInFocus() then
+			f57_arg1[#f57_arg1 + 1] = f57_local0
+		else
+			f57_arg1 = f57_local0:getAllFocusedChildren( f57_arg1 )
+		end
+		f57_local0 = f57_local1
+	end
+	return f57_arg1
+end
+
+LUI.UIElement.isParentInFocus = function ( f58_arg0 )
+	local f58_local0 = f58_arg0:getParent()
+	if f58_local0 and f58_local0:isInFocus() then
 		return true
 	else
 		return false
 	end
 end
 
-LUI.UIElement.saveState = function ( f58_arg0 )
-	if not f58_arg0:isIDNamed() then
-		error( "LUI Error: Tried to save menu state, but element has no name: " .. f58_arg0:getFullID() )
-		return 
-	end
-	local f58_local0 = Engine.GetLuiRoot()
-	if f58_local0.savedMenuStates == nil then
-		f58_local0.savedMenuStates = {}
-	end
-	f58_local0.savedMenuStates[f58_arg0.id] = {}
-	for f58_local4, f58_local5 in ipairs( f58_arg0:getAllFocusedChildren() ) do
-		if not f58_local5:isIDNamed() then
-			error( "LUI Error: Tried to save menu state, but focused element has no name: " .. f58_local5:getFullID() )
-			return 
-		end
-		f58_local0.savedMenuStates[f58_arg0.id][#f58_local0.savedMenuStates[f58_arg0.id] + 1] = {
-			id = f58_local5.id,
-			data = f58_local5.saveData
-		}
-	end
-end
-
-LUI.UIElement.setSavedStateFocusChild = function ( f59_arg0, f59_arg1, f59_arg2 )
+LUI.UIElement.saveState = function ( f59_arg0 )
 	if not f59_arg0:isIDNamed() then
 		error( "LUI Error: Tried to save menu state, but element has no name: " .. f59_arg0:getFullID() )
 		return 
@@ -920,337 +894,359 @@ LUI.UIElement.setSavedStateFocusChild = function ( f59_arg0, f59_arg1, f59_arg2 
 		f59_local0.savedMenuStates = {}
 	end
 	f59_local0.savedMenuStates[f59_arg0.id] = {}
-	f59_local0.savedMenuStates[f59_arg0.id][1] = {
-		id = f59_arg1,
-		data = f59_arg2
+	for f59_local4, f59_local5 in ipairs( f59_arg0:getAllFocusedChildren() ) do
+		if not f59_local5:isIDNamed() then
+			error( "LUI Error: Tried to save menu state, but focused element has no name: " .. f59_local5:getFullID() )
+			return 
+		end
+		f59_local0.savedMenuStates[f59_arg0.id][#f59_local0.savedMenuStates[f59_arg0.id] + 1] = {
+			id = f59_local5.id,
+			data = f59_local5.saveData
+		}
+	end
+end
+
+LUI.UIElement.setSavedStateFocusChild = function ( f60_arg0, f60_arg1, f60_arg2 )
+	if not f60_arg0:isIDNamed() then
+		error( "LUI Error: Tried to save menu state, but element has no name: " .. f60_arg0:getFullID() )
+		return 
+	end
+	local f60_local0 = Engine.GetLuiRoot()
+	if f60_local0.savedMenuStates == nil then
+		f60_local0.savedMenuStates = {}
+	end
+	f60_local0.savedMenuStates[f60_arg0.id] = {}
+	f60_local0.savedMenuStates[f60_arg0.id][1] = {
+		id = f60_arg1,
+		data = f60_arg2
 	}
 end
 
-LUI.UIElement.getSavedStateFocusId = function ( f60_arg0, f60_arg1 )
-	if not f60_arg0 then
+LUI.UIElement.getSavedStateFocusId = function ( f61_arg0, f61_arg1 )
+	if not f61_arg0 then
 		error( "LUI Error: Tried to get menu state, but element has no name." )
 		return 
-	elseif not f60_arg1 then
-		f60_arg1 = 1
+	elseif not f61_arg1 then
+		f61_arg1 = 1
 	end
-	local f60_local0 = nil
-	local f60_local1 = Engine.GetLuiRoot()
-	if f60_local1.savedMenuStates ~= nil and f60_local1.savedMenuStates[f60_arg0] ~= nil and f60_local1.savedMenuStates[f60_arg0][f60_arg1] ~= nil then
-		f60_local0 = f60_local1.savedMenuStates[f60_arg0][f60_arg1].id
-	end
-	return f60_local0
-end
-
-LUI.UIElement.clearSavedState = function ( f61_arg0 )
-	if not f61_arg0:isIDNamed() then
-		error( "LUI Error: Tried to save menu state, but element has no name: " .. f61_arg0:getFullID() )
-		return 
-	end
-	local f61_local0 = f61_arg0:getFirstChild()
-	while f61_local0 do
-		local f61_local1 = f61_local0:getNextSibling()
-		f61_local0:clearSavedState()
-		f61_local0 = f61_local1
-	end
+	local f61_local0 = nil
 	local f61_local1 = Engine.GetLuiRoot()
-	if f61_local1.savedMenuStates ~= nil then
-		f61_local1.savedMenuStates[f61_arg0.id] = nil
+	if f61_local1.savedMenuStates ~= nil and f61_local1.savedMenuStates[f61_arg0] ~= nil and f61_local1.savedMenuStates[f61_arg0][f61_arg1] ~= nil then
+		f61_local0 = f61_local1.savedMenuStates[f61_arg0][f61_arg1].id
+	end
+	return f61_local0
+end
+
+LUI.UIElement.clearSavedState = function ( f62_arg0 )
+	if not f62_arg0:isIDNamed() then
+		error( "LUI Error: Tried to save menu state, but element has no name: " .. f62_arg0:getFullID() )
+		return 
+	end
+	local f62_local0 = f62_arg0:getFirstChild()
+	while f62_local0 do
+		local f62_local1 = f62_local0:getNextSibling()
+		f62_local0:clearSavedState()
+		f62_local0 = f62_local1
+	end
+	local f62_local1 = Engine.GetLuiRoot()
+	if f62_local1.savedMenuStates ~= nil then
+		f62_local1.savedMenuStates[f62_arg0.id] = nil
 	end
 end
 
-LUI.UIElement.restoreState = function ( f62_arg0, f62_arg1, f62_arg2, f62_arg3 )
-	if not f62_arg0:isIDNamed() then
-		error( "LUI Error: Tried to restore menu state, but element has no name: " .. f62_arg0:getFullID() )
+LUI.UIElement.restoreState = function ( f63_arg0, f63_arg1, f63_arg2, f63_arg3 )
+	if not f63_arg0:isIDNamed() then
+		error( "LUI Error: Tried to restore menu state, but element has no name: " .. f63_arg0:getFullID() )
 		return 
 	end
-	local f62_local0 = false
-	local f62_local1 = 0
-	local f62_local2 = Engine.GetLuiRoot()
-	if f62_local2.savedMenuStates ~= nil and f62_local2.savedMenuStates[f62_arg0.id] ~= nil then
-		f62_local0 = true
-		for f62_local6, f62_local7 in ipairs( f62_local2.savedMenuStates[f62_arg0.id] ) do
-			if f62_local7.id and f62_arg0:processEvent( {
+	local f63_local0 = false
+	local f63_local1 = 0
+	local f63_local2 = Engine.GetLuiRoot()
+	if f63_local2.savedMenuStates ~= nil and f63_local2.savedMenuStates[f63_arg0.id] ~= nil then
+		f63_local0 = true
+		for f63_local6, f63_local7 in ipairs( f63_local2.savedMenuStates[f63_arg0.id] ) do
+			if f63_local7.id and f63_arg0:processEvent( {
 				name = "restore_focus",
-				id = f62_local7.id,
-				data = f62_local7.data,
-				isRefresh = f62_arg1,
-				controller = f62_arg3 and f62_arg3.controller,
-				flowType = f62_arg3 and f62_arg3.flowType
+				id = f63_local7.id,
+				data = f63_local7.data,
+				isRefresh = f63_arg1,
+				controller = f63_arg3 and f63_arg3.controller,
+				flowType = f63_arg3 and f63_arg3.flowType
 			} ) then
-				f62_local1 = f62_local1 + 1
+				f63_local1 = f63_local1 + 1
 			end
 		end
 	end
-	return f62_local0, f62_local1
+	return f63_local0, f63_local1
 end
 
-LUI.UIElement.restoreFocus = function ( f63_arg0, f63_arg1 )
-	local f63_local0 = f63_arg1.flowType and f63_arg1.flowType or FocusType.MenuFlow
-	if f63_arg0.id == f63_arg1.id and f63_arg0:canFocus( FocusType.MenuFlow ) then
-		if not f63_arg1.isRefresh or f63_arg1.isRefresh and not f63_arg0._isRefresh then
-			local f63_local1 = f63_arg0
-			local f63_local2 = f63_arg0.processEvent
-			local f63_local3 = {
+LUI.UIElement.restoreFocus = function ( f64_arg0, f64_arg1 )
+	local f64_local0 = f64_arg1.flowType and f64_arg1.flowType or FocusType.MenuFlow
+	if f64_arg0.id == f64_arg1.id and f64_arg0:canFocus( FocusType.MenuFlow ) then
+		if not f64_arg1.isRefresh or f64_arg1.isRefresh and not f64_arg0._isRefresh then
+			local f64_local1 = f64_arg0
+			local f64_local2 = f64_arg0.processEvent
+			local f64_local3 = {
 				name = "gain_focus",
-				focusType = f63_local0,
-				controller = f63_arg1 and f63_arg1.controller
+				focusType = f64_local0,
+				controller = f64_arg1 and f64_arg1.controller
 			}
-			if f63_arg1 then
-				local f63_local4 = f63_arg1.duration
-				local f63_local5 = f63_arg1.duration
+			if f64_arg1 then
+				local f64_local4 = f64_arg1.duration
+				local f64_local5 = f64_arg1.duration
 			end
-			f63_local3.duration = f63_local4 and f63_local5 or 0
-			f63_local2( f63_local1, f63_local3 )
+			f64_local3.duration = f64_local4 and f64_local5 or 0
+			f64_local2( f64_local1, f64_local3 )
 		end
 		return true
 	else
-		return f63_arg0:dispatchEventToChildren( f63_arg1 )
+		return f64_arg0:dispatchEventToChildren( f64_arg1 )
 	end
 end
 
-LUI.UIElement.buildState = function ( f64_arg0, f64_arg1, f64_arg2 )
-	local f64_local0 = type( f64_arg0 )
-	if f64_local0 == "function" then
-		return LUI.UIElement.buildState( f64_arg0( f64_arg1, f64_arg2 ), f64_arg1, f64_arg2 )
+LUI.UIElement.buildState = function ( f65_arg0, f65_arg1, f65_arg2 )
+	local f65_local0 = type( f65_arg0 )
+	if f65_local0 == "function" then
+		return LUI.UIElement.buildState( f65_arg0( f65_arg1, f65_arg2 ), f65_arg1, f65_arg2 )
 	end
-	assert( f64_local0 == "table", "Current state is not a table, did you forget {}?" )
-	for f64_local4, f64_local5 in pairs( f64_arg0 ) do
-		local f64_local6 = type( f64_local5 )
-		if f64_local6 == "function" then
-			f64_arg0[f64_local4] = f64_local5( f64_arg2 )
+	assert( f65_local0 == "table", "Current state is not a table, did you forget {}?" )
+	for f65_local4, f65_local5 in pairs( f65_arg0 ) do
+		local f65_local6 = type( f65_local5 )
+		if f65_local6 == "function" then
+			f65_arg0[f65_local4] = f65_local5( f65_arg2 )
 		end
-		if f64_local6 == "table" and f64_local5.isProperty then
-			f64_arg0[f64_local4] = f64_local5.func( f64_arg2 )
+		if f65_local6 == "table" and f65_local5.isProperty then
+			f65_arg0[f65_local4] = f65_local5.func( f65_arg2 )
 		else
-			f64_arg0[f64_local4] = f64_local5
+			f65_arg0[f65_local4] = f65_local5
 		end
 	end
-	return f64_arg0
+	return f65_arg0
 end
 
-LUI.UIElement.hasAnimationState = function ( f65_arg0, f65_arg1 )
-	local f65_local0 = f65_arg0:hasAnimationStateInC( f65_arg1 )
-	if not f65_local0 and f65_arg0.states then
-		return f65_arg0.states[f65_arg1]
+LUI.UIElement.hasAnimationState = function ( f66_arg0, f66_arg1 )
+	local f66_local0 = f66_arg0:hasAnimationStateInC( f66_arg1 )
+	if not f66_local0 and f66_arg0.states then
+		return f66_arg0.states[f66_arg1]
 	else
-		return f65_local0
+		return f66_local0
 	end
 end
 
-LUI.UIElement.animateToState = function ( f66_arg0, f66_arg1, f66_arg2, f66_arg3, f66_arg4, f66_arg5, f66_arg6 )
-	if f66_arg0.states ~= nil and f66_arg0.states[f66_arg1] then
-		f66_arg0:registerAnimationState( f66_arg1, LUI.UIElement.buildState( f66_arg0.states[f66_arg1], nil, f66_arg0.properties ) )
-		f66_arg0.states[f66_arg1] = nil
+LUI.UIElement.animateToState = function ( f67_arg0, f67_arg1, f67_arg2, f67_arg3, f67_arg4, f67_arg5, f67_arg6 )
+	if f67_arg0.states ~= nil and f67_arg0.states[f67_arg1] then
+		f67_arg0:registerAnimationState( f67_arg1, LUI.UIElement.buildState( f67_arg0.states[f67_arg1], nil, f67_arg0.properties ) )
+		f67_arg0.states[f67_arg1] = nil
 	end
-	if f66_arg0:hasAnimationStateInC( f66_arg1 ) then
-		f66_arg0:animateToStateInC( f66_arg1, f66_arg2, f66_arg3, f66_arg4, f66_arg5, f66_arg6 )
+	if f67_arg0:hasAnimationStateInC( f67_arg1 ) then
+		f67_arg0:animateToStateInC( f67_arg1, f67_arg2, f67_arg3, f67_arg4, f67_arg5, f67_arg6 )
 	end
 end
 
-LUI.UIElement.animationTimeLeft = function ( f67_arg0 )
-	local f67_local0
-	if f67_arg0.animationTimeLeftInC then
-		f67_local0 = f67_arg0:animationTimeLeftInC()
-		if not f67_local0 then
+LUI.UIElement.animationTimeLeft = function ( f68_arg0 )
+	local f68_local0
+	if f68_arg0.animationTimeLeftInC then
+		f68_local0 = f68_arg0:animationTimeLeftInC()
+		if not f68_local0 then
 		
 		else
-			return f67_local0
+			return f68_local0
 		end
 	end
-	f67_local0 = 0
+	f68_local0 = 0
 end
 
-LUI.UIElement.animate = function ( f68_arg0, f68_arg1 )
-	if f68_arg0:hasAnimationState( f68_arg1.animationStateName ) then
-		f68_arg0:animateToState( f68_arg1.animationStateName, f68_arg1.duration, f68_arg1.easeIn, f68_arg1.easeOut, nil, f68_arg1.easing )
-		if f68_arg1.animateChildren then
-			f68_arg0:dispatchEventToChildren( f68_arg1 )
+LUI.UIElement.animate = function ( f69_arg0, f69_arg1 )
+	if f69_arg0:hasAnimationState( f69_arg1.animationStateName ) then
+		f69_arg0:animateToState( f69_arg1.animationStateName, f69_arg1.duration, f69_arg1.easeIn, f69_arg1.easeOut, nil, f69_arg1.easing )
+		if f69_arg1.animateChildren then
+			f69_arg0:dispatchEventToChildren( f69_arg1 )
 		end
 	else
-		f68_arg0:dispatchEventToChildren( f68_arg1 )
+		f69_arg0:dispatchEventToChildren( f69_arg1 )
 	end
 end
 
-LUI.UIElement.intAnimate = function ( f69_arg0, f69_arg1, f69_arg2, f69_arg3, f69_arg4, f69_arg5 )
-	local f69_local0 = f69_arg0
-	local f69_local1 = 2
-	local f69_local2 = f69_arg1
-	local f69_local3 = 0
-	local f69_local4 = f69_arg2
-	local f69_local5 = f69_arg3
-	local f69_local6 = f69_arg5
-	local f69_local7 = f69_arg4
-	return function ( f133_arg0, f133_arg1 )
-		if f69_local6 then
-			local f133_local0 = f69_local1 - 1
-			if f133_local0 == 0 then
-				f133_local0 = #f69_local0
+LUI.UIElement.intAnimate = function ( f70_arg0, f70_arg1, f70_arg2, f70_arg3, f70_arg4, f70_arg5 )
+	local f70_local0 = f70_arg0
+	local f70_local1 = 2
+	local f70_local2 = f70_arg1
+	local f70_local3 = 0
+	local f70_local4 = f70_arg2
+	local f70_local5 = f70_arg3
+	local f70_local6 = f70_arg5
+	local f70_local7 = f70_arg4
+	return function ( f71_arg0, f71_arg1 )
+		if f70_local6 then
+			local f71_local0 = f70_local1 - 1
+			if f71_local0 == 0 then
+				f71_local0 = #f70_local0
 			end
-			local f133_local1 = LUI.FormatAnimStateFinishStepEvent( f69_local0[f133_local0][1] )
-			local f133_local2 = LUI.DeepCopy( f133_arg1 )
-			f133_local2.name = f133_local1
-			f133_arg0:processEvent( f133_local2 )
+			local f71_local1 = LUI.FormatAnimStateFinishStepEvent( f70_local0[f71_local0][1] )
+			local f71_local2 = LUI.DeepCopy( f71_arg1 )
+			f71_local2.name = f71_local1
+			f71_arg0:processEvent( f71_local2 )
 		end
-		if #f69_local0 < f69_local1 then
-			UPVAL1 = 1
-			UPVAL3 = f69_local3 + 1
-			if f69_local4 and f69_local4 <= f69_local3 then
+		if #f70_local0 < f70_local1 then
+			f70_local1 = 1
+			f70_local3 = f70_local3 + 1
+			if f70_local4 and f70_local4 <= f70_local3 then
 				return 
 			end
 		end
-		local f133_local0 = f69_local0[f69_local1]
-		f133_arg0:registerEventHandler( f133_arg1.name, nil )
-		if f69_local2 and not f133_arg0:isInFocus() and not f133_arg0:isParentInFocus() then
+		local f71_local0 = f70_local0[f70_local1]
+		f71_arg0:registerEventHandler( f71_arg1.name, nil )
+		if f70_local2 and not f71_arg0:isInFocus() and not f71_arg0:isParentInFocus() then
 			return 
-		elseif f133_arg1.interrupted then
+		elseif f71_arg1.interrupted then
 			if Engine.GetDvarBool( "lui_print_anim_states" ) then
-				local f133_local3 = "None"
-				if f133_arg0.id ~= nil then
-					f133_local3 = f133_arg0.id
+				local f71_local3 = "None"
+				if f71_arg0.id ~= nil then
+					f71_local3 = f71_arg0.id
 				end
-				DebugPrint( "LUI: Animation to state '" .. f133_local0[1] .. "' interrupted! id: " .. f133_local3 )
+				DebugPrint( "LUI: Animation to state '" .. f71_local0[1] .. "' interrupted! id: " .. f71_local3 )
 			end
 			return 
 		end
-		local f133_local3 = LUI.FormatAnimStateFinishEvent( f133_local0[1] )
-		local f133_local1 = f133_local0[2]
-		if f69_local7 and f133_arg1.lateness < f133_local1 then
-			f133_local1 = f133_local1 - f133_arg1.lateness
+		local f71_local3 = LUI.FormatAnimStateFinishEvent( f71_local0[1] )
+		local f71_local1 = f71_local0[2]
+		if f70_local7 and f71_arg1.lateness < f71_local1 then
+			f71_local1 = f71_local1 - f71_arg1.lateness
 		end
-		f133_arg0:animateToState( f133_local0[1], f133_local1, f133_local0[3], f133_local0[4], nil, f133_local0[6] )
-		if not (f69_local4 == 0 and (f69_local1 == #f69_local0 or f69_local4 ~= 0)) or f69_local6 and f69_local1 == #f69_local0 then
-			f133_arg0:registerEventHandler( f133_local3, REG14 )
+		f71_arg0:animateToState( f71_local0[1], f71_local1, f71_local0[3], f71_local0[4], nil, f71_local0[6] )
+		if not (f70_local4 == 0 and (f70_local1 == #f70_local0 or f70_local4 ~= 0)) or f70_local6 and f70_local1 == #f70_local0 then
+			f71_arg0:registerEventHandler( f71_local3, REG14 )
 		end
-		if f69_local1 == #f69_local0 and f69_local4 == 0 and f69_local5 then
-			f133_arg0:registerEventHandler( f133_local3, function ( element, event )
+		if f70_local1 == #f70_local0 and f70_local4 == 0 and f70_local5 then
+			f71_arg0:registerEventHandler( f71_local3, function ( element, event )
 				element:close()
 			end )
 		end
-		UPVAL1 = f69_local1 + 1
+		f70_local1 = f70_local1 + 1
 	end
 	
 end
 
-LUI.UIElement.animateInLoop = function ( f70_arg0, f70_arg1, f70_arg2, f70_arg3, f70_arg4, f70_arg5 )
+LUI.UIElement.animateInLoop = function ( f73_arg0, f73_arg1, f73_arg2, f73_arg3, f73_arg4, f73_arg5 )
 	if Engine.GetDvarBool( "lui_print_anim_states" ) then
-		local f70_local0 = "None"
-		if f70_arg0.id ~= nil then
-			f70_local0 = f70_arg0.id
+		local f73_local0 = "None"
+		if f73_arg0.id ~= nil then
+			f73_local0 = f73_arg0.id
 		end
-		DebugPrint( "LUI: AnimateLoop: id: " .. f70_local0 )
+		DebugPrint( "LUI: AnimateLoop: id: " .. f73_local0 )
 	end
 	if Engine.GetDvarBool( "lui_print_anim_states" ) then
-		for f70_local3, f70_local4 in ipairs( f70_arg1 ) do
-			DebugPrint( "	->" .. f70_local4[1] )
+		for f73_local3, f73_local4 in ipairs( f73_arg1 ) do
+			DebugPrint( "\t->" .. f73_local4[1] )
 		end
 	end
-	assert( f70_arg1 and #f70_arg1, "AnimateLoop does not have animation states!" )
-	local f70_local0 = f70_arg1[1]
-	local f70_local1 = LUI.FormatAnimStateFinishEvent( f70_local0[1] )
-	if #f70_arg1 == 1 then
-		DebugPrint( "LUI Warning: AnimateLoop only has one animation state! " .. f70_arg1[1][1] )
+	assert( f73_arg1 and #f73_arg1, "AnimateLoop does not have animation states!" )
+	local f73_local0 = f73_arg1[1]
+	local f73_local1 = LUI.FormatAnimStateFinishEvent( f73_local0[1] )
+	if #f73_arg1 == 1 then
+		DebugPrint( "LUI Warning: AnimateLoop only has one animation state! " .. f73_arg1[1][1] )
 	else
-		f70_arg0:registerEventHandler( f70_local1, LUI.UIElement.intAnimate( f70_arg1, f70_arg2, f70_arg3, nil, f70_arg4, f70_arg5 ) )
+		f73_arg0:registerEventHandler( f73_local1, LUI.UIElement.intAnimate( f73_arg1, f73_arg2, f73_arg3, nil, f73_arg4, f73_arg5 ) )
 	end
-	f70_arg0:animateToState( f70_local0[1], f70_local0[2], f70_local0[3], f70_local0[4], nil, f70_local0[6] )
+	f73_arg0:animateToState( f73_local0[1], f73_local0[2], f73_local0[3], f73_local0[4], nil, f73_local0[6] )
 end
 
-LUI.UIElement.animateInSequence = function ( f71_arg0, f71_arg1, f71_arg2, f71_arg3, f71_arg4, f71_arg5 )
+LUI.UIElement.animateInSequence = function ( f74_arg0, f74_arg1, f74_arg2, f74_arg3, f74_arg4, f74_arg5 )
 	if Engine.GetDvarBool( "lui_print_anim_states" ) then
-		local f71_local0 = "None"
-		if f71_arg0.id ~= nil then
-			f71_local0 = f71_arg0.id
+		local f74_local0 = "None"
+		if f74_arg0.id ~= nil then
+			f74_local0 = f74_arg0.id
 		end
-		DebugPrint( "LUI: AnimateSequence: id: " .. f71_local0 )
+		DebugPrint( "LUI: AnimateSequence: id: " .. f74_local0 )
 	end
 	if Engine.GetDvarBool( "lui_print_anim_states" ) then
-		for f71_local3, f71_local4 in ipairs( f71_arg1 ) do
-			DebugPrint( "	->" .. f71_local4[1] )
+		for f74_local3, f74_local4 in ipairs( f74_arg1 ) do
+			DebugPrint( "\t->" .. f74_local4[1] )
 		end
 	end
-	assert( f71_arg1 and #f71_arg1, "AnimateSequence does not have animation states!" )
-	local f71_local0 = f71_arg1[1]
-	local f71_local1 = LUI.FormatAnimStateFinishEvent( f71_local0[1] )
-	if #f71_arg1 == 1 then
-		DebugPrint( "LUI Warning: AnimateSequence only has one animation state! " .. f71_arg1[1][1] )
+	assert( f74_arg1 and #f74_arg1, "AnimateSequence does not have animation states!" )
+	local f74_local0 = f74_arg1[1]
+	local f74_local1 = LUI.FormatAnimStateFinishEvent( f74_local0[1] )
+	if #f74_arg1 == 1 then
+		DebugPrint( "LUI Warning: AnimateSequence only has one animation state! " .. f74_arg1[1][1] )
 	else
-		f71_arg0:registerEventHandler( f71_local1, LUI.UIElement.intAnimate( f71_arg1, f71_arg2, 0, f71_arg5, f71_arg3, f71_arg4 ) )
+		f74_arg0:registerEventHandler( f74_local1, LUI.UIElement.intAnimate( f74_arg1, f74_arg2, 0, f74_arg5, f74_arg3, f74_arg4 ) )
 	end
-	f71_arg0:animateToState( f71_local0[1], f71_local0[2], f71_local0[3], f71_local0[4], f71_local0[5], f71_local0[6] )
+	f74_arg0:animateToState( f74_local0[1], f74_local0[2], f74_local0[3], f74_local0[4], f74_local0[5], f74_local0[6] )
 end
 
-LUI.UIElement.rotateRandomly = function ( f72_arg0, f72_arg1 )
-	if not f72_arg0.m_eventHandlers.rotate_randomly then
-		f72_arg0:registerEventHandler( "rotate_randomly", LUI.UIElement.rotateRandomly )
-		f72_arg0:addElement( LUI.UITimer.new( 2500, "rotate_randomly", false, f72_arg0 ) )
+LUI.UIElement.rotateRandomly = function ( f75_arg0, f75_arg1 )
+	if not f75_arg0.m_eventHandlers.rotate_randomly then
+		f75_arg0:registerEventHandler( "rotate_randomly", LUI.UIElement.rotateRandomly )
+		f75_arg0:addElement( LUI.UITimer.new( 2500, "rotate_randomly", false, f75_arg0 ) )
 	end
-	f72_arg0:registerAnimationState( "rotate_randomly", {
+	f75_arg0:registerAnimationState( "rotate_randomly", {
 		xRot = math.random( -45, 45 ),
 		yRot = math.random( -45, 45 )
 	} )
-	f72_arg0:animateToState( "rotate_randomly", 2500, true, true )
+	f75_arg0:animateToState( "rotate_randomly", 2500, true, true )
 end
 
-LUI.UIElement.ViewportAnimation = function ( f73_arg0, f73_arg1 )
-	if not f73_arg0.viewportScaleTime then
-		f73_arg0.viewportScaleTime = f73_arg1.timeElapsed
+LUI.UIElement.ViewportAnimation = function ( f76_arg0, f76_arg1 )
+	if not f76_arg0.viewportScaleTime then
+		f76_arg0.viewportScaleTime = f76_arg1.timeElapsed
 	else
-		f73_arg0.viewportScaleTime = f73_arg0.viewportScaleTime + f73_arg1.timeElapsed
+		f76_arg0.viewportScaleTime = f76_arg0.viewportScaleTime + f76_arg1.timeElapsed
 	end
-	local f73_local0 = f73_arg0.viewportScaleTime / f73_arg1.scaleDuration
-	if f73_local0 > 1 then
-		f73_local0 = 1
-		f73_arg1.timer:close()
-		f73_arg0.viewportScaleTime = nil
+	local f76_local0 = f76_arg0.viewportScaleTime / f76_arg1.scaleDuration
+	if f76_local0 > 1 then
+		f76_local0 = 1
+		f76_arg1.timer:close()
+		f76_arg0.viewportScaleTime = nil
 	end
-	local f73_local1 = f73_arg1.startScale + (f73_arg1.endScale - f73_arg1.startScale) * f73_local0
-	Engine.SetViewport( f73_arg1.controller, 0, 0.5 - f73_local1 / 2, f73_local1 )
+	local f76_local1 = f76_arg1.startScale + (f76_arg1.endScale - f76_arg1.startScale) * f76_local0
+	Engine.SetViewport( f76_arg1.controller, 0, 0.5 - f76_local1 / 2, f76_local1 )
 end
 
-LUI.UIElement.animateViewport = function ( f74_arg0, f74_arg1, f74_arg2, f74_arg3, f74_arg4 )
-	f74_arg0:addElement( LUI.UITimer.new( 1, {
+LUI.UIElement.animateViewport = function ( f77_arg0, f77_arg1, f77_arg2, f77_arg3, f77_arg4 )
+	f77_arg0:addElement( LUI.UITimer.new( 1, {
 		name = "viewport_animation",
-		controller = f74_arg1,
-		startScale = f74_arg2,
-		endScale = f74_arg3,
-		scaleDuration = f74_arg4
-	}, false, f74_arg0 ) )
+		controller = f77_arg1,
+		startScale = f77_arg2,
+		endScale = f77_arg3,
+		scaleDuration = f77_arg4
+	}, false, f77_arg0 ) )
 end
 
-LUI.UIElement.delayCallFunc = function ( f75_arg0, f75_arg1, f75_arg2 )
-	if not f75_arg1 or f75_arg1 == 0 then
-		f75_arg2()
+LUI.UIElement.delayCallFunc = function ( f78_arg0, f78_arg1, f78_arg2 )
+	if not f78_arg1 or f78_arg1 == 0 then
+		f78_arg2()
 	else
-		f75_arg0.timerIdx = (f75_arg0.timerIdx or 0) + 1
-		local self = LUI.UITimer.new( f75_arg1, "delay_complete_" .. f75_arg0.timerIdx, nil, true )
-		self.func = f75_arg2
-		self.id = "delay_timer_" .. f75_arg0.timerIdx
-		self:registerEventHandler( "delay_complete_" .. f75_arg0.timerIdx, function ( element, event )
+		f78_arg0.timerIdx = (f78_arg0.timerIdx or 0) + 1
+		local self = LUI.UITimer.new( f78_arg1, "delay_complete_" .. f78_arg0.timerIdx, nil, true )
+		self.func = f78_arg2
+		self.id = "delay_timer_" .. f78_arg0.timerIdx
+		self:registerEventHandler( "delay_complete_" .. f78_arg0.timerIdx, function ( element, event )
 			element.func()
 			element:close()
 		end )
-		f75_arg0:addElement( self )
+		f78_arg0:addElement( self )
 	end
 end
 
-LUI.UIElement.setClass = function ( f76_arg0, f76_arg1 )
-	local f76_local0 = getmetatable( f76_arg0 )
-	local f76_local1 = f76_local0.__newindex
-	local f76_local2 = getmetatable( f76_local1 )
-	if not f76_local2 then
-		setmetatable( f76_local1, {
-			__index = f76_arg1
+LUI.UIElement.setClass = function ( f80_arg0, f80_arg1 )
+	local f80_local0 = getmetatable( f80_arg0 )
+	local f80_local1 = f80_local0.__newindex
+	local f80_local2 = getmetatable( f80_local1 )
+	if not f80_local2 then
+		setmetatable( f80_local1, {
+			__index = f80_arg1
 		} )
 	else
-		f76_local2.__index = f76_arg1
+		f80_local2.__index = f80_arg1
 	end
-	local f76_local3 = getmetatable( f76_local1.m_eventHandlers )
-	if not f76_local3 then
-		setmetatable( f76_local1.m_eventHandlers, {
-			__index = f76_arg1.m_eventHandlers
+	local f80_local3 = getmetatable( f80_local1.m_eventHandlers )
+	if not f80_local3 then
+		setmetatable( f80_local1.m_eventHandlers, {
+			__index = f80_arg1.m_eventHandlers
 		} )
 	else
-		f76_local3.__index = f76_arg1.m_eventHandlers
+		f80_local3.__index = f80_arg1.m_eventHandlers
 	end
 end
 
@@ -1266,22 +1262,22 @@ LUI.UIElement.m_eventHandlers = {
 	animate = LUI.UIElement.animate,
 	viewport_animation = LUI.UIElement.ViewportAnimation
 }
-LUI.UIElement.build = function ( f77_arg0, f77_arg1 )
+LUI.UIElement.build = function ( f81_arg0, f81_arg1 )
 	return LUI.UIElement.new()
 end
 
-LUI.UIElement.new = function ( f78_arg0 )
-	local f78_local0 = ConstructLUIElement()
-	LUI.UIElement.setClass( f78_local0, LUI.UIElement )
-	f78_local0._scoped = LUI.ActiveScoped
-	f78_local0:setLayoutCached( false )
-	if not f78_arg0 then
-		f78_local0:registerAnimationState( "default", LUI.UIElement.m_defaultAnimationState )
+LUI.UIElement.new = function ( f82_arg0 )
+	local f82_local0 = ConstructLUIElement()
+	LUI.UIElement.setClass( f82_local0, LUI.UIElement )
+	f82_local0._scoped = LUI.ActiveScoped
+	f82_local0:setLayoutCached( false )
+	if not f82_arg0 then
+		f82_local0:registerAnimationState( "default", LUI.UIElement.m_defaultAnimationState )
 	else
-		f78_local0:registerAnimationState( "default", f78_arg0 )
+		f82_local0:registerAnimationState( "default", f82_arg0 )
 	end
-	f78_local0:animateToState( "default" )
-	return f78_local0
+	f82_local0:animateToState( "default" )
+	return f82_local0
 end
 
 LUI.UIContainer.new = function ()
@@ -1297,11 +1293,11 @@ LUI.UIContainer.new = function ()
 	} )
 end
 
-LUI.UIElement.debugDraw = function ( f80_arg0, f80_arg1 )
-	if not f80_arg1 then
-		f80_arg1 = 10
+LUI.UIElement.debugDraw = function ( f84_arg0, f84_arg1 )
+	if not f84_arg1 then
+		f84_arg1 = 10
 	end
-	f80_arg0:addElement( LUI.UIImage.new( {
+	f84_arg0:addElement( LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -1312,7 +1308,7 @@ LUI.UIElement.debugDraw = function ( f80_arg0, f80_arg1 )
 		green = 1,
 		alpha = 0.2
 	} ) )
-	f80_arg0:addElement( LUI.UIImage.new( {
+	f84_arg0:addElement( LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = false,
 		leftAnchor = true,
@@ -1322,9 +1318,9 @@ LUI.UIElement.debugDraw = function ( f80_arg0, f80_arg1 )
 		blue = 0,
 		green = 0,
 		alpha = 1,
-		bottom = f80_arg1
+		bottom = f84_arg1
 	} ) )
-	f80_arg0:addElement( LUI.UIImage.new( {
+	f84_arg0:addElement( LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = false,
@@ -1334,9 +1330,9 @@ LUI.UIElement.debugDraw = function ( f80_arg0, f80_arg1 )
 		blue = 0,
 		green = 0,
 		alpha = 1,
-		left = -1 * f80_arg1
+		left = -1 * f84_arg1
 	} ) )
-	f80_arg0:addElement( LUI.UIImage.new( {
+	f84_arg0:addElement( LUI.UIImage.new( {
 		topAnchor = false,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -1346,9 +1342,9 @@ LUI.UIElement.debugDraw = function ( f80_arg0, f80_arg1 )
 		blue = 0,
 		green = 0,
 		alpha = 1,
-		top = -1 * f80_arg1
+		top = -1 * f84_arg1
 	} ) )
-	f80_arg0:addElement( LUI.UIImage.new( {
+	f84_arg0:addElement( LUI.UIImage.new( {
 		topAnchor = true,
 		bottomAnchor = true,
 		leftAnchor = true,
@@ -1358,7 +1354,7 @@ LUI.UIElement.debugDraw = function ( f80_arg0, f80_arg1 )
 		blue = 0,
 		green = 0,
 		alpha = 1,
-		right = f80_arg1
+		right = f84_arg1
 	} ) )
 end
 

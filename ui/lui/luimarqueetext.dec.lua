@@ -44,22 +44,22 @@ LUI.UIMarqueeText.new = function ( f3_arg0 )
 		bottom = 0,
 		left = 0
 	}
-	local self
+	local f3_local2
 	if f3_arg0 then
-		self = f3_arg0.font
-		if not self then
+		f3_local2 = f3_arg0.font
+		if not f3_local2 then
 		
 		else
-			f3_local1.font = self
-			self = LUI.UIText.new( f3_local1 )
-			self.text = self
-			self:addElement( self )
+			f3_local1.font = f3_local2
+			f3_local2 = LUI.UIText.new( f3_local1 )
+			self.text = f3_local2
+			self:addElement( f3_local2 )
 			self.text:registerAnimationState( "default", f3_local1 )
 			self.text:animateToState( "default" )
 			return self
 		end
 	end
-	self = CoD.TextSettings.BodyFont.Font
+	f3_local2 = CoD.TextSettings.BodyFont.Font
 end
 
 LUI.UIMarqueeText.SetUseTextWrapping = function ( f4_arg0, f4_arg1 )

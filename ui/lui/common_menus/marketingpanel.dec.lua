@@ -161,8 +161,8 @@ function BuildPanelButton( f12_arg0 )
 	f12_local4.height = f12_local3.Height * 2
 	f12_local4.material = RegisterMaterial( "black" )
 	f12_local4.alpha = 0.75
-	local self = LUI.UIImage.new( f12_local4 )
-	self:addElement( self )
+	local f12_local5 = LUI.UIImage.new( f12_local4 )
+	self:addElement( f12_local5 )
 	local f12_local6 = 2
 	local f12_local7 = f12_arg0.localizedText and f12_arg0.localizedText or "Call to Action goes here."
 	local f12_local8, f12_local9, f12_local10, f12_local11 = GetTextDimensions( f12_local7, f12_local3.Font, f12_local3.Height )
@@ -171,9 +171,9 @@ function BuildPanelButton( f12_arg0 )
 	f12_local12.color = Colors.white
 	f12_local12.width = f12_local10 - f12_local8
 	f12_local12.height = f12_local3.Height
-	local self = LUI.UIText.new( f12_local12 )
-	self:setText( f12_local7 )
-	self:addElement( self )
+	local f12_local13 = LUI.UIText.new( f12_local12 )
+	f12_local13:setText( f12_local7 )
+	f12_local5:addElement( f12_local13 )
 	return self
 end
 
@@ -181,28 +181,28 @@ function AddPanelButtonList( f13_arg0, f13_arg1 )
 	local f13_local0 = #f13_arg1.data and 1 or #f13_arg1.data
 	local self = LUI.UIStencilText.new( CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All ) )
 	f13_arg0:addElement( self )
-	local self = LUI.UIHorizontalList.new( {
+	local f13_local2 = LUI.UIHorizontalList.new( {
 		left = 0,
 		leftAnchor = true,
 		width = f0_local5 * f13_local0,
 		height = f0_local4,
 		spacing = 0
 	} )
-	self.list = {}
-	self.currIndex = 1
-	self.currMinRangeIndex = 1
-	self.currMaxRangeIndex = HLIST_NUM_DISPLAY_BUTTONS
+	f13_local2.list = {}
+	f13_local2.currIndex = 1
+	f13_local2.currMinRangeIndex = 1
+	f13_local2.currMaxRangeIndex = HLIST_NUM_DISPLAY_BUTTONS
 	for f13_local3 = 1, f13_local0, 1 do
 		local f13_local6 = #f13_arg1.data and f13_arg1.data or f13_arg1.data[f13_local3]
 		local f13_local7 = BuildPanelButton( {
 			localizedText = f13_local6.action_title,
 			imageName = f13_local6.image
 		} )
-		table.insert( self.list, f13_local7 )
-		self:addElement( f13_local7 )
+		table.insert( f13_local2.list, f13_local7 )
+		f13_local2:addElement( f13_local7 )
 	end
-	f13_arg0.hList = self
-	self:addElement( self )
+	f13_arg0.hList = f13_local2
+	self:addElement( f13_local2 )
 end
 
 function AddPanel( f14_arg0 )
@@ -226,16 +226,16 @@ function AddPanel( f14_arg0 )
 	local f14_local3 = CoD.CreateState( -f14_local2, -f14_local2, f14_local2, f14_local2, CoD.AnchorTypes.All )
 	f14_local3.alpha = 0
 	f14_local3.material = RegisterMaterial( "h1_ui_btn_focused_stroke_square" )
-	local self = LUI.UIImage.new( f14_local3 )
-	self:setup9SliceImage()
-	self:registerAnimationState( "focused", {
+	local f14_local4 = LUI.UIImage.new( f14_local3 )
+	f14_local4:setup9SliceImage()
+	f14_local4:registerAnimationState( "focused", {
 		alpha = 1
 	} )
-	self:registerAnimationState( "unfocused", {
+	f14_local4:registerAnimationState( "unfocused", {
 		alpha = 0
 	} )
-	self.highlight = self
-	self:addElement( self )
+	self.highlight = f14_local4
+	self:addElement( f14_local4 )
 	local f14_local5 = RegisterMaterial( "h1_prestige_leftright_arrow" )
 	local f14_local6 = Engine.GetMaterialAspectRatio( f14_local5 )
 	local f14_local7 = 20
@@ -277,126 +277,126 @@ function AddPanel( f14_arg0 )
 	f14_arg0.panel = self
 end
 
-function AddFeaturedBar( f15_arg0 )
-	local f15_local0 = CoD.CreateState( nil, f0_local0 + f0_local1, nil, nil, CoD.AnchorTypes.TopLeftRight )
-	f15_local0.height = f0_local2
-	local self = LUI.UIElement.new( f15_local0 )
-	f15_arg0:addElement( self )
-	local f15_local2 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All )
-	f15_local2.color = Colors.grey_14
-	f15_local2.material = RegisterMaterial( "white" )
-	self:addElement( LUI.UIImage.new( f15_local2 ) )
+function AddFeaturedBar( f16_arg0 )
+	local f16_local0 = CoD.CreateState( nil, f0_local0 + f0_local1, nil, nil, CoD.AnchorTypes.TopLeftRight )
+	f16_local0.height = f0_local2
+	local self = LUI.UIElement.new( f16_local0 )
+	f16_arg0:addElement( self )
+	local f16_local2 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All )
+	f16_local2.color = Colors.grey_14
+	f16_local2.material = RegisterMaterial( "white" )
+	self:addElement( LUI.UIImage.new( f16_local2 ) )
 	self:addElement( LUI.DecoFrame.new( nil, LUI.DecoFrame.Grey ) )
-	local f15_local3 = GenericButtonSettings.Styles.FlatButton.text_padding_with_content
-	local f15_local4 = 2
-	local f15_local5 = CoD.TextSettings.Font19
-	local f15_local6 = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_FEATURED" ) )
-	local f15_local7, f15_local8, f15_local9, f15_local10 = GetTextDimensions( f15_local6, f15_local5.Font, f15_local5.Height )
-	local f15_local11 = CoD.CreateState( f15_local3, -f15_local5.Height / 2 + f15_local4, nil, nil, CoD.AnchorTypes.Left )
-	f15_local11.font = f15_local5.Font
-	f15_local11.color = Colors.h1.light_grey
-	f15_local11.width = f15_local9 - f15_local7
-	f15_local11.height = f15_local5.Height
-	local self = LUI.UIText.new( f15_local11 )
-	self:setText( f15_local6 )
-	self:addElement( self )
-	if f15_arg0.numButtons > 1 then
-		local f15_local13 = -15
-		for f15_local14 = 1, f15_arg0.numButtons, 1 do
-			local f15_local17 = 14
-			local f15_local18 = RegisterMaterial( "h1_ui_featured_pip_unfocused" )
-			local f15_local19 = Engine.GetMaterialAspectRatio( f15_local18 )
-			local f15_local20 = CoD.CreateState( nil, nil, f15_local13, nil, CoD.AnchorTypes.Right )
-			f15_local20.width = f15_local17 * f15_local19
-			f15_local20.height = f15_local17
-			local self = LUI.UIButton.new( f15_local20 )
-			self.id = "pageIndicatorButton_" .. f15_local14
-			self:addElement( self )
+	local f16_local3 = GenericButtonSettings.Styles.FlatButton.text_padding_with_content
+	local f16_local4 = 2
+	local f16_local5 = CoD.TextSettings.Font19
+	local f16_local6 = Engine.ToUpperCase( Engine.Localize( "@LUA_MENU_FEATURED" ) )
+	local f16_local7, f16_local8, f16_local9, f16_local10 = GetTextDimensions( f16_local6, f16_local5.Font, f16_local5.Height )
+	local f16_local11 = CoD.CreateState( f16_local3, -f16_local5.Height / 2 + f16_local4, nil, nil, CoD.AnchorTypes.Left )
+	f16_local11.font = f16_local5.Font
+	f16_local11.color = Colors.h1.light_grey
+	f16_local11.width = f16_local9 - f16_local7
+	f16_local11.height = f16_local5.Height
+	local f16_local12 = LUI.UIText.new( f16_local11 )
+	f16_local12:setText( f16_local6 )
+	self:addElement( f16_local12 )
+	if f16_arg0.numButtons > 1 then
+		local f16_local13 = -15
+		for f16_local14 = 1, f16_arg0.numButtons, 1 do
+			local f16_local17 = 14
+			local f16_local18 = RegisterMaterial( "h1_ui_featured_pip_unfocused" )
+			local f16_local19 = Engine.GetMaterialAspectRatio( f16_local18 )
+			local f16_local20 = CoD.CreateState( nil, nil, f16_local13, nil, CoD.AnchorTypes.Right )
+			f16_local20.width = f16_local17 * f16_local19
+			f16_local20.height = f16_local17
+			local f16_local21 = LUI.UIButton.new( f16_local20 )
+			f16_local21.id = "pageIndicatorButton_" .. f16_local14
+			self:addElement( f16_local21 )
 			if Engine.IsPC() then
-				self.index = f15_arg0.numButtons + 1 - f15_local14
-				self:setHandleMouseButton( true )
-				self.m_requireFocusType = FocusType.MouseOver
-				self:registerEventHandler( "leftmousedown", function ( element, event )
-					OnShiftList( f15_arg0, {
-						shiftAmount = element.index - f15_arg0.currIndex,
+				f16_local21.index = f16_arg0.numButtons + 1 - f16_local14
+				f16_local21:setHandleMouseButton( true )
+				f16_local21.m_requireFocusType = FocusType.MouseOver
+				f16_local21:registerEventHandler( "leftmousedown", function ( element, event )
+					OnShiftList( f16_arg0, {
+						shiftAmount = element.index - f16_arg0.currIndex,
 						ignoreSound = true
 					} )
 				end )
 			end
-			local f15_local22 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All )
-			f15_local22.material = f15_local18
-			local self = LUI.UIImage.new( f15_local22 )
-			self.id = "pageIndicatorButtonImage_" .. f15_local14
-			self:registerAnimationState( "unfocused", {
+			local f16_local22 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All )
+			f16_local22.material = f16_local18
+			local f16_local23 = LUI.UIImage.new( f16_local22 )
+			f16_local23.id = "pageIndicatorButtonImage_" .. f16_local14
+			f16_local23:registerAnimationState( "unfocused", {
 				material = RegisterMaterial( "h1_ui_featured_pip_unfocused" )
 			} )
-			self:registerAnimationState( "focused", {
+			f16_local23:registerAnimationState( "focused", {
 				material = RegisterMaterial( "h1_ui_featured_pip_focused" )
 			} )
-			self.image = self
-			self:addElement( self )
-			table.insert( f15_arg0.fakeButtons, 1, self )
-			f15_local13 = f15_local13 - f15_local17
+			f16_local21.image = f16_local23
+			f16_local21:addElement( f16_local23 )
+			table.insert( f16_arg0.fakeButtons, 1, f16_local23 )
+			f16_local13 = f16_local13 - f16_local17
 		end
-		f15_arg0.fakeButtons[1]:animateToState( "focused" )
+		f16_arg0.fakeButtons[1]:animateToState( "focused" )
 	end
 end
 
-LUI.MarketingPanel.ClearViewedMessages = function ( f16_arg0 )
-	for f16_local0 = 1, #f16_arg0, 1 do
-		local f16_local3 = f16_arg0[f16_local0]
-		local f16_local4 = LUI.MOTD.ViewedChannels[f16_local3]
-		if f16_local4 ~= nil then
-			for f16_local8, f16_local9 in pairs( f16_local4 ) do
-				Engine.MarketingClearLocation( f16_local8, f16_local3 )
+LUI.MarketingPanel.ClearViewedMessages = function ( f18_arg0 )
+	for f18_local0 = 1, #f18_arg0, 1 do
+		local f18_local3 = f18_arg0[f18_local0]
+		local f18_local4 = LUI.MOTD.ViewedChannels[f18_local3]
+		if f18_local4 ~= nil then
+			for f18_local8, f18_local9 in pairs( f18_local4 ) do
+				Engine.MarketingClearLocation( f18_local8, f18_local3 )
 			end
-			LUI.MOTD.ViewedChannels[f16_local3] = nil
+			LUI.MOTD.ViewedChannels[f18_local3] = nil
 		end
 	end
 end
 
-LUI.MarketingPanel.new = function ( f17_arg0, f17_arg1 )
-	local f17_local0 = f17_arg1.exclusiveControllerIndex
-	if not f17_local0 then
-		f17_local0 = Engine.GetFirstActiveController()
+LUI.MarketingPanel.new = function ( f19_arg0, f19_arg1 )
+	local f19_local0 = f19_arg1.exclusiveControllerIndex
+	if not f19_local0 then
+		f19_local0 = Engine.GetFirstActiveController()
 	end
-	local f17_local1 = {}
-	LUI.MOTD.AddMarketingData( f17_local0, f17_arg1.channel, f17_local1 )
-	if not f17_local1 or #f17_local1 <= 0 then
+	local f19_local1 = {}
+	LUI.MOTD.AddMarketingData( f19_local0, f19_arg1.channel, f19_local1 )
+	if not f19_local1 or #f19_local1 <= 0 then
 		return LUI.UIElement.new()
 	end
-	f17_local1.exclusiveControllerIndex = f17_local0
-	local f17_local2 = CoD.CreateState( 0, 0, nil, nil, CoD.AnchorTypes.BottomLeft )
-	f17_local2.width = f0_local5
-	f17_local2.height = f0_local0 + f0_local1 + f0_local2 + f0_local3 + f0_local4
-	local f17_local3 = Engine.IsPC() and LUI.UIElement.new( f17_local2 ) or LUI.UIButton.new( f17_local2 )
-	f17_local3.panelData = f17_local1
-	f17_local3.height = f17_local2.height
-	f17_local3.channel = f17_arg1.channel
-	f17_local3.comScoreScreen = f17_arg1.comScoreScreen
-	f17_local3.fakeButtons = {}
-	f17_local3.currIndex = 1
-	f17_local3.numButtons = #f17_local1 and 1 or #f17_local1
-	f17_local3.isFocused = false
-	f17_local3:registerEventHandler( "gamepad_button", OnPanelButtonInput )
-	f17_local3:registerEventHandler( "autoscroll", OnAutoScrollPanel )
-	f17_local3:registerEventHandler( "button_over", OnPanelFocus )
+	f19_local1.exclusiveControllerIndex = f19_local0
+	local f19_local2 = CoD.CreateState( 0, 0, nil, nil, CoD.AnchorTypes.BottomLeft )
+	f19_local2.width = f0_local5
+	f19_local2.height = f0_local0 + f0_local1 + f0_local2 + f0_local3 + f0_local4
+	local f19_local3 = Engine.IsPC() and LUI.UIElement.new( f19_local2 ) or LUI.UIButton.new( f19_local2 )
+	f19_local3.panelData = f19_local1
+	f19_local3.height = f19_local2.height
+	f19_local3.channel = f19_arg1.channel
+	f19_local3.comScoreScreen = f19_arg1.comScoreScreen
+	f19_local3.fakeButtons = {}
+	f19_local3.currIndex = 1
+	f19_local3.numButtons = #f19_local1 and 1 or #f19_local1
+	f19_local3.isFocused = false
+	f19_local3:registerEventHandler( "gamepad_button", OnPanelButtonInput )
+	f19_local3:registerEventHandler( "autoscroll", OnAutoScrollPanel )
+	f19_local3:registerEventHandler( "button_over", OnPanelFocus )
 	if Engine.IsPC() then
-		local self = 24
-		local self = LUI.UIElement.new( CoD.CreateState( -self, nil, self, nil, CoD.AnchorTypes.All ) )
+		local f19_local4 = 24
+		local self = LUI.UIElement.new( CoD.CreateState( -f19_local4, nil, f19_local4, nil, CoD.AnchorTypes.All ) )
 		self:setHandleMouse( true )
-		self.parent = f17_local3
-		f17_local3:addElement( self )
+		self.parent = f19_local3
+		f19_local3:addElement( self )
 		self:registerEventHandler( "mouseenter", OnMousePanelFocus )
 		self:registerEventHandler( "mouseleave", OnMousePanelUnfocus )
 	end
-	f17_local3:addElement( LUI.Divider.new( CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.TopLeftRight ) ) )
-	AddFeaturedBar( f17_local3 )
-	AddPanel( f17_local3 )
-	local self = LUI.UITimer.new( 3 * f0_local7, "autoscroll" )
-	f17_local3.autoScrollTimer = self
-	f17_local3:addElement( self )
-	return f17_local3
+	f19_local3:addElement( LUI.Divider.new( CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.TopLeftRight ) ) )
+	AddFeaturedBar( f19_local3 )
+	AddPanel( f19_local3 )
+	local f19_local4 = LUI.UITimer.new( 3 * f0_local7, "autoscroll" )
+	f19_local3.autoScrollTimer = f19_local4
+	f19_local3:addElement( f19_local4 )
+	return f19_local3
 end
 
 LUI.MenuBuilder.registerType( "marketing_panel", LUI.MarketingPanel.new )

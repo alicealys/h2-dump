@@ -27,40 +27,38 @@ LUI.UIStencilText.new = function ( menu, controller )
 		left = 0,
 		right = f2_local2
 	}
-	local self
+	local f2_local4
 	if menu then
-		self = menu.font
-		if not self then
+		f2_local4 = menu.font
+		if not f2_local4 then
 		
 		else
-			f2_local3.font = self
-			self
+			f2_local3.font = f2_local4
 			if menu then
-				self = menu.alignment
-				if not self then
+				f2_local4 = menu.alignment
+				if not f2_local4 then
 				
 				else
-					f2_local3.alignment = self
-					self
+					f2_local3.alignment = f2_local4
 					if menu then
-						self = menu.color
-						if not self then
+						f2_local4 = menu.color
+						if not f2_local4 then
 						
 						else
-							f2_local3.color = self
-							self = LUI.UIText.new( f2_local3 )
-							self.text = self
-							self:addElement( self )
+							f2_local3.color = f2_local4
+							f2_local4 = LUI.UIText.new( f2_local3 )
+							self.text = f2_local4
+							self:addElement( f2_local4 )
 							return self
 						end
 					end
-					self = nil
+					f2_local4 = nil
 				end
 			end
-			self = nil
+			f2_local4 = nil
 		end
 	end
-	self = CoD.TextSettings.BodyFont.Font
+	f2_local4 = CoD.TextSettings.BodyFont.Font
 end
 
 LUI.UIStencilText.setText = function ( f3_arg0, f3_arg1 )

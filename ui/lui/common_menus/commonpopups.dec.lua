@@ -38,9 +38,9 @@ f0_local1 = function ( f2_arg0, f2_arg1 )
 		f2_arg0:addElement( self )
 		local f2_local9 = CoD.CreateState( 3, 3, -3, 18, CoD.AnchorTypes.TopLeftRight )
 		f2_local9.font = CoD.TextSettings.BodyFont.Font
-		local self = LUI.UIText.new( f2_local9 )
-		self:setText( string.sub( f2_local2, 1, f0_local0 - 2 ) )
-		self:addElement( self )
+		local f2_local10 = LUI.UIText.new( f2_local9 )
+		f2_local10:setText( string.sub( f2_local2, 1, f0_local0 - 2 ) )
+		self:addElement( f2_local10 )
 		Engine.SetDvarString( "lui_fullErrorDesc", "" )
 	end
 end
@@ -234,19 +234,19 @@ function live_party_invite_popmenu( f27_arg0, f27_arg1 )
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@XBOXLIVE_PARTY_INVITE" ),
 		yes_text = Engine.Localize( "@XBOXLIVE_PARTY_INVITE_ACCEPT_NOW" ),
-		yes_action = function ( f124_arg0, f124_arg1 )
-			Friends.AcceptLivePartyInvitation( f124_arg1.controller )
+		yes_action = function ( f28_arg0, f28_arg1 )
+			Friends.AcceptLivePartyInvitation( f28_arg1.controller )
 		end
 		,
 		no_text = Engine.Localize( "@LUA_MENU_DECLINE" ),
-		no_action = function ( f125_arg0, f125_arg1 )
-			Friends.DeclineLivePartyInvitation( f125_arg1.controller )
+		no_action = function ( f29_arg0, f29_arg1 )
+			Friends.DeclineLivePartyInvitation( f29_arg1.controller )
 		end
 		
 	} )
 end
 
-function live_party_streaming_incomplete_popmenu( f28_arg0, f28_arg1 )
+function live_party_streaming_incomplete_popmenu( f30_arg0, f30_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@PLATFORM_STREAMING_IN_PROGRESS" ),
@@ -254,103 +254,103 @@ function live_party_streaming_incomplete_popmenu( f28_arg0, f28_arg1 )
 	} )
 end
 
-function sign_in_as_sub_or_guest( f29_arg0, f29_arg1 )
+function sign_in_as_sub_or_guest( f31_arg0, f31_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_SIGN_IN_GUEST_OR_SUB_TITLE" ),
 		message_text = Engine.Localize( "@MENU_SIGN_IN_GUEST_OR_SUB_TEXT" ),
 		yes_text = Engine.Localize( "@MENU_SIGN_IN_GUEST_OR_SUB_YES" ),
-		yes_action = function ( f126_arg0, f126_arg1 )
-			Lobby.DoSubSignIn( f126_arg1.controller )
+		yes_action = function ( f32_arg0, f32_arg1 )
+			Lobby.DoSubSignIn( f32_arg1.controller )
 		end
 		,
 		no_text = Engine.Localize( "@MENU_SIGN_IN_GUEST_OR_SUB_NO" ),
-		no_action = function ( f127_arg0, f127_arg1 )
-			Lobby.DoGuestSignIn( f127_arg1.controller )
+		no_action = function ( f33_arg0, f33_arg1 )
+			Lobby.DoGuestSignIn( f33_arg1.controller )
 		end
 		
 	} )
 end
 
-function CancelAcceptingInvite( f30_arg0, f30_arg1 )
-	local f30_local0 = f30_arg1.controller
+function CancelAcceptingInvite( f34_arg0, f34_arg1 )
+	local f34_local0 = f34_arg1.controller
 	Engine.SetOnlineGame( false )
 	Engine.SetSystemLink( false )
 	Engine.SetDvarBool( "specialops", false )
 	Engine.SetDvarBool( "so_survival", false )
-	Engine.Exec( "stopPrivateListen", f30_local0 )
-	Engine.Exec( "coopStopSearch", f30_local0 )
-	Engine.Exec( "useonlinestats 0", f30_local0 )
-	Engine.Exec( "statsdownloadcancel", f30_local0 )
-	Engine.Exec( "xstopparty WAITING_POPUP_CANCELED_ACTION", f30_local0 )
-	Engine.Exec( "xstopprivateparty", f30_local0 )
-	Engine.Exec( "xcancelconnectingdialog", f30_local0 )
-	Engine.Exec( "forcesplitscreencontrol WAITING_POPUP_CANCELED_ACTION", f30_local0 )
-	LUI.FlowManager.RequestLeaveMenu( f30_arg0 )
+	Engine.Exec( "stopPrivateListen", f34_local0 )
+	Engine.Exec( "coopStopSearch", f34_local0 )
+	Engine.Exec( "useonlinestats 0", f34_local0 )
+	Engine.Exec( "statsdownloadcancel", f34_local0 )
+	Engine.Exec( "xstopparty WAITING_POPUP_CANCELED_ACTION", f34_local0 )
+	Engine.Exec( "xstopprivateparty", f34_local0 )
+	Engine.Exec( "xcancelconnectingdialog", f34_local0 )
+	Engine.Exec( "forcesplitscreencontrol WAITING_POPUP_CANCELED_ACTION", f34_local0 )
+	LUI.FlowManager.RequestLeaveMenu( f34_arg0 )
 end
 
-function OnAcceptingInviteCreate( f31_arg0, f31_arg1 )
+function OnAcceptingInviteCreate( f35_arg0, f35_arg1 )
 	if AAR ~= nil then
 		AAR.ClearAAR()
 	end
 end
 
-function popup_acceptinginvite( f32_arg0, f32_arg1 )
-	local f32_local0 = LUI.MenuBuilder.BuildRegisteredType( "live_dialog_text_box_with_cancel", {
+function popup_acceptinginvite( f36_arg0, f36_arg1 )
+	local f36_local0 = LUI.MenuBuilder.BuildRegisteredType( "live_dialog_text_box_with_cancel", {
 		message = Engine.Localize( "@MENU_POPUP_ACCEPTINVITE" ),
 		cancel_func = CancelAcceptingInvite
 	} )
-	f32_local0.id = "popup_acceptinginvite_id"
-	f32_local0:registerEventHandler( "menu_create", OnAcceptingInviteCreate )
-	return f32_local0
+	f36_local0.id = "popup_acceptinginvite_id"
+	f36_local0:registerEventHandler( "menu_create", OnAcceptingInviteCreate )
+	return f36_local0
 end
 
-function UpdateTextDots( f33_arg0, f33_arg1 )
-	assert( f33_arg0.properties.numDots )
-	assert( f33_arg0.properties.message )
-	local f33_local0 = f33_arg0.properties.numDots
-	local f33_local1 = f33_arg0.properties.message
-	f33_local0 = (f33_local0 + 1) % 12
-	for f33_local2 = 1, f33_local0, 1 do
-		local f33_local5 = f33_local2
-		f33_local1 = f33_local1 .. ". "
+function UpdateTextDots( f37_arg0, f37_arg1 )
+	assert( f37_arg0.properties.numDots )
+	assert( f37_arg0.properties.message )
+	local f37_local0 = f37_arg0.properties.numDots
+	local f37_local1 = f37_arg0.properties.message
+	f37_local0 = (f37_local0 + 1) % 12
+	for f37_local2 = 1, f37_local0, 1 do
+		local f37_local5 = f37_local2
+		f37_local1 = f37_local1 .. ". "
 	end
-	f33_arg0:setText( f33_local1 )
-	f33_arg0.properties.numDots = f33_local0
+	f37_arg0:setText( f37_local1 )
+	f37_arg0.properties.numDots = f37_local0
 end
 
-function CreateDot( f34_arg0, f34_arg1, f34_arg2, f34_arg3 )
-	local f34_local0 = f34_arg1 / 1.25
-	local f34_local1 = f34_arg0 / 1.25
-	local f34_local2 = 2
-	local f34_local3 = 1
-	local f34_local4 = MBh.AnimateSequence( {
+function CreateDot( f38_arg0, f38_arg1, f38_arg2, f38_arg3 )
+	local f38_local0 = f38_arg1 / 1.25
+	local f38_local1 = f38_arg0 / 1.25
+	local f38_local2 = 2
+	local f38_local3 = 1
+	local f38_local4 = MBh.AnimateSequence( {
 		{
 			"state0",
-			0 / f34_local3
+			0 / f38_local3
 		},
 		{
 			"state1",
-			150 / f34_local3,
+			150 / f38_local3,
 			true,
 			true
 		},
 		{
 			"state2",
-			100 / f34_local3,
+			100 / f38_local3,
 			true,
 			true
 		},
 		{
 			"state3",
-			800 / f34_local3,
+			800 / f38_local3,
 			true,
 			true
 		}
 	} )
-	local f34_local5 = CoD.CreateState( f34_local1 - f34_local2, f34_local0 - f34_local2, f34_local1 + f34_local2, f34_local0 + f34_local2, CoD.AnchorTypes.None )
-	f34_local5.material = RegisterMaterial( "widg_loading_circle" )
-	f34_local5.alpha = 0
-	local self = LUI.UIImage.new( f34_local5 )
+	local f38_local5 = CoD.CreateState( f38_local1 - f38_local2, f38_local0 - f38_local2, f38_local1 + f38_local2, f38_local0 + f38_local2, CoD.AnchorTypes.None )
+	f38_local5.material = RegisterMaterial( "widg_loading_circle" )
+	f38_local5.alpha = 0
+	local self = LUI.UIImage.new( f38_local5 )
 	self:registerAnimationState( "state0", {
 		alpha = 0,
 		scale = -1
@@ -367,52 +367,52 @@ function CreateDot( f34_arg0, f34_arg1, f34_arg2, f34_arg3 )
 		alpha = 0,
 		scale = 0
 	} )
-	self:registerEventHandler( f34_arg2, f34_local4 )
+	self:registerEventHandler( f38_arg2, f38_local4 )
 	return self
 end
 
-function loading_animation_widget( f35_arg0, f35_arg1 )
-	local f35_local0 = CoD.CreateState( nil, -75, nil, nil, CoD.AnchorTypes.None )
-	f35_local0.height = LoadingAnimationDims.Height
-	f35_local0.top = f35_local0.top + f35_arg1.bottomOffset
-	f35_local0.width = LoadingAnimationDims.Width
-	f35_local0.material = RegisterMaterial( CoD.Material.LoadingAnim )
-	f35_local0.alpha = 1
-	local self = LUI.UIImage.new( f35_local0 )
+function loading_animation_widget( f39_arg0, f39_arg1 )
+	local f39_local0 = CoD.CreateState( nil, -75, nil, nil, CoD.AnchorTypes.None )
+	f39_local0.height = LoadingAnimationDims.Height
+	f39_local0.top = f39_local0.top + f39_arg1.bottomOffset
+	f39_local0.width = LoadingAnimationDims.Width
+	f39_local0.material = RegisterMaterial( CoD.Material.LoadingAnim )
+	f39_local0.alpha = 1
+	local self = LUI.UIImage.new( f39_local0 )
 	self:setupOwnerdraw( CoD.Ownerdraw.CGLoadingAnimation )
 	return self
 end
 
-function OnAnimateArrow( f36_arg0, f36_arg1 )
-	f36_arg0.tick = f36_arg0.tick or 0
-	local f36_local0 = f36_arg0:getParent()
-	f36_local0:processEvent( {
-		name = "tick_" .. f36_arg0.tick
+function OnAnimateArrow( f40_arg0, f40_arg1 )
+	f40_arg0.tick = f40_arg0.tick or 0
+	local f40_local0 = f40_arg0:getParent()
+	f40_local0:processEvent( {
+		name = "tick_" .. f40_arg0.tick
 	} )
-	f36_arg0.tick = (f36_arg0.tick + 1) % 12
-	f36_arg0.tick = f36_arg0.tick and 0 or f36_arg0.tick
+	f40_arg0.tick = (f40_arg0.tick + 1) % 12
+	f40_arg0.tick = f40_arg0.tick and 0 or f40_arg0.tick
 end
 
 function live_dialog_processing_widget( menu, controller )
 	local self = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
-	local self = LUI.UIElement.new( CoD.CreateState( -15, -15, 15, 15, CoD.AnchorTypes.None ) )
-	self:addElement( CreateDot( -16, 0, "tick_0" ) )
-	self:addElement( CreateDot( -14, -8, "tick_1" ) )
-	self:addElement( CreateDot( -8, -14, "tick_2" ) )
-	self:addElement( CreateDot( 0, -16, "tick_3" ) )
-	self:addElement( CreateDot( 8, -14, "tick_4" ) )
-	self:addElement( CreateDot( 14, -8, "tick_5" ) )
-	self:addElement( CreateDot( 16, 0, "tick_6" ) )
-	self:addElement( CreateDot( 14, 8, "tick_7" ) )
-	self:addElement( CreateDot( 8, 14, "tick_8" ) )
-	self:addElement( CreateDot( 0, 16, "tick_9" ) )
-	self:addElement( CreateDot( -8, 14, "tick_10" ) )
-	self:addElement( CreateDot( -14, 8, "tick_11" ) )
-	self:addElement( LUI.UITimer.new( 300 / 3, "anim_arrow", nil, false ) )
-	local self = LUI.UIElement.new()
-	self:registerEventHandler( "anim_arrow", OnAnimateArrow )
-	self:addElement( self )
-	self:addElement( self )
+	local f41_local1 = LUI.UIElement.new( CoD.CreateState( -15, -15, 15, 15, CoD.AnchorTypes.None ) )
+	f41_local1:addElement( CreateDot( -16, 0, "tick_0" ) )
+	f41_local1:addElement( CreateDot( -14, -8, "tick_1" ) )
+	f41_local1:addElement( CreateDot( -8, -14, "tick_2" ) )
+	f41_local1:addElement( CreateDot( 0, -16, "tick_3" ) )
+	f41_local1:addElement( CreateDot( 8, -14, "tick_4" ) )
+	f41_local1:addElement( CreateDot( 14, -8, "tick_5" ) )
+	f41_local1:addElement( CreateDot( 16, 0, "tick_6" ) )
+	f41_local1:addElement( CreateDot( 14, 8, "tick_7" ) )
+	f41_local1:addElement( CreateDot( 8, 14, "tick_8" ) )
+	f41_local1:addElement( CreateDot( 0, 16, "tick_9" ) )
+	f41_local1:addElement( CreateDot( -8, 14, "tick_10" ) )
+	f41_local1:addElement( CreateDot( -14, 8, "tick_11" ) )
+	f41_local1:addElement( LUI.UITimer.new( 300 / 3, "anim_arrow", nil, false ) )
+	local f41_local2 = LUI.UIElement.new()
+	f41_local2:registerEventHandler( "anim_arrow", OnAnimateArrow )
+	f41_local1:addElement( f41_local2 )
+	self:addElement( f41_local1 )
 	return self
 end
 
@@ -426,30 +426,30 @@ function live_dialog_popup_background()
 	return self
 end
 
-function AddLiveDialogFooterHelperText( f39_arg0, f39_arg1 )
-	local f39_local0 = Engine.IsConsoleGame()
-	if not f39_local0 then
-		f39_local0 = Engine.IsGamepadEnabled()
+function AddLiveDialogFooterHelperText( f43_arg0, f43_arg1 )
+	local f43_local0 = Engine.IsConsoleGame()
+	if not f43_local0 then
+		f43_local0 = Engine.IsGamepadEnabled()
 	end
-	local f39_local1 = f39_arg1.footerOffset or 0
-	local f39_local2 = nil
-	if f39_local0 then
-		f39_local2 = LUI.ButtonHelperText.helper_text_item( nil, Engine.Localize( "@LUA_MENU_CANCEL" ), ButtonMap.button_secondary, nil, nil )
+	local f43_local1 = f43_arg1.footerOffset or 0
+	local f43_local2 = nil
+	if f43_local0 then
+		f43_local2 = LUI.ButtonHelperText.helper_text_item( nil, Engine.Localize( "@LUA_MENU_CANCEL" ), ButtonMap.button_secondary, nil, nil )
 	else
-		f39_local2 = LUI.ButtonHelperText.helper_text_item( ButtonMap.button_secondary, Engine.Localize( "@LUA_MENU_CANCEL" ), nil, nil, nil )
+		f43_local2 = LUI.ButtonHelperText.helper_text_item( ButtonMap.button_secondary, Engine.Localize( "@LUA_MENU_CANCEL" ), nil, nil, nil )
 	end
-	f39_local2.triggers_event = "button_secondary"
-	f39_local2.id = "popup_cancel_text_id"
-	local f39_local3
-	if f39_local0 then
-		f39_local3 = 33
-		if not f39_local3 then
+	f43_local2.triggers_event = "button_secondary"
+	f43_local2.id = "popup_cancel_text_id"
+	local f43_local3
+	if f43_local0 then
+		f43_local3 = 33
+		if not f43_local3 then
 		
 		else
-			local f39_local4 = f39_local2
-			local f39_local5 = f39_local2.registerAnimationState
-			local f39_local6 = "default"
-			local f39_local7 = {
+			local f43_local4 = f43_local2
+			local f43_local5 = f43_local2.registerAnimationState
+			local f43_local6 = "default"
+			local f43_local7 = {
 				leftAnchor = false,
 				rightAnchor = false,
 				topAnchor = false,
@@ -457,196 +457,196 @@ function AddLiveDialogFooterHelperText( f39_arg0, f39_arg1 )
 				left = -30,
 				right = 50
 			}
-			local f39_local8 = Engine.IsCurrentGen() and -45 or -25
-			local f39_local9 = f39_local8 + f39_local1
-			f39_local7.bottom = f39_local8
-			f39_local7.height = f39_local3
-			f39_local5( f39_local4, f39_local6, f39_local7 )
-			f39_local2:animateToState( "default" )
-			f39_local2:registerEventHandler( "virtual_keyboard_popup_active", MBh.EmitEvent( "popup_active" ) )
-			f39_local2:setPriority( 50 )
-			f39_arg0:addElement( f39_local2 )
+			local f43_local8 = Engine.IsCurrentGen() and -45 or -25
+			local f43_local9 = f43_local8 + f43_local1
+			f43_local7.bottom = f43_local8
+			f43_local7.height = f43_local3
+			f43_local5( f43_local4, f43_local6, f43_local7 )
+			f43_local2:animateToState( "default" )
+			f43_local2:registerEventHandler( "virtual_keyboard_popup_active", MBh.EmitEvent( "popup_active" ) )
+			f43_local2:setPriority( 50 )
+			f43_arg0:addElement( f43_local2 )
 		end
 	end
-	f39_local3 = CoD.TextSettings.BodyFont.Height
+	f43_local3 = CoD.TextSettings.BodyFont.Height
 end
 
-function OnIntermediateDialogGainFocus( f40_arg0, f40_arg1 )
-	if f40_arg1.focusType ~= FocusType.MouseOver then
-		f40_arg0:animateToState( "default" )
+function OnIntermediateDialogGainFocus( f44_arg0, f44_arg1 )
+	if f44_arg1.focusType ~= FocusType.MouseOver then
+		f44_arg0:animateToState( "default" )
 	end
 end
 
-function OnIntermediateDialogLostFocus( f41_arg0, f41_arg1 )
-	if f41_arg1.focusType ~= FocusType.MouseOver then
-		f41_arg0:animateToState( "hidden" )
+function OnIntermediateDialogLostFocus( f45_arg0, f45_arg1 )
+	if f45_arg1.focusType ~= FocusType.MouseOver then
+		f45_arg0:animateToState( "hidden" )
 	end
 end
 
-function OnPopupContainerReposition( f42_arg0, f42_arg1 )
-	local f42_local0 = 10
-	local f42_local1, f42_local2, f42_local3, f42_local4 = GetTextDimensions( f42_arg0.properties.message, CoD.TextSettings.BodyFont.Font, CoD.TextSettings.BodyFont.Height )
-	local f42_local5 = f42_local3 - f42_local1
-	local f42_local6 = LoadingAnimationDims.Width + f42_local0 + f42_local5
-	local f42_local7 = f42_arg0:getChildById( "popup_text_id" )
-	f42_local7:registerAnimationState( "updated", {
+function OnPopupContainerReposition( f46_arg0, f46_arg1 )
+	local f46_local0 = 10
+	local f46_local1, f46_local2, f46_local3, f46_local4 = GetTextDimensions( f46_arg0.properties.message, CoD.TextSettings.BodyFont.Font, CoD.TextSettings.BodyFont.Height )
+	local f46_local5 = f46_local3 - f46_local1
+	local f46_local6 = LoadingAnimationDims.Width + f46_local0 + f46_local5
+	local f46_local7 = f46_arg0:getChildById( "popup_text_id" )
+	f46_local7:registerAnimationState( "updated", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = false,
 		rightAnchor = false,
 		top = -CoD.TextSettings.BodyFont.Height,
 		bottom = 0,
-		left = -1 * (f42_local6 * 0.5 - LoadingAnimationDims.Width + f42_local0),
-		width = f42_local5 + f42_local0
+		left = -1 * (f46_local6 * 0.5 - LoadingAnimationDims.Width + f46_local0),
+		width = f46_local5 + f46_local0
 	} )
-	f42_local7:animateToState( "updated", 0 )
-	local f42_local8 = f42_arg0:getChildById( "loading_animation_id" )
-	f42_local8:registerAnimationState( "updated", {
+	f46_local7:animateToState( "updated", 0 )
+	local f46_local8 = f46_arg0:getChildById( "loading_animation_id" )
+	f46_local8:registerAnimationState( "updated", {
 		topAnchor = false,
 		bottomAnchor = false,
 		leftAnchor = false,
 		rightAnchor = false,
-		left = -f42_local6 * 0.5,
+		left = -f46_local6 * 0.5,
 		height = LoadingAnimationDims.Height,
 		width = LoadingAnimationDims.Width
 	} )
-	f42_local8:animateToState( "updated", 0 )
-	f42_arg0:registerAnimationState( "updated", {
+	f46_local8:animateToState( "updated", 0 )
+	f46_arg0:registerAnimationState( "updated", {
 		leftAnchor = false,
 		topAnchor = false,
 		rightAnchor = false,
 		bottomAnchor = false,
-		width = f42_local6 + f42_local0 * 2,
+		width = f46_local6 + f46_local0 * 2,
 		height = DialogPopupDims.Height
 	} )
-	f42_arg0:animateToState( "updated" )
+	f46_arg0:animateToState( "updated" )
 end
 
-function live_dialog_text_box_with_cancel( f43_arg0, f43_arg1 )
-	f43_arg1.isLiveWithCancel = true
-	f43_arg1.message_text = f43_arg1.message
-	return LUI.MenuBuilder.BuildRegisteredType( "waiting_popup", f43_arg1 )
+function live_dialog_text_box_with_cancel( f47_arg0, f47_arg1 )
+	f47_arg1.isLiveWithCancel = true
+	f47_arg1.message_text = f47_arg1.message
+	return LUI.MenuBuilder.BuildRegisteredType( "waiting_popup", f47_arg1 )
 end
 
-function live_dialog_text_box( f44_arg0, f44_arg1 )
+function live_dialog_text_box( f48_arg0, f48_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "waiting_popup", {
 		isLive = true,
-		message_text = f44_arg1.message
+		message_text = f48_arg1.message
 	} )
 end
 
-function popup_connecting( f45_arg0, f45_arg1 )
-	local f45_local0 = LUI.MenuBuilder.BuildRegisteredType( "live_dialog_text_box_with_cancel", {
+function popup_connecting( f49_arg0, f49_arg1 )
+	local f49_local0 = LUI.MenuBuilder.BuildRegisteredType( "live_dialog_text_box_with_cancel", {
 		message = Engine.Localize( "@XBOXLIVE_POPUP_CONNECTION" ),
 		cancel_func = LUI.common_menus.CommonPopups.CancelAcceptingInvite
 	} )
-	f45_local0.id = "popup_connecting_id"
-	return f45_local0
+	f49_local0.id = "popup_connecting_id"
+	return f49_local0
 end
 
-local f0_local16 = function ( f46_arg0, f46_arg1 )
-	local f46_local0 = Engine.Localize( "@MENU_NOTICE" )
-	local f46_local1 = Engine.GetDvarString( "online_end_reason" )
-	f46_arg0:dispatchEventToChildren( {
+local f0_local16 = function ( f50_arg0, f50_arg1 )
+	local f50_local0 = Engine.Localize( "@MENU_NOTICE" )
+	local f50_local1 = Engine.GetDvarString( "online_end_reason" )
+	f50_arg0:dispatchEventToChildren( {
 		name = "update_title",
-		title_text = f46_local0
+		title_text = f50_local0
 	} )
-	f46_arg0:dispatchEventToChildren( {
+	f50_arg0:dispatchEventToChildren( {
 		name = "update_message",
-		message_text = f46_local1
+		message_text = f50_local1
 	} )
 end
 
-local f0_local17 = function ( f47_arg0, f47_arg1 )
-	Engine.ResolveError( f47_arg1.controller )
+local f0_local17 = function ( f51_arg0, f51_arg1 )
+	Engine.ResolveError( f51_arg1.controller )
 end
 
-local f0_local18 = function ( f48_arg0, f48_arg1 )
-	local f48_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
+local f0_local18 = function ( f52_arg0, f52_arg1 )
+	local f52_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		confirmation_action = f0_local17
 	} )
-	f48_local0:registerEventHandler( "menu_create", f0_local16 )
-	return f48_local0
+	f52_local0:registerEventHandler( "menu_create", f0_local16 )
+	return f52_local0
 end
 
-local f0_local19 = function ( f49_arg0, f49_arg1 )
-	LUI.FlowManager.RequestCloseAllMenus( f49_arg0 )
+local f0_local19 = function ( f53_arg0, f53_arg1 )
+	LUI.FlowManager.RequestCloseAllMenus( f53_arg0 )
 	Engine.TogglePause()
-	f49_arg0:dispatchEventToRoot( {
+	f53_arg0:dispatchEventToRoot( {
 		name = "toggle_pause_off"
 	} )
 end
 
-function save_and_quit_yes_action( f50_arg0, f50_arg1 )
+function save_and_quit_yes_action( f54_arg0, f54_arg1 )
 	Engine.SendSPMatchData()
 	Engine.FlashFade( 0, 0, 0, 255, 20 )
 	LUI.FlowManager.RequestLeaveMenuByName( "save_game_info_hud" )
-	LUI.FlowManager.RequestAddMenu( f50_arg0, "save_game_info_hud", true, f50_arg1.controller, false )
+	LUI.FlowManager.RequestAddMenu( f54_arg0, "save_game_info_hud", true, f54_arg1.controller, false )
 end
 
-local f0_local20 = function ( f51_arg0, f51_arg1 )
+local f0_local20 = function ( f55_arg0, f55_arg1 )
 	Engine.SendSPMatchData()
 	LUI.FlowManager.RequestLeaveMenuByName( "save_game_info_hud" )
-	LUI.FlowManager.RequestAddMenu( f51_arg0, "save_game_info_hud", true, f51_arg1.controller, false, {
+	LUI.FlowManager.RequestAddMenu( f55_arg0, "save_game_info_hud", true, f55_arg1.controller, false, {
 		continueAfterSave = true
 	} )
 end
 
-local f0_local21 = function ( f52_arg0, f52_arg1 )
+local f0_local21 = function ( f56_arg0, f56_arg1 )
 	Engine.Exec( "disconnect" )
 	Engine.SetDvarBool( "inpubliclobby", false )
 	Engine.AcceptInvite()
 end
 
-local f0_local22 = function ( f53_arg0, f53_arg1 )
+local f0_local22 = function ( f57_arg0, f57_arg1 )
 	if Engine.IsXB3() or Engine.IsPCApp() then
-		Friends.DeclineLivePartyInvitation( f53_arg1.controller )
+		Friends.DeclineLivePartyInvitation( f57_arg1.controller )
 	end
 	Engine.SaveRevert()
 end
 
-local f0_local23 = function ( f54_arg0, f54_arg1 )
-	local f54_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
-	if not f54_local0 then
-		f54_local0 = Engine.IsPS4()
+local f0_local23 = function ( f58_arg0, f58_arg1 )
+	local f58_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
+	if not f58_local0 then
+		f58_local0 = Engine.IsPS4()
 	end
-	if f54_local0 then
-		LUI.FlowManager.RequestLeaveMenu( f54_arg0 )
+	if f58_local0 then
+		LUI.FlowManager.RequestLeaveMenu( f58_arg0 )
 	end
 end
 
-function SaveGameErrorCreate( f55_arg0, f55_arg1 )
+function SaveGameErrorCreate( f59_arg0, f59_arg1 )
 	LUI.FlowManager.RequestLeaveMenuByName( "save_game_info_hud" )
-	local f55_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
-	if not f55_local0 then
-		f55_local0 = Engine.IsPS4()
+	local f59_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
+	if not f59_local0 then
+		f59_local0 = Engine.IsPS4()
 	end
-	if not f55_local0 then
-		f55_arg0:addElement( LUI.UITimer.new( 200, "save_game_popup_tick" ) )
-		f55_arg0:registerEventHandler( "save_game_popup_tick", f0_local23 )
+	if not f59_local0 then
+		f59_arg0:addElement( LUI.UITimer.new( 200, "save_game_popup_tick" ) )
+		f59_arg0:registerEventHandler( "save_game_popup_tick", f0_local23 )
 	end
 end
 
-function SaveGameErrorFeeder( f56_arg0 )
-	local f56_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
-	if not f56_local0 then
-		f56_local0 = Engine.IsPS4()
+function SaveGameErrorFeeder( f60_arg0 )
+	local f60_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
+	if not f60_local0 then
+		f60_local0 = Engine.IsPS4()
 	end
-	local f56_local1 = Engine.GetDvarBool( "sv_saveGameAvailable" )
-	local f56_local2 = {}
-	local f56_local3 = ""
-	if f56_local0 then
-		if f56_local1 then
-			f56_local3 = Engine.Localize( "@MENU_WARNING_CHECKPOINT_RESET" )
+	local f60_local1 = Engine.GetDvarBool( "sv_saveGameAvailable" )
+	local f60_local2 = {}
+	local f60_local3 = ""
+	if f60_local0 then
+		if f60_local1 then
+			f60_local3 = Engine.Localize( "@MENU_WARNING_CHECKPOINT_RESET" )
 		elseif Engine.IsPS4() then
-			f56_local3 = Engine.Localize( "@PLATFORM_SAVE_ERROR" )
+			f60_local3 = Engine.Localize( "@PLATFORM_SAVE_ERROR" )
 		else
-			f56_local3 = Engine.Localize( "@MENU_NO_SAVE_DEVICE_WARNING_NOW_OKAY" )
+			f60_local3 = Engine.Localize( "@MENU_NO_SAVE_DEVICE_WARNING_NOW_OKAY" )
 		end
 	else
-		f56_local3 = Engine.Localize( "@MENU_NO_SAVE_DEVICE_WARNING" )
+		f60_local3 = Engine.Localize( "@MENU_NO_SAVE_DEVICE_WARNING" )
 	end
-	f56_local2[#f56_local2 + 1] = {
+	f60_local2[#f60_local2 + 1] = {
 		type = "UIText",
 		id = "desc_text",
 		states = {
@@ -667,44 +667,44 @@ function SaveGameErrorFeeder( f56_arg0 )
 			}
 		},
 		properties = {
-			text = f56_local3
+			text = f60_local3
 		}
 	}
-	local f56_local4 = ""
-	if f56_local0 then
-		if f56_local1 then
-			f56_local4 = Engine.Localize( "@MENU_OVERWRITE_SAVE" )
+	local f60_local4 = ""
+	if f60_local0 then
+		if f60_local1 then
+			f60_local4 = Engine.Localize( "@MENU_OVERWRITE_SAVE" )
 		else
-			f56_local4 = Engine.Localize( "@MENU_RETRY_SAVE" )
+			f60_local4 = Engine.Localize( "@MENU_RETRY_SAVE" )
 		end
 	else
-		f56_local4 = Engine.Localize( "@PLATFORM_SELECT_SAVE_DEVICE" )
+		f60_local4 = Engine.Localize( "@PLATFORM_SELECT_SAVE_DEVICE" )
 	end
-	f56_local2[#f56_local2 + 1] = {
+	f60_local2[#f60_local2 + 1] = {
 		type = "UIGenericButton",
 		id = "first_button",
 		properties = {
 			style = GenericButtonSettings.Styles.GlassButton,
 			substyle = GenericButtonSettings.Styles.GlassButton.SubStyles.Popup,
-			button_text = f56_local4,
+			button_text = f60_local4,
 			text_align_without_content = LUI.Alignment.Center,
-			button_action_func = function ( f128_arg0, f128_arg1 )
-				if f56_local0 then
-					if f56_local1 then
-						Engine.DeleteSave( f128_arg1.controller )
+			button_action_func = function ( f61_arg0, f61_arg1 )
+				if f60_local0 then
+					if f60_local1 then
+						Engine.DeleteSave( f61_arg1.controller )
 					end
-					f0_local20( f128_arg0, f128_arg1 )
+					f0_local20( f61_arg0, f61_arg1 )
 				else
-					Engine.ForceSelectSaveDevice( f128_arg1.controller )
-					local f128_local0 = Engine.GetLuiRoot()
-					if f128_local0 and not LUI.FlowManager.IsInStack( f128_local0.flowManager, "sp_pause_menu" ) then
-						Engine.TogglePause( f128_arg0, f128_arg1 )
+					Engine.ForceSelectSaveDevice( f61_arg1.controller )
+					local f61_local0 = Engine.GetLuiRoot()
+					if f61_local0 and not LUI.FlowManager.IsInStack( f61_local0.flowManager, "sp_pause_menu" ) then
+						Engine.TogglePause( f61_arg0, f61_arg1 )
 					end
 				end
 			end
 		}
 	}
-	f56_local2[#f56_local2 + 1] = {
+	f60_local2[#f60_local2 + 1] = {
 		type = "UIGenericButton",
 		id = "resume_game_nosave",
 		properties = {
@@ -712,14 +712,14 @@ function SaveGameErrorFeeder( f56_arg0 )
 			substyle = GenericButtonSettings.Styles.GlassButton.SubStyles.Popup,
 			button_text = Engine.Localize( "@MENU_RESUMEGAME_NOSAVE" ),
 			text_align_without_content = LUI.Alignment.Center,
-			button_action_func = function ( f129_arg0, f129_arg1 )
-				f0_local19( f129_arg0, f129_arg1 )
+			button_action_func = function ( f62_arg0, f62_arg1 )
+				f0_local19( f62_arg0, f62_arg1 )
 				Engine.SaveRevert()
 				Engine.FlashFade( 0, 0, 0, 0, 0 )
 			end
 		}
 	}
-	f56_local2[#f56_local2 + 1] = {
+	f60_local2[#f60_local2 + 1] = {
 		type = "UIGenericButton",
 		id = "quit_nosave",
 		properties = {
@@ -727,14 +727,14 @@ function SaveGameErrorFeeder( f56_arg0 )
 			substyle = GenericButtonSettings.Styles.GlassButton.SubStyles.Popup,
 			button_text = Engine.Localize( "@MENU_QUIT_NO_SAVE" ),
 			text_align_without_content = LUI.Alignment.Center,
-			button_action_func = function ( f130_arg0, f130_arg1 )
+			button_action_func = function ( f63_arg0, f63_arg1 )
 				Engine.SaveRevert()
-				LUI.FlowManager.RequestAddMenu( f130_arg0, "quit_confirm_popup", false, f130_arg1.controller, false )
+				LUI.FlowManager.RequestAddMenu( f63_arg0, "quit_confirm_popup", false, f63_arg1.controller, false )
 			end
 		}
 	}
-	if f56_local0 and not Engine.IsPS4() then
-		f56_local2[#f56_local2 + 1] = {
+	if f60_local0 and not Engine.IsPS4() then
+		f60_local2[#f60_local2 + 1] = {
 			type = "UIGenericButton",
 			id = "reselect_save_device",
 			properties = {
@@ -742,33 +742,33 @@ function SaveGameErrorFeeder( f56_arg0 )
 				substyle = GenericButtonSettings.Styles.GlassButton.SubStyles.Popup,
 				button_text = Engine.Localize( "@PLATFORM_RESELECT_SAVE_DEVICE" ),
 				text_align_without_content = LUI.Alignment.Center,
-				button_action_func = function ( f131_arg0, f131_arg1 )
-					Engine.ForceSelectSaveDevice( f131_arg1.controller )
+				button_action_func = function ( f64_arg0, f64_arg1 )
+					Engine.ForceSelectSaveDevice( f64_arg1.controller )
 				end
 			}
 		}
 	end
-	return f56_local2
+	return f60_local2
 end
 
 function save_game_error_popup()
-	local f57_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
-	local f57_local1 = nil
-	if f57_local0 then
+	local f65_local0 = Engine.GetDvarBool( "sv_saveDeviceAvailable" )
+	local f65_local1 = nil
+	if f65_local0 then
 		if Engine.IsPS4() then
-			f57_local1 = Engine.Localize( "@MENU_ERROR" )
+			f65_local1 = Engine.Localize( "@MENU_ERROR" )
 		else
-			f57_local1 = Engine.Localize( "@PLATFORM_SAVE_ERROR_NOW_OKAY" )
+			f65_local1 = Engine.Localize( "@PLATFORM_SAVE_ERROR_NOW_OKAY" )
 		end
 	else
-		f57_local1 = Engine.Localize( "@PLATFORM_SAVE_ERROR" )
+		f65_local1 = Engine.Localize( "@PLATFORM_SAVE_ERROR" )
 	end
 	return {
 		type = "generic_selectionList_popup",
 		id = "save_game_error_popup_id",
 		properties = {
 			cancel_will_close = false,
-			popup_title = f57_local1,
+			popup_title = f65_local1,
 			popup_childfeeder = SaveGameErrorFeeder
 		},
 		handlers = {
@@ -777,28 +777,28 @@ function save_game_error_popup()
 	}
 end
 
-function LostSelectedSaveDevicePopupConfirm( f58_arg0, f58_arg1 )
+function LostSelectedSaveDevicePopupConfirm( f66_arg0, f66_arg1 )
 	Engine.Exec( "select_save_device" )
 end
 
-local f0_local24 = function ( f59_arg0, f59_arg1 )
-	local f59_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
+local f0_local24 = function ( f67_arg0, f67_arg1 )
+	local f67_local0 = LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		message_text = Engine.Localize( "@PLATFORM_SAVE_DEVICE_LOST" ),
 		popup_title = Engine.Localize( "@MENU_WARNING" )
 	} )
-	f59_local0:registerEventHandler( "menu_close", LostSelectedSaveDevicePopupConfirm )
-	return f59_local0
+	f67_local0:registerEventHandler( "menu_close", LostSelectedSaveDevicePopupConfirm )
+	return f67_local0
 end
 
-local f0_local25 = function ( f60_arg0, f60_arg1 )
+local f0_local25 = function ( f68_arg0, f68_arg1 )
 	CoDAnywhere.IntegrateCACFile()
 end
 
-local f0_local26 = function ( f61_arg0, f61_arg1 )
+local f0_local26 = function ( f69_arg0, f69_arg1 )
 	CoDAnywhere.DeleteCACFile()
 end
 
-function cac_elite_popup( f62_arg0, f62_arg1 )
+function cac_elite_popup( f70_arg0, f70_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_COD_MOBILE_APP_DATA_TITLE" ),
 		squadMembersChanged = 1,
@@ -814,11 +814,11 @@ function cac_elite_popup( f62_arg0, f62_arg1 )
 	} )
 end
 
-function quitYesAction( f63_arg0, f63_arg1 )
+function quitYesAction( f71_arg0, f71_arg1 )
 	Engine.Exec( "disconnect" )
 end
 
-function quit_no_save_confirm_popup( f64_arg0, f64_arg1 )
+function quit_no_save_confirm_popup( f72_arg0, f72_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@PLATFORM_QUIT" ),
 		message_text = Engine.Localize( "@MENU_QUIT_WARNING" ),
@@ -828,7 +828,7 @@ function quit_no_save_confirm_popup( f64_arg0, f64_arg1 )
 	} )
 end
 
-function quit_confirm_popup( f65_arg0, f65_arg1 )
+function quit_confirm_popup( f73_arg0, f73_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@PLATFORM_QUIT" ),
 		message_text = Engine.Localize( "@MENU_ARE_YOU_SURE_QUIT" ),
@@ -838,7 +838,7 @@ function quit_confirm_popup( f65_arg0, f65_arg1 )
 	} )
 end
 
-function save_and_quit_confirm_popup( f66_arg0, f66_arg1 )
+function save_and_quit_confirm_popup( f74_arg0, f74_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@PLATFORM_SAVE_AND_QUIT" ),
 		message_text = Engine.Localize( "@MENU_SAVEQUIT_TEXT" ),
@@ -848,7 +848,7 @@ function save_and_quit_confirm_popup( f66_arg0, f66_arg1 )
 	} )
 end
 
-function save_and_quit_confirm_invited_popup( f67_arg0, f67_arg1 )
+function save_and_quit_confirm_invited_popup( f75_arg0, f75_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_CONTINUE_SAVING" ),
 		message_text = Engine.Localize( "@MENU_SAVEQUIT_TEXT" ),
@@ -889,9 +889,9 @@ local f0_local27 = function ()
 	}
 end
 
-local f0_local28 = function ( f69_arg0, f69_arg1 )
-	local f69_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f69_arg0 )
-	if not f69_local0.continueAfterSave then
+local f0_local28 = function ( f77_arg0, f77_arg1 )
+	local f77_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f77_arg0 )
+	if not f77_local0.continueAfterSave then
 		Engine.FlashFade( 0, 0, 0, 255, 20 )
 		Engine.SetSaveExecOnSuccess( "disconnect" )
 		Engine.SetDvarBool( "ui_skipMainLockout", true )
@@ -900,15 +900,15 @@ local f0_local28 = function ( f69_arg0, f69_arg1 )
 	Engine.WriteSave()
 end
 
-local f0_local29 = function ( f70_arg0, f70_arg1 )
-	if f70_arg1.doContinue then
-		local f70_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f70_arg0 )
-		if f70_local0.continueAfterSave then
-			f0_local19( f70_arg0, f70_arg1 )
+local f0_local29 = function ( f78_arg0, f78_arg1 )
+	if f78_arg1.doContinue then
+		local f78_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f78_arg0 )
+		if f78_local0.continueAfterSave then
+			f0_local19( f78_arg0, f78_arg1 )
 			return 
 		end
 	end
-	if f70_arg1.finished then
+	if f78_arg1.finished then
 		Engine.SaveComplete()
 	end
 end
@@ -1002,69 +1002,69 @@ end
 
 function controllerremoved_popmenu()
 	if Engine.IsConsoleGame() then
-		local f73_local0, f73_local1, f73_local2 = nil
+		local f81_local0, f81_local1, f81_local2 = nil
 		if Engine.IsXB3() == true then
-			f73_local0 = "h1_deco_option_controller_x1"
-			f73_local1 = 240
-			f73_local2 = 308
+			f81_local0 = "h1_deco_option_controller_x1"
+			f81_local1 = 240
+			f81_local2 = 308
 		else
-			f73_local0 = "h1_deco_option_controller_ps4"
-			f73_local1 = 210
+			f81_local0 = "h1_deco_option_controller_ps4"
+			f81_local1 = 210
 		end
-		local f73_local3 = 155
-		local f73_local4 = 330
-		local f73_local5 = 35
-		local f73_local6 = CoD.TextSettings.BodyFontSmall.Font
-		local f73_local7 = CoD.TextSettings.BodyFontSmall.Height
-		local f73_local8 = Engine.Localize( "@PLATFORM_CONTROLLER_DISCONNECTED" )
+		local f81_local3 = 155
+		local f81_local4 = 330
+		local f81_local5 = 35
+		local f81_local6 = CoD.TextSettings.BodyFontSmall.Font
+		local f81_local7 = CoD.TextSettings.BodyFontSmall.Height
+		local f81_local8 = Engine.Localize( "@PLATFORM_CONTROLLER_DISCONNECTED" )
 		local self = LUI.UIElement.new( CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.None ) )
 		if Engine.IsXB3() then
-			self.handleGamepadButton = function ( f136_arg0, f136_arg1 )
-				DebugPrint( "handleGamepadButton received controller change to " .. f136_arg1.controller )
-				if f136_arg0.m_ownerController ~= nil then
-					Engine.ChangeController( f136_arg0.m_ownerController, f136_arg1.controller )
+			self.handleGamepadButton = function ( f82_arg0, f82_arg1 )
+				DebugPrint( "handleGamepadButton received controller change to " .. f82_arg1.controller )
+				if f82_arg0.m_ownerController ~= nil then
+					Engine.ChangeController( f82_arg0.m_ownerController, f82_arg1.controller )
 				else
-					Engine.ChangeController( f136_arg1.controller )
+					Engine.ChangeController( f82_arg1.controller )
 				end
 				return true
 			end
 			
 		end
-		local f73_local10 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All )
-		f73_local10.material = RegisterMaterial( "white" )
-		f73_local10.color = Colors.black
-		f73_local10.alpha = 0.7
-		self:addElement( LUI.UIImage.new( f73_local10 ) )
-		local f73_local11 = CoD.CreateState( nil, -f73_local3, nil, nil, CoD.AnchorTypes.None )
-		f73_local11.height = f73_local1
-		f73_local11.width = f73_local4
-		f73_local11.material = RegisterMaterial( f73_local0 )
-		f73_local11.alpha = 0.75
-		local self = LUI.UIImage.new( f73_local11 )
-		self:addElement( self )
+		local f81_local10 = CoD.CreateState( nil, nil, nil, nil, CoD.AnchorTypes.All )
+		f81_local10.material = RegisterMaterial( "white" )
+		f81_local10.color = Colors.black
+		f81_local10.alpha = 0.7
+		self:addElement( LUI.UIImage.new( f81_local10 ) )
+		local f81_local11 = CoD.CreateState( nil, -f81_local3, nil, nil, CoD.AnchorTypes.None )
+		f81_local11.height = f81_local1
+		f81_local11.width = f81_local4
+		f81_local11.material = RegisterMaterial( f81_local0 )
+		f81_local11.alpha = 0.75
+		local f81_local12 = LUI.UIImage.new( f81_local11 )
+		self:addElement( f81_local12 )
 		if not Engine.IsPS4() then
-			local f73_local13 = CoD.CreateState( -35, f73_local2, nil, nil, CoD.AnchorTypes.Top )
-			f73_local13.height = 70
-			f73_local13.width = 70
-			f73_local13.material = RegisterMaterial( "h1_ui_icon_unlock_warning" )
-			self:addElement( LUI.UIImage.new( f73_local13 ) )
+			local f81_local13 = CoD.CreateState( -35, f81_local2, nil, nil, CoD.AnchorTypes.Top )
+			f81_local13.height = 70
+			f81_local13.width = 70
+			f81_local13.material = RegisterMaterial( "h1_ui_icon_unlock_warning" )
+			self:addElement( LUI.UIImage.new( f81_local13 ) )
 		end
-		local f73_local13 = CoD.CreateState( 3, f73_local1 + f73_local5, nil, nil, CoD.AnchorTypes.TopLeftRight )
-		f73_local13.font = f73_local6
-		f73_local13.height = f73_local7
-		f73_local13.textAlignment = LUI.Alignment.Center
-		local self = LUI.UIText.new( f73_local13 )
-		self:setText( f73_local8 )
-		self:addElement( self )
+		local f81_local13 = CoD.CreateState( 3, f81_local1 + f81_local5, nil, nil, CoD.AnchorTypes.TopLeftRight )
+		f81_local13.font = f81_local6
+		f81_local13.height = f81_local7
+		f81_local13.textAlignment = LUI.Alignment.Center
+		local f81_local14 = LUI.UIText.new( f81_local13 )
+		f81_local14:setText( f81_local8 )
+		f81_local12:addElement( f81_local14 )
 		if Engine.IsXB3() then
-			local self = LUI.UIElement.new( CoD.CreateState( 560, -150, -560, -100, CoD.AnchorTypes.BottomLeftRight ) )
-			self:addElement( self )
-			local f73_local16 = LUI.MenuBuilder.BuildRegisteredType( "UIGenericButton", {
+			local f81_local15 = LUI.UIElement.new( CoD.CreateState( 560, -150, -560, -100, CoD.AnchorTypes.BottomLeftRight ) )
+			self:addElement( f81_local15 )
+			local f81_local16 = LUI.MenuBuilder.BuildRegisteredType( "UIGenericButton", {
 				button_text = Engine.Localize( "@LUA_MENU_CONTINUE" ),
 				text_align_without_content = LUI.Alignment.Center
 			} )
-			f73_local16:makeFocusable()
-			self:addElement( f73_local16 )
+			f81_local16:makeFocusable()
+			f81_local15:addElement( f81_local16 )
 		end
 		self:setupFullWindowElement()
 		return self
@@ -1073,15 +1073,15 @@ function controllerremoved_popmenu()
 			popup_title = Engine.Localize( "@MENU_NOTICE" ),
 			message_text = Engine.Localize( "@PLATFORM_CONTROLLER_DISCONNECTED" ),
 			button_text = Engine.Localize( "@MENU_CONTINUE" ),
-			confirmation_action = function ( f137_arg0, f137_arg1 )
-				Engine.DismissControllerRemovedPopup( f137_arg1.controller )
-				Engine.ExecNow( "profile_toggleEnableGamepad " .. f137_arg1.controller )
+			confirmation_action = function ( f83_arg0, f83_arg1 )
+				Engine.DismissControllerRemovedPopup( f83_arg1.controller )
+				Engine.ExecNow( "profile_toggleEnableGamepad " .. f83_arg1.controller )
 				Engine.ExecNow( "updategamerprofile" )
-				f137_arg0:dispatchEventToRoot( {
+				f83_arg0:dispatchEventToRoot( {
 					name = "toggle_enable_gamepad",
 					dispatchChildren = true
 				} )
-				f137_arg0:dispatchEventToRoot( {
+				f83_arg0:dispatchEventToRoot( {
 					name = "check_switch_to_azerty"
 				} )
 			end
@@ -1091,7 +1091,7 @@ function controllerremoved_popmenu()
 end
 
 if not Engine.IsConsoleGame() then
-	function steam_overlay_required( f74_arg0, f74_arg1 )
+	function steam_overlay_required( f84_arg0, f84_arg1 )
 		return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 			popup_title = Engine.Localize( "@MENU_NOTICE" ),
 			message_text = Engine.Localize( "@PLATFORM_UI_STEAM_OVERLAY_REQUIRED" )
@@ -1099,17 +1099,17 @@ if not Engine.IsConsoleGame() then
 	end
 	
 end
-function ConfirmProfileChange( f75_arg0, f75_arg1 )
+function ConfirmProfileChange( f85_arg0, f85_arg1 )
 	DebugPrint( "Confirm profile change" )
-	Engine.ConfirmXB3UserProfileChange( f75_arg1.controller )
+	Engine.ConfirmXB3UserProfileChange( f85_arg1.controller )
 end
 
-function IgnoreProfileChange( f76_arg0, f76_arg1 )
+function IgnoreProfileChange( f86_arg0, f86_arg1 )
 	DebugPrint( "Ignore profile change" )
-	Engine.IgnoreXB3UserProfileChange( f76_arg1.controller )
+	Engine.IgnoreXB3UserProfileChange( f86_arg1.controller )
 end
 
-function user_changed_confirm_mp( f77_arg0, f77_arg1 )
+function user_changed_confirm_mp( f87_arg0, f87_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		message_text = Engine.Localize( "@MENU_PROFILE_PAIRING_CONFIRM" ),
 		popup_title = Engine.Localize( "@MENU_WARNING" ),
@@ -1121,17 +1121,17 @@ function user_changed_confirm_mp( f77_arg0, f77_arg1 )
 	} )
 end
 
-function controller_changed_confirm_mp( f78_arg0, f78_arg1 )
+function controller_changed_confirm_mp( f88_arg0, f88_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		message_text = Engine.Localize( "@PLATFORM_UI_CONTROLLER_PAIRING_CONFIRM" ),
 		popup_title = Engine.Localize( "@MENU_WARNING" ),
-		confirmation_action = function ( f14_arg0, f14_arg1 )
+		confirmation_action = function ( f89_arg0, f89_arg1 )
 			if Engine.IsXB3() then
-				DebugPrint( "controller_changed_confirm_mp received controller change to " .. f14_arg1.controller )
-				if f14_arg0.m_ownerController ~= nil then
-					Engine.ChangeController( f14_arg0.m_ownerController, f14_arg1.controller )
+				DebugPrint( "controller_changed_confirm_mp received controller change to " .. f89_arg1.controller )
+				if f89_arg0.m_ownerController ~= nil then
+					Engine.ChangeController( f89_arg0.m_ownerController, f89_arg1.controller )
 				else
-					Engine.ChangeController( f14_arg1.controller )
+					Engine.ChangeController( f89_arg1.controller )
 				end
 				Engine.ResetControllerChange()
 			end
@@ -1140,28 +1140,28 @@ function controller_changed_confirm_mp( f78_arg0, f78_arg1 )
 	} )
 end
 
-function recipe_load_failed_popup( f79_arg0, f79_arg1 )
+function recipe_load_failed_popup( f90_arg0, f90_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MPUI_RECIPE_LOAD_FAILED" )
 	} )
 end
 
-function recipe_save_failed_popup( f80_arg0, f80_arg1 )
+function recipe_save_failed_popup( f91_arg0, f91_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MPUI_RECIPE_SAVE_FAILED" )
 	} )
 end
 
-function recipe_save_failed_no_guests_popup( f81_arg0, f81_arg1 )
+function recipe_save_failed_no_guests_popup( f92_arg0, f92_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MPUI_RULES_NOGUESTSAVE" )
 	} )
 end
 
-function recipe_save_failed_no_device_popup( f82_arg0, f82_arg1 )
+function recipe_save_failed_no_device_popup( f93_arg0, f93_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MPUI_RULES_NOSAVEDEVICE" )
@@ -1169,47 +1169,47 @@ function recipe_save_failed_no_device_popup( f82_arg0, f82_arg1 )
 end
 
 function ChooseLanguageOptions()
-	local f83_local0 = {}
-	local f83_local1 = Engine.GetSupportedLanguages()
-	for f83_local2 = 1, #f83_local1, 1 do
-		f83_local0[#f83_local0 + 1] = {
+	local f94_local0 = {}
+	local f94_local1 = Engine.GetSupportedLanguages()
+	for f94_local2 = 1, #f94_local1, 1 do
+		f94_local0[#f94_local0 + 1] = {
 			type = "UIGenericButton",
-			id = "language_button_" .. #f83_local0,
-			listDefaultFocus = f83_local1[f83_local2].id == Engine.GetCurrentLanguage(),
+			id = "language_button_" .. #f94_local0,
+			listDefaultFocus = f94_local1[f94_local2].id == Engine.GetCurrentLanguage(),
 			properties = {
 				style = GenericButtonSettings.Styles.GlassButton,
 				substyle = GenericButtonSettings.Styles.GlassButton.SubStyles.Popup,
-				button_text = f83_local1[f83_local2].name,
-				language = f83_local1[f83_local2].id,
-				button_action_func = function ( f18_arg0, f18_arg1 )
-					if f18_arg0.properties.language ~= Engine.GetCurrentLanguage() then
-						LUI.FlowManager.RequestAddMenu( f18_arg0, "choose_language_confirm_popup", false, f18_arg1.controller, true, {
-							language = f18_arg0.properties.language
+				button_text = f94_local1[f94_local2].name,
+				language = f94_local1[f94_local2].id,
+				button_action_func = function ( f95_arg0, f95_arg1 )
+					if f95_arg0.properties.language ~= Engine.GetCurrentLanguage() then
+						LUI.FlowManager.RequestAddMenu( f95_arg0, "choose_language_confirm_popup", false, f95_arg1.controller, true, {
+							language = f95_arg0.properties.language
 						} )
 					else
-						Engine.SetLanguage( f18_arg0.properties.language )
-						LUI.FlowManager.RequestLeaveMenu( f18_arg0 )
-						local f18_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f18_arg0 )
-						if f18_local0 and f18_local0.callback ~= nil then
-							f18_local0.callback()
+						Engine.SetLanguage( f95_arg0.properties.language )
+						LUI.FlowManager.RequestLeaveMenu( f95_arg0 )
+						local f95_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f95_arg0 )
+						if f95_local0 and f95_local0.callback ~= nil then
+							f95_local0.callback()
 						end
 					end
 				end
 			}
 		}
-		if f83_local1[f83_local2].name == "Arabic" then
-			local f83_local5 = f83_local0[#f83_local0]
-			local f83_local6 = f83_local5.properties.substyle.height
-			local f83_local7 = RegisterMaterial( "ui_language_arabic" )
-			local f83_local8, f83_local9 = GetMaterialDimensions( f83_local7 )
-			f83_local8 = f83_local6 * f83_local8 / f83_local9
-			f83_local9 = f83_local6
-			local f83_local10 = RegisterMaterial( "ui_language_arabic_focused" )
-			local f83_local11, f83_local12 = GetMaterialDimensions( f83_local10 )
-			f83_local11 = f83_local6 * f83_local11 / f83_local12
-			f83_local12 = f83_local6
-			f83_local5.properties.button_text = ""
-			f83_local5.children = {
+		if f94_local1[f94_local2].name == "Arabic" then
+			local f94_local5 = f94_local0[#f94_local0]
+			local f94_local6 = f94_local5.properties.substyle.height
+			local f94_local7 = RegisterMaterial( "ui_language_arabic" )
+			local f94_local8, f94_local9 = GetMaterialDimensions( f94_local7 )
+			f94_local8 = f94_local6 * f94_local8 / f94_local9
+			f94_local9 = f94_local6
+			local f94_local10 = RegisterMaterial( "ui_language_arabic_focused" )
+			local f94_local11, f94_local12 = GetMaterialDimensions( f94_local10 )
+			f94_local11 = f94_local6 * f94_local11 / f94_local12
+			f94_local12 = f94_local6
+			f94_local5.properties.button_text = ""
+			f94_local5.children = {
 				{
 					type = "UIImage",
 					states = {
@@ -1218,33 +1218,33 @@ function ChooseLanguageOptions()
 							topAnchor = false,
 							rightAnchor = false,
 							bottomAnchor = false,
-							material = f83_local7,
-							width = f83_local8,
-							height = f83_local9
+							material = f94_local7,
+							width = f94_local8,
+							height = f94_local9
 						},
 						focused = {
 							leftAnchor = false,
 							topAnchor = false,
 							rightAnchor = false,
 							bottomAnchor = false,
-							material = f83_local10,
-							width = f83_local11,
-							height = f83_local12
+							material = f94_local10,
+							width = f94_local11,
+							height = f94_local12
 						}
 					},
 					handlers = {
-						gain_focus = function ( f19_arg0 )
-							f19_arg0:animateToState( "focused" )
+						gain_focus = function ( f96_arg0 )
+							f96_arg0:animateToState( "focused" )
 						end,
-						lose_focus = function ( f20_arg0 )
-							f20_arg0:animateToState( "default" )
+						lose_focus = function ( f97_arg0 )
+							f97_arg0:animateToState( "default" )
 						end
 					}
 				}
 			}
 		end
 	end
-	return f83_local0
+	return f94_local0
 end
 
 function choose_language_popup()
@@ -1256,16 +1256,16 @@ function choose_language_popup()
 			popup_childfeeder = ChooseLanguageOptions
 		},
 		handlers = {
-			menu_create = function ( f32_arg0 )
+			menu_create = function ( f99_arg0 )
 				if Engine.GetCurrentLanguage() ~= CoD.Language.Arabic then
-					local f32_local0 = Engine.GetSupportedLanguages()
-					for f32_local1 = 1, #f32_local0, 1 do
-						if f32_local0[f32_local1].name == "Arabic" then
-							local f32_local4 = f32_arg0:getFirstDescendentById( "generic_menu_titlebar_background_id" )
-							local f32_local5 = CoD.TextSettings.TitleFontMediumLarge.Height
-							local f32_local6 = RegisterMaterial( "ui_choose_language_arabic" )
-							local f32_local7, f32_local8 = GetMaterialDimensions( f32_local6 )
-							LUI.MenuBuilder.BuildAddChild( f32_local4, {
+					local f99_local0 = Engine.GetSupportedLanguages()
+					for f99_local1 = 1, #f99_local0, 1 do
+						if f99_local0[f99_local1].name == "Arabic" then
+							local f99_local4 = f99_arg0:getFirstDescendentById( "generic_menu_titlebar_background_id" )
+							local f99_local5 = CoD.TextSettings.TitleFontMediumLarge.Height
+							local f99_local6 = RegisterMaterial( "ui_choose_language_arabic" )
+							local f99_local7, f99_local8 = GetMaterialDimensions( f99_local6 )
+							LUI.MenuBuilder.BuildAddChild( f99_local4, {
 								type = "UIImage",
 								states = {
 									default = {
@@ -1273,9 +1273,9 @@ function choose_language_popup()
 										topAnchor = true,
 										rightAnchor = true,
 										bottomAnchor = false,
-										material = f32_local6,
-										width = f32_local5 * f32_local7 / f32_local8,
-										height = f32_local5
+										material = f99_local6,
+										width = f99_local5 * f99_local7 / f99_local8,
+										height = f99_local5
 									}
 								}
 							} )
@@ -1289,45 +1289,45 @@ function choose_language_popup()
 	}
 end
 
-local f0_local31 = function ( f85_arg0, f85_arg1 )
+local f0_local31 = function ( f100_arg0, f100_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_confirmation_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@LUA_MENU_CONFIRM_LANGUAGE" ),
 		button_text = Engine.Localize( "@MENU_CONTINUE" ),
-		confirmation_action = function ( f45_arg0, f45_arg1 )
-			local f45_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f45_arg0 )
-			Engine.SetLanguage( f45_local0.language )
+		confirmation_action = function ( f101_arg0, f101_arg1 )
+			local f101_local0 = LUI.FlowManager.GetMenuScopedDataFromElement( f101_arg0 )
+			Engine.SetLanguage( f101_local0.language )
 		end
 		
 	} )
 end
 
-local f0_local32 = function ( f86_arg0, f86_arg1 )
+local f0_local32 = function ( f102_arg0, f102_arg1 )
 	Engine.ExecNow( "profile_toggleEnableGamepad 1" )
 	Engine.ExecNow( "updategamerprofile" )
-	f86_arg0:dispatchEventToRoot( {
+	f102_arg0:dispatchEventToRoot( {
 		name = "toggle_enable_gamepad",
 		dispatchChildren = true
 	} )
-	f86_arg0:dispatchEventToRoot( {
+	f102_arg0:dispatchEventToRoot( {
 		name = "check_switch_to_azerty"
 	} )
 end
 
-local f0_local33 = function ( f87_arg0, f87_arg1 )
+local f0_local33 = function ( f103_arg0, f103_arg1 )
 	Engine.ExecNow( "profile_toggleEnableGamepad 0" )
 	Engine.ExecNow( "updategamerprofile" )
 	LUI.FlowManager.tryAddMouseCursor( Engine.GetLuiRoot() )
-	f87_arg0:dispatchEventToRoot( {
+	f103_arg0:dispatchEventToRoot( {
 		name = "toggle_enable_gamepad",
 		dispatchChildren = true
 	} )
-	f87_arg0:dispatchEventToRoot( {
+	f103_arg0:dispatchEventToRoot( {
 		name = "check_switch_to_azerty"
 	} )
 end
 
-local f0_local34 = function ( f88_arg0, f88_arg1 )
+local f0_local34 = function ( f104_arg0, f104_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MENU_NO_CONTROLLER_INITIAL" ),
@@ -1336,7 +1336,7 @@ local f0_local34 = function ( f88_arg0, f88_arg1 )
 	} )
 end
 
-local f0_local35 = function ( f89_arg0, f89_arg1 )
+local f0_local35 = function ( f105_arg0, f105_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MENU_CONTROLLER_INITIAL" ),
@@ -1360,7 +1360,7 @@ local f0_local38 = function ()
 	Engine.SetDvarBool( "cg_IsUsingAZERTY", false )
 end
 
-local f0_local39 = function ( f93_arg0, f93_arg1 )
+local f0_local39 = function ( f109_arg0, f109_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@LUA_MENU_KEYBOARD_LAYOUT" ),
 		message_text = Engine.Localize( "@LUA_MENU_KEYBOARD_LAYOUT_DESC1" ) .. "\n\n" .. Engine.Localize( "@LUA_MENU_KEYBOARD_LAYOUT_DESC2" ),
@@ -1372,7 +1372,7 @@ local f0_local39 = function ( f93_arg0, f93_arg1 )
 	} )
 end
 
-local f0_local40 = function ( f94_arg0, f94_arg1 )
+local f0_local40 = function ( f110_arg0, f110_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@LUA_MENU_KEYBOARD_LAYOUT" ),
 		message_text = Engine.Localize( "@LUA_MENU_KEYBOARD_LAYOUT_DESC1" ),
@@ -1384,12 +1384,12 @@ local f0_local40 = function ( f94_arg0, f94_arg1 )
 	} )
 end
 
-function invertAxisAction( f95_arg0, f95_arg1 )
+function invertAxisAction( f111_arg0, f111_arg1 )
 	if Engine.IsGamepadEnabled() == true then
 		if Engine.GetProfileData( "invertedPitch" ) then
-			Engine.ExecNow( "profile_toggleInvertedPitch 0", f95_arg1.controller )
+			Engine.ExecNow( "profile_toggleInvertedPitch 0", f111_arg1.controller )
 		else
-			Engine.ExecNow( "profile_toggleInvertedPitch 1", f95_arg1.controller )
+			Engine.ExecNow( "profile_toggleInvertedPitch 1", f111_arg1.controller )
 		end
 		Engine.Exec( "updategamerprofile" )
 	elseif Engine.GetDvarBool( "ui_mousePitch" ) then
@@ -1399,14 +1399,14 @@ function invertAxisAction( f95_arg0, f95_arg1 )
 		Engine.SetDvarBool( "ui_mousePitch", true )
 		Engine.SetDvarFloat( "m_pitch", -MousePitchTable.PitchFloat )
 	end
-	Engine.PopupClosed( f95_arg1.controller, "try_invert" )
+	Engine.PopupClosed( f111_arg1.controller, "try_invert" )
 end
 
-function invertAxisCancelAction( f96_arg0, f96_arg1 )
-	Engine.PopupClosed( f96_arg1.controller, "accept_normal" )
+function invertAxisCancelAction( f112_arg0, f112_arg1 )
+	Engine.PopupClosed( f112_arg1.controller, "accept_normal" )
 end
 
-function invert_axis_popup( f97_arg0, f97_arg1 )
+function invert_axis_popup( f113_arg0, f113_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@TRAINER_AXIS_OPTION_MENU1_ALL" ),
@@ -1417,7 +1417,7 @@ function invert_axis_popup( f97_arg0, f97_arg1 )
 	} )
 end
 
-function invert_axis_confirm_popup( f98_arg0, f98_arg1 )
+function invert_axis_confirm_popup( f114_arg0, f114_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@TRAINER_AXIS_OPTION_MENU2_ALL" ),
@@ -1428,71 +1428,71 @@ function invert_axis_confirm_popup( f98_arg0, f98_arg1 )
 	} )
 end
 
-local f0_local41 = function ( f99_arg0, f99_arg1 )
-	f99_arg0:setText( f99_arg1.message_text )
+local f0_local41 = function ( f115_arg0, f115_arg1 )
+	f115_arg0:setText( f115_arg1.message_text )
 end
 
-local f0_local42 = function ( f100_arg0, f100_arg1 )
+local f0_local42 = function ( f116_arg0, f116_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
-		message_text = Engine.Localize( f100_arg1.confirmationString ),
-		yes_action = f100_arg1.acceptFunc,
+		message_text = Engine.Localize( f116_arg1.confirmationString ),
+		yes_action = f116_arg1.acceptFunc,
 		yes_text = Engine.Localize( "@MENU_YES" ),
-		no_action = function ( f49_arg0, f49_arg1 )
-			LUI.FlowManager.RequestLeaveMenu( f49_arg0 )
+		no_action = function ( f117_arg0, f117_arg1 )
+			LUI.FlowManager.RequestLeaveMenu( f117_arg0 )
 		end
 		,
 		no_text = Engine.Localize( "@MENU_NO" )
 	} )
 end
 
-local f0_local43 = function ( f101_arg0, f101_arg1 )
-	return f0_local42( f101_arg0, f101_arg1 )
+local f0_local43 = function ( f118_arg0, f118_arg1 )
+	return f0_local42( f118_arg0, f118_arg1 )
 end
 
-local f0_local44 = function ( f102_arg0, f102_arg1 )
-	LUI.FlowManager.RequestLeaveMenu( f102_arg0 )
-	Engine.PopupClosed( f102_arg1.controller, "tryagain" )
+local f0_local44 = function ( f119_arg0, f119_arg1 )
+	LUI.FlowManager.RequestLeaveMenu( f119_arg0 )
+	Engine.PopupClosed( f119_arg1.controller, "tryagain" )
 end
 
-function difficulty_childfeeder( f103_arg0 )
-	local f103_local0 = {}
+function difficulty_childfeeder( f120_arg0 )
+	local f120_local0 = {}
 	local self = LUI.UIElement.new()
 	self.type = "difficulty_selection_menu_detailed"
 	self.id = self.type .. "_container"
-	local f103_local2 = nil
-	if f103_arg0.subContainer then
+	local f120_local2 = nil
+	if f120_arg0.subContainer then
 		local subContainer = LUI.UIElement.new( CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
 		subContainer.id = self.type .. "_sub_container"
 		self:addElement( subContainer )
 		self.subContainer = subContainer
 		
-		f103_local2 = subContainer
+		f120_local2 = subContainer
 	else
-		f103_local2 = self
+		f120_local2 = self
 	end
-	local self = nil
-	if f103_arg0.scrollInSplitScreen and GameX.IsSplitscreen() then
+	local f120_local4 = nil
+	if f120_arg0.scrollInSplitScreen and GameX.IsSplitscreen() then
 		listState.bottom = listTop + 265
-		self = LUI.UIScrollingVerticalList.new( listState, nil, {
+		f120_local4 = LUI.UIScrollingVerticalList.new( listState, nil, {
 			use_arrows = true,
 			sendScrollEvents = true,
 			autoScroll = LUI.AutoScroll.AnchoredEdges,
 			autoScrollTime = 200
 		} )
-		self.id = self.type .. "_list"
-		f103_local2:addElement( self )
+		f120_local4.id = self.type .. "_list"
+		f120_local2:addElement( f120_local4 )
 	else
-		self = LUI.UIVerticalList.build( nil, {
+		f120_local4 = LUI.UIVerticalList.build( nil, {
 			defaultState = listState,
-			noWrap = f103_arg0.listNoWrap
+			noWrap = f120_arg0.listNoWrap
 		} )
-		self.id = self.type .. "_list"
-		f103_local2:addElement( self )
+		f120_local4.id = self.type .. "_list"
+		f120_local2:addElement( f120_local4 )
 	end
-	self.buttonCount = 0
-	self.list = self
-	f103_local0[#f103_local0 + 1] = {
+	f120_local4.buttonCount = 0
+	self.list = f120_local4
+	f120_local0[#f120_local0 + 1] = {
 		type = "UIElement",
 		id = "difficulty_info_text_wrapper_id",
 		states = {
@@ -1523,7 +1523,7 @@ function difficulty_childfeeder( f103_arg0 )
 						right = 0,
 						font = CoD.TextSettings.PopupFont.Font,
 						color = Colors.h1.light_grey,
-						alignment = LUI.AdjustAlignmentForLanguage( f103_arg0.message_text_alignment )
+						alignment = LUI.AdjustAlignmentForLanguage( f120_arg0.message_text_alignment )
 					}
 				},
 				handlers = {
@@ -1532,85 +1532,85 @@ function difficulty_childfeeder( f103_arg0 )
 			}
 		}
 	}
-	for f103_local9, f103_local10 in pairs( CoD.DifficultyList ) do
-		if not f103_arg0.specialops or f103_local9 ~= 1 then
-			local f103_local7 = Engine.GetDvarInt( "g_gameskill" ) + 1
-			if f103_arg0.recommendDifficulty then
-				f103_local7 = Engine.GetDvarInt( "recommended_gameskill" ) + 1
+	for f120_local9, f120_local10 in pairs( CoD.DifficultyList ) do
+		if not f120_arg0.specialops or f120_local9 ~= 1 then
+			local f120_local7 = Engine.GetDvarInt( "g_gameskill" ) + 1
+			if f120_arg0.recommendDifficulty then
+				f120_local7 = Engine.GetDvarInt( "recommended_gameskill" ) + 1
 			end
-			local f103_local8 = f103_local10.text
-			if f103_local7 == f103_local9 and f103_arg0.recommendDifficulty then
-				f103_local8 = f103_local10.textRecommended
+			local f120_local8 = f120_local10.text
+			if f120_local7 == f120_local9 and f120_arg0.recommendDifficulty then
+				f120_local8 = f120_local10.textRecommended
 			end
-			f103_local0[#f103_local0 + 1] = {
+			f120_local0[#f120_local0 + 1] = {
 				type = "UIGenericButton",
-				id = "difficulty_button_" .. f103_local9 .. "_id",
-				listDefaultFocus = f103_local9 == f103_local7,
+				id = "difficulty_button_" .. f120_local9 .. "_id",
+				listDefaultFocus = f120_local9 == f120_local7,
 				audio = {
 					button_over = CoD.SFX.SubMenuMouseOver
 				},
 				properties = {
-					button_text = f103_local8,
-					button_action_func = function ( f15_arg0, f15_arg1 )
-						local f15_local0 = function ( f13_arg0, f13_arg1 )
-							if not f103_arg0.fakeDifficultySelection then
-								CoD.ChangeDifficulty( f103_local10.value )
+					button_text = f120_local8,
+					button_action_func = function ( f121_arg0, f121_arg1 )
+						local f121_local0 = function ( f122_arg0, f122_arg1 )
+							if not f120_arg0.fakeDifficultySelection then
+								CoD.ChangeDifficulty( f120_local10.value )
 							end
-							if f103_arg0.acceptFunc then
-								f103_arg0.acceptFunc( f13_arg0, f13_arg1 )
+							if f120_arg0.acceptFunc then
+								f120_arg0.acceptFunc( f122_arg0, f122_arg1 )
 							else
 								LUI.FlowManager.RequestLeaveMenuByName( "difficulty_selection_menu" )
-								Engine.PopupClosed( f13_arg1.controller, "continue" )
+								Engine.PopupClosed( f122_arg1.controller, "continue" )
 							end
-							if f103_arg0.extraAcceptFunc then
-								f103_arg0.extraAcceptFunc( f13_arg0, f13_arg1, f103_local10.value )
+							if f120_arg0.extraAcceptFunc then
+								f120_arg0.extraAcceptFunc( f122_arg0, f122_arg1, f120_local10.value )
 							end
 						end
 						
-						if f103_arg0.recommendDifficulty and (f103_local10.value == 3 or f103_local7 - 1 < f103_local10.value) then
-							local f15_local1 = function ( f14_arg0, f14_arg1 )
-								LUI.FlowManager.RequestAddMenu( f14_arg0, "difficultyConfirmationVeteran", false, f14_arg1.controller, false, {
-									acceptFunc = f15_local0,
+						if f120_arg0.recommendDifficulty and (f120_local10.value == 3 or f120_local7 - 1 < f120_local10.value) then
+							local f121_local1 = function ( f123_arg0, f123_arg1 )
+								LUI.FlowManager.RequestAddMenu( f123_arg0, "difficultyConfirmationVeteran", false, f123_arg1.controller, false, {
+									acceptFunc = f121_local0,
 									confirmationString = Engine.Localize( "@MENU_SP_ARE_YOU_ABSOLUTELY_SURE" )
 								} )
 							end
 							
-							local f15_local2 = ""
-							if f103_local10.value == 3 then
-								f15_local2 = Engine.Localize( "@MENU_SP_VETERAN_IS_EXTREMELY_DIFFICULT" )
-							elseif f103_local10.value == 2 then
-								f15_local2 = Engine.Localize( "@MENU_SP_NOT_RECOMMENDED_HARDENED" )
-							elseif f103_local10.value == 1 then
-								f15_local2 = Engine.Localize( "@MENU_SP_NOT_RECOMMENDED_REGULAR" )
+							local f121_local2 = ""
+							if f120_local10.value == 3 then
+								f121_local2 = Engine.Localize( "@MENU_SP_VETERAN_IS_EXTREMELY_DIFFICULT" )
+							elseif f120_local10.value == 2 then
+								f121_local2 = Engine.Localize( "@MENU_SP_NOT_RECOMMENDED_HARDENED" )
+							elseif f120_local10.value == 1 then
+								f121_local2 = Engine.Localize( "@MENU_SP_NOT_RECOMMENDED_REGULAR" )
 							end
-							local f15_local3 = f15_local0
-							if f103_local10.value == 3 then
-								f15_local3 = f15_local1
+							local f121_local3 = f121_local0
+							if f120_local10.value == 3 then
+								f121_local3 = f121_local1
 							end
-							LUI.FlowManager.RequestAddMenu( f15_arg0, "difficultyConfirmation", false, f15_arg1.controller, false, {
-								acceptFunc = f15_local3,
-								confirmationString = f15_local2
+							LUI.FlowManager.RequestAddMenu( f121_arg0, "difficultyConfirmation", false, f121_arg1.controller, false, {
+								acceptFunc = f121_local3,
+								confirmationString = f121_local2
 							} )
 						else
-							f15_local0( f15_arg0, f15_arg1 )
+							f121_local0( f121_arg0, f121_arg1 )
 						end
 					end,
 					text_align_without_content = LUI.Alignment.Center,
 					fade_in = GenericPopupAnimationSettings.Buttons.DelayIn,
 					parent_popup = nil,
-					button_over_func = function ( f16_arg0, f16_arg1 )
-						f16_arg0:dispatchEventToRoot( {
+					button_over_func = function ( f124_arg0, f124_arg1 )
+						f124_arg0:dispatchEventToRoot( {
 							name = "update_info_text",
-							message_text = f103_local10.description
+							message_text = f120_local10.description
 						} )
 					end
 				}
 			}
 		end
 	end
-	if f103_arg0.tryAgainAvailable then
+	if f120_arg0.tryAgainAvailable then
 		subContainer = 10
-		f103_local0[#f103_local0 + 1] = {
+		f120_local0[#f120_local0 + 1] = {
 			type = "UIElement",
 			id = "difficulty_try_again_separator_wrapper_id",
 			states = {
@@ -1645,7 +1645,7 @@ function difficulty_childfeeder( f103_arg0 )
 				}
 			}
 		}
-		f103_local0[#f103_local0 + 1] = {
+		f120_local0[#f120_local0 + 1] = {
 			type = "UIGenericButton",
 			id = "difficulty_try_again_button_id",
 			audio = {
@@ -1657,8 +1657,8 @@ function difficulty_childfeeder( f103_arg0 )
 				text_align_without_content = LUI.Alignment.Center,
 				fade_in = GenericPopupAnimationSettings.Buttons.DelayIn,
 				parent_popup = nil,
-				button_over_func = function ( f17_arg0, f17_arg1 )
-					f17_arg0:dispatchEventToRoot( {
+				button_over_func = function ( f125_arg0, f125_arg1 )
+					f125_arg0:dispatchEventToRoot( {
 						name = "update_info_text",
 						message_text = Engine.Localize( "MENU_TRY_AGAIN_DESC" )
 					} )
@@ -1666,78 +1666,78 @@ function difficulty_childfeeder( f103_arg0 )
 			}
 		}
 	end
-	return f103_local0
+	return f120_local0
 end
 
-function difficulty_selection_menu( f104_arg0, f104_arg1 )
-	if not f104_arg1 then
-		f104_arg1 = {}
+function difficulty_selection_menu( f126_arg0, f126_arg1 )
+	if not f126_arg1 then
+		f126_arg1 = {}
 	end
-	local f104_local0 = Engine.GetDvarInt( "recommended_gameskill" )
-	if f104_local0 ~= nil and f104_local0 >= 0 then
-		f104_arg1.canBackOut = false
-		f104_arg1.recommendDifficulty = true
-		f104_arg1.tryAgainAvailable = true
+	local f126_local0 = Engine.GetDvarInt( "recommended_gameskill" )
+	if f126_local0 ~= nil and f126_local0 >= 0 then
+		f126_arg1.canBackOut = false
+		f126_arg1.recommendDifficulty = true
+		f126_arg1.tryAgainAvailable = true
 	end
-	f104_arg1.message_text_alignment = LUI.Alignment.Center
-	f104_arg1.popup_title = Engine.Localize( "MENU_SELECT_DIFFICULTY" )
-	f104_arg1.message_text = Engine.Localize( "MENU_WARNING_CHECKPOINT_RESET2" )
-	f104_arg1.message_text_alignment = LUI.Alignment.Center
-	f104_arg1.padding_top = 25
-	f104_arg1.default_focus_index = 2
-	f104_arg1.popup_childfeeder = difficulty_childfeeder
-	local f104_local1 = f104_arg1.popup_list_spacing
-	if not f104_local1 then
-		f104_local1 = H1MenuDims.spacing
+	f126_arg1.message_text_alignment = LUI.Alignment.Center
+	f126_arg1.popup_title = Engine.Localize( "MENU_SELECT_DIFFICULTY" )
+	f126_arg1.message_text = Engine.Localize( "MENU_WARNING_CHECKPOINT_RESET2" )
+	f126_arg1.message_text_alignment = LUI.Alignment.Center
+	f126_arg1.padding_top = 25
+	f126_arg1.default_focus_index = 2
+	f126_arg1.popup_childfeeder = difficulty_childfeeder
+	local f126_local1 = f126_arg1.popup_list_spacing
+	if not f126_local1 then
+		f126_local1 = H1MenuDims.spacing
 	end
-	f104_arg1.popup_list_spacing = f104_local1
-	if f104_arg1.canBackOut ~= nil then
-		f104_local1 = f104_arg1.canBackOut
+	f126_arg1.popup_list_spacing = f126_local1
+	if f126_arg1.canBackOut ~= nil then
+		f126_local1 = f126_arg1.canBackOut
 	else
-		f104_local1 = true
+		f126_local1 = true
 	end
-	f104_arg1.cancel_will_close = f104_local1
-	f104_local1 = LUI.MenuBuilder.BuildRegisteredType( "generic_selectionList_popup", f104_arg1 )
-	f104_local1:registerAnimationState( "default", CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
-	f104_local1:registerEventHandler( "popup_back", function ( element, event )
-		if f104_arg1.tryAgainAvailable then
-			local f18_local0 = element:getFirstDescendentById( "generic_selectionList_content_id" )
-			local f18_local1 = f18_local0:getFirstChild()
-			while f18_local1 ~= nil do
-				if f18_local1.id == "difficulty_try_again_button_id" then
-					f18_local1:processEvent( {
+	f126_arg1.cancel_will_close = f126_local1
+	f126_local1 = LUI.MenuBuilder.BuildRegisteredType( "generic_selectionList_popup", f126_arg1 )
+	f126_local1:registerAnimationState( "default", CoD.CreateState( 0, 0, 0, 0, CoD.AnchorTypes.All ) )
+	f126_local1:registerEventHandler( "popup_back", function ( element, event )
+		if f126_arg1.tryAgainAvailable then
+			local f127_local0 = element:getFirstDescendentById( "generic_selectionList_content_id" )
+			local f127_local1 = f127_local0:getFirstChild()
+			while f127_local1 ~= nil do
+				if f127_local1.id == "difficulty_try_again_button_id" then
+					f127_local1:processEvent( {
 						name = "gain_focus"
 					} )
 				else
-					f18_local1:processEvent( {
+					f127_local1:processEvent( {
 						name = "lose_focus"
 					} )
 				end
-				f18_local1 = f18_local1:getNextSibling()
+				f127_local1 = f127_local1:getNextSibling()
 			end
 		end
 	end )
-	f104_local1:registerEventHandler( "menu_create", function ( element, event )
+	f126_local1:registerEventHandler( "menu_create", function ( element, event )
 		element:clearSavedState()
 	end )
-	return f104_local1
+	return f126_local1
 end
 
-function campaignCompletedPopupResponseQuit( f105_arg0, f105_arg1 )
+function campaignCompletedPopupResponseQuit( f129_arg0, f129_arg1 )
 	Engine.SetDvarBool( "profileMenuOption_hasBeenNotifiedCampaignCompleted", true )
 	Engine.ExecNow( "profile_menuDvarsFinish" )
 	Engine.Exec( "updategamerprofile" )
-	Engine.PopupClosed( f105_arg1.controller, "quit" )
+	Engine.PopupClosed( f129_arg1.controller, "quit" )
 end
 
-function campaignCompletedPopupResponseNo( f106_arg0, f106_arg1 )
+function campaignCompletedPopupResponseNo( f130_arg0, f130_arg1 )
 	Engine.SetDvarBool( "profileMenuOption_hasBeenNotifiedCampaignCompleted", true )
 	Engine.ExecNow( "profile_menuDvarsFinish" )
 	Engine.Exec( "updategamerprofile" )
-	Engine.PopupClosed( f106_arg1.controller, "no" )
+	Engine.PopupClosed( f130_arg1.controller, "no" )
 end
 
-function campaign_completed_popup( f107_arg0, f107_arg1 )
+function campaign_completed_popup( f131_arg0, f131_arg1 )
 	Engine.ExecNow( "profile_menuDvarsSetup" )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_CAMPAIGN_ARCADE_CHEAT_UNLOCKED" ),
@@ -1749,41 +1749,41 @@ function campaign_completed_popup( f107_arg0, f107_arg1 )
 	} )
 end
 
-function disturbingContentMainMenuYesResponse( f108_arg0, f108_arg1 )
+function disturbingContentMainMenuYesResponse( f132_arg0, f132_arg1 )
 	Engine.Exec( "profile_SetHasEverPlayed_SP; profile_toggleCanSkipOffensiveMissions 1; updategamerprofile" )
 end
 
-function disturbingContentMainMenuNoResponse( f109_arg0, f109_arg1 )
+function disturbingContentMainMenuNoResponse( f133_arg0, f133_arg1 )
 	Engine.Exec( "profile_SetHasEverPlayed_SP; profile_toggleCanSkipOffensiveMissions 0; updategamerprofile" )
 end
 
-function disturbingContentMainMenuResponse( f110_arg0, f110_arg1, f110_arg2, f110_arg3 )
-	local f110_local0 = nil
-	if f110_arg2 then
-		f110_local0 = disturbingContentMainMenuYesResponse
+function disturbingContentMainMenuResponse( f134_arg0, f134_arg1, f134_arg2, f134_arg3 )
+	local f134_local0 = nil
+	if f134_arg2 then
+		f134_local0 = disturbingContentMainMenuYesResponse
 	else
-		f110_local0 = disturbingContentMainMenuNoResponse
+		f134_local0 = disturbingContentMainMenuNoResponse
 	end
-	if f110_arg3 then
-		f110_arg3( f110_arg0, f110_arg1, f110_local0 )
+	if f134_arg3 then
+		f134_arg3( f134_arg0, f134_arg1, f134_local0 )
 	else
-		f110_local0( f110_arg0, f110_arg1 )
+		f134_local0( f134_arg0, f134_arg1 )
 	end
 end
 
-function disturbing_content_main_menu_popup( f111_arg0, f111_arg1 )
+function disturbing_content_main_menu_popup( f135_arg0, f135_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_SP_OFFENSIVE_TITLE" ),
 		message_text = Engine.Localize( "@MENU_SP_OFFENSIVE_SKIP_2" ) .. "\n\n" .. Engine.Localize( "@PLATFORM_OFFENSIVE_NO_PENALTY" ),
 		yes_text = Engine.Localize( "@MENU_SP_OFFENSIVE_SKIP_YES_ASK_LATER" ),
-		yes_action = function ( f22_arg0, f22_arg1 )
-			disturbingContentMainMenuResponse( f22_arg0, f22_arg1, true, f111_arg1.done_action )
+		yes_action = function ( f136_arg0, f136_arg1 )
+			disturbingContentMainMenuResponse( f136_arg0, f136_arg1, true, f135_arg1.done_action )
 		end
 		,
 		no_text = Engine.Localize( "@MENU_SP_OFFENSIVE_SKIP_NO_WONT_GET_OFFENDED" ),
-		no_action = function ( f23_arg0, f23_arg1 )
-			LUI.FlowManager.RequestAddMenu( f23_arg0, "disturbing_content_main_menu_confirm_popup", false, f23_arg1.controller, true, {
-				done_action = f111_arg1.done_action
+		no_action = function ( f137_arg0, f137_arg1 )
+			LUI.FlowManager.RequestAddMenu( f137_arg0, "disturbing_content_main_menu_confirm_popup", false, f137_arg1.controller, true, {
+				done_action = f135_arg1.done_action
 			} )
 		end
 		,
@@ -1793,19 +1793,19 @@ function disturbing_content_main_menu_popup( f111_arg0, f111_arg1 )
 	} )
 end
 
-function disturbing_content_main_menu_confirm_popup( f112_arg0, f112_arg1 )
+function disturbing_content_main_menu_confirm_popup( f138_arg0, f138_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_SP_OFFENSIVE_TITLE" ),
 		message_text = Engine.Localize( "@MENU_SP_OFFENSIVE_SKIP_3" ) .. "\n\n" .. Engine.Localize( "@MENU_SP_OFFENSIVE_SKIP_4" ),
 		yes_text = Engine.Localize( "@MENU_SP_OFFENSIVE_SKIP_YES_NEVER_ASK" ),
-		yes_action = function ( f24_arg0, f24_arg1 )
-			disturbingContentMainMenuResponse( f24_arg0, f24_arg1, false, f112_arg1.done_action )
+		yes_action = function ( f139_arg0, f139_arg1 )
+			disturbingContentMainMenuResponse( f139_arg0, f139_arg1, false, f138_arg1.done_action )
 		end
 		,
 		no_text = Engine.Localize( "@MENU_BACK" ),
-		no_action = function ( f25_arg0, f25_arg1 )
-			LUI.FlowManager.RequestAddMenu( f25_arg0, "disturbing_content_main_menu_popup", false, f25_arg1.controller, true, {
-				done_action = f112_arg1.done_action
+		no_action = function ( f140_arg0, f140_arg1 )
+			LUI.FlowManager.RequestAddMenu( f140_arg0, "disturbing_content_main_menu_popup", false, f140_arg1.controller, true, {
+				done_action = f138_arg1.done_action
 			} )
 		end
 		,
@@ -1815,17 +1815,17 @@ function disturbing_content_main_menu_confirm_popup( f112_arg0, f112_arg1 )
 	} )
 end
 
-function disturbingContentInGameResponseYes( f113_arg0, f113_arg1 )
-	LUI.FlowManager.RequestAddMenu( f113_arg0, "disturbing_content_in_game_confirm_popup", false, f113_arg1.controller, true, nil )
+function disturbingContentInGameResponseYes( f141_arg0, f141_arg1 )
+	LUI.FlowManager.RequestAddMenu( f141_arg0, "disturbing_content_in_game_confirm_popup", false, f141_arg1.controller, true, nil )
 end
 
-function disturbingContentInGameResponseNo( f114_arg0, f114_arg1 )
+function disturbingContentInGameResponseNo( f142_arg0, f142_arg1 )
 	Engine.Exec( "set ui_skip_graphic_material 0" )
 	Engine.Exec( "set cl_paused 0" )
-	Engine.PopupClosed( f114_arg1.controller, "" )
+	Engine.PopupClosed( f142_arg1.controller, "" )
 end
 
-function disturbing_content_in_game_popup( f115_arg0, f115_arg1 )
+function disturbing_content_in_game_popup( f143_arg0, f143_arg1 )
 	Engine.Exec( "set cl_paused 1" )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_SP_OFFENSIVE_TITLE" ),
@@ -1840,17 +1840,17 @@ function disturbing_content_in_game_popup( f115_arg0, f115_arg1 )
 	} )
 end
 
-function disturbingContentInGameConfirmResponseYes( f116_arg0, f116_arg1 )
+function disturbingContentInGameConfirmResponseYes( f144_arg0, f144_arg1 )
 	Engine.Exec( "set ui_skip_graphic_material 1" )
 	Engine.Exec( "set cl_paused 0" )
-	Engine.PopupClosed( f116_arg1.controller, "" )
+	Engine.PopupClosed( f144_arg1.controller, "" )
 end
 
-function disturbingContentInGameConfirmResponseNo( f117_arg0, f117_arg1 )
-	LUI.FlowManager.RequestAddMenu( f117_arg0, "disturbing_content_in_game_popup", false, f117_arg1.controller, true, nil )
+function disturbingContentInGameConfirmResponseNo( f145_arg0, f145_arg1 )
+	LUI.FlowManager.RequestAddMenu( f145_arg0, "disturbing_content_in_game_popup", false, f145_arg1.controller, true, nil )
 end
 
-function disturbing_content_in_game_confirm_popup( f118_arg0, f118_arg1 )
+function disturbing_content_in_game_confirm_popup( f146_arg0, f146_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_SP_OFFENSIVE_TITLE" ),
 		message_text = Engine.Localize( "@MENU_SP_OFFENSIVE_ARE_YOU_SURE" ),
@@ -1864,32 +1864,32 @@ function disturbing_content_in_game_confirm_popup( f118_arg0, f118_arg1 )
 	} )
 end
 
-local f0_local45 = function ( f119_arg0, f119_arg1, f119_arg2, f119_arg3, f119_arg4 )
-	return (f119_arg4 - f119_arg3) / (f119_arg2 - f119_arg1) * (f119_arg0 - f119_arg2) + f119_arg4
+local f0_local45 = function ( f147_arg0, f147_arg1, f147_arg2, f147_arg3, f147_arg4 )
+	return (f147_arg4 - f147_arg3) / (f147_arg2 - f147_arg1) * (f147_arg0 - f147_arg2) + f147_arg4
 end
 
-local f0_local46 = function ( f120_arg0, f120_arg1 )
-	local f120_local0 = Patch.PatchDownloadedSize()
-	local f120_local1 = Patch.PatchSize()
-	if f120_local1 <= f120_local0 then
-		f120_local0 = f120_local1
+local f0_local46 = function ( f148_arg0, f148_arg1 )
+	local f148_local0 = Patch.PatchDownloadedSize()
+	local f148_local1 = Patch.PatchSize()
+	if f148_local1 <= f148_local0 then
+		f148_local0 = f148_local1
 	end
-	local f120_local2 = f0_local45( f120_local0, 0, f120_local1, 0, f120_arg0.maxWidth )
-	if f120_local2 >= 10 and not f120_arg0.passedGlow then
-		f120_arg0.passedGlow = true
-		f120_arg0.glowRider:animateToState( "normalSize", 3000 )
+	local f148_local2 = f0_local45( f148_local0, 0, f148_local1, 0, f148_arg0.maxWidth )
+	if f148_local2 >= 10 and not f148_arg0.passedGlow then
+		f148_arg0.passedGlow = true
+		f148_arg0.glowRider:animateToState( "normalSize", 3000 )
 	end
-	f120_arg0:registerAnimationState( "update", {
-		left = f120_arg0.startLeft,
+	f148_arg0:registerAnimationState( "update", {
+		left = f148_arg0.startLeft,
 		leftAnchor = true,
-		width = f120_local2
+		width = f148_local2
 	} )
-	f120_arg0:animateToState( "update", 3000 )
+	f148_arg0:animateToState( "update", 3000 )
 end
 
-function waiting_popup( f121_arg0, f121_arg1 )
-	local f121_local0 = 175
-	local f121_local1 = {
+function waiting_popup( f149_arg0, f149_arg1 )
+	local f149_local0 = 175
+	local f149_local1 = {
 		r = 0,
 		g = 0,
 		b = 0
@@ -1897,53 +1897,53 @@ function waiting_popup( f121_arg0, f121_arg1 )
 	local self = LUI.UIElement.new( {
 		leftAnchor = true,
 		rightAnchor = true,
-		height = f121_local0
+		height = f149_local0
 	} )
-	local f121_local3 = 0
-	if f121_arg1.isLiveWithCancel then
-		local self = LUI.UIBindButton.new()
-		self:registerEventHandler( "button_secondary", function ( element, event )
-			if f121_arg1.cancel_func then
-				f121_arg1.cancel_func( element, event )
+	local f149_local3 = 0
+	if f149_arg1.isLiveWithCancel then
+		local f149_local4 = LUI.UIBindButton.new()
+		f149_local4:registerEventHandler( "button_secondary", function ( element, event )
+			if f149_arg1.cancel_func then
+				f149_arg1.cancel_func( element, event )
 			end
 		end )
-		self:addElement( self )
-		self:setPriority( 50 )
+		self:addElement( f149_local4 )
+		f149_local4:setPriority( 50 )
 		AddLiveDialogFooterHelperText( self, {
 			footerOffset = 10
 		} )
-		f121_local3 = f121_local3 - 20
+		f149_local3 = f149_local3 - 20
 	end
-	if f121_arg1.isCCS then
-		local self = 250
-		local f121_local5 = 5
-		local f121_local6 = 10
-		local self = LUI.UIElement.new( {
+	if f149_arg1.isCCS then
+		local f149_local4 = 250
+		local f149_local5 = 5
+		local f149_local6 = 10
+		local f149_local7 = LUI.UIElement.new( {
 			bottomAnchor = true,
 			bottom = -45,
-			width = self + f121_local6,
-			height = f121_local5 + f121_local6
+			width = f149_local4 + f149_local6,
+			height = f149_local5 + f149_local6
 		} )
-		local self = LUI.UIImage.new( {
+		local f149_local8 = LUI.UIImage.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
 			bottomAnchor = true,
-			color = f121_local1,
+			color = f149_local1,
 			alpha = 0.8
 		} )
-		local f121_local9 = LUI.DecoFrame.new( {
+		local f149_local9 = LUI.DecoFrame.new( {
 			leftAnchor = true,
 			rightAnchor = true,
 			topAnchor = true,
 			bottomAnchor = true,
 			alpha = 0.75
 		}, LUI.DecoFrame.Green )
-		self:addElement( self )
-		self:addElement( f121_local9 )
-		local f121_local10 = f121_local6 / 2
-		local self = LUI.UIImage.new( {
-			left = f121_local10,
+		f149_local7:addElement( f149_local8 )
+		f149_local7:addElement( f149_local9 )
+		local f149_local10 = f149_local6 / 2
+		local f149_local11 = LUI.UIImage.new( {
+			left = f149_local10,
 			leftAnchor = true,
 			color = {
 				r = 0.2,
@@ -1952,132 +1952,132 @@ function waiting_popup( f121_arg0, f121_arg1 )
 			},
 			alpha = 0.8,
 			material = RegisterMaterial( "white" ),
-			width = self,
-			height = f121_local5
+			width = f149_local4,
+			height = f149_local5
 		} )
-		local self = LUI.UIBorder.new( {
-			left = f121_local10,
+		local f149_local12 = LUI.UIBorder.new( {
+			left = f149_local10,
 			leftAnchor = true,
 			borderThickness = 1,
 			color = GenericMenuColors.line,
 			material = RegisterMaterial( "white" ),
-			width = self,
-			height = f121_local5
+			width = f149_local4,
+			height = f149_local5
 		} )
-		self:addElement( self )
-		self:addElement( self )
-		local self = LUI.UIImage.new( {
-			left = f121_local10,
+		f149_local7:addElement( f149_local11 )
+		f149_local7:addElement( f149_local12 )
+		local f149_local13 = LUI.UIImage.new( {
+			left = f149_local10,
 			leftAnchor = true,
 			material = RegisterMaterial( "h1_ui_progressbar_green" ),
 			width = 0,
-			height = f121_local5
+			height = f149_local5
 		} )
-		self.maxWidth = self
-		self.startLeft = f121_local10
-		local f121_local14 = 10
-		local f121_local15 = RegisterMaterial( "h1_ui_loadscreen_progress_highlight" )
-		local self, f121_local17 = GetMaterialDimensions( f121_local15 )
-		local f121_local18 = f121_local14 * self / f121_local17
-		local self = LUI.UIImage.new( {
+		f149_local13.maxWidth = f149_local4
+		f149_local13.startLeft = f149_local10
+		local f149_local14 = 10
+		local f149_local15 = RegisterMaterial( "h1_ui_loadscreen_progress_highlight" )
+		local f149_local16, f149_local17 = GetMaterialDimensions( f149_local15 )
+		local f149_local18 = f149_local14 * f149_local16 / f149_local17
+		local f149_local19 = LUI.UIImage.new( {
 			rightAnchor = true,
 			topAnchor = true,
 			top = -4,
 			right = 3,
-			material = f121_local15,
-			width = f121_local18 / 4,
-			height = f121_local14
+			material = f149_local15,
+			width = f149_local18 / 4,
+			height = f149_local14
 		} )
-		self:registerAnimationState( "normalSize", {
+		f149_local19:registerAnimationState( "normalSize", {
 			rightAnchor = true,
 			topAnchor = true,
 			top = -4,
 			right = 4.5,
-			material = f121_local15,
-			width = f121_local18 / 2,
-			height = f121_local14
+			material = f149_local15,
+			width = f149_local18 / 2,
+			height = f149_local14
 		} )
-		self.passedGlow = false
-		self.glowRider = self
-		self:addElement( self )
-		self:addElement( self )
-		self:addElement( self )
-		self:addElement( LUI.UITimer.new( 100, "update_progress" ) )
-		self:registerEventHandler( "update_progress", f0_local46 )
-		f121_local3 = f121_local3 - 10
-		self:setPriority( 51 )
+		f149_local13.passedGlow = false
+		f149_local13.glowRider = f149_local19
+		f149_local13:addElement( f149_local19 )
+		f149_local7:addElement( f149_local13 )
+		self:addElement( f149_local7 )
+		f149_local13:addElement( LUI.UITimer.new( 100, "update_progress" ) )
+		f149_local13:registerEventHandler( "update_progress", f0_local46 )
+		f149_local3 = f149_local3 - 10
+		f149_local7:setPriority( 51 )
 	end
-	local self = LUI.UIImage.new( {
+	local f149_local4 = LUI.UIImage.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true,
 		bottomAnchor = true,
 		material = RegisterMaterial( "white" ),
-		color = f121_local1,
+		color = f149_local1,
 		alpha = 0.8
 	} )
-	local f121_local5 = LUI.Divider.new( {
+	local f149_local5 = LUI.Divider.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		topAnchor = true
 	}, 55, LUI.Divider.Green )
-	local f121_local6 = LUI.Divider.new( {
+	local f149_local6 = LUI.Divider.new( {
 		leftAnchor = true,
 		rightAnchor = true,
 		bottomAnchor = true,
 		bottom = 2
 	}, 55, LUI.Divider.Green )
-	local self = 200
-	if f121_arg1.message_text == nil or f121_arg1.message_text == "" then
-		f121_arg1.message_text = "Please wait..."
+	local f149_local7 = 200
+	if f149_arg1.message_text == nil or f149_arg1.message_text == "" then
+		f149_arg1.message_text = "Please wait..."
 	end
-	local self = LUI.UIText.new( {
+	local f149_local8 = LUI.UIText.new( {
 		alignment = LUI.Alignment.Center,
 		topAnchor = true,
-		top = 105 + f121_local3,
+		top = 105 + f149_local3,
 		width = 550,
 		font = CoD.TextSettings.Font24.Font,
 		height = 16,
 		color = Colors.h1.light_grey
 	} )
-	self:setText( f121_arg1.message_text )
-	local f121_local9 = LUI.MenuBuilder.BuildRegisteredType( "loading_animation_widget", {
-		bottomOffset = f121_local3
+	f149_local8:setText( f149_arg1.message_text )
+	local f149_local9 = LUI.MenuBuilder.BuildRegisteredType( "loading_animation_widget", {
+		bottomOffset = f149_local3
 	} )
-	local f121_local10 = 15
-	local f121_local20 = f121_local0
-	local self = RegisterMaterial( "h1_deco_system_dialog_bg" )
-	local self, self = GetMaterialDimensions( self )
-	local self = LUI.UIImage.new( {
+	local f149_local10 = 15
+	local f149_local20 = f149_local0
+	local f149_local11 = RegisterMaterial( "h1_deco_system_dialog_bg" )
+	local f149_local12, f149_local13 = GetMaterialDimensions( f149_local11 )
+	local f149_local16 = LUI.UIImage.new( {
 		topAnchor = true,
-		width = f121_local20 * self / self,
-		height = f121_local20,
-		material = self
+		width = f149_local20 * f149_local12 / f149_local13,
+		height = f149_local20,
+		material = f149_local11
 	} )
 	self:addElement( LUI.MenuBuilder.BuildRegisteredType( "generic_popup_screen_overlay" ) )
-	self:addElement( self )
-	self:addElement( self )
-	self:addElement( f121_local5 )
-	self:addElement( f121_local6 )
-	self:addElement( f121_local9 )
-	self:addElement( self )
+	self:addElement( f149_local4 )
+	self:addElement( f149_local16 )
+	self:addElement( f149_local5 )
+	self:addElement( f149_local6 )
+	self:addElement( f149_local9 )
+	self:addElement( f149_local8 )
 	return self
 end
 
-function reset_all_cheats( f122_arg0, f122_arg1 )
+function reset_all_cheats( f151_arg0, f151_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_NOTICE" ),
 		message_text = Engine.Localize( "@MENU_RESET_CHEATS" ),
-		yes_action = f122_arg1.acceptFunc
+		yes_action = f151_arg1.acceptFunc
 	} )
 end
 
-function reset_exclusive_cheats( f123_arg0, f123_arg1 )
+function reset_exclusive_cheats( f152_arg0, f152_arg1 )
 	return LUI.MenuBuilder.BuildRegisteredType( "generic_yesno_popup", {
 		popup_title = Engine.Localize( "@MENU_WARNING" ),
-		message_text = f123_arg1.message,
-		yes_action = function ( f4_arg0, f4_arg1 )
-			f123_arg1.acceptFunc( f123_arg1.cheatTypeIndex, f123_arg1.cheatIndex )
+		message_text = f152_arg1.message,
+		yes_action = function ( f153_arg0, f153_arg1 )
+			f152_arg1.acceptFunc( f152_arg1.cheatTypeIndex, f152_arg1.cheatIndex )
 		end
 		,
 		yes_text = Engine.Localize( "@MENU_ACCEPT" ),
