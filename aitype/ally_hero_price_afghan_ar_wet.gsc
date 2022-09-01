@@ -1,19 +1,19 @@
-// H2 PC GSC
+// H2 GSC SOURCE
 // Decompiled by https://github.com/xensik/gsc-tool
 
 main()
 {
-    self._ID3217 = "";
-    self._ID2032 = "";
+    self.animtree = "";
+    self.additionalassets = "";
     self.team = "allies";
     self.type = "human";
-    self._ID36736 = "regular";
+    self.subclass = "regular";
     self.accuracy = 0.2;
     self.health = 100;
     self.grenadeweapon = "fraggrenade";
     self.grenadeammo = 0;
-    self._ID949 = "usp_silencer";
-    self._ID34144 = "usp_silencer";
+    self.secondaryweapon = "usp_silencer";
+    self.sidearm = "usp_silencer";
 
     if ( isai( self ) )
     {
@@ -22,17 +22,17 @@ main()
     }
 
     self.weapon = "m4_grenadier";
-    _ID54448::main();
+    _id_D4B0::main();
 }
 
-_ID988()
+spawner()
 {
     self setspawnerteam( "allies" );
 }
 
-_ID814()
+precache()
 {
-    _ID54448::_ID814();
+    _id_D4B0::precache();
     precacheitem( "m4_grenadier" );
     precacheitem( "m203_m4" );
     precacheitem( "usp_silencer" );

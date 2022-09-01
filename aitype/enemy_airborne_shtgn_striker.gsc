@@ -1,19 +1,19 @@
-// H2 PC GSC
+// H2 GSC SOURCE
 // Decompiled by https://github.com/xensik/gsc-tool
 
 main()
 {
-    self._ID3217 = "";
-    self._ID2032 = "";
+    self.animtree = "";
+    self.additionalassets = "";
     self.team = "axis";
     self.type = "human";
-    self._ID36736 = "regular";
+    self.subclass = "regular";
     self.accuracy = 0.2;
     self.health = 150;
     self.grenadeweapon = "fraggrenade";
     self.grenadeammo = 0;
-    self._ID949 = "";
-    self._ID34144 = "pp2000";
+    self.secondaryweapon = "";
+    self.sidearm = "pp2000";
 
     if ( isai( self ) )
     {
@@ -21,7 +21,7 @@ main()
         self setengagementmaxdist( 280.0, 400.0 );
     }
 
-    switch ( _ID42226::_ID15950( 2 ) )
+    switch ( codescripts\character::get_random_weapon( 2 ) )
     {
         case 0:
             self.weapon = "striker";
@@ -31,30 +31,30 @@ main()
             break;
     }
 
-    switch ( _ID42226::_ID15942( 3 ) )
+    switch ( codescripts\character::get_random_character( 3 ) )
     {
         case 0:
-            _ID45960::main();
+            _id_B388::main();
             break;
         case 1:
-            _ID48607::main();
+            _id_BDDF::main();
             break;
         case 2:
-            _ID51791::main();
+            _id_CA4F::main();
             break;
     }
 }
 
-_ID988()
+spawner()
 {
     self setspawnerteam( "axis" );
 }
 
-_ID814()
+precache()
 {
-    _ID45960::_ID814();
-    _ID48607::_ID814();
-    _ID51791::_ID814();
+    _id_B388::precache();
+    _id_BDDF::precache();
+    _id_CA4F::precache();
     precacheitem( "striker" );
     precacheitem( "striker_reflex" );
     precacheitem( "pp2000" );
