@@ -1,0 +1,72 @@
+// H2 GSC SOURCE
+// Dumped by https://github.com/xensik/gsc-tool
+
+main()
+{
+    level.tweakfile = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_outdoors" );
+    var_0.startdist = 3764.17;
+    var_0.halfwaydist = 19391;
+    var_0.red = 0.661137;
+    var_0.green = 0.554261;
+    var_0.blue = 0.454014;
+    var_0.maxopacity = 0.7;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_indoors" );
+    var_0.startdist = 3764.17;
+    var_0.halfwaydist = 19391;
+    var_0.red = 0.661137;
+    var_0.green = 0.554261;
+    var_0.blue = 0.454014;
+    var_0.maxopacity = 0.7;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_indoors_steamroom" );
+    var_0.startdist = 0;
+    var_0.halfwaydist = 15242;
+    var_0.red = 0.807;
+    var_0.green = 0.8225;
+    var_0.blue = 0.8262;
+    var_0.maxopacity = 0.7682;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_indoors_steamroom_dark" );
+    var_0.startdist = 0;
+    var_0.halfwaydist = 4110;
+    var_0.red = 0.73311;
+    var_0.green = 0.2763;
+    var_0.blue = 0.288116;
+    var_0.maxopacity = 0.7682;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_indoors_overlook" );
+    var_0.startdist = 3764.17;
+    var_0.halfwaydist = 19391;
+    var_0.red = 0.661137;
+    var_0.green = 0.554261;
+    var_0.blue = 0.454014;
+    var_0.maxopacity = 0.7;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_indoors_skylight" );
+    var_0.startdist = 3764.17;
+    var_0.halfwaydist = 19391;
+    var_0.red = 0.661137;
+    var_0.green = 0.554261;
+    var_0.blue = 0.454014;
+    var_0.maxopacity = 0.7;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_indoors_breachroom" );
+    var_0.startdist = 3764.17;
+    var_0.halfwaydist = 19391;
+    var_0.red = 0.661137;
+    var_0.green = 0.554261;
+    var_0.blue = 0.454014;
+    var_0.maxopacity = 0.7;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_vision_set_fog( "af_caves_outdoors_airstrip" );
+    var_0.startdist = 2044.09;
+    var_0.halfwaydist = 16810;
+    var_0.red = 0.67451;
+    var_0.green = 0.67451;
+    var_0.blue = 0.713726;
+    var_0.maxopacity = 0.778285;
+    var_0.transitiontime = 0;
+    maps\_utility::vision_set_fog_changes( "af_caves_outdoors", 0 );
+}

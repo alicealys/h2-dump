@@ -1,0 +1,17 @@
+// H2 GSC SOURCE
+// Dumped by https://github.com/xensik/gsc-tool
+
+main()
+{
+    self setmodel( "body_spetsnaz_assault_boris" );
+    self attach( "head_spetsnaz_assault_boris", "", 1 );
+    self.headmodel = "head_spetsnaz_assault_boris";
+    self.voice = "american";
+    self setclothtype( "vestlight" );
+}
+
+precache()
+{
+    precachemodel( "body_spetsnaz_assault_boris" );
+    precachemodel( "head_spetsnaz_assault_boris" );
+}
