@@ -1,0 +1,70 @@
+// H2 GSC SOURCE
+// Dumped by https://github.com/xensik/gsc-tool
+
+main()
+{
+    var_0 = maps\_utility::create_fog( "cliffhanger" );
+    var_0.startdist = 750;
+    var_0.halfwaydist = 4000;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 0.5;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "climbing" );
+    var_0.startdist = 24472;
+    var_0.halfwaydist = 15873;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 0.901075;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "climbing_up" );
+    var_0.startdist = 25;
+    var_0.halfwaydist = 1200;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 0.5;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "snowmobile" );
+    var_0.startdist = 2000;
+    var_0.halfwaydist = 10000;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 0.47;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "blizzard_light" );
+    var_0.startdist = 2000;
+    var_0.halfwaydist = 10000;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 0.47;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "blizzard_med" );
+    var_0.startdist = 0;
+    var_0.halfwaydist = 500;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 0.8;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "blizzard_heavy" );
+    var_0.startdist = 470;
+    var_0.halfwaydist = 500;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 1;
+    var_0.transitiontime = 0;
+    var_0 = maps\_utility::create_fog( "blizzard_extreme" );
+    var_0.startdist = 470;
+    var_0.halfwaydist = 500;
+    var_0.red = 0.76;
+    var_0.green = 0.8;
+    var_0.blue = 0.85;
+    var_0.maxopacity = 1;
+    var_0.transitiontime = 0;
+}
